@@ -21,6 +21,56 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
+// Invoker invokes operations described by OpenAPI v3 specification.
+type Invoker interface {
+	// NullableStrings invokes nullableStrings operation.
+	//
+	// Nullable strings.
+	//
+	// POST /nullableStrings
+	NullableStrings(ctx context.Context, request NilString) error
+	// ObjectsWithConflictingArrayProperty invokes objectsWithConflictingArrayProperty operation.
+	//
+	// Objects with conflicting array property.
+	//
+	// POST /objectsWithConflictingArrayProperty
+	ObjectsWithConflictingArrayProperty(ctx context.Context, request *ObjectsWithConflictingArrayPropertyReq) error
+	// ObjectsWithConflictingProperties invokes objectsWithConflictingProperties operation.
+	//
+	// Objects with conflicting properties.
+	//
+	// POST /objectsWithConflictingProperties
+	ObjectsWithConflictingProperties(ctx context.Context, request *ObjectsWithConflictingPropertiesReq) error
+	// ReferencedAllof invokes referencedAllof operation.
+	//
+	// Referenced allOf.
+	//
+	// POST /referencedAllof
+	ReferencedAllof(ctx context.Context, request ReferencedAllofReq) error
+	// ReferencedAllofOptional invokes referencedAllofOptional operation.
+	//
+	// Referenced allOf, but requestBody is not required.
+	//
+	// POST /referencedAllofOptional
+	ReferencedAllofOptional(ctx context.Context, request ReferencedAllofOptionalReq) error
+	// SimpleInteger invokes simpleInteger operation.
+	//
+	// Simple integers with validation.
+	//
+	// POST /simpleInteger
+	SimpleInteger(ctx context.Context, request int) error
+	// SimpleObjects invokes simpleObjects operation.
+	//
+	// Simple objects.
+	//
+	// POST /simpleObjects
+	SimpleObjects(ctx context.Context, request *SimpleObjectsReq) error
+	// StringsNotype invokes stringsNotype operation.
+	//
+	// POST /stringsNotype
+	StringsNotype(ctx context.Context, request NilString) error
+}
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL

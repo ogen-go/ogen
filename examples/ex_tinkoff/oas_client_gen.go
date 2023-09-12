@@ -21,6 +21,136 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+// Invoker invokes operations described by OpenAPI v3 specification.
+type Invoker interface {
+	// MarketBondsGet invokes GET /market/bonds operation.
+	//
+	// Получение списка облигаций.
+	//
+	// GET /market/bonds
+	MarketBondsGet(ctx context.Context) (MarketBondsGetRes, error)
+	// MarketCandlesGet invokes GET /market/candles operation.
+	//
+	// Получение исторических свечей по FIGI.
+	//
+	// GET /market/candles
+	MarketCandlesGet(ctx context.Context, params MarketCandlesGetParams) (MarketCandlesGetRes, error)
+	// MarketCurrenciesGet invokes GET /market/currencies operation.
+	//
+	// Получение списка валютных пар.
+	//
+	// GET /market/currencies
+	MarketCurrenciesGet(ctx context.Context) (MarketCurrenciesGetRes, error)
+	// MarketEtfsGet invokes GET /market/etfs operation.
+	//
+	// Получение списка ETF.
+	//
+	// GET /market/etfs
+	MarketEtfsGet(ctx context.Context) (MarketEtfsGetRes, error)
+	// MarketOrderbookGet invokes GET /market/orderbook operation.
+	//
+	// Получение стакана по FIGI.
+	//
+	// GET /market/orderbook
+	MarketOrderbookGet(ctx context.Context, params MarketOrderbookGetParams) (MarketOrderbookGetRes, error)
+	// MarketSearchByFigiGet invokes GET /market/search/by-figi operation.
+	//
+	// Получение инструмента по FIGI.
+	//
+	// GET /market/search/by-figi
+	MarketSearchByFigiGet(ctx context.Context, params MarketSearchByFigiGetParams) (MarketSearchByFigiGetRes, error)
+	// MarketSearchByTickerGet invokes GET /market/search/by-ticker operation.
+	//
+	// Получение инструмента по тикеру.
+	//
+	// GET /market/search/by-ticker
+	MarketSearchByTickerGet(ctx context.Context, params MarketSearchByTickerGetParams) (MarketSearchByTickerGetRes, error)
+	// MarketStocksGet invokes GET /market/stocks operation.
+	//
+	// Получение списка акций.
+	//
+	// GET /market/stocks
+	MarketStocksGet(ctx context.Context) (MarketStocksGetRes, error)
+	// OperationsGet invokes GET /operations operation.
+	//
+	// Получение списка операций.
+	//
+	// GET /operations
+	OperationsGet(ctx context.Context, params OperationsGetParams) (OperationsGetRes, error)
+	// OrdersCancelPost invokes POST /orders/cancel operation.
+	//
+	// Отмена заявки.
+	//
+	// POST /orders/cancel
+	OrdersCancelPost(ctx context.Context, params OrdersCancelPostParams) (OrdersCancelPostRes, error)
+	// OrdersGet invokes GET /orders operation.
+	//
+	// Получение списка активных заявок.
+	//
+	// GET /orders
+	OrdersGet(ctx context.Context, params OrdersGetParams) (OrdersGetRes, error)
+	// OrdersLimitOrderPost invokes POST /orders/limit-order operation.
+	//
+	// Создание лимитной заявки.
+	//
+	// POST /orders/limit-order
+	OrdersLimitOrderPost(ctx context.Context, request *LimitOrderRequest, params OrdersLimitOrderPostParams) (OrdersLimitOrderPostRes, error)
+	// OrdersMarketOrderPost invokes POST /orders/market-order operation.
+	//
+	// Создание рыночной заявки.
+	//
+	// POST /orders/market-order
+	OrdersMarketOrderPost(ctx context.Context, request *MarketOrderRequest, params OrdersMarketOrderPostParams) (OrdersMarketOrderPostRes, error)
+	// PortfolioCurrenciesGet invokes GET /portfolio/currencies operation.
+	//
+	// Получение валютных активов клиента.
+	//
+	// GET /portfolio/currencies
+	PortfolioCurrenciesGet(ctx context.Context, params PortfolioCurrenciesGetParams) (PortfolioCurrenciesGetRes, error)
+	// PortfolioGet invokes GET /portfolio operation.
+	//
+	// Получение портфеля клиента.
+	//
+	// GET /portfolio
+	PortfolioGet(ctx context.Context, params PortfolioGetParams) (PortfolioGetRes, error)
+	// SandboxClearPost invokes POST /sandbox/clear operation.
+	//
+	// Удаление всех позиций клиента.
+	//
+	// POST /sandbox/clear
+	SandboxClearPost(ctx context.Context, params SandboxClearPostParams) (SandboxClearPostRes, error)
+	// SandboxCurrenciesBalancePost invokes POST /sandbox/currencies/balance operation.
+	//
+	// Выставление баланса по валютным позициям.
+	//
+	// POST /sandbox/currencies/balance
+	SandboxCurrenciesBalancePost(ctx context.Context, request *SandboxSetCurrencyBalanceRequest, params SandboxCurrenciesBalancePostParams) (SandboxCurrenciesBalancePostRes, error)
+	// SandboxPositionsBalancePost invokes POST /sandbox/positions/balance operation.
+	//
+	// Выставление баланса по инструментным позициям.
+	//
+	// POST /sandbox/positions/balance
+	SandboxPositionsBalancePost(ctx context.Context, request *SandboxSetPositionBalanceRequest, params SandboxPositionsBalancePostParams) (SandboxPositionsBalancePostRes, error)
+	// SandboxRegisterPost invokes POST /sandbox/register operation.
+	//
+	// Создание счета и валютных позиций для клиента.
+	//
+	// POST /sandbox/register
+	SandboxRegisterPost(ctx context.Context, request OptSandboxRegisterRequest) (SandboxRegisterPostRes, error)
+	// SandboxRemovePost invokes POST /sandbox/remove operation.
+	//
+	// Удаление счета клиента.
+	//
+	// POST /sandbox/remove
+	SandboxRemovePost(ctx context.Context, params SandboxRemovePostParams) (SandboxRemovePostRes, error)
+	// UserAccountsGet invokes GET /user/accounts operation.
+	//
+	// Получение брокерских счетов клиента.
+	//
+	// GET /user/accounts
+	UserAccountsGet(ctx context.Context) (UserAccountsGetRes, error)
+}
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL

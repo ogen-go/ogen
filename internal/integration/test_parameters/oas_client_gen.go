@@ -22,6 +22,56 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+// Invoker invokes operations described by OpenAPI v3 specification.
+type Invoker interface {
+	// ComplicatedParameterNameGet invokes GET /complicatedParameterName operation.
+	//
+	// GET /complicatedParameterName
+	ComplicatedParameterNameGet(ctx context.Context, params ComplicatedParameterNameGetParams) error
+	// ContentParameters invokes contentParameters operation.
+	//
+	// GET /contentParameters/{path}
+	ContentParameters(ctx context.Context, params ContentParametersParams) (*ContentParameters, error)
+	// CookieParameter invokes cookieParameter operation.
+	//
+	// Test for cookie param.
+	//
+	// GET /cookieParameter
+	CookieParameter(ctx context.Context, params CookieParameterParams) (*Value, error)
+	// HeaderParameter invokes headerParameter operation.
+	//
+	// Test for header param.
+	//
+	// GET /headerParameter
+	HeaderParameter(ctx context.Context, params HeaderParameterParams) (*Value, error)
+	// ObjectCookieParameter invokes objectCookieParameter operation.
+	//
+	// GET /objectCookieParameter
+	ObjectCookieParameter(ctx context.Context, params ObjectCookieParameterParams) (*OneLevelObject, error)
+	// ObjectQueryParameter invokes objectQueryParameter operation.
+	//
+	// GET /objectQueryParameter
+	ObjectQueryParameter(ctx context.Context, params ObjectQueryParameterParams) (*ObjectQueryParameterOK, error)
+	// PathParameter invokes pathParameter operation.
+	//
+	// Test for path param.
+	//
+	// GET /pathParameter/{value}
+	PathParameter(ctx context.Context, params PathParameterParams) (*Value, error)
+	// SameName invokes sameName operation.
+	//
+	// Parameters with different location, but with the same name.
+	//
+	// GET /same_name/{param}
+	SameName(ctx context.Context, params SameNameParams) error
+	// SimilarNames invokes similarNames operation.
+	//
+	// Parameters with different location, but with similar names.
+	//
+	// GET /similarNames
+	SimilarNames(ctx context.Context, params SimilarNamesParams) error
+}
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL

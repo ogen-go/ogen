@@ -20,6 +20,112 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+// Invoker invokes operations described by OpenAPI v3 specification.
+type Invoker interface {
+	// APICaptcha2chcaptchaIDGet invokes GET /api/captcha/2chcaptcha/id operation.
+	//
+	// Получение ид для использования 2chcaptcha.
+	//
+	// GET /api/captcha/2chcaptcha/id
+	APICaptcha2chcaptchaIDGet(ctx context.Context, params APICaptcha2chcaptchaIDGetParams) (*Captcha, error)
+	// APICaptcha2chcaptchaShowGet invokes GET /api/captcha/2chcaptcha/show operation.
+	//
+	// Отображение 2chcaptcha по id.
+	//
+	// GET /api/captcha/2chcaptcha/show
+	APICaptcha2chcaptchaShowGet(ctx context.Context, params APICaptcha2chcaptchaShowGetParams) (APICaptcha2chcaptchaShowGetRes, error)
+	// APICaptchaAppIDPublicKeyGet invokes GET /api/captcha/app/id/{public_key} operation.
+	//
+	// Полученный id вам нужно отправить вместе с постом как
+	// app_response_id.
+	// При этом нужно отправить app_response = sha256(app_response_id + '|' +
+	// private key).
+	// Срок жизни id: 180 секунд.
+	//
+	// GET /api/captcha/app/id/{public_key}
+	APICaptchaAppIDPublicKeyGet(ctx context.Context, params APICaptchaAppIDPublicKeyGetParams) (*Captcha, error)
+	// APICaptchaInvisibleRecaptchaIDGet invokes GET /api/captcha/invisible_recaptcha/id operation.
+	//
+	// Получение публичного ключа invisible recaptcha.
+	//
+	// GET /api/captcha/invisible_recaptcha/id
+	APICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params APICaptchaInvisibleRecaptchaIDGetParams) (*Captcha, error)
+	// APICaptchaInvisibleRecaptchaMobileGet invokes GET /api/captcha/invisible_recaptcha/mobile operation.
+	//
+	// Получение html страницы для решения капчи, CORS отключён.
+	//
+	// GET /api/captcha/invisible_recaptcha/mobile
+	APICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) error
+	// APICaptchaRecaptchaIDGet invokes GET /api/captcha/recaptcha/id operation.
+	//
+	// Получение публичного ключа recaptcha v2.
+	//
+	// GET /api/captcha/recaptcha/id
+	APICaptchaRecaptchaIDGet(ctx context.Context, params APICaptchaRecaptchaIDGetParams) (*Captcha, error)
+	// APICaptchaRecaptchaMobileGet invokes GET /api/captcha/recaptcha/mobile operation.
+	//
+	// Получение html страницы для решения капчи, CORS отключён.
+	//
+	// GET /api/captcha/recaptcha/mobile
+	APICaptchaRecaptchaMobileGet(ctx context.Context) error
+	// APIDislikeGet invokes GET /api/dislike operation.
+	//
+	// Добавление дизлайка на пост.
+	//
+	// GET /api/dislike
+	APIDislikeGet(ctx context.Context, params APIDislikeGetParams) (*Like, error)
+	// APILikeGet invokes GET /api/like operation.
+	//
+	// Добавление лайка на пост.
+	//
+	// GET /api/like
+	APILikeGet(ctx context.Context, params APILikeGetParams) (*Like, error)
+	// APIMobileV2AfterBoardThreadNumGet invokes GET /api/mobile/v2/after/{board}/{thread}/{num} operation.
+	//
+	// Получение постов в треде >= указанного. Не
+	// рекомендуется использовать для получения треда
+	// целиком, только для проверки новых постов.
+	//
+	// GET /api/mobile/v2/after/{board}/{thread}/{num}
+	APIMobileV2AfterBoardThreadNumGet(ctx context.Context, params APIMobileV2AfterBoardThreadNumGetParams) (*MobileThreadPostsAfter, error)
+	// APIMobileV2BoardsGet invokes GET /api/mobile/v2/boards operation.
+	//
+	// Получение списка досок и их настроек.
+	//
+	// GET /api/mobile/v2/boards
+	APIMobileV2BoardsGet(ctx context.Context) (Boards, error)
+	// APIMobileV2InfoBoardThreadGet invokes GET /api/mobile/v2/info/{board}/{thread} operation.
+	//
+	// Получение информации о треде.
+	//
+	// GET /api/mobile/v2/info/{board}/{thread}
+	APIMobileV2InfoBoardThreadGet(ctx context.Context, params APIMobileV2InfoBoardThreadGetParams) (*MobileThreadLastInfo, error)
+	// APIMobileV2PostBoardNumGet invokes GET /api/mobile/v2/post/{board}/{num} operation.
+	//
+	// Получение информации о посте.
+	//
+	// GET /api/mobile/v2/post/{board}/{num}
+	APIMobileV2PostBoardNumGet(ctx context.Context, params APIMobileV2PostBoardNumGetParams) (*MobilePost, error)
+	// UserPassloginPost invokes POST /user/passlogin operation.
+	//
+	// Авторизация пасскода.
+	//
+	// POST /user/passlogin
+	UserPassloginPost(ctx context.Context, request OptUserPassloginPostReq, params UserPassloginPostParams) (*Passcode, error)
+	// UserPostingPost invokes POST /user/posting operation.
+	//
+	// Создание нового поста или треда.
+	//
+	// POST /user/posting
+	UserPostingPost(ctx context.Context, request OptUserPostingPostReq) (UserPostingPostOK, error)
+	// UserReportPost invokes POST /user/report operation.
+	//
+	// Отправка жалобы.
+	//
+	// POST /user/report
+	UserReportPost(ctx context.Context, request OptUserReportPostReq) (*Report, error)
+}
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL

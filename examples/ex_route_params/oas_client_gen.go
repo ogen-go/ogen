@@ -21,6 +21,28 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+// Invoker invokes operations described by OpenAPI v3 specification.
+type Invoker interface {
+	// DataGet invokes dataGet operation.
+	//
+	// Retrieve data.
+	//
+	// GET /name/{id}/{key}
+	DataGet(ctx context.Context, params DataGetParams) (string, error)
+	// DataGetAny invokes dataGetAny operation.
+	//
+	// Retrieve any data.
+	//
+	// GET /name
+	DataGetAny(ctx context.Context) (string, error)
+	// DataGetID invokes dataGetID operation.
+	//
+	// Retrieve data.
+	//
+	// GET /name/{id}
+	DataGetID(ctx context.Context, params DataGetIDParams) (string, error)
+}
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL

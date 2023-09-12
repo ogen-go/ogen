@@ -20,6 +20,338 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+// Invoker invokes operations described by OpenAPI v3 specification.
+type Invoker interface {
+	// AddStickerToSet invokes addStickerToSet operation.
+	//
+	// POST /addStickerToSet
+	AddStickerToSet(ctx context.Context, request *AddStickerToSet) (*Result, error)
+	// AnswerCallbackQuery invokes answerCallbackQuery operation.
+	//
+	// POST /answerCallbackQuery
+	AnswerCallbackQuery(ctx context.Context, request *AnswerCallbackQuery) (*Result, error)
+	// AnswerInlineQuery invokes answerInlineQuery operation.
+	//
+	// POST /answerInlineQuery
+	AnswerInlineQuery(ctx context.Context, request *AnswerInlineQuery) (*Result, error)
+	// AnswerPreCheckoutQuery invokes answerPreCheckoutQuery operation.
+	//
+	// POST /answerPreCheckoutQuery
+	AnswerPreCheckoutQuery(ctx context.Context, request *AnswerPreCheckoutQuery) (*Result, error)
+	// AnswerShippingQuery invokes answerShippingQuery operation.
+	//
+	// POST /answerShippingQuery
+	AnswerShippingQuery(ctx context.Context, request *AnswerShippingQuery) (*Result, error)
+	// ApproveChatJoinRequest invokes approveChatJoinRequest operation.
+	//
+	// POST /approveChatJoinRequest
+	ApproveChatJoinRequest(ctx context.Context, request *ApproveChatJoinRequest) (*Result, error)
+	// BanChatMember invokes banChatMember operation.
+	//
+	// POST /banChatMember
+	BanChatMember(ctx context.Context, request *BanChatMember) (*Result, error)
+	// BanChatSenderChat invokes banChatSenderChat operation.
+	//
+	// POST /banChatSenderChat
+	BanChatSenderChat(ctx context.Context, request *BanChatSenderChat) (*Result, error)
+	// Close invokes close operation.
+	//
+	// POST /close
+	Close(ctx context.Context) (*Result, error)
+	// CopyMessage invokes copyMessage operation.
+	//
+	// POST /copyMessage
+	CopyMessage(ctx context.Context, request *CopyMessage) (*ResultMessageId, error)
+	// CreateChatInviteLink invokes createChatInviteLink operation.
+	//
+	// POST /createChatInviteLink
+	CreateChatInviteLink(ctx context.Context, request *CreateChatInviteLink) (*ResultChatInviteLink, error)
+	// CreateNewStickerSet invokes createNewStickerSet operation.
+	//
+	// POST /createNewStickerSet
+	CreateNewStickerSet(ctx context.Context, request *CreateNewStickerSet) (*Result, error)
+	// DeclineChatJoinRequest invokes declineChatJoinRequest operation.
+	//
+	// POST /declineChatJoinRequest
+	DeclineChatJoinRequest(ctx context.Context, request *DeclineChatJoinRequest) (*Result, error)
+	// DeleteChatPhoto invokes deleteChatPhoto operation.
+	//
+	// POST /deleteChatPhoto
+	DeleteChatPhoto(ctx context.Context, request *DeleteChatPhoto) (*Result, error)
+	// DeleteChatStickerSet invokes deleteChatStickerSet operation.
+	//
+	// POST /deleteChatStickerSet
+	DeleteChatStickerSet(ctx context.Context, request *DeleteChatStickerSet) (*Result, error)
+	// DeleteMessage invokes deleteMessage operation.
+	//
+	// POST /deleteMessage
+	DeleteMessage(ctx context.Context, request *DeleteMessage) (*Result, error)
+	// DeleteMyCommands invokes deleteMyCommands operation.
+	//
+	// POST /deleteMyCommands
+	DeleteMyCommands(ctx context.Context, request OptDeleteMyCommands) (*Result, error)
+	// DeleteStickerFromSet invokes deleteStickerFromSet operation.
+	//
+	// POST /deleteStickerFromSet
+	DeleteStickerFromSet(ctx context.Context, request *DeleteStickerFromSet) (*Result, error)
+	// DeleteWebhook invokes deleteWebhook operation.
+	//
+	// POST /deleteWebhook
+	DeleteWebhook(ctx context.Context, request OptDeleteWebhook) (*Result, error)
+	// EditChatInviteLink invokes editChatInviteLink operation.
+	//
+	// POST /editChatInviteLink
+	EditChatInviteLink(ctx context.Context, request *EditChatInviteLink) (*ResultChatInviteLink, error)
+	// EditMessageCaption invokes editMessageCaption operation.
+	//
+	// POST /editMessageCaption
+	EditMessageCaption(ctx context.Context, request *EditMessageCaption) (*Result, error)
+	// EditMessageLiveLocation invokes editMessageLiveLocation operation.
+	//
+	// POST /editMessageLiveLocation
+	EditMessageLiveLocation(ctx context.Context, request *EditMessageLiveLocation) (*Result, error)
+	// EditMessageMedia invokes editMessageMedia operation.
+	//
+	// POST /editMessageMedia
+	EditMessageMedia(ctx context.Context, request *EditMessageMedia) (*Result, error)
+	// EditMessageReplyMarkup invokes editMessageReplyMarkup operation.
+	//
+	// POST /editMessageReplyMarkup
+	EditMessageReplyMarkup(ctx context.Context, request *EditMessageReplyMarkup) (*Result, error)
+	// EditMessageText invokes editMessageText operation.
+	//
+	// POST /editMessageText
+	EditMessageText(ctx context.Context, request *EditMessageText) (*Result, error)
+	// ExportChatInviteLink invokes exportChatInviteLink operation.
+	//
+	// POST /exportChatInviteLink
+	ExportChatInviteLink(ctx context.Context, request *ExportChatInviteLink) (*ResultString, error)
+	// ForwardMessage invokes forwardMessage operation.
+	//
+	// POST /forwardMessage
+	ForwardMessage(ctx context.Context, request *ForwardMessage) (*ResultMessage, error)
+	// GetChat invokes getChat operation.
+	//
+	// POST /getChat
+	GetChat(ctx context.Context, request *GetChat) (*ResultChat, error)
+	// GetChatAdministrators invokes getChatAdministrators operation.
+	//
+	// POST /getChatAdministrators
+	GetChatAdministrators(ctx context.Context, request *GetChatAdministrators) (*ResultArrayOfChatMember, error)
+	// GetChatMember invokes getChatMember operation.
+	//
+	// POST /getChatMember
+	GetChatMember(ctx context.Context, request *GetChatMember) (*ResultChatMember, error)
+	// GetChatMemberCount invokes getChatMemberCount operation.
+	//
+	// POST /getChatMemberCount
+	GetChatMemberCount(ctx context.Context, request *GetChatMemberCount) (*ResultInt, error)
+	// GetFile invokes getFile operation.
+	//
+	// POST /getFile
+	GetFile(ctx context.Context, request *GetFile) (*Result, error)
+	// GetGameHighScores invokes getGameHighScores operation.
+	//
+	// POST /getGameHighScores
+	GetGameHighScores(ctx context.Context, request *GetGameHighScores) (*ResultArrayOfGameHighScore, error)
+	// GetMe invokes getMe operation.
+	//
+	// POST /getMe
+	GetMe(ctx context.Context) (*ResultUser, error)
+	// GetMyCommands invokes getMyCommands operation.
+	//
+	// POST /getMyCommands
+	GetMyCommands(ctx context.Context, request OptGetMyCommands) (*ResultArrayOfBotCommand, error)
+	// GetStickerSet invokes getStickerSet operation.
+	//
+	// POST /getStickerSet
+	GetStickerSet(ctx context.Context, request *GetStickerSet) (*Result, error)
+	// GetUpdates invokes getUpdates operation.
+	//
+	// POST /getUpdates
+	GetUpdates(ctx context.Context, request OptGetUpdates) (*ResultArrayOfUpdate, error)
+	// GetUserProfilePhotos invokes getUserProfilePhotos operation.
+	//
+	// POST /getUserProfilePhotos
+	GetUserProfilePhotos(ctx context.Context, request *GetUserProfilePhotos) (*ResultUserProfilePhotos, error)
+	// GetWebhookInfo invokes getWebhookInfo operation.
+	//
+	// POST /getWebhookInfo
+	GetWebhookInfo(ctx context.Context) (*ResultWebhookInfo, error)
+	// LeaveChat invokes leaveChat operation.
+	//
+	// POST /leaveChat
+	LeaveChat(ctx context.Context, request *LeaveChat) (*Result, error)
+	// LogOut invokes logOut operation.
+	//
+	// POST /logOut
+	LogOut(ctx context.Context) (*Result, error)
+	// PinChatMessage invokes pinChatMessage operation.
+	//
+	// POST /pinChatMessage
+	PinChatMessage(ctx context.Context, request *PinChatMessage) (*Result, error)
+	// PromoteChatMember invokes promoteChatMember operation.
+	//
+	// POST /promoteChatMember
+	PromoteChatMember(ctx context.Context, request *PromoteChatMember) (*Result, error)
+	// RestrictChatMember invokes restrictChatMember operation.
+	//
+	// POST /restrictChatMember
+	RestrictChatMember(ctx context.Context, request *RestrictChatMember) (*Result, error)
+	// RevokeChatInviteLink invokes revokeChatInviteLink operation.
+	//
+	// POST /revokeChatInviteLink
+	RevokeChatInviteLink(ctx context.Context, request *RevokeChatInviteLink) (*ResultChatInviteLink, error)
+	// SendAnimation invokes sendAnimation operation.
+	//
+	// POST /sendAnimation
+	SendAnimation(ctx context.Context, request *SendAnimation) (*ResultMessage, error)
+	// SendAudio invokes sendAudio operation.
+	//
+	// POST /sendAudio
+	SendAudio(ctx context.Context, request *SendAudio) (*ResultMessage, error)
+	// SendChatAction invokes sendChatAction operation.
+	//
+	// POST /sendChatAction
+	SendChatAction(ctx context.Context, request *SendChatAction) (*Result, error)
+	// SendContact invokes sendContact operation.
+	//
+	// POST /sendContact
+	SendContact(ctx context.Context, request *SendContact) (*ResultMessage, error)
+	// SendDice invokes sendDice operation.
+	//
+	// POST /sendDice
+	SendDice(ctx context.Context, request *SendDice) (*ResultMessage, error)
+	// SendDocument invokes sendDocument operation.
+	//
+	// POST /sendDocument
+	SendDocument(ctx context.Context, request *SendDocument) (*ResultMessage, error)
+	// SendGame invokes sendGame operation.
+	//
+	// POST /sendGame
+	SendGame(ctx context.Context, request *SendGame) (*ResultMessage, error)
+	// SendInvoice invokes sendInvoice operation.
+	//
+	// POST /sendInvoice
+	SendInvoice(ctx context.Context, request *SendInvoice) (*ResultMessage, error)
+	// SendLocation invokes sendLocation operation.
+	//
+	// POST /sendLocation
+	SendLocation(ctx context.Context, request *SendLocation) (*ResultMessage, error)
+	// SendMediaGroup invokes sendMediaGroup operation.
+	//
+	// POST /sendMediaGroup
+	SendMediaGroup(ctx context.Context, request *SendMediaGroup) (*ResultArrayOfMessage, error)
+	// SendMessage invokes sendMessage operation.
+	//
+	// POST /sendMessage
+	SendMessage(ctx context.Context, request *SendMessage) (*ResultMessage, error)
+	// SendPhoto invokes sendPhoto operation.
+	//
+	// POST /sendPhoto
+	SendPhoto(ctx context.Context, request *SendPhoto) (*ResultMessage, error)
+	// SendPoll invokes sendPoll operation.
+	//
+	// POST /sendPoll
+	SendPoll(ctx context.Context, request *SendPoll) (*ResultMessage, error)
+	// SendSticker invokes sendSticker operation.
+	//
+	// POST /sendSticker
+	SendSticker(ctx context.Context, request *SendSticker) (*ResultMessage, error)
+	// SendVenue invokes sendVenue operation.
+	//
+	// POST /sendVenue
+	SendVenue(ctx context.Context, request *SendVenue) (*ResultMessage, error)
+	// SendVideo invokes sendVideo operation.
+	//
+	// POST /sendVideo
+	SendVideo(ctx context.Context, request *SendVideo) (*ResultMessage, error)
+	// SendVideoNote invokes sendVideoNote operation.
+	//
+	// POST /sendVideoNote
+	SendVideoNote(ctx context.Context, request *SendVideoNote) (*ResultMessage, error)
+	// SendVoice invokes sendVoice operation.
+	//
+	// POST /sendVoice
+	SendVoice(ctx context.Context, request *SendVoice) (*ResultMessage, error)
+	// SetChatAdministratorCustomTitle invokes setChatAdministratorCustomTitle operation.
+	//
+	// POST /setChatAdministratorCustomTitle
+	SetChatAdministratorCustomTitle(ctx context.Context, request *SetChatAdministratorCustomTitle) (*Result, error)
+	// SetChatDescription invokes setChatDescription operation.
+	//
+	// POST /setChatDescription
+	SetChatDescription(ctx context.Context, request *SetChatDescription) (*Result, error)
+	// SetChatPermissions invokes setChatPermissions operation.
+	//
+	// POST /setChatPermissions
+	SetChatPermissions(ctx context.Context, request *SetChatPermissions) (*Result, error)
+	// SetChatPhoto invokes setChatPhoto operation.
+	//
+	// POST /setChatPhoto
+	SetChatPhoto(ctx context.Context, request *SetChatPhoto) (*Result, error)
+	// SetChatStickerSet invokes setChatStickerSet operation.
+	//
+	// POST /setChatStickerSet
+	SetChatStickerSet(ctx context.Context, request *SetChatStickerSet) (*Result, error)
+	// SetChatTitle invokes setChatTitle operation.
+	//
+	// POST /setChatTitle
+	SetChatTitle(ctx context.Context, request *SetChatTitle) (*Result, error)
+	// SetGameScore invokes setGameScore operation.
+	//
+	// POST /setGameScore
+	SetGameScore(ctx context.Context, request *SetGameScore) (*Result, error)
+	// SetMyCommands invokes setMyCommands operation.
+	//
+	// POST /setMyCommands
+	SetMyCommands(ctx context.Context, request *SetMyCommands) (*Result, error)
+	// SetPassportDataErrors invokes setPassportDataErrors operation.
+	//
+	// POST /setPassportDataErrors
+	SetPassportDataErrors(ctx context.Context, request *SetPassportDataErrors) (*Result, error)
+	// SetStickerPositionInSet invokes setStickerPositionInSet operation.
+	//
+	// POST /setStickerPositionInSet
+	SetStickerPositionInSet(ctx context.Context, request *SetStickerPositionInSet) (*Result, error)
+	// SetStickerSetThumb invokes setStickerSetThumb operation.
+	//
+	// POST /setStickerSetThumb
+	SetStickerSetThumb(ctx context.Context, request *SetStickerSetThumb) (*Result, error)
+	// SetWebhook invokes setWebhook operation.
+	//
+	// POST /setWebhook
+	SetWebhook(ctx context.Context, request *SetWebhook) (*Result, error)
+	// StopMessageLiveLocation invokes stopMessageLiveLocation operation.
+	//
+	// POST /stopMessageLiveLocation
+	StopMessageLiveLocation(ctx context.Context, request *StopMessageLiveLocation) (*Result, error)
+	// StopPoll invokes stopPoll operation.
+	//
+	// POST /stopPoll
+	StopPoll(ctx context.Context, request *StopPoll) (*ResultPoll, error)
+	// UnbanChatMember invokes unbanChatMember operation.
+	//
+	// POST /unbanChatMember
+	UnbanChatMember(ctx context.Context, request *UnbanChatMember) (*Result, error)
+	// UnbanChatSenderChat invokes unbanChatSenderChat operation.
+	//
+	// POST /unbanChatSenderChat
+	UnbanChatSenderChat(ctx context.Context, request *UnbanChatSenderChat) (*Result, error)
+	// UnpinAllChatMessages invokes unpinAllChatMessages operation.
+	//
+	// POST /unpinAllChatMessages
+	UnpinAllChatMessages(ctx context.Context, request *UnpinAllChatMessages) (*Result, error)
+	// UnpinChatMessage invokes unpinChatMessage operation.
+	//
+	// POST /unpinChatMessage
+	UnpinChatMessage(ctx context.Context, request *UnpinChatMessage) (*Result, error)
+	// UploadStickerFile invokes uploadStickerFile operation.
+	//
+	// POST /uploadStickerFile
+	UploadStickerFile(ctx context.Context, request *UploadStickerFile) (*ResultFile, error)
+}
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL

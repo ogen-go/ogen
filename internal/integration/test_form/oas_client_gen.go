@@ -20,6 +20,46 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+// Invoker invokes operations described by OpenAPI v3 specification.
+type Invoker interface {
+	// OnlyForm invokes onlyForm operation.
+	//
+	// POST /onlyForm
+	OnlyForm(ctx context.Context, request *OnlyFormReq) error
+	// OnlyMultipartFile invokes onlyMultipartFile operation.
+	//
+	// POST /onlyMultipartFile
+	OnlyMultipartFile(ctx context.Context, request *OnlyMultipartFileReq) error
+	// OnlyMultipartForm invokes onlyMultipartForm operation.
+	//
+	// POST /onlyMultipartForm
+	OnlyMultipartForm(ctx context.Context, request *OnlyMultipartFormReq) error
+	// TestFormURLEncoded invokes testFormURLEncoded operation.
+	//
+	// POST /testFormURLEncoded
+	TestFormURLEncoded(ctx context.Context, request *TestForm) error
+	// TestMultipart invokes testMultipart operation.
+	//
+	// POST /testMultipart
+	TestMultipart(ctx context.Context, request *TestFormMultipart) error
+	// TestMultipartUpload invokes testMultipartUpload operation.
+	//
+	// POST /testMultipartUpload
+	TestMultipartUpload(ctx context.Context, request *TestMultipartUploadReq) (*TestMultipartUploadOK, error)
+	// TestReuseFormOptionalSchema invokes testReuseFormOptionalSchema operation.
+	//
+	// POST /testReuseFormOptionalSchema
+	TestReuseFormOptionalSchema(ctx context.Context, request OptSharedRequestMultipart) error
+	// TestReuseFormSchema invokes testReuseFormSchema operation.
+	//
+	// POST /testReuseFormSchema
+	TestReuseFormSchema(ctx context.Context, request *SharedRequestMultipart) error
+	// TestShareFormSchema invokes testShareFormSchema operation.
+	//
+	// POST /testShareFormSchema
+	TestShareFormSchema(ctx context.Context, request TestShareFormSchemaReq) error
+}
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL
