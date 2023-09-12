@@ -21,6 +21,7754 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+// Invoker invokes operations described by OpenAPI v3 specification.
+type Invoker interface {
+	// ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg invokes actions/add-repo-access-to-self-hosted-runner-group-in-org operation.
+	//
+	// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
+	// information, see "[GitHub's products](https://docs.github.
+	// com/github/getting-started-with-github/githubs-products)."
+	// Adds a repository to the list of selected repositories that can access a self-hosted runner group.
+	// The runner group must have `visibility` set to `selected`. For more information, see "[Create a
+	// self-hosted runner group for an
+	// organization](#create-a-self-hosted-runner-group-for-an-organization)."
+	// You must authenticate using an access token with the `admin:org`
+	// scope to use this endpoint.
+	//
+	// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
+	ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams) error
+	// ActionsAddSelectedRepoToOrgSecret invokes actions/add-selected-repo-to-org-secret operation.
+	//
+	// Adds a repository to an organization secret when the `visibility` for repository access is set to
+	// `selected`. The visibility is set when you [Create or update an organization secret](https://docs.
+	// github.com/rest/reference/actions#create-or-update-an-organization-secret). You must authenticate
+	// using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the
+	// `secrets` organization permission to use this endpoint.
+	//
+	// PUT /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}
+	ActionsAddSelectedRepoToOrgSecret(ctx context.Context, params ActionsAddSelectedRepoToOrgSecretParams) (ActionsAddSelectedRepoToOrgSecretRes, error)
+	// ActionsAddSelfHostedRunnerToGroupForOrg invokes actions/add-self-hosted-runner-to-group-for-org operation.
+	//
+	// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
+	// information, see "[GitHub's products](https://docs.github.
+	// com/github/getting-started-with-github/githubs-products)."
+	// Adds a self-hosted runner to a runner group configured in an organization.
+	// You must authenticate using an access token with the `admin:org`
+	// scope to use this endpoint.
+	//
+	// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
+	ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, params ActionsAddSelfHostedRunnerToGroupForOrgParams) error
+	// ActionsApproveWorkflowRun invokes actions/approve-workflow-run operation.
+	//
+	// Approves a workflow run for a pull request from a public fork of a first time contributor. For
+	// more information, see ["Approving workflow runs from public forks](https://docs.github.
+	// com/actions/managing-workflow-runs/approving-workflow-runs-from-public-forks)."
+	// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub
+	// Apps must have the `actions:write` permission to use this endpoint.
+	//
+	// POST /repos/{owner}/{repo}/actions/runs/{run_id}/approve
+	ActionsApproveWorkflowRun(ctx context.Context, params ActionsApproveWorkflowRunParams) (ActionsApproveWorkflowRunRes, error)
+	// ActionsCancelWorkflowRun invokes actions/cancel-workflow-run operation.
+	//
+	// Cancels a workflow run using its `id`. You must authenticate using an access token with the `repo`
+	// scope to use this endpoint. GitHub Apps must have the `actions:write` permission to use this
+	// endpoint.
+	//
+	// POST /repos/{owner}/{repo}/actions/runs/{run_id}/cancel
+	ActionsCancelWorkflowRun(ctx context.Context, params ActionsCancelWorkflowRunParams) error
+	// ActionsCreateOrUpdateEnvironmentSecret invokes actions/create-or-update-environment-secret operation.
+	//
+	// Creates or updates an environment secret with an encrypted value. Encrypt your secret using
+	// [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). You must authenticate
+	// using an access
+	// token with the `repo` scope to use this endpoint. GitHub Apps must have the `secrets` repository
+	// permission to use
+	// this endpoint.
+	// #### Example encrypting a secret using Node.js
+	// Encrypt your secret using the [tweetsodium](https://github.com/github/tweetsodium) library.
+	// ```
+	// const sodium = require('tweetsodium');
+	// const key = "base64-encoded-public-key";
+	// const value = "plain-text-secret";
+	// // Convert the message and key to Uint8Array's (Buffer implements that interface)
+	// const messageBytes = Buffer.from(value);
+	// const keyBytes = Buffer.from(key, 'base64');
+	// // Encrypt using LibSodium.
+	// const encryptedBytes = sodium.seal(messageBytes, keyBytes);
+	// // Base64 the encrypted secret
+	// const encrypted = Buffer.from(encryptedBytes).toString('base64');
+	// console.log(encrypted);
+	// ```
+	// #### Example encrypting a secret using Python
+	// Encrypt your secret using [pynacl](https://pynacl.readthedocs.
+	// io/en/stable/public/#nacl-public-sealedbox) with Python 3.
+	// ```
+	// from base64 import b64encode
+	// from nacl import encoding, public
+	// def encrypt(public_key: str, secret_value: str) -> str:
+	// """Encrypt a Unicode string using the public key."""
+	// public_key = public.PublicKey(public_key.encode("utf-8"), encoding.Base64Encoder())
+	// sealed_box = public.SealedBox(public_key)
+	// encrypted = sealed_box.encrypt(secret_value.encode("utf-8"))
+	// return b64encode(encrypted).decode("utf-8")
+	// ```
+	// #### Example encrypting a secret using C#
+	// Encrypt your secret using the [Sodium.Core](https://www.nuget.org/packages/Sodium.Core/) package.
+	// ```
+	// var secretValue = System.Text.Encoding.UTF8.GetBytes("mySecret");
+	// var publicKey = Convert.FromBase64String("2Sg8iYjAxxmI2LvUXpJjkYrMxURPc8r+dB7TJyvvcCU=");
+	// var sealedPublicKeyBox = Sodium.SealedPublicKeyBox.Create(secretValue, publicKey);
+	// Console.WriteLine(Convert.ToBase64String(sealedPublicKeyBox));
+	// ```
+	// #### Example encrypting a secret using Ruby
+	// Encrypt your secret using the [rbnacl](https://github.com/RubyCrypto/rbnacl) gem.
+	// ```ruby
+	// require "rbnacl"
+	// require "base64"
+	// key = Base64.decode64("+ZYvJDZMHUfBkJdyq5Zm9SKqeuBQ4sj+6sfjlH4CgG0=")
+	// public_key = RbNaCl::PublicKey.new(key)
+	// box = RbNaCl::Boxes::Sealed.from_public_key(public_key)
+	// encrypted_secret = box.encrypt("my_secret")
+	// # Print the base64 encoded secret
+	// puts Base64.strict_encode64(encrypted_secret)
+	// ```.
+	//
+	// PUT /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
+	ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, request *ActionsCreateOrUpdateEnvironmentSecretReq, params ActionsCreateOrUpdateEnvironmentSecretParams) (ActionsCreateOrUpdateEnvironmentSecretRes, error)
+	// ActionsCreateOrUpdateOrgSecret invokes actions/create-or-update-org-secret operation.
+	//
+	// Creates or updates an organization secret with an encrypted value. Encrypt your secret using
+	// [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). You must authenticate
+	// using an access
+	// token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `secrets`
+	// organization permission to
+	// use this endpoint.
+	// #### Example encrypting a secret using Node.js
+	// Encrypt your secret using the [tweetsodium](https://github.com/github/tweetsodium) library.
+	// ```
+	// const sodium = require('tweetsodium');
+	// const key = "base64-encoded-public-key";
+	// const value = "plain-text-secret";
+	// // Convert the message and key to Uint8Array's (Buffer implements that interface)
+	// const messageBytes = Buffer.from(value);
+	// const keyBytes = Buffer.from(key, 'base64');
+	// // Encrypt using LibSodium.
+	// const encryptedBytes = sodium.seal(messageBytes, keyBytes);
+	// // Base64 the encrypted secret
+	// const encrypted = Buffer.from(encryptedBytes).toString('base64');
+	// console.log(encrypted);
+	// ```
+	// #### Example encrypting a secret using Python
+	// Encrypt your secret using [pynacl](https://pynacl.readthedocs.
+	// io/en/stable/public/#nacl-public-sealedbox) with Python 3.
+	// ```
+	// from base64 import b64encode
+	// from nacl import encoding, public
+	// def encrypt(public_key: str, secret_value: str) -> str:
+	// """Encrypt a Unicode string using the public key."""
+	// public_key = public.PublicKey(public_key.encode("utf-8"), encoding.Base64Encoder())
+	// sealed_box = public.SealedBox(public_key)
+	// encrypted = sealed_box.encrypt(secret_value.encode("utf-8"))
+	// return b64encode(encrypted).decode("utf-8")
+	// ```
+	// #### Example encrypting a secret using C#
+	// Encrypt your secret using the [Sodium.Core](https://www.nuget.org/packages/Sodium.Core/) package.
+	// ```
+	// var secretValue = System.Text.Encoding.UTF8.GetBytes("mySecret");
+	// var publicKey = Convert.FromBase64String("2Sg8iYjAxxmI2LvUXpJjkYrMxURPc8r+dB7TJyvvcCU=");
+	// var sealedPublicKeyBox = Sodium.SealedPublicKeyBox.Create(secretValue, publicKey);
+	// Console.WriteLine(Convert.ToBase64String(sealedPublicKeyBox));
+	// ```
+	// #### Example encrypting a secret using Ruby
+	// Encrypt your secret using the [rbnacl](https://github.com/RubyCrypto/rbnacl) gem.
+	// ```ruby
+	// require "rbnacl"
+	// require "base64"
+	// key = Base64.decode64("+ZYvJDZMHUfBkJdyq5Zm9SKqeuBQ4sj+6sfjlH4CgG0=")
+	// public_key = RbNaCl::PublicKey.new(key)
+	// box = RbNaCl::Boxes::Sealed.from_public_key(public_key)
+	// encrypted_secret = box.encrypt("my_secret")
+	// # Print the base64 encoded secret
+	// puts Base64.strict_encode64(encrypted_secret)
+	// ```.
+	//
+	// PUT /orgs/{org}/actions/secrets/{secret_name}
+	ActionsCreateOrUpdateOrgSecret(ctx context.Context, request *ActionsCreateOrUpdateOrgSecretReq, params ActionsCreateOrUpdateOrgSecretParams) (ActionsCreateOrUpdateOrgSecretRes, error)
+	// ActionsCreateOrUpdateRepoSecret invokes actions/create-or-update-repo-secret operation.
+	//
+	// Creates or updates a repository secret with an encrypted value. Encrypt your secret using
+	// [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). You must authenticate
+	// using an access
+	// token with the `repo` scope to use this endpoint. GitHub Apps must have the `secrets` repository
+	// permission to use
+	// this endpoint.
+	// #### Example encrypting a secret using Node.js
+	// Encrypt your secret using the [tweetsodium](https://github.com/github/tweetsodium) library.
+	// ```
+	// const sodium = require('tweetsodium');
+	// const key = "base64-encoded-public-key";
+	// const value = "plain-text-secret";
+	// // Convert the message and key to Uint8Array's (Buffer implements that interface)
+	// const messageBytes = Buffer.from(value);
+	// const keyBytes = Buffer.from(key, 'base64');
+	// // Encrypt using LibSodium.
+	// const encryptedBytes = sodium.seal(messageBytes, keyBytes);
+	// // Base64 the encrypted secret
+	// const encrypted = Buffer.from(encryptedBytes).toString('base64');
+	// console.log(encrypted);
+	// ```
+	// #### Example encrypting a secret using Python
+	// Encrypt your secret using [pynacl](https://pynacl.readthedocs.
+	// io/en/stable/public/#nacl-public-sealedbox) with Python 3.
+	// ```
+	// from base64 import b64encode
+	// from nacl import encoding, public
+	// def encrypt(public_key: str, secret_value: str) -> str:
+	// """Encrypt a Unicode string using the public key."""
+	// public_key = public.PublicKey(public_key.encode("utf-8"), encoding.Base64Encoder())
+	// sealed_box = public.SealedBox(public_key)
+	// encrypted = sealed_box.encrypt(secret_value.encode("utf-8"))
+	// return b64encode(encrypted).decode("utf-8")
+	// ```
+	// #### Example encrypting a secret using C#
+	// Encrypt your secret using the [Sodium.Core](https://www.nuget.org/packages/Sodium.Core/) package.
+	// ```
+	// var secretValue = System.Text.Encoding.UTF8.GetBytes("mySecret");
+	// var publicKey = Convert.FromBase64String("2Sg8iYjAxxmI2LvUXpJjkYrMxURPc8r+dB7TJyvvcCU=");
+	// var sealedPublicKeyBox = Sodium.SealedPublicKeyBox.Create(secretValue, publicKey);
+	// Console.WriteLine(Convert.ToBase64String(sealedPublicKeyBox));
+	// ```
+	// #### Example encrypting a secret using Ruby
+	// Encrypt your secret using the [rbnacl](https://github.com/RubyCrypto/rbnacl) gem.
+	// ```ruby
+	// require "rbnacl"
+	// require "base64"
+	// key = Base64.decode64("+ZYvJDZMHUfBkJdyq5Zm9SKqeuBQ4sj+6sfjlH4CgG0=")
+	// public_key = RbNaCl::PublicKey.new(key)
+	// box = RbNaCl::Boxes::Sealed.from_public_key(public_key)
+	// encrypted_secret = box.encrypt("my_secret")
+	// # Print the base64 encoded secret
+	// puts Base64.strict_encode64(encrypted_secret)
+	// ```.
+	//
+	// PUT /repos/{owner}/{repo}/actions/secrets/{secret_name}
+	ActionsCreateOrUpdateRepoSecret(ctx context.Context, request *ActionsCreateOrUpdateRepoSecretReq, params ActionsCreateOrUpdateRepoSecretParams) (ActionsCreateOrUpdateRepoSecretRes, error)
+	// ActionsCreateRegistrationTokenForOrg invokes actions/create-registration-token-for-org operation.
+	//
+	// Returns a token that you can pass to the `config` script. The token expires after one hour.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	// #### Example using registration token
+	// Configure your self-hosted runner, replacing `TOKEN` with the registration token provided by this
+	// endpoint.
+	// ```
+	// ./config.sh --url https://github.com/octo-org --token TOKEN
+	// ```.
+	//
+	// POST /orgs/{org}/actions/runners/registration-token
+	ActionsCreateRegistrationTokenForOrg(ctx context.Context, params ActionsCreateRegistrationTokenForOrgParams) (*AuthenticationToken, error)
+	// ActionsCreateRegistrationTokenForRepo invokes actions/create-registration-token-for-repo operation.
+	//
+	// Returns a token that you can pass to the `config` script. The token expires after one hour. You
+	// must authenticate
+	// using an access token with the `repo` scope to use this endpoint.
+	// #### Example using registration token
+	// Configure your self-hosted runner, replacing `TOKEN` with the registration token provided by this
+	// endpoint.
+	// ```
+	// ./config.sh --url https://github.com/octo-org/octo-repo-artifacts --token TOKEN
+	// ```.
+	//
+	// POST /repos/{owner}/{repo}/actions/runners/registration-token
+	ActionsCreateRegistrationTokenForRepo(ctx context.Context, params ActionsCreateRegistrationTokenForRepoParams) (*AuthenticationToken, error)
+	// ActionsCreateRemoveTokenForOrg invokes actions/create-remove-token-for-org operation.
+	//
+	// Returns a token that you can pass to the `config` script to remove a self-hosted runner from an
+	// organization. The token expires after one hour.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	// #### Example using remove token
+	// To remove your self-hosted runner from an organization, replace `TOKEN` with the remove token
+	// provided by this
+	// endpoint.
+	// ```
+	// ./config.sh remove --token TOKEN
+	// ```.
+	//
+	// POST /orgs/{org}/actions/runners/remove-token
+	ActionsCreateRemoveTokenForOrg(ctx context.Context, params ActionsCreateRemoveTokenForOrgParams) (*AuthenticationToken, error)
+	// ActionsCreateRemoveTokenForRepo invokes actions/create-remove-token-for-repo operation.
+	//
+	// Returns a token that you can pass to remove a self-hosted runner from a repository. The token
+	// expires after one hour.
+	// You must authenticate using an access token with the `repo` scope to use this endpoint.
+	// #### Example using remove token
+	// To remove your self-hosted runner from a repository, replace TOKEN with the remove token provided
+	// by this endpoint.
+	// ```
+	// ./config.sh remove --token TOKEN
+	// ```.
+	//
+	// POST /repos/{owner}/{repo}/actions/runners/remove-token
+	ActionsCreateRemoveTokenForRepo(ctx context.Context, params ActionsCreateRemoveTokenForRepoParams) (*AuthenticationToken, error)
+	// ActionsCreateSelfHostedRunnerGroupForOrg invokes actions/create-self-hosted-runner-group-for-org operation.
+	//
+	// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud and GitHub
+	// Enterprise Server. For more information, see "[GitHub's products](https://docs.github.
+	// com/github/getting-started-with-github/githubs-products)."
+	// Creates a new self-hosted runner group for an organization.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	//
+	// POST /orgs/{org}/actions/runner-groups
+	ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, request *ActionsCreateSelfHostedRunnerGroupForOrgReq, params ActionsCreateSelfHostedRunnerGroupForOrgParams) (*RunnerGroupsOrg, error)
+	// ActionsDeleteArtifact invokes actions/delete-artifact operation.
+	//
+	// Deletes an artifact for a workflow run. You must authenticate using an access token with the
+	// `repo` scope to use this endpoint. GitHub Apps must have the `actions:write` permission to use
+	// this endpoint.
+	//
+	// DELETE /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
+	ActionsDeleteArtifact(ctx context.Context, params ActionsDeleteArtifactParams) error
+	// ActionsDeleteEnvironmentSecret invokes actions/delete-environment-secret operation.
+	//
+	// Deletes a secret in an environment using the secret name. You must authenticate using an access
+	// token with the `repo` scope to use this endpoint. GitHub Apps must have the `secrets` repository
+	// permission to use this endpoint.
+	//
+	// DELETE /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
+	ActionsDeleteEnvironmentSecret(ctx context.Context, params ActionsDeleteEnvironmentSecretParams) error
+	// ActionsDeleteOrgSecret invokes actions/delete-org-secret operation.
+	//
+	// Deletes a secret in an organization using the secret name. You must authenticate using an access
+	// token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `secrets`
+	// organization permission to use this endpoint.
+	//
+	// DELETE /orgs/{org}/actions/secrets/{secret_name}
+	ActionsDeleteOrgSecret(ctx context.Context, params ActionsDeleteOrgSecretParams) error
+	// ActionsDeleteRepoSecret invokes actions/delete-repo-secret operation.
+	//
+	// Deletes a secret in a repository using the secret name. You must authenticate using an access
+	// token with the `repo` scope to use this endpoint. GitHub Apps must have the `secrets` repository
+	// permission to use this endpoint.
+	//
+	// DELETE /repos/{owner}/{repo}/actions/secrets/{secret_name}
+	ActionsDeleteRepoSecret(ctx context.Context, params ActionsDeleteRepoSecretParams) error
+	// ActionsDeleteSelfHostedRunnerFromOrg invokes actions/delete-self-hosted-runner-from-org operation.
+	//
+	// Forces the removal of a self-hosted runner from an organization. You can use this endpoint to
+	// completely remove the runner when the machine you were using no longer exists.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	//
+	// DELETE /orgs/{org}/actions/runners/{runner_id}
+	ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromOrgParams) error
+	// ActionsDeleteSelfHostedRunnerFromRepo invokes actions/delete-self-hosted-runner-from-repo operation.
+	//
+	// Forces the removal of a self-hosted runner from a repository. You can use this endpoint to
+	// completely remove the runner when the machine you were using no longer exists.
+	// You must authenticate using an access token with the `repo`
+	// scope to use this endpoint.
+	//
+	// DELETE /repos/{owner}/{repo}/actions/runners/{runner_id}
+	ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromRepoParams) error
+	// ActionsDeleteSelfHostedRunnerGroupFromOrg invokes actions/delete-self-hosted-runner-group-from-org operation.
+	//
+	// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
+	// information, see "[GitHub's products](https://docs.github.
+	// com/github/getting-started-with-github/githubs-products)."
+	// Deletes a self-hosted runner group for an organization.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	//
+	// DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}
+	ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerGroupFromOrgParams) error
+	// ActionsDeleteWorkflowRun invokes actions/delete-workflow-run operation.
+	//
+	// Delete a specific workflow run. Anyone with write access to the repository can use this endpoint.
+	// If the repository is
+	// private you must use an access token with the `repo` scope. GitHub Apps must have the
+	// `actions:write` permission to use
+	// this endpoint.
+	//
+	// DELETE /repos/{owner}/{repo}/actions/runs/{run_id}
+	ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDeleteWorkflowRunParams) error
+	// ActionsDeleteWorkflowRunLogs invokes actions/delete-workflow-run-logs operation.
+	//
+	// Deletes all logs for a workflow run. You must authenticate using an access token with the `repo`
+	// scope to use this endpoint. GitHub Apps must have the `actions:write` permission to use this
+	// endpoint.
+	//
+	// DELETE /repos/{owner}/{repo}/actions/runs/{run_id}/logs
+	ActionsDeleteWorkflowRunLogs(ctx context.Context, params ActionsDeleteWorkflowRunLogsParams) error
+	// ActionsDisableSelectedRepositoryGithubActionsOrganization invokes actions/disable-selected-repository-github-actions-organization operation.
+	//
+	// Removes a repository from the list of selected repositories that are enabled for GitHub Actions in
+	// an organization. To use this endpoint, the organization permission policy for
+	// `enabled_repositories` must be configured to `selected`. For more information, see "[Set GitHub
+	// Actions permissions for an organization](#set-github-actions-permissions-for-an-organization)."
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	// GitHub Apps must have the `administration` organization permission to use this API.
+	//
+	// DELETE /orgs/{org}/actions/permissions/repositories/{repository_id}
+	ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams) error
+	// ActionsDownloadArtifact invokes actions/download-artifact operation.
+	//
+	// Gets a redirect URL to download an archive for a repository. This URL expires after 1 minute. Look
+	// for `Location:` in
+	// the response header to find the URL for the download. The `:archive_format` must be `zip`. Anyone
+	// with read access to
+	// the repository can use this endpoint. If the repository is private you must use an access token
+	// with the `repo` scope.
+	// GitHub Apps must have the `actions:read` permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}
+	ActionsDownloadArtifact(ctx context.Context, params ActionsDownloadArtifactParams) (*ActionsDownloadArtifactFound, error)
+	// ActionsDownloadJobLogsForWorkflowRun invokes actions/download-job-logs-for-workflow-run operation.
+	//
+	// Gets a redirect URL to download a plain text file of logs for a workflow job. This link expires
+	// after 1 minute. Look
+	// for `Location:` in the response header to find the URL for the download. Anyone with read access
+	// to the repository can
+	// use this endpoint. If the repository is private you must use an access token with the `repo` scope.
+	//  GitHub Apps must
+	// have the `actions:read` permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs
+	ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, params ActionsDownloadJobLogsForWorkflowRunParams) (*ActionsDownloadJobLogsForWorkflowRunFound, error)
+	// ActionsDownloadWorkflowRunLogs invokes actions/download-workflow-run-logs operation.
+	//
+	// Gets a redirect URL to download an archive of log files for a workflow run. This link expires
+	// after 1 minute. Look for
+	// `Location:` in the response header to find the URL for the download. Anyone with read access to
+	// the repository can use
+	// this endpoint. If the repository is private you must use an access token with the `repo` scope.
+	// GitHub Apps must have
+	// the `actions:read` permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/runs/{run_id}/logs
+	ActionsDownloadWorkflowRunLogs(ctx context.Context, params ActionsDownloadWorkflowRunLogsParams) (*ActionsDownloadWorkflowRunLogsFound, error)
+	// ActionsEnableSelectedRepositoryGithubActionsOrganization invokes actions/enable-selected-repository-github-actions-organization operation.
+	//
+	// Adds a repository to the list of selected repositories that are enabled for GitHub Actions in an
+	// organization. To use this endpoint, the organization permission policy for `enabled_repositories`
+	// must be must be configured to `selected`. For more information, see "[Set GitHub Actions
+	// permissions for an organization](#set-github-actions-permissions-for-an-organization)."
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	// GitHub Apps must have the `administration` organization permission to use this API.
+	//
+	// PUT /orgs/{org}/actions/permissions/repositories/{repository_id}
+	ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams) error
+	// ActionsGetAllowedActionsOrganization invokes actions/get-allowed-actions-organization operation.
+	//
+	// Gets the selected actions that are allowed in an organization. To use this endpoint, the
+	// organization permission policy for `allowed_actions` must be configured to `selected`. For more
+	// information, see "[Set GitHub Actions permissions for an
+	// organization](#set-github-actions-permissions-for-an-organization).""
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	// GitHub Apps must have the `administration` organization permission to use this API.
+	//
+	// GET /orgs/{org}/actions/permissions/selected-actions
+	ActionsGetAllowedActionsOrganization(ctx context.Context, params ActionsGetAllowedActionsOrganizationParams) (*SelectedActions, error)
+	// ActionsGetAllowedActionsRepository invokes actions/get-allowed-actions-repository operation.
+	//
+	// Gets the settings for selected actions that are allowed in a repository. To use this endpoint, the
+	// repository policy for `allowed_actions` must be configured to `selected`. For more information,
+	// see "[Set GitHub Actions permissions for a
+	// repository](#set-github-actions-permissions-for-a-repository)."
+	// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub
+	// Apps must have the `administration` repository permission to use this API.
+	//
+	// GET /repos/{owner}/{repo}/actions/permissions/selected-actions
+	ActionsGetAllowedActionsRepository(ctx context.Context, params ActionsGetAllowedActionsRepositoryParams) (*SelectedActions, error)
+	// ActionsGetArtifact invokes actions/get-artifact operation.
+	//
+	// Gets a specific artifact for a workflow run. Anyone with read access to the repository can use
+	// this endpoint. If the repository is private you must use an access token with the `repo` scope.
+	// GitHub Apps must have the `actions:read` permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
+	ActionsGetArtifact(ctx context.Context, params ActionsGetArtifactParams) (*Artifact, error)
+	// ActionsGetEnvironmentPublicKey invokes actions/get-environment-public-key operation.
+	//
+	// Get the public key for an environment, which you need to encrypt environment secrets. You need to
+	// encrypt a secret before you can create or update secrets. Anyone with read access to the
+	// repository can use this endpoint. If the repository is private you must use an access token with
+	// the `repo` scope. GitHub Apps must have the `secrets` repository permission to use this endpoint.
+	//
+	// GET /repositories/{repository_id}/environments/{environment_name}/secrets/public-key
+	ActionsGetEnvironmentPublicKey(ctx context.Context, params ActionsGetEnvironmentPublicKeyParams) (*ActionsPublicKey, error)
+	// ActionsGetEnvironmentSecret invokes actions/get-environment-secret operation.
+	//
+	// Gets a single environment secret without revealing its encrypted value. You must authenticate
+	// using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the
+	// `secrets` repository permission to use this endpoint.
+	//
+	// GET /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
+	ActionsGetEnvironmentSecret(ctx context.Context, params ActionsGetEnvironmentSecretParams) (*ActionsSecret, error)
+	// ActionsGetGithubActionsPermissionsOrganization invokes actions/get-github-actions-permissions-organization operation.
+	//
+	// Gets the GitHub Actions permissions policy for repositories and allowed actions in an organization.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	// GitHub Apps must have the `administration` organization permission to use this API.
+	//
+	// GET /orgs/{org}/actions/permissions
+	ActionsGetGithubActionsPermissionsOrganization(ctx context.Context, params ActionsGetGithubActionsPermissionsOrganizationParams) (*ActionsOrganizationPermissions, error)
+	// ActionsGetGithubActionsPermissionsRepository invokes actions/get-github-actions-permissions-repository operation.
+	//
+	// Gets the GitHub Actions permissions policy for a repository, including whether GitHub Actions is
+	// enabled and the actions allowed to run in the repository.
+	// You must authenticate using an access token with the `repo` scope to use this
+	// endpoint. GitHub Apps must have the `administration` repository permission to use this API.
+	//
+	// GET /repos/{owner}/{repo}/actions/permissions
+	ActionsGetGithubActionsPermissionsRepository(ctx context.Context, params ActionsGetGithubActionsPermissionsRepositoryParams) (*ActionsRepositoryPermissions, error)
+	// ActionsGetJobForWorkflowRun invokes actions/get-job-for-workflow-run operation.
+	//
+	// Gets a specific job in a workflow run. Anyone with read access to the repository can use this
+	// endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub
+	// Apps must have the `actions:read` permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/jobs/{job_id}
+	ActionsGetJobForWorkflowRun(ctx context.Context, params ActionsGetJobForWorkflowRunParams) (*Job, error)
+	// ActionsGetOrgPublicKey invokes actions/get-org-public-key operation.
+	//
+	// Gets your public key, which you need to encrypt secrets. You need to encrypt a secret before you
+	// can create or update secrets. You must authenticate using an access token with the `admin:org`
+	// scope to use this endpoint. GitHub Apps must have the `secrets` organization permission to use
+	// this endpoint.
+	//
+	// GET /orgs/{org}/actions/secrets/public-key
+	ActionsGetOrgPublicKey(ctx context.Context, params ActionsGetOrgPublicKeyParams) (*ActionsPublicKey, error)
+	// ActionsGetOrgSecret invokes actions/get-org-secret operation.
+	//
+	// Gets a single organization secret without revealing its encrypted value. You must authenticate
+	// using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the
+	// `secrets` organization permission to use this endpoint.
+	//
+	// GET /orgs/{org}/actions/secrets/{secret_name}
+	ActionsGetOrgSecret(ctx context.Context, params ActionsGetOrgSecretParams) (*OrganizationActionsSecret, error)
+	// ActionsGetRepoPublicKey invokes actions/get-repo-public-key operation.
+	//
+	// Gets your public key, which you need to encrypt secrets. You need to encrypt a secret before you
+	// can create or update secrets. Anyone with read access to the repository can use this endpoint. If
+	// the repository is private you must use an access token with the `repo` scope. GitHub Apps must
+	// have the `secrets` repository permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/secrets/public-key
+	ActionsGetRepoPublicKey(ctx context.Context, params ActionsGetRepoPublicKeyParams) (*ActionsPublicKey, error)
+	// ActionsGetRepoSecret invokes actions/get-repo-secret operation.
+	//
+	// Gets a single repository secret without revealing its encrypted value. You must authenticate using
+	// an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `secrets`
+	// repository permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/secrets/{secret_name}
+	ActionsGetRepoSecret(ctx context.Context, params ActionsGetRepoSecretParams) (*ActionsSecret, error)
+	// ActionsGetReviewsForRun invokes actions/get-reviews-for-run operation.
+	//
+	// Anyone with read access to the repository can use this endpoint. If the repository is private, you
+	// must use an access token with the `repo` scope. GitHub Apps must have the `actions:read`
+	// permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/runs/{run_id}/approvals
+	ActionsGetReviewsForRun(ctx context.Context, params ActionsGetReviewsForRunParams) ([]EnvironmentApprovals, error)
+	// ActionsGetSelfHostedRunnerForOrg invokes actions/get-self-hosted-runner-for-org operation.
+	//
+	// Gets a specific self-hosted runner configured in an organization.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	//
+	// GET /orgs/{org}/actions/runners/{runner_id}
+	ActionsGetSelfHostedRunnerForOrg(ctx context.Context, params ActionsGetSelfHostedRunnerForOrgParams) (*Runner, error)
+	// ActionsGetSelfHostedRunnerForRepo invokes actions/get-self-hosted-runner-for-repo operation.
+	//
+	// Gets a specific self-hosted runner configured in a repository.
+	// You must authenticate using an access token with the `repo` scope to use this
+	// endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/runners/{runner_id}
+	ActionsGetSelfHostedRunnerForRepo(ctx context.Context, params ActionsGetSelfHostedRunnerForRepoParams) (*Runner, error)
+	// ActionsGetSelfHostedRunnerGroupForOrg invokes actions/get-self-hosted-runner-group-for-org operation.
+	//
+	// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
+	// information, see "[GitHub's products](https://docs.github.
+	// com/github/getting-started-with-github/githubs-products)."
+	// Gets a specific self-hosted runner group for an organization.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	//
+	// GET /orgs/{org}/actions/runner-groups/{runner_group_id}
+	ActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, params ActionsGetSelfHostedRunnerGroupForOrgParams) (*RunnerGroupsOrg, error)
+	// ActionsGetWorkflowRun invokes actions/get-workflow-run operation.
+	//
+	// Gets a specific workflow run. Anyone with read access to the repository can use this endpoint. If
+	// the repository is private you must use an access token with the `repo` scope. GitHub Apps must
+	// have the `actions:read` permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/runs/{run_id}
+	ActionsGetWorkflowRun(ctx context.Context, params ActionsGetWorkflowRunParams) (*WorkflowRun, error)
+	// ActionsGetWorkflowRunUsage invokes actions/get-workflow-run-usage operation.
+	//
+	// Gets the number of billable minutes and total run time for a specific workflow run. Billable
+	// minutes only apply to workflows in private repositories that use GitHub-hosted runners. Usage is
+	// listed for each GitHub-hosted runner operating system in milliseconds. Any job re-runs are also
+	// included in the usage. The usage does not include the multiplier for macOS and Windows runners and
+	// is not rounded up to the nearest whole minute. For more information, see "[Managing billing for
+	// GitHub Actions](https://help.github.
+	// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+	// Anyone with read access to the repository can use this endpoint. If the repository is private you
+	// must use an access token with the `repo` scope. GitHub Apps must have the `actions:read`
+	// permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/runs/{run_id}/timing
+	ActionsGetWorkflowRunUsage(ctx context.Context, params ActionsGetWorkflowRunUsageParams) (*WorkflowRunUsage, error)
+	// ActionsListArtifactsForRepo invokes actions/list-artifacts-for-repo operation.
+	//
+	// Lists all artifacts for a repository. Anyone with read access to the repository can use this
+	// endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub
+	// Apps must have the `actions:read` permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/artifacts
+	ActionsListArtifactsForRepo(ctx context.Context, params ActionsListArtifactsForRepoParams) (*ActionsListArtifactsForRepoOKHeaders, error)
+	// ActionsListEnvironmentSecrets invokes actions/list-environment-secrets operation.
+	//
+	// Lists all secrets available in an environment without revealing their encrypted values. You must
+	// authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must
+	// have the `secrets` repository permission to use this endpoint.
+	//
+	// GET /repositories/{repository_id}/environments/{environment_name}/secrets
+	ActionsListEnvironmentSecrets(ctx context.Context, params ActionsListEnvironmentSecretsParams) (*ActionsListEnvironmentSecretsOKHeaders, error)
+	// ActionsListJobsForWorkflowRun invokes actions/list-jobs-for-workflow-run operation.
+	//
+	// Lists jobs for a workflow run. Anyone with read access to the repository can use this endpoint. If
+	// the repository is private you must use an access token with the `repo` scope. GitHub Apps must
+	// have the `actions:read` permission to use this endpoint. You can use parameters to narrow the list
+	// of results. For more information about using parameters, see [Parameters](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#parameters).
+	//
+	// GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs
+	ActionsListJobsForWorkflowRun(ctx context.Context, params ActionsListJobsForWorkflowRunParams) (*ActionsListJobsForWorkflowRunOKHeaders, error)
+	// ActionsListOrgSecrets invokes actions/list-org-secrets operation.
+	//
+	// Lists all secrets available in an organization without revealing their encrypted values. You must
+	// authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps
+	// must have the `secrets` organization permission to use this endpoint.
+	//
+	// GET /orgs/{org}/actions/secrets
+	ActionsListOrgSecrets(ctx context.Context, params ActionsListOrgSecretsParams) (*ActionsListOrgSecretsOKHeaders, error)
+	// ActionsListRepoAccessToSelfHostedRunnerGroupInOrg invokes actions/list-repo-access-to-self-hosted-runner-group-in-org operation.
+	//
+	// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud and GitHub
+	// Enterprise Server. For more information, see "[GitHub's products](https://docs.github.
+	// com/github/getting-started-with-github/githubs-products)."
+	// Lists the repositories with access to a self-hosted runner group configured in an organization.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	//
+	// GET /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
+	ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams) (*ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK, error)
+	// ActionsListRepoSecrets invokes actions/list-repo-secrets operation.
+	//
+	// Lists all secrets available in a repository without revealing their encrypted values. You must
+	// authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must
+	// have the `secrets` repository permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/secrets
+	ActionsListRepoSecrets(ctx context.Context, params ActionsListRepoSecretsParams) (*ActionsListRepoSecretsOKHeaders, error)
+	// ActionsListRepoWorkflows invokes actions/list-repo-workflows operation.
+	//
+	// Lists the workflows in a repository. Anyone with read access to the repository can use this
+	// endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub
+	// Apps must have the `actions:read` permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/workflows
+	ActionsListRepoWorkflows(ctx context.Context, params ActionsListRepoWorkflowsParams) (*ActionsListRepoWorkflowsOKHeaders, error)
+	// ActionsListRunnerApplicationsForOrg invokes actions/list-runner-applications-for-org operation.
+	//
+	// Lists binaries for the runner application that you can download and run.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	//
+	// GET /orgs/{org}/actions/runners/downloads
+	ActionsListRunnerApplicationsForOrg(ctx context.Context, params ActionsListRunnerApplicationsForOrgParams) ([]RunnerApplication, error)
+	// ActionsListRunnerApplicationsForRepo invokes actions/list-runner-applications-for-repo operation.
+	//
+	// Lists binaries for the runner application that you can download and run.
+	// You must authenticate using an access token with the `repo` scope to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/runners/downloads
+	ActionsListRunnerApplicationsForRepo(ctx context.Context, params ActionsListRunnerApplicationsForRepoParams) ([]RunnerApplication, error)
+	// ActionsListSelectedReposForOrgSecret invokes actions/list-selected-repos-for-org-secret operation.
+	//
+	// Lists all repositories that have been selected when the `visibility` for repository access to a
+	// secret is set to `selected`. You must authenticate using an access token with the `admin:org`
+	// scope to use this endpoint. GitHub Apps must have the `secrets` organization permission to use
+	// this endpoint.
+	//
+	// GET /orgs/{org}/actions/secrets/{secret_name}/repositories
+	ActionsListSelectedReposForOrgSecret(ctx context.Context, params ActionsListSelectedReposForOrgSecretParams) (*ActionsListSelectedReposForOrgSecretOK, error)
+	// ActionsListSelectedRepositoriesEnabledGithubActionsOrganization invokes actions/list-selected-repositories-enabled-github-actions-organization operation.
+	//
+	// Lists the selected repositories that are enabled for GitHub Actions in an organization. To use
+	// this endpoint, the organization permission policy for `enabled_repositories` must be configured to
+	// `selected`. For more information, see "[Set GitHub Actions permissions for an
+	// organization](#set-github-actions-permissions-for-an-organization)."
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	// GitHub Apps must have the `administration` organization permission to use this API.
+	//
+	// GET /orgs/{org}/actions/permissions/repositories
+	ActionsListSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, params ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams) (*ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK, error)
+	// ActionsListSelfHostedRunnerGroupsForOrg invokes actions/list-self-hosted-runner-groups-for-org operation.
+	//
+	// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
+	// information, see "[GitHub's products](https://docs.github.
+	// com/github/getting-started-with-github/githubs-products)."
+	// Lists all self-hosted runner groups configured in an organization and inherited from an enterprise.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	//
+	// GET /orgs/{org}/actions/runner-groups
+	ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, params ActionsListSelfHostedRunnerGroupsForOrgParams) (*ActionsListSelfHostedRunnerGroupsForOrgOK, error)
+	// ActionsListSelfHostedRunnersForOrg invokes actions/list-self-hosted-runners-for-org operation.
+	//
+	// Lists all self-hosted runners configured in an organization.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	//
+	// GET /orgs/{org}/actions/runners
+	ActionsListSelfHostedRunnersForOrg(ctx context.Context, params ActionsListSelfHostedRunnersForOrgParams) (*ActionsListSelfHostedRunnersForOrgOKHeaders, error)
+	// ActionsListSelfHostedRunnersForRepo invokes actions/list-self-hosted-runners-for-repo operation.
+	//
+	// Lists all self-hosted runners configured in a repository. You must authenticate using an access
+	// token with the `repo` scope to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/runners
+	ActionsListSelfHostedRunnersForRepo(ctx context.Context, params ActionsListSelfHostedRunnersForRepoParams) (*ActionsListSelfHostedRunnersForRepoOKHeaders, error)
+	// ActionsListSelfHostedRunnersInGroupForOrg invokes actions/list-self-hosted-runners-in-group-for-org operation.
+	//
+	// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
+	// information, see "[GitHub's products](https://docs.github.
+	// com/github/getting-started-with-github/githubs-products)."
+	// Lists self-hosted runners that are in a specific organization group.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	//
+	// GET /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
+	ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, params ActionsListSelfHostedRunnersInGroupForOrgParams) (*ActionsListSelfHostedRunnersInGroupForOrgOKHeaders, error)
+	// ActionsListWorkflowRunArtifacts invokes actions/list-workflow-run-artifacts operation.
+	//
+	// Lists artifacts for a workflow run. Anyone with read access to the repository can use this
+	// endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub
+	// Apps must have the `actions:read` permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/runs/{run_id}/artifacts
+	ActionsListWorkflowRunArtifacts(ctx context.Context, params ActionsListWorkflowRunArtifactsParams) (*ActionsListWorkflowRunArtifactsOKHeaders, error)
+	// ActionsListWorkflowRunsForRepo invokes actions/list-workflow-runs-for-repo operation.
+	//
+	// Lists all workflow runs for a repository. You can use parameters to narrow the list of results.
+	// For more information about using parameters, see [Parameters](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#parameters).
+	// Anyone with read access to the repository can use this endpoint. If the repository is private you
+	// must use an access token with the `repo` scope. GitHub Apps must have the `actions:read`
+	// permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/runs
+	ActionsListWorkflowRunsForRepo(ctx context.Context, params ActionsListWorkflowRunsForRepoParams) (*ActionsListWorkflowRunsForRepoOKHeaders, error)
+	// ActionsReRunWorkflow invokes actions/re-run-workflow operation.
+	//
+	// **Deprecation Notice:** This endpoint is deprecated.
+	// We recommend migrating your existing code to use the new [retry workflow](https://docs.github.
+	// com/rest/reference/actions#retry-a-workflow) endpoint.
+	// Re-runs your workflow run using its `id`. You must authenticate using
+	// an access token with the `repo` scope to use this endpoint. GitHub Apps must have
+	// the `actions:write` permission to use this endpoint.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// POST /repos/{owner}/{repo}/actions/runs/{run_id}/rerun
+	ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWorkflowParams) error
+	// ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg invokes actions/remove-repo-access-to-self-hosted-runner-group-in-org operation.
+	//
+	// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
+	// information, see "[GitHub's products](https://docs.github.
+	// com/github/getting-started-with-github/githubs-products)."
+	// Removes a repository from the list of selected repositories that can access a self-hosted runner
+	// group. The runner group must have `visibility` set to `selected`. For more information, see
+	// "[Create a self-hosted runner group for an
+	// organization](#create-a-self-hosted-runner-group-for-an-organization)."
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	//
+	// DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
+	ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams) error
+	// ActionsRemoveSelectedRepoFromOrgSecret invokes actions/remove-selected-repo-from-org-secret operation.
+	//
+	// Removes a repository from an organization secret when the `visibility` for repository access is
+	// set to `selected`. The visibility is set when you [Create or update an organization
+	// secret](https://docs.github.com/rest/reference/actions#create-or-update-an-organization-secret).
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	// GitHub Apps must have the `secrets` organization permission to use this endpoint.
+	//
+	// DELETE /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}
+	ActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context, params ActionsRemoveSelectedRepoFromOrgSecretParams) (ActionsRemoveSelectedRepoFromOrgSecretRes, error)
+	// ActionsRemoveSelfHostedRunnerFromGroupForOrg invokes actions/remove-self-hosted-runner-from-group-for-org operation.
+	//
+	// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
+	// information, see "[GitHub's products](https://docs.github.
+	// com/github/getting-started-with-github/githubs-products)."
+	// Removes a self-hosted runner from a group configured in an organization. The runner is then
+	// returned to the default group.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	//
+	// DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
+	ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Context, params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams) error
+	// ActionsRetryWorkflow invokes actions/retry-workflow operation.
+	//
+	// Retry your workflow run using its `id`. You must authenticate using an access token with the
+	// `repo` scope to use this endpoint. GitHub Apps must have the `actions:write` permission to use
+	// this endpoint.
+	//
+	// POST /repos/{owner}/{repo}/actions/runs/{run_id}/retry
+	ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWorkflowParams) error
+	// ActionsReviewPendingDeploymentsForRun invokes actions/review-pending-deployments-for-run operation.
+	//
+	// Approve or reject pending deployments that are waiting on approval by a required reviewer.
+	// Anyone with read access to the repository contents and deployments can use this endpoint.
+	//
+	// POST /repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments
+	ActionsReviewPendingDeploymentsForRun(ctx context.Context, request *ActionsReviewPendingDeploymentsForRunReq, params ActionsReviewPendingDeploymentsForRunParams) ([]Deployment, error)
+	// ActionsSetAllowedActionsOrganization invokes actions/set-allowed-actions-organization operation.
+	//
+	// Sets the actions that are allowed in an organization. To use this endpoint, the organization
+	// permission policy for `allowed_actions` must be configured to `selected`. For more information,
+	// see "[Set GitHub Actions permissions for an
+	// organization](#set-github-actions-permissions-for-an-organization)."
+	// If the organization belongs to an enterprise that has `selected` actions set at the enterprise
+	// level, then you cannot override any of the enterprise's allowed actions settings.
+	// To use the `patterns_allowed` setting for private repositories, the organization must belong to an
+	// enterprise. If the organization does not belong to an enterprise, then the `patterns_allowed`
+	// setting only applies to public repositories in the organization.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	// GitHub Apps must have the `administration` organization permission to use this API.
+	//
+	// PUT /orgs/{org}/actions/permissions/selected-actions
+	ActionsSetAllowedActionsOrganization(ctx context.Context, request OptSelectedActions, params ActionsSetAllowedActionsOrganizationParams) error
+	// ActionsSetAllowedActionsRepository invokes actions/set-allowed-actions-repository operation.
+	//
+	// Sets the actions that are allowed in a repository. To use this endpoint, the repository permission
+	// policy for `allowed_actions` must be configured to `selected`. For more information, see "[Set
+	// GitHub Actions permissions for a repository](#set-github-actions-permissions-for-a-repository)."
+	// If the repository belongs to an organization or enterprise that has `selected` actions set at the
+	// organization or enterprise levels, then you cannot override any of the allowed actions settings.
+	// To use the `patterns_allowed` setting for private repositories, the repository must belong to an
+	// enterprise. If the repository does not belong to an enterprise, then the `patterns_allowed`
+	// setting only applies to public repositories.
+	// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub
+	// Apps must have the `administration` repository permission to use this API.
+	//
+	// PUT /repos/{owner}/{repo}/actions/permissions/selected-actions
+	ActionsSetAllowedActionsRepository(ctx context.Context, request OptSelectedActions, params ActionsSetAllowedActionsRepositoryParams) error
+	// ActionsSetGithubActionsPermissionsOrganization invokes actions/set-github-actions-permissions-organization operation.
+	//
+	// Sets the GitHub Actions permissions policy for repositories and allowed actions in an organization.
+	// If the organization belongs to an enterprise that has set restrictive permissions at the
+	// enterprise level, such as `allowed_actions` to `selected` actions, then you cannot override them
+	// for the organization.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	// GitHub Apps must have the `administration` organization permission to use this API.
+	//
+	// PUT /orgs/{org}/actions/permissions
+	ActionsSetGithubActionsPermissionsOrganization(ctx context.Context, request *ActionsSetGithubActionsPermissionsOrganizationReq, params ActionsSetGithubActionsPermissionsOrganizationParams) error
+	// ActionsSetGithubActionsPermissionsRepository invokes actions/set-github-actions-permissions-repository operation.
+	//
+	// Sets the GitHub Actions permissions policy for enabling GitHub Actions and allowed actions in the
+	// repository.
+	// If the repository belongs to an organization or enterprise that has set restrictive permissions at
+	// the organization or enterprise levels, such as `allowed_actions` to `selected` actions, then you
+	// cannot override them for the repository.
+	// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub
+	// Apps must have the `administration` repository permission to use this API.
+	//
+	// PUT /repos/{owner}/{repo}/actions/permissions
+	ActionsSetGithubActionsPermissionsRepository(ctx context.Context, request *ActionsSetGithubActionsPermissionsRepositoryReq, params ActionsSetGithubActionsPermissionsRepositoryParams) error
+	// ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg invokes actions/set-repo-access-to-self-hosted-runner-group-in-org operation.
+	//
+	// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
+	// information, see "[GitHub's products](https://docs.github.
+	// com/github/getting-started-with-github/githubs-products)."
+	// Replaces the list of repositories that have access to a self-hosted runner group configured in an
+	// organization.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	//
+	// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
+	ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, request *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq, params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams) error
+	// ActionsSetSelectedReposForOrgSecret invokes actions/set-selected-repos-for-org-secret operation.
+	//
+	// Replaces all repositories for an organization secret when the `visibility` for repository access
+	// is set to `selected`. The visibility is set when you [Create or update an organization
+	// secret](https://docs.github.com/rest/reference/actions#create-or-update-an-organization-secret).
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	// GitHub Apps must have the `secrets` organization permission to use this endpoint.
+	//
+	// PUT /orgs/{org}/actions/secrets/{secret_name}/repositories
+	ActionsSetSelectedReposForOrgSecret(ctx context.Context, request *ActionsSetSelectedReposForOrgSecretReq, params ActionsSetSelectedReposForOrgSecretParams) error
+	// ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization invokes actions/set-selected-repositories-enabled-github-actions-organization operation.
+	//
+	// Replaces the list of selected repositories that are enabled for GitHub Actions in an organization.
+	// To use this endpoint, the organization permission policy for `enabled_repositories` must be
+	// configured to `selected`. For more information, see "[Set GitHub Actions permissions for an
+	// organization](#set-github-actions-permissions-for-an-organization)."
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	// GitHub Apps must have the `administration` organization permission to use this API.
+	//
+	// PUT /orgs/{org}/actions/permissions/repositories
+	ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, request *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq, params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams) error
+	// ActionsSetSelfHostedRunnersInGroupForOrg invokes actions/set-self-hosted-runners-in-group-for-org operation.
+	//
+	// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
+	// information, see "[GitHub's products](https://docs.github.
+	// com/github/getting-started-with-github/githubs-products)."
+	// Replaces the list of self-hosted runners that are part of an organization runner group.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	//
+	// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
+	ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, request *ActionsSetSelfHostedRunnersInGroupForOrgReq, params ActionsSetSelfHostedRunnersInGroupForOrgParams) error
+	// ActionsUpdateSelfHostedRunnerGroupForOrg invokes actions/update-self-hosted-runner-group-for-org operation.
+	//
+	// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
+	// information, see "[GitHub's products](https://docs.github.
+	// com/github/getting-started-with-github/githubs-products)."
+	// Updates the `name` and `visibility` of a self-hosted runner group in an organization.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	//
+	// PATCH /orgs/{org}/actions/runner-groups/{runner_group_id}
+	ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, request *ActionsUpdateSelfHostedRunnerGroupForOrgReq, params ActionsUpdateSelfHostedRunnerGroupForOrgParams) (*RunnerGroupsOrg, error)
+	// ActivityCheckRepoIsStarredByAuthenticatedUser invokes activity/check-repo-is-starred-by-authenticated-user operation.
+	//
+	// Check if a repository is starred by the authenticated user.
+	//
+	// GET /user/starred/{owner}/{repo}
+	ActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.Context, params ActivityCheckRepoIsStarredByAuthenticatedUserParams) (ActivityCheckRepoIsStarredByAuthenticatedUserRes, error)
+	// ActivityDeleteRepoSubscription invokes activity/delete-repo-subscription operation.
+	//
+	// This endpoint should only be used to stop watching a repository. To control whether or not you
+	// wish to receive notifications from a repository, [set the repository's subscription
+	// manually](https://docs.github.com/rest/reference/activity#set-a-repository-subscription).
+	//
+	// DELETE /repos/{owner}/{repo}/subscription
+	ActivityDeleteRepoSubscription(ctx context.Context, params ActivityDeleteRepoSubscriptionParams) error
+	// ActivityDeleteThreadSubscription invokes activity/delete-thread-subscription operation.
+	//
+	// Mutes all future notifications for a conversation until you comment on the thread or get an
+	// **@mention**. If you are watching the repository of the thread, you will still receive
+	// notifications. To ignore future notifications for a repository you are watching, use the [Set a
+	// thread subscription](https://docs.github.com/rest/reference/activity#set-a-thread-subscription)
+	// endpoint and set `ignore` to `true`.
+	//
+	// DELETE /notifications/threads/{thread_id}/subscription
+	ActivityDeleteThreadSubscription(ctx context.Context, params ActivityDeleteThreadSubscriptionParams) (ActivityDeleteThreadSubscriptionRes, error)
+	// ActivityGetFeeds invokes activity/get-feeds operation.
+	//
+	// GitHub provides several timeline resources in [Atom](http://en.wikipedia.org/wiki/Atom_(standard))
+	// format. The Feeds API lists all the feeds available to the authenticated user:
+	// *   **Timeline**: The GitHub global public timeline
+	// *   **User**: The public timeline for any user, using [URI template](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#hypermedia)
+	// *   **Current user public**: The public timeline for the authenticated user
+	// *   **Current user**: The private timeline for the authenticated user
+	// *   **Current user actor**: The private timeline for activity created by the authenticated user
+	// *   **Current user organizations**: The private timeline for the organizations the authenticated
+	// user is a member of.
+	// *   **Security advisories**: A collection of public announcements that provide information about
+	// security-related vulnerabilities in software on GitHub.
+	// **Note**: Private feeds are only returned when [authenticating via Basic Auth](https://docs.github.
+	// com/rest/overview/other-authentication-methods#basic-authentication) since current feed URIs use
+	// the older, non revocable auth tokens.
+	//
+	// GET /feeds
+	ActivityGetFeeds(ctx context.Context) (*Feed, error)
+	// ActivityGetRepoSubscription invokes activity/get-repo-subscription operation.
+	//
+	// Get a repository subscription.
+	//
+	// GET /repos/{owner}/{repo}/subscription
+	ActivityGetRepoSubscription(ctx context.Context, params ActivityGetRepoSubscriptionParams) (ActivityGetRepoSubscriptionRes, error)
+	// ActivityGetThread invokes activity/get-thread operation.
+	//
+	// Get a thread.
+	//
+	// GET /notifications/threads/{thread_id}
+	ActivityGetThread(ctx context.Context, params ActivityGetThreadParams) (ActivityGetThreadRes, error)
+	// ActivityGetThreadSubscriptionForAuthenticatedUser invokes activity/get-thread-subscription-for-authenticated-user operation.
+	//
+	// This checks to see if the current user is subscribed to a thread. You can also [get a repository
+	// subscription](https://docs.github.com/rest/reference/activity#get-a-repository-subscription).
+	// Note that subscriptions are only generated if a user is participating in a conversation--for
+	// example, they've replied to the thread, were **@mentioned**, or manually subscribe to a thread.
+	//
+	// GET /notifications/threads/{thread_id}/subscription
+	ActivityGetThreadSubscriptionForAuthenticatedUser(ctx context.Context, params ActivityGetThreadSubscriptionForAuthenticatedUserParams) (ActivityGetThreadSubscriptionForAuthenticatedUserRes, error)
+	// ActivityListEventsForAuthenticatedUser invokes activity/list-events-for-authenticated-user operation.
+	//
+	// If you are authenticated as the given user, you will see your private events. Otherwise, you'll
+	// only see public events.
+	//
+	// GET /users/{username}/events
+	ActivityListEventsForAuthenticatedUser(ctx context.Context, params ActivityListEventsForAuthenticatedUserParams) ([]Event, error)
+	// ActivityListNotificationsForAuthenticatedUser invokes activity/list-notifications-for-authenticated-user operation.
+	//
+	// List all notifications for the current user, sorted by most recently updated.
+	//
+	// GET /notifications
+	ActivityListNotificationsForAuthenticatedUser(ctx context.Context, params ActivityListNotificationsForAuthenticatedUserParams) (ActivityListNotificationsForAuthenticatedUserRes, error)
+	// ActivityListOrgEventsForAuthenticatedUser invokes activity/list-org-events-for-authenticated-user operation.
+	//
+	// This is the user's organization dashboard. You must be authenticated as the user to view this.
+	//
+	// GET /users/{username}/events/orgs/{org}
+	ActivityListOrgEventsForAuthenticatedUser(ctx context.Context, params ActivityListOrgEventsForAuthenticatedUserParams) ([]Event, error)
+	// ActivityListPublicEvents invokes activity/list-public-events operation.
+	//
+	// We delay the public events feed by five minutes, which means the most recent event returned by the
+	// public events API actually occurred at least five minutes ago.
+	//
+	// GET /events
+	ActivityListPublicEvents(ctx context.Context, params ActivityListPublicEventsParams) (ActivityListPublicEventsRes, error)
+	// ActivityListPublicEventsForRepoNetwork invokes activity/list-public-events-for-repo-network operation.
+	//
+	// List public events for a network of repositories.
+	//
+	// GET /networks/{owner}/{repo}/events
+	ActivityListPublicEventsForRepoNetwork(ctx context.Context, params ActivityListPublicEventsForRepoNetworkParams) (ActivityListPublicEventsForRepoNetworkRes, error)
+	// ActivityListPublicEventsForUser invokes activity/list-public-events-for-user operation.
+	//
+	// List public events for a user.
+	//
+	// GET /users/{username}/events/public
+	ActivityListPublicEventsForUser(ctx context.Context, params ActivityListPublicEventsForUserParams) ([]Event, error)
+	// ActivityListPublicOrgEvents invokes activity/list-public-org-events operation.
+	//
+	// List public organization events.
+	//
+	// GET /orgs/{org}/events
+	ActivityListPublicOrgEvents(ctx context.Context, params ActivityListPublicOrgEventsParams) ([]Event, error)
+	// ActivityListReceivedEventsForUser invokes activity/list-received-events-for-user operation.
+	//
+	// These are events that you've received by watching repos and following users. If you are
+	// authenticated as the given user, you will see private events. Otherwise, you'll only see public
+	// events.
+	//
+	// GET /users/{username}/received_events
+	ActivityListReceivedEventsForUser(ctx context.Context, params ActivityListReceivedEventsForUserParams) ([]Event, error)
+	// ActivityListReceivedPublicEventsForUser invokes activity/list-received-public-events-for-user operation.
+	//
+	// List public events received by a user.
+	//
+	// GET /users/{username}/received_events/public
+	ActivityListReceivedPublicEventsForUser(ctx context.Context, params ActivityListReceivedPublicEventsForUserParams) ([]Event, error)
+	// ActivityListRepoEvents invokes activity/list-repo-events operation.
+	//
+	// List repository events.
+	//
+	// GET /repos/{owner}/{repo}/events
+	ActivityListRepoEvents(ctx context.Context, params ActivityListRepoEventsParams) ([]Event, error)
+	// ActivityListRepoNotificationsForAuthenticatedUser invokes activity/list-repo-notifications-for-authenticated-user operation.
+	//
+	// List all notifications for the current user.
+	//
+	// GET /repos/{owner}/{repo}/notifications
+	ActivityListRepoNotificationsForAuthenticatedUser(ctx context.Context, params ActivityListRepoNotificationsForAuthenticatedUserParams) (*ActivityListRepoNotificationsForAuthenticatedUserOKHeaders, error)
+	// ActivityListReposStarredByAuthenticatedUser invokes activity/list-repos-starred-by-authenticated-user operation.
+	//
+	// Lists repositories the authenticated user has starred.
+	// You can also find out _when_ stars were created by passing the following custom [media
+	// type](https://docs.github.com/rest/overview/media-types/) via the `Accept` header:.
+	//
+	// GET /user/starred
+	ActivityListReposStarredByAuthenticatedUser(ctx context.Context, params ActivityListReposStarredByAuthenticatedUserParams) (ActivityListReposStarredByAuthenticatedUserRes, error)
+	// ActivityListReposWatchedByUser invokes activity/list-repos-watched-by-user operation.
+	//
+	// Lists repositories a user is watching.
+	//
+	// GET /users/{username}/subscriptions
+	ActivityListReposWatchedByUser(ctx context.Context, params ActivityListReposWatchedByUserParams) (*ActivityListReposWatchedByUserOKHeaders, error)
+	// ActivityListWatchedReposForAuthenticatedUser invokes activity/list-watched-repos-for-authenticated-user operation.
+	//
+	// Lists repositories the authenticated user is watching.
+	//
+	// GET /user/subscriptions
+	ActivityListWatchedReposForAuthenticatedUser(ctx context.Context, params ActivityListWatchedReposForAuthenticatedUserParams) (ActivityListWatchedReposForAuthenticatedUserRes, error)
+	// ActivityListWatchersForRepo invokes activity/list-watchers-for-repo operation.
+	//
+	// Lists the people watching the specified repository.
+	//
+	// GET /repos/{owner}/{repo}/subscribers
+	ActivityListWatchersForRepo(ctx context.Context, params ActivityListWatchersForRepoParams) (*ActivityListWatchersForRepoOKHeaders, error)
+	// ActivityMarkNotificationsAsRead invokes activity/mark-notifications-as-read operation.
+	//
+	// Marks all notifications as "read" removes it from the [default view on GitHub](https://github.
+	// com/notifications). If the number of notifications is too large to complete in one request, you
+	// will receive a `202 Accepted` status and GitHub will run an asynchronous process to mark
+	// notifications as "read." To check whether any "unread" notifications remain, you can use the [List
+	// notifications for the authenticated user](https://docs.github.
+	// com/rest/reference/activity#list-notifications-for-the-authenticated-user) endpoint and pass the
+	// query parameter `all=false`.
+	//
+	// PUT /notifications
+	ActivityMarkNotificationsAsRead(ctx context.Context, request OptActivityMarkNotificationsAsReadReq) (ActivityMarkNotificationsAsReadRes, error)
+	// ActivityMarkRepoNotificationsAsRead invokes activity/mark-repo-notifications-as-read operation.
+	//
+	// Marks all notifications in a repository as "read" removes them from the [default view on
+	// GitHub](https://github.com/notifications). If the number of notifications is too large to complete
+	// in one request, you will receive a `202 Accepted` status and GitHub will run an asynchronous
+	// process to mark notifications as "read." To check whether any "unread" notifications remain, you
+	// can use the [List repository notifications for the authenticated user](https://docs.github.
+	// com/rest/reference/activity#list-repository-notifications-for-the-authenticated-user) endpoint and
+	// pass the query parameter `all=false`.
+	//
+	// PUT /repos/{owner}/{repo}/notifications
+	ActivityMarkRepoNotificationsAsRead(ctx context.Context, request OptActivityMarkRepoNotificationsAsReadReq, params ActivityMarkRepoNotificationsAsReadParams) (ActivityMarkRepoNotificationsAsReadRes, error)
+	// ActivityMarkThreadAsRead invokes activity/mark-thread-as-read operation.
+	//
+	// Mark a thread as read.
+	//
+	// PATCH /notifications/threads/{thread_id}
+	ActivityMarkThreadAsRead(ctx context.Context, params ActivityMarkThreadAsReadParams) (ActivityMarkThreadAsReadRes, error)
+	// ActivitySetRepoSubscription invokes activity/set-repo-subscription operation.
+	//
+	// If you would like to watch a repository, set `subscribed` to `true`. If you would like to ignore
+	// notifications made within a repository, set `ignored` to `true`. If you would like to stop
+	// watching a repository, [delete the repository's subscription](https://docs.github.
+	// com/rest/reference/activity#delete-a-repository-subscription) completely.
+	//
+	// PUT /repos/{owner}/{repo}/subscription
+	ActivitySetRepoSubscription(ctx context.Context, request OptActivitySetRepoSubscriptionReq, params ActivitySetRepoSubscriptionParams) (*RepositorySubscription, error)
+	// ActivitySetThreadSubscription invokes activity/set-thread-subscription operation.
+	//
+	// If you are watching a repository, you receive notifications for all threads by default. Use this
+	// endpoint to ignore future notifications for threads until you comment on the thread or get an
+	// **@mention**.
+	// You can also use this endpoint to subscribe to threads that you are currently not receiving
+	// notifications for or to subscribed to threads that you have previously ignored.
+	// Unsubscribing from a conversation in a repository that you are not watching is functionally
+	// equivalent to the [Delete a thread subscription](https://docs.github.
+	// com/rest/reference/activity#delete-a-thread-subscription) endpoint.
+	//
+	// PUT /notifications/threads/{thread_id}/subscription
+	ActivitySetThreadSubscription(ctx context.Context, request OptActivitySetThreadSubscriptionReq, params ActivitySetThreadSubscriptionParams) (ActivitySetThreadSubscriptionRes, error)
+	// ActivityStarRepoForAuthenticatedUser invokes activity/star-repo-for-authenticated-user operation.
+	//
+	// Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more
+	// information, see "[HTTP verbs](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#http-verbs).".
+	//
+	// PUT /user/starred/{owner}/{repo}
+	ActivityStarRepoForAuthenticatedUser(ctx context.Context, params ActivityStarRepoForAuthenticatedUserParams) (ActivityStarRepoForAuthenticatedUserRes, error)
+	// ActivityUnstarRepoForAuthenticatedUser invokes activity/unstar-repo-for-authenticated-user operation.
+	//
+	// Unstar a repository for the authenticated user.
+	//
+	// DELETE /user/starred/{owner}/{repo}
+	ActivityUnstarRepoForAuthenticatedUser(ctx context.Context, params ActivityUnstarRepoForAuthenticatedUserParams) (ActivityUnstarRepoForAuthenticatedUserRes, error)
+	// AppsAddRepoToInstallation invokes apps/add-repo-to-installation operation.
+	//
+	// Add a single repository to an installation. The authenticated user must have admin access to the
+	// repository.
+	// You must use a personal access token (which you can create via the [command line](https://docs.
+	// github.com/github/authenticating-to-github/creating-a-personal-access-token) or [Basic
+	// Authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#basic-authentication)) to access this endpoint.
+	//
+	// PUT /user/installations/{installation_id}/repositories/{repository_id}
+	AppsAddRepoToInstallation(ctx context.Context, params AppsAddRepoToInstallationParams) (AppsAddRepoToInstallationRes, error)
+	// AppsCheckToken invokes apps/check-token operation.
+	//
+	// OAuth applications can use a special API method for checking OAuth token validity without
+	// exceeding the normal rate limits for failed login attempts. Authentication works differently with
+	// this particular endpoint. You must use [Basic Authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#basic-authentication) to use this endpoint, where
+	// the username is the OAuth application `client_id` and the password is its `client_secret`. Invalid
+	// tokens will return `404 NOT FOUND`.
+	//
+	// POST /applications/{client_id}/token
+	AppsCheckToken(ctx context.Context, request *AppsCheckTokenReq, params AppsCheckTokenParams) (AppsCheckTokenRes, error)
+	// AppsCreateContentAttachment invokes apps/create-content-attachment operation.
+	//
+	// Creates an attachment under a content reference URL in the body or comment of an issue or pull
+	// request. Use the `id` and `repository` `full_name` of the content reference from the
+	// [`content_reference` event](https://docs.github.com/webhooks/event-payloads/#content_reference) to
+	// create an attachment.
+	// The app must create a content attachment within six hours of the content reference URL being
+	// posted. See "[Using content attachments](https://docs.github.com/apps/using-content-attachments/)"
+	// for details about content attachments.
+	// You must use an [installation access token](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-an-installation)
+	// to access this endpoint.
+	//
+	// POST /repos/{owner}/{repo}/content_references/{content_reference_id}/attachments
+	AppsCreateContentAttachment(ctx context.Context, request *AppsCreateContentAttachmentReq, params AppsCreateContentAttachmentParams) (AppsCreateContentAttachmentRes, error)
+	// AppsCreateFromManifest invokes apps/create-from-manifest operation.
+	//
+	// Use this endpoint to complete the handshake necessary when implementing the [GitHub App Manifest
+	// flow](https://docs.github.com/apps/building-github-apps/creating-github-apps-from-a-manifest/).
+	// When you create a GitHub App with the manifest flow, you receive a temporary `code` used to
+	// retrieve the GitHub App's `id`, `pem` (private key), and `webhook_secret`.
+	//
+	// POST /app-manifests/{code}/conversions
+	AppsCreateFromManifest(ctx context.Context, request *AppsCreateFromManifestReq, params AppsCreateFromManifestParams) (AppsCreateFromManifestRes, error)
+	// AppsCreateInstallationAccessToken invokes apps/create-installation-access-token operation.
+	//
+	// Creates an installation access token that enables a GitHub App to make authenticated API requests
+	// for the app's installation on an organization or individual account. Installation tokens expire
+	// one hour from the time you create them. Using an expired token produces a status code of `401 -
+	// Unauthorized`, and requires creating a new installation token. By default the installation token
+	// has access to all repositories that the installation can access. To restrict the access to
+	// specific repositories, you can provide the `repository_ids` when creating the token. When you omit
+	// `repository_ids`, the response does not contain the `repositories` key.
+	// You must use a [JWT](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
+	// access this endpoint.
+	//
+	// POST /app/installations/{installation_id}/access_tokens
+	AppsCreateInstallationAccessToken(ctx context.Context, request OptAppsCreateInstallationAccessTokenReq, params AppsCreateInstallationAccessTokenParams) (AppsCreateInstallationAccessTokenRes, error)
+	// AppsDeleteAuthorization invokes apps/delete-authorization operation.
+	//
+	// OAuth application owners can revoke a grant for their OAuth application and a specific user. You
+	// must use [Basic Authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#basic-authentication) when accessing this endpoint,
+	// using the OAuth application's `client_id` and `client_secret` as the username and password. You
+	// must also provide a valid OAuth `access_token` as an input parameter and the grant for the token's
+	// owner will be deleted.
+	// Deleting an OAuth application's grant will also delete all OAuth tokens associated with the
+	// application for the user. Once deleted, the application will have no access to the user's account
+	// and will no longer be listed on [the application authorizations settings screen within
+	// GitHub](https://github.com/settings/applications#authorized).
+	//
+	// DELETE /applications/{client_id}/grant
+	AppsDeleteAuthorization(ctx context.Context, request *AppsDeleteAuthorizationReq, params AppsDeleteAuthorizationParams) (AppsDeleteAuthorizationRes, error)
+	// AppsDeleteInstallation invokes apps/delete-installation operation.
+	//
+	// Uninstalls a GitHub App on a user, organization, or business account. If you prefer to temporarily
+	// suspend an app's access to your account's resources, then we recommend the "[Suspend an app
+	// installation](https://docs.github.com/rest/reference/apps/#suspend-an-app-installation)" endpoint.
+	// You must use a [JWT](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
+	// access this endpoint.
+	//
+	// DELETE /app/installations/{installation_id}
+	AppsDeleteInstallation(ctx context.Context, params AppsDeleteInstallationParams) (AppsDeleteInstallationRes, error)
+	// AppsDeleteToken invokes apps/delete-token operation.
+	//
+	// OAuth application owners can revoke a single token for an OAuth application. You must use [Basic
+	// Authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#basic-authentication) when accessing this endpoint,
+	// using the OAuth application's `client_id` and `client_secret` as the username and password.
+	//
+	// DELETE /applications/{client_id}/token
+	AppsDeleteToken(ctx context.Context, request *AppsDeleteTokenReq, params AppsDeleteTokenParams) (AppsDeleteTokenRes, error)
+	// AppsGetAuthenticated invokes apps/get-authenticated operation.
+	//
+	// Returns the GitHub App associated with the authentication credentials used. To see how many app
+	// installations are associated with this GitHub App, see the `installations_count` in the response.
+	// For more details about your app's installations, see the "[List installations for the
+	// authenticated app](https://docs.github.
+	// com/rest/reference/apps#list-installations-for-the-authenticated-app)" endpoint.
+	// You must use a [JWT](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
+	// access this endpoint.
+	//
+	// GET /app
+	AppsGetAuthenticated(ctx context.Context) (*Integration, error)
+	// AppsGetBySlug invokes apps/get-by-slug operation.
+	//
+	// **Note**: The `:app_slug` is just the URL-friendly name of your GitHub App. You can find this on
+	// the settings page for your GitHub App (e.g., `https://github.com/settings/apps/:app_slug`).
+	// If the GitHub App you specify is public, you can access this endpoint without authenticating. If
+	// the GitHub App you specify is private, you must authenticate with a [personal access
+	// token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/) or
+	// an [installation access token](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-an-installation)
+	// to access this endpoint.
+	//
+	// GET /apps/{app_slug}
+	AppsGetBySlug(ctx context.Context, params AppsGetBySlugParams) (AppsGetBySlugRes, error)
+	// AppsGetSubscriptionPlanForAccount invokes apps/get-subscription-plan-for-account operation.
+	//
+	// Shows whether the user or organization account actively subscribes to a plan listed by the
+	// authenticated GitHub App. When someone submits a plan change that won't be processed until the end
+	// of their billing cycle, you will also see the upcoming pending change.
+	// GitHub Apps must use a [JWT](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
+	// access this endpoint. OAuth Apps must use [basic authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and
+	// client secret to access this endpoint.
+	//
+	// GET /marketplace_listing/accounts/{account_id}
+	AppsGetSubscriptionPlanForAccount(ctx context.Context, params AppsGetSubscriptionPlanForAccountParams) (AppsGetSubscriptionPlanForAccountRes, error)
+	// AppsGetSubscriptionPlanForAccountStubbed invokes apps/get-subscription-plan-for-account-stubbed operation.
+	//
+	// Shows whether the user or organization account actively subscribes to a plan listed by the
+	// authenticated GitHub App. When someone submits a plan change that won't be processed until the end
+	// of their billing cycle, you will also see the upcoming pending change.
+	// GitHub Apps must use a [JWT](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
+	// access this endpoint. OAuth Apps must use [basic authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and
+	// client secret to access this endpoint.
+	//
+	// GET /marketplace_listing/stubbed/accounts/{account_id}
+	AppsGetSubscriptionPlanForAccountStubbed(ctx context.Context, params AppsGetSubscriptionPlanForAccountStubbedParams) (AppsGetSubscriptionPlanForAccountStubbedRes, error)
+	// AppsGetWebhookConfigForApp invokes apps/get-webhook-config-for-app operation.
+	//
+	// Returns the webhook configuration for a GitHub App. For more information about configuring a
+	// webhook for your app, see "[Creating a GitHub App](/developers/apps/creating-a-github-app)."
+	// You must use a [JWT](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
+	// access this endpoint.
+	//
+	// GET /app/hook/config
+	AppsGetWebhookConfigForApp(ctx context.Context) (*WebhookConfig, error)
+	// AppsGetWebhookDelivery invokes apps/get-webhook-delivery operation.
+	//
+	// Returns a delivery for the webhook configured for a GitHub App.
+	// You must use a [JWT](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
+	// access this endpoint.
+	//
+	// GET /app/hook/deliveries/{delivery_id}
+	AppsGetWebhookDelivery(ctx context.Context, params AppsGetWebhookDeliveryParams) (AppsGetWebhookDeliveryRes, error)
+	// AppsListAccountsForPlan invokes apps/list-accounts-for-plan operation.
+	//
+	// Returns user and organization accounts associated with the specified plan, including free plans.
+	// For per-seat pricing, you see the list of accounts that have purchased the plan, including the
+	// number of seats purchased. When someone submits a plan change that won't be processed until the
+	// end of their billing cycle, you will also see the upcoming pending change.
+	// GitHub Apps must use a [JWT](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
+	// access this endpoint. OAuth Apps must use [basic authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and
+	// client secret to access this endpoint.
+	//
+	// GET /marketplace_listing/plans/{plan_id}/accounts
+	AppsListAccountsForPlan(ctx context.Context, params AppsListAccountsForPlanParams) (AppsListAccountsForPlanRes, error)
+	// AppsListAccountsForPlanStubbed invokes apps/list-accounts-for-plan-stubbed operation.
+	//
+	// Returns repository and organization accounts associated with the specified plan, including free
+	// plans. For per-seat pricing, you see the list of accounts that have purchased the plan, including
+	// the number of seats purchased. When someone submits a plan change that won't be processed until
+	// the end of their billing cycle, you will also see the upcoming pending change.
+	// GitHub Apps must use a [JWT](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
+	// access this endpoint. OAuth Apps must use [basic authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and
+	// client secret to access this endpoint.
+	//
+	// GET /marketplace_listing/stubbed/plans/{plan_id}/accounts
+	AppsListAccountsForPlanStubbed(ctx context.Context, params AppsListAccountsForPlanStubbedParams) (AppsListAccountsForPlanStubbedRes, error)
+	// AppsListInstallationReposForAuthenticatedUser invokes apps/list-installation-repos-for-authenticated-user operation.
+	//
+	// List repositories that the authenticated user has explicit permission (`:read`, `:write`, or
+	// `:admin`) to access for an installation.
+	// The authenticated user has explicit permission to access repositories they own, repositories where
+	// they are a collaborator, and repositories that they can access through an organization membership.
+	// You must use a [user-to-server OAuth access token](https://docs.github.
+	// com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/#identifying-users-on-your-site), created for a user who has authorized your GitHub App, to access this endpoint.
+	// The access the user has to each repository is included in the hash under the `permissions` key.
+	//
+	// GET /user/installations/{installation_id}/repositories
+	AppsListInstallationReposForAuthenticatedUser(ctx context.Context, params AppsListInstallationReposForAuthenticatedUserParams) (AppsListInstallationReposForAuthenticatedUserRes, error)
+	// AppsListPlans invokes apps/list-plans operation.
+	//
+	// Lists all plans that are part of your GitHub Marketplace listing.
+	// GitHub Apps must use a [JWT](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
+	// access this endpoint. OAuth Apps must use [basic authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and
+	// client secret to access this endpoint.
+	//
+	// GET /marketplace_listing/plans
+	AppsListPlans(ctx context.Context, params AppsListPlansParams) (AppsListPlansRes, error)
+	// AppsListPlansStubbed invokes apps/list-plans-stubbed operation.
+	//
+	// Lists all plans that are part of your GitHub Marketplace listing.
+	// GitHub Apps must use a [JWT](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
+	// access this endpoint. OAuth Apps must use [basic authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and
+	// client secret to access this endpoint.
+	//
+	// GET /marketplace_listing/stubbed/plans
+	AppsListPlansStubbed(ctx context.Context, params AppsListPlansStubbedParams) (AppsListPlansStubbedRes, error)
+	// AppsListReposAccessibleToInstallation invokes apps/list-repos-accessible-to-installation operation.
+	//
+	// List repositories that an app installation can access.
+	// You must use an [installation access token](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-an-installation)
+	// to access this endpoint.
+	//
+	// GET /installation/repositories
+	AppsListReposAccessibleToInstallation(ctx context.Context, params AppsListReposAccessibleToInstallationParams) (AppsListReposAccessibleToInstallationRes, error)
+	// AppsListSubscriptionsForAuthenticatedUser invokes apps/list-subscriptions-for-authenticated-user operation.
+	//
+	// Lists the active subscriptions for the authenticated user. You must use a [user-to-server OAuth
+	// access token](https://docs.github.
+	// com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/#identifying-users-on-your-site), created for a user who has authorized your GitHub App, to access this endpoint. . OAuth Apps must authenticate using an [OAuth token](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/).
+	//
+	// GET /user/marketplace_purchases
+	AppsListSubscriptionsForAuthenticatedUser(ctx context.Context, params AppsListSubscriptionsForAuthenticatedUserParams) (AppsListSubscriptionsForAuthenticatedUserRes, error)
+	// AppsListSubscriptionsForAuthenticatedUserStubbed invokes apps/list-subscriptions-for-authenticated-user-stubbed operation.
+	//
+	// Lists the active subscriptions for the authenticated user. You must use a [user-to-server OAuth
+	// access token](https://docs.github.
+	// com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/#identifying-users-on-your-site), created for a user who has authorized your GitHub App, to access this endpoint. . OAuth Apps must authenticate using an [OAuth token](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/).
+	//
+	// GET /user/marketplace_purchases/stubbed
+	AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Context, params AppsListSubscriptionsForAuthenticatedUserStubbedParams) (AppsListSubscriptionsForAuthenticatedUserStubbedRes, error)
+	// AppsListWebhookDeliveries invokes apps/list-webhook-deliveries operation.
+	//
+	// Returns a list of webhook deliveries for the webhook configured for a GitHub App.
+	// You must use a [JWT](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
+	// access this endpoint.
+	//
+	// GET /app/hook/deliveries
+	AppsListWebhookDeliveries(ctx context.Context, params AppsListWebhookDeliveriesParams) (AppsListWebhookDeliveriesRes, error)
+	// AppsRedeliverWebhookDelivery invokes apps/redeliver-webhook-delivery operation.
+	//
+	// Redeliver a delivery for the webhook configured for a GitHub App.
+	// You must use a [JWT](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
+	// access this endpoint.
+	//
+	// POST /app/hook/deliveries/{delivery_id}/attempts
+	AppsRedeliverWebhookDelivery(ctx context.Context, params AppsRedeliverWebhookDeliveryParams) (AppsRedeliverWebhookDeliveryRes, error)
+	// AppsRemoveRepoFromInstallation invokes apps/remove-repo-from-installation operation.
+	//
+	// Remove a single repository from an installation. The authenticated user must have admin access to
+	// the repository.
+	// You must use a personal access token (which you can create via the [command line](https://docs.
+	// github.com/github/authenticating-to-github/creating-a-personal-access-token) or [Basic
+	// Authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#basic-authentication)) to access this endpoint.
+	//
+	// DELETE /user/installations/{installation_id}/repositories/{repository_id}
+	AppsRemoveRepoFromInstallation(ctx context.Context, params AppsRemoveRepoFromInstallationParams) (AppsRemoveRepoFromInstallationRes, error)
+	// AppsResetToken invokes apps/reset-token operation.
+	//
+	// OAuth applications can use this API method to reset a valid OAuth token without end-user
+	// involvement. Applications must save the "token" property in the response because changes take
+	// effect immediately. You must use [Basic Authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#basic-authentication) when accessing this endpoint,
+	// using the OAuth application's `client_id` and `client_secret` as the username and password.
+	// Invalid tokens will return `404 NOT FOUND`.
+	//
+	// PATCH /applications/{client_id}/token
+	AppsResetToken(ctx context.Context, request *AppsResetTokenReq, params AppsResetTokenParams) (AppsResetTokenRes, error)
+	// AppsRevokeInstallationAccessToken invokes apps/revoke-installation-access-token operation.
+	//
+	// Revokes the installation token you're using to authenticate as an installation and access this
+	// endpoint.
+	// Once an installation token is revoked, the token is invalidated and cannot be used. Other
+	// endpoints that require the revoked installation token must have a new installation token to work.
+	// You can create a new token using the "[Create an installation access token for an
+	// app](https://docs.github.com/rest/reference/apps#create-an-installation-access-token-for-an-app)"
+	// endpoint.
+	// You must use an [installation access token](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-an-installation)
+	// to access this endpoint.
+	//
+	// DELETE /installation/token
+	AppsRevokeInstallationAccessToken(ctx context.Context) error
+	// AppsScopeToken invokes apps/scope-token operation.
+	//
+	// Use a non-scoped user-to-server OAuth access token to create a repository scoped and/or permission
+	// scoped user-to-server OAuth access token. You can specify which repositories the token can access
+	// and which permissions are granted to the token. You must use [Basic Authentication](https://docs.
+	// github.com/rest/overview/other-authentication-methods#basic-authentication) when accessing this
+	// endpoint, using the OAuth application's `client_id` and `client_secret` as the username and
+	// password. Invalid tokens will return `404 NOT FOUND`.
+	//
+	// POST /applications/{client_id}/token/scoped
+	AppsScopeToken(ctx context.Context, request *AppsScopeTokenReq, params AppsScopeTokenParams) (AppsScopeTokenRes, error)
+	// AppsSuspendInstallation invokes apps/suspend-installation operation.
+	//
+	// Suspends a GitHub App on a user, organization, or business account, which blocks the app from
+	// accessing the account's resources. When a GitHub App is suspended, the app's access to the GitHub
+	// API or webhook events is blocked for that account.
+	// You must use a [JWT](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
+	// access this endpoint.
+	//
+	// PUT /app/installations/{installation_id}/suspended
+	AppsSuspendInstallation(ctx context.Context, params AppsSuspendInstallationParams) (AppsSuspendInstallationRes, error)
+	// AppsUnsuspendInstallation invokes apps/unsuspend-installation operation.
+	//
+	// Removes a GitHub App installation suspension.
+	// You must use a [JWT](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
+	// access this endpoint.
+	//
+	// DELETE /app/installations/{installation_id}/suspended
+	AppsUnsuspendInstallation(ctx context.Context, params AppsUnsuspendInstallationParams) (AppsUnsuspendInstallationRes, error)
+	// AppsUpdateWebhookConfigForApp invokes apps/update-webhook-config-for-app operation.
+	//
+	// Updates the webhook configuration for a GitHub App. For more information about configuring a
+	// webhook for your app, see "[Creating a GitHub App](/developers/apps/creating-a-github-app)."
+	// You must use a [JWT](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
+	// access this endpoint.
+	//
+	// PATCH /app/hook/config
+	AppsUpdateWebhookConfigForApp(ctx context.Context, request OptAppsUpdateWebhookConfigForAppReq) (*WebhookConfig, error)
+	// BillingGetGithubActionsBillingGhe invokes billing/get-github-actions-billing-ghe operation.
+	//
+	// Gets the summary of the free and paid GitHub Actions minutes used.
+	// Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners.
+	// Minutes used is listed for each GitHub-hosted runner operating system. Any job re-runs are also
+	// included in the usage. The usage does not include the multiplier for macOS and Windows runners and
+	// is not rounded up to the nearest whole minute. For more information, see "[Managing billing for
+	// GitHub Actions](https://help.github.
+	// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+	// The authenticated user must be an enterprise admin.
+	//
+	// GET /enterprises/{enterprise}/settings/billing/actions
+	BillingGetGithubActionsBillingGhe(ctx context.Context, params BillingGetGithubActionsBillingGheParams) (*ActionsBillingUsage, error)
+	// BillingGetGithubActionsBillingOrg invokes billing/get-github-actions-billing-org operation.
+	//
+	// Gets the summary of the free and paid GitHub Actions minutes used.
+	// Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners.
+	// Minutes used is listed for each GitHub-hosted runner operating system. Any job re-runs are also
+	// included in the usage. The usage returned includes any minute multipliers for macOS and Windows
+	// runners, and is rounded up to the nearest whole minute. For more information, see "[Managing
+	// billing for GitHub Actions](https://help.github.
+	// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+	// Access tokens must have the `repo` or `admin:org` scope.
+	//
+	// GET /orgs/{org}/settings/billing/actions
+	BillingGetGithubActionsBillingOrg(ctx context.Context, params BillingGetGithubActionsBillingOrgParams) (*ActionsBillingUsage, error)
+	// BillingGetGithubActionsBillingUser invokes billing/get-github-actions-billing-user operation.
+	//
+	// Gets the summary of the free and paid GitHub Actions minutes used.
+	// Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners.
+	// Minutes used is listed for each GitHub-hosted runner operating system. Any job re-runs are also
+	// included in the usage. The usage returned includes any minute multipliers for macOS and Windows
+	// runners, and is rounded up to the nearest whole minute. For more information, see "[Managing
+	// billing for GitHub Actions](https://help.github.
+	// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+	// Access tokens must have the `user` scope.
+	//
+	// GET /users/{username}/settings/billing/actions
+	BillingGetGithubActionsBillingUser(ctx context.Context, params BillingGetGithubActionsBillingUserParams) (*ActionsBillingUsage, error)
+	// BillingGetGithubPackagesBillingGhe invokes billing/get-github-packages-billing-ghe operation.
+	//
+	// Gets the free and paid storage used for GitHub Packages in gigabytes.
+	// Paid minutes only apply to packages stored for private repositories. For more information, see
+	// "[Managing billing for GitHub Packages](https://help.github.
+	// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+	// The authenticated user must be an enterprise admin.
+	//
+	// GET /enterprises/{enterprise}/settings/billing/packages
+	BillingGetGithubPackagesBillingGhe(ctx context.Context, params BillingGetGithubPackagesBillingGheParams) (*PackagesBillingUsage, error)
+	// BillingGetGithubPackagesBillingOrg invokes billing/get-github-packages-billing-org operation.
+	//
+	// Gets the free and paid storage used for GitHub Packages in gigabytes.
+	// Paid minutes only apply to packages stored for private repositories. For more information, see
+	// "[Managing billing for GitHub Packages](https://help.github.
+	// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+	// Access tokens must have the `repo` or `admin:org` scope.
+	//
+	// GET /orgs/{org}/settings/billing/packages
+	BillingGetGithubPackagesBillingOrg(ctx context.Context, params BillingGetGithubPackagesBillingOrgParams) (*PackagesBillingUsage, error)
+	// BillingGetGithubPackagesBillingUser invokes billing/get-github-packages-billing-user operation.
+	//
+	// Gets the free and paid storage used for GitHub Packages in gigabytes.
+	// Paid minutes only apply to packages stored for private repositories. For more information, see
+	// "[Managing billing for GitHub Packages](https://help.github.
+	// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+	// Access tokens must have the `user` scope.
+	//
+	// GET /users/{username}/settings/billing/packages
+	BillingGetGithubPackagesBillingUser(ctx context.Context, params BillingGetGithubPackagesBillingUserParams) (*PackagesBillingUsage, error)
+	// BillingGetSharedStorageBillingGhe invokes billing/get-shared-storage-billing-ghe operation.
+	//
+	// Gets the estimated paid and estimated total storage used for GitHub Actions and Github Packages.
+	// Paid minutes only apply to packages stored for private repositories. For more information, see
+	// "[Managing billing for GitHub Packages](https://help.github.
+	// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+	// The authenticated user must be an enterprise admin.
+	//
+	// GET /enterprises/{enterprise}/settings/billing/shared-storage
+	BillingGetSharedStorageBillingGhe(ctx context.Context, params BillingGetSharedStorageBillingGheParams) (*CombinedBillingUsage, error)
+	// BillingGetSharedStorageBillingOrg invokes billing/get-shared-storage-billing-org operation.
+	//
+	// Gets the estimated paid and estimated total storage used for GitHub Actions and Github Packages.
+	// Paid minutes only apply to packages stored for private repositories. For more information, see
+	// "[Managing billing for GitHub Packages](https://help.github.
+	// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+	// Access tokens must have the `repo` or `admin:org` scope.
+	//
+	// GET /orgs/{org}/settings/billing/shared-storage
+	BillingGetSharedStorageBillingOrg(ctx context.Context, params BillingGetSharedStorageBillingOrgParams) (*CombinedBillingUsage, error)
+	// BillingGetSharedStorageBillingUser invokes billing/get-shared-storage-billing-user operation.
+	//
+	// Gets the estimated paid and estimated total storage used for GitHub Actions and Github Packages.
+	// Paid minutes only apply to packages stored for private repositories. For more information, see
+	// "[Managing billing for GitHub Packages](https://help.github.
+	// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+	// Access tokens must have the `user` scope.
+	//
+	// GET /users/{username}/settings/billing/shared-storage
+	BillingGetSharedStorageBillingUser(ctx context.Context, params BillingGetSharedStorageBillingUserParams) (*CombinedBillingUsage, error)
+	// ChecksCreateSuite invokes checks/create-suite operation.
+	//
+	// **Note:** The Checks API only looks for pushes in the repository where the check suite or check
+	// run were created. Pushes to a branch in a forked repository are not detected and return an empty
+	// `pull_requests` array and a `null` value for `head_branch`.
+	// By default, check suites are automatically created when you create a [check run](https://docs.
+	// github.com/rest/reference/checks#check-runs). You only need to use this endpoint for manually
+	// creating check suites when you've disabled automatic creation using "[Update repository
+	// preferences for check suites](https://docs.github.
+	// com/rest/reference/checks#update-repository-preferences-for-check-suites)". Your GitHub App must
+	// have the `checks:write` permission to create check suites.
+	//
+	// POST /repos/{owner}/{repo}/check-suites
+	ChecksCreateSuite(ctx context.Context, request *ChecksCreateSuiteReq, params ChecksCreateSuiteParams) (ChecksCreateSuiteRes, error)
+	// ChecksGet invokes checks/get operation.
+	//
+	// **Note:** The Checks API only looks for pushes in the repository where the check suite or check
+	// run were created. Pushes to a branch in a forked repository are not detected and return an empty
+	// `pull_requests` array.
+	// Gets a single check run using its `id`. GitHub Apps must have the `checks:read` permission on a
+	// private repository or pull access to a public repository to get check runs. OAuth Apps and
+	// authenticated users must have the `repo` scope to get check runs in a private repository.
+	//
+	// GET /repos/{owner}/{repo}/check-runs/{check_run_id}
+	ChecksGet(ctx context.Context, params ChecksGetParams) (*CheckRun, error)
+	// ChecksGetSuite invokes checks/get-suite operation.
+	//
+	// **Note:** The Checks API only looks for pushes in the repository where the check suite or check
+	// run were created. Pushes to a branch in a forked repository are not detected and return an empty
+	// `pull_requests` array and a `null` value for `head_branch`.
+	// Gets a single check suite using its `id`. GitHub Apps must have the `checks:read` permission on a
+	// private repository or pull access to a public repository to get check suites. OAuth Apps and
+	// authenticated users must have the `repo` scope to get check suites in a private repository.
+	//
+	// GET /repos/{owner}/{repo}/check-suites/{check_suite_id}
+	ChecksGetSuite(ctx context.Context, params ChecksGetSuiteParams) (*CheckSuite, error)
+	// ChecksListAnnotations invokes checks/list-annotations operation.
+	//
+	// Lists annotations for a check run using the annotation `id`. GitHub Apps must have the
+	// `checks:read` permission on a private repository or pull access to a public repository to get
+	// annotations for a check run. OAuth Apps and authenticated users must have the `repo` scope to get
+	// annotations for a check run in a private repository.
+	//
+	// GET /repos/{owner}/{repo}/check-runs/{check_run_id}/annotations
+	ChecksListAnnotations(ctx context.Context, params ChecksListAnnotationsParams) (*ChecksListAnnotationsOKHeaders, error)
+	// ChecksListForRef invokes checks/list-for-ref operation.
+	//
+	// **Note:** The Checks API only looks for pushes in the repository where the check suite or check
+	// run were created. Pushes to a branch in a forked repository are not detected and return an empty
+	// `pull_requests` array.
+	// Lists check runs for a commit ref. The `ref` can be a SHA, branch name, or a tag name. GitHub Apps
+	// must have the `checks:read` permission on a private repository or pull access to a public
+	// repository to get check runs. OAuth Apps and authenticated users must have the `repo` scope to get
+	// check runs in a private repository.
+	//
+	// GET /repos/{owner}/{repo}/commits/{ref}/check-runs
+	ChecksListForRef(ctx context.Context, params ChecksListForRefParams) (*ChecksListForRefOKHeaders, error)
+	// ChecksListForSuite invokes checks/list-for-suite operation.
+	//
+	// **Note:** The Checks API only looks for pushes in the repository where the check suite or check
+	// run were created. Pushes to a branch in a forked repository are not detected and return an empty
+	// `pull_requests` array.
+	// Lists check runs for a check suite using its `id`. GitHub Apps must have the `checks:read`
+	// permission on a private repository or pull access to a public repository to get check runs. OAuth
+	// Apps and authenticated users must have the `repo` scope to get check runs in a private repository.
+	//
+	// GET /repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs
+	ChecksListForSuite(ctx context.Context, params ChecksListForSuiteParams) (*ChecksListForSuiteOKHeaders, error)
+	// ChecksListSuitesForRef invokes checks/list-suites-for-ref operation.
+	//
+	// **Note:** The Checks API only looks for pushes in the repository where the check suite or check
+	// run were created. Pushes to a branch in a forked repository are not detected and return an empty
+	// `pull_requests` array and a `null` value for `head_branch`.
+	// Lists check suites for a commit `ref`. The `ref` can be a SHA, branch name, or a tag name. GitHub
+	// Apps must have the `checks:read` permission on a private repository or pull access to a public
+	// repository to list check suites. OAuth Apps and authenticated users must have the `repo` scope to
+	// get check suites in a private repository.
+	//
+	// GET /repos/{owner}/{repo}/commits/{ref}/check-suites
+	ChecksListSuitesForRef(ctx context.Context, params ChecksListSuitesForRefParams) (*ChecksListSuitesForRefOKHeaders, error)
+	// ChecksRerequestSuite invokes checks/rerequest-suite operation.
+	//
+	// Triggers GitHub to rerequest an existing check suite, without pushing new code to a repository.
+	// This endpoint will trigger the [`check_suite` webhook](https://docs.github.
+	// com/webhooks/event-payloads/#check_suite) event with the action `rerequested`. When a check suite
+	// is `rerequested`, its `status` is reset to `queued` and the `conclusion` is cleared.
+	// To rerequest a check suite, your GitHub App must have the `checks:read` permission on a private
+	// repository or pull access to a public repository.
+	//
+	// POST /repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest
+	ChecksRerequestSuite(ctx context.Context, params ChecksRerequestSuiteParams) error
+	// ChecksSetSuitesPreferences invokes checks/set-suites-preferences operation.
+	//
+	// Changes the default automatic flow when creating check suites. By default, a check suite is
+	// automatically created each time code is pushed to a repository. When you disable the automatic
+	// creation of check suites, you can manually [Create a check suite](https://docs.github.
+	// com/rest/reference/checks#create-a-check-suite). You must have admin permissions in the repository
+	// to set preferences for check suites.
+	//
+	// PATCH /repos/{owner}/{repo}/check-suites/preferences
+	ChecksSetSuitesPreferences(ctx context.Context, request *ChecksSetSuitesPreferencesReq, params ChecksSetSuitesPreferencesParams) (*CheckSuitePreference, error)
+	// CodeScanningDeleteAnalysis invokes code-scanning/delete-analysis operation.
+	//
+	// Deletes a specified code scanning analysis from a repository. For
+	// private repositories, you must use an access token with the `repo` scope. For public repositories,
+	// you must use an access token with `public_repo` and `repo:security_events` scopes.
+	// GitHub Apps must have the `security_events` write permission to use this endpoint.
+	// You can delete one analysis at a time.
+	// To delete a series of analyses, start with the most recent analysis and work backwards.
+	// Conceptually, the process is similar to the undo function in a text editor.
+	// When you list the analyses for a repository,
+	// one or more will be identified as deletable in the response:
+	// ```
+	// "deletable": true
+	// ```
+	// An analysis is deletable when it's the most recent in a set of analyses.
+	// Typically, a repository will have multiple sets of analyses
+	// for each enabled code scanning tool,
+	// where a set is determined by a unique combination of analysis values:
+	// * `ref`
+	// * `tool`
+	// * `analysis_key`
+	// * `environment`
+	// If you attempt to delete an analysis that is not the most recent in a set,
+	// you'll get a 400 response with the message:
+	// ```
+	// Analysis specified is not deletable.
+	// ```
+	// The response from a successful `DELETE` operation provides you with
+	// two alternative URLs for deleting the next analysis in the set
+	// (see the example default response below).
+	// Use the `next_analysis_url` URL if you want to avoid accidentally deleting the final analysis
+	// in the set. This is a useful option if you want to preserve at least one analysis
+	// for the specified tool in your repository.
+	// Use the `confirm_delete_url` URL if you are content to remove all analyses for a tool.
+	// When you delete the last analysis in a set the value of `next_analysis_url` and
+	// `confirm_delete_url`
+	// in the 200 response is `null`.
+	// As an example of the deletion process,
+	// let's imagine that you added a workflow that configured a particular code scanning tool
+	// to analyze the code in a repository. This tool has added 15 analyses:
+	// 10 on the default branch, and another 5 on a topic branch.
+	// You therefore have two separate sets of analyses for this tool.
+	// You've now decided that you want to remove all of the analyses for the tool.
+	// To do this you must make 15 separate deletion requests.
+	// To start, you must find the deletable analysis for one of the sets,
+	// step through deleting the analyses in that set,
+	// and then repeat the process for the second set.
+	// The procedure therefore consists of a nested loop:
+	// **Outer loop**:
+	// * List the analyses for the repository, filtered by tool.
+	// * Parse this list to find a deletable analysis. If found:
+	// **Inner loop**:
+	// * Delete the identified analysis.
+	// * Parse the response for the value of `confirm_delete_url` and, if found, use this in the next
+	// iteration.
+	// The above process assumes that you want to remove all trace of the tool's analyses from the GitHub
+	// user interface, for the specified repository, and it therefore uses the `confirm_delete_url` value.
+	//  Alternatively, you could use the `next_analysis_url` value, which would leave the last analysis
+	// in each set undeleted to avoid removing a tool's analysis entirely.
+	//
+	// DELETE /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
+	CodeScanningDeleteAnalysis(ctx context.Context, params CodeScanningDeleteAnalysisParams) (CodeScanningDeleteAnalysisRes, error)
+	// CodeScanningGetAlert invokes code-scanning/get-alert operation.
+	//
+	// Gets a single code scanning alert. You must use an access token with the `security_events` scope
+	// to use this endpoint. GitHub Apps must have the `security_events` read permission to use this
+	// endpoint.
+	// **Deprecation notice**:
+	// The instances field is deprecated and will, in future, not be included in the response for this
+	// endpoint. The example response reflects this change. The same information can now be retrieved via
+	// a GET request to the URL specified by `instances_url`.
+	//
+	// GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}
+	CodeScanningGetAlert(ctx context.Context, params CodeScanningGetAlertParams) (CodeScanningGetAlertRes, error)
+	// CodeScanningGetAnalysis invokes code-scanning/get-analysis operation.
+	//
+	// Gets a specified code scanning analysis for a repository.
+	// You must use an access token with the `security_events` scope to use this endpoint.
+	// GitHub Apps must have the `security_events` read permission to use this endpoint.
+	// The default JSON response contains fields that describe the analysis.
+	// This includes the Git reference and commit SHA to which the analysis relates,
+	// the datetime of the analysis, the name of the code scanning tool,
+	// and the number of alerts.
+	// The `rules_count` field in the default response give the number of rules
+	// that were run in the analysis.
+	// For very old analyses this data is not available,
+	// and `0` is returned in this field.
+	// If you use the Accept header `application/sarif+json`,
+	// the response contains the analysis data that was uploaded.
+	// This is formatted as
+	// [SARIF version 2.1.0](https://docs.oasis-open.org/sarif/sarif/v2.1.0/cs01/sarif-v2.1.0-cs01.html).
+	// **Deprecation notice**:
+	// The `tool_name` field is deprecated and will, in future, not be included in the response for this
+	// endpoint. The example response reflects this change. The tool name can now be found inside the
+	// `tool` field.
+	//
+	// GET /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
+	CodeScanningGetAnalysis(ctx context.Context, params CodeScanningGetAnalysisParams) (CodeScanningGetAnalysisRes, error)
+	// CodeScanningGetSarif invokes code-scanning/get-sarif operation.
+	//
+	// Gets information about a SARIF upload, including the status and the URL of the analysis that was
+	// uploaded so that you can retrieve details of the analysis. For more information, see "[Get a code
+	// scanning analysis for a
+	// repository](/rest/reference/code-scanning#get-a-code-scanning-analysis-for-a-repository)." You
+	// must use an access token with the `security_events` scope to use this endpoint. GitHub Apps must
+	// have the `security_events` read permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}
+	CodeScanningGetSarif(ctx context.Context, params CodeScanningGetSarifParams) (CodeScanningGetSarifRes, error)
+	// CodeScanningListAlertInstances invokes code-scanning/list-alert-instances operation.
+	//
+	// Lists all instances of the specified code scanning alert. You must use an access token with the
+	// `security_events` scope to use this endpoint. GitHub Apps must have the `security_events` read
+	// permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances
+	CodeScanningListAlertInstances(ctx context.Context, params CodeScanningListAlertInstancesParams) (CodeScanningListAlertInstancesRes, error)
+	// CodeScanningListAlertsForRepo invokes code-scanning/list-alerts-for-repo operation.
+	//
+	// Lists all open code scanning alerts for the default branch (usually `main`
+	// or `master`). You must use an access token with the `security_events` scope to use
+	// this endpoint. GitHub Apps must have the `security_events` read permission to use
+	// this endpoint.
+	// The response includes a `most_recent_instance` object.
+	// This provides details of the most recent instance of this alert
+	// for the default branch or for the specified Git reference
+	// (if you used `ref` in the request).
+	//
+	// GET /repos/{owner}/{repo}/code-scanning/alerts
+	CodeScanningListAlertsForRepo(ctx context.Context, params CodeScanningListAlertsForRepoParams) (CodeScanningListAlertsForRepoRes, error)
+	// CodeScanningListRecentAnalyses invokes code-scanning/list-recent-analyses operation.
+	//
+	// Lists the details of all code scanning analyses for a repository,
+	// starting with the most recent.
+	// The response is paginated and you can use the `page` and `per_page` parameters
+	// to list the analyses you're interested in.
+	// By default 30 analyses are listed per page.
+	// The `rules_count` field in the response give the number of rules
+	// that were run in the analysis.
+	// For very old analyses this data is not available,
+	// and `0` is returned in this field.
+	// You must use an access token with the `security_events` scope to use this endpoint.
+	// GitHub Apps must have the `security_events` read permission to use this endpoint.
+	// **Deprecation notice**:
+	// The `tool_name` field is deprecated and will, in future, not be included in the response for this
+	// endpoint. The example response reflects this change. The tool name can now be found inside the
+	// `tool` field.
+	//
+	// GET /repos/{owner}/{repo}/code-scanning/analyses
+	CodeScanningListRecentAnalyses(ctx context.Context, params CodeScanningListRecentAnalysesParams) (CodeScanningListRecentAnalysesRes, error)
+	// CodeScanningUpdateAlert invokes code-scanning/update-alert operation.
+	//
+	// Updates the status of a single code scanning alert. You must use an access token with the
+	// `security_events` scope to use this endpoint. GitHub Apps must have the `security_events` write
+	// permission to use this endpoint.
+	//
+	// PATCH /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}
+	CodeScanningUpdateAlert(ctx context.Context, request *CodeScanningUpdateAlertReq, params CodeScanningUpdateAlertParams) (CodeScanningUpdateAlertRes, error)
+	// CodeScanningUploadSarif invokes code-scanning/upload-sarif operation.
+	//
+	// Uploads SARIF data containing the results of a code scanning analysis to make the results
+	// available in a repository. You must use an access token with the `security_events` scope to use
+	// this endpoint. GitHub Apps must have the `security_events` write permission to use this endpoint.
+	// There are two places where you can upload code scanning results.
+	// - If you upload to a pull request, for example `--ref refs/pull/42/merge` or `--ref
+	// refs/pull/42/head`, then the results appear as alerts in a pull request check. For more
+	// information, see "[Triaging code scanning alerts in pull
+	// requests](/code-security/secure-coding/triaging-code-scanning-alerts-in-pull-requests)."
+	// - If you upload to a branch, for example `--ref refs/heads/my-branch`, then the results appear in
+	// the **Security** tab for your repository. For more information, see "[Managing code scanning
+	// alerts for your
+	// repository](/code-security/secure-coding/managing-code-scanning-alerts-for-your-repository#viewing-the-alerts-for-a-repository)."
+	// You must compress the SARIF-formatted analysis data that you want to upload, using `gzip`, and
+	// then encode it as a Base64 format string. For example:
+	// ```
+	// gzip -c analysis-data.sarif | base64 -w0
+	// ```
+	// SARIF upload supports a maximum of 5000 results per analysis run. Any results over this limit are
+	// ignored and any SARIF uploads with more than 25,000 results are rejected. Typically, but not
+	// necessarily, a SARIF file contains a single run of a single tool. If a code scanning tool
+	// generates too many results, you should update the analysis configuration to run only the most
+	// important rules or queries.
+	// The `202 Accepted`, response includes an `id` value.
+	// You can use this ID to check the status of the upload by using this for the `/sarifs/{sarif_id}`
+	// endpoint.
+	// For more information, see "[Get information about a SARIF
+	// upload](/rest/reference/code-scanning#get-information-about-a-sarif-upload).".
+	//
+	// POST /repos/{owner}/{repo}/code-scanning/sarifs
+	CodeScanningUploadSarif(ctx context.Context, request *CodeScanningUploadSarifReq, params CodeScanningUploadSarifParams) (CodeScanningUploadSarifRes, error)
+	// CodesOfConductGetAllCodesOfConduct invokes codes-of-conduct/get-all-codes-of-conduct operation.
+	//
+	// Get all codes of conduct.
+	//
+	// GET /codes_of_conduct
+	CodesOfConductGetAllCodesOfConduct(ctx context.Context) (CodesOfConductGetAllCodesOfConductRes, error)
+	// CodesOfConductGetConductCode invokes codes-of-conduct/get-conduct-code operation.
+	//
+	// Get a code of conduct.
+	//
+	// GET /codes_of_conduct/{key}
+	CodesOfConductGetConductCode(ctx context.Context, params CodesOfConductGetConductCodeParams) (CodesOfConductGetConductCodeRes, error)
+	// EmojisGet invokes emojis/get operation.
+	//
+	// Lists all the emojis available to use on GitHub.
+	//
+	// GET /emojis
+	EmojisGet(ctx context.Context) (EmojisGetRes, error)
+	// EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise invokes enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise operation.
+	//
+	// Adds an organization to the list of selected organizations that can access a self-hosted runner
+	// group. The runner group must have `visibility` set to `selected`. For more information, see
+	// "[Create a self-hosted runner group for an
+	// enterprise](#create-a-self-hosted-runner-group-for-an-enterprise)."
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
+	EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) error
+	// EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise invokes enterprise-admin/add-self-hosted-runner-to-group-for-enterprise operation.
+	//
+	// Adds a self-hosted runner to a runner group configured in an enterprise.
+	// You must authenticate using an access token with the `admin:enterprise`
+	// scope to use this endpoint.
+	//
+	// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
+	EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx context.Context, params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams) error
+	// EnterpriseAdminCreateRegistrationTokenForEnterprise invokes enterprise-admin/create-registration-token-for-enterprise operation.
+	//
+	// Returns a token that you can pass to the `config` script. The token expires after one hour.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	// #### Example using registration token
+	// Configure your self-hosted runner, replacing `TOKEN` with the registration token provided by this
+	// endpoint.
+	// ```
+	// ./config.sh --url https://github.com/enterprises/octo-enterprise --token TOKEN
+	// ```.
+	//
+	// POST /enterprises/{enterprise}/actions/runners/registration-token
+	EnterpriseAdminCreateRegistrationTokenForEnterprise(ctx context.Context, params EnterpriseAdminCreateRegistrationTokenForEnterpriseParams) (*AuthenticationToken, error)
+	// EnterpriseAdminCreateRemoveTokenForEnterprise invokes enterprise-admin/create-remove-token-for-enterprise operation.
+	//
+	// Returns a token that you can pass to the `config` script to remove a self-hosted runner from an
+	// enterprise. The token expires after one hour.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	// #### Example using remove token
+	// To remove your self-hosted runner from an enterprise, replace `TOKEN` with the remove token
+	// provided by this
+	// endpoint.
+	// ```
+	// ./config.sh remove --token TOKEN
+	// ```.
+	//
+	// POST /enterprises/{enterprise}/actions/runners/remove-token
+	EnterpriseAdminCreateRemoveTokenForEnterprise(ctx context.Context, params EnterpriseAdminCreateRemoveTokenForEnterpriseParams) (*AuthenticationToken, error)
+	// EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise invokes enterprise-admin/create-self-hosted-runner-group-for-enterprise operation.
+	//
+	// Creates a new self-hosted runner group for an enterprise.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// POST /enterprises/{enterprise}/actions/runner-groups
+	EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx context.Context, request *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams) (*RunnerGroupsEnterprise, error)
+	// EnterpriseAdminDeleteScimGroupFromEnterprise invokes enterprise-admin/delete-scim-group-from-enterprise operation.
+	//
+	// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+	// change.
+	//
+	// DELETE /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
+	EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteScimGroupFromEnterpriseParams) error
+	// EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise invokes enterprise-admin/delete-self-hosted-runner-from-enterprise operation.
+	//
+	// Forces the removal of a self-hosted runner from an enterprise. You can use this endpoint to
+	// completely remove the runner when the machine you were using no longer exists.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// DELETE /enterprises/{enterprise}/actions/runners/{runner_id}
+	EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams) error
+	// EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise invokes enterprise-admin/delete-self-hosted-runner-group-from-enterprise operation.
+	//
+	// Deletes a self-hosted runner group for an enterprise.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
+	EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams) error
+	// EnterpriseAdminDeleteUserFromEnterprise invokes enterprise-admin/delete-user-from-enterprise operation.
+	//
+	// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+	// change.
+	//
+	// DELETE /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
+	EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteUserFromEnterpriseParams) error
+	// EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise invokes enterprise-admin/disable-selected-organization-github-actions-enterprise operation.
+	//
+	// Removes an organization from the list of selected organizations that are enabled for GitHub
+	// Actions in an enterprise. To use this endpoint, the enterprise permission policy for
+	// `enabled_organizations` must be configured to `selected`. For more information, see "[Set GitHub
+	// Actions permissions for an enterprise](#set-github-actions-permissions-for-an-enterprise)."
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// DELETE /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
+	EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams) error
+	// EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise invokes enterprise-admin/enable-selected-organization-github-actions-enterprise operation.
+	//
+	// Adds an organization to the list of selected organizations that are enabled for GitHub Actions in
+	// an enterprise. To use this endpoint, the enterprise permission policy for `enabled_organizations`
+	// must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for
+	// an enterprise](#set-github-actions-permissions-for-an-enterprise)."
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// PUT /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
+	EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams) error
+	// EnterpriseAdminGetAllowedActionsEnterprise invokes enterprise-admin/get-allowed-actions-enterprise operation.
+	//
+	// Gets the selected actions that are allowed in an enterprise. To use this endpoint, the enterprise
+	// permission policy for `allowed_actions` must be configured to `selected`. For more information,
+	// see "[Set GitHub Actions permissions for an
+	// enterprise](#set-github-actions-permissions-for-an-enterprise)."
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// GET /enterprises/{enterprise}/actions/permissions/selected-actions
+	EnterpriseAdminGetAllowedActionsEnterprise(ctx context.Context, params EnterpriseAdminGetAllowedActionsEnterpriseParams) (*SelectedActions, error)
+	// EnterpriseAdminGetAuditLog invokes enterprise-admin/get-audit-log operation.
+	//
+	// Gets the audit log for an enterprise. To use this endpoint, you must be an enterprise admin, and
+	// you must use an access token with the `admin:enterprise` scope.
+	//
+	// GET /enterprises/{enterprise}/audit-log
+	EnterpriseAdminGetAuditLog(ctx context.Context, params EnterpriseAdminGetAuditLogParams) ([]AuditLogEvent, error)
+	// EnterpriseAdminGetGithubActionsPermissionsEnterprise invokes enterprise-admin/get-github-actions-permissions-enterprise operation.
+	//
+	// Gets the GitHub Actions permissions policy for organizations and allowed actions in an enterprise.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// GET /enterprises/{enterprise}/actions/permissions
+	EnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx context.Context, params EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams) (*ActionsEnterprisePermissions, error)
+	// EnterpriseAdminGetProvisioningInformationForEnterpriseGroup invokes enterprise-admin/get-provisioning-information-for-enterprise-group operation.
+	//
+	// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+	// change.
+	//
+	// GET /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
+	EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx context.Context, params EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams) (*ScimEnterpriseGroup, error)
+	// EnterpriseAdminGetProvisioningInformationForEnterpriseUser invokes enterprise-admin/get-provisioning-information-for-enterprise-user operation.
+	//
+	// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+	// change.
+	//
+	// GET /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
+	EnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx context.Context, params EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams) (*ScimEnterpriseUser, error)
+	// EnterpriseAdminGetSelfHostedRunnerForEnterprise invokes enterprise-admin/get-self-hosted-runner-for-enterprise operation.
+	//
+	// Gets a specific self-hosted runner configured in an enterprise.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// GET /enterprises/{enterprise}/actions/runners/{runner_id}
+	EnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx context.Context, params EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams) (*Runner, error)
+	// EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise invokes enterprise-admin/get-self-hosted-runner-group-for-enterprise operation.
+	//
+	// Gets a specific self-hosted runner group for an enterprise.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
+	EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx context.Context, params EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams) (*RunnerGroupsEnterprise, error)
+	// EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise invokes enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise operation.
+	//
+	// Lists the organizations with access to a self-hosted runner group.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
+	EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (*EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK, error)
+	// EnterpriseAdminListProvisionedGroupsEnterprise invokes enterprise-admin/list-provisioned-groups-enterprise operation.
+	//
+	// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+	// change.
+	//
+	// GET /scim/v2/enterprises/{enterprise}/Groups
+	EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Context, params EnterpriseAdminListProvisionedGroupsEnterpriseParams) (*ScimGroupListEnterprise, error)
+	// EnterpriseAdminListProvisionedIdentitiesEnterprise invokes enterprise-admin/list-provisioned-identities-enterprise operation.
+	//
+	// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+	// change.
+	// Retrieves a paginated list of all provisioned enterprise members, including pending invitations.
+	// When a user with a SAML-provisioned external identity leaves (or is removed from) an enterprise,
+	// the account's metadata is immediately removed. However, the returned list of user accounts might
+	// not always match the organization or enterprise member list you see on GitHub. This can happen in
+	// certain cases where an external identity associated with an organization will not match an
+	// organization member:
+	// - When a user with a SCIM-provisioned external identity is removed from an enterprise, the
+	// account's metadata is preserved to allow the user to re-join the organization in the future.
+	// - When inviting a user to join an organization, you can expect to see their external identity in
+	// the results before they accept the invitation, or if the invitation is cancelled (or never
+	// accepted).
+	// - When a user is invited over SCIM, an external identity is created that matches with the
+	// invitee's email address. However, this identity is only linked to a user account when the user
+	// accepts the invitation by going through SAML SSO.
+	// The returned list of external identities can include an entry for a `null` user. These are
+	// unlinked SAML identities that are created when a user goes through the following Single Sign-On
+	// (SSO) process but does not sign in to their GitHub account after completing SSO:
+	// 1. The user is granted access by the IdP and is not a member of the GitHub enterprise.
+	// 1. The user attempts to access the GitHub enterprise and initiates the SAML SSO process, and is
+	// not currently signed in to their GitHub account.
+	// 1. After successfully authenticating with the SAML SSO IdP, the `null` external identity entry is
+	// created and the user is prompted to sign in to their GitHub account:
+	// - If the user signs in, their GitHub account is linked to this entry.
+	// - If the user does not sign in (or does not create a new account when prompted), they are not
+	// added to the GitHub enterprise, and the external identity `null` entry remains in place.
+	//
+	// GET /scim/v2/enterprises/{enterprise}/Users
+	EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.Context, params EnterpriseAdminListProvisionedIdentitiesEnterpriseParams) (*ScimUserListEnterprise, error)
+	// EnterpriseAdminListRunnerApplicationsForEnterprise invokes enterprise-admin/list-runner-applications-for-enterprise operation.
+	//
+	// Lists binaries for the runner application that you can download and run.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// GET /enterprises/{enterprise}/actions/runners/downloads
+	EnterpriseAdminListRunnerApplicationsForEnterprise(ctx context.Context, params EnterpriseAdminListRunnerApplicationsForEnterpriseParams) ([]RunnerApplication, error)
+	// EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise invokes enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise operation.
+	//
+	// Lists the organizations that are selected to have GitHub Actions enabled in an enterprise. To use
+	// this endpoint, the enterprise permission policy for `enabled_organizations` must be configured to
+	// `selected`. For more information, see "[Set GitHub Actions permissions for an
+	// enterprise](#set-github-actions-permissions-for-an-enterprise)."
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// GET /enterprises/{enterprise}/actions/permissions/organizations
+	EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (*EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK, error)
+	// EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise invokes enterprise-admin/list-self-hosted-runner-groups-for-enterprise operation.
+	//
+	// Lists all self-hosted runner groups for an enterprise.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// GET /enterprises/{enterprise}/actions/runner-groups
+	EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams) (*EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK, error)
+	// EnterpriseAdminListSelfHostedRunnersForEnterprise invokes enterprise-admin/list-self-hosted-runners-for-enterprise operation.
+	//
+	// Lists all self-hosted runners configured for an enterprise.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// GET /enterprises/{enterprise}/actions/runners
+	EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersForEnterpriseParams) (*EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders, error)
+	// EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise invokes enterprise-admin/list-self-hosted-runners-in-group-for-enterprise operation.
+	//
+	// Lists the self-hosted runners that are in a specific enterprise group.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
+	EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams) (*EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders, error)
+	// EnterpriseAdminProvisionAndInviteEnterpriseGroup invokes enterprise-admin/provision-and-invite-enterprise-group operation.
+	//
+	// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+	// change.
+	// Provision an enterprise group, and invite users to the group. This sends invitation emails to the
+	// email address of the invited users to join the GitHub organization that the SCIM group corresponds
+	// to.
+	//
+	// POST /scim/v2/enterprises/{enterprise}/Groups
+	EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Context, request *EnterpriseAdminProvisionAndInviteEnterpriseGroupReq, params EnterpriseAdminProvisionAndInviteEnterpriseGroupParams) (*ScimEnterpriseGroup, error)
+	// EnterpriseAdminProvisionAndInviteEnterpriseUser invokes enterprise-admin/provision-and-invite-enterprise-user operation.
+	//
+	// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+	// change.
+	// Provision enterprise membership for a user, and send organization invitation emails to the email
+	// address.
+	// You can optionally include the groups a user will be invited to join. If you do not provide a list
+	// of `groups`, the user is provisioned for the enterprise, but no organization invitation emails
+	// will be sent.
+	//
+	// POST /scim/v2/enterprises/{enterprise}/Users
+	EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Context, request *EnterpriseAdminProvisionAndInviteEnterpriseUserReq, params EnterpriseAdminProvisionAndInviteEnterpriseUserParams) (*ScimEnterpriseUser, error)
+	// EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise invokes enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise operation.
+	//
+	// Removes an organization from the list of selected organizations that can access a self-hosted
+	// runner group. The runner group must have `visibility` set to `selected`. For more information, see
+	// "[Create a self-hosted runner group for an
+	// enterprise](#create-a-self-hosted-runner-group-for-an-enterprise)."
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
+	EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) error
+	// EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise invokes enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise operation.
+	//
+	// Removes a self-hosted runner from a group configured in an enterprise. The runner is then returned
+	// to the default group.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
+	EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx context.Context, params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams) error
+	// EnterpriseAdminSetAllowedActionsEnterprise invokes enterprise-admin/set-allowed-actions-enterprise operation.
+	//
+	// Sets the actions that are allowed in an enterprise. To use this endpoint, the enterprise
+	// permission policy for `allowed_actions` must be configured to `selected`. For more information,
+	// see "[Set GitHub Actions permissions for an
+	// enterprise](#set-github-actions-permissions-for-an-enterprise)."
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// PUT /enterprises/{enterprise}/actions/permissions/selected-actions
+	EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context, request *SelectedActions, params EnterpriseAdminSetAllowedActionsEnterpriseParams) error
+	// EnterpriseAdminSetGithubActionsPermissionsEnterprise invokes enterprise-admin/set-github-actions-permissions-enterprise operation.
+	//
+	// Sets the GitHub Actions permissions policy for organizations and allowed actions in an enterprise.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// PUT /enterprises/{enterprise}/actions/permissions
+	EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx context.Context, request *EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq, params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams) error
+	// EnterpriseAdminSetInformationForProvisionedEnterpriseGroup invokes enterprise-admin/set-information-for-provisioned-enterprise-group operation.
+	//
+	// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+	// change.
+	// Replaces an existing provisioned group’s information. You must provide all the information
+	// required for the group as if you were provisioning it for the first time. Any existing group
+	// information that you don't provide will be removed, including group membership. If you want to
+	// only update a specific attribute, use the [Update an attribute for a SCIM enterprise
+	// group](#update-an-attribute-for-a-scim-enterprise-group) endpoint instead.
+	//
+	// PUT /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
+	EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx context.Context, request *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams) (*ScimEnterpriseGroup, error)
+	// EnterpriseAdminSetInformationForProvisionedEnterpriseUser invokes enterprise-admin/set-information-for-provisioned-enterprise-user operation.
+	//
+	// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+	// change.
+	// Replaces an existing provisioned user's information. You must provide all the information required
+	// for the user as if you were provisioning them for the first time. Any existing user information
+	// that you don't provide will be removed. If you want to only update a specific attribute, use the
+	// [Update an attribute for a SCIM user](#update-an-attribute-for-an-enterprise-scim-user) endpoint
+	// instead.
+	// You must at least provide the required values for the user: `userName`, `name`, and `emails`.
+	// **Warning:** Setting `active: false` removes the user from the enterprise, deletes the external
+	// identity, and deletes the associated `{scim_user_id}`.
+	//
+	// PUT /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
+	EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx context.Context, request *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams) (*ScimEnterpriseUser, error)
+	// EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise invokes enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise operation.
+	//
+	// Replaces the list of organizations that have access to a self-hosted runner configured in an
+	// enterprise.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
+	EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, request *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq, params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) error
+	// EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise invokes enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise operation.
+	//
+	// Replaces the list of selected organizations that are enabled for GitHub Actions in an enterprise.
+	// To use this endpoint, the enterprise permission policy for `enabled_organizations` must be
+	// configured to `selected`. For more information, see "[Set GitHub Actions permissions for an
+	// enterprise](#set-github-actions-permissions-for-an-enterprise)."
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// PUT /enterprises/{enterprise}/actions/permissions/organizations
+	EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, request *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq, params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams) error
+	// EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise invokes enterprise-admin/set-self-hosted-runners-in-group-for-enterprise operation.
+	//
+	// Replaces the list of self-hosted runners that are part of an enterprise runner group.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
+	EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx context.Context, request *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq, params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) error
+	// EnterpriseAdminUpdateAttributeForEnterpriseGroup invokes enterprise-admin/update-attribute-for-enterprise-group operation.
+	//
+	// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+	// change.
+	// Allows you to change a provisioned group’s individual attributes. To change a group’s values,
+	// you must provide a specific Operations JSON format that contains at least one of the add, remove,
+	// or replace operations. For examples and more information on the SCIM operations format, see the
+	// [SCIM specification](https://tools.ietf.org/html/rfc7644#section-3.5.2).
+	//
+	// PATCH /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
+	EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx context.Context, request *EnterpriseAdminUpdateAttributeForEnterpriseGroupReq, params EnterpriseAdminUpdateAttributeForEnterpriseGroupParams) (*ScimEnterpriseGroup, error)
+	// EnterpriseAdminUpdateAttributeForEnterpriseUser invokes enterprise-admin/update-attribute-for-enterprise-user operation.
+	//
+	// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+	// change.
+	// Allows you to change a provisioned user's individual attributes. To change a user's values, you
+	// must provide a specific `Operations` JSON format that contains at least one of the `add`, `remove`,
+	//  or `replace` operations. For examples and more information on the SCIM operations format, see the
+	// [SCIM specification](https://tools.ietf.org/html/rfc7644#section-3.5.2).
+	// **Note:** Complicated SCIM `path` selectors that include filters are not supported. For example, a
+	// `path` selector defined as `"path": "emails[type eq \"work\"]"` will not work.
+	// **Warning:** If you set `active:false` using the `replace` operation (as shown in the JSON example
+	// below), it removes the user from the enterprise, deletes the external identity, and deletes the
+	// associated `:scim_user_id`.
+	// ```
+	// {
+	// "Operations":[{
+	// "op":"replace",
+	// "value":{
+	// "active":false
+	// }
+	// }]
+	// }
+	// ```.
+	//
+	// PATCH /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
+	EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Context, request *EnterpriseAdminUpdateAttributeForEnterpriseUserReq, params EnterpriseAdminUpdateAttributeForEnterpriseUserParams) (*ScimEnterpriseUser, error)
+	// EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise invokes enterprise-admin/update-self-hosted-runner-group-for-enterprise operation.
+	//
+	// Updates the `name` and `visibility` of a self-hosted runner group in an enterprise.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// PATCH /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
+	EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx context.Context, request OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams) (*RunnerGroupsEnterprise, error)
+	// GistsCheckIsStarred invokes gists/check-is-starred operation.
+	//
+	// Check if a gist is starred.
+	//
+	// GET /gists/{gist_id}/star
+	GistsCheckIsStarred(ctx context.Context, params GistsCheckIsStarredParams) (GistsCheckIsStarredRes, error)
+	// GistsCreate invokes gists/create operation.
+	//
+	// Allows you to add a new gist with one or more files.
+	// **Note:** Don't name your files "gistfile" with a numerical suffix. This is the format of the
+	// automatic naming scheme that Gist uses internally.
+	//
+	// POST /gists
+	GistsCreate(ctx context.Context, request *GistsCreateReq) (GistsCreateRes, error)
+	// GistsCreateComment invokes gists/create-comment operation.
+	//
+	// Create a gist comment.
+	//
+	// POST /gists/{gist_id}/comments
+	GistsCreateComment(ctx context.Context, request *GistsCreateCommentReq, params GistsCreateCommentParams) (GistsCreateCommentRes, error)
+	// GistsDelete invokes gists/delete operation.
+	//
+	// Delete a gist.
+	//
+	// DELETE /gists/{gist_id}
+	GistsDelete(ctx context.Context, params GistsDeleteParams) (GistsDeleteRes, error)
+	// GistsDeleteComment invokes gists/delete-comment operation.
+	//
+	// Delete a gist comment.
+	//
+	// DELETE /gists/{gist_id}/comments/{comment_id}
+	GistsDeleteComment(ctx context.Context, params GistsDeleteCommentParams) (GistsDeleteCommentRes, error)
+	// GistsFork invokes gists/fork operation.
+	//
+	// **Note**: This was previously `/gists/:gist_id/fork`.
+	//
+	// POST /gists/{gist_id}/forks
+	GistsFork(ctx context.Context, params GistsForkParams) (GistsForkRes, error)
+	// GistsGet invokes gists/get operation.
+	//
+	// Get a gist.
+	//
+	// GET /gists/{gist_id}
+	GistsGet(ctx context.Context, params GistsGetParams) (GistsGetRes, error)
+	// GistsGetComment invokes gists/get-comment operation.
+	//
+	// Get a gist comment.
+	//
+	// GET /gists/{gist_id}/comments/{comment_id}
+	GistsGetComment(ctx context.Context, params GistsGetCommentParams) (GistsGetCommentRes, error)
+	// GistsGetRevision invokes gists/get-revision operation.
+	//
+	// Get a gist revision.
+	//
+	// GET /gists/{gist_id}/{sha}
+	GistsGetRevision(ctx context.Context, params GistsGetRevisionParams) (GistsGetRevisionRes, error)
+	// GistsList invokes gists/list operation.
+	//
+	// Lists the authenticated user's gists or if called anonymously, this endpoint returns all public
+	// gists:.
+	//
+	// GET /gists
+	GistsList(ctx context.Context, params GistsListParams) (GistsListRes, error)
+	// GistsListComments invokes gists/list-comments operation.
+	//
+	// List gist comments.
+	//
+	// GET /gists/{gist_id}/comments
+	GistsListComments(ctx context.Context, params GistsListCommentsParams) (GistsListCommentsRes, error)
+	// GistsListCommits invokes gists/list-commits operation.
+	//
+	// List gist commits.
+	//
+	// GET /gists/{gist_id}/commits
+	GistsListCommits(ctx context.Context, params GistsListCommitsParams) (GistsListCommitsRes, error)
+	// GistsListForUser invokes gists/list-for-user operation.
+	//
+	// Lists public gists for the specified user:.
+	//
+	// GET /users/{username}/gists
+	GistsListForUser(ctx context.Context, params GistsListForUserParams) (GistsListForUserRes, error)
+	// GistsListForks invokes gists/list-forks operation.
+	//
+	// List gist forks.
+	//
+	// GET /gists/{gist_id}/forks
+	GistsListForks(ctx context.Context, params GistsListForksParams) (GistsListForksRes, error)
+	// GistsListPublic invokes gists/list-public operation.
+	//
+	// List public gists sorted by most recently updated to least recently updated.
+	// Note: With [pagination](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#pagination), you can fetch up to 3000 gists. For
+	// example, you can fetch 100 pages with 30 gists per page or 30 pages with 100 gists per page.
+	//
+	// GET /gists/public
+	GistsListPublic(ctx context.Context, params GistsListPublicParams) (GistsListPublicRes, error)
+	// GistsListStarred invokes gists/list-starred operation.
+	//
+	// List the authenticated user's starred gists:.
+	//
+	// GET /gists/starred
+	GistsListStarred(ctx context.Context, params GistsListStarredParams) (GistsListStarredRes, error)
+	// GistsStar invokes gists/star operation.
+	//
+	// Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more
+	// information, see "[HTTP verbs](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#http-verbs).".
+	//
+	// PUT /gists/{gist_id}/star
+	GistsStar(ctx context.Context, params GistsStarParams) (GistsStarRes, error)
+	// GistsUnstar invokes gists/unstar operation.
+	//
+	// Unstar a gist.
+	//
+	// DELETE /gists/{gist_id}/star
+	GistsUnstar(ctx context.Context, params GistsUnstarParams) (GistsUnstarRes, error)
+	// GistsUpdateComment invokes gists/update-comment operation.
+	//
+	// Update a gist comment.
+	//
+	// PATCH /gists/{gist_id}/comments/{comment_id}
+	GistsUpdateComment(ctx context.Context, request *GistsUpdateCommentReq, params GistsUpdateCommentParams) (GistsUpdateCommentRes, error)
+	// GitCreateBlob invokes git/create-blob operation.
+	//
+	// Create a blob.
+	//
+	// POST /repos/{owner}/{repo}/git/blobs
+	GitCreateBlob(ctx context.Context, request *GitCreateBlobReq, params GitCreateBlobParams) (GitCreateBlobRes, error)
+	// GitCreateCommit invokes git/create-commit operation.
+	//
+	// Creates a new Git [commit object](https://git-scm.
+	// com/book/en/v1/Git-Internals-Git-Objects#Commit-Objects).
+	// **Signature verification object**
+	// The response will include a `verification` object that describes the result of verifying the
+	// commit's signature. The following fields are included in the `verification` object:
+	// | Name | Type | Description |
+	// | ---- | ---- | ----------- |
+	// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be
+	// verified. |
+	// | `reason` | `string` | The reason for verified value. Possible values and their meanings are
+	// enumerated in table below. |
+	// | `signature` | `string` | The signature that was extracted from the commit. |
+	// | `payload` | `string` | The value that was signed. |
+	// These are the possible values for `reason` in the `verification` object:
+	// | Value | Description |
+	// | ----- | ----------- |
+	// | `expired_key` | The key that made the signature is expired. |
+	// | `not_signing_key` | The "signing" flag is not among the usage flags in the GPG key that made the
+	// signature. |
+	// | `gpgverify_error` | There was an error communicating with the signature verification service. |
+	// | `gpgverify_unavailable` | The signature verification service is currently unavailable. |
+	// | `unsigned` | The object does not include a signature. |
+	// | `unknown_signature_type` | A non-PGP signature was found in the commit. |
+	// | `no_user` | No user was associated with the `committer` email address in the commit. |
+	// | `unverified_email` | The `committer` email address in the commit was associated with a user, but
+	// the email address is not verified on her/his account. |
+	// | `bad_email` | The `committer` email address in the commit is not included in the identities of
+	// the PGP key that made the signature. |
+	// | `unknown_key` | The key that made the signature has not been registered with any user's account.
+	// |
+	// | `malformed_signature` | There was an error parsing the signature. |
+	// | `invalid` | The signature could not be cryptographically verified using the key whose key-id was
+	// found in the signature. |
+	// | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
+	//
+	// POST /repos/{owner}/{repo}/git/commits
+	GitCreateCommit(ctx context.Context, request *GitCreateCommitReq, params GitCreateCommitParams) (GitCreateCommitRes, error)
+	// GitCreateRef invokes git/create-ref operation.
+	//
+	// Creates a reference for your repository. You are unable to create new references for empty
+	// repositories, even if the commit SHA-1 hash used exists. Empty repositories are repositories
+	// without branches.
+	//
+	// POST /repos/{owner}/{repo}/git/refs
+	GitCreateRef(ctx context.Context, request *GitCreateRefReq, params GitCreateRefParams) (GitCreateRefRes, error)
+	// GitCreateTag invokes git/create-tag operation.
+	//
+	// Note that creating a tag object does not create the reference that makes a tag in Git. If you want
+	// to create an annotated tag in Git, you have to do this call to create the tag object, and then
+	// [create](https://docs.github.com/rest/reference/git#create-a-reference) the `refs/tags/[tag]`
+	// reference. If you want to create a lightweight tag, you only have to [create](https://docs.github.
+	// com/rest/reference/git#create-a-reference) the tag reference - this call would be unnecessary.
+	// **Signature verification object**
+	// The response will include a `verification` object that describes the result of verifying the
+	// commit's signature. The following fields are included in the `verification` object:
+	// | Name | Type | Description |
+	// | ---- | ---- | ----------- |
+	// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be
+	// verified. |
+	// | `reason` | `string` | The reason for verified value. Possible values and their meanings are
+	// enumerated in table below. |
+	// | `signature` | `string` | The signature that was extracted from the commit. |
+	// | `payload` | `string` | The value that was signed. |
+	// These are the possible values for `reason` in the `verification` object:
+	// | Value | Description |
+	// | ----- | ----------- |
+	// | `expired_key` | The key that made the signature is expired. |
+	// | `not_signing_key` | The "signing" flag is not among the usage flags in the GPG key that made the
+	// signature. |
+	// | `gpgverify_error` | There was an error communicating with the signature verification service. |
+	// | `gpgverify_unavailable` | The signature verification service is currently unavailable. |
+	// | `unsigned` | The object does not include a signature. |
+	// | `unknown_signature_type` | A non-PGP signature was found in the commit. |
+	// | `no_user` | No user was associated with the `committer` email address in the commit. |
+	// | `unverified_email` | The `committer` email address in the commit was associated with a user, but
+	// the email address is not verified on her/his account. |
+	// | `bad_email` | The `committer` email address in the commit is not included in the identities of
+	// the PGP key that made the signature. |
+	// | `unknown_key` | The key that made the signature has not been registered with any user's account.
+	// |
+	// | `malformed_signature` | There was an error parsing the signature. |
+	// | `invalid` | The signature could not be cryptographically verified using the key whose key-id was
+	// found in the signature. |
+	// | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
+	//
+	// POST /repos/{owner}/{repo}/git/tags
+	GitCreateTag(ctx context.Context, request *GitCreateTagReq, params GitCreateTagParams) (GitCreateTagRes, error)
+	// GitCreateTree invokes git/create-tree operation.
+	//
+	// The tree creation API accepts nested entries. If you specify both a tree and a nested path
+	// modifying that tree, this endpoint will overwrite the contents of the tree with the new path
+	// contents, and create a new tree structure.
+	// If you use this endpoint to add, delete, or modify the file contents in a tree, you will need to
+	// commit the tree and then update a branch to point to the commit. For more information see "[Create
+	// a commit](https://docs.github.com/rest/reference/git#create-a-commit)" and "[Update a
+	// reference](https://docs.github.com/rest/reference/git#update-a-reference).".
+	//
+	// POST /repos/{owner}/{repo}/git/trees
+	GitCreateTree(ctx context.Context, request *GitCreateTreeReq, params GitCreateTreeParams) (GitCreateTreeRes, error)
+	// GitDeleteRef invokes git/delete-ref operation.
+	//
+	// Delete a reference.
+	//
+	// DELETE /repos/{owner}/{repo}/git/refs/{ref}
+	GitDeleteRef(ctx context.Context, params GitDeleteRefParams) (GitDeleteRefRes, error)
+	// GitGetBlob invokes git/get-blob operation.
+	//
+	// The `content` in the response will always be Base64 encoded.
+	// _Note_: This API supports blobs up to 100 megabytes in size.
+	//
+	// GET /repos/{owner}/{repo}/git/blobs/{file_sha}
+	GitGetBlob(ctx context.Context, params GitGetBlobParams) (GitGetBlobRes, error)
+	// GitGetCommit invokes git/get-commit operation.
+	//
+	// Gets a Git [commit object](https://git-scm.
+	// com/book/en/v1/Git-Internals-Git-Objects#Commit-Objects).
+	// **Signature verification object**
+	// The response will include a `verification` object that describes the result of verifying the
+	// commit's signature. The following fields are included in the `verification` object:
+	// | Name | Type | Description |
+	// | ---- | ---- | ----------- |
+	// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be
+	// verified. |
+	// | `reason` | `string` | The reason for verified value. Possible values and their meanings are
+	// enumerated in table below. |
+	// | `signature` | `string` | The signature that was extracted from the commit. |
+	// | `payload` | `string` | The value that was signed. |
+	// These are the possible values for `reason` in the `verification` object:
+	// | Value | Description |
+	// | ----- | ----------- |
+	// | `expired_key` | The key that made the signature is expired. |
+	// | `not_signing_key` | The "signing" flag is not among the usage flags in the GPG key that made the
+	// signature. |
+	// | `gpgverify_error` | There was an error communicating with the signature verification service. |
+	// | `gpgverify_unavailable` | The signature verification service is currently unavailable. |
+	// | `unsigned` | The object does not include a signature. |
+	// | `unknown_signature_type` | A non-PGP signature was found in the commit. |
+	// | `no_user` | No user was associated with the `committer` email address in the commit. |
+	// | `unverified_email` | The `committer` email address in the commit was associated with a user, but
+	// the email address is not verified on her/his account. |
+	// | `bad_email` | The `committer` email address in the commit is not included in the identities of
+	// the PGP key that made the signature. |
+	// | `unknown_key` | The key that made the signature has not been registered with any user's account.
+	// |
+	// | `malformed_signature` | There was an error parsing the signature. |
+	// | `invalid` | The signature could not be cryptographically verified using the key whose key-id was
+	// found in the signature. |
+	// | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
+	//
+	// GET /repos/{owner}/{repo}/git/commits/{commit_sha}
+	GitGetCommit(ctx context.Context, params GitGetCommitParams) (GitGetCommitRes, error)
+	// GitGetRef invokes git/get-ref operation.
+	//
+	// Returns a single reference from your Git database. The `:ref` in the URL must be formatted as
+	// `heads/<branch name>` for branches and `tags/<tag name>` for tags. If the `:ref` doesn't match an
+	// existing ref, a `404` is returned.
+	// **Note:** You need to explicitly [request a pull request](https://docs.github.
+	// com/rest/reference/pulls#get-a-pull-request) to trigger a test merge commit, which checks the
+	// mergeability of pull requests. For more information, see "[Checking mergeability of pull
+	// requests](https://docs.github.
+	// com/rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
+	//
+	// GET /repos/{owner}/{repo}/git/ref/{ref}
+	GitGetRef(ctx context.Context, params GitGetRefParams) (GitGetRefRes, error)
+	// GitGetTag invokes git/get-tag operation.
+	//
+	// **Signature verification object**
+	// The response will include a `verification` object that describes the result of verifying the
+	// commit's signature. The following fields are included in the `verification` object:
+	// | Name | Type | Description |
+	// | ---- | ---- | ----------- |
+	// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be
+	// verified. |
+	// | `reason` | `string` | The reason for verified value. Possible values and their meanings are
+	// enumerated in table below. |
+	// | `signature` | `string` | The signature that was extracted from the commit. |
+	// | `payload` | `string` | The value that was signed. |
+	// These are the possible values for `reason` in the `verification` object:
+	// | Value | Description |
+	// | ----- | ----------- |
+	// | `expired_key` | The key that made the signature is expired. |
+	// | `not_signing_key` | The "signing" flag is not among the usage flags in the GPG key that made the
+	// signature. |
+	// | `gpgverify_error` | There was an error communicating with the signature verification service. |
+	// | `gpgverify_unavailable` | The signature verification service is currently unavailable. |
+	// | `unsigned` | The object does not include a signature. |
+	// | `unknown_signature_type` | A non-PGP signature was found in the commit. |
+	// | `no_user` | No user was associated with the `committer` email address in the commit. |
+	// | `unverified_email` | The `committer` email address in the commit was associated with a user, but
+	// the email address is not verified on her/his account. |
+	// | `bad_email` | The `committer` email address in the commit is not included in the identities of
+	// the PGP key that made the signature. |
+	// | `unknown_key` | The key that made the signature has not been registered with any user's account.
+	// |
+	// | `malformed_signature` | There was an error parsing the signature. |
+	// | `invalid` | The signature could not be cryptographically verified using the key whose key-id was
+	// found in the signature. |
+	// | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
+	//
+	// GET /repos/{owner}/{repo}/git/tags/{tag_sha}
+	GitGetTag(ctx context.Context, params GitGetTagParams) (GitGetTagRes, error)
+	// GitGetTree invokes git/get-tree operation.
+	//
+	// Returns a single tree using the SHA1 value for that tree.
+	// If `truncated` is `true` in the response then the number of items in the `tree` array exceeded our
+	// maximum limit. If you need to fetch more items, use the non-recursive method of fetching trees,
+	// and fetch one sub-tree at a time.
+	//
+	// GET /repos/{owner}/{repo}/git/trees/{tree_sha}
+	GitGetTree(ctx context.Context, params GitGetTreeParams) (GitGetTreeRes, error)
+	// GitListMatchingRefs invokes git/list-matching-refs operation.
+	//
+	// Returns an array of references from your Git database that match the supplied name. The `:ref` in
+	// the URL must be formatted as `heads/<branch name>` for branches and `tags/<tag name>` for tags. If
+	// the `:ref` doesn't exist in the repository, but existing refs start with `:ref`, they will be
+	// returned as an array.
+	// When you use this endpoint without providing a `:ref`, it will return an array of all the
+	// references from your Git database, including notes and stashes if they exist on the server.
+	// Anything in the namespace is returned, not just `heads` and `tags`.
+	// **Note:** You need to explicitly [request a pull request](https://docs.github.
+	// com/rest/reference/pulls#get-a-pull-request) to trigger a test merge commit, which checks the
+	// mergeability of pull requests. For more information, see "[Checking mergeability of pull
+	// requests](https://docs.github.
+	// com/rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
+	// If you request matching references for a branch named `feature` but the branch `feature` doesn't
+	// exist, the response can still include other matching head refs that start with the word `feature`,
+	// such as `featureA` and `featureB`.
+	//
+	// GET /repos/{owner}/{repo}/git/matching-refs/{ref}
+	GitListMatchingRefs(ctx context.Context, params GitListMatchingRefsParams) (*GitListMatchingRefsOKHeaders, error)
+	// GitUpdateRef invokes git/update-ref operation.
+	//
+	// Update a reference.
+	//
+	// PATCH /repos/{owner}/{repo}/git/refs/{ref}
+	GitUpdateRef(ctx context.Context, request *GitUpdateRefReq, params GitUpdateRefParams) (GitUpdateRefRes, error)
+	// GitignoreGetAllTemplates invokes gitignore/get-all-templates operation.
+	//
+	// List all templates available to pass as an option when [creating a repository](https://docs.github.
+	// com/rest/reference/repos#create-a-repository-for-the-authenticated-user).
+	//
+	// GET /gitignore/templates
+	GitignoreGetAllTemplates(ctx context.Context) (GitignoreGetAllTemplatesRes, error)
+	// GitignoreGetTemplate invokes gitignore/get-template operation.
+	//
+	// The API also allows fetching the source of a single template.
+	// Use the raw [media type](https://docs.github.com/rest/overview/media-types/) to get the raw
+	// contents.
+	//
+	// GET /gitignore/templates/{name}
+	GitignoreGetTemplate(ctx context.Context, params GitignoreGetTemplateParams) (GitignoreGetTemplateRes, error)
+	// InteractionsRemoveRestrictionsForAuthenticatedUser invokes interactions/remove-restrictions-for-authenticated-user operation.
+	//
+	// Removes any interaction restrictions from your public repositories.
+	//
+	// DELETE /user/interaction-limits
+	InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.Context) error
+	// InteractionsRemoveRestrictionsForOrg invokes interactions/remove-restrictions-for-org operation.
+	//
+	// Removes all interaction restrictions from public repositories in the given organization. You must
+	// be an organization owner to remove restrictions.
+	//
+	// DELETE /orgs/{org}/interaction-limits
+	InteractionsRemoveRestrictionsForOrg(ctx context.Context, params InteractionsRemoveRestrictionsForOrgParams) error
+	// InteractionsRemoveRestrictionsForRepo invokes interactions/remove-restrictions-for-repo operation.
+	//
+	// Removes all interaction restrictions from the given repository. You must have owner or admin
+	// access to remove restrictions. If the interaction limit is set for the user or organization that
+	// owns this repository, you will receive a `409 Conflict` response and will not be able to use this
+	// endpoint to change the interaction limit for a single repository.
+	//
+	// DELETE /repos/{owner}/{repo}/interaction-limits
+	InteractionsRemoveRestrictionsForRepo(ctx context.Context, params InteractionsRemoveRestrictionsForRepoParams) (InteractionsRemoveRestrictionsForRepoRes, error)
+	// InteractionsSetRestrictionsForAuthenticatedUser invokes interactions/set-restrictions-for-authenticated-user operation.
+	//
+	// Temporarily restricts which type of GitHub user can interact with your public repositories.
+	// Setting the interaction limit at the user level will overwrite any interaction limits that are set
+	// for individual repositories owned by the user.
+	//
+	// PUT /user/interaction-limits
+	InteractionsSetRestrictionsForAuthenticatedUser(ctx context.Context, request *InteractionLimit) (InteractionsSetRestrictionsForAuthenticatedUserRes, error)
+	// InteractionsSetRestrictionsForOrg invokes interactions/set-restrictions-for-org operation.
+	//
+	// Temporarily restricts interactions to a certain type of GitHub user in any public repository in
+	// the given organization. You must be an organization owner to set these restrictions. Setting the
+	// interaction limit at the organization level will overwrite any interaction limits that are set for
+	// individual repositories owned by the organization.
+	//
+	// PUT /orgs/{org}/interaction-limits
+	InteractionsSetRestrictionsForOrg(ctx context.Context, request *InteractionLimit, params InteractionsSetRestrictionsForOrgParams) (InteractionsSetRestrictionsForOrgRes, error)
+	// InteractionsSetRestrictionsForRepo invokes interactions/set-restrictions-for-repo operation.
+	//
+	// Temporarily restricts interactions to a certain type of GitHub user within the given repository.
+	// You must have owner or admin access to set these restrictions. If an interaction limit is set for
+	// the user or organization that owns this repository, you will receive a `409 Conflict` response and
+	// will not be able to use this endpoint to change the interaction limit for a single repository.
+	//
+	// PUT /repos/{owner}/{repo}/interaction-limits
+	InteractionsSetRestrictionsForRepo(ctx context.Context, request *InteractionLimit, params InteractionsSetRestrictionsForRepoParams) (InteractionsSetRestrictionsForRepoRes, error)
+	// IssuesAddAssignees invokes issues/add-assignees operation.
+	//
+	// Adds up to 10 assignees to an issue. Users already assigned to an issue are not replaced.
+	//
+	// POST /repos/{owner}/{repo}/issues/{issue_number}/assignees
+	IssuesAddAssignees(ctx context.Context, request OptIssuesAddAssigneesReq, params IssuesAddAssigneesParams) (*IssueSimple, error)
+	// IssuesCheckUserCanBeAssigned invokes issues/check-user-can-be-assigned operation.
+	//
+	// Checks if a user has permission to be assigned to an issue in this repository.
+	// If the `assignee` can be assigned to issues in the repository, a `204` header with no content is
+	// returned.
+	// Otherwise a `404` status code is returned.
+	//
+	// GET /repos/{owner}/{repo}/assignees/{assignee}
+	IssuesCheckUserCanBeAssigned(ctx context.Context, params IssuesCheckUserCanBeAssignedParams) (IssuesCheckUserCanBeAssignedRes, error)
+	// IssuesCreate invokes issues/create operation.
+	//
+	// Any user with pull access to a repository can create an issue. If [issues are disabled in the
+	// repository](https://help.github.com/articles/disabling-issues/), the API returns a `410 Gone`
+	// status.
+	// This endpoint triggers [notifications](https://docs.github.
+	// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
+	// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
+	// rate limits](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
+	// rate limits](https://docs.github.
+	// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+	//
+	// POST /repos/{owner}/{repo}/issues
+	IssuesCreate(ctx context.Context, request *IssuesCreateReq, params IssuesCreateParams) (IssuesCreateRes, error)
+	// IssuesCreateComment invokes issues/create-comment operation.
+	//
+	// This endpoint triggers [notifications](https://docs.github.
+	// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
+	// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
+	// rate limits](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
+	// rate limits](https://docs.github.
+	// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+	//
+	// POST /repos/{owner}/{repo}/issues/{issue_number}/comments
+	IssuesCreateComment(ctx context.Context, request *IssuesCreateCommentReq, params IssuesCreateCommentParams) (IssuesCreateCommentRes, error)
+	// IssuesCreateLabel invokes issues/create-label operation.
+	//
+	// Create a label.
+	//
+	// POST /repos/{owner}/{repo}/labels
+	IssuesCreateLabel(ctx context.Context, request *IssuesCreateLabelReq, params IssuesCreateLabelParams) (IssuesCreateLabelRes, error)
+	// IssuesCreateMilestone invokes issues/create-milestone operation.
+	//
+	// Create a milestone.
+	//
+	// POST /repos/{owner}/{repo}/milestones
+	IssuesCreateMilestone(ctx context.Context, request *IssuesCreateMilestoneReq, params IssuesCreateMilestoneParams) (IssuesCreateMilestoneRes, error)
+	// IssuesDeleteComment invokes issues/delete-comment operation.
+	//
+	// Delete an issue comment.
+	//
+	// DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}
+	IssuesDeleteComment(ctx context.Context, params IssuesDeleteCommentParams) error
+	// IssuesDeleteLabel invokes issues/delete-label operation.
+	//
+	// Delete a label.
+	//
+	// DELETE /repos/{owner}/{repo}/labels/{name}
+	IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabelParams) error
+	// IssuesDeleteMilestone invokes issues/delete-milestone operation.
+	//
+	// Delete a milestone.
+	//
+	// DELETE /repos/{owner}/{repo}/milestones/{milestone_number}
+	IssuesDeleteMilestone(ctx context.Context, params IssuesDeleteMilestoneParams) (IssuesDeleteMilestoneRes, error)
+	// IssuesGet invokes issues/get operation.
+	//
+	// The API returns a [`301 Moved Permanently` status](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#http-redirects-redirects) if the issue was
+	// [transferred](https://help.github.com/articles/transferring-an-issue-to-another-repository/) to
+	// another repository. If
+	// the issue was transferred to or deleted from a repository where the authenticated user lacks read
+	// access, the API
+	// returns a `404 Not Found` status. If the issue was deleted from a repository where the
+	// authenticated user has read
+	// access, the API returns a `410 Gone` status. To receive webhook events for transferred and deleted
+	// issues, subscribe
+	// to the [`issues`](https://docs.github.com/webhooks/event-payloads/#issues) webhook.
+	// **Note**: GitHub's REST API v3 considers every pull request an issue, but not every issue is a
+	// pull request. For this
+	// reason, "Issues" endpoints may return both issues and pull requests in the response. You can
+	// identify pull requests by
+	// the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints
+	// will be an _issue id_. To find out the pull
+	// request id, use the "[List pull requests](https://docs.github.
+	// com/rest/reference/pulls#list-pull-requests)" endpoint.
+	//
+	// GET /repos/{owner}/{repo}/issues/{issue_number}
+	IssuesGet(ctx context.Context, params IssuesGetParams) (IssuesGetRes, error)
+	// IssuesGetComment invokes issues/get-comment operation.
+	//
+	// Get an issue comment.
+	//
+	// GET /repos/{owner}/{repo}/issues/comments/{comment_id}
+	IssuesGetComment(ctx context.Context, params IssuesGetCommentParams) (IssuesGetCommentRes, error)
+	// IssuesGetEvent invokes issues/get-event operation.
+	//
+	// Get an issue event.
+	//
+	// GET /repos/{owner}/{repo}/issues/events/{event_id}
+	IssuesGetEvent(ctx context.Context, params IssuesGetEventParams) (IssuesGetEventRes, error)
+	// IssuesGetLabel invokes issues/get-label operation.
+	//
+	// Get a label.
+	//
+	// GET /repos/{owner}/{repo}/labels/{name}
+	IssuesGetLabel(ctx context.Context, params IssuesGetLabelParams) (IssuesGetLabelRes, error)
+	// IssuesGetMilestone invokes issues/get-milestone operation.
+	//
+	// Get a milestone.
+	//
+	// GET /repos/{owner}/{repo}/milestones/{milestone_number}
+	IssuesGetMilestone(ctx context.Context, params IssuesGetMilestoneParams) (IssuesGetMilestoneRes, error)
+	// IssuesList invokes issues/list operation.
+	//
+	// List issues assigned to the authenticated user across all visible repositories including owned
+	// repositories, member
+	// repositories, and organization repositories. You can use the `filter` query parameter to fetch
+	// issues that are not
+	// necessarily assigned to you.
+	// **Note**: GitHub's REST API v3 considers every pull request an issue, but not every issue is a
+	// pull request. For this
+	// reason, "Issues" endpoints may return both issues and pull requests in the response. You can
+	// identify pull requests by
+	// the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints
+	// will be an _issue id_. To find out the pull
+	// request id, use the "[List pull requests](https://docs.github.
+	// com/rest/reference/pulls#list-pull-requests)" endpoint.
+	//
+	// GET /issues
+	IssuesList(ctx context.Context, params IssuesListParams) (IssuesListRes, error)
+	// IssuesListAssignees invokes issues/list-assignees operation.
+	//
+	// Lists the [available assignees](https://help.github.
+	// com/articles/assigning-issues-and-pull-requests-to-other-github-users/) for issues in a repository.
+	//
+	// GET /repos/{owner}/{repo}/assignees
+	IssuesListAssignees(ctx context.Context, params IssuesListAssigneesParams) (IssuesListAssigneesRes, error)
+	// IssuesListComments invokes issues/list-comments operation.
+	//
+	// Issue Comments are ordered by ascending ID.
+	//
+	// GET /repos/{owner}/{repo}/issues/{issue_number}/comments
+	IssuesListComments(ctx context.Context, params IssuesListCommentsParams) (IssuesListCommentsRes, error)
+	// IssuesListCommentsForRepo invokes issues/list-comments-for-repo operation.
+	//
+	// By default, Issue Comments are ordered by ascending ID.
+	//
+	// GET /repos/{owner}/{repo}/issues/comments
+	IssuesListCommentsForRepo(ctx context.Context, params IssuesListCommentsForRepoParams) (IssuesListCommentsForRepoRes, error)
+	// IssuesListEventsForRepo invokes issues/list-events-for-repo operation.
+	//
+	// List issue events for a repository.
+	//
+	// GET /repos/{owner}/{repo}/issues/events
+	IssuesListEventsForRepo(ctx context.Context, params IssuesListEventsForRepoParams) (IssuesListEventsForRepoRes, error)
+	// IssuesListForAuthenticatedUser invokes issues/list-for-authenticated-user operation.
+	//
+	// List issues across owned and member repositories assigned to the authenticated user.
+	// **Note**: GitHub's REST API v3 considers every pull request an issue, but not every issue is a
+	// pull request. For this
+	// reason, "Issues" endpoints may return both issues and pull requests in the response. You can
+	// identify pull requests by
+	// the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints
+	// will be an _issue id_. To find out the pull
+	// request id, use the "[List pull requests](https://docs.github.
+	// com/rest/reference/pulls#list-pull-requests)" endpoint.
+	//
+	// GET /user/issues
+	IssuesListForAuthenticatedUser(ctx context.Context, params IssuesListForAuthenticatedUserParams) (IssuesListForAuthenticatedUserRes, error)
+	// IssuesListForOrg invokes issues/list-for-org operation.
+	//
+	// List issues in an organization assigned to the authenticated user.
+	// **Note**: GitHub's REST API v3 considers every pull request an issue, but not every issue is a
+	// pull request. For this
+	// reason, "Issues" endpoints may return both issues and pull requests in the response. You can
+	// identify pull requests by
+	// the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints
+	// will be an _issue id_. To find out the pull
+	// request id, use the "[List pull requests](https://docs.github.
+	// com/rest/reference/pulls#list-pull-requests)" endpoint.
+	//
+	// GET /orgs/{org}/issues
+	IssuesListForOrg(ctx context.Context, params IssuesListForOrgParams) (IssuesListForOrgRes, error)
+	// IssuesListForRepo invokes issues/list-for-repo operation.
+	//
+	// List issues in a repository.
+	// **Note**: GitHub's REST API v3 considers every pull request an issue, but not every issue is a
+	// pull request. For this
+	// reason, "Issues" endpoints may return both issues and pull requests in the response. You can
+	// identify pull requests by
+	// the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints
+	// will be an _issue id_. To find out the pull
+	// request id, use the "[List pull requests](https://docs.github.
+	// com/rest/reference/pulls#list-pull-requests)" endpoint.
+	//
+	// GET /repos/{owner}/{repo}/issues
+	IssuesListForRepo(ctx context.Context, params IssuesListForRepoParams) (IssuesListForRepoRes, error)
+	// IssuesListLabelsForMilestone invokes issues/list-labels-for-milestone operation.
+	//
+	// List labels for issues in a milestone.
+	//
+	// GET /repos/{owner}/{repo}/milestones/{milestone_number}/labels
+	IssuesListLabelsForMilestone(ctx context.Context, params IssuesListLabelsForMilestoneParams) (*IssuesListLabelsForMilestoneOKHeaders, error)
+	// IssuesListLabelsForRepo invokes issues/list-labels-for-repo operation.
+	//
+	// List labels for a repository.
+	//
+	// GET /repos/{owner}/{repo}/labels
+	IssuesListLabelsForRepo(ctx context.Context, params IssuesListLabelsForRepoParams) (IssuesListLabelsForRepoRes, error)
+	// IssuesListLabelsOnIssue invokes issues/list-labels-on-issue operation.
+	//
+	// List labels for an issue.
+	//
+	// GET /repos/{owner}/{repo}/issues/{issue_number}/labels
+	IssuesListLabelsOnIssue(ctx context.Context, params IssuesListLabelsOnIssueParams) (IssuesListLabelsOnIssueRes, error)
+	// IssuesListMilestones invokes issues/list-milestones operation.
+	//
+	// List milestones.
+	//
+	// GET /repos/{owner}/{repo}/milestones
+	IssuesListMilestones(ctx context.Context, params IssuesListMilestonesParams) (IssuesListMilestonesRes, error)
+	// IssuesLock invokes issues/lock operation.
+	//
+	// Users with push access can lock an issue or pull request's conversation.
+	// Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero
+	// when calling out to this endpoint. For more information, see "[HTTP verbs](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#http-verbs).".
+	//
+	// PUT /repos/{owner}/{repo}/issues/{issue_number}/lock
+	IssuesLock(ctx context.Context, request OptNilIssuesLockReq, params IssuesLockParams) (IssuesLockRes, error)
+	// IssuesRemoveAllLabels invokes issues/remove-all-labels operation.
+	//
+	// Remove all labels from an issue.
+	//
+	// DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels
+	IssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveAllLabelsParams) (IssuesRemoveAllLabelsRes, error)
+	// IssuesRemoveAssignees invokes issues/remove-assignees operation.
+	//
+	// Removes one or more assignees from an issue.
+	//
+	// DELETE /repos/{owner}/{repo}/issues/{issue_number}/assignees
+	IssuesRemoveAssignees(ctx context.Context, request OptIssuesRemoveAssigneesReq, params IssuesRemoveAssigneesParams) (*IssueSimple, error)
+	// IssuesRemoveLabel invokes issues/remove-label operation.
+	//
+	// Removes the specified label from the issue, and returns the remaining labels on the issue. This
+	// endpoint returns a `404 Not Found` status if the label does not exist.
+	//
+	// DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels/{name}
+	IssuesRemoveLabel(ctx context.Context, params IssuesRemoveLabelParams) (IssuesRemoveLabelRes, error)
+	// IssuesUnlock invokes issues/unlock operation.
+	//
+	// Users with push access can unlock an issue's conversation.
+	//
+	// DELETE /repos/{owner}/{repo}/issues/{issue_number}/lock
+	IssuesUnlock(ctx context.Context, params IssuesUnlockParams) (IssuesUnlockRes, error)
+	// IssuesUpdate invokes issues/update operation.
+	//
+	// Issue owners and users with push access can edit an issue.
+	//
+	// PATCH /repos/{owner}/{repo}/issues/{issue_number}
+	IssuesUpdate(ctx context.Context, request OptIssuesUpdateReq, params IssuesUpdateParams) (IssuesUpdateRes, error)
+	// IssuesUpdateComment invokes issues/update-comment operation.
+	//
+	// Update an issue comment.
+	//
+	// PATCH /repos/{owner}/{repo}/issues/comments/{comment_id}
+	IssuesUpdateComment(ctx context.Context, request *IssuesUpdateCommentReq, params IssuesUpdateCommentParams) (IssuesUpdateCommentRes, error)
+	// IssuesUpdateLabel invokes issues/update-label operation.
+	//
+	// Update a label.
+	//
+	// PATCH /repos/{owner}/{repo}/labels/{name}
+	IssuesUpdateLabel(ctx context.Context, request OptIssuesUpdateLabelReq, params IssuesUpdateLabelParams) (*Label, error)
+	// IssuesUpdateMilestone invokes issues/update-milestone operation.
+	//
+	// Update a milestone.
+	//
+	// PATCH /repos/{owner}/{repo}/milestones/{milestone_number}
+	IssuesUpdateMilestone(ctx context.Context, request OptIssuesUpdateMilestoneReq, params IssuesUpdateMilestoneParams) (*Milestone, error)
+	// LicensesGet invokes licenses/get operation.
+	//
+	// Get a license.
+	//
+	// GET /licenses/{license}
+	LicensesGet(ctx context.Context, params LicensesGetParams) (LicensesGetRes, error)
+	// LicensesGetAllCommonlyUsed invokes licenses/get-all-commonly-used operation.
+	//
+	// Get all commonly used licenses.
+	//
+	// GET /licenses
+	LicensesGetAllCommonlyUsed(ctx context.Context, params LicensesGetAllCommonlyUsedParams) (LicensesGetAllCommonlyUsedRes, error)
+	// LicensesGetForRepo invokes licenses/get-for-repo operation.
+	//
+	// This method returns the contents of the repository's license file, if one is detected.
+	// Similar to [Get repository content](https://docs.github.
+	// com/rest/reference/repos#get-repository-content), this method also supports [custom media
+	// types](https://docs.github.com/rest/overview/media-types) for retrieving the raw license content
+	// or rendered license HTML.
+	//
+	// GET /repos/{owner}/{repo}/license
+	LicensesGetForRepo(ctx context.Context, params LicensesGetForRepoParams) (*LicenseContent, error)
+	// MarkdownRender invokes markdown/render operation.
+	//
+	// Render a Markdown document.
+	//
+	// POST /markdown
+	MarkdownRender(ctx context.Context, request *MarkdownRenderReq) (MarkdownRenderRes, error)
+	// MarkdownRenderRaw invokes markdown/render-raw operation.
+	//
+	// You must send Markdown as plain text (using a `Content-Type` header of `text/plain` or
+	// `text/x-markdown`) to this endpoint, rather than using JSON format. In raw mode, [GitHub Flavored
+	// Markdown](https://github.github.com/gfm/) is not supported and Markdown will be rendered in plain
+	// format like a README.md file. Markdown content must be 400 KB or less.
+	//
+	// POST /markdown/raw
+	MarkdownRenderRaw(ctx context.Context, request MarkdownRenderRawReq) (MarkdownRenderRawRes, error)
+	// MetaGet invokes meta/get operation.
+	//
+	// Returns meta information about GitHub, including a list of GitHub's IP addresses. For more
+	// information, see "[About GitHub's IP addresses](https://help.github.
+	// com/articles/about-github-s-ip-addresses/)."
+	// **Note:** The IP addresses shown in the documentation's response are only example values. You must
+	// always query the API directly to get the latest list of IP addresses.
+	//
+	// GET /meta
+	MetaGet(ctx context.Context) (MetaGetRes, error)
+	// MetaGetOctocat invokes meta/get-octocat operation.
+	//
+	// Get the octocat as ASCII art.
+	//
+	// GET /octocat
+	MetaGetOctocat(ctx context.Context, params MetaGetOctocatParams) (MetaGetOctocatOK, error)
+	// MetaGetZen invokes meta/get-zen operation.
+	//
+	// Get a random sentence from the Zen of GitHub.
+	//
+	// GET /zen
+	MetaGetZen(ctx context.Context) (MetaGetZenOK, error)
+	// MetaRoot invokes meta/root operation.
+	//
+	// Get Hypermedia links to resources accessible in GitHub's REST API.
+	//
+	// GET /
+	MetaRoot(ctx context.Context) (*MetaRootOK, error)
+	// MigrationsCancelImport invokes migrations/cancel-import operation.
+	//
+	// Stop an import for a repository.
+	//
+	// DELETE /repos/{owner}/{repo}/import
+	MigrationsCancelImport(ctx context.Context, params MigrationsCancelImportParams) error
+	// MigrationsDeleteArchiveForAuthenticatedUser invokes migrations/delete-archive-for-authenticated-user operation.
+	//
+	// Deletes a previous migration archive. Downloadable migration archives are automatically deleted
+	// after seven days. Migration metadata, which is returned in the [List user migrations](https://docs.
+	// github.com/rest/reference/migrations#list-user-migrations) and [Get a user migration
+	// status](https://docs.github.com/rest/reference/migrations#get-a-user-migration-status) endpoints,
+	// will continue to be available even after an archive is deleted.
+	//
+	// DELETE /user/migrations/{migration_id}/archive
+	MigrationsDeleteArchiveForAuthenticatedUser(ctx context.Context, params MigrationsDeleteArchiveForAuthenticatedUserParams) (MigrationsDeleteArchiveForAuthenticatedUserRes, error)
+	// MigrationsDeleteArchiveForOrg invokes migrations/delete-archive-for-org operation.
+	//
+	// Deletes a previous migration archive. Migration archives are automatically deleted after seven
+	// days.
+	//
+	// DELETE /orgs/{org}/migrations/{migration_id}/archive
+	MigrationsDeleteArchiveForOrg(ctx context.Context, params MigrationsDeleteArchiveForOrgParams) (MigrationsDeleteArchiveForOrgRes, error)
+	// MigrationsDownloadArchiveForOrg invokes migrations/download-archive-for-org operation.
+	//
+	// Fetches the URL to a migration archive.
+	//
+	// GET /orgs/{org}/migrations/{migration_id}/archive
+	MigrationsDownloadArchiveForOrg(ctx context.Context, params MigrationsDownloadArchiveForOrgParams) (MigrationsDownloadArchiveForOrgRes, error)
+	// MigrationsGetArchiveForAuthenticatedUser invokes migrations/get-archive-for-authenticated-user operation.
+	//
+	// Fetches the URL to download the migration archive as a `tar.gz` file. Depending on the resources
+	// your repository uses, the migration archive can contain JSON files with data for these objects:
+	// *   attachments
+	// *   bases
+	// *   commit\_comments
+	// *   issue\_comments
+	// *   issue\_events
+	// *   issues
+	// *   milestones
+	// *   organizations
+	// *   projects
+	// *   protected\_branches
+	// *   pull\_request\_reviews
+	// *   pull\_requests
+	// *   releases
+	// *   repositories
+	// *   review\_comments
+	// *   schema
+	// *   users
+	// The archive will also contain an `attachments` directory that includes all attachment files
+	// uploaded to GitHub.com and a `repositories` directory that contains the repository's Git data.
+	//
+	// GET /user/migrations/{migration_id}/archive
+	MigrationsGetArchiveForAuthenticatedUser(ctx context.Context, params MigrationsGetArchiveForAuthenticatedUserParams) (MigrationsGetArchiveForAuthenticatedUserRes, error)
+	// MigrationsGetCommitAuthors invokes migrations/get-commit-authors operation.
+	//
+	// Each type of source control system represents authors in a different way. For example, a Git
+	// commit author has a display name and an email address, but a Subversion commit author just has a
+	// username. The GitHub Importer will make the author information valid, but the author might not be
+	// correct. For example, it will change the bare Subversion username `hubot` into something like
+	// `hubot <hubot@12341234-abab-fefe-8787-fedcba987654>`.
+	// This endpoint and the [Map a commit author](https://docs.github.
+	// com/rest/reference/migrations#map-a-commit-author) endpoint allow you to provide correct Git
+	// author information.
+	//
+	// GET /repos/{owner}/{repo}/import/authors
+	MigrationsGetCommitAuthors(ctx context.Context, params MigrationsGetCommitAuthorsParams) (MigrationsGetCommitAuthorsRes, error)
+	// MigrationsGetImportStatus invokes migrations/get-import-status operation.
+	//
+	// View the progress of an import.
+	// **Import status**
+	// This section includes details about the possible values of the `status` field of the Import
+	// Progress response.
+	// An import that does not have errors will progress through these steps:
+	// *   `detecting` - the "detection" step of the import is in progress because the request did not
+	// include a `vcs` parameter. The import is identifying the type of source control present at the URL.
+	// *   `importing` - the "raw" step of the import is in progress. This is where commit data is
+	// fetched from the original repository. The import progress response will include `commit_count`
+	// (the total number of raw commits that will be imported) and `percent` (0 - 100, the current
+	// progress through the import).
+	// *   `mapping` - the "rewrite" step of the import is in progress. This is where SVN branches are
+	// converted to Git branches, and where author updates are applied. The import progress response does
+	// not include progress information.
+	// *   `pushing` - the "push" step of the import is in progress. This is where the importer updates
+	// the repository on GitHub. The import progress response will include `push_percent`, which is the
+	// percent value reported by `git push` when it is "Writing objects".
+	// *   `complete` - the import is complete, and the repository is ready on GitHub.
+	// If there are problems, you will see one of these in the `status` field:
+	// *   `auth_failed` - the import requires authentication in order to connect to the original
+	// repository. To update authentication for the import, please see the [Update an
+	// import](https://docs.github.com/rest/reference/migrations#update-an-import) section.
+	// *   `error` - the import encountered an error. The import progress response will include the
+	// `failed_step` and an error message. Contact [GitHub Support](https://support.github.
+	// com/contact?tags=dotcom-rest-api) for more information.
+	// *   `detection_needs_auth` - the importer requires authentication for the originating repository
+	// to continue detection. To update authentication for the import, please see the [Update an
+	// import](https://docs.github.com/rest/reference/migrations#update-an-import) section.
+	// *   `detection_found_nothing` - the importer didn't recognize any source control at the URL. To
+	// resolve, [Cancel the import](https://docs.github.com/rest/reference/migrations#cancel-an-import)
+	// and [retry](https://docs.github.com/rest/reference/migrations#start-an-import) with the correct
+	// URL.
+	// *   `detection_found_multiple` - the importer found several projects or repositories at the
+	// provided URL. When this is the case, the Import Progress response will also include a
+	// `project_choices` field with the possible project choices as values. To update project choice,
+	// please see the [Update an import](https://docs.github.
+	// com/rest/reference/migrations#update-an-import) section.
+	// **The project_choices field**
+	// When multiple projects are found at the provided URL, the response hash will include a
+	// `project_choices` field, the value of which is an array of hashes each representing a project
+	// choice. The exact key/value pairs of the project hashes will differ depending on the version
+	// control type.
+	// **Git LFS related fields**
+	// This section includes details about Git LFS related fields that may be present in the Import
+	// Progress response.
+	// *   `use_lfs` - describes whether the import has been opted in or out of using Git LFS. The value
+	// can be `opt_in`, `opt_out`, or `undecided` if no action has been taken.
+	// *   `has_large_files` - the boolean value describing whether files larger than 100MB were found
+	// during the `importing` step.
+	// *   `large_files_size` - the total size in gigabytes of files larger than 100MB found in the
+	// originating repository.
+	// *   `large_files_count` - the total number of files larger than 100MB found in the originating
+	// repository. To see a list of these files, make a "Get Large Files" request.
+	//
+	// GET /repos/{owner}/{repo}/import
+	MigrationsGetImportStatus(ctx context.Context, params MigrationsGetImportStatusParams) (MigrationsGetImportStatusRes, error)
+	// MigrationsGetLargeFiles invokes migrations/get-large-files operation.
+	//
+	// List files larger than 100MB found during the import.
+	//
+	// GET /repos/{owner}/{repo}/import/large_files
+	MigrationsGetLargeFiles(ctx context.Context, params MigrationsGetLargeFilesParams) ([]PorterLargeFile, error)
+	// MigrationsGetStatusForAuthenticatedUser invokes migrations/get-status-for-authenticated-user operation.
+	//
+	// Fetches a single user migration. The response includes the `state` of the migration, which can be
+	// one of the following values:
+	// *   `pending` - the migration hasn't started yet.
+	// *   `exporting` - the migration is in progress.
+	// *   `exported` - the migration finished successfully.
+	// *   `failed` - the migration failed.
+	// Once the migration has been `exported` you can [download the migration archive](https://docs.
+	// github.com/rest/reference/migrations#download-a-user-migration-archive).
+	//
+	// GET /user/migrations/{migration_id}
+	MigrationsGetStatusForAuthenticatedUser(ctx context.Context, params MigrationsGetStatusForAuthenticatedUserParams) (MigrationsGetStatusForAuthenticatedUserRes, error)
+	// MigrationsGetStatusForOrg invokes migrations/get-status-for-org operation.
+	//
+	// Fetches the status of a migration.
+	// The `state` of a migration can be one of the following values:
+	// *   `pending`, which means the migration hasn't started yet.
+	// *   `exporting`, which means the migration is in progress.
+	// *   `exported`, which means the migration finished successfully.
+	// *   `failed`, which means the migration failed.
+	//
+	// GET /orgs/{org}/migrations/{migration_id}
+	MigrationsGetStatusForOrg(ctx context.Context, params MigrationsGetStatusForOrgParams) (MigrationsGetStatusForOrgRes, error)
+	// MigrationsListForAuthenticatedUser invokes migrations/list-for-authenticated-user operation.
+	//
+	// Lists all migrations a user has started.
+	//
+	// GET /user/migrations
+	MigrationsListForAuthenticatedUser(ctx context.Context, params MigrationsListForAuthenticatedUserParams) (MigrationsListForAuthenticatedUserRes, error)
+	// MigrationsListForOrg invokes migrations/list-for-org operation.
+	//
+	// Lists the most recent migrations.
+	//
+	// GET /orgs/{org}/migrations
+	MigrationsListForOrg(ctx context.Context, params MigrationsListForOrgParams) (*MigrationsListForOrgOKHeaders, error)
+	// MigrationsListReposForOrg invokes migrations/list-repos-for-org operation.
+	//
+	// List all the repositories for this organization migration.
+	//
+	// GET /orgs/{org}/migrations/{migration_id}/repositories
+	MigrationsListReposForOrg(ctx context.Context, params MigrationsListReposForOrgParams) (MigrationsListReposForOrgRes, error)
+	// MigrationsListReposForUser invokes migrations/list-repos-for-user operation.
+	//
+	// Lists all the repositories for this user migration.
+	//
+	// GET /user/migrations/{migration_id}/repositories
+	MigrationsListReposForUser(ctx context.Context, params MigrationsListReposForUserParams) (MigrationsListReposForUserRes, error)
+	// MigrationsMapCommitAuthor invokes migrations/map-commit-author operation.
+	//
+	// Update an author's identity for the import. Your application can continue updating authors any
+	// time before you push new commits to the repository.
+	//
+	// PATCH /repos/{owner}/{repo}/import/authors/{author_id}
+	MigrationsMapCommitAuthor(ctx context.Context, request OptMigrationsMapCommitAuthorReq, params MigrationsMapCommitAuthorParams) (MigrationsMapCommitAuthorRes, error)
+	// MigrationsSetLfsPreference invokes migrations/set-lfs-preference operation.
+	//
+	// You can import repositories from Subversion, Mercurial, and TFS that include files larger than
+	// 100MB. This ability is powered by [Git LFS](https://git-lfs.github.com). You can learn more about
+	// our LFS feature and working with large files [on our help site](https://help.github.
+	// com/articles/versioning-large-files/).
+	//
+	// PATCH /repos/{owner}/{repo}/import/lfs
+	MigrationsSetLfsPreference(ctx context.Context, request *MigrationsSetLfsPreferenceReq, params MigrationsSetLfsPreferenceParams) (MigrationsSetLfsPreferenceRes, error)
+	// MigrationsStartForAuthenticatedUser invokes migrations/start-for-authenticated-user operation.
+	//
+	// Initiates the generation of a user migration archive.
+	//
+	// POST /user/migrations
+	MigrationsStartForAuthenticatedUser(ctx context.Context, request *MigrationsStartForAuthenticatedUserReq) (MigrationsStartForAuthenticatedUserRes, error)
+	// MigrationsStartForOrg invokes migrations/start-for-org operation.
+	//
+	// Initiates the generation of a migration archive.
+	//
+	// POST /orgs/{org}/migrations
+	MigrationsStartForOrg(ctx context.Context, request *MigrationsStartForOrgReq, params MigrationsStartForOrgParams) (MigrationsStartForOrgRes, error)
+	// MigrationsStartImport invokes migrations/start-import operation.
+	//
+	// Start a source import to a GitHub repository using GitHub Importer.
+	//
+	// PUT /repos/{owner}/{repo}/import
+	MigrationsStartImport(ctx context.Context, request *MigrationsStartImportReq, params MigrationsStartImportParams) (MigrationsStartImportRes, error)
+	// MigrationsUnlockRepoForAuthenticatedUser invokes migrations/unlock-repo-for-authenticated-user operation.
+	//
+	// Unlocks a repository. You can lock repositories when you [start a user migration](https://docs.
+	// github.com/rest/reference/migrations#start-a-user-migration). Once the migration is complete you
+	// can unlock each repository to begin using it again or [delete the repository](https://docs.github.
+	// com/rest/reference/repos#delete-a-repository) if you no longer need the source data. Returns a
+	// status of `404 Not Found` if the repository is not locked.
+	//
+	// DELETE /user/migrations/{migration_id}/repos/{repo_name}/lock
+	MigrationsUnlockRepoForAuthenticatedUser(ctx context.Context, params MigrationsUnlockRepoForAuthenticatedUserParams) (MigrationsUnlockRepoForAuthenticatedUserRes, error)
+	// MigrationsUnlockRepoForOrg invokes migrations/unlock-repo-for-org operation.
+	//
+	// Unlocks a repository that was locked for migration. You should unlock each migrated repository and
+	// [delete them](https://docs.github.com/rest/reference/repos#delete-a-repository) when the migration
+	// is complete and you no longer need the source data.
+	//
+	// DELETE /orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock
+	MigrationsUnlockRepoForOrg(ctx context.Context, params MigrationsUnlockRepoForOrgParams) (MigrationsUnlockRepoForOrgRes, error)
+	// MigrationsUpdateImport invokes migrations/update-import operation.
+	//
+	// An import can be updated with credentials or a project choice by passing in the appropriate
+	// parameters in this API
+	// request. If no parameters are provided, the import will be restarted.
+	//
+	// PATCH /repos/{owner}/{repo}/import
+	MigrationsUpdateImport(ctx context.Context, request OptNilMigrationsUpdateImportReq, params MigrationsUpdateImportParams) (*Import, error)
+	// OAuthAuthorizationsCreateAuthorization invokes oauth-authorizations/create-authorization operation.
+	//
+	// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
+	// com/rest/reference/oauth-authorizations), which is used by integrations to create personal access
+	// tokens and OAuth tokens, and you must now create these tokens using our [web application
+	// flow](https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow). The
+	// [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be
+	// removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
+	// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+	// **Warning:** Apps must use the [web application flow](https://docs.github.
+	// com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow) to obtain OAuth tokens
+	// that work with GitHub SAML organizations. OAuth tokens created using the Authorizations API will
+	// be unable to access GitHub SAML organizations. For more information, see the [blog
+	// post](https://developer.github.com/changes/2019-11-05-deprecated-passwords-and-authorizations-api).
+	// Creates OAuth tokens using [Basic Authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#basic-authentication). If you have two-factor
+	// authentication setup, Basic Authentication for this endpoint requires that you use a one-time
+	// password (OTP) and your username and password instead of tokens. For more information, see
+	// "[Working with two-factor authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#working-with-two-factor-authentication)."
+	// To create tokens for a particular OAuth application using this endpoint, you must authenticate as
+	// the user you want to create an authorization for and provide the app's client ID and secret, found
+	// on your OAuth application's settings page. If your OAuth application intends to create multiple
+	// tokens for one user, use `fingerprint` to differentiate between them.
+	// You can also create tokens on GitHub from the [personal access tokens settings](https://github.
+	// com/settings/tokens) page. Read more about these tokens in [the GitHub Help
+	// documentation](https://help.github.com/articles/creating-an-access-token-for-command-line-use).
+	// Organizations that enforce SAML SSO require personal access tokens to be allowed. Read more about
+	// allowing tokens in [the GitHub Help documentation](https://help.github.
+	// com/articles/about-identity-and-access-management-with-saml-single-sign-on).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// POST /authorizations
+	OAuthAuthorizationsCreateAuthorization(ctx context.Context, request OptOAuthAuthorizationsCreateAuthorizationReq) (OAuthAuthorizationsCreateAuthorizationRes, error)
+	// OAuthAuthorizationsDeleteAuthorization invokes oauth-authorizations/delete-authorization operation.
+	//
+	// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
+	// com/rest/reference/oauth-authorizations), which is used by integrations to create personal access
+	// tokens and OAuth tokens, and you must now create these tokens using our [web application
+	// flow](https://docs.github.
+	// com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow). The [OAuth
+	// Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed
+	// on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
+	// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// DELETE /authorizations/{authorization_id}
+	OAuthAuthorizationsDeleteAuthorization(ctx context.Context, params OAuthAuthorizationsDeleteAuthorizationParams) (OAuthAuthorizationsDeleteAuthorizationRes, error)
+	// OAuthAuthorizationsDeleteGrant invokes oauth-authorizations/delete-grant operation.
+	//
+	// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
+	// com/rest/reference/oauth-authorizations/), which is used by integrations to create personal access
+	// tokens and OAuth tokens, and you must now create these tokens using our [web application
+	// flow](https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow). The
+	// [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations/) will be
+	// removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
+	// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+	// Deleting an OAuth application's grant will also delete all OAuth tokens associated with the
+	// application for your user. Once deleted, the application has no access to your account and is no
+	// longer listed on [the application authorizations settings screen within GitHub](https://github.
+	// com/settings/applications#authorized).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// DELETE /applications/grants/{grant_id}
+	OAuthAuthorizationsDeleteGrant(ctx context.Context, params OAuthAuthorizationsDeleteGrantParams) (OAuthAuthorizationsDeleteGrantRes, error)
+	// OAuthAuthorizationsGetAuthorization invokes oauth-authorizations/get-authorization operation.
+	//
+	// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
+	// com/rest/reference/oauth-authorizations), which is used by integrations to create personal access
+	// tokens and OAuth tokens, and you must now create these tokens using our [web application
+	// flow](https://docs.github.
+	// com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow). The [OAuth
+	// Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed
+	// on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
+	// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /authorizations/{authorization_id}
+	OAuthAuthorizationsGetAuthorization(ctx context.Context, params OAuthAuthorizationsGetAuthorizationParams) (OAuthAuthorizationsGetAuthorizationRes, error)
+	// OAuthAuthorizationsGetGrant invokes oauth-authorizations/get-grant operation.
+	//
+	// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
+	// com/rest/reference/oauth-authorizations), which is used by integrations to create personal access
+	// tokens and OAuth tokens, and you must now create these tokens using our [web application
+	// flow](https://docs.github.
+	// com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow). The [OAuth
+	// Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed
+	// on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
+	// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /applications/grants/{grant_id}
+	OAuthAuthorizationsGetGrant(ctx context.Context, params OAuthAuthorizationsGetGrantParams) (OAuthAuthorizationsGetGrantRes, error)
+	// OAuthAuthorizationsGetOrCreateAuthorizationForApp invokes oauth-authorizations/get-or-create-authorization-for-app operation.
+	//
+	// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
+	// com/rest/reference/oauth-authorizations/), which is used by integrations to create personal access
+	// tokens and OAuth tokens, and you must now create these tokens using our [web application
+	// flow](https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow). The
+	// [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be
+	// removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
+	// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+	// **Warning:** Apps must use the [web application flow](https://docs.github.
+	// com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow) to obtain OAuth tokens
+	// that work with GitHub SAML organizations. OAuth tokens created using the Authorizations API will
+	// be unable to access GitHub SAML organizations. For more information, see the [blog
+	// post](https://developer.github.com/changes/2019-11-05-deprecated-passwords-and-authorizations-api).
+	// Creates a new authorization for the specified OAuth application, only if an authorization for that
+	// application doesn't already exist for the user. The URL includes the 20 character client ID for
+	// the OAuth app that is requesting the token. It returns the user's existing authorization for the
+	// application if one is present. Otherwise, it creates and returns a new one.
+	// If you have two-factor authentication setup, Basic Authentication for this endpoint requires that
+	// you use a one-time password (OTP) and your username and password instead of tokens. For more
+	// information, see "[Working with two-factor authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#working-with-two-factor-authentication)."
+	// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
+	// com/rest/reference/oauth-authorizations/), which is used by integrations to create personal access
+	// tokens and OAuth tokens, and you must now create these tokens using our [web application
+	// flow](https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow). The
+	// [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be
+	// removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
+	// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// PUT /authorizations/clients/{client_id}
+	OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx context.Context, request *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq, params OAuthAuthorizationsGetOrCreateAuthorizationForAppParams) (OAuthAuthorizationsGetOrCreateAuthorizationForAppRes, error)
+	// OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint invokes oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint operation.
+	//
+	// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
+	// com/rest/reference/oauth-authorizations/), which is used by integrations to create personal access
+	// tokens and OAuth tokens, and you must now create these tokens using our [web application
+	// flow](https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow). The
+	// [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be
+	// removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
+	// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+	// **Warning:** Apps must use the [web application flow](https://docs.github.
+	// com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow) to obtain OAuth tokens
+	// that work with GitHub SAML organizations. OAuth tokens created using the Authorizations API will
+	// be unable to access GitHub SAML organizations. For more information, see the [blog
+	// post](https://developer.github.com/changes/2019-11-05-deprecated-passwords-and-authorizations-api).
+	// This method will create a new authorization for the specified OAuth application, only if an
+	// authorization for that application and fingerprint do not already exist for the user. The URL
+	// includes the 20 character client ID for the OAuth app that is requesting the token. `fingerprint`
+	// is a unique string to distinguish an authorization from others created for the same client ID and
+	// user. It returns the user's existing authorization for the application if one is present.
+	// Otherwise, it creates and returns a new one.
+	// If you have two-factor authentication setup, Basic Authentication for this endpoint requires that
+	// you use a one-time password (OTP) and your username and password instead of tokens. For more
+	// information, see "[Working with two-factor authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#working-with-two-factor-authentication).".
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// PUT /authorizations/clients/{client_id}/{fingerprint}
+	OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint(ctx context.Context, request *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq, params OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams) (OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes, error)
+	// OAuthAuthorizationsListAuthorizations invokes oauth-authorizations/list-authorizations operation.
+	//
+	// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
+	// com/rest/reference/oauth-authorizations), which is used by integrations to create personal access
+	// tokens and OAuth tokens, and you must now create these tokens using our [web application
+	// flow](https://docs.github.
+	// com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow). The [OAuth
+	// Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed
+	// on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
+	// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /authorizations
+	OAuthAuthorizationsListAuthorizations(ctx context.Context, params OAuthAuthorizationsListAuthorizationsParams) (OAuthAuthorizationsListAuthorizationsRes, error)
+	// OAuthAuthorizationsListGrants invokes oauth-authorizations/list-grants operation.
+	//
+	// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
+	// com/rest/reference/oauth-authorizations/), which is used by integrations to create personal access
+	// tokens and OAuth tokens, and you must now create these tokens using our [web application
+	// flow](https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow). The
+	// [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be
+	// removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
+	// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+	// You can use this API to list the set of OAuth applications that have been granted access to your
+	// account. Unlike the [list your authorizations](https://docs.github.
+	// com/rest/reference/oauth-authorizations#list-your-authorizations) API, this API does not manage
+	// individual tokens. This API will return one entry for each OAuth application that has been granted
+	// access to your account, regardless of the number of tokens an application has generated for your
+	// user. The list of OAuth applications returned matches what is shown on [the application
+	// authorizations settings screen within GitHub](https://github.com/settings/applications#authorized).
+	//  The `scopes` returned are the union of scopes authorized for the application. For example, if an
+	// application has one token with `repo` scope and another token with `user` scope, the grant will
+	// return `["repo", "user"]`.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /applications/grants
+	OAuthAuthorizationsListGrants(ctx context.Context, params OAuthAuthorizationsListGrantsParams) (OAuthAuthorizationsListGrantsRes, error)
+	// OAuthAuthorizationsUpdateAuthorization invokes oauth-authorizations/update-authorization operation.
+	//
+	// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
+	// com/rest/reference/oauth-authorizations/), which is used by integrations to create personal access
+	// tokens and OAuth tokens, and you must now create these tokens using our [web application
+	// flow](https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow). The
+	// [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be
+	// removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
+	// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+	// If you have two-factor authentication setup, Basic Authentication for this endpoint requires that
+	// you use a one-time password (OTP) and your username and password instead of tokens. For more
+	// information, see "[Working with two-factor authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#working-with-two-factor-authentication)."
+	// You can only send one of these scope keys at a time.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// PATCH /authorizations/{authorization_id}
+	OAuthAuthorizationsUpdateAuthorization(ctx context.Context, request OptOAuthAuthorizationsUpdateAuthorizationReq, params OAuthAuthorizationsUpdateAuthorizationParams) (OAuthAuthorizationsUpdateAuthorizationRes, error)
+	// OrgsBlockUser invokes orgs/block-user operation.
+	//
+	// Block a user from an organization.
+	//
+	// PUT /orgs/{org}/blocks/{username}
+	OrgsBlockUser(ctx context.Context, params OrgsBlockUserParams) (OrgsBlockUserRes, error)
+	// OrgsCancelInvitation invokes orgs/cancel-invitation operation.
+	//
+	// Cancel an organization invitation. In order to cancel an organization invitation, the
+	// authenticated user must be an organization owner.
+	// This endpoint triggers [notifications](https://docs.github.
+	// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications).
+	//
+	// DELETE /orgs/{org}/invitations/{invitation_id}
+	OrgsCancelInvitation(ctx context.Context, params OrgsCancelInvitationParams) (OrgsCancelInvitationRes, error)
+	// OrgsCheckBlockedUser invokes orgs/check-blocked-user operation.
+	//
+	// Check if a user is blocked by an organization.
+	//
+	// GET /orgs/{org}/blocks/{username}
+	OrgsCheckBlockedUser(ctx context.Context, params OrgsCheckBlockedUserParams) (OrgsCheckBlockedUserRes, error)
+	// OrgsCheckMembershipForUser invokes orgs/check-membership-for-user operation.
+	//
+	// Check if a user is, publicly or privately, a member of the organization.
+	//
+	// GET /orgs/{org}/members/{username}
+	OrgsCheckMembershipForUser(ctx context.Context, params OrgsCheckMembershipForUserParams) (OrgsCheckMembershipForUserRes, error)
+	// OrgsCheckPublicMembershipForUser invokes orgs/check-public-membership-for-user operation.
+	//
+	// Check public organization membership for a user.
+	//
+	// GET /orgs/{org}/public_members/{username}
+	OrgsCheckPublicMembershipForUser(ctx context.Context, params OrgsCheckPublicMembershipForUserParams) (OrgsCheckPublicMembershipForUserRes, error)
+	// OrgsConvertMemberToOutsideCollaborator invokes orgs/convert-member-to-outside-collaborator operation.
+	//
+	// When an organization member is converted to an outside collaborator, they'll only have access to
+	// the repositories that their current team membership allows. The user will no longer be a member of
+	// the organization. For more information, see "[Converting an organization member to an outside
+	// collaborator](https://help.github.
+	// com/articles/converting-an-organization-member-to-an-outside-collaborator/)".
+	//
+	// PUT /orgs/{org}/outside_collaborators/{username}
+	OrgsConvertMemberToOutsideCollaborator(ctx context.Context, params OrgsConvertMemberToOutsideCollaboratorParams) (OrgsConvertMemberToOutsideCollaboratorRes, error)
+	// OrgsCreateInvitation invokes orgs/create-invitation operation.
+	//
+	// Invite people to an organization by using their GitHub user ID or their email address. In order to
+	// create invitations in an organization, the authenticated user must be an organization owner.
+	// This endpoint triggers [notifications](https://docs.github.
+	// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
+	// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
+	// rate limits](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
+	// rate limits](https://docs.github.
+	// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+	//
+	// POST /orgs/{org}/invitations
+	OrgsCreateInvitation(ctx context.Context, request OptOrgsCreateInvitationReq, params OrgsCreateInvitationParams) (OrgsCreateInvitationRes, error)
+	// OrgsCreateWebhook invokes orgs/create-webhook operation.
+	//
+	// Here's how you can create a hook that posts payloads in JSON format:.
+	//
+	// POST /orgs/{org}/hooks
+	OrgsCreateWebhook(ctx context.Context, request *OrgsCreateWebhookReq, params OrgsCreateWebhookParams) (OrgsCreateWebhookRes, error)
+	// OrgsDeleteWebhook invokes orgs/delete-webhook operation.
+	//
+	// Delete an organization webhook.
+	//
+	// DELETE /orgs/{org}/hooks/{hook_id}
+	OrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWebhookParams) (OrgsDeleteWebhookRes, error)
+	// OrgsGet invokes orgs/get operation.
+	//
+	// To see many of the organization response values, you need to be an authenticated organization
+	// owner with the `admin:org` scope. When the value of `two_factor_requirement_enabled` is `true`,
+	// the organization requires all members, billing managers, and outside collaborators to enable
+	// [two-factor authentication](https://help.github.
+	// com/articles/securing-your-account-with-two-factor-authentication-2fa/).
+	// GitHub Apps with the `Organization plan` permission can use this endpoint to retrieve information
+	// about an organization's GitHub plan. See "[Authenticating with GitHub Apps](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/)" for details. For an example
+	// response, see 'Response with GitHub plan information' below.".
+	//
+	// GET /orgs/{org}
+	OrgsGet(ctx context.Context, params OrgsGetParams) (OrgsGetRes, error)
+	// OrgsGetAuditLog invokes orgs/get-audit-log operation.
+	//
+	// Gets the audit log for an organization. For more information, see "[Reviewing the audit log for
+	// your organization](https://docs.github.
+	// com/github/setting-up-and-managing-organizations-and-teams/reviewing-the-audit-log-for-your-organization)."
+	// To use this endpoint, you must be an organization owner, and you must use an access token with the
+	// `admin:org` scope. GitHub Apps must have the `organization_administration` read permission to use
+	// this endpoint.
+	//
+	// GET /orgs/{org}/audit-log
+	OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogParams) ([]AuditLogEvent, error)
+	// OrgsGetMembershipForAuthenticatedUser invokes orgs/get-membership-for-authenticated-user operation.
+	//
+	// Get an organization membership for the authenticated user.
+	//
+	// GET /user/memberships/orgs/{org}
+	OrgsGetMembershipForAuthenticatedUser(ctx context.Context, params OrgsGetMembershipForAuthenticatedUserParams) (OrgsGetMembershipForAuthenticatedUserRes, error)
+	// OrgsGetMembershipForUser invokes orgs/get-membership-for-user operation.
+	//
+	// In order to get a user's membership with an organization, the authenticated user must be an
+	// organization member. The `state` parameter in the response can be used to identify the user's
+	// membership status.
+	//
+	// GET /orgs/{org}/memberships/{username}
+	OrgsGetMembershipForUser(ctx context.Context, params OrgsGetMembershipForUserParams) (OrgsGetMembershipForUserRes, error)
+	// OrgsGetWebhook invokes orgs/get-webhook operation.
+	//
+	// Returns a webhook configured in an organization. To get only the webhook `config` properties, see
+	// "[Get a webhook configuration for an
+	// organization](/rest/reference/orgs#get-a-webhook-configuration-for-an-organization).".
+	//
+	// GET /orgs/{org}/hooks/{hook_id}
+	OrgsGetWebhook(ctx context.Context, params OrgsGetWebhookParams) (OrgsGetWebhookRes, error)
+	// OrgsGetWebhookConfigForOrg invokes orgs/get-webhook-config-for-org operation.
+	//
+	// Returns the webhook configuration for an organization. To get more information about the webhook,
+	// including the `active` state and `events`, use "[Get an organization webhook
+	// ](/rest/reference/orgs#get-an-organization-webhook)."
+	// Access tokens must have the `admin:org_hook` scope, and GitHub Apps must have the
+	// `organization_hooks:read` permission.
+	//
+	// GET /orgs/{org}/hooks/{hook_id}/config
+	OrgsGetWebhookConfigForOrg(ctx context.Context, params OrgsGetWebhookConfigForOrgParams) (*WebhookConfig, error)
+	// OrgsGetWebhookDelivery invokes orgs/get-webhook-delivery operation.
+	//
+	// Returns a delivery for a webhook configured in an organization.
+	//
+	// GET /orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}
+	OrgsGetWebhookDelivery(ctx context.Context, params OrgsGetWebhookDeliveryParams) (OrgsGetWebhookDeliveryRes, error)
+	// OrgsList invokes orgs/list operation.
+	//
+	// Lists all organizations, in the order that they were created on GitHub.
+	// **Note:** Pagination is powered exclusively by the `since` parameter. Use the [Link
+	// header](https://docs.github.com/rest/overview/resources-in-the-rest-api#link-header) to get the
+	// URL for the next page of organizations.
+	//
+	// GET /organizations
+	OrgsList(ctx context.Context, params OrgsListParams) (OrgsListRes, error)
+	// OrgsListBlockedUsers invokes orgs/list-blocked-users operation.
+	//
+	// List the users blocked by an organization.
+	//
+	// GET /orgs/{org}/blocks
+	OrgsListBlockedUsers(ctx context.Context, params OrgsListBlockedUsersParams) (OrgsListBlockedUsersRes, error)
+	// OrgsListFailedInvitations invokes orgs/list-failed-invitations operation.
+	//
+	// The return hash contains `failed_at` and `failed_reason` fields which represent the time at which
+	// the invitation failed and the reason for the failure.
+	//
+	// GET /orgs/{org}/failed_invitations
+	OrgsListFailedInvitations(ctx context.Context, params OrgsListFailedInvitationsParams) (OrgsListFailedInvitationsRes, error)
+	// OrgsListForAuthenticatedUser invokes orgs/list-for-authenticated-user operation.
+	//
+	// List organizations for the authenticated user.
+	// **OAuth scope requirements**
+	// This only lists organizations that your authorization allows you to operate on in some way (e.g.,
+	// you can list teams with `read:org` scope, you can publicize your organization membership with
+	// `user` scope, etc.). Therefore, this API requires at least `user` or `read:org` scope. OAuth
+	// requests with insufficient scope receive a `403 Forbidden` response.
+	//
+	// GET /user/orgs
+	OrgsListForAuthenticatedUser(ctx context.Context, params OrgsListForAuthenticatedUserParams) (OrgsListForAuthenticatedUserRes, error)
+	// OrgsListForUser invokes orgs/list-for-user operation.
+	//
+	// List [public organization memberships](https://help.github.
+	// com/articles/publicizing-or-concealing-organization-membership) for the specified user.
+	// This method only lists _public_ memberships, regardless of authentication. If you need to fetch
+	// all of the organization memberships (public and private) for the authenticated user, use the [List
+	// organizations for the authenticated user](https://docs.github.
+	// com/rest/reference/orgs#list-organizations-for-the-authenticated-user) API instead.
+	//
+	// GET /users/{username}/orgs
+	OrgsListForUser(ctx context.Context, params OrgsListForUserParams) (*OrgsListForUserOKHeaders, error)
+	// OrgsListInvitationTeams invokes orgs/list-invitation-teams operation.
+	//
+	// List all teams associated with an invitation. In order to see invitations in an organization, the
+	// authenticated user must be an organization owner.
+	//
+	// GET /orgs/{org}/invitations/{invitation_id}/teams
+	OrgsListInvitationTeams(ctx context.Context, params OrgsListInvitationTeamsParams) (OrgsListInvitationTeamsRes, error)
+	// OrgsListMembers invokes orgs/list-members operation.
+	//
+	// List all users who are members of an organization. If the authenticated user is also a member of
+	// this organization then both concealed and public members will be returned.
+	//
+	// GET /orgs/{org}/members
+	OrgsListMembers(ctx context.Context, params OrgsListMembersParams) (OrgsListMembersRes, error)
+	// OrgsListMembershipsForAuthenticatedUser invokes orgs/list-memberships-for-authenticated-user operation.
+	//
+	// List organization memberships for the authenticated user.
+	//
+	// GET /user/memberships/orgs
+	OrgsListMembershipsForAuthenticatedUser(ctx context.Context, params OrgsListMembershipsForAuthenticatedUserParams) (OrgsListMembershipsForAuthenticatedUserRes, error)
+	// OrgsListOutsideCollaborators invokes orgs/list-outside-collaborators operation.
+	//
+	// List all users who are outside collaborators of an organization.
+	//
+	// GET /orgs/{org}/outside_collaborators
+	OrgsListOutsideCollaborators(ctx context.Context, params OrgsListOutsideCollaboratorsParams) (*OrgsListOutsideCollaboratorsOKHeaders, error)
+	// OrgsListPendingInvitations invokes orgs/list-pending-invitations operation.
+	//
+	// The return hash contains a `role` field which refers to the Organization Invitation role and will
+	// be one of the following values: `direct_member`, `admin`, `billing_manager`, `hiring_manager`, or
+	// `reinstate`. If the invitee is not a GitHub member, the `login` field in the return hash will be
+	// `null`.
+	//
+	// GET /orgs/{org}/invitations
+	OrgsListPendingInvitations(ctx context.Context, params OrgsListPendingInvitationsParams) (OrgsListPendingInvitationsRes, error)
+	// OrgsListPublicMembers invokes orgs/list-public-members operation.
+	//
+	// Members of an organization can choose to have their membership publicized or not.
+	//
+	// GET /orgs/{org}/public_members
+	OrgsListPublicMembers(ctx context.Context, params OrgsListPublicMembersParams) (*OrgsListPublicMembersOKHeaders, error)
+	// OrgsListSamlSSOAuthorizations invokes orgs/list-saml-sso-authorizations operation.
+	//
+	// Listing and deleting credential authorizations is available to organizations with GitHub
+	// Enterprise Cloud. For more information, see [GitHub's products](https://help.github.
+	// com/github/getting-started-with-github/githubs-products).
+	// An authenticated organization owner with the `read:org` scope can list all credential
+	// authorizations for an organization that uses SAML single sign-on (SSO). The credentials are either
+	// personal access tokens or SSH keys that organization members have authorized for the organization.
+	// For more information, see [About authentication with SAML single sign-on](https://help.github.
+	// com/en/articles/about-authentication-with-saml-single-sign-on).
+	//
+	// GET /orgs/{org}/credential-authorizations
+	OrgsListSamlSSOAuthorizations(ctx context.Context, params OrgsListSamlSSOAuthorizationsParams) ([]CredentialAuthorization, error)
+	// OrgsListWebhookDeliveries invokes orgs/list-webhook-deliveries operation.
+	//
+	// Returns a list of webhook deliveries for a webhook configured in an organization.
+	//
+	// GET /orgs/{org}/hooks/{hook_id}/deliveries
+	OrgsListWebhookDeliveries(ctx context.Context, params OrgsListWebhookDeliveriesParams) (OrgsListWebhookDeliveriesRes, error)
+	// OrgsListWebhooks invokes orgs/list-webhooks operation.
+	//
+	// List organization webhooks.
+	//
+	// GET /orgs/{org}/hooks
+	OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksParams) (OrgsListWebhooksRes, error)
+	// OrgsPingWebhook invokes orgs/ping-webhook operation.
+	//
+	// This will trigger a [ping event](https://docs.github.com/webhooks/#ping-event) to be sent to the
+	// hook.
+	//
+	// POST /orgs/{org}/hooks/{hook_id}/pings
+	OrgsPingWebhook(ctx context.Context, params OrgsPingWebhookParams) (OrgsPingWebhookRes, error)
+	// OrgsRedeliverWebhookDelivery invokes orgs/redeliver-webhook-delivery operation.
+	//
+	// Redeliver a delivery for a webhook configured in an organization.
+	//
+	// POST /orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}/attempts
+	OrgsRedeliverWebhookDelivery(ctx context.Context, params OrgsRedeliverWebhookDeliveryParams) (OrgsRedeliverWebhookDeliveryRes, error)
+	// OrgsRemoveMember invokes orgs/remove-member operation.
+	//
+	// Removing a user from this list will remove them from all teams and they will no longer have any
+	// access to the organization's repositories.
+	//
+	// DELETE /orgs/{org}/members/{username}
+	OrgsRemoveMember(ctx context.Context, params OrgsRemoveMemberParams) (OrgsRemoveMemberRes, error)
+	// OrgsRemoveMembershipForUser invokes orgs/remove-membership-for-user operation.
+	//
+	// In order to remove a user's membership with an organization, the authenticated user must be an
+	// organization owner.
+	// If the specified user is an active member of the organization, this will remove them from the
+	// organization. If the specified user has been invited to the organization, this will cancel their
+	// invitation. The specified user will receive an email notification in both cases.
+	//
+	// DELETE /orgs/{org}/memberships/{username}
+	OrgsRemoveMembershipForUser(ctx context.Context, params OrgsRemoveMembershipForUserParams) (OrgsRemoveMembershipForUserRes, error)
+	// OrgsRemoveOutsideCollaborator invokes orgs/remove-outside-collaborator operation.
+	//
+	// Removing a user from this list will remove them from all the organization's repositories.
+	//
+	// DELETE /orgs/{org}/outside_collaborators/{username}
+	OrgsRemoveOutsideCollaborator(ctx context.Context, params OrgsRemoveOutsideCollaboratorParams) (OrgsRemoveOutsideCollaboratorRes, error)
+	// OrgsRemovePublicMembershipForAuthenticatedUser invokes orgs/remove-public-membership-for-authenticated-user operation.
+	//
+	// Remove public organization membership for the authenticated user.
+	//
+	// DELETE /orgs/{org}/public_members/{username}
+	OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsRemovePublicMembershipForAuthenticatedUserParams) error
+	// OrgsRemoveSamlSSOAuthorization invokes orgs/remove-saml-sso-authorization operation.
+	//
+	// Listing and deleting credential authorizations is available to organizations with GitHub
+	// Enterprise Cloud. For more information, see [GitHub's products](https://help.github.
+	// com/github/getting-started-with-github/githubs-products).
+	// An authenticated organization owner with the `admin:org` scope can remove a credential
+	// authorization for an organization that uses SAML SSO. Once you remove someone's credential
+	// authorization, they will need to create a new personal access token or SSH key and authorize it
+	// for the organization they want to access.
+	//
+	// DELETE /orgs/{org}/credential-authorizations/{credential_id}
+	OrgsRemoveSamlSSOAuthorization(ctx context.Context, params OrgsRemoveSamlSSOAuthorizationParams) (OrgsRemoveSamlSSOAuthorizationRes, error)
+	// OrgsSetMembershipForUser invokes orgs/set-membership-for-user operation.
+	//
+	// Only authenticated organization owners can add a member to the organization or update the member's
+	// role.
+	// *   If the authenticated user is _adding_ a member to the organization, the invited user will
+	// receive an email inviting them to the organization. The user's [membership status](https://docs.
+	// github.com/rest/reference/orgs#get-organization-membership-for-a-user) will be `pending` until
+	// they accept the invitation.
+	// *   Authenticated users can _update_ a user's membership by passing the `role` parameter. If the
+	// authenticated user changes a member's role to `admin`, the affected user will receive an email
+	// notifying them that they've been made an organization owner. If the authenticated user changes an
+	// owner's role to `member`, no email will be sent.
+	// **Rate limits**
+	// To prevent abuse, the authenticated user is limited to 50 organization invitations per 24 hour
+	// period. If the organization is more than one month old or on a paid plan, the limit is 500
+	// invitations per 24 hour period.
+	//
+	// PUT /orgs/{org}/memberships/{username}
+	OrgsSetMembershipForUser(ctx context.Context, request OptOrgsSetMembershipForUserReq, params OrgsSetMembershipForUserParams) (OrgsSetMembershipForUserRes, error)
+	// OrgsSetPublicMembershipForAuthenticatedUser invokes orgs/set-public-membership-for-authenticated-user operation.
+	//
+	// The user can publicize their own membership. (A user cannot publicize the membership for another
+	// user.)
+	// Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more
+	// information, see "[HTTP verbs](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#http-verbs).".
+	//
+	// PUT /orgs/{org}/public_members/{username}
+	OrgsSetPublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsSetPublicMembershipForAuthenticatedUserParams) (OrgsSetPublicMembershipForAuthenticatedUserRes, error)
+	// OrgsUnblockUser invokes orgs/unblock-user operation.
+	//
+	// Unblock a user from an organization.
+	//
+	// DELETE /orgs/{org}/blocks/{username}
+	OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserParams) error
+	// OrgsUpdateMembershipForAuthenticatedUser invokes orgs/update-membership-for-authenticated-user operation.
+	//
+	// Update an organization membership for the authenticated user.
+	//
+	// PATCH /user/memberships/orgs/{org}
+	OrgsUpdateMembershipForAuthenticatedUser(ctx context.Context, request *OrgsUpdateMembershipForAuthenticatedUserReq, params OrgsUpdateMembershipForAuthenticatedUserParams) (OrgsUpdateMembershipForAuthenticatedUserRes, error)
+	// OrgsUpdateWebhook invokes orgs/update-webhook operation.
+	//
+	// Updates a webhook configured in an organization. When you update a webhook, the `secret` will be
+	// overwritten. If you previously had a `secret` set, you must provide the same `secret` or set a new
+	// `secret` or the secret will be removed. If you are only updating individual webhook `config`
+	// properties, use "[Update a webhook configuration for an
+	// organization](/rest/reference/orgs#update-a-webhook-configuration-for-an-organization).".
+	//
+	// PATCH /orgs/{org}/hooks/{hook_id}
+	OrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdateWebhookReq, params OrgsUpdateWebhookParams) (OrgsUpdateWebhookRes, error)
+	// OrgsUpdateWebhookConfigForOrg invokes orgs/update-webhook-config-for-org operation.
+	//
+	// Updates the webhook configuration for an organization. To update more information about the
+	// webhook, including the `active` state and `events`, use "[Update an organization webhook
+	// ](/rest/reference/orgs#update-an-organization-webhook)."
+	// Access tokens must have the `admin:org_hook` scope, and GitHub Apps must have the
+	// `organization_hooks:write` permission.
+	//
+	// PATCH /orgs/{org}/hooks/{hook_id}/config
+	OrgsUpdateWebhookConfigForOrg(ctx context.Context, request OptOrgsUpdateWebhookConfigForOrgReq, params OrgsUpdateWebhookConfigForOrgParams) (*WebhookConfig, error)
+	// PackagesDeletePackageForAuthenticatedUser invokes packages/delete-package-for-authenticated-user operation.
+	//
+	// Deletes a package owned by the authenticated user. You cannot delete a public package if any
+	// version of the package has more than 5,000 downloads. In this scenario, contact GitHub support for
+	// further assistance.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` and
+	// `packages:delete` scopes.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// DELETE /user/packages/{package_type}/{package_name}
+	PackagesDeletePackageForAuthenticatedUser(ctx context.Context, params PackagesDeletePackageForAuthenticatedUserParams) (PackagesDeletePackageForAuthenticatedUserRes, error)
+	// PackagesDeletePackageForOrg invokes packages/delete-package-for-org operation.
+	//
+	// Deletes an entire package in an organization. You cannot delete a public package if any version of
+	// the package has more than 5,000 downloads. In this scenario, contact GitHub support for further
+	// assistance.
+	// To use this endpoint, you must have admin permissions in the organization and authenticate using
+	// an access token with the `packages:read` and `packages:delete` scopes. In addition:
+	// - If `package_type` is not `container`, your token must also include the `repo` scope.
+	// - If `package_type` is `container`, you must also have admin permissions to the container you want
+	// to delete.
+	//
+	// DELETE /orgs/{org}/packages/{package_type}/{package_name}
+	PackagesDeletePackageForOrg(ctx context.Context, params PackagesDeletePackageForOrgParams) (PackagesDeletePackageForOrgRes, error)
+	// PackagesDeletePackageForUser invokes packages/delete-package-for-user operation.
+	//
+	// Deletes an entire package for a user. You cannot delete a public package if any version of the
+	// package has more than 5,000 downloads. In this scenario, contact GitHub support for further
+	// assistance.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` and
+	// `packages:delete` scopes. In addition:
+	// - If `package_type` is not `container`, your token must also include the `repo` scope.
+	// - If `package_type` is `container`, you must also have admin permissions to the container you want
+	// to delete.
+	//
+	// DELETE /users/{username}/packages/{package_type}/{package_name}
+	PackagesDeletePackageForUser(ctx context.Context, params PackagesDeletePackageForUserParams) (PackagesDeletePackageForUserRes, error)
+	// PackagesDeletePackageVersionForAuthenticatedUser invokes packages/delete-package-version-for-authenticated-user operation.
+	//
+	// Deletes a specific package version for a package owned by the authenticated user.  If the package
+	// is public and the package version has more than 5,000 downloads, you cannot delete the package
+	// version. In this scenario, contact GitHub support for further assistance.
+	// To use this endpoint, you must have admin permissions in the organization and authenticate using
+	// an access token with the `packages:read` and `packages:delete` scopes.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// DELETE /user/packages/{package_type}/{package_name}/versions/{package_version_id}
+	PackagesDeletePackageVersionForAuthenticatedUser(ctx context.Context, params PackagesDeletePackageVersionForAuthenticatedUserParams) (PackagesDeletePackageVersionForAuthenticatedUserRes, error)
+	// PackagesDeletePackageVersionForOrg invokes packages/delete-package-version-for-org operation.
+	//
+	// Deletes a specific package version in an organization. If the package is public and the package
+	// version has more than 5,000 downloads, you cannot delete the package version. In this scenario,
+	// contact GitHub support for further assistance.
+	// To use this endpoint, you must have admin permissions in the organization and authenticate using
+	// an access token with the `packages:read` and `packages:delete` scopes. In addition:
+	// - If `package_type` is not `container`, your token must also include the `repo` scope.
+	// - If `package_type` is `container`, you must also have admin permissions to the container you want
+	// to delete.
+	//
+	// DELETE /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
+	PackagesDeletePackageVersionForOrg(ctx context.Context, params PackagesDeletePackageVersionForOrgParams) (PackagesDeletePackageVersionForOrgRes, error)
+	// PackagesDeletePackageVersionForUser invokes packages/delete-package-version-for-user operation.
+	//
+	// Deletes a specific package version for a user. If the package is public and the package version
+	// has more than 5,000 downloads, you cannot delete the package version. In this scenario, contact
+	// GitHub support for further assistance.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` and
+	// `packages:delete` scopes. In addition:
+	// - If `package_type` is not `container`, your token must also include the `repo` scope.
+	// - If `package_type` is `container`, you must also have admin permissions to the container you want
+	// to delete.
+	//
+	// DELETE /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
+	PackagesDeletePackageVersionForUser(ctx context.Context, params PackagesDeletePackageVersionForUserParams) (PackagesDeletePackageVersionForUserRes, error)
+	// PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser invokes packages/get-all-package-versions-for-package-owned-by-authenticated-user operation.
+	//
+	// Returns all package versions for a package owned by the authenticated user.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// GET /user/packages/{package_type}/{package_name}/versions
+	PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser(ctx context.Context, params PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams) (PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes, error)
+	// PackagesGetAllPackageVersionsForPackageOwnedByOrg invokes packages/get-all-package-versions-for-package-owned-by-org operation.
+	//
+	// Returns all package versions for a package owned by an organization.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// GET /orgs/{org}/packages/{package_type}/{package_name}/versions
+	PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.Context, params PackagesGetAllPackageVersionsForPackageOwnedByOrgParams) (PackagesGetAllPackageVersionsForPackageOwnedByOrgRes, error)
+	// PackagesGetAllPackageVersionsForPackageOwnedByUser invokes packages/get-all-package-versions-for-package-owned-by-user operation.
+	//
+	// Returns all package versions for a public package owned by a specified user.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// GET /users/{username}/packages/{package_type}/{package_name}/versions
+	PackagesGetAllPackageVersionsForPackageOwnedByUser(ctx context.Context, params PackagesGetAllPackageVersionsForPackageOwnedByUserParams) (PackagesGetAllPackageVersionsForPackageOwnedByUserRes, error)
+	// PackagesGetPackageForAuthenticatedUser invokes packages/get-package-for-authenticated-user operation.
+	//
+	// Gets a specific package for a package owned by the authenticated user.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// GET /user/packages/{package_type}/{package_name}
+	PackagesGetPackageForAuthenticatedUser(ctx context.Context, params PackagesGetPackageForAuthenticatedUserParams) (*Package, error)
+	// PackagesGetPackageForOrganization invokes packages/get-package-for-organization operation.
+	//
+	// Gets a specific package in an organization.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// GET /orgs/{org}/packages/{package_type}/{package_name}
+	PackagesGetPackageForOrganization(ctx context.Context, params PackagesGetPackageForOrganizationParams) (*Package, error)
+	// PackagesGetPackageForUser invokes packages/get-package-for-user operation.
+	//
+	// Gets a specific package metadata for a public package owned by a user.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// GET /users/{username}/packages/{package_type}/{package_name}
+	PackagesGetPackageForUser(ctx context.Context, params PackagesGetPackageForUserParams) (*Package, error)
+	// PackagesGetPackageVersionForAuthenticatedUser invokes packages/get-package-version-for-authenticated-user operation.
+	//
+	// Gets a specific package version for a package owned by the authenticated user.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// GET /user/packages/{package_type}/{package_name}/versions/{package_version_id}
+	PackagesGetPackageVersionForAuthenticatedUser(ctx context.Context, params PackagesGetPackageVersionForAuthenticatedUserParams) (*PackageVersion, error)
+	// PackagesGetPackageVersionForOrganization invokes packages/get-package-version-for-organization operation.
+	//
+	// Gets a specific package version in an organization.
+	// You must authenticate using an access token with the `packages:read` scope.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// GET /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
+	PackagesGetPackageVersionForOrganization(ctx context.Context, params PackagesGetPackageVersionForOrganizationParams) (*PackageVersion, error)
+	// PackagesGetPackageVersionForUser invokes packages/get-package-version-for-user operation.
+	//
+	// Gets a specific package version for a public package owned by a specified user.
+	// At this time, to use this endpoint, you must authenticate using an access token with the
+	// `packages:read` scope.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// GET /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
+	PackagesGetPackageVersionForUser(ctx context.Context, params PackagesGetPackageVersionForUserParams) (*PackageVersion, error)
+	// PackagesListPackagesForAuthenticatedUser invokes packages/list-packages-for-authenticated-user operation.
+	//
+	// Lists packages owned by the authenticated user within the user's namespace.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// GET /user/packages
+	PackagesListPackagesForAuthenticatedUser(ctx context.Context, params PackagesListPackagesForAuthenticatedUserParams) ([]Package, error)
+	// PackagesListPackagesForOrganization invokes packages/list-packages-for-organization operation.
+	//
+	// Lists all packages in an organization readable by the user.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// GET /orgs/{org}/packages
+	PackagesListPackagesForOrganization(ctx context.Context, params PackagesListPackagesForOrganizationParams) (PackagesListPackagesForOrganizationRes, error)
+	// PackagesListPackagesForUser invokes packages/list-packages-for-user operation.
+	//
+	// Lists all packages in a user's namespace for which the requesting user has access.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// GET /users/{username}/packages
+	PackagesListPackagesForUser(ctx context.Context, params PackagesListPackagesForUserParams) (PackagesListPackagesForUserRes, error)
+	// PackagesRestorePackageForAuthenticatedUser invokes packages/restore-package-for-authenticated-user operation.
+	//
+	// Restores a package owned by the authenticated user.
+	// You can restore a deleted package under the following conditions:
+	// - The package was deleted within the last 30 days.
+	// - The same package namespace and version is still available and not reused for a new package. If
+	// the same package namespace is not available, you will not be able to restore your package. In this
+	// scenario, to restore the deleted package, you must delete the new package that uses the deleted
+	// package's namespace first.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` and
+	// `packages:write` scopes. If `package_type` is not `container`, your token must also include the
+	// `repo` scope.
+	//
+	// POST /user/packages/{package_type}/{package_name}/restore
+	PackagesRestorePackageForAuthenticatedUser(ctx context.Context, params PackagesRestorePackageForAuthenticatedUserParams) (PackagesRestorePackageForAuthenticatedUserRes, error)
+	// PackagesRestorePackageForOrg invokes packages/restore-package-for-org operation.
+	//
+	// Restores an entire package in an organization.
+	// You can restore a deleted package under the following conditions:
+	// - The package was deleted within the last 30 days.
+	// - The same package namespace and version is still available and not reused for a new package. If
+	// the same package namespace is not available, you will not be able to restore your package. In this
+	// scenario, to restore the deleted package, you must delete the new package that uses the deleted
+	// package's namespace first.
+	// To use this endpoint, you must have admin permissions in the organization and authenticate using
+	// an access token with the `packages:read` and `packages:write` scopes. In addition:
+	// - If `package_type` is not `container`, your token must also include the `repo` scope.
+	// - If `package_type` is `container`, you must also have admin permissions to the container that you
+	// want to restore.
+	//
+	// POST /orgs/{org}/packages/{package_type}/{package_name}/restore
+	PackagesRestorePackageForOrg(ctx context.Context, params PackagesRestorePackageForOrgParams) (PackagesRestorePackageForOrgRes, error)
+	// PackagesRestorePackageForUser invokes packages/restore-package-for-user operation.
+	//
+	// Restores an entire package for a user.
+	// You can restore a deleted package under the following conditions:
+	// - The package was deleted within the last 30 days.
+	// - The same package namespace and version is still available and not reused for a new package. If
+	// the same package namespace is not available, you will not be able to restore your package. In this
+	// scenario, to restore the deleted package, you must delete the new package that uses the deleted
+	// package's namespace first.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` and
+	// `packages:write` scopes. In addition:
+	// - If `package_type` is not `container`, your token must also include the `repo` scope.
+	// - If `package_type` is `container`, you must also have admin permissions to the container that you
+	// want to restore.
+	//
+	// POST /users/{username}/packages/{package_type}/{package_name}/restore
+	PackagesRestorePackageForUser(ctx context.Context, params PackagesRestorePackageForUserParams) (PackagesRestorePackageForUserRes, error)
+	// PackagesRestorePackageVersionForAuthenticatedUser invokes packages/restore-package-version-for-authenticated-user operation.
+	//
+	// Restores a package version owned by the authenticated user.
+	// You can restore a deleted package version under the following conditions:
+	// - The package was deleted within the last 30 days.
+	// - The same package namespace and version is still available and not reused for a new package. If
+	// the same package namespace is not available, you will not be able to restore your package. In this
+	// scenario, to restore the deleted package, you must delete the new package that uses the deleted
+	// package's namespace first.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` and
+	// `packages:write` scopes. If `package_type` is not `container`, your token must also include the
+	// `repo` scope.
+	//
+	// POST /user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
+	PackagesRestorePackageVersionForAuthenticatedUser(ctx context.Context, params PackagesRestorePackageVersionForAuthenticatedUserParams) (PackagesRestorePackageVersionForAuthenticatedUserRes, error)
+	// PackagesRestorePackageVersionForOrg invokes packages/restore-package-version-for-org operation.
+	//
+	// Restores a specific package version in an organization.
+	// You can restore a deleted package under the following conditions:
+	// - The package was deleted within the last 30 days.
+	// - The same package namespace and version is still available and not reused for a new package. If
+	// the same package namespace is not available, you will not be able to restore your package. In this
+	// scenario, to restore the deleted package, you must delete the new package that uses the deleted
+	// package's namespace first.
+	// To use this endpoint, you must have admin permissions in the organization and authenticate using
+	// an access token with the `packages:read` and `packages:write` scopes. In addition:
+	// - If `package_type` is not `container`, your token must also include the `repo` scope.
+	// - If `package_type` is `container`, you must also have admin permissions to the container that you
+	// want to restore.
+	//
+	// POST /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
+	PackagesRestorePackageVersionForOrg(ctx context.Context, params PackagesRestorePackageVersionForOrgParams) (PackagesRestorePackageVersionForOrgRes, error)
+	// PackagesRestorePackageVersionForUser invokes packages/restore-package-version-for-user operation.
+	//
+	// Restores a specific package version for a user.
+	// You can restore a deleted package under the following conditions:
+	// - The package was deleted within the last 30 days.
+	// - The same package namespace and version is still available and not reused for a new package. If
+	// the same package namespace is not available, you will not be able to restore your package. In this
+	// scenario, to restore the deleted package, you must delete the new package that uses the deleted
+	// package's namespace first.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` and
+	// `packages:write` scopes. In addition:
+	// - If `package_type` is not `container`, your token must also include the `repo` scope.
+	// - If `package_type` is `container`, you must also have admin permissions to the container that you
+	// want to restore.
+	//
+	// POST /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
+	PackagesRestorePackageVersionForUser(ctx context.Context, params PackagesRestorePackageVersionForUserParams) (PackagesRestorePackageVersionForUserRes, error)
+	// ProjectsAddCollaborator invokes projects/add-collaborator operation.
+	//
+	// Adds a collaborator to an organization project and sets their permission level. You must be an
+	// organization owner or a project `admin` to add a collaborator.
+	//
+	// PUT /projects/{project_id}/collaborators/{username}
+	ProjectsAddCollaborator(ctx context.Context, request OptNilProjectsAddCollaboratorReq, params ProjectsAddCollaboratorParams) (ProjectsAddCollaboratorRes, error)
+	// ProjectsCreateColumn invokes projects/create-column operation.
+	//
+	// Create a project column.
+	//
+	// POST /projects/{project_id}/columns
+	ProjectsCreateColumn(ctx context.Context, request *ProjectsCreateColumnReq, params ProjectsCreateColumnParams) (ProjectsCreateColumnRes, error)
+	// ProjectsCreateForAuthenticatedUser invokes projects/create-for-authenticated-user operation.
+	//
+	// Create a user project.
+	//
+	// POST /user/projects
+	ProjectsCreateForAuthenticatedUser(ctx context.Context, request *ProjectsCreateForAuthenticatedUserReq) (ProjectsCreateForAuthenticatedUserRes, error)
+	// ProjectsCreateForOrg invokes projects/create-for-org operation.
+	//
+	// Creates an organization project board. Returns a `404 Not Found` status if projects are disabled
+	// in the organization. If you do not have sufficient privileges to perform this action, a `401
+	// Unauthorized` or `410 Gone` status is returned.
+	//
+	// POST /orgs/{org}/projects
+	ProjectsCreateForOrg(ctx context.Context, request *ProjectsCreateForOrgReq, params ProjectsCreateForOrgParams) (ProjectsCreateForOrgRes, error)
+	// ProjectsCreateForRepo invokes projects/create-for-repo operation.
+	//
+	// Creates a repository project board. Returns a `404 Not Found` status if projects are disabled in
+	// the repository. If you do not have sufficient privileges to perform this action, a `401
+	// Unauthorized` or `410 Gone` status is returned.
+	//
+	// POST /repos/{owner}/{repo}/projects
+	ProjectsCreateForRepo(ctx context.Context, request *ProjectsCreateForRepoReq, params ProjectsCreateForRepoParams) (ProjectsCreateForRepoRes, error)
+	// ProjectsDelete invokes projects/delete operation.
+	//
+	// Deletes a project board. Returns a `404 Not Found` status if projects are disabled.
+	//
+	// DELETE /projects/{project_id}
+	ProjectsDelete(ctx context.Context, params ProjectsDeleteParams) (ProjectsDeleteRes, error)
+	// ProjectsDeleteCard invokes projects/delete-card operation.
+	//
+	// Delete a project card.
+	//
+	// DELETE /projects/columns/cards/{card_id}
+	ProjectsDeleteCard(ctx context.Context, params ProjectsDeleteCardParams) (ProjectsDeleteCardRes, error)
+	// ProjectsDeleteColumn invokes projects/delete-column operation.
+	//
+	// Delete a project column.
+	//
+	// DELETE /projects/columns/{column_id}
+	ProjectsDeleteColumn(ctx context.Context, params ProjectsDeleteColumnParams) (ProjectsDeleteColumnRes, error)
+	// ProjectsGet invokes projects/get operation.
+	//
+	// Gets a project by its `id`. Returns a `404 Not Found` status if projects are disabled. If you do
+	// not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status
+	// is returned.
+	//
+	// GET /projects/{project_id}
+	ProjectsGet(ctx context.Context, params ProjectsGetParams) (ProjectsGetRes, error)
+	// ProjectsGetCard invokes projects/get-card operation.
+	//
+	// Get a project card.
+	//
+	// GET /projects/columns/cards/{card_id}
+	ProjectsGetCard(ctx context.Context, params ProjectsGetCardParams) (ProjectsGetCardRes, error)
+	// ProjectsGetColumn invokes projects/get-column operation.
+	//
+	// Get a project column.
+	//
+	// GET /projects/columns/{column_id}
+	ProjectsGetColumn(ctx context.Context, params ProjectsGetColumnParams) (ProjectsGetColumnRes, error)
+	// ProjectsGetPermissionForUser invokes projects/get-permission-for-user operation.
+	//
+	// Returns the collaborator's permission level for an organization project. Possible values for the
+	// `permission` key: `admin`, `write`, `read`, `none`. You must be an organization owner or a project
+	// `admin` to review a user's permission level.
+	//
+	// GET /projects/{project_id}/collaborators/{username}/permission
+	ProjectsGetPermissionForUser(ctx context.Context, params ProjectsGetPermissionForUserParams) (ProjectsGetPermissionForUserRes, error)
+	// ProjectsListCards invokes projects/list-cards operation.
+	//
+	// List project cards.
+	//
+	// GET /projects/columns/{column_id}/cards
+	ProjectsListCards(ctx context.Context, params ProjectsListCardsParams) (ProjectsListCardsRes, error)
+	// ProjectsListCollaborators invokes projects/list-collaborators operation.
+	//
+	// Lists the collaborators for an organization project. For a project, the list of collaborators
+	// includes outside collaborators, organization members that are direct collaborators, organization
+	// members with access through team memberships, organization members with access through default
+	// organization permissions, and organization owners. You must be an organization owner or a project
+	// `admin` to list collaborators.
+	//
+	// GET /projects/{project_id}/collaborators
+	ProjectsListCollaborators(ctx context.Context, params ProjectsListCollaboratorsParams) (ProjectsListCollaboratorsRes, error)
+	// ProjectsListColumns invokes projects/list-columns operation.
+	//
+	// List project columns.
+	//
+	// GET /projects/{project_id}/columns
+	ProjectsListColumns(ctx context.Context, params ProjectsListColumnsParams) (ProjectsListColumnsRes, error)
+	// ProjectsListForOrg invokes projects/list-for-org operation.
+	//
+	// Lists the projects in an organization. Returns a `404 Not Found` status if projects are disabled
+	// in the organization. If you do not have sufficient privileges to perform this action, a `401
+	// Unauthorized` or `410 Gone` status is returned.
+	//
+	// GET /orgs/{org}/projects
+	ProjectsListForOrg(ctx context.Context, params ProjectsListForOrgParams) (ProjectsListForOrgRes, error)
+	// ProjectsListForRepo invokes projects/list-for-repo operation.
+	//
+	// Lists the projects in a repository. Returns a `404 Not Found` status if projects are disabled in
+	// the repository. If you do not have sufficient privileges to perform this action, a `401
+	// Unauthorized` or `410 Gone` status is returned.
+	//
+	// GET /repos/{owner}/{repo}/projects
+	ProjectsListForRepo(ctx context.Context, params ProjectsListForRepoParams) (ProjectsListForRepoRes, error)
+	// ProjectsListForUser invokes projects/list-for-user operation.
+	//
+	// List user projects.
+	//
+	// GET /users/{username}/projects
+	ProjectsListForUser(ctx context.Context, params ProjectsListForUserParams) (ProjectsListForUserRes, error)
+	// ProjectsMoveCard invokes projects/move-card operation.
+	//
+	// Move a project card.
+	//
+	// POST /projects/columns/cards/{card_id}/moves
+	ProjectsMoveCard(ctx context.Context, request *ProjectsMoveCardReq, params ProjectsMoveCardParams) (ProjectsMoveCardRes, error)
+	// ProjectsMoveColumn invokes projects/move-column operation.
+	//
+	// Move a project column.
+	//
+	// POST /projects/columns/{column_id}/moves
+	ProjectsMoveColumn(ctx context.Context, request *ProjectsMoveColumnReq, params ProjectsMoveColumnParams) (ProjectsMoveColumnRes, error)
+	// ProjectsRemoveCollaborator invokes projects/remove-collaborator operation.
+	//
+	// Removes a collaborator from an organization project. You must be an organization owner or a
+	// project `admin` to remove a collaborator.
+	//
+	// DELETE /projects/{project_id}/collaborators/{username}
+	ProjectsRemoveCollaborator(ctx context.Context, params ProjectsRemoveCollaboratorParams) (ProjectsRemoveCollaboratorRes, error)
+	// ProjectsUpdate invokes projects/update operation.
+	//
+	// Updates a project board's information. Returns a `404 Not Found` status if projects are disabled.
+	// If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410
+	// Gone` status is returned.
+	//
+	// PATCH /projects/{project_id}
+	ProjectsUpdate(ctx context.Context, request OptProjectsUpdateReq, params ProjectsUpdateParams) (ProjectsUpdateRes, error)
+	// ProjectsUpdateCard invokes projects/update-card operation.
+	//
+	// Update an existing project card.
+	//
+	// PATCH /projects/columns/cards/{card_id}
+	ProjectsUpdateCard(ctx context.Context, request OptProjectsUpdateCardReq, params ProjectsUpdateCardParams) (ProjectsUpdateCardRes, error)
+	// ProjectsUpdateColumn invokes projects/update-column operation.
+	//
+	// Update an existing project column.
+	//
+	// PATCH /projects/columns/{column_id}
+	ProjectsUpdateColumn(ctx context.Context, request *ProjectsUpdateColumnReq, params ProjectsUpdateColumnParams) (ProjectsUpdateColumnRes, error)
+	// PullsCheckIfMerged invokes pulls/check-if-merged operation.
+	//
+	// Check if a pull request has been merged.
+	//
+	// GET /repos/{owner}/{repo}/pulls/{pull_number}/merge
+	PullsCheckIfMerged(ctx context.Context, params PullsCheckIfMergedParams) (PullsCheckIfMergedRes, error)
+	// PullsCreate invokes pulls/create operation.
+	//
+	// Draft pull requests are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private
+	// repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// To open or update a pull request in a public repository, you must have write access to the head or
+	// the source branch. For organization-owned repositories, you must be a member of the organization
+	// that owns the repository to open or update a pull request.
+	// You can create a new pull request.
+	// This endpoint triggers [notifications](https://docs.github.
+	// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
+	// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
+	// rate limits](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
+	// rate limits](https://docs.github.
+	// com/rest/guides/best-practices-for-integrators#dealing-with-rate-limits)" for details.
+	//
+	// POST /repos/{owner}/{repo}/pulls
+	PullsCreate(ctx context.Context, request *PullsCreateReq, params PullsCreateParams) (PullsCreateRes, error)
+	// PullsCreateReplyForReviewComment invokes pulls/create-reply-for-review-comment operation.
+	//
+	// Creates a reply to a review comment for a pull request. For the `comment_id`, provide the ID of
+	// the review comment you are replying to. This must be the ID of a _top-level review comment_, not a
+	// reply to that comment. Replies to replies are not supported.
+	// This endpoint triggers [notifications](https://docs.github.
+	// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
+	// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
+	// rate limits](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
+	// rate limits](https://docs.github.
+	// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+	//
+	// POST /repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies
+	PullsCreateReplyForReviewComment(ctx context.Context, request *PullsCreateReplyForReviewCommentReq, params PullsCreateReplyForReviewCommentParams) (PullsCreateReplyForReviewCommentRes, error)
+	// PullsCreateReview invokes pulls/create-review operation.
+	//
+	// This endpoint triggers [notifications](https://docs.github.
+	// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
+	// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
+	// rate limits](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
+	// rate limits](https://docs.github.
+	// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+	// Pull request reviews created in the `PENDING` state do not include the `submitted_at` property in
+	// the response.
+	// **Note:** To comment on a specific line in a file, you need to first determine the _position_ of
+	// that line in the diff. The GitHub REST API v3 offers the `application/vnd.github.v3.diff` [media
+	// type](https://docs.github.
+	// com/rest/overview/media-types#commits-commit-comparison-and-pull-requests). To see a pull request
+	// diff, add this media type to the `Accept` header of a call to the [single pull
+	// request](https://docs.github.com/rest/reference/pulls#get-a-pull-request) endpoint.
+	// The `position` value equals the number of lines down from the first "@@" hunk header in the file
+	// you want to add a comment. The line just below the "@@" line is position 1, the next line is
+	// position 2, and so on. The position in the diff continues to increase through lines of whitespace
+	// and additional hunks until the beginning of a new file.
+	//
+	// POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews
+	PullsCreateReview(ctx context.Context, request OptPullsCreateReviewReq, params PullsCreateReviewParams) (PullsCreateReviewRes, error)
+	// PullsCreateReviewComment invokes pulls/create-review-comment operation.
+	//
+	// Creates a review comment in the pull request diff. To add a regular comment to a pull request
+	// timeline, see "[Create an issue comment](https://docs.github.
+	// com/rest/reference/issues#create-an-issue-comment)." We recommend creating a review comment using
+	// `line`, `side`, and optionally `start_line` and `start_side` if your comment applies to more than
+	// one line in the pull request diff.
+	// You can still create a review comment using the `position` parameter. When you use `position`, the
+	// `line`, `side`, `start_line`, and `start_side` parameters are not required. For more information,
+	// see the [`comfort-fade` preview notice](https://docs.github.
+	// com/rest/reference/pulls#create-a-review-comment-for-a-pull-request-preview-notices).
+	// **Note:** The position value equals the number of lines down from the first "@@" hunk header in
+	// the file you want to add a comment. The line just below the "@@" line is position 1, the next line
+	// is position 2, and so on. The position in the diff continues to increase through lines of
+	// whitespace and additional hunks until the beginning of a new file.
+	// This endpoint triggers [notifications](https://docs.github.
+	// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
+	// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
+	// rate limits](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
+	// rate limits](https://docs.github.
+	// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+	//
+	// POST /repos/{owner}/{repo}/pulls/{pull_number}/comments
+	PullsCreateReviewComment(ctx context.Context, request *PullsCreateReviewCommentReq, params PullsCreateReviewCommentParams) (PullsCreateReviewCommentRes, error)
+	// PullsDeletePendingReview invokes pulls/delete-pending-review operation.
+	//
+	// Delete a pending review for a pull request.
+	//
+	// DELETE /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
+	PullsDeletePendingReview(ctx context.Context, params PullsDeletePendingReviewParams) (PullsDeletePendingReviewRes, error)
+	// PullsDeleteReviewComment invokes pulls/delete-review-comment operation.
+	//
+	// Deletes a review comment.
+	//
+	// DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}
+	PullsDeleteReviewComment(ctx context.Context, params PullsDeleteReviewCommentParams) (PullsDeleteReviewCommentRes, error)
+	// PullsDismissReview invokes pulls/dismiss-review operation.
+	//
+	// **Note:** To dismiss a pull request review on a [protected branch](https://docs.github.
+	// com/rest/reference/repos#branches), you must be a repository administrator or be included in the
+	// list of people or teams who can dismiss pull request reviews.
+	//
+	// PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals
+	PullsDismissReview(ctx context.Context, request *PullsDismissReviewReq, params PullsDismissReviewParams) (PullsDismissReviewRes, error)
+	// PullsGet invokes pulls/get operation.
+	//
+	// Draft pull requests are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private
+	// repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Lists details of a pull request by providing its number.
+	// When you get, [create](https://docs.github.com/rest/reference/pulls/#create-a-pull-request), or
+	// [edit](https://docs.github.com/rest/reference/pulls#update-a-pull-request) a pull request, GitHub
+	// creates a merge commit to test whether the pull request can be automatically merged into the base
+	// branch. This test commit is not added to the base branch or the head branch. You can review the
+	// status of the test commit using the `mergeable` key. For more information, see "[Checking
+	// mergeability of pull requests](https://docs.github.
+	// com/rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
+	// The value of the `mergeable` attribute can be `true`, `false`, or `null`. If the value is `null`,
+	// then GitHub has started a background job to compute the mergeability. After giving the job time to
+	// complete, resubmit the request. When the job finishes, you will see a non-`null` value for the
+	// `mergeable` attribute in the response. If `mergeable` is `true`, then `merge_commit_sha` will be
+	// the SHA of the _test_ merge commit.
+	// The value of the `merge_commit_sha` attribute changes depending on the state of the pull request.
+	// Before merging a pull request, the `merge_commit_sha` attribute holds the SHA of the _test_ merge
+	// commit. After merging a pull request, the `merge_commit_sha` attribute changes depending on how
+	// you merged the pull request:
+	// *   If merged as a [merge commit](https://help.github.com/articles/about-merge-methods-on-github/),
+	//  `merge_commit_sha` represents the SHA of the merge commit.
+	// *   If merged via a [squash](https://help.github.
+	// com/articles/about-merge-methods-on-github/#squashing-your-merge-commits), `merge_commit_sha`
+	// represents the SHA of the squashed commit on the base branch.
+	// *   If [rebased](https://help.github.
+	// com/articles/about-merge-methods-on-github/#rebasing-and-merging-your-commits), `merge_commit_sha`
+	// represents the commit that the base branch was updated to.
+	// Pass the appropriate [media type](https://docs.github.
+	// com/rest/overview/media-types/#commits-commit-comparison-and-pull-requests) to fetch diff and
+	// patch formats.
+	//
+	// GET /repos/{owner}/{repo}/pulls/{pull_number}
+	PullsGet(ctx context.Context, params PullsGetParams) (PullsGetRes, error)
+	// PullsGetReview invokes pulls/get-review operation.
+	//
+	// Get a review for a pull request.
+	//
+	// GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
+	PullsGetReview(ctx context.Context, params PullsGetReviewParams) (PullsGetReviewRes, error)
+	// PullsGetReviewComment invokes pulls/get-review-comment operation.
+	//
+	// Provides details for a review comment.
+	//
+	// GET /repos/{owner}/{repo}/pulls/comments/{comment_id}
+	PullsGetReviewComment(ctx context.Context, params PullsGetReviewCommentParams) (PullsGetReviewCommentRes, error)
+	// PullsList invokes pulls/list operation.
+	//
+	// Draft pull requests are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private
+	// repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	//
+	// GET /repos/{owner}/{repo}/pulls
+	PullsList(ctx context.Context, params PullsListParams) (PullsListRes, error)
+	// PullsListCommentsForReview invokes pulls/list-comments-for-review operation.
+	//
+	// List comments for a specific pull request review.
+	//
+	// GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments
+	PullsListCommentsForReview(ctx context.Context, params PullsListCommentsForReviewParams) (PullsListCommentsForReviewRes, error)
+	// PullsListCommits invokes pulls/list-commits operation.
+	//
+	// Lists a maximum of 250 commits for a pull request. To receive a complete commit list for pull
+	// requests with more than 250 commits, use the [List commits](https://docs.github.
+	// com/rest/reference/repos#list-commits) endpoint.
+	//
+	// GET /repos/{owner}/{repo}/pulls/{pull_number}/commits
+	PullsListCommits(ctx context.Context, params PullsListCommitsParams) (*PullsListCommitsOKHeaders, error)
+	// PullsListFiles invokes pulls/list-files operation.
+	//
+	// **Note:** Responses include a maximum of 3000 files. The paginated response returns 30 files per
+	// page by default.
+	//
+	// GET /repos/{owner}/{repo}/pulls/{pull_number}/files
+	PullsListFiles(ctx context.Context, params PullsListFilesParams) (PullsListFilesRes, error)
+	// PullsListRequestedReviewers invokes pulls/list-requested-reviewers operation.
+	//
+	// List requested reviewers for a pull request.
+	//
+	// GET /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
+	PullsListRequestedReviewers(ctx context.Context, params PullsListRequestedReviewersParams) (*PullRequestReviewRequestHeaders, error)
+	// PullsListReviewComments invokes pulls/list-review-comments operation.
+	//
+	// Lists all review comments for a pull request. By default, review comments are in ascending order
+	// by ID.
+	//
+	// GET /repos/{owner}/{repo}/pulls/{pull_number}/comments
+	PullsListReviewComments(ctx context.Context, params PullsListReviewCommentsParams) (*PullsListReviewCommentsOKHeaders, error)
+	// PullsListReviewCommentsForRepo invokes pulls/list-review-comments-for-repo operation.
+	//
+	// Lists review comments for all pull requests in a repository. By default, review comments are in
+	// ascending order by ID.
+	//
+	// GET /repos/{owner}/{repo}/pulls/comments
+	PullsListReviewCommentsForRepo(ctx context.Context, params PullsListReviewCommentsForRepoParams) (*PullsListReviewCommentsForRepoOKHeaders, error)
+	// PullsListReviews invokes pulls/list-reviews operation.
+	//
+	// The list of reviews returns in chronological order.
+	//
+	// GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews
+	PullsListReviews(ctx context.Context, params PullsListReviewsParams) (*PullsListReviewsOKHeaders, error)
+	// PullsMerge invokes pulls/merge operation.
+	//
+	// This endpoint triggers [notifications](https://docs.github.
+	// com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
+	// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
+	// rate limits](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
+	// rate limits](https://docs.github.
+	// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+	//
+	// PUT /repos/{owner}/{repo}/pulls/{pull_number}/merge
+	PullsMerge(ctx context.Context, request OptNilPullsMergeReq, params PullsMergeParams) (PullsMergeRes, error)
+	// PullsRemoveRequestedReviewers invokes pulls/remove-requested-reviewers operation.
+	//
+	// Remove requested reviewers from a pull request.
+	//
+	// DELETE /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
+	PullsRemoveRequestedReviewers(ctx context.Context, request *PullsRemoveRequestedReviewersReq, params PullsRemoveRequestedReviewersParams) (PullsRemoveRequestedReviewersRes, error)
+	// PullsSubmitReview invokes pulls/submit-review operation.
+	//
+	// Submit a review for a pull request.
+	//
+	// POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events
+	PullsSubmitReview(ctx context.Context, request *PullsSubmitReviewReq, params PullsSubmitReviewParams) (PullsSubmitReviewRes, error)
+	// PullsUpdate invokes pulls/update operation.
+	//
+	// Draft pull requests are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private
+	// repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// To open or update a pull request in a public repository, you must have write access to the head or
+	// the source branch. For organization-owned repositories, you must be a member of the organization
+	// that owns the repository to open or update a pull request.
+	//
+	// PATCH /repos/{owner}/{repo}/pulls/{pull_number}
+	PullsUpdate(ctx context.Context, request OptPullsUpdateReq, params PullsUpdateParams) (PullsUpdateRes, error)
+	// PullsUpdateBranch invokes pulls/update-branch operation.
+	//
+	// Updates the pull request branch with the latest upstream changes by merging HEAD from the base
+	// branch into the pull request branch.
+	//
+	// PUT /repos/{owner}/{repo}/pulls/{pull_number}/update-branch
+	PullsUpdateBranch(ctx context.Context, request OptNilPullsUpdateBranchReq, params PullsUpdateBranchParams) (PullsUpdateBranchRes, error)
+	// PullsUpdateReview invokes pulls/update-review operation.
+	//
+	// Update the review summary comment with new text.
+	//
+	// PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
+	PullsUpdateReview(ctx context.Context, request *PullsUpdateReviewReq, params PullsUpdateReviewParams) (PullsUpdateReviewRes, error)
+	// PullsUpdateReviewComment invokes pulls/update-review-comment operation.
+	//
+	// Enables you to edit a review comment.
+	//
+	// PATCH /repos/{owner}/{repo}/pulls/comments/{comment_id}
+	PullsUpdateReviewComment(ctx context.Context, request *PullsUpdateReviewCommentReq, params PullsUpdateReviewCommentParams) (*PullRequestReviewComment, error)
+	// RateLimitGet invokes rate-limit/get operation.
+	//
+	// **Note:** Accessing this endpoint does not count against your REST API rate limit.
+	// **Note:** The `rate` object is deprecated. If you're writing new API client code or updating
+	// existing code, you should use the `core` object instead of the `rate` object. The `core` object
+	// contains the same information that is present in the `rate` object.
+	//
+	// GET /rate_limit
+	RateLimitGet(ctx context.Context) (RateLimitGetRes, error)
+	// ReactionsCreateForCommitComment invokes reactions/create-for-commit-comment operation.
+	//
+	// Create a reaction to a [commit comment](https://docs.github.com/rest/reference/repos#comments). A
+	// response with an HTTP `200` status means that you already added the reaction type to this commit
+	// comment.
+	//
+	// POST /repos/{owner}/{repo}/comments/{comment_id}/reactions
+	ReactionsCreateForCommitComment(ctx context.Context, request *ReactionsCreateForCommitCommentReq, params ReactionsCreateForCommitCommentParams) (ReactionsCreateForCommitCommentRes, error)
+	// ReactionsCreateForIssue invokes reactions/create-for-issue operation.
+	//
+	// Create a reaction to an [issue](https://docs.github.com/rest/reference/issues/). A response with
+	// an HTTP `200` status means that you already added the reaction type to this issue.
+	//
+	// POST /repos/{owner}/{repo}/issues/{issue_number}/reactions
+	ReactionsCreateForIssue(ctx context.Context, request *ReactionsCreateForIssueReq, params ReactionsCreateForIssueParams) (ReactionsCreateForIssueRes, error)
+	// ReactionsCreateForIssueComment invokes reactions/create-for-issue-comment operation.
+	//
+	// Create a reaction to an [issue comment](https://docs.github.com/rest/reference/issues#comments). A
+	// response with an HTTP `200` status means that you already added the reaction type to this issue
+	// comment.
+	//
+	// POST /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
+	ReactionsCreateForIssueComment(ctx context.Context, request *ReactionsCreateForIssueCommentReq, params ReactionsCreateForIssueCommentParams) (ReactionsCreateForIssueCommentRes, error)
+	// ReactionsCreateForPullRequestReviewComment invokes reactions/create-for-pull-request-review-comment operation.
+	//
+	// Create a reaction to a [pull request review comment](https://docs.github.
+	// com/rest/reference/pulls#comments). A response with an HTTP `200` status means that you already
+	// added the reaction type to this pull request review comment.
+	//
+	// POST /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
+	ReactionsCreateForPullRequestReviewComment(ctx context.Context, request *ReactionsCreateForPullRequestReviewCommentReq, params ReactionsCreateForPullRequestReviewCommentParams) (ReactionsCreateForPullRequestReviewCommentRes, error)
+	// ReactionsCreateForRelease invokes reactions/create-for-release operation.
+	//
+	// Create a reaction to a [release](https://docs.github.com/rest/reference/repos#releases). A
+	// response with a `Status: 200 OK` means that you already added the reaction type to this release.
+	//
+	// POST /repos/{owner}/{repo}/releases/{release_id}/reactions
+	ReactionsCreateForRelease(ctx context.Context, request *ReactionsCreateForReleaseReq, params ReactionsCreateForReleaseParams) (ReactionsCreateForReleaseRes, error)
+	// ReactionsCreateForTeamDiscussionCommentInOrg invokes reactions/create-for-team-discussion-comment-in-org operation.
+	//
+	// Create a reaction to a [team discussion comment](https://docs.github.
+	// com/rest/reference/teams#discussion-comments). OAuth access tokens require the `write:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/). A
+	// response with an HTTP `200` status means that you already added the reaction type to this team
+	// discussion comment.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `POST
+	// /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions`.
+	//
+	// POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
+	ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Context, request *ReactionsCreateForTeamDiscussionCommentInOrgReq, params ReactionsCreateForTeamDiscussionCommentInOrgParams) (ReactionsCreateForTeamDiscussionCommentInOrgRes, error)
+	// ReactionsCreateForTeamDiscussionCommentLegacy invokes reactions/create-for-team-discussion-comment-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new "[Create reaction for a team discussion
+	// comment](https://docs.github.
+	// com/rest/reference/reactions#create-reaction-for-a-team-discussion-comment)" endpoint.
+	// Create a reaction to a [team discussion comment](https://docs.github.
+	// com/rest/reference/teams#discussion-comments). OAuth access tokens require the `write:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/). A
+	// response with an HTTP `200` status means that you already added the reaction type to this team
+	// discussion comment.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// POST /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
+	ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Context, request *ReactionsCreateForTeamDiscussionCommentLegacyReq, params ReactionsCreateForTeamDiscussionCommentLegacyParams) (*Reaction, error)
+	// ReactionsCreateForTeamDiscussionInOrg invokes reactions/create-for-team-discussion-in-org operation.
+	//
+	// Create a reaction to a [team discussion](https://docs.github.com/rest/reference/teams#discussions).
+	//  OAuth access tokens require the `write:discussion` [scope](https://docs.github.
+	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/). A response with an HTTP `200`
+	// status means that you already added the reaction type to this team discussion.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `POST
+	// /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions`.
+	//
+	// POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
+	ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, request *ReactionsCreateForTeamDiscussionInOrgReq, params ReactionsCreateForTeamDiscussionInOrgParams) (ReactionsCreateForTeamDiscussionInOrgRes, error)
+	// ReactionsCreateForTeamDiscussionLegacy invokes reactions/create-for-team-discussion-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [`Create reaction for a team
+	// discussion`](https://docs.github.
+	// com/rest/reference/reactions#create-reaction-for-a-team-discussion) endpoint.
+	// Create a reaction to a [team discussion](https://docs.github.com/rest/reference/teams#discussions).
+	//  OAuth access tokens require the `write:discussion` [scope](https://docs.github.
+	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/). A response with an HTTP `200`
+	// status means that you already added the reaction type to this team discussion.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// POST /teams/{team_id}/discussions/{discussion_number}/reactions
+	ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, request *ReactionsCreateForTeamDiscussionLegacyReq, params ReactionsCreateForTeamDiscussionLegacyParams) (*Reaction, error)
+	// ReactionsDeleteForCommitComment invokes reactions/delete-for-commit-comment operation.
+	//
+	// **Note:** You can also specify a repository by `repository_id` using the route `DELETE
+	// /repositories/:repository_id/comments/:comment_id/reactions/:reaction_id`.
+	// Delete a reaction to a [commit comment](https://docs.github.com/rest/reference/repos#comments).
+	//
+	// DELETE /repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}
+	ReactionsDeleteForCommitComment(ctx context.Context, params ReactionsDeleteForCommitCommentParams) error
+	// ReactionsDeleteForIssue invokes reactions/delete-for-issue operation.
+	//
+	// **Note:** You can also specify a repository by `repository_id` using the route `DELETE
+	// /repositories/:repository_id/issues/:issue_number/reactions/:reaction_id`.
+	// Delete a reaction to an [issue](https://docs.github.com/rest/reference/issues/).
+	//
+	// DELETE /repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}
+	ReactionsDeleteForIssue(ctx context.Context, params ReactionsDeleteForIssueParams) error
+	// ReactionsDeleteForIssueComment invokes reactions/delete-for-issue-comment operation.
+	//
+	// **Note:** You can also specify a repository by `repository_id` using the route `DELETE delete
+	// /repositories/:repository_id/issues/comments/:comment_id/reactions/:reaction_id`.
+	// Delete a reaction to an [issue comment](https://docs.github.com/rest/reference/issues#comments).
+	//
+	// DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}
+	ReactionsDeleteForIssueComment(ctx context.Context, params ReactionsDeleteForIssueCommentParams) error
+	// ReactionsDeleteForPullRequestComment invokes reactions/delete-for-pull-request-comment operation.
+	//
+	// **Note:** You can also specify a repository by `repository_id` using the route `DELETE
+	// /repositories/:repository_id/pulls/comments/:comment_id/reactions/:reaction_id.`
+	// Delete a reaction to a [pull request review comment](https://docs.github.
+	// com/rest/reference/pulls#review-comments).
+	//
+	// DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}
+	ReactionsDeleteForPullRequestComment(ctx context.Context, params ReactionsDeleteForPullRequestCommentParams) error
+	// ReactionsDeleteForTeamDiscussion invokes reactions/delete-for-team-discussion operation.
+	//
+	// **Note:** You can also specify a team or organization with `team_id` and `org_id` using the route
+	// `DELETE
+	// /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions/:reaction_id`.
+	// Delete a reaction to a [team discussion](https://docs.github.com/rest/reference/teams#discussions).
+	//  OAuth access tokens require the `write:discussion` [scope](https://docs.github.
+	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}
+	ReactionsDeleteForTeamDiscussion(ctx context.Context, params ReactionsDeleteForTeamDiscussionParams) error
+	// ReactionsDeleteForTeamDiscussionComment invokes reactions/delete-for-team-discussion-comment operation.
+	//
+	// **Note:** You can also specify a team or organization with `team_id` and `org_id` using the route
+	// `DELETE
+	// /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions/:reaction_id`.
+	// Delete a reaction to a [team discussion comment](https://docs.github.
+	// com/rest/reference/teams#discussion-comments). OAuth access tokens require the `write:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}
+	ReactionsDeleteForTeamDiscussionComment(ctx context.Context, params ReactionsDeleteForTeamDiscussionCommentParams) error
+	// ReactionsDeleteLegacy invokes reactions/delete-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Reactions
+	// API. We recommend migrating your existing code to use the new delete reactions endpoints. For more
+	// information, see this [blog post](https://developer.github.
+	// com/changes/2020-02-26-new-delete-reactions-endpoints/).
+	// OAuth access tokens require the `write:discussion` [scope](https://docs.github.
+	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/), when deleting a [team
+	// discussion](https://docs.github.com/rest/reference/teams#discussions) or [team discussion
+	// comment](https://docs.github.com/rest/reference/teams#discussion-comments).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// DELETE /reactions/{reaction_id}
+	ReactionsDeleteLegacy(ctx context.Context, params ReactionsDeleteLegacyParams) (ReactionsDeleteLegacyRes, error)
+	// ReactionsListForCommitComment invokes reactions/list-for-commit-comment operation.
+	//
+	// List the reactions to a [commit comment](https://docs.github.com/rest/reference/repos#comments).
+	//
+	// GET /repos/{owner}/{repo}/comments/{comment_id}/reactions
+	ReactionsListForCommitComment(ctx context.Context, params ReactionsListForCommitCommentParams) (ReactionsListForCommitCommentRes, error)
+	// ReactionsListForIssue invokes reactions/list-for-issue operation.
+	//
+	// List the reactions to an [issue](https://docs.github.com/rest/reference/issues).
+	//
+	// GET /repos/{owner}/{repo}/issues/{issue_number}/reactions
+	ReactionsListForIssue(ctx context.Context, params ReactionsListForIssueParams) (ReactionsListForIssueRes, error)
+	// ReactionsListForIssueComment invokes reactions/list-for-issue-comment operation.
+	//
+	// List the reactions to an [issue comment](https://docs.github.com/rest/reference/issues#comments).
+	//
+	// GET /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
+	ReactionsListForIssueComment(ctx context.Context, params ReactionsListForIssueCommentParams) (ReactionsListForIssueCommentRes, error)
+	// ReactionsListForPullRequestReviewComment invokes reactions/list-for-pull-request-review-comment operation.
+	//
+	// List the reactions to a [pull request review comment](https://docs.github.
+	// com/rest/reference/pulls#review-comments).
+	//
+	// GET /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
+	ReactionsListForPullRequestReviewComment(ctx context.Context, params ReactionsListForPullRequestReviewCommentParams) (ReactionsListForPullRequestReviewCommentRes, error)
+	// ReactionsListForTeamDiscussionCommentInOrg invokes reactions/list-for-team-discussion-comment-in-org operation.
+	//
+	// List the reactions to a [team discussion comment](https://docs.github.
+	// com/rest/reference/teams#discussion-comments/). OAuth access tokens require the `read:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
+	// /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions`.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
+	ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context, params ReactionsListForTeamDiscussionCommentInOrgParams) (*ReactionsListForTeamDiscussionCommentInOrgOKHeaders, error)
+	// ReactionsListForTeamDiscussionCommentLegacy invokes reactions/list-for-team-discussion-comment-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [`List reactions for a team discussion
+	// comment`](https://docs.github.
+	// com/rest/reference/reactions#list-reactions-for-a-team-discussion-comment) endpoint.
+	// List the reactions to a [team discussion comment](https://docs.github.
+	// com/rest/reference/teams#discussion-comments). OAuth access tokens require the `read:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
+	ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context, params ReactionsListForTeamDiscussionCommentLegacyParams) (*ReactionsListForTeamDiscussionCommentLegacyOKHeaders, error)
+	// ReactionsListForTeamDiscussionInOrg invokes reactions/list-for-team-discussion-in-org operation.
+	//
+	// List the reactions to a [team discussion](https://docs.github.
+	// com/rest/reference/teams#discussions). OAuth access tokens require the `read:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
+	// /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions`.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
+	ReactionsListForTeamDiscussionInOrg(ctx context.Context, params ReactionsListForTeamDiscussionInOrgParams) (*ReactionsListForTeamDiscussionInOrgOKHeaders, error)
+	// ReactionsListForTeamDiscussionLegacy invokes reactions/list-for-team-discussion-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [`List reactions for a team
+	// discussion`](https://docs.github.
+	// com/rest/reference/reactions#list-reactions-for-a-team-discussion) endpoint.
+	// List the reactions to a [team discussion](https://docs.github.
+	// com/rest/reference/teams#discussions). OAuth access tokens require the `read:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}/discussions/{discussion_number}/reactions
+	ReactionsListForTeamDiscussionLegacy(ctx context.Context, params ReactionsListForTeamDiscussionLegacyParams) (*ReactionsListForTeamDiscussionLegacyOKHeaders, error)
+	// ReposAcceptInvitation invokes repos/accept-invitation operation.
+	//
+	// Accept a repository invitation.
+	//
+	// PATCH /user/repository_invitations/{invitation_id}
+	ReposAcceptInvitation(ctx context.Context, params ReposAcceptInvitationParams) (ReposAcceptInvitationRes, error)
+	// ReposAddAppAccessRestrictions invokes repos/add-app-access-restrictions operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Grants the specified apps push access for this branch. Only installed GitHub Apps with `write`
+	// access to the `contents` permission can be added as authorized actors on a protected branch.
+	// | Type    | Description
+	//                                                                     |
+	// | ------- |
+	// ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+	// | `array` | The GitHub Apps that have push access to this branch. Use the app's `slug`. **Note**:
+	// The list of users, apps, and teams in total is limited to 100 items. |.
+	//
+	// POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
+	ReposAddAppAccessRestrictions(ctx context.Context, request OptReposAddAppAccessRestrictionsReq, params ReposAddAppAccessRestrictionsParams) (ReposAddAppAccessRestrictionsRes, error)
+	// ReposAddCollaborator invokes repos/add-collaborator operation.
+	//
+	// This endpoint triggers [notifications](https://docs.github.
+	// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
+	// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
+	// rate limits](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
+	// rate limits](https://docs.github.
+	// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+	// For more information the permission levels, see "[Repository permission levels for an
+	// organization](https://help.github.
+	// com/en/github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization#permission-levels-for-repositories-owned-by-an-organization)".
+	// Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero
+	// when calling out to this endpoint. For more information, see "[HTTP verbs](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#http-verbs)."
+	// The invitee will receive a notification that they have been invited to the repository, which they
+	// must accept or decline. They may do this via the notifications page, the email they receive, or by
+	// using the [repository invitations API endpoints](https://docs.github.
+	// com/rest/reference/repos#invitations).
+	// **Rate limits**
+	// You are limited to sending 50 invitations to a repository per 24 hour period. Note there is no
+	// limit if you are inviting organization members to an organization repository.
+	//
+	// PUT /repos/{owner}/{repo}/collaborators/{username}
+	ReposAddCollaborator(ctx context.Context, request OptReposAddCollaboratorReq, params ReposAddCollaboratorParams) (ReposAddCollaboratorRes, error)
+	// ReposAddStatusCheckContexts invokes repos/add-status-check-contexts operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	//
+	// POST /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
+	ReposAddStatusCheckContexts(ctx context.Context, request OptReposAddStatusCheckContextsReq, params ReposAddStatusCheckContextsParams) (ReposAddStatusCheckContextsRes, error)
+	// ReposAddTeamAccessRestrictions invokes repos/add-team-access-restrictions operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Grants the specified teams push access for this branch. You can also give push access to child
+	// teams.
+	// | Type    | Description
+	//                                                     |
+	// | ------- |
+	// ------------------------------------------------------------------------------------------------------------------------------------------ |
+	// | `array` | The teams that can have push access. Use the team's `slug`. **Note**: The list of
+	// users, apps, and teams in total is limited to 100 items. |.
+	//
+	// POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
+	ReposAddTeamAccessRestrictions(ctx context.Context, request OptReposAddTeamAccessRestrictionsReq, params ReposAddTeamAccessRestrictionsParams) (ReposAddTeamAccessRestrictionsRes, error)
+	// ReposAddUserAccessRestrictions invokes repos/add-user-access-restrictions operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Grants the specified people push access for this branch.
+	// | Type    | Description
+	//                                        |
+	// | ------- |
+	// ----------------------------------------------------------------------------------------------------------------------------- |
+	// | `array` | Usernames for people who can have push access. **Note**: The list of users, apps, and
+	// teams in total is limited to 100 items. |.
+	//
+	// POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
+	ReposAddUserAccessRestrictions(ctx context.Context, request OptReposAddUserAccessRestrictionsReq, params ReposAddUserAccessRestrictionsParams) (ReposAddUserAccessRestrictionsRes, error)
+	// ReposCheckCollaborator invokes repos/check-collaborator operation.
+	//
+	// For organization-owned repositories, the list of collaborators includes outside collaborators,
+	// organization members that are direct collaborators, organization members with access through team
+	// memberships, organization members with access through default organization permissions, and
+	// organization owners.
+	// Team members will include the members of child teams.
+	//
+	// GET /repos/{owner}/{repo}/collaborators/{username}
+	ReposCheckCollaborator(ctx context.Context, params ReposCheckCollaboratorParams) (ReposCheckCollaboratorRes, error)
+	// ReposCheckVulnerabilityAlerts invokes repos/check-vulnerability-alerts operation.
+	//
+	// Shows whether dependency alerts are enabled or disabled for a repository. The authenticated user
+	// must have admin access to the repository. For more information, see "[About security alerts for
+	// vulnerable dependencies](https://help.github.
+	// com/en/articles/about-security-alerts-for-vulnerable-dependencies)".
+	//
+	// GET /repos/{owner}/{repo}/vulnerability-alerts
+	ReposCheckVulnerabilityAlerts(ctx context.Context, params ReposCheckVulnerabilityAlertsParams) (ReposCheckVulnerabilityAlertsRes, error)
+	// ReposCompareCommits invokes repos/compare-commits operation.
+	//
+	// The `basehead` param is comprised of two parts: `base` and `head`. Both must be branch names in
+	// `repo`. To compare branches across other repositories in the same network as `repo`, use the
+	// format `<USERNAME>:branch`.
+	// The response from the API is equivalent to running the `git log base..head` command; however,
+	// commits are returned in chronological order. Pass the appropriate [media type](https://docs.github.
+	// com/rest/overview/media-types/#commits-commit-comparison-and-pull-requests) to fetch diff and
+	// patch formats.
+	// The response also includes details on the files that were changed between the two commits. This
+	// includes the status of the change (for example, if a file was added, removed, modified, or
+	// renamed), and details of the change itself. For example, files with a `renamed` status have a
+	// `previous_filename` field showing the previous filename of the file, and files with a `modified`
+	// status have a `patch` field showing the changes made to the file.
+	// **Working with large comparisons**
+	// To process a response with a large number of commits, you can use (`per_page` or `page`) to
+	// paginate the results. When using paging, the list of changed files is only returned with page 1,
+	// but includes all changed files for the entire comparison. For more information on working with
+	// pagination, see "[Traversing with pagination](/rest/guides/traversing-with-pagination)."
+	// When calling this API without any paging parameters (`per_page` or `page`), the returned list is
+	// limited to 250 commits and the last commit in the list is the most recent of the entire comparison.
+	//  When a paging parameter is specified, the first commit in the returned list of each page is the
+	// earliest.
+	// **Signature verification object**
+	// The response will include a `verification` object that describes the result of verifying the
+	// commit's signature. The following fields are included in the `verification` object:
+	// | Name | Type | Description |
+	// | ---- | ---- | ----------- |
+	// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be
+	// verified. |
+	// | `reason` | `string` | The reason for verified value. Possible values and their meanings are
+	// enumerated in table below. |
+	// | `signature` | `string` | The signature that was extracted from the commit. |
+	// | `payload` | `string` | The value that was signed. |
+	// These are the possible values for `reason` in the `verification` object:
+	// | Value | Description |
+	// | ----- | ----------- |
+	// | `expired_key` | The key that made the signature is expired. |
+	// | `not_signing_key` | The "signing" flag is not among the usage flags in the GPG key that made the
+	// signature. |
+	// | `gpgverify_error` | There was an error communicating with the signature verification service. |
+	// | `gpgverify_unavailable` | The signature verification service is currently unavailable. |
+	// | `unsigned` | The object does not include a signature. |
+	// | `unknown_signature_type` | A non-PGP signature was found in the commit. |
+	// | `no_user` | No user was associated with the `committer` email address in the commit. |
+	// | `unverified_email` | The `committer` email address in the commit was associated with a user, but
+	// the email address is not verified on her/his account. |
+	// | `bad_email` | The `committer` email address in the commit is not included in the identities of
+	// the PGP key that made the signature. |
+	// | `unknown_key` | The key that made the signature has not been registered with any user's account.
+	// |
+	// | `malformed_signature` | There was an error parsing the signature. |
+	// | `invalid` | The signature could not be cryptographically verified using the key whose key-id was
+	// found in the signature. |
+	// | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
+	//
+	// GET /repos/{owner}/{repo}/compare/{basehead}
+	ReposCompareCommits(ctx context.Context, params ReposCompareCommitsParams) (ReposCompareCommitsRes, error)
+	// ReposCreateAutolink invokes repos/create-autolink operation.
+	//
+	// Users with admin access to the repository can create an autolink.
+	//
+	// POST /repos/{owner}/{repo}/autolinks
+	ReposCreateAutolink(ctx context.Context, request *ReposCreateAutolinkReq, params ReposCreateAutolinkParams) (ReposCreateAutolinkRes, error)
+	// ReposCreateCommitComment invokes repos/create-commit-comment operation.
+	//
+	// Create a comment for a commit using its `:commit_sha`.
+	// This endpoint triggers [notifications](https://docs.github.
+	// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
+	// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
+	// rate limits](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
+	// rate limits](https://docs.github.
+	// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+	//
+	// POST /repos/{owner}/{repo}/commits/{commit_sha}/comments
+	ReposCreateCommitComment(ctx context.Context, request *ReposCreateCommitCommentReq, params ReposCreateCommitCommentParams) (ReposCreateCommitCommentRes, error)
+	// ReposCreateCommitSignatureProtection invokes repos/create-commit-signature-protection operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// When authenticated with admin or owner permissions to the repository, you can use this endpoint to
+	// require signed commits on a branch. You must enable branch protection to require signed commits.
+	//
+	// POST /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
+	ReposCreateCommitSignatureProtection(ctx context.Context, params ReposCreateCommitSignatureProtectionParams) (ReposCreateCommitSignatureProtectionRes, error)
+	// ReposCreateCommitStatus invokes repos/create-commit-status operation.
+	//
+	// Users with push access in a repository can create commit statuses for a given SHA.
+	// Note: there is a limit of 1000 statuses per `sha` and `context` within a repository. Attempts to
+	// create more than 1000 statuses will result in a validation error.
+	//
+	// POST /repos/{owner}/{repo}/statuses/{sha}
+	ReposCreateCommitStatus(ctx context.Context, request *ReposCreateCommitStatusReq, params ReposCreateCommitStatusParams) (*StatusHeaders, error)
+	// ReposCreateDeployKey invokes repos/create-deploy-key operation.
+	//
+	// You can create a read-only deploy key.
+	//
+	// POST /repos/{owner}/{repo}/keys
+	ReposCreateDeployKey(ctx context.Context, request *ReposCreateDeployKeyReq, params ReposCreateDeployKeyParams) (ReposCreateDeployKeyRes, error)
+	// ReposCreateDeployment invokes repos/create-deployment operation.
+	//
+	// Deployments offer a few configurable parameters with certain defaults.
+	// The `ref` parameter can be any named branch, tag, or SHA. At GitHub we often deploy branches and
+	// verify them
+	// before we merge a pull request.
+	// The `environment` parameter allows deployments to be issued to different runtime environments.
+	// Teams often have
+	// multiple environments for verifying their applications, such as `production`, `staging`, and `qa`.
+	// This parameter
+	// makes it easier to track which environments have requested deployments. The default environment is
+	// `production`.
+	// The `auto_merge` parameter is used to ensure that the requested ref is not behind the repository's
+	// default branch. If
+	// the ref _is_ behind the default branch for the repository, we will attempt to merge it for you. If
+	// the merge succeeds,
+	// the API will return a successful merge commit. If merge conflicts prevent the merge from
+	// succeeding, the API will
+	// return a failure response.
+	// By default, [commit statuses](https://docs.github.com/rest/reference/repos#statuses) for every
+	// submitted context must be in a `success`
+	// state. The `required_contexts` parameter allows you to specify a subset of contexts that must be
+	// `success`, or to
+	// specify contexts that have not yet been submitted. You are not required to use commit statuses to
+	// deploy. If you do
+	// not require any contexts or create any commit statuses, the deployment will always succeed.
+	// The `payload` parameter is available for any extra information that a deployment system might need.
+	//  It is a JSON text
+	// field that will be passed on when a deployment event is dispatched.
+	// The `task` parameter is used by the deployment system to allow different execution paths. In the
+	// web world this might
+	// be `deploy:migrations` to run schema changes on the system. In the compiled world this could be a
+	// flag to compile an
+	// application with debugging enabled.
+	// Users with `repo` or `repo_deployment` scopes can create a deployment for a given ref.
+	// #### Merged branch response
+	// You will see this response when GitHub automatically merges the base branch into the topic branch
+	// instead of creating
+	// a deployment. This auto-merge happens when:
+	// *   Auto-merge option is enabled in the repository
+	// *   Topic branch does not include the latest changes on the base branch, which is `master` in the
+	// response example
+	// *   There are no merge conflicts
+	// If there are no new commits in the base branch, a new request to create a deployment should give a
+	// successful
+	// response.
+	// #### Merge conflict response
+	// This error happens when the `auto_merge` option is enabled and when the default branch (in this
+	// case `master`), can't
+	// be merged into the branch that's being deployed (in this case `topic-branch`), due to merge
+	// conflicts.
+	// #### Failed commit status checks
+	// This error happens when the `required_contexts` parameter indicates that one or more contexts need
+	// to have a `success`
+	// status for the commit to be deployed, but one or more of the required contexts do not have a state
+	// of `success`.
+	//
+	// POST /repos/{owner}/{repo}/deployments
+	ReposCreateDeployment(ctx context.Context, request *ReposCreateDeploymentReq, params ReposCreateDeploymentParams) (ReposCreateDeploymentRes, error)
+	// ReposCreateDeploymentStatus invokes repos/create-deployment-status operation.
+	//
+	// Users with `push` access can create deployment statuses for a given deployment.
+	// GitHub Apps require `read & write` access to "Deployments" and `read-only` access to "Repo
+	// contents" (for private repos). OAuth Apps require the `repo_deployment` scope.
+	//
+	// POST /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
+	ReposCreateDeploymentStatus(ctx context.Context, request *ReposCreateDeploymentStatusReq, params ReposCreateDeploymentStatusParams) (ReposCreateDeploymentStatusRes, error)
+	// ReposCreateDispatchEvent invokes repos/create-dispatch-event operation.
+	//
+	// You can use this endpoint to trigger a webhook event called `repository_dispatch` when you want
+	// activity that happens outside of GitHub to trigger a GitHub Actions workflow or GitHub App webhook.
+	//  You must configure your GitHub Actions workflow or GitHub App to run when the
+	// `repository_dispatch` event occurs. For an example `repository_dispatch` webhook payload, see
+	// "[RepositoryDispatchEvent](https://docs.github.com/webhooks/event-payloads/#repository_dispatch)."
+	// The `client_payload` parameter is available for any extra information that your workflow might
+	// need. This parameter is a JSON payload that will be passed on when the webhook event is dispatched.
+	//  For example, the `client_payload` can include a message that a user would like to send using a
+	// GitHub Actions workflow. Or the `client_payload` can be used as a test to debug your workflow.
+	// This endpoint requires write access to the repository by providing either:
+	// - Personal access tokens with `repo` scope. For more information, see "[Creating a personal access
+	// token for the command line](https://help.github.
+	// com/articles/creating-a-personal-access-token-for-the-command-line)" in the GitHub Help
+	// documentation.
+	// - GitHub Apps with both `metadata:read` and `contents:read&write` permissions.
+	// This input example shows how you can use the `client_payload` as a test to debug your workflow.
+	//
+	// POST /repos/{owner}/{repo}/dispatches
+	ReposCreateDispatchEvent(ctx context.Context, request *ReposCreateDispatchEventReq, params ReposCreateDispatchEventParams) (ReposCreateDispatchEventRes, error)
+	// ReposCreateForAuthenticatedUser invokes repos/create-for-authenticated-user operation.
+	//
+	// Creates a new repository for the authenticated user.
+	// **OAuth scope requirements**
+	// When using [OAuth](https://docs.github.
+	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/), authorizations must include:
+	// *   `public_repo` scope or `repo` scope to create a public repository. Note: For GitHub AE, use
+	// `repo` scope to create an internal repository.
+	// *   `repo` scope to create a private repository.
+	//
+	// POST /user/repos
+	ReposCreateForAuthenticatedUser(ctx context.Context, request *ReposCreateForAuthenticatedUserReq) (ReposCreateForAuthenticatedUserRes, error)
+	// ReposCreateFork invokes repos/create-fork operation.
+	//
+	// Create a fork for the authenticated user.
+	// **Note**: Forking a Repository happens asynchronously. You may have to wait a short period of time
+	// before you can access the git objects. If this takes longer than 5 minutes, be sure to contact
+	// [GitHub Support](https://support.github.com/contact?tags=dotcom-rest-api).
+	//
+	// POST /repos/{owner}/{repo}/forks
+	ReposCreateFork(ctx context.Context, request OptNilReposCreateForkReq, params ReposCreateForkParams) (ReposCreateForkRes, error)
+	// ReposCreateInOrg invokes repos/create-in-org operation.
+	//
+	// Creates a new repository in the specified organization. The authenticated user must be a member of
+	// the organization.
+	// **OAuth scope requirements**
+	// When using [OAuth](https://docs.github.
+	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/), authorizations must include:
+	// *   `public_repo` scope or `repo` scope to create a public repository. Note: For GitHub AE, use
+	// `repo` scope to create an internal repository.
+	// *   `repo` scope to create a private repository.
+	//
+	// POST /orgs/{org}/repos
+	ReposCreateInOrg(ctx context.Context, request *ReposCreateInOrgReq, params ReposCreateInOrgParams) (ReposCreateInOrgRes, error)
+	// ReposCreateOrUpdateFileContents invokes repos/create-or-update-file-contents operation.
+	//
+	// Creates a new file or replaces an existing file in a repository.
+	//
+	// PUT /repos/{owner}/{repo}/contents/{path}
+	ReposCreateOrUpdateFileContents(ctx context.Context, request *ReposCreateOrUpdateFileContentsReq, params ReposCreateOrUpdateFileContentsParams) (ReposCreateOrUpdateFileContentsRes, error)
+	// ReposCreatePagesSite invokes repos/create-pages-site operation.
+	//
+	// Configures a GitHub Pages site. For more information, see "[About GitHub
+	// Pages](/github/working-with-github-pages/about-github-pages).".
+	//
+	// POST /repos/{owner}/{repo}/pages
+	ReposCreatePagesSite(ctx context.Context, request NilReposCreatePagesSiteReq, params ReposCreatePagesSiteParams) (ReposCreatePagesSiteRes, error)
+	// ReposCreateRelease invokes repos/create-release operation.
+	//
+	// Users with push access to the repository can create a release.
+	// This endpoint triggers [notifications](https://docs.github.
+	// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
+	// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
+	// rate limits](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
+	// rate limits](https://docs.github.
+	// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+	//
+	// POST /repos/{owner}/{repo}/releases
+	ReposCreateRelease(ctx context.Context, request *ReposCreateReleaseReq, params ReposCreateReleaseParams) (ReposCreateReleaseRes, error)
+	// ReposCreateUsingTemplate invokes repos/create-using-template operation.
+	//
+	// Creates a new repository using a repository template. Use the `template_owner` and `template_repo`
+	// route parameters to specify the repository to use as the template. The authenticated user must own
+	// or be a member of an organization that owns the repository. To check if a repository is available
+	// to use as a template, get the repository's information using the [Get a repository](https://docs.
+	// github.com/rest/reference/repos#get-a-repository) endpoint and check that the `is_template` key is
+	// `true`.
+	// **OAuth scope requirements**
+	// When using [OAuth](https://docs.github.
+	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/), authorizations must include:
+	// *   `public_repo` scope or `repo` scope to create a public repository. Note: For GitHub AE, use
+	// `repo` scope to create an internal repository.
+	// *   `repo` scope to create a private repository.
+	//
+	// POST /repos/{template_owner}/{template_repo}/generate
+	ReposCreateUsingTemplate(ctx context.Context, request *ReposCreateUsingTemplateReq, params ReposCreateUsingTemplateParams) (*RepositoryHeaders, error)
+	// ReposCreateWebhook invokes repos/create-webhook operation.
+	//
+	// Repositories can have multiple webhooks installed. Each webhook should have a unique `config`.
+	// Multiple webhooks can
+	// share the same `config` as long as those webhooks do not have any `events` that overlap.
+	//
+	// POST /repos/{owner}/{repo}/hooks
+	ReposCreateWebhook(ctx context.Context, request OptNilReposCreateWebhookReq, params ReposCreateWebhookParams) (ReposCreateWebhookRes, error)
+	// ReposDeclineInvitation invokes repos/decline-invitation operation.
+	//
+	// Decline a repository invitation.
+	//
+	// DELETE /user/repository_invitations/{invitation_id}
+	ReposDeclineInvitation(ctx context.Context, params ReposDeclineInvitationParams) (ReposDeclineInvitationRes, error)
+	// ReposDelete invokes repos/delete operation.
+	//
+	// Deleting a repository requires admin access. If OAuth is used, the `delete_repo` scope is required.
+	// If an organization owner has configured the organization to prevent members from deleting
+	// organization-owned
+	// repositories, you will get a `403 Forbidden` response.
+	//
+	// DELETE /repos/{owner}/{repo}
+	ReposDelete(ctx context.Context, params ReposDeleteParams) (ReposDeleteRes, error)
+	// ReposDeleteAccessRestrictions invokes repos/delete-access-restrictions operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Disables the ability to restrict who can push to this branch.
+	//
+	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
+	ReposDeleteAccessRestrictions(ctx context.Context, params ReposDeleteAccessRestrictionsParams) error
+	// ReposDeleteAdminBranchProtection invokes repos/delete-admin-branch-protection operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Removing admin enforcement requires admin or owner permissions to the repository and branch
+	// protection to be enabled.
+	//
+	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
+	ReposDeleteAdminBranchProtection(ctx context.Context, params ReposDeleteAdminBranchProtectionParams) (ReposDeleteAdminBranchProtectionRes, error)
+	// ReposDeleteAnEnvironment invokes repos/delete-an-environment operation.
+	//
+	// You must authenticate using an access token with the repo scope to use this endpoint.
+	//
+	// DELETE /repos/{owner}/{repo}/environments/{environment_name}
+	ReposDeleteAnEnvironment(ctx context.Context, params ReposDeleteAnEnvironmentParams) error
+	// ReposDeleteAutolink invokes repos/delete-autolink operation.
+	//
+	// This deletes a single autolink reference by ID that was configured for the given repository.
+	// Information about autolinks are only available to repository administrators.
+	//
+	// DELETE /repos/{owner}/{repo}/autolinks/{autolink_id}
+	ReposDeleteAutolink(ctx context.Context, params ReposDeleteAutolinkParams) (ReposDeleteAutolinkRes, error)
+	// ReposDeleteBranchProtection invokes repos/delete-branch-protection operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	//
+	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection
+	ReposDeleteBranchProtection(ctx context.Context, params ReposDeleteBranchProtectionParams) (ReposDeleteBranchProtectionRes, error)
+	// ReposDeleteCommitComment invokes repos/delete-commit-comment operation.
+	//
+	// Delete a commit comment.
+	//
+	// DELETE /repos/{owner}/{repo}/comments/{comment_id}
+	ReposDeleteCommitComment(ctx context.Context, params ReposDeleteCommitCommentParams) (ReposDeleteCommitCommentRes, error)
+	// ReposDeleteCommitSignatureProtection invokes repos/delete-commit-signature-protection operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// When authenticated with admin or owner permissions to the repository, you can use this endpoint to
+	// disable required signed commits on a branch. You must enable branch protection to require signed
+	// commits.
+	//
+	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
+	ReposDeleteCommitSignatureProtection(ctx context.Context, params ReposDeleteCommitSignatureProtectionParams) (ReposDeleteCommitSignatureProtectionRes, error)
+	// ReposDeleteDeployKey invokes repos/delete-deploy-key operation.
+	//
+	// Deploy keys are immutable. If you need to update a key, remove the key and create a new one
+	// instead.
+	//
+	// DELETE /repos/{owner}/{repo}/keys/{key_id}
+	ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDeployKeyParams) error
+	// ReposDeleteDeployment invokes repos/delete-deployment operation.
+	//
+	// To ensure there can always be an active deployment, you can only delete an _inactive_ deployment.
+	// Anyone with `repo` or `repo_deployment` scopes can delete an inactive deployment.
+	// To set a deployment as inactive, you must:
+	// *   Create a new deployment that is active so that the system has a record of the current state,
+	// then delete the previously active deployment.
+	// *   Mark the active deployment as inactive by adding any non-successful deployment status.
+	// For more information, see "[Create a deployment](https://docs.github.
+	// com/rest/reference/repos/#create-a-deployment)" and "[Create a deployment status](https://docs.
+	// github.com/rest/reference/repos#create-a-deployment-status).".
+	//
+	// DELETE /repos/{owner}/{repo}/deployments/{deployment_id}
+	ReposDeleteDeployment(ctx context.Context, params ReposDeleteDeploymentParams) (ReposDeleteDeploymentRes, error)
+	// ReposDeleteFile invokes repos/delete-file operation.
+	//
+	// Deletes a file in a repository.
+	// You can provide an additional `committer` parameter, which is an object containing information
+	// about the committer. Or, you can provide an `author` parameter, which is an object containing
+	// information about the author.
+	// The `author` section is optional and is filled in with the `committer` information if omitted. If
+	// the `committer` information is omitted, the authenticated user's information is used.
+	// You must provide values for both `name` and `email`, whether you choose to use `author` or
+	// `committer`. Otherwise, you'll receive a `422` status code.
+	//
+	// DELETE /repos/{owner}/{repo}/contents/{path}
+	ReposDeleteFile(ctx context.Context, request *ReposDeleteFileReq, params ReposDeleteFileParams) (ReposDeleteFileRes, error)
+	// ReposDeleteInvitation invokes repos/delete-invitation operation.
+	//
+	// Delete a repository invitation.
+	//
+	// DELETE /repos/{owner}/{repo}/invitations/{invitation_id}
+	ReposDeleteInvitation(ctx context.Context, params ReposDeleteInvitationParams) error
+	// ReposDeletePagesSite invokes repos/delete-pages-site operation.
+	//
+	// Delete a GitHub Pages site.
+	//
+	// DELETE /repos/{owner}/{repo}/pages
+	ReposDeletePagesSite(ctx context.Context, params ReposDeletePagesSiteParams) (ReposDeletePagesSiteRes, error)
+	// ReposDeletePullRequestReviewProtection invokes repos/delete-pull-request-review-protection operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	//
+	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
+	ReposDeletePullRequestReviewProtection(ctx context.Context, params ReposDeletePullRequestReviewProtectionParams) (ReposDeletePullRequestReviewProtectionRes, error)
+	// ReposDeleteRelease invokes repos/delete-release operation.
+	//
+	// Users with push access to the repository can delete a release.
+	//
+	// DELETE /repos/{owner}/{repo}/releases/{release_id}
+	ReposDeleteRelease(ctx context.Context, params ReposDeleteReleaseParams) error
+	// ReposDeleteReleaseAsset invokes repos/delete-release-asset operation.
+	//
+	// Delete a release asset.
+	//
+	// DELETE /repos/{owner}/{repo}/releases/assets/{asset_id}
+	ReposDeleteReleaseAsset(ctx context.Context, params ReposDeleteReleaseAssetParams) error
+	// ReposDeleteWebhook invokes repos/delete-webhook operation.
+	//
+	// Delete a repository webhook.
+	//
+	// DELETE /repos/{owner}/{repo}/hooks/{hook_id}
+	ReposDeleteWebhook(ctx context.Context, params ReposDeleteWebhookParams) (ReposDeleteWebhookRes, error)
+	// ReposDisableAutomatedSecurityFixes invokes repos/disable-automated-security-fixes operation.
+	//
+	// Disables automated security fixes for a repository. The authenticated user must have admin access
+	// to the repository. For more information, see "[Configuring automated security fixes](https://help.
+	// github.com/en/articles/configuring-automated-security-fixes)".
+	//
+	// DELETE /repos/{owner}/{repo}/automated-security-fixes
+	ReposDisableAutomatedSecurityFixes(ctx context.Context, params ReposDisableAutomatedSecurityFixesParams) error
+	// ReposDisableLfsForRepo invokes repos/disable-lfs-for-repo operation.
+	//
+	// **Note:** The Git LFS API endpoints are currently in beta and are subject to change.
+	//
+	// DELETE /repos/{owner}/{repo}/lfs
+	ReposDisableLfsForRepo(ctx context.Context, params ReposDisableLfsForRepoParams) error
+	// ReposDisableVulnerabilityAlerts invokes repos/disable-vulnerability-alerts operation.
+	//
+	// Disables dependency alerts and the dependency graph for a repository. The authenticated user must
+	// have admin access to the repository. For more information, see "[About security alerts for
+	// vulnerable dependencies](https://help.github.
+	// com/en/articles/about-security-alerts-for-vulnerable-dependencies)".
+	//
+	// DELETE /repos/{owner}/{repo}/vulnerability-alerts
+	ReposDisableVulnerabilityAlerts(ctx context.Context, params ReposDisableVulnerabilityAlertsParams) error
+	// ReposDownloadTarballArchive invokes repos/download-tarball-archive operation.
+	//
+	// Gets a redirect URL to download a tar archive for a repository. If you omit `:ref`, the
+	// repository’s default branch (usually
+	// `master`) will be used. Please make sure your HTTP framework is configured to follow redirects or
+	// you will need to use
+	// the `Location` header to make a second `GET` request.
+	// **Note**: For private repositories, these links are temporary and expire after five minutes.
+	//
+	// GET /repos/{owner}/{repo}/tarball/{ref}
+	ReposDownloadTarballArchive(ctx context.Context, params ReposDownloadTarballArchiveParams) (*ReposDownloadTarballArchiveFound, error)
+	// ReposDownloadZipballArchive invokes repos/download-zipball-archive operation.
+	//
+	// Gets a redirect URL to download a zip archive for a repository. If you omit `:ref`, the
+	// repository’s default branch (usually
+	// `master`) will be used. Please make sure your HTTP framework is configured to follow redirects or
+	// you will need to use
+	// the `Location` header to make a second `GET` request.
+	// **Note**: For private repositories, these links are temporary and expire after five minutes.
+	//
+	// GET /repos/{owner}/{repo}/zipball/{ref}
+	ReposDownloadZipballArchive(ctx context.Context, params ReposDownloadZipballArchiveParams) (*ReposDownloadZipballArchiveFound, error)
+	// ReposEnableAutomatedSecurityFixes invokes repos/enable-automated-security-fixes operation.
+	//
+	// Enables automated security fixes for a repository. The authenticated user must have admin access
+	// to the repository. For more information, see "[Configuring automated security fixes](https://help.
+	// github.com/en/articles/configuring-automated-security-fixes)".
+	//
+	// PUT /repos/{owner}/{repo}/automated-security-fixes
+	ReposEnableAutomatedSecurityFixes(ctx context.Context, params ReposEnableAutomatedSecurityFixesParams) error
+	// ReposEnableLfsForRepo invokes repos/enable-lfs-for-repo operation.
+	//
+	// **Note:** The Git LFS API endpoints are currently in beta and are subject to change.
+	//
+	// PUT /repos/{owner}/{repo}/lfs
+	ReposEnableLfsForRepo(ctx context.Context, params ReposEnableLfsForRepoParams) (ReposEnableLfsForRepoRes, error)
+	// ReposEnableVulnerabilityAlerts invokes repos/enable-vulnerability-alerts operation.
+	//
+	// Enables dependency alerts and the dependency graph for a repository. The authenticated user must
+	// have admin access to the repository. For more information, see "[About security alerts for
+	// vulnerable dependencies](https://help.github.
+	// com/en/articles/about-security-alerts-for-vulnerable-dependencies)".
+	//
+	// PUT /repos/{owner}/{repo}/vulnerability-alerts
+	ReposEnableVulnerabilityAlerts(ctx context.Context, params ReposEnableVulnerabilityAlertsParams) error
+	// ReposGet invokes repos/get operation.
+	//
+	// The `parent` and `source` objects are present when the repository is a fork. `parent` is the
+	// repository this repository was forked from, `source` is the ultimate source for the network.
+	//
+	// GET /repos/{owner}/{repo}
+	ReposGet(ctx context.Context, params ReposGetParams) (ReposGetRes, error)
+	// ReposGetAccessRestrictions invokes repos/get-access-restrictions operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Lists who has access to this protected branch.
+	// **Note**: Users, apps, and teams `restrictions` are only available for organization-owned
+	// repositories.
+	//
+	// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
+	ReposGetAccessRestrictions(ctx context.Context, params ReposGetAccessRestrictionsParams) (ReposGetAccessRestrictionsRes, error)
+	// ReposGetAdminBranchProtection invokes repos/get-admin-branch-protection operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	//
+	// GET /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
+	ReposGetAdminBranchProtection(ctx context.Context, params ReposGetAdminBranchProtectionParams) (*ProtectedBranchAdminEnforced, error)
+	// ReposGetAllStatusCheckContexts invokes repos/get-all-status-check-contexts operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	//
+	// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
+	ReposGetAllStatusCheckContexts(ctx context.Context, params ReposGetAllStatusCheckContextsParams) (ReposGetAllStatusCheckContextsRes, error)
+	// ReposGetAllTopics invokes repos/get-all-topics operation.
+	//
+	// Get all repository topics.
+	//
+	// GET /repos/{owner}/{repo}/topics
+	ReposGetAllTopics(ctx context.Context, params ReposGetAllTopicsParams) (ReposGetAllTopicsRes, error)
+	// ReposGetAppsWithAccessToProtectedBranch invokes repos/get-apps-with-access-to-protected-branch operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Lists the GitHub Apps that have push access to this branch. Only installed GitHub Apps with
+	// `write` access to the `contents` permission can be added as authorized actors on a protected
+	// branch.
+	//
+	// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
+	ReposGetAppsWithAccessToProtectedBranch(ctx context.Context, params ReposGetAppsWithAccessToProtectedBranchParams) (ReposGetAppsWithAccessToProtectedBranchRes, error)
+	// ReposGetAutolink invokes repos/get-autolink operation.
+	//
+	// This returns a single autolink reference by ID that was configured for the given repository.
+	// Information about autolinks are only available to repository administrators.
+	//
+	// GET /repos/{owner}/{repo}/autolinks/{autolink_id}
+	ReposGetAutolink(ctx context.Context, params ReposGetAutolinkParams) (ReposGetAutolinkRes, error)
+	// ReposGetBranch invokes repos/get-branch operation.
+	//
+	// Get a branch.
+	//
+	// GET /repos/{owner}/{repo}/branches/{branch}
+	ReposGetBranch(ctx context.Context, params ReposGetBranchParams) (ReposGetBranchRes, error)
+	// ReposGetBranchProtection invokes repos/get-branch-protection operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	//
+	// GET /repos/{owner}/{repo}/branches/{branch}/protection
+	ReposGetBranchProtection(ctx context.Context, params ReposGetBranchProtectionParams) (ReposGetBranchProtectionRes, error)
+	// ReposGetClones invokes repos/get-clones operation.
+	//
+	// Get the total number of clones and breakdown per day or week for the last 14 days. Timestamps are
+	// aligned to UTC midnight of the beginning of the day or week. Week begins on Monday.
+	//
+	// GET /repos/{owner}/{repo}/traffic/clones
+	ReposGetClones(ctx context.Context, params ReposGetClonesParams) (ReposGetClonesRes, error)
+	// ReposGetCodeFrequencyStats invokes repos/get-code-frequency-stats operation.
+	//
+	// Returns a weekly aggregate of the number of additions and deletions pushed to a repository.
+	//
+	// GET /repos/{owner}/{repo}/stats/code_frequency
+	ReposGetCodeFrequencyStats(ctx context.Context, params ReposGetCodeFrequencyStatsParams) (ReposGetCodeFrequencyStatsRes, error)
+	// ReposGetCollaboratorPermissionLevel invokes repos/get-collaborator-permission-level operation.
+	//
+	// Checks the repository permission of a collaborator. The possible repository permissions are
+	// `admin`, `write`, `read`, and `none`.
+	//
+	// GET /repos/{owner}/{repo}/collaborators/{username}/permission
+	ReposGetCollaboratorPermissionLevel(ctx context.Context, params ReposGetCollaboratorPermissionLevelParams) (ReposGetCollaboratorPermissionLevelRes, error)
+	// ReposGetCombinedStatusForRef invokes repos/get-combined-status-for-ref operation.
+	//
+	// Users with pull access in a repository can access a combined view of commit statuses for a given
+	// ref. The ref can be a SHA, a branch name, or a tag name.
+	// The most recent status for each context is returned, up to 100. This field
+	// [paginates](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination) if there
+	// are over 100 contexts.
+	// Additionally, a combined `state` is returned. The `state` is one of:
+	// *   **failure** if any of the contexts report as `error` or `failure`
+	// *   **pending** if there are no statuses or a context is `pending`
+	// *   **success** if the latest status for all contexts is `success`.
+	//
+	// GET /repos/{owner}/{repo}/commits/{ref}/status
+	ReposGetCombinedStatusForRef(ctx context.Context, params ReposGetCombinedStatusForRefParams) (ReposGetCombinedStatusForRefRes, error)
+	// ReposGetCommit invokes repos/get-commit operation.
+	//
+	// Returns the contents of a single commit reference. You must have `read` access for the repository
+	// to use this endpoint.
+	// **Note:** If there are more than 300 files in the commit diff, the response will include
+	// pagination link headers for the remaining files, up to a limit of 3000 files. Each page contains
+	// the static commit information, and the only changes are to the file listing.
+	// You can pass the appropriate [media type](https://docs.github.
+	// com/rest/overview/media-types/#commits-commit-comparison-and-pull-requests) to  fetch `diff` and
+	// `patch` formats. Diffs with binary data will have no `patch` property.
+	// To return only the SHA-1 hash of the commit reference, you can provide the `sha` custom [media
+	// type](https://docs.github.
+	// com/rest/overview/media-types/#commits-commit-comparison-and-pull-requests) in the `Accept` header.
+	//  You can use this endpoint to check if a remote reference's SHA-1 hash is the same as your local
+	// reference's SHA-1 hash by providing the local SHA-1 reference as the ETag.
+	// **Signature verification object**
+	// The response will include a `verification` object that describes the result of verifying the
+	// commit's signature. The following fields are included in the `verification` object:
+	// | Name | Type | Description |
+	// | ---- | ---- | ----------- |
+	// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be
+	// verified. |
+	// | `reason` | `string` | The reason for verified value. Possible values and their meanings are
+	// enumerated in table below. |
+	// | `signature` | `string` | The signature that was extracted from the commit. |
+	// | `payload` | `string` | The value that was signed. |
+	// These are the possible values for `reason` in the `verification` object:
+	// | Value | Description |
+	// | ----- | ----------- |
+	// | `expired_key` | The key that made the signature is expired. |
+	// | `not_signing_key` | The "signing" flag is not among the usage flags in the GPG key that made the
+	// signature. |
+	// | `gpgverify_error` | There was an error communicating with the signature verification service. |
+	// | `gpgverify_unavailable` | The signature verification service is currently unavailable. |
+	// | `unsigned` | The object does not include a signature. |
+	// | `unknown_signature_type` | A non-PGP signature was found in the commit. |
+	// | `no_user` | No user was associated with the `committer` email address in the commit. |
+	// | `unverified_email` | The `committer` email address in the commit was associated with a user, but
+	// the email address is not verified on her/his account. |
+	// | `bad_email` | The `committer` email address in the commit is not included in the identities of
+	// the PGP key that made the signature. |
+	// | `unknown_key` | The key that made the signature has not been registered with any user's account.
+	// |
+	// | `malformed_signature` | There was an error parsing the signature. |
+	// | `invalid` | The signature could not be cryptographically verified using the key whose key-id was
+	// found in the signature. |
+	// | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
+	//
+	// GET /repos/{owner}/{repo}/commits/{ref}
+	ReposGetCommit(ctx context.Context, params ReposGetCommitParams) (ReposGetCommitRes, error)
+	// ReposGetCommitActivityStats invokes repos/get-commit-activity-stats operation.
+	//
+	// Returns the last year of commit activity grouped by week. The `days` array is a group of commits
+	// per day, starting on `Sunday`.
+	//
+	// GET /repos/{owner}/{repo}/stats/commit_activity
+	ReposGetCommitActivityStats(ctx context.Context, params ReposGetCommitActivityStatsParams) (ReposGetCommitActivityStatsRes, error)
+	// ReposGetCommitComment invokes repos/get-commit-comment operation.
+	//
+	// Get a commit comment.
+	//
+	// GET /repos/{owner}/{repo}/comments/{comment_id}
+	ReposGetCommitComment(ctx context.Context, params ReposGetCommitCommentParams) (ReposGetCommitCommentRes, error)
+	// ReposGetCommitSignatureProtection invokes repos/get-commit-signature-protection operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// When authenticated with admin or owner permissions to the repository, you can use this endpoint to
+	// check whether a branch requires signed commits. An enabled status of `true` indicates you must
+	// sign commits on this branch. For more information, see [Signing commits with GPG](https://help.
+	// github.com/articles/signing-commits-with-gpg) in GitHub Help.
+	// **Note**: You must enable branch protection to require signed commits.
+	//
+	// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
+	ReposGetCommitSignatureProtection(ctx context.Context, params ReposGetCommitSignatureProtectionParams) (ReposGetCommitSignatureProtectionRes, error)
+	// ReposGetCommunityProfileMetrics invokes repos/get-community-profile-metrics operation.
+	//
+	// This endpoint will return all community profile metrics, including an
+	// overall health score, repository description, the presence of documentation, detected
+	// code of conduct, detected license, and the presence of ISSUE\_TEMPLATE, PULL\_REQUEST\_TEMPLATE,
+	// README, and CONTRIBUTING files.
+	// The `health_percentage` score is defined as a percentage of how many of
+	// these four documents are present: README, CONTRIBUTING, LICENSE, and
+	// CODE_OF_CONDUCT. For example, if all four documents are present, then
+	// the `health_percentage` is `100`. If only one is present, then the
+	// `health_percentage` is `25`.
+	// `content_reports_enabled` is only returned for organization-owned repositories.
+	//
+	// GET /repos/{owner}/{repo}/community/profile
+	ReposGetCommunityProfileMetrics(ctx context.Context, params ReposGetCommunityProfileMetricsParams) (*CommunityProfile, error)
+	// ReposGetContributorsStats invokes repos/get-contributors-stats operation.
+	//
+	// Returns the `total` number of commits authored by the contributor. In addition, the response
+	// includes a Weekly Hash (`weeks` array) with the following information:
+	// *   `w` - Start of the week, given as a [Unix timestamp](http://en.wikipedia.org/wiki/Unix_time).
+	// *   `a` - Number of additions
+	// *   `d` - Number of deletions
+	// *   `c` - Number of commits.
+	//
+	// GET /repos/{owner}/{repo}/stats/contributors
+	ReposGetContributorsStats(ctx context.Context, params ReposGetContributorsStatsParams) (ReposGetContributorsStatsRes, error)
+	// ReposGetDeployKey invokes repos/get-deploy-key operation.
+	//
+	// Get a deploy key.
+	//
+	// GET /repos/{owner}/{repo}/keys/{key_id}
+	ReposGetDeployKey(ctx context.Context, params ReposGetDeployKeyParams) (ReposGetDeployKeyRes, error)
+	// ReposGetDeployment invokes repos/get-deployment operation.
+	//
+	// Get a deployment.
+	//
+	// GET /repos/{owner}/{repo}/deployments/{deployment_id}
+	ReposGetDeployment(ctx context.Context, params ReposGetDeploymentParams) (ReposGetDeploymentRes, error)
+	// ReposGetDeploymentStatus invokes repos/get-deployment-status operation.
+	//
+	// Users with pull access can view a deployment status for a deployment:.
+	//
+	// GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}
+	ReposGetDeploymentStatus(ctx context.Context, params ReposGetDeploymentStatusParams) (ReposGetDeploymentStatusRes, error)
+	// ReposGetLatestPagesBuild invokes repos/get-latest-pages-build operation.
+	//
+	// Get latest Pages build.
+	//
+	// GET /repos/{owner}/{repo}/pages/builds/latest
+	ReposGetLatestPagesBuild(ctx context.Context, params ReposGetLatestPagesBuildParams) (*PageBuild, error)
+	// ReposGetLatestRelease invokes repos/get-latest-release operation.
+	//
+	// View the latest published full release for the repository.
+	// The latest release is the most recent non-prerelease, non-draft release, sorted by the
+	// `created_at` attribute. The `created_at` attribute is the date of the commit used for the release,
+	// and not the date when the release was drafted or published.
+	//
+	// GET /repos/{owner}/{repo}/releases/latest
+	ReposGetLatestRelease(ctx context.Context, params ReposGetLatestReleaseParams) (*Release, error)
+	// ReposGetPages invokes repos/get-pages operation.
+	//
+	// Get a GitHub Pages site.
+	//
+	// GET /repos/{owner}/{repo}/pages
+	ReposGetPages(ctx context.Context, params ReposGetPagesParams) (ReposGetPagesRes, error)
+	// ReposGetPagesBuild invokes repos/get-pages-build operation.
+	//
+	// Get GitHub Pages build.
+	//
+	// GET /repos/{owner}/{repo}/pages/builds/{build_id}
+	ReposGetPagesBuild(ctx context.Context, params ReposGetPagesBuildParams) (*PageBuild, error)
+	// ReposGetPagesHealthCheck invokes repos/get-pages-health-check operation.
+	//
+	// Gets a health check of the DNS settings for the `CNAME` record configured for a repository's
+	// GitHub Pages.
+	// The first request to this endpoint returns a `202 Accepted` status and starts an asynchronous
+	// background task to get the results for the domain. After the background task completes, subsequent
+	// requests to this endpoint return a `200 OK` status with the health check results in the response.
+	// Users must have admin or owner permissions. GitHub Apps must have the `pages:write` and
+	// `administration:write` permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/pages/health
+	ReposGetPagesHealthCheck(ctx context.Context, params ReposGetPagesHealthCheckParams) (ReposGetPagesHealthCheckRes, error)
+	// ReposGetParticipationStats invokes repos/get-participation-stats operation.
+	//
+	// Returns the total commit counts for the `owner` and total commit counts in `all`. `all` is
+	// everyone combined, including the `owner` in the last 52 weeks. If you'd like to get the commit
+	// counts for non-owners, you can subtract `owner` from `all`.
+	// The array order is oldest week (index 0) to most recent week.
+	//
+	// GET /repos/{owner}/{repo}/stats/participation
+	ReposGetParticipationStats(ctx context.Context, params ReposGetParticipationStatsParams) (ReposGetParticipationStatsRes, error)
+	// ReposGetPullRequestReviewProtection invokes repos/get-pull-request-review-protection operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	//
+	// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
+	ReposGetPullRequestReviewProtection(ctx context.Context, params ReposGetPullRequestReviewProtectionParams) (*ProtectedBranchPullRequestReview, error)
+	// ReposGetPunchCardStats invokes repos/get-punch-card-stats operation.
+	//
+	// Each array contains the day number, hour number, and number of commits:
+	// *   `0-6`: Sunday - Saturday
+	// *   `0-23`: Hour of day
+	// *   Number of commits
+	// For example, `[2, 14, 25]` indicates that there were 25 total commits, during the 2:00pm hour on
+	// Tuesdays. All times are based on the time zone of individual commits.
+	//
+	// GET /repos/{owner}/{repo}/stats/punch_card
+	ReposGetPunchCardStats(ctx context.Context, params ReposGetPunchCardStatsParams) (ReposGetPunchCardStatsRes, error)
+	// ReposGetReadme invokes repos/get-readme operation.
+	//
+	// Gets the preferred README for a repository.
+	// READMEs support [custom media types](https://docs.github.
+	// com/rest/reference/repos#custom-media-types) for retrieving the raw content or rendered HTML.
+	//
+	// GET /repos/{owner}/{repo}/readme
+	ReposGetReadme(ctx context.Context, params ReposGetReadmeParams) (ReposGetReadmeRes, error)
+	// ReposGetReadmeInDirectory invokes repos/get-readme-in-directory operation.
+	//
+	// Gets the README from a repository directory.
+	// READMEs support [custom media types](https://docs.github.
+	// com/rest/reference/repos#custom-media-types) for retrieving the raw content or rendered HTML.
+	//
+	// GET /repos/{owner}/{repo}/readme/{dir}
+	ReposGetReadmeInDirectory(ctx context.Context, params ReposGetReadmeInDirectoryParams) (ReposGetReadmeInDirectoryRes, error)
+	// ReposGetRelease invokes repos/get-release operation.
+	//
+	// **Note:** This returns an `upload_url` key corresponding to the endpoint for uploading release
+	// assets. This key is a [hypermedia resource](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#hypermedia).
+	//
+	// GET /repos/{owner}/{repo}/releases/{release_id}
+	ReposGetRelease(ctx context.Context, params ReposGetReleaseParams) (ReposGetReleaseRes, error)
+	// ReposGetReleaseAsset invokes repos/get-release-asset operation.
+	//
+	// To download the asset's binary content, set the `Accept` header of the request to
+	// [`application/octet-stream`](https://docs.github.com/rest/overview/media-types). The API will
+	// either redirect the client to the location, or stream it directly if possible. API clients should
+	// handle both a `200` or `302` response.
+	//
+	// GET /repos/{owner}/{repo}/releases/assets/{asset_id}
+	ReposGetReleaseAsset(ctx context.Context, params ReposGetReleaseAssetParams) (ReposGetReleaseAssetRes, error)
+	// ReposGetReleaseByTag invokes repos/get-release-by-tag operation.
+	//
+	// Get a published release with the specified tag.
+	//
+	// GET /repos/{owner}/{repo}/releases/tags/{tag}
+	ReposGetReleaseByTag(ctx context.Context, params ReposGetReleaseByTagParams) (ReposGetReleaseByTagRes, error)
+	// ReposGetStatusChecksProtection invokes repos/get-status-checks-protection operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	//
+	// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
+	ReposGetStatusChecksProtection(ctx context.Context, params ReposGetStatusChecksProtectionParams) (ReposGetStatusChecksProtectionRes, error)
+	// ReposGetTeamsWithAccessToProtectedBranch invokes repos/get-teams-with-access-to-protected-branch operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Lists the teams who have push access to this branch. The list includes child teams.
+	//
+	// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
+	ReposGetTeamsWithAccessToProtectedBranch(ctx context.Context, params ReposGetTeamsWithAccessToProtectedBranchParams) (ReposGetTeamsWithAccessToProtectedBranchRes, error)
+	// ReposGetTopPaths invokes repos/get-top-paths operation.
+	//
+	// Get the top 10 popular contents over the last 14 days.
+	//
+	// GET /repos/{owner}/{repo}/traffic/popular/paths
+	ReposGetTopPaths(ctx context.Context, params ReposGetTopPathsParams) (ReposGetTopPathsRes, error)
+	// ReposGetTopReferrers invokes repos/get-top-referrers operation.
+	//
+	// Get the top 10 referrers over the last 14 days.
+	//
+	// GET /repos/{owner}/{repo}/traffic/popular/referrers
+	ReposGetTopReferrers(ctx context.Context, params ReposGetTopReferrersParams) (ReposGetTopReferrersRes, error)
+	// ReposGetUsersWithAccessToProtectedBranch invokes repos/get-users-with-access-to-protected-branch operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Lists the people who have push access to this branch.
+	//
+	// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
+	ReposGetUsersWithAccessToProtectedBranch(ctx context.Context, params ReposGetUsersWithAccessToProtectedBranchParams) (ReposGetUsersWithAccessToProtectedBranchRes, error)
+	// ReposGetViews invokes repos/get-views operation.
+	//
+	// Get the total number of views and breakdown per day or week for the last 14 days. Timestamps are
+	// aligned to UTC midnight of the beginning of the day or week. Week begins on Monday.
+	//
+	// GET /repos/{owner}/{repo}/traffic/views
+	ReposGetViews(ctx context.Context, params ReposGetViewsParams) (ReposGetViewsRes, error)
+	// ReposGetWebhook invokes repos/get-webhook operation.
+	//
+	// Returns a webhook configured in a repository. To get only the webhook `config` properties, see
+	// "[Get a webhook configuration for a
+	// repository](/rest/reference/repos#get-a-webhook-configuration-for-a-repository).".
+	//
+	// GET /repos/{owner}/{repo}/hooks/{hook_id}
+	ReposGetWebhook(ctx context.Context, params ReposGetWebhookParams) (ReposGetWebhookRes, error)
+	// ReposGetWebhookConfigForRepo invokes repos/get-webhook-config-for-repo operation.
+	//
+	// Returns the webhook configuration for a repository. To get more information about the webhook,
+	// including the `active` state and `events`, use "[Get a repository
+	// webhook](/rest/reference/orgs#get-a-repository-webhook)."
+	// Access tokens must have the `read:repo_hook` or `repo` scope, and GitHub Apps must have the
+	// `repository_hooks:read` permission.
+	//
+	// GET /repos/{owner}/{repo}/hooks/{hook_id}/config
+	ReposGetWebhookConfigForRepo(ctx context.Context, params ReposGetWebhookConfigForRepoParams) (*WebhookConfig, error)
+	// ReposGetWebhookDelivery invokes repos/get-webhook-delivery operation.
+	//
+	// Returns a delivery for a webhook configured in a repository.
+	//
+	// GET /repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}
+	ReposGetWebhookDelivery(ctx context.Context, params ReposGetWebhookDeliveryParams) (ReposGetWebhookDeliveryRes, error)
+	// ReposListAutolinks invokes repos/list-autolinks operation.
+	//
+	// This returns a list of autolinks configured for the given repository.
+	// Information about autolinks are only available to repository administrators.
+	//
+	// GET /repos/{owner}/{repo}/autolinks
+	ReposListAutolinks(ctx context.Context, params ReposListAutolinksParams) ([]Autolink, error)
+	// ReposListBranches invokes repos/list-branches operation.
+	//
+	// List branches.
+	//
+	// GET /repos/{owner}/{repo}/branches
+	ReposListBranches(ctx context.Context, params ReposListBranchesParams) (ReposListBranchesRes, error)
+	// ReposListBranchesForHeadCommit invokes repos/list-branches-for-head-commit operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Returns all branches where the given commit SHA is the HEAD, or latest commit for the branch.
+	//
+	// GET /repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head
+	ReposListBranchesForHeadCommit(ctx context.Context, params ReposListBranchesForHeadCommitParams) (ReposListBranchesForHeadCommitRes, error)
+	// ReposListCollaborators invokes repos/list-collaborators operation.
+	//
+	// For organization-owned repositories, the list of collaborators includes outside collaborators,
+	// organization members that are direct collaborators, organization members with access through team
+	// memberships, organization members with access through default organization permissions, and
+	// organization owners.
+	// Team members will include the members of child teams.
+	//
+	// GET /repos/{owner}/{repo}/collaborators
+	ReposListCollaborators(ctx context.Context, params ReposListCollaboratorsParams) (ReposListCollaboratorsRes, error)
+	// ReposListCommentsForCommit invokes repos/list-comments-for-commit operation.
+	//
+	// Use the `:commit_sha` to specify the commit that will have its comments listed.
+	//
+	// GET /repos/{owner}/{repo}/commits/{commit_sha}/comments
+	ReposListCommentsForCommit(ctx context.Context, params ReposListCommentsForCommitParams) (*ReposListCommentsForCommitOKHeaders, error)
+	// ReposListCommitCommentsForRepo invokes repos/list-commit-comments-for-repo operation.
+	//
+	// Commit Comments use [these custom media types](https://docs.github.
+	// com/rest/reference/repos#custom-media-types). You can read more about the use of media types in
+	// the API [here](https://docs.github.com/rest/overview/media-types/).
+	// Comments are ordered by ascending ID.
+	//
+	// GET /repos/{owner}/{repo}/comments
+	ReposListCommitCommentsForRepo(ctx context.Context, params ReposListCommitCommentsForRepoParams) (*ReposListCommitCommentsForRepoOKHeaders, error)
+	// ReposListCommitStatusesForRef invokes repos/list-commit-statuses-for-ref operation.
+	//
+	// Users with pull access in a repository can view commit statuses for a given ref. The ref can be a
+	// SHA, a branch name, or a tag name. Statuses are returned in reverse chronological order. The first
+	// status in the list will be the latest one.
+	// This resource is also available via a legacy route: `GET /repos/:owner/:repo/statuses/:ref`.
+	//
+	// GET /repos/{owner}/{repo}/commits/{ref}/statuses
+	ReposListCommitStatusesForRef(ctx context.Context, params ReposListCommitStatusesForRefParams) (ReposListCommitStatusesForRefRes, error)
+	// ReposListCommits invokes repos/list-commits operation.
+	//
+	// **Signature verification object**
+	// The response will include a `verification` object that describes the result of verifying the
+	// commit's signature. The following fields are included in the `verification` object:
+	// | Name | Type | Description |
+	// | ---- | ---- | ----------- |
+	// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be
+	// verified. |
+	// | `reason` | `string` | The reason for verified value. Possible values and their meanings are
+	// enumerated in table below. |
+	// | `signature` | `string` | The signature that was extracted from the commit. |
+	// | `payload` | `string` | The value that was signed. |
+	// These are the possible values for `reason` in the `verification` object:
+	// | Value | Description |
+	// | ----- | ----------- |
+	// | `expired_key` | The key that made the signature is expired. |
+	// | `not_signing_key` | The "signing" flag is not among the usage flags in the GPG key that made the
+	// signature. |
+	// | `gpgverify_error` | There was an error communicating with the signature verification service. |
+	// | `gpgverify_unavailable` | The signature verification service is currently unavailable. |
+	// | `unsigned` | The object does not include a signature. |
+	// | `unknown_signature_type` | A non-PGP signature was found in the commit. |
+	// | `no_user` | No user was associated with the `committer` email address in the commit. |
+	// | `unverified_email` | The `committer` email address in the commit was associated with a user, but
+	// the email address is not verified on her/his account. |
+	// | `bad_email` | The `committer` email address in the commit is not included in the identities of
+	// the PGP key that made the signature. |
+	// | `unknown_key` | The key that made the signature has not been registered with any user's account.
+	// |
+	// | `malformed_signature` | There was an error parsing the signature. |
+	// | `invalid` | The signature could not be cryptographically verified using the key whose key-id was
+	// found in the signature. |
+	// | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
+	//
+	// GET /repos/{owner}/{repo}/commits
+	ReposListCommits(ctx context.Context, params ReposListCommitsParams) (ReposListCommitsRes, error)
+	// ReposListContributors invokes repos/list-contributors operation.
+	//
+	// Lists contributors to the specified repository and sorts them by the number of commits per
+	// contributor in descending order. This endpoint may return information that is a few hours old
+	// because the GitHub REST API v3 caches contributor data to improve performance.
+	// GitHub identifies contributors by author email address. This endpoint groups contribution counts
+	// by GitHub user, which includes all associated email addresses. To improve performance, only the
+	// first 500 author email addresses in the repository link to GitHub users. The rest will appear as
+	// anonymous contributors without associated GitHub user information.
+	//
+	// GET /repos/{owner}/{repo}/contributors
+	ReposListContributors(ctx context.Context, params ReposListContributorsParams) (ReposListContributorsRes, error)
+	// ReposListDeployKeys invokes repos/list-deploy-keys operation.
+	//
+	// List deploy keys.
+	//
+	// GET /repos/{owner}/{repo}/keys
+	ReposListDeployKeys(ctx context.Context, params ReposListDeployKeysParams) (*ReposListDeployKeysOKHeaders, error)
+	// ReposListDeploymentStatuses invokes repos/list-deployment-statuses operation.
+	//
+	// Users with pull access can view deployment statuses for a deployment:.
+	//
+	// GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
+	ReposListDeploymentStatuses(ctx context.Context, params ReposListDeploymentStatusesParams) (ReposListDeploymentStatusesRes, error)
+	// ReposListDeployments invokes repos/list-deployments operation.
+	//
+	// Simple filtering of deployments is available via query parameters:.
+	//
+	// GET /repos/{owner}/{repo}/deployments
+	ReposListDeployments(ctx context.Context, params ReposListDeploymentsParams) (*ReposListDeploymentsOKHeaders, error)
+	// ReposListForAuthenticatedUser invokes repos/list-for-authenticated-user operation.
+	//
+	// Lists repositories that the authenticated user has explicit permission (`:read`, `:write`, or
+	// `:admin`) to access.
+	// The authenticated user has explicit permission to access repositories they own, repositories where
+	// they are a collaborator, and repositories that they can access through an organization membership.
+	//
+	// GET /user/repos
+	ReposListForAuthenticatedUser(ctx context.Context, params ReposListForAuthenticatedUserParams) (ReposListForAuthenticatedUserRes, error)
+	// ReposListForOrg invokes repos/list-for-org operation.
+	//
+	// Lists repositories for the specified organization.
+	//
+	// GET /orgs/{org}/repos
+	ReposListForOrg(ctx context.Context, params ReposListForOrgParams) (*ReposListForOrgOKHeaders, error)
+	// ReposListForUser invokes repos/list-for-user operation.
+	//
+	// Lists public repositories for the specified user. Note: For GitHub AE, this endpoint will list
+	// internal repositories for the specified user.
+	//
+	// GET /users/{username}/repos
+	ReposListForUser(ctx context.Context, params ReposListForUserParams) (*ReposListForUserOKHeaders, error)
+	// ReposListForks invokes repos/list-forks operation.
+	//
+	// List forks.
+	//
+	// GET /repos/{owner}/{repo}/forks
+	ReposListForks(ctx context.Context, params ReposListForksParams) (ReposListForksRes, error)
+	// ReposListInvitations invokes repos/list-invitations operation.
+	//
+	// When authenticating as a user with admin rights to a repository, this endpoint will list all
+	// currently open repository invitations.
+	//
+	// GET /repos/{owner}/{repo}/invitations
+	ReposListInvitations(ctx context.Context, params ReposListInvitationsParams) (*ReposListInvitationsOKHeaders, error)
+	// ReposListInvitationsForAuthenticatedUser invokes repos/list-invitations-for-authenticated-user operation.
+	//
+	// When authenticating as a user, this endpoint will list all currently open repository invitations
+	// for that user.
+	//
+	// GET /user/repository_invitations
+	ReposListInvitationsForAuthenticatedUser(ctx context.Context, params ReposListInvitationsForAuthenticatedUserParams) (ReposListInvitationsForAuthenticatedUserRes, error)
+	// ReposListLanguages invokes repos/list-languages operation.
+	//
+	// Lists languages for the specified repository. The value shown for each language is the number of
+	// bytes of code written in that language.
+	//
+	// GET /repos/{owner}/{repo}/languages
+	ReposListLanguages(ctx context.Context, params ReposListLanguagesParams) (Language, error)
+	// ReposListPagesBuilds invokes repos/list-pages-builds operation.
+	//
+	// List GitHub Pages builds.
+	//
+	// GET /repos/{owner}/{repo}/pages/builds
+	ReposListPagesBuilds(ctx context.Context, params ReposListPagesBuildsParams) (*ReposListPagesBuildsOKHeaders, error)
+	// ReposListPublic invokes repos/list-public operation.
+	//
+	// Lists all public repositories in the order that they were created.
+	// Note:
+	// - For GitHub Enterprise Server, this endpoint will only list repositories available to all users
+	// on the enterprise.
+	// - Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://docs.
+	// github.com/rest/overview/resources-in-the-rest-api#link-header) to get the URL for the next page
+	// of repositories.
+	//
+	// GET /repositories
+	ReposListPublic(ctx context.Context, params ReposListPublicParams) (ReposListPublicRes, error)
+	// ReposListPullRequestsAssociatedWithCommit invokes repos/list-pull-requests-associated-with-commit operation.
+	//
+	// Lists the merged pull request that introduced the commit to the repository. If the commit is not
+	// present in the default branch, additionally returns open pull requests associated with the commit.
+	// The results may include open and closed pull requests. Additional preview headers may be required
+	// to see certain details for associated pull requests, such as whether a pull request is in a draft
+	// state. For more information about previews that might affect this endpoint, see the [List pull
+	// requests](https://docs.github.com/rest/reference/pulls#list-pull-requests) endpoint.
+	//
+	// GET /repos/{owner}/{repo}/commits/{commit_sha}/pulls
+	ReposListPullRequestsAssociatedWithCommit(ctx context.Context, params ReposListPullRequestsAssociatedWithCommitParams) (*ReposListPullRequestsAssociatedWithCommitOKHeaders, error)
+	// ReposListReleaseAssets invokes repos/list-release-assets operation.
+	//
+	// List release assets.
+	//
+	// GET /repos/{owner}/{repo}/releases/{release_id}/assets
+	ReposListReleaseAssets(ctx context.Context, params ReposListReleaseAssetsParams) (*ReposListReleaseAssetsOKHeaders, error)
+	// ReposListReleases invokes repos/list-releases operation.
+	//
+	// This returns a list of releases, which does not include regular Git tags that have not been
+	// associated with a release. To get a list of Git tags, use the [Repository Tags API](https://docs.
+	// github.com/rest/reference/repos#list-repository-tags).
+	// Information about published releases are available to everyone. Only users with push access will
+	// receive listings for draft releases.
+	//
+	// GET /repos/{owner}/{repo}/releases
+	ReposListReleases(ctx context.Context, params ReposListReleasesParams) (ReposListReleasesRes, error)
+	// ReposListTags invokes repos/list-tags operation.
+	//
+	// List repository tags.
+	//
+	// GET /repos/{owner}/{repo}/tags
+	ReposListTags(ctx context.Context, params ReposListTagsParams) (*ReposListTagsOKHeaders, error)
+	// ReposListTeams invokes repos/list-teams operation.
+	//
+	// List repository teams.
+	//
+	// GET /repos/{owner}/{repo}/teams
+	ReposListTeams(ctx context.Context, params ReposListTeamsParams) (*ReposListTeamsOKHeaders, error)
+	// ReposListWebhookDeliveries invokes repos/list-webhook-deliveries operation.
+	//
+	// Returns a list of webhook deliveries for a webhook configured in a repository.
+	//
+	// GET /repos/{owner}/{repo}/hooks/{hook_id}/deliveries
+	ReposListWebhookDeliveries(ctx context.Context, params ReposListWebhookDeliveriesParams) (ReposListWebhookDeliveriesRes, error)
+	// ReposListWebhooks invokes repos/list-webhooks operation.
+	//
+	// List repository webhooks.
+	//
+	// GET /repos/{owner}/{repo}/hooks
+	ReposListWebhooks(ctx context.Context, params ReposListWebhooksParams) (ReposListWebhooksRes, error)
+	// ReposMerge invokes repos/merge operation.
+	//
+	// Merge a branch.
+	//
+	// POST /repos/{owner}/{repo}/merges
+	ReposMerge(ctx context.Context, request *ReposMergeReq, params ReposMergeParams) (ReposMergeRes, error)
+	// ReposMergeUpstream invokes repos/merge-upstream operation.
+	//
+	// **Note:** This endpoint is currently in beta and subject to change.
+	// Sync a branch of a forked repository to keep it up-to-date with the upstream repository.
+	//
+	// POST /repos/{owner}/{repo}/merge-upstream
+	ReposMergeUpstream(ctx context.Context, request *ReposMergeUpstreamReq, params ReposMergeUpstreamParams) (ReposMergeUpstreamRes, error)
+	// ReposPingWebhook invokes repos/ping-webhook operation.
+	//
+	// This will trigger a [ping event](https://docs.github.com/webhooks/#ping-event) to be sent to the
+	// hook.
+	//
+	// POST /repos/{owner}/{repo}/hooks/{hook_id}/pings
+	ReposPingWebhook(ctx context.Context, params ReposPingWebhookParams) (ReposPingWebhookRes, error)
+	// ReposRedeliverWebhookDelivery invokes repos/redeliver-webhook-delivery operation.
+	//
+	// Redeliver a webhook delivery for a webhook configured in a repository.
+	//
+	// POST /repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}/attempts
+	ReposRedeliverWebhookDelivery(ctx context.Context, params ReposRedeliverWebhookDeliveryParams) (ReposRedeliverWebhookDeliveryRes, error)
+	// ReposRemoveAppAccessRestrictions invokes repos/remove-app-access-restrictions operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Removes the ability of an app to push to this branch. Only installed GitHub Apps with `write`
+	// access to the `contents` permission can be added as authorized actors on a protected branch.
+	// | Type    | Description
+	//                                                                     |
+	// | ------- |
+	// ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+	// | `array` | The GitHub Apps that have push access to this branch. Use the app's `slug`. **Note**:
+	// The list of users, apps, and teams in total is limited to 100 items. |.
+	//
+	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
+	ReposRemoveAppAccessRestrictions(ctx context.Context, request OptReposRemoveAppAccessRestrictionsReq, params ReposRemoveAppAccessRestrictionsParams) (ReposRemoveAppAccessRestrictionsRes, error)
+	// ReposRemoveCollaborator invokes repos/remove-collaborator operation.
+	//
+	// Remove a repository collaborator.
+	//
+	// DELETE /repos/{owner}/{repo}/collaborators/{username}
+	ReposRemoveCollaborator(ctx context.Context, params ReposRemoveCollaboratorParams) error
+	// ReposRemoveStatusCheckContexts invokes repos/remove-status-check-contexts operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	//
+	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
+	ReposRemoveStatusCheckContexts(ctx context.Context, request OptReposRemoveStatusCheckContextsReq, params ReposRemoveStatusCheckContextsParams) (ReposRemoveStatusCheckContextsRes, error)
+	// ReposRemoveStatusCheckProtection invokes repos/remove-status-check-protection operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	//
+	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
+	ReposRemoveStatusCheckProtection(ctx context.Context, params ReposRemoveStatusCheckProtectionParams) error
+	// ReposRemoveTeamAccessRestrictions invokes repos/remove-team-access-restrictions operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Removes the ability of a team to push to this branch. You can also remove push access for child
+	// teams.
+	// | Type    | Description
+	//                                                              |
+	// | ------- |
+	// --------------------------------------------------------------------------------------------------------------------------------------------------- |
+	// | `array` | Teams that should no longer have push access. Use the team's `slug`. **Note**: The
+	// list of users, apps, and teams in total is limited to 100 items. |.
+	//
+	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
+	ReposRemoveTeamAccessRestrictions(ctx context.Context, request OptReposRemoveTeamAccessRestrictionsReq, params ReposRemoveTeamAccessRestrictionsParams) (ReposRemoveTeamAccessRestrictionsRes, error)
+	// ReposRemoveUserAccessRestrictions invokes repos/remove-user-access-restrictions operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Removes the ability of a user to push to this branch.
+	// | Type    | Description
+	//                                                        |
+	// | ------- |
+	// --------------------------------------------------------------------------------------------------------------------------------------------- |
+	// | `array` | Usernames of the people who should no longer have push access. **Note**: The list of
+	// users, apps, and teams in total is limited to 100 items. |.
+	//
+	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
+	ReposRemoveUserAccessRestrictions(ctx context.Context, request OptReposRemoveUserAccessRestrictionsReq, params ReposRemoveUserAccessRestrictionsParams) (ReposRemoveUserAccessRestrictionsRes, error)
+	// ReposRenameBranch invokes repos/rename-branch operation.
+	//
+	// Renames a branch in a repository.
+	// **Note:** Although the API responds immediately, the branch rename process might take some extra
+	// time to complete in the background. You won't be able to push to the old branch name while the
+	// rename process is in progress. For more information, see "[Renaming a branch](https://docs.github.
+	// com/github/administering-a-repository/renaming-a-branch)".
+	// The permissions required to use this endpoint depends on whether you are renaming the default
+	// branch.
+	// To rename a non-default branch:
+	// * Users must have push access.
+	// * GitHub Apps must have the `contents:write` repository permission.
+	// To rename the default branch:
+	// * Users must have admin or owner permissions.
+	// * GitHub Apps must have the `administration:write` repository permission.
+	//
+	// POST /repos/{owner}/{repo}/branches/{branch}/rename
+	ReposRenameBranch(ctx context.Context, request OptReposRenameBranchReq, params ReposRenameBranchParams) (ReposRenameBranchRes, error)
+	// ReposReplaceAllTopics invokes repos/replace-all-topics operation.
+	//
+	// Replace all repository topics.
+	//
+	// PUT /repos/{owner}/{repo}/topics
+	ReposReplaceAllTopics(ctx context.Context, request *ReposReplaceAllTopicsReq, params ReposReplaceAllTopicsParams) (ReposReplaceAllTopicsRes, error)
+	// ReposRequestPagesBuild invokes repos/request-pages-build operation.
+	//
+	// You can request that your site be built from the latest revision on the default branch. This has
+	// the same effect as pushing a commit to your default branch, but does not require an additional
+	// commit. Manually triggering page builds can be helpful when diagnosing build warnings and failures.
+	// Build requests are limited to one concurrent build per repository and one concurrent build per
+	// requester. If you request a build while another is still in progress, the second request will be
+	// queued until the first completes.
+	//
+	// POST /repos/{owner}/{repo}/pages/builds
+	ReposRequestPagesBuild(ctx context.Context, params ReposRequestPagesBuildParams) (*PageBuildStatus, error)
+	// ReposSetAdminBranchProtection invokes repos/set-admin-branch-protection operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Adding admin enforcement requires admin or owner permissions to the repository and branch
+	// protection to be enabled.
+	//
+	// POST /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
+	ReposSetAdminBranchProtection(ctx context.Context, params ReposSetAdminBranchProtectionParams) (*ProtectedBranchAdminEnforced, error)
+	// ReposSetAppAccessRestrictions invokes repos/set-app-access-restrictions operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Replaces the list of apps that have push access to this branch. This removes all apps that
+	// previously had push access and grants push access to the new list of apps. Only installed GitHub
+	// Apps with `write` access to the `contents` permission can be added as authorized actors on a
+	// protected branch.
+	// | Type    | Description
+	//                                                                     |
+	// | ------- |
+	// ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+	// | `array` | The GitHub Apps that have push access to this branch. Use the app's `slug`. **Note**:
+	// The list of users, apps, and teams in total is limited to 100 items. |.
+	//
+	// PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
+	ReposSetAppAccessRestrictions(ctx context.Context, request OptReposSetAppAccessRestrictionsReq, params ReposSetAppAccessRestrictionsParams) (ReposSetAppAccessRestrictionsRes, error)
+	// ReposSetStatusCheckContexts invokes repos/set-status-check-contexts operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	//
+	// PUT /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
+	ReposSetStatusCheckContexts(ctx context.Context, request OptReposSetStatusCheckContextsReq, params ReposSetStatusCheckContextsParams) (ReposSetStatusCheckContextsRes, error)
+	// ReposSetTeamAccessRestrictions invokes repos/set-team-access-restrictions operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Replaces the list of teams that have push access to this branch. This removes all teams that
+	// previously had push access and grants push access to the new list of teams. Team restrictions
+	// include child teams.
+	// | Type    | Description
+	//                                                     |
+	// | ------- |
+	// ------------------------------------------------------------------------------------------------------------------------------------------ |
+	// | `array` | The teams that can have push access. Use the team's `slug`. **Note**: The list of
+	// users, apps, and teams in total is limited to 100 items. |.
+	//
+	// PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
+	ReposSetTeamAccessRestrictions(ctx context.Context, request OptReposSetTeamAccessRestrictionsReq, params ReposSetTeamAccessRestrictionsParams) (ReposSetTeamAccessRestrictionsRes, error)
+	// ReposSetUserAccessRestrictions invokes repos/set-user-access-restrictions operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Replaces the list of people that have push access to this branch. This removes all people that
+	// previously had push access and grants push access to the new list of people.
+	// | Type    | Description
+	//                                        |
+	// | ------- |
+	// ----------------------------------------------------------------------------------------------------------------------------- |
+	// | `array` | Usernames for people who can have push access. **Note**: The list of users, apps, and
+	// teams in total is limited to 100 items. |.
+	//
+	// PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
+	ReposSetUserAccessRestrictions(ctx context.Context, request OptReposSetUserAccessRestrictionsReq, params ReposSetUserAccessRestrictionsParams) (ReposSetUserAccessRestrictionsRes, error)
+	// ReposTestPushWebhook invokes repos/test-push-webhook operation.
+	//
+	// This will trigger the hook with the latest push to the current repository if the hook is
+	// subscribed to `push` events. If the hook is not subscribed to `push` events, the server will
+	// respond with 204 but no test POST will be generated.
+	// **Note**: Previously `/repos/:owner/:repo/hooks/:hook_id/test`.
+	//
+	// POST /repos/{owner}/{repo}/hooks/{hook_id}/tests
+	ReposTestPushWebhook(ctx context.Context, params ReposTestPushWebhookParams) (ReposTestPushWebhookRes, error)
+	// ReposTransfer invokes repos/transfer operation.
+	//
+	// A transfer request will need to be accepted by the new owner when transferring a personal
+	// repository to another user. The response will contain the original `owner`, and the transfer will
+	// continue asynchronously. For more details on the requirements to transfer personal and
+	// organization-owned repositories, see [about repository transfers](https://help.github.
+	// com/articles/about-repository-transfers/).
+	//
+	// POST /repos/{owner}/{repo}/transfer
+	ReposTransfer(ctx context.Context, request *ReposTransferReq, params ReposTransferParams) (*MinimalRepository, error)
+	// ReposUpdate invokes repos/update operation.
+	//
+	// **Note**: To edit a repository's topics, use the [Replace all repository topics](https://docs.
+	// github.com/rest/reference/repos#replace-all-repository-topics) endpoint.
+	//
+	// PATCH /repos/{owner}/{repo}
+	ReposUpdate(ctx context.Context, request OptReposUpdateReq, params ReposUpdateParams) (ReposUpdateRes, error)
+	// ReposUpdateBranchProtection invokes repos/update-branch-protection operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Protecting a branch requires admin or owner permissions to the repository.
+	// **Note**: Passing new arrays of `users` and `teams` replaces their previous values.
+	// **Note**: The list of users, apps, and teams in total is limited to 100 items.
+	//
+	// PUT /repos/{owner}/{repo}/branches/{branch}/protection
+	ReposUpdateBranchProtection(ctx context.Context, request *ReposUpdateBranchProtectionReq, params ReposUpdateBranchProtectionParams) (ReposUpdateBranchProtectionRes, error)
+	// ReposUpdateCommitComment invokes repos/update-commit-comment operation.
+	//
+	// Update a commit comment.
+	//
+	// PATCH /repos/{owner}/{repo}/comments/{comment_id}
+	ReposUpdateCommitComment(ctx context.Context, request *ReposUpdateCommitCommentReq, params ReposUpdateCommitCommentParams) (ReposUpdateCommitCommentRes, error)
+	// ReposUpdateInvitation invokes repos/update-invitation operation.
+	//
+	// Update a repository invitation.
+	//
+	// PATCH /repos/{owner}/{repo}/invitations/{invitation_id}
+	ReposUpdateInvitation(ctx context.Context, request OptReposUpdateInvitationReq, params ReposUpdateInvitationParams) (*RepositoryInvitation, error)
+	// ReposUpdatePullRequestReviewProtection invokes repos/update-pull-request-review-protection operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Updating pull request review enforcement requires admin or owner permissions to the repository and
+	// branch protection to be enabled.
+	// **Note**: Passing new arrays of `users` and `teams` replaces their previous values.
+	//
+	// PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
+	ReposUpdatePullRequestReviewProtection(ctx context.Context, request OptReposUpdatePullRequestReviewProtectionReq, params ReposUpdatePullRequestReviewProtectionParams) (ReposUpdatePullRequestReviewProtectionRes, error)
+	// ReposUpdateRelease invokes repos/update-release operation.
+	//
+	// Users with push access to the repository can edit a release.
+	//
+	// PATCH /repos/{owner}/{repo}/releases/{release_id}
+	ReposUpdateRelease(ctx context.Context, request OptReposUpdateReleaseReq, params ReposUpdateReleaseParams) (ReposUpdateReleaseRes, error)
+	// ReposUpdateReleaseAsset invokes repos/update-release-asset operation.
+	//
+	// Users with push access to the repository can edit a release asset.
+	//
+	// PATCH /repos/{owner}/{repo}/releases/assets/{asset_id}
+	ReposUpdateReleaseAsset(ctx context.Context, request OptReposUpdateReleaseAssetReq, params ReposUpdateReleaseAssetParams) (*ReleaseAsset, error)
+	// ReposUpdateStatusCheckProtection invokes repos/update-status-check-protection operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Updating required status checks requires admin or owner permissions to the repository and branch
+	// protection to be enabled.
+	//
+	// PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
+	ReposUpdateStatusCheckProtection(ctx context.Context, request OptReposUpdateStatusCheckProtectionReq, params ReposUpdateStatusCheckProtectionParams) (ReposUpdateStatusCheckProtectionRes, error)
+	// ReposUpdateWebhook invokes repos/update-webhook operation.
+	//
+	// Updates a webhook configured in a repository. If you previously had a `secret` set, you must
+	// provide the same `secret` or set a new `secret` or the secret will be removed. If you are only
+	// updating individual webhook `config` properties, use "[Update a webhook configuration for a
+	// repository](/rest/reference/repos#update-a-webhook-configuration-for-a-repository).".
+	//
+	// PATCH /repos/{owner}/{repo}/hooks/{hook_id}
+	ReposUpdateWebhook(ctx context.Context, request OptReposUpdateWebhookReq, params ReposUpdateWebhookParams) (ReposUpdateWebhookRes, error)
+	// ReposUpdateWebhookConfigForRepo invokes repos/update-webhook-config-for-repo operation.
+	//
+	// Updates the webhook configuration for a repository. To update more information about the webhook,
+	// including the `active` state and `events`, use "[Update a repository
+	// webhook](/rest/reference/orgs#update-a-repository-webhook)."
+	// Access tokens must have the `write:repo_hook` or `repo` scope, and GitHub Apps must have the
+	// `repository_hooks:write` permission.
+	//
+	// PATCH /repos/{owner}/{repo}/hooks/{hook_id}/config
+	ReposUpdateWebhookConfigForRepo(ctx context.Context, request OptReposUpdateWebhookConfigForRepoReq, params ReposUpdateWebhookConfigForRepoParams) (*WebhookConfig, error)
+	// ReposUploadReleaseAsset invokes repos/upload-release-asset operation.
+	//
+	// This endpoint makes use of [a Hypermedia relation](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#hypermedia) to determine which URL to access. The
+	// endpoint you call to upload release assets is specific to your release. Use the `upload_url`
+	// returned in
+	// the response of the [Create a release endpoint](https://docs.github.
+	// com/rest/reference/repos#create-a-release) to upload a release asset.
+	// You need to use an HTTP client which supports [SNI](http://en.wikipedia.
+	// org/wiki/Server_Name_Indication) to make calls to this endpoint.
+	// Most libraries will set the required `Content-Length` header automatically. Use the required
+	// `Content-Type` header to provide the media type of the asset. For a list of media types, see
+	// [Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml). For example:
+	// `application/zip`
+	// GitHub expects the asset data in its raw binary form, rather than JSON. You will send the raw
+	// binary content of the asset as the request body. Everything else about the endpoint is the same as
+	// the rest of the API. For example,
+	// you'll still need to pass your authentication to be able to upload an asset.
+	// When an upstream failure occurs, you will receive a `502 Bad Gateway` status. This may leave an
+	// empty asset with a state of `starter`. It can be safely deleted.
+	// **Notes:**
+	// *   GitHub renames asset filenames that have special characters, non-alphanumeric characters, and
+	// leading or trailing periods. The "[List assets for a release](https://docs.github.
+	// com/rest/reference/repos#list-assets-for-a-release)"
+	// endpoint lists the renamed filenames. For more information and help, contact [GitHub
+	// Support](https://support.github.com/contact?tags=dotcom-rest-api).
+	// *   If you upload an asset with the same filename as another uploaded asset, you'll receive an
+	// error and must delete the old file before you can re-upload the new asset.
+	//
+	// POST /repos/{owner}/{repo}/releases/{release_id}/assets
+	ReposUploadReleaseAsset(ctx context.Context, request *ReposUploadReleaseAssetReqWithContentType, params ReposUploadReleaseAssetParams) (*ReleaseAsset, error)
+	// ScimDeleteUserFromOrg invokes scim/delete-user-from-org operation.
+	//
+	// Delete a SCIM user from an organization.
+	//
+	// DELETE /scim/v2/organizations/{org}/Users/{scim_user_id}
+	ScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUserFromOrgParams) (ScimDeleteUserFromOrgRes, error)
+	// SearchCode invokes search/code operation.
+	//
+	// Searches for query terms inside of a file. This method returns up to 100 results [per
+	// page](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination).
+	// When searching for code, you can get text match metadata for the file **content** and file
+	// **path** fields when you pass the `text-match` media type. For more details about how to receive
+	// highlighted search results, see [Text match metadata](https://docs.github.
+	// com/rest/reference/search#text-match-metadata).
+	// For example, if you want to find the definition of the `addClass` function inside
+	// [jQuery](https://github.com/jquery/jquery) repository, your query would look something like this:
+	// `q=addClass+in:file+language:js+repo:jquery/jquery`
+	// This query searches for the keyword `addClass` within a file's contents. The query limits the
+	// search to files where the language is JavaScript in the `jquery/jquery` repository.
+	// #### Considerations for code search
+	// Due to the complexity of searching code, there are a few restrictions on how searches are
+	// performed:
+	// *   Only the _default branch_ is considered. In most cases, this will be the `master` branch.
+	// *   Only files smaller than 384 KB are searchable.
+	// *   You must always include at least one search term when searching source code. For example,
+	// searching for [`language:go`](https://github.com/search?utf8=%E2%9C%93&q=language%3Ago&type=Code)
+	// is not valid, while [`amazing
+	// language:go`](https://github.com/search?utf8=%E2%9C%93&q=amazing+language%3Ago&type=Code) is.
+	//
+	// GET /search/code
+	SearchCode(ctx context.Context, params SearchCodeParams) (SearchCodeRes, error)
+	// SearchCommits invokes search/commits operation.
+	//
+	// Find commits via various criteria on the default branch (usually `master`). This method returns up
+	// to 100 results [per page](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#pagination).
+	// When searching for commits, you can get text match metadata for the **message** field when you
+	// provide the `text-match` media type. For more details about how to receive highlighted search
+	// results, see [Text match
+	// metadata](https://docs.github.com/rest/reference/search#text-match-metadata).
+	// For example, if you want to find commits related to CSS in the
+	// [octocat/Spoon-Knife](https://github.com/octocat/Spoon-Knife) repository. Your query would look
+	// something like this:
+	// `q=repo:octocat/Spoon-Knife+css`.
+	//
+	// GET /search/commits
+	SearchCommits(ctx context.Context, params SearchCommitsParams) (SearchCommitsRes, error)
+	// SearchIssuesAndPullRequests invokes search/issues-and-pull-requests operation.
+	//
+	// Find issues by state and keyword. This method returns up to 100 results [per page](https://docs.
+	// github.com/rest/overview/resources-in-the-rest-api#pagination).
+	// When searching for issues, you can get text match metadata for the issue **title**, issue **body**,
+	//  and issue **comment body** fields when you pass the `text-match` media type. For more details
+	// about how to receive highlighted
+	// search results, see [Text match metadata](https://docs.github.
+	// com/rest/reference/search#text-match-metadata).
+	// For example, if you want to find the oldest unresolved Python bugs on Windows. Your query might
+	// look something like this.
+	// `q=windows+label:bug+language:python+state:open&sort=created&order=asc`
+	// This query searches for the keyword `windows`, within any open issue that is labeled as `bug`. The
+	// search runs across repositories whose primary language is Python. The results are sorted by
+	// creation date in ascending order, which means the oldest issues appear first in the search results.
+	// **Note:** For [user-to-server](https://docs.github.
+	// com/developers/apps/identifying-and-authorizing-users-for-github-apps#user-to-server-requests)
+	// GitHub App requests, you can't retrieve a combination of issues and pull requests in a single
+	// query. Requests that don't include the `is:issue` or `is:pull-request` qualifier will receive an
+	// HTTP `422 Unprocessable Entity` response. To get results for both issues and pull requests, you
+	// must send separate queries for issues and pull requests. For more information about the `is`
+	// qualifier, see "[Searching only issues or pull requests](https://docs.github.
+	// com/github/searching-for-information-on-github/searching-issues-and-pull-requests#search-only-issues-or-pull-requests).".
+	//
+	// GET /search/issues
+	SearchIssuesAndPullRequests(ctx context.Context, params SearchIssuesAndPullRequestsParams) (SearchIssuesAndPullRequestsRes, error)
+	// SearchLabels invokes search/labels operation.
+	//
+	// Find labels in a repository with names or descriptions that match search keywords. Returns up to
+	// 100 results [per page](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination).
+	// When searching for labels, you can get text match metadata for the label **name** and
+	// **description** fields when you pass the `text-match` media type. For more details about how to
+	// receive highlighted search results, see [Text match metadata](https://docs.github.
+	// com/rest/reference/search#text-match-metadata).
+	// For example, if you want to find labels in the `linguist` repository that match `bug`, `defect`,
+	// or `enhancement`. Your query might look like this:
+	// `q=bug+defect+enhancement&repository_id=64778136`
+	// The labels that best match the query appear first in the search results.
+	//
+	// GET /search/labels
+	SearchLabels(ctx context.Context, params SearchLabelsParams) (SearchLabelsRes, error)
+	// SearchRepos invokes search/repos operation.
+	//
+	// Find repositories via various criteria. This method returns up to 100 results [per
+	// page](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination).
+	// When searching for repositories, you can get text match metadata for the **name** and
+	// **description** fields when you pass the `text-match` media type. For more details about how to
+	// receive highlighted search results, see [Text match metadata](https://docs.github.
+	// com/rest/reference/search#text-match-metadata).
+	// For example, if you want to search for popular Tetris repositories written in assembly code, your
+	// query might look like this:
+	// `q=tetris+language:assembly&sort=stars&order=desc`
+	// This query searches for repositories with the word `tetris` in the name, the description, or the
+	// README. The results are limited to repositories where the primary language is assembly. The
+	// results are sorted by stars in descending order, so that the most popular repositories appear
+	// first in the search results.
+	// When you include the `mercy` preview header, you can also search for multiple topics by adding
+	// more `topic:` instances. For example, your query might look like this:
+	// `q=topic:ruby+topic:rails`.
+	//
+	// GET /search/repositories
+	SearchRepos(ctx context.Context, params SearchReposParams) (SearchReposRes, error)
+	// SearchTopics invokes search/topics operation.
+	//
+	// Find topics via various criteria. Results are sorted by best match. This method returns up to 100
+	// results [per page](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination).
+	// See "[Searching topics](https://help.github.com/articles/searching-topics/)" for a detailed list
+	// of qualifiers.
+	// When searching for topics, you can get text match metadata for the topic's **short\_description**,
+	// **description**, **name**, or **display\_name** field when you pass the `text-match` media type.
+	// For more details about how to receive highlighted search results, see [Text match
+	// metadata](https://docs.github.com/rest/reference/search#text-match-metadata).
+	// For example, if you want to search for topics related to Ruby that are featured on https://github.
+	// com/topics. Your query might look like this:
+	// `q=ruby+is:featured`
+	// This query searches for topics with the keyword `ruby` and limits the results to find only topics
+	// that are featured. The topics that are the best match for the query appear first in the search
+	// results.
+	//
+	// GET /search/topics
+	SearchTopics(ctx context.Context, params SearchTopicsParams) (SearchTopicsRes, error)
+	// SearchUsers invokes search/users operation.
+	//
+	// Find users via various criteria. This method returns up to 100 results [per page](https://docs.
+	// github.com/rest/overview/resources-in-the-rest-api#pagination).
+	// When searching for users, you can get text match metadata for the issue **login**, **email**, and
+	// **name** fields when you pass the `text-match` media type. For more details about highlighting
+	// search results, see [Text match metadata](https://docs.github.
+	// com/rest/reference/search#text-match-metadata). For more details about how to receive highlighted
+	// search results, see [Text match metadata](https://docs.github.
+	// com/rest/reference/search#text-match-metadata).
+	// For example, if you're looking for a list of popular users, you might try this query:
+	// `q=tom+repos:%3E42+followers:%3E1000`
+	// This query searches for users with the name `tom`. The results are restricted to users with more
+	// than 42 repositories and over 1,000 followers.
+	//
+	// GET /search/users
+	SearchUsers(ctx context.Context, params SearchUsersParams) (SearchUsersRes, error)
+	// SecretScanningGetAlert invokes secret-scanning/get-alert operation.
+	//
+	// Gets a single secret scanning alert detected in a private repository. To use this endpoint, you
+	// must be an administrator for the repository or organization, and you must use an access token with
+	// the `repo` scope or `security_events` scope.
+	// GitHub Apps must have the `secret_scanning_alerts` read permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
+	SecretScanningGetAlert(ctx context.Context, params SecretScanningGetAlertParams) (SecretScanningGetAlertRes, error)
+	// SecretScanningListAlertsForOrg invokes secret-scanning/list-alerts-for-org operation.
+	//
+	// Lists all secret scanning alerts for all eligible repositories in an organization, from newest to
+	// oldest.
+	// To use this endpoint, you must be an administrator for the repository or organization, and you
+	// must use an access token with the `repo` scope or `security_events` scope.
+	// GitHub Apps must have the `secret_scanning_alerts` read permission to use this endpoint.
+	//
+	// GET /orgs/{org}/secret-scanning/alerts
+	SecretScanningListAlertsForOrg(ctx context.Context, params SecretScanningListAlertsForOrgParams) (SecretScanningListAlertsForOrgRes, error)
+	// SecretScanningListAlertsForRepo invokes secret-scanning/list-alerts-for-repo operation.
+	//
+	// Lists all secret scanning alerts for a private repository, from newest to oldest. To use this
+	// endpoint, you must be an administrator for the repository or organization, and you must use an
+	// access token with the `repo` scope or `security_events` scope.
+	// GitHub Apps must have the `secret_scanning_alerts` read permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/secret-scanning/alerts
+	SecretScanningListAlertsForRepo(ctx context.Context, params SecretScanningListAlertsForRepoParams) (SecretScanningListAlertsForRepoRes, error)
+	// SecretScanningUpdateAlert invokes secret-scanning/update-alert operation.
+	//
+	// Updates the status of a secret scanning alert in a private repository. To use this endpoint, you
+	// must be an administrator for the repository or organization, and you must use an access token with
+	// the `repo` scope or `security_events` scope.
+	// GitHub Apps must have the `secret_scanning_alerts` write permission to use this endpoint.
+	//
+	// PATCH /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
+	SecretScanningUpdateAlert(ctx context.Context, request *SecretScanningUpdateAlertReq, params SecretScanningUpdateAlertParams) (SecretScanningUpdateAlertRes, error)
+	// TeamsAddMemberLegacy invokes teams/add-member-legacy operation.
+	//
+	// The "Add team member" endpoint (described below) is deprecated.
+	// We recommend using the [Add or update team membership for a user](https://docs.github.
+	// com/rest/reference/teams#add-or-update-team-membership-for-a-user) endpoint instead. It allows you
+	// to invite new organization members to your teams.
+	// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
+	// information, see [GitHub's products](https://help.github.
+	// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+	// To add someone to a team, the authenticated user must be an organization owner or a team
+	// maintainer in the team they're changing. The person being added to the team must be a member of
+	// the team's organization.
+	// **Note:** When you have team synchronization set up for a team with your organization's identity
+	// provider (IdP), you will see an error if you attempt to use the API for making changes to the
+	// team's membership. If you have access to manage group membership in your IdP, you can manage
+	// GitHub team membership through your identity provider, which automatically adds and removes team
+	// members in an organization. For more information, see "[Synchronizing teams between your identity
+	// provider and GitHub](https://help.github.
+	// com/articles/synchronizing-teams-between-your-identity-provider-and-github/)."
+	// Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more
+	// information, see "[HTTP verbs](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#http-verbs).".
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// PUT /teams/{team_id}/members/{username}
+	TeamsAddMemberLegacy(ctx context.Context, params TeamsAddMemberLegacyParams) (TeamsAddMemberLegacyRes, error)
+	// TeamsAddOrUpdateMembershipForUserInOrg invokes teams/add-or-update-membership-for-user-in-org operation.
+	//
+	// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
+	// information, see [GitHub's products](https://help.github.
+	// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+	// Adds an organization member to a team. An authenticated organization owner or team maintainer can
+	// add organization members to a team.
+	// **Note:** When you have team synchronization set up for a team with your organization's identity
+	// provider (IdP), you will see an error if you attempt to use the API for making changes to the
+	// team's membership. If you have access to manage group membership in your IdP, you can manage
+	// GitHub team membership through your identity provider, which automatically adds and removes team
+	// members in an organization. For more information, see "[Synchronizing teams between your identity
+	// provider and GitHub](https://help.github.
+	// com/articles/synchronizing-teams-between-your-identity-provider-and-github/)."
+	// An organization owner can add someone who is not part of the team's organization to a team. When
+	// an organization owner adds someone to a team who is not an organization member, this endpoint will
+	// send an invitation to the person via email. This newly-created membership will be in the "pending"
+	// state until the person accepts the invitation, at which point the membership will transition to
+	// the "active" state and the user will be added as a member of the team.
+	// If the user is already a member of the team, this endpoint will update the role of the team
+	// member's role. To update the membership of a team member, the authenticated user must be an
+	// organization owner or a team maintainer.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `PUT
+	// /organizations/{org_id}/team/{team_id}/memberships/{username}`.
+	//
+	// PUT /orgs/{org}/teams/{team_slug}/memberships/{username}
+	TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, request OptTeamsAddOrUpdateMembershipForUserInOrgReq, params TeamsAddOrUpdateMembershipForUserInOrgParams) (TeamsAddOrUpdateMembershipForUserInOrgRes, error)
+	// TeamsAddOrUpdateMembershipForUserLegacy invokes teams/add-or-update-membership-for-user-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [Add or update team membership for a
+	// user](https://docs.github.com/rest/reference/teams#add-or-update-team-membership-for-a-user)
+	// endpoint.
+	// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
+	// information, see [GitHub's products](https://help.github.
+	// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+	// If the user is already a member of the team's organization, this endpoint will add the user to the
+	// team. To add a membership between an organization member and a team, the authenticated user must
+	// be an organization owner or a team maintainer.
+	// **Note:** When you have team synchronization set up for a team with your organization's identity
+	// provider (IdP), you will see an error if you attempt to use the API for making changes to the
+	// team's membership. If you have access to manage group membership in your IdP, you can manage
+	// GitHub team membership through your identity provider, which automatically adds and removes team
+	// members in an organization. For more information, see "[Synchronizing teams between your identity
+	// provider and GitHub](https://help.github.
+	// com/articles/synchronizing-teams-between-your-identity-provider-and-github/)."
+	// If the user is unaffiliated with the team's organization, this endpoint will send an invitation to
+	// the user via email. This newly-created membership will be in the "pending" state until the user
+	// accepts the invitation, at which point the membership will transition to the "active" state and
+	// the user will be added as a member of the team. To add a membership between an unaffiliated user
+	// and a team, the authenticated user must be an organization owner.
+	// If the user is already a member of the team, this endpoint will update the role of the team
+	// member's role. To update the membership of a team member, the authenticated user must be an
+	// organization owner or a team maintainer.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// PUT /teams/{team_id}/memberships/{username}
+	TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, request OptTeamsAddOrUpdateMembershipForUserLegacyReq, params TeamsAddOrUpdateMembershipForUserLegacyParams) (TeamsAddOrUpdateMembershipForUserLegacyRes, error)
+	// TeamsAddOrUpdateProjectPermissionsInOrg invokes teams/add-or-update-project-permissions-in-org operation.
+	//
+	// Adds an organization project to a team. To add a project to a team or update the team's permission
+	// on a project, the authenticated user must have `admin` permissions for the project. The project
+	// and team must be part of the same organization.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `PUT
+	// /organizations/{org_id}/team/{team_id}/projects/{project_id}`.
+	//
+	// PUT /orgs/{org}/teams/{team_slug}/projects/{project_id}
+	TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, request OptNilTeamsAddOrUpdateProjectPermissionsInOrgReq, params TeamsAddOrUpdateProjectPermissionsInOrgParams) (TeamsAddOrUpdateProjectPermissionsInOrgRes, error)
+	// TeamsAddOrUpdateProjectPermissionsLegacy invokes teams/add-or-update-project-permissions-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [Add or update team project
+	// permissions](https://docs.github.com/rest/reference/teams#add-or-update-team-project-permissions)
+	// endpoint.
+	// Adds an organization project to a team. To add a project to a team or update the team's permission
+	// on a project, the authenticated user must have `admin` permissions for the project. The project
+	// and team must be part of the same organization.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// PUT /teams/{team_id}/projects/{project_id}
+	TeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Context, request OptTeamsAddOrUpdateProjectPermissionsLegacyReq, params TeamsAddOrUpdateProjectPermissionsLegacyParams) (TeamsAddOrUpdateProjectPermissionsLegacyRes, error)
+	// TeamsAddOrUpdateRepoPermissionsInOrg invokes teams/add-or-update-repo-permissions-in-org operation.
+	//
+	// To add a repository to a team or update the team's permission on a repository, the authenticated
+	// user must have admin access to the repository, and must be able to see the team. The repository
+	// must be owned by the organization, or a direct fork of a repository owned by the organization. You
+	// will get a `422 Unprocessable Entity` status if you attempt to add a repository to a team that is
+	// not owned by the organization. Note that, if you choose not to pass any parameters, you'll need to
+	// set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP
+	// verbs](https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs)."
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `PUT
+	// /organizations/{org_id}/team/{team_id}/repos/{owner}/{repo}`.
+	// For more information about the permission levels, see "[Repository permission levels for an
+	// organization](https://help.github.
+	// com/en/github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization#permission-levels-for-repositories-owned-by-an-organization)".
+	//
+	// PUT /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
+	TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, request OptTeamsAddOrUpdateRepoPermissionsInOrgReq, params TeamsAddOrUpdateRepoPermissionsInOrgParams) error
+	// TeamsAddOrUpdateRepoPermissionsLegacy invokes teams/add-or-update-repo-permissions-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new "[Add or update team repository
+	// permissions](https://docs.github.
+	// com/rest/reference/teams#add-or-update-team-repository-permissions)" endpoint.
+	// To add a repository to a team or update the team's permission on a repository, the authenticated
+	// user must have admin access to the repository, and must be able to see the team. The repository
+	// must be owned by the organization, or a direct fork of a repository owned by the organization. You
+	// will get a `422 Unprocessable Entity` status if you attempt to add a repository to a team that is
+	// not owned by the organization.
+	// Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero
+	// when calling out to this endpoint. For more information, see "[HTTP verbs](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#http-verbs).".
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// PUT /teams/{team_id}/repos/{owner}/{repo}
+	TeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, request OptTeamsAddOrUpdateRepoPermissionsLegacyReq, params TeamsAddOrUpdateRepoPermissionsLegacyParams) (TeamsAddOrUpdateRepoPermissionsLegacyRes, error)
+	// TeamsCheckPermissionsForProjectInOrg invokes teams/check-permissions-for-project-in-org operation.
+	//
+	// Checks whether a team has `read`, `write`, or `admin` permissions for an organization project. The
+	// response includes projects inherited from a parent team.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
+	// /organizations/{org_id}/team/{team_id}/projects/{project_id}`.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/projects/{project_id}
+	TeamsCheckPermissionsForProjectInOrg(ctx context.Context, params TeamsCheckPermissionsForProjectInOrgParams) (TeamsCheckPermissionsForProjectInOrgRes, error)
+	// TeamsCheckPermissionsForProjectLegacy invokes teams/check-permissions-for-project-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [Check team permissions for a
+	// project](https://docs.github.com/rest/reference/teams#check-team-permissions-for-a-project)
+	// endpoint.
+	// Checks whether a team has `read`, `write`, or `admin` permissions for an organization project. The
+	// response includes projects inherited from a parent team.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}/projects/{project_id}
+	TeamsCheckPermissionsForProjectLegacy(ctx context.Context, params TeamsCheckPermissionsForProjectLegacyParams) (TeamsCheckPermissionsForProjectLegacyRes, error)
+	// TeamsCheckPermissionsForRepoInOrg invokes teams/check-permissions-for-repo-in-org operation.
+	//
+	// Checks whether a team has `admin`, `push`, `maintain`, `triage`, or `pull` permission for a
+	// repository. Repositories inherited through a parent team will also be checked.
+	// You can also get information about the specified repository, including what permissions the team
+	// grants on it, by passing the following custom [media type](https://docs.github.
+	// com/rest/overview/media-types/) via the `application/vnd.github.v3.repository+json` accept header.
+	// If a team doesn't have permission for the repository, you will receive a `404 Not Found` response
+	// status.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
+	// /organizations/{org_id}/team/{team_id}/repos/{owner}/{repo}`.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
+	TeamsCheckPermissionsForRepoInOrg(ctx context.Context, params TeamsCheckPermissionsForRepoInOrgParams) (TeamsCheckPermissionsForRepoInOrgRes, error)
+	// TeamsCheckPermissionsForRepoLegacy invokes teams/check-permissions-for-repo-legacy operation.
+	//
+	// **Note**: Repositories inherited through a parent team will also be checked.
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [Check team permissions for a
+	// repository](https://docs.github.com/rest/reference/teams#check-team-permissions-for-a-repository)
+	// endpoint.
+	// You can also get information about the specified repository, including what permissions the team
+	// grants on it, by passing the following custom [media type](https://docs.github.
+	// com/rest/overview/media-types/) via the `Accept` header:.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}/repos/{owner}/{repo}
+	TeamsCheckPermissionsForRepoLegacy(ctx context.Context, params TeamsCheckPermissionsForRepoLegacyParams) (TeamsCheckPermissionsForRepoLegacyRes, error)
+	// TeamsCreate invokes teams/create operation.
+	//
+	// To create a team, the authenticated user must be a member or owner of `{org}`. By default,
+	// organization members can create teams. Organization owners can limit team creation to organization
+	// owners. For more information, see "[Setting team creation permissions](https://help.github.
+	// com/en/articles/setting-team-creation-permissions-in-your-organization)."
+	// When you create a new team, you automatically become a team maintainer without explicitly adding
+	// yourself to the optional array of `maintainers`. For more information, see "[About
+	// teams](https://help.github.
+	// com/en/github/setting-up-and-managing-organizations-and-teams/about-teams)".
+	//
+	// POST /orgs/{org}/teams
+	TeamsCreate(ctx context.Context, request *TeamsCreateReq, params TeamsCreateParams) (TeamsCreateRes, error)
+	// TeamsCreateDiscussionCommentInOrg invokes teams/create-discussion-comment-in-org operation.
+	//
+	// Creates a new comment on a team discussion. OAuth access tokens require the `write:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	// This endpoint triggers [notifications](https://docs.github.
+	// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
+	// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
+	// rate limits](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
+	// rate limits](https://docs.github.
+	// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `POST
+	// /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments`.
+	//
+	// POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
+	TeamsCreateDiscussionCommentInOrg(ctx context.Context, request *TeamsCreateDiscussionCommentInOrgReq, params TeamsCreateDiscussionCommentInOrgParams) (*TeamDiscussionComment, error)
+	// TeamsCreateDiscussionCommentLegacy invokes teams/create-discussion-comment-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [Create a discussion
+	// comment](https://docs.github.com/rest/reference/teams#create-a-discussion-comment) endpoint.
+	// Creates a new comment on a team discussion. OAuth access tokens require the `write:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	// This endpoint triggers [notifications](https://docs.github.
+	// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
+	// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
+	// rate limits](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
+	// rate limits](https://docs.github.
+	// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// POST /teams/{team_id}/discussions/{discussion_number}/comments
+	TeamsCreateDiscussionCommentLegacy(ctx context.Context, request *TeamsCreateDiscussionCommentLegacyReq, params TeamsCreateDiscussionCommentLegacyParams) (*TeamDiscussionComment, error)
+	// TeamsCreateDiscussionInOrg invokes teams/create-discussion-in-org operation.
+	//
+	// Creates a new discussion post on a team's page. OAuth access tokens require the `write:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	// This endpoint triggers [notifications](https://docs.github.
+	// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
+	// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
+	// rate limits](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
+	// rate limits](https://docs.github.
+	// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `POST
+	// /organizations/{org_id}/team/{team_id}/discussions`.
+	//
+	// POST /orgs/{org}/teams/{team_slug}/discussions
+	TeamsCreateDiscussionInOrg(ctx context.Context, request *TeamsCreateDiscussionInOrgReq, params TeamsCreateDiscussionInOrgParams) (*TeamDiscussion, error)
+	// TeamsCreateDiscussionLegacy invokes teams/create-discussion-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [`Create a discussion`](https://docs.
+	// github.com/rest/reference/teams#create-a-discussion) endpoint.
+	// Creates a new discussion post on a team's page. OAuth access tokens require the `write:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	// This endpoint triggers [notifications](https://docs.github.
+	// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
+	// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
+	// rate limits](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
+	// rate limits](https://docs.github.
+	// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// POST /teams/{team_id}/discussions
+	TeamsCreateDiscussionLegacy(ctx context.Context, request *TeamsCreateDiscussionLegacyReq, params TeamsCreateDiscussionLegacyParams) (*TeamDiscussion, error)
+	// TeamsCreateOrUpdateIdpGroupConnectionsInOrg invokes teams/create-or-update-idp-group-connections-in-org operation.
+	//
+	// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
+	// information, see [GitHub's products](https://help.github.
+	// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+	// Creates, updates, or removes a connection between a team and an IdP group. When adding groups to a
+	// team, you must include all new and existing groups to avoid replacing existing groups with the new
+	// ones. Specifying an empty `groups` array will remove all connections for a team.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `PATCH
+	// /organizations/{org_id}/team/{team_id}/team-sync/group-mappings`.
+	//
+	// PATCH /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
+	TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context, request *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq, params TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams) (*GroupMapping, error)
+	// TeamsCreateOrUpdateIdpGroupConnectionsLegacy invokes teams/create-or-update-idp-group-connections-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [`Create or update IdP group
+	// connections`](https://docs.github.com/rest/reference/teams#create-or-update-idp-group-connections)
+	// endpoint.
+	// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
+	// information, see [GitHub's products](https://help.github.
+	// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+	// Creates, updates, or removes a connection between a team and an IdP group. When adding groups to a
+	// team, you must include all new and existing groups to avoid replacing existing groups with the new
+	// ones. Specifying an empty `groups` array will remove all connections for a team.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// PATCH /teams/{team_id}/team-sync/group-mappings
+	TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Context, request *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq, params TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams) (TeamsCreateOrUpdateIdpGroupConnectionsLegacyRes, error)
+	// TeamsDeleteDiscussionCommentInOrg invokes teams/delete-discussion-comment-in-org operation.
+	//
+	// Deletes a comment on a team discussion. OAuth access tokens require the `write:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `DELETE
+	// /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
+	//
+	// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
+	TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params TeamsDeleteDiscussionCommentInOrgParams) error
+	// TeamsDeleteDiscussionCommentLegacy invokes teams/delete-discussion-comment-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [Delete a discussion
+	// comment](https://docs.github.com/rest/reference/teams#delete-a-discussion-comment) endpoint.
+	// Deletes a comment on a team discussion. OAuth access tokens require the `write:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// DELETE /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
+	TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params TeamsDeleteDiscussionCommentLegacyParams) error
+	// TeamsDeleteDiscussionInOrg invokes teams/delete-discussion-in-org operation.
+	//
+	// Delete a discussion from a team's page. OAuth access tokens require the `write:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `DELETE
+	// /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
+	//
+	// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
+	TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDeleteDiscussionInOrgParams) error
+	// TeamsDeleteDiscussionLegacy invokes teams/delete-discussion-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [`Delete a discussion`](https://docs.
+	// github.com/rest/reference/teams#delete-a-discussion) endpoint.
+	// Delete a discussion from a team's page. OAuth access tokens require the `write:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// DELETE /teams/{team_id}/discussions/{discussion_number}
+	TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDeleteDiscussionLegacyParams) error
+	// TeamsDeleteInOrg invokes teams/delete-in-org operation.
+	//
+	// To delete a team, the authenticated user must be an organization owner or team maintainer.
+	// If you are an organization owner, deleting a parent team will delete all of its child teams as
+	// well.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `DELETE
+	// /organizations/{org_id}/team/{team_id}`.
+	//
+	// DELETE /orgs/{org}/teams/{team_slug}
+	TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgParams) error
+	// TeamsDeleteLegacy invokes teams/delete-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [Delete a team](https://docs.github.
+	// com/rest/reference/teams#delete-a-team) endpoint.
+	// To delete a team, the authenticated user must be an organization owner or team maintainer.
+	// If you are an organization owner, deleting a parent team will delete all of its child teams as
+	// well.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// DELETE /teams/{team_id}
+	TeamsDeleteLegacy(ctx context.Context, params TeamsDeleteLegacyParams) (TeamsDeleteLegacyRes, error)
+	// TeamsGetByName invokes teams/get-by-name operation.
+	//
+	// Gets a team using the team's `slug`. GitHub generates the `slug` from the team `name`.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
+	// /organizations/{org_id}/team/{team_id}`.
+	//
+	// GET /orgs/{org}/teams/{team_slug}
+	TeamsGetByName(ctx context.Context, params TeamsGetByNameParams) (TeamsGetByNameRes, error)
+	// TeamsGetDiscussionCommentInOrg invokes teams/get-discussion-comment-in-org operation.
+	//
+	// Get a specific comment on a team discussion. OAuth access tokens require the `read:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
+	// /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
+	TeamsGetDiscussionCommentInOrg(ctx context.Context, params TeamsGetDiscussionCommentInOrgParams) (*TeamDiscussionComment, error)
+	// TeamsGetDiscussionCommentLegacy invokes teams/get-discussion-comment-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [Get a discussion comment](https://docs.
+	// github.com/rest/reference/teams#get-a-discussion-comment) endpoint.
+	// Get a specific comment on a team discussion. OAuth access tokens require the `read:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
+	TeamsGetDiscussionCommentLegacy(ctx context.Context, params TeamsGetDiscussionCommentLegacyParams) (*TeamDiscussionComment, error)
+	// TeamsGetDiscussionInOrg invokes teams/get-discussion-in-org operation.
+	//
+	// Get a specific discussion on a team's page. OAuth access tokens require the `read:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
+	// /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
+	TeamsGetDiscussionInOrg(ctx context.Context, params TeamsGetDiscussionInOrgParams) (*TeamDiscussion, error)
+	// TeamsGetDiscussionLegacy invokes teams/get-discussion-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [Get a discussion](https://docs.github.
+	// com/rest/reference/teams#get-a-discussion) endpoint.
+	// Get a specific discussion on a team's page. OAuth access tokens require the `read:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}/discussions/{discussion_number}
+	TeamsGetDiscussionLegacy(ctx context.Context, params TeamsGetDiscussionLegacyParams) (*TeamDiscussion, error)
+	// TeamsGetLegacy invokes teams/get-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the [Get a team by name](https://docs.github.
+	// com/rest/reference/teams#get-a-team-by-name) endpoint.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}
+	TeamsGetLegacy(ctx context.Context, params TeamsGetLegacyParams) (TeamsGetLegacyRes, error)
+	// TeamsGetMemberLegacy invokes teams/get-member-legacy operation.
+	//
+	// The "Get team member" endpoint (described below) is deprecated.
+	// We recommend using the [Get team membership for a user](https://docs.github.
+	// com/rest/reference/teams#get-team-membership-for-a-user) endpoint instead. It allows you to get
+	// both active and pending memberships.
+	// To list members in a team, the team must be visible to the authenticated user.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}/members/{username}
+	TeamsGetMemberLegacy(ctx context.Context, params TeamsGetMemberLegacyParams) (TeamsGetMemberLegacyRes, error)
+	// TeamsGetMembershipForUserInOrg invokes teams/get-membership-for-user-in-org operation.
+	//
+	// Team members will include the members of child teams.
+	// To get a user's membership with a team, the team must be visible to the authenticated user.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
+	// /organizations/{org_id}/team/{team_id}/memberships/{username}`.
+	// **Note:**
+	// The response contains the `state` of the membership and the member's `role`.
+	// The `role` for organization owners is set to `maintainer`. For more information about `maintainer`
+	// roles, see see [Create a team](https://docs.github.com/rest/reference/teams#create-a-team).
+	//
+	// GET /orgs/{org}/teams/{team_slug}/memberships/{username}
+	TeamsGetMembershipForUserInOrg(ctx context.Context, params TeamsGetMembershipForUserInOrgParams) (TeamsGetMembershipForUserInOrgRes, error)
+	// TeamsGetMembershipForUserLegacy invokes teams/get-membership-for-user-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [Get team membership for a
+	// user](https://docs.github.com/rest/reference/teams#get-team-membership-for-a-user) endpoint.
+	// Team members will include the members of child teams.
+	// To get a user's membership with a team, the team must be visible to the authenticated user.
+	// **Note:**
+	// The response contains the `state` of the membership and the member's `role`.
+	// The `role` for organization owners is set to `maintainer`. For more information about `maintainer`
+	// roles, see [Create a team](https://docs.github.com/rest/reference/teams#create-a-team).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}/memberships/{username}
+	TeamsGetMembershipForUserLegacy(ctx context.Context, params TeamsGetMembershipForUserLegacyParams) (TeamsGetMembershipForUserLegacyRes, error)
+	// TeamsList invokes teams/list operation.
+	//
+	// Lists all teams in an organization that are visible to the authenticated user.
+	//
+	// GET /orgs/{org}/teams
+	TeamsList(ctx context.Context, params TeamsListParams) (TeamsListRes, error)
+	// TeamsListChildInOrg invokes teams/list-child-in-org operation.
+	//
+	// Lists the child teams of the team specified by `{team_slug}`.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
+	// /organizations/{org_id}/team/{team_id}/teams`.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/teams
+	TeamsListChildInOrg(ctx context.Context, params TeamsListChildInOrgParams) (*TeamsListChildInOrgOKHeaders, error)
+	// TeamsListChildLegacy invokes teams/list-child-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [`List child teams`](https://docs.github.
+	// com/rest/reference/teams#list-child-teams) endpoint.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}/teams
+	TeamsListChildLegacy(ctx context.Context, params TeamsListChildLegacyParams) (TeamsListChildLegacyRes, error)
+	// TeamsListDiscussionCommentsInOrg invokes teams/list-discussion-comments-in-org operation.
+	//
+	// List all comments on a team discussion. OAuth access tokens require the `read:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
+	// /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments`.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
+	TeamsListDiscussionCommentsInOrg(ctx context.Context, params TeamsListDiscussionCommentsInOrgParams) (*TeamsListDiscussionCommentsInOrgOKHeaders, error)
+	// TeamsListDiscussionCommentsLegacy invokes teams/list-discussion-comments-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [List discussion comments](https://docs.
+	// github.com/rest/reference/teams#list-discussion-comments) endpoint.
+	// List all comments on a team discussion. OAuth access tokens require the `read:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}/discussions/{discussion_number}/comments
+	TeamsListDiscussionCommentsLegacy(ctx context.Context, params TeamsListDiscussionCommentsLegacyParams) (*TeamsListDiscussionCommentsLegacyOKHeaders, error)
+	// TeamsListDiscussionsInOrg invokes teams/list-discussions-in-org operation.
+	//
+	// List all discussions on a team's page. OAuth access tokens require the `read:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
+	// /organizations/{org_id}/team/{team_id}/discussions`.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/discussions
+	TeamsListDiscussionsInOrg(ctx context.Context, params TeamsListDiscussionsInOrgParams) (*TeamsListDiscussionsInOrgOKHeaders, error)
+	// TeamsListDiscussionsLegacy invokes teams/list-discussions-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [`List discussions`](https://docs.github.
+	// com/rest/reference/teams#list-discussions) endpoint.
+	// List all discussions on a team's page. OAuth access tokens require the `read:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}/discussions
+	TeamsListDiscussionsLegacy(ctx context.Context, params TeamsListDiscussionsLegacyParams) (*TeamsListDiscussionsLegacyOKHeaders, error)
+	// TeamsListForAuthenticatedUser invokes teams/list-for-authenticated-user operation.
+	//
+	// List all of the teams across all of the organizations to which the authenticated user belongs.
+	// This method requires `user`, `repo`, or `read:org` [scope](https://docs.github.
+	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/) when authenticating via
+	// [OAuth](https://docs.github.com/apps/building-oauth-apps/).
+	//
+	// GET /user/teams
+	TeamsListForAuthenticatedUser(ctx context.Context, params TeamsListForAuthenticatedUserParams) (TeamsListForAuthenticatedUserRes, error)
+	// TeamsListIdpGroupsForLegacy invokes teams/list-idp-groups-for-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [`List IdP groups for a
+	// team`](https://docs.github.com/rest/reference/teams#list-idp-groups-for-a-team) endpoint.
+	// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
+	// information, see [GitHub's products](https://help.github.
+	// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+	// List IdP groups connected to a team on GitHub.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}/team-sync/group-mappings
+	TeamsListIdpGroupsForLegacy(ctx context.Context, params TeamsListIdpGroupsForLegacyParams) (TeamsListIdpGroupsForLegacyRes, error)
+	// TeamsListIdpGroupsForOrg invokes teams/list-idp-groups-for-org operation.
+	//
+	// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
+	// information, see [GitHub's products](https://help.github.
+	// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+	// List IdP groups available in an organization. You can limit your page results using the `per_page`
+	// parameter. GitHub generates a url-encoded `page` token using a cursor value for where the next
+	// page begins. For more information on cursor pagination, see "[Offset and Cursor Pagination
+	// explained](https://dev.to/jackmarchant/offset-and-cursor-pagination-explained-b89).".
+	//
+	// GET /orgs/{org}/team-sync/groups
+	TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListIdpGroupsForOrgParams) (*GroupMappingHeaders, error)
+	// TeamsListIdpGroupsInOrg invokes teams/list-idp-groups-in-org operation.
+	//
+	// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
+	// information, see [GitHub's products](https://help.github.
+	// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+	// List IdP groups connected to a team on GitHub.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
+	// /organizations/{org_id}/team/{team_id}/team-sync/group-mappings`.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
+	TeamsListIdpGroupsInOrg(ctx context.Context, params TeamsListIdpGroupsInOrgParams) (*GroupMapping, error)
+	// TeamsListMembersInOrg invokes teams/list-members-in-org operation.
+	//
+	// Team members will include the members of child teams.
+	// To list members in a team, the team must be visible to the authenticated user.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/members
+	TeamsListMembersInOrg(ctx context.Context, params TeamsListMembersInOrgParams) (*TeamsListMembersInOrgOKHeaders, error)
+	// TeamsListMembersLegacy invokes teams/list-members-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [`List team members`](https://docs.github.
+	// com/rest/reference/teams#list-team-members) endpoint.
+	// Team members will include the members of child teams.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}/members
+	TeamsListMembersLegacy(ctx context.Context, params TeamsListMembersLegacyParams) (TeamsListMembersLegacyRes, error)
+	// TeamsListPendingInvitationsInOrg invokes teams/list-pending-invitations-in-org operation.
+	//
+	// The return hash contains a `role` field which refers to the Organization Invitation role and will
+	// be one of the following values: `direct_member`, `admin`, `billing_manager`, `hiring_manager`, or
+	// `reinstate`. If the invitee is not a GitHub member, the `login` field in the return hash will be
+	// `null`.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
+	// /organizations/{org_id}/team/{team_id}/invitations`.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/invitations
+	TeamsListPendingInvitationsInOrg(ctx context.Context, params TeamsListPendingInvitationsInOrgParams) (*TeamsListPendingInvitationsInOrgOKHeaders, error)
+	// TeamsListPendingInvitationsLegacy invokes teams/list-pending-invitations-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [`List pending team
+	// invitations`](https://docs.github.com/rest/reference/teams#list-pending-team-invitations) endpoint.
+	// The return hash contains a `role` field which refers to the Organization Invitation role and will
+	// be one of the following values: `direct_member`, `admin`, `billing_manager`, `hiring_manager`, or
+	// `reinstate`. If the invitee is not a GitHub member, the `login` field in the return hash will be
+	// `null`.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}/invitations
+	TeamsListPendingInvitationsLegacy(ctx context.Context, params TeamsListPendingInvitationsLegacyParams) (*TeamsListPendingInvitationsLegacyOKHeaders, error)
+	// TeamsListProjectsInOrg invokes teams/list-projects-in-org operation.
+	//
+	// Lists the organization projects for a team.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
+	// /organizations/{org_id}/team/{team_id}/projects`.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/projects
+	TeamsListProjectsInOrg(ctx context.Context, params TeamsListProjectsInOrgParams) (*TeamsListProjectsInOrgOKHeaders, error)
+	// TeamsListProjectsLegacy invokes teams/list-projects-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [`List team projects`](https://docs.
+	// github.com/rest/reference/teams#list-team-projects) endpoint.
+	// Lists the organization projects for a team.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}/projects
+	TeamsListProjectsLegacy(ctx context.Context, params TeamsListProjectsLegacyParams) (TeamsListProjectsLegacyRes, error)
+	// TeamsListReposInOrg invokes teams/list-repos-in-org operation.
+	//
+	// Lists a team's repositories visible to the authenticated user.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
+	// /organizations/{org_id}/team/{team_id}/repos`.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/repos
+	TeamsListReposInOrg(ctx context.Context, params TeamsListReposInOrgParams) (*TeamsListReposInOrgOKHeaders, error)
+	// TeamsListReposLegacy invokes teams/list-repos-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [List team repositories](https://docs.
+	// github.com/rest/reference/teams#list-team-repositories) endpoint.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}/repos
+	TeamsListReposLegacy(ctx context.Context, params TeamsListReposLegacyParams) (TeamsListReposLegacyRes, error)
+	// TeamsRemoveMemberLegacy invokes teams/remove-member-legacy operation.
+	//
+	// The "Remove team member" endpoint (described below) is deprecated.
+	// We recommend using the [Remove team membership for a user](https://docs.github.
+	// com/rest/reference/teams#remove-team-membership-for-a-user) endpoint instead. It allows you to
+	// remove both active and pending memberships.
+	// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
+	// information, see [GitHub's products](https://help.github.
+	// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+	// To remove a team member, the authenticated user must have 'admin' permissions to the team or be an
+	// owner of the org that the team is associated with. Removing a team member does not delete the user,
+	//  it just removes them from the team.
+	// **Note:** When you have team synchronization set up for a team with your organization's identity
+	// provider (IdP), you will see an error if you attempt to use the API for making changes to the
+	// team's membership. If you have access to manage group membership in your IdP, you can manage
+	// GitHub team membership through your identity provider, which automatically adds and removes team
+	// members in an organization. For more information, see "[Synchronizing teams between your identity
+	// provider and GitHub](https://help.github.
+	// com/articles/synchronizing-teams-between-your-identity-provider-and-github/).".
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// DELETE /teams/{team_id}/members/{username}
+	TeamsRemoveMemberLegacy(ctx context.Context, params TeamsRemoveMemberLegacyParams) (TeamsRemoveMemberLegacyRes, error)
+	// TeamsRemoveMembershipForUserInOrg invokes teams/remove-membership-for-user-in-org operation.
+	//
+	// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
+	// information, see [GitHub's products](https://help.github.
+	// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+	// To remove a membership between a user and a team, the authenticated user must have 'admin'
+	// permissions to the team or be an owner of the organization that the team is associated with.
+	// Removing team membership does not delete the user, it just removes their membership from the team.
+	// **Note:** When you have team synchronization set up for a team with your organization's identity
+	// provider (IdP), you will see an error if you attempt to use the API for making changes to the
+	// team's membership. If you have access to manage group membership in your IdP, you can manage
+	// GitHub team membership through your identity provider, which automatically adds and removes team
+	// members in an organization. For more information, see "[Synchronizing teams between your identity
+	// provider and GitHub](https://help.github.
+	// com/articles/synchronizing-teams-between-your-identity-provider-and-github/)."
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `DELETE
+	// /organizations/{org_id}/team/{team_id}/memberships/{username}`.
+	//
+	// DELETE /orgs/{org}/teams/{team_slug}/memberships/{username}
+	TeamsRemoveMembershipForUserInOrg(ctx context.Context, params TeamsRemoveMembershipForUserInOrgParams) (TeamsRemoveMembershipForUserInOrgRes, error)
+	// TeamsRemoveMembershipForUserLegacy invokes teams/remove-membership-for-user-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [Remove team membership for a
+	// user](https://docs.github.com/rest/reference/teams#remove-team-membership-for-a-user) endpoint.
+	// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
+	// information, see [GitHub's products](https://help.github.
+	// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+	// To remove a membership between a user and a team, the authenticated user must have 'admin'
+	// permissions to the team or be an owner of the organization that the team is associated with.
+	// Removing team membership does not delete the user, it just removes their membership from the team.
+	// **Note:** When you have team synchronization set up for a team with your organization's identity
+	// provider (IdP), you will see an error if you attempt to use the API for making changes to the
+	// team's membership. If you have access to manage group membership in your IdP, you can manage
+	// GitHub team membership through your identity provider, which automatically adds and removes team
+	// members in an organization. For more information, see "[Synchronizing teams between your identity
+	// provider and GitHub](https://help.github.
+	// com/articles/synchronizing-teams-between-your-identity-provider-and-github/).".
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// DELETE /teams/{team_id}/memberships/{username}
+	TeamsRemoveMembershipForUserLegacy(ctx context.Context, params TeamsRemoveMembershipForUserLegacyParams) (TeamsRemoveMembershipForUserLegacyRes, error)
+	// TeamsRemoveProjectInOrg invokes teams/remove-project-in-org operation.
+	//
+	// Removes an organization project from a team. An organization owner or a team maintainer can remove
+	// any project from the team. To remove a project from a team as an organization member, the
+	// authenticated user must have `read` access to both the team and project, or `admin` access to the
+	// team or project. This endpoint removes the project from the team, but does not delete the project.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `DELETE
+	// /organizations/{org_id}/team/{team_id}/projects/{project_id}`.
+	//
+	// DELETE /orgs/{org}/teams/{team_slug}/projects/{project_id}
+	TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemoveProjectInOrgParams) error
+	// TeamsRemoveProjectLegacy invokes teams/remove-project-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [Remove a project from a
+	// team](https://docs.github.com/rest/reference/teams#remove-a-project-from-a-team) endpoint.
+	// Removes an organization project from a team. An organization owner or a team maintainer can remove
+	// any project from the team. To remove a project from a team as an organization member, the
+	// authenticated user must have `read` access to both the team and project, or `admin` access to the
+	// team or project. **Note:** This endpoint removes the project from the team, but does not delete it.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// DELETE /teams/{team_id}/projects/{project_id}
+	TeamsRemoveProjectLegacy(ctx context.Context, params TeamsRemoveProjectLegacyParams) (TeamsRemoveProjectLegacyRes, error)
+	// TeamsRemoveRepoInOrg invokes teams/remove-repo-in-org operation.
+	//
+	// If the authenticated user is an organization owner or a team maintainer, they can remove any
+	// repositories from the team. To remove a repository from a team as an organization member, the
+	// authenticated user must have admin access to the repository and must be able to see the team. This
+	// does not delete the repository, it just removes it from the team.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `DELETE
+	// /organizations/{org_id}/team/{team_id}/repos/{owner}/{repo}`.
+	//
+	// DELETE /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
+	TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRepoInOrgParams) error
+	// TeamsRemoveRepoLegacy invokes teams/remove-repo-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [Remove a repository from a
+	// team](https://docs.github.com/rest/reference/teams#remove-a-repository-from-a-team) endpoint.
+	// If the authenticated user is an organization owner or a team maintainer, they can remove any
+	// repositories from the team. To remove a repository from a team as an organization member, the
+	// authenticated user must have admin access to the repository and must be able to see the team.
+	// NOTE: This does not delete the repository, it just removes it from the team.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// DELETE /teams/{team_id}/repos/{owner}/{repo}
+	TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRepoLegacyParams) error
+	// TeamsUpdateDiscussionCommentInOrg invokes teams/update-discussion-comment-in-org operation.
+	//
+	// Edits the body text of a discussion comment. OAuth access tokens require the `write:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `PATCH
+	// /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
+	//
+	// PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
+	TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request *TeamsUpdateDiscussionCommentInOrgReq, params TeamsUpdateDiscussionCommentInOrgParams) (*TeamDiscussionComment, error)
+	// TeamsUpdateDiscussionCommentLegacy invokes teams/update-discussion-comment-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [Update a discussion
+	// comment](https://docs.github.com/rest/reference/teams#update-a-discussion-comment) endpoint.
+	// Edits the body text of a discussion comment. OAuth access tokens require the `write:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// PATCH /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
+	TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request *TeamsUpdateDiscussionCommentLegacyReq, params TeamsUpdateDiscussionCommentLegacyParams) (*TeamDiscussionComment, error)
+	// TeamsUpdateDiscussionInOrg invokes teams/update-discussion-in-org operation.
+	//
+	// Edits the title and body text of a discussion post. Only the parameters you provide are updated.
+	// OAuth access tokens require the `write:discussion` [scope](https://docs.github.
+	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `PATCH
+	// /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
+	//
+	// PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
+	TeamsUpdateDiscussionInOrg(ctx context.Context, request OptTeamsUpdateDiscussionInOrgReq, params TeamsUpdateDiscussionInOrgParams) (*TeamDiscussion, error)
+	// TeamsUpdateDiscussionLegacy invokes teams/update-discussion-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [Update a discussion](https://docs.github.
+	// com/rest/reference/teams#update-a-discussion) endpoint.
+	// Edits the title and body text of a discussion post. Only the parameters you provide are updated.
+	// OAuth access tokens require the `write:discussion` [scope](https://docs.github.
+	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// PATCH /teams/{team_id}/discussions/{discussion_number}
+	TeamsUpdateDiscussionLegacy(ctx context.Context, request OptTeamsUpdateDiscussionLegacyReq, params TeamsUpdateDiscussionLegacyParams) (*TeamDiscussion, error)
+	// TeamsUpdateInOrg invokes teams/update-in-org operation.
+	//
+	// To edit a team, the authenticated user must either be an organization owner or a team maintainer.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `PATCH
+	// /organizations/{org_id}/team/{team_id}`.
+	//
+	// PATCH /orgs/{org}/teams/{team_slug}
+	TeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdateInOrgReq, params TeamsUpdateInOrgParams) (*TeamFull, error)
+	// TeamsUpdateLegacy invokes teams/update-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [Update a team](https://docs.github.
+	// com/rest/reference/teams#update-a-team) endpoint.
+	// To edit a team, the authenticated user must either be an organization owner or a team maintainer.
+	// **Note:** With nested teams, the `privacy` for parent teams cannot be `secret`.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// PATCH /teams/{team_id}
+	TeamsUpdateLegacy(ctx context.Context, request *TeamsUpdateLegacyReq, params TeamsUpdateLegacyParams) (TeamsUpdateLegacyRes, error)
+	// UsersAddEmailForAuthenticated invokes users/add-email-for-authenticated operation.
+	//
+	// This endpoint is accessible with the `user` scope.
+	//
+	// POST /user/emails
+	UsersAddEmailForAuthenticated(ctx context.Context, request OptUsersAddEmailForAuthenticatedReq) (UsersAddEmailForAuthenticatedRes, error)
+	// UsersBlock invokes users/block operation.
+	//
+	// Block a user.
+	//
+	// PUT /user/blocks/{username}
+	UsersBlock(ctx context.Context, params UsersBlockParams) (UsersBlockRes, error)
+	// UsersCheckBlocked invokes users/check-blocked operation.
+	//
+	// Check if a user is blocked by the authenticated user.
+	//
+	// GET /user/blocks/{username}
+	UsersCheckBlocked(ctx context.Context, params UsersCheckBlockedParams) (UsersCheckBlockedRes, error)
+	// UsersCheckFollowingForUser invokes users/check-following-for-user operation.
+	//
+	// Check if a user follows another user.
+	//
+	// GET /users/{username}/following/{target_user}
+	UsersCheckFollowingForUser(ctx context.Context, params UsersCheckFollowingForUserParams) (UsersCheckFollowingForUserRes, error)
+	// UsersCheckPersonIsFollowedByAuthenticated invokes users/check-person-is-followed-by-authenticated operation.
+	//
+	// Check if a person is followed by the authenticated user.
+	//
+	// GET /user/following/{username}
+	UsersCheckPersonIsFollowedByAuthenticated(ctx context.Context, params UsersCheckPersonIsFollowedByAuthenticatedParams) (UsersCheckPersonIsFollowedByAuthenticatedRes, error)
+	// UsersCreateGpgKeyForAuthenticated invokes users/create-gpg-key-for-authenticated operation.
+	//
+	// Adds a GPG key to the authenticated user's GitHub account. Requires that you are authenticated via
+	// Basic Auth, or OAuth with at least `write:gpg_key` [scope](https://docs.github.
+	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// POST /user/gpg_keys
+	UsersCreateGpgKeyForAuthenticated(ctx context.Context, request *UsersCreateGpgKeyForAuthenticatedReq) (UsersCreateGpgKeyForAuthenticatedRes, error)
+	// UsersCreatePublicSSHKeyForAuthenticated invokes users/create-public-ssh-key-for-authenticated operation.
+	//
+	// Adds a public SSH key to the authenticated user's GitHub account. Requires that you are
+	// authenticated via Basic Auth, or OAuth with at least `write:public_key` [scope](https://docs.
+	// github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// POST /user/keys
+	UsersCreatePublicSSHKeyForAuthenticated(ctx context.Context, request *UsersCreatePublicSSHKeyForAuthenticatedReq) (UsersCreatePublicSSHKeyForAuthenticatedRes, error)
+	// UsersDeleteEmailForAuthenticated invokes users/delete-email-for-authenticated operation.
+	//
+	// This endpoint is accessible with the `user` scope.
+	//
+	// DELETE /user/emails
+	UsersDeleteEmailForAuthenticated(ctx context.Context, request OptUsersDeleteEmailForAuthenticatedReq) (UsersDeleteEmailForAuthenticatedRes, error)
+	// UsersDeleteGpgKeyForAuthenticated invokes users/delete-gpg-key-for-authenticated operation.
+	//
+	// Removes a GPG key from the authenticated user's GitHub account. Requires that you are
+	// authenticated via Basic Auth or via OAuth with at least `admin:gpg_key` [scope](https://docs.
+	// github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// DELETE /user/gpg_keys/{gpg_key_id}
+	UsersDeleteGpgKeyForAuthenticated(ctx context.Context, params UsersDeleteGpgKeyForAuthenticatedParams) (UsersDeleteGpgKeyForAuthenticatedRes, error)
+	// UsersDeletePublicSSHKeyForAuthenticated invokes users/delete-public-ssh-key-for-authenticated operation.
+	//
+	// Removes a public SSH key from the authenticated user's GitHub account. Requires that you are
+	// authenticated via Basic Auth or via OAuth with at least `admin:public_key` [scope](https://docs.
+	// github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// DELETE /user/keys/{key_id}
+	UsersDeletePublicSSHKeyForAuthenticated(ctx context.Context, params UsersDeletePublicSSHKeyForAuthenticatedParams) (UsersDeletePublicSSHKeyForAuthenticatedRes, error)
+	// UsersFollow invokes users/follow operation.
+	//
+	// Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more
+	// information, see "[HTTP verbs](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#http-verbs)."
+	// Following a user requires the user to be logged in and authenticated with basic auth or OAuth with
+	// the `user:follow` scope.
+	//
+	// PUT /user/following/{username}
+	UsersFollow(ctx context.Context, params UsersFollowParams) (UsersFollowRes, error)
+	// UsersGetAuthenticated invokes users/get-authenticated operation.
+	//
+	// If the authenticated user is authenticated through basic authentication or OAuth with the `user`
+	// scope, then the response lists public and private profile information.
+	// If the authenticated user is authenticated through OAuth without the `user` scope, then the
+	// response lists only public profile information.
+	//
+	// GET /user
+	UsersGetAuthenticated(ctx context.Context) (UsersGetAuthenticatedRes, error)
+	// UsersGetByUsername invokes users/get-by-username operation.
+	//
+	// Provides publicly available information about someone with a GitHub account.
+	// GitHub Apps with the `Plan` user permission can use this endpoint to retrieve information about a
+	// user's GitHub plan. The GitHub App must be authenticated as a user. See "[Identifying and
+	// authorizing users for GitHub Apps](https://docs.github.
+	// com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/)" for details
+	// about authentication. For an example response, see 'Response with GitHub plan information' below"
+	// The `email` key in the following response is the publicly visible email address from your GitHub
+	// [profile page](https://github.com/settings/profile). When setting up your profile, you can select
+	// a primary email address to be “public” which provides an email entry for this endpoint. If you
+	// do not set a public email address for `email`, then it will have a value of `null`. You only see
+	// publicly visible email addresses when authenticated with GitHub. For more information, see
+	// [Authentication](https://docs.github.com/rest/overview/resources-in-the-rest-api#authentication).
+	// The Emails API enables you to list all of your email addresses, and toggle a primary email to be
+	// visible publicly. For more information, see "[Emails API](https://docs.github.
+	// com/rest/reference/users#emails)".
+	//
+	// GET /users/{username}
+	UsersGetByUsername(ctx context.Context, params UsersGetByUsernameParams) (UsersGetByUsernameRes, error)
+	// UsersGetContextForUser invokes users/get-context-for-user operation.
+	//
+	// Provides hovercard information when authenticated through basic auth or OAuth with the `repo`
+	// scope. You can find out more about someone in relation to their pull requests, issues,
+	// repositories, and organizations.
+	// The `subject_type` and `subject_id` parameters provide context for the person's hovercard, which
+	// returns more information than without the parameters. For example, if you wanted to find out more
+	// about `octocat` who owns the `Spoon-Knife` repository via cURL, it would look like this:
+	// ```shell
+	// curl -u username:token
+	// https://api.github.com/users/octocat/hovercard?subject_type=repository&subject_id=1300192
+	// ```.
+	//
+	// GET /users/{username}/hovercard
+	UsersGetContextForUser(ctx context.Context, params UsersGetContextForUserParams) (UsersGetContextForUserRes, error)
+	// UsersGetGpgKeyForAuthenticated invokes users/get-gpg-key-for-authenticated operation.
+	//
+	// View extended details for a single GPG key. Requires that you are authenticated via Basic Auth or
+	// via OAuth with at least `read:gpg_key` [scope](https://docs.github.
+	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// GET /user/gpg_keys/{gpg_key_id}
+	UsersGetGpgKeyForAuthenticated(ctx context.Context, params UsersGetGpgKeyForAuthenticatedParams) (UsersGetGpgKeyForAuthenticatedRes, error)
+	// UsersGetPublicSSHKeyForAuthenticated invokes users/get-public-ssh-key-for-authenticated operation.
+	//
+	// View extended details for a single public SSH key. Requires that you are authenticated via Basic
+	// Auth or via OAuth with at least `read:public_key` [scope](https://docs.github.
+	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// GET /user/keys/{key_id}
+	UsersGetPublicSSHKeyForAuthenticated(ctx context.Context, params UsersGetPublicSSHKeyForAuthenticatedParams) (UsersGetPublicSSHKeyForAuthenticatedRes, error)
+	// UsersList invokes users/list operation.
+	//
+	// Lists all users, in the order that they signed up on GitHub. This list includes personal user
+	// accounts and organization accounts.
+	// Note: Pagination is powered exclusively by the `since` parameter. Use the [Link
+	// header](https://docs.github.com/rest/overview/resources-in-the-rest-api#link-header) to get the
+	// URL for the next page of users.
+	//
+	// GET /users
+	UsersList(ctx context.Context, params UsersListParams) (UsersListRes, error)
+	// UsersListBlockedByAuthenticated invokes users/list-blocked-by-authenticated operation.
+	//
+	// List the users you've blocked on your personal account.
+	//
+	// GET /user/blocks
+	UsersListBlockedByAuthenticated(ctx context.Context) (UsersListBlockedByAuthenticatedRes, error)
+	// UsersListEmailsForAuthenticated invokes users/list-emails-for-authenticated operation.
+	//
+	// Lists all of your email addresses, and specifies which one is visible to the public. This endpoint
+	// is accessible with the `user:email` scope.
+	//
+	// GET /user/emails
+	UsersListEmailsForAuthenticated(ctx context.Context, params UsersListEmailsForAuthenticatedParams) (UsersListEmailsForAuthenticatedRes, error)
+	// UsersListFollowedByAuthenticated invokes users/list-followed-by-authenticated operation.
+	//
+	// Lists the people who the authenticated user follows.
+	//
+	// GET /user/following
+	UsersListFollowedByAuthenticated(ctx context.Context, params UsersListFollowedByAuthenticatedParams) (UsersListFollowedByAuthenticatedRes, error)
+	// UsersListFollowersForAuthenticatedUser invokes users/list-followers-for-authenticated-user operation.
+	//
+	// Lists the people following the authenticated user.
+	//
+	// GET /user/followers
+	UsersListFollowersForAuthenticatedUser(ctx context.Context, params UsersListFollowersForAuthenticatedUserParams) (UsersListFollowersForAuthenticatedUserRes, error)
+	// UsersListFollowersForUser invokes users/list-followers-for-user operation.
+	//
+	// Lists the people following the specified user.
+	//
+	// GET /users/{username}/followers
+	UsersListFollowersForUser(ctx context.Context, params UsersListFollowersForUserParams) (*UsersListFollowersForUserOKHeaders, error)
+	// UsersListFollowingForUser invokes users/list-following-for-user operation.
+	//
+	// Lists the people who the specified user follows.
+	//
+	// GET /users/{username}/following
+	UsersListFollowingForUser(ctx context.Context, params UsersListFollowingForUserParams) (*UsersListFollowingForUserOKHeaders, error)
+	// UsersListGpgKeysForAuthenticated invokes users/list-gpg-keys-for-authenticated operation.
+	//
+	// Lists the current user's GPG keys. Requires that you are authenticated via Basic Auth or via OAuth
+	// with at least `read:gpg_key` [scope](https://docs.github.
+	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// GET /user/gpg_keys
+	UsersListGpgKeysForAuthenticated(ctx context.Context, params UsersListGpgKeysForAuthenticatedParams) (UsersListGpgKeysForAuthenticatedRes, error)
+	// UsersListGpgKeysForUser invokes users/list-gpg-keys-for-user operation.
+	//
+	// Lists the GPG keys for a user. This information is accessible by anyone.
+	//
+	// GET /users/{username}/gpg_keys
+	UsersListGpgKeysForUser(ctx context.Context, params UsersListGpgKeysForUserParams) (*UsersListGpgKeysForUserOKHeaders, error)
+	// UsersListPublicEmailsForAuthenticated invokes users/list-public-emails-for-authenticated operation.
+	//
+	// Lists your publicly visible email address, which you can set with the [Set primary email
+	// visibility for the authenticated user](https://docs.github.
+	// com/rest/reference/users#set-primary-email-visibility-for-the-authenticated-user) endpoint. This
+	// endpoint is accessible with the `user:email` scope.
+	//
+	// GET /user/public_emails
+	UsersListPublicEmailsForAuthenticated(ctx context.Context, params UsersListPublicEmailsForAuthenticatedParams) (UsersListPublicEmailsForAuthenticatedRes, error)
+	// UsersListPublicKeysForUser invokes users/list-public-keys-for-user operation.
+	//
+	// Lists the _verified_ public SSH keys for a user. This is accessible by anyone.
+	//
+	// GET /users/{username}/keys
+	UsersListPublicKeysForUser(ctx context.Context, params UsersListPublicKeysForUserParams) (*UsersListPublicKeysForUserOKHeaders, error)
+	// UsersListPublicSSHKeysForAuthenticated invokes users/list-public-ssh-keys-for-authenticated operation.
+	//
+	// Lists the public SSH keys for the authenticated user's GitHub account. Requires that you are
+	// authenticated via Basic Auth or via OAuth with at least `read:public_key` [scope](https://docs.
+	// github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// GET /user/keys
+	UsersListPublicSSHKeysForAuthenticated(ctx context.Context, params UsersListPublicSSHKeysForAuthenticatedParams) (UsersListPublicSSHKeysForAuthenticatedRes, error)
+	// UsersSetPrimaryEmailVisibilityForAuthenticated invokes users/set-primary-email-visibility-for-authenticated operation.
+	//
+	// Sets the visibility for your primary email addresses.
+	//
+	// PATCH /user/email/visibility
+	UsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.Context, request *UsersSetPrimaryEmailVisibilityForAuthenticatedReq) (UsersSetPrimaryEmailVisibilityForAuthenticatedRes, error)
+	// UsersUnblock invokes users/unblock operation.
+	//
+	// Unblock a user.
+	//
+	// DELETE /user/blocks/{username}
+	UsersUnblock(ctx context.Context, params UsersUnblockParams) (UsersUnblockRes, error)
+	// UsersUnfollow invokes users/unfollow operation.
+	//
+	// Unfollowing a user requires the user to be logged in and authenticated with basic auth or OAuth
+	// with the `user:follow` scope.
+	//
+	// DELETE /user/following/{username}
+	UsersUnfollow(ctx context.Context, params UsersUnfollowParams) (UsersUnfollowRes, error)
+	// UsersUpdateAuthenticated invokes users/update-authenticated operation.
+	//
+	// **Note:** If your email is set to private and you send an `email` parameter as part of this
+	// request to update your profile, your privacy settings are still enforced: the email address will
+	// not be displayed on your public profile or via the API.
+	//
+	// PATCH /user
+	UsersUpdateAuthenticated(ctx context.Context, request OptUsersUpdateAuthenticatedReq) (UsersUpdateAuthenticatedRes, error)
+}
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL

@@ -21,6 +21,46 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+// Invoker invokes operations described by OpenAPI v3 specification.
+type Invoker interface {
+	// GetBook invokes getBook operation.
+	//
+	// Gets metadata of book.
+	//
+	// GET /api/gallery/{book_id}
+	GetBook(ctx context.Context, params GetBookParams) (GetBookRes, error)
+	// GetPageCoverImage invokes getPageCoverImage operation.
+	//
+	// Gets page cover.
+	//
+	// GET /galleries/{media_id}/cover.{format}
+	GetPageCoverImage(ctx context.Context, params GetPageCoverImageParams) (GetPageCoverImageRes, error)
+	// GetPageImage invokes getPageImage operation.
+	//
+	// Gets page.
+	//
+	// GET /galleries/{media_id}/{page}.{format}
+	GetPageImage(ctx context.Context, params GetPageImageParams) (GetPageImageRes, error)
+	// GetPageThumbnailImage invokes getPageThumbnailImage operation.
+	//
+	// Gets page thumbnail.
+	//
+	// GET /galleries/{media_id}/{page}t.{format}
+	GetPageThumbnailImage(ctx context.Context, params GetPageThumbnailImageParams) (GetPageThumbnailImageRes, error)
+	// Search invokes search operation.
+	//
+	// Search for comics.
+	//
+	// GET /api/galleries/search
+	Search(ctx context.Context, params SearchParams) (SearchRes, error)
+	// SearchByTagID invokes searchByTagID operation.
+	//
+	// Search for comics by tag ID.
+	//
+	// GET /api/galleries/tagged
+	SearchByTagID(ctx context.Context, params SearchByTagIDParams) (SearchByTagIDRes, error)
+}
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL

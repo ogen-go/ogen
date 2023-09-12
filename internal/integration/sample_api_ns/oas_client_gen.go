@@ -23,6 +23,154 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
+// Invoker invokes operations described by OpenAPI v3 specification.
+type Invoker interface {
+	// DataGetFormat invokes dataGetFormat operation.
+	//
+	// Retrieve data.
+	//
+	// GET /name/{id}/{foo}1234{bar}-{baz}!{kek}
+	DataGetFormat(ctx context.Context, params DataGetFormatParams) (string, error)
+	// DefaultTest invokes defaultTest operation.
+	//
+	// POST /defaultTest
+	DefaultTest(ctx context.Context, request *DefaultTest, params DefaultTestParams) (int32, error)
+	// ErrorGet invokes errorGet operation.
+	//
+	// Returns error.
+	//
+	// GET /error
+	ErrorGet(ctx context.Context) (*ErrorStatusCode, error)
+	// FoobarGet invokes foobarGet operation.
+	//
+	// Dumb endpoint for testing things.
+	//
+	// GET /foobar
+	FoobarGet(ctx context.Context, params FoobarGetParams) (FoobarGetRes, error)
+	// FoobarPost invokes foobarPost operation.
+	//
+	// Dumb endpoint for testing things.
+	//
+	// POST /foobar
+	FoobarPost(ctx context.Context, request OptPet) (FoobarPostRes, error)
+	// FoobarPut invokes PUT /foobar operation.
+	//
+	// PUT /foobar
+	FoobarPut(ctx context.Context) (*FoobarPutDef, error)
+	// NoAdditionalPropertiesTest invokes noAdditionalPropertiesTest operation.
+	//
+	// GET /noAdditionalPropertiesTest
+	NoAdditionalPropertiesTest(ctx context.Context) (*NoAdditionalPropertiesTest, error)
+	// NullableDefaultResponse invokes nullableDefaultResponse operation.
+	//
+	// GET /nullableDefaultResponse
+	NullableDefaultResponse(ctx context.Context) (*NilIntStatusCode, error)
+	// OneofBug invokes oneofBug operation.
+	//
+	// POST /oneofBug
+	OneofBug(ctx context.Context, request *OneOfBugs) error
+	// PatternRecursiveMapGet invokes GET /patternRecursiveMap operation.
+	//
+	// GET /patternRecursiveMap
+	PatternRecursiveMapGet(ctx context.Context) (PatternRecursiveMap, error)
+	// PetCreate invokes petCreate operation.
+	//
+	// Creates pet.
+	//
+	// POST /pet
+	PetCreate(ctx context.Context, request OptPet) (*Pet, error)
+	// PetFriendsNamesByID invokes petFriendsNamesByID operation.
+	//
+	// Returns names of all friends of pet.
+	//
+	// GET /pet/friendNames/{id}
+	PetFriendsNamesByID(ctx context.Context, params PetFriendsNamesByIDParams) ([]string, error)
+	// PetGet invokes petGet operation.
+	//
+	// Returns pet from the system that the user has access to.
+	//
+	// GET /pet
+	PetGet(ctx context.Context, params PetGetParams) (PetGetRes, error)
+	// PetGetAvatarByID invokes petGetAvatarByID operation.
+	//
+	// Returns pet avatar by id.
+	//
+	// GET /pet/avatar
+	PetGetAvatarByID(ctx context.Context, params PetGetAvatarByIDParams) (PetGetAvatarByIDRes, error)
+	// PetGetAvatarByName invokes petGetAvatarByName operation.
+	//
+	// Returns pet's avatar by name.
+	//
+	// GET /pet/{name}/avatar
+	PetGetAvatarByName(ctx context.Context, params PetGetAvatarByNameParams) (PetGetAvatarByNameRes, error)
+	// PetGetByName invokes petGetByName operation.
+	//
+	// Returns pet by name from the system that the user has access to.
+	//
+	// GET /pet/{name}
+	PetGetByName(ctx context.Context, params PetGetByNameParams) (*Pet, error)
+	// PetNameByID invokes petNameByID operation.
+	//
+	// Returns pet name by pet id.
+	//
+	// GET /pet/name/{id}
+	PetNameByID(ctx context.Context, params PetNameByIDParams) (string, error)
+	// PetUpdateNameAliasPost invokes POST /pet/updateNameAlias operation.
+	//
+	// POST /pet/updateNameAlias
+	PetUpdateNameAliasPost(ctx context.Context, request OptPetName) (*PetUpdateNameAliasPostDef, error)
+	// PetUpdateNamePost invokes POST /pet/updateName operation.
+	//
+	// POST /pet/updateName
+	PetUpdateNamePost(ctx context.Context, request OptString) (*PetUpdateNamePostDef, error)
+	// PetUploadAvatarByID invokes petUploadAvatarByID operation.
+	//
+	// Uploads pet avatar by id.
+	//
+	// POST /pet/avatar
+	PetUploadAvatarByID(ctx context.Context, request PetUploadAvatarByIDReq, params PetUploadAvatarByIDParams) (PetUploadAvatarByIDRes, error)
+	// RecursiveArrayGet invokes GET /recursiveArray operation.
+	//
+	// GET /recursiveArray
+	RecursiveArrayGet(ctx context.Context) (RecursiveArray, error)
+	// RecursiveMapGet invokes GET /recursiveMap operation.
+	//
+	// GET /recursiveMap
+	RecursiveMapGet(ctx context.Context) (*RecursiveMap, error)
+	// SecurityTest invokes securityTest operation.
+	//
+	// GET /securityTest
+	SecurityTest(ctx context.Context) (string, error)
+	// StringIntMapGet invokes GET /stringIntMap operation.
+	//
+	// GET /stringIntMap
+	StringIntMapGet(ctx context.Context) (*StringIntMap, error)
+	// TestFloatValidation invokes testFloatValidation operation.
+	//
+	// POST /testFloatValidation
+	TestFloatValidation(ctx context.Context, request *TestFloatValidation) error
+	// TestInlineOneof invokes testInlineOneof operation.
+	//
+	// GET /testInlineOneof
+	TestInlineOneof(ctx context.Context) (*TestInlineOneOf, error)
+	// TestNullableOneofs invokes testNullableOneofs operation.
+	//
+	// GET /testNullableOneofs
+	TestNullableOneofs(ctx context.Context) (TestNullableOneofsRes, error)
+	// TestTuple invokes testTuple operation.
+	//
+	// GET /testTuple
+	TestTuple(ctx context.Context) (*TupleTest, error)
+	// TestTupleNamed invokes testTupleNamed operation.
+	//
+	// GET /testTupleNamed
+	TestTupleNamed(ctx context.Context) (*TupleNamedTest, error)
+	// TestUniqueItems invokes testUniqueItems operation.
+	//
+	// GET /testUniqueItems
+	TestUniqueItems(ctx context.Context) (*UniqueItemsTest, error)
+}
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL

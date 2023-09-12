@@ -19,6 +19,18 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+// Invoker invokes operations described by OpenAPI v3 specification.
+type Invoker interface {
+	// EventPost invokes POST /event operation.
+	//
+	// POST /event
+	EventPost(ctx context.Context, request any) (any, error)
+	// PhoneGet invokes GET /phone operation.
+	//
+	// GET /phone
+	PhoneGet(ctx context.Context, request *User, params PhoneGetParams) (*User, error)
+}
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL

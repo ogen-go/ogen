@@ -22,6 +22,34 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
+// Invoker invokes operations described by OpenAPI v3 specification.
+type Invoker interface {
+	// AllRequestBodies invokes allRequestBodies operation.
+	//
+	// POST /allRequestBodies
+	AllRequestBodies(ctx context.Context, request AllRequestBodiesReq) (AllRequestBodiesOK, error)
+	// AllRequestBodiesOptional invokes allRequestBodiesOptional operation.
+	//
+	// POST /allRequestBodiesOptional
+	AllRequestBodiesOptional(ctx context.Context, request AllRequestBodiesOptionalReq) (AllRequestBodiesOptionalOK, error)
+	// Base64Request invokes base64Request operation.
+	//
+	// POST /base64Request
+	Base64Request(ctx context.Context, request Base64RequestReq) (Base64RequestOK, error)
+	// MaskContentType invokes maskContentType operation.
+	//
+	// POST /maskContentType
+	MaskContentType(ctx context.Context, request *MaskContentTypeReqWithContentType) (*MaskResponse, error)
+	// MaskContentTypeOptional invokes maskContentTypeOptional operation.
+	//
+	// POST /maskContentTypeOptional
+	MaskContentTypeOptional(ctx context.Context, request *MaskContentTypeOptionalReqWithContentType) (*MaskResponse, error)
+	// StreamJSON invokes streamJSON operation.
+	//
+	// POST /streamJSON
+	StreamJSON(ctx context.Context, request []float64) (float64, error)
+}
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL

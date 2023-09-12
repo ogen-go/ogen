@@ -21,6 +21,75 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+// Invoker invokes operations described by OpenAPI v3 specification.
+type Invoker interface {
+	// AnyContentTypeBinaryStringSchema invokes anyContentTypeBinaryStringSchema operation.
+	//
+	// GET /anyContentTypeBinaryStringSchema
+	AnyContentTypeBinaryStringSchema(ctx context.Context) (AnyContentTypeBinaryStringSchemaOK, error)
+	// AnyContentTypeBinaryStringSchemaDefault invokes anyContentTypeBinaryStringSchemaDefault operation.
+	//
+	// GET /anyContentTypeBinaryStringSchemaDefault
+	AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (*AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, error)
+	// Combined invokes combined operation.
+	//
+	// GET /combined
+	Combined(ctx context.Context, params CombinedParams) (CombinedRes, error)
+	// Headers200 invokes headers200 operation.
+	//
+	// GET /headers200
+	Headers200(ctx context.Context) (*Headers200OK, error)
+	// HeadersCombined invokes headersCombined operation.
+	//
+	// GET /headersCombined
+	HeadersCombined(ctx context.Context, params HeadersCombinedParams) (HeadersCombinedRes, error)
+	// HeadersDefault invokes headersDefault operation.
+	//
+	// GET /headersDefault
+	HeadersDefault(ctx context.Context) (*HeadersDefaultDef, error)
+	// HeadersJSON invokes headersJSON operation.
+	//
+	// GET /headersJSON
+	HeadersJSON(ctx context.Context) (*HeadersJSONOK, error)
+	// HeadersPattern invokes headersPattern operation.
+	//
+	// GET /headersPattern
+	HeadersPattern(ctx context.Context) (*HeadersPattern4XX, error)
+	// IntersectPatternCode invokes intersectPatternCode operation.
+	//
+	// If a response is defined using an explicit code, the explicit code definition takes precedence
+	// over the range definition for that code.
+	//
+	// GET /intersectPatternCode
+	IntersectPatternCode(ctx context.Context, params IntersectPatternCodeParams) (IntersectPatternCodeRes, error)
+	// MultipleGenericResponses invokes multipleGenericResponses operation.
+	//
+	// GET /multipleGenericResponses
+	MultipleGenericResponses(ctx context.Context) (MultipleGenericResponsesRes, error)
+	// OctetStreamBinaryStringSchema invokes octetStreamBinaryStringSchema operation.
+	//
+	// GET /octetStreamBinaryStringSchema
+	OctetStreamBinaryStringSchema(ctx context.Context) (OctetStreamBinaryStringSchemaOK, error)
+	// OctetStreamEmptySchema invokes octetStreamEmptySchema operation.
+	//
+	// GET /octetStreamEmptySchema
+	OctetStreamEmptySchema(ctx context.Context) (OctetStreamEmptySchemaOK, error)
+	// OptionalHeaders invokes optionalHeaders operation.
+	//
+	// Https://github.com/ogen-go/ogen/issues/822.
+	//
+	// GET /optionalHeaders
+	OptionalHeaders(ctx context.Context) (*OptionalHeadersOK, error)
+	// StreamJSON invokes streamJSON operation.
+	//
+	// POST /streamJSON
+	StreamJSON(ctx context.Context, params StreamJSONParams) (StreamJSONRes, error)
+	// TextPlainBinaryStringSchema invokes textPlainBinaryStringSchema operation.
+	//
+	// GET /textPlainBinaryStringSchema
+	TextPlainBinaryStringSchema(ctx context.Context) (TextPlainBinaryStringSchemaOK, error)
+}
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL

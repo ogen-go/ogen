@@ -21,6 +21,82 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+// Invoker invokes operations described by OpenAPI v3 specification.
+type Invoker interface {
+	// CreatePet invokes createPet operation.
+	//
+	// Creates a new Pet and persists it to storage.
+	//
+	// POST /pets
+	CreatePet(ctx context.Context, request *CreatePetReq) (CreatePetRes, error)
+	// CreatePetCategories invokes createPetCategories operation.
+	//
+	// Creates a new Category and attaches it to the Pet.
+	//
+	// POST /pets/{id}/categories
+	CreatePetCategories(ctx context.Context, request *CreatePetCategoriesReq, params CreatePetCategoriesParams) (CreatePetCategoriesRes, error)
+	// CreatePetFriends invokes createPetFriends operation.
+	//
+	// Creates a new Pet and attaches it to the Pet.
+	//
+	// POST /pets/{id}/friends
+	CreatePetFriends(ctx context.Context, request *CreatePetFriendsReq, params CreatePetFriendsParams) (CreatePetFriendsRes, error)
+	// CreatePetOwner invokes createPetOwner operation.
+	//
+	// Creates a new User and attaches it to the Pet.
+	//
+	// POST /pets/{id}/owner
+	CreatePetOwner(ctx context.Context, request *CreatePetOwnerReq, params CreatePetOwnerParams) (CreatePetOwnerRes, error)
+	// DeletePet invokes deletePet operation.
+	//
+	// Deletes the Pet with the requested ID.
+	//
+	// DELETE /pets/{id}
+	DeletePet(ctx context.Context, params DeletePetParams) (DeletePetRes, error)
+	// DeletePetOwner invokes deletePetOwner operation.
+	//
+	// Delete the attached Owner of the Pet with the given ID.
+	//
+	// DELETE /pets/{id}/owner
+	DeletePetOwner(ctx context.Context, params DeletePetOwnerParams) (DeletePetOwnerRes, error)
+	// ListPet invokes listPet operation.
+	//
+	// List Pets.
+	//
+	// GET /pets
+	ListPet(ctx context.Context, params ListPetParams) (ListPetRes, error)
+	// ListPetCategories invokes listPetCategories operation.
+	//
+	// List attached Categories.
+	//
+	// GET /pets/{id}/categories
+	ListPetCategories(ctx context.Context, params ListPetCategoriesParams) (ListPetCategoriesRes, error)
+	// ListPetFriends invokes listPetFriends operation.
+	//
+	// List attached Friends.
+	//
+	// GET /pets/{id}/friends
+	ListPetFriends(ctx context.Context, params ListPetFriendsParams) (ListPetFriendsRes, error)
+	// ReadPet invokes readPet operation.
+	//
+	// Finds the Pet with the requested ID and returns it.
+	//
+	// GET /pets/{id}
+	ReadPet(ctx context.Context, params ReadPetParams) (ReadPetRes, error)
+	// ReadPetOwner invokes readPetOwner operation.
+	//
+	// Find the attached User of the Pet with the given ID.
+	//
+	// GET /pets/{id}/owner
+	ReadPetOwner(ctx context.Context, params ReadPetOwnerParams) (ReadPetOwnerRes, error)
+	// UpdatePet invokes updatePet operation.
+	//
+	// Updates a Pet and persists changes to storage.
+	//
+	// PATCH /pets/{id}
+	UpdatePet(ctx context.Context, request *UpdatePetReq, params UpdatePetParams) (UpdatePetRes, error)
+}
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL

@@ -20,6 +20,22 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+// Invoker invokes operations described by OpenAPI v3 specification.
+type Invoker interface {
+	// IntegerNumber invokes integerNumber operation.
+	//
+	// GET /integerNumber
+	IntegerNumber(ctx context.Context) (*IntegerNumber, error)
+	// JaegerAnyOf invokes jaegerAnyOf operation.
+	//
+	// GET /jaegerAnyOf
+	JaegerAnyOf(ctx context.Context) (*JaegerAnyOf, error)
+	// OneUUID invokes oneUUID operation.
+	//
+	// GET /oneUUID
+	OneUUID(ctx context.Context) (*OneUUID, error)
+}
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL

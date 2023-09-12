@@ -21,6 +21,22 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+// Invoker invokes operations described by OpenAPI v3 specification.
+type Invoker interface {
+	// DisjointSecurity invokes disjointSecurity operation.
+	//
+	// GET /disjointSecurity
+	DisjointSecurity(ctx context.Context) error
+	// IntersectSecurity invokes intersectSecurity operation.
+	//
+	// GET /intersectSecurity
+	IntersectSecurity(ctx context.Context) error
+	// OptionalSecurity invokes optionalSecurity operation.
+	//
+	// GET /optionalSecurity
+	OptionalSecurity(ctx context.Context) error
+}
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL
