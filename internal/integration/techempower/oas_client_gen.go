@@ -129,6 +129,9 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 func (c *Client) Caching(ctx context.Context, params CachingParams) (WorldObjects, error) {
 	res, err := c.sendCaching(ctx, params)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
@@ -221,6 +224,9 @@ func (c *Client) sendCaching(ctx context.Context, params CachingParams) (res Wor
 func (c *Client) DB(ctx context.Context) (*WorldObject, error) {
 	res, err := c.sendDB(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
@@ -296,6 +302,9 @@ func (c *Client) sendDB(ctx context.Context) (res *WorldObject, err error) {
 func (c *Client) JSON(ctx context.Context) (*HelloWorld, error) {
 	res, err := c.sendJSON(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
@@ -372,6 +381,9 @@ func (c *Client) sendJSON(ctx context.Context) (res *HelloWorld, err error) {
 func (c *Client) Queries(ctx context.Context, params QueriesParams) (WorldObjects, error) {
 	res, err := c.sendQueries(ctx, params)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
@@ -465,6 +477,9 @@ func (c *Client) sendQueries(ctx context.Context, params QueriesParams) (res Wor
 func (c *Client) Updates(ctx context.Context, params UpdatesParams) (WorldObjects, error) {
 	res, err := c.sendUpdates(ctx, params)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 

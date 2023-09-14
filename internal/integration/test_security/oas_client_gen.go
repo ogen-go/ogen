@@ -93,6 +93,9 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 func (c *Client) DisjointSecurity(ctx context.Context) error {
 	res, err := c.sendDisjointSecurity(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return err
 }
 
@@ -231,6 +234,9 @@ func (c *Client) sendDisjointSecurity(ctx context.Context) (res *DisjointSecurit
 func (c *Client) IntersectSecurity(ctx context.Context) error {
 	res, err := c.sendIntersectSecurity(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return err
 }
 
@@ -358,6 +364,9 @@ func (c *Client) sendIntersectSecurity(ctx context.Context) (res *IntersectSecur
 func (c *Client) OptionalSecurity(ctx context.Context) error {
 	res, err := c.sendOptionalSecurity(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return err
 }
 

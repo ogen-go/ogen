@@ -96,6 +96,9 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 func (c *Client) DataCreate(ctx context.Context, request OptData) (*Data, error) {
 	res, err := c.sendDataCreate(ctx, request)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
@@ -172,6 +175,9 @@ func (c *Client) sendDataCreate(ctx context.Context, request OptData) (res *Data
 func (c *Client) DataGet(ctx context.Context) (*Data, error) {
 	res, err := c.sendDataGet(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
