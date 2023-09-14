@@ -132,7 +132,7 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) {{ $op.Name }}(ctx cont
 	)
 	_ = res
     if err != nil && c.cfg.errorMiddleware != nil {
-        err = c.cfg.errorMiddleware(ctx, err)
+        err = c.cfg.errorMiddleware(ctx, {{ $op.Name | quote }}, {{ upper $op.Spec.HTTPMethod | quote }}, {{ quote $op.Spec.Path }}, err)
     }
 	return {{ if $op.Responses.DoPass }}res,{{ end }} err
 }

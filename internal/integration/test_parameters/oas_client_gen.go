@@ -128,7 +128,7 @@ func (c *Client) ComplicatedParameterNameGet(ctx context.Context, params Complic
 	res, err := c.sendComplicatedParameterNameGet(ctx, params)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "ComplicatedParameterNameGet", "GET", "/complicatedParameterName", err)
 	}
 	return err
 }
@@ -275,7 +275,7 @@ func (c *Client) ContentParameters(ctx context.Context, params ContentParameters
 	res, err := c.sendContentParameters(ctx, params)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "ContentParameters", "GET", "/contentParameters/{path}", err)
 	}
 	return res, err
 }
@@ -433,7 +433,7 @@ func (c *Client) CookieParameter(ctx context.Context, params CookieParameterPara
 	res, err := c.sendCookieParameter(ctx, params)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "CookieParameter", "GET", "/cookieParameter", err)
 	}
 	return res, err
 }
@@ -525,7 +525,7 @@ func (c *Client) HeaderParameter(ctx context.Context, params HeaderParameterPara
 	res, err := c.sendHeaderParameter(ctx, params)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "HeaderParameter", "GET", "/headerParameter", err)
 	}
 	return res, err
 }
@@ -613,7 +613,7 @@ func (c *Client) ObjectCookieParameter(ctx context.Context, params ObjectCookieP
 	res, err := c.sendObjectCookieParameter(ctx, params)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "ObjectCookieParameter", "GET", "/objectCookieParameter", err)
 	}
 	return res, err
 }
@@ -703,7 +703,7 @@ func (c *Client) ObjectQueryParameter(ctx context.Context, params ObjectQueryPar
 	res, err := c.sendObjectQueryParameter(ctx, params)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "ObjectQueryParameter", "GET", "/objectQueryParameter", err)
 	}
 	return res, err
 }
@@ -817,7 +817,7 @@ func (c *Client) PathParameter(ctx context.Context, params PathParameterParams) 
 	res, err := c.sendPathParameter(ctx, params)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "PathParameter", "GET", "/pathParameter/{value}", err)
 	}
 	return res, err
 }
@@ -911,7 +911,7 @@ func (c *Client) SameName(ctx context.Context, params SameNameParams) error {
 	res, err := c.sendSameName(ctx, params)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "SameName", "GET", "/same_name/{param}", err)
 	}
 	return err
 }
@@ -1023,7 +1023,7 @@ func (c *Client) SimilarNames(ctx context.Context, params SimilarNamesParams) er
 	res, err := c.sendSimilarNames(ctx, params)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "SimilarNames", "GET", "/similarNames", err)
 	}
 	return err
 }

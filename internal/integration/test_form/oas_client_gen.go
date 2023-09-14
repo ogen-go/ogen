@@ -116,7 +116,7 @@ func (c *Client) OnlyForm(ctx context.Context, request *OnlyFormReq) error {
 	res, err := c.sendOnlyForm(ctx, request)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "OnlyForm", "POST", "/onlyForm", err)
 	}
 	return err
 }
@@ -193,7 +193,7 @@ func (c *Client) OnlyMultipartFile(ctx context.Context, request *OnlyMultipartFi
 	res, err := c.sendOnlyMultipartFile(ctx, request)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "OnlyMultipartFile", "POST", "/onlyMultipartFile", err)
 	}
 	return err
 }
@@ -270,7 +270,7 @@ func (c *Client) OnlyMultipartForm(ctx context.Context, request *OnlyMultipartFo
 	res, err := c.sendOnlyMultipartForm(ctx, request)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "OnlyMultipartForm", "POST", "/onlyMultipartForm", err)
 	}
 	return err
 }
@@ -347,7 +347,7 @@ func (c *Client) TestFormURLEncoded(ctx context.Context, request *TestForm) erro
 	res, err := c.sendTestFormURLEncoded(ctx, request)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "TestFormURLEncoded", "POST", "/testFormURLEncoded", err)
 	}
 	return err
 }
@@ -424,7 +424,7 @@ func (c *Client) TestMultipart(ctx context.Context, request *TestFormMultipart) 
 	res, err := c.sendTestMultipart(ctx, request)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "TestMultipart", "POST", "/testMultipart", err)
 	}
 	return err
 }
@@ -501,7 +501,7 @@ func (c *Client) TestMultipartUpload(ctx context.Context, request *TestMultipart
 	res, err := c.sendTestMultipartUpload(ctx, request)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "TestMultipartUpload", "POST", "/testMultipartUpload", err)
 	}
 	return res, err
 }
@@ -587,7 +587,7 @@ func (c *Client) TestReuseFormOptionalSchema(ctx context.Context, request OptSha
 	res, err := c.sendTestReuseFormOptionalSchema(ctx, request)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "TestReuseFormOptionalSchema", "POST", "/testReuseFormOptionalSchema", err)
 	}
 	return err
 }
@@ -664,7 +664,7 @@ func (c *Client) TestReuseFormSchema(ctx context.Context, request *SharedRequest
 	res, err := c.sendTestReuseFormSchema(ctx, request)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "TestReuseFormSchema", "POST", "/testReuseFormSchema", err)
 	}
 	return err
 }
@@ -741,7 +741,7 @@ func (c *Client) TestShareFormSchema(ctx context.Context, request TestShareFormS
 	res, err := c.sendTestShareFormSchema(ctx, request)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "TestShareFormSchema", "POST", "/testShareFormSchema", err)
 	}
 	return err
 }

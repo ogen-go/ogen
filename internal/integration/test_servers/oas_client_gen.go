@@ -94,7 +94,7 @@ func (c *Client) ProbeLiveness(ctx context.Context) (string, error) {
 	res, err := c.sendProbeLiveness(ctx)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "ProbeLiveness", "GET", "/healthz", err)
 	}
 	return res, err
 }

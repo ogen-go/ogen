@@ -106,7 +106,7 @@ func (c *Client) AllRequestBodies(ctx context.Context, request AllRequestBodiesR
 	res, err := c.sendAllRequestBodies(ctx, request)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "AllRequestBodies", "POST", "/allRequestBodies", err)
 	}
 	return res, err
 }
@@ -198,7 +198,7 @@ func (c *Client) AllRequestBodiesOptional(ctx context.Context, request AllReques
 	res, err := c.sendAllRequestBodiesOptional(ctx, request)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "AllRequestBodiesOptional", "POST", "/allRequestBodiesOptional", err)
 	}
 	return res, err
 }
@@ -292,7 +292,7 @@ func (c *Client) Base64Request(ctx context.Context, request Base64RequestReq) (B
 	res, err := c.sendBase64Request(ctx, request)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "Base64Request", "POST", "/base64Request", err)
 	}
 	return res, err
 }
@@ -369,7 +369,7 @@ func (c *Client) MaskContentType(ctx context.Context, request *MaskContentTypeRe
 	res, err := c.sendMaskContentType(ctx, request)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "MaskContentType", "POST", "/maskContentType", err)
 	}
 	return res, err
 }
@@ -446,7 +446,7 @@ func (c *Client) MaskContentTypeOptional(ctx context.Context, request *MaskConte
 	res, err := c.sendMaskContentTypeOptional(ctx, request)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "MaskContentTypeOptional", "POST", "/maskContentTypeOptional", err)
 	}
 	return res, err
 }
@@ -523,7 +523,7 @@ func (c *Client) StreamJSON(ctx context.Context, request []float64) (float64, er
 	res, err := c.sendStreamJSON(ctx, request)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "StreamJSON", "POST", "/streamJSON", err)
 	}
 	return res, err
 }

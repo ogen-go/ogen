@@ -151,7 +151,7 @@ func (cfg serverConfig) baseServer() (s baseServer, err error) {
 	return s, nil
 }
 
-type ClientErrorMiddleware func(ctx context.Context, err error) error
+type ClientErrorMiddleware func(ctx context.Context, opName, opMethod, opPath string, err error) error
 
 type clientConfig struct {
 	otelConfig

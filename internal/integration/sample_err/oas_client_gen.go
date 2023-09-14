@@ -100,7 +100,7 @@ func (c *Client) DataCreate(ctx context.Context, request OptData) (*Data, error)
 	res, err := c.sendDataCreate(ctx, request)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "DataCreate", "POST", "/data", err)
 	}
 	return res, err
 }
@@ -179,7 +179,7 @@ func (c *Client) DataGet(ctx context.Context) (*Data, error) {
 	res, err := c.sendDataGet(ctx)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "DataGet", "GET", "/data", err)
 	}
 	return res, err
 }

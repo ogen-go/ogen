@@ -92,7 +92,7 @@ func (c *Client) IntegerNumber(ctx context.Context) (*IntegerNumber, error) {
 	res, err := c.sendIntegerNumber(ctx)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "IntegerNumber", "GET", "/integerNumber", err)
 	}
 	return res, err
 }
@@ -166,7 +166,7 @@ func (c *Client) JaegerAnyOf(ctx context.Context) (*JaegerAnyOf, error) {
 	res, err := c.sendJaegerAnyOf(ctx)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "JaegerAnyOf", "GET", "/jaegerAnyOf", err)
 	}
 	return res, err
 }
@@ -240,7 +240,7 @@ func (c *Client) OneUUID(ctx context.Context) (*OneUUID, error) {
 	res, err := c.sendOneUUID(ctx)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "OneUUID", "GET", "/oneUUID", err)
 	}
 	return res, err
 }

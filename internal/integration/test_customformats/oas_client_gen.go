@@ -87,7 +87,7 @@ func (c *Client) EventPost(ctx context.Context, request any) (any, error) {
 	res, err := c.sendEventPost(ctx, request)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "EventPost", "POST", "/event", err)
 	}
 	return res, err
 }
@@ -163,7 +163,7 @@ func (c *Client) PhoneGet(ctx context.Context, request *User, params PhoneGetPar
 	res, err := c.sendPhoneGet(ctx, request, params)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "PhoneGet", "GET", "/phone", err)
 	}
 	return res, err
 }

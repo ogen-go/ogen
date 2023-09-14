@@ -83,7 +83,7 @@ func (c *Client) HealthzGet(ctx context.Context) (*Person, error) {
 	res, err := c.sendHealthzGet(ctx)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "HealthzGet", "GET", "/healthz", err)
 	}
 	return res, err
 }

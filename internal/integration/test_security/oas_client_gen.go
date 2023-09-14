@@ -95,7 +95,7 @@ func (c *Client) DisjointSecurity(ctx context.Context) error {
 	res, err := c.sendDisjointSecurity(ctx)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "DisjointSecurity", "GET", "/disjointSecurity", err)
 	}
 	return err
 }
@@ -236,7 +236,7 @@ func (c *Client) IntersectSecurity(ctx context.Context) error {
 	res, err := c.sendIntersectSecurity(ctx)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "IntersectSecurity", "GET", "/intersectSecurity", err)
 	}
 	return err
 }
@@ -366,7 +366,7 @@ func (c *Client) OptionalSecurity(ctx context.Context) error {
 	res, err := c.sendOptionalSecurity(ctx)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "OptionalSecurity", "GET", "/optionalSecurity", err)
 	}
 	return err
 }

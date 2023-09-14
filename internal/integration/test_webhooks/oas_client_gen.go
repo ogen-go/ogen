@@ -91,7 +91,7 @@ func (c *Client) PublishEvent(ctx context.Context, request OptEvent) (*Event, er
 	res, err := c.sendPublishEvent(ctx, request)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "PublishEvent", "POST", "/event", err)
 	}
 	return res, err
 }
@@ -182,7 +182,7 @@ func (c *WebhookClient) StatusWebhook(ctx context.Context, targetURL string) (*S
 	res, err := c.sendStatusWebhook(ctx, targetURL)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "StatusWebhook", "GET", "/", err)
 	}
 	return res, err
 }
@@ -254,7 +254,7 @@ func (c *WebhookClient) UpdateDelete(ctx context.Context, targetURL string) (Upd
 	res, err := c.sendUpdateDelete(ctx, targetURL)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "UpdateDelete", "DELETE", "/", err)
 	}
 	return res, err
 }
@@ -325,7 +325,7 @@ func (c *WebhookClient) UpdateWebhook(ctx context.Context, targetURL string, req
 	res, err := c.sendUpdateWebhook(ctx, targetURL, request, params)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "UpdateWebhook", "POST", "/", err)
 	}
 	return res, err
 }

@@ -83,7 +83,7 @@ func (c *Client) FooGet(ctx context.Context) (string, error) {
 	res, err := c.sendFooGet(ctx)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "FooGet", "GET", "/foo", err)
 	}
 	return res, err
 }

@@ -129,7 +129,7 @@ func (c *Client) NullableStrings(ctx context.Context, request NilString) error {
 	res, err := c.sendNullableStrings(ctx, request)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "NullableStrings", "POST", "/nullableStrings", err)
 	}
 	return err
 }
@@ -232,7 +232,7 @@ func (c *Client) ObjectsWithConflictingArrayProperty(ctx context.Context, reques
 	res, err := c.sendObjectsWithConflictingArrayProperty(ctx, request)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "ObjectsWithConflictingArrayProperty", "POST", "/objectsWithConflictingArrayProperty", err)
 	}
 	return err
 }
@@ -320,7 +320,7 @@ func (c *Client) ObjectsWithConflictingProperties(ctx context.Context, request *
 	res, err := c.sendObjectsWithConflictingProperties(ctx, request)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "ObjectsWithConflictingProperties", "POST", "/objectsWithConflictingProperties", err)
 	}
 	return err
 }
@@ -408,7 +408,7 @@ func (c *Client) ReferencedAllof(ctx context.Context, request ReferencedAllofReq
 	res, err := c.sendReferencedAllof(ctx, request)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "ReferencedAllof", "POST", "/referencedAllof", err)
 	}
 	return err
 }
@@ -510,7 +510,7 @@ func (c *Client) ReferencedAllofOptional(ctx context.Context, request Referenced
 	res, err := c.sendReferencedAllofOptional(ctx, request)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "ReferencedAllofOptional", "POST", "/referencedAllofOptional", err)
 	}
 	return err
 }
@@ -614,7 +614,7 @@ func (c *Client) SimpleInteger(ctx context.Context, request int) error {
 	res, err := c.sendSimpleInteger(ctx, request)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "SimpleInteger", "POST", "/simpleInteger", err)
 	}
 	return err
 }
@@ -711,7 +711,7 @@ func (c *Client) SimpleObjects(ctx context.Context, request *SimpleObjectsReq) e
 	res, err := c.sendSimpleObjects(ctx, request)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "SimpleObjects", "POST", "/simpleObjects", err)
 	}
 	return err
 }
@@ -788,7 +788,7 @@ func (c *Client) StringsNotype(ctx context.Context, request NilString) error {
 	res, err := c.sendStringsNotype(ctx, request)
 	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
-		err = c.cfg.errorMiddleware(ctx, err)
+		err = c.cfg.errorMiddleware(ctx, "StringsNotype", "POST", "/stringsNotype", err)
 	}
 	return err
 }

@@ -69,7 +69,7 @@ func (cfg *otelConfig) initOTEL() {
 	cfg.Meter = cfg.MeterProvider.Meter(otelogen.Name)
 }
 
-type ClientErrorMiddleware func(ctx context.Context, err error) error
+type ClientErrorMiddleware func(ctx context.Context, opName, opMethod, opPath string, err error) error
 
 type clientConfig struct {
 	otelConfig
