@@ -9,6 +9,7 @@ import (
 	"net/url"
 	"time"
 
+	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"github.com/google/uuid"
 	"go.opentelemetry.io/otel/attribute"
@@ -17,6 +18,7 @@ import (
 	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
 	"go.opentelemetry.io/otel/trace"
 
+	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
@@ -561,7 +563,9 @@ func (s *Server) handleTestQueryParameterRequest(args [0]string, argsEscaped boo
 
 	if err := encodeTestQueryParameterResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -662,7 +666,9 @@ func (s *Server) handleTestRequestAnyRequest(args [0]string, argsEscaped bool, w
 
 	if err := encodeTestRequestAnyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -763,7 +769,9 @@ func (s *Server) handleTestRequestBooleanRequest(args [0]string, argsEscaped boo
 
 	if err := encodeTestRequestBooleanResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -864,7 +872,9 @@ func (s *Server) handleTestRequestBooleanArrayRequest(args [0]string, argsEscape
 
 	if err := encodeTestRequestBooleanArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -965,7 +975,9 @@ func (s *Server) handleTestRequestBooleanArrayArrayRequest(args [0]string, argsE
 
 	if err := encodeTestRequestBooleanArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1066,7 +1078,9 @@ func (s *Server) handleTestRequestBooleanNullableRequest(args [0]string, argsEsc
 
 	if err := encodeTestRequestBooleanNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1167,7 +1181,9 @@ func (s *Server) handleTestRequestBooleanNullableArrayRequest(args [0]string, ar
 
 	if err := encodeTestRequestBooleanNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1268,7 +1284,9 @@ func (s *Server) handleTestRequestBooleanNullableArrayArrayRequest(args [0]strin
 
 	if err := encodeTestRequestBooleanNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1369,7 +1387,9 @@ func (s *Server) handleTestRequestEmptyStructRequest(args [0]string, argsEscaped
 
 	if err := encodeTestRequestEmptyStructResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1470,7 +1490,9 @@ func (s *Server) handleTestRequestFormatTestRequest(args [0]string, argsEscaped 
 
 	if err := encodeTestRequestFormatTestResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1571,7 +1593,9 @@ func (s *Server) handleTestRequestIntegerRequest(args [0]string, argsEscaped boo
 
 	if err := encodeTestRequestIntegerResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1672,7 +1696,9 @@ func (s *Server) handleTestRequestIntegerArrayRequest(args [0]string, argsEscape
 
 	if err := encodeTestRequestIntegerArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1773,7 +1799,9 @@ func (s *Server) handleTestRequestIntegerArrayArrayRequest(args [0]string, argsE
 
 	if err := encodeTestRequestIntegerArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1874,7 +1902,9 @@ func (s *Server) handleTestRequestIntegerInt16Request(args [0]string, argsEscape
 
 	if err := encodeTestRequestIntegerInt16Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1975,7 +2005,9 @@ func (s *Server) handleTestRequestIntegerInt16ArrayRequest(args [0]string, argsE
 
 	if err := encodeTestRequestIntegerInt16ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2076,7 +2108,9 @@ func (s *Server) handleTestRequestIntegerInt16ArrayArrayRequest(args [0]string, 
 
 	if err := encodeTestRequestIntegerInt16ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2177,7 +2211,9 @@ func (s *Server) handleTestRequestIntegerInt16NullableRequest(args [0]string, ar
 
 	if err := encodeTestRequestIntegerInt16NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2278,7 +2314,9 @@ func (s *Server) handleTestRequestIntegerInt16NullableArrayRequest(args [0]strin
 
 	if err := encodeTestRequestIntegerInt16NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2379,7 +2417,9 @@ func (s *Server) handleTestRequestIntegerInt16NullableArrayArrayRequest(args [0]
 
 	if err := encodeTestRequestIntegerInt16NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2480,7 +2520,9 @@ func (s *Server) handleTestRequestIntegerInt32Request(args [0]string, argsEscape
 
 	if err := encodeTestRequestIntegerInt32Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2581,7 +2623,9 @@ func (s *Server) handleTestRequestIntegerInt32ArrayRequest(args [0]string, argsE
 
 	if err := encodeTestRequestIntegerInt32ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2682,7 +2726,9 @@ func (s *Server) handleTestRequestIntegerInt32ArrayArrayRequest(args [0]string, 
 
 	if err := encodeTestRequestIntegerInt32ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2783,7 +2829,9 @@ func (s *Server) handleTestRequestIntegerInt32NullableRequest(args [0]string, ar
 
 	if err := encodeTestRequestIntegerInt32NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2884,7 +2932,9 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayRequest(args [0]strin
 
 	if err := encodeTestRequestIntegerInt32NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2985,7 +3035,9 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayArrayRequest(args [0]
 
 	if err := encodeTestRequestIntegerInt32NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -3086,7 +3138,9 @@ func (s *Server) handleTestRequestIntegerInt64Request(args [0]string, argsEscape
 
 	if err := encodeTestRequestIntegerInt64Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -3187,7 +3241,9 @@ func (s *Server) handleTestRequestIntegerInt64ArrayRequest(args [0]string, argsE
 
 	if err := encodeTestRequestIntegerInt64ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -3288,7 +3344,9 @@ func (s *Server) handleTestRequestIntegerInt64ArrayArrayRequest(args [0]string, 
 
 	if err := encodeTestRequestIntegerInt64ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -3389,7 +3447,9 @@ func (s *Server) handleTestRequestIntegerInt64NullableRequest(args [0]string, ar
 
 	if err := encodeTestRequestIntegerInt64NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -3490,7 +3550,9 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayRequest(args [0]strin
 
 	if err := encodeTestRequestIntegerInt64NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -3591,7 +3653,9 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayArrayRequest(args [0]
 
 	if err := encodeTestRequestIntegerInt64NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -3692,7 +3756,9 @@ func (s *Server) handleTestRequestIntegerInt8Request(args [0]string, argsEscaped
 
 	if err := encodeTestRequestIntegerInt8Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -3793,7 +3859,9 @@ func (s *Server) handleTestRequestIntegerInt8ArrayRequest(args [0]string, argsEs
 
 	if err := encodeTestRequestIntegerInt8ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -3894,7 +3962,9 @@ func (s *Server) handleTestRequestIntegerInt8ArrayArrayRequest(args [0]string, a
 
 	if err := encodeTestRequestIntegerInt8ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -3995,7 +4065,9 @@ func (s *Server) handleTestRequestIntegerInt8NullableRequest(args [0]string, arg
 
 	if err := encodeTestRequestIntegerInt8NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -4096,7 +4168,9 @@ func (s *Server) handleTestRequestIntegerInt8NullableArrayRequest(args [0]string
 
 	if err := encodeTestRequestIntegerInt8NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -4197,7 +4271,9 @@ func (s *Server) handleTestRequestIntegerInt8NullableArrayArrayRequest(args [0]s
 
 	if err := encodeTestRequestIntegerInt8NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -4298,7 +4374,9 @@ func (s *Server) handleTestRequestIntegerNullableRequest(args [0]string, argsEsc
 
 	if err := encodeTestRequestIntegerNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -4399,7 +4477,9 @@ func (s *Server) handleTestRequestIntegerNullableArrayRequest(args [0]string, ar
 
 	if err := encodeTestRequestIntegerNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -4500,7 +4580,9 @@ func (s *Server) handleTestRequestIntegerNullableArrayArrayRequest(args [0]strin
 
 	if err := encodeTestRequestIntegerNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -4601,7 +4683,9 @@ func (s *Server) handleTestRequestIntegerUintRequest(args [0]string, argsEscaped
 
 	if err := encodeTestRequestIntegerUintResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -4702,7 +4786,9 @@ func (s *Server) handleTestRequestIntegerUint16Request(args [0]string, argsEscap
 
 	if err := encodeTestRequestIntegerUint16Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -4803,7 +4889,9 @@ func (s *Server) handleTestRequestIntegerUint16ArrayRequest(args [0]string, args
 
 	if err := encodeTestRequestIntegerUint16ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -4904,7 +4992,9 @@ func (s *Server) handleTestRequestIntegerUint16ArrayArrayRequest(args [0]string,
 
 	if err := encodeTestRequestIntegerUint16ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -5005,7 +5095,9 @@ func (s *Server) handleTestRequestIntegerUint16NullableRequest(args [0]string, a
 
 	if err := encodeTestRequestIntegerUint16NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -5106,7 +5198,9 @@ func (s *Server) handleTestRequestIntegerUint16NullableArrayRequest(args [0]stri
 
 	if err := encodeTestRequestIntegerUint16NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -5207,7 +5301,9 @@ func (s *Server) handleTestRequestIntegerUint16NullableArrayArrayRequest(args [0
 
 	if err := encodeTestRequestIntegerUint16NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -5308,7 +5404,9 @@ func (s *Server) handleTestRequestIntegerUint32Request(args [0]string, argsEscap
 
 	if err := encodeTestRequestIntegerUint32Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -5409,7 +5507,9 @@ func (s *Server) handleTestRequestIntegerUint32ArrayRequest(args [0]string, args
 
 	if err := encodeTestRequestIntegerUint32ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -5510,7 +5610,9 @@ func (s *Server) handleTestRequestIntegerUint32ArrayArrayRequest(args [0]string,
 
 	if err := encodeTestRequestIntegerUint32ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -5611,7 +5713,9 @@ func (s *Server) handleTestRequestIntegerUint32NullableRequest(args [0]string, a
 
 	if err := encodeTestRequestIntegerUint32NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -5712,7 +5816,9 @@ func (s *Server) handleTestRequestIntegerUint32NullableArrayRequest(args [0]stri
 
 	if err := encodeTestRequestIntegerUint32NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -5813,7 +5919,9 @@ func (s *Server) handleTestRequestIntegerUint32NullableArrayArrayRequest(args [0
 
 	if err := encodeTestRequestIntegerUint32NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -5914,7 +6022,9 @@ func (s *Server) handleTestRequestIntegerUint64Request(args [0]string, argsEscap
 
 	if err := encodeTestRequestIntegerUint64Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -6015,7 +6125,9 @@ func (s *Server) handleTestRequestIntegerUint64ArrayRequest(args [0]string, args
 
 	if err := encodeTestRequestIntegerUint64ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -6116,7 +6228,9 @@ func (s *Server) handleTestRequestIntegerUint64ArrayArrayRequest(args [0]string,
 
 	if err := encodeTestRequestIntegerUint64ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -6217,7 +6331,9 @@ func (s *Server) handleTestRequestIntegerUint64NullableRequest(args [0]string, a
 
 	if err := encodeTestRequestIntegerUint64NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -6318,7 +6434,9 @@ func (s *Server) handleTestRequestIntegerUint64NullableArrayRequest(args [0]stri
 
 	if err := encodeTestRequestIntegerUint64NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -6419,7 +6537,9 @@ func (s *Server) handleTestRequestIntegerUint64NullableArrayArrayRequest(args [0
 
 	if err := encodeTestRequestIntegerUint64NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -6520,7 +6640,9 @@ func (s *Server) handleTestRequestIntegerUint8Request(args [0]string, argsEscape
 
 	if err := encodeTestRequestIntegerUint8Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -6621,7 +6743,9 @@ func (s *Server) handleTestRequestIntegerUint8ArrayRequest(args [0]string, argsE
 
 	if err := encodeTestRequestIntegerUint8ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -6722,7 +6846,9 @@ func (s *Server) handleTestRequestIntegerUint8ArrayArrayRequest(args [0]string, 
 
 	if err := encodeTestRequestIntegerUint8ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -6823,7 +6949,9 @@ func (s *Server) handleTestRequestIntegerUint8NullableRequest(args [0]string, ar
 
 	if err := encodeTestRequestIntegerUint8NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -6924,7 +7052,9 @@ func (s *Server) handleTestRequestIntegerUint8NullableArrayRequest(args [0]strin
 
 	if err := encodeTestRequestIntegerUint8NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -7025,7 +7155,9 @@ func (s *Server) handleTestRequestIntegerUint8NullableArrayArrayRequest(args [0]
 
 	if err := encodeTestRequestIntegerUint8NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -7126,7 +7258,9 @@ func (s *Server) handleTestRequestIntegerUintArrayRequest(args [0]string, argsEs
 
 	if err := encodeTestRequestIntegerUintArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -7227,7 +7361,9 @@ func (s *Server) handleTestRequestIntegerUintArrayArrayRequest(args [0]string, a
 
 	if err := encodeTestRequestIntegerUintArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -7328,7 +7464,9 @@ func (s *Server) handleTestRequestIntegerUintNullableRequest(args [0]string, arg
 
 	if err := encodeTestRequestIntegerUintNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -7429,7 +7567,9 @@ func (s *Server) handleTestRequestIntegerUintNullableArrayRequest(args [0]string
 
 	if err := encodeTestRequestIntegerUintNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -7530,7 +7670,9 @@ func (s *Server) handleTestRequestIntegerUintNullableArrayArrayRequest(args [0]s
 
 	if err := encodeTestRequestIntegerUintNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -7631,7 +7773,9 @@ func (s *Server) handleTestRequestIntegerUnixRequest(args [0]string, argsEscaped
 
 	if err := encodeTestRequestIntegerUnixResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -7732,7 +7876,9 @@ func (s *Server) handleTestRequestIntegerUnixArrayRequest(args [0]string, argsEs
 
 	if err := encodeTestRequestIntegerUnixArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -7833,7 +7979,9 @@ func (s *Server) handleTestRequestIntegerUnixArrayArrayRequest(args [0]string, a
 
 	if err := encodeTestRequestIntegerUnixArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -7934,7 +8082,9 @@ func (s *Server) handleTestRequestIntegerUnixMicroRequest(args [0]string, argsEs
 
 	if err := encodeTestRequestIntegerUnixMicroResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -8035,7 +8185,9 @@ func (s *Server) handleTestRequestIntegerUnixMicroArrayRequest(args [0]string, a
 
 	if err := encodeTestRequestIntegerUnixMicroArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -8136,7 +8288,9 @@ func (s *Server) handleTestRequestIntegerUnixMicroArrayArrayRequest(args [0]stri
 
 	if err := encodeTestRequestIntegerUnixMicroArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -8237,7 +8391,9 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableRequest(args [0]string
 
 	if err := encodeTestRequestIntegerUnixMicroNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -8338,7 +8494,9 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableArrayRequest(args [0]s
 
 	if err := encodeTestRequestIntegerUnixMicroNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -8439,7 +8597,9 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableArrayArrayRequest(args
 
 	if err := encodeTestRequestIntegerUnixMicroNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -8540,7 +8700,9 @@ func (s *Server) handleTestRequestIntegerUnixMilliRequest(args [0]string, argsEs
 
 	if err := encodeTestRequestIntegerUnixMilliResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -8641,7 +8803,9 @@ func (s *Server) handleTestRequestIntegerUnixMilliArrayRequest(args [0]string, a
 
 	if err := encodeTestRequestIntegerUnixMilliArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -8742,7 +8906,9 @@ func (s *Server) handleTestRequestIntegerUnixMilliArrayArrayRequest(args [0]stri
 
 	if err := encodeTestRequestIntegerUnixMilliArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -8843,7 +9009,9 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableRequest(args [0]string
 
 	if err := encodeTestRequestIntegerUnixMilliNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -8944,7 +9112,9 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableArrayRequest(args [0]s
 
 	if err := encodeTestRequestIntegerUnixMilliNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -9045,7 +9215,9 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableArrayArrayRequest(args
 
 	if err := encodeTestRequestIntegerUnixMilliNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -9146,7 +9318,9 @@ func (s *Server) handleTestRequestIntegerUnixNanoRequest(args [0]string, argsEsc
 
 	if err := encodeTestRequestIntegerUnixNanoResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -9247,7 +9421,9 @@ func (s *Server) handleTestRequestIntegerUnixNanoArrayRequest(args [0]string, ar
 
 	if err := encodeTestRequestIntegerUnixNanoArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -9348,7 +9524,9 @@ func (s *Server) handleTestRequestIntegerUnixNanoArrayArrayRequest(args [0]strin
 
 	if err := encodeTestRequestIntegerUnixNanoArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -9449,7 +9627,9 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableRequest(args [0]string,
 
 	if err := encodeTestRequestIntegerUnixNanoNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -9550,7 +9730,9 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableArrayRequest(args [0]st
 
 	if err := encodeTestRequestIntegerUnixNanoNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -9651,7 +9833,9 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableArrayArrayRequest(args 
 
 	if err := encodeTestRequestIntegerUnixNanoNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -9752,7 +9936,9 @@ func (s *Server) handleTestRequestIntegerUnixNullableRequest(args [0]string, arg
 
 	if err := encodeTestRequestIntegerUnixNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -9853,7 +10039,9 @@ func (s *Server) handleTestRequestIntegerUnixNullableArrayRequest(args [0]string
 
 	if err := encodeTestRequestIntegerUnixNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -9954,7 +10142,9 @@ func (s *Server) handleTestRequestIntegerUnixNullableArrayArrayRequest(args [0]s
 
 	if err := encodeTestRequestIntegerUnixNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -10055,7 +10245,9 @@ func (s *Server) handleTestRequestIntegerUnixSecondsRequest(args [0]string, args
 
 	if err := encodeTestRequestIntegerUnixSecondsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -10156,7 +10348,9 @@ func (s *Server) handleTestRequestIntegerUnixSecondsArrayRequest(args [0]string,
 
 	if err := encodeTestRequestIntegerUnixSecondsArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -10257,7 +10451,9 @@ func (s *Server) handleTestRequestIntegerUnixSecondsArrayArrayRequest(args [0]st
 
 	if err := encodeTestRequestIntegerUnixSecondsArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -10358,7 +10554,9 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableRequest(args [0]stri
 
 	if err := encodeTestRequestIntegerUnixSecondsNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -10459,7 +10657,9 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableArrayRequest(args [0
 
 	if err := encodeTestRequestIntegerUnixSecondsNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -10560,7 +10760,9 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableArrayArrayRequest(ar
 
 	if err := encodeTestRequestIntegerUnixSecondsNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -10661,7 +10863,9 @@ func (s *Server) handleTestRequestNullRequest(args [0]string, argsEscaped bool, 
 
 	if err := encodeTestRequestNullResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -10762,7 +10966,9 @@ func (s *Server) handleTestRequestNullArrayRequest(args [0]string, argsEscaped b
 
 	if err := encodeTestRequestNullArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -10863,7 +11069,9 @@ func (s *Server) handleTestRequestNullArrayArrayRequest(args [0]string, argsEsca
 
 	if err := encodeTestRequestNullArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -10964,7 +11172,9 @@ func (s *Server) handleTestRequestNullNullableRequest(args [0]string, argsEscape
 
 	if err := encodeTestRequestNullNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -11065,7 +11275,9 @@ func (s *Server) handleTestRequestNullNullableArrayRequest(args [0]string, argsE
 
 	if err := encodeTestRequestNullNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -11166,7 +11378,9 @@ func (s *Server) handleTestRequestNullNullableArrayArrayRequest(args [0]string, 
 
 	if err := encodeTestRequestNullNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -11267,7 +11481,9 @@ func (s *Server) handleTestRequestNumberRequest(args [0]string, argsEscaped bool
 
 	if err := encodeTestRequestNumberResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -11368,7 +11584,9 @@ func (s *Server) handleTestRequestNumberArrayRequest(args [0]string, argsEscaped
 
 	if err := encodeTestRequestNumberArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -11469,7 +11687,9 @@ func (s *Server) handleTestRequestNumberArrayArrayRequest(args [0]string, argsEs
 
 	if err := encodeTestRequestNumberArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -11570,7 +11790,9 @@ func (s *Server) handleTestRequestNumberDoubleRequest(args [0]string, argsEscape
 
 	if err := encodeTestRequestNumberDoubleResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -11671,7 +11893,9 @@ func (s *Server) handleTestRequestNumberDoubleArrayRequest(args [0]string, argsE
 
 	if err := encodeTestRequestNumberDoubleArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -11772,7 +11996,9 @@ func (s *Server) handleTestRequestNumberDoubleArrayArrayRequest(args [0]string, 
 
 	if err := encodeTestRequestNumberDoubleArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -11873,7 +12099,9 @@ func (s *Server) handleTestRequestNumberDoubleNullableRequest(args [0]string, ar
 
 	if err := encodeTestRequestNumberDoubleNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -11974,7 +12202,9 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayRequest(args [0]strin
 
 	if err := encodeTestRequestNumberDoubleNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -12075,7 +12305,9 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayArrayRequest(args [0]
 
 	if err := encodeTestRequestNumberDoubleNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -12176,7 +12408,9 @@ func (s *Server) handleTestRequestNumberFloatRequest(args [0]string, argsEscaped
 
 	if err := encodeTestRequestNumberFloatResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -12277,7 +12511,9 @@ func (s *Server) handleTestRequestNumberFloatArrayRequest(args [0]string, argsEs
 
 	if err := encodeTestRequestNumberFloatArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -12378,7 +12614,9 @@ func (s *Server) handleTestRequestNumberFloatArrayArrayRequest(args [0]string, a
 
 	if err := encodeTestRequestNumberFloatArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -12479,7 +12717,9 @@ func (s *Server) handleTestRequestNumberFloatNullableRequest(args [0]string, arg
 
 	if err := encodeTestRequestNumberFloatNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -12580,7 +12820,9 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayRequest(args [0]string
 
 	if err := encodeTestRequestNumberFloatNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -12681,7 +12923,9 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayArrayRequest(args [0]s
 
 	if err := encodeTestRequestNumberFloatNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -12782,7 +13026,9 @@ func (s *Server) handleTestRequestNumberInt32Request(args [0]string, argsEscaped
 
 	if err := encodeTestRequestNumberInt32Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -12883,7 +13129,9 @@ func (s *Server) handleTestRequestNumberInt32ArrayRequest(args [0]string, argsEs
 
 	if err := encodeTestRequestNumberInt32ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -12984,7 +13232,9 @@ func (s *Server) handleTestRequestNumberInt32ArrayArrayRequest(args [0]string, a
 
 	if err := encodeTestRequestNumberInt32ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -13085,7 +13335,9 @@ func (s *Server) handleTestRequestNumberInt32NullableRequest(args [0]string, arg
 
 	if err := encodeTestRequestNumberInt32NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -13186,7 +13438,9 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayRequest(args [0]string
 
 	if err := encodeTestRequestNumberInt32NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -13287,7 +13541,9 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayArrayRequest(args [0]s
 
 	if err := encodeTestRequestNumberInt32NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -13388,7 +13644,9 @@ func (s *Server) handleTestRequestNumberInt64Request(args [0]string, argsEscaped
 
 	if err := encodeTestRequestNumberInt64Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -13489,7 +13747,9 @@ func (s *Server) handleTestRequestNumberInt64ArrayRequest(args [0]string, argsEs
 
 	if err := encodeTestRequestNumberInt64ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -13590,7 +13850,9 @@ func (s *Server) handleTestRequestNumberInt64ArrayArrayRequest(args [0]string, a
 
 	if err := encodeTestRequestNumberInt64ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -13691,7 +13953,9 @@ func (s *Server) handleTestRequestNumberInt64NullableRequest(args [0]string, arg
 
 	if err := encodeTestRequestNumberInt64NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -13792,7 +14056,9 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayRequest(args [0]string
 
 	if err := encodeTestRequestNumberInt64NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -13893,7 +14159,9 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayArrayRequest(args [0]s
 
 	if err := encodeTestRequestNumberInt64NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -13994,7 +14262,9 @@ func (s *Server) handleTestRequestNumberNullableRequest(args [0]string, argsEsca
 
 	if err := encodeTestRequestNumberNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -14095,7 +14365,9 @@ func (s *Server) handleTestRequestNumberNullableArrayRequest(args [0]string, arg
 
 	if err := encodeTestRequestNumberNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -14196,7 +14468,9 @@ func (s *Server) handleTestRequestNumberNullableArrayArrayRequest(args [0]string
 
 	if err := encodeTestRequestNumberNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -14297,7 +14571,9 @@ func (s *Server) handleTestRequestRequiredAnyRequest(args [0]string, argsEscaped
 
 	if err := encodeTestRequestRequiredAnyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -14398,7 +14674,9 @@ func (s *Server) handleTestRequestRequiredBooleanRequest(args [0]string, argsEsc
 
 	if err := encodeTestRequestRequiredBooleanResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -14499,7 +14777,9 @@ func (s *Server) handleTestRequestRequiredBooleanArrayRequest(args [0]string, ar
 
 	if err := encodeTestRequestRequiredBooleanArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -14600,7 +14880,9 @@ func (s *Server) handleTestRequestRequiredBooleanArrayArrayRequest(args [0]strin
 
 	if err := encodeTestRequestRequiredBooleanArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -14701,7 +14983,9 @@ func (s *Server) handleTestRequestRequiredBooleanNullableRequest(args [0]string,
 
 	if err := encodeTestRequestRequiredBooleanNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -14802,7 +15086,9 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayRequest(args [0]st
 
 	if err := encodeTestRequestRequiredBooleanNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -14903,7 +15189,9 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayArrayRequest(args 
 
 	if err := encodeTestRequestRequiredBooleanNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -15004,7 +15292,9 @@ func (s *Server) handleTestRequestRequiredEmptyStructRequest(args [0]string, arg
 
 	if err := encodeTestRequestRequiredEmptyStructResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -15105,7 +15395,9 @@ func (s *Server) handleTestRequestRequiredFormatTestRequest(args [0]string, args
 
 	if err := encodeTestRequestRequiredFormatTestResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -15206,7 +15498,9 @@ func (s *Server) handleTestRequestRequiredIntegerRequest(args [0]string, argsEsc
 
 	if err := encodeTestRequestRequiredIntegerResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -15307,7 +15601,9 @@ func (s *Server) handleTestRequestRequiredIntegerArrayRequest(args [0]string, ar
 
 	if err := encodeTestRequestRequiredIntegerArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -15408,7 +15704,9 @@ func (s *Server) handleTestRequestRequiredIntegerArrayArrayRequest(args [0]strin
 
 	if err := encodeTestRequestRequiredIntegerArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -15509,7 +15807,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt16Request(args [0]string, ar
 
 	if err := encodeTestRequestRequiredIntegerInt16Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -15610,7 +15910,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt16ArrayRequest(args [0]strin
 
 	if err := encodeTestRequestRequiredIntegerInt16ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -15711,7 +16013,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt16ArrayArrayRequest(args [0]
 
 	if err := encodeTestRequestRequiredIntegerInt16ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -15812,7 +16116,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt16NullableRequest(args [0]st
 
 	if err := encodeTestRequestRequiredIntegerInt16NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -15913,7 +16219,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt16NullableArrayRequest(args 
 
 	if err := encodeTestRequestRequiredIntegerInt16NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -16014,7 +16322,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt16NullableArrayArrayRequest(
 
 	if err := encodeTestRequestRequiredIntegerInt16NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -16115,7 +16425,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt32Request(args [0]string, ar
 
 	if err := encodeTestRequestRequiredIntegerInt32Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -16216,7 +16528,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayRequest(args [0]strin
 
 	if err := encodeTestRequestRequiredIntegerInt32ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -16317,7 +16631,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayArrayRequest(args [0]
 
 	if err := encodeTestRequestRequiredIntegerInt32ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -16418,7 +16734,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableRequest(args [0]st
 
 	if err := encodeTestRequestRequiredIntegerInt32NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -16519,7 +16837,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayRequest(args 
 
 	if err := encodeTestRequestRequiredIntegerInt32NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -16620,7 +16940,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 
 	if err := encodeTestRequestRequiredIntegerInt32NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -16721,7 +17043,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt64Request(args [0]string, ar
 
 	if err := encodeTestRequestRequiredIntegerInt64Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -16822,7 +17146,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayRequest(args [0]strin
 
 	if err := encodeTestRequestRequiredIntegerInt64ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -16923,7 +17249,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayArrayRequest(args [0]
 
 	if err := encodeTestRequestRequiredIntegerInt64ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -17024,7 +17352,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableRequest(args [0]st
 
 	if err := encodeTestRequestRequiredIntegerInt64NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -17125,7 +17455,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayRequest(args 
 
 	if err := encodeTestRequestRequiredIntegerInt64NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -17226,7 +17558,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 
 	if err := encodeTestRequestRequiredIntegerInt64NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -17327,7 +17661,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt8Request(args [0]string, arg
 
 	if err := encodeTestRequestRequiredIntegerInt8Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -17428,7 +17764,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt8ArrayRequest(args [0]string
 
 	if err := encodeTestRequestRequiredIntegerInt8ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -17529,7 +17867,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt8ArrayArrayRequest(args [0]s
 
 	if err := encodeTestRequestRequiredIntegerInt8ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -17630,7 +17970,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt8NullableRequest(args [0]str
 
 	if err := encodeTestRequestRequiredIntegerInt8NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -17731,7 +18073,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt8NullableArrayRequest(args [
 
 	if err := encodeTestRequestRequiredIntegerInt8NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -17832,7 +18176,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt8NullableArrayArrayRequest(a
 
 	if err := encodeTestRequestRequiredIntegerInt8NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -17933,7 +18279,9 @@ func (s *Server) handleTestRequestRequiredIntegerNullableRequest(args [0]string,
 
 	if err := encodeTestRequestRequiredIntegerNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -18034,7 +18382,9 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayRequest(args [0]st
 
 	if err := encodeTestRequestRequiredIntegerNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -18135,7 +18485,9 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayArrayRequest(args 
 
 	if err := encodeTestRequestRequiredIntegerNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -18236,7 +18588,9 @@ func (s *Server) handleTestRequestRequiredIntegerUintRequest(args [0]string, arg
 
 	if err := encodeTestRequestRequiredIntegerUintResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -18337,7 +18691,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint16Request(args [0]string, a
 
 	if err := encodeTestRequestRequiredIntegerUint16Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -18438,7 +18794,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint16ArrayRequest(args [0]stri
 
 	if err := encodeTestRequestRequiredIntegerUint16ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -18539,7 +18897,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint16ArrayArrayRequest(args [0
 
 	if err := encodeTestRequestRequiredIntegerUint16ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -18640,7 +19000,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint16NullableRequest(args [0]s
 
 	if err := encodeTestRequestRequiredIntegerUint16NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -18741,7 +19103,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint16NullableArrayRequest(args
 
 	if err := encodeTestRequestRequiredIntegerUint16NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -18842,7 +19206,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint16NullableArrayArrayRequest
 
 	if err := encodeTestRequestRequiredIntegerUint16NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -18943,7 +19309,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint32Request(args [0]string, a
 
 	if err := encodeTestRequestRequiredIntegerUint32Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -19044,7 +19412,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint32ArrayRequest(args [0]stri
 
 	if err := encodeTestRequestRequiredIntegerUint32ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -19145,7 +19515,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint32ArrayArrayRequest(args [0
 
 	if err := encodeTestRequestRequiredIntegerUint32ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -19246,7 +19618,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint32NullableRequest(args [0]s
 
 	if err := encodeTestRequestRequiredIntegerUint32NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -19347,7 +19721,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint32NullableArrayRequest(args
 
 	if err := encodeTestRequestRequiredIntegerUint32NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -19448,7 +19824,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint32NullableArrayArrayRequest
 
 	if err := encodeTestRequestRequiredIntegerUint32NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -19549,7 +19927,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint64Request(args [0]string, a
 
 	if err := encodeTestRequestRequiredIntegerUint64Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -19650,7 +20030,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint64ArrayRequest(args [0]stri
 
 	if err := encodeTestRequestRequiredIntegerUint64ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -19751,7 +20133,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint64ArrayArrayRequest(args [0
 
 	if err := encodeTestRequestRequiredIntegerUint64ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -19852,7 +20236,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint64NullableRequest(args [0]s
 
 	if err := encodeTestRequestRequiredIntegerUint64NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -19953,7 +20339,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint64NullableArrayRequest(args
 
 	if err := encodeTestRequestRequiredIntegerUint64NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -20054,7 +20442,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint64NullableArrayArrayRequest
 
 	if err := encodeTestRequestRequiredIntegerUint64NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -20155,7 +20545,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint8Request(args [0]string, ar
 
 	if err := encodeTestRequestRequiredIntegerUint8Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -20256,7 +20648,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint8ArrayRequest(args [0]strin
 
 	if err := encodeTestRequestRequiredIntegerUint8ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -20357,7 +20751,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint8ArrayArrayRequest(args [0]
 
 	if err := encodeTestRequestRequiredIntegerUint8ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -20458,7 +20854,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint8NullableRequest(args [0]st
 
 	if err := encodeTestRequestRequiredIntegerUint8NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -20559,7 +20957,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint8NullableArrayRequest(args 
 
 	if err := encodeTestRequestRequiredIntegerUint8NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -20660,7 +21060,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint8NullableArrayArrayRequest(
 
 	if err := encodeTestRequestRequiredIntegerUint8NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -20761,7 +21163,9 @@ func (s *Server) handleTestRequestRequiredIntegerUintArrayRequest(args [0]string
 
 	if err := encodeTestRequestRequiredIntegerUintArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -20862,7 +21266,9 @@ func (s *Server) handleTestRequestRequiredIntegerUintArrayArrayRequest(args [0]s
 
 	if err := encodeTestRequestRequiredIntegerUintArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -20963,7 +21369,9 @@ func (s *Server) handleTestRequestRequiredIntegerUintNullableRequest(args [0]str
 
 	if err := encodeTestRequestRequiredIntegerUintNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -21064,7 +21472,9 @@ func (s *Server) handleTestRequestRequiredIntegerUintNullableArrayRequest(args [
 
 	if err := encodeTestRequestRequiredIntegerUintNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -21165,7 +21575,9 @@ func (s *Server) handleTestRequestRequiredIntegerUintNullableArrayArrayRequest(a
 
 	if err := encodeTestRequestRequiredIntegerUintNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -21266,7 +21678,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixRequest(args [0]string, arg
 
 	if err := encodeTestRequestRequiredIntegerUnixResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -21367,7 +21781,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixArrayRequest(args [0]string
 
 	if err := encodeTestRequestRequiredIntegerUnixArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -21468,7 +21884,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixArrayArrayRequest(args [0]s
 
 	if err := encodeTestRequestRequiredIntegerUnixArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -21569,7 +21987,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroRequest(args [0]string
 
 	if err := encodeTestRequestRequiredIntegerUnixMicroResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -21670,7 +22090,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroArrayRequest(args [0]s
 
 	if err := encodeTestRequestRequiredIntegerUnixMicroArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -21771,7 +22193,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroArrayArrayRequest(args
 
 	if err := encodeTestRequestRequiredIntegerUnixMicroArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -21872,7 +22296,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableRequest(args [
 
 	if err := encodeTestRequestRequiredIntegerUnixMicroNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -21973,7 +22399,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableArrayRequest(a
 
 	if err := encodeTestRequestRequiredIntegerUnixMicroNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -22074,7 +22502,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequ
 
 	if err := encodeTestRequestRequiredIntegerUnixMicroNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -22175,7 +22605,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliRequest(args [0]string
 
 	if err := encodeTestRequestRequiredIntegerUnixMilliResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -22276,7 +22708,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliArrayRequest(args [0]s
 
 	if err := encodeTestRequestRequiredIntegerUnixMilliArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -22377,7 +22811,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliArrayArrayRequest(args
 
 	if err := encodeTestRequestRequiredIntegerUnixMilliArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -22478,7 +22914,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableRequest(args [
 
 	if err := encodeTestRequestRequiredIntegerUnixMilliNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -22579,7 +23017,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableArrayRequest(a
 
 	if err := encodeTestRequestRequiredIntegerUnixMilliNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -22680,7 +23120,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequ
 
 	if err := encodeTestRequestRequiredIntegerUnixMilliNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -22781,7 +23223,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoRequest(args [0]string,
 
 	if err := encodeTestRequestRequiredIntegerUnixNanoResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -22882,7 +23326,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoArrayRequest(args [0]st
 
 	if err := encodeTestRequestRequiredIntegerUnixNanoArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -22983,7 +23429,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoArrayArrayRequest(args 
 
 	if err := encodeTestRequestRequiredIntegerUnixNanoArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -23084,7 +23532,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableRequest(args [0
 
 	if err := encodeTestRequestRequiredIntegerUnixNanoNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -23185,7 +23635,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableArrayRequest(ar
 
 	if err := encodeTestRequestRequiredIntegerUnixNanoNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -23286,7 +23738,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableArrayArrayReque
 
 	if err := encodeTestRequestRequiredIntegerUnixNanoNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -23387,7 +23841,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableRequest(args [0]str
 
 	if err := encodeTestRequestRequiredIntegerUnixNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -23488,7 +23944,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableArrayRequest(args [
 
 	if err := encodeTestRequestRequiredIntegerUnixNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -23589,7 +24047,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableArrayArrayRequest(a
 
 	if err := encodeTestRequestRequiredIntegerUnixNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -23690,7 +24150,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsRequest(args [0]stri
 
 	if err := encodeTestRequestRequiredIntegerUnixSecondsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -23791,7 +24253,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsArrayRequest(args [0
 
 	if err := encodeTestRequestRequiredIntegerUnixSecondsArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -23892,7 +24356,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsArrayArrayRequest(ar
 
 	if err := encodeTestRequestRequiredIntegerUnixSecondsArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -23993,7 +24459,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableRequest(args
 
 	if err := encodeTestRequestRequiredIntegerUnixSecondsNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -24094,7 +24562,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableArrayRequest
 
 	if err := encodeTestRequestRequiredIntegerUnixSecondsNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -24195,7 +24665,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRe
 
 	if err := encodeTestRequestRequiredIntegerUnixSecondsNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -24296,7 +24768,9 @@ func (s *Server) handleTestRequestRequiredNullRequest(args [0]string, argsEscape
 
 	if err := encodeTestRequestRequiredNullResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -24397,7 +24871,9 @@ func (s *Server) handleTestRequestRequiredNullArrayRequest(args [0]string, argsE
 
 	if err := encodeTestRequestRequiredNullArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -24498,7 +24974,9 @@ func (s *Server) handleTestRequestRequiredNullArrayArrayRequest(args [0]string, 
 
 	if err := encodeTestRequestRequiredNullArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -24599,7 +25077,9 @@ func (s *Server) handleTestRequestRequiredNullNullableRequest(args [0]string, ar
 
 	if err := encodeTestRequestRequiredNullNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -24700,7 +25180,9 @@ func (s *Server) handleTestRequestRequiredNullNullableArrayRequest(args [0]strin
 
 	if err := encodeTestRequestRequiredNullNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -24801,7 +25283,9 @@ func (s *Server) handleTestRequestRequiredNullNullableArrayArrayRequest(args [0]
 
 	if err := encodeTestRequestRequiredNullNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -24902,7 +25386,9 @@ func (s *Server) handleTestRequestRequiredNumberRequest(args [0]string, argsEsca
 
 	if err := encodeTestRequestRequiredNumberResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -25003,7 +25489,9 @@ func (s *Server) handleTestRequestRequiredNumberArrayRequest(args [0]string, arg
 
 	if err := encodeTestRequestRequiredNumberArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -25104,7 +25592,9 @@ func (s *Server) handleTestRequestRequiredNumberArrayArrayRequest(args [0]string
 
 	if err := encodeTestRequestRequiredNumberArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -25205,7 +25695,9 @@ func (s *Server) handleTestRequestRequiredNumberDoubleRequest(args [0]string, ar
 
 	if err := encodeTestRequestRequiredNumberDoubleResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -25306,7 +25798,9 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayRequest(args [0]strin
 
 	if err := encodeTestRequestRequiredNumberDoubleArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -25407,7 +25901,9 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayArrayRequest(args [0]
 
 	if err := encodeTestRequestRequiredNumberDoubleArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -25508,7 +26004,9 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableRequest(args [0]st
 
 	if err := encodeTestRequestRequiredNumberDoubleNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -25609,7 +26107,9 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayRequest(args 
 
 	if err := encodeTestRequestRequiredNumberDoubleNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -25710,7 +26210,9 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 
 	if err := encodeTestRequestRequiredNumberDoubleNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -25811,7 +26313,9 @@ func (s *Server) handleTestRequestRequiredNumberFloatRequest(args [0]string, arg
 
 	if err := encodeTestRequestRequiredNumberFloatResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -25912,7 +26416,9 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayRequest(args [0]string
 
 	if err := encodeTestRequestRequiredNumberFloatArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -26013,7 +26519,9 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayArrayRequest(args [0]s
 
 	if err := encodeTestRequestRequiredNumberFloatArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -26114,7 +26622,9 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableRequest(args [0]str
 
 	if err := encodeTestRequestRequiredNumberFloatNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -26215,7 +26725,9 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayRequest(args [
 
 	if err := encodeTestRequestRequiredNumberFloatNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -26316,7 +26828,9 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayArrayRequest(a
 
 	if err := encodeTestRequestRequiredNumberFloatNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -26417,7 +26931,9 @@ func (s *Server) handleTestRequestRequiredNumberInt32Request(args [0]string, arg
 
 	if err := encodeTestRequestRequiredNumberInt32Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -26518,7 +27034,9 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayRequest(args [0]string
 
 	if err := encodeTestRequestRequiredNumberInt32ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -26619,7 +27137,9 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayArrayRequest(args [0]s
 
 	if err := encodeTestRequestRequiredNumberInt32ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -26720,7 +27240,9 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableRequest(args [0]str
 
 	if err := encodeTestRequestRequiredNumberInt32NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -26821,7 +27343,9 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayRequest(args [
 
 	if err := encodeTestRequestRequiredNumberInt32NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -26922,7 +27446,9 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayArrayRequest(a
 
 	if err := encodeTestRequestRequiredNumberInt32NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -27023,7 +27549,9 @@ func (s *Server) handleTestRequestRequiredNumberInt64Request(args [0]string, arg
 
 	if err := encodeTestRequestRequiredNumberInt64Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -27124,7 +27652,9 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayRequest(args [0]string
 
 	if err := encodeTestRequestRequiredNumberInt64ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -27225,7 +27755,9 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayArrayRequest(args [0]s
 
 	if err := encodeTestRequestRequiredNumberInt64ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -27326,7 +27858,9 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableRequest(args [0]str
 
 	if err := encodeTestRequestRequiredNumberInt64NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -27427,7 +27961,9 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayRequest(args [
 
 	if err := encodeTestRequestRequiredNumberInt64NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -27528,7 +28064,9 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayArrayRequest(a
 
 	if err := encodeTestRequestRequiredNumberInt64NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -27629,7 +28167,9 @@ func (s *Server) handleTestRequestRequiredNumberNullableRequest(args [0]string, 
 
 	if err := encodeTestRequestRequiredNumberNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -27730,7 +28270,9 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayRequest(args [0]str
 
 	if err := encodeTestRequestRequiredNumberNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -27831,7 +28373,9 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayArrayRequest(args [
 
 	if err := encodeTestRequestRequiredNumberNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -27932,7 +28476,9 @@ func (s *Server) handleTestRequestRequiredStringRequest(args [0]string, argsEsca
 
 	if err := encodeTestRequestRequiredStringResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -28033,7 +28579,9 @@ func (s *Server) handleTestRequestRequiredStringArrayRequest(args [0]string, arg
 
 	if err := encodeTestRequestRequiredStringArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -28134,7 +28682,9 @@ func (s *Server) handleTestRequestRequiredStringArrayArrayRequest(args [0]string
 
 	if err := encodeTestRequestRequiredStringArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -28235,7 +28785,9 @@ func (s *Server) handleTestRequestRequiredStringBase64Request(args [0]string, ar
 
 	if err := encodeTestRequestRequiredStringBase64Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -28336,7 +28888,9 @@ func (s *Server) handleTestRequestRequiredStringBase64ArrayRequest(args [0]strin
 
 	if err := encodeTestRequestRequiredStringBase64ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -28437,7 +28991,9 @@ func (s *Server) handleTestRequestRequiredStringBase64ArrayArrayRequest(args [0]
 
 	if err := encodeTestRequestRequiredStringBase64ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -28538,7 +29094,9 @@ func (s *Server) handleTestRequestRequiredStringBase64NullableRequest(args [0]st
 
 	if err := encodeTestRequestRequiredStringBase64NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -28639,7 +29197,9 @@ func (s *Server) handleTestRequestRequiredStringBase64NullableArrayRequest(args 
 
 	if err := encodeTestRequestRequiredStringBase64NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -28740,7 +29300,9 @@ func (s *Server) handleTestRequestRequiredStringBase64NullableArrayArrayRequest(
 
 	if err := encodeTestRequestRequiredStringBase64NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -28841,7 +29403,9 @@ func (s *Server) handleTestRequestRequiredStringBinaryRequest(args [0]string, ar
 
 	if err := encodeTestRequestRequiredStringBinaryResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -28942,7 +29506,9 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayRequest(args [0]strin
 
 	if err := encodeTestRequestRequiredStringBinaryArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -29043,7 +29609,9 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayArrayRequest(args [0]
 
 	if err := encodeTestRequestRequiredStringBinaryArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -29144,7 +29712,9 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableRequest(args [0]st
 
 	if err := encodeTestRequestRequiredStringBinaryNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -29245,7 +29815,9 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayRequest(args 
 
 	if err := encodeTestRequestRequiredStringBinaryNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -29346,7 +29918,9 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 
 	if err := encodeTestRequestRequiredStringBinaryNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -29447,7 +30021,9 @@ func (s *Server) handleTestRequestRequiredStringByteRequest(args [0]string, args
 
 	if err := encodeTestRequestRequiredStringByteResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -29548,7 +30124,9 @@ func (s *Server) handleTestRequestRequiredStringByteArrayRequest(args [0]string,
 
 	if err := encodeTestRequestRequiredStringByteArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -29649,7 +30227,9 @@ func (s *Server) handleTestRequestRequiredStringByteArrayArrayRequest(args [0]st
 
 	if err := encodeTestRequestRequiredStringByteArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -29750,7 +30330,9 @@ func (s *Server) handleTestRequestRequiredStringByteNullableRequest(args [0]stri
 
 	if err := encodeTestRequestRequiredStringByteNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -29851,7 +30433,9 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayRequest(args [0
 
 	if err := encodeTestRequestRequiredStringByteNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -29952,7 +30536,9 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayArrayRequest(ar
 
 	if err := encodeTestRequestRequiredStringByteNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -30053,7 +30639,9 @@ func (s *Server) handleTestRequestRequiredStringDateRequest(args [0]string, args
 
 	if err := encodeTestRequestRequiredStringDateResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -30154,7 +30742,9 @@ func (s *Server) handleTestRequestRequiredStringDateArrayRequest(args [0]string,
 
 	if err := encodeTestRequestRequiredStringDateArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -30255,7 +30845,9 @@ func (s *Server) handleTestRequestRequiredStringDateArrayArrayRequest(args [0]st
 
 	if err := encodeTestRequestRequiredStringDateArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -30356,7 +30948,9 @@ func (s *Server) handleTestRequestRequiredStringDateNullableRequest(args [0]stri
 
 	if err := encodeTestRequestRequiredStringDateNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -30457,7 +31051,9 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayRequest(args [0
 
 	if err := encodeTestRequestRequiredStringDateNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -30558,7 +31154,9 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayArrayRequest(ar
 
 	if err := encodeTestRequestRequiredStringDateNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -30659,7 +31257,9 @@ func (s *Server) handleTestRequestRequiredStringDateTimeRequest(args [0]string, 
 
 	if err := encodeTestRequestRequiredStringDateTimeResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -30760,7 +31360,9 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayRequest(args [0]str
 
 	if err := encodeTestRequestRequiredStringDateTimeArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -30861,7 +31463,9 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayArrayRequest(args [
 
 	if err := encodeTestRequestRequiredStringDateTimeArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -30962,7 +31566,9 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableRequest(args [0]
 
 	if err := encodeTestRequestRequiredStringDateTimeNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -31063,7 +31669,9 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayRequest(arg
 
 	if err := encodeTestRequestRequiredStringDateTimeNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -31164,7 +31772,9 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayArrayReques
 
 	if err := encodeTestRequestRequiredStringDateTimeNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -31265,7 +31875,9 @@ func (s *Server) handleTestRequestRequiredStringDurationRequest(args [0]string, 
 
 	if err := encodeTestRequestRequiredStringDurationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -31366,7 +31978,9 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayRequest(args [0]str
 
 	if err := encodeTestRequestRequiredStringDurationArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -31467,7 +32081,9 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayArrayRequest(args [
 
 	if err := encodeTestRequestRequiredStringDurationArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -31568,7 +32184,9 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableRequest(args [0]
 
 	if err := encodeTestRequestRequiredStringDurationNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -31669,7 +32287,9 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayRequest(arg
 
 	if err := encodeTestRequestRequiredStringDurationNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -31770,7 +32390,9 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayArrayReques
 
 	if err := encodeTestRequestRequiredStringDurationNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -31871,7 +32493,9 @@ func (s *Server) handleTestRequestRequiredStringEmailRequest(args [0]string, arg
 
 	if err := encodeTestRequestRequiredStringEmailResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -31972,7 +32596,9 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayRequest(args [0]string
 
 	if err := encodeTestRequestRequiredStringEmailArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -32073,7 +32699,9 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayArrayRequest(args [0]s
 
 	if err := encodeTestRequestRequiredStringEmailArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -32174,7 +32802,9 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableRequest(args [0]str
 
 	if err := encodeTestRequestRequiredStringEmailNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -32275,7 +32905,9 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayRequest(args [
 
 	if err := encodeTestRequestRequiredStringEmailNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -32376,7 +33008,9 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayArrayRequest(a
 
 	if err := encodeTestRequestRequiredStringEmailNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -32477,7 +33111,9 @@ func (s *Server) handleTestRequestRequiredStringFloat32Request(args [0]string, a
 
 	if err := encodeTestRequestRequiredStringFloat32Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -32578,7 +33214,9 @@ func (s *Server) handleTestRequestRequiredStringFloat32ArrayRequest(args [0]stri
 
 	if err := encodeTestRequestRequiredStringFloat32ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -32679,7 +33317,9 @@ func (s *Server) handleTestRequestRequiredStringFloat32ArrayArrayRequest(args [0
 
 	if err := encodeTestRequestRequiredStringFloat32ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -32780,7 +33420,9 @@ func (s *Server) handleTestRequestRequiredStringFloat32NullableRequest(args [0]s
 
 	if err := encodeTestRequestRequiredStringFloat32NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -32881,7 +33523,9 @@ func (s *Server) handleTestRequestRequiredStringFloat32NullableArrayRequest(args
 
 	if err := encodeTestRequestRequiredStringFloat32NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -32982,7 +33626,9 @@ func (s *Server) handleTestRequestRequiredStringFloat32NullableArrayArrayRequest
 
 	if err := encodeTestRequestRequiredStringFloat32NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -33083,7 +33729,9 @@ func (s *Server) handleTestRequestRequiredStringFloat64Request(args [0]string, a
 
 	if err := encodeTestRequestRequiredStringFloat64Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -33184,7 +33832,9 @@ func (s *Server) handleTestRequestRequiredStringFloat64ArrayRequest(args [0]stri
 
 	if err := encodeTestRequestRequiredStringFloat64ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -33285,7 +33935,9 @@ func (s *Server) handleTestRequestRequiredStringFloat64ArrayArrayRequest(args [0
 
 	if err := encodeTestRequestRequiredStringFloat64ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -33386,7 +34038,9 @@ func (s *Server) handleTestRequestRequiredStringFloat64NullableRequest(args [0]s
 
 	if err := encodeTestRequestRequiredStringFloat64NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -33487,7 +34141,9 @@ func (s *Server) handleTestRequestRequiredStringFloat64NullableArrayRequest(args
 
 	if err := encodeTestRequestRequiredStringFloat64NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -33588,7 +34244,9 @@ func (s *Server) handleTestRequestRequiredStringFloat64NullableArrayArrayRequest
 
 	if err := encodeTestRequestRequiredStringFloat64NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -33689,7 +34347,9 @@ func (s *Server) handleTestRequestRequiredStringHostnameRequest(args [0]string, 
 
 	if err := encodeTestRequestRequiredStringHostnameResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -33790,7 +34450,9 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayRequest(args [0]str
 
 	if err := encodeTestRequestRequiredStringHostnameArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -33891,7 +34553,9 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayArrayRequest(args [
 
 	if err := encodeTestRequestRequiredStringHostnameArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -33992,7 +34656,9 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableRequest(args [0]
 
 	if err := encodeTestRequestRequiredStringHostnameNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -34093,7 +34759,9 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayRequest(arg
 
 	if err := encodeTestRequestRequiredStringHostnameNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -34194,7 +34862,9 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayArrayReques
 
 	if err := encodeTestRequestRequiredStringHostnameNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -34295,7 +34965,9 @@ func (s *Server) handleTestRequestRequiredStringIPRequest(args [0]string, argsEs
 
 	if err := encodeTestRequestRequiredStringIPResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -34396,7 +35068,9 @@ func (s *Server) handleTestRequestRequiredStringIPArrayRequest(args [0]string, a
 
 	if err := encodeTestRequestRequiredStringIPArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -34497,7 +35171,9 @@ func (s *Server) handleTestRequestRequiredStringIPArrayArrayRequest(args [0]stri
 
 	if err := encodeTestRequestRequiredStringIPArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -34598,7 +35274,9 @@ func (s *Server) handleTestRequestRequiredStringIPNullableRequest(args [0]string
 
 	if err := encodeTestRequestRequiredStringIPNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -34699,7 +35377,9 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayRequest(args [0]s
 
 	if err := encodeTestRequestRequiredStringIPNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -34800,7 +35480,9 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayArrayRequest(args
 
 	if err := encodeTestRequestRequiredStringIPNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -34901,7 +35583,9 @@ func (s *Server) handleTestRequestRequiredStringIntRequest(args [0]string, argsE
 
 	if err := encodeTestRequestRequiredStringIntResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -35002,7 +35686,9 @@ func (s *Server) handleTestRequestRequiredStringInt16Request(args [0]string, arg
 
 	if err := encodeTestRequestRequiredStringInt16Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -35103,7 +35789,9 @@ func (s *Server) handleTestRequestRequiredStringInt16ArrayRequest(args [0]string
 
 	if err := encodeTestRequestRequiredStringInt16ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -35204,7 +35892,9 @@ func (s *Server) handleTestRequestRequiredStringInt16ArrayArrayRequest(args [0]s
 
 	if err := encodeTestRequestRequiredStringInt16ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -35305,7 +35995,9 @@ func (s *Server) handleTestRequestRequiredStringInt16NullableRequest(args [0]str
 
 	if err := encodeTestRequestRequiredStringInt16NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -35406,7 +36098,9 @@ func (s *Server) handleTestRequestRequiredStringInt16NullableArrayRequest(args [
 
 	if err := encodeTestRequestRequiredStringInt16NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -35507,7 +36201,9 @@ func (s *Server) handleTestRequestRequiredStringInt16NullableArrayArrayRequest(a
 
 	if err := encodeTestRequestRequiredStringInt16NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -35608,7 +36304,9 @@ func (s *Server) handleTestRequestRequiredStringInt32Request(args [0]string, arg
 
 	if err := encodeTestRequestRequiredStringInt32Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -35709,7 +36407,9 @@ func (s *Server) handleTestRequestRequiredStringInt32ArrayRequest(args [0]string
 
 	if err := encodeTestRequestRequiredStringInt32ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -35810,7 +36510,9 @@ func (s *Server) handleTestRequestRequiredStringInt32ArrayArrayRequest(args [0]s
 
 	if err := encodeTestRequestRequiredStringInt32ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -35911,7 +36613,9 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableRequest(args [0]str
 
 	if err := encodeTestRequestRequiredStringInt32NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -36012,7 +36716,9 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableArrayRequest(args [
 
 	if err := encodeTestRequestRequiredStringInt32NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -36113,7 +36819,9 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableArrayArrayRequest(a
 
 	if err := encodeTestRequestRequiredStringInt32NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -36214,7 +36922,9 @@ func (s *Server) handleTestRequestRequiredStringInt64Request(args [0]string, arg
 
 	if err := encodeTestRequestRequiredStringInt64Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -36315,7 +37025,9 @@ func (s *Server) handleTestRequestRequiredStringInt64ArrayRequest(args [0]string
 
 	if err := encodeTestRequestRequiredStringInt64ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -36416,7 +37128,9 @@ func (s *Server) handleTestRequestRequiredStringInt64ArrayArrayRequest(args [0]s
 
 	if err := encodeTestRequestRequiredStringInt64ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -36517,7 +37231,9 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableRequest(args [0]str
 
 	if err := encodeTestRequestRequiredStringInt64NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -36618,7 +37334,9 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableArrayRequest(args [
 
 	if err := encodeTestRequestRequiredStringInt64NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -36719,7 +37437,9 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableArrayArrayRequest(a
 
 	if err := encodeTestRequestRequiredStringInt64NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -36820,7 +37540,9 @@ func (s *Server) handleTestRequestRequiredStringInt8Request(args [0]string, args
 
 	if err := encodeTestRequestRequiredStringInt8Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -36921,7 +37643,9 @@ func (s *Server) handleTestRequestRequiredStringInt8ArrayRequest(args [0]string,
 
 	if err := encodeTestRequestRequiredStringInt8ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -37022,7 +37746,9 @@ func (s *Server) handleTestRequestRequiredStringInt8ArrayArrayRequest(args [0]st
 
 	if err := encodeTestRequestRequiredStringInt8ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -37123,7 +37849,9 @@ func (s *Server) handleTestRequestRequiredStringInt8NullableRequest(args [0]stri
 
 	if err := encodeTestRequestRequiredStringInt8NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -37224,7 +37952,9 @@ func (s *Server) handleTestRequestRequiredStringInt8NullableArrayRequest(args [0
 
 	if err := encodeTestRequestRequiredStringInt8NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -37325,7 +38055,9 @@ func (s *Server) handleTestRequestRequiredStringInt8NullableArrayArrayRequest(ar
 
 	if err := encodeTestRequestRequiredStringInt8NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -37426,7 +38158,9 @@ func (s *Server) handleTestRequestRequiredStringIntArrayRequest(args [0]string, 
 
 	if err := encodeTestRequestRequiredStringIntArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -37527,7 +38261,9 @@ func (s *Server) handleTestRequestRequiredStringIntArrayArrayRequest(args [0]str
 
 	if err := encodeTestRequestRequiredStringIntArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -37628,7 +38364,9 @@ func (s *Server) handleTestRequestRequiredStringIntNullableRequest(args [0]strin
 
 	if err := encodeTestRequestRequiredStringIntNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -37729,7 +38467,9 @@ func (s *Server) handleTestRequestRequiredStringIntNullableArrayRequest(args [0]
 
 	if err := encodeTestRequestRequiredStringIntNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -37830,7 +38570,9 @@ func (s *Server) handleTestRequestRequiredStringIntNullableArrayArrayRequest(arg
 
 	if err := encodeTestRequestRequiredStringIntNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -37931,7 +38673,9 @@ func (s *Server) handleTestRequestRequiredStringIpv4Request(args [0]string, args
 
 	if err := encodeTestRequestRequiredStringIpv4Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -38032,7 +38776,9 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayRequest(args [0]string,
 
 	if err := encodeTestRequestRequiredStringIpv4ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -38133,7 +38879,9 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayArrayRequest(args [0]st
 
 	if err := encodeTestRequestRequiredStringIpv4ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -38234,7 +38982,9 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableRequest(args [0]stri
 
 	if err := encodeTestRequestRequiredStringIpv4NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -38335,7 +39085,9 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayRequest(args [0
 
 	if err := encodeTestRequestRequiredStringIpv4NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -38436,7 +39188,9 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayArrayRequest(ar
 
 	if err := encodeTestRequestRequiredStringIpv4NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -38537,7 +39291,9 @@ func (s *Server) handleTestRequestRequiredStringIpv6Request(args [0]string, args
 
 	if err := encodeTestRequestRequiredStringIpv6Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -38638,7 +39394,9 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayRequest(args [0]string,
 
 	if err := encodeTestRequestRequiredStringIpv6ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -38739,7 +39497,9 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayArrayRequest(args [0]st
 
 	if err := encodeTestRequestRequiredStringIpv6ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -38840,7 +39600,9 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableRequest(args [0]stri
 
 	if err := encodeTestRequestRequiredStringIpv6NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -38941,7 +39703,9 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayRequest(args [0
 
 	if err := encodeTestRequestRequiredStringIpv6NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -39042,7 +39806,9 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayArrayRequest(ar
 
 	if err := encodeTestRequestRequiredStringIpv6NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -39143,7 +39909,9 @@ func (s *Server) handleTestRequestRequiredStringNullableRequest(args [0]string, 
 
 	if err := encodeTestRequestRequiredStringNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -39244,7 +40012,9 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayRequest(args [0]str
 
 	if err := encodeTestRequestRequiredStringNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -39345,7 +40115,9 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayArrayRequest(args [
 
 	if err := encodeTestRequestRequiredStringNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -39446,7 +40218,9 @@ func (s *Server) handleTestRequestRequiredStringPasswordRequest(args [0]string, 
 
 	if err := encodeTestRequestRequiredStringPasswordResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -39547,7 +40321,9 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayRequest(args [0]str
 
 	if err := encodeTestRequestRequiredStringPasswordArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -39648,7 +40424,9 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayArrayRequest(args [
 
 	if err := encodeTestRequestRequiredStringPasswordArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -39749,7 +40527,9 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableRequest(args [0]
 
 	if err := encodeTestRequestRequiredStringPasswordNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -39850,7 +40630,9 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayRequest(arg
 
 	if err := encodeTestRequestRequiredStringPasswordNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -39951,7 +40733,9 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayArrayReques
 
 	if err := encodeTestRequestRequiredStringPasswordNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -40052,7 +40836,9 @@ func (s *Server) handleTestRequestRequiredStringTimeRequest(args [0]string, args
 
 	if err := encodeTestRequestRequiredStringTimeResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -40153,7 +40939,9 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayRequest(args [0]string,
 
 	if err := encodeTestRequestRequiredStringTimeArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -40254,7 +41042,9 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayArrayRequest(args [0]st
 
 	if err := encodeTestRequestRequiredStringTimeArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -40355,7 +41145,9 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableRequest(args [0]stri
 
 	if err := encodeTestRequestRequiredStringTimeNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -40456,7 +41248,9 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayRequest(args [0
 
 	if err := encodeTestRequestRequiredStringTimeNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -40557,7 +41351,9 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayArrayRequest(ar
 
 	if err := encodeTestRequestRequiredStringTimeNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -40658,7 +41454,9 @@ func (s *Server) handleTestRequestRequiredStringURIRequest(args [0]string, argsE
 
 	if err := encodeTestRequestRequiredStringURIResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -40759,7 +41557,9 @@ func (s *Server) handleTestRequestRequiredStringURIArrayRequest(args [0]string, 
 
 	if err := encodeTestRequestRequiredStringURIArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -40860,7 +41660,9 @@ func (s *Server) handleTestRequestRequiredStringURIArrayArrayRequest(args [0]str
 
 	if err := encodeTestRequestRequiredStringURIArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -40961,7 +41763,9 @@ func (s *Server) handleTestRequestRequiredStringURINullableRequest(args [0]strin
 
 	if err := encodeTestRequestRequiredStringURINullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -41062,7 +41866,9 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayRequest(args [0]
 
 	if err := encodeTestRequestRequiredStringURINullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -41163,7 +41969,9 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayArrayRequest(arg
 
 	if err := encodeTestRequestRequiredStringURINullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -41264,7 +42072,9 @@ func (s *Server) handleTestRequestRequiredStringUUIDRequest(args [0]string, args
 
 	if err := encodeTestRequestRequiredStringUUIDResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -41365,7 +42175,9 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayRequest(args [0]string,
 
 	if err := encodeTestRequestRequiredStringUUIDArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -41466,7 +42278,9 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayArrayRequest(args [0]st
 
 	if err := encodeTestRequestRequiredStringUUIDArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -41567,7 +42381,9 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableRequest(args [0]stri
 
 	if err := encodeTestRequestRequiredStringUUIDNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -41668,7 +42484,9 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayRequest(args [0
 
 	if err := encodeTestRequestRequiredStringUUIDNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -41769,7 +42587,9 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayArrayRequest(ar
 
 	if err := encodeTestRequestRequiredStringUUIDNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -41870,7 +42690,9 @@ func (s *Server) handleTestRequestRequiredStringUintRequest(args [0]string, args
 
 	if err := encodeTestRequestRequiredStringUintResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -41971,7 +42793,9 @@ func (s *Server) handleTestRequestRequiredStringUint16Request(args [0]string, ar
 
 	if err := encodeTestRequestRequiredStringUint16Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -42072,7 +42896,9 @@ func (s *Server) handleTestRequestRequiredStringUint16ArrayRequest(args [0]strin
 
 	if err := encodeTestRequestRequiredStringUint16ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -42173,7 +42999,9 @@ func (s *Server) handleTestRequestRequiredStringUint16ArrayArrayRequest(args [0]
 
 	if err := encodeTestRequestRequiredStringUint16ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -42274,7 +43102,9 @@ func (s *Server) handleTestRequestRequiredStringUint16NullableRequest(args [0]st
 
 	if err := encodeTestRequestRequiredStringUint16NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -42375,7 +43205,9 @@ func (s *Server) handleTestRequestRequiredStringUint16NullableArrayRequest(args 
 
 	if err := encodeTestRequestRequiredStringUint16NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -42476,7 +43308,9 @@ func (s *Server) handleTestRequestRequiredStringUint16NullableArrayArrayRequest(
 
 	if err := encodeTestRequestRequiredStringUint16NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -42577,7 +43411,9 @@ func (s *Server) handleTestRequestRequiredStringUint32Request(args [0]string, ar
 
 	if err := encodeTestRequestRequiredStringUint32Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -42678,7 +43514,9 @@ func (s *Server) handleTestRequestRequiredStringUint32ArrayRequest(args [0]strin
 
 	if err := encodeTestRequestRequiredStringUint32ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -42779,7 +43617,9 @@ func (s *Server) handleTestRequestRequiredStringUint32ArrayArrayRequest(args [0]
 
 	if err := encodeTestRequestRequiredStringUint32ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -42880,7 +43720,9 @@ func (s *Server) handleTestRequestRequiredStringUint32NullableRequest(args [0]st
 
 	if err := encodeTestRequestRequiredStringUint32NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -42981,7 +43823,9 @@ func (s *Server) handleTestRequestRequiredStringUint32NullableArrayRequest(args 
 
 	if err := encodeTestRequestRequiredStringUint32NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -43082,7 +43926,9 @@ func (s *Server) handleTestRequestRequiredStringUint32NullableArrayArrayRequest(
 
 	if err := encodeTestRequestRequiredStringUint32NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -43183,7 +44029,9 @@ func (s *Server) handleTestRequestRequiredStringUint64Request(args [0]string, ar
 
 	if err := encodeTestRequestRequiredStringUint64Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -43284,7 +44132,9 @@ func (s *Server) handleTestRequestRequiredStringUint64ArrayRequest(args [0]strin
 
 	if err := encodeTestRequestRequiredStringUint64ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -43385,7 +44235,9 @@ func (s *Server) handleTestRequestRequiredStringUint64ArrayArrayRequest(args [0]
 
 	if err := encodeTestRequestRequiredStringUint64ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -43486,7 +44338,9 @@ func (s *Server) handleTestRequestRequiredStringUint64NullableRequest(args [0]st
 
 	if err := encodeTestRequestRequiredStringUint64NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -43587,7 +44441,9 @@ func (s *Server) handleTestRequestRequiredStringUint64NullableArrayRequest(args 
 
 	if err := encodeTestRequestRequiredStringUint64NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -43688,7 +44544,9 @@ func (s *Server) handleTestRequestRequiredStringUint64NullableArrayArrayRequest(
 
 	if err := encodeTestRequestRequiredStringUint64NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -43789,7 +44647,9 @@ func (s *Server) handleTestRequestRequiredStringUint8Request(args [0]string, arg
 
 	if err := encodeTestRequestRequiredStringUint8Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -43890,7 +44750,9 @@ func (s *Server) handleTestRequestRequiredStringUint8ArrayRequest(args [0]string
 
 	if err := encodeTestRequestRequiredStringUint8ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -43991,7 +44853,9 @@ func (s *Server) handleTestRequestRequiredStringUint8ArrayArrayRequest(args [0]s
 
 	if err := encodeTestRequestRequiredStringUint8ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -44092,7 +44956,9 @@ func (s *Server) handleTestRequestRequiredStringUint8NullableRequest(args [0]str
 
 	if err := encodeTestRequestRequiredStringUint8NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -44193,7 +45059,9 @@ func (s *Server) handleTestRequestRequiredStringUint8NullableArrayRequest(args [
 
 	if err := encodeTestRequestRequiredStringUint8NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -44294,7 +45162,9 @@ func (s *Server) handleTestRequestRequiredStringUint8NullableArrayArrayRequest(a
 
 	if err := encodeTestRequestRequiredStringUint8NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -44395,7 +45265,9 @@ func (s *Server) handleTestRequestRequiredStringUintArrayRequest(args [0]string,
 
 	if err := encodeTestRequestRequiredStringUintArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -44496,7 +45368,9 @@ func (s *Server) handleTestRequestRequiredStringUintArrayArrayRequest(args [0]st
 
 	if err := encodeTestRequestRequiredStringUintArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -44597,7 +45471,9 @@ func (s *Server) handleTestRequestRequiredStringUintNullableRequest(args [0]stri
 
 	if err := encodeTestRequestRequiredStringUintNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -44698,7 +45574,9 @@ func (s *Server) handleTestRequestRequiredStringUintNullableArrayRequest(args [0
 
 	if err := encodeTestRequestRequiredStringUintNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -44799,7 +45677,9 @@ func (s *Server) handleTestRequestRequiredStringUintNullableArrayArrayRequest(ar
 
 	if err := encodeTestRequestRequiredStringUintNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -44900,7 +45780,9 @@ func (s *Server) handleTestRequestRequiredStringUnixRequest(args [0]string, args
 
 	if err := encodeTestRequestRequiredStringUnixResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -45001,7 +45883,9 @@ func (s *Server) handleTestRequestRequiredStringUnixArrayRequest(args [0]string,
 
 	if err := encodeTestRequestRequiredStringUnixArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -45102,7 +45986,9 @@ func (s *Server) handleTestRequestRequiredStringUnixArrayArrayRequest(args [0]st
 
 	if err := encodeTestRequestRequiredStringUnixArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -45203,7 +46089,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroRequest(args [0]string,
 
 	if err := encodeTestRequestRequiredStringUnixMicroResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -45304,7 +46192,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroArrayRequest(args [0]st
 
 	if err := encodeTestRequestRequiredStringUnixMicroArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -45405,7 +46295,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroArrayArrayRequest(args 
 
 	if err := encodeTestRequestRequiredStringUnixMicroArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -45506,7 +46398,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableRequest(args [0
 
 	if err := encodeTestRequestRequiredStringUnixMicroNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -45607,7 +46501,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayRequest(ar
 
 	if err := encodeTestRequestRequiredStringUnixMicroNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -45708,7 +46604,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayArrayReque
 
 	if err := encodeTestRequestRequiredStringUnixMicroNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -45809,7 +46707,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliRequest(args [0]string,
 
 	if err := encodeTestRequestRequiredStringUnixMilliResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -45910,7 +46810,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliArrayRequest(args [0]st
 
 	if err := encodeTestRequestRequiredStringUnixMilliArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -46011,7 +46913,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliArrayArrayRequest(args 
 
 	if err := encodeTestRequestRequiredStringUnixMilliArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -46112,7 +47016,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableRequest(args [0
 
 	if err := encodeTestRequestRequiredStringUnixMilliNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -46213,7 +47119,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayRequest(ar
 
 	if err := encodeTestRequestRequiredStringUnixMilliNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -46314,7 +47222,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayArrayReque
 
 	if err := encodeTestRequestRequiredStringUnixMilliNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -46415,7 +47325,9 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoRequest(args [0]string, 
 
 	if err := encodeTestRequestRequiredStringUnixNanoResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -46516,7 +47428,9 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoArrayRequest(args [0]str
 
 	if err := encodeTestRequestRequiredStringUnixNanoArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -46617,7 +47531,9 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoArrayArrayRequest(args [
 
 	if err := encodeTestRequestRequiredStringUnixNanoArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -46718,7 +47634,9 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableRequest(args [0]
 
 	if err := encodeTestRequestRequiredStringUnixNanoNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -46819,7 +47737,9 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayRequest(arg
 
 	if err := encodeTestRequestRequiredStringUnixNanoNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -46920,7 +47840,9 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayArrayReques
 
 	if err := encodeTestRequestRequiredStringUnixNanoNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -47021,7 +47943,9 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableRequest(args [0]stri
 
 	if err := encodeTestRequestRequiredStringUnixNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -47122,7 +48046,9 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableArrayRequest(args [0
 
 	if err := encodeTestRequestRequiredStringUnixNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -47223,7 +48149,9 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableArrayArrayRequest(ar
 
 	if err := encodeTestRequestRequiredStringUnixNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -47324,7 +48252,9 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsRequest(args [0]strin
 
 	if err := encodeTestRequestRequiredStringUnixSecondsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -47425,7 +48355,9 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayRequest(args [0]
 
 	if err := encodeTestRequestRequiredStringUnixSecondsArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -47526,7 +48458,9 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayArrayRequest(arg
 
 	if err := encodeTestRequestRequiredStringUnixSecondsArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -47627,7 +48561,9 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableRequest(args 
 
 	if err := encodeTestRequestRequiredStringUnixSecondsNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -47728,7 +48664,9 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayRequest(
 
 	if err := encodeTestRequestRequiredStringUnixSecondsNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -47829,7 +48767,9 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayArrayReq
 
 	if err := encodeTestRequestRequiredStringUnixSecondsNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -47930,7 +48870,9 @@ func (s *Server) handleTestRequestStringRequest(args [0]string, argsEscaped bool
 
 	if err := encodeTestRequestStringResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -48031,7 +48973,9 @@ func (s *Server) handleTestRequestStringArrayRequest(args [0]string, argsEscaped
 
 	if err := encodeTestRequestStringArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -48132,7 +49076,9 @@ func (s *Server) handleTestRequestStringArrayArrayRequest(args [0]string, argsEs
 
 	if err := encodeTestRequestStringArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -48233,7 +49179,9 @@ func (s *Server) handleTestRequestStringBase64Request(args [0]string, argsEscape
 
 	if err := encodeTestRequestStringBase64Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -48334,7 +49282,9 @@ func (s *Server) handleTestRequestStringBase64ArrayRequest(args [0]string, argsE
 
 	if err := encodeTestRequestStringBase64ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -48435,7 +49385,9 @@ func (s *Server) handleTestRequestStringBase64ArrayArrayRequest(args [0]string, 
 
 	if err := encodeTestRequestStringBase64ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -48536,7 +49488,9 @@ func (s *Server) handleTestRequestStringBase64NullableRequest(args [0]string, ar
 
 	if err := encodeTestRequestStringBase64NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -48637,7 +49591,9 @@ func (s *Server) handleTestRequestStringBase64NullableArrayRequest(args [0]strin
 
 	if err := encodeTestRequestStringBase64NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -48738,7 +49694,9 @@ func (s *Server) handleTestRequestStringBase64NullableArrayArrayRequest(args [0]
 
 	if err := encodeTestRequestStringBase64NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -48839,7 +49797,9 @@ func (s *Server) handleTestRequestStringBinaryRequest(args [0]string, argsEscape
 
 	if err := encodeTestRequestStringBinaryResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -48940,7 +49900,9 @@ func (s *Server) handleTestRequestStringBinaryArrayRequest(args [0]string, argsE
 
 	if err := encodeTestRequestStringBinaryArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -49041,7 +50003,9 @@ func (s *Server) handleTestRequestStringBinaryArrayArrayRequest(args [0]string, 
 
 	if err := encodeTestRequestStringBinaryArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -49142,7 +50106,9 @@ func (s *Server) handleTestRequestStringBinaryNullableRequest(args [0]string, ar
 
 	if err := encodeTestRequestStringBinaryNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -49243,7 +50209,9 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayRequest(args [0]strin
 
 	if err := encodeTestRequestStringBinaryNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -49344,7 +50312,9 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayArrayRequest(args [0]
 
 	if err := encodeTestRequestStringBinaryNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -49445,7 +50415,9 @@ func (s *Server) handleTestRequestStringByteRequest(args [0]string, argsEscaped 
 
 	if err := encodeTestRequestStringByteResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -49546,7 +50518,9 @@ func (s *Server) handleTestRequestStringByteArrayRequest(args [0]string, argsEsc
 
 	if err := encodeTestRequestStringByteArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -49647,7 +50621,9 @@ func (s *Server) handleTestRequestStringByteArrayArrayRequest(args [0]string, ar
 
 	if err := encodeTestRequestStringByteArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -49748,7 +50724,9 @@ func (s *Server) handleTestRequestStringByteNullableRequest(args [0]string, args
 
 	if err := encodeTestRequestStringByteNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -49849,7 +50827,9 @@ func (s *Server) handleTestRequestStringByteNullableArrayRequest(args [0]string,
 
 	if err := encodeTestRequestStringByteNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -49950,7 +50930,9 @@ func (s *Server) handleTestRequestStringByteNullableArrayArrayRequest(args [0]st
 
 	if err := encodeTestRequestStringByteNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -50051,7 +51033,9 @@ func (s *Server) handleTestRequestStringDateRequest(args [0]string, argsEscaped 
 
 	if err := encodeTestRequestStringDateResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -50152,7 +51136,9 @@ func (s *Server) handleTestRequestStringDateArrayRequest(args [0]string, argsEsc
 
 	if err := encodeTestRequestStringDateArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -50253,7 +51239,9 @@ func (s *Server) handleTestRequestStringDateArrayArrayRequest(args [0]string, ar
 
 	if err := encodeTestRequestStringDateArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -50354,7 +51342,9 @@ func (s *Server) handleTestRequestStringDateNullableRequest(args [0]string, args
 
 	if err := encodeTestRequestStringDateNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -50455,7 +51445,9 @@ func (s *Server) handleTestRequestStringDateNullableArrayRequest(args [0]string,
 
 	if err := encodeTestRequestStringDateNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -50556,7 +51548,9 @@ func (s *Server) handleTestRequestStringDateNullableArrayArrayRequest(args [0]st
 
 	if err := encodeTestRequestStringDateNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -50657,7 +51651,9 @@ func (s *Server) handleTestRequestStringDateTimeRequest(args [0]string, argsEsca
 
 	if err := encodeTestRequestStringDateTimeResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -50758,7 +51754,9 @@ func (s *Server) handleTestRequestStringDateTimeArrayRequest(args [0]string, arg
 
 	if err := encodeTestRequestStringDateTimeArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -50859,7 +51857,9 @@ func (s *Server) handleTestRequestStringDateTimeArrayArrayRequest(args [0]string
 
 	if err := encodeTestRequestStringDateTimeArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -50960,7 +51960,9 @@ func (s *Server) handleTestRequestStringDateTimeNullableRequest(args [0]string, 
 
 	if err := encodeTestRequestStringDateTimeNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -51061,7 +52063,9 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayRequest(args [0]str
 
 	if err := encodeTestRequestStringDateTimeNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -51162,7 +52166,9 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayArrayRequest(args [
 
 	if err := encodeTestRequestStringDateTimeNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -51263,7 +52269,9 @@ func (s *Server) handleTestRequestStringDurationRequest(args [0]string, argsEsca
 
 	if err := encodeTestRequestStringDurationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -51364,7 +52372,9 @@ func (s *Server) handleTestRequestStringDurationArrayRequest(args [0]string, arg
 
 	if err := encodeTestRequestStringDurationArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -51465,7 +52475,9 @@ func (s *Server) handleTestRequestStringDurationArrayArrayRequest(args [0]string
 
 	if err := encodeTestRequestStringDurationArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -51566,7 +52578,9 @@ func (s *Server) handleTestRequestStringDurationNullableRequest(args [0]string, 
 
 	if err := encodeTestRequestStringDurationNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -51667,7 +52681,9 @@ func (s *Server) handleTestRequestStringDurationNullableArrayRequest(args [0]str
 
 	if err := encodeTestRequestStringDurationNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -51768,7 +52784,9 @@ func (s *Server) handleTestRequestStringDurationNullableArrayArrayRequest(args [
 
 	if err := encodeTestRequestStringDurationNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -51869,7 +52887,9 @@ func (s *Server) handleTestRequestStringEmailRequest(args [0]string, argsEscaped
 
 	if err := encodeTestRequestStringEmailResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -51970,7 +52990,9 @@ func (s *Server) handleTestRequestStringEmailArrayRequest(args [0]string, argsEs
 
 	if err := encodeTestRequestStringEmailArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -52071,7 +53093,9 @@ func (s *Server) handleTestRequestStringEmailArrayArrayRequest(args [0]string, a
 
 	if err := encodeTestRequestStringEmailArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -52172,7 +53196,9 @@ func (s *Server) handleTestRequestStringEmailNullableRequest(args [0]string, arg
 
 	if err := encodeTestRequestStringEmailNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -52273,7 +53299,9 @@ func (s *Server) handleTestRequestStringEmailNullableArrayRequest(args [0]string
 
 	if err := encodeTestRequestStringEmailNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -52374,7 +53402,9 @@ func (s *Server) handleTestRequestStringEmailNullableArrayArrayRequest(args [0]s
 
 	if err := encodeTestRequestStringEmailNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -52475,7 +53505,9 @@ func (s *Server) handleTestRequestStringFloat32Request(args [0]string, argsEscap
 
 	if err := encodeTestRequestStringFloat32Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -52576,7 +53608,9 @@ func (s *Server) handleTestRequestStringFloat32ArrayRequest(args [0]string, args
 
 	if err := encodeTestRequestStringFloat32ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -52677,7 +53711,9 @@ func (s *Server) handleTestRequestStringFloat32ArrayArrayRequest(args [0]string,
 
 	if err := encodeTestRequestStringFloat32ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -52778,7 +53814,9 @@ func (s *Server) handleTestRequestStringFloat32NullableRequest(args [0]string, a
 
 	if err := encodeTestRequestStringFloat32NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -52879,7 +53917,9 @@ func (s *Server) handleTestRequestStringFloat32NullableArrayRequest(args [0]stri
 
 	if err := encodeTestRequestStringFloat32NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -52980,7 +54020,9 @@ func (s *Server) handleTestRequestStringFloat32NullableArrayArrayRequest(args [0
 
 	if err := encodeTestRequestStringFloat32NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -53081,7 +54123,9 @@ func (s *Server) handleTestRequestStringFloat64Request(args [0]string, argsEscap
 
 	if err := encodeTestRequestStringFloat64Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -53182,7 +54226,9 @@ func (s *Server) handleTestRequestStringFloat64ArrayRequest(args [0]string, args
 
 	if err := encodeTestRequestStringFloat64ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -53283,7 +54329,9 @@ func (s *Server) handleTestRequestStringFloat64ArrayArrayRequest(args [0]string,
 
 	if err := encodeTestRequestStringFloat64ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -53384,7 +54432,9 @@ func (s *Server) handleTestRequestStringFloat64NullableRequest(args [0]string, a
 
 	if err := encodeTestRequestStringFloat64NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -53485,7 +54535,9 @@ func (s *Server) handleTestRequestStringFloat64NullableArrayRequest(args [0]stri
 
 	if err := encodeTestRequestStringFloat64NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -53586,7 +54638,9 @@ func (s *Server) handleTestRequestStringFloat64NullableArrayArrayRequest(args [0
 
 	if err := encodeTestRequestStringFloat64NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -53687,7 +54741,9 @@ func (s *Server) handleTestRequestStringHostnameRequest(args [0]string, argsEsca
 
 	if err := encodeTestRequestStringHostnameResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -53788,7 +54844,9 @@ func (s *Server) handleTestRequestStringHostnameArrayRequest(args [0]string, arg
 
 	if err := encodeTestRequestStringHostnameArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -53889,7 +54947,9 @@ func (s *Server) handleTestRequestStringHostnameArrayArrayRequest(args [0]string
 
 	if err := encodeTestRequestStringHostnameArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -53990,7 +55050,9 @@ func (s *Server) handleTestRequestStringHostnameNullableRequest(args [0]string, 
 
 	if err := encodeTestRequestStringHostnameNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -54091,7 +55153,9 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayRequest(args [0]str
 
 	if err := encodeTestRequestStringHostnameNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -54192,7 +55256,9 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayArrayRequest(args [
 
 	if err := encodeTestRequestStringHostnameNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -54293,7 +55359,9 @@ func (s *Server) handleTestRequestStringIPRequest(args [0]string, argsEscaped bo
 
 	if err := encodeTestRequestStringIPResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -54394,7 +55462,9 @@ func (s *Server) handleTestRequestStringIPArrayRequest(args [0]string, argsEscap
 
 	if err := encodeTestRequestStringIPArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -54495,7 +55565,9 @@ func (s *Server) handleTestRequestStringIPArrayArrayRequest(args [0]string, args
 
 	if err := encodeTestRequestStringIPArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -54596,7 +55668,9 @@ func (s *Server) handleTestRequestStringIPNullableRequest(args [0]string, argsEs
 
 	if err := encodeTestRequestStringIPNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -54697,7 +55771,9 @@ func (s *Server) handleTestRequestStringIPNullableArrayRequest(args [0]string, a
 
 	if err := encodeTestRequestStringIPNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -54798,7 +55874,9 @@ func (s *Server) handleTestRequestStringIPNullableArrayArrayRequest(args [0]stri
 
 	if err := encodeTestRequestStringIPNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -54899,7 +55977,9 @@ func (s *Server) handleTestRequestStringIntRequest(args [0]string, argsEscaped b
 
 	if err := encodeTestRequestStringIntResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -55000,7 +56080,9 @@ func (s *Server) handleTestRequestStringInt16Request(args [0]string, argsEscaped
 
 	if err := encodeTestRequestStringInt16Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -55101,7 +56183,9 @@ func (s *Server) handleTestRequestStringInt16ArrayRequest(args [0]string, argsEs
 
 	if err := encodeTestRequestStringInt16ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -55202,7 +56286,9 @@ func (s *Server) handleTestRequestStringInt16ArrayArrayRequest(args [0]string, a
 
 	if err := encodeTestRequestStringInt16ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -55303,7 +56389,9 @@ func (s *Server) handleTestRequestStringInt16NullableRequest(args [0]string, arg
 
 	if err := encodeTestRequestStringInt16NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -55404,7 +56492,9 @@ func (s *Server) handleTestRequestStringInt16NullableArrayRequest(args [0]string
 
 	if err := encodeTestRequestStringInt16NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -55505,7 +56595,9 @@ func (s *Server) handleTestRequestStringInt16NullableArrayArrayRequest(args [0]s
 
 	if err := encodeTestRequestStringInt16NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -55606,7 +56698,9 @@ func (s *Server) handleTestRequestStringInt32Request(args [0]string, argsEscaped
 
 	if err := encodeTestRequestStringInt32Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -55707,7 +56801,9 @@ func (s *Server) handleTestRequestStringInt32ArrayRequest(args [0]string, argsEs
 
 	if err := encodeTestRequestStringInt32ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -55808,7 +56904,9 @@ func (s *Server) handleTestRequestStringInt32ArrayArrayRequest(args [0]string, a
 
 	if err := encodeTestRequestStringInt32ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -55909,7 +57007,9 @@ func (s *Server) handleTestRequestStringInt32NullableRequest(args [0]string, arg
 
 	if err := encodeTestRequestStringInt32NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -56010,7 +57110,9 @@ func (s *Server) handleTestRequestStringInt32NullableArrayRequest(args [0]string
 
 	if err := encodeTestRequestStringInt32NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -56111,7 +57213,9 @@ func (s *Server) handleTestRequestStringInt32NullableArrayArrayRequest(args [0]s
 
 	if err := encodeTestRequestStringInt32NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -56212,7 +57316,9 @@ func (s *Server) handleTestRequestStringInt64Request(args [0]string, argsEscaped
 
 	if err := encodeTestRequestStringInt64Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -56313,7 +57419,9 @@ func (s *Server) handleTestRequestStringInt64ArrayRequest(args [0]string, argsEs
 
 	if err := encodeTestRequestStringInt64ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -56414,7 +57522,9 @@ func (s *Server) handleTestRequestStringInt64ArrayArrayRequest(args [0]string, a
 
 	if err := encodeTestRequestStringInt64ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -56515,7 +57625,9 @@ func (s *Server) handleTestRequestStringInt64NullableRequest(args [0]string, arg
 
 	if err := encodeTestRequestStringInt64NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -56616,7 +57728,9 @@ func (s *Server) handleTestRequestStringInt64NullableArrayRequest(args [0]string
 
 	if err := encodeTestRequestStringInt64NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -56717,7 +57831,9 @@ func (s *Server) handleTestRequestStringInt64NullableArrayArrayRequest(args [0]s
 
 	if err := encodeTestRequestStringInt64NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -56818,7 +57934,9 @@ func (s *Server) handleTestRequestStringInt8Request(args [0]string, argsEscaped 
 
 	if err := encodeTestRequestStringInt8Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -56919,7 +58037,9 @@ func (s *Server) handleTestRequestStringInt8ArrayRequest(args [0]string, argsEsc
 
 	if err := encodeTestRequestStringInt8ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -57020,7 +58140,9 @@ func (s *Server) handleTestRequestStringInt8ArrayArrayRequest(args [0]string, ar
 
 	if err := encodeTestRequestStringInt8ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -57121,7 +58243,9 @@ func (s *Server) handleTestRequestStringInt8NullableRequest(args [0]string, args
 
 	if err := encodeTestRequestStringInt8NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -57222,7 +58346,9 @@ func (s *Server) handleTestRequestStringInt8NullableArrayRequest(args [0]string,
 
 	if err := encodeTestRequestStringInt8NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -57323,7 +58449,9 @@ func (s *Server) handleTestRequestStringInt8NullableArrayArrayRequest(args [0]st
 
 	if err := encodeTestRequestStringInt8NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -57424,7 +58552,9 @@ func (s *Server) handleTestRequestStringIntArrayRequest(args [0]string, argsEsca
 
 	if err := encodeTestRequestStringIntArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -57525,7 +58655,9 @@ func (s *Server) handleTestRequestStringIntArrayArrayRequest(args [0]string, arg
 
 	if err := encodeTestRequestStringIntArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -57626,7 +58758,9 @@ func (s *Server) handleTestRequestStringIntNullableRequest(args [0]string, argsE
 
 	if err := encodeTestRequestStringIntNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -57727,7 +58861,9 @@ func (s *Server) handleTestRequestStringIntNullableArrayRequest(args [0]string, 
 
 	if err := encodeTestRequestStringIntNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -57828,7 +58964,9 @@ func (s *Server) handleTestRequestStringIntNullableArrayArrayRequest(args [0]str
 
 	if err := encodeTestRequestStringIntNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -57929,7 +59067,9 @@ func (s *Server) handleTestRequestStringIpv4Request(args [0]string, argsEscaped 
 
 	if err := encodeTestRequestStringIpv4Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -58030,7 +59170,9 @@ func (s *Server) handleTestRequestStringIpv4ArrayRequest(args [0]string, argsEsc
 
 	if err := encodeTestRequestStringIpv4ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -58131,7 +59273,9 @@ func (s *Server) handleTestRequestStringIpv4ArrayArrayRequest(args [0]string, ar
 
 	if err := encodeTestRequestStringIpv4ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -58232,7 +59376,9 @@ func (s *Server) handleTestRequestStringIpv4NullableRequest(args [0]string, args
 
 	if err := encodeTestRequestStringIpv4NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -58333,7 +59479,9 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayRequest(args [0]string,
 
 	if err := encodeTestRequestStringIpv4NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -58434,7 +59582,9 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayArrayRequest(args [0]st
 
 	if err := encodeTestRequestStringIpv4NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -58535,7 +59685,9 @@ func (s *Server) handleTestRequestStringIpv6Request(args [0]string, argsEscaped 
 
 	if err := encodeTestRequestStringIpv6Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -58636,7 +59788,9 @@ func (s *Server) handleTestRequestStringIpv6ArrayRequest(args [0]string, argsEsc
 
 	if err := encodeTestRequestStringIpv6ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -58737,7 +59891,9 @@ func (s *Server) handleTestRequestStringIpv6ArrayArrayRequest(args [0]string, ar
 
 	if err := encodeTestRequestStringIpv6ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -58838,7 +59994,9 @@ func (s *Server) handleTestRequestStringIpv6NullableRequest(args [0]string, args
 
 	if err := encodeTestRequestStringIpv6NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -58939,7 +60097,9 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayRequest(args [0]string,
 
 	if err := encodeTestRequestStringIpv6NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -59040,7 +60200,9 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayArrayRequest(args [0]st
 
 	if err := encodeTestRequestStringIpv6NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -59141,7 +60303,9 @@ func (s *Server) handleTestRequestStringNullableRequest(args [0]string, argsEsca
 
 	if err := encodeTestRequestStringNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -59242,7 +60406,9 @@ func (s *Server) handleTestRequestStringNullableArrayRequest(args [0]string, arg
 
 	if err := encodeTestRequestStringNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -59343,7 +60509,9 @@ func (s *Server) handleTestRequestStringNullableArrayArrayRequest(args [0]string
 
 	if err := encodeTestRequestStringNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -59444,7 +60612,9 @@ func (s *Server) handleTestRequestStringPasswordRequest(args [0]string, argsEsca
 
 	if err := encodeTestRequestStringPasswordResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -59545,7 +60715,9 @@ func (s *Server) handleTestRequestStringPasswordArrayRequest(args [0]string, arg
 
 	if err := encodeTestRequestStringPasswordArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -59646,7 +60818,9 @@ func (s *Server) handleTestRequestStringPasswordArrayArrayRequest(args [0]string
 
 	if err := encodeTestRequestStringPasswordArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -59747,7 +60921,9 @@ func (s *Server) handleTestRequestStringPasswordNullableRequest(args [0]string, 
 
 	if err := encodeTestRequestStringPasswordNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -59848,7 +61024,9 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayRequest(args [0]str
 
 	if err := encodeTestRequestStringPasswordNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -59949,7 +61127,9 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayArrayRequest(args [
 
 	if err := encodeTestRequestStringPasswordNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -60050,7 +61230,9 @@ func (s *Server) handleTestRequestStringTimeRequest(args [0]string, argsEscaped 
 
 	if err := encodeTestRequestStringTimeResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -60151,7 +61333,9 @@ func (s *Server) handleTestRequestStringTimeArrayRequest(args [0]string, argsEsc
 
 	if err := encodeTestRequestStringTimeArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -60252,7 +61436,9 @@ func (s *Server) handleTestRequestStringTimeArrayArrayRequest(args [0]string, ar
 
 	if err := encodeTestRequestStringTimeArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -60353,7 +61539,9 @@ func (s *Server) handleTestRequestStringTimeNullableRequest(args [0]string, args
 
 	if err := encodeTestRequestStringTimeNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -60454,7 +61642,9 @@ func (s *Server) handleTestRequestStringTimeNullableArrayRequest(args [0]string,
 
 	if err := encodeTestRequestStringTimeNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -60555,7 +61745,9 @@ func (s *Server) handleTestRequestStringTimeNullableArrayArrayRequest(args [0]st
 
 	if err := encodeTestRequestStringTimeNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -60656,7 +61848,9 @@ func (s *Server) handleTestRequestStringURIRequest(args [0]string, argsEscaped b
 
 	if err := encodeTestRequestStringURIResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -60757,7 +61951,9 @@ func (s *Server) handleTestRequestStringURIArrayRequest(args [0]string, argsEsca
 
 	if err := encodeTestRequestStringURIArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -60858,7 +62054,9 @@ func (s *Server) handleTestRequestStringURIArrayArrayRequest(args [0]string, arg
 
 	if err := encodeTestRequestStringURIArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -60959,7 +62157,9 @@ func (s *Server) handleTestRequestStringURINullableRequest(args [0]string, argsE
 
 	if err := encodeTestRequestStringURINullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -61060,7 +62260,9 @@ func (s *Server) handleTestRequestStringURINullableArrayRequest(args [0]string, 
 
 	if err := encodeTestRequestStringURINullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -61161,7 +62363,9 @@ func (s *Server) handleTestRequestStringURINullableArrayArrayRequest(args [0]str
 
 	if err := encodeTestRequestStringURINullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -61262,7 +62466,9 @@ func (s *Server) handleTestRequestStringUUIDRequest(args [0]string, argsEscaped 
 
 	if err := encodeTestRequestStringUUIDResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -61363,7 +62569,9 @@ func (s *Server) handleTestRequestStringUUIDArrayRequest(args [0]string, argsEsc
 
 	if err := encodeTestRequestStringUUIDArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -61464,7 +62672,9 @@ func (s *Server) handleTestRequestStringUUIDArrayArrayRequest(args [0]string, ar
 
 	if err := encodeTestRequestStringUUIDArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -61565,7 +62775,9 @@ func (s *Server) handleTestRequestStringUUIDNullableRequest(args [0]string, args
 
 	if err := encodeTestRequestStringUUIDNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -61666,7 +62878,9 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayRequest(args [0]string,
 
 	if err := encodeTestRequestStringUUIDNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -61767,7 +62981,9 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayArrayRequest(args [0]st
 
 	if err := encodeTestRequestStringUUIDNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -61868,7 +63084,9 @@ func (s *Server) handleTestRequestStringUintRequest(args [0]string, argsEscaped 
 
 	if err := encodeTestRequestStringUintResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -61969,7 +63187,9 @@ func (s *Server) handleTestRequestStringUint16Request(args [0]string, argsEscape
 
 	if err := encodeTestRequestStringUint16Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -62070,7 +63290,9 @@ func (s *Server) handleTestRequestStringUint16ArrayRequest(args [0]string, argsE
 
 	if err := encodeTestRequestStringUint16ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -62171,7 +63393,9 @@ func (s *Server) handleTestRequestStringUint16ArrayArrayRequest(args [0]string, 
 
 	if err := encodeTestRequestStringUint16ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -62272,7 +63496,9 @@ func (s *Server) handleTestRequestStringUint16NullableRequest(args [0]string, ar
 
 	if err := encodeTestRequestStringUint16NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -62373,7 +63599,9 @@ func (s *Server) handleTestRequestStringUint16NullableArrayRequest(args [0]strin
 
 	if err := encodeTestRequestStringUint16NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -62474,7 +63702,9 @@ func (s *Server) handleTestRequestStringUint16NullableArrayArrayRequest(args [0]
 
 	if err := encodeTestRequestStringUint16NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -62575,7 +63805,9 @@ func (s *Server) handleTestRequestStringUint32Request(args [0]string, argsEscape
 
 	if err := encodeTestRequestStringUint32Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -62676,7 +63908,9 @@ func (s *Server) handleTestRequestStringUint32ArrayRequest(args [0]string, argsE
 
 	if err := encodeTestRequestStringUint32ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -62777,7 +64011,9 @@ func (s *Server) handleTestRequestStringUint32ArrayArrayRequest(args [0]string, 
 
 	if err := encodeTestRequestStringUint32ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -62878,7 +64114,9 @@ func (s *Server) handleTestRequestStringUint32NullableRequest(args [0]string, ar
 
 	if err := encodeTestRequestStringUint32NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -62979,7 +64217,9 @@ func (s *Server) handleTestRequestStringUint32NullableArrayRequest(args [0]strin
 
 	if err := encodeTestRequestStringUint32NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -63080,7 +64320,9 @@ func (s *Server) handleTestRequestStringUint32NullableArrayArrayRequest(args [0]
 
 	if err := encodeTestRequestStringUint32NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -63181,7 +64423,9 @@ func (s *Server) handleTestRequestStringUint64Request(args [0]string, argsEscape
 
 	if err := encodeTestRequestStringUint64Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -63282,7 +64526,9 @@ func (s *Server) handleTestRequestStringUint64ArrayRequest(args [0]string, argsE
 
 	if err := encodeTestRequestStringUint64ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -63383,7 +64629,9 @@ func (s *Server) handleTestRequestStringUint64ArrayArrayRequest(args [0]string, 
 
 	if err := encodeTestRequestStringUint64ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -63484,7 +64732,9 @@ func (s *Server) handleTestRequestStringUint64NullableRequest(args [0]string, ar
 
 	if err := encodeTestRequestStringUint64NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -63585,7 +64835,9 @@ func (s *Server) handleTestRequestStringUint64NullableArrayRequest(args [0]strin
 
 	if err := encodeTestRequestStringUint64NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -63686,7 +64938,9 @@ func (s *Server) handleTestRequestStringUint64NullableArrayArrayRequest(args [0]
 
 	if err := encodeTestRequestStringUint64NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -63787,7 +65041,9 @@ func (s *Server) handleTestRequestStringUint8Request(args [0]string, argsEscaped
 
 	if err := encodeTestRequestStringUint8Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -63888,7 +65144,9 @@ func (s *Server) handleTestRequestStringUint8ArrayRequest(args [0]string, argsEs
 
 	if err := encodeTestRequestStringUint8ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -63989,7 +65247,9 @@ func (s *Server) handleTestRequestStringUint8ArrayArrayRequest(args [0]string, a
 
 	if err := encodeTestRequestStringUint8ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -64090,7 +65350,9 @@ func (s *Server) handleTestRequestStringUint8NullableRequest(args [0]string, arg
 
 	if err := encodeTestRequestStringUint8NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -64191,7 +65453,9 @@ func (s *Server) handleTestRequestStringUint8NullableArrayRequest(args [0]string
 
 	if err := encodeTestRequestStringUint8NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -64292,7 +65556,9 @@ func (s *Server) handleTestRequestStringUint8NullableArrayArrayRequest(args [0]s
 
 	if err := encodeTestRequestStringUint8NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -64393,7 +65659,9 @@ func (s *Server) handleTestRequestStringUintArrayRequest(args [0]string, argsEsc
 
 	if err := encodeTestRequestStringUintArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -64494,7 +65762,9 @@ func (s *Server) handleTestRequestStringUintArrayArrayRequest(args [0]string, ar
 
 	if err := encodeTestRequestStringUintArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -64595,7 +65865,9 @@ func (s *Server) handleTestRequestStringUintNullableRequest(args [0]string, args
 
 	if err := encodeTestRequestStringUintNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -64696,7 +65968,9 @@ func (s *Server) handleTestRequestStringUintNullableArrayRequest(args [0]string,
 
 	if err := encodeTestRequestStringUintNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -64797,7 +66071,9 @@ func (s *Server) handleTestRequestStringUintNullableArrayArrayRequest(args [0]st
 
 	if err := encodeTestRequestStringUintNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -64898,7 +66174,9 @@ func (s *Server) handleTestRequestStringUnixRequest(args [0]string, argsEscaped 
 
 	if err := encodeTestRequestStringUnixResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -64999,7 +66277,9 @@ func (s *Server) handleTestRequestStringUnixArrayRequest(args [0]string, argsEsc
 
 	if err := encodeTestRequestStringUnixArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -65100,7 +66380,9 @@ func (s *Server) handleTestRequestStringUnixArrayArrayRequest(args [0]string, ar
 
 	if err := encodeTestRequestStringUnixArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -65201,7 +66483,9 @@ func (s *Server) handleTestRequestStringUnixMicroRequest(args [0]string, argsEsc
 
 	if err := encodeTestRequestStringUnixMicroResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -65302,7 +66586,9 @@ func (s *Server) handleTestRequestStringUnixMicroArrayRequest(args [0]string, ar
 
 	if err := encodeTestRequestStringUnixMicroArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -65403,7 +66689,9 @@ func (s *Server) handleTestRequestStringUnixMicroArrayArrayRequest(args [0]strin
 
 	if err := encodeTestRequestStringUnixMicroArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -65504,7 +66792,9 @@ func (s *Server) handleTestRequestStringUnixMicroNullableRequest(args [0]string,
 
 	if err := encodeTestRequestStringUnixMicroNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -65605,7 +66895,9 @@ func (s *Server) handleTestRequestStringUnixMicroNullableArrayRequest(args [0]st
 
 	if err := encodeTestRequestStringUnixMicroNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -65706,7 +66998,9 @@ func (s *Server) handleTestRequestStringUnixMicroNullableArrayArrayRequest(args 
 
 	if err := encodeTestRequestStringUnixMicroNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -65807,7 +67101,9 @@ func (s *Server) handleTestRequestStringUnixMilliRequest(args [0]string, argsEsc
 
 	if err := encodeTestRequestStringUnixMilliResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -65908,7 +67204,9 @@ func (s *Server) handleTestRequestStringUnixMilliArrayRequest(args [0]string, ar
 
 	if err := encodeTestRequestStringUnixMilliArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -66009,7 +67307,9 @@ func (s *Server) handleTestRequestStringUnixMilliArrayArrayRequest(args [0]strin
 
 	if err := encodeTestRequestStringUnixMilliArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -66110,7 +67410,9 @@ func (s *Server) handleTestRequestStringUnixMilliNullableRequest(args [0]string,
 
 	if err := encodeTestRequestStringUnixMilliNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -66211,7 +67513,9 @@ func (s *Server) handleTestRequestStringUnixMilliNullableArrayRequest(args [0]st
 
 	if err := encodeTestRequestStringUnixMilliNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -66312,7 +67616,9 @@ func (s *Server) handleTestRequestStringUnixMilliNullableArrayArrayRequest(args 
 
 	if err := encodeTestRequestStringUnixMilliNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -66413,7 +67719,9 @@ func (s *Server) handleTestRequestStringUnixNanoRequest(args [0]string, argsEsca
 
 	if err := encodeTestRequestStringUnixNanoResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -66514,7 +67822,9 @@ func (s *Server) handleTestRequestStringUnixNanoArrayRequest(args [0]string, arg
 
 	if err := encodeTestRequestStringUnixNanoArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -66615,7 +67925,9 @@ func (s *Server) handleTestRequestStringUnixNanoArrayArrayRequest(args [0]string
 
 	if err := encodeTestRequestStringUnixNanoArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -66716,7 +68028,9 @@ func (s *Server) handleTestRequestStringUnixNanoNullableRequest(args [0]string, 
 
 	if err := encodeTestRequestStringUnixNanoNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -66817,7 +68131,9 @@ func (s *Server) handleTestRequestStringUnixNanoNullableArrayRequest(args [0]str
 
 	if err := encodeTestRequestStringUnixNanoNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -66918,7 +68234,9 @@ func (s *Server) handleTestRequestStringUnixNanoNullableArrayArrayRequest(args [
 
 	if err := encodeTestRequestStringUnixNanoNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -67019,7 +68337,9 @@ func (s *Server) handleTestRequestStringUnixNullableRequest(args [0]string, args
 
 	if err := encodeTestRequestStringUnixNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -67120,7 +68440,9 @@ func (s *Server) handleTestRequestStringUnixNullableArrayRequest(args [0]string,
 
 	if err := encodeTestRequestStringUnixNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -67221,7 +68543,9 @@ func (s *Server) handleTestRequestStringUnixNullableArrayArrayRequest(args [0]st
 
 	if err := encodeTestRequestStringUnixNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -67322,7 +68646,9 @@ func (s *Server) handleTestRequestStringUnixSecondsRequest(args [0]string, argsE
 
 	if err := encodeTestRequestStringUnixSecondsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -67423,7 +68749,9 @@ func (s *Server) handleTestRequestStringUnixSecondsArrayRequest(args [0]string, 
 
 	if err := encodeTestRequestStringUnixSecondsArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -67524,7 +68852,9 @@ func (s *Server) handleTestRequestStringUnixSecondsArrayArrayRequest(args [0]str
 
 	if err := encodeTestRequestStringUnixSecondsArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -67625,7 +68955,9 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableRequest(args [0]strin
 
 	if err := encodeTestRequestStringUnixSecondsNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -67726,7 +69058,9 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableArrayRequest(args [0]
 
 	if err := encodeTestRequestStringUnixSecondsNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -67827,7 +69161,9 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableArrayArrayRequest(arg
 
 	if err := encodeTestRequestStringUnixSecondsNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -67928,7 +69264,9 @@ func (s *Server) handleTestResponseAnyRequest(args [0]string, argsEscaped bool, 
 
 	if err := encodeTestResponseAnyResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -68029,7 +69367,9 @@ func (s *Server) handleTestResponseBooleanRequest(args [0]string, argsEscaped bo
 
 	if err := encodeTestResponseBooleanResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -68130,7 +69470,9 @@ func (s *Server) handleTestResponseBooleanArrayRequest(args [0]string, argsEscap
 
 	if err := encodeTestResponseBooleanArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -68231,7 +69573,9 @@ func (s *Server) handleTestResponseBooleanArrayArrayRequest(args [0]string, args
 
 	if err := encodeTestResponseBooleanArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -68332,7 +69676,9 @@ func (s *Server) handleTestResponseBooleanNullableRequest(args [0]string, argsEs
 
 	if err := encodeTestResponseBooleanNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -68433,7 +69779,9 @@ func (s *Server) handleTestResponseBooleanNullableArrayRequest(args [0]string, a
 
 	if err := encodeTestResponseBooleanNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -68534,7 +69882,9 @@ func (s *Server) handleTestResponseBooleanNullableArrayArrayRequest(args [0]stri
 
 	if err := encodeTestResponseBooleanNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -68635,7 +69985,9 @@ func (s *Server) handleTestResponseEmptyStructRequest(args [0]string, argsEscape
 
 	if err := encodeTestResponseEmptyStructResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -68736,7 +70088,9 @@ func (s *Server) handleTestResponseFormatTestRequest(args [0]string, argsEscaped
 
 	if err := encodeTestResponseFormatTestResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -68837,7 +70191,9 @@ func (s *Server) handleTestResponseIntegerRequest(args [0]string, argsEscaped bo
 
 	if err := encodeTestResponseIntegerResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -68938,7 +70294,9 @@ func (s *Server) handleTestResponseIntegerArrayRequest(args [0]string, argsEscap
 
 	if err := encodeTestResponseIntegerArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -69039,7 +70397,9 @@ func (s *Server) handleTestResponseIntegerArrayArrayRequest(args [0]string, args
 
 	if err := encodeTestResponseIntegerArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -69140,7 +70500,9 @@ func (s *Server) handleTestResponseIntegerInt16Request(args [0]string, argsEscap
 
 	if err := encodeTestResponseIntegerInt16Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -69241,7 +70603,9 @@ func (s *Server) handleTestResponseIntegerInt16ArrayRequest(args [0]string, args
 
 	if err := encodeTestResponseIntegerInt16ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -69342,7 +70706,9 @@ func (s *Server) handleTestResponseIntegerInt16ArrayArrayRequest(args [0]string,
 
 	if err := encodeTestResponseIntegerInt16ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -69443,7 +70809,9 @@ func (s *Server) handleTestResponseIntegerInt16NullableRequest(args [0]string, a
 
 	if err := encodeTestResponseIntegerInt16NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -69544,7 +70912,9 @@ func (s *Server) handleTestResponseIntegerInt16NullableArrayRequest(args [0]stri
 
 	if err := encodeTestResponseIntegerInt16NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -69645,7 +71015,9 @@ func (s *Server) handleTestResponseIntegerInt16NullableArrayArrayRequest(args [0
 
 	if err := encodeTestResponseIntegerInt16NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -69746,7 +71118,9 @@ func (s *Server) handleTestResponseIntegerInt32Request(args [0]string, argsEscap
 
 	if err := encodeTestResponseIntegerInt32Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -69847,7 +71221,9 @@ func (s *Server) handleTestResponseIntegerInt32ArrayRequest(args [0]string, args
 
 	if err := encodeTestResponseIntegerInt32ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -69948,7 +71324,9 @@ func (s *Server) handleTestResponseIntegerInt32ArrayArrayRequest(args [0]string,
 
 	if err := encodeTestResponseIntegerInt32ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -70049,7 +71427,9 @@ func (s *Server) handleTestResponseIntegerInt32NullableRequest(args [0]string, a
 
 	if err := encodeTestResponseIntegerInt32NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -70150,7 +71530,9 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayRequest(args [0]stri
 
 	if err := encodeTestResponseIntegerInt32NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -70251,7 +71633,9 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayArrayRequest(args [0
 
 	if err := encodeTestResponseIntegerInt32NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -70352,7 +71736,9 @@ func (s *Server) handleTestResponseIntegerInt64Request(args [0]string, argsEscap
 
 	if err := encodeTestResponseIntegerInt64Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -70453,7 +71839,9 @@ func (s *Server) handleTestResponseIntegerInt64ArrayRequest(args [0]string, args
 
 	if err := encodeTestResponseIntegerInt64ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -70554,7 +71942,9 @@ func (s *Server) handleTestResponseIntegerInt64ArrayArrayRequest(args [0]string,
 
 	if err := encodeTestResponseIntegerInt64ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -70655,7 +72045,9 @@ func (s *Server) handleTestResponseIntegerInt64NullableRequest(args [0]string, a
 
 	if err := encodeTestResponseIntegerInt64NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -70756,7 +72148,9 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayRequest(args [0]stri
 
 	if err := encodeTestResponseIntegerInt64NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -70857,7 +72251,9 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayArrayRequest(args [0
 
 	if err := encodeTestResponseIntegerInt64NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -70958,7 +72354,9 @@ func (s *Server) handleTestResponseIntegerInt8Request(args [0]string, argsEscape
 
 	if err := encodeTestResponseIntegerInt8Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -71059,7 +72457,9 @@ func (s *Server) handleTestResponseIntegerInt8ArrayRequest(args [0]string, argsE
 
 	if err := encodeTestResponseIntegerInt8ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -71160,7 +72560,9 @@ func (s *Server) handleTestResponseIntegerInt8ArrayArrayRequest(args [0]string, 
 
 	if err := encodeTestResponseIntegerInt8ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -71261,7 +72663,9 @@ func (s *Server) handleTestResponseIntegerInt8NullableRequest(args [0]string, ar
 
 	if err := encodeTestResponseIntegerInt8NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -71362,7 +72766,9 @@ func (s *Server) handleTestResponseIntegerInt8NullableArrayRequest(args [0]strin
 
 	if err := encodeTestResponseIntegerInt8NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -71463,7 +72869,9 @@ func (s *Server) handleTestResponseIntegerInt8NullableArrayArrayRequest(args [0]
 
 	if err := encodeTestResponseIntegerInt8NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -71564,7 +72972,9 @@ func (s *Server) handleTestResponseIntegerNullableRequest(args [0]string, argsEs
 
 	if err := encodeTestResponseIntegerNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -71665,7 +73075,9 @@ func (s *Server) handleTestResponseIntegerNullableArrayRequest(args [0]string, a
 
 	if err := encodeTestResponseIntegerNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -71766,7 +73178,9 @@ func (s *Server) handleTestResponseIntegerNullableArrayArrayRequest(args [0]stri
 
 	if err := encodeTestResponseIntegerNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -71867,7 +73281,9 @@ func (s *Server) handleTestResponseIntegerUintRequest(args [0]string, argsEscape
 
 	if err := encodeTestResponseIntegerUintResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -71968,7 +73384,9 @@ func (s *Server) handleTestResponseIntegerUint16Request(args [0]string, argsEsca
 
 	if err := encodeTestResponseIntegerUint16Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -72069,7 +73487,9 @@ func (s *Server) handleTestResponseIntegerUint16ArrayRequest(args [0]string, arg
 
 	if err := encodeTestResponseIntegerUint16ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -72170,7 +73590,9 @@ func (s *Server) handleTestResponseIntegerUint16ArrayArrayRequest(args [0]string
 
 	if err := encodeTestResponseIntegerUint16ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -72271,7 +73693,9 @@ func (s *Server) handleTestResponseIntegerUint16NullableRequest(args [0]string, 
 
 	if err := encodeTestResponseIntegerUint16NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -72372,7 +73796,9 @@ func (s *Server) handleTestResponseIntegerUint16NullableArrayRequest(args [0]str
 
 	if err := encodeTestResponseIntegerUint16NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -72473,7 +73899,9 @@ func (s *Server) handleTestResponseIntegerUint16NullableArrayArrayRequest(args [
 
 	if err := encodeTestResponseIntegerUint16NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -72574,7 +74002,9 @@ func (s *Server) handleTestResponseIntegerUint32Request(args [0]string, argsEsca
 
 	if err := encodeTestResponseIntegerUint32Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -72675,7 +74105,9 @@ func (s *Server) handleTestResponseIntegerUint32ArrayRequest(args [0]string, arg
 
 	if err := encodeTestResponseIntegerUint32ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -72776,7 +74208,9 @@ func (s *Server) handleTestResponseIntegerUint32ArrayArrayRequest(args [0]string
 
 	if err := encodeTestResponseIntegerUint32ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -72877,7 +74311,9 @@ func (s *Server) handleTestResponseIntegerUint32NullableRequest(args [0]string, 
 
 	if err := encodeTestResponseIntegerUint32NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -72978,7 +74414,9 @@ func (s *Server) handleTestResponseIntegerUint32NullableArrayRequest(args [0]str
 
 	if err := encodeTestResponseIntegerUint32NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -73079,7 +74517,9 @@ func (s *Server) handleTestResponseIntegerUint32NullableArrayArrayRequest(args [
 
 	if err := encodeTestResponseIntegerUint32NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -73180,7 +74620,9 @@ func (s *Server) handleTestResponseIntegerUint64Request(args [0]string, argsEsca
 
 	if err := encodeTestResponseIntegerUint64Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -73281,7 +74723,9 @@ func (s *Server) handleTestResponseIntegerUint64ArrayRequest(args [0]string, arg
 
 	if err := encodeTestResponseIntegerUint64ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -73382,7 +74826,9 @@ func (s *Server) handleTestResponseIntegerUint64ArrayArrayRequest(args [0]string
 
 	if err := encodeTestResponseIntegerUint64ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -73483,7 +74929,9 @@ func (s *Server) handleTestResponseIntegerUint64NullableRequest(args [0]string, 
 
 	if err := encodeTestResponseIntegerUint64NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -73584,7 +75032,9 @@ func (s *Server) handleTestResponseIntegerUint64NullableArrayRequest(args [0]str
 
 	if err := encodeTestResponseIntegerUint64NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -73685,7 +75135,9 @@ func (s *Server) handleTestResponseIntegerUint64NullableArrayArrayRequest(args [
 
 	if err := encodeTestResponseIntegerUint64NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -73786,7 +75238,9 @@ func (s *Server) handleTestResponseIntegerUint8Request(args [0]string, argsEscap
 
 	if err := encodeTestResponseIntegerUint8Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -73887,7 +75341,9 @@ func (s *Server) handleTestResponseIntegerUint8ArrayRequest(args [0]string, args
 
 	if err := encodeTestResponseIntegerUint8ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -73988,7 +75444,9 @@ func (s *Server) handleTestResponseIntegerUint8ArrayArrayRequest(args [0]string,
 
 	if err := encodeTestResponseIntegerUint8ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -74089,7 +75547,9 @@ func (s *Server) handleTestResponseIntegerUint8NullableRequest(args [0]string, a
 
 	if err := encodeTestResponseIntegerUint8NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -74190,7 +75650,9 @@ func (s *Server) handleTestResponseIntegerUint8NullableArrayRequest(args [0]stri
 
 	if err := encodeTestResponseIntegerUint8NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -74291,7 +75753,9 @@ func (s *Server) handleTestResponseIntegerUint8NullableArrayArrayRequest(args [0
 
 	if err := encodeTestResponseIntegerUint8NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -74392,7 +75856,9 @@ func (s *Server) handleTestResponseIntegerUintArrayRequest(args [0]string, argsE
 
 	if err := encodeTestResponseIntegerUintArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -74493,7 +75959,9 @@ func (s *Server) handleTestResponseIntegerUintArrayArrayRequest(args [0]string, 
 
 	if err := encodeTestResponseIntegerUintArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -74594,7 +76062,9 @@ func (s *Server) handleTestResponseIntegerUintNullableRequest(args [0]string, ar
 
 	if err := encodeTestResponseIntegerUintNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -74695,7 +76165,9 @@ func (s *Server) handleTestResponseIntegerUintNullableArrayRequest(args [0]strin
 
 	if err := encodeTestResponseIntegerUintNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -74796,7 +76268,9 @@ func (s *Server) handleTestResponseIntegerUintNullableArrayArrayRequest(args [0]
 
 	if err := encodeTestResponseIntegerUintNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -74897,7 +76371,9 @@ func (s *Server) handleTestResponseIntegerUnixRequest(args [0]string, argsEscape
 
 	if err := encodeTestResponseIntegerUnixResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -74998,7 +76474,9 @@ func (s *Server) handleTestResponseIntegerUnixArrayRequest(args [0]string, argsE
 
 	if err := encodeTestResponseIntegerUnixArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -75099,7 +76577,9 @@ func (s *Server) handleTestResponseIntegerUnixArrayArrayRequest(args [0]string, 
 
 	if err := encodeTestResponseIntegerUnixArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -75200,7 +76680,9 @@ func (s *Server) handleTestResponseIntegerUnixMicroRequest(args [0]string, argsE
 
 	if err := encodeTestResponseIntegerUnixMicroResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -75301,7 +76783,9 @@ func (s *Server) handleTestResponseIntegerUnixMicroArrayRequest(args [0]string, 
 
 	if err := encodeTestResponseIntegerUnixMicroArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -75402,7 +76886,9 @@ func (s *Server) handleTestResponseIntegerUnixMicroArrayArrayRequest(args [0]str
 
 	if err := encodeTestResponseIntegerUnixMicroArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -75503,7 +76989,9 @@ func (s *Server) handleTestResponseIntegerUnixMicroNullableRequest(args [0]strin
 
 	if err := encodeTestResponseIntegerUnixMicroNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -75604,7 +77092,9 @@ func (s *Server) handleTestResponseIntegerUnixMicroNullableArrayRequest(args [0]
 
 	if err := encodeTestResponseIntegerUnixMicroNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -75705,7 +77195,9 @@ func (s *Server) handleTestResponseIntegerUnixMicroNullableArrayArrayRequest(arg
 
 	if err := encodeTestResponseIntegerUnixMicroNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -75806,7 +77298,9 @@ func (s *Server) handleTestResponseIntegerUnixMilliRequest(args [0]string, argsE
 
 	if err := encodeTestResponseIntegerUnixMilliResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -75907,7 +77401,9 @@ func (s *Server) handleTestResponseIntegerUnixMilliArrayRequest(args [0]string, 
 
 	if err := encodeTestResponseIntegerUnixMilliArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -76008,7 +77504,9 @@ func (s *Server) handleTestResponseIntegerUnixMilliArrayArrayRequest(args [0]str
 
 	if err := encodeTestResponseIntegerUnixMilliArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -76109,7 +77607,9 @@ func (s *Server) handleTestResponseIntegerUnixMilliNullableRequest(args [0]strin
 
 	if err := encodeTestResponseIntegerUnixMilliNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -76210,7 +77710,9 @@ func (s *Server) handleTestResponseIntegerUnixMilliNullableArrayRequest(args [0]
 
 	if err := encodeTestResponseIntegerUnixMilliNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -76311,7 +77813,9 @@ func (s *Server) handleTestResponseIntegerUnixMilliNullableArrayArrayRequest(arg
 
 	if err := encodeTestResponseIntegerUnixMilliNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -76412,7 +77916,9 @@ func (s *Server) handleTestResponseIntegerUnixNanoRequest(args [0]string, argsEs
 
 	if err := encodeTestResponseIntegerUnixNanoResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -76513,7 +78019,9 @@ func (s *Server) handleTestResponseIntegerUnixNanoArrayRequest(args [0]string, a
 
 	if err := encodeTestResponseIntegerUnixNanoArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -76614,7 +78122,9 @@ func (s *Server) handleTestResponseIntegerUnixNanoArrayArrayRequest(args [0]stri
 
 	if err := encodeTestResponseIntegerUnixNanoArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -76715,7 +78225,9 @@ func (s *Server) handleTestResponseIntegerUnixNanoNullableRequest(args [0]string
 
 	if err := encodeTestResponseIntegerUnixNanoNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -76816,7 +78328,9 @@ func (s *Server) handleTestResponseIntegerUnixNanoNullableArrayRequest(args [0]s
 
 	if err := encodeTestResponseIntegerUnixNanoNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -76917,7 +78431,9 @@ func (s *Server) handleTestResponseIntegerUnixNanoNullableArrayArrayRequest(args
 
 	if err := encodeTestResponseIntegerUnixNanoNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -77018,7 +78534,9 @@ func (s *Server) handleTestResponseIntegerUnixNullableRequest(args [0]string, ar
 
 	if err := encodeTestResponseIntegerUnixNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -77119,7 +78637,9 @@ func (s *Server) handleTestResponseIntegerUnixNullableArrayRequest(args [0]strin
 
 	if err := encodeTestResponseIntegerUnixNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -77220,7 +78740,9 @@ func (s *Server) handleTestResponseIntegerUnixNullableArrayArrayRequest(args [0]
 
 	if err := encodeTestResponseIntegerUnixNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -77321,7 +78843,9 @@ func (s *Server) handleTestResponseIntegerUnixSecondsRequest(args [0]string, arg
 
 	if err := encodeTestResponseIntegerUnixSecondsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -77422,7 +78946,9 @@ func (s *Server) handleTestResponseIntegerUnixSecondsArrayRequest(args [0]string
 
 	if err := encodeTestResponseIntegerUnixSecondsArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -77523,7 +79049,9 @@ func (s *Server) handleTestResponseIntegerUnixSecondsArrayArrayRequest(args [0]s
 
 	if err := encodeTestResponseIntegerUnixSecondsArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -77624,7 +79152,9 @@ func (s *Server) handleTestResponseIntegerUnixSecondsNullableRequest(args [0]str
 
 	if err := encodeTestResponseIntegerUnixSecondsNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -77725,7 +79255,9 @@ func (s *Server) handleTestResponseIntegerUnixSecondsNullableArrayRequest(args [
 
 	if err := encodeTestResponseIntegerUnixSecondsNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -77826,7 +79358,9 @@ func (s *Server) handleTestResponseIntegerUnixSecondsNullableArrayArrayRequest(a
 
 	if err := encodeTestResponseIntegerUnixSecondsNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -77927,7 +79461,9 @@ func (s *Server) handleTestResponseNullRequest(args [0]string, argsEscaped bool,
 
 	if err := encodeTestResponseNullResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -78028,7 +79564,9 @@ func (s *Server) handleTestResponseNullArrayRequest(args [0]string, argsEscaped 
 
 	if err := encodeTestResponseNullArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -78129,7 +79667,9 @@ func (s *Server) handleTestResponseNullArrayArrayRequest(args [0]string, argsEsc
 
 	if err := encodeTestResponseNullArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -78230,7 +79770,9 @@ func (s *Server) handleTestResponseNullNullableRequest(args [0]string, argsEscap
 
 	if err := encodeTestResponseNullNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -78331,7 +79873,9 @@ func (s *Server) handleTestResponseNullNullableArrayRequest(args [0]string, args
 
 	if err := encodeTestResponseNullNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -78432,7 +79976,9 @@ func (s *Server) handleTestResponseNullNullableArrayArrayRequest(args [0]string,
 
 	if err := encodeTestResponseNullNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -78533,7 +80079,9 @@ func (s *Server) handleTestResponseNumberRequest(args [0]string, argsEscaped boo
 
 	if err := encodeTestResponseNumberResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -78634,7 +80182,9 @@ func (s *Server) handleTestResponseNumberArrayRequest(args [0]string, argsEscape
 
 	if err := encodeTestResponseNumberArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -78735,7 +80285,9 @@ func (s *Server) handleTestResponseNumberArrayArrayRequest(args [0]string, argsE
 
 	if err := encodeTestResponseNumberArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -78836,7 +80388,9 @@ func (s *Server) handleTestResponseNumberDoubleRequest(args [0]string, argsEscap
 
 	if err := encodeTestResponseNumberDoubleResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -78937,7 +80491,9 @@ func (s *Server) handleTestResponseNumberDoubleArrayRequest(args [0]string, args
 
 	if err := encodeTestResponseNumberDoubleArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -79038,7 +80594,9 @@ func (s *Server) handleTestResponseNumberDoubleArrayArrayRequest(args [0]string,
 
 	if err := encodeTestResponseNumberDoubleArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -79139,7 +80697,9 @@ func (s *Server) handleTestResponseNumberDoubleNullableRequest(args [0]string, a
 
 	if err := encodeTestResponseNumberDoubleNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -79240,7 +80800,9 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayRequest(args [0]stri
 
 	if err := encodeTestResponseNumberDoubleNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -79341,7 +80903,9 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayArrayRequest(args [0
 
 	if err := encodeTestResponseNumberDoubleNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -79442,7 +81006,9 @@ func (s *Server) handleTestResponseNumberFloatRequest(args [0]string, argsEscape
 
 	if err := encodeTestResponseNumberFloatResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -79543,7 +81109,9 @@ func (s *Server) handleTestResponseNumberFloatArrayRequest(args [0]string, argsE
 
 	if err := encodeTestResponseNumberFloatArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -79644,7 +81212,9 @@ func (s *Server) handleTestResponseNumberFloatArrayArrayRequest(args [0]string, 
 
 	if err := encodeTestResponseNumberFloatArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -79745,7 +81315,9 @@ func (s *Server) handleTestResponseNumberFloatNullableRequest(args [0]string, ar
 
 	if err := encodeTestResponseNumberFloatNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -79846,7 +81418,9 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayRequest(args [0]strin
 
 	if err := encodeTestResponseNumberFloatNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -79947,7 +81521,9 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayArrayRequest(args [0]
 
 	if err := encodeTestResponseNumberFloatNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -80048,7 +81624,9 @@ func (s *Server) handleTestResponseNumberInt32Request(args [0]string, argsEscape
 
 	if err := encodeTestResponseNumberInt32Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -80149,7 +81727,9 @@ func (s *Server) handleTestResponseNumberInt32ArrayRequest(args [0]string, argsE
 
 	if err := encodeTestResponseNumberInt32ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -80250,7 +81830,9 @@ func (s *Server) handleTestResponseNumberInt32ArrayArrayRequest(args [0]string, 
 
 	if err := encodeTestResponseNumberInt32ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -80351,7 +81933,9 @@ func (s *Server) handleTestResponseNumberInt32NullableRequest(args [0]string, ar
 
 	if err := encodeTestResponseNumberInt32NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -80452,7 +82036,9 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayRequest(args [0]strin
 
 	if err := encodeTestResponseNumberInt32NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -80553,7 +82139,9 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayArrayRequest(args [0]
 
 	if err := encodeTestResponseNumberInt32NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -80654,7 +82242,9 @@ func (s *Server) handleTestResponseNumberInt64Request(args [0]string, argsEscape
 
 	if err := encodeTestResponseNumberInt64Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -80755,7 +82345,9 @@ func (s *Server) handleTestResponseNumberInt64ArrayRequest(args [0]string, argsE
 
 	if err := encodeTestResponseNumberInt64ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -80856,7 +82448,9 @@ func (s *Server) handleTestResponseNumberInt64ArrayArrayRequest(args [0]string, 
 
 	if err := encodeTestResponseNumberInt64ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -80957,7 +82551,9 @@ func (s *Server) handleTestResponseNumberInt64NullableRequest(args [0]string, ar
 
 	if err := encodeTestResponseNumberInt64NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -81058,7 +82654,9 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayRequest(args [0]strin
 
 	if err := encodeTestResponseNumberInt64NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -81159,7 +82757,9 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayArrayRequest(args [0]
 
 	if err := encodeTestResponseNumberInt64NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -81260,7 +82860,9 @@ func (s *Server) handleTestResponseNumberNullableRequest(args [0]string, argsEsc
 
 	if err := encodeTestResponseNumberNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -81361,7 +82963,9 @@ func (s *Server) handleTestResponseNumberNullableArrayRequest(args [0]string, ar
 
 	if err := encodeTestResponseNumberNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -81462,7 +83066,9 @@ func (s *Server) handleTestResponseNumberNullableArrayArrayRequest(args [0]strin
 
 	if err := encodeTestResponseNumberNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -81563,7 +83169,9 @@ func (s *Server) handleTestResponseStringRequest(args [0]string, argsEscaped boo
 
 	if err := encodeTestResponseStringResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -81664,7 +83272,9 @@ func (s *Server) handleTestResponseStringArrayRequest(args [0]string, argsEscape
 
 	if err := encodeTestResponseStringArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -81765,7 +83375,9 @@ func (s *Server) handleTestResponseStringArrayArrayRequest(args [0]string, argsE
 
 	if err := encodeTestResponseStringArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -81866,7 +83478,9 @@ func (s *Server) handleTestResponseStringBase64Request(args [0]string, argsEscap
 
 	if err := encodeTestResponseStringBase64Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -81967,7 +83581,9 @@ func (s *Server) handleTestResponseStringBase64ArrayRequest(args [0]string, args
 
 	if err := encodeTestResponseStringBase64ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -82068,7 +83684,9 @@ func (s *Server) handleTestResponseStringBase64ArrayArrayRequest(args [0]string,
 
 	if err := encodeTestResponseStringBase64ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -82169,7 +83787,9 @@ func (s *Server) handleTestResponseStringBase64NullableRequest(args [0]string, a
 
 	if err := encodeTestResponseStringBase64NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -82270,7 +83890,9 @@ func (s *Server) handleTestResponseStringBase64NullableArrayRequest(args [0]stri
 
 	if err := encodeTestResponseStringBase64NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -82371,7 +83993,9 @@ func (s *Server) handleTestResponseStringBase64NullableArrayArrayRequest(args [0
 
 	if err := encodeTestResponseStringBase64NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -82472,7 +84096,9 @@ func (s *Server) handleTestResponseStringBinaryRequest(args [0]string, argsEscap
 
 	if err := encodeTestResponseStringBinaryResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -82573,7 +84199,9 @@ func (s *Server) handleTestResponseStringBinaryArrayRequest(args [0]string, args
 
 	if err := encodeTestResponseStringBinaryArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -82674,7 +84302,9 @@ func (s *Server) handleTestResponseStringBinaryArrayArrayRequest(args [0]string,
 
 	if err := encodeTestResponseStringBinaryArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -82775,7 +84405,9 @@ func (s *Server) handleTestResponseStringBinaryNullableRequest(args [0]string, a
 
 	if err := encodeTestResponseStringBinaryNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -82876,7 +84508,9 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayRequest(args [0]stri
 
 	if err := encodeTestResponseStringBinaryNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -82977,7 +84611,9 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayArrayRequest(args [0
 
 	if err := encodeTestResponseStringBinaryNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -83078,7 +84714,9 @@ func (s *Server) handleTestResponseStringByteRequest(args [0]string, argsEscaped
 
 	if err := encodeTestResponseStringByteResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -83179,7 +84817,9 @@ func (s *Server) handleTestResponseStringByteArrayRequest(args [0]string, argsEs
 
 	if err := encodeTestResponseStringByteArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -83280,7 +84920,9 @@ func (s *Server) handleTestResponseStringByteArrayArrayRequest(args [0]string, a
 
 	if err := encodeTestResponseStringByteArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -83381,7 +85023,9 @@ func (s *Server) handleTestResponseStringByteNullableRequest(args [0]string, arg
 
 	if err := encodeTestResponseStringByteNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -83482,7 +85126,9 @@ func (s *Server) handleTestResponseStringByteNullableArrayRequest(args [0]string
 
 	if err := encodeTestResponseStringByteNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -83583,7 +85229,9 @@ func (s *Server) handleTestResponseStringByteNullableArrayArrayRequest(args [0]s
 
 	if err := encodeTestResponseStringByteNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -83684,7 +85332,9 @@ func (s *Server) handleTestResponseStringDateRequest(args [0]string, argsEscaped
 
 	if err := encodeTestResponseStringDateResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -83785,7 +85435,9 @@ func (s *Server) handleTestResponseStringDateArrayRequest(args [0]string, argsEs
 
 	if err := encodeTestResponseStringDateArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -83886,7 +85538,9 @@ func (s *Server) handleTestResponseStringDateArrayArrayRequest(args [0]string, a
 
 	if err := encodeTestResponseStringDateArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -83987,7 +85641,9 @@ func (s *Server) handleTestResponseStringDateNullableRequest(args [0]string, arg
 
 	if err := encodeTestResponseStringDateNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -84088,7 +85744,9 @@ func (s *Server) handleTestResponseStringDateNullableArrayRequest(args [0]string
 
 	if err := encodeTestResponseStringDateNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -84189,7 +85847,9 @@ func (s *Server) handleTestResponseStringDateNullableArrayArrayRequest(args [0]s
 
 	if err := encodeTestResponseStringDateNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -84290,7 +85950,9 @@ func (s *Server) handleTestResponseStringDateTimeRequest(args [0]string, argsEsc
 
 	if err := encodeTestResponseStringDateTimeResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -84391,7 +86053,9 @@ func (s *Server) handleTestResponseStringDateTimeArrayRequest(args [0]string, ar
 
 	if err := encodeTestResponseStringDateTimeArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -84492,7 +86156,9 @@ func (s *Server) handleTestResponseStringDateTimeArrayArrayRequest(args [0]strin
 
 	if err := encodeTestResponseStringDateTimeArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -84593,7 +86259,9 @@ func (s *Server) handleTestResponseStringDateTimeNullableRequest(args [0]string,
 
 	if err := encodeTestResponseStringDateTimeNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -84694,7 +86362,9 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayRequest(args [0]st
 
 	if err := encodeTestResponseStringDateTimeNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -84795,7 +86465,9 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayArrayRequest(args 
 
 	if err := encodeTestResponseStringDateTimeNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -84896,7 +86568,9 @@ func (s *Server) handleTestResponseStringDurationRequest(args [0]string, argsEsc
 
 	if err := encodeTestResponseStringDurationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -84997,7 +86671,9 @@ func (s *Server) handleTestResponseStringDurationArrayRequest(args [0]string, ar
 
 	if err := encodeTestResponseStringDurationArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -85098,7 +86774,9 @@ func (s *Server) handleTestResponseStringDurationArrayArrayRequest(args [0]strin
 
 	if err := encodeTestResponseStringDurationArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -85199,7 +86877,9 @@ func (s *Server) handleTestResponseStringDurationNullableRequest(args [0]string,
 
 	if err := encodeTestResponseStringDurationNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -85300,7 +86980,9 @@ func (s *Server) handleTestResponseStringDurationNullableArrayRequest(args [0]st
 
 	if err := encodeTestResponseStringDurationNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -85401,7 +87083,9 @@ func (s *Server) handleTestResponseStringDurationNullableArrayArrayRequest(args 
 
 	if err := encodeTestResponseStringDurationNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -85502,7 +87186,9 @@ func (s *Server) handleTestResponseStringEmailRequest(args [0]string, argsEscape
 
 	if err := encodeTestResponseStringEmailResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -85603,7 +87289,9 @@ func (s *Server) handleTestResponseStringEmailArrayRequest(args [0]string, argsE
 
 	if err := encodeTestResponseStringEmailArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -85704,7 +87392,9 @@ func (s *Server) handleTestResponseStringEmailArrayArrayRequest(args [0]string, 
 
 	if err := encodeTestResponseStringEmailArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -85805,7 +87495,9 @@ func (s *Server) handleTestResponseStringEmailNullableRequest(args [0]string, ar
 
 	if err := encodeTestResponseStringEmailNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -85906,7 +87598,9 @@ func (s *Server) handleTestResponseStringEmailNullableArrayRequest(args [0]strin
 
 	if err := encodeTestResponseStringEmailNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -86007,7 +87701,9 @@ func (s *Server) handleTestResponseStringEmailNullableArrayArrayRequest(args [0]
 
 	if err := encodeTestResponseStringEmailNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -86108,7 +87804,9 @@ func (s *Server) handleTestResponseStringFloat32Request(args [0]string, argsEsca
 
 	if err := encodeTestResponseStringFloat32Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -86209,7 +87907,9 @@ func (s *Server) handleTestResponseStringFloat32ArrayRequest(args [0]string, arg
 
 	if err := encodeTestResponseStringFloat32ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -86310,7 +88010,9 @@ func (s *Server) handleTestResponseStringFloat32ArrayArrayRequest(args [0]string
 
 	if err := encodeTestResponseStringFloat32ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -86411,7 +88113,9 @@ func (s *Server) handleTestResponseStringFloat32NullableRequest(args [0]string, 
 
 	if err := encodeTestResponseStringFloat32NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -86512,7 +88216,9 @@ func (s *Server) handleTestResponseStringFloat32NullableArrayRequest(args [0]str
 
 	if err := encodeTestResponseStringFloat32NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -86613,7 +88319,9 @@ func (s *Server) handleTestResponseStringFloat32NullableArrayArrayRequest(args [
 
 	if err := encodeTestResponseStringFloat32NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -86714,7 +88422,9 @@ func (s *Server) handleTestResponseStringFloat64Request(args [0]string, argsEsca
 
 	if err := encodeTestResponseStringFloat64Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -86815,7 +88525,9 @@ func (s *Server) handleTestResponseStringFloat64ArrayRequest(args [0]string, arg
 
 	if err := encodeTestResponseStringFloat64ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -86916,7 +88628,9 @@ func (s *Server) handleTestResponseStringFloat64ArrayArrayRequest(args [0]string
 
 	if err := encodeTestResponseStringFloat64ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -87017,7 +88731,9 @@ func (s *Server) handleTestResponseStringFloat64NullableRequest(args [0]string, 
 
 	if err := encodeTestResponseStringFloat64NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -87118,7 +88834,9 @@ func (s *Server) handleTestResponseStringFloat64NullableArrayRequest(args [0]str
 
 	if err := encodeTestResponseStringFloat64NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -87219,7 +88937,9 @@ func (s *Server) handleTestResponseStringFloat64NullableArrayArrayRequest(args [
 
 	if err := encodeTestResponseStringFloat64NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -87320,7 +89040,9 @@ func (s *Server) handleTestResponseStringHostnameRequest(args [0]string, argsEsc
 
 	if err := encodeTestResponseStringHostnameResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -87421,7 +89143,9 @@ func (s *Server) handleTestResponseStringHostnameArrayRequest(args [0]string, ar
 
 	if err := encodeTestResponseStringHostnameArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -87522,7 +89246,9 @@ func (s *Server) handleTestResponseStringHostnameArrayArrayRequest(args [0]strin
 
 	if err := encodeTestResponseStringHostnameArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -87623,7 +89349,9 @@ func (s *Server) handleTestResponseStringHostnameNullableRequest(args [0]string,
 
 	if err := encodeTestResponseStringHostnameNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -87724,7 +89452,9 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayRequest(args [0]st
 
 	if err := encodeTestResponseStringHostnameNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -87825,7 +89555,9 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayArrayRequest(args 
 
 	if err := encodeTestResponseStringHostnameNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -87926,7 +89658,9 @@ func (s *Server) handleTestResponseStringIPRequest(args [0]string, argsEscaped b
 
 	if err := encodeTestResponseStringIPResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -88027,7 +89761,9 @@ func (s *Server) handleTestResponseStringIPArrayRequest(args [0]string, argsEsca
 
 	if err := encodeTestResponseStringIPArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -88128,7 +89864,9 @@ func (s *Server) handleTestResponseStringIPArrayArrayRequest(args [0]string, arg
 
 	if err := encodeTestResponseStringIPArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -88229,7 +89967,9 @@ func (s *Server) handleTestResponseStringIPNullableRequest(args [0]string, argsE
 
 	if err := encodeTestResponseStringIPNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -88330,7 +90070,9 @@ func (s *Server) handleTestResponseStringIPNullableArrayRequest(args [0]string, 
 
 	if err := encodeTestResponseStringIPNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -88431,7 +90173,9 @@ func (s *Server) handleTestResponseStringIPNullableArrayArrayRequest(args [0]str
 
 	if err := encodeTestResponseStringIPNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -88532,7 +90276,9 @@ func (s *Server) handleTestResponseStringIntRequest(args [0]string, argsEscaped 
 
 	if err := encodeTestResponseStringIntResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -88633,7 +90379,9 @@ func (s *Server) handleTestResponseStringInt16Request(args [0]string, argsEscape
 
 	if err := encodeTestResponseStringInt16Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -88734,7 +90482,9 @@ func (s *Server) handleTestResponseStringInt16ArrayRequest(args [0]string, argsE
 
 	if err := encodeTestResponseStringInt16ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -88835,7 +90585,9 @@ func (s *Server) handleTestResponseStringInt16ArrayArrayRequest(args [0]string, 
 
 	if err := encodeTestResponseStringInt16ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -88936,7 +90688,9 @@ func (s *Server) handleTestResponseStringInt16NullableRequest(args [0]string, ar
 
 	if err := encodeTestResponseStringInt16NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -89037,7 +90791,9 @@ func (s *Server) handleTestResponseStringInt16NullableArrayRequest(args [0]strin
 
 	if err := encodeTestResponseStringInt16NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -89138,7 +90894,9 @@ func (s *Server) handleTestResponseStringInt16NullableArrayArrayRequest(args [0]
 
 	if err := encodeTestResponseStringInt16NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -89239,7 +90997,9 @@ func (s *Server) handleTestResponseStringInt32Request(args [0]string, argsEscape
 
 	if err := encodeTestResponseStringInt32Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -89340,7 +91100,9 @@ func (s *Server) handleTestResponseStringInt32ArrayRequest(args [0]string, argsE
 
 	if err := encodeTestResponseStringInt32ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -89441,7 +91203,9 @@ func (s *Server) handleTestResponseStringInt32ArrayArrayRequest(args [0]string, 
 
 	if err := encodeTestResponseStringInt32ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -89542,7 +91306,9 @@ func (s *Server) handleTestResponseStringInt32NullableRequest(args [0]string, ar
 
 	if err := encodeTestResponseStringInt32NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -89643,7 +91409,9 @@ func (s *Server) handleTestResponseStringInt32NullableArrayRequest(args [0]strin
 
 	if err := encodeTestResponseStringInt32NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -89744,7 +91512,9 @@ func (s *Server) handleTestResponseStringInt32NullableArrayArrayRequest(args [0]
 
 	if err := encodeTestResponseStringInt32NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -89845,7 +91615,9 @@ func (s *Server) handleTestResponseStringInt64Request(args [0]string, argsEscape
 
 	if err := encodeTestResponseStringInt64Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -89946,7 +91718,9 @@ func (s *Server) handleTestResponseStringInt64ArrayRequest(args [0]string, argsE
 
 	if err := encodeTestResponseStringInt64ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -90047,7 +91821,9 @@ func (s *Server) handleTestResponseStringInt64ArrayArrayRequest(args [0]string, 
 
 	if err := encodeTestResponseStringInt64ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -90148,7 +91924,9 @@ func (s *Server) handleTestResponseStringInt64NullableRequest(args [0]string, ar
 
 	if err := encodeTestResponseStringInt64NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -90249,7 +92027,9 @@ func (s *Server) handleTestResponseStringInt64NullableArrayRequest(args [0]strin
 
 	if err := encodeTestResponseStringInt64NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -90350,7 +92130,9 @@ func (s *Server) handleTestResponseStringInt64NullableArrayArrayRequest(args [0]
 
 	if err := encodeTestResponseStringInt64NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -90451,7 +92233,9 @@ func (s *Server) handleTestResponseStringInt8Request(args [0]string, argsEscaped
 
 	if err := encodeTestResponseStringInt8Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -90552,7 +92336,9 @@ func (s *Server) handleTestResponseStringInt8ArrayRequest(args [0]string, argsEs
 
 	if err := encodeTestResponseStringInt8ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -90653,7 +92439,9 @@ func (s *Server) handleTestResponseStringInt8ArrayArrayRequest(args [0]string, a
 
 	if err := encodeTestResponseStringInt8ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -90754,7 +92542,9 @@ func (s *Server) handleTestResponseStringInt8NullableRequest(args [0]string, arg
 
 	if err := encodeTestResponseStringInt8NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -90855,7 +92645,9 @@ func (s *Server) handleTestResponseStringInt8NullableArrayRequest(args [0]string
 
 	if err := encodeTestResponseStringInt8NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -90956,7 +92748,9 @@ func (s *Server) handleTestResponseStringInt8NullableArrayArrayRequest(args [0]s
 
 	if err := encodeTestResponseStringInt8NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -91057,7 +92851,9 @@ func (s *Server) handleTestResponseStringIntArrayRequest(args [0]string, argsEsc
 
 	if err := encodeTestResponseStringIntArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -91158,7 +92954,9 @@ func (s *Server) handleTestResponseStringIntArrayArrayRequest(args [0]string, ar
 
 	if err := encodeTestResponseStringIntArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -91259,7 +93057,9 @@ func (s *Server) handleTestResponseStringIntNullableRequest(args [0]string, args
 
 	if err := encodeTestResponseStringIntNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -91360,7 +93160,9 @@ func (s *Server) handleTestResponseStringIntNullableArrayRequest(args [0]string,
 
 	if err := encodeTestResponseStringIntNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -91461,7 +93263,9 @@ func (s *Server) handleTestResponseStringIntNullableArrayArrayRequest(args [0]st
 
 	if err := encodeTestResponseStringIntNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -91562,7 +93366,9 @@ func (s *Server) handleTestResponseStringIpv4Request(args [0]string, argsEscaped
 
 	if err := encodeTestResponseStringIpv4Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -91663,7 +93469,9 @@ func (s *Server) handleTestResponseStringIpv4ArrayRequest(args [0]string, argsEs
 
 	if err := encodeTestResponseStringIpv4ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -91764,7 +93572,9 @@ func (s *Server) handleTestResponseStringIpv4ArrayArrayRequest(args [0]string, a
 
 	if err := encodeTestResponseStringIpv4ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -91865,7 +93675,9 @@ func (s *Server) handleTestResponseStringIpv4NullableRequest(args [0]string, arg
 
 	if err := encodeTestResponseStringIpv4NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -91966,7 +93778,9 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayRequest(args [0]string
 
 	if err := encodeTestResponseStringIpv4NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -92067,7 +93881,9 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayArrayRequest(args [0]s
 
 	if err := encodeTestResponseStringIpv4NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -92168,7 +93984,9 @@ func (s *Server) handleTestResponseStringIpv6Request(args [0]string, argsEscaped
 
 	if err := encodeTestResponseStringIpv6Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -92269,7 +94087,9 @@ func (s *Server) handleTestResponseStringIpv6ArrayRequest(args [0]string, argsEs
 
 	if err := encodeTestResponseStringIpv6ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -92370,7 +94190,9 @@ func (s *Server) handleTestResponseStringIpv6ArrayArrayRequest(args [0]string, a
 
 	if err := encodeTestResponseStringIpv6ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -92471,7 +94293,9 @@ func (s *Server) handleTestResponseStringIpv6NullableRequest(args [0]string, arg
 
 	if err := encodeTestResponseStringIpv6NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -92572,7 +94396,9 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayRequest(args [0]string
 
 	if err := encodeTestResponseStringIpv6NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -92673,7 +94499,9 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayArrayRequest(args [0]s
 
 	if err := encodeTestResponseStringIpv6NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -92774,7 +94602,9 @@ func (s *Server) handleTestResponseStringNullableRequest(args [0]string, argsEsc
 
 	if err := encodeTestResponseStringNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -92875,7 +94705,9 @@ func (s *Server) handleTestResponseStringNullableArrayRequest(args [0]string, ar
 
 	if err := encodeTestResponseStringNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -92976,7 +94808,9 @@ func (s *Server) handleTestResponseStringNullableArrayArrayRequest(args [0]strin
 
 	if err := encodeTestResponseStringNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -93077,7 +94911,9 @@ func (s *Server) handleTestResponseStringPasswordRequest(args [0]string, argsEsc
 
 	if err := encodeTestResponseStringPasswordResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -93178,7 +95014,9 @@ func (s *Server) handleTestResponseStringPasswordArrayRequest(args [0]string, ar
 
 	if err := encodeTestResponseStringPasswordArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -93279,7 +95117,9 @@ func (s *Server) handleTestResponseStringPasswordArrayArrayRequest(args [0]strin
 
 	if err := encodeTestResponseStringPasswordArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -93380,7 +95220,9 @@ func (s *Server) handleTestResponseStringPasswordNullableRequest(args [0]string,
 
 	if err := encodeTestResponseStringPasswordNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -93481,7 +95323,9 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayRequest(args [0]st
 
 	if err := encodeTestResponseStringPasswordNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -93582,7 +95426,9 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayArrayRequest(args 
 
 	if err := encodeTestResponseStringPasswordNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -93683,7 +95529,9 @@ func (s *Server) handleTestResponseStringTimeRequest(args [0]string, argsEscaped
 
 	if err := encodeTestResponseStringTimeResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -93784,7 +95632,9 @@ func (s *Server) handleTestResponseStringTimeArrayRequest(args [0]string, argsEs
 
 	if err := encodeTestResponseStringTimeArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -93885,7 +95735,9 @@ func (s *Server) handleTestResponseStringTimeArrayArrayRequest(args [0]string, a
 
 	if err := encodeTestResponseStringTimeArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -93986,7 +95838,9 @@ func (s *Server) handleTestResponseStringTimeNullableRequest(args [0]string, arg
 
 	if err := encodeTestResponseStringTimeNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -94087,7 +95941,9 @@ func (s *Server) handleTestResponseStringTimeNullableArrayRequest(args [0]string
 
 	if err := encodeTestResponseStringTimeNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -94188,7 +96044,9 @@ func (s *Server) handleTestResponseStringTimeNullableArrayArrayRequest(args [0]s
 
 	if err := encodeTestResponseStringTimeNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -94289,7 +96147,9 @@ func (s *Server) handleTestResponseStringURIRequest(args [0]string, argsEscaped 
 
 	if err := encodeTestResponseStringURIResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -94390,7 +96250,9 @@ func (s *Server) handleTestResponseStringURIArrayRequest(args [0]string, argsEsc
 
 	if err := encodeTestResponseStringURIArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -94491,7 +96353,9 @@ func (s *Server) handleTestResponseStringURIArrayArrayRequest(args [0]string, ar
 
 	if err := encodeTestResponseStringURIArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -94592,7 +96456,9 @@ func (s *Server) handleTestResponseStringURINullableRequest(args [0]string, args
 
 	if err := encodeTestResponseStringURINullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -94693,7 +96559,9 @@ func (s *Server) handleTestResponseStringURINullableArrayRequest(args [0]string,
 
 	if err := encodeTestResponseStringURINullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -94794,7 +96662,9 @@ func (s *Server) handleTestResponseStringURINullableArrayArrayRequest(args [0]st
 
 	if err := encodeTestResponseStringURINullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -94895,7 +96765,9 @@ func (s *Server) handleTestResponseStringUUIDRequest(args [0]string, argsEscaped
 
 	if err := encodeTestResponseStringUUIDResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -94996,7 +96868,9 @@ func (s *Server) handleTestResponseStringUUIDArrayRequest(args [0]string, argsEs
 
 	if err := encodeTestResponseStringUUIDArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -95097,7 +96971,9 @@ func (s *Server) handleTestResponseStringUUIDArrayArrayRequest(args [0]string, a
 
 	if err := encodeTestResponseStringUUIDArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -95198,7 +97074,9 @@ func (s *Server) handleTestResponseStringUUIDNullableRequest(args [0]string, arg
 
 	if err := encodeTestResponseStringUUIDNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -95299,7 +97177,9 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayRequest(args [0]string
 
 	if err := encodeTestResponseStringUUIDNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -95400,7 +97280,9 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayArrayRequest(args [0]s
 
 	if err := encodeTestResponseStringUUIDNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -95501,7 +97383,9 @@ func (s *Server) handleTestResponseStringUintRequest(args [0]string, argsEscaped
 
 	if err := encodeTestResponseStringUintResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -95602,7 +97486,9 @@ func (s *Server) handleTestResponseStringUint16Request(args [0]string, argsEscap
 
 	if err := encodeTestResponseStringUint16Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -95703,7 +97589,9 @@ func (s *Server) handleTestResponseStringUint16ArrayRequest(args [0]string, args
 
 	if err := encodeTestResponseStringUint16ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -95804,7 +97692,9 @@ func (s *Server) handleTestResponseStringUint16ArrayArrayRequest(args [0]string,
 
 	if err := encodeTestResponseStringUint16ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -95905,7 +97795,9 @@ func (s *Server) handleTestResponseStringUint16NullableRequest(args [0]string, a
 
 	if err := encodeTestResponseStringUint16NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -96006,7 +97898,9 @@ func (s *Server) handleTestResponseStringUint16NullableArrayRequest(args [0]stri
 
 	if err := encodeTestResponseStringUint16NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -96107,7 +98001,9 @@ func (s *Server) handleTestResponseStringUint16NullableArrayArrayRequest(args [0
 
 	if err := encodeTestResponseStringUint16NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -96208,7 +98104,9 @@ func (s *Server) handleTestResponseStringUint32Request(args [0]string, argsEscap
 
 	if err := encodeTestResponseStringUint32Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -96309,7 +98207,9 @@ func (s *Server) handleTestResponseStringUint32ArrayRequest(args [0]string, args
 
 	if err := encodeTestResponseStringUint32ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -96410,7 +98310,9 @@ func (s *Server) handleTestResponseStringUint32ArrayArrayRequest(args [0]string,
 
 	if err := encodeTestResponseStringUint32ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -96511,7 +98413,9 @@ func (s *Server) handleTestResponseStringUint32NullableRequest(args [0]string, a
 
 	if err := encodeTestResponseStringUint32NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -96612,7 +98516,9 @@ func (s *Server) handleTestResponseStringUint32NullableArrayRequest(args [0]stri
 
 	if err := encodeTestResponseStringUint32NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -96713,7 +98619,9 @@ func (s *Server) handleTestResponseStringUint32NullableArrayArrayRequest(args [0
 
 	if err := encodeTestResponseStringUint32NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -96814,7 +98722,9 @@ func (s *Server) handleTestResponseStringUint64Request(args [0]string, argsEscap
 
 	if err := encodeTestResponseStringUint64Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -96915,7 +98825,9 @@ func (s *Server) handleTestResponseStringUint64ArrayRequest(args [0]string, args
 
 	if err := encodeTestResponseStringUint64ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -97016,7 +98928,9 @@ func (s *Server) handleTestResponseStringUint64ArrayArrayRequest(args [0]string,
 
 	if err := encodeTestResponseStringUint64ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -97117,7 +99031,9 @@ func (s *Server) handleTestResponseStringUint64NullableRequest(args [0]string, a
 
 	if err := encodeTestResponseStringUint64NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -97218,7 +99134,9 @@ func (s *Server) handleTestResponseStringUint64NullableArrayRequest(args [0]stri
 
 	if err := encodeTestResponseStringUint64NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -97319,7 +99237,9 @@ func (s *Server) handleTestResponseStringUint64NullableArrayArrayRequest(args [0
 
 	if err := encodeTestResponseStringUint64NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -97420,7 +99340,9 @@ func (s *Server) handleTestResponseStringUint8Request(args [0]string, argsEscape
 
 	if err := encodeTestResponseStringUint8Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -97521,7 +99443,9 @@ func (s *Server) handleTestResponseStringUint8ArrayRequest(args [0]string, argsE
 
 	if err := encodeTestResponseStringUint8ArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -97622,7 +99546,9 @@ func (s *Server) handleTestResponseStringUint8ArrayArrayRequest(args [0]string, 
 
 	if err := encodeTestResponseStringUint8ArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -97723,7 +99649,9 @@ func (s *Server) handleTestResponseStringUint8NullableRequest(args [0]string, ar
 
 	if err := encodeTestResponseStringUint8NullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -97824,7 +99752,9 @@ func (s *Server) handleTestResponseStringUint8NullableArrayRequest(args [0]strin
 
 	if err := encodeTestResponseStringUint8NullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -97925,7 +99855,9 @@ func (s *Server) handleTestResponseStringUint8NullableArrayArrayRequest(args [0]
 
 	if err := encodeTestResponseStringUint8NullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -98026,7 +99958,9 @@ func (s *Server) handleTestResponseStringUintArrayRequest(args [0]string, argsEs
 
 	if err := encodeTestResponseStringUintArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -98127,7 +100061,9 @@ func (s *Server) handleTestResponseStringUintArrayArrayRequest(args [0]string, a
 
 	if err := encodeTestResponseStringUintArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -98228,7 +100164,9 @@ func (s *Server) handleTestResponseStringUintNullableRequest(args [0]string, arg
 
 	if err := encodeTestResponseStringUintNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -98329,7 +100267,9 @@ func (s *Server) handleTestResponseStringUintNullableArrayRequest(args [0]string
 
 	if err := encodeTestResponseStringUintNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -98430,7 +100370,9 @@ func (s *Server) handleTestResponseStringUintNullableArrayArrayRequest(args [0]s
 
 	if err := encodeTestResponseStringUintNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -98531,7 +100473,9 @@ func (s *Server) handleTestResponseStringUnixRequest(args [0]string, argsEscaped
 
 	if err := encodeTestResponseStringUnixResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -98632,7 +100576,9 @@ func (s *Server) handleTestResponseStringUnixArrayRequest(args [0]string, argsEs
 
 	if err := encodeTestResponseStringUnixArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -98733,7 +100679,9 @@ func (s *Server) handleTestResponseStringUnixArrayArrayRequest(args [0]string, a
 
 	if err := encodeTestResponseStringUnixArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -98834,7 +100782,9 @@ func (s *Server) handleTestResponseStringUnixMicroRequest(args [0]string, argsEs
 
 	if err := encodeTestResponseStringUnixMicroResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -98935,7 +100885,9 @@ func (s *Server) handleTestResponseStringUnixMicroArrayRequest(args [0]string, a
 
 	if err := encodeTestResponseStringUnixMicroArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -99036,7 +100988,9 @@ func (s *Server) handleTestResponseStringUnixMicroArrayArrayRequest(args [0]stri
 
 	if err := encodeTestResponseStringUnixMicroArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -99137,7 +101091,9 @@ func (s *Server) handleTestResponseStringUnixMicroNullableRequest(args [0]string
 
 	if err := encodeTestResponseStringUnixMicroNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -99238,7 +101194,9 @@ func (s *Server) handleTestResponseStringUnixMicroNullableArrayRequest(args [0]s
 
 	if err := encodeTestResponseStringUnixMicroNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -99339,7 +101297,9 @@ func (s *Server) handleTestResponseStringUnixMicroNullableArrayArrayRequest(args
 
 	if err := encodeTestResponseStringUnixMicroNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -99440,7 +101400,9 @@ func (s *Server) handleTestResponseStringUnixMilliRequest(args [0]string, argsEs
 
 	if err := encodeTestResponseStringUnixMilliResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -99541,7 +101503,9 @@ func (s *Server) handleTestResponseStringUnixMilliArrayRequest(args [0]string, a
 
 	if err := encodeTestResponseStringUnixMilliArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -99642,7 +101606,9 @@ func (s *Server) handleTestResponseStringUnixMilliArrayArrayRequest(args [0]stri
 
 	if err := encodeTestResponseStringUnixMilliArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -99743,7 +101709,9 @@ func (s *Server) handleTestResponseStringUnixMilliNullableRequest(args [0]string
 
 	if err := encodeTestResponseStringUnixMilliNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -99844,7 +101812,9 @@ func (s *Server) handleTestResponseStringUnixMilliNullableArrayRequest(args [0]s
 
 	if err := encodeTestResponseStringUnixMilliNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -99945,7 +101915,9 @@ func (s *Server) handleTestResponseStringUnixMilliNullableArrayArrayRequest(args
 
 	if err := encodeTestResponseStringUnixMilliNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -100046,7 +102018,9 @@ func (s *Server) handleTestResponseStringUnixNanoRequest(args [0]string, argsEsc
 
 	if err := encodeTestResponseStringUnixNanoResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -100147,7 +102121,9 @@ func (s *Server) handleTestResponseStringUnixNanoArrayRequest(args [0]string, ar
 
 	if err := encodeTestResponseStringUnixNanoArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -100248,7 +102224,9 @@ func (s *Server) handleTestResponseStringUnixNanoArrayArrayRequest(args [0]strin
 
 	if err := encodeTestResponseStringUnixNanoArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -100349,7 +102327,9 @@ func (s *Server) handleTestResponseStringUnixNanoNullableRequest(args [0]string,
 
 	if err := encodeTestResponseStringUnixNanoNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -100450,7 +102430,9 @@ func (s *Server) handleTestResponseStringUnixNanoNullableArrayRequest(args [0]st
 
 	if err := encodeTestResponseStringUnixNanoNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -100551,7 +102533,9 @@ func (s *Server) handleTestResponseStringUnixNanoNullableArrayArrayRequest(args 
 
 	if err := encodeTestResponseStringUnixNanoNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -100652,7 +102636,9 @@ func (s *Server) handleTestResponseStringUnixNullableRequest(args [0]string, arg
 
 	if err := encodeTestResponseStringUnixNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -100753,7 +102739,9 @@ func (s *Server) handleTestResponseStringUnixNullableArrayRequest(args [0]string
 
 	if err := encodeTestResponseStringUnixNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -100854,7 +102842,9 @@ func (s *Server) handleTestResponseStringUnixNullableArrayArrayRequest(args [0]s
 
 	if err := encodeTestResponseStringUnixNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -100955,7 +102945,9 @@ func (s *Server) handleTestResponseStringUnixSecondsRequest(args [0]string, args
 
 	if err := encodeTestResponseStringUnixSecondsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -101056,7 +103048,9 @@ func (s *Server) handleTestResponseStringUnixSecondsArrayRequest(args [0]string,
 
 	if err := encodeTestResponseStringUnixSecondsArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -101157,7 +103151,9 @@ func (s *Server) handleTestResponseStringUnixSecondsArrayArrayRequest(args [0]st
 
 	if err := encodeTestResponseStringUnixSecondsArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -101258,7 +103254,9 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableRequest(args [0]stri
 
 	if err := encodeTestResponseStringUnixSecondsNullableResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -101359,7 +103357,9 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableArrayRequest(args [0
 
 	if err := encodeTestResponseStringUnixSecondsNullableArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -101460,7 +103460,9 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableArrayArrayRequest(ar
 
 	if err := encodeTestResponseStringUnixSecondsNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }

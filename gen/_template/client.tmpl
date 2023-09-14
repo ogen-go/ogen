@@ -4,6 +4,20 @@
 
 {{- if $.PathsClientEnabled }}
 {{- with $ops := $.Operations }}
+
+// Invoker invokes operations described by OpenAPI v3 specification.
+type Invoker interface {
+{{- range $op := $ops }}
+	// {{ $op.Name }} invokes {{ $op.PrettyOperationID }} operation.
+	//
+	{{- template "godoc_op" $op }}
+	{{ $op.Name }}(ctx context.Context
+	{{- if $op.WebhookInfo }}, targetURL string{{ end }}
+	{{- if $op.Request }}, request {{ $op.Request.GoType }}{{ end }}
+	{{- if $op.Params }}, params {{ $op.Name }}Params {{ end }}) {{ $op.Responses.ResultTuple "" "" }}
+{{- end }}
+}
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL
@@ -126,11 +140,16 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 	{{- if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (res {{ $op.Responses.GoType }}, err error) {
 
 	{{- $hasOTELAttrs := false }}
-	{{- with $attrs := $op.OTELAttributes }}
+	{{- $ogenAttrs := $op.OTELAttributes }}
+	{{- if or $ogenAttrs (not $op.WebhookInfo) }}
 	{{- $hasOTELAttrs = true }}
 	otelAttrs := []attribute.KeyValue{
-		{{- range $attr := $attrs }}
+		{{- range $attr := $ogenAttrs }}
 		{{ $attr.String }},
+		{{- end }}
+		{{- if not $op.WebhookInfo }}
+		semconv.HTTPMethodKey.String({{ upper $op.Spec.HTTPMethod | quote }}),
+		semconv.HTTPRouteKey.String({{ quote $op.Spec.Path }}),
 		{{- end }}
 	}
 	{{- else }}

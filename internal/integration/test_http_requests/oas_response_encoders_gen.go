@@ -22,6 +22,7 @@ func encodeAllRequestBodiesResponse(response AllRequestBodiesOK, w http.Response
 	if _, err := io.Copy(writer, response); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -34,6 +35,7 @@ func encodeAllRequestBodiesOptionalResponse(response AllRequestBodiesOptionalOK,
 	if _, err := io.Copy(writer, response); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -47,6 +49,7 @@ func encodeBase64RequestResponse(response Base64RequestOK, w http.ResponseWriter
 	if _, err := io.Copy(writer, response); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -60,6 +63,7 @@ func encodeMaskContentTypeResponse(response *MaskResponse, w http.ResponseWriter
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -73,6 +77,7 @@ func encodeMaskContentTypeOptionalResponse(response *MaskResponse, w http.Respon
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -86,5 +91,6 @@ func encodeStreamJSONResponse(response float64, w http.ResponseWriter, span trac
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }

@@ -283,7 +283,7 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema, side bool) (*i
 					})
 
 					// Filter discriminator field in-place.
-					xslices.Filter(&s.Fields, func(f *ir.Field) bool {
+					s.Fields = xslices.Filter(s.Fields, func(f *ir.Field) bool {
 						return f.Tag.JSON != propName
 					})
 

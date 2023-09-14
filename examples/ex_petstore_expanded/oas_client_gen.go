@@ -12,6 +12,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
+	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/conv"
@@ -19,6 +20,50 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 )
+
+// Invoker invokes operations described by OpenAPI v3 specification.
+type Invoker interface {
+	// AddPet invokes addPet operation.
+	//
+	// Creates a new pet in the store. Duplicates are allowed.
+	//
+	// POST /pets
+	AddPet(ctx context.Context, request *NewPet) (*Pet, error)
+	// DeletePet invokes deletePet operation.
+	//
+	// Deletes a single pet based on the ID supplied.
+	//
+	// DELETE /pets/{id}
+	DeletePet(ctx context.Context, params DeletePetParams) error
+	// FindPetByID invokes find pet by id operation.
+	//
+	// Returns a user based on a single ID, if the user does not have access to the pet.
+	//
+	// GET /pets/{id}
+	FindPetByID(ctx context.Context, params FindPetByIDParams) (*Pet, error)
+	// FindPets invokes findPets operation.
+	//
+	// Returns all pets from the system that the user has access to
+	// Nam sed condimentum est. Maecenas tempor sagittis sapien, nec rhoncus sem sagittis sit amet.
+	// Aenean at gravida augue, ac iaculis sem. Curabitur odio lorem, ornare eget elementum nec, cursus
+	// id lectus. Duis mi turpis, pulvinar ac eros ac, tincidunt varius justo. In hac habitasse platea
+	// dictumst. Integer at adipiscing ante, a sagittis ligula. Aenean pharetra tempor ante molestie
+	// imperdiet. Vivamus id aliquam diam. Cras quis velit non tortor eleifend sagittis. Praesent at enim
+	// pharetra urna volutpat venenatis eget eget mauris. In eleifend fermentum facilisis. Praesent enim
+	// enim, gravida ac sodales sed, placerat id erat. Suspendisse lacus dolor, consectetur non augue vel,
+	//  vehicula interdum libero. Morbi euismod sagittis libero sed lacinia.
+	// Sed tempus felis lobortis leo pulvinar rutrum. Nam mattis velit nisl, eu condimentum ligula luctus
+	// nec. Phasellus semper velit eget aliquet faucibus. In a mattis elit. Phasellus vel urna viverra,
+	// condimentum lorem id, rhoncus nibh. Ut pellentesque posuere elementum. Sed a varius odio. Morbi
+	// rhoncus ligula libero, vel eleifend nunc tristique vitae. Fusce et sem dui. Aenean nec scelerisque
+	// tortor. Fusce malesuada accumsan magna vel tempus. Quisque mollis felis eu dolor tristique, sit
+	// amet auctor felis gravida. Sed libero lorem, molestie sed nisl in, accumsan tempor nisi. Fusce
+	// sollicitudin massa ut lacinia mattis. Sed vel eleifend lorem. Pellentesque vitae felis pretium,
+	// pulvinar elit eu, euismod sapien.
+	//
+	// GET /pets
+	FindPets(ctx context.Context, params FindPetsParams) ([]Pet, error)
+}
 
 // Client implements OAS client.
 type Client struct {
@@ -86,6 +131,8 @@ func (c *Client) AddPet(ctx context.Context, request *NewPet) (*Pet, error) {
 func (c *Client) sendAddPet(ctx context.Context, request *NewPet) (res *Pet, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("addPet"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/pets"),
 	}
 
 	// Run stopwatch.
@@ -160,6 +207,8 @@ func (c *Client) DeletePet(ctx context.Context, params DeletePetParams) error {
 func (c *Client) sendDeletePet(ctx context.Context, params DeletePetParams) (res *DeletePetNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deletePet"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/pets/{id}"),
 	}
 
 	// Run stopwatch.
@@ -249,6 +298,8 @@ func (c *Client) FindPetByID(ctx context.Context, params FindPetByIDParams) (*Pe
 func (c *Client) sendFindPetByID(ctx context.Context, params FindPetByIDParams) (res *Pet, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("find pet by id"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/pets/{id}"),
 	}
 
 	// Run stopwatch.
@@ -356,6 +407,8 @@ func (c *Client) FindPets(ctx context.Context, params FindPetsParams) ([]Pet, er
 func (c *Client) sendFindPets(ctx context.Context, params FindPetsParams) (res []Pet, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("findPets"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/pets"),
 	}
 
 	// Run stopwatch.

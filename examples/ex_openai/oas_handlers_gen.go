@@ -7,12 +7,14 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/go-faster/errors"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
 	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
 	"go.opentelemetry.io/otel/trace"
 
+	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
@@ -116,7 +118,9 @@ func (s *Server) handleCancelFineTuneRequest(args [1]string, argsEscaped bool, w
 
 	if err := encodeCancelFineTuneResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -224,7 +228,9 @@ func (s *Server) handleCreateAnswerRequest(args [0]string, argsEscaped bool, w h
 
 	if err := encodeCreateAnswerResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -327,7 +333,9 @@ func (s *Server) handleCreateChatCompletionRequest(args [0]string, argsEscaped b
 
 	if err := encodeCreateChatCompletionResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -438,7 +446,9 @@ func (s *Server) handleCreateClassificationRequest(args [0]string, argsEscaped b
 
 	if err := encodeCreateClassificationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -541,7 +551,9 @@ func (s *Server) handleCreateCompletionRequest(args [0]string, argsEscaped bool,
 
 	if err := encodeCreateCompletionResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -644,7 +656,9 @@ func (s *Server) handleCreateEditRequest(args [0]string, argsEscaped bool, w htt
 
 	if err := encodeCreateEditResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -747,7 +761,9 @@ func (s *Server) handleCreateEmbeddingRequest(args [0]string, argsEscaped bool, 
 
 	if err := encodeCreateEmbeddingResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -852,7 +868,9 @@ func (s *Server) handleCreateFileRequest(args [0]string, argsEscaped bool, w htt
 
 	if err := encodeCreateFileResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -958,7 +976,9 @@ func (s *Server) handleCreateFineTuneRequest(args [0]string, argsEscaped bool, w
 
 	if err := encodeCreateFineTuneResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1061,7 +1081,9 @@ func (s *Server) handleCreateImageRequest(args [0]string, argsEscaped bool, w ht
 
 	if err := encodeCreateImageResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1164,7 +1186,9 @@ func (s *Server) handleCreateImageEditRequest(args [0]string, argsEscaped bool, 
 
 	if err := encodeCreateImageEditResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1267,7 +1291,9 @@ func (s *Server) handleCreateImageVariationRequest(args [0]string, argsEscaped b
 
 	if err := encodeCreateImageVariationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1370,7 +1396,9 @@ func (s *Server) handleCreateModerationRequest(args [0]string, argsEscaped bool,
 
 	if err := encodeCreateModerationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1497,7 +1525,9 @@ func (s *Server) handleCreateSearchRequest(args [1]string, argsEscaped bool, w h
 
 	if err := encodeCreateSearchResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1600,7 +1630,9 @@ func (s *Server) handleCreateTranscriptionRequest(args [0]string, argsEscaped bo
 
 	if err := encodeCreateTranscriptionResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1703,7 +1735,9 @@ func (s *Server) handleCreateTranslationRequest(args [0]string, argsEscaped bool
 
 	if err := encodeCreateTranslationResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1806,7 +1840,9 @@ func (s *Server) handleDeleteFileRequest(args [1]string, argsEscaped bool, w htt
 
 	if err := encodeDeleteFileResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1909,7 +1945,9 @@ func (s *Server) handleDeleteModelRequest(args [1]string, argsEscaped bool, w ht
 
 	if err := encodeDeleteModelResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2012,7 +2050,9 @@ func (s *Server) handleDownloadFileRequest(args [1]string, argsEscaped bool, w h
 
 	if err := encodeDownloadFileResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2099,7 +2139,9 @@ func (s *Server) handleListEnginesRequest(args [0]string, argsEscaped bool, w ht
 
 	if err := encodeListEnginesResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2183,7 +2225,9 @@ func (s *Server) handleListFilesRequest(args [0]string, argsEscaped bool, w http
 
 	if err := encodeListFilesResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2290,7 +2334,9 @@ func (s *Server) handleListFineTuneEventsRequest(args [1]string, argsEscaped boo
 
 	if err := encodeListFineTuneEventsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2374,7 +2420,9 @@ func (s *Server) handleListFineTunesRequest(args [0]string, argsEscaped bool, w 
 
 	if err := encodeListFineTunesResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2459,7 +2507,9 @@ func (s *Server) handleListModelsRequest(args [0]string, argsEscaped bool, w htt
 
 	if err := encodeListModelsResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2565,7 +2615,9 @@ func (s *Server) handleRetrieveEngineRequest(args [1]string, argsEscaped bool, w
 
 	if err := encodeRetrieveEngineResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2668,7 +2720,9 @@ func (s *Server) handleRetrieveFileRequest(args [1]string, argsEscaped bool, w h
 
 	if err := encodeRetrieveFileResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2772,7 +2826,9 @@ func (s *Server) handleRetrieveFineTuneRequest(args [1]string, argsEscaped bool,
 
 	if err := encodeRetrieveFineTuneResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2876,7 +2932,9 @@ func (s *Server) handleRetrieveModelRequest(args [1]string, argsEscaped bool, w 
 
 	if err := encodeRetrieveModelResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }

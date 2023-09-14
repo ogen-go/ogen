@@ -12,6 +12,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
+	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/conv"
@@ -19,6 +20,7754 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 )
+
+// Invoker invokes operations described by OpenAPI v3 specification.
+type Invoker interface {
+	// ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg invokes actions/add-repo-access-to-self-hosted-runner-group-in-org operation.
+	//
+	// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
+	// information, see "[GitHub's products](https://docs.github.
+	// com/github/getting-started-with-github/githubs-products)."
+	// Adds a repository to the list of selected repositories that can access a self-hosted runner group.
+	// The runner group must have `visibility` set to `selected`. For more information, see "[Create a
+	// self-hosted runner group for an
+	// organization](#create-a-self-hosted-runner-group-for-an-organization)."
+	// You must authenticate using an access token with the `admin:org`
+	// scope to use this endpoint.
+	//
+	// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
+	ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams) error
+	// ActionsAddSelectedRepoToOrgSecret invokes actions/add-selected-repo-to-org-secret operation.
+	//
+	// Adds a repository to an organization secret when the `visibility` for repository access is set to
+	// `selected`. The visibility is set when you [Create or update an organization secret](https://docs.
+	// github.com/rest/reference/actions#create-or-update-an-organization-secret). You must authenticate
+	// using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the
+	// `secrets` organization permission to use this endpoint.
+	//
+	// PUT /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}
+	ActionsAddSelectedRepoToOrgSecret(ctx context.Context, params ActionsAddSelectedRepoToOrgSecretParams) (ActionsAddSelectedRepoToOrgSecretRes, error)
+	// ActionsAddSelfHostedRunnerToGroupForOrg invokes actions/add-self-hosted-runner-to-group-for-org operation.
+	//
+	// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
+	// information, see "[GitHub's products](https://docs.github.
+	// com/github/getting-started-with-github/githubs-products)."
+	// Adds a self-hosted runner to a runner group configured in an organization.
+	// You must authenticate using an access token with the `admin:org`
+	// scope to use this endpoint.
+	//
+	// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
+	ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, params ActionsAddSelfHostedRunnerToGroupForOrgParams) error
+	// ActionsApproveWorkflowRun invokes actions/approve-workflow-run operation.
+	//
+	// Approves a workflow run for a pull request from a public fork of a first time contributor. For
+	// more information, see ["Approving workflow runs from public forks](https://docs.github.
+	// com/actions/managing-workflow-runs/approving-workflow-runs-from-public-forks)."
+	// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub
+	// Apps must have the `actions:write` permission to use this endpoint.
+	//
+	// POST /repos/{owner}/{repo}/actions/runs/{run_id}/approve
+	ActionsApproveWorkflowRun(ctx context.Context, params ActionsApproveWorkflowRunParams) (ActionsApproveWorkflowRunRes, error)
+	// ActionsCancelWorkflowRun invokes actions/cancel-workflow-run operation.
+	//
+	// Cancels a workflow run using its `id`. You must authenticate using an access token with the `repo`
+	// scope to use this endpoint. GitHub Apps must have the `actions:write` permission to use this
+	// endpoint.
+	//
+	// POST /repos/{owner}/{repo}/actions/runs/{run_id}/cancel
+	ActionsCancelWorkflowRun(ctx context.Context, params ActionsCancelWorkflowRunParams) error
+	// ActionsCreateOrUpdateEnvironmentSecret invokes actions/create-or-update-environment-secret operation.
+	//
+	// Creates or updates an environment secret with an encrypted value. Encrypt your secret using
+	// [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). You must authenticate
+	// using an access
+	// token with the `repo` scope to use this endpoint. GitHub Apps must have the `secrets` repository
+	// permission to use
+	// this endpoint.
+	// #### Example encrypting a secret using Node.js
+	// Encrypt your secret using the [tweetsodium](https://github.com/github/tweetsodium) library.
+	// ```
+	// const sodium = require('tweetsodium');
+	// const key = "base64-encoded-public-key";
+	// const value = "plain-text-secret";
+	// // Convert the message and key to Uint8Array's (Buffer implements that interface)
+	// const messageBytes = Buffer.from(value);
+	// const keyBytes = Buffer.from(key, 'base64');
+	// // Encrypt using LibSodium.
+	// const encryptedBytes = sodium.seal(messageBytes, keyBytes);
+	// // Base64 the encrypted secret
+	// const encrypted = Buffer.from(encryptedBytes).toString('base64');
+	// console.log(encrypted);
+	// ```
+	// #### Example encrypting a secret using Python
+	// Encrypt your secret using [pynacl](https://pynacl.readthedocs.
+	// io/en/stable/public/#nacl-public-sealedbox) with Python 3.
+	// ```
+	// from base64 import b64encode
+	// from nacl import encoding, public
+	// def encrypt(public_key: str, secret_value: str) -> str:
+	// """Encrypt a Unicode string using the public key."""
+	// public_key = public.PublicKey(public_key.encode("utf-8"), encoding.Base64Encoder())
+	// sealed_box = public.SealedBox(public_key)
+	// encrypted = sealed_box.encrypt(secret_value.encode("utf-8"))
+	// return b64encode(encrypted).decode("utf-8")
+	// ```
+	// #### Example encrypting a secret using C#
+	// Encrypt your secret using the [Sodium.Core](https://www.nuget.org/packages/Sodium.Core/) package.
+	// ```
+	// var secretValue = System.Text.Encoding.UTF8.GetBytes("mySecret");
+	// var publicKey = Convert.FromBase64String("2Sg8iYjAxxmI2LvUXpJjkYrMxURPc8r+dB7TJyvvcCU=");
+	// var sealedPublicKeyBox = Sodium.SealedPublicKeyBox.Create(secretValue, publicKey);
+	// Console.WriteLine(Convert.ToBase64String(sealedPublicKeyBox));
+	// ```
+	// #### Example encrypting a secret using Ruby
+	// Encrypt your secret using the [rbnacl](https://github.com/RubyCrypto/rbnacl) gem.
+	// ```ruby
+	// require "rbnacl"
+	// require "base64"
+	// key = Base64.decode64("+ZYvJDZMHUfBkJdyq5Zm9SKqeuBQ4sj+6sfjlH4CgG0=")
+	// public_key = RbNaCl::PublicKey.new(key)
+	// box = RbNaCl::Boxes::Sealed.from_public_key(public_key)
+	// encrypted_secret = box.encrypt("my_secret")
+	// # Print the base64 encoded secret
+	// puts Base64.strict_encode64(encrypted_secret)
+	// ```.
+	//
+	// PUT /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
+	ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, request *ActionsCreateOrUpdateEnvironmentSecretReq, params ActionsCreateOrUpdateEnvironmentSecretParams) (ActionsCreateOrUpdateEnvironmentSecretRes, error)
+	// ActionsCreateOrUpdateOrgSecret invokes actions/create-or-update-org-secret operation.
+	//
+	// Creates or updates an organization secret with an encrypted value. Encrypt your secret using
+	// [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). You must authenticate
+	// using an access
+	// token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `secrets`
+	// organization permission to
+	// use this endpoint.
+	// #### Example encrypting a secret using Node.js
+	// Encrypt your secret using the [tweetsodium](https://github.com/github/tweetsodium) library.
+	// ```
+	// const sodium = require('tweetsodium');
+	// const key = "base64-encoded-public-key";
+	// const value = "plain-text-secret";
+	// // Convert the message and key to Uint8Array's (Buffer implements that interface)
+	// const messageBytes = Buffer.from(value);
+	// const keyBytes = Buffer.from(key, 'base64');
+	// // Encrypt using LibSodium.
+	// const encryptedBytes = sodium.seal(messageBytes, keyBytes);
+	// // Base64 the encrypted secret
+	// const encrypted = Buffer.from(encryptedBytes).toString('base64');
+	// console.log(encrypted);
+	// ```
+	// #### Example encrypting a secret using Python
+	// Encrypt your secret using [pynacl](https://pynacl.readthedocs.
+	// io/en/stable/public/#nacl-public-sealedbox) with Python 3.
+	// ```
+	// from base64 import b64encode
+	// from nacl import encoding, public
+	// def encrypt(public_key: str, secret_value: str) -> str:
+	// """Encrypt a Unicode string using the public key."""
+	// public_key = public.PublicKey(public_key.encode("utf-8"), encoding.Base64Encoder())
+	// sealed_box = public.SealedBox(public_key)
+	// encrypted = sealed_box.encrypt(secret_value.encode("utf-8"))
+	// return b64encode(encrypted).decode("utf-8")
+	// ```
+	// #### Example encrypting a secret using C#
+	// Encrypt your secret using the [Sodium.Core](https://www.nuget.org/packages/Sodium.Core/) package.
+	// ```
+	// var secretValue = System.Text.Encoding.UTF8.GetBytes("mySecret");
+	// var publicKey = Convert.FromBase64String("2Sg8iYjAxxmI2LvUXpJjkYrMxURPc8r+dB7TJyvvcCU=");
+	// var sealedPublicKeyBox = Sodium.SealedPublicKeyBox.Create(secretValue, publicKey);
+	// Console.WriteLine(Convert.ToBase64String(sealedPublicKeyBox));
+	// ```
+	// #### Example encrypting a secret using Ruby
+	// Encrypt your secret using the [rbnacl](https://github.com/RubyCrypto/rbnacl) gem.
+	// ```ruby
+	// require "rbnacl"
+	// require "base64"
+	// key = Base64.decode64("+ZYvJDZMHUfBkJdyq5Zm9SKqeuBQ4sj+6sfjlH4CgG0=")
+	// public_key = RbNaCl::PublicKey.new(key)
+	// box = RbNaCl::Boxes::Sealed.from_public_key(public_key)
+	// encrypted_secret = box.encrypt("my_secret")
+	// # Print the base64 encoded secret
+	// puts Base64.strict_encode64(encrypted_secret)
+	// ```.
+	//
+	// PUT /orgs/{org}/actions/secrets/{secret_name}
+	ActionsCreateOrUpdateOrgSecret(ctx context.Context, request *ActionsCreateOrUpdateOrgSecretReq, params ActionsCreateOrUpdateOrgSecretParams) (ActionsCreateOrUpdateOrgSecretRes, error)
+	// ActionsCreateOrUpdateRepoSecret invokes actions/create-or-update-repo-secret operation.
+	//
+	// Creates or updates a repository secret with an encrypted value. Encrypt your secret using
+	// [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). You must authenticate
+	// using an access
+	// token with the `repo` scope to use this endpoint. GitHub Apps must have the `secrets` repository
+	// permission to use
+	// this endpoint.
+	// #### Example encrypting a secret using Node.js
+	// Encrypt your secret using the [tweetsodium](https://github.com/github/tweetsodium) library.
+	// ```
+	// const sodium = require('tweetsodium');
+	// const key = "base64-encoded-public-key";
+	// const value = "plain-text-secret";
+	// // Convert the message and key to Uint8Array's (Buffer implements that interface)
+	// const messageBytes = Buffer.from(value);
+	// const keyBytes = Buffer.from(key, 'base64');
+	// // Encrypt using LibSodium.
+	// const encryptedBytes = sodium.seal(messageBytes, keyBytes);
+	// // Base64 the encrypted secret
+	// const encrypted = Buffer.from(encryptedBytes).toString('base64');
+	// console.log(encrypted);
+	// ```
+	// #### Example encrypting a secret using Python
+	// Encrypt your secret using [pynacl](https://pynacl.readthedocs.
+	// io/en/stable/public/#nacl-public-sealedbox) with Python 3.
+	// ```
+	// from base64 import b64encode
+	// from nacl import encoding, public
+	// def encrypt(public_key: str, secret_value: str) -> str:
+	// """Encrypt a Unicode string using the public key."""
+	// public_key = public.PublicKey(public_key.encode("utf-8"), encoding.Base64Encoder())
+	// sealed_box = public.SealedBox(public_key)
+	// encrypted = sealed_box.encrypt(secret_value.encode("utf-8"))
+	// return b64encode(encrypted).decode("utf-8")
+	// ```
+	// #### Example encrypting a secret using C#
+	// Encrypt your secret using the [Sodium.Core](https://www.nuget.org/packages/Sodium.Core/) package.
+	// ```
+	// var secretValue = System.Text.Encoding.UTF8.GetBytes("mySecret");
+	// var publicKey = Convert.FromBase64String("2Sg8iYjAxxmI2LvUXpJjkYrMxURPc8r+dB7TJyvvcCU=");
+	// var sealedPublicKeyBox = Sodium.SealedPublicKeyBox.Create(secretValue, publicKey);
+	// Console.WriteLine(Convert.ToBase64String(sealedPublicKeyBox));
+	// ```
+	// #### Example encrypting a secret using Ruby
+	// Encrypt your secret using the [rbnacl](https://github.com/RubyCrypto/rbnacl) gem.
+	// ```ruby
+	// require "rbnacl"
+	// require "base64"
+	// key = Base64.decode64("+ZYvJDZMHUfBkJdyq5Zm9SKqeuBQ4sj+6sfjlH4CgG0=")
+	// public_key = RbNaCl::PublicKey.new(key)
+	// box = RbNaCl::Boxes::Sealed.from_public_key(public_key)
+	// encrypted_secret = box.encrypt("my_secret")
+	// # Print the base64 encoded secret
+	// puts Base64.strict_encode64(encrypted_secret)
+	// ```.
+	//
+	// PUT /repos/{owner}/{repo}/actions/secrets/{secret_name}
+	ActionsCreateOrUpdateRepoSecret(ctx context.Context, request *ActionsCreateOrUpdateRepoSecretReq, params ActionsCreateOrUpdateRepoSecretParams) (ActionsCreateOrUpdateRepoSecretRes, error)
+	// ActionsCreateRegistrationTokenForOrg invokes actions/create-registration-token-for-org operation.
+	//
+	// Returns a token that you can pass to the `config` script. The token expires after one hour.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	// #### Example using registration token
+	// Configure your self-hosted runner, replacing `TOKEN` with the registration token provided by this
+	// endpoint.
+	// ```
+	// ./config.sh --url https://github.com/octo-org --token TOKEN
+	// ```.
+	//
+	// POST /orgs/{org}/actions/runners/registration-token
+	ActionsCreateRegistrationTokenForOrg(ctx context.Context, params ActionsCreateRegistrationTokenForOrgParams) (*AuthenticationToken, error)
+	// ActionsCreateRegistrationTokenForRepo invokes actions/create-registration-token-for-repo operation.
+	//
+	// Returns a token that you can pass to the `config` script. The token expires after one hour. You
+	// must authenticate
+	// using an access token with the `repo` scope to use this endpoint.
+	// #### Example using registration token
+	// Configure your self-hosted runner, replacing `TOKEN` with the registration token provided by this
+	// endpoint.
+	// ```
+	// ./config.sh --url https://github.com/octo-org/octo-repo-artifacts --token TOKEN
+	// ```.
+	//
+	// POST /repos/{owner}/{repo}/actions/runners/registration-token
+	ActionsCreateRegistrationTokenForRepo(ctx context.Context, params ActionsCreateRegistrationTokenForRepoParams) (*AuthenticationToken, error)
+	// ActionsCreateRemoveTokenForOrg invokes actions/create-remove-token-for-org operation.
+	//
+	// Returns a token that you can pass to the `config` script to remove a self-hosted runner from an
+	// organization. The token expires after one hour.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	// #### Example using remove token
+	// To remove your self-hosted runner from an organization, replace `TOKEN` with the remove token
+	// provided by this
+	// endpoint.
+	// ```
+	// ./config.sh remove --token TOKEN
+	// ```.
+	//
+	// POST /orgs/{org}/actions/runners/remove-token
+	ActionsCreateRemoveTokenForOrg(ctx context.Context, params ActionsCreateRemoveTokenForOrgParams) (*AuthenticationToken, error)
+	// ActionsCreateRemoveTokenForRepo invokes actions/create-remove-token-for-repo operation.
+	//
+	// Returns a token that you can pass to remove a self-hosted runner from a repository. The token
+	// expires after one hour.
+	// You must authenticate using an access token with the `repo` scope to use this endpoint.
+	// #### Example using remove token
+	// To remove your self-hosted runner from a repository, replace TOKEN with the remove token provided
+	// by this endpoint.
+	// ```
+	// ./config.sh remove --token TOKEN
+	// ```.
+	//
+	// POST /repos/{owner}/{repo}/actions/runners/remove-token
+	ActionsCreateRemoveTokenForRepo(ctx context.Context, params ActionsCreateRemoveTokenForRepoParams) (*AuthenticationToken, error)
+	// ActionsCreateSelfHostedRunnerGroupForOrg invokes actions/create-self-hosted-runner-group-for-org operation.
+	//
+	// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud and GitHub
+	// Enterprise Server. For more information, see "[GitHub's products](https://docs.github.
+	// com/github/getting-started-with-github/githubs-products)."
+	// Creates a new self-hosted runner group for an organization.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	//
+	// POST /orgs/{org}/actions/runner-groups
+	ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, request *ActionsCreateSelfHostedRunnerGroupForOrgReq, params ActionsCreateSelfHostedRunnerGroupForOrgParams) (*RunnerGroupsOrg, error)
+	// ActionsDeleteArtifact invokes actions/delete-artifact operation.
+	//
+	// Deletes an artifact for a workflow run. You must authenticate using an access token with the
+	// `repo` scope to use this endpoint. GitHub Apps must have the `actions:write` permission to use
+	// this endpoint.
+	//
+	// DELETE /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
+	ActionsDeleteArtifact(ctx context.Context, params ActionsDeleteArtifactParams) error
+	// ActionsDeleteEnvironmentSecret invokes actions/delete-environment-secret operation.
+	//
+	// Deletes a secret in an environment using the secret name. You must authenticate using an access
+	// token with the `repo` scope to use this endpoint. GitHub Apps must have the `secrets` repository
+	// permission to use this endpoint.
+	//
+	// DELETE /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
+	ActionsDeleteEnvironmentSecret(ctx context.Context, params ActionsDeleteEnvironmentSecretParams) error
+	// ActionsDeleteOrgSecret invokes actions/delete-org-secret operation.
+	//
+	// Deletes a secret in an organization using the secret name. You must authenticate using an access
+	// token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `secrets`
+	// organization permission to use this endpoint.
+	//
+	// DELETE /orgs/{org}/actions/secrets/{secret_name}
+	ActionsDeleteOrgSecret(ctx context.Context, params ActionsDeleteOrgSecretParams) error
+	// ActionsDeleteRepoSecret invokes actions/delete-repo-secret operation.
+	//
+	// Deletes a secret in a repository using the secret name. You must authenticate using an access
+	// token with the `repo` scope to use this endpoint. GitHub Apps must have the `secrets` repository
+	// permission to use this endpoint.
+	//
+	// DELETE /repos/{owner}/{repo}/actions/secrets/{secret_name}
+	ActionsDeleteRepoSecret(ctx context.Context, params ActionsDeleteRepoSecretParams) error
+	// ActionsDeleteSelfHostedRunnerFromOrg invokes actions/delete-self-hosted-runner-from-org operation.
+	//
+	// Forces the removal of a self-hosted runner from an organization. You can use this endpoint to
+	// completely remove the runner when the machine you were using no longer exists.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	//
+	// DELETE /orgs/{org}/actions/runners/{runner_id}
+	ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromOrgParams) error
+	// ActionsDeleteSelfHostedRunnerFromRepo invokes actions/delete-self-hosted-runner-from-repo operation.
+	//
+	// Forces the removal of a self-hosted runner from a repository. You can use this endpoint to
+	// completely remove the runner when the machine you were using no longer exists.
+	// You must authenticate using an access token with the `repo`
+	// scope to use this endpoint.
+	//
+	// DELETE /repos/{owner}/{repo}/actions/runners/{runner_id}
+	ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromRepoParams) error
+	// ActionsDeleteSelfHostedRunnerGroupFromOrg invokes actions/delete-self-hosted-runner-group-from-org operation.
+	//
+	// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
+	// information, see "[GitHub's products](https://docs.github.
+	// com/github/getting-started-with-github/githubs-products)."
+	// Deletes a self-hosted runner group for an organization.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	//
+	// DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}
+	ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerGroupFromOrgParams) error
+	// ActionsDeleteWorkflowRun invokes actions/delete-workflow-run operation.
+	//
+	// Delete a specific workflow run. Anyone with write access to the repository can use this endpoint.
+	// If the repository is
+	// private you must use an access token with the `repo` scope. GitHub Apps must have the
+	// `actions:write` permission to use
+	// this endpoint.
+	//
+	// DELETE /repos/{owner}/{repo}/actions/runs/{run_id}
+	ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDeleteWorkflowRunParams) error
+	// ActionsDeleteWorkflowRunLogs invokes actions/delete-workflow-run-logs operation.
+	//
+	// Deletes all logs for a workflow run. You must authenticate using an access token with the `repo`
+	// scope to use this endpoint. GitHub Apps must have the `actions:write` permission to use this
+	// endpoint.
+	//
+	// DELETE /repos/{owner}/{repo}/actions/runs/{run_id}/logs
+	ActionsDeleteWorkflowRunLogs(ctx context.Context, params ActionsDeleteWorkflowRunLogsParams) error
+	// ActionsDisableSelectedRepositoryGithubActionsOrganization invokes actions/disable-selected-repository-github-actions-organization operation.
+	//
+	// Removes a repository from the list of selected repositories that are enabled for GitHub Actions in
+	// an organization. To use this endpoint, the organization permission policy for
+	// `enabled_repositories` must be configured to `selected`. For more information, see "[Set GitHub
+	// Actions permissions for an organization](#set-github-actions-permissions-for-an-organization)."
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	// GitHub Apps must have the `administration` organization permission to use this API.
+	//
+	// DELETE /orgs/{org}/actions/permissions/repositories/{repository_id}
+	ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams) error
+	// ActionsDownloadArtifact invokes actions/download-artifact operation.
+	//
+	// Gets a redirect URL to download an archive for a repository. This URL expires after 1 minute. Look
+	// for `Location:` in
+	// the response header to find the URL for the download. The `:archive_format` must be `zip`. Anyone
+	// with read access to
+	// the repository can use this endpoint. If the repository is private you must use an access token
+	// with the `repo` scope.
+	// GitHub Apps must have the `actions:read` permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}
+	ActionsDownloadArtifact(ctx context.Context, params ActionsDownloadArtifactParams) (*ActionsDownloadArtifactFound, error)
+	// ActionsDownloadJobLogsForWorkflowRun invokes actions/download-job-logs-for-workflow-run operation.
+	//
+	// Gets a redirect URL to download a plain text file of logs for a workflow job. This link expires
+	// after 1 minute. Look
+	// for `Location:` in the response header to find the URL for the download. Anyone with read access
+	// to the repository can
+	// use this endpoint. If the repository is private you must use an access token with the `repo` scope.
+	//  GitHub Apps must
+	// have the `actions:read` permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs
+	ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, params ActionsDownloadJobLogsForWorkflowRunParams) (*ActionsDownloadJobLogsForWorkflowRunFound, error)
+	// ActionsDownloadWorkflowRunLogs invokes actions/download-workflow-run-logs operation.
+	//
+	// Gets a redirect URL to download an archive of log files for a workflow run. This link expires
+	// after 1 minute. Look for
+	// `Location:` in the response header to find the URL for the download. Anyone with read access to
+	// the repository can use
+	// this endpoint. If the repository is private you must use an access token with the `repo` scope.
+	// GitHub Apps must have
+	// the `actions:read` permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/runs/{run_id}/logs
+	ActionsDownloadWorkflowRunLogs(ctx context.Context, params ActionsDownloadWorkflowRunLogsParams) (*ActionsDownloadWorkflowRunLogsFound, error)
+	// ActionsEnableSelectedRepositoryGithubActionsOrganization invokes actions/enable-selected-repository-github-actions-organization operation.
+	//
+	// Adds a repository to the list of selected repositories that are enabled for GitHub Actions in an
+	// organization. To use this endpoint, the organization permission policy for `enabled_repositories`
+	// must be must be configured to `selected`. For more information, see "[Set GitHub Actions
+	// permissions for an organization](#set-github-actions-permissions-for-an-organization)."
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	// GitHub Apps must have the `administration` organization permission to use this API.
+	//
+	// PUT /orgs/{org}/actions/permissions/repositories/{repository_id}
+	ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams) error
+	// ActionsGetAllowedActionsOrganization invokes actions/get-allowed-actions-organization operation.
+	//
+	// Gets the selected actions that are allowed in an organization. To use this endpoint, the
+	// organization permission policy for `allowed_actions` must be configured to `selected`. For more
+	// information, see "[Set GitHub Actions permissions for an
+	// organization](#set-github-actions-permissions-for-an-organization).""
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	// GitHub Apps must have the `administration` organization permission to use this API.
+	//
+	// GET /orgs/{org}/actions/permissions/selected-actions
+	ActionsGetAllowedActionsOrganization(ctx context.Context, params ActionsGetAllowedActionsOrganizationParams) (*SelectedActions, error)
+	// ActionsGetAllowedActionsRepository invokes actions/get-allowed-actions-repository operation.
+	//
+	// Gets the settings for selected actions that are allowed in a repository. To use this endpoint, the
+	// repository policy for `allowed_actions` must be configured to `selected`. For more information,
+	// see "[Set GitHub Actions permissions for a
+	// repository](#set-github-actions-permissions-for-a-repository)."
+	// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub
+	// Apps must have the `administration` repository permission to use this API.
+	//
+	// GET /repos/{owner}/{repo}/actions/permissions/selected-actions
+	ActionsGetAllowedActionsRepository(ctx context.Context, params ActionsGetAllowedActionsRepositoryParams) (*SelectedActions, error)
+	// ActionsGetArtifact invokes actions/get-artifact operation.
+	//
+	// Gets a specific artifact for a workflow run. Anyone with read access to the repository can use
+	// this endpoint. If the repository is private you must use an access token with the `repo` scope.
+	// GitHub Apps must have the `actions:read` permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
+	ActionsGetArtifact(ctx context.Context, params ActionsGetArtifactParams) (*Artifact, error)
+	// ActionsGetEnvironmentPublicKey invokes actions/get-environment-public-key operation.
+	//
+	// Get the public key for an environment, which you need to encrypt environment secrets. You need to
+	// encrypt a secret before you can create or update secrets. Anyone with read access to the
+	// repository can use this endpoint. If the repository is private you must use an access token with
+	// the `repo` scope. GitHub Apps must have the `secrets` repository permission to use this endpoint.
+	//
+	// GET /repositories/{repository_id}/environments/{environment_name}/secrets/public-key
+	ActionsGetEnvironmentPublicKey(ctx context.Context, params ActionsGetEnvironmentPublicKeyParams) (*ActionsPublicKey, error)
+	// ActionsGetEnvironmentSecret invokes actions/get-environment-secret operation.
+	//
+	// Gets a single environment secret without revealing its encrypted value. You must authenticate
+	// using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the
+	// `secrets` repository permission to use this endpoint.
+	//
+	// GET /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
+	ActionsGetEnvironmentSecret(ctx context.Context, params ActionsGetEnvironmentSecretParams) (*ActionsSecret, error)
+	// ActionsGetGithubActionsPermissionsOrganization invokes actions/get-github-actions-permissions-organization operation.
+	//
+	// Gets the GitHub Actions permissions policy for repositories and allowed actions in an organization.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	// GitHub Apps must have the `administration` organization permission to use this API.
+	//
+	// GET /orgs/{org}/actions/permissions
+	ActionsGetGithubActionsPermissionsOrganization(ctx context.Context, params ActionsGetGithubActionsPermissionsOrganizationParams) (*ActionsOrganizationPermissions, error)
+	// ActionsGetGithubActionsPermissionsRepository invokes actions/get-github-actions-permissions-repository operation.
+	//
+	// Gets the GitHub Actions permissions policy for a repository, including whether GitHub Actions is
+	// enabled and the actions allowed to run in the repository.
+	// You must authenticate using an access token with the `repo` scope to use this
+	// endpoint. GitHub Apps must have the `administration` repository permission to use this API.
+	//
+	// GET /repos/{owner}/{repo}/actions/permissions
+	ActionsGetGithubActionsPermissionsRepository(ctx context.Context, params ActionsGetGithubActionsPermissionsRepositoryParams) (*ActionsRepositoryPermissions, error)
+	// ActionsGetJobForWorkflowRun invokes actions/get-job-for-workflow-run operation.
+	//
+	// Gets a specific job in a workflow run. Anyone with read access to the repository can use this
+	// endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub
+	// Apps must have the `actions:read` permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/jobs/{job_id}
+	ActionsGetJobForWorkflowRun(ctx context.Context, params ActionsGetJobForWorkflowRunParams) (*Job, error)
+	// ActionsGetOrgPublicKey invokes actions/get-org-public-key operation.
+	//
+	// Gets your public key, which you need to encrypt secrets. You need to encrypt a secret before you
+	// can create or update secrets. You must authenticate using an access token with the `admin:org`
+	// scope to use this endpoint. GitHub Apps must have the `secrets` organization permission to use
+	// this endpoint.
+	//
+	// GET /orgs/{org}/actions/secrets/public-key
+	ActionsGetOrgPublicKey(ctx context.Context, params ActionsGetOrgPublicKeyParams) (*ActionsPublicKey, error)
+	// ActionsGetOrgSecret invokes actions/get-org-secret operation.
+	//
+	// Gets a single organization secret without revealing its encrypted value. You must authenticate
+	// using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the
+	// `secrets` organization permission to use this endpoint.
+	//
+	// GET /orgs/{org}/actions/secrets/{secret_name}
+	ActionsGetOrgSecret(ctx context.Context, params ActionsGetOrgSecretParams) (*OrganizationActionsSecret, error)
+	// ActionsGetRepoPublicKey invokes actions/get-repo-public-key operation.
+	//
+	// Gets your public key, which you need to encrypt secrets. You need to encrypt a secret before you
+	// can create or update secrets. Anyone with read access to the repository can use this endpoint. If
+	// the repository is private you must use an access token with the `repo` scope. GitHub Apps must
+	// have the `secrets` repository permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/secrets/public-key
+	ActionsGetRepoPublicKey(ctx context.Context, params ActionsGetRepoPublicKeyParams) (*ActionsPublicKey, error)
+	// ActionsGetRepoSecret invokes actions/get-repo-secret operation.
+	//
+	// Gets a single repository secret without revealing its encrypted value. You must authenticate using
+	// an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `secrets`
+	// repository permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/secrets/{secret_name}
+	ActionsGetRepoSecret(ctx context.Context, params ActionsGetRepoSecretParams) (*ActionsSecret, error)
+	// ActionsGetReviewsForRun invokes actions/get-reviews-for-run operation.
+	//
+	// Anyone with read access to the repository can use this endpoint. If the repository is private, you
+	// must use an access token with the `repo` scope. GitHub Apps must have the `actions:read`
+	// permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/runs/{run_id}/approvals
+	ActionsGetReviewsForRun(ctx context.Context, params ActionsGetReviewsForRunParams) ([]EnvironmentApprovals, error)
+	// ActionsGetSelfHostedRunnerForOrg invokes actions/get-self-hosted-runner-for-org operation.
+	//
+	// Gets a specific self-hosted runner configured in an organization.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	//
+	// GET /orgs/{org}/actions/runners/{runner_id}
+	ActionsGetSelfHostedRunnerForOrg(ctx context.Context, params ActionsGetSelfHostedRunnerForOrgParams) (*Runner, error)
+	// ActionsGetSelfHostedRunnerForRepo invokes actions/get-self-hosted-runner-for-repo operation.
+	//
+	// Gets a specific self-hosted runner configured in a repository.
+	// You must authenticate using an access token with the `repo` scope to use this
+	// endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/runners/{runner_id}
+	ActionsGetSelfHostedRunnerForRepo(ctx context.Context, params ActionsGetSelfHostedRunnerForRepoParams) (*Runner, error)
+	// ActionsGetSelfHostedRunnerGroupForOrg invokes actions/get-self-hosted-runner-group-for-org operation.
+	//
+	// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
+	// information, see "[GitHub's products](https://docs.github.
+	// com/github/getting-started-with-github/githubs-products)."
+	// Gets a specific self-hosted runner group for an organization.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	//
+	// GET /orgs/{org}/actions/runner-groups/{runner_group_id}
+	ActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, params ActionsGetSelfHostedRunnerGroupForOrgParams) (*RunnerGroupsOrg, error)
+	// ActionsGetWorkflowRun invokes actions/get-workflow-run operation.
+	//
+	// Gets a specific workflow run. Anyone with read access to the repository can use this endpoint. If
+	// the repository is private you must use an access token with the `repo` scope. GitHub Apps must
+	// have the `actions:read` permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/runs/{run_id}
+	ActionsGetWorkflowRun(ctx context.Context, params ActionsGetWorkflowRunParams) (*WorkflowRun, error)
+	// ActionsGetWorkflowRunUsage invokes actions/get-workflow-run-usage operation.
+	//
+	// Gets the number of billable minutes and total run time for a specific workflow run. Billable
+	// minutes only apply to workflows in private repositories that use GitHub-hosted runners. Usage is
+	// listed for each GitHub-hosted runner operating system in milliseconds. Any job re-runs are also
+	// included in the usage. The usage does not include the multiplier for macOS and Windows runners and
+	// is not rounded up to the nearest whole minute. For more information, see "[Managing billing for
+	// GitHub Actions](https://help.github.
+	// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+	// Anyone with read access to the repository can use this endpoint. If the repository is private you
+	// must use an access token with the `repo` scope. GitHub Apps must have the `actions:read`
+	// permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/runs/{run_id}/timing
+	ActionsGetWorkflowRunUsage(ctx context.Context, params ActionsGetWorkflowRunUsageParams) (*WorkflowRunUsage, error)
+	// ActionsListArtifactsForRepo invokes actions/list-artifacts-for-repo operation.
+	//
+	// Lists all artifacts for a repository. Anyone with read access to the repository can use this
+	// endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub
+	// Apps must have the `actions:read` permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/artifacts
+	ActionsListArtifactsForRepo(ctx context.Context, params ActionsListArtifactsForRepoParams) (*ActionsListArtifactsForRepoOKHeaders, error)
+	// ActionsListEnvironmentSecrets invokes actions/list-environment-secrets operation.
+	//
+	// Lists all secrets available in an environment without revealing their encrypted values. You must
+	// authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must
+	// have the `secrets` repository permission to use this endpoint.
+	//
+	// GET /repositories/{repository_id}/environments/{environment_name}/secrets
+	ActionsListEnvironmentSecrets(ctx context.Context, params ActionsListEnvironmentSecretsParams) (*ActionsListEnvironmentSecretsOKHeaders, error)
+	// ActionsListJobsForWorkflowRun invokes actions/list-jobs-for-workflow-run operation.
+	//
+	// Lists jobs for a workflow run. Anyone with read access to the repository can use this endpoint. If
+	// the repository is private you must use an access token with the `repo` scope. GitHub Apps must
+	// have the `actions:read` permission to use this endpoint. You can use parameters to narrow the list
+	// of results. For more information about using parameters, see [Parameters](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#parameters).
+	//
+	// GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs
+	ActionsListJobsForWorkflowRun(ctx context.Context, params ActionsListJobsForWorkflowRunParams) (*ActionsListJobsForWorkflowRunOKHeaders, error)
+	// ActionsListOrgSecrets invokes actions/list-org-secrets operation.
+	//
+	// Lists all secrets available in an organization without revealing their encrypted values. You must
+	// authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps
+	// must have the `secrets` organization permission to use this endpoint.
+	//
+	// GET /orgs/{org}/actions/secrets
+	ActionsListOrgSecrets(ctx context.Context, params ActionsListOrgSecretsParams) (*ActionsListOrgSecretsOKHeaders, error)
+	// ActionsListRepoAccessToSelfHostedRunnerGroupInOrg invokes actions/list-repo-access-to-self-hosted-runner-group-in-org operation.
+	//
+	// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud and GitHub
+	// Enterprise Server. For more information, see "[GitHub's products](https://docs.github.
+	// com/github/getting-started-with-github/githubs-products)."
+	// Lists the repositories with access to a self-hosted runner group configured in an organization.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	//
+	// GET /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
+	ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams) (*ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK, error)
+	// ActionsListRepoSecrets invokes actions/list-repo-secrets operation.
+	//
+	// Lists all secrets available in a repository without revealing their encrypted values. You must
+	// authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must
+	// have the `secrets` repository permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/secrets
+	ActionsListRepoSecrets(ctx context.Context, params ActionsListRepoSecretsParams) (*ActionsListRepoSecretsOKHeaders, error)
+	// ActionsListRepoWorkflows invokes actions/list-repo-workflows operation.
+	//
+	// Lists the workflows in a repository. Anyone with read access to the repository can use this
+	// endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub
+	// Apps must have the `actions:read` permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/workflows
+	ActionsListRepoWorkflows(ctx context.Context, params ActionsListRepoWorkflowsParams) (*ActionsListRepoWorkflowsOKHeaders, error)
+	// ActionsListRunnerApplicationsForOrg invokes actions/list-runner-applications-for-org operation.
+	//
+	// Lists binaries for the runner application that you can download and run.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	//
+	// GET /orgs/{org}/actions/runners/downloads
+	ActionsListRunnerApplicationsForOrg(ctx context.Context, params ActionsListRunnerApplicationsForOrgParams) ([]RunnerApplication, error)
+	// ActionsListRunnerApplicationsForRepo invokes actions/list-runner-applications-for-repo operation.
+	//
+	// Lists binaries for the runner application that you can download and run.
+	// You must authenticate using an access token with the `repo` scope to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/runners/downloads
+	ActionsListRunnerApplicationsForRepo(ctx context.Context, params ActionsListRunnerApplicationsForRepoParams) ([]RunnerApplication, error)
+	// ActionsListSelectedReposForOrgSecret invokes actions/list-selected-repos-for-org-secret operation.
+	//
+	// Lists all repositories that have been selected when the `visibility` for repository access to a
+	// secret is set to `selected`. You must authenticate using an access token with the `admin:org`
+	// scope to use this endpoint. GitHub Apps must have the `secrets` organization permission to use
+	// this endpoint.
+	//
+	// GET /orgs/{org}/actions/secrets/{secret_name}/repositories
+	ActionsListSelectedReposForOrgSecret(ctx context.Context, params ActionsListSelectedReposForOrgSecretParams) (*ActionsListSelectedReposForOrgSecretOK, error)
+	// ActionsListSelectedRepositoriesEnabledGithubActionsOrganization invokes actions/list-selected-repositories-enabled-github-actions-organization operation.
+	//
+	// Lists the selected repositories that are enabled for GitHub Actions in an organization. To use
+	// this endpoint, the organization permission policy for `enabled_repositories` must be configured to
+	// `selected`. For more information, see "[Set GitHub Actions permissions for an
+	// organization](#set-github-actions-permissions-for-an-organization)."
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	// GitHub Apps must have the `administration` organization permission to use this API.
+	//
+	// GET /orgs/{org}/actions/permissions/repositories
+	ActionsListSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, params ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams) (*ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK, error)
+	// ActionsListSelfHostedRunnerGroupsForOrg invokes actions/list-self-hosted-runner-groups-for-org operation.
+	//
+	// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
+	// information, see "[GitHub's products](https://docs.github.
+	// com/github/getting-started-with-github/githubs-products)."
+	// Lists all self-hosted runner groups configured in an organization and inherited from an enterprise.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	//
+	// GET /orgs/{org}/actions/runner-groups
+	ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, params ActionsListSelfHostedRunnerGroupsForOrgParams) (*ActionsListSelfHostedRunnerGroupsForOrgOK, error)
+	// ActionsListSelfHostedRunnersForOrg invokes actions/list-self-hosted-runners-for-org operation.
+	//
+	// Lists all self-hosted runners configured in an organization.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	//
+	// GET /orgs/{org}/actions/runners
+	ActionsListSelfHostedRunnersForOrg(ctx context.Context, params ActionsListSelfHostedRunnersForOrgParams) (*ActionsListSelfHostedRunnersForOrgOKHeaders, error)
+	// ActionsListSelfHostedRunnersForRepo invokes actions/list-self-hosted-runners-for-repo operation.
+	//
+	// Lists all self-hosted runners configured in a repository. You must authenticate using an access
+	// token with the `repo` scope to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/runners
+	ActionsListSelfHostedRunnersForRepo(ctx context.Context, params ActionsListSelfHostedRunnersForRepoParams) (*ActionsListSelfHostedRunnersForRepoOKHeaders, error)
+	// ActionsListSelfHostedRunnersInGroupForOrg invokes actions/list-self-hosted-runners-in-group-for-org operation.
+	//
+	// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
+	// information, see "[GitHub's products](https://docs.github.
+	// com/github/getting-started-with-github/githubs-products)."
+	// Lists self-hosted runners that are in a specific organization group.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	//
+	// GET /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
+	ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, params ActionsListSelfHostedRunnersInGroupForOrgParams) (*ActionsListSelfHostedRunnersInGroupForOrgOKHeaders, error)
+	// ActionsListWorkflowRunArtifacts invokes actions/list-workflow-run-artifacts operation.
+	//
+	// Lists artifacts for a workflow run. Anyone with read access to the repository can use this
+	// endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub
+	// Apps must have the `actions:read` permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/runs/{run_id}/artifacts
+	ActionsListWorkflowRunArtifacts(ctx context.Context, params ActionsListWorkflowRunArtifactsParams) (*ActionsListWorkflowRunArtifactsOKHeaders, error)
+	// ActionsListWorkflowRunsForRepo invokes actions/list-workflow-runs-for-repo operation.
+	//
+	// Lists all workflow runs for a repository. You can use parameters to narrow the list of results.
+	// For more information about using parameters, see [Parameters](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#parameters).
+	// Anyone with read access to the repository can use this endpoint. If the repository is private you
+	// must use an access token with the `repo` scope. GitHub Apps must have the `actions:read`
+	// permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/runs
+	ActionsListWorkflowRunsForRepo(ctx context.Context, params ActionsListWorkflowRunsForRepoParams) (*ActionsListWorkflowRunsForRepoOKHeaders, error)
+	// ActionsReRunWorkflow invokes actions/re-run-workflow operation.
+	//
+	// **Deprecation Notice:** This endpoint is deprecated.
+	// We recommend migrating your existing code to use the new [retry workflow](https://docs.github.
+	// com/rest/reference/actions#retry-a-workflow) endpoint.
+	// Re-runs your workflow run using its `id`. You must authenticate using
+	// an access token with the `repo` scope to use this endpoint. GitHub Apps must have
+	// the `actions:write` permission to use this endpoint.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// POST /repos/{owner}/{repo}/actions/runs/{run_id}/rerun
+	ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWorkflowParams) error
+	// ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg invokes actions/remove-repo-access-to-self-hosted-runner-group-in-org operation.
+	//
+	// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
+	// information, see "[GitHub's products](https://docs.github.
+	// com/github/getting-started-with-github/githubs-products)."
+	// Removes a repository from the list of selected repositories that can access a self-hosted runner
+	// group. The runner group must have `visibility` set to `selected`. For more information, see
+	// "[Create a self-hosted runner group for an
+	// organization](#create-a-self-hosted-runner-group-for-an-organization)."
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	//
+	// DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
+	ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams) error
+	// ActionsRemoveSelectedRepoFromOrgSecret invokes actions/remove-selected-repo-from-org-secret operation.
+	//
+	// Removes a repository from an organization secret when the `visibility` for repository access is
+	// set to `selected`. The visibility is set when you [Create or update an organization
+	// secret](https://docs.github.com/rest/reference/actions#create-or-update-an-organization-secret).
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	// GitHub Apps must have the `secrets` organization permission to use this endpoint.
+	//
+	// DELETE /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}
+	ActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context, params ActionsRemoveSelectedRepoFromOrgSecretParams) (ActionsRemoveSelectedRepoFromOrgSecretRes, error)
+	// ActionsRemoveSelfHostedRunnerFromGroupForOrg invokes actions/remove-self-hosted-runner-from-group-for-org operation.
+	//
+	// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
+	// information, see "[GitHub's products](https://docs.github.
+	// com/github/getting-started-with-github/githubs-products)."
+	// Removes a self-hosted runner from a group configured in an organization. The runner is then
+	// returned to the default group.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	//
+	// DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
+	ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Context, params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams) error
+	// ActionsRetryWorkflow invokes actions/retry-workflow operation.
+	//
+	// Retry your workflow run using its `id`. You must authenticate using an access token with the
+	// `repo` scope to use this endpoint. GitHub Apps must have the `actions:write` permission to use
+	// this endpoint.
+	//
+	// POST /repos/{owner}/{repo}/actions/runs/{run_id}/retry
+	ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWorkflowParams) error
+	// ActionsReviewPendingDeploymentsForRun invokes actions/review-pending-deployments-for-run operation.
+	//
+	// Approve or reject pending deployments that are waiting on approval by a required reviewer.
+	// Anyone with read access to the repository contents and deployments can use this endpoint.
+	//
+	// POST /repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments
+	ActionsReviewPendingDeploymentsForRun(ctx context.Context, request *ActionsReviewPendingDeploymentsForRunReq, params ActionsReviewPendingDeploymentsForRunParams) ([]Deployment, error)
+	// ActionsSetAllowedActionsOrganization invokes actions/set-allowed-actions-organization operation.
+	//
+	// Sets the actions that are allowed in an organization. To use this endpoint, the organization
+	// permission policy for `allowed_actions` must be configured to `selected`. For more information,
+	// see "[Set GitHub Actions permissions for an
+	// organization](#set-github-actions-permissions-for-an-organization)."
+	// If the organization belongs to an enterprise that has `selected` actions set at the enterprise
+	// level, then you cannot override any of the enterprise's allowed actions settings.
+	// To use the `patterns_allowed` setting for private repositories, the organization must belong to an
+	// enterprise. If the organization does not belong to an enterprise, then the `patterns_allowed`
+	// setting only applies to public repositories in the organization.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	// GitHub Apps must have the `administration` organization permission to use this API.
+	//
+	// PUT /orgs/{org}/actions/permissions/selected-actions
+	ActionsSetAllowedActionsOrganization(ctx context.Context, request OptSelectedActions, params ActionsSetAllowedActionsOrganizationParams) error
+	// ActionsSetAllowedActionsRepository invokes actions/set-allowed-actions-repository operation.
+	//
+	// Sets the actions that are allowed in a repository. To use this endpoint, the repository permission
+	// policy for `allowed_actions` must be configured to `selected`. For more information, see "[Set
+	// GitHub Actions permissions for a repository](#set-github-actions-permissions-for-a-repository)."
+	// If the repository belongs to an organization or enterprise that has `selected` actions set at the
+	// organization or enterprise levels, then you cannot override any of the allowed actions settings.
+	// To use the `patterns_allowed` setting for private repositories, the repository must belong to an
+	// enterprise. If the repository does not belong to an enterprise, then the `patterns_allowed`
+	// setting only applies to public repositories.
+	// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub
+	// Apps must have the `administration` repository permission to use this API.
+	//
+	// PUT /repos/{owner}/{repo}/actions/permissions/selected-actions
+	ActionsSetAllowedActionsRepository(ctx context.Context, request OptSelectedActions, params ActionsSetAllowedActionsRepositoryParams) error
+	// ActionsSetGithubActionsPermissionsOrganization invokes actions/set-github-actions-permissions-organization operation.
+	//
+	// Sets the GitHub Actions permissions policy for repositories and allowed actions in an organization.
+	// If the organization belongs to an enterprise that has set restrictive permissions at the
+	// enterprise level, such as `allowed_actions` to `selected` actions, then you cannot override them
+	// for the organization.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	// GitHub Apps must have the `administration` organization permission to use this API.
+	//
+	// PUT /orgs/{org}/actions/permissions
+	ActionsSetGithubActionsPermissionsOrganization(ctx context.Context, request *ActionsSetGithubActionsPermissionsOrganizationReq, params ActionsSetGithubActionsPermissionsOrganizationParams) error
+	// ActionsSetGithubActionsPermissionsRepository invokes actions/set-github-actions-permissions-repository operation.
+	//
+	// Sets the GitHub Actions permissions policy for enabling GitHub Actions and allowed actions in the
+	// repository.
+	// If the repository belongs to an organization or enterprise that has set restrictive permissions at
+	// the organization or enterprise levels, such as `allowed_actions` to `selected` actions, then you
+	// cannot override them for the repository.
+	// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub
+	// Apps must have the `administration` repository permission to use this API.
+	//
+	// PUT /repos/{owner}/{repo}/actions/permissions
+	ActionsSetGithubActionsPermissionsRepository(ctx context.Context, request *ActionsSetGithubActionsPermissionsRepositoryReq, params ActionsSetGithubActionsPermissionsRepositoryParams) error
+	// ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg invokes actions/set-repo-access-to-self-hosted-runner-group-in-org operation.
+	//
+	// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
+	// information, see "[GitHub's products](https://docs.github.
+	// com/github/getting-started-with-github/githubs-products)."
+	// Replaces the list of repositories that have access to a self-hosted runner group configured in an
+	// organization.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	//
+	// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
+	ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, request *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq, params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams) error
+	// ActionsSetSelectedReposForOrgSecret invokes actions/set-selected-repos-for-org-secret operation.
+	//
+	// Replaces all repositories for an organization secret when the `visibility` for repository access
+	// is set to `selected`. The visibility is set when you [Create or update an organization
+	// secret](https://docs.github.com/rest/reference/actions#create-or-update-an-organization-secret).
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	// GitHub Apps must have the `secrets` organization permission to use this endpoint.
+	//
+	// PUT /orgs/{org}/actions/secrets/{secret_name}/repositories
+	ActionsSetSelectedReposForOrgSecret(ctx context.Context, request *ActionsSetSelectedReposForOrgSecretReq, params ActionsSetSelectedReposForOrgSecretParams) error
+	// ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization invokes actions/set-selected-repositories-enabled-github-actions-organization operation.
+	//
+	// Replaces the list of selected repositories that are enabled for GitHub Actions in an organization.
+	// To use this endpoint, the organization permission policy for `enabled_repositories` must be
+	// configured to `selected`. For more information, see "[Set GitHub Actions permissions for an
+	// organization](#set-github-actions-permissions-for-an-organization)."
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	// GitHub Apps must have the `administration` organization permission to use this API.
+	//
+	// PUT /orgs/{org}/actions/permissions/repositories
+	ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, request *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq, params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams) error
+	// ActionsSetSelfHostedRunnersInGroupForOrg invokes actions/set-self-hosted-runners-in-group-for-org operation.
+	//
+	// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
+	// information, see "[GitHub's products](https://docs.github.
+	// com/github/getting-started-with-github/githubs-products)."
+	// Replaces the list of self-hosted runners that are part of an organization runner group.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	//
+	// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
+	ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, request *ActionsSetSelfHostedRunnersInGroupForOrgReq, params ActionsSetSelfHostedRunnersInGroupForOrgParams) error
+	// ActionsUpdateSelfHostedRunnerGroupForOrg invokes actions/update-self-hosted-runner-group-for-org operation.
+	//
+	// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
+	// information, see "[GitHub's products](https://docs.github.
+	// com/github/getting-started-with-github/githubs-products)."
+	// Updates the `name` and `visibility` of a self-hosted runner group in an organization.
+	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+	//
+	// PATCH /orgs/{org}/actions/runner-groups/{runner_group_id}
+	ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, request *ActionsUpdateSelfHostedRunnerGroupForOrgReq, params ActionsUpdateSelfHostedRunnerGroupForOrgParams) (*RunnerGroupsOrg, error)
+	// ActivityCheckRepoIsStarredByAuthenticatedUser invokes activity/check-repo-is-starred-by-authenticated-user operation.
+	//
+	// Check if a repository is starred by the authenticated user.
+	//
+	// GET /user/starred/{owner}/{repo}
+	ActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.Context, params ActivityCheckRepoIsStarredByAuthenticatedUserParams) (ActivityCheckRepoIsStarredByAuthenticatedUserRes, error)
+	// ActivityDeleteRepoSubscription invokes activity/delete-repo-subscription operation.
+	//
+	// This endpoint should only be used to stop watching a repository. To control whether or not you
+	// wish to receive notifications from a repository, [set the repository's subscription
+	// manually](https://docs.github.com/rest/reference/activity#set-a-repository-subscription).
+	//
+	// DELETE /repos/{owner}/{repo}/subscription
+	ActivityDeleteRepoSubscription(ctx context.Context, params ActivityDeleteRepoSubscriptionParams) error
+	// ActivityDeleteThreadSubscription invokes activity/delete-thread-subscription operation.
+	//
+	// Mutes all future notifications for a conversation until you comment on the thread or get an
+	// **@mention**. If you are watching the repository of the thread, you will still receive
+	// notifications. To ignore future notifications for a repository you are watching, use the [Set a
+	// thread subscription](https://docs.github.com/rest/reference/activity#set-a-thread-subscription)
+	// endpoint and set `ignore` to `true`.
+	//
+	// DELETE /notifications/threads/{thread_id}/subscription
+	ActivityDeleteThreadSubscription(ctx context.Context, params ActivityDeleteThreadSubscriptionParams) (ActivityDeleteThreadSubscriptionRes, error)
+	// ActivityGetFeeds invokes activity/get-feeds operation.
+	//
+	// GitHub provides several timeline resources in [Atom](http://en.wikipedia.org/wiki/Atom_(standard))
+	// format. The Feeds API lists all the feeds available to the authenticated user:
+	// *   **Timeline**: The GitHub global public timeline
+	// *   **User**: The public timeline for any user, using [URI template](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#hypermedia)
+	// *   **Current user public**: The public timeline for the authenticated user
+	// *   **Current user**: The private timeline for the authenticated user
+	// *   **Current user actor**: The private timeline for activity created by the authenticated user
+	// *   **Current user organizations**: The private timeline for the organizations the authenticated
+	// user is a member of.
+	// *   **Security advisories**: A collection of public announcements that provide information about
+	// security-related vulnerabilities in software on GitHub.
+	// **Note**: Private feeds are only returned when [authenticating via Basic Auth](https://docs.github.
+	// com/rest/overview/other-authentication-methods#basic-authentication) since current feed URIs use
+	// the older, non revocable auth tokens.
+	//
+	// GET /feeds
+	ActivityGetFeeds(ctx context.Context) (*Feed, error)
+	// ActivityGetRepoSubscription invokes activity/get-repo-subscription operation.
+	//
+	// Get a repository subscription.
+	//
+	// GET /repos/{owner}/{repo}/subscription
+	ActivityGetRepoSubscription(ctx context.Context, params ActivityGetRepoSubscriptionParams) (ActivityGetRepoSubscriptionRes, error)
+	// ActivityGetThread invokes activity/get-thread operation.
+	//
+	// Get a thread.
+	//
+	// GET /notifications/threads/{thread_id}
+	ActivityGetThread(ctx context.Context, params ActivityGetThreadParams) (ActivityGetThreadRes, error)
+	// ActivityGetThreadSubscriptionForAuthenticatedUser invokes activity/get-thread-subscription-for-authenticated-user operation.
+	//
+	// This checks to see if the current user is subscribed to a thread. You can also [get a repository
+	// subscription](https://docs.github.com/rest/reference/activity#get-a-repository-subscription).
+	// Note that subscriptions are only generated if a user is participating in a conversation--for
+	// example, they've replied to the thread, were **@mentioned**, or manually subscribe to a thread.
+	//
+	// GET /notifications/threads/{thread_id}/subscription
+	ActivityGetThreadSubscriptionForAuthenticatedUser(ctx context.Context, params ActivityGetThreadSubscriptionForAuthenticatedUserParams) (ActivityGetThreadSubscriptionForAuthenticatedUserRes, error)
+	// ActivityListEventsForAuthenticatedUser invokes activity/list-events-for-authenticated-user operation.
+	//
+	// If you are authenticated as the given user, you will see your private events. Otherwise, you'll
+	// only see public events.
+	//
+	// GET /users/{username}/events
+	ActivityListEventsForAuthenticatedUser(ctx context.Context, params ActivityListEventsForAuthenticatedUserParams) ([]Event, error)
+	// ActivityListNotificationsForAuthenticatedUser invokes activity/list-notifications-for-authenticated-user operation.
+	//
+	// List all notifications for the current user, sorted by most recently updated.
+	//
+	// GET /notifications
+	ActivityListNotificationsForAuthenticatedUser(ctx context.Context, params ActivityListNotificationsForAuthenticatedUserParams) (ActivityListNotificationsForAuthenticatedUserRes, error)
+	// ActivityListOrgEventsForAuthenticatedUser invokes activity/list-org-events-for-authenticated-user operation.
+	//
+	// This is the user's organization dashboard. You must be authenticated as the user to view this.
+	//
+	// GET /users/{username}/events/orgs/{org}
+	ActivityListOrgEventsForAuthenticatedUser(ctx context.Context, params ActivityListOrgEventsForAuthenticatedUserParams) ([]Event, error)
+	// ActivityListPublicEvents invokes activity/list-public-events operation.
+	//
+	// We delay the public events feed by five minutes, which means the most recent event returned by the
+	// public events API actually occurred at least five minutes ago.
+	//
+	// GET /events
+	ActivityListPublicEvents(ctx context.Context, params ActivityListPublicEventsParams) (ActivityListPublicEventsRes, error)
+	// ActivityListPublicEventsForRepoNetwork invokes activity/list-public-events-for-repo-network operation.
+	//
+	// List public events for a network of repositories.
+	//
+	// GET /networks/{owner}/{repo}/events
+	ActivityListPublicEventsForRepoNetwork(ctx context.Context, params ActivityListPublicEventsForRepoNetworkParams) (ActivityListPublicEventsForRepoNetworkRes, error)
+	// ActivityListPublicEventsForUser invokes activity/list-public-events-for-user operation.
+	//
+	// List public events for a user.
+	//
+	// GET /users/{username}/events/public
+	ActivityListPublicEventsForUser(ctx context.Context, params ActivityListPublicEventsForUserParams) ([]Event, error)
+	// ActivityListPublicOrgEvents invokes activity/list-public-org-events operation.
+	//
+	// List public organization events.
+	//
+	// GET /orgs/{org}/events
+	ActivityListPublicOrgEvents(ctx context.Context, params ActivityListPublicOrgEventsParams) ([]Event, error)
+	// ActivityListReceivedEventsForUser invokes activity/list-received-events-for-user operation.
+	//
+	// These are events that you've received by watching repos and following users. If you are
+	// authenticated as the given user, you will see private events. Otherwise, you'll only see public
+	// events.
+	//
+	// GET /users/{username}/received_events
+	ActivityListReceivedEventsForUser(ctx context.Context, params ActivityListReceivedEventsForUserParams) ([]Event, error)
+	// ActivityListReceivedPublicEventsForUser invokes activity/list-received-public-events-for-user operation.
+	//
+	// List public events received by a user.
+	//
+	// GET /users/{username}/received_events/public
+	ActivityListReceivedPublicEventsForUser(ctx context.Context, params ActivityListReceivedPublicEventsForUserParams) ([]Event, error)
+	// ActivityListRepoEvents invokes activity/list-repo-events operation.
+	//
+	// List repository events.
+	//
+	// GET /repos/{owner}/{repo}/events
+	ActivityListRepoEvents(ctx context.Context, params ActivityListRepoEventsParams) ([]Event, error)
+	// ActivityListRepoNotificationsForAuthenticatedUser invokes activity/list-repo-notifications-for-authenticated-user operation.
+	//
+	// List all notifications for the current user.
+	//
+	// GET /repos/{owner}/{repo}/notifications
+	ActivityListRepoNotificationsForAuthenticatedUser(ctx context.Context, params ActivityListRepoNotificationsForAuthenticatedUserParams) (*ActivityListRepoNotificationsForAuthenticatedUserOKHeaders, error)
+	// ActivityListReposStarredByAuthenticatedUser invokes activity/list-repos-starred-by-authenticated-user operation.
+	//
+	// Lists repositories the authenticated user has starred.
+	// You can also find out _when_ stars were created by passing the following custom [media
+	// type](https://docs.github.com/rest/overview/media-types/) via the `Accept` header:.
+	//
+	// GET /user/starred
+	ActivityListReposStarredByAuthenticatedUser(ctx context.Context, params ActivityListReposStarredByAuthenticatedUserParams) (ActivityListReposStarredByAuthenticatedUserRes, error)
+	// ActivityListReposWatchedByUser invokes activity/list-repos-watched-by-user operation.
+	//
+	// Lists repositories a user is watching.
+	//
+	// GET /users/{username}/subscriptions
+	ActivityListReposWatchedByUser(ctx context.Context, params ActivityListReposWatchedByUserParams) (*ActivityListReposWatchedByUserOKHeaders, error)
+	// ActivityListWatchedReposForAuthenticatedUser invokes activity/list-watched-repos-for-authenticated-user operation.
+	//
+	// Lists repositories the authenticated user is watching.
+	//
+	// GET /user/subscriptions
+	ActivityListWatchedReposForAuthenticatedUser(ctx context.Context, params ActivityListWatchedReposForAuthenticatedUserParams) (ActivityListWatchedReposForAuthenticatedUserRes, error)
+	// ActivityListWatchersForRepo invokes activity/list-watchers-for-repo operation.
+	//
+	// Lists the people watching the specified repository.
+	//
+	// GET /repos/{owner}/{repo}/subscribers
+	ActivityListWatchersForRepo(ctx context.Context, params ActivityListWatchersForRepoParams) (*ActivityListWatchersForRepoOKHeaders, error)
+	// ActivityMarkNotificationsAsRead invokes activity/mark-notifications-as-read operation.
+	//
+	// Marks all notifications as "read" removes it from the [default view on GitHub](https://github.
+	// com/notifications). If the number of notifications is too large to complete in one request, you
+	// will receive a `202 Accepted` status and GitHub will run an asynchronous process to mark
+	// notifications as "read." To check whether any "unread" notifications remain, you can use the [List
+	// notifications for the authenticated user](https://docs.github.
+	// com/rest/reference/activity#list-notifications-for-the-authenticated-user) endpoint and pass the
+	// query parameter `all=false`.
+	//
+	// PUT /notifications
+	ActivityMarkNotificationsAsRead(ctx context.Context, request OptActivityMarkNotificationsAsReadReq) (ActivityMarkNotificationsAsReadRes, error)
+	// ActivityMarkRepoNotificationsAsRead invokes activity/mark-repo-notifications-as-read operation.
+	//
+	// Marks all notifications in a repository as "read" removes them from the [default view on
+	// GitHub](https://github.com/notifications). If the number of notifications is too large to complete
+	// in one request, you will receive a `202 Accepted` status and GitHub will run an asynchronous
+	// process to mark notifications as "read." To check whether any "unread" notifications remain, you
+	// can use the [List repository notifications for the authenticated user](https://docs.github.
+	// com/rest/reference/activity#list-repository-notifications-for-the-authenticated-user) endpoint and
+	// pass the query parameter `all=false`.
+	//
+	// PUT /repos/{owner}/{repo}/notifications
+	ActivityMarkRepoNotificationsAsRead(ctx context.Context, request OptActivityMarkRepoNotificationsAsReadReq, params ActivityMarkRepoNotificationsAsReadParams) (ActivityMarkRepoNotificationsAsReadRes, error)
+	// ActivityMarkThreadAsRead invokes activity/mark-thread-as-read operation.
+	//
+	// Mark a thread as read.
+	//
+	// PATCH /notifications/threads/{thread_id}
+	ActivityMarkThreadAsRead(ctx context.Context, params ActivityMarkThreadAsReadParams) (ActivityMarkThreadAsReadRes, error)
+	// ActivitySetRepoSubscription invokes activity/set-repo-subscription operation.
+	//
+	// If you would like to watch a repository, set `subscribed` to `true`. If you would like to ignore
+	// notifications made within a repository, set `ignored` to `true`. If you would like to stop
+	// watching a repository, [delete the repository's subscription](https://docs.github.
+	// com/rest/reference/activity#delete-a-repository-subscription) completely.
+	//
+	// PUT /repos/{owner}/{repo}/subscription
+	ActivitySetRepoSubscription(ctx context.Context, request OptActivitySetRepoSubscriptionReq, params ActivitySetRepoSubscriptionParams) (*RepositorySubscription, error)
+	// ActivitySetThreadSubscription invokes activity/set-thread-subscription operation.
+	//
+	// If you are watching a repository, you receive notifications for all threads by default. Use this
+	// endpoint to ignore future notifications for threads until you comment on the thread or get an
+	// **@mention**.
+	// You can also use this endpoint to subscribe to threads that you are currently not receiving
+	// notifications for or to subscribed to threads that you have previously ignored.
+	// Unsubscribing from a conversation in a repository that you are not watching is functionally
+	// equivalent to the [Delete a thread subscription](https://docs.github.
+	// com/rest/reference/activity#delete-a-thread-subscription) endpoint.
+	//
+	// PUT /notifications/threads/{thread_id}/subscription
+	ActivitySetThreadSubscription(ctx context.Context, request OptActivitySetThreadSubscriptionReq, params ActivitySetThreadSubscriptionParams) (ActivitySetThreadSubscriptionRes, error)
+	// ActivityStarRepoForAuthenticatedUser invokes activity/star-repo-for-authenticated-user operation.
+	//
+	// Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more
+	// information, see "[HTTP verbs](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#http-verbs).".
+	//
+	// PUT /user/starred/{owner}/{repo}
+	ActivityStarRepoForAuthenticatedUser(ctx context.Context, params ActivityStarRepoForAuthenticatedUserParams) (ActivityStarRepoForAuthenticatedUserRes, error)
+	// ActivityUnstarRepoForAuthenticatedUser invokes activity/unstar-repo-for-authenticated-user operation.
+	//
+	// Unstar a repository for the authenticated user.
+	//
+	// DELETE /user/starred/{owner}/{repo}
+	ActivityUnstarRepoForAuthenticatedUser(ctx context.Context, params ActivityUnstarRepoForAuthenticatedUserParams) (ActivityUnstarRepoForAuthenticatedUserRes, error)
+	// AppsAddRepoToInstallation invokes apps/add-repo-to-installation operation.
+	//
+	// Add a single repository to an installation. The authenticated user must have admin access to the
+	// repository.
+	// You must use a personal access token (which you can create via the [command line](https://docs.
+	// github.com/github/authenticating-to-github/creating-a-personal-access-token) or [Basic
+	// Authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#basic-authentication)) to access this endpoint.
+	//
+	// PUT /user/installations/{installation_id}/repositories/{repository_id}
+	AppsAddRepoToInstallation(ctx context.Context, params AppsAddRepoToInstallationParams) (AppsAddRepoToInstallationRes, error)
+	// AppsCheckToken invokes apps/check-token operation.
+	//
+	// OAuth applications can use a special API method for checking OAuth token validity without
+	// exceeding the normal rate limits for failed login attempts. Authentication works differently with
+	// this particular endpoint. You must use [Basic Authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#basic-authentication) to use this endpoint, where
+	// the username is the OAuth application `client_id` and the password is its `client_secret`. Invalid
+	// tokens will return `404 NOT FOUND`.
+	//
+	// POST /applications/{client_id}/token
+	AppsCheckToken(ctx context.Context, request *AppsCheckTokenReq, params AppsCheckTokenParams) (AppsCheckTokenRes, error)
+	// AppsCreateContentAttachment invokes apps/create-content-attachment operation.
+	//
+	// Creates an attachment under a content reference URL in the body or comment of an issue or pull
+	// request. Use the `id` and `repository` `full_name` of the content reference from the
+	// [`content_reference` event](https://docs.github.com/webhooks/event-payloads/#content_reference) to
+	// create an attachment.
+	// The app must create a content attachment within six hours of the content reference URL being
+	// posted. See "[Using content attachments](https://docs.github.com/apps/using-content-attachments/)"
+	// for details about content attachments.
+	// You must use an [installation access token](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-an-installation)
+	// to access this endpoint.
+	//
+	// POST /repos/{owner}/{repo}/content_references/{content_reference_id}/attachments
+	AppsCreateContentAttachment(ctx context.Context, request *AppsCreateContentAttachmentReq, params AppsCreateContentAttachmentParams) (AppsCreateContentAttachmentRes, error)
+	// AppsCreateFromManifest invokes apps/create-from-manifest operation.
+	//
+	// Use this endpoint to complete the handshake necessary when implementing the [GitHub App Manifest
+	// flow](https://docs.github.com/apps/building-github-apps/creating-github-apps-from-a-manifest/).
+	// When you create a GitHub App with the manifest flow, you receive a temporary `code` used to
+	// retrieve the GitHub App's `id`, `pem` (private key), and `webhook_secret`.
+	//
+	// POST /app-manifests/{code}/conversions
+	AppsCreateFromManifest(ctx context.Context, request *AppsCreateFromManifestReq, params AppsCreateFromManifestParams) (AppsCreateFromManifestRes, error)
+	// AppsCreateInstallationAccessToken invokes apps/create-installation-access-token operation.
+	//
+	// Creates an installation access token that enables a GitHub App to make authenticated API requests
+	// for the app's installation on an organization or individual account. Installation tokens expire
+	// one hour from the time you create them. Using an expired token produces a status code of `401 -
+	// Unauthorized`, and requires creating a new installation token. By default the installation token
+	// has access to all repositories that the installation can access. To restrict the access to
+	// specific repositories, you can provide the `repository_ids` when creating the token. When you omit
+	// `repository_ids`, the response does not contain the `repositories` key.
+	// You must use a [JWT](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
+	// access this endpoint.
+	//
+	// POST /app/installations/{installation_id}/access_tokens
+	AppsCreateInstallationAccessToken(ctx context.Context, request OptAppsCreateInstallationAccessTokenReq, params AppsCreateInstallationAccessTokenParams) (AppsCreateInstallationAccessTokenRes, error)
+	// AppsDeleteAuthorization invokes apps/delete-authorization operation.
+	//
+	// OAuth application owners can revoke a grant for their OAuth application and a specific user. You
+	// must use [Basic Authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#basic-authentication) when accessing this endpoint,
+	// using the OAuth application's `client_id` and `client_secret` as the username and password. You
+	// must also provide a valid OAuth `access_token` as an input parameter and the grant for the token's
+	// owner will be deleted.
+	// Deleting an OAuth application's grant will also delete all OAuth tokens associated with the
+	// application for the user. Once deleted, the application will have no access to the user's account
+	// and will no longer be listed on [the application authorizations settings screen within
+	// GitHub](https://github.com/settings/applications#authorized).
+	//
+	// DELETE /applications/{client_id}/grant
+	AppsDeleteAuthorization(ctx context.Context, request *AppsDeleteAuthorizationReq, params AppsDeleteAuthorizationParams) (AppsDeleteAuthorizationRes, error)
+	// AppsDeleteInstallation invokes apps/delete-installation operation.
+	//
+	// Uninstalls a GitHub App on a user, organization, or business account. If you prefer to temporarily
+	// suspend an app's access to your account's resources, then we recommend the "[Suspend an app
+	// installation](https://docs.github.com/rest/reference/apps/#suspend-an-app-installation)" endpoint.
+	// You must use a [JWT](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
+	// access this endpoint.
+	//
+	// DELETE /app/installations/{installation_id}
+	AppsDeleteInstallation(ctx context.Context, params AppsDeleteInstallationParams) (AppsDeleteInstallationRes, error)
+	// AppsDeleteToken invokes apps/delete-token operation.
+	//
+	// OAuth application owners can revoke a single token for an OAuth application. You must use [Basic
+	// Authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#basic-authentication) when accessing this endpoint,
+	// using the OAuth application's `client_id` and `client_secret` as the username and password.
+	//
+	// DELETE /applications/{client_id}/token
+	AppsDeleteToken(ctx context.Context, request *AppsDeleteTokenReq, params AppsDeleteTokenParams) (AppsDeleteTokenRes, error)
+	// AppsGetAuthenticated invokes apps/get-authenticated operation.
+	//
+	// Returns the GitHub App associated with the authentication credentials used. To see how many app
+	// installations are associated with this GitHub App, see the `installations_count` in the response.
+	// For more details about your app's installations, see the "[List installations for the
+	// authenticated app](https://docs.github.
+	// com/rest/reference/apps#list-installations-for-the-authenticated-app)" endpoint.
+	// You must use a [JWT](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
+	// access this endpoint.
+	//
+	// GET /app
+	AppsGetAuthenticated(ctx context.Context) (*Integration, error)
+	// AppsGetBySlug invokes apps/get-by-slug operation.
+	//
+	// **Note**: The `:app_slug` is just the URL-friendly name of your GitHub App. You can find this on
+	// the settings page for your GitHub App (e.g., `https://github.com/settings/apps/:app_slug`).
+	// If the GitHub App you specify is public, you can access this endpoint without authenticating. If
+	// the GitHub App you specify is private, you must authenticate with a [personal access
+	// token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/) or
+	// an [installation access token](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-an-installation)
+	// to access this endpoint.
+	//
+	// GET /apps/{app_slug}
+	AppsGetBySlug(ctx context.Context, params AppsGetBySlugParams) (AppsGetBySlugRes, error)
+	// AppsGetSubscriptionPlanForAccount invokes apps/get-subscription-plan-for-account operation.
+	//
+	// Shows whether the user or organization account actively subscribes to a plan listed by the
+	// authenticated GitHub App. When someone submits a plan change that won't be processed until the end
+	// of their billing cycle, you will also see the upcoming pending change.
+	// GitHub Apps must use a [JWT](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
+	// access this endpoint. OAuth Apps must use [basic authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and
+	// client secret to access this endpoint.
+	//
+	// GET /marketplace_listing/accounts/{account_id}
+	AppsGetSubscriptionPlanForAccount(ctx context.Context, params AppsGetSubscriptionPlanForAccountParams) (AppsGetSubscriptionPlanForAccountRes, error)
+	// AppsGetSubscriptionPlanForAccountStubbed invokes apps/get-subscription-plan-for-account-stubbed operation.
+	//
+	// Shows whether the user or organization account actively subscribes to a plan listed by the
+	// authenticated GitHub App. When someone submits a plan change that won't be processed until the end
+	// of their billing cycle, you will also see the upcoming pending change.
+	// GitHub Apps must use a [JWT](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
+	// access this endpoint. OAuth Apps must use [basic authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and
+	// client secret to access this endpoint.
+	//
+	// GET /marketplace_listing/stubbed/accounts/{account_id}
+	AppsGetSubscriptionPlanForAccountStubbed(ctx context.Context, params AppsGetSubscriptionPlanForAccountStubbedParams) (AppsGetSubscriptionPlanForAccountStubbedRes, error)
+	// AppsGetWebhookConfigForApp invokes apps/get-webhook-config-for-app operation.
+	//
+	// Returns the webhook configuration for a GitHub App. For more information about configuring a
+	// webhook for your app, see "[Creating a GitHub App](/developers/apps/creating-a-github-app)."
+	// You must use a [JWT](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
+	// access this endpoint.
+	//
+	// GET /app/hook/config
+	AppsGetWebhookConfigForApp(ctx context.Context) (*WebhookConfig, error)
+	// AppsGetWebhookDelivery invokes apps/get-webhook-delivery operation.
+	//
+	// Returns a delivery for the webhook configured for a GitHub App.
+	// You must use a [JWT](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
+	// access this endpoint.
+	//
+	// GET /app/hook/deliveries/{delivery_id}
+	AppsGetWebhookDelivery(ctx context.Context, params AppsGetWebhookDeliveryParams) (AppsGetWebhookDeliveryRes, error)
+	// AppsListAccountsForPlan invokes apps/list-accounts-for-plan operation.
+	//
+	// Returns user and organization accounts associated with the specified plan, including free plans.
+	// For per-seat pricing, you see the list of accounts that have purchased the plan, including the
+	// number of seats purchased. When someone submits a plan change that won't be processed until the
+	// end of their billing cycle, you will also see the upcoming pending change.
+	// GitHub Apps must use a [JWT](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
+	// access this endpoint. OAuth Apps must use [basic authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and
+	// client secret to access this endpoint.
+	//
+	// GET /marketplace_listing/plans/{plan_id}/accounts
+	AppsListAccountsForPlan(ctx context.Context, params AppsListAccountsForPlanParams) (AppsListAccountsForPlanRes, error)
+	// AppsListAccountsForPlanStubbed invokes apps/list-accounts-for-plan-stubbed operation.
+	//
+	// Returns repository and organization accounts associated with the specified plan, including free
+	// plans. For per-seat pricing, you see the list of accounts that have purchased the plan, including
+	// the number of seats purchased. When someone submits a plan change that won't be processed until
+	// the end of their billing cycle, you will also see the upcoming pending change.
+	// GitHub Apps must use a [JWT](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
+	// access this endpoint. OAuth Apps must use [basic authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and
+	// client secret to access this endpoint.
+	//
+	// GET /marketplace_listing/stubbed/plans/{plan_id}/accounts
+	AppsListAccountsForPlanStubbed(ctx context.Context, params AppsListAccountsForPlanStubbedParams) (AppsListAccountsForPlanStubbedRes, error)
+	// AppsListInstallationReposForAuthenticatedUser invokes apps/list-installation-repos-for-authenticated-user operation.
+	//
+	// List repositories that the authenticated user has explicit permission (`:read`, `:write`, or
+	// `:admin`) to access for an installation.
+	// The authenticated user has explicit permission to access repositories they own, repositories where
+	// they are a collaborator, and repositories that they can access through an organization membership.
+	// You must use a [user-to-server OAuth access token](https://docs.github.
+	// com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/#identifying-users-on-your-site), created for a user who has authorized your GitHub App, to access this endpoint.
+	// The access the user has to each repository is included in the hash under the `permissions` key.
+	//
+	// GET /user/installations/{installation_id}/repositories
+	AppsListInstallationReposForAuthenticatedUser(ctx context.Context, params AppsListInstallationReposForAuthenticatedUserParams) (AppsListInstallationReposForAuthenticatedUserRes, error)
+	// AppsListPlans invokes apps/list-plans operation.
+	//
+	// Lists all plans that are part of your GitHub Marketplace listing.
+	// GitHub Apps must use a [JWT](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
+	// access this endpoint. OAuth Apps must use [basic authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and
+	// client secret to access this endpoint.
+	//
+	// GET /marketplace_listing/plans
+	AppsListPlans(ctx context.Context, params AppsListPlansParams) (AppsListPlansRes, error)
+	// AppsListPlansStubbed invokes apps/list-plans-stubbed operation.
+	//
+	// Lists all plans that are part of your GitHub Marketplace listing.
+	// GitHub Apps must use a [JWT](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
+	// access this endpoint. OAuth Apps must use [basic authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and
+	// client secret to access this endpoint.
+	//
+	// GET /marketplace_listing/stubbed/plans
+	AppsListPlansStubbed(ctx context.Context, params AppsListPlansStubbedParams) (AppsListPlansStubbedRes, error)
+	// AppsListReposAccessibleToInstallation invokes apps/list-repos-accessible-to-installation operation.
+	//
+	// List repositories that an app installation can access.
+	// You must use an [installation access token](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-an-installation)
+	// to access this endpoint.
+	//
+	// GET /installation/repositories
+	AppsListReposAccessibleToInstallation(ctx context.Context, params AppsListReposAccessibleToInstallationParams) (AppsListReposAccessibleToInstallationRes, error)
+	// AppsListSubscriptionsForAuthenticatedUser invokes apps/list-subscriptions-for-authenticated-user operation.
+	//
+	// Lists the active subscriptions for the authenticated user. You must use a [user-to-server OAuth
+	// access token](https://docs.github.
+	// com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/#identifying-users-on-your-site), created for a user who has authorized your GitHub App, to access this endpoint. . OAuth Apps must authenticate using an [OAuth token](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/).
+	//
+	// GET /user/marketplace_purchases
+	AppsListSubscriptionsForAuthenticatedUser(ctx context.Context, params AppsListSubscriptionsForAuthenticatedUserParams) (AppsListSubscriptionsForAuthenticatedUserRes, error)
+	// AppsListSubscriptionsForAuthenticatedUserStubbed invokes apps/list-subscriptions-for-authenticated-user-stubbed operation.
+	//
+	// Lists the active subscriptions for the authenticated user. You must use a [user-to-server OAuth
+	// access token](https://docs.github.
+	// com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/#identifying-users-on-your-site), created for a user who has authorized your GitHub App, to access this endpoint. . OAuth Apps must authenticate using an [OAuth token](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/).
+	//
+	// GET /user/marketplace_purchases/stubbed
+	AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Context, params AppsListSubscriptionsForAuthenticatedUserStubbedParams) (AppsListSubscriptionsForAuthenticatedUserStubbedRes, error)
+	// AppsListWebhookDeliveries invokes apps/list-webhook-deliveries operation.
+	//
+	// Returns a list of webhook deliveries for the webhook configured for a GitHub App.
+	// You must use a [JWT](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
+	// access this endpoint.
+	//
+	// GET /app/hook/deliveries
+	AppsListWebhookDeliveries(ctx context.Context, params AppsListWebhookDeliveriesParams) (AppsListWebhookDeliveriesRes, error)
+	// AppsRedeliverWebhookDelivery invokes apps/redeliver-webhook-delivery operation.
+	//
+	// Redeliver a delivery for the webhook configured for a GitHub App.
+	// You must use a [JWT](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
+	// access this endpoint.
+	//
+	// POST /app/hook/deliveries/{delivery_id}/attempts
+	AppsRedeliverWebhookDelivery(ctx context.Context, params AppsRedeliverWebhookDeliveryParams) (AppsRedeliverWebhookDeliveryRes, error)
+	// AppsRemoveRepoFromInstallation invokes apps/remove-repo-from-installation operation.
+	//
+	// Remove a single repository from an installation. The authenticated user must have admin access to
+	// the repository.
+	// You must use a personal access token (which you can create via the [command line](https://docs.
+	// github.com/github/authenticating-to-github/creating-a-personal-access-token) or [Basic
+	// Authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#basic-authentication)) to access this endpoint.
+	//
+	// DELETE /user/installations/{installation_id}/repositories/{repository_id}
+	AppsRemoveRepoFromInstallation(ctx context.Context, params AppsRemoveRepoFromInstallationParams) (AppsRemoveRepoFromInstallationRes, error)
+	// AppsResetToken invokes apps/reset-token operation.
+	//
+	// OAuth applications can use this API method to reset a valid OAuth token without end-user
+	// involvement. Applications must save the "token" property in the response because changes take
+	// effect immediately. You must use [Basic Authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#basic-authentication) when accessing this endpoint,
+	// using the OAuth application's `client_id` and `client_secret` as the username and password.
+	// Invalid tokens will return `404 NOT FOUND`.
+	//
+	// PATCH /applications/{client_id}/token
+	AppsResetToken(ctx context.Context, request *AppsResetTokenReq, params AppsResetTokenParams) (AppsResetTokenRes, error)
+	// AppsRevokeInstallationAccessToken invokes apps/revoke-installation-access-token operation.
+	//
+	// Revokes the installation token you're using to authenticate as an installation and access this
+	// endpoint.
+	// Once an installation token is revoked, the token is invalidated and cannot be used. Other
+	// endpoints that require the revoked installation token must have a new installation token to work.
+	// You can create a new token using the "[Create an installation access token for an
+	// app](https://docs.github.com/rest/reference/apps#create-an-installation-access-token-for-an-app)"
+	// endpoint.
+	// You must use an [installation access token](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-an-installation)
+	// to access this endpoint.
+	//
+	// DELETE /installation/token
+	AppsRevokeInstallationAccessToken(ctx context.Context) error
+	// AppsScopeToken invokes apps/scope-token operation.
+	//
+	// Use a non-scoped user-to-server OAuth access token to create a repository scoped and/or permission
+	// scoped user-to-server OAuth access token. You can specify which repositories the token can access
+	// and which permissions are granted to the token. You must use [Basic Authentication](https://docs.
+	// github.com/rest/overview/other-authentication-methods#basic-authentication) when accessing this
+	// endpoint, using the OAuth application's `client_id` and `client_secret` as the username and
+	// password. Invalid tokens will return `404 NOT FOUND`.
+	//
+	// POST /applications/{client_id}/token/scoped
+	AppsScopeToken(ctx context.Context, request *AppsScopeTokenReq, params AppsScopeTokenParams) (AppsScopeTokenRes, error)
+	// AppsSuspendInstallation invokes apps/suspend-installation operation.
+	//
+	// Suspends a GitHub App on a user, organization, or business account, which blocks the app from
+	// accessing the account's resources. When a GitHub App is suspended, the app's access to the GitHub
+	// API or webhook events is blocked for that account.
+	// You must use a [JWT](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
+	// access this endpoint.
+	//
+	// PUT /app/installations/{installation_id}/suspended
+	AppsSuspendInstallation(ctx context.Context, params AppsSuspendInstallationParams) (AppsSuspendInstallationRes, error)
+	// AppsUnsuspendInstallation invokes apps/unsuspend-installation operation.
+	//
+	// Removes a GitHub App installation suspension.
+	// You must use a [JWT](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
+	// access this endpoint.
+	//
+	// DELETE /app/installations/{installation_id}/suspended
+	AppsUnsuspendInstallation(ctx context.Context, params AppsUnsuspendInstallationParams) (AppsUnsuspendInstallationRes, error)
+	// AppsUpdateWebhookConfigForApp invokes apps/update-webhook-config-for-app operation.
+	//
+	// Updates the webhook configuration for a GitHub App. For more information about configuring a
+	// webhook for your app, see "[Creating a GitHub App](/developers/apps/creating-a-github-app)."
+	// You must use a [JWT](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
+	// access this endpoint.
+	//
+	// PATCH /app/hook/config
+	AppsUpdateWebhookConfigForApp(ctx context.Context, request OptAppsUpdateWebhookConfigForAppReq) (*WebhookConfig, error)
+	// BillingGetGithubActionsBillingGhe invokes billing/get-github-actions-billing-ghe operation.
+	//
+	// Gets the summary of the free and paid GitHub Actions minutes used.
+	// Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners.
+	// Minutes used is listed for each GitHub-hosted runner operating system. Any job re-runs are also
+	// included in the usage. The usage does not include the multiplier for macOS and Windows runners and
+	// is not rounded up to the nearest whole minute. For more information, see "[Managing billing for
+	// GitHub Actions](https://help.github.
+	// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+	// The authenticated user must be an enterprise admin.
+	//
+	// GET /enterprises/{enterprise}/settings/billing/actions
+	BillingGetGithubActionsBillingGhe(ctx context.Context, params BillingGetGithubActionsBillingGheParams) (*ActionsBillingUsage, error)
+	// BillingGetGithubActionsBillingOrg invokes billing/get-github-actions-billing-org operation.
+	//
+	// Gets the summary of the free and paid GitHub Actions minutes used.
+	// Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners.
+	// Minutes used is listed for each GitHub-hosted runner operating system. Any job re-runs are also
+	// included in the usage. The usage returned includes any minute multipliers for macOS and Windows
+	// runners, and is rounded up to the nearest whole minute. For more information, see "[Managing
+	// billing for GitHub Actions](https://help.github.
+	// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+	// Access tokens must have the `repo` or `admin:org` scope.
+	//
+	// GET /orgs/{org}/settings/billing/actions
+	BillingGetGithubActionsBillingOrg(ctx context.Context, params BillingGetGithubActionsBillingOrgParams) (*ActionsBillingUsage, error)
+	// BillingGetGithubActionsBillingUser invokes billing/get-github-actions-billing-user operation.
+	//
+	// Gets the summary of the free and paid GitHub Actions minutes used.
+	// Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners.
+	// Minutes used is listed for each GitHub-hosted runner operating system. Any job re-runs are also
+	// included in the usage. The usage returned includes any minute multipliers for macOS and Windows
+	// runners, and is rounded up to the nearest whole minute. For more information, see "[Managing
+	// billing for GitHub Actions](https://help.github.
+	// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+	// Access tokens must have the `user` scope.
+	//
+	// GET /users/{username}/settings/billing/actions
+	BillingGetGithubActionsBillingUser(ctx context.Context, params BillingGetGithubActionsBillingUserParams) (*ActionsBillingUsage, error)
+	// BillingGetGithubPackagesBillingGhe invokes billing/get-github-packages-billing-ghe operation.
+	//
+	// Gets the free and paid storage used for GitHub Packages in gigabytes.
+	// Paid minutes only apply to packages stored for private repositories. For more information, see
+	// "[Managing billing for GitHub Packages](https://help.github.
+	// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+	// The authenticated user must be an enterprise admin.
+	//
+	// GET /enterprises/{enterprise}/settings/billing/packages
+	BillingGetGithubPackagesBillingGhe(ctx context.Context, params BillingGetGithubPackagesBillingGheParams) (*PackagesBillingUsage, error)
+	// BillingGetGithubPackagesBillingOrg invokes billing/get-github-packages-billing-org operation.
+	//
+	// Gets the free and paid storage used for GitHub Packages in gigabytes.
+	// Paid minutes only apply to packages stored for private repositories. For more information, see
+	// "[Managing billing for GitHub Packages](https://help.github.
+	// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+	// Access tokens must have the `repo` or `admin:org` scope.
+	//
+	// GET /orgs/{org}/settings/billing/packages
+	BillingGetGithubPackagesBillingOrg(ctx context.Context, params BillingGetGithubPackagesBillingOrgParams) (*PackagesBillingUsage, error)
+	// BillingGetGithubPackagesBillingUser invokes billing/get-github-packages-billing-user operation.
+	//
+	// Gets the free and paid storage used for GitHub Packages in gigabytes.
+	// Paid minutes only apply to packages stored for private repositories. For more information, see
+	// "[Managing billing for GitHub Packages](https://help.github.
+	// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+	// Access tokens must have the `user` scope.
+	//
+	// GET /users/{username}/settings/billing/packages
+	BillingGetGithubPackagesBillingUser(ctx context.Context, params BillingGetGithubPackagesBillingUserParams) (*PackagesBillingUsage, error)
+	// BillingGetSharedStorageBillingGhe invokes billing/get-shared-storage-billing-ghe operation.
+	//
+	// Gets the estimated paid and estimated total storage used for GitHub Actions and Github Packages.
+	// Paid minutes only apply to packages stored for private repositories. For more information, see
+	// "[Managing billing for GitHub Packages](https://help.github.
+	// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+	// The authenticated user must be an enterprise admin.
+	//
+	// GET /enterprises/{enterprise}/settings/billing/shared-storage
+	BillingGetSharedStorageBillingGhe(ctx context.Context, params BillingGetSharedStorageBillingGheParams) (*CombinedBillingUsage, error)
+	// BillingGetSharedStorageBillingOrg invokes billing/get-shared-storage-billing-org operation.
+	//
+	// Gets the estimated paid and estimated total storage used for GitHub Actions and Github Packages.
+	// Paid minutes only apply to packages stored for private repositories. For more information, see
+	// "[Managing billing for GitHub Packages](https://help.github.
+	// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+	// Access tokens must have the `repo` or `admin:org` scope.
+	//
+	// GET /orgs/{org}/settings/billing/shared-storage
+	BillingGetSharedStorageBillingOrg(ctx context.Context, params BillingGetSharedStorageBillingOrgParams) (*CombinedBillingUsage, error)
+	// BillingGetSharedStorageBillingUser invokes billing/get-shared-storage-billing-user operation.
+	//
+	// Gets the estimated paid and estimated total storage used for GitHub Actions and Github Packages.
+	// Paid minutes only apply to packages stored for private repositories. For more information, see
+	// "[Managing billing for GitHub Packages](https://help.github.
+	// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+	// Access tokens must have the `user` scope.
+	//
+	// GET /users/{username}/settings/billing/shared-storage
+	BillingGetSharedStorageBillingUser(ctx context.Context, params BillingGetSharedStorageBillingUserParams) (*CombinedBillingUsage, error)
+	// ChecksCreateSuite invokes checks/create-suite operation.
+	//
+	// **Note:** The Checks API only looks for pushes in the repository where the check suite or check
+	// run were created. Pushes to a branch in a forked repository are not detected and return an empty
+	// `pull_requests` array and a `null` value for `head_branch`.
+	// By default, check suites are automatically created when you create a [check run](https://docs.
+	// github.com/rest/reference/checks#check-runs). You only need to use this endpoint for manually
+	// creating check suites when you've disabled automatic creation using "[Update repository
+	// preferences for check suites](https://docs.github.
+	// com/rest/reference/checks#update-repository-preferences-for-check-suites)". Your GitHub App must
+	// have the `checks:write` permission to create check suites.
+	//
+	// POST /repos/{owner}/{repo}/check-suites
+	ChecksCreateSuite(ctx context.Context, request *ChecksCreateSuiteReq, params ChecksCreateSuiteParams) (ChecksCreateSuiteRes, error)
+	// ChecksGet invokes checks/get operation.
+	//
+	// **Note:** The Checks API only looks for pushes in the repository where the check suite or check
+	// run were created. Pushes to a branch in a forked repository are not detected and return an empty
+	// `pull_requests` array.
+	// Gets a single check run using its `id`. GitHub Apps must have the `checks:read` permission on a
+	// private repository or pull access to a public repository to get check runs. OAuth Apps and
+	// authenticated users must have the `repo` scope to get check runs in a private repository.
+	//
+	// GET /repos/{owner}/{repo}/check-runs/{check_run_id}
+	ChecksGet(ctx context.Context, params ChecksGetParams) (*CheckRun, error)
+	// ChecksGetSuite invokes checks/get-suite operation.
+	//
+	// **Note:** The Checks API only looks for pushes in the repository where the check suite or check
+	// run were created. Pushes to a branch in a forked repository are not detected and return an empty
+	// `pull_requests` array and a `null` value for `head_branch`.
+	// Gets a single check suite using its `id`. GitHub Apps must have the `checks:read` permission on a
+	// private repository or pull access to a public repository to get check suites. OAuth Apps and
+	// authenticated users must have the `repo` scope to get check suites in a private repository.
+	//
+	// GET /repos/{owner}/{repo}/check-suites/{check_suite_id}
+	ChecksGetSuite(ctx context.Context, params ChecksGetSuiteParams) (*CheckSuite, error)
+	// ChecksListAnnotations invokes checks/list-annotations operation.
+	//
+	// Lists annotations for a check run using the annotation `id`. GitHub Apps must have the
+	// `checks:read` permission on a private repository or pull access to a public repository to get
+	// annotations for a check run. OAuth Apps and authenticated users must have the `repo` scope to get
+	// annotations for a check run in a private repository.
+	//
+	// GET /repos/{owner}/{repo}/check-runs/{check_run_id}/annotations
+	ChecksListAnnotations(ctx context.Context, params ChecksListAnnotationsParams) (*ChecksListAnnotationsOKHeaders, error)
+	// ChecksListForRef invokes checks/list-for-ref operation.
+	//
+	// **Note:** The Checks API only looks for pushes in the repository where the check suite or check
+	// run were created. Pushes to a branch in a forked repository are not detected and return an empty
+	// `pull_requests` array.
+	// Lists check runs for a commit ref. The `ref` can be a SHA, branch name, or a tag name. GitHub Apps
+	// must have the `checks:read` permission on a private repository or pull access to a public
+	// repository to get check runs. OAuth Apps and authenticated users must have the `repo` scope to get
+	// check runs in a private repository.
+	//
+	// GET /repos/{owner}/{repo}/commits/{ref}/check-runs
+	ChecksListForRef(ctx context.Context, params ChecksListForRefParams) (*ChecksListForRefOKHeaders, error)
+	// ChecksListForSuite invokes checks/list-for-suite operation.
+	//
+	// **Note:** The Checks API only looks for pushes in the repository where the check suite or check
+	// run were created. Pushes to a branch in a forked repository are not detected and return an empty
+	// `pull_requests` array.
+	// Lists check runs for a check suite using its `id`. GitHub Apps must have the `checks:read`
+	// permission on a private repository or pull access to a public repository to get check runs. OAuth
+	// Apps and authenticated users must have the `repo` scope to get check runs in a private repository.
+	//
+	// GET /repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs
+	ChecksListForSuite(ctx context.Context, params ChecksListForSuiteParams) (*ChecksListForSuiteOKHeaders, error)
+	// ChecksListSuitesForRef invokes checks/list-suites-for-ref operation.
+	//
+	// **Note:** The Checks API only looks for pushes in the repository where the check suite or check
+	// run were created. Pushes to a branch in a forked repository are not detected and return an empty
+	// `pull_requests` array and a `null` value for `head_branch`.
+	// Lists check suites for a commit `ref`. The `ref` can be a SHA, branch name, or a tag name. GitHub
+	// Apps must have the `checks:read` permission on a private repository or pull access to a public
+	// repository to list check suites. OAuth Apps and authenticated users must have the `repo` scope to
+	// get check suites in a private repository.
+	//
+	// GET /repos/{owner}/{repo}/commits/{ref}/check-suites
+	ChecksListSuitesForRef(ctx context.Context, params ChecksListSuitesForRefParams) (*ChecksListSuitesForRefOKHeaders, error)
+	// ChecksRerequestSuite invokes checks/rerequest-suite operation.
+	//
+	// Triggers GitHub to rerequest an existing check suite, without pushing new code to a repository.
+	// This endpoint will trigger the [`check_suite` webhook](https://docs.github.
+	// com/webhooks/event-payloads/#check_suite) event with the action `rerequested`. When a check suite
+	// is `rerequested`, its `status` is reset to `queued` and the `conclusion` is cleared.
+	// To rerequest a check suite, your GitHub App must have the `checks:read` permission on a private
+	// repository or pull access to a public repository.
+	//
+	// POST /repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest
+	ChecksRerequestSuite(ctx context.Context, params ChecksRerequestSuiteParams) error
+	// ChecksSetSuitesPreferences invokes checks/set-suites-preferences operation.
+	//
+	// Changes the default automatic flow when creating check suites. By default, a check suite is
+	// automatically created each time code is pushed to a repository. When you disable the automatic
+	// creation of check suites, you can manually [Create a check suite](https://docs.github.
+	// com/rest/reference/checks#create-a-check-suite). You must have admin permissions in the repository
+	// to set preferences for check suites.
+	//
+	// PATCH /repos/{owner}/{repo}/check-suites/preferences
+	ChecksSetSuitesPreferences(ctx context.Context, request *ChecksSetSuitesPreferencesReq, params ChecksSetSuitesPreferencesParams) (*CheckSuitePreference, error)
+	// CodeScanningDeleteAnalysis invokes code-scanning/delete-analysis operation.
+	//
+	// Deletes a specified code scanning analysis from a repository. For
+	// private repositories, you must use an access token with the `repo` scope. For public repositories,
+	// you must use an access token with `public_repo` and `repo:security_events` scopes.
+	// GitHub Apps must have the `security_events` write permission to use this endpoint.
+	// You can delete one analysis at a time.
+	// To delete a series of analyses, start with the most recent analysis and work backwards.
+	// Conceptually, the process is similar to the undo function in a text editor.
+	// When you list the analyses for a repository,
+	// one or more will be identified as deletable in the response:
+	// ```
+	// "deletable": true
+	// ```
+	// An analysis is deletable when it's the most recent in a set of analyses.
+	// Typically, a repository will have multiple sets of analyses
+	// for each enabled code scanning tool,
+	// where a set is determined by a unique combination of analysis values:
+	// * `ref`
+	// * `tool`
+	// * `analysis_key`
+	// * `environment`
+	// If you attempt to delete an analysis that is not the most recent in a set,
+	// you'll get a 400 response with the message:
+	// ```
+	// Analysis specified is not deletable.
+	// ```
+	// The response from a successful `DELETE` operation provides you with
+	// two alternative URLs for deleting the next analysis in the set
+	// (see the example default response below).
+	// Use the `next_analysis_url` URL if you want to avoid accidentally deleting the final analysis
+	// in the set. This is a useful option if you want to preserve at least one analysis
+	// for the specified tool in your repository.
+	// Use the `confirm_delete_url` URL if you are content to remove all analyses for a tool.
+	// When you delete the last analysis in a set the value of `next_analysis_url` and
+	// `confirm_delete_url`
+	// in the 200 response is `null`.
+	// As an example of the deletion process,
+	// let's imagine that you added a workflow that configured a particular code scanning tool
+	// to analyze the code in a repository. This tool has added 15 analyses:
+	// 10 on the default branch, and another 5 on a topic branch.
+	// You therefore have two separate sets of analyses for this tool.
+	// You've now decided that you want to remove all of the analyses for the tool.
+	// To do this you must make 15 separate deletion requests.
+	// To start, you must find the deletable analysis for one of the sets,
+	// step through deleting the analyses in that set,
+	// and then repeat the process for the second set.
+	// The procedure therefore consists of a nested loop:
+	// **Outer loop**:
+	// * List the analyses for the repository, filtered by tool.
+	// * Parse this list to find a deletable analysis. If found:
+	// **Inner loop**:
+	// * Delete the identified analysis.
+	// * Parse the response for the value of `confirm_delete_url` and, if found, use this in the next
+	// iteration.
+	// The above process assumes that you want to remove all trace of the tool's analyses from the GitHub
+	// user interface, for the specified repository, and it therefore uses the `confirm_delete_url` value.
+	//  Alternatively, you could use the `next_analysis_url` value, which would leave the last analysis
+	// in each set undeleted to avoid removing a tool's analysis entirely.
+	//
+	// DELETE /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
+	CodeScanningDeleteAnalysis(ctx context.Context, params CodeScanningDeleteAnalysisParams) (CodeScanningDeleteAnalysisRes, error)
+	// CodeScanningGetAlert invokes code-scanning/get-alert operation.
+	//
+	// Gets a single code scanning alert. You must use an access token with the `security_events` scope
+	// to use this endpoint. GitHub Apps must have the `security_events` read permission to use this
+	// endpoint.
+	// **Deprecation notice**:
+	// The instances field is deprecated and will, in future, not be included in the response for this
+	// endpoint. The example response reflects this change. The same information can now be retrieved via
+	// a GET request to the URL specified by `instances_url`.
+	//
+	// GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}
+	CodeScanningGetAlert(ctx context.Context, params CodeScanningGetAlertParams) (CodeScanningGetAlertRes, error)
+	// CodeScanningGetAnalysis invokes code-scanning/get-analysis operation.
+	//
+	// Gets a specified code scanning analysis for a repository.
+	// You must use an access token with the `security_events` scope to use this endpoint.
+	// GitHub Apps must have the `security_events` read permission to use this endpoint.
+	// The default JSON response contains fields that describe the analysis.
+	// This includes the Git reference and commit SHA to which the analysis relates,
+	// the datetime of the analysis, the name of the code scanning tool,
+	// and the number of alerts.
+	// The `rules_count` field in the default response give the number of rules
+	// that were run in the analysis.
+	// For very old analyses this data is not available,
+	// and `0` is returned in this field.
+	// If you use the Accept header `application/sarif+json`,
+	// the response contains the analysis data that was uploaded.
+	// This is formatted as
+	// [SARIF version 2.1.0](https://docs.oasis-open.org/sarif/sarif/v2.1.0/cs01/sarif-v2.1.0-cs01.html).
+	// **Deprecation notice**:
+	// The `tool_name` field is deprecated and will, in future, not be included in the response for this
+	// endpoint. The example response reflects this change. The tool name can now be found inside the
+	// `tool` field.
+	//
+	// GET /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
+	CodeScanningGetAnalysis(ctx context.Context, params CodeScanningGetAnalysisParams) (CodeScanningGetAnalysisRes, error)
+	// CodeScanningGetSarif invokes code-scanning/get-sarif operation.
+	//
+	// Gets information about a SARIF upload, including the status and the URL of the analysis that was
+	// uploaded so that you can retrieve details of the analysis. For more information, see "[Get a code
+	// scanning analysis for a
+	// repository](/rest/reference/code-scanning#get-a-code-scanning-analysis-for-a-repository)." You
+	// must use an access token with the `security_events` scope to use this endpoint. GitHub Apps must
+	// have the `security_events` read permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}
+	CodeScanningGetSarif(ctx context.Context, params CodeScanningGetSarifParams) (CodeScanningGetSarifRes, error)
+	// CodeScanningListAlertInstances invokes code-scanning/list-alert-instances operation.
+	//
+	// Lists all instances of the specified code scanning alert. You must use an access token with the
+	// `security_events` scope to use this endpoint. GitHub Apps must have the `security_events` read
+	// permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances
+	CodeScanningListAlertInstances(ctx context.Context, params CodeScanningListAlertInstancesParams) (CodeScanningListAlertInstancesRes, error)
+	// CodeScanningListAlertsForRepo invokes code-scanning/list-alerts-for-repo operation.
+	//
+	// Lists all open code scanning alerts for the default branch (usually `main`
+	// or `master`). You must use an access token with the `security_events` scope to use
+	// this endpoint. GitHub Apps must have the `security_events` read permission to use
+	// this endpoint.
+	// The response includes a `most_recent_instance` object.
+	// This provides details of the most recent instance of this alert
+	// for the default branch or for the specified Git reference
+	// (if you used `ref` in the request).
+	//
+	// GET /repos/{owner}/{repo}/code-scanning/alerts
+	CodeScanningListAlertsForRepo(ctx context.Context, params CodeScanningListAlertsForRepoParams) (CodeScanningListAlertsForRepoRes, error)
+	// CodeScanningListRecentAnalyses invokes code-scanning/list-recent-analyses operation.
+	//
+	// Lists the details of all code scanning analyses for a repository,
+	// starting with the most recent.
+	// The response is paginated and you can use the `page` and `per_page` parameters
+	// to list the analyses you're interested in.
+	// By default 30 analyses are listed per page.
+	// The `rules_count` field in the response give the number of rules
+	// that were run in the analysis.
+	// For very old analyses this data is not available,
+	// and `0` is returned in this field.
+	// You must use an access token with the `security_events` scope to use this endpoint.
+	// GitHub Apps must have the `security_events` read permission to use this endpoint.
+	// **Deprecation notice**:
+	// The `tool_name` field is deprecated and will, in future, not be included in the response for this
+	// endpoint. The example response reflects this change. The tool name can now be found inside the
+	// `tool` field.
+	//
+	// GET /repos/{owner}/{repo}/code-scanning/analyses
+	CodeScanningListRecentAnalyses(ctx context.Context, params CodeScanningListRecentAnalysesParams) (CodeScanningListRecentAnalysesRes, error)
+	// CodeScanningUpdateAlert invokes code-scanning/update-alert operation.
+	//
+	// Updates the status of a single code scanning alert. You must use an access token with the
+	// `security_events` scope to use this endpoint. GitHub Apps must have the `security_events` write
+	// permission to use this endpoint.
+	//
+	// PATCH /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}
+	CodeScanningUpdateAlert(ctx context.Context, request *CodeScanningUpdateAlertReq, params CodeScanningUpdateAlertParams) (CodeScanningUpdateAlertRes, error)
+	// CodeScanningUploadSarif invokes code-scanning/upload-sarif operation.
+	//
+	// Uploads SARIF data containing the results of a code scanning analysis to make the results
+	// available in a repository. You must use an access token with the `security_events` scope to use
+	// this endpoint. GitHub Apps must have the `security_events` write permission to use this endpoint.
+	// There are two places where you can upload code scanning results.
+	// - If you upload to a pull request, for example `--ref refs/pull/42/merge` or `--ref
+	// refs/pull/42/head`, then the results appear as alerts in a pull request check. For more
+	// information, see "[Triaging code scanning alerts in pull
+	// requests](/code-security/secure-coding/triaging-code-scanning-alerts-in-pull-requests)."
+	// - If you upload to a branch, for example `--ref refs/heads/my-branch`, then the results appear in
+	// the **Security** tab for your repository. For more information, see "[Managing code scanning
+	// alerts for your
+	// repository](/code-security/secure-coding/managing-code-scanning-alerts-for-your-repository#viewing-the-alerts-for-a-repository)."
+	// You must compress the SARIF-formatted analysis data that you want to upload, using `gzip`, and
+	// then encode it as a Base64 format string. For example:
+	// ```
+	// gzip -c analysis-data.sarif | base64 -w0
+	// ```
+	// SARIF upload supports a maximum of 5000 results per analysis run. Any results over this limit are
+	// ignored and any SARIF uploads with more than 25,000 results are rejected. Typically, but not
+	// necessarily, a SARIF file contains a single run of a single tool. If a code scanning tool
+	// generates too many results, you should update the analysis configuration to run only the most
+	// important rules or queries.
+	// The `202 Accepted`, response includes an `id` value.
+	// You can use this ID to check the status of the upload by using this for the `/sarifs/{sarif_id}`
+	// endpoint.
+	// For more information, see "[Get information about a SARIF
+	// upload](/rest/reference/code-scanning#get-information-about-a-sarif-upload).".
+	//
+	// POST /repos/{owner}/{repo}/code-scanning/sarifs
+	CodeScanningUploadSarif(ctx context.Context, request *CodeScanningUploadSarifReq, params CodeScanningUploadSarifParams) (CodeScanningUploadSarifRes, error)
+	// CodesOfConductGetAllCodesOfConduct invokes codes-of-conduct/get-all-codes-of-conduct operation.
+	//
+	// Get all codes of conduct.
+	//
+	// GET /codes_of_conduct
+	CodesOfConductGetAllCodesOfConduct(ctx context.Context) (CodesOfConductGetAllCodesOfConductRes, error)
+	// CodesOfConductGetConductCode invokes codes-of-conduct/get-conduct-code operation.
+	//
+	// Get a code of conduct.
+	//
+	// GET /codes_of_conduct/{key}
+	CodesOfConductGetConductCode(ctx context.Context, params CodesOfConductGetConductCodeParams) (CodesOfConductGetConductCodeRes, error)
+	// EmojisGet invokes emojis/get operation.
+	//
+	// Lists all the emojis available to use on GitHub.
+	//
+	// GET /emojis
+	EmojisGet(ctx context.Context) (EmojisGetRes, error)
+	// EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise invokes enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise operation.
+	//
+	// Adds an organization to the list of selected organizations that can access a self-hosted runner
+	// group. The runner group must have `visibility` set to `selected`. For more information, see
+	// "[Create a self-hosted runner group for an
+	// enterprise](#create-a-self-hosted-runner-group-for-an-enterprise)."
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
+	EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) error
+	// EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise invokes enterprise-admin/add-self-hosted-runner-to-group-for-enterprise operation.
+	//
+	// Adds a self-hosted runner to a runner group configured in an enterprise.
+	// You must authenticate using an access token with the `admin:enterprise`
+	// scope to use this endpoint.
+	//
+	// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
+	EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx context.Context, params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams) error
+	// EnterpriseAdminCreateRegistrationTokenForEnterprise invokes enterprise-admin/create-registration-token-for-enterprise operation.
+	//
+	// Returns a token that you can pass to the `config` script. The token expires after one hour.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	// #### Example using registration token
+	// Configure your self-hosted runner, replacing `TOKEN` with the registration token provided by this
+	// endpoint.
+	// ```
+	// ./config.sh --url https://github.com/enterprises/octo-enterprise --token TOKEN
+	// ```.
+	//
+	// POST /enterprises/{enterprise}/actions/runners/registration-token
+	EnterpriseAdminCreateRegistrationTokenForEnterprise(ctx context.Context, params EnterpriseAdminCreateRegistrationTokenForEnterpriseParams) (*AuthenticationToken, error)
+	// EnterpriseAdminCreateRemoveTokenForEnterprise invokes enterprise-admin/create-remove-token-for-enterprise operation.
+	//
+	// Returns a token that you can pass to the `config` script to remove a self-hosted runner from an
+	// enterprise. The token expires after one hour.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	// #### Example using remove token
+	// To remove your self-hosted runner from an enterprise, replace `TOKEN` with the remove token
+	// provided by this
+	// endpoint.
+	// ```
+	// ./config.sh remove --token TOKEN
+	// ```.
+	//
+	// POST /enterprises/{enterprise}/actions/runners/remove-token
+	EnterpriseAdminCreateRemoveTokenForEnterprise(ctx context.Context, params EnterpriseAdminCreateRemoveTokenForEnterpriseParams) (*AuthenticationToken, error)
+	// EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise invokes enterprise-admin/create-self-hosted-runner-group-for-enterprise operation.
+	//
+	// Creates a new self-hosted runner group for an enterprise.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// POST /enterprises/{enterprise}/actions/runner-groups
+	EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx context.Context, request *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams) (*RunnerGroupsEnterprise, error)
+	// EnterpriseAdminDeleteScimGroupFromEnterprise invokes enterprise-admin/delete-scim-group-from-enterprise operation.
+	//
+	// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+	// change.
+	//
+	// DELETE /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
+	EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteScimGroupFromEnterpriseParams) error
+	// EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise invokes enterprise-admin/delete-self-hosted-runner-from-enterprise operation.
+	//
+	// Forces the removal of a self-hosted runner from an enterprise. You can use this endpoint to
+	// completely remove the runner when the machine you were using no longer exists.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// DELETE /enterprises/{enterprise}/actions/runners/{runner_id}
+	EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams) error
+	// EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise invokes enterprise-admin/delete-self-hosted-runner-group-from-enterprise operation.
+	//
+	// Deletes a self-hosted runner group for an enterprise.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
+	EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams) error
+	// EnterpriseAdminDeleteUserFromEnterprise invokes enterprise-admin/delete-user-from-enterprise operation.
+	//
+	// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+	// change.
+	//
+	// DELETE /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
+	EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteUserFromEnterpriseParams) error
+	// EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise invokes enterprise-admin/disable-selected-organization-github-actions-enterprise operation.
+	//
+	// Removes an organization from the list of selected organizations that are enabled for GitHub
+	// Actions in an enterprise. To use this endpoint, the enterprise permission policy for
+	// `enabled_organizations` must be configured to `selected`. For more information, see "[Set GitHub
+	// Actions permissions for an enterprise](#set-github-actions-permissions-for-an-enterprise)."
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// DELETE /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
+	EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams) error
+	// EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise invokes enterprise-admin/enable-selected-organization-github-actions-enterprise operation.
+	//
+	// Adds an organization to the list of selected organizations that are enabled for GitHub Actions in
+	// an enterprise. To use this endpoint, the enterprise permission policy for `enabled_organizations`
+	// must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for
+	// an enterprise](#set-github-actions-permissions-for-an-enterprise)."
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// PUT /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
+	EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams) error
+	// EnterpriseAdminGetAllowedActionsEnterprise invokes enterprise-admin/get-allowed-actions-enterprise operation.
+	//
+	// Gets the selected actions that are allowed in an enterprise. To use this endpoint, the enterprise
+	// permission policy for `allowed_actions` must be configured to `selected`. For more information,
+	// see "[Set GitHub Actions permissions for an
+	// enterprise](#set-github-actions-permissions-for-an-enterprise)."
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// GET /enterprises/{enterprise}/actions/permissions/selected-actions
+	EnterpriseAdminGetAllowedActionsEnterprise(ctx context.Context, params EnterpriseAdminGetAllowedActionsEnterpriseParams) (*SelectedActions, error)
+	// EnterpriseAdminGetAuditLog invokes enterprise-admin/get-audit-log operation.
+	//
+	// Gets the audit log for an enterprise. To use this endpoint, you must be an enterprise admin, and
+	// you must use an access token with the `admin:enterprise` scope.
+	//
+	// GET /enterprises/{enterprise}/audit-log
+	EnterpriseAdminGetAuditLog(ctx context.Context, params EnterpriseAdminGetAuditLogParams) ([]AuditLogEvent, error)
+	// EnterpriseAdminGetGithubActionsPermissionsEnterprise invokes enterprise-admin/get-github-actions-permissions-enterprise operation.
+	//
+	// Gets the GitHub Actions permissions policy for organizations and allowed actions in an enterprise.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// GET /enterprises/{enterprise}/actions/permissions
+	EnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx context.Context, params EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams) (*ActionsEnterprisePermissions, error)
+	// EnterpriseAdminGetProvisioningInformationForEnterpriseGroup invokes enterprise-admin/get-provisioning-information-for-enterprise-group operation.
+	//
+	// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+	// change.
+	//
+	// GET /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
+	EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx context.Context, params EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams) (*ScimEnterpriseGroup, error)
+	// EnterpriseAdminGetProvisioningInformationForEnterpriseUser invokes enterprise-admin/get-provisioning-information-for-enterprise-user operation.
+	//
+	// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+	// change.
+	//
+	// GET /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
+	EnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx context.Context, params EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams) (*ScimEnterpriseUser, error)
+	// EnterpriseAdminGetSelfHostedRunnerForEnterprise invokes enterprise-admin/get-self-hosted-runner-for-enterprise operation.
+	//
+	// Gets a specific self-hosted runner configured in an enterprise.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// GET /enterprises/{enterprise}/actions/runners/{runner_id}
+	EnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx context.Context, params EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams) (*Runner, error)
+	// EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise invokes enterprise-admin/get-self-hosted-runner-group-for-enterprise operation.
+	//
+	// Gets a specific self-hosted runner group for an enterprise.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
+	EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx context.Context, params EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams) (*RunnerGroupsEnterprise, error)
+	// EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise invokes enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise operation.
+	//
+	// Lists the organizations with access to a self-hosted runner group.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
+	EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (*EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK, error)
+	// EnterpriseAdminListProvisionedGroupsEnterprise invokes enterprise-admin/list-provisioned-groups-enterprise operation.
+	//
+	// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+	// change.
+	//
+	// GET /scim/v2/enterprises/{enterprise}/Groups
+	EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Context, params EnterpriseAdminListProvisionedGroupsEnterpriseParams) (*ScimGroupListEnterprise, error)
+	// EnterpriseAdminListProvisionedIdentitiesEnterprise invokes enterprise-admin/list-provisioned-identities-enterprise operation.
+	//
+	// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+	// change.
+	// Retrieves a paginated list of all provisioned enterprise members, including pending invitations.
+	// When a user with a SAML-provisioned external identity leaves (or is removed from) an enterprise,
+	// the account's metadata is immediately removed. However, the returned list of user accounts might
+	// not always match the organization or enterprise member list you see on GitHub. This can happen in
+	// certain cases where an external identity associated with an organization will not match an
+	// organization member:
+	// - When a user with a SCIM-provisioned external identity is removed from an enterprise, the
+	// account's metadata is preserved to allow the user to re-join the organization in the future.
+	// - When inviting a user to join an organization, you can expect to see their external identity in
+	// the results before they accept the invitation, or if the invitation is cancelled (or never
+	// accepted).
+	// - When a user is invited over SCIM, an external identity is created that matches with the
+	// invitee's email address. However, this identity is only linked to a user account when the user
+	// accepts the invitation by going through SAML SSO.
+	// The returned list of external identities can include an entry for a `null` user. These are
+	// unlinked SAML identities that are created when a user goes through the following Single Sign-On
+	// (SSO) process but does not sign in to their GitHub account after completing SSO:
+	// 1. The user is granted access by the IdP and is not a member of the GitHub enterprise.
+	// 1. The user attempts to access the GitHub enterprise and initiates the SAML SSO process, and is
+	// not currently signed in to their GitHub account.
+	// 1. After successfully authenticating with the SAML SSO IdP, the `null` external identity entry is
+	// created and the user is prompted to sign in to their GitHub account:
+	// - If the user signs in, their GitHub account is linked to this entry.
+	// - If the user does not sign in (or does not create a new account when prompted), they are not
+	// added to the GitHub enterprise, and the external identity `null` entry remains in place.
+	//
+	// GET /scim/v2/enterprises/{enterprise}/Users
+	EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.Context, params EnterpriseAdminListProvisionedIdentitiesEnterpriseParams) (*ScimUserListEnterprise, error)
+	// EnterpriseAdminListRunnerApplicationsForEnterprise invokes enterprise-admin/list-runner-applications-for-enterprise operation.
+	//
+	// Lists binaries for the runner application that you can download and run.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// GET /enterprises/{enterprise}/actions/runners/downloads
+	EnterpriseAdminListRunnerApplicationsForEnterprise(ctx context.Context, params EnterpriseAdminListRunnerApplicationsForEnterpriseParams) ([]RunnerApplication, error)
+	// EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise invokes enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise operation.
+	//
+	// Lists the organizations that are selected to have GitHub Actions enabled in an enterprise. To use
+	// this endpoint, the enterprise permission policy for `enabled_organizations` must be configured to
+	// `selected`. For more information, see "[Set GitHub Actions permissions for an
+	// enterprise](#set-github-actions-permissions-for-an-enterprise)."
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// GET /enterprises/{enterprise}/actions/permissions/organizations
+	EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (*EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK, error)
+	// EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise invokes enterprise-admin/list-self-hosted-runner-groups-for-enterprise operation.
+	//
+	// Lists all self-hosted runner groups for an enterprise.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// GET /enterprises/{enterprise}/actions/runner-groups
+	EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams) (*EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK, error)
+	// EnterpriseAdminListSelfHostedRunnersForEnterprise invokes enterprise-admin/list-self-hosted-runners-for-enterprise operation.
+	//
+	// Lists all self-hosted runners configured for an enterprise.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// GET /enterprises/{enterprise}/actions/runners
+	EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersForEnterpriseParams) (*EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders, error)
+	// EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise invokes enterprise-admin/list-self-hosted-runners-in-group-for-enterprise operation.
+	//
+	// Lists the self-hosted runners that are in a specific enterprise group.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
+	EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams) (*EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders, error)
+	// EnterpriseAdminProvisionAndInviteEnterpriseGroup invokes enterprise-admin/provision-and-invite-enterprise-group operation.
+	//
+	// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+	// change.
+	// Provision an enterprise group, and invite users to the group. This sends invitation emails to the
+	// email address of the invited users to join the GitHub organization that the SCIM group corresponds
+	// to.
+	//
+	// POST /scim/v2/enterprises/{enterprise}/Groups
+	EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Context, request *EnterpriseAdminProvisionAndInviteEnterpriseGroupReq, params EnterpriseAdminProvisionAndInviteEnterpriseGroupParams) (*ScimEnterpriseGroup, error)
+	// EnterpriseAdminProvisionAndInviteEnterpriseUser invokes enterprise-admin/provision-and-invite-enterprise-user operation.
+	//
+	// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+	// change.
+	// Provision enterprise membership for a user, and send organization invitation emails to the email
+	// address.
+	// You can optionally include the groups a user will be invited to join. If you do not provide a list
+	// of `groups`, the user is provisioned for the enterprise, but no organization invitation emails
+	// will be sent.
+	//
+	// POST /scim/v2/enterprises/{enterprise}/Users
+	EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Context, request *EnterpriseAdminProvisionAndInviteEnterpriseUserReq, params EnterpriseAdminProvisionAndInviteEnterpriseUserParams) (*ScimEnterpriseUser, error)
+	// EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise invokes enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise operation.
+	//
+	// Removes an organization from the list of selected organizations that can access a self-hosted
+	// runner group. The runner group must have `visibility` set to `selected`. For more information, see
+	// "[Create a self-hosted runner group for an
+	// enterprise](#create-a-self-hosted-runner-group-for-an-enterprise)."
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
+	EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) error
+	// EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise invokes enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise operation.
+	//
+	// Removes a self-hosted runner from a group configured in an enterprise. The runner is then returned
+	// to the default group.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
+	EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx context.Context, params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams) error
+	// EnterpriseAdminSetAllowedActionsEnterprise invokes enterprise-admin/set-allowed-actions-enterprise operation.
+	//
+	// Sets the actions that are allowed in an enterprise. To use this endpoint, the enterprise
+	// permission policy for `allowed_actions` must be configured to `selected`. For more information,
+	// see "[Set GitHub Actions permissions for an
+	// enterprise](#set-github-actions-permissions-for-an-enterprise)."
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// PUT /enterprises/{enterprise}/actions/permissions/selected-actions
+	EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context, request *SelectedActions, params EnterpriseAdminSetAllowedActionsEnterpriseParams) error
+	// EnterpriseAdminSetGithubActionsPermissionsEnterprise invokes enterprise-admin/set-github-actions-permissions-enterprise operation.
+	//
+	// Sets the GitHub Actions permissions policy for organizations and allowed actions in an enterprise.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// PUT /enterprises/{enterprise}/actions/permissions
+	EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx context.Context, request *EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq, params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams) error
+	// EnterpriseAdminSetInformationForProvisionedEnterpriseGroup invokes enterprise-admin/set-information-for-provisioned-enterprise-group operation.
+	//
+	// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+	// change.
+	// Replaces an existing provisioned group’s information. You must provide all the information
+	// required for the group as if you were provisioning it for the first time. Any existing group
+	// information that you don't provide will be removed, including group membership. If you want to
+	// only update a specific attribute, use the [Update an attribute for a SCIM enterprise
+	// group](#update-an-attribute-for-a-scim-enterprise-group) endpoint instead.
+	//
+	// PUT /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
+	EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx context.Context, request *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams) (*ScimEnterpriseGroup, error)
+	// EnterpriseAdminSetInformationForProvisionedEnterpriseUser invokes enterprise-admin/set-information-for-provisioned-enterprise-user operation.
+	//
+	// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+	// change.
+	// Replaces an existing provisioned user's information. You must provide all the information required
+	// for the user as if you were provisioning them for the first time. Any existing user information
+	// that you don't provide will be removed. If you want to only update a specific attribute, use the
+	// [Update an attribute for a SCIM user](#update-an-attribute-for-an-enterprise-scim-user) endpoint
+	// instead.
+	// You must at least provide the required values for the user: `userName`, `name`, and `emails`.
+	// **Warning:** Setting `active: false` removes the user from the enterprise, deletes the external
+	// identity, and deletes the associated `{scim_user_id}`.
+	//
+	// PUT /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
+	EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx context.Context, request *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams) (*ScimEnterpriseUser, error)
+	// EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise invokes enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise operation.
+	//
+	// Replaces the list of organizations that have access to a self-hosted runner configured in an
+	// enterprise.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
+	EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, request *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq, params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) error
+	// EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise invokes enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise operation.
+	//
+	// Replaces the list of selected organizations that are enabled for GitHub Actions in an enterprise.
+	// To use this endpoint, the enterprise permission policy for `enabled_organizations` must be
+	// configured to `selected`. For more information, see "[Set GitHub Actions permissions for an
+	// enterprise](#set-github-actions-permissions-for-an-enterprise)."
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// PUT /enterprises/{enterprise}/actions/permissions/organizations
+	EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, request *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq, params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams) error
+	// EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise invokes enterprise-admin/set-self-hosted-runners-in-group-for-enterprise operation.
+	//
+	// Replaces the list of self-hosted runners that are part of an enterprise runner group.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
+	EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx context.Context, request *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq, params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) error
+	// EnterpriseAdminUpdateAttributeForEnterpriseGroup invokes enterprise-admin/update-attribute-for-enterprise-group operation.
+	//
+	// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+	// change.
+	// Allows you to change a provisioned group’s individual attributes. To change a group’s values,
+	// you must provide a specific Operations JSON format that contains at least one of the add, remove,
+	// or replace operations. For examples and more information on the SCIM operations format, see the
+	// [SCIM specification](https://tools.ietf.org/html/rfc7644#section-3.5.2).
+	//
+	// PATCH /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
+	EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx context.Context, request *EnterpriseAdminUpdateAttributeForEnterpriseGroupReq, params EnterpriseAdminUpdateAttributeForEnterpriseGroupParams) (*ScimEnterpriseGroup, error)
+	// EnterpriseAdminUpdateAttributeForEnterpriseUser invokes enterprise-admin/update-attribute-for-enterprise-user operation.
+	//
+	// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+	// change.
+	// Allows you to change a provisioned user's individual attributes. To change a user's values, you
+	// must provide a specific `Operations` JSON format that contains at least one of the `add`, `remove`,
+	//  or `replace` operations. For examples and more information on the SCIM operations format, see the
+	// [SCIM specification](https://tools.ietf.org/html/rfc7644#section-3.5.2).
+	// **Note:** Complicated SCIM `path` selectors that include filters are not supported. For example, a
+	// `path` selector defined as `"path": "emails[type eq \"work\"]"` will not work.
+	// **Warning:** If you set `active:false` using the `replace` operation (as shown in the JSON example
+	// below), it removes the user from the enterprise, deletes the external identity, and deletes the
+	// associated `:scim_user_id`.
+	// ```
+	// {
+	// "Operations":[{
+	// "op":"replace",
+	// "value":{
+	// "active":false
+	// }
+	// }]
+	// }
+	// ```.
+	//
+	// PATCH /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
+	EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Context, request *EnterpriseAdminUpdateAttributeForEnterpriseUserReq, params EnterpriseAdminUpdateAttributeForEnterpriseUserParams) (*ScimEnterpriseUser, error)
+	// EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise invokes enterprise-admin/update-self-hosted-runner-group-for-enterprise operation.
+	//
+	// Updates the `name` and `visibility` of a self-hosted runner group in an enterprise.
+	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+	//
+	// PATCH /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
+	EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx context.Context, request OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams) (*RunnerGroupsEnterprise, error)
+	// GistsCheckIsStarred invokes gists/check-is-starred operation.
+	//
+	// Check if a gist is starred.
+	//
+	// GET /gists/{gist_id}/star
+	GistsCheckIsStarred(ctx context.Context, params GistsCheckIsStarredParams) (GistsCheckIsStarredRes, error)
+	// GistsCreate invokes gists/create operation.
+	//
+	// Allows you to add a new gist with one or more files.
+	// **Note:** Don't name your files "gistfile" with a numerical suffix. This is the format of the
+	// automatic naming scheme that Gist uses internally.
+	//
+	// POST /gists
+	GistsCreate(ctx context.Context, request *GistsCreateReq) (GistsCreateRes, error)
+	// GistsCreateComment invokes gists/create-comment operation.
+	//
+	// Create a gist comment.
+	//
+	// POST /gists/{gist_id}/comments
+	GistsCreateComment(ctx context.Context, request *GistsCreateCommentReq, params GistsCreateCommentParams) (GistsCreateCommentRes, error)
+	// GistsDelete invokes gists/delete operation.
+	//
+	// Delete a gist.
+	//
+	// DELETE /gists/{gist_id}
+	GistsDelete(ctx context.Context, params GistsDeleteParams) (GistsDeleteRes, error)
+	// GistsDeleteComment invokes gists/delete-comment operation.
+	//
+	// Delete a gist comment.
+	//
+	// DELETE /gists/{gist_id}/comments/{comment_id}
+	GistsDeleteComment(ctx context.Context, params GistsDeleteCommentParams) (GistsDeleteCommentRes, error)
+	// GistsFork invokes gists/fork operation.
+	//
+	// **Note**: This was previously `/gists/:gist_id/fork`.
+	//
+	// POST /gists/{gist_id}/forks
+	GistsFork(ctx context.Context, params GistsForkParams) (GistsForkRes, error)
+	// GistsGet invokes gists/get operation.
+	//
+	// Get a gist.
+	//
+	// GET /gists/{gist_id}
+	GistsGet(ctx context.Context, params GistsGetParams) (GistsGetRes, error)
+	// GistsGetComment invokes gists/get-comment operation.
+	//
+	// Get a gist comment.
+	//
+	// GET /gists/{gist_id}/comments/{comment_id}
+	GistsGetComment(ctx context.Context, params GistsGetCommentParams) (GistsGetCommentRes, error)
+	// GistsGetRevision invokes gists/get-revision operation.
+	//
+	// Get a gist revision.
+	//
+	// GET /gists/{gist_id}/{sha}
+	GistsGetRevision(ctx context.Context, params GistsGetRevisionParams) (GistsGetRevisionRes, error)
+	// GistsList invokes gists/list operation.
+	//
+	// Lists the authenticated user's gists or if called anonymously, this endpoint returns all public
+	// gists:.
+	//
+	// GET /gists
+	GistsList(ctx context.Context, params GistsListParams) (GistsListRes, error)
+	// GistsListComments invokes gists/list-comments operation.
+	//
+	// List gist comments.
+	//
+	// GET /gists/{gist_id}/comments
+	GistsListComments(ctx context.Context, params GistsListCommentsParams) (GistsListCommentsRes, error)
+	// GistsListCommits invokes gists/list-commits operation.
+	//
+	// List gist commits.
+	//
+	// GET /gists/{gist_id}/commits
+	GistsListCommits(ctx context.Context, params GistsListCommitsParams) (GistsListCommitsRes, error)
+	// GistsListForUser invokes gists/list-for-user operation.
+	//
+	// Lists public gists for the specified user:.
+	//
+	// GET /users/{username}/gists
+	GistsListForUser(ctx context.Context, params GistsListForUserParams) (GistsListForUserRes, error)
+	// GistsListForks invokes gists/list-forks operation.
+	//
+	// List gist forks.
+	//
+	// GET /gists/{gist_id}/forks
+	GistsListForks(ctx context.Context, params GistsListForksParams) (GistsListForksRes, error)
+	// GistsListPublic invokes gists/list-public operation.
+	//
+	// List public gists sorted by most recently updated to least recently updated.
+	// Note: With [pagination](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#pagination), you can fetch up to 3000 gists. For
+	// example, you can fetch 100 pages with 30 gists per page or 30 pages with 100 gists per page.
+	//
+	// GET /gists/public
+	GistsListPublic(ctx context.Context, params GistsListPublicParams) (GistsListPublicRes, error)
+	// GistsListStarred invokes gists/list-starred operation.
+	//
+	// List the authenticated user's starred gists:.
+	//
+	// GET /gists/starred
+	GistsListStarred(ctx context.Context, params GistsListStarredParams) (GistsListStarredRes, error)
+	// GistsStar invokes gists/star operation.
+	//
+	// Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more
+	// information, see "[HTTP verbs](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#http-verbs).".
+	//
+	// PUT /gists/{gist_id}/star
+	GistsStar(ctx context.Context, params GistsStarParams) (GistsStarRes, error)
+	// GistsUnstar invokes gists/unstar operation.
+	//
+	// Unstar a gist.
+	//
+	// DELETE /gists/{gist_id}/star
+	GistsUnstar(ctx context.Context, params GistsUnstarParams) (GistsUnstarRes, error)
+	// GistsUpdateComment invokes gists/update-comment operation.
+	//
+	// Update a gist comment.
+	//
+	// PATCH /gists/{gist_id}/comments/{comment_id}
+	GistsUpdateComment(ctx context.Context, request *GistsUpdateCommentReq, params GistsUpdateCommentParams) (GistsUpdateCommentRes, error)
+	// GitCreateBlob invokes git/create-blob operation.
+	//
+	// Create a blob.
+	//
+	// POST /repos/{owner}/{repo}/git/blobs
+	GitCreateBlob(ctx context.Context, request *GitCreateBlobReq, params GitCreateBlobParams) (GitCreateBlobRes, error)
+	// GitCreateCommit invokes git/create-commit operation.
+	//
+	// Creates a new Git [commit object](https://git-scm.
+	// com/book/en/v1/Git-Internals-Git-Objects#Commit-Objects).
+	// **Signature verification object**
+	// The response will include a `verification` object that describes the result of verifying the
+	// commit's signature. The following fields are included in the `verification` object:
+	// | Name | Type | Description |
+	// | ---- | ---- | ----------- |
+	// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be
+	// verified. |
+	// | `reason` | `string` | The reason for verified value. Possible values and their meanings are
+	// enumerated in table below. |
+	// | `signature` | `string` | The signature that was extracted from the commit. |
+	// | `payload` | `string` | The value that was signed. |
+	// These are the possible values for `reason` in the `verification` object:
+	// | Value | Description |
+	// | ----- | ----------- |
+	// | `expired_key` | The key that made the signature is expired. |
+	// | `not_signing_key` | The "signing" flag is not among the usage flags in the GPG key that made the
+	// signature. |
+	// | `gpgverify_error` | There was an error communicating with the signature verification service. |
+	// | `gpgverify_unavailable` | The signature verification service is currently unavailable. |
+	// | `unsigned` | The object does not include a signature. |
+	// | `unknown_signature_type` | A non-PGP signature was found in the commit. |
+	// | `no_user` | No user was associated with the `committer` email address in the commit. |
+	// | `unverified_email` | The `committer` email address in the commit was associated with a user, but
+	// the email address is not verified on her/his account. |
+	// | `bad_email` | The `committer` email address in the commit is not included in the identities of
+	// the PGP key that made the signature. |
+	// | `unknown_key` | The key that made the signature has not been registered with any user's account.
+	// |
+	// | `malformed_signature` | There was an error parsing the signature. |
+	// | `invalid` | The signature could not be cryptographically verified using the key whose key-id was
+	// found in the signature. |
+	// | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
+	//
+	// POST /repos/{owner}/{repo}/git/commits
+	GitCreateCommit(ctx context.Context, request *GitCreateCommitReq, params GitCreateCommitParams) (GitCreateCommitRes, error)
+	// GitCreateRef invokes git/create-ref operation.
+	//
+	// Creates a reference for your repository. You are unable to create new references for empty
+	// repositories, even if the commit SHA-1 hash used exists. Empty repositories are repositories
+	// without branches.
+	//
+	// POST /repos/{owner}/{repo}/git/refs
+	GitCreateRef(ctx context.Context, request *GitCreateRefReq, params GitCreateRefParams) (GitCreateRefRes, error)
+	// GitCreateTag invokes git/create-tag operation.
+	//
+	// Note that creating a tag object does not create the reference that makes a tag in Git. If you want
+	// to create an annotated tag in Git, you have to do this call to create the tag object, and then
+	// [create](https://docs.github.com/rest/reference/git#create-a-reference) the `refs/tags/[tag]`
+	// reference. If you want to create a lightweight tag, you only have to [create](https://docs.github.
+	// com/rest/reference/git#create-a-reference) the tag reference - this call would be unnecessary.
+	// **Signature verification object**
+	// The response will include a `verification` object that describes the result of verifying the
+	// commit's signature. The following fields are included in the `verification` object:
+	// | Name | Type | Description |
+	// | ---- | ---- | ----------- |
+	// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be
+	// verified. |
+	// | `reason` | `string` | The reason for verified value. Possible values and their meanings are
+	// enumerated in table below. |
+	// | `signature` | `string` | The signature that was extracted from the commit. |
+	// | `payload` | `string` | The value that was signed. |
+	// These are the possible values for `reason` in the `verification` object:
+	// | Value | Description |
+	// | ----- | ----------- |
+	// | `expired_key` | The key that made the signature is expired. |
+	// | `not_signing_key` | The "signing" flag is not among the usage flags in the GPG key that made the
+	// signature. |
+	// | `gpgverify_error` | There was an error communicating with the signature verification service. |
+	// | `gpgverify_unavailable` | The signature verification service is currently unavailable. |
+	// | `unsigned` | The object does not include a signature. |
+	// | `unknown_signature_type` | A non-PGP signature was found in the commit. |
+	// | `no_user` | No user was associated with the `committer` email address in the commit. |
+	// | `unverified_email` | The `committer` email address in the commit was associated with a user, but
+	// the email address is not verified on her/his account. |
+	// | `bad_email` | The `committer` email address in the commit is not included in the identities of
+	// the PGP key that made the signature. |
+	// | `unknown_key` | The key that made the signature has not been registered with any user's account.
+	// |
+	// | `malformed_signature` | There was an error parsing the signature. |
+	// | `invalid` | The signature could not be cryptographically verified using the key whose key-id was
+	// found in the signature. |
+	// | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
+	//
+	// POST /repos/{owner}/{repo}/git/tags
+	GitCreateTag(ctx context.Context, request *GitCreateTagReq, params GitCreateTagParams) (GitCreateTagRes, error)
+	// GitCreateTree invokes git/create-tree operation.
+	//
+	// The tree creation API accepts nested entries. If you specify both a tree and a nested path
+	// modifying that tree, this endpoint will overwrite the contents of the tree with the new path
+	// contents, and create a new tree structure.
+	// If you use this endpoint to add, delete, or modify the file contents in a tree, you will need to
+	// commit the tree and then update a branch to point to the commit. For more information see "[Create
+	// a commit](https://docs.github.com/rest/reference/git#create-a-commit)" and "[Update a
+	// reference](https://docs.github.com/rest/reference/git#update-a-reference).".
+	//
+	// POST /repos/{owner}/{repo}/git/trees
+	GitCreateTree(ctx context.Context, request *GitCreateTreeReq, params GitCreateTreeParams) (GitCreateTreeRes, error)
+	// GitDeleteRef invokes git/delete-ref operation.
+	//
+	// Delete a reference.
+	//
+	// DELETE /repos/{owner}/{repo}/git/refs/{ref}
+	GitDeleteRef(ctx context.Context, params GitDeleteRefParams) (GitDeleteRefRes, error)
+	// GitGetBlob invokes git/get-blob operation.
+	//
+	// The `content` in the response will always be Base64 encoded.
+	// _Note_: This API supports blobs up to 100 megabytes in size.
+	//
+	// GET /repos/{owner}/{repo}/git/blobs/{file_sha}
+	GitGetBlob(ctx context.Context, params GitGetBlobParams) (GitGetBlobRes, error)
+	// GitGetCommit invokes git/get-commit operation.
+	//
+	// Gets a Git [commit object](https://git-scm.
+	// com/book/en/v1/Git-Internals-Git-Objects#Commit-Objects).
+	// **Signature verification object**
+	// The response will include a `verification` object that describes the result of verifying the
+	// commit's signature. The following fields are included in the `verification` object:
+	// | Name | Type | Description |
+	// | ---- | ---- | ----------- |
+	// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be
+	// verified. |
+	// | `reason` | `string` | The reason for verified value. Possible values and their meanings are
+	// enumerated in table below. |
+	// | `signature` | `string` | The signature that was extracted from the commit. |
+	// | `payload` | `string` | The value that was signed. |
+	// These are the possible values for `reason` in the `verification` object:
+	// | Value | Description |
+	// | ----- | ----------- |
+	// | `expired_key` | The key that made the signature is expired. |
+	// | `not_signing_key` | The "signing" flag is not among the usage flags in the GPG key that made the
+	// signature. |
+	// | `gpgverify_error` | There was an error communicating with the signature verification service. |
+	// | `gpgverify_unavailable` | The signature verification service is currently unavailable. |
+	// | `unsigned` | The object does not include a signature. |
+	// | `unknown_signature_type` | A non-PGP signature was found in the commit. |
+	// | `no_user` | No user was associated with the `committer` email address in the commit. |
+	// | `unverified_email` | The `committer` email address in the commit was associated with a user, but
+	// the email address is not verified on her/his account. |
+	// | `bad_email` | The `committer` email address in the commit is not included in the identities of
+	// the PGP key that made the signature. |
+	// | `unknown_key` | The key that made the signature has not been registered with any user's account.
+	// |
+	// | `malformed_signature` | There was an error parsing the signature. |
+	// | `invalid` | The signature could not be cryptographically verified using the key whose key-id was
+	// found in the signature. |
+	// | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
+	//
+	// GET /repos/{owner}/{repo}/git/commits/{commit_sha}
+	GitGetCommit(ctx context.Context, params GitGetCommitParams) (GitGetCommitRes, error)
+	// GitGetRef invokes git/get-ref operation.
+	//
+	// Returns a single reference from your Git database. The `:ref` in the URL must be formatted as
+	// `heads/<branch name>` for branches and `tags/<tag name>` for tags. If the `:ref` doesn't match an
+	// existing ref, a `404` is returned.
+	// **Note:** You need to explicitly [request a pull request](https://docs.github.
+	// com/rest/reference/pulls#get-a-pull-request) to trigger a test merge commit, which checks the
+	// mergeability of pull requests. For more information, see "[Checking mergeability of pull
+	// requests](https://docs.github.
+	// com/rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
+	//
+	// GET /repos/{owner}/{repo}/git/ref/{ref}
+	GitGetRef(ctx context.Context, params GitGetRefParams) (GitGetRefRes, error)
+	// GitGetTag invokes git/get-tag operation.
+	//
+	// **Signature verification object**
+	// The response will include a `verification` object that describes the result of verifying the
+	// commit's signature. The following fields are included in the `verification` object:
+	// | Name | Type | Description |
+	// | ---- | ---- | ----------- |
+	// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be
+	// verified. |
+	// | `reason` | `string` | The reason for verified value. Possible values and their meanings are
+	// enumerated in table below. |
+	// | `signature` | `string` | The signature that was extracted from the commit. |
+	// | `payload` | `string` | The value that was signed. |
+	// These are the possible values for `reason` in the `verification` object:
+	// | Value | Description |
+	// | ----- | ----------- |
+	// | `expired_key` | The key that made the signature is expired. |
+	// | `not_signing_key` | The "signing" flag is not among the usage flags in the GPG key that made the
+	// signature. |
+	// | `gpgverify_error` | There was an error communicating with the signature verification service. |
+	// | `gpgverify_unavailable` | The signature verification service is currently unavailable. |
+	// | `unsigned` | The object does not include a signature. |
+	// | `unknown_signature_type` | A non-PGP signature was found in the commit. |
+	// | `no_user` | No user was associated with the `committer` email address in the commit. |
+	// | `unverified_email` | The `committer` email address in the commit was associated with a user, but
+	// the email address is not verified on her/his account. |
+	// | `bad_email` | The `committer` email address in the commit is not included in the identities of
+	// the PGP key that made the signature. |
+	// | `unknown_key` | The key that made the signature has not been registered with any user's account.
+	// |
+	// | `malformed_signature` | There was an error parsing the signature. |
+	// | `invalid` | The signature could not be cryptographically verified using the key whose key-id was
+	// found in the signature. |
+	// | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
+	//
+	// GET /repos/{owner}/{repo}/git/tags/{tag_sha}
+	GitGetTag(ctx context.Context, params GitGetTagParams) (GitGetTagRes, error)
+	// GitGetTree invokes git/get-tree operation.
+	//
+	// Returns a single tree using the SHA1 value for that tree.
+	// If `truncated` is `true` in the response then the number of items in the `tree` array exceeded our
+	// maximum limit. If you need to fetch more items, use the non-recursive method of fetching trees,
+	// and fetch one sub-tree at a time.
+	//
+	// GET /repos/{owner}/{repo}/git/trees/{tree_sha}
+	GitGetTree(ctx context.Context, params GitGetTreeParams) (GitGetTreeRes, error)
+	// GitListMatchingRefs invokes git/list-matching-refs operation.
+	//
+	// Returns an array of references from your Git database that match the supplied name. The `:ref` in
+	// the URL must be formatted as `heads/<branch name>` for branches and `tags/<tag name>` for tags. If
+	// the `:ref` doesn't exist in the repository, but existing refs start with `:ref`, they will be
+	// returned as an array.
+	// When you use this endpoint without providing a `:ref`, it will return an array of all the
+	// references from your Git database, including notes and stashes if they exist on the server.
+	// Anything in the namespace is returned, not just `heads` and `tags`.
+	// **Note:** You need to explicitly [request a pull request](https://docs.github.
+	// com/rest/reference/pulls#get-a-pull-request) to trigger a test merge commit, which checks the
+	// mergeability of pull requests. For more information, see "[Checking mergeability of pull
+	// requests](https://docs.github.
+	// com/rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
+	// If you request matching references for a branch named `feature` but the branch `feature` doesn't
+	// exist, the response can still include other matching head refs that start with the word `feature`,
+	// such as `featureA` and `featureB`.
+	//
+	// GET /repos/{owner}/{repo}/git/matching-refs/{ref}
+	GitListMatchingRefs(ctx context.Context, params GitListMatchingRefsParams) (*GitListMatchingRefsOKHeaders, error)
+	// GitUpdateRef invokes git/update-ref operation.
+	//
+	// Update a reference.
+	//
+	// PATCH /repos/{owner}/{repo}/git/refs/{ref}
+	GitUpdateRef(ctx context.Context, request *GitUpdateRefReq, params GitUpdateRefParams) (GitUpdateRefRes, error)
+	// GitignoreGetAllTemplates invokes gitignore/get-all-templates operation.
+	//
+	// List all templates available to pass as an option when [creating a repository](https://docs.github.
+	// com/rest/reference/repos#create-a-repository-for-the-authenticated-user).
+	//
+	// GET /gitignore/templates
+	GitignoreGetAllTemplates(ctx context.Context) (GitignoreGetAllTemplatesRes, error)
+	// GitignoreGetTemplate invokes gitignore/get-template operation.
+	//
+	// The API also allows fetching the source of a single template.
+	// Use the raw [media type](https://docs.github.com/rest/overview/media-types/) to get the raw
+	// contents.
+	//
+	// GET /gitignore/templates/{name}
+	GitignoreGetTemplate(ctx context.Context, params GitignoreGetTemplateParams) (GitignoreGetTemplateRes, error)
+	// InteractionsRemoveRestrictionsForAuthenticatedUser invokes interactions/remove-restrictions-for-authenticated-user operation.
+	//
+	// Removes any interaction restrictions from your public repositories.
+	//
+	// DELETE /user/interaction-limits
+	InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.Context) error
+	// InteractionsRemoveRestrictionsForOrg invokes interactions/remove-restrictions-for-org operation.
+	//
+	// Removes all interaction restrictions from public repositories in the given organization. You must
+	// be an organization owner to remove restrictions.
+	//
+	// DELETE /orgs/{org}/interaction-limits
+	InteractionsRemoveRestrictionsForOrg(ctx context.Context, params InteractionsRemoveRestrictionsForOrgParams) error
+	// InteractionsRemoveRestrictionsForRepo invokes interactions/remove-restrictions-for-repo operation.
+	//
+	// Removes all interaction restrictions from the given repository. You must have owner or admin
+	// access to remove restrictions. If the interaction limit is set for the user or organization that
+	// owns this repository, you will receive a `409 Conflict` response and will not be able to use this
+	// endpoint to change the interaction limit for a single repository.
+	//
+	// DELETE /repos/{owner}/{repo}/interaction-limits
+	InteractionsRemoveRestrictionsForRepo(ctx context.Context, params InteractionsRemoveRestrictionsForRepoParams) (InteractionsRemoveRestrictionsForRepoRes, error)
+	// InteractionsSetRestrictionsForAuthenticatedUser invokes interactions/set-restrictions-for-authenticated-user operation.
+	//
+	// Temporarily restricts which type of GitHub user can interact with your public repositories.
+	// Setting the interaction limit at the user level will overwrite any interaction limits that are set
+	// for individual repositories owned by the user.
+	//
+	// PUT /user/interaction-limits
+	InteractionsSetRestrictionsForAuthenticatedUser(ctx context.Context, request *InteractionLimit) (InteractionsSetRestrictionsForAuthenticatedUserRes, error)
+	// InteractionsSetRestrictionsForOrg invokes interactions/set-restrictions-for-org operation.
+	//
+	// Temporarily restricts interactions to a certain type of GitHub user in any public repository in
+	// the given organization. You must be an organization owner to set these restrictions. Setting the
+	// interaction limit at the organization level will overwrite any interaction limits that are set for
+	// individual repositories owned by the organization.
+	//
+	// PUT /orgs/{org}/interaction-limits
+	InteractionsSetRestrictionsForOrg(ctx context.Context, request *InteractionLimit, params InteractionsSetRestrictionsForOrgParams) (InteractionsSetRestrictionsForOrgRes, error)
+	// InteractionsSetRestrictionsForRepo invokes interactions/set-restrictions-for-repo operation.
+	//
+	// Temporarily restricts interactions to a certain type of GitHub user within the given repository.
+	// You must have owner or admin access to set these restrictions. If an interaction limit is set for
+	// the user or organization that owns this repository, you will receive a `409 Conflict` response and
+	// will not be able to use this endpoint to change the interaction limit for a single repository.
+	//
+	// PUT /repos/{owner}/{repo}/interaction-limits
+	InteractionsSetRestrictionsForRepo(ctx context.Context, request *InteractionLimit, params InteractionsSetRestrictionsForRepoParams) (InteractionsSetRestrictionsForRepoRes, error)
+	// IssuesAddAssignees invokes issues/add-assignees operation.
+	//
+	// Adds up to 10 assignees to an issue. Users already assigned to an issue are not replaced.
+	//
+	// POST /repos/{owner}/{repo}/issues/{issue_number}/assignees
+	IssuesAddAssignees(ctx context.Context, request OptIssuesAddAssigneesReq, params IssuesAddAssigneesParams) (*IssueSimple, error)
+	// IssuesCheckUserCanBeAssigned invokes issues/check-user-can-be-assigned operation.
+	//
+	// Checks if a user has permission to be assigned to an issue in this repository.
+	// If the `assignee` can be assigned to issues in the repository, a `204` header with no content is
+	// returned.
+	// Otherwise a `404` status code is returned.
+	//
+	// GET /repos/{owner}/{repo}/assignees/{assignee}
+	IssuesCheckUserCanBeAssigned(ctx context.Context, params IssuesCheckUserCanBeAssignedParams) (IssuesCheckUserCanBeAssignedRes, error)
+	// IssuesCreate invokes issues/create operation.
+	//
+	// Any user with pull access to a repository can create an issue. If [issues are disabled in the
+	// repository](https://help.github.com/articles/disabling-issues/), the API returns a `410 Gone`
+	// status.
+	// This endpoint triggers [notifications](https://docs.github.
+	// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
+	// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
+	// rate limits](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
+	// rate limits](https://docs.github.
+	// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+	//
+	// POST /repos/{owner}/{repo}/issues
+	IssuesCreate(ctx context.Context, request *IssuesCreateReq, params IssuesCreateParams) (IssuesCreateRes, error)
+	// IssuesCreateComment invokes issues/create-comment operation.
+	//
+	// This endpoint triggers [notifications](https://docs.github.
+	// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
+	// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
+	// rate limits](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
+	// rate limits](https://docs.github.
+	// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+	//
+	// POST /repos/{owner}/{repo}/issues/{issue_number}/comments
+	IssuesCreateComment(ctx context.Context, request *IssuesCreateCommentReq, params IssuesCreateCommentParams) (IssuesCreateCommentRes, error)
+	// IssuesCreateLabel invokes issues/create-label operation.
+	//
+	// Create a label.
+	//
+	// POST /repos/{owner}/{repo}/labels
+	IssuesCreateLabel(ctx context.Context, request *IssuesCreateLabelReq, params IssuesCreateLabelParams) (IssuesCreateLabelRes, error)
+	// IssuesCreateMilestone invokes issues/create-milestone operation.
+	//
+	// Create a milestone.
+	//
+	// POST /repos/{owner}/{repo}/milestones
+	IssuesCreateMilestone(ctx context.Context, request *IssuesCreateMilestoneReq, params IssuesCreateMilestoneParams) (IssuesCreateMilestoneRes, error)
+	// IssuesDeleteComment invokes issues/delete-comment operation.
+	//
+	// Delete an issue comment.
+	//
+	// DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}
+	IssuesDeleteComment(ctx context.Context, params IssuesDeleteCommentParams) error
+	// IssuesDeleteLabel invokes issues/delete-label operation.
+	//
+	// Delete a label.
+	//
+	// DELETE /repos/{owner}/{repo}/labels/{name}
+	IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabelParams) error
+	// IssuesDeleteMilestone invokes issues/delete-milestone operation.
+	//
+	// Delete a milestone.
+	//
+	// DELETE /repos/{owner}/{repo}/milestones/{milestone_number}
+	IssuesDeleteMilestone(ctx context.Context, params IssuesDeleteMilestoneParams) (IssuesDeleteMilestoneRes, error)
+	// IssuesGet invokes issues/get operation.
+	//
+	// The API returns a [`301 Moved Permanently` status](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#http-redirects-redirects) if the issue was
+	// [transferred](https://help.github.com/articles/transferring-an-issue-to-another-repository/) to
+	// another repository. If
+	// the issue was transferred to or deleted from a repository where the authenticated user lacks read
+	// access, the API
+	// returns a `404 Not Found` status. If the issue was deleted from a repository where the
+	// authenticated user has read
+	// access, the API returns a `410 Gone` status. To receive webhook events for transferred and deleted
+	// issues, subscribe
+	// to the [`issues`](https://docs.github.com/webhooks/event-payloads/#issues) webhook.
+	// **Note**: GitHub's REST API v3 considers every pull request an issue, but not every issue is a
+	// pull request. For this
+	// reason, "Issues" endpoints may return both issues and pull requests in the response. You can
+	// identify pull requests by
+	// the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints
+	// will be an _issue id_. To find out the pull
+	// request id, use the "[List pull requests](https://docs.github.
+	// com/rest/reference/pulls#list-pull-requests)" endpoint.
+	//
+	// GET /repos/{owner}/{repo}/issues/{issue_number}
+	IssuesGet(ctx context.Context, params IssuesGetParams) (IssuesGetRes, error)
+	// IssuesGetComment invokes issues/get-comment operation.
+	//
+	// Get an issue comment.
+	//
+	// GET /repos/{owner}/{repo}/issues/comments/{comment_id}
+	IssuesGetComment(ctx context.Context, params IssuesGetCommentParams) (IssuesGetCommentRes, error)
+	// IssuesGetEvent invokes issues/get-event operation.
+	//
+	// Get an issue event.
+	//
+	// GET /repos/{owner}/{repo}/issues/events/{event_id}
+	IssuesGetEvent(ctx context.Context, params IssuesGetEventParams) (IssuesGetEventRes, error)
+	// IssuesGetLabel invokes issues/get-label operation.
+	//
+	// Get a label.
+	//
+	// GET /repos/{owner}/{repo}/labels/{name}
+	IssuesGetLabel(ctx context.Context, params IssuesGetLabelParams) (IssuesGetLabelRes, error)
+	// IssuesGetMilestone invokes issues/get-milestone operation.
+	//
+	// Get a milestone.
+	//
+	// GET /repos/{owner}/{repo}/milestones/{milestone_number}
+	IssuesGetMilestone(ctx context.Context, params IssuesGetMilestoneParams) (IssuesGetMilestoneRes, error)
+	// IssuesList invokes issues/list operation.
+	//
+	// List issues assigned to the authenticated user across all visible repositories including owned
+	// repositories, member
+	// repositories, and organization repositories. You can use the `filter` query parameter to fetch
+	// issues that are not
+	// necessarily assigned to you.
+	// **Note**: GitHub's REST API v3 considers every pull request an issue, but not every issue is a
+	// pull request. For this
+	// reason, "Issues" endpoints may return both issues and pull requests in the response. You can
+	// identify pull requests by
+	// the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints
+	// will be an _issue id_. To find out the pull
+	// request id, use the "[List pull requests](https://docs.github.
+	// com/rest/reference/pulls#list-pull-requests)" endpoint.
+	//
+	// GET /issues
+	IssuesList(ctx context.Context, params IssuesListParams) (IssuesListRes, error)
+	// IssuesListAssignees invokes issues/list-assignees operation.
+	//
+	// Lists the [available assignees](https://help.github.
+	// com/articles/assigning-issues-and-pull-requests-to-other-github-users/) for issues in a repository.
+	//
+	// GET /repos/{owner}/{repo}/assignees
+	IssuesListAssignees(ctx context.Context, params IssuesListAssigneesParams) (IssuesListAssigneesRes, error)
+	// IssuesListComments invokes issues/list-comments operation.
+	//
+	// Issue Comments are ordered by ascending ID.
+	//
+	// GET /repos/{owner}/{repo}/issues/{issue_number}/comments
+	IssuesListComments(ctx context.Context, params IssuesListCommentsParams) (IssuesListCommentsRes, error)
+	// IssuesListCommentsForRepo invokes issues/list-comments-for-repo operation.
+	//
+	// By default, Issue Comments are ordered by ascending ID.
+	//
+	// GET /repos/{owner}/{repo}/issues/comments
+	IssuesListCommentsForRepo(ctx context.Context, params IssuesListCommentsForRepoParams) (IssuesListCommentsForRepoRes, error)
+	// IssuesListEventsForRepo invokes issues/list-events-for-repo operation.
+	//
+	// List issue events for a repository.
+	//
+	// GET /repos/{owner}/{repo}/issues/events
+	IssuesListEventsForRepo(ctx context.Context, params IssuesListEventsForRepoParams) (IssuesListEventsForRepoRes, error)
+	// IssuesListForAuthenticatedUser invokes issues/list-for-authenticated-user operation.
+	//
+	// List issues across owned and member repositories assigned to the authenticated user.
+	// **Note**: GitHub's REST API v3 considers every pull request an issue, but not every issue is a
+	// pull request. For this
+	// reason, "Issues" endpoints may return both issues and pull requests in the response. You can
+	// identify pull requests by
+	// the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints
+	// will be an _issue id_. To find out the pull
+	// request id, use the "[List pull requests](https://docs.github.
+	// com/rest/reference/pulls#list-pull-requests)" endpoint.
+	//
+	// GET /user/issues
+	IssuesListForAuthenticatedUser(ctx context.Context, params IssuesListForAuthenticatedUserParams) (IssuesListForAuthenticatedUserRes, error)
+	// IssuesListForOrg invokes issues/list-for-org operation.
+	//
+	// List issues in an organization assigned to the authenticated user.
+	// **Note**: GitHub's REST API v3 considers every pull request an issue, but not every issue is a
+	// pull request. For this
+	// reason, "Issues" endpoints may return both issues and pull requests in the response. You can
+	// identify pull requests by
+	// the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints
+	// will be an _issue id_. To find out the pull
+	// request id, use the "[List pull requests](https://docs.github.
+	// com/rest/reference/pulls#list-pull-requests)" endpoint.
+	//
+	// GET /orgs/{org}/issues
+	IssuesListForOrg(ctx context.Context, params IssuesListForOrgParams) (IssuesListForOrgRes, error)
+	// IssuesListForRepo invokes issues/list-for-repo operation.
+	//
+	// List issues in a repository.
+	// **Note**: GitHub's REST API v3 considers every pull request an issue, but not every issue is a
+	// pull request. For this
+	// reason, "Issues" endpoints may return both issues and pull requests in the response. You can
+	// identify pull requests by
+	// the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints
+	// will be an _issue id_. To find out the pull
+	// request id, use the "[List pull requests](https://docs.github.
+	// com/rest/reference/pulls#list-pull-requests)" endpoint.
+	//
+	// GET /repos/{owner}/{repo}/issues
+	IssuesListForRepo(ctx context.Context, params IssuesListForRepoParams) (IssuesListForRepoRes, error)
+	// IssuesListLabelsForMilestone invokes issues/list-labels-for-milestone operation.
+	//
+	// List labels for issues in a milestone.
+	//
+	// GET /repos/{owner}/{repo}/milestones/{milestone_number}/labels
+	IssuesListLabelsForMilestone(ctx context.Context, params IssuesListLabelsForMilestoneParams) (*IssuesListLabelsForMilestoneOKHeaders, error)
+	// IssuesListLabelsForRepo invokes issues/list-labels-for-repo operation.
+	//
+	// List labels for a repository.
+	//
+	// GET /repos/{owner}/{repo}/labels
+	IssuesListLabelsForRepo(ctx context.Context, params IssuesListLabelsForRepoParams) (IssuesListLabelsForRepoRes, error)
+	// IssuesListLabelsOnIssue invokes issues/list-labels-on-issue operation.
+	//
+	// List labels for an issue.
+	//
+	// GET /repos/{owner}/{repo}/issues/{issue_number}/labels
+	IssuesListLabelsOnIssue(ctx context.Context, params IssuesListLabelsOnIssueParams) (IssuesListLabelsOnIssueRes, error)
+	// IssuesListMilestones invokes issues/list-milestones operation.
+	//
+	// List milestones.
+	//
+	// GET /repos/{owner}/{repo}/milestones
+	IssuesListMilestones(ctx context.Context, params IssuesListMilestonesParams) (IssuesListMilestonesRes, error)
+	// IssuesLock invokes issues/lock operation.
+	//
+	// Users with push access can lock an issue or pull request's conversation.
+	// Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero
+	// when calling out to this endpoint. For more information, see "[HTTP verbs](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#http-verbs).".
+	//
+	// PUT /repos/{owner}/{repo}/issues/{issue_number}/lock
+	IssuesLock(ctx context.Context, request OptNilIssuesLockReq, params IssuesLockParams) (IssuesLockRes, error)
+	// IssuesRemoveAllLabels invokes issues/remove-all-labels operation.
+	//
+	// Remove all labels from an issue.
+	//
+	// DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels
+	IssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveAllLabelsParams) (IssuesRemoveAllLabelsRes, error)
+	// IssuesRemoveAssignees invokes issues/remove-assignees operation.
+	//
+	// Removes one or more assignees from an issue.
+	//
+	// DELETE /repos/{owner}/{repo}/issues/{issue_number}/assignees
+	IssuesRemoveAssignees(ctx context.Context, request OptIssuesRemoveAssigneesReq, params IssuesRemoveAssigneesParams) (*IssueSimple, error)
+	// IssuesRemoveLabel invokes issues/remove-label operation.
+	//
+	// Removes the specified label from the issue, and returns the remaining labels on the issue. This
+	// endpoint returns a `404 Not Found` status if the label does not exist.
+	//
+	// DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels/{name}
+	IssuesRemoveLabel(ctx context.Context, params IssuesRemoveLabelParams) (IssuesRemoveLabelRes, error)
+	// IssuesUnlock invokes issues/unlock operation.
+	//
+	// Users with push access can unlock an issue's conversation.
+	//
+	// DELETE /repos/{owner}/{repo}/issues/{issue_number}/lock
+	IssuesUnlock(ctx context.Context, params IssuesUnlockParams) (IssuesUnlockRes, error)
+	// IssuesUpdate invokes issues/update operation.
+	//
+	// Issue owners and users with push access can edit an issue.
+	//
+	// PATCH /repos/{owner}/{repo}/issues/{issue_number}
+	IssuesUpdate(ctx context.Context, request OptIssuesUpdateReq, params IssuesUpdateParams) (IssuesUpdateRes, error)
+	// IssuesUpdateComment invokes issues/update-comment operation.
+	//
+	// Update an issue comment.
+	//
+	// PATCH /repos/{owner}/{repo}/issues/comments/{comment_id}
+	IssuesUpdateComment(ctx context.Context, request *IssuesUpdateCommentReq, params IssuesUpdateCommentParams) (IssuesUpdateCommentRes, error)
+	// IssuesUpdateLabel invokes issues/update-label operation.
+	//
+	// Update a label.
+	//
+	// PATCH /repos/{owner}/{repo}/labels/{name}
+	IssuesUpdateLabel(ctx context.Context, request OptIssuesUpdateLabelReq, params IssuesUpdateLabelParams) (*Label, error)
+	// IssuesUpdateMilestone invokes issues/update-milestone operation.
+	//
+	// Update a milestone.
+	//
+	// PATCH /repos/{owner}/{repo}/milestones/{milestone_number}
+	IssuesUpdateMilestone(ctx context.Context, request OptIssuesUpdateMilestoneReq, params IssuesUpdateMilestoneParams) (*Milestone, error)
+	// LicensesGet invokes licenses/get operation.
+	//
+	// Get a license.
+	//
+	// GET /licenses/{license}
+	LicensesGet(ctx context.Context, params LicensesGetParams) (LicensesGetRes, error)
+	// LicensesGetAllCommonlyUsed invokes licenses/get-all-commonly-used operation.
+	//
+	// Get all commonly used licenses.
+	//
+	// GET /licenses
+	LicensesGetAllCommonlyUsed(ctx context.Context, params LicensesGetAllCommonlyUsedParams) (LicensesGetAllCommonlyUsedRes, error)
+	// LicensesGetForRepo invokes licenses/get-for-repo operation.
+	//
+	// This method returns the contents of the repository's license file, if one is detected.
+	// Similar to [Get repository content](https://docs.github.
+	// com/rest/reference/repos#get-repository-content), this method also supports [custom media
+	// types](https://docs.github.com/rest/overview/media-types) for retrieving the raw license content
+	// or rendered license HTML.
+	//
+	// GET /repos/{owner}/{repo}/license
+	LicensesGetForRepo(ctx context.Context, params LicensesGetForRepoParams) (*LicenseContent, error)
+	// MarkdownRender invokes markdown/render operation.
+	//
+	// Render a Markdown document.
+	//
+	// POST /markdown
+	MarkdownRender(ctx context.Context, request *MarkdownRenderReq) (MarkdownRenderRes, error)
+	// MarkdownRenderRaw invokes markdown/render-raw operation.
+	//
+	// You must send Markdown as plain text (using a `Content-Type` header of `text/plain` or
+	// `text/x-markdown`) to this endpoint, rather than using JSON format. In raw mode, [GitHub Flavored
+	// Markdown](https://github.github.com/gfm/) is not supported and Markdown will be rendered in plain
+	// format like a README.md file. Markdown content must be 400 KB or less.
+	//
+	// POST /markdown/raw
+	MarkdownRenderRaw(ctx context.Context, request MarkdownRenderRawReq) (MarkdownRenderRawRes, error)
+	// MetaGet invokes meta/get operation.
+	//
+	// Returns meta information about GitHub, including a list of GitHub's IP addresses. For more
+	// information, see "[About GitHub's IP addresses](https://help.github.
+	// com/articles/about-github-s-ip-addresses/)."
+	// **Note:** The IP addresses shown in the documentation's response are only example values. You must
+	// always query the API directly to get the latest list of IP addresses.
+	//
+	// GET /meta
+	MetaGet(ctx context.Context) (MetaGetRes, error)
+	// MetaGetOctocat invokes meta/get-octocat operation.
+	//
+	// Get the octocat as ASCII art.
+	//
+	// GET /octocat
+	MetaGetOctocat(ctx context.Context, params MetaGetOctocatParams) (MetaGetOctocatOK, error)
+	// MetaGetZen invokes meta/get-zen operation.
+	//
+	// Get a random sentence from the Zen of GitHub.
+	//
+	// GET /zen
+	MetaGetZen(ctx context.Context) (MetaGetZenOK, error)
+	// MetaRoot invokes meta/root operation.
+	//
+	// Get Hypermedia links to resources accessible in GitHub's REST API.
+	//
+	// GET /
+	MetaRoot(ctx context.Context) (*MetaRootOK, error)
+	// MigrationsCancelImport invokes migrations/cancel-import operation.
+	//
+	// Stop an import for a repository.
+	//
+	// DELETE /repos/{owner}/{repo}/import
+	MigrationsCancelImport(ctx context.Context, params MigrationsCancelImportParams) error
+	// MigrationsDeleteArchiveForAuthenticatedUser invokes migrations/delete-archive-for-authenticated-user operation.
+	//
+	// Deletes a previous migration archive. Downloadable migration archives are automatically deleted
+	// after seven days. Migration metadata, which is returned in the [List user migrations](https://docs.
+	// github.com/rest/reference/migrations#list-user-migrations) and [Get a user migration
+	// status](https://docs.github.com/rest/reference/migrations#get-a-user-migration-status) endpoints,
+	// will continue to be available even after an archive is deleted.
+	//
+	// DELETE /user/migrations/{migration_id}/archive
+	MigrationsDeleteArchiveForAuthenticatedUser(ctx context.Context, params MigrationsDeleteArchiveForAuthenticatedUserParams) (MigrationsDeleteArchiveForAuthenticatedUserRes, error)
+	// MigrationsDeleteArchiveForOrg invokes migrations/delete-archive-for-org operation.
+	//
+	// Deletes a previous migration archive. Migration archives are automatically deleted after seven
+	// days.
+	//
+	// DELETE /orgs/{org}/migrations/{migration_id}/archive
+	MigrationsDeleteArchiveForOrg(ctx context.Context, params MigrationsDeleteArchiveForOrgParams) (MigrationsDeleteArchiveForOrgRes, error)
+	// MigrationsDownloadArchiveForOrg invokes migrations/download-archive-for-org operation.
+	//
+	// Fetches the URL to a migration archive.
+	//
+	// GET /orgs/{org}/migrations/{migration_id}/archive
+	MigrationsDownloadArchiveForOrg(ctx context.Context, params MigrationsDownloadArchiveForOrgParams) (MigrationsDownloadArchiveForOrgRes, error)
+	// MigrationsGetArchiveForAuthenticatedUser invokes migrations/get-archive-for-authenticated-user operation.
+	//
+	// Fetches the URL to download the migration archive as a `tar.gz` file. Depending on the resources
+	// your repository uses, the migration archive can contain JSON files with data for these objects:
+	// *   attachments
+	// *   bases
+	// *   commit\_comments
+	// *   issue\_comments
+	// *   issue\_events
+	// *   issues
+	// *   milestones
+	// *   organizations
+	// *   projects
+	// *   protected\_branches
+	// *   pull\_request\_reviews
+	// *   pull\_requests
+	// *   releases
+	// *   repositories
+	// *   review\_comments
+	// *   schema
+	// *   users
+	// The archive will also contain an `attachments` directory that includes all attachment files
+	// uploaded to GitHub.com and a `repositories` directory that contains the repository's Git data.
+	//
+	// GET /user/migrations/{migration_id}/archive
+	MigrationsGetArchiveForAuthenticatedUser(ctx context.Context, params MigrationsGetArchiveForAuthenticatedUserParams) (MigrationsGetArchiveForAuthenticatedUserRes, error)
+	// MigrationsGetCommitAuthors invokes migrations/get-commit-authors operation.
+	//
+	// Each type of source control system represents authors in a different way. For example, a Git
+	// commit author has a display name and an email address, but a Subversion commit author just has a
+	// username. The GitHub Importer will make the author information valid, but the author might not be
+	// correct. For example, it will change the bare Subversion username `hubot` into something like
+	// `hubot <hubot@12341234-abab-fefe-8787-fedcba987654>`.
+	// This endpoint and the [Map a commit author](https://docs.github.
+	// com/rest/reference/migrations#map-a-commit-author) endpoint allow you to provide correct Git
+	// author information.
+	//
+	// GET /repos/{owner}/{repo}/import/authors
+	MigrationsGetCommitAuthors(ctx context.Context, params MigrationsGetCommitAuthorsParams) (MigrationsGetCommitAuthorsRes, error)
+	// MigrationsGetImportStatus invokes migrations/get-import-status operation.
+	//
+	// View the progress of an import.
+	// **Import status**
+	// This section includes details about the possible values of the `status` field of the Import
+	// Progress response.
+	// An import that does not have errors will progress through these steps:
+	// *   `detecting` - the "detection" step of the import is in progress because the request did not
+	// include a `vcs` parameter. The import is identifying the type of source control present at the URL.
+	// *   `importing` - the "raw" step of the import is in progress. This is where commit data is
+	// fetched from the original repository. The import progress response will include `commit_count`
+	// (the total number of raw commits that will be imported) and `percent` (0 - 100, the current
+	// progress through the import).
+	// *   `mapping` - the "rewrite" step of the import is in progress. This is where SVN branches are
+	// converted to Git branches, and where author updates are applied. The import progress response does
+	// not include progress information.
+	// *   `pushing` - the "push" step of the import is in progress. This is where the importer updates
+	// the repository on GitHub. The import progress response will include `push_percent`, which is the
+	// percent value reported by `git push` when it is "Writing objects".
+	// *   `complete` - the import is complete, and the repository is ready on GitHub.
+	// If there are problems, you will see one of these in the `status` field:
+	// *   `auth_failed` - the import requires authentication in order to connect to the original
+	// repository. To update authentication for the import, please see the [Update an
+	// import](https://docs.github.com/rest/reference/migrations#update-an-import) section.
+	// *   `error` - the import encountered an error. The import progress response will include the
+	// `failed_step` and an error message. Contact [GitHub Support](https://support.github.
+	// com/contact?tags=dotcom-rest-api) for more information.
+	// *   `detection_needs_auth` - the importer requires authentication for the originating repository
+	// to continue detection. To update authentication for the import, please see the [Update an
+	// import](https://docs.github.com/rest/reference/migrations#update-an-import) section.
+	// *   `detection_found_nothing` - the importer didn't recognize any source control at the URL. To
+	// resolve, [Cancel the import](https://docs.github.com/rest/reference/migrations#cancel-an-import)
+	// and [retry](https://docs.github.com/rest/reference/migrations#start-an-import) with the correct
+	// URL.
+	// *   `detection_found_multiple` - the importer found several projects or repositories at the
+	// provided URL. When this is the case, the Import Progress response will also include a
+	// `project_choices` field with the possible project choices as values. To update project choice,
+	// please see the [Update an import](https://docs.github.
+	// com/rest/reference/migrations#update-an-import) section.
+	// **The project_choices field**
+	// When multiple projects are found at the provided URL, the response hash will include a
+	// `project_choices` field, the value of which is an array of hashes each representing a project
+	// choice. The exact key/value pairs of the project hashes will differ depending on the version
+	// control type.
+	// **Git LFS related fields**
+	// This section includes details about Git LFS related fields that may be present in the Import
+	// Progress response.
+	// *   `use_lfs` - describes whether the import has been opted in or out of using Git LFS. The value
+	// can be `opt_in`, `opt_out`, or `undecided` if no action has been taken.
+	// *   `has_large_files` - the boolean value describing whether files larger than 100MB were found
+	// during the `importing` step.
+	// *   `large_files_size` - the total size in gigabytes of files larger than 100MB found in the
+	// originating repository.
+	// *   `large_files_count` - the total number of files larger than 100MB found in the originating
+	// repository. To see a list of these files, make a "Get Large Files" request.
+	//
+	// GET /repos/{owner}/{repo}/import
+	MigrationsGetImportStatus(ctx context.Context, params MigrationsGetImportStatusParams) (MigrationsGetImportStatusRes, error)
+	// MigrationsGetLargeFiles invokes migrations/get-large-files operation.
+	//
+	// List files larger than 100MB found during the import.
+	//
+	// GET /repos/{owner}/{repo}/import/large_files
+	MigrationsGetLargeFiles(ctx context.Context, params MigrationsGetLargeFilesParams) ([]PorterLargeFile, error)
+	// MigrationsGetStatusForAuthenticatedUser invokes migrations/get-status-for-authenticated-user operation.
+	//
+	// Fetches a single user migration. The response includes the `state` of the migration, which can be
+	// one of the following values:
+	// *   `pending` - the migration hasn't started yet.
+	// *   `exporting` - the migration is in progress.
+	// *   `exported` - the migration finished successfully.
+	// *   `failed` - the migration failed.
+	// Once the migration has been `exported` you can [download the migration archive](https://docs.
+	// github.com/rest/reference/migrations#download-a-user-migration-archive).
+	//
+	// GET /user/migrations/{migration_id}
+	MigrationsGetStatusForAuthenticatedUser(ctx context.Context, params MigrationsGetStatusForAuthenticatedUserParams) (MigrationsGetStatusForAuthenticatedUserRes, error)
+	// MigrationsGetStatusForOrg invokes migrations/get-status-for-org operation.
+	//
+	// Fetches the status of a migration.
+	// The `state` of a migration can be one of the following values:
+	// *   `pending`, which means the migration hasn't started yet.
+	// *   `exporting`, which means the migration is in progress.
+	// *   `exported`, which means the migration finished successfully.
+	// *   `failed`, which means the migration failed.
+	//
+	// GET /orgs/{org}/migrations/{migration_id}
+	MigrationsGetStatusForOrg(ctx context.Context, params MigrationsGetStatusForOrgParams) (MigrationsGetStatusForOrgRes, error)
+	// MigrationsListForAuthenticatedUser invokes migrations/list-for-authenticated-user operation.
+	//
+	// Lists all migrations a user has started.
+	//
+	// GET /user/migrations
+	MigrationsListForAuthenticatedUser(ctx context.Context, params MigrationsListForAuthenticatedUserParams) (MigrationsListForAuthenticatedUserRes, error)
+	// MigrationsListForOrg invokes migrations/list-for-org operation.
+	//
+	// Lists the most recent migrations.
+	//
+	// GET /orgs/{org}/migrations
+	MigrationsListForOrg(ctx context.Context, params MigrationsListForOrgParams) (*MigrationsListForOrgOKHeaders, error)
+	// MigrationsListReposForOrg invokes migrations/list-repos-for-org operation.
+	//
+	// List all the repositories for this organization migration.
+	//
+	// GET /orgs/{org}/migrations/{migration_id}/repositories
+	MigrationsListReposForOrg(ctx context.Context, params MigrationsListReposForOrgParams) (MigrationsListReposForOrgRes, error)
+	// MigrationsListReposForUser invokes migrations/list-repos-for-user operation.
+	//
+	// Lists all the repositories for this user migration.
+	//
+	// GET /user/migrations/{migration_id}/repositories
+	MigrationsListReposForUser(ctx context.Context, params MigrationsListReposForUserParams) (MigrationsListReposForUserRes, error)
+	// MigrationsMapCommitAuthor invokes migrations/map-commit-author operation.
+	//
+	// Update an author's identity for the import. Your application can continue updating authors any
+	// time before you push new commits to the repository.
+	//
+	// PATCH /repos/{owner}/{repo}/import/authors/{author_id}
+	MigrationsMapCommitAuthor(ctx context.Context, request OptMigrationsMapCommitAuthorReq, params MigrationsMapCommitAuthorParams) (MigrationsMapCommitAuthorRes, error)
+	// MigrationsSetLfsPreference invokes migrations/set-lfs-preference operation.
+	//
+	// You can import repositories from Subversion, Mercurial, and TFS that include files larger than
+	// 100MB. This ability is powered by [Git LFS](https://git-lfs.github.com). You can learn more about
+	// our LFS feature and working with large files [on our help site](https://help.github.
+	// com/articles/versioning-large-files/).
+	//
+	// PATCH /repos/{owner}/{repo}/import/lfs
+	MigrationsSetLfsPreference(ctx context.Context, request *MigrationsSetLfsPreferenceReq, params MigrationsSetLfsPreferenceParams) (MigrationsSetLfsPreferenceRes, error)
+	// MigrationsStartForAuthenticatedUser invokes migrations/start-for-authenticated-user operation.
+	//
+	// Initiates the generation of a user migration archive.
+	//
+	// POST /user/migrations
+	MigrationsStartForAuthenticatedUser(ctx context.Context, request *MigrationsStartForAuthenticatedUserReq) (MigrationsStartForAuthenticatedUserRes, error)
+	// MigrationsStartForOrg invokes migrations/start-for-org operation.
+	//
+	// Initiates the generation of a migration archive.
+	//
+	// POST /orgs/{org}/migrations
+	MigrationsStartForOrg(ctx context.Context, request *MigrationsStartForOrgReq, params MigrationsStartForOrgParams) (MigrationsStartForOrgRes, error)
+	// MigrationsStartImport invokes migrations/start-import operation.
+	//
+	// Start a source import to a GitHub repository using GitHub Importer.
+	//
+	// PUT /repos/{owner}/{repo}/import
+	MigrationsStartImport(ctx context.Context, request *MigrationsStartImportReq, params MigrationsStartImportParams) (MigrationsStartImportRes, error)
+	// MigrationsUnlockRepoForAuthenticatedUser invokes migrations/unlock-repo-for-authenticated-user operation.
+	//
+	// Unlocks a repository. You can lock repositories when you [start a user migration](https://docs.
+	// github.com/rest/reference/migrations#start-a-user-migration). Once the migration is complete you
+	// can unlock each repository to begin using it again or [delete the repository](https://docs.github.
+	// com/rest/reference/repos#delete-a-repository) if you no longer need the source data. Returns a
+	// status of `404 Not Found` if the repository is not locked.
+	//
+	// DELETE /user/migrations/{migration_id}/repos/{repo_name}/lock
+	MigrationsUnlockRepoForAuthenticatedUser(ctx context.Context, params MigrationsUnlockRepoForAuthenticatedUserParams) (MigrationsUnlockRepoForAuthenticatedUserRes, error)
+	// MigrationsUnlockRepoForOrg invokes migrations/unlock-repo-for-org operation.
+	//
+	// Unlocks a repository that was locked for migration. You should unlock each migrated repository and
+	// [delete them](https://docs.github.com/rest/reference/repos#delete-a-repository) when the migration
+	// is complete and you no longer need the source data.
+	//
+	// DELETE /orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock
+	MigrationsUnlockRepoForOrg(ctx context.Context, params MigrationsUnlockRepoForOrgParams) (MigrationsUnlockRepoForOrgRes, error)
+	// MigrationsUpdateImport invokes migrations/update-import operation.
+	//
+	// An import can be updated with credentials or a project choice by passing in the appropriate
+	// parameters in this API
+	// request. If no parameters are provided, the import will be restarted.
+	//
+	// PATCH /repos/{owner}/{repo}/import
+	MigrationsUpdateImport(ctx context.Context, request OptNilMigrationsUpdateImportReq, params MigrationsUpdateImportParams) (*Import, error)
+	// OAuthAuthorizationsCreateAuthorization invokes oauth-authorizations/create-authorization operation.
+	//
+	// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
+	// com/rest/reference/oauth-authorizations), which is used by integrations to create personal access
+	// tokens and OAuth tokens, and you must now create these tokens using our [web application
+	// flow](https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow). The
+	// [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be
+	// removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
+	// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+	// **Warning:** Apps must use the [web application flow](https://docs.github.
+	// com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow) to obtain OAuth tokens
+	// that work with GitHub SAML organizations. OAuth tokens created using the Authorizations API will
+	// be unable to access GitHub SAML organizations. For more information, see the [blog
+	// post](https://developer.github.com/changes/2019-11-05-deprecated-passwords-and-authorizations-api).
+	// Creates OAuth tokens using [Basic Authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#basic-authentication). If you have two-factor
+	// authentication setup, Basic Authentication for this endpoint requires that you use a one-time
+	// password (OTP) and your username and password instead of tokens. For more information, see
+	// "[Working with two-factor authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#working-with-two-factor-authentication)."
+	// To create tokens for a particular OAuth application using this endpoint, you must authenticate as
+	// the user you want to create an authorization for and provide the app's client ID and secret, found
+	// on your OAuth application's settings page. If your OAuth application intends to create multiple
+	// tokens for one user, use `fingerprint` to differentiate between them.
+	// You can also create tokens on GitHub from the [personal access tokens settings](https://github.
+	// com/settings/tokens) page. Read more about these tokens in [the GitHub Help
+	// documentation](https://help.github.com/articles/creating-an-access-token-for-command-line-use).
+	// Organizations that enforce SAML SSO require personal access tokens to be allowed. Read more about
+	// allowing tokens in [the GitHub Help documentation](https://help.github.
+	// com/articles/about-identity-and-access-management-with-saml-single-sign-on).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// POST /authorizations
+	OAuthAuthorizationsCreateAuthorization(ctx context.Context, request OptOAuthAuthorizationsCreateAuthorizationReq) (OAuthAuthorizationsCreateAuthorizationRes, error)
+	// OAuthAuthorizationsDeleteAuthorization invokes oauth-authorizations/delete-authorization operation.
+	//
+	// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
+	// com/rest/reference/oauth-authorizations), which is used by integrations to create personal access
+	// tokens and OAuth tokens, and you must now create these tokens using our [web application
+	// flow](https://docs.github.
+	// com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow). The [OAuth
+	// Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed
+	// on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
+	// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// DELETE /authorizations/{authorization_id}
+	OAuthAuthorizationsDeleteAuthorization(ctx context.Context, params OAuthAuthorizationsDeleteAuthorizationParams) (OAuthAuthorizationsDeleteAuthorizationRes, error)
+	// OAuthAuthorizationsDeleteGrant invokes oauth-authorizations/delete-grant operation.
+	//
+	// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
+	// com/rest/reference/oauth-authorizations/), which is used by integrations to create personal access
+	// tokens and OAuth tokens, and you must now create these tokens using our [web application
+	// flow](https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow). The
+	// [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations/) will be
+	// removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
+	// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+	// Deleting an OAuth application's grant will also delete all OAuth tokens associated with the
+	// application for your user. Once deleted, the application has no access to your account and is no
+	// longer listed on [the application authorizations settings screen within GitHub](https://github.
+	// com/settings/applications#authorized).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// DELETE /applications/grants/{grant_id}
+	OAuthAuthorizationsDeleteGrant(ctx context.Context, params OAuthAuthorizationsDeleteGrantParams) (OAuthAuthorizationsDeleteGrantRes, error)
+	// OAuthAuthorizationsGetAuthorization invokes oauth-authorizations/get-authorization operation.
+	//
+	// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
+	// com/rest/reference/oauth-authorizations), which is used by integrations to create personal access
+	// tokens and OAuth tokens, and you must now create these tokens using our [web application
+	// flow](https://docs.github.
+	// com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow). The [OAuth
+	// Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed
+	// on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
+	// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /authorizations/{authorization_id}
+	OAuthAuthorizationsGetAuthorization(ctx context.Context, params OAuthAuthorizationsGetAuthorizationParams) (OAuthAuthorizationsGetAuthorizationRes, error)
+	// OAuthAuthorizationsGetGrant invokes oauth-authorizations/get-grant operation.
+	//
+	// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
+	// com/rest/reference/oauth-authorizations), which is used by integrations to create personal access
+	// tokens and OAuth tokens, and you must now create these tokens using our [web application
+	// flow](https://docs.github.
+	// com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow). The [OAuth
+	// Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed
+	// on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
+	// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /applications/grants/{grant_id}
+	OAuthAuthorizationsGetGrant(ctx context.Context, params OAuthAuthorizationsGetGrantParams) (OAuthAuthorizationsGetGrantRes, error)
+	// OAuthAuthorizationsGetOrCreateAuthorizationForApp invokes oauth-authorizations/get-or-create-authorization-for-app operation.
+	//
+	// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
+	// com/rest/reference/oauth-authorizations/), which is used by integrations to create personal access
+	// tokens and OAuth tokens, and you must now create these tokens using our [web application
+	// flow](https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow). The
+	// [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be
+	// removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
+	// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+	// **Warning:** Apps must use the [web application flow](https://docs.github.
+	// com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow) to obtain OAuth tokens
+	// that work with GitHub SAML organizations. OAuth tokens created using the Authorizations API will
+	// be unable to access GitHub SAML organizations. For more information, see the [blog
+	// post](https://developer.github.com/changes/2019-11-05-deprecated-passwords-and-authorizations-api).
+	// Creates a new authorization for the specified OAuth application, only if an authorization for that
+	// application doesn't already exist for the user. The URL includes the 20 character client ID for
+	// the OAuth app that is requesting the token. It returns the user's existing authorization for the
+	// application if one is present. Otherwise, it creates and returns a new one.
+	// If you have two-factor authentication setup, Basic Authentication for this endpoint requires that
+	// you use a one-time password (OTP) and your username and password instead of tokens. For more
+	// information, see "[Working with two-factor authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#working-with-two-factor-authentication)."
+	// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
+	// com/rest/reference/oauth-authorizations/), which is used by integrations to create personal access
+	// tokens and OAuth tokens, and you must now create these tokens using our [web application
+	// flow](https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow). The
+	// [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be
+	// removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
+	// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// PUT /authorizations/clients/{client_id}
+	OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx context.Context, request *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq, params OAuthAuthorizationsGetOrCreateAuthorizationForAppParams) (OAuthAuthorizationsGetOrCreateAuthorizationForAppRes, error)
+	// OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint invokes oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint operation.
+	//
+	// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
+	// com/rest/reference/oauth-authorizations/), which is used by integrations to create personal access
+	// tokens and OAuth tokens, and you must now create these tokens using our [web application
+	// flow](https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow). The
+	// [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be
+	// removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
+	// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+	// **Warning:** Apps must use the [web application flow](https://docs.github.
+	// com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow) to obtain OAuth tokens
+	// that work with GitHub SAML organizations. OAuth tokens created using the Authorizations API will
+	// be unable to access GitHub SAML organizations. For more information, see the [blog
+	// post](https://developer.github.com/changes/2019-11-05-deprecated-passwords-and-authorizations-api).
+	// This method will create a new authorization for the specified OAuth application, only if an
+	// authorization for that application and fingerprint do not already exist for the user. The URL
+	// includes the 20 character client ID for the OAuth app that is requesting the token. `fingerprint`
+	// is a unique string to distinguish an authorization from others created for the same client ID and
+	// user. It returns the user's existing authorization for the application if one is present.
+	// Otherwise, it creates and returns a new one.
+	// If you have two-factor authentication setup, Basic Authentication for this endpoint requires that
+	// you use a one-time password (OTP) and your username and password instead of tokens. For more
+	// information, see "[Working with two-factor authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#working-with-two-factor-authentication).".
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// PUT /authorizations/clients/{client_id}/{fingerprint}
+	OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint(ctx context.Context, request *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq, params OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams) (OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes, error)
+	// OAuthAuthorizationsListAuthorizations invokes oauth-authorizations/list-authorizations operation.
+	//
+	// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
+	// com/rest/reference/oauth-authorizations), which is used by integrations to create personal access
+	// tokens and OAuth tokens, and you must now create these tokens using our [web application
+	// flow](https://docs.github.
+	// com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow). The [OAuth
+	// Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed
+	// on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
+	// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /authorizations
+	OAuthAuthorizationsListAuthorizations(ctx context.Context, params OAuthAuthorizationsListAuthorizationsParams) (OAuthAuthorizationsListAuthorizationsRes, error)
+	// OAuthAuthorizationsListGrants invokes oauth-authorizations/list-grants operation.
+	//
+	// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
+	// com/rest/reference/oauth-authorizations/), which is used by integrations to create personal access
+	// tokens and OAuth tokens, and you must now create these tokens using our [web application
+	// flow](https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow). The
+	// [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be
+	// removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
+	// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+	// You can use this API to list the set of OAuth applications that have been granted access to your
+	// account. Unlike the [list your authorizations](https://docs.github.
+	// com/rest/reference/oauth-authorizations#list-your-authorizations) API, this API does not manage
+	// individual tokens. This API will return one entry for each OAuth application that has been granted
+	// access to your account, regardless of the number of tokens an application has generated for your
+	// user. The list of OAuth applications returned matches what is shown on [the application
+	// authorizations settings screen within GitHub](https://github.com/settings/applications#authorized).
+	//  The `scopes` returned are the union of scopes authorized for the application. For example, if an
+	// application has one token with `repo` scope and another token with `user` scope, the grant will
+	// return `["repo", "user"]`.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /applications/grants
+	OAuthAuthorizationsListGrants(ctx context.Context, params OAuthAuthorizationsListGrantsParams) (OAuthAuthorizationsListGrantsRes, error)
+	// OAuthAuthorizationsUpdateAuthorization invokes oauth-authorizations/update-authorization operation.
+	//
+	// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
+	// com/rest/reference/oauth-authorizations/), which is used by integrations to create personal access
+	// tokens and OAuth tokens, and you must now create these tokens using our [web application
+	// flow](https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow). The
+	// [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be
+	// removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
+	// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+	// If you have two-factor authentication setup, Basic Authentication for this endpoint requires that
+	// you use a one-time password (OTP) and your username and password instead of tokens. For more
+	// information, see "[Working with two-factor authentication](https://docs.github.
+	// com/rest/overview/other-authentication-methods#working-with-two-factor-authentication)."
+	// You can only send one of these scope keys at a time.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// PATCH /authorizations/{authorization_id}
+	OAuthAuthorizationsUpdateAuthorization(ctx context.Context, request OptOAuthAuthorizationsUpdateAuthorizationReq, params OAuthAuthorizationsUpdateAuthorizationParams) (OAuthAuthorizationsUpdateAuthorizationRes, error)
+	// OrgsBlockUser invokes orgs/block-user operation.
+	//
+	// Block a user from an organization.
+	//
+	// PUT /orgs/{org}/blocks/{username}
+	OrgsBlockUser(ctx context.Context, params OrgsBlockUserParams) (OrgsBlockUserRes, error)
+	// OrgsCancelInvitation invokes orgs/cancel-invitation operation.
+	//
+	// Cancel an organization invitation. In order to cancel an organization invitation, the
+	// authenticated user must be an organization owner.
+	// This endpoint triggers [notifications](https://docs.github.
+	// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications).
+	//
+	// DELETE /orgs/{org}/invitations/{invitation_id}
+	OrgsCancelInvitation(ctx context.Context, params OrgsCancelInvitationParams) (OrgsCancelInvitationRes, error)
+	// OrgsCheckBlockedUser invokes orgs/check-blocked-user operation.
+	//
+	// Check if a user is blocked by an organization.
+	//
+	// GET /orgs/{org}/blocks/{username}
+	OrgsCheckBlockedUser(ctx context.Context, params OrgsCheckBlockedUserParams) (OrgsCheckBlockedUserRes, error)
+	// OrgsCheckMembershipForUser invokes orgs/check-membership-for-user operation.
+	//
+	// Check if a user is, publicly or privately, a member of the organization.
+	//
+	// GET /orgs/{org}/members/{username}
+	OrgsCheckMembershipForUser(ctx context.Context, params OrgsCheckMembershipForUserParams) (OrgsCheckMembershipForUserRes, error)
+	// OrgsCheckPublicMembershipForUser invokes orgs/check-public-membership-for-user operation.
+	//
+	// Check public organization membership for a user.
+	//
+	// GET /orgs/{org}/public_members/{username}
+	OrgsCheckPublicMembershipForUser(ctx context.Context, params OrgsCheckPublicMembershipForUserParams) (OrgsCheckPublicMembershipForUserRes, error)
+	// OrgsConvertMemberToOutsideCollaborator invokes orgs/convert-member-to-outside-collaborator operation.
+	//
+	// When an organization member is converted to an outside collaborator, they'll only have access to
+	// the repositories that their current team membership allows. The user will no longer be a member of
+	// the organization. For more information, see "[Converting an organization member to an outside
+	// collaborator](https://help.github.
+	// com/articles/converting-an-organization-member-to-an-outside-collaborator/)".
+	//
+	// PUT /orgs/{org}/outside_collaborators/{username}
+	OrgsConvertMemberToOutsideCollaborator(ctx context.Context, params OrgsConvertMemberToOutsideCollaboratorParams) (OrgsConvertMemberToOutsideCollaboratorRes, error)
+	// OrgsCreateInvitation invokes orgs/create-invitation operation.
+	//
+	// Invite people to an organization by using their GitHub user ID or their email address. In order to
+	// create invitations in an organization, the authenticated user must be an organization owner.
+	// This endpoint triggers [notifications](https://docs.github.
+	// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
+	// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
+	// rate limits](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
+	// rate limits](https://docs.github.
+	// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+	//
+	// POST /orgs/{org}/invitations
+	OrgsCreateInvitation(ctx context.Context, request OptOrgsCreateInvitationReq, params OrgsCreateInvitationParams) (OrgsCreateInvitationRes, error)
+	// OrgsCreateWebhook invokes orgs/create-webhook operation.
+	//
+	// Here's how you can create a hook that posts payloads in JSON format:.
+	//
+	// POST /orgs/{org}/hooks
+	OrgsCreateWebhook(ctx context.Context, request *OrgsCreateWebhookReq, params OrgsCreateWebhookParams) (OrgsCreateWebhookRes, error)
+	// OrgsDeleteWebhook invokes orgs/delete-webhook operation.
+	//
+	// Delete an organization webhook.
+	//
+	// DELETE /orgs/{org}/hooks/{hook_id}
+	OrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWebhookParams) (OrgsDeleteWebhookRes, error)
+	// OrgsGet invokes orgs/get operation.
+	//
+	// To see many of the organization response values, you need to be an authenticated organization
+	// owner with the `admin:org` scope. When the value of `two_factor_requirement_enabled` is `true`,
+	// the organization requires all members, billing managers, and outside collaborators to enable
+	// [two-factor authentication](https://help.github.
+	// com/articles/securing-your-account-with-two-factor-authentication-2fa/).
+	// GitHub Apps with the `Organization plan` permission can use this endpoint to retrieve information
+	// about an organization's GitHub plan. See "[Authenticating with GitHub Apps](https://docs.github.
+	// com/apps/building-github-apps/authenticating-with-github-apps/)" for details. For an example
+	// response, see 'Response with GitHub plan information' below.".
+	//
+	// GET /orgs/{org}
+	OrgsGet(ctx context.Context, params OrgsGetParams) (OrgsGetRes, error)
+	// OrgsGetAuditLog invokes orgs/get-audit-log operation.
+	//
+	// Gets the audit log for an organization. For more information, see "[Reviewing the audit log for
+	// your organization](https://docs.github.
+	// com/github/setting-up-and-managing-organizations-and-teams/reviewing-the-audit-log-for-your-organization)."
+	// To use this endpoint, you must be an organization owner, and you must use an access token with the
+	// `admin:org` scope. GitHub Apps must have the `organization_administration` read permission to use
+	// this endpoint.
+	//
+	// GET /orgs/{org}/audit-log
+	OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogParams) ([]AuditLogEvent, error)
+	// OrgsGetMembershipForAuthenticatedUser invokes orgs/get-membership-for-authenticated-user operation.
+	//
+	// Get an organization membership for the authenticated user.
+	//
+	// GET /user/memberships/orgs/{org}
+	OrgsGetMembershipForAuthenticatedUser(ctx context.Context, params OrgsGetMembershipForAuthenticatedUserParams) (OrgsGetMembershipForAuthenticatedUserRes, error)
+	// OrgsGetMembershipForUser invokes orgs/get-membership-for-user operation.
+	//
+	// In order to get a user's membership with an organization, the authenticated user must be an
+	// organization member. The `state` parameter in the response can be used to identify the user's
+	// membership status.
+	//
+	// GET /orgs/{org}/memberships/{username}
+	OrgsGetMembershipForUser(ctx context.Context, params OrgsGetMembershipForUserParams) (OrgsGetMembershipForUserRes, error)
+	// OrgsGetWebhook invokes orgs/get-webhook operation.
+	//
+	// Returns a webhook configured in an organization. To get only the webhook `config` properties, see
+	// "[Get a webhook configuration for an
+	// organization](/rest/reference/orgs#get-a-webhook-configuration-for-an-organization).".
+	//
+	// GET /orgs/{org}/hooks/{hook_id}
+	OrgsGetWebhook(ctx context.Context, params OrgsGetWebhookParams) (OrgsGetWebhookRes, error)
+	// OrgsGetWebhookConfigForOrg invokes orgs/get-webhook-config-for-org operation.
+	//
+	// Returns the webhook configuration for an organization. To get more information about the webhook,
+	// including the `active` state and `events`, use "[Get an organization webhook
+	// ](/rest/reference/orgs#get-an-organization-webhook)."
+	// Access tokens must have the `admin:org_hook` scope, and GitHub Apps must have the
+	// `organization_hooks:read` permission.
+	//
+	// GET /orgs/{org}/hooks/{hook_id}/config
+	OrgsGetWebhookConfigForOrg(ctx context.Context, params OrgsGetWebhookConfigForOrgParams) (*WebhookConfig, error)
+	// OrgsGetWebhookDelivery invokes orgs/get-webhook-delivery operation.
+	//
+	// Returns a delivery for a webhook configured in an organization.
+	//
+	// GET /orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}
+	OrgsGetWebhookDelivery(ctx context.Context, params OrgsGetWebhookDeliveryParams) (OrgsGetWebhookDeliveryRes, error)
+	// OrgsList invokes orgs/list operation.
+	//
+	// Lists all organizations, in the order that they were created on GitHub.
+	// **Note:** Pagination is powered exclusively by the `since` parameter. Use the [Link
+	// header](https://docs.github.com/rest/overview/resources-in-the-rest-api#link-header) to get the
+	// URL for the next page of organizations.
+	//
+	// GET /organizations
+	OrgsList(ctx context.Context, params OrgsListParams) (OrgsListRes, error)
+	// OrgsListBlockedUsers invokes orgs/list-blocked-users operation.
+	//
+	// List the users blocked by an organization.
+	//
+	// GET /orgs/{org}/blocks
+	OrgsListBlockedUsers(ctx context.Context, params OrgsListBlockedUsersParams) (OrgsListBlockedUsersRes, error)
+	// OrgsListFailedInvitations invokes orgs/list-failed-invitations operation.
+	//
+	// The return hash contains `failed_at` and `failed_reason` fields which represent the time at which
+	// the invitation failed and the reason for the failure.
+	//
+	// GET /orgs/{org}/failed_invitations
+	OrgsListFailedInvitations(ctx context.Context, params OrgsListFailedInvitationsParams) (OrgsListFailedInvitationsRes, error)
+	// OrgsListForAuthenticatedUser invokes orgs/list-for-authenticated-user operation.
+	//
+	// List organizations for the authenticated user.
+	// **OAuth scope requirements**
+	// This only lists organizations that your authorization allows you to operate on in some way (e.g.,
+	// you can list teams with `read:org` scope, you can publicize your organization membership with
+	// `user` scope, etc.). Therefore, this API requires at least `user` or `read:org` scope. OAuth
+	// requests with insufficient scope receive a `403 Forbidden` response.
+	//
+	// GET /user/orgs
+	OrgsListForAuthenticatedUser(ctx context.Context, params OrgsListForAuthenticatedUserParams) (OrgsListForAuthenticatedUserRes, error)
+	// OrgsListForUser invokes orgs/list-for-user operation.
+	//
+	// List [public organization memberships](https://help.github.
+	// com/articles/publicizing-or-concealing-organization-membership) for the specified user.
+	// This method only lists _public_ memberships, regardless of authentication. If you need to fetch
+	// all of the organization memberships (public and private) for the authenticated user, use the [List
+	// organizations for the authenticated user](https://docs.github.
+	// com/rest/reference/orgs#list-organizations-for-the-authenticated-user) API instead.
+	//
+	// GET /users/{username}/orgs
+	OrgsListForUser(ctx context.Context, params OrgsListForUserParams) (*OrgsListForUserOKHeaders, error)
+	// OrgsListInvitationTeams invokes orgs/list-invitation-teams operation.
+	//
+	// List all teams associated with an invitation. In order to see invitations in an organization, the
+	// authenticated user must be an organization owner.
+	//
+	// GET /orgs/{org}/invitations/{invitation_id}/teams
+	OrgsListInvitationTeams(ctx context.Context, params OrgsListInvitationTeamsParams) (OrgsListInvitationTeamsRes, error)
+	// OrgsListMembers invokes orgs/list-members operation.
+	//
+	// List all users who are members of an organization. If the authenticated user is also a member of
+	// this organization then both concealed and public members will be returned.
+	//
+	// GET /orgs/{org}/members
+	OrgsListMembers(ctx context.Context, params OrgsListMembersParams) (OrgsListMembersRes, error)
+	// OrgsListMembershipsForAuthenticatedUser invokes orgs/list-memberships-for-authenticated-user operation.
+	//
+	// List organization memberships for the authenticated user.
+	//
+	// GET /user/memberships/orgs
+	OrgsListMembershipsForAuthenticatedUser(ctx context.Context, params OrgsListMembershipsForAuthenticatedUserParams) (OrgsListMembershipsForAuthenticatedUserRes, error)
+	// OrgsListOutsideCollaborators invokes orgs/list-outside-collaborators operation.
+	//
+	// List all users who are outside collaborators of an organization.
+	//
+	// GET /orgs/{org}/outside_collaborators
+	OrgsListOutsideCollaborators(ctx context.Context, params OrgsListOutsideCollaboratorsParams) (*OrgsListOutsideCollaboratorsOKHeaders, error)
+	// OrgsListPendingInvitations invokes orgs/list-pending-invitations operation.
+	//
+	// The return hash contains a `role` field which refers to the Organization Invitation role and will
+	// be one of the following values: `direct_member`, `admin`, `billing_manager`, `hiring_manager`, or
+	// `reinstate`. If the invitee is not a GitHub member, the `login` field in the return hash will be
+	// `null`.
+	//
+	// GET /orgs/{org}/invitations
+	OrgsListPendingInvitations(ctx context.Context, params OrgsListPendingInvitationsParams) (OrgsListPendingInvitationsRes, error)
+	// OrgsListPublicMembers invokes orgs/list-public-members operation.
+	//
+	// Members of an organization can choose to have their membership publicized or not.
+	//
+	// GET /orgs/{org}/public_members
+	OrgsListPublicMembers(ctx context.Context, params OrgsListPublicMembersParams) (*OrgsListPublicMembersOKHeaders, error)
+	// OrgsListSamlSSOAuthorizations invokes orgs/list-saml-sso-authorizations operation.
+	//
+	// Listing and deleting credential authorizations is available to organizations with GitHub
+	// Enterprise Cloud. For more information, see [GitHub's products](https://help.github.
+	// com/github/getting-started-with-github/githubs-products).
+	// An authenticated organization owner with the `read:org` scope can list all credential
+	// authorizations for an organization that uses SAML single sign-on (SSO). The credentials are either
+	// personal access tokens or SSH keys that organization members have authorized for the organization.
+	// For more information, see [About authentication with SAML single sign-on](https://help.github.
+	// com/en/articles/about-authentication-with-saml-single-sign-on).
+	//
+	// GET /orgs/{org}/credential-authorizations
+	OrgsListSamlSSOAuthorizations(ctx context.Context, params OrgsListSamlSSOAuthorizationsParams) ([]CredentialAuthorization, error)
+	// OrgsListWebhookDeliveries invokes orgs/list-webhook-deliveries operation.
+	//
+	// Returns a list of webhook deliveries for a webhook configured in an organization.
+	//
+	// GET /orgs/{org}/hooks/{hook_id}/deliveries
+	OrgsListWebhookDeliveries(ctx context.Context, params OrgsListWebhookDeliveriesParams) (OrgsListWebhookDeliveriesRes, error)
+	// OrgsListWebhooks invokes orgs/list-webhooks operation.
+	//
+	// List organization webhooks.
+	//
+	// GET /orgs/{org}/hooks
+	OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksParams) (OrgsListWebhooksRes, error)
+	// OrgsPingWebhook invokes orgs/ping-webhook operation.
+	//
+	// This will trigger a [ping event](https://docs.github.com/webhooks/#ping-event) to be sent to the
+	// hook.
+	//
+	// POST /orgs/{org}/hooks/{hook_id}/pings
+	OrgsPingWebhook(ctx context.Context, params OrgsPingWebhookParams) (OrgsPingWebhookRes, error)
+	// OrgsRedeliverWebhookDelivery invokes orgs/redeliver-webhook-delivery operation.
+	//
+	// Redeliver a delivery for a webhook configured in an organization.
+	//
+	// POST /orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}/attempts
+	OrgsRedeliverWebhookDelivery(ctx context.Context, params OrgsRedeliverWebhookDeliveryParams) (OrgsRedeliverWebhookDeliveryRes, error)
+	// OrgsRemoveMember invokes orgs/remove-member operation.
+	//
+	// Removing a user from this list will remove them from all teams and they will no longer have any
+	// access to the organization's repositories.
+	//
+	// DELETE /orgs/{org}/members/{username}
+	OrgsRemoveMember(ctx context.Context, params OrgsRemoveMemberParams) (OrgsRemoveMemberRes, error)
+	// OrgsRemoveMembershipForUser invokes orgs/remove-membership-for-user operation.
+	//
+	// In order to remove a user's membership with an organization, the authenticated user must be an
+	// organization owner.
+	// If the specified user is an active member of the organization, this will remove them from the
+	// organization. If the specified user has been invited to the organization, this will cancel their
+	// invitation. The specified user will receive an email notification in both cases.
+	//
+	// DELETE /orgs/{org}/memberships/{username}
+	OrgsRemoveMembershipForUser(ctx context.Context, params OrgsRemoveMembershipForUserParams) (OrgsRemoveMembershipForUserRes, error)
+	// OrgsRemoveOutsideCollaborator invokes orgs/remove-outside-collaborator operation.
+	//
+	// Removing a user from this list will remove them from all the organization's repositories.
+	//
+	// DELETE /orgs/{org}/outside_collaborators/{username}
+	OrgsRemoveOutsideCollaborator(ctx context.Context, params OrgsRemoveOutsideCollaboratorParams) (OrgsRemoveOutsideCollaboratorRes, error)
+	// OrgsRemovePublicMembershipForAuthenticatedUser invokes orgs/remove-public-membership-for-authenticated-user operation.
+	//
+	// Remove public organization membership for the authenticated user.
+	//
+	// DELETE /orgs/{org}/public_members/{username}
+	OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsRemovePublicMembershipForAuthenticatedUserParams) error
+	// OrgsRemoveSamlSSOAuthorization invokes orgs/remove-saml-sso-authorization operation.
+	//
+	// Listing and deleting credential authorizations is available to organizations with GitHub
+	// Enterprise Cloud. For more information, see [GitHub's products](https://help.github.
+	// com/github/getting-started-with-github/githubs-products).
+	// An authenticated organization owner with the `admin:org` scope can remove a credential
+	// authorization for an organization that uses SAML SSO. Once you remove someone's credential
+	// authorization, they will need to create a new personal access token or SSH key and authorize it
+	// for the organization they want to access.
+	//
+	// DELETE /orgs/{org}/credential-authorizations/{credential_id}
+	OrgsRemoveSamlSSOAuthorization(ctx context.Context, params OrgsRemoveSamlSSOAuthorizationParams) (OrgsRemoveSamlSSOAuthorizationRes, error)
+	// OrgsSetMembershipForUser invokes orgs/set-membership-for-user operation.
+	//
+	// Only authenticated organization owners can add a member to the organization or update the member's
+	// role.
+	// *   If the authenticated user is _adding_ a member to the organization, the invited user will
+	// receive an email inviting them to the organization. The user's [membership status](https://docs.
+	// github.com/rest/reference/orgs#get-organization-membership-for-a-user) will be `pending` until
+	// they accept the invitation.
+	// *   Authenticated users can _update_ a user's membership by passing the `role` parameter. If the
+	// authenticated user changes a member's role to `admin`, the affected user will receive an email
+	// notifying them that they've been made an organization owner. If the authenticated user changes an
+	// owner's role to `member`, no email will be sent.
+	// **Rate limits**
+	// To prevent abuse, the authenticated user is limited to 50 organization invitations per 24 hour
+	// period. If the organization is more than one month old or on a paid plan, the limit is 500
+	// invitations per 24 hour period.
+	//
+	// PUT /orgs/{org}/memberships/{username}
+	OrgsSetMembershipForUser(ctx context.Context, request OptOrgsSetMembershipForUserReq, params OrgsSetMembershipForUserParams) (OrgsSetMembershipForUserRes, error)
+	// OrgsSetPublicMembershipForAuthenticatedUser invokes orgs/set-public-membership-for-authenticated-user operation.
+	//
+	// The user can publicize their own membership. (A user cannot publicize the membership for another
+	// user.)
+	// Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more
+	// information, see "[HTTP verbs](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#http-verbs).".
+	//
+	// PUT /orgs/{org}/public_members/{username}
+	OrgsSetPublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsSetPublicMembershipForAuthenticatedUserParams) (OrgsSetPublicMembershipForAuthenticatedUserRes, error)
+	// OrgsUnblockUser invokes orgs/unblock-user operation.
+	//
+	// Unblock a user from an organization.
+	//
+	// DELETE /orgs/{org}/blocks/{username}
+	OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserParams) error
+	// OrgsUpdateMembershipForAuthenticatedUser invokes orgs/update-membership-for-authenticated-user operation.
+	//
+	// Update an organization membership for the authenticated user.
+	//
+	// PATCH /user/memberships/orgs/{org}
+	OrgsUpdateMembershipForAuthenticatedUser(ctx context.Context, request *OrgsUpdateMembershipForAuthenticatedUserReq, params OrgsUpdateMembershipForAuthenticatedUserParams) (OrgsUpdateMembershipForAuthenticatedUserRes, error)
+	// OrgsUpdateWebhook invokes orgs/update-webhook operation.
+	//
+	// Updates a webhook configured in an organization. When you update a webhook, the `secret` will be
+	// overwritten. If you previously had a `secret` set, you must provide the same `secret` or set a new
+	// `secret` or the secret will be removed. If you are only updating individual webhook `config`
+	// properties, use "[Update a webhook configuration for an
+	// organization](/rest/reference/orgs#update-a-webhook-configuration-for-an-organization).".
+	//
+	// PATCH /orgs/{org}/hooks/{hook_id}
+	OrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdateWebhookReq, params OrgsUpdateWebhookParams) (OrgsUpdateWebhookRes, error)
+	// OrgsUpdateWebhookConfigForOrg invokes orgs/update-webhook-config-for-org operation.
+	//
+	// Updates the webhook configuration for an organization. To update more information about the
+	// webhook, including the `active` state and `events`, use "[Update an organization webhook
+	// ](/rest/reference/orgs#update-an-organization-webhook)."
+	// Access tokens must have the `admin:org_hook` scope, and GitHub Apps must have the
+	// `organization_hooks:write` permission.
+	//
+	// PATCH /orgs/{org}/hooks/{hook_id}/config
+	OrgsUpdateWebhookConfigForOrg(ctx context.Context, request OptOrgsUpdateWebhookConfigForOrgReq, params OrgsUpdateWebhookConfigForOrgParams) (*WebhookConfig, error)
+	// PackagesDeletePackageForAuthenticatedUser invokes packages/delete-package-for-authenticated-user operation.
+	//
+	// Deletes a package owned by the authenticated user. You cannot delete a public package if any
+	// version of the package has more than 5,000 downloads. In this scenario, contact GitHub support for
+	// further assistance.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` and
+	// `packages:delete` scopes.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// DELETE /user/packages/{package_type}/{package_name}
+	PackagesDeletePackageForAuthenticatedUser(ctx context.Context, params PackagesDeletePackageForAuthenticatedUserParams) (PackagesDeletePackageForAuthenticatedUserRes, error)
+	// PackagesDeletePackageForOrg invokes packages/delete-package-for-org operation.
+	//
+	// Deletes an entire package in an organization. You cannot delete a public package if any version of
+	// the package has more than 5,000 downloads. In this scenario, contact GitHub support for further
+	// assistance.
+	// To use this endpoint, you must have admin permissions in the organization and authenticate using
+	// an access token with the `packages:read` and `packages:delete` scopes. In addition:
+	// - If `package_type` is not `container`, your token must also include the `repo` scope.
+	// - If `package_type` is `container`, you must also have admin permissions to the container you want
+	// to delete.
+	//
+	// DELETE /orgs/{org}/packages/{package_type}/{package_name}
+	PackagesDeletePackageForOrg(ctx context.Context, params PackagesDeletePackageForOrgParams) (PackagesDeletePackageForOrgRes, error)
+	// PackagesDeletePackageForUser invokes packages/delete-package-for-user operation.
+	//
+	// Deletes an entire package for a user. You cannot delete a public package if any version of the
+	// package has more than 5,000 downloads. In this scenario, contact GitHub support for further
+	// assistance.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` and
+	// `packages:delete` scopes. In addition:
+	// - If `package_type` is not `container`, your token must also include the `repo` scope.
+	// - If `package_type` is `container`, you must also have admin permissions to the container you want
+	// to delete.
+	//
+	// DELETE /users/{username}/packages/{package_type}/{package_name}
+	PackagesDeletePackageForUser(ctx context.Context, params PackagesDeletePackageForUserParams) (PackagesDeletePackageForUserRes, error)
+	// PackagesDeletePackageVersionForAuthenticatedUser invokes packages/delete-package-version-for-authenticated-user operation.
+	//
+	// Deletes a specific package version for a package owned by the authenticated user.  If the package
+	// is public and the package version has more than 5,000 downloads, you cannot delete the package
+	// version. In this scenario, contact GitHub support for further assistance.
+	// To use this endpoint, you must have admin permissions in the organization and authenticate using
+	// an access token with the `packages:read` and `packages:delete` scopes.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// DELETE /user/packages/{package_type}/{package_name}/versions/{package_version_id}
+	PackagesDeletePackageVersionForAuthenticatedUser(ctx context.Context, params PackagesDeletePackageVersionForAuthenticatedUserParams) (PackagesDeletePackageVersionForAuthenticatedUserRes, error)
+	// PackagesDeletePackageVersionForOrg invokes packages/delete-package-version-for-org operation.
+	//
+	// Deletes a specific package version in an organization. If the package is public and the package
+	// version has more than 5,000 downloads, you cannot delete the package version. In this scenario,
+	// contact GitHub support for further assistance.
+	// To use this endpoint, you must have admin permissions in the organization and authenticate using
+	// an access token with the `packages:read` and `packages:delete` scopes. In addition:
+	// - If `package_type` is not `container`, your token must also include the `repo` scope.
+	// - If `package_type` is `container`, you must also have admin permissions to the container you want
+	// to delete.
+	//
+	// DELETE /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
+	PackagesDeletePackageVersionForOrg(ctx context.Context, params PackagesDeletePackageVersionForOrgParams) (PackagesDeletePackageVersionForOrgRes, error)
+	// PackagesDeletePackageVersionForUser invokes packages/delete-package-version-for-user operation.
+	//
+	// Deletes a specific package version for a user. If the package is public and the package version
+	// has more than 5,000 downloads, you cannot delete the package version. In this scenario, contact
+	// GitHub support for further assistance.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` and
+	// `packages:delete` scopes. In addition:
+	// - If `package_type` is not `container`, your token must also include the `repo` scope.
+	// - If `package_type` is `container`, you must also have admin permissions to the container you want
+	// to delete.
+	//
+	// DELETE /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
+	PackagesDeletePackageVersionForUser(ctx context.Context, params PackagesDeletePackageVersionForUserParams) (PackagesDeletePackageVersionForUserRes, error)
+	// PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser invokes packages/get-all-package-versions-for-package-owned-by-authenticated-user operation.
+	//
+	// Returns all package versions for a package owned by the authenticated user.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// GET /user/packages/{package_type}/{package_name}/versions
+	PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser(ctx context.Context, params PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams) (PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes, error)
+	// PackagesGetAllPackageVersionsForPackageOwnedByOrg invokes packages/get-all-package-versions-for-package-owned-by-org operation.
+	//
+	// Returns all package versions for a package owned by an organization.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// GET /orgs/{org}/packages/{package_type}/{package_name}/versions
+	PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.Context, params PackagesGetAllPackageVersionsForPackageOwnedByOrgParams) (PackagesGetAllPackageVersionsForPackageOwnedByOrgRes, error)
+	// PackagesGetAllPackageVersionsForPackageOwnedByUser invokes packages/get-all-package-versions-for-package-owned-by-user operation.
+	//
+	// Returns all package versions for a public package owned by a specified user.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// GET /users/{username}/packages/{package_type}/{package_name}/versions
+	PackagesGetAllPackageVersionsForPackageOwnedByUser(ctx context.Context, params PackagesGetAllPackageVersionsForPackageOwnedByUserParams) (PackagesGetAllPackageVersionsForPackageOwnedByUserRes, error)
+	// PackagesGetPackageForAuthenticatedUser invokes packages/get-package-for-authenticated-user operation.
+	//
+	// Gets a specific package for a package owned by the authenticated user.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// GET /user/packages/{package_type}/{package_name}
+	PackagesGetPackageForAuthenticatedUser(ctx context.Context, params PackagesGetPackageForAuthenticatedUserParams) (*Package, error)
+	// PackagesGetPackageForOrganization invokes packages/get-package-for-organization operation.
+	//
+	// Gets a specific package in an organization.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// GET /orgs/{org}/packages/{package_type}/{package_name}
+	PackagesGetPackageForOrganization(ctx context.Context, params PackagesGetPackageForOrganizationParams) (*Package, error)
+	// PackagesGetPackageForUser invokes packages/get-package-for-user operation.
+	//
+	// Gets a specific package metadata for a public package owned by a user.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// GET /users/{username}/packages/{package_type}/{package_name}
+	PackagesGetPackageForUser(ctx context.Context, params PackagesGetPackageForUserParams) (*Package, error)
+	// PackagesGetPackageVersionForAuthenticatedUser invokes packages/get-package-version-for-authenticated-user operation.
+	//
+	// Gets a specific package version for a package owned by the authenticated user.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// GET /user/packages/{package_type}/{package_name}/versions/{package_version_id}
+	PackagesGetPackageVersionForAuthenticatedUser(ctx context.Context, params PackagesGetPackageVersionForAuthenticatedUserParams) (*PackageVersion, error)
+	// PackagesGetPackageVersionForOrganization invokes packages/get-package-version-for-organization operation.
+	//
+	// Gets a specific package version in an organization.
+	// You must authenticate using an access token with the `packages:read` scope.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// GET /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
+	PackagesGetPackageVersionForOrganization(ctx context.Context, params PackagesGetPackageVersionForOrganizationParams) (*PackageVersion, error)
+	// PackagesGetPackageVersionForUser invokes packages/get-package-version-for-user operation.
+	//
+	// Gets a specific package version for a public package owned by a specified user.
+	// At this time, to use this endpoint, you must authenticate using an access token with the
+	// `packages:read` scope.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// GET /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
+	PackagesGetPackageVersionForUser(ctx context.Context, params PackagesGetPackageVersionForUserParams) (*PackageVersion, error)
+	// PackagesListPackagesForAuthenticatedUser invokes packages/list-packages-for-authenticated-user operation.
+	//
+	// Lists packages owned by the authenticated user within the user's namespace.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// GET /user/packages
+	PackagesListPackagesForAuthenticatedUser(ctx context.Context, params PackagesListPackagesForAuthenticatedUserParams) ([]Package, error)
+	// PackagesListPackagesForOrganization invokes packages/list-packages-for-organization operation.
+	//
+	// Lists all packages in an organization readable by the user.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// GET /orgs/{org}/packages
+	PackagesListPackagesForOrganization(ctx context.Context, params PackagesListPackagesForOrganizationParams) (PackagesListPackagesForOrganizationRes, error)
+	// PackagesListPackagesForUser invokes packages/list-packages-for-user operation.
+	//
+	// Lists all packages in a user's namespace for which the requesting user has access.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// GET /users/{username}/packages
+	PackagesListPackagesForUser(ctx context.Context, params PackagesListPackagesForUserParams) (PackagesListPackagesForUserRes, error)
+	// PackagesRestorePackageForAuthenticatedUser invokes packages/restore-package-for-authenticated-user operation.
+	//
+	// Restores a package owned by the authenticated user.
+	// You can restore a deleted package under the following conditions:
+	// - The package was deleted within the last 30 days.
+	// - The same package namespace and version is still available and not reused for a new package. If
+	// the same package namespace is not available, you will not be able to restore your package. In this
+	// scenario, to restore the deleted package, you must delete the new package that uses the deleted
+	// package's namespace first.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` and
+	// `packages:write` scopes. If `package_type` is not `container`, your token must also include the
+	// `repo` scope.
+	//
+	// POST /user/packages/{package_type}/{package_name}/restore
+	PackagesRestorePackageForAuthenticatedUser(ctx context.Context, params PackagesRestorePackageForAuthenticatedUserParams) (PackagesRestorePackageForAuthenticatedUserRes, error)
+	// PackagesRestorePackageForOrg invokes packages/restore-package-for-org operation.
+	//
+	// Restores an entire package in an organization.
+	// You can restore a deleted package under the following conditions:
+	// - The package was deleted within the last 30 days.
+	// - The same package namespace and version is still available and not reused for a new package. If
+	// the same package namespace is not available, you will not be able to restore your package. In this
+	// scenario, to restore the deleted package, you must delete the new package that uses the deleted
+	// package's namespace first.
+	// To use this endpoint, you must have admin permissions in the organization and authenticate using
+	// an access token with the `packages:read` and `packages:write` scopes. In addition:
+	// - If `package_type` is not `container`, your token must also include the `repo` scope.
+	// - If `package_type` is `container`, you must also have admin permissions to the container that you
+	// want to restore.
+	//
+	// POST /orgs/{org}/packages/{package_type}/{package_name}/restore
+	PackagesRestorePackageForOrg(ctx context.Context, params PackagesRestorePackageForOrgParams) (PackagesRestorePackageForOrgRes, error)
+	// PackagesRestorePackageForUser invokes packages/restore-package-for-user operation.
+	//
+	// Restores an entire package for a user.
+	// You can restore a deleted package under the following conditions:
+	// - The package was deleted within the last 30 days.
+	// - The same package namespace and version is still available and not reused for a new package. If
+	// the same package namespace is not available, you will not be able to restore your package. In this
+	// scenario, to restore the deleted package, you must delete the new package that uses the deleted
+	// package's namespace first.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` and
+	// `packages:write` scopes. In addition:
+	// - If `package_type` is not `container`, your token must also include the `repo` scope.
+	// - If `package_type` is `container`, you must also have admin permissions to the container that you
+	// want to restore.
+	//
+	// POST /users/{username}/packages/{package_type}/{package_name}/restore
+	PackagesRestorePackageForUser(ctx context.Context, params PackagesRestorePackageForUserParams) (PackagesRestorePackageForUserRes, error)
+	// PackagesRestorePackageVersionForAuthenticatedUser invokes packages/restore-package-version-for-authenticated-user operation.
+	//
+	// Restores a package version owned by the authenticated user.
+	// You can restore a deleted package version under the following conditions:
+	// - The package was deleted within the last 30 days.
+	// - The same package namespace and version is still available and not reused for a new package. If
+	// the same package namespace is not available, you will not be able to restore your package. In this
+	// scenario, to restore the deleted package, you must delete the new package that uses the deleted
+	// package's namespace first.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` and
+	// `packages:write` scopes. If `package_type` is not `container`, your token must also include the
+	// `repo` scope.
+	//
+	// POST /user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
+	PackagesRestorePackageVersionForAuthenticatedUser(ctx context.Context, params PackagesRestorePackageVersionForAuthenticatedUserParams) (PackagesRestorePackageVersionForAuthenticatedUserRes, error)
+	// PackagesRestorePackageVersionForOrg invokes packages/restore-package-version-for-org operation.
+	//
+	// Restores a specific package version in an organization.
+	// You can restore a deleted package under the following conditions:
+	// - The package was deleted within the last 30 days.
+	// - The same package namespace and version is still available and not reused for a new package. If
+	// the same package namespace is not available, you will not be able to restore your package. In this
+	// scenario, to restore the deleted package, you must delete the new package that uses the deleted
+	// package's namespace first.
+	// To use this endpoint, you must have admin permissions in the organization and authenticate using
+	// an access token with the `packages:read` and `packages:write` scopes. In addition:
+	// - If `package_type` is not `container`, your token must also include the `repo` scope.
+	// - If `package_type` is `container`, you must also have admin permissions to the container that you
+	// want to restore.
+	//
+	// POST /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
+	PackagesRestorePackageVersionForOrg(ctx context.Context, params PackagesRestorePackageVersionForOrgParams) (PackagesRestorePackageVersionForOrgRes, error)
+	// PackagesRestorePackageVersionForUser invokes packages/restore-package-version-for-user operation.
+	//
+	// Restores a specific package version for a user.
+	// You can restore a deleted package under the following conditions:
+	// - The package was deleted within the last 30 days.
+	// - The same package namespace and version is still available and not reused for a new package. If
+	// the same package namespace is not available, you will not be able to restore your package. In this
+	// scenario, to restore the deleted package, you must delete the new package that uses the deleted
+	// package's namespace first.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` and
+	// `packages:write` scopes. In addition:
+	// - If `package_type` is not `container`, your token must also include the `repo` scope.
+	// - If `package_type` is `container`, you must also have admin permissions to the container that you
+	// want to restore.
+	//
+	// POST /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
+	PackagesRestorePackageVersionForUser(ctx context.Context, params PackagesRestorePackageVersionForUserParams) (PackagesRestorePackageVersionForUserRes, error)
+	// ProjectsAddCollaborator invokes projects/add-collaborator operation.
+	//
+	// Adds a collaborator to an organization project and sets their permission level. You must be an
+	// organization owner or a project `admin` to add a collaborator.
+	//
+	// PUT /projects/{project_id}/collaborators/{username}
+	ProjectsAddCollaborator(ctx context.Context, request OptNilProjectsAddCollaboratorReq, params ProjectsAddCollaboratorParams) (ProjectsAddCollaboratorRes, error)
+	// ProjectsCreateColumn invokes projects/create-column operation.
+	//
+	// Create a project column.
+	//
+	// POST /projects/{project_id}/columns
+	ProjectsCreateColumn(ctx context.Context, request *ProjectsCreateColumnReq, params ProjectsCreateColumnParams) (ProjectsCreateColumnRes, error)
+	// ProjectsCreateForAuthenticatedUser invokes projects/create-for-authenticated-user operation.
+	//
+	// Create a user project.
+	//
+	// POST /user/projects
+	ProjectsCreateForAuthenticatedUser(ctx context.Context, request *ProjectsCreateForAuthenticatedUserReq) (ProjectsCreateForAuthenticatedUserRes, error)
+	// ProjectsCreateForOrg invokes projects/create-for-org operation.
+	//
+	// Creates an organization project board. Returns a `404 Not Found` status if projects are disabled
+	// in the organization. If you do not have sufficient privileges to perform this action, a `401
+	// Unauthorized` or `410 Gone` status is returned.
+	//
+	// POST /orgs/{org}/projects
+	ProjectsCreateForOrg(ctx context.Context, request *ProjectsCreateForOrgReq, params ProjectsCreateForOrgParams) (ProjectsCreateForOrgRes, error)
+	// ProjectsCreateForRepo invokes projects/create-for-repo operation.
+	//
+	// Creates a repository project board. Returns a `404 Not Found` status if projects are disabled in
+	// the repository. If you do not have sufficient privileges to perform this action, a `401
+	// Unauthorized` or `410 Gone` status is returned.
+	//
+	// POST /repos/{owner}/{repo}/projects
+	ProjectsCreateForRepo(ctx context.Context, request *ProjectsCreateForRepoReq, params ProjectsCreateForRepoParams) (ProjectsCreateForRepoRes, error)
+	// ProjectsDelete invokes projects/delete operation.
+	//
+	// Deletes a project board. Returns a `404 Not Found` status if projects are disabled.
+	//
+	// DELETE /projects/{project_id}
+	ProjectsDelete(ctx context.Context, params ProjectsDeleteParams) (ProjectsDeleteRes, error)
+	// ProjectsDeleteCard invokes projects/delete-card operation.
+	//
+	// Delete a project card.
+	//
+	// DELETE /projects/columns/cards/{card_id}
+	ProjectsDeleteCard(ctx context.Context, params ProjectsDeleteCardParams) (ProjectsDeleteCardRes, error)
+	// ProjectsDeleteColumn invokes projects/delete-column operation.
+	//
+	// Delete a project column.
+	//
+	// DELETE /projects/columns/{column_id}
+	ProjectsDeleteColumn(ctx context.Context, params ProjectsDeleteColumnParams) (ProjectsDeleteColumnRes, error)
+	// ProjectsGet invokes projects/get operation.
+	//
+	// Gets a project by its `id`. Returns a `404 Not Found` status if projects are disabled. If you do
+	// not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status
+	// is returned.
+	//
+	// GET /projects/{project_id}
+	ProjectsGet(ctx context.Context, params ProjectsGetParams) (ProjectsGetRes, error)
+	// ProjectsGetCard invokes projects/get-card operation.
+	//
+	// Get a project card.
+	//
+	// GET /projects/columns/cards/{card_id}
+	ProjectsGetCard(ctx context.Context, params ProjectsGetCardParams) (ProjectsGetCardRes, error)
+	// ProjectsGetColumn invokes projects/get-column operation.
+	//
+	// Get a project column.
+	//
+	// GET /projects/columns/{column_id}
+	ProjectsGetColumn(ctx context.Context, params ProjectsGetColumnParams) (ProjectsGetColumnRes, error)
+	// ProjectsGetPermissionForUser invokes projects/get-permission-for-user operation.
+	//
+	// Returns the collaborator's permission level for an organization project. Possible values for the
+	// `permission` key: `admin`, `write`, `read`, `none`. You must be an organization owner or a project
+	// `admin` to review a user's permission level.
+	//
+	// GET /projects/{project_id}/collaborators/{username}/permission
+	ProjectsGetPermissionForUser(ctx context.Context, params ProjectsGetPermissionForUserParams) (ProjectsGetPermissionForUserRes, error)
+	// ProjectsListCards invokes projects/list-cards operation.
+	//
+	// List project cards.
+	//
+	// GET /projects/columns/{column_id}/cards
+	ProjectsListCards(ctx context.Context, params ProjectsListCardsParams) (ProjectsListCardsRes, error)
+	// ProjectsListCollaborators invokes projects/list-collaborators operation.
+	//
+	// Lists the collaborators for an organization project. For a project, the list of collaborators
+	// includes outside collaborators, organization members that are direct collaborators, organization
+	// members with access through team memberships, organization members with access through default
+	// organization permissions, and organization owners. You must be an organization owner or a project
+	// `admin` to list collaborators.
+	//
+	// GET /projects/{project_id}/collaborators
+	ProjectsListCollaborators(ctx context.Context, params ProjectsListCollaboratorsParams) (ProjectsListCollaboratorsRes, error)
+	// ProjectsListColumns invokes projects/list-columns operation.
+	//
+	// List project columns.
+	//
+	// GET /projects/{project_id}/columns
+	ProjectsListColumns(ctx context.Context, params ProjectsListColumnsParams) (ProjectsListColumnsRes, error)
+	// ProjectsListForOrg invokes projects/list-for-org operation.
+	//
+	// Lists the projects in an organization. Returns a `404 Not Found` status if projects are disabled
+	// in the organization. If you do not have sufficient privileges to perform this action, a `401
+	// Unauthorized` or `410 Gone` status is returned.
+	//
+	// GET /orgs/{org}/projects
+	ProjectsListForOrg(ctx context.Context, params ProjectsListForOrgParams) (ProjectsListForOrgRes, error)
+	// ProjectsListForRepo invokes projects/list-for-repo operation.
+	//
+	// Lists the projects in a repository. Returns a `404 Not Found` status if projects are disabled in
+	// the repository. If you do not have sufficient privileges to perform this action, a `401
+	// Unauthorized` or `410 Gone` status is returned.
+	//
+	// GET /repos/{owner}/{repo}/projects
+	ProjectsListForRepo(ctx context.Context, params ProjectsListForRepoParams) (ProjectsListForRepoRes, error)
+	// ProjectsListForUser invokes projects/list-for-user operation.
+	//
+	// List user projects.
+	//
+	// GET /users/{username}/projects
+	ProjectsListForUser(ctx context.Context, params ProjectsListForUserParams) (ProjectsListForUserRes, error)
+	// ProjectsMoveCard invokes projects/move-card operation.
+	//
+	// Move a project card.
+	//
+	// POST /projects/columns/cards/{card_id}/moves
+	ProjectsMoveCard(ctx context.Context, request *ProjectsMoveCardReq, params ProjectsMoveCardParams) (ProjectsMoveCardRes, error)
+	// ProjectsMoveColumn invokes projects/move-column operation.
+	//
+	// Move a project column.
+	//
+	// POST /projects/columns/{column_id}/moves
+	ProjectsMoveColumn(ctx context.Context, request *ProjectsMoveColumnReq, params ProjectsMoveColumnParams) (ProjectsMoveColumnRes, error)
+	// ProjectsRemoveCollaborator invokes projects/remove-collaborator operation.
+	//
+	// Removes a collaborator from an organization project. You must be an organization owner or a
+	// project `admin` to remove a collaborator.
+	//
+	// DELETE /projects/{project_id}/collaborators/{username}
+	ProjectsRemoveCollaborator(ctx context.Context, params ProjectsRemoveCollaboratorParams) (ProjectsRemoveCollaboratorRes, error)
+	// ProjectsUpdate invokes projects/update operation.
+	//
+	// Updates a project board's information. Returns a `404 Not Found` status if projects are disabled.
+	// If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410
+	// Gone` status is returned.
+	//
+	// PATCH /projects/{project_id}
+	ProjectsUpdate(ctx context.Context, request OptProjectsUpdateReq, params ProjectsUpdateParams) (ProjectsUpdateRes, error)
+	// ProjectsUpdateCard invokes projects/update-card operation.
+	//
+	// Update an existing project card.
+	//
+	// PATCH /projects/columns/cards/{card_id}
+	ProjectsUpdateCard(ctx context.Context, request OptProjectsUpdateCardReq, params ProjectsUpdateCardParams) (ProjectsUpdateCardRes, error)
+	// ProjectsUpdateColumn invokes projects/update-column operation.
+	//
+	// Update an existing project column.
+	//
+	// PATCH /projects/columns/{column_id}
+	ProjectsUpdateColumn(ctx context.Context, request *ProjectsUpdateColumnReq, params ProjectsUpdateColumnParams) (ProjectsUpdateColumnRes, error)
+	// PullsCheckIfMerged invokes pulls/check-if-merged operation.
+	//
+	// Check if a pull request has been merged.
+	//
+	// GET /repos/{owner}/{repo}/pulls/{pull_number}/merge
+	PullsCheckIfMerged(ctx context.Context, params PullsCheckIfMergedParams) (PullsCheckIfMergedRes, error)
+	// PullsCreate invokes pulls/create operation.
+	//
+	// Draft pull requests are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private
+	// repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// To open or update a pull request in a public repository, you must have write access to the head or
+	// the source branch. For organization-owned repositories, you must be a member of the organization
+	// that owns the repository to open or update a pull request.
+	// You can create a new pull request.
+	// This endpoint triggers [notifications](https://docs.github.
+	// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
+	// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
+	// rate limits](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
+	// rate limits](https://docs.github.
+	// com/rest/guides/best-practices-for-integrators#dealing-with-rate-limits)" for details.
+	//
+	// POST /repos/{owner}/{repo}/pulls
+	PullsCreate(ctx context.Context, request *PullsCreateReq, params PullsCreateParams) (PullsCreateRes, error)
+	// PullsCreateReplyForReviewComment invokes pulls/create-reply-for-review-comment operation.
+	//
+	// Creates a reply to a review comment for a pull request. For the `comment_id`, provide the ID of
+	// the review comment you are replying to. This must be the ID of a _top-level review comment_, not a
+	// reply to that comment. Replies to replies are not supported.
+	// This endpoint triggers [notifications](https://docs.github.
+	// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
+	// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
+	// rate limits](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
+	// rate limits](https://docs.github.
+	// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+	//
+	// POST /repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies
+	PullsCreateReplyForReviewComment(ctx context.Context, request *PullsCreateReplyForReviewCommentReq, params PullsCreateReplyForReviewCommentParams) (PullsCreateReplyForReviewCommentRes, error)
+	// PullsCreateReview invokes pulls/create-review operation.
+	//
+	// This endpoint triggers [notifications](https://docs.github.
+	// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
+	// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
+	// rate limits](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
+	// rate limits](https://docs.github.
+	// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+	// Pull request reviews created in the `PENDING` state do not include the `submitted_at` property in
+	// the response.
+	// **Note:** To comment on a specific line in a file, you need to first determine the _position_ of
+	// that line in the diff. The GitHub REST API v3 offers the `application/vnd.github.v3.diff` [media
+	// type](https://docs.github.
+	// com/rest/overview/media-types#commits-commit-comparison-and-pull-requests). To see a pull request
+	// diff, add this media type to the `Accept` header of a call to the [single pull
+	// request](https://docs.github.com/rest/reference/pulls#get-a-pull-request) endpoint.
+	// The `position` value equals the number of lines down from the first "@@" hunk header in the file
+	// you want to add a comment. The line just below the "@@" line is position 1, the next line is
+	// position 2, and so on. The position in the diff continues to increase through lines of whitespace
+	// and additional hunks until the beginning of a new file.
+	//
+	// POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews
+	PullsCreateReview(ctx context.Context, request OptPullsCreateReviewReq, params PullsCreateReviewParams) (PullsCreateReviewRes, error)
+	// PullsCreateReviewComment invokes pulls/create-review-comment operation.
+	//
+	// Creates a review comment in the pull request diff. To add a regular comment to a pull request
+	// timeline, see "[Create an issue comment](https://docs.github.
+	// com/rest/reference/issues#create-an-issue-comment)." We recommend creating a review comment using
+	// `line`, `side`, and optionally `start_line` and `start_side` if your comment applies to more than
+	// one line in the pull request diff.
+	// You can still create a review comment using the `position` parameter. When you use `position`, the
+	// `line`, `side`, `start_line`, and `start_side` parameters are not required. For more information,
+	// see the [`comfort-fade` preview notice](https://docs.github.
+	// com/rest/reference/pulls#create-a-review-comment-for-a-pull-request-preview-notices).
+	// **Note:** The position value equals the number of lines down from the first "@@" hunk header in
+	// the file you want to add a comment. The line just below the "@@" line is position 1, the next line
+	// is position 2, and so on. The position in the diff continues to increase through lines of
+	// whitespace and additional hunks until the beginning of a new file.
+	// This endpoint triggers [notifications](https://docs.github.
+	// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
+	// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
+	// rate limits](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
+	// rate limits](https://docs.github.
+	// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+	//
+	// POST /repos/{owner}/{repo}/pulls/{pull_number}/comments
+	PullsCreateReviewComment(ctx context.Context, request *PullsCreateReviewCommentReq, params PullsCreateReviewCommentParams) (PullsCreateReviewCommentRes, error)
+	// PullsDeletePendingReview invokes pulls/delete-pending-review operation.
+	//
+	// Delete a pending review for a pull request.
+	//
+	// DELETE /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
+	PullsDeletePendingReview(ctx context.Context, params PullsDeletePendingReviewParams) (PullsDeletePendingReviewRes, error)
+	// PullsDeleteReviewComment invokes pulls/delete-review-comment operation.
+	//
+	// Deletes a review comment.
+	//
+	// DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}
+	PullsDeleteReviewComment(ctx context.Context, params PullsDeleteReviewCommentParams) (PullsDeleteReviewCommentRes, error)
+	// PullsDismissReview invokes pulls/dismiss-review operation.
+	//
+	// **Note:** To dismiss a pull request review on a [protected branch](https://docs.github.
+	// com/rest/reference/repos#branches), you must be a repository administrator or be included in the
+	// list of people or teams who can dismiss pull request reviews.
+	//
+	// PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals
+	PullsDismissReview(ctx context.Context, request *PullsDismissReviewReq, params PullsDismissReviewParams) (PullsDismissReviewRes, error)
+	// PullsGet invokes pulls/get operation.
+	//
+	// Draft pull requests are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private
+	// repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Lists details of a pull request by providing its number.
+	// When you get, [create](https://docs.github.com/rest/reference/pulls/#create-a-pull-request), or
+	// [edit](https://docs.github.com/rest/reference/pulls#update-a-pull-request) a pull request, GitHub
+	// creates a merge commit to test whether the pull request can be automatically merged into the base
+	// branch. This test commit is not added to the base branch or the head branch. You can review the
+	// status of the test commit using the `mergeable` key. For more information, see "[Checking
+	// mergeability of pull requests](https://docs.github.
+	// com/rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
+	// The value of the `mergeable` attribute can be `true`, `false`, or `null`. If the value is `null`,
+	// then GitHub has started a background job to compute the mergeability. After giving the job time to
+	// complete, resubmit the request. When the job finishes, you will see a non-`null` value for the
+	// `mergeable` attribute in the response. If `mergeable` is `true`, then `merge_commit_sha` will be
+	// the SHA of the _test_ merge commit.
+	// The value of the `merge_commit_sha` attribute changes depending on the state of the pull request.
+	// Before merging a pull request, the `merge_commit_sha` attribute holds the SHA of the _test_ merge
+	// commit. After merging a pull request, the `merge_commit_sha` attribute changes depending on how
+	// you merged the pull request:
+	// *   If merged as a [merge commit](https://help.github.com/articles/about-merge-methods-on-github/),
+	//  `merge_commit_sha` represents the SHA of the merge commit.
+	// *   If merged via a [squash](https://help.github.
+	// com/articles/about-merge-methods-on-github/#squashing-your-merge-commits), `merge_commit_sha`
+	// represents the SHA of the squashed commit on the base branch.
+	// *   If [rebased](https://help.github.
+	// com/articles/about-merge-methods-on-github/#rebasing-and-merging-your-commits), `merge_commit_sha`
+	// represents the commit that the base branch was updated to.
+	// Pass the appropriate [media type](https://docs.github.
+	// com/rest/overview/media-types/#commits-commit-comparison-and-pull-requests) to fetch diff and
+	// patch formats.
+	//
+	// GET /repos/{owner}/{repo}/pulls/{pull_number}
+	PullsGet(ctx context.Context, params PullsGetParams) (PullsGetRes, error)
+	// PullsGetReview invokes pulls/get-review operation.
+	//
+	// Get a review for a pull request.
+	//
+	// GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
+	PullsGetReview(ctx context.Context, params PullsGetReviewParams) (PullsGetReviewRes, error)
+	// PullsGetReviewComment invokes pulls/get-review-comment operation.
+	//
+	// Provides details for a review comment.
+	//
+	// GET /repos/{owner}/{repo}/pulls/comments/{comment_id}
+	PullsGetReviewComment(ctx context.Context, params PullsGetReviewCommentParams) (PullsGetReviewCommentRes, error)
+	// PullsList invokes pulls/list operation.
+	//
+	// Draft pull requests are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private
+	// repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	//
+	// GET /repos/{owner}/{repo}/pulls
+	PullsList(ctx context.Context, params PullsListParams) (PullsListRes, error)
+	// PullsListCommentsForReview invokes pulls/list-comments-for-review operation.
+	//
+	// List comments for a specific pull request review.
+	//
+	// GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments
+	PullsListCommentsForReview(ctx context.Context, params PullsListCommentsForReviewParams) (PullsListCommentsForReviewRes, error)
+	// PullsListCommits invokes pulls/list-commits operation.
+	//
+	// Lists a maximum of 250 commits for a pull request. To receive a complete commit list for pull
+	// requests with more than 250 commits, use the [List commits](https://docs.github.
+	// com/rest/reference/repos#list-commits) endpoint.
+	//
+	// GET /repos/{owner}/{repo}/pulls/{pull_number}/commits
+	PullsListCommits(ctx context.Context, params PullsListCommitsParams) (*PullsListCommitsOKHeaders, error)
+	// PullsListFiles invokes pulls/list-files operation.
+	//
+	// **Note:** Responses include a maximum of 3000 files. The paginated response returns 30 files per
+	// page by default.
+	//
+	// GET /repos/{owner}/{repo}/pulls/{pull_number}/files
+	PullsListFiles(ctx context.Context, params PullsListFilesParams) (PullsListFilesRes, error)
+	// PullsListRequestedReviewers invokes pulls/list-requested-reviewers operation.
+	//
+	// List requested reviewers for a pull request.
+	//
+	// GET /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
+	PullsListRequestedReviewers(ctx context.Context, params PullsListRequestedReviewersParams) (*PullRequestReviewRequestHeaders, error)
+	// PullsListReviewComments invokes pulls/list-review-comments operation.
+	//
+	// Lists all review comments for a pull request. By default, review comments are in ascending order
+	// by ID.
+	//
+	// GET /repos/{owner}/{repo}/pulls/{pull_number}/comments
+	PullsListReviewComments(ctx context.Context, params PullsListReviewCommentsParams) (*PullsListReviewCommentsOKHeaders, error)
+	// PullsListReviewCommentsForRepo invokes pulls/list-review-comments-for-repo operation.
+	//
+	// Lists review comments for all pull requests in a repository. By default, review comments are in
+	// ascending order by ID.
+	//
+	// GET /repos/{owner}/{repo}/pulls/comments
+	PullsListReviewCommentsForRepo(ctx context.Context, params PullsListReviewCommentsForRepoParams) (*PullsListReviewCommentsForRepoOKHeaders, error)
+	// PullsListReviews invokes pulls/list-reviews operation.
+	//
+	// The list of reviews returns in chronological order.
+	//
+	// GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews
+	PullsListReviews(ctx context.Context, params PullsListReviewsParams) (*PullsListReviewsOKHeaders, error)
+	// PullsMerge invokes pulls/merge operation.
+	//
+	// This endpoint triggers [notifications](https://docs.github.
+	// com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
+	// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
+	// rate limits](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
+	// rate limits](https://docs.github.
+	// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+	//
+	// PUT /repos/{owner}/{repo}/pulls/{pull_number}/merge
+	PullsMerge(ctx context.Context, request OptNilPullsMergeReq, params PullsMergeParams) (PullsMergeRes, error)
+	// PullsRemoveRequestedReviewers invokes pulls/remove-requested-reviewers operation.
+	//
+	// Remove requested reviewers from a pull request.
+	//
+	// DELETE /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
+	PullsRemoveRequestedReviewers(ctx context.Context, request *PullsRemoveRequestedReviewersReq, params PullsRemoveRequestedReviewersParams) (PullsRemoveRequestedReviewersRes, error)
+	// PullsSubmitReview invokes pulls/submit-review operation.
+	//
+	// Submit a review for a pull request.
+	//
+	// POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events
+	PullsSubmitReview(ctx context.Context, request *PullsSubmitReviewReq, params PullsSubmitReviewParams) (PullsSubmitReviewRes, error)
+	// PullsUpdate invokes pulls/update operation.
+	//
+	// Draft pull requests are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private
+	// repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// To open or update a pull request in a public repository, you must have write access to the head or
+	// the source branch. For organization-owned repositories, you must be a member of the organization
+	// that owns the repository to open or update a pull request.
+	//
+	// PATCH /repos/{owner}/{repo}/pulls/{pull_number}
+	PullsUpdate(ctx context.Context, request OptPullsUpdateReq, params PullsUpdateParams) (PullsUpdateRes, error)
+	// PullsUpdateBranch invokes pulls/update-branch operation.
+	//
+	// Updates the pull request branch with the latest upstream changes by merging HEAD from the base
+	// branch into the pull request branch.
+	//
+	// PUT /repos/{owner}/{repo}/pulls/{pull_number}/update-branch
+	PullsUpdateBranch(ctx context.Context, request OptNilPullsUpdateBranchReq, params PullsUpdateBranchParams) (PullsUpdateBranchRes, error)
+	// PullsUpdateReview invokes pulls/update-review operation.
+	//
+	// Update the review summary comment with new text.
+	//
+	// PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
+	PullsUpdateReview(ctx context.Context, request *PullsUpdateReviewReq, params PullsUpdateReviewParams) (PullsUpdateReviewRes, error)
+	// PullsUpdateReviewComment invokes pulls/update-review-comment operation.
+	//
+	// Enables you to edit a review comment.
+	//
+	// PATCH /repos/{owner}/{repo}/pulls/comments/{comment_id}
+	PullsUpdateReviewComment(ctx context.Context, request *PullsUpdateReviewCommentReq, params PullsUpdateReviewCommentParams) (*PullRequestReviewComment, error)
+	// RateLimitGet invokes rate-limit/get operation.
+	//
+	// **Note:** Accessing this endpoint does not count against your REST API rate limit.
+	// **Note:** The `rate` object is deprecated. If you're writing new API client code or updating
+	// existing code, you should use the `core` object instead of the `rate` object. The `core` object
+	// contains the same information that is present in the `rate` object.
+	//
+	// GET /rate_limit
+	RateLimitGet(ctx context.Context) (RateLimitGetRes, error)
+	// ReactionsCreateForCommitComment invokes reactions/create-for-commit-comment operation.
+	//
+	// Create a reaction to a [commit comment](https://docs.github.com/rest/reference/repos#comments). A
+	// response with an HTTP `200` status means that you already added the reaction type to this commit
+	// comment.
+	//
+	// POST /repos/{owner}/{repo}/comments/{comment_id}/reactions
+	ReactionsCreateForCommitComment(ctx context.Context, request *ReactionsCreateForCommitCommentReq, params ReactionsCreateForCommitCommentParams) (ReactionsCreateForCommitCommentRes, error)
+	// ReactionsCreateForIssue invokes reactions/create-for-issue operation.
+	//
+	// Create a reaction to an [issue](https://docs.github.com/rest/reference/issues/). A response with
+	// an HTTP `200` status means that you already added the reaction type to this issue.
+	//
+	// POST /repos/{owner}/{repo}/issues/{issue_number}/reactions
+	ReactionsCreateForIssue(ctx context.Context, request *ReactionsCreateForIssueReq, params ReactionsCreateForIssueParams) (ReactionsCreateForIssueRes, error)
+	// ReactionsCreateForIssueComment invokes reactions/create-for-issue-comment operation.
+	//
+	// Create a reaction to an [issue comment](https://docs.github.com/rest/reference/issues#comments). A
+	// response with an HTTP `200` status means that you already added the reaction type to this issue
+	// comment.
+	//
+	// POST /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
+	ReactionsCreateForIssueComment(ctx context.Context, request *ReactionsCreateForIssueCommentReq, params ReactionsCreateForIssueCommentParams) (ReactionsCreateForIssueCommentRes, error)
+	// ReactionsCreateForPullRequestReviewComment invokes reactions/create-for-pull-request-review-comment operation.
+	//
+	// Create a reaction to a [pull request review comment](https://docs.github.
+	// com/rest/reference/pulls#comments). A response with an HTTP `200` status means that you already
+	// added the reaction type to this pull request review comment.
+	//
+	// POST /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
+	ReactionsCreateForPullRequestReviewComment(ctx context.Context, request *ReactionsCreateForPullRequestReviewCommentReq, params ReactionsCreateForPullRequestReviewCommentParams) (ReactionsCreateForPullRequestReviewCommentRes, error)
+	// ReactionsCreateForRelease invokes reactions/create-for-release operation.
+	//
+	// Create a reaction to a [release](https://docs.github.com/rest/reference/repos#releases). A
+	// response with a `Status: 200 OK` means that you already added the reaction type to this release.
+	//
+	// POST /repos/{owner}/{repo}/releases/{release_id}/reactions
+	ReactionsCreateForRelease(ctx context.Context, request *ReactionsCreateForReleaseReq, params ReactionsCreateForReleaseParams) (ReactionsCreateForReleaseRes, error)
+	// ReactionsCreateForTeamDiscussionCommentInOrg invokes reactions/create-for-team-discussion-comment-in-org operation.
+	//
+	// Create a reaction to a [team discussion comment](https://docs.github.
+	// com/rest/reference/teams#discussion-comments). OAuth access tokens require the `write:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/). A
+	// response with an HTTP `200` status means that you already added the reaction type to this team
+	// discussion comment.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `POST
+	// /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions`.
+	//
+	// POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
+	ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Context, request *ReactionsCreateForTeamDiscussionCommentInOrgReq, params ReactionsCreateForTeamDiscussionCommentInOrgParams) (ReactionsCreateForTeamDiscussionCommentInOrgRes, error)
+	// ReactionsCreateForTeamDiscussionCommentLegacy invokes reactions/create-for-team-discussion-comment-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new "[Create reaction for a team discussion
+	// comment](https://docs.github.
+	// com/rest/reference/reactions#create-reaction-for-a-team-discussion-comment)" endpoint.
+	// Create a reaction to a [team discussion comment](https://docs.github.
+	// com/rest/reference/teams#discussion-comments). OAuth access tokens require the `write:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/). A
+	// response with an HTTP `200` status means that you already added the reaction type to this team
+	// discussion comment.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// POST /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
+	ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Context, request *ReactionsCreateForTeamDiscussionCommentLegacyReq, params ReactionsCreateForTeamDiscussionCommentLegacyParams) (*Reaction, error)
+	// ReactionsCreateForTeamDiscussionInOrg invokes reactions/create-for-team-discussion-in-org operation.
+	//
+	// Create a reaction to a [team discussion](https://docs.github.com/rest/reference/teams#discussions).
+	//  OAuth access tokens require the `write:discussion` [scope](https://docs.github.
+	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/). A response with an HTTP `200`
+	// status means that you already added the reaction type to this team discussion.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `POST
+	// /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions`.
+	//
+	// POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
+	ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, request *ReactionsCreateForTeamDiscussionInOrgReq, params ReactionsCreateForTeamDiscussionInOrgParams) (ReactionsCreateForTeamDiscussionInOrgRes, error)
+	// ReactionsCreateForTeamDiscussionLegacy invokes reactions/create-for-team-discussion-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [`Create reaction for a team
+	// discussion`](https://docs.github.
+	// com/rest/reference/reactions#create-reaction-for-a-team-discussion) endpoint.
+	// Create a reaction to a [team discussion](https://docs.github.com/rest/reference/teams#discussions).
+	//  OAuth access tokens require the `write:discussion` [scope](https://docs.github.
+	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/). A response with an HTTP `200`
+	// status means that you already added the reaction type to this team discussion.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// POST /teams/{team_id}/discussions/{discussion_number}/reactions
+	ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, request *ReactionsCreateForTeamDiscussionLegacyReq, params ReactionsCreateForTeamDiscussionLegacyParams) (*Reaction, error)
+	// ReactionsDeleteForCommitComment invokes reactions/delete-for-commit-comment operation.
+	//
+	// **Note:** You can also specify a repository by `repository_id` using the route `DELETE
+	// /repositories/:repository_id/comments/:comment_id/reactions/:reaction_id`.
+	// Delete a reaction to a [commit comment](https://docs.github.com/rest/reference/repos#comments).
+	//
+	// DELETE /repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}
+	ReactionsDeleteForCommitComment(ctx context.Context, params ReactionsDeleteForCommitCommentParams) error
+	// ReactionsDeleteForIssue invokes reactions/delete-for-issue operation.
+	//
+	// **Note:** You can also specify a repository by `repository_id` using the route `DELETE
+	// /repositories/:repository_id/issues/:issue_number/reactions/:reaction_id`.
+	// Delete a reaction to an [issue](https://docs.github.com/rest/reference/issues/).
+	//
+	// DELETE /repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}
+	ReactionsDeleteForIssue(ctx context.Context, params ReactionsDeleteForIssueParams) error
+	// ReactionsDeleteForIssueComment invokes reactions/delete-for-issue-comment operation.
+	//
+	// **Note:** You can also specify a repository by `repository_id` using the route `DELETE delete
+	// /repositories/:repository_id/issues/comments/:comment_id/reactions/:reaction_id`.
+	// Delete a reaction to an [issue comment](https://docs.github.com/rest/reference/issues#comments).
+	//
+	// DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}
+	ReactionsDeleteForIssueComment(ctx context.Context, params ReactionsDeleteForIssueCommentParams) error
+	// ReactionsDeleteForPullRequestComment invokes reactions/delete-for-pull-request-comment operation.
+	//
+	// **Note:** You can also specify a repository by `repository_id` using the route `DELETE
+	// /repositories/:repository_id/pulls/comments/:comment_id/reactions/:reaction_id.`
+	// Delete a reaction to a [pull request review comment](https://docs.github.
+	// com/rest/reference/pulls#review-comments).
+	//
+	// DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}
+	ReactionsDeleteForPullRequestComment(ctx context.Context, params ReactionsDeleteForPullRequestCommentParams) error
+	// ReactionsDeleteForTeamDiscussion invokes reactions/delete-for-team-discussion operation.
+	//
+	// **Note:** You can also specify a team or organization with `team_id` and `org_id` using the route
+	// `DELETE
+	// /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions/:reaction_id`.
+	// Delete a reaction to a [team discussion](https://docs.github.com/rest/reference/teams#discussions).
+	//  OAuth access tokens require the `write:discussion` [scope](https://docs.github.
+	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}
+	ReactionsDeleteForTeamDiscussion(ctx context.Context, params ReactionsDeleteForTeamDiscussionParams) error
+	// ReactionsDeleteForTeamDiscussionComment invokes reactions/delete-for-team-discussion-comment operation.
+	//
+	// **Note:** You can also specify a team or organization with `team_id` and `org_id` using the route
+	// `DELETE
+	// /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions/:reaction_id`.
+	// Delete a reaction to a [team discussion comment](https://docs.github.
+	// com/rest/reference/teams#discussion-comments). OAuth access tokens require the `write:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}
+	ReactionsDeleteForTeamDiscussionComment(ctx context.Context, params ReactionsDeleteForTeamDiscussionCommentParams) error
+	// ReactionsDeleteLegacy invokes reactions/delete-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Reactions
+	// API. We recommend migrating your existing code to use the new delete reactions endpoints. For more
+	// information, see this [blog post](https://developer.github.
+	// com/changes/2020-02-26-new-delete-reactions-endpoints/).
+	// OAuth access tokens require the `write:discussion` [scope](https://docs.github.
+	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/), when deleting a [team
+	// discussion](https://docs.github.com/rest/reference/teams#discussions) or [team discussion
+	// comment](https://docs.github.com/rest/reference/teams#discussion-comments).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// DELETE /reactions/{reaction_id}
+	ReactionsDeleteLegacy(ctx context.Context, params ReactionsDeleteLegacyParams) (ReactionsDeleteLegacyRes, error)
+	// ReactionsListForCommitComment invokes reactions/list-for-commit-comment operation.
+	//
+	// List the reactions to a [commit comment](https://docs.github.com/rest/reference/repos#comments).
+	//
+	// GET /repos/{owner}/{repo}/comments/{comment_id}/reactions
+	ReactionsListForCommitComment(ctx context.Context, params ReactionsListForCommitCommentParams) (ReactionsListForCommitCommentRes, error)
+	// ReactionsListForIssue invokes reactions/list-for-issue operation.
+	//
+	// List the reactions to an [issue](https://docs.github.com/rest/reference/issues).
+	//
+	// GET /repos/{owner}/{repo}/issues/{issue_number}/reactions
+	ReactionsListForIssue(ctx context.Context, params ReactionsListForIssueParams) (ReactionsListForIssueRes, error)
+	// ReactionsListForIssueComment invokes reactions/list-for-issue-comment operation.
+	//
+	// List the reactions to an [issue comment](https://docs.github.com/rest/reference/issues#comments).
+	//
+	// GET /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
+	ReactionsListForIssueComment(ctx context.Context, params ReactionsListForIssueCommentParams) (ReactionsListForIssueCommentRes, error)
+	// ReactionsListForPullRequestReviewComment invokes reactions/list-for-pull-request-review-comment operation.
+	//
+	// List the reactions to a [pull request review comment](https://docs.github.
+	// com/rest/reference/pulls#review-comments).
+	//
+	// GET /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
+	ReactionsListForPullRequestReviewComment(ctx context.Context, params ReactionsListForPullRequestReviewCommentParams) (ReactionsListForPullRequestReviewCommentRes, error)
+	// ReactionsListForTeamDiscussionCommentInOrg invokes reactions/list-for-team-discussion-comment-in-org operation.
+	//
+	// List the reactions to a [team discussion comment](https://docs.github.
+	// com/rest/reference/teams#discussion-comments/). OAuth access tokens require the `read:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
+	// /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions`.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
+	ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context, params ReactionsListForTeamDiscussionCommentInOrgParams) (*ReactionsListForTeamDiscussionCommentInOrgOKHeaders, error)
+	// ReactionsListForTeamDiscussionCommentLegacy invokes reactions/list-for-team-discussion-comment-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [`List reactions for a team discussion
+	// comment`](https://docs.github.
+	// com/rest/reference/reactions#list-reactions-for-a-team-discussion-comment) endpoint.
+	// List the reactions to a [team discussion comment](https://docs.github.
+	// com/rest/reference/teams#discussion-comments). OAuth access tokens require the `read:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
+	ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context, params ReactionsListForTeamDiscussionCommentLegacyParams) (*ReactionsListForTeamDiscussionCommentLegacyOKHeaders, error)
+	// ReactionsListForTeamDiscussionInOrg invokes reactions/list-for-team-discussion-in-org operation.
+	//
+	// List the reactions to a [team discussion](https://docs.github.
+	// com/rest/reference/teams#discussions). OAuth access tokens require the `read:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
+	// /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions`.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
+	ReactionsListForTeamDiscussionInOrg(ctx context.Context, params ReactionsListForTeamDiscussionInOrgParams) (*ReactionsListForTeamDiscussionInOrgOKHeaders, error)
+	// ReactionsListForTeamDiscussionLegacy invokes reactions/list-for-team-discussion-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [`List reactions for a team
+	// discussion`](https://docs.github.
+	// com/rest/reference/reactions#list-reactions-for-a-team-discussion) endpoint.
+	// List the reactions to a [team discussion](https://docs.github.
+	// com/rest/reference/teams#discussions). OAuth access tokens require the `read:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}/discussions/{discussion_number}/reactions
+	ReactionsListForTeamDiscussionLegacy(ctx context.Context, params ReactionsListForTeamDiscussionLegacyParams) (*ReactionsListForTeamDiscussionLegacyOKHeaders, error)
+	// ReposAcceptInvitation invokes repos/accept-invitation operation.
+	//
+	// Accept a repository invitation.
+	//
+	// PATCH /user/repository_invitations/{invitation_id}
+	ReposAcceptInvitation(ctx context.Context, params ReposAcceptInvitationParams) (ReposAcceptInvitationRes, error)
+	// ReposAddAppAccessRestrictions invokes repos/add-app-access-restrictions operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Grants the specified apps push access for this branch. Only installed GitHub Apps with `write`
+	// access to the `contents` permission can be added as authorized actors on a protected branch.
+	// | Type    | Description
+	//                                                                     |
+	// | ------- |
+	// ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+	// | `array` | The GitHub Apps that have push access to this branch. Use the app's `slug`. **Note**:
+	// The list of users, apps, and teams in total is limited to 100 items. |.
+	//
+	// POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
+	ReposAddAppAccessRestrictions(ctx context.Context, request OptReposAddAppAccessRestrictionsReq, params ReposAddAppAccessRestrictionsParams) (ReposAddAppAccessRestrictionsRes, error)
+	// ReposAddCollaborator invokes repos/add-collaborator operation.
+	//
+	// This endpoint triggers [notifications](https://docs.github.
+	// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
+	// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
+	// rate limits](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
+	// rate limits](https://docs.github.
+	// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+	// For more information the permission levels, see "[Repository permission levels for an
+	// organization](https://help.github.
+	// com/en/github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization#permission-levels-for-repositories-owned-by-an-organization)".
+	// Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero
+	// when calling out to this endpoint. For more information, see "[HTTP verbs](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#http-verbs)."
+	// The invitee will receive a notification that they have been invited to the repository, which they
+	// must accept or decline. They may do this via the notifications page, the email they receive, or by
+	// using the [repository invitations API endpoints](https://docs.github.
+	// com/rest/reference/repos#invitations).
+	// **Rate limits**
+	// You are limited to sending 50 invitations to a repository per 24 hour period. Note there is no
+	// limit if you are inviting organization members to an organization repository.
+	//
+	// PUT /repos/{owner}/{repo}/collaborators/{username}
+	ReposAddCollaborator(ctx context.Context, request OptReposAddCollaboratorReq, params ReposAddCollaboratorParams) (ReposAddCollaboratorRes, error)
+	// ReposAddStatusCheckContexts invokes repos/add-status-check-contexts operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	//
+	// POST /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
+	ReposAddStatusCheckContexts(ctx context.Context, request OptReposAddStatusCheckContextsReq, params ReposAddStatusCheckContextsParams) (ReposAddStatusCheckContextsRes, error)
+	// ReposAddTeamAccessRestrictions invokes repos/add-team-access-restrictions operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Grants the specified teams push access for this branch. You can also give push access to child
+	// teams.
+	// | Type    | Description
+	//                                                     |
+	// | ------- |
+	// ------------------------------------------------------------------------------------------------------------------------------------------ |
+	// | `array` | The teams that can have push access. Use the team's `slug`. **Note**: The list of
+	// users, apps, and teams in total is limited to 100 items. |.
+	//
+	// POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
+	ReposAddTeamAccessRestrictions(ctx context.Context, request OptReposAddTeamAccessRestrictionsReq, params ReposAddTeamAccessRestrictionsParams) (ReposAddTeamAccessRestrictionsRes, error)
+	// ReposAddUserAccessRestrictions invokes repos/add-user-access-restrictions operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Grants the specified people push access for this branch.
+	// | Type    | Description
+	//                                        |
+	// | ------- |
+	// ----------------------------------------------------------------------------------------------------------------------------- |
+	// | `array` | Usernames for people who can have push access. **Note**: The list of users, apps, and
+	// teams in total is limited to 100 items. |.
+	//
+	// POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
+	ReposAddUserAccessRestrictions(ctx context.Context, request OptReposAddUserAccessRestrictionsReq, params ReposAddUserAccessRestrictionsParams) (ReposAddUserAccessRestrictionsRes, error)
+	// ReposCheckCollaborator invokes repos/check-collaborator operation.
+	//
+	// For organization-owned repositories, the list of collaborators includes outside collaborators,
+	// organization members that are direct collaborators, organization members with access through team
+	// memberships, organization members with access through default organization permissions, and
+	// organization owners.
+	// Team members will include the members of child teams.
+	//
+	// GET /repos/{owner}/{repo}/collaborators/{username}
+	ReposCheckCollaborator(ctx context.Context, params ReposCheckCollaboratorParams) (ReposCheckCollaboratorRes, error)
+	// ReposCheckVulnerabilityAlerts invokes repos/check-vulnerability-alerts operation.
+	//
+	// Shows whether dependency alerts are enabled or disabled for a repository. The authenticated user
+	// must have admin access to the repository. For more information, see "[About security alerts for
+	// vulnerable dependencies](https://help.github.
+	// com/en/articles/about-security-alerts-for-vulnerable-dependencies)".
+	//
+	// GET /repos/{owner}/{repo}/vulnerability-alerts
+	ReposCheckVulnerabilityAlerts(ctx context.Context, params ReposCheckVulnerabilityAlertsParams) (ReposCheckVulnerabilityAlertsRes, error)
+	// ReposCompareCommits invokes repos/compare-commits operation.
+	//
+	// The `basehead` param is comprised of two parts: `base` and `head`. Both must be branch names in
+	// `repo`. To compare branches across other repositories in the same network as `repo`, use the
+	// format `<USERNAME>:branch`.
+	// The response from the API is equivalent to running the `git log base..head` command; however,
+	// commits are returned in chronological order. Pass the appropriate [media type](https://docs.github.
+	// com/rest/overview/media-types/#commits-commit-comparison-and-pull-requests) to fetch diff and
+	// patch formats.
+	// The response also includes details on the files that were changed between the two commits. This
+	// includes the status of the change (for example, if a file was added, removed, modified, or
+	// renamed), and details of the change itself. For example, files with a `renamed` status have a
+	// `previous_filename` field showing the previous filename of the file, and files with a `modified`
+	// status have a `patch` field showing the changes made to the file.
+	// **Working with large comparisons**
+	// To process a response with a large number of commits, you can use (`per_page` or `page`) to
+	// paginate the results. When using paging, the list of changed files is only returned with page 1,
+	// but includes all changed files for the entire comparison. For more information on working with
+	// pagination, see "[Traversing with pagination](/rest/guides/traversing-with-pagination)."
+	// When calling this API without any paging parameters (`per_page` or `page`), the returned list is
+	// limited to 250 commits and the last commit in the list is the most recent of the entire comparison.
+	//  When a paging parameter is specified, the first commit in the returned list of each page is the
+	// earliest.
+	// **Signature verification object**
+	// The response will include a `verification` object that describes the result of verifying the
+	// commit's signature. The following fields are included in the `verification` object:
+	// | Name | Type | Description |
+	// | ---- | ---- | ----------- |
+	// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be
+	// verified. |
+	// | `reason` | `string` | The reason for verified value. Possible values and their meanings are
+	// enumerated in table below. |
+	// | `signature` | `string` | The signature that was extracted from the commit. |
+	// | `payload` | `string` | The value that was signed. |
+	// These are the possible values for `reason` in the `verification` object:
+	// | Value | Description |
+	// | ----- | ----------- |
+	// | `expired_key` | The key that made the signature is expired. |
+	// | `not_signing_key` | The "signing" flag is not among the usage flags in the GPG key that made the
+	// signature. |
+	// | `gpgverify_error` | There was an error communicating with the signature verification service. |
+	// | `gpgverify_unavailable` | The signature verification service is currently unavailable. |
+	// | `unsigned` | The object does not include a signature. |
+	// | `unknown_signature_type` | A non-PGP signature was found in the commit. |
+	// | `no_user` | No user was associated with the `committer` email address in the commit. |
+	// | `unverified_email` | The `committer` email address in the commit was associated with a user, but
+	// the email address is not verified on her/his account. |
+	// | `bad_email` | The `committer` email address in the commit is not included in the identities of
+	// the PGP key that made the signature. |
+	// | `unknown_key` | The key that made the signature has not been registered with any user's account.
+	// |
+	// | `malformed_signature` | There was an error parsing the signature. |
+	// | `invalid` | The signature could not be cryptographically verified using the key whose key-id was
+	// found in the signature. |
+	// | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
+	//
+	// GET /repos/{owner}/{repo}/compare/{basehead}
+	ReposCompareCommits(ctx context.Context, params ReposCompareCommitsParams) (ReposCompareCommitsRes, error)
+	// ReposCreateAutolink invokes repos/create-autolink operation.
+	//
+	// Users with admin access to the repository can create an autolink.
+	//
+	// POST /repos/{owner}/{repo}/autolinks
+	ReposCreateAutolink(ctx context.Context, request *ReposCreateAutolinkReq, params ReposCreateAutolinkParams) (ReposCreateAutolinkRes, error)
+	// ReposCreateCommitComment invokes repos/create-commit-comment operation.
+	//
+	// Create a comment for a commit using its `:commit_sha`.
+	// This endpoint triggers [notifications](https://docs.github.
+	// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
+	// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
+	// rate limits](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
+	// rate limits](https://docs.github.
+	// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+	//
+	// POST /repos/{owner}/{repo}/commits/{commit_sha}/comments
+	ReposCreateCommitComment(ctx context.Context, request *ReposCreateCommitCommentReq, params ReposCreateCommitCommentParams) (ReposCreateCommitCommentRes, error)
+	// ReposCreateCommitSignatureProtection invokes repos/create-commit-signature-protection operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// When authenticated with admin or owner permissions to the repository, you can use this endpoint to
+	// require signed commits on a branch. You must enable branch protection to require signed commits.
+	//
+	// POST /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
+	ReposCreateCommitSignatureProtection(ctx context.Context, params ReposCreateCommitSignatureProtectionParams) (ReposCreateCommitSignatureProtectionRes, error)
+	// ReposCreateCommitStatus invokes repos/create-commit-status operation.
+	//
+	// Users with push access in a repository can create commit statuses for a given SHA.
+	// Note: there is a limit of 1000 statuses per `sha` and `context` within a repository. Attempts to
+	// create more than 1000 statuses will result in a validation error.
+	//
+	// POST /repos/{owner}/{repo}/statuses/{sha}
+	ReposCreateCommitStatus(ctx context.Context, request *ReposCreateCommitStatusReq, params ReposCreateCommitStatusParams) (*StatusHeaders, error)
+	// ReposCreateDeployKey invokes repos/create-deploy-key operation.
+	//
+	// You can create a read-only deploy key.
+	//
+	// POST /repos/{owner}/{repo}/keys
+	ReposCreateDeployKey(ctx context.Context, request *ReposCreateDeployKeyReq, params ReposCreateDeployKeyParams) (ReposCreateDeployKeyRes, error)
+	// ReposCreateDeployment invokes repos/create-deployment operation.
+	//
+	// Deployments offer a few configurable parameters with certain defaults.
+	// The `ref` parameter can be any named branch, tag, or SHA. At GitHub we often deploy branches and
+	// verify them
+	// before we merge a pull request.
+	// The `environment` parameter allows deployments to be issued to different runtime environments.
+	// Teams often have
+	// multiple environments for verifying their applications, such as `production`, `staging`, and `qa`.
+	// This parameter
+	// makes it easier to track which environments have requested deployments. The default environment is
+	// `production`.
+	// The `auto_merge` parameter is used to ensure that the requested ref is not behind the repository's
+	// default branch. If
+	// the ref _is_ behind the default branch for the repository, we will attempt to merge it for you. If
+	// the merge succeeds,
+	// the API will return a successful merge commit. If merge conflicts prevent the merge from
+	// succeeding, the API will
+	// return a failure response.
+	// By default, [commit statuses](https://docs.github.com/rest/reference/repos#statuses) for every
+	// submitted context must be in a `success`
+	// state. The `required_contexts` parameter allows you to specify a subset of contexts that must be
+	// `success`, or to
+	// specify contexts that have not yet been submitted. You are not required to use commit statuses to
+	// deploy. If you do
+	// not require any contexts or create any commit statuses, the deployment will always succeed.
+	// The `payload` parameter is available for any extra information that a deployment system might need.
+	//  It is a JSON text
+	// field that will be passed on when a deployment event is dispatched.
+	// The `task` parameter is used by the deployment system to allow different execution paths. In the
+	// web world this might
+	// be `deploy:migrations` to run schema changes on the system. In the compiled world this could be a
+	// flag to compile an
+	// application with debugging enabled.
+	// Users with `repo` or `repo_deployment` scopes can create a deployment for a given ref.
+	// #### Merged branch response
+	// You will see this response when GitHub automatically merges the base branch into the topic branch
+	// instead of creating
+	// a deployment. This auto-merge happens when:
+	// *   Auto-merge option is enabled in the repository
+	// *   Topic branch does not include the latest changes on the base branch, which is `master` in the
+	// response example
+	// *   There are no merge conflicts
+	// If there are no new commits in the base branch, a new request to create a deployment should give a
+	// successful
+	// response.
+	// #### Merge conflict response
+	// This error happens when the `auto_merge` option is enabled and when the default branch (in this
+	// case `master`), can't
+	// be merged into the branch that's being deployed (in this case `topic-branch`), due to merge
+	// conflicts.
+	// #### Failed commit status checks
+	// This error happens when the `required_contexts` parameter indicates that one or more contexts need
+	// to have a `success`
+	// status for the commit to be deployed, but one or more of the required contexts do not have a state
+	// of `success`.
+	//
+	// POST /repos/{owner}/{repo}/deployments
+	ReposCreateDeployment(ctx context.Context, request *ReposCreateDeploymentReq, params ReposCreateDeploymentParams) (ReposCreateDeploymentRes, error)
+	// ReposCreateDeploymentStatus invokes repos/create-deployment-status operation.
+	//
+	// Users with `push` access can create deployment statuses for a given deployment.
+	// GitHub Apps require `read & write` access to "Deployments" and `read-only` access to "Repo
+	// contents" (for private repos). OAuth Apps require the `repo_deployment` scope.
+	//
+	// POST /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
+	ReposCreateDeploymentStatus(ctx context.Context, request *ReposCreateDeploymentStatusReq, params ReposCreateDeploymentStatusParams) (ReposCreateDeploymentStatusRes, error)
+	// ReposCreateDispatchEvent invokes repos/create-dispatch-event operation.
+	//
+	// You can use this endpoint to trigger a webhook event called `repository_dispatch` when you want
+	// activity that happens outside of GitHub to trigger a GitHub Actions workflow or GitHub App webhook.
+	//  You must configure your GitHub Actions workflow or GitHub App to run when the
+	// `repository_dispatch` event occurs. For an example `repository_dispatch` webhook payload, see
+	// "[RepositoryDispatchEvent](https://docs.github.com/webhooks/event-payloads/#repository_dispatch)."
+	// The `client_payload` parameter is available for any extra information that your workflow might
+	// need. This parameter is a JSON payload that will be passed on when the webhook event is dispatched.
+	//  For example, the `client_payload` can include a message that a user would like to send using a
+	// GitHub Actions workflow. Or the `client_payload` can be used as a test to debug your workflow.
+	// This endpoint requires write access to the repository by providing either:
+	// - Personal access tokens with `repo` scope. For more information, see "[Creating a personal access
+	// token for the command line](https://help.github.
+	// com/articles/creating-a-personal-access-token-for-the-command-line)" in the GitHub Help
+	// documentation.
+	// - GitHub Apps with both `metadata:read` and `contents:read&write` permissions.
+	// This input example shows how you can use the `client_payload` as a test to debug your workflow.
+	//
+	// POST /repos/{owner}/{repo}/dispatches
+	ReposCreateDispatchEvent(ctx context.Context, request *ReposCreateDispatchEventReq, params ReposCreateDispatchEventParams) (ReposCreateDispatchEventRes, error)
+	// ReposCreateForAuthenticatedUser invokes repos/create-for-authenticated-user operation.
+	//
+	// Creates a new repository for the authenticated user.
+	// **OAuth scope requirements**
+	// When using [OAuth](https://docs.github.
+	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/), authorizations must include:
+	// *   `public_repo` scope or `repo` scope to create a public repository. Note: For GitHub AE, use
+	// `repo` scope to create an internal repository.
+	// *   `repo` scope to create a private repository.
+	//
+	// POST /user/repos
+	ReposCreateForAuthenticatedUser(ctx context.Context, request *ReposCreateForAuthenticatedUserReq) (ReposCreateForAuthenticatedUserRes, error)
+	// ReposCreateFork invokes repos/create-fork operation.
+	//
+	// Create a fork for the authenticated user.
+	// **Note**: Forking a Repository happens asynchronously. You may have to wait a short period of time
+	// before you can access the git objects. If this takes longer than 5 minutes, be sure to contact
+	// [GitHub Support](https://support.github.com/contact?tags=dotcom-rest-api).
+	//
+	// POST /repos/{owner}/{repo}/forks
+	ReposCreateFork(ctx context.Context, request OptNilReposCreateForkReq, params ReposCreateForkParams) (ReposCreateForkRes, error)
+	// ReposCreateInOrg invokes repos/create-in-org operation.
+	//
+	// Creates a new repository in the specified organization. The authenticated user must be a member of
+	// the organization.
+	// **OAuth scope requirements**
+	// When using [OAuth](https://docs.github.
+	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/), authorizations must include:
+	// *   `public_repo` scope or `repo` scope to create a public repository. Note: For GitHub AE, use
+	// `repo` scope to create an internal repository.
+	// *   `repo` scope to create a private repository.
+	//
+	// POST /orgs/{org}/repos
+	ReposCreateInOrg(ctx context.Context, request *ReposCreateInOrgReq, params ReposCreateInOrgParams) (ReposCreateInOrgRes, error)
+	// ReposCreateOrUpdateFileContents invokes repos/create-or-update-file-contents operation.
+	//
+	// Creates a new file or replaces an existing file in a repository.
+	//
+	// PUT /repos/{owner}/{repo}/contents/{path}
+	ReposCreateOrUpdateFileContents(ctx context.Context, request *ReposCreateOrUpdateFileContentsReq, params ReposCreateOrUpdateFileContentsParams) (ReposCreateOrUpdateFileContentsRes, error)
+	// ReposCreatePagesSite invokes repos/create-pages-site operation.
+	//
+	// Configures a GitHub Pages site. For more information, see "[About GitHub
+	// Pages](/github/working-with-github-pages/about-github-pages).".
+	//
+	// POST /repos/{owner}/{repo}/pages
+	ReposCreatePagesSite(ctx context.Context, request NilReposCreatePagesSiteReq, params ReposCreatePagesSiteParams) (ReposCreatePagesSiteRes, error)
+	// ReposCreateRelease invokes repos/create-release operation.
+	//
+	// Users with push access to the repository can create a release.
+	// This endpoint triggers [notifications](https://docs.github.
+	// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
+	// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
+	// rate limits](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
+	// rate limits](https://docs.github.
+	// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+	//
+	// POST /repos/{owner}/{repo}/releases
+	ReposCreateRelease(ctx context.Context, request *ReposCreateReleaseReq, params ReposCreateReleaseParams) (ReposCreateReleaseRes, error)
+	// ReposCreateUsingTemplate invokes repos/create-using-template operation.
+	//
+	// Creates a new repository using a repository template. Use the `template_owner` and `template_repo`
+	// route parameters to specify the repository to use as the template. The authenticated user must own
+	// or be a member of an organization that owns the repository. To check if a repository is available
+	// to use as a template, get the repository's information using the [Get a repository](https://docs.
+	// github.com/rest/reference/repos#get-a-repository) endpoint and check that the `is_template` key is
+	// `true`.
+	// **OAuth scope requirements**
+	// When using [OAuth](https://docs.github.
+	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/), authorizations must include:
+	// *   `public_repo` scope or `repo` scope to create a public repository. Note: For GitHub AE, use
+	// `repo` scope to create an internal repository.
+	// *   `repo` scope to create a private repository.
+	//
+	// POST /repos/{template_owner}/{template_repo}/generate
+	ReposCreateUsingTemplate(ctx context.Context, request *ReposCreateUsingTemplateReq, params ReposCreateUsingTemplateParams) (*RepositoryHeaders, error)
+	// ReposCreateWebhook invokes repos/create-webhook operation.
+	//
+	// Repositories can have multiple webhooks installed. Each webhook should have a unique `config`.
+	// Multiple webhooks can
+	// share the same `config` as long as those webhooks do not have any `events` that overlap.
+	//
+	// POST /repos/{owner}/{repo}/hooks
+	ReposCreateWebhook(ctx context.Context, request OptNilReposCreateWebhookReq, params ReposCreateWebhookParams) (ReposCreateWebhookRes, error)
+	// ReposDeclineInvitation invokes repos/decline-invitation operation.
+	//
+	// Decline a repository invitation.
+	//
+	// DELETE /user/repository_invitations/{invitation_id}
+	ReposDeclineInvitation(ctx context.Context, params ReposDeclineInvitationParams) (ReposDeclineInvitationRes, error)
+	// ReposDelete invokes repos/delete operation.
+	//
+	// Deleting a repository requires admin access. If OAuth is used, the `delete_repo` scope is required.
+	// If an organization owner has configured the organization to prevent members from deleting
+	// organization-owned
+	// repositories, you will get a `403 Forbidden` response.
+	//
+	// DELETE /repos/{owner}/{repo}
+	ReposDelete(ctx context.Context, params ReposDeleteParams) (ReposDeleteRes, error)
+	// ReposDeleteAccessRestrictions invokes repos/delete-access-restrictions operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Disables the ability to restrict who can push to this branch.
+	//
+	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
+	ReposDeleteAccessRestrictions(ctx context.Context, params ReposDeleteAccessRestrictionsParams) error
+	// ReposDeleteAdminBranchProtection invokes repos/delete-admin-branch-protection operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Removing admin enforcement requires admin or owner permissions to the repository and branch
+	// protection to be enabled.
+	//
+	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
+	ReposDeleteAdminBranchProtection(ctx context.Context, params ReposDeleteAdminBranchProtectionParams) (ReposDeleteAdminBranchProtectionRes, error)
+	// ReposDeleteAnEnvironment invokes repos/delete-an-environment operation.
+	//
+	// You must authenticate using an access token with the repo scope to use this endpoint.
+	//
+	// DELETE /repos/{owner}/{repo}/environments/{environment_name}
+	ReposDeleteAnEnvironment(ctx context.Context, params ReposDeleteAnEnvironmentParams) error
+	// ReposDeleteAutolink invokes repos/delete-autolink operation.
+	//
+	// This deletes a single autolink reference by ID that was configured for the given repository.
+	// Information about autolinks are only available to repository administrators.
+	//
+	// DELETE /repos/{owner}/{repo}/autolinks/{autolink_id}
+	ReposDeleteAutolink(ctx context.Context, params ReposDeleteAutolinkParams) (ReposDeleteAutolinkRes, error)
+	// ReposDeleteBranchProtection invokes repos/delete-branch-protection operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	//
+	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection
+	ReposDeleteBranchProtection(ctx context.Context, params ReposDeleteBranchProtectionParams) (ReposDeleteBranchProtectionRes, error)
+	// ReposDeleteCommitComment invokes repos/delete-commit-comment operation.
+	//
+	// Delete a commit comment.
+	//
+	// DELETE /repos/{owner}/{repo}/comments/{comment_id}
+	ReposDeleteCommitComment(ctx context.Context, params ReposDeleteCommitCommentParams) (ReposDeleteCommitCommentRes, error)
+	// ReposDeleteCommitSignatureProtection invokes repos/delete-commit-signature-protection operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// When authenticated with admin or owner permissions to the repository, you can use this endpoint to
+	// disable required signed commits on a branch. You must enable branch protection to require signed
+	// commits.
+	//
+	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
+	ReposDeleteCommitSignatureProtection(ctx context.Context, params ReposDeleteCommitSignatureProtectionParams) (ReposDeleteCommitSignatureProtectionRes, error)
+	// ReposDeleteDeployKey invokes repos/delete-deploy-key operation.
+	//
+	// Deploy keys are immutable. If you need to update a key, remove the key and create a new one
+	// instead.
+	//
+	// DELETE /repos/{owner}/{repo}/keys/{key_id}
+	ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDeployKeyParams) error
+	// ReposDeleteDeployment invokes repos/delete-deployment operation.
+	//
+	// To ensure there can always be an active deployment, you can only delete an _inactive_ deployment.
+	// Anyone with `repo` or `repo_deployment` scopes can delete an inactive deployment.
+	// To set a deployment as inactive, you must:
+	// *   Create a new deployment that is active so that the system has a record of the current state,
+	// then delete the previously active deployment.
+	// *   Mark the active deployment as inactive by adding any non-successful deployment status.
+	// For more information, see "[Create a deployment](https://docs.github.
+	// com/rest/reference/repos/#create-a-deployment)" and "[Create a deployment status](https://docs.
+	// github.com/rest/reference/repos#create-a-deployment-status).".
+	//
+	// DELETE /repos/{owner}/{repo}/deployments/{deployment_id}
+	ReposDeleteDeployment(ctx context.Context, params ReposDeleteDeploymentParams) (ReposDeleteDeploymentRes, error)
+	// ReposDeleteFile invokes repos/delete-file operation.
+	//
+	// Deletes a file in a repository.
+	// You can provide an additional `committer` parameter, which is an object containing information
+	// about the committer. Or, you can provide an `author` parameter, which is an object containing
+	// information about the author.
+	// The `author` section is optional and is filled in with the `committer` information if omitted. If
+	// the `committer` information is omitted, the authenticated user's information is used.
+	// You must provide values for both `name` and `email`, whether you choose to use `author` or
+	// `committer`. Otherwise, you'll receive a `422` status code.
+	//
+	// DELETE /repos/{owner}/{repo}/contents/{path}
+	ReposDeleteFile(ctx context.Context, request *ReposDeleteFileReq, params ReposDeleteFileParams) (ReposDeleteFileRes, error)
+	// ReposDeleteInvitation invokes repos/delete-invitation operation.
+	//
+	// Delete a repository invitation.
+	//
+	// DELETE /repos/{owner}/{repo}/invitations/{invitation_id}
+	ReposDeleteInvitation(ctx context.Context, params ReposDeleteInvitationParams) error
+	// ReposDeletePagesSite invokes repos/delete-pages-site operation.
+	//
+	// Delete a GitHub Pages site.
+	//
+	// DELETE /repos/{owner}/{repo}/pages
+	ReposDeletePagesSite(ctx context.Context, params ReposDeletePagesSiteParams) (ReposDeletePagesSiteRes, error)
+	// ReposDeletePullRequestReviewProtection invokes repos/delete-pull-request-review-protection operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	//
+	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
+	ReposDeletePullRequestReviewProtection(ctx context.Context, params ReposDeletePullRequestReviewProtectionParams) (ReposDeletePullRequestReviewProtectionRes, error)
+	// ReposDeleteRelease invokes repos/delete-release operation.
+	//
+	// Users with push access to the repository can delete a release.
+	//
+	// DELETE /repos/{owner}/{repo}/releases/{release_id}
+	ReposDeleteRelease(ctx context.Context, params ReposDeleteReleaseParams) error
+	// ReposDeleteReleaseAsset invokes repos/delete-release-asset operation.
+	//
+	// Delete a release asset.
+	//
+	// DELETE /repos/{owner}/{repo}/releases/assets/{asset_id}
+	ReposDeleteReleaseAsset(ctx context.Context, params ReposDeleteReleaseAssetParams) error
+	// ReposDeleteWebhook invokes repos/delete-webhook operation.
+	//
+	// Delete a repository webhook.
+	//
+	// DELETE /repos/{owner}/{repo}/hooks/{hook_id}
+	ReposDeleteWebhook(ctx context.Context, params ReposDeleteWebhookParams) (ReposDeleteWebhookRes, error)
+	// ReposDisableAutomatedSecurityFixes invokes repos/disable-automated-security-fixes operation.
+	//
+	// Disables automated security fixes for a repository. The authenticated user must have admin access
+	// to the repository. For more information, see "[Configuring automated security fixes](https://help.
+	// github.com/en/articles/configuring-automated-security-fixes)".
+	//
+	// DELETE /repos/{owner}/{repo}/automated-security-fixes
+	ReposDisableAutomatedSecurityFixes(ctx context.Context, params ReposDisableAutomatedSecurityFixesParams) error
+	// ReposDisableLfsForRepo invokes repos/disable-lfs-for-repo operation.
+	//
+	// **Note:** The Git LFS API endpoints are currently in beta and are subject to change.
+	//
+	// DELETE /repos/{owner}/{repo}/lfs
+	ReposDisableLfsForRepo(ctx context.Context, params ReposDisableLfsForRepoParams) error
+	// ReposDisableVulnerabilityAlerts invokes repos/disable-vulnerability-alerts operation.
+	//
+	// Disables dependency alerts and the dependency graph for a repository. The authenticated user must
+	// have admin access to the repository. For more information, see "[About security alerts for
+	// vulnerable dependencies](https://help.github.
+	// com/en/articles/about-security-alerts-for-vulnerable-dependencies)".
+	//
+	// DELETE /repos/{owner}/{repo}/vulnerability-alerts
+	ReposDisableVulnerabilityAlerts(ctx context.Context, params ReposDisableVulnerabilityAlertsParams) error
+	// ReposDownloadTarballArchive invokes repos/download-tarball-archive operation.
+	//
+	// Gets a redirect URL to download a tar archive for a repository. If you omit `:ref`, the
+	// repository’s default branch (usually
+	// `master`) will be used. Please make sure your HTTP framework is configured to follow redirects or
+	// you will need to use
+	// the `Location` header to make a second `GET` request.
+	// **Note**: For private repositories, these links are temporary and expire after five minutes.
+	//
+	// GET /repos/{owner}/{repo}/tarball/{ref}
+	ReposDownloadTarballArchive(ctx context.Context, params ReposDownloadTarballArchiveParams) (*ReposDownloadTarballArchiveFound, error)
+	// ReposDownloadZipballArchive invokes repos/download-zipball-archive operation.
+	//
+	// Gets a redirect URL to download a zip archive for a repository. If you omit `:ref`, the
+	// repository’s default branch (usually
+	// `master`) will be used. Please make sure your HTTP framework is configured to follow redirects or
+	// you will need to use
+	// the `Location` header to make a second `GET` request.
+	// **Note**: For private repositories, these links are temporary and expire after five minutes.
+	//
+	// GET /repos/{owner}/{repo}/zipball/{ref}
+	ReposDownloadZipballArchive(ctx context.Context, params ReposDownloadZipballArchiveParams) (*ReposDownloadZipballArchiveFound, error)
+	// ReposEnableAutomatedSecurityFixes invokes repos/enable-automated-security-fixes operation.
+	//
+	// Enables automated security fixes for a repository. The authenticated user must have admin access
+	// to the repository. For more information, see "[Configuring automated security fixes](https://help.
+	// github.com/en/articles/configuring-automated-security-fixes)".
+	//
+	// PUT /repos/{owner}/{repo}/automated-security-fixes
+	ReposEnableAutomatedSecurityFixes(ctx context.Context, params ReposEnableAutomatedSecurityFixesParams) error
+	// ReposEnableLfsForRepo invokes repos/enable-lfs-for-repo operation.
+	//
+	// **Note:** The Git LFS API endpoints are currently in beta and are subject to change.
+	//
+	// PUT /repos/{owner}/{repo}/lfs
+	ReposEnableLfsForRepo(ctx context.Context, params ReposEnableLfsForRepoParams) (ReposEnableLfsForRepoRes, error)
+	// ReposEnableVulnerabilityAlerts invokes repos/enable-vulnerability-alerts operation.
+	//
+	// Enables dependency alerts and the dependency graph for a repository. The authenticated user must
+	// have admin access to the repository. For more information, see "[About security alerts for
+	// vulnerable dependencies](https://help.github.
+	// com/en/articles/about-security-alerts-for-vulnerable-dependencies)".
+	//
+	// PUT /repos/{owner}/{repo}/vulnerability-alerts
+	ReposEnableVulnerabilityAlerts(ctx context.Context, params ReposEnableVulnerabilityAlertsParams) error
+	// ReposGet invokes repos/get operation.
+	//
+	// The `parent` and `source` objects are present when the repository is a fork. `parent` is the
+	// repository this repository was forked from, `source` is the ultimate source for the network.
+	//
+	// GET /repos/{owner}/{repo}
+	ReposGet(ctx context.Context, params ReposGetParams) (ReposGetRes, error)
+	// ReposGetAccessRestrictions invokes repos/get-access-restrictions operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Lists who has access to this protected branch.
+	// **Note**: Users, apps, and teams `restrictions` are only available for organization-owned
+	// repositories.
+	//
+	// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
+	ReposGetAccessRestrictions(ctx context.Context, params ReposGetAccessRestrictionsParams) (ReposGetAccessRestrictionsRes, error)
+	// ReposGetAdminBranchProtection invokes repos/get-admin-branch-protection operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	//
+	// GET /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
+	ReposGetAdminBranchProtection(ctx context.Context, params ReposGetAdminBranchProtectionParams) (*ProtectedBranchAdminEnforced, error)
+	// ReposGetAllStatusCheckContexts invokes repos/get-all-status-check-contexts operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	//
+	// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
+	ReposGetAllStatusCheckContexts(ctx context.Context, params ReposGetAllStatusCheckContextsParams) (ReposGetAllStatusCheckContextsRes, error)
+	// ReposGetAllTopics invokes repos/get-all-topics operation.
+	//
+	// Get all repository topics.
+	//
+	// GET /repos/{owner}/{repo}/topics
+	ReposGetAllTopics(ctx context.Context, params ReposGetAllTopicsParams) (ReposGetAllTopicsRes, error)
+	// ReposGetAppsWithAccessToProtectedBranch invokes repos/get-apps-with-access-to-protected-branch operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Lists the GitHub Apps that have push access to this branch. Only installed GitHub Apps with
+	// `write` access to the `contents` permission can be added as authorized actors on a protected
+	// branch.
+	//
+	// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
+	ReposGetAppsWithAccessToProtectedBranch(ctx context.Context, params ReposGetAppsWithAccessToProtectedBranchParams) (ReposGetAppsWithAccessToProtectedBranchRes, error)
+	// ReposGetAutolink invokes repos/get-autolink operation.
+	//
+	// This returns a single autolink reference by ID that was configured for the given repository.
+	// Information about autolinks are only available to repository administrators.
+	//
+	// GET /repos/{owner}/{repo}/autolinks/{autolink_id}
+	ReposGetAutolink(ctx context.Context, params ReposGetAutolinkParams) (ReposGetAutolinkRes, error)
+	// ReposGetBranch invokes repos/get-branch operation.
+	//
+	// Get a branch.
+	//
+	// GET /repos/{owner}/{repo}/branches/{branch}
+	ReposGetBranch(ctx context.Context, params ReposGetBranchParams) (ReposGetBranchRes, error)
+	// ReposGetBranchProtection invokes repos/get-branch-protection operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	//
+	// GET /repos/{owner}/{repo}/branches/{branch}/protection
+	ReposGetBranchProtection(ctx context.Context, params ReposGetBranchProtectionParams) (ReposGetBranchProtectionRes, error)
+	// ReposGetClones invokes repos/get-clones operation.
+	//
+	// Get the total number of clones and breakdown per day or week for the last 14 days. Timestamps are
+	// aligned to UTC midnight of the beginning of the day or week. Week begins on Monday.
+	//
+	// GET /repos/{owner}/{repo}/traffic/clones
+	ReposGetClones(ctx context.Context, params ReposGetClonesParams) (ReposGetClonesRes, error)
+	// ReposGetCodeFrequencyStats invokes repos/get-code-frequency-stats operation.
+	//
+	// Returns a weekly aggregate of the number of additions and deletions pushed to a repository.
+	//
+	// GET /repos/{owner}/{repo}/stats/code_frequency
+	ReposGetCodeFrequencyStats(ctx context.Context, params ReposGetCodeFrequencyStatsParams) (ReposGetCodeFrequencyStatsRes, error)
+	// ReposGetCollaboratorPermissionLevel invokes repos/get-collaborator-permission-level operation.
+	//
+	// Checks the repository permission of a collaborator. The possible repository permissions are
+	// `admin`, `write`, `read`, and `none`.
+	//
+	// GET /repos/{owner}/{repo}/collaborators/{username}/permission
+	ReposGetCollaboratorPermissionLevel(ctx context.Context, params ReposGetCollaboratorPermissionLevelParams) (ReposGetCollaboratorPermissionLevelRes, error)
+	// ReposGetCombinedStatusForRef invokes repos/get-combined-status-for-ref operation.
+	//
+	// Users with pull access in a repository can access a combined view of commit statuses for a given
+	// ref. The ref can be a SHA, a branch name, or a tag name.
+	// The most recent status for each context is returned, up to 100. This field
+	// [paginates](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination) if there
+	// are over 100 contexts.
+	// Additionally, a combined `state` is returned. The `state` is one of:
+	// *   **failure** if any of the contexts report as `error` or `failure`
+	// *   **pending** if there are no statuses or a context is `pending`
+	// *   **success** if the latest status for all contexts is `success`.
+	//
+	// GET /repos/{owner}/{repo}/commits/{ref}/status
+	ReposGetCombinedStatusForRef(ctx context.Context, params ReposGetCombinedStatusForRefParams) (ReposGetCombinedStatusForRefRes, error)
+	// ReposGetCommit invokes repos/get-commit operation.
+	//
+	// Returns the contents of a single commit reference. You must have `read` access for the repository
+	// to use this endpoint.
+	// **Note:** If there are more than 300 files in the commit diff, the response will include
+	// pagination link headers for the remaining files, up to a limit of 3000 files. Each page contains
+	// the static commit information, and the only changes are to the file listing.
+	// You can pass the appropriate [media type](https://docs.github.
+	// com/rest/overview/media-types/#commits-commit-comparison-and-pull-requests) to  fetch `diff` and
+	// `patch` formats. Diffs with binary data will have no `patch` property.
+	// To return only the SHA-1 hash of the commit reference, you can provide the `sha` custom [media
+	// type](https://docs.github.
+	// com/rest/overview/media-types/#commits-commit-comparison-and-pull-requests) in the `Accept` header.
+	//  You can use this endpoint to check if a remote reference's SHA-1 hash is the same as your local
+	// reference's SHA-1 hash by providing the local SHA-1 reference as the ETag.
+	// **Signature verification object**
+	// The response will include a `verification` object that describes the result of verifying the
+	// commit's signature. The following fields are included in the `verification` object:
+	// | Name | Type | Description |
+	// | ---- | ---- | ----------- |
+	// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be
+	// verified. |
+	// | `reason` | `string` | The reason for verified value. Possible values and their meanings are
+	// enumerated in table below. |
+	// | `signature` | `string` | The signature that was extracted from the commit. |
+	// | `payload` | `string` | The value that was signed. |
+	// These are the possible values for `reason` in the `verification` object:
+	// | Value | Description |
+	// | ----- | ----------- |
+	// | `expired_key` | The key that made the signature is expired. |
+	// | `not_signing_key` | The "signing" flag is not among the usage flags in the GPG key that made the
+	// signature. |
+	// | `gpgverify_error` | There was an error communicating with the signature verification service. |
+	// | `gpgverify_unavailable` | The signature verification service is currently unavailable. |
+	// | `unsigned` | The object does not include a signature. |
+	// | `unknown_signature_type` | A non-PGP signature was found in the commit. |
+	// | `no_user` | No user was associated with the `committer` email address in the commit. |
+	// | `unverified_email` | The `committer` email address in the commit was associated with a user, but
+	// the email address is not verified on her/his account. |
+	// | `bad_email` | The `committer` email address in the commit is not included in the identities of
+	// the PGP key that made the signature. |
+	// | `unknown_key` | The key that made the signature has not been registered with any user's account.
+	// |
+	// | `malformed_signature` | There was an error parsing the signature. |
+	// | `invalid` | The signature could not be cryptographically verified using the key whose key-id was
+	// found in the signature. |
+	// | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
+	//
+	// GET /repos/{owner}/{repo}/commits/{ref}
+	ReposGetCommit(ctx context.Context, params ReposGetCommitParams) (ReposGetCommitRes, error)
+	// ReposGetCommitActivityStats invokes repos/get-commit-activity-stats operation.
+	//
+	// Returns the last year of commit activity grouped by week. The `days` array is a group of commits
+	// per day, starting on `Sunday`.
+	//
+	// GET /repos/{owner}/{repo}/stats/commit_activity
+	ReposGetCommitActivityStats(ctx context.Context, params ReposGetCommitActivityStatsParams) (ReposGetCommitActivityStatsRes, error)
+	// ReposGetCommitComment invokes repos/get-commit-comment operation.
+	//
+	// Get a commit comment.
+	//
+	// GET /repos/{owner}/{repo}/comments/{comment_id}
+	ReposGetCommitComment(ctx context.Context, params ReposGetCommitCommentParams) (ReposGetCommitCommentRes, error)
+	// ReposGetCommitSignatureProtection invokes repos/get-commit-signature-protection operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// When authenticated with admin or owner permissions to the repository, you can use this endpoint to
+	// check whether a branch requires signed commits. An enabled status of `true` indicates you must
+	// sign commits on this branch. For more information, see [Signing commits with GPG](https://help.
+	// github.com/articles/signing-commits-with-gpg) in GitHub Help.
+	// **Note**: You must enable branch protection to require signed commits.
+	//
+	// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
+	ReposGetCommitSignatureProtection(ctx context.Context, params ReposGetCommitSignatureProtectionParams) (ReposGetCommitSignatureProtectionRes, error)
+	// ReposGetCommunityProfileMetrics invokes repos/get-community-profile-metrics operation.
+	//
+	// This endpoint will return all community profile metrics, including an
+	// overall health score, repository description, the presence of documentation, detected
+	// code of conduct, detected license, and the presence of ISSUE\_TEMPLATE, PULL\_REQUEST\_TEMPLATE,
+	// README, and CONTRIBUTING files.
+	// The `health_percentage` score is defined as a percentage of how many of
+	// these four documents are present: README, CONTRIBUTING, LICENSE, and
+	// CODE_OF_CONDUCT. For example, if all four documents are present, then
+	// the `health_percentage` is `100`. If only one is present, then the
+	// `health_percentage` is `25`.
+	// `content_reports_enabled` is only returned for organization-owned repositories.
+	//
+	// GET /repos/{owner}/{repo}/community/profile
+	ReposGetCommunityProfileMetrics(ctx context.Context, params ReposGetCommunityProfileMetricsParams) (*CommunityProfile, error)
+	// ReposGetContributorsStats invokes repos/get-contributors-stats operation.
+	//
+	// Returns the `total` number of commits authored by the contributor. In addition, the response
+	// includes a Weekly Hash (`weeks` array) with the following information:
+	// *   `w` - Start of the week, given as a [Unix timestamp](http://en.wikipedia.org/wiki/Unix_time).
+	// *   `a` - Number of additions
+	// *   `d` - Number of deletions
+	// *   `c` - Number of commits.
+	//
+	// GET /repos/{owner}/{repo}/stats/contributors
+	ReposGetContributorsStats(ctx context.Context, params ReposGetContributorsStatsParams) (ReposGetContributorsStatsRes, error)
+	// ReposGetDeployKey invokes repos/get-deploy-key operation.
+	//
+	// Get a deploy key.
+	//
+	// GET /repos/{owner}/{repo}/keys/{key_id}
+	ReposGetDeployKey(ctx context.Context, params ReposGetDeployKeyParams) (ReposGetDeployKeyRes, error)
+	// ReposGetDeployment invokes repos/get-deployment operation.
+	//
+	// Get a deployment.
+	//
+	// GET /repos/{owner}/{repo}/deployments/{deployment_id}
+	ReposGetDeployment(ctx context.Context, params ReposGetDeploymentParams) (ReposGetDeploymentRes, error)
+	// ReposGetDeploymentStatus invokes repos/get-deployment-status operation.
+	//
+	// Users with pull access can view a deployment status for a deployment:.
+	//
+	// GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}
+	ReposGetDeploymentStatus(ctx context.Context, params ReposGetDeploymentStatusParams) (ReposGetDeploymentStatusRes, error)
+	// ReposGetLatestPagesBuild invokes repos/get-latest-pages-build operation.
+	//
+	// Get latest Pages build.
+	//
+	// GET /repos/{owner}/{repo}/pages/builds/latest
+	ReposGetLatestPagesBuild(ctx context.Context, params ReposGetLatestPagesBuildParams) (*PageBuild, error)
+	// ReposGetLatestRelease invokes repos/get-latest-release operation.
+	//
+	// View the latest published full release for the repository.
+	// The latest release is the most recent non-prerelease, non-draft release, sorted by the
+	// `created_at` attribute. The `created_at` attribute is the date of the commit used for the release,
+	// and not the date when the release was drafted or published.
+	//
+	// GET /repos/{owner}/{repo}/releases/latest
+	ReposGetLatestRelease(ctx context.Context, params ReposGetLatestReleaseParams) (*Release, error)
+	// ReposGetPages invokes repos/get-pages operation.
+	//
+	// Get a GitHub Pages site.
+	//
+	// GET /repos/{owner}/{repo}/pages
+	ReposGetPages(ctx context.Context, params ReposGetPagesParams) (ReposGetPagesRes, error)
+	// ReposGetPagesBuild invokes repos/get-pages-build operation.
+	//
+	// Get GitHub Pages build.
+	//
+	// GET /repos/{owner}/{repo}/pages/builds/{build_id}
+	ReposGetPagesBuild(ctx context.Context, params ReposGetPagesBuildParams) (*PageBuild, error)
+	// ReposGetPagesHealthCheck invokes repos/get-pages-health-check operation.
+	//
+	// Gets a health check of the DNS settings for the `CNAME` record configured for a repository's
+	// GitHub Pages.
+	// The first request to this endpoint returns a `202 Accepted` status and starts an asynchronous
+	// background task to get the results for the domain. After the background task completes, subsequent
+	// requests to this endpoint return a `200 OK` status with the health check results in the response.
+	// Users must have admin or owner permissions. GitHub Apps must have the `pages:write` and
+	// `administration:write` permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/pages/health
+	ReposGetPagesHealthCheck(ctx context.Context, params ReposGetPagesHealthCheckParams) (ReposGetPagesHealthCheckRes, error)
+	// ReposGetParticipationStats invokes repos/get-participation-stats operation.
+	//
+	// Returns the total commit counts for the `owner` and total commit counts in `all`. `all` is
+	// everyone combined, including the `owner` in the last 52 weeks. If you'd like to get the commit
+	// counts for non-owners, you can subtract `owner` from `all`.
+	// The array order is oldest week (index 0) to most recent week.
+	//
+	// GET /repos/{owner}/{repo}/stats/participation
+	ReposGetParticipationStats(ctx context.Context, params ReposGetParticipationStatsParams) (ReposGetParticipationStatsRes, error)
+	// ReposGetPullRequestReviewProtection invokes repos/get-pull-request-review-protection operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	//
+	// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
+	ReposGetPullRequestReviewProtection(ctx context.Context, params ReposGetPullRequestReviewProtectionParams) (*ProtectedBranchPullRequestReview, error)
+	// ReposGetPunchCardStats invokes repos/get-punch-card-stats operation.
+	//
+	// Each array contains the day number, hour number, and number of commits:
+	// *   `0-6`: Sunday - Saturday
+	// *   `0-23`: Hour of day
+	// *   Number of commits
+	// For example, `[2, 14, 25]` indicates that there were 25 total commits, during the 2:00pm hour on
+	// Tuesdays. All times are based on the time zone of individual commits.
+	//
+	// GET /repos/{owner}/{repo}/stats/punch_card
+	ReposGetPunchCardStats(ctx context.Context, params ReposGetPunchCardStatsParams) (ReposGetPunchCardStatsRes, error)
+	// ReposGetReadme invokes repos/get-readme operation.
+	//
+	// Gets the preferred README for a repository.
+	// READMEs support [custom media types](https://docs.github.
+	// com/rest/reference/repos#custom-media-types) for retrieving the raw content or rendered HTML.
+	//
+	// GET /repos/{owner}/{repo}/readme
+	ReposGetReadme(ctx context.Context, params ReposGetReadmeParams) (ReposGetReadmeRes, error)
+	// ReposGetReadmeInDirectory invokes repos/get-readme-in-directory operation.
+	//
+	// Gets the README from a repository directory.
+	// READMEs support [custom media types](https://docs.github.
+	// com/rest/reference/repos#custom-media-types) for retrieving the raw content or rendered HTML.
+	//
+	// GET /repos/{owner}/{repo}/readme/{dir}
+	ReposGetReadmeInDirectory(ctx context.Context, params ReposGetReadmeInDirectoryParams) (ReposGetReadmeInDirectoryRes, error)
+	// ReposGetRelease invokes repos/get-release operation.
+	//
+	// **Note:** This returns an `upload_url` key corresponding to the endpoint for uploading release
+	// assets. This key is a [hypermedia resource](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#hypermedia).
+	//
+	// GET /repos/{owner}/{repo}/releases/{release_id}
+	ReposGetRelease(ctx context.Context, params ReposGetReleaseParams) (ReposGetReleaseRes, error)
+	// ReposGetReleaseAsset invokes repos/get-release-asset operation.
+	//
+	// To download the asset's binary content, set the `Accept` header of the request to
+	// [`application/octet-stream`](https://docs.github.com/rest/overview/media-types). The API will
+	// either redirect the client to the location, or stream it directly if possible. API clients should
+	// handle both a `200` or `302` response.
+	//
+	// GET /repos/{owner}/{repo}/releases/assets/{asset_id}
+	ReposGetReleaseAsset(ctx context.Context, params ReposGetReleaseAssetParams) (ReposGetReleaseAssetRes, error)
+	// ReposGetReleaseByTag invokes repos/get-release-by-tag operation.
+	//
+	// Get a published release with the specified tag.
+	//
+	// GET /repos/{owner}/{repo}/releases/tags/{tag}
+	ReposGetReleaseByTag(ctx context.Context, params ReposGetReleaseByTagParams) (ReposGetReleaseByTagRes, error)
+	// ReposGetStatusChecksProtection invokes repos/get-status-checks-protection operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	//
+	// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
+	ReposGetStatusChecksProtection(ctx context.Context, params ReposGetStatusChecksProtectionParams) (ReposGetStatusChecksProtectionRes, error)
+	// ReposGetTeamsWithAccessToProtectedBranch invokes repos/get-teams-with-access-to-protected-branch operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Lists the teams who have push access to this branch. The list includes child teams.
+	//
+	// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
+	ReposGetTeamsWithAccessToProtectedBranch(ctx context.Context, params ReposGetTeamsWithAccessToProtectedBranchParams) (ReposGetTeamsWithAccessToProtectedBranchRes, error)
+	// ReposGetTopPaths invokes repos/get-top-paths operation.
+	//
+	// Get the top 10 popular contents over the last 14 days.
+	//
+	// GET /repos/{owner}/{repo}/traffic/popular/paths
+	ReposGetTopPaths(ctx context.Context, params ReposGetTopPathsParams) (ReposGetTopPathsRes, error)
+	// ReposGetTopReferrers invokes repos/get-top-referrers operation.
+	//
+	// Get the top 10 referrers over the last 14 days.
+	//
+	// GET /repos/{owner}/{repo}/traffic/popular/referrers
+	ReposGetTopReferrers(ctx context.Context, params ReposGetTopReferrersParams) (ReposGetTopReferrersRes, error)
+	// ReposGetUsersWithAccessToProtectedBranch invokes repos/get-users-with-access-to-protected-branch operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Lists the people who have push access to this branch.
+	//
+	// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
+	ReposGetUsersWithAccessToProtectedBranch(ctx context.Context, params ReposGetUsersWithAccessToProtectedBranchParams) (ReposGetUsersWithAccessToProtectedBranchRes, error)
+	// ReposGetViews invokes repos/get-views operation.
+	//
+	// Get the total number of views and breakdown per day or week for the last 14 days. Timestamps are
+	// aligned to UTC midnight of the beginning of the day or week. Week begins on Monday.
+	//
+	// GET /repos/{owner}/{repo}/traffic/views
+	ReposGetViews(ctx context.Context, params ReposGetViewsParams) (ReposGetViewsRes, error)
+	// ReposGetWebhook invokes repos/get-webhook operation.
+	//
+	// Returns a webhook configured in a repository. To get only the webhook `config` properties, see
+	// "[Get a webhook configuration for a
+	// repository](/rest/reference/repos#get-a-webhook-configuration-for-a-repository).".
+	//
+	// GET /repos/{owner}/{repo}/hooks/{hook_id}
+	ReposGetWebhook(ctx context.Context, params ReposGetWebhookParams) (ReposGetWebhookRes, error)
+	// ReposGetWebhookConfigForRepo invokes repos/get-webhook-config-for-repo operation.
+	//
+	// Returns the webhook configuration for a repository. To get more information about the webhook,
+	// including the `active` state and `events`, use "[Get a repository
+	// webhook](/rest/reference/orgs#get-a-repository-webhook)."
+	// Access tokens must have the `read:repo_hook` or `repo` scope, and GitHub Apps must have the
+	// `repository_hooks:read` permission.
+	//
+	// GET /repos/{owner}/{repo}/hooks/{hook_id}/config
+	ReposGetWebhookConfigForRepo(ctx context.Context, params ReposGetWebhookConfigForRepoParams) (*WebhookConfig, error)
+	// ReposGetWebhookDelivery invokes repos/get-webhook-delivery operation.
+	//
+	// Returns a delivery for a webhook configured in a repository.
+	//
+	// GET /repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}
+	ReposGetWebhookDelivery(ctx context.Context, params ReposGetWebhookDeliveryParams) (ReposGetWebhookDeliveryRes, error)
+	// ReposListAutolinks invokes repos/list-autolinks operation.
+	//
+	// This returns a list of autolinks configured for the given repository.
+	// Information about autolinks are only available to repository administrators.
+	//
+	// GET /repos/{owner}/{repo}/autolinks
+	ReposListAutolinks(ctx context.Context, params ReposListAutolinksParams) ([]Autolink, error)
+	// ReposListBranches invokes repos/list-branches operation.
+	//
+	// List branches.
+	//
+	// GET /repos/{owner}/{repo}/branches
+	ReposListBranches(ctx context.Context, params ReposListBranchesParams) (ReposListBranchesRes, error)
+	// ReposListBranchesForHeadCommit invokes repos/list-branches-for-head-commit operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Returns all branches where the given commit SHA is the HEAD, or latest commit for the branch.
+	//
+	// GET /repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head
+	ReposListBranchesForHeadCommit(ctx context.Context, params ReposListBranchesForHeadCommitParams) (ReposListBranchesForHeadCommitRes, error)
+	// ReposListCollaborators invokes repos/list-collaborators operation.
+	//
+	// For organization-owned repositories, the list of collaborators includes outside collaborators,
+	// organization members that are direct collaborators, organization members with access through team
+	// memberships, organization members with access through default organization permissions, and
+	// organization owners.
+	// Team members will include the members of child teams.
+	//
+	// GET /repos/{owner}/{repo}/collaborators
+	ReposListCollaborators(ctx context.Context, params ReposListCollaboratorsParams) (ReposListCollaboratorsRes, error)
+	// ReposListCommentsForCommit invokes repos/list-comments-for-commit operation.
+	//
+	// Use the `:commit_sha` to specify the commit that will have its comments listed.
+	//
+	// GET /repos/{owner}/{repo}/commits/{commit_sha}/comments
+	ReposListCommentsForCommit(ctx context.Context, params ReposListCommentsForCommitParams) (*ReposListCommentsForCommitOKHeaders, error)
+	// ReposListCommitCommentsForRepo invokes repos/list-commit-comments-for-repo operation.
+	//
+	// Commit Comments use [these custom media types](https://docs.github.
+	// com/rest/reference/repos#custom-media-types). You can read more about the use of media types in
+	// the API [here](https://docs.github.com/rest/overview/media-types/).
+	// Comments are ordered by ascending ID.
+	//
+	// GET /repos/{owner}/{repo}/comments
+	ReposListCommitCommentsForRepo(ctx context.Context, params ReposListCommitCommentsForRepoParams) (*ReposListCommitCommentsForRepoOKHeaders, error)
+	// ReposListCommitStatusesForRef invokes repos/list-commit-statuses-for-ref operation.
+	//
+	// Users with pull access in a repository can view commit statuses for a given ref. The ref can be a
+	// SHA, a branch name, or a tag name. Statuses are returned in reverse chronological order. The first
+	// status in the list will be the latest one.
+	// This resource is also available via a legacy route: `GET /repos/:owner/:repo/statuses/:ref`.
+	//
+	// GET /repos/{owner}/{repo}/commits/{ref}/statuses
+	ReposListCommitStatusesForRef(ctx context.Context, params ReposListCommitStatusesForRefParams) (ReposListCommitStatusesForRefRes, error)
+	// ReposListCommits invokes repos/list-commits operation.
+	//
+	// **Signature verification object**
+	// The response will include a `verification` object that describes the result of verifying the
+	// commit's signature. The following fields are included in the `verification` object:
+	// | Name | Type | Description |
+	// | ---- | ---- | ----------- |
+	// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be
+	// verified. |
+	// | `reason` | `string` | The reason for verified value. Possible values and their meanings are
+	// enumerated in table below. |
+	// | `signature` | `string` | The signature that was extracted from the commit. |
+	// | `payload` | `string` | The value that was signed. |
+	// These are the possible values for `reason` in the `verification` object:
+	// | Value | Description |
+	// | ----- | ----------- |
+	// | `expired_key` | The key that made the signature is expired. |
+	// | `not_signing_key` | The "signing" flag is not among the usage flags in the GPG key that made the
+	// signature. |
+	// | `gpgverify_error` | There was an error communicating with the signature verification service. |
+	// | `gpgverify_unavailable` | The signature verification service is currently unavailable. |
+	// | `unsigned` | The object does not include a signature. |
+	// | `unknown_signature_type` | A non-PGP signature was found in the commit. |
+	// | `no_user` | No user was associated with the `committer` email address in the commit. |
+	// | `unverified_email` | The `committer` email address in the commit was associated with a user, but
+	// the email address is not verified on her/his account. |
+	// | `bad_email` | The `committer` email address in the commit is not included in the identities of
+	// the PGP key that made the signature. |
+	// | `unknown_key` | The key that made the signature has not been registered with any user's account.
+	// |
+	// | `malformed_signature` | There was an error parsing the signature. |
+	// | `invalid` | The signature could not be cryptographically verified using the key whose key-id was
+	// found in the signature. |
+	// | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
+	//
+	// GET /repos/{owner}/{repo}/commits
+	ReposListCommits(ctx context.Context, params ReposListCommitsParams) (ReposListCommitsRes, error)
+	// ReposListContributors invokes repos/list-contributors operation.
+	//
+	// Lists contributors to the specified repository and sorts them by the number of commits per
+	// contributor in descending order. This endpoint may return information that is a few hours old
+	// because the GitHub REST API v3 caches contributor data to improve performance.
+	// GitHub identifies contributors by author email address. This endpoint groups contribution counts
+	// by GitHub user, which includes all associated email addresses. To improve performance, only the
+	// first 500 author email addresses in the repository link to GitHub users. The rest will appear as
+	// anonymous contributors without associated GitHub user information.
+	//
+	// GET /repos/{owner}/{repo}/contributors
+	ReposListContributors(ctx context.Context, params ReposListContributorsParams) (ReposListContributorsRes, error)
+	// ReposListDeployKeys invokes repos/list-deploy-keys operation.
+	//
+	// List deploy keys.
+	//
+	// GET /repos/{owner}/{repo}/keys
+	ReposListDeployKeys(ctx context.Context, params ReposListDeployKeysParams) (*ReposListDeployKeysOKHeaders, error)
+	// ReposListDeploymentStatuses invokes repos/list-deployment-statuses operation.
+	//
+	// Users with pull access can view deployment statuses for a deployment:.
+	//
+	// GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
+	ReposListDeploymentStatuses(ctx context.Context, params ReposListDeploymentStatusesParams) (ReposListDeploymentStatusesRes, error)
+	// ReposListDeployments invokes repos/list-deployments operation.
+	//
+	// Simple filtering of deployments is available via query parameters:.
+	//
+	// GET /repos/{owner}/{repo}/deployments
+	ReposListDeployments(ctx context.Context, params ReposListDeploymentsParams) (*ReposListDeploymentsOKHeaders, error)
+	// ReposListForAuthenticatedUser invokes repos/list-for-authenticated-user operation.
+	//
+	// Lists repositories that the authenticated user has explicit permission (`:read`, `:write`, or
+	// `:admin`) to access.
+	// The authenticated user has explicit permission to access repositories they own, repositories where
+	// they are a collaborator, and repositories that they can access through an organization membership.
+	//
+	// GET /user/repos
+	ReposListForAuthenticatedUser(ctx context.Context, params ReposListForAuthenticatedUserParams) (ReposListForAuthenticatedUserRes, error)
+	// ReposListForOrg invokes repos/list-for-org operation.
+	//
+	// Lists repositories for the specified organization.
+	//
+	// GET /orgs/{org}/repos
+	ReposListForOrg(ctx context.Context, params ReposListForOrgParams) (*ReposListForOrgOKHeaders, error)
+	// ReposListForUser invokes repos/list-for-user operation.
+	//
+	// Lists public repositories for the specified user. Note: For GitHub AE, this endpoint will list
+	// internal repositories for the specified user.
+	//
+	// GET /users/{username}/repos
+	ReposListForUser(ctx context.Context, params ReposListForUserParams) (*ReposListForUserOKHeaders, error)
+	// ReposListForks invokes repos/list-forks operation.
+	//
+	// List forks.
+	//
+	// GET /repos/{owner}/{repo}/forks
+	ReposListForks(ctx context.Context, params ReposListForksParams) (ReposListForksRes, error)
+	// ReposListInvitations invokes repos/list-invitations operation.
+	//
+	// When authenticating as a user with admin rights to a repository, this endpoint will list all
+	// currently open repository invitations.
+	//
+	// GET /repos/{owner}/{repo}/invitations
+	ReposListInvitations(ctx context.Context, params ReposListInvitationsParams) (*ReposListInvitationsOKHeaders, error)
+	// ReposListInvitationsForAuthenticatedUser invokes repos/list-invitations-for-authenticated-user operation.
+	//
+	// When authenticating as a user, this endpoint will list all currently open repository invitations
+	// for that user.
+	//
+	// GET /user/repository_invitations
+	ReposListInvitationsForAuthenticatedUser(ctx context.Context, params ReposListInvitationsForAuthenticatedUserParams) (ReposListInvitationsForAuthenticatedUserRes, error)
+	// ReposListLanguages invokes repos/list-languages operation.
+	//
+	// Lists languages for the specified repository. The value shown for each language is the number of
+	// bytes of code written in that language.
+	//
+	// GET /repos/{owner}/{repo}/languages
+	ReposListLanguages(ctx context.Context, params ReposListLanguagesParams) (Language, error)
+	// ReposListPagesBuilds invokes repos/list-pages-builds operation.
+	//
+	// List GitHub Pages builds.
+	//
+	// GET /repos/{owner}/{repo}/pages/builds
+	ReposListPagesBuilds(ctx context.Context, params ReposListPagesBuildsParams) (*ReposListPagesBuildsOKHeaders, error)
+	// ReposListPublic invokes repos/list-public operation.
+	//
+	// Lists all public repositories in the order that they were created.
+	// Note:
+	// - For GitHub Enterprise Server, this endpoint will only list repositories available to all users
+	// on the enterprise.
+	// - Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://docs.
+	// github.com/rest/overview/resources-in-the-rest-api#link-header) to get the URL for the next page
+	// of repositories.
+	//
+	// GET /repositories
+	ReposListPublic(ctx context.Context, params ReposListPublicParams) (ReposListPublicRes, error)
+	// ReposListPullRequestsAssociatedWithCommit invokes repos/list-pull-requests-associated-with-commit operation.
+	//
+	// Lists the merged pull request that introduced the commit to the repository. If the commit is not
+	// present in the default branch, additionally returns open pull requests associated with the commit.
+	// The results may include open and closed pull requests. Additional preview headers may be required
+	// to see certain details for associated pull requests, such as whether a pull request is in a draft
+	// state. For more information about previews that might affect this endpoint, see the [List pull
+	// requests](https://docs.github.com/rest/reference/pulls#list-pull-requests) endpoint.
+	//
+	// GET /repos/{owner}/{repo}/commits/{commit_sha}/pulls
+	ReposListPullRequestsAssociatedWithCommit(ctx context.Context, params ReposListPullRequestsAssociatedWithCommitParams) (*ReposListPullRequestsAssociatedWithCommitOKHeaders, error)
+	// ReposListReleaseAssets invokes repos/list-release-assets operation.
+	//
+	// List release assets.
+	//
+	// GET /repos/{owner}/{repo}/releases/{release_id}/assets
+	ReposListReleaseAssets(ctx context.Context, params ReposListReleaseAssetsParams) (*ReposListReleaseAssetsOKHeaders, error)
+	// ReposListReleases invokes repos/list-releases operation.
+	//
+	// This returns a list of releases, which does not include regular Git tags that have not been
+	// associated with a release. To get a list of Git tags, use the [Repository Tags API](https://docs.
+	// github.com/rest/reference/repos#list-repository-tags).
+	// Information about published releases are available to everyone. Only users with push access will
+	// receive listings for draft releases.
+	//
+	// GET /repos/{owner}/{repo}/releases
+	ReposListReleases(ctx context.Context, params ReposListReleasesParams) (ReposListReleasesRes, error)
+	// ReposListTags invokes repos/list-tags operation.
+	//
+	// List repository tags.
+	//
+	// GET /repos/{owner}/{repo}/tags
+	ReposListTags(ctx context.Context, params ReposListTagsParams) (*ReposListTagsOKHeaders, error)
+	// ReposListTeams invokes repos/list-teams operation.
+	//
+	// List repository teams.
+	//
+	// GET /repos/{owner}/{repo}/teams
+	ReposListTeams(ctx context.Context, params ReposListTeamsParams) (*ReposListTeamsOKHeaders, error)
+	// ReposListWebhookDeliveries invokes repos/list-webhook-deliveries operation.
+	//
+	// Returns a list of webhook deliveries for a webhook configured in a repository.
+	//
+	// GET /repos/{owner}/{repo}/hooks/{hook_id}/deliveries
+	ReposListWebhookDeliveries(ctx context.Context, params ReposListWebhookDeliveriesParams) (ReposListWebhookDeliveriesRes, error)
+	// ReposListWebhooks invokes repos/list-webhooks operation.
+	//
+	// List repository webhooks.
+	//
+	// GET /repos/{owner}/{repo}/hooks
+	ReposListWebhooks(ctx context.Context, params ReposListWebhooksParams) (ReposListWebhooksRes, error)
+	// ReposMerge invokes repos/merge operation.
+	//
+	// Merge a branch.
+	//
+	// POST /repos/{owner}/{repo}/merges
+	ReposMerge(ctx context.Context, request *ReposMergeReq, params ReposMergeParams) (ReposMergeRes, error)
+	// ReposMergeUpstream invokes repos/merge-upstream operation.
+	//
+	// **Note:** This endpoint is currently in beta and subject to change.
+	// Sync a branch of a forked repository to keep it up-to-date with the upstream repository.
+	//
+	// POST /repos/{owner}/{repo}/merge-upstream
+	ReposMergeUpstream(ctx context.Context, request *ReposMergeUpstreamReq, params ReposMergeUpstreamParams) (ReposMergeUpstreamRes, error)
+	// ReposPingWebhook invokes repos/ping-webhook operation.
+	//
+	// This will trigger a [ping event](https://docs.github.com/webhooks/#ping-event) to be sent to the
+	// hook.
+	//
+	// POST /repos/{owner}/{repo}/hooks/{hook_id}/pings
+	ReposPingWebhook(ctx context.Context, params ReposPingWebhookParams) (ReposPingWebhookRes, error)
+	// ReposRedeliverWebhookDelivery invokes repos/redeliver-webhook-delivery operation.
+	//
+	// Redeliver a webhook delivery for a webhook configured in a repository.
+	//
+	// POST /repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}/attempts
+	ReposRedeliverWebhookDelivery(ctx context.Context, params ReposRedeliverWebhookDeliveryParams) (ReposRedeliverWebhookDeliveryRes, error)
+	// ReposRemoveAppAccessRestrictions invokes repos/remove-app-access-restrictions operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Removes the ability of an app to push to this branch. Only installed GitHub Apps with `write`
+	// access to the `contents` permission can be added as authorized actors on a protected branch.
+	// | Type    | Description
+	//                                                                     |
+	// | ------- |
+	// ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+	// | `array` | The GitHub Apps that have push access to this branch. Use the app's `slug`. **Note**:
+	// The list of users, apps, and teams in total is limited to 100 items. |.
+	//
+	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
+	ReposRemoveAppAccessRestrictions(ctx context.Context, request OptReposRemoveAppAccessRestrictionsReq, params ReposRemoveAppAccessRestrictionsParams) (ReposRemoveAppAccessRestrictionsRes, error)
+	// ReposRemoveCollaborator invokes repos/remove-collaborator operation.
+	//
+	// Remove a repository collaborator.
+	//
+	// DELETE /repos/{owner}/{repo}/collaborators/{username}
+	ReposRemoveCollaborator(ctx context.Context, params ReposRemoveCollaboratorParams) error
+	// ReposRemoveStatusCheckContexts invokes repos/remove-status-check-contexts operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	//
+	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
+	ReposRemoveStatusCheckContexts(ctx context.Context, request OptReposRemoveStatusCheckContextsReq, params ReposRemoveStatusCheckContextsParams) (ReposRemoveStatusCheckContextsRes, error)
+	// ReposRemoveStatusCheckProtection invokes repos/remove-status-check-protection operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	//
+	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
+	ReposRemoveStatusCheckProtection(ctx context.Context, params ReposRemoveStatusCheckProtectionParams) error
+	// ReposRemoveTeamAccessRestrictions invokes repos/remove-team-access-restrictions operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Removes the ability of a team to push to this branch. You can also remove push access for child
+	// teams.
+	// | Type    | Description
+	//                                                              |
+	// | ------- |
+	// --------------------------------------------------------------------------------------------------------------------------------------------------- |
+	// | `array` | Teams that should no longer have push access. Use the team's `slug`. **Note**: The
+	// list of users, apps, and teams in total is limited to 100 items. |.
+	//
+	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
+	ReposRemoveTeamAccessRestrictions(ctx context.Context, request OptReposRemoveTeamAccessRestrictionsReq, params ReposRemoveTeamAccessRestrictionsParams) (ReposRemoveTeamAccessRestrictionsRes, error)
+	// ReposRemoveUserAccessRestrictions invokes repos/remove-user-access-restrictions operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Removes the ability of a user to push to this branch.
+	// | Type    | Description
+	//                                                        |
+	// | ------- |
+	// --------------------------------------------------------------------------------------------------------------------------------------------- |
+	// | `array` | Usernames of the people who should no longer have push access. **Note**: The list of
+	// users, apps, and teams in total is limited to 100 items. |.
+	//
+	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
+	ReposRemoveUserAccessRestrictions(ctx context.Context, request OptReposRemoveUserAccessRestrictionsReq, params ReposRemoveUserAccessRestrictionsParams) (ReposRemoveUserAccessRestrictionsRes, error)
+	// ReposRenameBranch invokes repos/rename-branch operation.
+	//
+	// Renames a branch in a repository.
+	// **Note:** Although the API responds immediately, the branch rename process might take some extra
+	// time to complete in the background. You won't be able to push to the old branch name while the
+	// rename process is in progress. For more information, see "[Renaming a branch](https://docs.github.
+	// com/github/administering-a-repository/renaming-a-branch)".
+	// The permissions required to use this endpoint depends on whether you are renaming the default
+	// branch.
+	// To rename a non-default branch:
+	// * Users must have push access.
+	// * GitHub Apps must have the `contents:write` repository permission.
+	// To rename the default branch:
+	// * Users must have admin or owner permissions.
+	// * GitHub Apps must have the `administration:write` repository permission.
+	//
+	// POST /repos/{owner}/{repo}/branches/{branch}/rename
+	ReposRenameBranch(ctx context.Context, request OptReposRenameBranchReq, params ReposRenameBranchParams) (ReposRenameBranchRes, error)
+	// ReposReplaceAllTopics invokes repos/replace-all-topics operation.
+	//
+	// Replace all repository topics.
+	//
+	// PUT /repos/{owner}/{repo}/topics
+	ReposReplaceAllTopics(ctx context.Context, request *ReposReplaceAllTopicsReq, params ReposReplaceAllTopicsParams) (ReposReplaceAllTopicsRes, error)
+	// ReposRequestPagesBuild invokes repos/request-pages-build operation.
+	//
+	// You can request that your site be built from the latest revision on the default branch. This has
+	// the same effect as pushing a commit to your default branch, but does not require an additional
+	// commit. Manually triggering page builds can be helpful when diagnosing build warnings and failures.
+	// Build requests are limited to one concurrent build per repository and one concurrent build per
+	// requester. If you request a build while another is still in progress, the second request will be
+	// queued until the first completes.
+	//
+	// POST /repos/{owner}/{repo}/pages/builds
+	ReposRequestPagesBuild(ctx context.Context, params ReposRequestPagesBuildParams) (*PageBuildStatus, error)
+	// ReposSetAdminBranchProtection invokes repos/set-admin-branch-protection operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Adding admin enforcement requires admin or owner permissions to the repository and branch
+	// protection to be enabled.
+	//
+	// POST /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
+	ReposSetAdminBranchProtection(ctx context.Context, params ReposSetAdminBranchProtectionParams) (*ProtectedBranchAdminEnforced, error)
+	// ReposSetAppAccessRestrictions invokes repos/set-app-access-restrictions operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Replaces the list of apps that have push access to this branch. This removes all apps that
+	// previously had push access and grants push access to the new list of apps. Only installed GitHub
+	// Apps with `write` access to the `contents` permission can be added as authorized actors on a
+	// protected branch.
+	// | Type    | Description
+	//                                                                     |
+	// | ------- |
+	// ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+	// | `array` | The GitHub Apps that have push access to this branch. Use the app's `slug`. **Note**:
+	// The list of users, apps, and teams in total is limited to 100 items. |.
+	//
+	// PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
+	ReposSetAppAccessRestrictions(ctx context.Context, request OptReposSetAppAccessRestrictionsReq, params ReposSetAppAccessRestrictionsParams) (ReposSetAppAccessRestrictionsRes, error)
+	// ReposSetStatusCheckContexts invokes repos/set-status-check-contexts operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	//
+	// PUT /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
+	ReposSetStatusCheckContexts(ctx context.Context, request OptReposSetStatusCheckContextsReq, params ReposSetStatusCheckContextsParams) (ReposSetStatusCheckContextsRes, error)
+	// ReposSetTeamAccessRestrictions invokes repos/set-team-access-restrictions operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Replaces the list of teams that have push access to this branch. This removes all teams that
+	// previously had push access and grants push access to the new list of teams. Team restrictions
+	// include child teams.
+	// | Type    | Description
+	//                                                     |
+	// | ------- |
+	// ------------------------------------------------------------------------------------------------------------------------------------------ |
+	// | `array` | The teams that can have push access. Use the team's `slug`. **Note**: The list of
+	// users, apps, and teams in total is limited to 100 items. |.
+	//
+	// PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
+	ReposSetTeamAccessRestrictions(ctx context.Context, request OptReposSetTeamAccessRestrictionsReq, params ReposSetTeamAccessRestrictionsParams) (ReposSetTeamAccessRestrictionsRes, error)
+	// ReposSetUserAccessRestrictions invokes repos/set-user-access-restrictions operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Replaces the list of people that have push access to this branch. This removes all people that
+	// previously had push access and grants push access to the new list of people.
+	// | Type    | Description
+	//                                        |
+	// | ------- |
+	// ----------------------------------------------------------------------------------------------------------------------------- |
+	// | `array` | Usernames for people who can have push access. **Note**: The list of users, apps, and
+	// teams in total is limited to 100 items. |.
+	//
+	// PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
+	ReposSetUserAccessRestrictions(ctx context.Context, request OptReposSetUserAccessRestrictionsReq, params ReposSetUserAccessRestrictionsParams) (ReposSetUserAccessRestrictionsRes, error)
+	// ReposTestPushWebhook invokes repos/test-push-webhook operation.
+	//
+	// This will trigger the hook with the latest push to the current repository if the hook is
+	// subscribed to `push` events. If the hook is not subscribed to `push` events, the server will
+	// respond with 204 but no test POST will be generated.
+	// **Note**: Previously `/repos/:owner/:repo/hooks/:hook_id/test`.
+	//
+	// POST /repos/{owner}/{repo}/hooks/{hook_id}/tests
+	ReposTestPushWebhook(ctx context.Context, params ReposTestPushWebhookParams) (ReposTestPushWebhookRes, error)
+	// ReposTransfer invokes repos/transfer operation.
+	//
+	// A transfer request will need to be accepted by the new owner when transferring a personal
+	// repository to another user. The response will contain the original `owner`, and the transfer will
+	// continue asynchronously. For more details on the requirements to transfer personal and
+	// organization-owned repositories, see [about repository transfers](https://help.github.
+	// com/articles/about-repository-transfers/).
+	//
+	// POST /repos/{owner}/{repo}/transfer
+	ReposTransfer(ctx context.Context, request *ReposTransferReq, params ReposTransferParams) (*MinimalRepository, error)
+	// ReposUpdate invokes repos/update operation.
+	//
+	// **Note**: To edit a repository's topics, use the [Replace all repository topics](https://docs.
+	// github.com/rest/reference/repos#replace-all-repository-topics) endpoint.
+	//
+	// PATCH /repos/{owner}/{repo}
+	ReposUpdate(ctx context.Context, request OptReposUpdateReq, params ReposUpdateParams) (ReposUpdateRes, error)
+	// ReposUpdateBranchProtection invokes repos/update-branch-protection operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Protecting a branch requires admin or owner permissions to the repository.
+	// **Note**: Passing new arrays of `users` and `teams` replaces their previous values.
+	// **Note**: The list of users, apps, and teams in total is limited to 100 items.
+	//
+	// PUT /repos/{owner}/{repo}/branches/{branch}/protection
+	ReposUpdateBranchProtection(ctx context.Context, request *ReposUpdateBranchProtectionReq, params ReposUpdateBranchProtectionParams) (ReposUpdateBranchProtectionRes, error)
+	// ReposUpdateCommitComment invokes repos/update-commit-comment operation.
+	//
+	// Update a commit comment.
+	//
+	// PATCH /repos/{owner}/{repo}/comments/{comment_id}
+	ReposUpdateCommitComment(ctx context.Context, request *ReposUpdateCommitCommentReq, params ReposUpdateCommitCommentParams) (ReposUpdateCommitCommentRes, error)
+	// ReposUpdateInvitation invokes repos/update-invitation operation.
+	//
+	// Update a repository invitation.
+	//
+	// PATCH /repos/{owner}/{repo}/invitations/{invitation_id}
+	ReposUpdateInvitation(ctx context.Context, request OptReposUpdateInvitationReq, params ReposUpdateInvitationParams) (*RepositoryInvitation, error)
+	// ReposUpdatePullRequestReviewProtection invokes repos/update-pull-request-review-protection operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Updating pull request review enforcement requires admin or owner permissions to the repository and
+	// branch protection to be enabled.
+	// **Note**: Passing new arrays of `users` and `teams` replaces their previous values.
+	//
+	// PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
+	ReposUpdatePullRequestReviewProtection(ctx context.Context, request OptReposUpdatePullRequestReviewProtectionReq, params ReposUpdatePullRequestReviewProtectionParams) (ReposUpdatePullRequestReviewProtectionRes, error)
+	// ReposUpdateRelease invokes repos/update-release operation.
+	//
+	// Users with push access to the repository can edit a release.
+	//
+	// PATCH /repos/{owner}/{repo}/releases/{release_id}
+	ReposUpdateRelease(ctx context.Context, request OptReposUpdateReleaseReq, params ReposUpdateReleaseParams) (ReposUpdateReleaseRes, error)
+	// ReposUpdateReleaseAsset invokes repos/update-release-asset operation.
+	//
+	// Users with push access to the repository can edit a release asset.
+	//
+	// PATCH /repos/{owner}/{repo}/releases/assets/{asset_id}
+	ReposUpdateReleaseAsset(ctx context.Context, request OptReposUpdateReleaseAssetReq, params ReposUpdateReleaseAssetParams) (*ReleaseAsset, error)
+	// ReposUpdateStatusCheckProtection invokes repos/update-status-check-protection operation.
+	//
+	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
+	// organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
+	// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
+	// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+	// GitHub Help documentation.
+	// Updating required status checks requires admin or owner permissions to the repository and branch
+	// protection to be enabled.
+	//
+	// PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
+	ReposUpdateStatusCheckProtection(ctx context.Context, request OptReposUpdateStatusCheckProtectionReq, params ReposUpdateStatusCheckProtectionParams) (ReposUpdateStatusCheckProtectionRes, error)
+	// ReposUpdateWebhook invokes repos/update-webhook operation.
+	//
+	// Updates a webhook configured in a repository. If you previously had a `secret` set, you must
+	// provide the same `secret` or set a new `secret` or the secret will be removed. If you are only
+	// updating individual webhook `config` properties, use "[Update a webhook configuration for a
+	// repository](/rest/reference/repos#update-a-webhook-configuration-for-a-repository).".
+	//
+	// PATCH /repos/{owner}/{repo}/hooks/{hook_id}
+	ReposUpdateWebhook(ctx context.Context, request OptReposUpdateWebhookReq, params ReposUpdateWebhookParams) (ReposUpdateWebhookRes, error)
+	// ReposUpdateWebhookConfigForRepo invokes repos/update-webhook-config-for-repo operation.
+	//
+	// Updates the webhook configuration for a repository. To update more information about the webhook,
+	// including the `active` state and `events`, use "[Update a repository
+	// webhook](/rest/reference/orgs#update-a-repository-webhook)."
+	// Access tokens must have the `write:repo_hook` or `repo` scope, and GitHub Apps must have the
+	// `repository_hooks:write` permission.
+	//
+	// PATCH /repos/{owner}/{repo}/hooks/{hook_id}/config
+	ReposUpdateWebhookConfigForRepo(ctx context.Context, request OptReposUpdateWebhookConfigForRepoReq, params ReposUpdateWebhookConfigForRepoParams) (*WebhookConfig, error)
+	// ReposUploadReleaseAsset invokes repos/upload-release-asset operation.
+	//
+	// This endpoint makes use of [a Hypermedia relation](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#hypermedia) to determine which URL to access. The
+	// endpoint you call to upload release assets is specific to your release. Use the `upload_url`
+	// returned in
+	// the response of the [Create a release endpoint](https://docs.github.
+	// com/rest/reference/repos#create-a-release) to upload a release asset.
+	// You need to use an HTTP client which supports [SNI](http://en.wikipedia.
+	// org/wiki/Server_Name_Indication) to make calls to this endpoint.
+	// Most libraries will set the required `Content-Length` header automatically. Use the required
+	// `Content-Type` header to provide the media type of the asset. For a list of media types, see
+	// [Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml). For example:
+	// `application/zip`
+	// GitHub expects the asset data in its raw binary form, rather than JSON. You will send the raw
+	// binary content of the asset as the request body. Everything else about the endpoint is the same as
+	// the rest of the API. For example,
+	// you'll still need to pass your authentication to be able to upload an asset.
+	// When an upstream failure occurs, you will receive a `502 Bad Gateway` status. This may leave an
+	// empty asset with a state of `starter`. It can be safely deleted.
+	// **Notes:**
+	// *   GitHub renames asset filenames that have special characters, non-alphanumeric characters, and
+	// leading or trailing periods. The "[List assets for a release](https://docs.github.
+	// com/rest/reference/repos#list-assets-for-a-release)"
+	// endpoint lists the renamed filenames. For more information and help, contact [GitHub
+	// Support](https://support.github.com/contact?tags=dotcom-rest-api).
+	// *   If you upload an asset with the same filename as another uploaded asset, you'll receive an
+	// error and must delete the old file before you can re-upload the new asset.
+	//
+	// POST /repos/{owner}/{repo}/releases/{release_id}/assets
+	ReposUploadReleaseAsset(ctx context.Context, request *ReposUploadReleaseAssetReqWithContentType, params ReposUploadReleaseAssetParams) (*ReleaseAsset, error)
+	// ScimDeleteUserFromOrg invokes scim/delete-user-from-org operation.
+	//
+	// Delete a SCIM user from an organization.
+	//
+	// DELETE /scim/v2/organizations/{org}/Users/{scim_user_id}
+	ScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUserFromOrgParams) (ScimDeleteUserFromOrgRes, error)
+	// SearchCode invokes search/code operation.
+	//
+	// Searches for query terms inside of a file. This method returns up to 100 results [per
+	// page](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination).
+	// When searching for code, you can get text match metadata for the file **content** and file
+	// **path** fields when you pass the `text-match` media type. For more details about how to receive
+	// highlighted search results, see [Text match metadata](https://docs.github.
+	// com/rest/reference/search#text-match-metadata).
+	// For example, if you want to find the definition of the `addClass` function inside
+	// [jQuery](https://github.com/jquery/jquery) repository, your query would look something like this:
+	// `q=addClass+in:file+language:js+repo:jquery/jquery`
+	// This query searches for the keyword `addClass` within a file's contents. The query limits the
+	// search to files where the language is JavaScript in the `jquery/jquery` repository.
+	// #### Considerations for code search
+	// Due to the complexity of searching code, there are a few restrictions on how searches are
+	// performed:
+	// *   Only the _default branch_ is considered. In most cases, this will be the `master` branch.
+	// *   Only files smaller than 384 KB are searchable.
+	// *   You must always include at least one search term when searching source code. For example,
+	// searching for [`language:go`](https://github.com/search?utf8=%E2%9C%93&q=language%3Ago&type=Code)
+	// is not valid, while [`amazing
+	// language:go`](https://github.com/search?utf8=%E2%9C%93&q=amazing+language%3Ago&type=Code) is.
+	//
+	// GET /search/code
+	SearchCode(ctx context.Context, params SearchCodeParams) (SearchCodeRes, error)
+	// SearchCommits invokes search/commits operation.
+	//
+	// Find commits via various criteria on the default branch (usually `master`). This method returns up
+	// to 100 results [per page](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#pagination).
+	// When searching for commits, you can get text match metadata for the **message** field when you
+	// provide the `text-match` media type. For more details about how to receive highlighted search
+	// results, see [Text match
+	// metadata](https://docs.github.com/rest/reference/search#text-match-metadata).
+	// For example, if you want to find commits related to CSS in the
+	// [octocat/Spoon-Knife](https://github.com/octocat/Spoon-Knife) repository. Your query would look
+	// something like this:
+	// `q=repo:octocat/Spoon-Knife+css`.
+	//
+	// GET /search/commits
+	SearchCommits(ctx context.Context, params SearchCommitsParams) (SearchCommitsRes, error)
+	// SearchIssuesAndPullRequests invokes search/issues-and-pull-requests operation.
+	//
+	// Find issues by state and keyword. This method returns up to 100 results [per page](https://docs.
+	// github.com/rest/overview/resources-in-the-rest-api#pagination).
+	// When searching for issues, you can get text match metadata for the issue **title**, issue **body**,
+	//  and issue **comment body** fields when you pass the `text-match` media type. For more details
+	// about how to receive highlighted
+	// search results, see [Text match metadata](https://docs.github.
+	// com/rest/reference/search#text-match-metadata).
+	// For example, if you want to find the oldest unresolved Python bugs on Windows. Your query might
+	// look something like this.
+	// `q=windows+label:bug+language:python+state:open&sort=created&order=asc`
+	// This query searches for the keyword `windows`, within any open issue that is labeled as `bug`. The
+	// search runs across repositories whose primary language is Python. The results are sorted by
+	// creation date in ascending order, which means the oldest issues appear first in the search results.
+	// **Note:** For [user-to-server](https://docs.github.
+	// com/developers/apps/identifying-and-authorizing-users-for-github-apps#user-to-server-requests)
+	// GitHub App requests, you can't retrieve a combination of issues and pull requests in a single
+	// query. Requests that don't include the `is:issue` or `is:pull-request` qualifier will receive an
+	// HTTP `422 Unprocessable Entity` response. To get results for both issues and pull requests, you
+	// must send separate queries for issues and pull requests. For more information about the `is`
+	// qualifier, see "[Searching only issues or pull requests](https://docs.github.
+	// com/github/searching-for-information-on-github/searching-issues-and-pull-requests#search-only-issues-or-pull-requests).".
+	//
+	// GET /search/issues
+	SearchIssuesAndPullRequests(ctx context.Context, params SearchIssuesAndPullRequestsParams) (SearchIssuesAndPullRequestsRes, error)
+	// SearchLabels invokes search/labels operation.
+	//
+	// Find labels in a repository with names or descriptions that match search keywords. Returns up to
+	// 100 results [per page](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination).
+	// When searching for labels, you can get text match metadata for the label **name** and
+	// **description** fields when you pass the `text-match` media type. For more details about how to
+	// receive highlighted search results, see [Text match metadata](https://docs.github.
+	// com/rest/reference/search#text-match-metadata).
+	// For example, if you want to find labels in the `linguist` repository that match `bug`, `defect`,
+	// or `enhancement`. Your query might look like this:
+	// `q=bug+defect+enhancement&repository_id=64778136`
+	// The labels that best match the query appear first in the search results.
+	//
+	// GET /search/labels
+	SearchLabels(ctx context.Context, params SearchLabelsParams) (SearchLabelsRes, error)
+	// SearchRepos invokes search/repos operation.
+	//
+	// Find repositories via various criteria. This method returns up to 100 results [per
+	// page](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination).
+	// When searching for repositories, you can get text match metadata for the **name** and
+	// **description** fields when you pass the `text-match` media type. For more details about how to
+	// receive highlighted search results, see [Text match metadata](https://docs.github.
+	// com/rest/reference/search#text-match-metadata).
+	// For example, if you want to search for popular Tetris repositories written in assembly code, your
+	// query might look like this:
+	// `q=tetris+language:assembly&sort=stars&order=desc`
+	// This query searches for repositories with the word `tetris` in the name, the description, or the
+	// README. The results are limited to repositories where the primary language is assembly. The
+	// results are sorted by stars in descending order, so that the most popular repositories appear
+	// first in the search results.
+	// When you include the `mercy` preview header, you can also search for multiple topics by adding
+	// more `topic:` instances. For example, your query might look like this:
+	// `q=topic:ruby+topic:rails`.
+	//
+	// GET /search/repositories
+	SearchRepos(ctx context.Context, params SearchReposParams) (SearchReposRes, error)
+	// SearchTopics invokes search/topics operation.
+	//
+	// Find topics via various criteria. Results are sorted by best match. This method returns up to 100
+	// results [per page](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination).
+	// See "[Searching topics](https://help.github.com/articles/searching-topics/)" for a detailed list
+	// of qualifiers.
+	// When searching for topics, you can get text match metadata for the topic's **short\_description**,
+	// **description**, **name**, or **display\_name** field when you pass the `text-match` media type.
+	// For more details about how to receive highlighted search results, see [Text match
+	// metadata](https://docs.github.com/rest/reference/search#text-match-metadata).
+	// For example, if you want to search for topics related to Ruby that are featured on https://github.
+	// com/topics. Your query might look like this:
+	// `q=ruby+is:featured`
+	// This query searches for topics with the keyword `ruby` and limits the results to find only topics
+	// that are featured. The topics that are the best match for the query appear first in the search
+	// results.
+	//
+	// GET /search/topics
+	SearchTopics(ctx context.Context, params SearchTopicsParams) (SearchTopicsRes, error)
+	// SearchUsers invokes search/users operation.
+	//
+	// Find users via various criteria. This method returns up to 100 results [per page](https://docs.
+	// github.com/rest/overview/resources-in-the-rest-api#pagination).
+	// When searching for users, you can get text match metadata for the issue **login**, **email**, and
+	// **name** fields when you pass the `text-match` media type. For more details about highlighting
+	// search results, see [Text match metadata](https://docs.github.
+	// com/rest/reference/search#text-match-metadata). For more details about how to receive highlighted
+	// search results, see [Text match metadata](https://docs.github.
+	// com/rest/reference/search#text-match-metadata).
+	// For example, if you're looking for a list of popular users, you might try this query:
+	// `q=tom+repos:%3E42+followers:%3E1000`
+	// This query searches for users with the name `tom`. The results are restricted to users with more
+	// than 42 repositories and over 1,000 followers.
+	//
+	// GET /search/users
+	SearchUsers(ctx context.Context, params SearchUsersParams) (SearchUsersRes, error)
+	// SecretScanningGetAlert invokes secret-scanning/get-alert operation.
+	//
+	// Gets a single secret scanning alert detected in a private repository. To use this endpoint, you
+	// must be an administrator for the repository or organization, and you must use an access token with
+	// the `repo` scope or `security_events` scope.
+	// GitHub Apps must have the `secret_scanning_alerts` read permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
+	SecretScanningGetAlert(ctx context.Context, params SecretScanningGetAlertParams) (SecretScanningGetAlertRes, error)
+	// SecretScanningListAlertsForOrg invokes secret-scanning/list-alerts-for-org operation.
+	//
+	// Lists all secret scanning alerts for all eligible repositories in an organization, from newest to
+	// oldest.
+	// To use this endpoint, you must be an administrator for the repository or organization, and you
+	// must use an access token with the `repo` scope or `security_events` scope.
+	// GitHub Apps must have the `secret_scanning_alerts` read permission to use this endpoint.
+	//
+	// GET /orgs/{org}/secret-scanning/alerts
+	SecretScanningListAlertsForOrg(ctx context.Context, params SecretScanningListAlertsForOrgParams) (SecretScanningListAlertsForOrgRes, error)
+	// SecretScanningListAlertsForRepo invokes secret-scanning/list-alerts-for-repo operation.
+	//
+	// Lists all secret scanning alerts for a private repository, from newest to oldest. To use this
+	// endpoint, you must be an administrator for the repository or organization, and you must use an
+	// access token with the `repo` scope or `security_events` scope.
+	// GitHub Apps must have the `secret_scanning_alerts` read permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/secret-scanning/alerts
+	SecretScanningListAlertsForRepo(ctx context.Context, params SecretScanningListAlertsForRepoParams) (SecretScanningListAlertsForRepoRes, error)
+	// SecretScanningUpdateAlert invokes secret-scanning/update-alert operation.
+	//
+	// Updates the status of a secret scanning alert in a private repository. To use this endpoint, you
+	// must be an administrator for the repository or organization, and you must use an access token with
+	// the `repo` scope or `security_events` scope.
+	// GitHub Apps must have the `secret_scanning_alerts` write permission to use this endpoint.
+	//
+	// PATCH /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
+	SecretScanningUpdateAlert(ctx context.Context, request *SecretScanningUpdateAlertReq, params SecretScanningUpdateAlertParams) (SecretScanningUpdateAlertRes, error)
+	// TeamsAddMemberLegacy invokes teams/add-member-legacy operation.
+	//
+	// The "Add team member" endpoint (described below) is deprecated.
+	// We recommend using the [Add or update team membership for a user](https://docs.github.
+	// com/rest/reference/teams#add-or-update-team-membership-for-a-user) endpoint instead. It allows you
+	// to invite new organization members to your teams.
+	// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
+	// information, see [GitHub's products](https://help.github.
+	// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+	// To add someone to a team, the authenticated user must be an organization owner or a team
+	// maintainer in the team they're changing. The person being added to the team must be a member of
+	// the team's organization.
+	// **Note:** When you have team synchronization set up for a team with your organization's identity
+	// provider (IdP), you will see an error if you attempt to use the API for making changes to the
+	// team's membership. If you have access to manage group membership in your IdP, you can manage
+	// GitHub team membership through your identity provider, which automatically adds and removes team
+	// members in an organization. For more information, see "[Synchronizing teams between your identity
+	// provider and GitHub](https://help.github.
+	// com/articles/synchronizing-teams-between-your-identity-provider-and-github/)."
+	// Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more
+	// information, see "[HTTP verbs](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#http-verbs).".
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// PUT /teams/{team_id}/members/{username}
+	TeamsAddMemberLegacy(ctx context.Context, params TeamsAddMemberLegacyParams) (TeamsAddMemberLegacyRes, error)
+	// TeamsAddOrUpdateMembershipForUserInOrg invokes teams/add-or-update-membership-for-user-in-org operation.
+	//
+	// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
+	// information, see [GitHub's products](https://help.github.
+	// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+	// Adds an organization member to a team. An authenticated organization owner or team maintainer can
+	// add organization members to a team.
+	// **Note:** When you have team synchronization set up for a team with your organization's identity
+	// provider (IdP), you will see an error if you attempt to use the API for making changes to the
+	// team's membership. If you have access to manage group membership in your IdP, you can manage
+	// GitHub team membership through your identity provider, which automatically adds and removes team
+	// members in an organization. For more information, see "[Synchronizing teams between your identity
+	// provider and GitHub](https://help.github.
+	// com/articles/synchronizing-teams-between-your-identity-provider-and-github/)."
+	// An organization owner can add someone who is not part of the team's organization to a team. When
+	// an organization owner adds someone to a team who is not an organization member, this endpoint will
+	// send an invitation to the person via email. This newly-created membership will be in the "pending"
+	// state until the person accepts the invitation, at which point the membership will transition to
+	// the "active" state and the user will be added as a member of the team.
+	// If the user is already a member of the team, this endpoint will update the role of the team
+	// member's role. To update the membership of a team member, the authenticated user must be an
+	// organization owner or a team maintainer.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `PUT
+	// /organizations/{org_id}/team/{team_id}/memberships/{username}`.
+	//
+	// PUT /orgs/{org}/teams/{team_slug}/memberships/{username}
+	TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, request OptTeamsAddOrUpdateMembershipForUserInOrgReq, params TeamsAddOrUpdateMembershipForUserInOrgParams) (TeamsAddOrUpdateMembershipForUserInOrgRes, error)
+	// TeamsAddOrUpdateMembershipForUserLegacy invokes teams/add-or-update-membership-for-user-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [Add or update team membership for a
+	// user](https://docs.github.com/rest/reference/teams#add-or-update-team-membership-for-a-user)
+	// endpoint.
+	// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
+	// information, see [GitHub's products](https://help.github.
+	// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+	// If the user is already a member of the team's organization, this endpoint will add the user to the
+	// team. To add a membership between an organization member and a team, the authenticated user must
+	// be an organization owner or a team maintainer.
+	// **Note:** When you have team synchronization set up for a team with your organization's identity
+	// provider (IdP), you will see an error if you attempt to use the API for making changes to the
+	// team's membership. If you have access to manage group membership in your IdP, you can manage
+	// GitHub team membership through your identity provider, which automatically adds and removes team
+	// members in an organization. For more information, see "[Synchronizing teams between your identity
+	// provider and GitHub](https://help.github.
+	// com/articles/synchronizing-teams-between-your-identity-provider-and-github/)."
+	// If the user is unaffiliated with the team's organization, this endpoint will send an invitation to
+	// the user via email. This newly-created membership will be in the "pending" state until the user
+	// accepts the invitation, at which point the membership will transition to the "active" state and
+	// the user will be added as a member of the team. To add a membership between an unaffiliated user
+	// and a team, the authenticated user must be an organization owner.
+	// If the user is already a member of the team, this endpoint will update the role of the team
+	// member's role. To update the membership of a team member, the authenticated user must be an
+	// organization owner or a team maintainer.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// PUT /teams/{team_id}/memberships/{username}
+	TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, request OptTeamsAddOrUpdateMembershipForUserLegacyReq, params TeamsAddOrUpdateMembershipForUserLegacyParams) (TeamsAddOrUpdateMembershipForUserLegacyRes, error)
+	// TeamsAddOrUpdateProjectPermissionsInOrg invokes teams/add-or-update-project-permissions-in-org operation.
+	//
+	// Adds an organization project to a team. To add a project to a team or update the team's permission
+	// on a project, the authenticated user must have `admin` permissions for the project. The project
+	// and team must be part of the same organization.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `PUT
+	// /organizations/{org_id}/team/{team_id}/projects/{project_id}`.
+	//
+	// PUT /orgs/{org}/teams/{team_slug}/projects/{project_id}
+	TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, request OptNilTeamsAddOrUpdateProjectPermissionsInOrgReq, params TeamsAddOrUpdateProjectPermissionsInOrgParams) (TeamsAddOrUpdateProjectPermissionsInOrgRes, error)
+	// TeamsAddOrUpdateProjectPermissionsLegacy invokes teams/add-or-update-project-permissions-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [Add or update team project
+	// permissions](https://docs.github.com/rest/reference/teams#add-or-update-team-project-permissions)
+	// endpoint.
+	// Adds an organization project to a team. To add a project to a team or update the team's permission
+	// on a project, the authenticated user must have `admin` permissions for the project. The project
+	// and team must be part of the same organization.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// PUT /teams/{team_id}/projects/{project_id}
+	TeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Context, request OptTeamsAddOrUpdateProjectPermissionsLegacyReq, params TeamsAddOrUpdateProjectPermissionsLegacyParams) (TeamsAddOrUpdateProjectPermissionsLegacyRes, error)
+	// TeamsAddOrUpdateRepoPermissionsInOrg invokes teams/add-or-update-repo-permissions-in-org operation.
+	//
+	// To add a repository to a team or update the team's permission on a repository, the authenticated
+	// user must have admin access to the repository, and must be able to see the team. The repository
+	// must be owned by the organization, or a direct fork of a repository owned by the organization. You
+	// will get a `422 Unprocessable Entity` status if you attempt to add a repository to a team that is
+	// not owned by the organization. Note that, if you choose not to pass any parameters, you'll need to
+	// set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP
+	// verbs](https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs)."
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `PUT
+	// /organizations/{org_id}/team/{team_id}/repos/{owner}/{repo}`.
+	// For more information about the permission levels, see "[Repository permission levels for an
+	// organization](https://help.github.
+	// com/en/github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization#permission-levels-for-repositories-owned-by-an-organization)".
+	//
+	// PUT /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
+	TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, request OptTeamsAddOrUpdateRepoPermissionsInOrgReq, params TeamsAddOrUpdateRepoPermissionsInOrgParams) error
+	// TeamsAddOrUpdateRepoPermissionsLegacy invokes teams/add-or-update-repo-permissions-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new "[Add or update team repository
+	// permissions](https://docs.github.
+	// com/rest/reference/teams#add-or-update-team-repository-permissions)" endpoint.
+	// To add a repository to a team or update the team's permission on a repository, the authenticated
+	// user must have admin access to the repository, and must be able to see the team. The repository
+	// must be owned by the organization, or a direct fork of a repository owned by the organization. You
+	// will get a `422 Unprocessable Entity` status if you attempt to add a repository to a team that is
+	// not owned by the organization.
+	// Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero
+	// when calling out to this endpoint. For more information, see "[HTTP verbs](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#http-verbs).".
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// PUT /teams/{team_id}/repos/{owner}/{repo}
+	TeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, request OptTeamsAddOrUpdateRepoPermissionsLegacyReq, params TeamsAddOrUpdateRepoPermissionsLegacyParams) (TeamsAddOrUpdateRepoPermissionsLegacyRes, error)
+	// TeamsCheckPermissionsForProjectInOrg invokes teams/check-permissions-for-project-in-org operation.
+	//
+	// Checks whether a team has `read`, `write`, or `admin` permissions for an organization project. The
+	// response includes projects inherited from a parent team.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
+	// /organizations/{org_id}/team/{team_id}/projects/{project_id}`.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/projects/{project_id}
+	TeamsCheckPermissionsForProjectInOrg(ctx context.Context, params TeamsCheckPermissionsForProjectInOrgParams) (TeamsCheckPermissionsForProjectInOrgRes, error)
+	// TeamsCheckPermissionsForProjectLegacy invokes teams/check-permissions-for-project-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [Check team permissions for a
+	// project](https://docs.github.com/rest/reference/teams#check-team-permissions-for-a-project)
+	// endpoint.
+	// Checks whether a team has `read`, `write`, or `admin` permissions for an organization project. The
+	// response includes projects inherited from a parent team.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}/projects/{project_id}
+	TeamsCheckPermissionsForProjectLegacy(ctx context.Context, params TeamsCheckPermissionsForProjectLegacyParams) (TeamsCheckPermissionsForProjectLegacyRes, error)
+	// TeamsCheckPermissionsForRepoInOrg invokes teams/check-permissions-for-repo-in-org operation.
+	//
+	// Checks whether a team has `admin`, `push`, `maintain`, `triage`, or `pull` permission for a
+	// repository. Repositories inherited through a parent team will also be checked.
+	// You can also get information about the specified repository, including what permissions the team
+	// grants on it, by passing the following custom [media type](https://docs.github.
+	// com/rest/overview/media-types/) via the `application/vnd.github.v3.repository+json` accept header.
+	// If a team doesn't have permission for the repository, you will receive a `404 Not Found` response
+	// status.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
+	// /organizations/{org_id}/team/{team_id}/repos/{owner}/{repo}`.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
+	TeamsCheckPermissionsForRepoInOrg(ctx context.Context, params TeamsCheckPermissionsForRepoInOrgParams) (TeamsCheckPermissionsForRepoInOrgRes, error)
+	// TeamsCheckPermissionsForRepoLegacy invokes teams/check-permissions-for-repo-legacy operation.
+	//
+	// **Note**: Repositories inherited through a parent team will also be checked.
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [Check team permissions for a
+	// repository](https://docs.github.com/rest/reference/teams#check-team-permissions-for-a-repository)
+	// endpoint.
+	// You can also get information about the specified repository, including what permissions the team
+	// grants on it, by passing the following custom [media type](https://docs.github.
+	// com/rest/overview/media-types/) via the `Accept` header:.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}/repos/{owner}/{repo}
+	TeamsCheckPermissionsForRepoLegacy(ctx context.Context, params TeamsCheckPermissionsForRepoLegacyParams) (TeamsCheckPermissionsForRepoLegacyRes, error)
+	// TeamsCreate invokes teams/create operation.
+	//
+	// To create a team, the authenticated user must be a member or owner of `{org}`. By default,
+	// organization members can create teams. Organization owners can limit team creation to organization
+	// owners. For more information, see "[Setting team creation permissions](https://help.github.
+	// com/en/articles/setting-team-creation-permissions-in-your-organization)."
+	// When you create a new team, you automatically become a team maintainer without explicitly adding
+	// yourself to the optional array of `maintainers`. For more information, see "[About
+	// teams](https://help.github.
+	// com/en/github/setting-up-and-managing-organizations-and-teams/about-teams)".
+	//
+	// POST /orgs/{org}/teams
+	TeamsCreate(ctx context.Context, request *TeamsCreateReq, params TeamsCreateParams) (TeamsCreateRes, error)
+	// TeamsCreateDiscussionCommentInOrg invokes teams/create-discussion-comment-in-org operation.
+	//
+	// Creates a new comment on a team discussion. OAuth access tokens require the `write:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	// This endpoint triggers [notifications](https://docs.github.
+	// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
+	// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
+	// rate limits](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
+	// rate limits](https://docs.github.
+	// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `POST
+	// /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments`.
+	//
+	// POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
+	TeamsCreateDiscussionCommentInOrg(ctx context.Context, request *TeamsCreateDiscussionCommentInOrgReq, params TeamsCreateDiscussionCommentInOrgParams) (*TeamDiscussionComment, error)
+	// TeamsCreateDiscussionCommentLegacy invokes teams/create-discussion-comment-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [Create a discussion
+	// comment](https://docs.github.com/rest/reference/teams#create-a-discussion-comment) endpoint.
+	// Creates a new comment on a team discussion. OAuth access tokens require the `write:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	// This endpoint triggers [notifications](https://docs.github.
+	// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
+	// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
+	// rate limits](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
+	// rate limits](https://docs.github.
+	// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// POST /teams/{team_id}/discussions/{discussion_number}/comments
+	TeamsCreateDiscussionCommentLegacy(ctx context.Context, request *TeamsCreateDiscussionCommentLegacyReq, params TeamsCreateDiscussionCommentLegacyParams) (*TeamDiscussionComment, error)
+	// TeamsCreateDiscussionInOrg invokes teams/create-discussion-in-org operation.
+	//
+	// Creates a new discussion post on a team's page. OAuth access tokens require the `write:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	// This endpoint triggers [notifications](https://docs.github.
+	// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
+	// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
+	// rate limits](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
+	// rate limits](https://docs.github.
+	// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `POST
+	// /organizations/{org_id}/team/{team_id}/discussions`.
+	//
+	// POST /orgs/{org}/teams/{team_slug}/discussions
+	TeamsCreateDiscussionInOrg(ctx context.Context, request *TeamsCreateDiscussionInOrgReq, params TeamsCreateDiscussionInOrgParams) (*TeamDiscussion, error)
+	// TeamsCreateDiscussionLegacy invokes teams/create-discussion-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [`Create a discussion`](https://docs.
+	// github.com/rest/reference/teams#create-a-discussion) endpoint.
+	// Creates a new discussion post on a team's page. OAuth access tokens require the `write:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	// This endpoint triggers [notifications](https://docs.github.
+	// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
+	// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
+	// rate limits](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
+	// rate limits](https://docs.github.
+	// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// POST /teams/{team_id}/discussions
+	TeamsCreateDiscussionLegacy(ctx context.Context, request *TeamsCreateDiscussionLegacyReq, params TeamsCreateDiscussionLegacyParams) (*TeamDiscussion, error)
+	// TeamsCreateOrUpdateIdpGroupConnectionsInOrg invokes teams/create-or-update-idp-group-connections-in-org operation.
+	//
+	// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
+	// information, see [GitHub's products](https://help.github.
+	// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+	// Creates, updates, or removes a connection between a team and an IdP group. When adding groups to a
+	// team, you must include all new and existing groups to avoid replacing existing groups with the new
+	// ones. Specifying an empty `groups` array will remove all connections for a team.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `PATCH
+	// /organizations/{org_id}/team/{team_id}/team-sync/group-mappings`.
+	//
+	// PATCH /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
+	TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context, request *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq, params TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams) (*GroupMapping, error)
+	// TeamsCreateOrUpdateIdpGroupConnectionsLegacy invokes teams/create-or-update-idp-group-connections-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [`Create or update IdP group
+	// connections`](https://docs.github.com/rest/reference/teams#create-or-update-idp-group-connections)
+	// endpoint.
+	// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
+	// information, see [GitHub's products](https://help.github.
+	// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+	// Creates, updates, or removes a connection between a team and an IdP group. When adding groups to a
+	// team, you must include all new and existing groups to avoid replacing existing groups with the new
+	// ones. Specifying an empty `groups` array will remove all connections for a team.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// PATCH /teams/{team_id}/team-sync/group-mappings
+	TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Context, request *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq, params TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams) (TeamsCreateOrUpdateIdpGroupConnectionsLegacyRes, error)
+	// TeamsDeleteDiscussionCommentInOrg invokes teams/delete-discussion-comment-in-org operation.
+	//
+	// Deletes a comment on a team discussion. OAuth access tokens require the `write:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `DELETE
+	// /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
+	//
+	// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
+	TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params TeamsDeleteDiscussionCommentInOrgParams) error
+	// TeamsDeleteDiscussionCommentLegacy invokes teams/delete-discussion-comment-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [Delete a discussion
+	// comment](https://docs.github.com/rest/reference/teams#delete-a-discussion-comment) endpoint.
+	// Deletes a comment on a team discussion. OAuth access tokens require the `write:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// DELETE /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
+	TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params TeamsDeleteDiscussionCommentLegacyParams) error
+	// TeamsDeleteDiscussionInOrg invokes teams/delete-discussion-in-org operation.
+	//
+	// Delete a discussion from a team's page. OAuth access tokens require the `write:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `DELETE
+	// /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
+	//
+	// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
+	TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDeleteDiscussionInOrgParams) error
+	// TeamsDeleteDiscussionLegacy invokes teams/delete-discussion-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [`Delete a discussion`](https://docs.
+	// github.com/rest/reference/teams#delete-a-discussion) endpoint.
+	// Delete a discussion from a team's page. OAuth access tokens require the `write:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// DELETE /teams/{team_id}/discussions/{discussion_number}
+	TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDeleteDiscussionLegacyParams) error
+	// TeamsDeleteInOrg invokes teams/delete-in-org operation.
+	//
+	// To delete a team, the authenticated user must be an organization owner or team maintainer.
+	// If you are an organization owner, deleting a parent team will delete all of its child teams as
+	// well.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `DELETE
+	// /organizations/{org_id}/team/{team_id}`.
+	//
+	// DELETE /orgs/{org}/teams/{team_slug}
+	TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgParams) error
+	// TeamsDeleteLegacy invokes teams/delete-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [Delete a team](https://docs.github.
+	// com/rest/reference/teams#delete-a-team) endpoint.
+	// To delete a team, the authenticated user must be an organization owner or team maintainer.
+	// If you are an organization owner, deleting a parent team will delete all of its child teams as
+	// well.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// DELETE /teams/{team_id}
+	TeamsDeleteLegacy(ctx context.Context, params TeamsDeleteLegacyParams) (TeamsDeleteLegacyRes, error)
+	// TeamsGetByName invokes teams/get-by-name operation.
+	//
+	// Gets a team using the team's `slug`. GitHub generates the `slug` from the team `name`.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
+	// /organizations/{org_id}/team/{team_id}`.
+	//
+	// GET /orgs/{org}/teams/{team_slug}
+	TeamsGetByName(ctx context.Context, params TeamsGetByNameParams) (TeamsGetByNameRes, error)
+	// TeamsGetDiscussionCommentInOrg invokes teams/get-discussion-comment-in-org operation.
+	//
+	// Get a specific comment on a team discussion. OAuth access tokens require the `read:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
+	// /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
+	TeamsGetDiscussionCommentInOrg(ctx context.Context, params TeamsGetDiscussionCommentInOrgParams) (*TeamDiscussionComment, error)
+	// TeamsGetDiscussionCommentLegacy invokes teams/get-discussion-comment-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [Get a discussion comment](https://docs.
+	// github.com/rest/reference/teams#get-a-discussion-comment) endpoint.
+	// Get a specific comment on a team discussion. OAuth access tokens require the `read:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
+	TeamsGetDiscussionCommentLegacy(ctx context.Context, params TeamsGetDiscussionCommentLegacyParams) (*TeamDiscussionComment, error)
+	// TeamsGetDiscussionInOrg invokes teams/get-discussion-in-org operation.
+	//
+	// Get a specific discussion on a team's page. OAuth access tokens require the `read:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
+	// /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
+	TeamsGetDiscussionInOrg(ctx context.Context, params TeamsGetDiscussionInOrgParams) (*TeamDiscussion, error)
+	// TeamsGetDiscussionLegacy invokes teams/get-discussion-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [Get a discussion](https://docs.github.
+	// com/rest/reference/teams#get-a-discussion) endpoint.
+	// Get a specific discussion on a team's page. OAuth access tokens require the `read:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}/discussions/{discussion_number}
+	TeamsGetDiscussionLegacy(ctx context.Context, params TeamsGetDiscussionLegacyParams) (*TeamDiscussion, error)
+	// TeamsGetLegacy invokes teams/get-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the [Get a team by name](https://docs.github.
+	// com/rest/reference/teams#get-a-team-by-name) endpoint.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}
+	TeamsGetLegacy(ctx context.Context, params TeamsGetLegacyParams) (TeamsGetLegacyRes, error)
+	// TeamsGetMemberLegacy invokes teams/get-member-legacy operation.
+	//
+	// The "Get team member" endpoint (described below) is deprecated.
+	// We recommend using the [Get team membership for a user](https://docs.github.
+	// com/rest/reference/teams#get-team-membership-for-a-user) endpoint instead. It allows you to get
+	// both active and pending memberships.
+	// To list members in a team, the team must be visible to the authenticated user.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}/members/{username}
+	TeamsGetMemberLegacy(ctx context.Context, params TeamsGetMemberLegacyParams) (TeamsGetMemberLegacyRes, error)
+	// TeamsGetMembershipForUserInOrg invokes teams/get-membership-for-user-in-org operation.
+	//
+	// Team members will include the members of child teams.
+	// To get a user's membership with a team, the team must be visible to the authenticated user.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
+	// /organizations/{org_id}/team/{team_id}/memberships/{username}`.
+	// **Note:**
+	// The response contains the `state` of the membership and the member's `role`.
+	// The `role` for organization owners is set to `maintainer`. For more information about `maintainer`
+	// roles, see see [Create a team](https://docs.github.com/rest/reference/teams#create-a-team).
+	//
+	// GET /orgs/{org}/teams/{team_slug}/memberships/{username}
+	TeamsGetMembershipForUserInOrg(ctx context.Context, params TeamsGetMembershipForUserInOrgParams) (TeamsGetMembershipForUserInOrgRes, error)
+	// TeamsGetMembershipForUserLegacy invokes teams/get-membership-for-user-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [Get team membership for a
+	// user](https://docs.github.com/rest/reference/teams#get-team-membership-for-a-user) endpoint.
+	// Team members will include the members of child teams.
+	// To get a user's membership with a team, the team must be visible to the authenticated user.
+	// **Note:**
+	// The response contains the `state` of the membership and the member's `role`.
+	// The `role` for organization owners is set to `maintainer`. For more information about `maintainer`
+	// roles, see [Create a team](https://docs.github.com/rest/reference/teams#create-a-team).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}/memberships/{username}
+	TeamsGetMembershipForUserLegacy(ctx context.Context, params TeamsGetMembershipForUserLegacyParams) (TeamsGetMembershipForUserLegacyRes, error)
+	// TeamsList invokes teams/list operation.
+	//
+	// Lists all teams in an organization that are visible to the authenticated user.
+	//
+	// GET /orgs/{org}/teams
+	TeamsList(ctx context.Context, params TeamsListParams) (TeamsListRes, error)
+	// TeamsListChildInOrg invokes teams/list-child-in-org operation.
+	//
+	// Lists the child teams of the team specified by `{team_slug}`.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
+	// /organizations/{org_id}/team/{team_id}/teams`.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/teams
+	TeamsListChildInOrg(ctx context.Context, params TeamsListChildInOrgParams) (*TeamsListChildInOrgOKHeaders, error)
+	// TeamsListChildLegacy invokes teams/list-child-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [`List child teams`](https://docs.github.
+	// com/rest/reference/teams#list-child-teams) endpoint.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}/teams
+	TeamsListChildLegacy(ctx context.Context, params TeamsListChildLegacyParams) (TeamsListChildLegacyRes, error)
+	// TeamsListDiscussionCommentsInOrg invokes teams/list-discussion-comments-in-org operation.
+	//
+	// List all comments on a team discussion. OAuth access tokens require the `read:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
+	// /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments`.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
+	TeamsListDiscussionCommentsInOrg(ctx context.Context, params TeamsListDiscussionCommentsInOrgParams) (*TeamsListDiscussionCommentsInOrgOKHeaders, error)
+	// TeamsListDiscussionCommentsLegacy invokes teams/list-discussion-comments-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [List discussion comments](https://docs.
+	// github.com/rest/reference/teams#list-discussion-comments) endpoint.
+	// List all comments on a team discussion. OAuth access tokens require the `read:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}/discussions/{discussion_number}/comments
+	TeamsListDiscussionCommentsLegacy(ctx context.Context, params TeamsListDiscussionCommentsLegacyParams) (*TeamsListDiscussionCommentsLegacyOKHeaders, error)
+	// TeamsListDiscussionsInOrg invokes teams/list-discussions-in-org operation.
+	//
+	// List all discussions on a team's page. OAuth access tokens require the `read:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
+	// /organizations/{org_id}/team/{team_id}/discussions`.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/discussions
+	TeamsListDiscussionsInOrg(ctx context.Context, params TeamsListDiscussionsInOrgParams) (*TeamsListDiscussionsInOrgOKHeaders, error)
+	// TeamsListDiscussionsLegacy invokes teams/list-discussions-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [`List discussions`](https://docs.github.
+	// com/rest/reference/teams#list-discussions) endpoint.
+	// List all discussions on a team's page. OAuth access tokens require the `read:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}/discussions
+	TeamsListDiscussionsLegacy(ctx context.Context, params TeamsListDiscussionsLegacyParams) (*TeamsListDiscussionsLegacyOKHeaders, error)
+	// TeamsListForAuthenticatedUser invokes teams/list-for-authenticated-user operation.
+	//
+	// List all of the teams across all of the organizations to which the authenticated user belongs.
+	// This method requires `user`, `repo`, or `read:org` [scope](https://docs.github.
+	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/) when authenticating via
+	// [OAuth](https://docs.github.com/apps/building-oauth-apps/).
+	//
+	// GET /user/teams
+	TeamsListForAuthenticatedUser(ctx context.Context, params TeamsListForAuthenticatedUserParams) (TeamsListForAuthenticatedUserRes, error)
+	// TeamsListIdpGroupsForLegacy invokes teams/list-idp-groups-for-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [`List IdP groups for a
+	// team`](https://docs.github.com/rest/reference/teams#list-idp-groups-for-a-team) endpoint.
+	// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
+	// information, see [GitHub's products](https://help.github.
+	// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+	// List IdP groups connected to a team on GitHub.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}/team-sync/group-mappings
+	TeamsListIdpGroupsForLegacy(ctx context.Context, params TeamsListIdpGroupsForLegacyParams) (TeamsListIdpGroupsForLegacyRes, error)
+	// TeamsListIdpGroupsForOrg invokes teams/list-idp-groups-for-org operation.
+	//
+	// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
+	// information, see [GitHub's products](https://help.github.
+	// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+	// List IdP groups available in an organization. You can limit your page results using the `per_page`
+	// parameter. GitHub generates a url-encoded `page` token using a cursor value for where the next
+	// page begins. For more information on cursor pagination, see "[Offset and Cursor Pagination
+	// explained](https://dev.to/jackmarchant/offset-and-cursor-pagination-explained-b89).".
+	//
+	// GET /orgs/{org}/team-sync/groups
+	TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListIdpGroupsForOrgParams) (*GroupMappingHeaders, error)
+	// TeamsListIdpGroupsInOrg invokes teams/list-idp-groups-in-org operation.
+	//
+	// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
+	// information, see [GitHub's products](https://help.github.
+	// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+	// List IdP groups connected to a team on GitHub.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
+	// /organizations/{org_id}/team/{team_id}/team-sync/group-mappings`.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
+	TeamsListIdpGroupsInOrg(ctx context.Context, params TeamsListIdpGroupsInOrgParams) (*GroupMapping, error)
+	// TeamsListMembersInOrg invokes teams/list-members-in-org operation.
+	//
+	// Team members will include the members of child teams.
+	// To list members in a team, the team must be visible to the authenticated user.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/members
+	TeamsListMembersInOrg(ctx context.Context, params TeamsListMembersInOrgParams) (*TeamsListMembersInOrgOKHeaders, error)
+	// TeamsListMembersLegacy invokes teams/list-members-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [`List team members`](https://docs.github.
+	// com/rest/reference/teams#list-team-members) endpoint.
+	// Team members will include the members of child teams.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}/members
+	TeamsListMembersLegacy(ctx context.Context, params TeamsListMembersLegacyParams) (TeamsListMembersLegacyRes, error)
+	// TeamsListPendingInvitationsInOrg invokes teams/list-pending-invitations-in-org operation.
+	//
+	// The return hash contains a `role` field which refers to the Organization Invitation role and will
+	// be one of the following values: `direct_member`, `admin`, `billing_manager`, `hiring_manager`, or
+	// `reinstate`. If the invitee is not a GitHub member, the `login` field in the return hash will be
+	// `null`.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
+	// /organizations/{org_id}/team/{team_id}/invitations`.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/invitations
+	TeamsListPendingInvitationsInOrg(ctx context.Context, params TeamsListPendingInvitationsInOrgParams) (*TeamsListPendingInvitationsInOrgOKHeaders, error)
+	// TeamsListPendingInvitationsLegacy invokes teams/list-pending-invitations-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [`List pending team
+	// invitations`](https://docs.github.com/rest/reference/teams#list-pending-team-invitations) endpoint.
+	// The return hash contains a `role` field which refers to the Organization Invitation role and will
+	// be one of the following values: `direct_member`, `admin`, `billing_manager`, `hiring_manager`, or
+	// `reinstate`. If the invitee is not a GitHub member, the `login` field in the return hash will be
+	// `null`.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}/invitations
+	TeamsListPendingInvitationsLegacy(ctx context.Context, params TeamsListPendingInvitationsLegacyParams) (*TeamsListPendingInvitationsLegacyOKHeaders, error)
+	// TeamsListProjectsInOrg invokes teams/list-projects-in-org operation.
+	//
+	// Lists the organization projects for a team.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
+	// /organizations/{org_id}/team/{team_id}/projects`.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/projects
+	TeamsListProjectsInOrg(ctx context.Context, params TeamsListProjectsInOrgParams) (*TeamsListProjectsInOrgOKHeaders, error)
+	// TeamsListProjectsLegacy invokes teams/list-projects-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [`List team projects`](https://docs.
+	// github.com/rest/reference/teams#list-team-projects) endpoint.
+	// Lists the organization projects for a team.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}/projects
+	TeamsListProjectsLegacy(ctx context.Context, params TeamsListProjectsLegacyParams) (TeamsListProjectsLegacyRes, error)
+	// TeamsListReposInOrg invokes teams/list-repos-in-org operation.
+	//
+	// Lists a team's repositories visible to the authenticated user.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
+	// /organizations/{org_id}/team/{team_id}/repos`.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/repos
+	TeamsListReposInOrg(ctx context.Context, params TeamsListReposInOrgParams) (*TeamsListReposInOrgOKHeaders, error)
+	// TeamsListReposLegacy invokes teams/list-repos-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [List team repositories](https://docs.
+	// github.com/rest/reference/teams#list-team-repositories) endpoint.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /teams/{team_id}/repos
+	TeamsListReposLegacy(ctx context.Context, params TeamsListReposLegacyParams) (TeamsListReposLegacyRes, error)
+	// TeamsRemoveMemberLegacy invokes teams/remove-member-legacy operation.
+	//
+	// The "Remove team member" endpoint (described below) is deprecated.
+	// We recommend using the [Remove team membership for a user](https://docs.github.
+	// com/rest/reference/teams#remove-team-membership-for-a-user) endpoint instead. It allows you to
+	// remove both active and pending memberships.
+	// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
+	// information, see [GitHub's products](https://help.github.
+	// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+	// To remove a team member, the authenticated user must have 'admin' permissions to the team or be an
+	// owner of the org that the team is associated with. Removing a team member does not delete the user,
+	//  it just removes them from the team.
+	// **Note:** When you have team synchronization set up for a team with your organization's identity
+	// provider (IdP), you will see an error if you attempt to use the API for making changes to the
+	// team's membership. If you have access to manage group membership in your IdP, you can manage
+	// GitHub team membership through your identity provider, which automatically adds and removes team
+	// members in an organization. For more information, see "[Synchronizing teams between your identity
+	// provider and GitHub](https://help.github.
+	// com/articles/synchronizing-teams-between-your-identity-provider-and-github/).".
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// DELETE /teams/{team_id}/members/{username}
+	TeamsRemoveMemberLegacy(ctx context.Context, params TeamsRemoveMemberLegacyParams) (TeamsRemoveMemberLegacyRes, error)
+	// TeamsRemoveMembershipForUserInOrg invokes teams/remove-membership-for-user-in-org operation.
+	//
+	// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
+	// information, see [GitHub's products](https://help.github.
+	// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+	// To remove a membership between a user and a team, the authenticated user must have 'admin'
+	// permissions to the team or be an owner of the organization that the team is associated with.
+	// Removing team membership does not delete the user, it just removes their membership from the team.
+	// **Note:** When you have team synchronization set up for a team with your organization's identity
+	// provider (IdP), you will see an error if you attempt to use the API for making changes to the
+	// team's membership. If you have access to manage group membership in your IdP, you can manage
+	// GitHub team membership through your identity provider, which automatically adds and removes team
+	// members in an organization. For more information, see "[Synchronizing teams between your identity
+	// provider and GitHub](https://help.github.
+	// com/articles/synchronizing-teams-between-your-identity-provider-and-github/)."
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `DELETE
+	// /organizations/{org_id}/team/{team_id}/memberships/{username}`.
+	//
+	// DELETE /orgs/{org}/teams/{team_slug}/memberships/{username}
+	TeamsRemoveMembershipForUserInOrg(ctx context.Context, params TeamsRemoveMembershipForUserInOrgParams) (TeamsRemoveMembershipForUserInOrgRes, error)
+	// TeamsRemoveMembershipForUserLegacy invokes teams/remove-membership-for-user-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [Remove team membership for a
+	// user](https://docs.github.com/rest/reference/teams#remove-team-membership-for-a-user) endpoint.
+	// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
+	// information, see [GitHub's products](https://help.github.
+	// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+	// To remove a membership between a user and a team, the authenticated user must have 'admin'
+	// permissions to the team or be an owner of the organization that the team is associated with.
+	// Removing team membership does not delete the user, it just removes their membership from the team.
+	// **Note:** When you have team synchronization set up for a team with your organization's identity
+	// provider (IdP), you will see an error if you attempt to use the API for making changes to the
+	// team's membership. If you have access to manage group membership in your IdP, you can manage
+	// GitHub team membership through your identity provider, which automatically adds and removes team
+	// members in an organization. For more information, see "[Synchronizing teams between your identity
+	// provider and GitHub](https://help.github.
+	// com/articles/synchronizing-teams-between-your-identity-provider-and-github/).".
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// DELETE /teams/{team_id}/memberships/{username}
+	TeamsRemoveMembershipForUserLegacy(ctx context.Context, params TeamsRemoveMembershipForUserLegacyParams) (TeamsRemoveMembershipForUserLegacyRes, error)
+	// TeamsRemoveProjectInOrg invokes teams/remove-project-in-org operation.
+	//
+	// Removes an organization project from a team. An organization owner or a team maintainer can remove
+	// any project from the team. To remove a project from a team as an organization member, the
+	// authenticated user must have `read` access to both the team and project, or `admin` access to the
+	// team or project. This endpoint removes the project from the team, but does not delete the project.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `DELETE
+	// /organizations/{org_id}/team/{team_id}/projects/{project_id}`.
+	//
+	// DELETE /orgs/{org}/teams/{team_slug}/projects/{project_id}
+	TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemoveProjectInOrgParams) error
+	// TeamsRemoveProjectLegacy invokes teams/remove-project-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [Remove a project from a
+	// team](https://docs.github.com/rest/reference/teams#remove-a-project-from-a-team) endpoint.
+	// Removes an organization project from a team. An organization owner or a team maintainer can remove
+	// any project from the team. To remove a project from a team as an organization member, the
+	// authenticated user must have `read` access to both the team and project, or `admin` access to the
+	// team or project. **Note:** This endpoint removes the project from the team, but does not delete it.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// DELETE /teams/{team_id}/projects/{project_id}
+	TeamsRemoveProjectLegacy(ctx context.Context, params TeamsRemoveProjectLegacyParams) (TeamsRemoveProjectLegacyRes, error)
+	// TeamsRemoveRepoInOrg invokes teams/remove-repo-in-org operation.
+	//
+	// If the authenticated user is an organization owner or a team maintainer, they can remove any
+	// repositories from the team. To remove a repository from a team as an organization member, the
+	// authenticated user must have admin access to the repository and must be able to see the team. This
+	// does not delete the repository, it just removes it from the team.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `DELETE
+	// /organizations/{org_id}/team/{team_id}/repos/{owner}/{repo}`.
+	//
+	// DELETE /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
+	TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRepoInOrgParams) error
+	// TeamsRemoveRepoLegacy invokes teams/remove-repo-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [Remove a repository from a
+	// team](https://docs.github.com/rest/reference/teams#remove-a-repository-from-a-team) endpoint.
+	// If the authenticated user is an organization owner or a team maintainer, they can remove any
+	// repositories from the team. To remove a repository from a team as an organization member, the
+	// authenticated user must have admin access to the repository and must be able to see the team.
+	// NOTE: This does not delete the repository, it just removes it from the team.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// DELETE /teams/{team_id}/repos/{owner}/{repo}
+	TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRepoLegacyParams) error
+	// TeamsUpdateDiscussionCommentInOrg invokes teams/update-discussion-comment-in-org operation.
+	//
+	// Edits the body text of a discussion comment. OAuth access tokens require the `write:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `PATCH
+	// /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
+	//
+	// PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
+	TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request *TeamsUpdateDiscussionCommentInOrgReq, params TeamsUpdateDiscussionCommentInOrgParams) (*TeamDiscussionComment, error)
+	// TeamsUpdateDiscussionCommentLegacy invokes teams/update-discussion-comment-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [Update a discussion
+	// comment](https://docs.github.com/rest/reference/teams#update-a-discussion-comment) endpoint.
+	// Edits the body text of a discussion comment. OAuth access tokens require the `write:discussion`
+	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// PATCH /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
+	TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request *TeamsUpdateDiscussionCommentLegacyReq, params TeamsUpdateDiscussionCommentLegacyParams) (*TeamDiscussionComment, error)
+	// TeamsUpdateDiscussionInOrg invokes teams/update-discussion-in-org operation.
+	//
+	// Edits the title and body text of a discussion post. Only the parameters you provide are updated.
+	// OAuth access tokens require the `write:discussion` [scope](https://docs.github.
+	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `PATCH
+	// /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
+	//
+	// PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
+	TeamsUpdateDiscussionInOrg(ctx context.Context, request OptTeamsUpdateDiscussionInOrgReq, params TeamsUpdateDiscussionInOrgParams) (*TeamDiscussion, error)
+	// TeamsUpdateDiscussionLegacy invokes teams/update-discussion-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [Update a discussion](https://docs.github.
+	// com/rest/reference/teams#update-a-discussion) endpoint.
+	// Edits the title and body text of a discussion post. Only the parameters you provide are updated.
+	// OAuth access tokens require the `write:discussion` [scope](https://docs.github.
+	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// PATCH /teams/{team_id}/discussions/{discussion_number}
+	TeamsUpdateDiscussionLegacy(ctx context.Context, request OptTeamsUpdateDiscussionLegacyReq, params TeamsUpdateDiscussionLegacyParams) (*TeamDiscussion, error)
+	// TeamsUpdateInOrg invokes teams/update-in-org operation.
+	//
+	// To edit a team, the authenticated user must either be an organization owner or a team maintainer.
+	// **Note:** You can also specify a team by `org_id` and `team_id` using the route `PATCH
+	// /organizations/{org_id}/team/{team_id}`.
+	//
+	// PATCH /orgs/{org}/teams/{team_slug}
+	TeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdateInOrgReq, params TeamsUpdateInOrgParams) (*TeamFull, error)
+	// TeamsUpdateLegacy invokes teams/update-legacy operation.
+	//
+	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
+	// We recommend migrating your existing code to use the new [Update a team](https://docs.github.
+	// com/rest/reference/teams#update-a-team) endpoint.
+	// To edit a team, the authenticated user must either be an organization owner or a team maintainer.
+	// **Note:** With nested teams, the `privacy` for parent teams cannot be `secret`.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// PATCH /teams/{team_id}
+	TeamsUpdateLegacy(ctx context.Context, request *TeamsUpdateLegacyReq, params TeamsUpdateLegacyParams) (TeamsUpdateLegacyRes, error)
+	// UsersAddEmailForAuthenticated invokes users/add-email-for-authenticated operation.
+	//
+	// This endpoint is accessible with the `user` scope.
+	//
+	// POST /user/emails
+	UsersAddEmailForAuthenticated(ctx context.Context, request OptUsersAddEmailForAuthenticatedReq) (UsersAddEmailForAuthenticatedRes, error)
+	// UsersBlock invokes users/block operation.
+	//
+	// Block a user.
+	//
+	// PUT /user/blocks/{username}
+	UsersBlock(ctx context.Context, params UsersBlockParams) (UsersBlockRes, error)
+	// UsersCheckBlocked invokes users/check-blocked operation.
+	//
+	// Check if a user is blocked by the authenticated user.
+	//
+	// GET /user/blocks/{username}
+	UsersCheckBlocked(ctx context.Context, params UsersCheckBlockedParams) (UsersCheckBlockedRes, error)
+	// UsersCheckFollowingForUser invokes users/check-following-for-user operation.
+	//
+	// Check if a user follows another user.
+	//
+	// GET /users/{username}/following/{target_user}
+	UsersCheckFollowingForUser(ctx context.Context, params UsersCheckFollowingForUserParams) (UsersCheckFollowingForUserRes, error)
+	// UsersCheckPersonIsFollowedByAuthenticated invokes users/check-person-is-followed-by-authenticated operation.
+	//
+	// Check if a person is followed by the authenticated user.
+	//
+	// GET /user/following/{username}
+	UsersCheckPersonIsFollowedByAuthenticated(ctx context.Context, params UsersCheckPersonIsFollowedByAuthenticatedParams) (UsersCheckPersonIsFollowedByAuthenticatedRes, error)
+	// UsersCreateGpgKeyForAuthenticated invokes users/create-gpg-key-for-authenticated operation.
+	//
+	// Adds a GPG key to the authenticated user's GitHub account. Requires that you are authenticated via
+	// Basic Auth, or OAuth with at least `write:gpg_key` [scope](https://docs.github.
+	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// POST /user/gpg_keys
+	UsersCreateGpgKeyForAuthenticated(ctx context.Context, request *UsersCreateGpgKeyForAuthenticatedReq) (UsersCreateGpgKeyForAuthenticatedRes, error)
+	// UsersCreatePublicSSHKeyForAuthenticated invokes users/create-public-ssh-key-for-authenticated operation.
+	//
+	// Adds a public SSH key to the authenticated user's GitHub account. Requires that you are
+	// authenticated via Basic Auth, or OAuth with at least `write:public_key` [scope](https://docs.
+	// github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// POST /user/keys
+	UsersCreatePublicSSHKeyForAuthenticated(ctx context.Context, request *UsersCreatePublicSSHKeyForAuthenticatedReq) (UsersCreatePublicSSHKeyForAuthenticatedRes, error)
+	// UsersDeleteEmailForAuthenticated invokes users/delete-email-for-authenticated operation.
+	//
+	// This endpoint is accessible with the `user` scope.
+	//
+	// DELETE /user/emails
+	UsersDeleteEmailForAuthenticated(ctx context.Context, request OptUsersDeleteEmailForAuthenticatedReq) (UsersDeleteEmailForAuthenticatedRes, error)
+	// UsersDeleteGpgKeyForAuthenticated invokes users/delete-gpg-key-for-authenticated operation.
+	//
+	// Removes a GPG key from the authenticated user's GitHub account. Requires that you are
+	// authenticated via Basic Auth or via OAuth with at least `admin:gpg_key` [scope](https://docs.
+	// github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// DELETE /user/gpg_keys/{gpg_key_id}
+	UsersDeleteGpgKeyForAuthenticated(ctx context.Context, params UsersDeleteGpgKeyForAuthenticatedParams) (UsersDeleteGpgKeyForAuthenticatedRes, error)
+	// UsersDeletePublicSSHKeyForAuthenticated invokes users/delete-public-ssh-key-for-authenticated operation.
+	//
+	// Removes a public SSH key from the authenticated user's GitHub account. Requires that you are
+	// authenticated via Basic Auth or via OAuth with at least `admin:public_key` [scope](https://docs.
+	// github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// DELETE /user/keys/{key_id}
+	UsersDeletePublicSSHKeyForAuthenticated(ctx context.Context, params UsersDeletePublicSSHKeyForAuthenticatedParams) (UsersDeletePublicSSHKeyForAuthenticatedRes, error)
+	// UsersFollow invokes users/follow operation.
+	//
+	// Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more
+	// information, see "[HTTP verbs](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#http-verbs)."
+	// Following a user requires the user to be logged in and authenticated with basic auth or OAuth with
+	// the `user:follow` scope.
+	//
+	// PUT /user/following/{username}
+	UsersFollow(ctx context.Context, params UsersFollowParams) (UsersFollowRes, error)
+	// UsersGetAuthenticated invokes users/get-authenticated operation.
+	//
+	// If the authenticated user is authenticated through basic authentication or OAuth with the `user`
+	// scope, then the response lists public and private profile information.
+	// If the authenticated user is authenticated through OAuth without the `user` scope, then the
+	// response lists only public profile information.
+	//
+	// GET /user
+	UsersGetAuthenticated(ctx context.Context) (UsersGetAuthenticatedRes, error)
+	// UsersGetByUsername invokes users/get-by-username operation.
+	//
+	// Provides publicly available information about someone with a GitHub account.
+	// GitHub Apps with the `Plan` user permission can use this endpoint to retrieve information about a
+	// user's GitHub plan. The GitHub App must be authenticated as a user. See "[Identifying and
+	// authorizing users for GitHub Apps](https://docs.github.
+	// com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/)" for details
+	// about authentication. For an example response, see 'Response with GitHub plan information' below"
+	// The `email` key in the following response is the publicly visible email address from your GitHub
+	// [profile page](https://github.com/settings/profile). When setting up your profile, you can select
+	// a primary email address to be “public” which provides an email entry for this endpoint. If you
+	// do not set a public email address for `email`, then it will have a value of `null`. You only see
+	// publicly visible email addresses when authenticated with GitHub. For more information, see
+	// [Authentication](https://docs.github.com/rest/overview/resources-in-the-rest-api#authentication).
+	// The Emails API enables you to list all of your email addresses, and toggle a primary email to be
+	// visible publicly. For more information, see "[Emails API](https://docs.github.
+	// com/rest/reference/users#emails)".
+	//
+	// GET /users/{username}
+	UsersGetByUsername(ctx context.Context, params UsersGetByUsernameParams) (UsersGetByUsernameRes, error)
+	// UsersGetContextForUser invokes users/get-context-for-user operation.
+	//
+	// Provides hovercard information when authenticated through basic auth or OAuth with the `repo`
+	// scope. You can find out more about someone in relation to their pull requests, issues,
+	// repositories, and organizations.
+	// The `subject_type` and `subject_id` parameters provide context for the person's hovercard, which
+	// returns more information than without the parameters. For example, if you wanted to find out more
+	// about `octocat` who owns the `Spoon-Knife` repository via cURL, it would look like this:
+	// ```shell
+	// curl -u username:token
+	// https://api.github.com/users/octocat/hovercard?subject_type=repository&subject_id=1300192
+	// ```.
+	//
+	// GET /users/{username}/hovercard
+	UsersGetContextForUser(ctx context.Context, params UsersGetContextForUserParams) (UsersGetContextForUserRes, error)
+	// UsersGetGpgKeyForAuthenticated invokes users/get-gpg-key-for-authenticated operation.
+	//
+	// View extended details for a single GPG key. Requires that you are authenticated via Basic Auth or
+	// via OAuth with at least `read:gpg_key` [scope](https://docs.github.
+	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// GET /user/gpg_keys/{gpg_key_id}
+	UsersGetGpgKeyForAuthenticated(ctx context.Context, params UsersGetGpgKeyForAuthenticatedParams) (UsersGetGpgKeyForAuthenticatedRes, error)
+	// UsersGetPublicSSHKeyForAuthenticated invokes users/get-public-ssh-key-for-authenticated operation.
+	//
+	// View extended details for a single public SSH key. Requires that you are authenticated via Basic
+	// Auth or via OAuth with at least `read:public_key` [scope](https://docs.github.
+	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// GET /user/keys/{key_id}
+	UsersGetPublicSSHKeyForAuthenticated(ctx context.Context, params UsersGetPublicSSHKeyForAuthenticatedParams) (UsersGetPublicSSHKeyForAuthenticatedRes, error)
+	// UsersList invokes users/list operation.
+	//
+	// Lists all users, in the order that they signed up on GitHub. This list includes personal user
+	// accounts and organization accounts.
+	// Note: Pagination is powered exclusively by the `since` parameter. Use the [Link
+	// header](https://docs.github.com/rest/overview/resources-in-the-rest-api#link-header) to get the
+	// URL for the next page of users.
+	//
+	// GET /users
+	UsersList(ctx context.Context, params UsersListParams) (UsersListRes, error)
+	// UsersListBlockedByAuthenticated invokes users/list-blocked-by-authenticated operation.
+	//
+	// List the users you've blocked on your personal account.
+	//
+	// GET /user/blocks
+	UsersListBlockedByAuthenticated(ctx context.Context) (UsersListBlockedByAuthenticatedRes, error)
+	// UsersListEmailsForAuthenticated invokes users/list-emails-for-authenticated operation.
+	//
+	// Lists all of your email addresses, and specifies which one is visible to the public. This endpoint
+	// is accessible with the `user:email` scope.
+	//
+	// GET /user/emails
+	UsersListEmailsForAuthenticated(ctx context.Context, params UsersListEmailsForAuthenticatedParams) (UsersListEmailsForAuthenticatedRes, error)
+	// UsersListFollowedByAuthenticated invokes users/list-followed-by-authenticated operation.
+	//
+	// Lists the people who the authenticated user follows.
+	//
+	// GET /user/following
+	UsersListFollowedByAuthenticated(ctx context.Context, params UsersListFollowedByAuthenticatedParams) (UsersListFollowedByAuthenticatedRes, error)
+	// UsersListFollowersForAuthenticatedUser invokes users/list-followers-for-authenticated-user operation.
+	//
+	// Lists the people following the authenticated user.
+	//
+	// GET /user/followers
+	UsersListFollowersForAuthenticatedUser(ctx context.Context, params UsersListFollowersForAuthenticatedUserParams) (UsersListFollowersForAuthenticatedUserRes, error)
+	// UsersListFollowersForUser invokes users/list-followers-for-user operation.
+	//
+	// Lists the people following the specified user.
+	//
+	// GET /users/{username}/followers
+	UsersListFollowersForUser(ctx context.Context, params UsersListFollowersForUserParams) (*UsersListFollowersForUserOKHeaders, error)
+	// UsersListFollowingForUser invokes users/list-following-for-user operation.
+	//
+	// Lists the people who the specified user follows.
+	//
+	// GET /users/{username}/following
+	UsersListFollowingForUser(ctx context.Context, params UsersListFollowingForUserParams) (*UsersListFollowingForUserOKHeaders, error)
+	// UsersListGpgKeysForAuthenticated invokes users/list-gpg-keys-for-authenticated operation.
+	//
+	// Lists the current user's GPG keys. Requires that you are authenticated via Basic Auth or via OAuth
+	// with at least `read:gpg_key` [scope](https://docs.github.
+	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// GET /user/gpg_keys
+	UsersListGpgKeysForAuthenticated(ctx context.Context, params UsersListGpgKeysForAuthenticatedParams) (UsersListGpgKeysForAuthenticatedRes, error)
+	// UsersListGpgKeysForUser invokes users/list-gpg-keys-for-user operation.
+	//
+	// Lists the GPG keys for a user. This information is accessible by anyone.
+	//
+	// GET /users/{username}/gpg_keys
+	UsersListGpgKeysForUser(ctx context.Context, params UsersListGpgKeysForUserParams) (*UsersListGpgKeysForUserOKHeaders, error)
+	// UsersListPublicEmailsForAuthenticated invokes users/list-public-emails-for-authenticated operation.
+	//
+	// Lists your publicly visible email address, which you can set with the [Set primary email
+	// visibility for the authenticated user](https://docs.github.
+	// com/rest/reference/users#set-primary-email-visibility-for-the-authenticated-user) endpoint. This
+	// endpoint is accessible with the `user:email` scope.
+	//
+	// GET /user/public_emails
+	UsersListPublicEmailsForAuthenticated(ctx context.Context, params UsersListPublicEmailsForAuthenticatedParams) (UsersListPublicEmailsForAuthenticatedRes, error)
+	// UsersListPublicKeysForUser invokes users/list-public-keys-for-user operation.
+	//
+	// Lists the _verified_ public SSH keys for a user. This is accessible by anyone.
+	//
+	// GET /users/{username}/keys
+	UsersListPublicKeysForUser(ctx context.Context, params UsersListPublicKeysForUserParams) (*UsersListPublicKeysForUserOKHeaders, error)
+	// UsersListPublicSSHKeysForAuthenticated invokes users/list-public-ssh-keys-for-authenticated operation.
+	//
+	// Lists the public SSH keys for the authenticated user's GitHub account. Requires that you are
+	// authenticated via Basic Auth or via OAuth with at least `read:public_key` [scope](https://docs.
+	// github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// GET /user/keys
+	UsersListPublicSSHKeysForAuthenticated(ctx context.Context, params UsersListPublicSSHKeysForAuthenticatedParams) (UsersListPublicSSHKeysForAuthenticatedRes, error)
+	// UsersSetPrimaryEmailVisibilityForAuthenticated invokes users/set-primary-email-visibility-for-authenticated operation.
+	//
+	// Sets the visibility for your primary email addresses.
+	//
+	// PATCH /user/email/visibility
+	UsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.Context, request *UsersSetPrimaryEmailVisibilityForAuthenticatedReq) (UsersSetPrimaryEmailVisibilityForAuthenticatedRes, error)
+	// UsersUnblock invokes users/unblock operation.
+	//
+	// Unblock a user.
+	//
+	// DELETE /user/blocks/{username}
+	UsersUnblock(ctx context.Context, params UsersUnblockParams) (UsersUnblockRes, error)
+	// UsersUnfollow invokes users/unfollow operation.
+	//
+	// Unfollowing a user requires the user to be logged in and authenticated with basic auth or OAuth
+	// with the `user:follow` scope.
+	//
+	// DELETE /user/following/{username}
+	UsersUnfollow(ctx context.Context, params UsersUnfollowParams) (UsersUnfollowRes, error)
+	// UsersUpdateAuthenticated invokes users/update-authenticated operation.
+	//
+	// **Note:** If your email is set to private and you send an `email` parameter as part of this
+	// request to update your profile, your privacy settings are still enforced: the email address will
+	// not be displayed on your public profile or via the API.
+	//
+	// PATCH /user
+	UsersUpdateAuthenticated(ctx context.Context, request OptUsersUpdateAuthenticatedReq) (UsersUpdateAuthenticatedRes, error)
+}
 
 // Client implements OAS client.
 type Client struct {
@@ -90,6 +7839,8 @@ func (c *Client) ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 func (c *Client) sendActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams) (res *ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/add-repo-access-to-self-hosted-runner-group-in-org"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}"),
 	}
 
 	// Run stopwatch.
@@ -221,6 +7972,8 @@ func (c *Client) ActionsAddSelectedRepoToOrgSecret(ctx context.Context, params A
 func (c *Client) sendActionsAddSelectedRepoToOrgSecret(ctx context.Context, params ActionsAddSelectedRepoToOrgSecretParams) (res ActionsAddSelectedRepoToOrgSecretRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/add-selected-repo-to-org-secret"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"),
 	}
 
 	// Run stopwatch.
@@ -353,6 +8106,8 @@ func (c *Client) ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, pa
 func (c *Client) sendActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, params ActionsAddSelfHostedRunnerToGroupForOrgParams) (res *ActionsAddSelfHostedRunnerToGroupForOrgNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/add-self-hosted-runner-to-group-for-org"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"),
 	}
 
 	// Run stopwatch.
@@ -484,6 +8239,8 @@ func (c *Client) ActionsApproveWorkflowRun(ctx context.Context, params ActionsAp
 func (c *Client) sendActionsApproveWorkflowRun(ctx context.Context, params ActionsApproveWorkflowRunParams) (res ActionsApproveWorkflowRunRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/approve-workflow-run"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/approve"),
 	}
 
 	// Run stopwatch.
@@ -614,6 +8371,8 @@ func (c *Client) ActionsCancelWorkflowRun(ctx context.Context, params ActionsCan
 func (c *Client) sendActionsCancelWorkflowRun(ctx context.Context, params ActionsCancelWorkflowRunParams) (res *ActionsCancelWorkflowRunAccepted, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/cancel-workflow-run"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/cancel"),
 	}
 
 	// Run stopwatch.
@@ -795,6 +8554,8 @@ func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req
 func (c *Client) sendActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, request *ActionsCreateOrUpdateEnvironmentSecretReq, params ActionsCreateOrUpdateEnvironmentSecretParams) (res ActionsCreateOrUpdateEnvironmentSecretRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-or-update-environment-secret"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -987,6 +8748,8 @@ func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, request *Ac
 func (c *Client) sendActionsCreateOrUpdateOrgSecret(ctx context.Context, request *ActionsCreateOrUpdateOrgSecretReq, params ActionsCreateOrUpdateOrgSecretParams) (res ActionsCreateOrUpdateOrgSecretRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-or-update-org-secret"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/{secret_name}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -1160,6 +8923,8 @@ func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, request *A
 func (c *Client) sendActionsCreateOrUpdateRepoSecret(ctx context.Context, request *ActionsCreateOrUpdateRepoSecretReq, params ActionsCreateOrUpdateRepoSecretParams) (res ActionsCreateOrUpdateRepoSecretRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-or-update-repo-secret"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/secrets/{secret_name}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -1306,6 +9071,8 @@ func (c *Client) ActionsCreateRegistrationTokenForOrg(ctx context.Context, param
 func (c *Client) sendActionsCreateRegistrationTokenForOrg(ctx context.Context, params ActionsCreateRegistrationTokenForOrgParams) (res *AuthenticationToken, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-registration-token-for-org"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runners/registration-token"),
 	}
 
 	// Run stopwatch.
@@ -1404,6 +9171,8 @@ func (c *Client) ActionsCreateRegistrationTokenForRepo(ctx context.Context, para
 func (c *Client) sendActionsCreateRegistrationTokenForRepo(ctx context.Context, params ActionsCreateRegistrationTokenForRepoParams) (res *AuthenticationToken, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-registration-token-for-repo"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runners/registration-token"),
 	}
 
 	// Run stopwatch.
@@ -1522,6 +9291,8 @@ func (c *Client) ActionsCreateRemoveTokenForOrg(ctx context.Context, params Acti
 func (c *Client) sendActionsCreateRemoveTokenForOrg(ctx context.Context, params ActionsCreateRemoveTokenForOrgParams) (res *AuthenticationToken, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-remove-token-for-org"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runners/remove-token"),
 	}
 
 	// Run stopwatch.
@@ -1620,6 +9391,8 @@ func (c *Client) ActionsCreateRemoveTokenForRepo(ctx context.Context, params Act
 func (c *Client) sendActionsCreateRemoveTokenForRepo(ctx context.Context, params ActionsCreateRemoveTokenForRepoParams) (res *AuthenticationToken, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-remove-token-for-repo"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runners/remove-token"),
 	}
 
 	// Run stopwatch.
@@ -1733,6 +9506,8 @@ func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 func (c *Client) sendActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, request *ActionsCreateSelfHostedRunnerGroupForOrgReq, params ActionsCreateSelfHostedRunnerGroupForOrgParams) (res *RunnerGroupsOrg, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-self-hosted-runner-group-for-org"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -1837,6 +9612,8 @@ func (c *Client) ActionsDeleteArtifact(ctx context.Context, params ActionsDelete
 func (c *Client) sendActionsDeleteArtifact(ctx context.Context, params ActionsDeleteArtifactParams) (res *ActionsDeleteArtifactNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-artifact"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/artifacts/{artifact_id}"),
 	}
 
 	// Run stopwatch.
@@ -1966,6 +9743,8 @@ func (c *Client) ActionsDeleteEnvironmentSecret(ctx context.Context, params Acti
 func (c *Client) sendActionsDeleteEnvironmentSecret(ctx context.Context, params ActionsDeleteEnvironmentSecretParams) (res *ActionsDeleteEnvironmentSecretNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-environment-secret"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"),
 	}
 
 	// Run stopwatch.
@@ -2095,6 +9874,8 @@ func (c *Client) ActionsDeleteOrgSecret(ctx context.Context, params ActionsDelet
 func (c *Client) sendActionsDeleteOrgSecret(ctx context.Context, params ActionsDeleteOrgSecretParams) (res *ActionsDeleteOrgSecretNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-org-secret"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/{secret_name}"),
 	}
 
 	// Run stopwatch.
@@ -2205,6 +9986,8 @@ func (c *Client) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDele
 func (c *Client) sendActionsDeleteRepoSecret(ctx context.Context, params ActionsDeleteRepoSecretParams) (res *ActionsDeleteRepoSecretNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-repo-secret"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/secrets/{secret_name}"),
 	}
 
 	// Run stopwatch.
@@ -2334,6 +10117,8 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, param
 func (c *Client) sendActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromOrgParams) (res *ActionsDeleteSelfHostedRunnerFromOrgNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-self-hosted-runner-from-org"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runners/{runner_id}"),
 	}
 
 	// Run stopwatch.
@@ -2445,6 +10230,8 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, para
 func (c *Client) sendActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromRepoParams) (res *ActionsDeleteSelfHostedRunnerFromRepoNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-self-hosted-runner-from-repo"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runners/{runner_id}"),
 	}
 
 	// Run stopwatch.
@@ -2576,6 +10363,8 @@ func (c *Client) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, 
 func (c *Client) sendActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerGroupFromOrgParams) (res *ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-self-hosted-runner-group-from-org"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}"),
 	}
 
 	// Run stopwatch.
@@ -2688,6 +10477,8 @@ func (c *Client) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDel
 func (c *Client) sendActionsDeleteWorkflowRun(ctx context.Context, params ActionsDeleteWorkflowRunParams) (res *ActionsDeleteWorkflowRunNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-workflow-run"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}"),
 	}
 
 	// Run stopwatch.
@@ -2817,6 +10608,8 @@ func (c *Client) ActionsDeleteWorkflowRunLogs(ctx context.Context, params Action
 func (c *Client) sendActionsDeleteWorkflowRunLogs(ctx context.Context, params ActionsDeleteWorkflowRunLogsParams) (res *ActionsDeleteWorkflowRunLogsNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-workflow-run-logs"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/logs"),
 	}
 
 	// Run stopwatch.
@@ -2950,6 +10743,8 @@ func (c *Client) ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx c
 func (c *Client) sendActionsDisableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams) (res *ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/disable-selected-repository-github-actions-organization"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions/repositories/{repository_id}"),
 	}
 
 	// Run stopwatch.
@@ -3064,6 +10859,8 @@ func (c *Client) ActionsDownloadArtifact(ctx context.Context, params ActionsDown
 func (c *Client) sendActionsDownloadArtifact(ctx context.Context, params ActionsDownloadArtifactParams) (res *ActionsDownloadArtifactFound, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/download-artifact"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}"),
 	}
 
 	// Run stopwatch.
@@ -3218,6 +11015,8 @@ func (c *Client) ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, param
 func (c *Client) sendActionsDownloadJobLogsForWorkflowRun(ctx context.Context, params ActionsDownloadJobLogsForWorkflowRunParams) (res *ActionsDownloadJobLogsForWorkflowRunFound, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/download-job-logs-for-workflow-run"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/jobs/{job_id}/logs"),
 	}
 
 	// Run stopwatch.
@@ -3352,6 +11151,8 @@ func (c *Client) ActionsDownloadWorkflowRunLogs(ctx context.Context, params Acti
 func (c *Client) sendActionsDownloadWorkflowRunLogs(ctx context.Context, params ActionsDownloadWorkflowRunLogsParams) (res *ActionsDownloadWorkflowRunLogsFound, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/download-workflow-run-logs"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/logs"),
 	}
 
 	// Run stopwatch.
@@ -3485,6 +11286,8 @@ func (c *Client) ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx co
 func (c *Client) sendActionsEnableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams) (res *ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/enable-selected-repository-github-actions-organization"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions/repositories/{repository_id}"),
 	}
 
 	// Run stopwatch.
@@ -3598,6 +11401,8 @@ func (c *Client) ActionsGetAllowedActionsOrganization(ctx context.Context, param
 func (c *Client) sendActionsGetAllowedActionsOrganization(ctx context.Context, params ActionsGetAllowedActionsOrganizationParams) (res *SelectedActions, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-allowed-actions-organization"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions/selected-actions"),
 	}
 
 	// Run stopwatch.
@@ -3693,6 +11498,8 @@ func (c *Client) ActionsGetAllowedActionsRepository(ctx context.Context, params 
 func (c *Client) sendActionsGetAllowedActionsRepository(ctx context.Context, params ActionsGetAllowedActionsRepositoryParams) (res *SelectedActions, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-allowed-actions-repository"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/permissions/selected-actions"),
 	}
 
 	// Run stopwatch.
@@ -3804,6 +11611,8 @@ func (c *Client) ActionsGetArtifact(ctx context.Context, params ActionsGetArtifa
 func (c *Client) sendActionsGetArtifact(ctx context.Context, params ActionsGetArtifactParams) (res *Artifact, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-artifact"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/artifacts/{artifact_id}"),
 	}
 
 	// Run stopwatch.
@@ -3934,6 +11743,8 @@ func (c *Client) ActionsGetEnvironmentPublicKey(ctx context.Context, params Acti
 func (c *Client) sendActionsGetEnvironmentPublicKey(ctx context.Context, params ActionsGetEnvironmentPublicKeyParams) (res *ActionsPublicKey, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-environment-public-key"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repositories/{repository_id}/environments/{environment_name}/secrets/public-key"),
 	}
 
 	// Run stopwatch.
@@ -4045,6 +11856,8 @@ func (c *Client) ActionsGetEnvironmentSecret(ctx context.Context, params Actions
 func (c *Client) sendActionsGetEnvironmentSecret(ctx context.Context, params ActionsGetEnvironmentSecretParams) (res *ActionsSecret, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-environment-secret"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"),
 	}
 
 	// Run stopwatch.
@@ -4174,6 +11987,8 @@ func (c *Client) ActionsGetGithubActionsPermissionsOrganization(ctx context.Cont
 func (c *Client) sendActionsGetGithubActionsPermissionsOrganization(ctx context.Context, params ActionsGetGithubActionsPermissionsOrganizationParams) (res *ActionsOrganizationPermissions, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-github-actions-permissions-organization"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions"),
 	}
 
 	// Run stopwatch.
@@ -4267,6 +12082,8 @@ func (c *Client) ActionsGetGithubActionsPermissionsRepository(ctx context.Contex
 func (c *Client) sendActionsGetGithubActionsPermissionsRepository(ctx context.Context, params ActionsGetGithubActionsPermissionsRepositoryParams) (res *ActionsRepositoryPermissions, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-github-actions-permissions-repository"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/permissions"),
 	}
 
 	// Run stopwatch.
@@ -4378,6 +12195,8 @@ func (c *Client) ActionsGetJobForWorkflowRun(ctx context.Context, params Actions
 func (c *Client) sendActionsGetJobForWorkflowRun(ctx context.Context, params ActionsGetJobForWorkflowRunParams) (res *Job, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-job-for-workflow-run"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/jobs/{job_id}"),
 	}
 
 	// Run stopwatch.
@@ -4508,6 +12327,8 @@ func (c *Client) ActionsGetOrgPublicKey(ctx context.Context, params ActionsGetOr
 func (c *Client) sendActionsGetOrgPublicKey(ctx context.Context, params ActionsGetOrgPublicKeyParams) (res *ActionsPublicKey, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-org-public-key"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/public-key"),
 	}
 
 	// Run stopwatch.
@@ -4600,6 +12421,8 @@ func (c *Client) ActionsGetOrgSecret(ctx context.Context, params ActionsGetOrgSe
 func (c *Client) sendActionsGetOrgSecret(ctx context.Context, params ActionsGetOrgSecretParams) (res *OrganizationActionsSecret, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-org-secret"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/{secret_name}"),
 	}
 
 	// Run stopwatch.
@@ -4711,6 +12534,8 @@ func (c *Client) ActionsGetRepoPublicKey(ctx context.Context, params ActionsGetR
 func (c *Client) sendActionsGetRepoPublicKey(ctx context.Context, params ActionsGetRepoPublicKeyParams) (res *ActionsPublicKey, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-repo-public-key"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/secrets/public-key"),
 	}
 
 	// Run stopwatch.
@@ -4822,6 +12647,8 @@ func (c *Client) ActionsGetRepoSecret(ctx context.Context, params ActionsGetRepo
 func (c *Client) sendActionsGetRepoSecret(ctx context.Context, params ActionsGetRepoSecretParams) (res *ActionsSecret, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-repo-secret"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/secrets/{secret_name}"),
 	}
 
 	// Run stopwatch.
@@ -4951,6 +12778,8 @@ func (c *Client) ActionsGetReviewsForRun(ctx context.Context, params ActionsGetR
 func (c *Client) sendActionsGetReviewsForRun(ctx context.Context, params ActionsGetReviewsForRunParams) (res []EnvironmentApprovals, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-reviews-for-run"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/approvals"),
 	}
 
 	// Run stopwatch.
@@ -5080,6 +12909,8 @@ func (c *Client) ActionsGetSelfHostedRunnerForOrg(ctx context.Context, params Ac
 func (c *Client) sendActionsGetSelfHostedRunnerForOrg(ctx context.Context, params ActionsGetSelfHostedRunnerForOrgParams) (res *Runner, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-self-hosted-runner-for-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runners/{runner_id}"),
 	}
 
 	// Run stopwatch.
@@ -5190,6 +13021,8 @@ func (c *Client) ActionsGetSelfHostedRunnerForRepo(ctx context.Context, params A
 func (c *Client) sendActionsGetSelfHostedRunnerForRepo(ctx context.Context, params ActionsGetSelfHostedRunnerForRepoParams) (res *Runner, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-self-hosted-runner-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runners/{runner_id}"),
 	}
 
 	// Run stopwatch.
@@ -5321,6 +13154,8 @@ func (c *Client) ActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, para
 func (c *Client) sendActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, params ActionsGetSelfHostedRunnerGroupForOrgParams) (res *RunnerGroupsOrg, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-self-hosted-runner-group-for-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}"),
 	}
 
 	// Run stopwatch.
@@ -5431,6 +13266,8 @@ func (c *Client) ActionsGetWorkflowRun(ctx context.Context, params ActionsGetWor
 func (c *Client) sendActionsGetWorkflowRun(ctx context.Context, params ActionsGetWorkflowRunParams) (res *WorkflowRun, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-workflow-run"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}"),
 	}
 
 	// Run stopwatch.
@@ -5567,6 +13404,8 @@ func (c *Client) ActionsGetWorkflowRunUsage(ctx context.Context, params ActionsG
 func (c *Client) sendActionsGetWorkflowRunUsage(ctx context.Context, params ActionsGetWorkflowRunUsageParams) (res *WorkflowRunUsage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-workflow-run-usage"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/timing"),
 	}
 
 	// Run stopwatch.
@@ -5697,6 +13536,8 @@ func (c *Client) ActionsListArtifactsForRepo(ctx context.Context, params Actions
 func (c *Client) sendActionsListArtifactsForRepo(ctx context.Context, params ActionsListArtifactsForRepoParams) (res *ActionsListArtifactsForRepoOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-artifacts-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/artifacts"),
 	}
 
 	// Run stopwatch.
@@ -5846,6 +13687,8 @@ func (c *Client) ActionsListEnvironmentSecrets(ctx context.Context, params Actio
 func (c *Client) sendActionsListEnvironmentSecrets(ctx context.Context, params ActionsListEnvironmentSecretsParams) (res *ActionsListEnvironmentSecretsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-environment-secrets"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repositories/{repository_id}/environments/{environment_name}/secrets"),
 	}
 
 	// Run stopwatch.
@@ -5997,6 +13840,8 @@ func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params Actio
 func (c *Client) sendActionsListJobsForWorkflowRun(ctx context.Context, params ActionsListJobsForWorkflowRunParams) (res *ActionsListJobsForWorkflowRunOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-jobs-for-workflow-run"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/jobs"),
 	}
 
 	// Run stopwatch.
@@ -6182,6 +14027,8 @@ func (c *Client) ActionsListOrgSecrets(ctx context.Context, params ActionsListOr
 func (c *Client) sendActionsListOrgSecrets(ctx context.Context, params ActionsListOrgSecretsParams) (res *ActionsListOrgSecretsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-org-secrets"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets"),
 	}
 
 	// Run stopwatch.
@@ -6314,6 +14161,8 @@ func (c *Client) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.C
 func (c *Client) sendActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams) (res *ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-repo-access-to-self-hosted-runner-group-in-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories"),
 	}
 
 	// Run stopwatch.
@@ -6463,6 +14312,8 @@ func (c *Client) ActionsListRepoSecrets(ctx context.Context, params ActionsListR
 func (c *Client) sendActionsListRepoSecrets(ctx context.Context, params ActionsListRepoSecretsParams) (res *ActionsListRepoSecretsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-repo-secrets"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/secrets"),
 	}
 
 	// Run stopwatch.
@@ -6612,6 +14463,8 @@ func (c *Client) ActionsListRepoWorkflows(ctx context.Context, params ActionsLis
 func (c *Client) sendActionsListRepoWorkflows(ctx context.Context, params ActionsListRepoWorkflowsParams) (res *ActionsListRepoWorkflowsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-repo-workflows"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/workflows"),
 	}
 
 	// Run stopwatch.
@@ -6760,6 +14613,8 @@ func (c *Client) ActionsListRunnerApplicationsForOrg(ctx context.Context, params
 func (c *Client) sendActionsListRunnerApplicationsForOrg(ctx context.Context, params ActionsListRunnerApplicationsForOrgParams) (res []RunnerApplication, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-runner-applications-for-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runners/downloads"),
 	}
 
 	// Run stopwatch.
@@ -6851,6 +14706,8 @@ func (c *Client) ActionsListRunnerApplicationsForRepo(ctx context.Context, param
 func (c *Client) sendActionsListRunnerApplicationsForRepo(ctx context.Context, params ActionsListRunnerApplicationsForRepoParams) (res []RunnerApplication, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-runner-applications-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runners/downloads"),
 	}
 
 	// Run stopwatch.
@@ -6963,6 +14820,8 @@ func (c *Client) ActionsListSelectedReposForOrgSecret(ctx context.Context, param
 func (c *Client) sendActionsListSelectedReposForOrgSecret(ctx context.Context, params ActionsListSelectedReposForOrgSecretParams) (res *ActionsListSelectedReposForOrgSecretOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-selected-repos-for-org-secret"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/{secret_name}/repositories"),
 	}
 
 	// Run stopwatch.
@@ -7115,6 +14974,8 @@ func (c *Client) ActionsListSelectedRepositoriesEnabledGithubActionsOrganization
 func (c *Client) sendActionsListSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, params ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams) (res *ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-selected-repositories-enabled-github-actions-organization"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions/repositories"),
 	}
 
 	// Run stopwatch.
@@ -7247,6 +15108,8 @@ func (c *Client) ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, pa
 func (c *Client) sendActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, params ActionsListSelfHostedRunnerGroupsForOrgParams) (res *ActionsListSelfHostedRunnerGroupsForOrgOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-self-hosted-runner-groups-for-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups"),
 	}
 
 	// Run stopwatch.
@@ -7376,6 +15239,8 @@ func (c *Client) ActionsListSelfHostedRunnersForOrg(ctx context.Context, params 
 func (c *Client) sendActionsListSelfHostedRunnersForOrg(ctx context.Context, params ActionsListSelfHostedRunnersForOrgParams) (res *ActionsListSelfHostedRunnersForOrgOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-self-hosted-runners-for-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runners"),
 	}
 
 	// Run stopwatch.
@@ -7505,6 +15370,8 @@ func (c *Client) ActionsListSelfHostedRunnersForRepo(ctx context.Context, params
 func (c *Client) sendActionsListSelfHostedRunnersForRepo(ctx context.Context, params ActionsListSelfHostedRunnersForRepoParams) (res *ActionsListSelfHostedRunnersForRepoOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-self-hosted-runners-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runners"),
 	}
 
 	// Run stopwatch.
@@ -7656,6 +15523,8 @@ func (c *Client) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, 
 func (c *Client) sendActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, params ActionsListSelfHostedRunnersInGroupForOrgParams) (res *ActionsListSelfHostedRunnersInGroupForOrgOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-self-hosted-runners-in-group-for-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/runners"),
 	}
 
 	// Run stopwatch.
@@ -7805,6 +15674,8 @@ func (c *Client) ActionsListWorkflowRunArtifacts(ctx context.Context, params Act
 func (c *Client) sendActionsListWorkflowRunArtifacts(ctx context.Context, params ActionsListWorkflowRunArtifactsParams) (res *ActionsListWorkflowRunArtifactsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-workflow-run-artifacts"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/artifacts"),
 	}
 
 	// Run stopwatch.
@@ -7976,6 +15847,8 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 func (c *Client) sendActionsListWorkflowRunsForRepo(ctx context.Context, params ActionsListWorkflowRunsForRepoParams) (res *ActionsListWorkflowRunsForRepoOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-workflow-runs-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs"),
 	}
 
 	// Run stopwatch.
@@ -8215,6 +16088,8 @@ func (c *Client) ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWo
 func (c *Client) sendActionsReRunWorkflow(ctx context.Context, params ActionsReRunWorkflowParams) (res *ActionsReRunWorkflowCreated, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/re-run-workflow"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/rerun"),
 	}
 
 	// Run stopwatch.
@@ -8350,6 +16225,8 @@ func (c *Client) ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context
 func (c *Client) sendActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams) (res *ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/remove-repo-access-to-self-hosted-runner-group-in-org"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}"),
 	}
 
 	// Run stopwatch.
@@ -8481,6 +16358,8 @@ func (c *Client) ActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context, par
 func (c *Client) sendActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context, params ActionsRemoveSelectedRepoFromOrgSecretParams) (res ActionsRemoveSelectedRepoFromOrgSecretRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/remove-selected-repo-from-org-secret"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"),
 	}
 
 	// Run stopwatch.
@@ -8613,6 +16492,8 @@ func (c *Client) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Contex
 func (c *Client) sendActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Context, params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams) (res *ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/remove-self-hosted-runner-from-group-for-org"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"),
 	}
 
 	// Run stopwatch.
@@ -8742,6 +16623,8 @@ func (c *Client) ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWo
 func (c *Client) sendActionsRetryWorkflow(ctx context.Context, params ActionsRetryWorkflowParams) (res *ActionsRetryWorkflowCreated, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/retry-workflow"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/retry"),
 	}
 
 	// Run stopwatch.
@@ -8871,6 +16754,8 @@ func (c *Client) ActionsReviewPendingDeploymentsForRun(ctx context.Context, requ
 func (c *Client) sendActionsReviewPendingDeploymentsForRun(ctx context.Context, request *ActionsReviewPendingDeploymentsForRunReq, params ActionsReviewPendingDeploymentsForRunParams) (res []Deployment, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/review-pending-deployments-for-run"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -9021,6 +16906,8 @@ func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, reque
 func (c *Client) sendActionsSetAllowedActionsOrganization(ctx context.Context, request OptSelectedActions, params ActionsSetAllowedActionsOrganizationParams) (res *ActionsSetAllowedActionsOrganizationNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-allowed-actions-organization"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions/selected-actions"),
 	}
 
 	// Run stopwatch.
@@ -9123,6 +17010,8 @@ func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request
 func (c *Client) sendActionsSetAllowedActionsRepository(ctx context.Context, request OptSelectedActions, params ActionsSetAllowedActionsRepositoryParams) (res *ActionsSetAllowedActionsRepositoryNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-allowed-actions-repository"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/permissions/selected-actions"),
 	}
 
 	// Run stopwatch.
@@ -9240,6 +17129,8 @@ func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Cont
 func (c *Client) sendActionsSetGithubActionsPermissionsOrganization(ctx context.Context, request *ActionsSetGithubActionsPermissionsOrganizationReq, params ActionsSetGithubActionsPermissionsOrganizationParams) (res *ActionsSetGithubActionsPermissionsOrganizationNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-github-actions-permissions-organization"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -9348,6 +17239,8 @@ func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Contex
 func (c *Client) sendActionsSetGithubActionsPermissionsRepository(ctx context.Context, request *ActionsSetGithubActionsPermissionsRepositoryReq, params ActionsSetGithubActionsPermissionsRepositoryParams) (res *ActionsSetGithubActionsPermissionsRepositoryNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-github-actions-permissions-repository"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/permissions"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -9474,6 +17367,8 @@ func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 func (c *Client) sendActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, request *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq, params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams) (res *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-repo-access-to-self-hosted-runner-group-in-org"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -9599,6 +17494,8 @@ func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, reques
 func (c *Client) sendActionsSetSelectedReposForOrgSecret(ctx context.Context, request *ActionsSetSelectedReposForOrgSecretReq, params ActionsSetSelectedReposForOrgSecretParams) (res *ActionsSetSelectedReposForOrgSecretNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-selected-repos-for-org-secret"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/{secret_name}/repositories"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -9725,6 +17622,8 @@ func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(
 func (c *Client) sendActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, request *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq, params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams) (res *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-selected-repositories-enabled-github-actions-organization"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions/repositories"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -9831,6 +17730,8 @@ func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, r
 func (c *Client) sendActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, request *ActionsSetSelfHostedRunnersInGroupForOrgReq, params ActionsSetSelfHostedRunnersInGroupForOrgParams) (res *ActionsSetSelfHostedRunnersInGroupForOrgNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-self-hosted-runners-in-group-for-org"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/runners"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -9956,6 +17857,8 @@ func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 func (c *Client) sendActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, request *ActionsUpdateSelfHostedRunnerGroupForOrgReq, params ActionsUpdateSelfHostedRunnerGroupForOrgParams) (res *RunnerGroupsOrg, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/update-self-hosted-runner-group-for-org"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -10076,6 +17979,8 @@ func (c *Client) ActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.Conte
 func (c *Client) sendActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.Context, params ActivityCheckRepoIsStarredByAuthenticatedUserParams) (res ActivityCheckRepoIsStarredByAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/check-repo-is-starred-by-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user/starred/{owner}/{repo}"),
 	}
 
 	// Run stopwatch.
@@ -10186,6 +18091,8 @@ func (c *Client) ActivityDeleteRepoSubscription(ctx context.Context, params Acti
 func (c *Client) sendActivityDeleteRepoSubscription(ctx context.Context, params ActivityDeleteRepoSubscriptionParams) (res *ActivityDeleteRepoSubscriptionNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/delete-repo-subscription"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/subscription"),
 	}
 
 	// Run stopwatch.
@@ -10299,6 +18206,8 @@ func (c *Client) ActivityDeleteThreadSubscription(ctx context.Context, params Ac
 func (c *Client) sendActivityDeleteThreadSubscription(ctx context.Context, params ActivityDeleteThreadSubscriptionParams) (res ActivityDeleteThreadSubscriptionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/delete-thread-subscription"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/notifications/threads/{thread_id}/subscription"),
 	}
 
 	// Run stopwatch.
@@ -10403,6 +18312,8 @@ func (c *Client) ActivityGetFeeds(ctx context.Context) (*Feed, error) {
 func (c *Client) sendActivityGetFeeds(ctx context.Context) (res *Feed, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/get-feeds"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/feeds"),
 	}
 
 	// Run stopwatch.
@@ -10474,6 +18385,8 @@ func (c *Client) ActivityGetRepoSubscription(ctx context.Context, params Activit
 func (c *Client) sendActivityGetRepoSubscription(ctx context.Context, params ActivityGetRepoSubscriptionParams) (res ActivityGetRepoSubscriptionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/get-repo-subscription"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/subscription"),
 	}
 
 	// Run stopwatch.
@@ -10583,6 +18496,8 @@ func (c *Client) ActivityGetThread(ctx context.Context, params ActivityGetThread
 func (c *Client) sendActivityGetThread(ctx context.Context, params ActivityGetThreadParams) (res ActivityGetThreadRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/get-thread"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/notifications/threads/{thread_id}"),
 	}
 
 	// Run stopwatch.
@@ -10675,6 +18590,8 @@ func (c *Client) ActivityGetThreadSubscriptionForAuthenticatedUser(ctx context.C
 func (c *Client) sendActivityGetThreadSubscriptionForAuthenticatedUser(ctx context.Context, params ActivityGetThreadSubscriptionForAuthenticatedUserParams) (res ActivityGetThreadSubscriptionForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/get-thread-subscription-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/notifications/threads/{thread_id}/subscription"),
 	}
 
 	// Run stopwatch.
@@ -10766,6 +18683,8 @@ func (c *Client) ActivityListEventsForAuthenticatedUser(ctx context.Context, par
 func (c *Client) sendActivityListEventsForAuthenticatedUser(ctx context.Context, params ActivityListEventsForAuthenticatedUserParams) (res []Event, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-events-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/users/{username}/events"),
 	}
 
 	// Run stopwatch.
@@ -10894,6 +18813,8 @@ func (c *Client) ActivityListNotificationsForAuthenticatedUser(ctx context.Conte
 func (c *Client) sendActivityListNotificationsForAuthenticatedUser(ctx context.Context, params ActivityListNotificationsForAuthenticatedUserParams) (res ActivityListNotificationsForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-notifications-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/notifications"),
 	}
 
 	// Run stopwatch.
@@ -11071,6 +18992,8 @@ func (c *Client) ActivityListOrgEventsForAuthenticatedUser(ctx context.Context, 
 func (c *Client) sendActivityListOrgEventsForAuthenticatedUser(ctx context.Context, params ActivityListOrgEventsForAuthenticatedUserParams) (res []Event, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-org-events-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/users/{username}/events/orgs/{org}"),
 	}
 
 	// Run stopwatch.
@@ -11218,6 +19141,8 @@ func (c *Client) ActivityListPublicEvents(ctx context.Context, params ActivityLi
 func (c *Client) sendActivityListPublicEvents(ctx context.Context, params ActivityListPublicEventsParams) (res ActivityListPublicEventsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-public-events"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/events"),
 	}
 
 	// Run stopwatch.
@@ -11327,6 +19252,8 @@ func (c *Client) ActivityListPublicEventsForRepoNetwork(ctx context.Context, par
 func (c *Client) sendActivityListPublicEventsForRepoNetwork(ctx context.Context, params ActivityListPublicEventsForRepoNetworkParams) (res ActivityListPublicEventsForRepoNetworkRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-public-events-for-repo-network"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/networks/{owner}/{repo}/events"),
 	}
 
 	// Run stopwatch.
@@ -11474,6 +19401,8 @@ func (c *Client) ActivityListPublicEventsForUser(ctx context.Context, params Act
 func (c *Client) sendActivityListPublicEventsForUser(ctx context.Context, params ActivityListPublicEventsForUserParams) (res []Event, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-public-events-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/users/{username}/events/public"),
 	}
 
 	// Run stopwatch.
@@ -11602,6 +19531,8 @@ func (c *Client) ActivityListPublicOrgEvents(ctx context.Context, params Activit
 func (c *Client) sendActivityListPublicOrgEvents(ctx context.Context, params ActivityListPublicOrgEventsParams) (res []Event, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-public-org-events"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/events"),
 	}
 
 	// Run stopwatch.
@@ -11732,6 +19663,8 @@ func (c *Client) ActivityListReceivedEventsForUser(ctx context.Context, params A
 func (c *Client) sendActivityListReceivedEventsForUser(ctx context.Context, params ActivityListReceivedEventsForUserParams) (res []Event, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-received-events-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/users/{username}/received_events"),
 	}
 
 	// Run stopwatch.
@@ -11860,6 +19793,8 @@ func (c *Client) ActivityListReceivedPublicEventsForUser(ctx context.Context, pa
 func (c *Client) sendActivityListReceivedPublicEventsForUser(ctx context.Context, params ActivityListReceivedPublicEventsForUserParams) (res []Event, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-received-public-events-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/users/{username}/received_events/public"),
 	}
 
 	// Run stopwatch.
@@ -11988,6 +19923,8 @@ func (c *Client) ActivityListRepoEvents(ctx context.Context, params ActivityList
 func (c *Client) sendActivityListRepoEvents(ctx context.Context, params ActivityListRepoEventsParams) (res []Event, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-repo-events"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/events"),
 	}
 
 	// Run stopwatch.
@@ -12135,6 +20072,8 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 func (c *Client) sendActivityListRepoNotificationsForAuthenticatedUser(ctx context.Context, params ActivityListRepoNotificationsForAuthenticatedUserParams) (res *ActivityListRepoNotificationsForAuthenticatedUserOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-repo-notifications-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/notifications"),
 	}
 
 	// Run stopwatch.
@@ -12352,6 +20291,8 @@ func (c *Client) ActivityListReposStarredByAuthenticatedUser(ctx context.Context
 func (c *Client) sendActivityListReposStarredByAuthenticatedUser(ctx context.Context, params ActivityListReposStarredByAuthenticatedUserParams) (res ActivityListReposStarredByAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-repos-starred-by-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user/starred"),
 	}
 
 	// Run stopwatch.
@@ -12495,6 +20436,8 @@ func (c *Client) ActivityListReposWatchedByUser(ctx context.Context, params Acti
 func (c *Client) sendActivityListReposWatchedByUser(ctx context.Context, params ActivityListReposWatchedByUserParams) (res *ActivityListReposWatchedByUserOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-repos-watched-by-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/users/{username}/subscriptions"),
 	}
 
 	// Run stopwatch.
@@ -12623,6 +20566,8 @@ func (c *Client) ActivityListWatchedReposForAuthenticatedUser(ctx context.Contex
 func (c *Client) sendActivityListWatchedReposForAuthenticatedUser(ctx context.Context, params ActivityListWatchedReposForAuthenticatedUserParams) (res ActivityListWatchedReposForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-watched-repos-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user/subscriptions"),
 	}
 
 	// Run stopwatch.
@@ -12732,6 +20677,8 @@ func (c *Client) ActivityListWatchersForRepo(ctx context.Context, params Activit
 func (c *Client) sendActivityListWatchersForRepo(ctx context.Context, params ActivityListWatchersForRepoParams) (res *ActivityListWatchersForRepoOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-watchers-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/subscribers"),
 	}
 
 	// Run stopwatch.
@@ -12885,6 +20832,8 @@ func (c *Client) ActivityMarkNotificationsAsRead(ctx context.Context, request Op
 func (c *Client) sendActivityMarkNotificationsAsRead(ctx context.Context, request OptActivityMarkNotificationsAsReadReq) (res ActivityMarkNotificationsAsReadRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/mark-notifications-as-read"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/notifications"),
 	}
 
 	// Run stopwatch.
@@ -12965,6 +20914,8 @@ func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, reques
 func (c *Client) sendActivityMarkRepoNotificationsAsRead(ctx context.Context, request OptActivityMarkRepoNotificationsAsReadReq, params ActivityMarkRepoNotificationsAsReadParams) (res ActivityMarkRepoNotificationsAsReadRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/mark-repo-notifications-as-read"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/notifications"),
 	}
 
 	// Run stopwatch.
@@ -13077,6 +21028,8 @@ func (c *Client) ActivityMarkThreadAsRead(ctx context.Context, params ActivityMa
 func (c *Client) sendActivityMarkThreadAsRead(ctx context.Context, params ActivityMarkThreadAsReadParams) (res ActivityMarkThreadAsReadRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/mark-thread-as-read"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/notifications/threads/{thread_id}"),
 	}
 
 	// Run stopwatch.
@@ -13169,6 +21122,8 @@ func (c *Client) ActivitySetRepoSubscription(ctx context.Context, request OptAct
 func (c *Client) sendActivitySetRepoSubscription(ctx context.Context, request OptActivitySetRepoSubscriptionReq, params ActivitySetRepoSubscriptionParams) (res *RepositorySubscription, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/set-repo-subscription"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/subscription"),
 	}
 
 	// Run stopwatch.
@@ -13288,6 +21243,8 @@ func (c *Client) ActivitySetThreadSubscription(ctx context.Context, request OptA
 func (c *Client) sendActivitySetThreadSubscription(ctx context.Context, request OptActivitySetThreadSubscriptionReq, params ActivitySetThreadSubscriptionParams) (res ActivitySetThreadSubscriptionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/set-thread-subscription"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/notifications/threads/{thread_id}/subscription"),
 	}
 
 	// Run stopwatch.
@@ -13383,6 +21340,8 @@ func (c *Client) ActivityStarRepoForAuthenticatedUser(ctx context.Context, param
 func (c *Client) sendActivityStarRepoForAuthenticatedUser(ctx context.Context, params ActivityStarRepoForAuthenticatedUserParams) (res ActivityStarRepoForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/star-repo-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/user/starred/{owner}/{repo}"),
 	}
 
 	// Run stopwatch.
@@ -13491,6 +21450,8 @@ func (c *Client) ActivityUnstarRepoForAuthenticatedUser(ctx context.Context, par
 func (c *Client) sendActivityUnstarRepoForAuthenticatedUser(ctx context.Context, params ActivityUnstarRepoForAuthenticatedUserParams) (res ActivityUnstarRepoForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/unstar-repo-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/user/starred/{owner}/{repo}"),
 	}
 
 	// Run stopwatch.
@@ -13604,6 +21565,8 @@ func (c *Client) AppsAddRepoToInstallation(ctx context.Context, params AppsAddRe
 func (c *Client) sendAppsAddRepoToInstallation(ctx context.Context, params AppsAddRepoToInstallationParams) (res AppsAddRepoToInstallationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/add-repo-to-installation"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/user/installations/{installation_id}/repositories/{repository_id}"),
 	}
 
 	// Run stopwatch.
@@ -13717,6 +21680,8 @@ func (c *Client) AppsCheckToken(ctx context.Context, request *AppsCheckTokenReq,
 func (c *Client) sendAppsCheckToken(ctx context.Context, request *AppsCheckTokenReq, params AppsCheckTokenParams) (res AppsCheckTokenRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/check-token"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/applications/{client_id}/token"),
 	}
 
 	// Run stopwatch.
@@ -13819,6 +21784,8 @@ func (c *Client) AppsCreateContentAttachment(ctx context.Context, request *AppsC
 func (c *Client) sendAppsCreateContentAttachment(ctx context.Context, request *AppsCreateContentAttachmentReq, params AppsCreateContentAttachmentParams) (res AppsCreateContentAttachmentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/create-content-attachment"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/content_references/{content_reference_id}/attachments"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -13962,6 +21929,8 @@ func (c *Client) AppsCreateFromManifest(ctx context.Context, request *AppsCreate
 func (c *Client) sendAppsCreateFromManifest(ctx context.Context, request *AppsCreateFromManifestReq, params AppsCreateFromManifestParams) (res AppsCreateFromManifestRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/create-from-manifest"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/app-manifests/{code}/conversions"),
 	}
 
 	// Run stopwatch.
@@ -14064,6 +22033,8 @@ func (c *Client) AppsCreateInstallationAccessToken(ctx context.Context, request 
 func (c *Client) sendAppsCreateInstallationAccessToken(ctx context.Context, request OptAppsCreateInstallationAccessTokenReq, params AppsCreateInstallationAccessTokenParams) (res AppsCreateInstallationAccessTokenRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/create-installation-access-token"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/app/installations/{installation_id}/access_tokens"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -14182,6 +22153,8 @@ func (c *Client) AppsDeleteAuthorization(ctx context.Context, request *AppsDelet
 func (c *Client) sendAppsDeleteAuthorization(ctx context.Context, request *AppsDeleteAuthorizationReq, params AppsDeleteAuthorizationParams) (res AppsDeleteAuthorizationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/delete-authorization"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/applications/{client_id}/grant"),
 	}
 
 	// Run stopwatch.
@@ -14280,6 +22253,8 @@ func (c *Client) AppsDeleteInstallation(ctx context.Context, params AppsDeleteIn
 func (c *Client) sendAppsDeleteInstallation(ctx context.Context, params AppsDeleteInstallationParams) (res AppsDeleteInstallationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/delete-installation"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/app/installations/{installation_id}"),
 	}
 
 	// Run stopwatch.
@@ -14372,6 +22347,8 @@ func (c *Client) AppsDeleteToken(ctx context.Context, request *AppsDeleteTokenRe
 func (c *Client) sendAppsDeleteToken(ctx context.Context, request *AppsDeleteTokenReq, params AppsDeleteTokenParams) (res AppsDeleteTokenRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/delete-token"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/applications/{client_id}/token"),
 	}
 
 	// Run stopwatch.
@@ -14472,6 +22449,8 @@ func (c *Client) AppsGetAuthenticated(ctx context.Context) (*Integration, error)
 func (c *Client) sendAppsGetAuthenticated(ctx context.Context) (res *Integration, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/get-authenticated"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/app"),
 	}
 
 	// Run stopwatch.
@@ -14550,6 +22529,8 @@ func (c *Client) AppsGetBySlug(ctx context.Context, params AppsGetBySlugParams) 
 func (c *Client) sendAppsGetBySlug(ctx context.Context, params AppsGetBySlugParams) (res AppsGetBySlugRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/get-by-slug"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apps/{app_slug}"),
 	}
 
 	// Run stopwatch.
@@ -14646,6 +22627,8 @@ func (c *Client) AppsGetSubscriptionPlanForAccount(ctx context.Context, params A
 func (c *Client) sendAppsGetSubscriptionPlanForAccount(ctx context.Context, params AppsGetSubscriptionPlanForAccountParams) (res AppsGetSubscriptionPlanForAccountRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/get-subscription-plan-for-account"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/marketplace_listing/accounts/{account_id}"),
 	}
 
 	// Run stopwatch.
@@ -14742,6 +22725,8 @@ func (c *Client) AppsGetSubscriptionPlanForAccountStubbed(ctx context.Context, p
 func (c *Client) sendAppsGetSubscriptionPlanForAccountStubbed(ctx context.Context, params AppsGetSubscriptionPlanForAccountStubbedParams) (res AppsGetSubscriptionPlanForAccountStubbedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/get-subscription-plan-for-account-stubbed"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/marketplace_listing/stubbed/accounts/{account_id}"),
 	}
 
 	// Run stopwatch.
@@ -14835,6 +22820,8 @@ func (c *Client) AppsGetWebhookConfigForApp(ctx context.Context) (*WebhookConfig
 func (c *Client) sendAppsGetWebhookConfigForApp(ctx context.Context) (res *WebhookConfig, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/get-webhook-config-for-app"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/app/hook/config"),
 	}
 
 	// Run stopwatch.
@@ -14909,6 +22896,8 @@ func (c *Client) AppsGetWebhookDelivery(ctx context.Context, params AppsGetWebho
 func (c *Client) sendAppsGetWebhookDelivery(ctx context.Context, params AppsGetWebhookDeliveryParams) (res AppsGetWebhookDeliveryRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/get-webhook-delivery"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/app/hook/deliveries/{delivery_id}"),
 	}
 
 	// Run stopwatch.
@@ -15006,6 +22995,8 @@ func (c *Client) AppsListAccountsForPlan(ctx context.Context, params AppsListAcc
 func (c *Client) sendAppsListAccountsForPlan(ctx context.Context, params AppsListAccountsForPlanParams) (res AppsListAccountsForPlanRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-accounts-for-plan"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/marketplace_listing/plans/{plan_id}/accounts"),
 	}
 
 	// Run stopwatch.
@@ -15176,6 +23167,8 @@ func (c *Client) AppsListAccountsForPlanStubbed(ctx context.Context, params Apps
 func (c *Client) sendAppsListAccountsForPlanStubbed(ctx context.Context, params AppsListAccountsForPlanStubbedParams) (res AppsListAccountsForPlanStubbedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-accounts-for-plan-stubbed"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/marketplace_listing/stubbed/plans/{plan_id}/accounts"),
 	}
 
 	// Run stopwatch.
@@ -15344,6 +23337,8 @@ func (c *Client) AppsListInstallationReposForAuthenticatedUser(ctx context.Conte
 func (c *Client) sendAppsListInstallationReposForAuthenticatedUser(ctx context.Context, params AppsListInstallationReposForAuthenticatedUserParams) (res AppsListInstallationReposForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-installation-repos-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user/installations/{installation_id}/repositories"),
 	}
 
 	// Run stopwatch.
@@ -15477,6 +23472,8 @@ func (c *Client) AppsListPlans(ctx context.Context, params AppsListPlansParams) 
 func (c *Client) sendAppsListPlans(ctx context.Context, params AppsListPlansParams) (res AppsListPlansRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-plans"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/marketplace_listing/plans"),
 	}
 
 	// Run stopwatch.
@@ -15591,6 +23588,8 @@ func (c *Client) AppsListPlansStubbed(ctx context.Context, params AppsListPlansS
 func (c *Client) sendAppsListPlansStubbed(ctx context.Context, params AppsListPlansStubbedParams) (res AppsListPlansStubbedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-plans-stubbed"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/marketplace_listing/stubbed/plans"),
 	}
 
 	// Run stopwatch.
@@ -15703,6 +23702,8 @@ func (c *Client) AppsListReposAccessibleToInstallation(ctx context.Context, para
 func (c *Client) sendAppsListReposAccessibleToInstallation(ctx context.Context, params AppsListReposAccessibleToInstallationParams) (res AppsListReposAccessibleToInstallationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-repos-accessible-to-installation"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/installation/repositories"),
 	}
 
 	// Run stopwatch.
@@ -15814,6 +23815,8 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUser(ctx context.Context, 
 func (c *Client) sendAppsListSubscriptionsForAuthenticatedUser(ctx context.Context, params AppsListSubscriptionsForAuthenticatedUserParams) (res AppsListSubscriptionsForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-subscriptions-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user/marketplace_purchases"),
 	}
 
 	// Run stopwatch.
@@ -15925,6 +23928,8 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Co
 func (c *Client) sendAppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Context, params AppsListSubscriptionsForAuthenticatedUserStubbedParams) (res AppsListSubscriptionsForAuthenticatedUserStubbedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-subscriptions-for-authenticated-user-stubbed"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user/marketplace_purchases/stubbed"),
 	}
 
 	// Run stopwatch.
@@ -16037,6 +24042,8 @@ func (c *Client) AppsListWebhookDeliveries(ctx context.Context, params AppsListW
 func (c *Client) sendAppsListWebhookDeliveries(ctx context.Context, params AppsListWebhookDeliveriesParams) (res AppsListWebhookDeliveriesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-webhook-deliveries"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/app/hook/deliveries"),
 	}
 
 	// Run stopwatch.
@@ -16149,6 +24156,8 @@ func (c *Client) AppsRedeliverWebhookDelivery(ctx context.Context, params AppsRe
 func (c *Client) sendAppsRedeliverWebhookDelivery(ctx context.Context, params AppsRedeliverWebhookDeliveryParams) (res AppsRedeliverWebhookDeliveryRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/redeliver-webhook-delivery"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/app/hook/deliveries/{delivery_id}/attempts"),
 	}
 
 	// Run stopwatch.
@@ -16244,6 +24253,8 @@ func (c *Client) AppsRemoveRepoFromInstallation(ctx context.Context, params Apps
 func (c *Client) sendAppsRemoveRepoFromInstallation(ctx context.Context, params AppsRemoveRepoFromInstallationParams) (res AppsRemoveRepoFromInstallationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/remove-repo-from-installation"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/user/installations/{installation_id}/repositories/{repository_id}"),
 	}
 
 	// Run stopwatch.
@@ -16357,6 +24368,8 @@ func (c *Client) AppsResetToken(ctx context.Context, request *AppsResetTokenReq,
 func (c *Client) sendAppsResetToken(ctx context.Context, request *AppsResetTokenReq, params AppsResetTokenParams) (res AppsResetTokenRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/reset-token"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/applications/{client_id}/token"),
 	}
 
 	// Run stopwatch.
@@ -16459,6 +24472,8 @@ func (c *Client) AppsRevokeInstallationAccessToken(ctx context.Context) error {
 func (c *Client) sendAppsRevokeInstallationAccessToken(ctx context.Context) (res *AppsRevokeInstallationAccessTokenNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/revoke-installation-access-token"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/installation/token"),
 	}
 
 	// Run stopwatch.
@@ -16535,6 +24550,8 @@ func (c *Client) AppsScopeToken(ctx context.Context, request *AppsScopeTokenReq,
 func (c *Client) sendAppsScopeToken(ctx context.Context, request *AppsScopeTokenReq, params AppsScopeTokenParams) (res AppsScopeTokenRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/scope-token"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/applications/{client_id}/token/scoped"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -16642,6 +24659,8 @@ func (c *Client) AppsSuspendInstallation(ctx context.Context, params AppsSuspend
 func (c *Client) sendAppsSuspendInstallation(ctx context.Context, params AppsSuspendInstallationParams) (res AppsSuspendInstallationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/suspend-installation"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/app/installations/{installation_id}/suspended"),
 	}
 
 	// Run stopwatch.
@@ -16735,6 +24754,8 @@ func (c *Client) AppsUnsuspendInstallation(ctx context.Context, params AppsUnsus
 func (c *Client) sendAppsUnsuspendInstallation(ctx context.Context, params AppsUnsuspendInstallationParams) (res AppsUnsuspendInstallationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/unsuspend-installation"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/app/installations/{installation_id}/suspended"),
 	}
 
 	// Run stopwatch.
@@ -16829,6 +24850,8 @@ func (c *Client) AppsUpdateWebhookConfigForApp(ctx context.Context, request OptA
 func (c *Client) sendAppsUpdateWebhookConfigForApp(ctx context.Context, request OptAppsUpdateWebhookConfigForAppReq) (res *WebhookConfig, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/update-webhook-config-for-app"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/app/hook/config"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -16926,6 +24949,8 @@ func (c *Client) BillingGetGithubActionsBillingGhe(ctx context.Context, params B
 func (c *Client) sendBillingGetGithubActionsBillingGhe(ctx context.Context, params BillingGetGithubActionsBillingGheParams) (res *ActionsBillingUsage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-github-actions-billing-ghe"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/settings/billing/actions"),
 	}
 
 	// Run stopwatch.
@@ -17023,6 +25048,8 @@ func (c *Client) BillingGetGithubActionsBillingOrg(ctx context.Context, params B
 func (c *Client) sendBillingGetGithubActionsBillingOrg(ctx context.Context, params BillingGetGithubActionsBillingOrgParams) (res *ActionsBillingUsage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-github-actions-billing-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/settings/billing/actions"),
 	}
 
 	// Run stopwatch.
@@ -17120,6 +25147,8 @@ func (c *Client) BillingGetGithubActionsBillingUser(ctx context.Context, params 
 func (c *Client) sendBillingGetGithubActionsBillingUser(ctx context.Context, params BillingGetGithubActionsBillingUserParams) (res *ActionsBillingUsage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-github-actions-billing-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/users/{username}/settings/billing/actions"),
 	}
 
 	// Run stopwatch.
@@ -17214,6 +25243,8 @@ func (c *Client) BillingGetGithubPackagesBillingGhe(ctx context.Context, params 
 func (c *Client) sendBillingGetGithubPackagesBillingGhe(ctx context.Context, params BillingGetGithubPackagesBillingGheParams) (res *PackagesBillingUsage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-github-packages-billing-ghe"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/settings/billing/packages"),
 	}
 
 	// Run stopwatch.
@@ -17308,6 +25339,8 @@ func (c *Client) BillingGetGithubPackagesBillingOrg(ctx context.Context, params 
 func (c *Client) sendBillingGetGithubPackagesBillingOrg(ctx context.Context, params BillingGetGithubPackagesBillingOrgParams) (res *PackagesBillingUsage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-github-packages-billing-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/settings/billing/packages"),
 	}
 
 	// Run stopwatch.
@@ -17402,6 +25435,8 @@ func (c *Client) BillingGetGithubPackagesBillingUser(ctx context.Context, params
 func (c *Client) sendBillingGetGithubPackagesBillingUser(ctx context.Context, params BillingGetGithubPackagesBillingUserParams) (res *PackagesBillingUsage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-github-packages-billing-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/users/{username}/settings/billing/packages"),
 	}
 
 	// Run stopwatch.
@@ -17496,6 +25531,8 @@ func (c *Client) BillingGetSharedStorageBillingGhe(ctx context.Context, params B
 func (c *Client) sendBillingGetSharedStorageBillingGhe(ctx context.Context, params BillingGetSharedStorageBillingGheParams) (res *CombinedBillingUsage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-shared-storage-billing-ghe"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/settings/billing/shared-storage"),
 	}
 
 	// Run stopwatch.
@@ -17590,6 +25627,8 @@ func (c *Client) BillingGetSharedStorageBillingOrg(ctx context.Context, params B
 func (c *Client) sendBillingGetSharedStorageBillingOrg(ctx context.Context, params BillingGetSharedStorageBillingOrgParams) (res *CombinedBillingUsage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-shared-storage-billing-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/settings/billing/shared-storage"),
 	}
 
 	// Run stopwatch.
@@ -17684,6 +25723,8 @@ func (c *Client) BillingGetSharedStorageBillingUser(ctx context.Context, params 
 func (c *Client) sendBillingGetSharedStorageBillingUser(ctx context.Context, params BillingGetSharedStorageBillingUserParams) (res *CombinedBillingUsage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-shared-storage-billing-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/users/{username}/settings/billing/shared-storage"),
 	}
 
 	// Run stopwatch.
@@ -17782,6 +25823,8 @@ func (c *Client) ChecksCreateSuite(ctx context.Context, request *ChecksCreateSui
 func (c *Client) sendChecksCreateSuite(ctx context.Context, request *ChecksCreateSuiteReq, params ChecksCreateSuiteParams) (res ChecksCreateSuiteRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/create-suite"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/check-suites"),
 	}
 
 	// Run stopwatch.
@@ -17899,6 +25942,8 @@ func (c *Client) ChecksGet(ctx context.Context, params ChecksGetParams) (*CheckR
 func (c *Client) sendChecksGet(ctx context.Context, params ChecksGetParams) (res *CheckRun, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/get"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/check-runs/{check_run_id}"),
 	}
 
 	// Run stopwatch.
@@ -18031,6 +26076,8 @@ func (c *Client) ChecksGetSuite(ctx context.Context, params ChecksGetSuiteParams
 func (c *Client) sendChecksGetSuite(ctx context.Context, params ChecksGetSuiteParams) (res *CheckSuite, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/get-suite"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/check-suites/{check_suite_id}"),
 	}
 
 	// Run stopwatch.
@@ -18161,6 +26208,8 @@ func (c *Client) ChecksListAnnotations(ctx context.Context, params ChecksListAnn
 func (c *Client) sendChecksListAnnotations(ctx context.Context, params ChecksListAnnotationsParams) (res *ChecksListAnnotationsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/list-annotations"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/check-runs/{check_run_id}/annotations"),
 	}
 
 	// Run stopwatch.
@@ -18333,6 +26382,8 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 func (c *Client) sendChecksListForRef(ctx context.Context, params ChecksListForRefParams) (res *ChecksListForRefOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/list-for-ref"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{ref}/check-runs"),
 	}
 
 	// Run stopwatch.
@@ -18572,6 +26623,8 @@ func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSui
 func (c *Client) sendChecksListForSuite(ctx context.Context, params ChecksListForSuiteParams) (res *ChecksListForSuiteOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/list-for-suite"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs"),
 	}
 
 	// Run stopwatch.
@@ -18795,6 +26848,8 @@ func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSu
 func (c *Client) sendChecksListSuitesForRef(ctx context.Context, params ChecksListSuitesForRefParams) (res *ChecksListSuitesForRefOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/list-suites-for-ref"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{ref}/check-suites"),
 	}
 
 	// Run stopwatch.
@@ -19000,6 +27055,8 @@ func (c *Client) ChecksRerequestSuite(ctx context.Context, params ChecksRereques
 func (c *Client) sendChecksRerequestSuite(ctx context.Context, params ChecksRerequestSuiteParams) (res *ChecksRerequestSuiteCreated, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/rerequest-suite"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest"),
 	}
 
 	// Run stopwatch.
@@ -19132,6 +27189,8 @@ func (c *Client) ChecksSetSuitesPreferences(ctx context.Context, request *Checks
 func (c *Client) sendChecksSetSuitesPreferences(ctx context.Context, request *ChecksSetSuitesPreferencesReq, params ChecksSetSuitesPreferencesParams) (res *CheckSuitePreference, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/set-suites-preferences"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/check-suites/preferences"),
 	}
 
 	// Run stopwatch.
@@ -19302,6 +27361,8 @@ func (c *Client) CodeScanningDeleteAnalysis(ctx context.Context, params CodeScan
 func (c *Client) sendCodeScanningDeleteAnalysis(ctx context.Context, params CodeScanningDeleteAnalysisParams) (res CodeScanningDeleteAnalysisRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/delete-analysis"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}"),
 	}
 
 	// Run stopwatch.
@@ -19456,6 +27517,8 @@ func (c *Client) CodeScanningGetAlert(ctx context.Context, params CodeScanningGe
 func (c *Client) sendCodeScanningGetAlert(ctx context.Context, params CodeScanningGetAlertParams) (res CodeScanningGetAlertRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/get-alert"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"),
 	}
 
 	// Run stopwatch.
@@ -19604,6 +27667,8 @@ func (c *Client) CodeScanningGetAnalysis(ctx context.Context, params CodeScannin
 func (c *Client) sendCodeScanningGetAnalysis(ctx context.Context, params CodeScanningGetAnalysisParams) (res CodeScanningGetAnalysisRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/get-analysis"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}"),
 	}
 
 	// Run stopwatch.
@@ -19736,6 +27801,8 @@ func (c *Client) CodeScanningGetSarif(ctx context.Context, params CodeScanningGe
 func (c *Client) sendCodeScanningGetSarif(ctx context.Context, params CodeScanningGetSarifParams) (res CodeScanningGetSarifRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/get-sarif"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}"),
 	}
 
 	// Run stopwatch.
@@ -19865,6 +27932,8 @@ func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params Code
 func (c *Client) sendCodeScanningListAlertInstances(ctx context.Context, params CodeScanningListAlertInstancesParams) (res CodeScanningListAlertInstancesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/list-alert-instances"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances"),
 	}
 
 	// Run stopwatch.
@@ -20061,6 +28130,8 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 func (c *Client) sendCodeScanningListAlertsForRepo(ctx context.Context, params CodeScanningListAlertsForRepoParams) (res CodeScanningListAlertsForRepoRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/list-alerts-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/alerts"),
 	}
 
 	// Run stopwatch.
@@ -20299,6 +28370,8 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 func (c *Client) sendCodeScanningListRecentAnalyses(ctx context.Context, params CodeScanningListRecentAnalysesParams) (res CodeScanningListRecentAnalysesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/list-recent-analyses"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/analyses"),
 	}
 
 	// Run stopwatch.
@@ -20528,6 +28601,8 @@ func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request *CodeScann
 func (c *Client) sendCodeScanningUpdateAlert(ctx context.Context, request *CodeScanningUpdateAlertReq, params CodeScanningUpdateAlertParams) (res CodeScanningUpdateAlertRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/update-alert"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -20696,6 +28771,8 @@ func (c *Client) CodeScanningUploadSarif(ctx context.Context, request *CodeScann
 func (c *Client) sendCodeScanningUploadSarif(ctx context.Context, request *CodeScanningUploadSarifReq, params CodeScanningUploadSarifParams) (res CodeScanningUploadSarifRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/upload-sarif"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/sarifs"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -20817,6 +28894,8 @@ func (c *Client) CodesOfConductGetAllCodesOfConduct(ctx context.Context) (CodesO
 func (c *Client) sendCodesOfConductGetAllCodesOfConduct(ctx context.Context) (res CodesOfConductGetAllCodesOfConductRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("codes-of-conduct/get-all-codes-of-conduct"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/codes_of_conduct"),
 	}
 
 	// Run stopwatch.
@@ -20888,6 +28967,8 @@ func (c *Client) CodesOfConductGetConductCode(ctx context.Context, params CodesO
 func (c *Client) sendCodesOfConductGetConductCode(ctx context.Context, params CodesOfConductGetConductCodeParams) (res CodesOfConductGetConductCodeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("codes-of-conduct/get-conduct-code"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/codes_of_conduct/{key}"),
 	}
 
 	// Run stopwatch.
@@ -20977,6 +29058,8 @@ func (c *Client) EmojisGet(ctx context.Context) (EmojisGetRes, error) {
 func (c *Client) sendEmojisGet(ctx context.Context) (res EmojisGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("emojis/get"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/emojis"),
 	}
 
 	// Run stopwatch.
@@ -21052,6 +29135,8 @@ func (c *Client) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(
 func (c *Client) sendEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res *EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}"),
 	}
 
 	// Run stopwatch.
@@ -21181,6 +29266,8 @@ func (c *Client) EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx cont
 func (c *Client) sendEnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx context.Context, params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams) (res *EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/add-self-hosted-runner-to-group-for-enterprise"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"),
 	}
 
 	// Run stopwatch.
@@ -21315,6 +29402,8 @@ func (c *Client) EnterpriseAdminCreateRegistrationTokenForEnterprise(ctx context
 func (c *Client) sendEnterpriseAdminCreateRegistrationTokenForEnterprise(ctx context.Context, params EnterpriseAdminCreateRegistrationTokenForEnterpriseParams) (res *AuthenticationToken, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/create-registration-token-for-enterprise"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runners/registration-token"),
 	}
 
 	// Run stopwatch.
@@ -21414,6 +29503,8 @@ func (c *Client) EnterpriseAdminCreateRemoveTokenForEnterprise(ctx context.Conte
 func (c *Client) sendEnterpriseAdminCreateRemoveTokenForEnterprise(ctx context.Context, params EnterpriseAdminCreateRemoveTokenForEnterpriseParams) (res *AuthenticationToken, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/create-remove-token-for-enterprise"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runners/remove-token"),
 	}
 
 	// Run stopwatch.
@@ -21505,6 +29596,8 @@ func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx con
 func (c *Client) sendEnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx context.Context, request *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams) (res *RunnerGroupsEnterprise, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/create-self-hosted-runner-group-for-enterprise"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -21608,6 +29701,8 @@ func (c *Client) EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Contex
 func (c *Client) sendEnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteScimGroupFromEnterpriseParams) (res *EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/delete-scim-group-from-enterprise"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"),
 	}
 
 	// Run stopwatch.
@@ -21718,6 +29813,8 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context
 func (c *Client) sendEnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams) (res *EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/delete-self-hosted-runner-from-enterprise"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runners/{runner_id}"),
 	}
 
 	// Run stopwatch.
@@ -21827,6 +29924,8 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx co
 func (c *Client) sendEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams) (res *EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/delete-self-hosted-runner-group-from-enterprise"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"),
 	}
 
 	// Run stopwatch.
@@ -21936,6 +30035,8 @@ func (c *Client) EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, pa
 func (c *Client) sendEnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteUserFromEnterpriseParams) (res *EnterpriseAdminDeleteUserFromEnterpriseNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/delete-user-from-enterprise"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"),
 	}
 
 	// Run stopwatch.
@@ -22048,6 +30149,8 @@ func (c *Client) EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpri
 func (c *Client) sendEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams) (res *EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/disable-selected-organization-github-actions-enterprise"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions/organizations/{org_id}"),
 	}
 
 	// Run stopwatch.
@@ -22160,6 +30263,8 @@ func (c *Client) EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpris
 func (c *Client) sendEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams) (res *EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/enable-selected-organization-github-actions-enterprise"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions/organizations/{org_id}"),
 	}
 
 	// Run stopwatch.
@@ -22272,6 +30377,8 @@ func (c *Client) EnterpriseAdminGetAllowedActionsEnterprise(ctx context.Context,
 func (c *Client) sendEnterpriseAdminGetAllowedActionsEnterprise(ctx context.Context, params EnterpriseAdminGetAllowedActionsEnterpriseParams) (res *SelectedActions, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-allowed-actions-enterprise"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions/selected-actions"),
 	}
 
 	// Run stopwatch.
@@ -22363,6 +30470,8 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 func (c *Client) sendEnterpriseAdminGetAuditLog(ctx context.Context, params EnterpriseAdminGetAuditLogParams) (res []AuditLogEvent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-audit-log"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/audit-log"),
 	}
 
 	// Run stopwatch.
@@ -22577,6 +30686,8 @@ func (c *Client) EnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx contex
 func (c *Client) sendEnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx context.Context, params EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams) (res *ActionsEnterprisePermissions, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-github-actions-permissions-enterprise"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions"),
 	}
 
 	// Run stopwatch.
@@ -22668,6 +30779,8 @@ func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx
 func (c *Client) sendEnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx context.Context, params EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams) (res *ScimEnterpriseGroup, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-provisioning-information-for-enterprise-group"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"),
 	}
 
 	// Run stopwatch.
@@ -22798,6 +30911,8 @@ func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx 
 func (c *Client) sendEnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx context.Context, params EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams) (res *ScimEnterpriseUser, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-provisioning-information-for-enterprise-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"),
 	}
 
 	// Run stopwatch.
@@ -22907,6 +31022,8 @@ func (c *Client) EnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx context.Con
 func (c *Client) sendEnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx context.Context, params EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams) (res *Runner, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-self-hosted-runner-for-enterprise"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runners/{runner_id}"),
 	}
 
 	// Run stopwatch.
@@ -23016,6 +31133,8 @@ func (c *Client) EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx contex
 func (c *Client) sendEnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx context.Context, params EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams) (res *RunnerGroupsEnterprise, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-self-hosted-runner-group-for-enterprise"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"),
 	}
 
 	// Run stopwatch.
@@ -23125,6 +31244,8 @@ func (c *Client) EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise
 func (c *Client) sendEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res *EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations"),
 	}
 
 	// Run stopwatch.
@@ -23273,6 +31394,8 @@ func (c *Client) EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Cont
 func (c *Client) sendEnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Context, params EnterpriseAdminListProvisionedGroupsEnterpriseParams) (res *ScimGroupListEnterprise, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-provisioned-groups-enterprise"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Groups"),
 	}
 
 	// Run stopwatch.
@@ -23461,6 +31584,8 @@ func (c *Client) EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.
 func (c *Client) sendEnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.Context, params EnterpriseAdminListProvisionedIdentitiesEnterpriseParams) (res *ScimUserListEnterprise, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-provisioned-identities-enterprise"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Users"),
 	}
 
 	// Run stopwatch.
@@ -23607,6 +31732,8 @@ func (c *Client) EnterpriseAdminListRunnerApplicationsForEnterprise(ctx context.
 func (c *Client) sendEnterpriseAdminListRunnerApplicationsForEnterprise(ctx context.Context, params EnterpriseAdminListRunnerApplicationsForEnterpriseParams) (res []RunnerApplication, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-runner-applications-for-enterprise"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runners/downloads"),
 	}
 
 	// Run stopwatch.
@@ -23701,6 +31828,8 @@ func (c *Client) EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnt
 func (c *Client) sendEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (res *EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions/organizations"),
 	}
 
 	// Run stopwatch.
@@ -23830,6 +31959,8 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx cont
 func (c *Client) sendEnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams) (res *EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-self-hosted-runner-groups-for-enterprise"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups"),
 	}
 
 	// Run stopwatch.
@@ -23959,6 +32090,8 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.C
 func (c *Client) sendEnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersForEnterpriseParams) (res *EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-self-hosted-runners-for-enterprise"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runners"),
 	}
 
 	// Run stopwatch.
@@ -24088,6 +32221,8 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx co
 func (c *Client) sendEnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams) (res *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-self-hosted-runners-in-group-for-enterprise"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners"),
 	}
 
 	// Run stopwatch.
@@ -24239,6 +32374,8 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Co
 func (c *Client) sendEnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Context, request *EnterpriseAdminProvisionAndInviteEnterpriseGroupReq, params EnterpriseAdminProvisionAndInviteEnterpriseGroupParams) (res *ScimEnterpriseGroup, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/provision-and-invite-enterprise-group"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Groups"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -24347,6 +32484,8 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Con
 func (c *Client) sendEnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Context, request *EnterpriseAdminProvisionAndInviteEnterpriseUserReq, params EnterpriseAdminProvisionAndInviteEnterpriseUserParams) (res *ScimEnterpriseUser, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/provision-and-invite-enterprise-user"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Users"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -24453,6 +32592,8 @@ func (c *Client) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpri
 func (c *Client) sendEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res *EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}"),
 	}
 
 	// Run stopwatch.
@@ -24582,6 +32723,8 @@ func (c *Client) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx
 func (c *Client) sendEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx context.Context, params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams) (res *EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"),
 	}
 
 	// Run stopwatch.
@@ -24713,6 +32856,8 @@ func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context,
 func (c *Client) sendEnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context, request *SelectedActions, params EnterpriseAdminSetAllowedActionsEnterpriseParams) (res *EnterpriseAdminSetAllowedActionsEnterpriseNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-allowed-actions-enterprise"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions/selected-actions"),
 	}
 
 	// Run stopwatch.
@@ -24807,6 +32952,8 @@ func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx contex
 func (c *Client) sendEnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx context.Context, request *EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq, params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams) (res *EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-github-actions-permissions-enterprise"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -24915,6 +33062,8 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx 
 func (c *Client) sendEnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx context.Context, request *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams) (res *ScimEnterpriseGroup, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-information-for-provisioned-enterprise-group"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -25044,6 +33193,8 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx c
 func (c *Client) sendEnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx context.Context, request *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams) (res *ScimEnterpriseUser, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-information-for-provisioned-enterprise-user"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -25166,6 +33317,8 @@ func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(
 func (c *Client) sendEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, request *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq, params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -25291,6 +33444,8 @@ func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnte
 func (c *Client) sendEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, request *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq, params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (res *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions/organizations"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -25394,6 +33549,8 @@ func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx con
 func (c *Client) sendEnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx context.Context, request *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq, params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) (res *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-self-hosted-runners-in-group-for-enterprise"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -25520,6 +33677,8 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx context.Co
 func (c *Client) sendEnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx context.Context, request *EnterpriseAdminUpdateAttributeForEnterpriseGroupReq, params EnterpriseAdminUpdateAttributeForEnterpriseGroupParams) (res *ScimEnterpriseGroup, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/update-attribute-for-enterprise-group"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -25662,6 +33821,8 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Con
 func (c *Client) sendEnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Context, request *EnterpriseAdminUpdateAttributeForEnterpriseUserReq, params EnterpriseAdminUpdateAttributeForEnterpriseUserParams) (res *ScimEnterpriseUser, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/update-attribute-for-enterprise-user"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -25783,6 +33944,8 @@ func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx con
 func (c *Client) sendEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx context.Context, request OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams) (res *RunnerGroupsEnterprise, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/update-self-hosted-runner-group-for-enterprise"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -25910,6 +34073,8 @@ func (c *Client) GistsCheckIsStarred(ctx context.Context, params GistsCheckIsSta
 func (c *Client) sendGistsCheckIsStarred(ctx context.Context, params GistsCheckIsStarredParams) (res GistsCheckIsStarredRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/check-is-starred"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/gists/{gist_id}/star"),
 	}
 
 	// Run stopwatch.
@@ -26002,6 +34167,8 @@ func (c *Client) GistsCreate(ctx context.Context, request *GistsCreateReq) (Gist
 func (c *Client) sendGistsCreate(ctx context.Context, request *GistsCreateReq) (res GistsCreateRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/create"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/gists"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -26085,6 +34252,8 @@ func (c *Client) GistsCreateComment(ctx context.Context, request *GistsCreateCom
 func (c *Client) sendGistsCreateComment(ctx context.Context, request *GistsCreateCommentReq, params GistsCreateCommentParams) (res GistsCreateCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/create-comment"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/gists/{gist_id}/comments"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -26187,6 +34356,8 @@ func (c *Client) GistsDelete(ctx context.Context, params GistsDeleteParams) (Gis
 func (c *Client) sendGistsDelete(ctx context.Context, params GistsDeleteParams) (res GistsDeleteRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/delete"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/gists/{gist_id}"),
 	}
 
 	// Run stopwatch.
@@ -26276,6 +34447,8 @@ func (c *Client) GistsDeleteComment(ctx context.Context, params GistsDeleteComme
 func (c *Client) sendGistsDeleteComment(ctx context.Context, params GistsDeleteCommentParams) (res GistsDeleteCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/delete-comment"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/gists/{gist_id}/comments/{comment_id}"),
 	}
 
 	// Run stopwatch.
@@ -26384,6 +34557,8 @@ func (c *Client) GistsFork(ctx context.Context, params GistsForkParams) (GistsFo
 func (c *Client) sendGistsFork(ctx context.Context, params GistsForkParams) (res GistsForkRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/fork"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/gists/{gist_id}/forks"),
 	}
 
 	// Run stopwatch.
@@ -26474,6 +34649,8 @@ func (c *Client) GistsGet(ctx context.Context, params GistsGetParams) (GistsGetR
 func (c *Client) sendGistsGet(ctx context.Context, params GistsGetParams) (res GistsGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/get"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/gists/{gist_id}"),
 	}
 
 	// Run stopwatch.
@@ -26563,6 +34740,8 @@ func (c *Client) GistsGetComment(ctx context.Context, params GistsGetCommentPara
 func (c *Client) sendGistsGetComment(ctx context.Context, params GistsGetCommentParams) (res GistsGetCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/get-comment"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/gists/{gist_id}/comments/{comment_id}"),
 	}
 
 	// Run stopwatch.
@@ -26671,6 +34850,8 @@ func (c *Client) GistsGetRevision(ctx context.Context, params GistsGetRevisionPa
 func (c *Client) sendGistsGetRevision(ctx context.Context, params GistsGetRevisionParams) (res GistsGetRevisionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/get-revision"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/gists/{gist_id}/{sha}"),
 	}
 
 	// Run stopwatch.
@@ -26780,6 +34961,8 @@ func (c *Client) GistsList(ctx context.Context, params GistsListParams) (GistsLi
 func (c *Client) sendGistsList(ctx context.Context, params GistsListParams) (res GistsListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/gists"),
 	}
 
 	// Run stopwatch.
@@ -26906,6 +35089,8 @@ func (c *Client) GistsListComments(ctx context.Context, params GistsListComments
 func (c *Client) sendGistsListComments(ctx context.Context, params GistsListCommentsParams) (res GistsListCommentsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list-comments"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/gists/{gist_id}/comments"),
 	}
 
 	// Run stopwatch.
@@ -27034,6 +35219,8 @@ func (c *Client) GistsListCommits(ctx context.Context, params GistsListCommitsPa
 func (c *Client) sendGistsListCommits(ctx context.Context, params GistsListCommitsParams) (res GistsListCommitsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list-commits"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/gists/{gist_id}/commits"),
 	}
 
 	// Run stopwatch.
@@ -27162,6 +35349,8 @@ func (c *Client) GistsListForUser(ctx context.Context, params GistsListForUserPa
 func (c *Client) sendGistsListForUser(ctx context.Context, params GistsListForUserParams) (res GistsListForUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/users/{username}/gists"),
 	}
 
 	// Run stopwatch.
@@ -27307,6 +35496,8 @@ func (c *Client) GistsListForks(ctx context.Context, params GistsListForksParams
 func (c *Client) sendGistsListForks(ctx context.Context, params GistsListForksParams) (res GistsListForksRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list-forks"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/gists/{gist_id}/forks"),
 	}
 
 	// Run stopwatch.
@@ -27438,6 +35629,8 @@ func (c *Client) GistsListPublic(ctx context.Context, params GistsListPublicPara
 func (c *Client) sendGistsListPublic(ctx context.Context, params GistsListPublicParams) (res GistsListPublicRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list-public"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/gists/public"),
 	}
 
 	// Run stopwatch.
@@ -27564,6 +35757,8 @@ func (c *Client) GistsListStarred(ctx context.Context, params GistsListStarredPa
 func (c *Client) sendGistsListStarred(ctx context.Context, params GistsListStarredParams) (res GistsListStarredRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list-starred"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/gists/starred"),
 	}
 
 	// Run stopwatch.
@@ -27692,6 +35887,8 @@ func (c *Client) GistsStar(ctx context.Context, params GistsStarParams) (GistsSt
 func (c *Client) sendGistsStar(ctx context.Context, params GistsStarParams) (res GistsStarRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/star"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/gists/{gist_id}/star"),
 	}
 
 	// Run stopwatch.
@@ -27782,6 +35979,8 @@ func (c *Client) GistsUnstar(ctx context.Context, params GistsUnstarParams) (Gis
 func (c *Client) sendGistsUnstar(ctx context.Context, params GistsUnstarParams) (res GistsUnstarRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/unstar"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/gists/{gist_id}/star"),
 	}
 
 	// Run stopwatch.
@@ -27872,6 +36071,8 @@ func (c *Client) GistsUpdateComment(ctx context.Context, request *GistsUpdateCom
 func (c *Client) sendGistsUpdateComment(ctx context.Context, request *GistsUpdateCommentReq, params GistsUpdateCommentParams) (res GistsUpdateCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/update-comment"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/gists/{gist_id}/comments/{comment_id}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -27992,6 +36193,8 @@ func (c *Client) GitCreateBlob(ctx context.Context, request *GitCreateBlobReq, p
 func (c *Client) sendGitCreateBlob(ctx context.Context, request *GitCreateBlobReq, params GitCreateBlobParams) (res GitCreateBlobRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/create-blob"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/blobs"),
 	}
 
 	// Run stopwatch.
@@ -28137,6 +36340,8 @@ func (c *Client) GitCreateCommit(ctx context.Context, request *GitCreateCommitRe
 func (c *Client) sendGitCreateCommit(ctx context.Context, request *GitCreateCommitReq, params GitCreateCommitParams) (res GitCreateCommitRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/create-commit"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/commits"),
 	}
 
 	// Run stopwatch.
@@ -28251,6 +36456,8 @@ func (c *Client) GitCreateRef(ctx context.Context, request *GitCreateRefReq, par
 func (c *Client) sendGitCreateRef(ctx context.Context, request *GitCreateRefReq, params GitCreateRefParams) (res GitCreateRefRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/create-ref"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/refs"),
 	}
 
 	// Run stopwatch.
@@ -28399,6 +36606,8 @@ func (c *Client) GitCreateTag(ctx context.Context, request *GitCreateTagReq, par
 func (c *Client) sendGitCreateTag(ctx context.Context, request *GitCreateTagReq, params GitCreateTagParams) (res GitCreateTagRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/create-tag"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/tags"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -28526,6 +36735,8 @@ func (c *Client) GitCreateTree(ctx context.Context, request *GitCreateTreeReq, p
 func (c *Client) sendGitCreateTree(ctx context.Context, request *GitCreateTreeReq, params GitCreateTreeParams) (res GitCreateTreeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/create-tree"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/trees"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -28647,6 +36858,8 @@ func (c *Client) GitDeleteRef(ctx context.Context, params GitDeleteRefParams) (G
 func (c *Client) sendGitDeleteRef(ctx context.Context, params GitDeleteRefParams) (res GitDeleteRefRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/delete-ref"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/refs/{ref}"),
 	}
 
 	// Run stopwatch.
@@ -28775,6 +36988,8 @@ func (c *Client) GitGetBlob(ctx context.Context, params GitGetBlobParams) (GitGe
 func (c *Client) sendGitGetBlob(ctx context.Context, params GitGetBlobParams) (res GitGetBlobRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/get-blob"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/blobs/{file_sha}"),
 	}
 
 	// Run stopwatch.
@@ -28935,6 +37150,8 @@ func (c *Client) GitGetCommit(ctx context.Context, params GitGetCommitParams) (G
 func (c *Client) sendGitGetCommit(ctx context.Context, params GitGetCommitParams) (res GitGetCommitRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/get-commit"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/commits/{commit_sha}"),
 	}
 
 	// Run stopwatch.
@@ -29069,6 +37286,8 @@ func (c *Client) GitGetRef(ctx context.Context, params GitGetRefParams) (GitGetR
 func (c *Client) sendGitGetRef(ctx context.Context, params GitGetRefParams) (res GitGetRefRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/get-ref"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/ref/{ref}"),
 	}
 
 	// Run stopwatch.
@@ -29227,6 +37446,8 @@ func (c *Client) GitGetTag(ctx context.Context, params GitGetTagParams) (GitGetT
 func (c *Client) sendGitGetTag(ctx context.Context, params GitGetTagParams) (res GitGetTagRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/get-tag"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/tags/{tag_sha}"),
 	}
 
 	// Run stopwatch.
@@ -29357,6 +37578,8 @@ func (c *Client) GitGetTree(ctx context.Context, params GitGetTreeParams) (GitGe
 func (c *Client) sendGitGetTree(ctx context.Context, params GitGetTreeParams) (res GitGetTreeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/get-tree"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/trees/{tree_sha}"),
 	}
 
 	// Run stopwatch.
@@ -29519,6 +37742,8 @@ func (c *Client) GitListMatchingRefs(ctx context.Context, params GitListMatching
 func (c *Client) sendGitListMatchingRefs(ctx context.Context, params GitListMatchingRefsParams) (res *GitListMatchingRefsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/list-matching-refs"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/matching-refs/{ref}"),
 	}
 
 	// Run stopwatch.
@@ -29684,6 +37909,8 @@ func (c *Client) GitUpdateRef(ctx context.Context, request *GitUpdateRefReq, par
 func (c *Client) sendGitUpdateRef(ctx context.Context, request *GitUpdateRefReq, params GitUpdateRefParams) (res GitUpdateRefRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/update-ref"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/refs/{ref}"),
 	}
 
 	// Run stopwatch.
@@ -29815,6 +38042,8 @@ func (c *Client) GitignoreGetAllTemplates(ctx context.Context) (GitignoreGetAllT
 func (c *Client) sendGitignoreGetAllTemplates(ctx context.Context) (res GitignoreGetAllTemplatesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gitignore/get-all-templates"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/gitignore/templates"),
 	}
 
 	// Run stopwatch.
@@ -29888,6 +38117,8 @@ func (c *Client) GitignoreGetTemplate(ctx context.Context, params GitignoreGetTe
 func (c *Client) sendGitignoreGetTemplate(ctx context.Context, params GitignoreGetTemplateParams) (res GitignoreGetTemplateRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gitignore/get-template"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/gitignore/templates/{name}"),
 	}
 
 	// Run stopwatch.
@@ -29977,6 +38208,8 @@ func (c *Client) InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.
 func (c *Client) sendInteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.Context) (res *InteractionsRemoveRestrictionsForAuthenticatedUserNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("interactions/remove-restrictions-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/user/interaction-limits"),
 	}
 
 	// Run stopwatch.
@@ -30049,6 +38282,8 @@ func (c *Client) InteractionsRemoveRestrictionsForOrg(ctx context.Context, param
 func (c *Client) sendInteractionsRemoveRestrictionsForOrg(ctx context.Context, params InteractionsRemoveRestrictionsForOrgParams) (res *InteractionsRemoveRestrictionsForOrgNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("interactions/remove-restrictions-for-org"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/interaction-limits"),
 	}
 
 	// Run stopwatch.
@@ -30142,6 +38377,8 @@ func (c *Client) InteractionsRemoveRestrictionsForRepo(ctx context.Context, para
 func (c *Client) sendInteractionsRemoveRestrictionsForRepo(ctx context.Context, params InteractionsRemoveRestrictionsForRepoParams) (res InteractionsRemoveRestrictionsForRepoRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("interactions/remove-restrictions-for-repo"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/interaction-limits"),
 	}
 
 	// Run stopwatch.
@@ -30253,6 +38490,8 @@ func (c *Client) InteractionsSetRestrictionsForAuthenticatedUser(ctx context.Con
 func (c *Client) sendInteractionsSetRestrictionsForAuthenticatedUser(ctx context.Context, request *InteractionLimit) (res InteractionsSetRestrictionsForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("interactions/set-restrictions-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/user/interaction-limits"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -30339,6 +38578,8 @@ func (c *Client) InteractionsSetRestrictionsForOrg(ctx context.Context, request 
 func (c *Client) sendInteractionsSetRestrictionsForOrg(ctx context.Context, request *InteractionLimit, params InteractionsSetRestrictionsForOrgParams) (res InteractionsSetRestrictionsForOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("interactions/set-restrictions-for-org"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/interaction-limits"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -30444,6 +38685,8 @@ func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, request
 func (c *Client) sendInteractionsSetRestrictionsForRepo(ctx context.Context, request *InteractionLimit, params InteractionsSetRestrictionsForRepoParams) (res InteractionsSetRestrictionsForRepoRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("interactions/set-restrictions-for-repo"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/interaction-limits"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -30565,6 +38808,8 @@ func (c *Client) IssuesAddAssignees(ctx context.Context, request OptIssuesAddAss
 func (c *Client) sendIssuesAddAssignees(ctx context.Context, request OptIssuesAddAssigneesReq, params IssuesAddAssigneesParams) (res *IssueSimple, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/add-assignees"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/assignees"),
 	}
 
 	// Run stopwatch.
@@ -30699,6 +38944,8 @@ func (c *Client) IssuesCheckUserCanBeAssigned(ctx context.Context, params Issues
 func (c *Client) sendIssuesCheckUserCanBeAssigned(ctx context.Context, params IssuesCheckUserCanBeAssignedParams) (res IssuesCheckUserCanBeAssignedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/check-user-can-be-assigned"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/assignees/{assignee}"),
 	}
 
 	// Run stopwatch.
@@ -30835,6 +39082,8 @@ func (c *Client) IssuesCreate(ctx context.Context, request *IssuesCreateReq, par
 func (c *Client) sendIssuesCreate(ctx context.Context, request *IssuesCreateReq, params IssuesCreateParams) (res IssuesCreateRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/create"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues"),
 	}
 
 	// Run stopwatch.
@@ -30953,6 +39202,8 @@ func (c *Client) IssuesCreateComment(ctx context.Context, request *IssuesCreateC
 func (c *Client) sendIssuesCreateComment(ctx context.Context, request *IssuesCreateCommentReq, params IssuesCreateCommentParams) (res IssuesCreateCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/create-comment"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/comments"),
 	}
 
 	// Run stopwatch.
@@ -31084,6 +39335,8 @@ func (c *Client) IssuesCreateLabel(ctx context.Context, request *IssuesCreateLab
 func (c *Client) sendIssuesCreateLabel(ctx context.Context, request *IssuesCreateLabelReq, params IssuesCreateLabelParams) (res IssuesCreateLabelRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/create-label"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/labels"),
 	}
 
 	// Run stopwatch.
@@ -31196,6 +39449,8 @@ func (c *Client) IssuesCreateMilestone(ctx context.Context, request *IssuesCreat
 func (c *Client) sendIssuesCreateMilestone(ctx context.Context, request *IssuesCreateMilestoneReq, params IssuesCreateMilestoneParams) (res IssuesCreateMilestoneRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/create-milestone"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/milestones"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -31317,6 +39572,8 @@ func (c *Client) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCom
 func (c *Client) sendIssuesDeleteComment(ctx context.Context, params IssuesDeleteCommentParams) (res *IssuesDeleteCommentNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/delete-comment"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/comments/{comment_id}"),
 	}
 
 	// Run stopwatch.
@@ -31444,6 +39701,8 @@ func (c *Client) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabel
 func (c *Client) sendIssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabelParams) (res *IssuesDeleteLabelNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/delete-label"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/labels/{name}"),
 	}
 
 	// Run stopwatch.
@@ -31571,6 +39830,8 @@ func (c *Client) IssuesDeleteMilestone(ctx context.Context, params IssuesDeleteM
 func (c *Client) sendIssuesDeleteMilestone(ctx context.Context, params IssuesDeleteMilestoneParams) (res IssuesDeleteMilestoneRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/delete-milestone"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/milestones/{milestone_number}"),
 	}
 
 	// Run stopwatch.
@@ -31716,6 +39977,8 @@ func (c *Client) IssuesGet(ctx context.Context, params IssuesGetParams) (IssuesG
 func (c *Client) sendIssuesGet(ctx context.Context, params IssuesGetParams) (res IssuesGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/get"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}"),
 	}
 
 	// Run stopwatch.
@@ -31843,6 +40106,8 @@ func (c *Client) IssuesGetComment(ctx context.Context, params IssuesGetCommentPa
 func (c *Client) sendIssuesGetComment(ctx context.Context, params IssuesGetCommentParams) (res IssuesGetCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/get-comment"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/comments/{comment_id}"),
 	}
 
 	// Run stopwatch.
@@ -31970,6 +40235,8 @@ func (c *Client) IssuesGetEvent(ctx context.Context, params IssuesGetEventParams
 func (c *Client) sendIssuesGetEvent(ctx context.Context, params IssuesGetEventParams) (res IssuesGetEventRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/get-event"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/events/{event_id}"),
 	}
 
 	// Run stopwatch.
@@ -32097,6 +40364,8 @@ func (c *Client) IssuesGetLabel(ctx context.Context, params IssuesGetLabelParams
 func (c *Client) sendIssuesGetLabel(ctx context.Context, params IssuesGetLabelParams) (res IssuesGetLabelRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/get-label"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/labels/{name}"),
 	}
 
 	// Run stopwatch.
@@ -32224,6 +40493,8 @@ func (c *Client) IssuesGetMilestone(ctx context.Context, params IssuesGetMilesto
 func (c *Client) sendIssuesGetMilestone(ctx context.Context, params IssuesGetMilestoneParams) (res IssuesGetMilestoneRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/get-milestone"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/milestones/{milestone_number}"),
 	}
 
 	// Run stopwatch.
@@ -32363,6 +40634,8 @@ func (c *Client) IssuesList(ctx context.Context, params IssuesListParams) (Issue
 func (c *Client) sendIssuesList(ctx context.Context, params IssuesListParams) (res IssuesListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/issues"),
 	}
 
 	// Run stopwatch.
@@ -32643,6 +40916,8 @@ func (c *Client) IssuesListAssignees(ctx context.Context, params IssuesListAssig
 func (c *Client) sendIssuesListAssignees(ctx context.Context, params IssuesListAssigneesParams) (res IssuesListAssigneesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-assignees"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/assignees"),
 	}
 
 	// Run stopwatch.
@@ -32790,6 +41065,8 @@ func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommen
 func (c *Client) sendIssuesListComments(ctx context.Context, params IssuesListCommentsParams) (res IssuesListCommentsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-comments"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/comments"),
 	}
 
 	// Run stopwatch.
@@ -32973,6 +41250,8 @@ func (c *Client) IssuesListCommentsForRepo(ctx context.Context, params IssuesLis
 func (c *Client) sendIssuesListCommentsForRepo(ctx context.Context, params IssuesListCommentsForRepoParams) (res IssuesListCommentsForRepoRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-comments-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/comments"),
 	}
 
 	// Run stopwatch.
@@ -33171,6 +41450,8 @@ func (c *Client) IssuesListEventsForRepo(ctx context.Context, params IssuesListE
 func (c *Client) sendIssuesListEventsForRepo(ctx context.Context, params IssuesListEventsForRepoParams) (res IssuesListEventsForRepoRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-events-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/events"),
 	}
 
 	// Run stopwatch.
@@ -33326,6 +41607,8 @@ func (c *Client) IssuesListForAuthenticatedUser(ctx context.Context, params Issu
 func (c *Client) sendIssuesListForAuthenticatedUser(ctx context.Context, params IssuesListForAuthenticatedUserParams) (res IssuesListForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user/issues"),
 	}
 
 	// Run stopwatch.
@@ -33545,6 +41828,8 @@ func (c *Client) IssuesListForOrg(ctx context.Context, params IssuesListForOrgPa
 func (c *Client) sendIssuesListForOrg(ctx context.Context, params IssuesListForOrgParams) (res IssuesListForOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-for-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/issues"),
 	}
 
 	// Run stopwatch.
@@ -33783,6 +42068,8 @@ func (c *Client) IssuesListForRepo(ctx context.Context, params IssuesListForRepo
 func (c *Client) sendIssuesListForRepo(ctx context.Context, params IssuesListForRepoParams) (res IssuesListForRepoRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues"),
 	}
 
 	// Run stopwatch.
@@ -34083,6 +42370,8 @@ func (c *Client) IssuesListLabelsForMilestone(ctx context.Context, params Issues
 func (c *Client) sendIssuesListLabelsForMilestone(ctx context.Context, params IssuesListLabelsForMilestoneParams) (res *IssuesListLabelsForMilestoneOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-labels-for-milestone"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/milestones/{milestone_number}/labels"),
 	}
 
 	// Run stopwatch.
@@ -34249,6 +42538,8 @@ func (c *Client) IssuesListLabelsForRepo(ctx context.Context, params IssuesListL
 func (c *Client) sendIssuesListLabelsForRepo(ctx context.Context, params IssuesListLabelsForRepoParams) (res IssuesListLabelsForRepoRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-labels-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/labels"),
 	}
 
 	// Run stopwatch.
@@ -34396,6 +42687,8 @@ func (c *Client) IssuesListLabelsOnIssue(ctx context.Context, params IssuesListL
 func (c *Client) sendIssuesListLabelsOnIssue(ctx context.Context, params IssuesListLabelsOnIssueParams) (res IssuesListLabelsOnIssueRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-labels-on-issue"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/labels"),
 	}
 
 	// Run stopwatch.
@@ -34562,6 +42855,8 @@ func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMile
 func (c *Client) sendIssuesListMilestones(ctx context.Context, params IssuesListMilestonesParams) (res IssuesListMilestonesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-milestones"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/milestones"),
 	}
 
 	// Run stopwatch.
@@ -34763,6 +43058,8 @@ func (c *Client) IssuesLock(ctx context.Context, request OptNilIssuesLockReq, pa
 func (c *Client) sendIssuesLock(ctx context.Context, request OptNilIssuesLockReq, params IssuesLockParams) (res IssuesLockRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/lock"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/lock"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -34910,6 +43207,8 @@ func (c *Client) IssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveA
 func (c *Client) sendIssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveAllLabelsParams) (res IssuesRemoveAllLabelsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/remove-all-labels"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/labels"),
 	}
 
 	// Run stopwatch.
@@ -35038,6 +43337,8 @@ func (c *Client) IssuesRemoveAssignees(ctx context.Context, request OptIssuesRem
 func (c *Client) sendIssuesRemoveAssignees(ctx context.Context, request OptIssuesRemoveAssigneesReq, params IssuesRemoveAssigneesParams) (res *IssueSimple, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/remove-assignees"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/assignees"),
 	}
 
 	// Run stopwatch.
@@ -35170,6 +43471,8 @@ func (c *Client) IssuesRemoveLabel(ctx context.Context, params IssuesRemoveLabel
 func (c *Client) sendIssuesRemoveLabel(ctx context.Context, params IssuesRemoveLabelParams) (res IssuesRemoveLabelRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/remove-label"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/labels/{name}"),
 	}
 
 	// Run stopwatch.
@@ -35316,6 +43619,8 @@ func (c *Client) IssuesUnlock(ctx context.Context, params IssuesUnlockParams) (I
 func (c *Client) sendIssuesUnlock(ctx context.Context, params IssuesUnlockParams) (res IssuesUnlockRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/unlock"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/lock"),
 	}
 
 	// Run stopwatch.
@@ -35444,6 +43749,8 @@ func (c *Client) IssuesUpdate(ctx context.Context, request OptIssuesUpdateReq, p
 func (c *Client) sendIssuesUpdate(ctx context.Context, request OptIssuesUpdateReq, params IssuesUpdateParams) (res IssuesUpdateRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/update"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -35590,6 +43897,8 @@ func (c *Client) IssuesUpdateComment(ctx context.Context, request *IssuesUpdateC
 func (c *Client) sendIssuesUpdateComment(ctx context.Context, request *IssuesUpdateCommentReq, params IssuesUpdateCommentParams) (res IssuesUpdateCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/update-comment"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/comments/{comment_id}"),
 	}
 
 	// Run stopwatch.
@@ -35720,6 +44029,8 @@ func (c *Client) IssuesUpdateLabel(ctx context.Context, request OptIssuesUpdateL
 func (c *Client) sendIssuesUpdateLabel(ctx context.Context, request OptIssuesUpdateLabelReq, params IssuesUpdateLabelParams) (res *Label, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/update-label"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/labels/{name}"),
 	}
 
 	// Run stopwatch.
@@ -35850,6 +44161,8 @@ func (c *Client) IssuesUpdateMilestone(ctx context.Context, request OptIssuesUpd
 func (c *Client) sendIssuesUpdateMilestone(ctx context.Context, request OptIssuesUpdateMilestoneReq, params IssuesUpdateMilestoneParams) (res *Milestone, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/update-milestone"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/milestones/{milestone_number}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -35996,6 +44309,8 @@ func (c *Client) LicensesGet(ctx context.Context, params LicensesGetParams) (Lic
 func (c *Client) sendLicensesGet(ctx context.Context, params LicensesGetParams) (res LicensesGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("licenses/get"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/licenses/{license}"),
 	}
 
 	// Run stopwatch.
@@ -36085,6 +44400,8 @@ func (c *Client) LicensesGetAllCommonlyUsed(ctx context.Context, params Licenses
 func (c *Client) sendLicensesGetAllCommonlyUsed(ctx context.Context, params LicensesGetAllCommonlyUsedParams) (res LicensesGetAllCommonlyUsedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("licenses/get-all-commonly-used"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/licenses"),
 	}
 
 	// Run stopwatch.
@@ -36215,6 +44532,8 @@ func (c *Client) LicensesGetForRepo(ctx context.Context, params LicensesGetForRe
 func (c *Client) sendLicensesGetForRepo(ctx context.Context, params LicensesGetForRepoParams) (res *LicenseContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("licenses/get-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/license"),
 	}
 
 	// Run stopwatch.
@@ -36324,6 +44643,8 @@ func (c *Client) MarkdownRender(ctx context.Context, request *MarkdownRenderReq)
 func (c *Client) sendMarkdownRender(ctx context.Context, request *MarkdownRenderReq) (res MarkdownRenderRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("markdown/render"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/markdown"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -36410,6 +44731,8 @@ func (c *Client) MarkdownRenderRaw(ctx context.Context, request MarkdownRenderRa
 func (c *Client) sendMarkdownRenderRaw(ctx context.Context, request MarkdownRenderRawReq) (res MarkdownRenderRawRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("markdown/render-raw"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/markdown/raw"),
 	}
 	// Validate request before sending.
 	switch request := request.(type) {
@@ -36499,6 +44822,8 @@ func (c *Client) MetaGet(ctx context.Context) (MetaGetRes, error) {
 func (c *Client) sendMetaGet(ctx context.Context) (res MetaGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("meta/get"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/meta"),
 	}
 
 	// Run stopwatch.
@@ -36570,6 +44895,8 @@ func (c *Client) MetaGetOctocat(ctx context.Context, params MetaGetOctocatParams
 func (c *Client) sendMetaGetOctocat(ctx context.Context, params MetaGetOctocatParams) (res MetaGetOctocatOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("meta/get-octocat"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/octocat"),
 	}
 
 	// Run stopwatch.
@@ -36662,6 +44989,8 @@ func (c *Client) MetaGetZen(ctx context.Context) (MetaGetZenOK, error) {
 func (c *Client) sendMetaGetZen(ctx context.Context) (res MetaGetZenOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("meta/get-zen"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/zen"),
 	}
 
 	// Run stopwatch.
@@ -36733,6 +45062,8 @@ func (c *Client) MetaRoot(ctx context.Context) (*MetaRootOK, error) {
 func (c *Client) sendMetaRoot(ctx context.Context) (res *MetaRootOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("meta/root"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/"),
 	}
 
 	// Run stopwatch.
@@ -36804,6 +45135,8 @@ func (c *Client) MigrationsCancelImport(ctx context.Context, params MigrationsCa
 func (c *Client) sendMigrationsCancelImport(ctx context.Context, params MigrationsCancelImportParams) (res *MigrationsCancelImportNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/cancel-import"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import"),
 	}
 
 	// Run stopwatch.
@@ -36917,6 +45250,8 @@ func (c *Client) MigrationsDeleteArchiveForAuthenticatedUser(ctx context.Context
 func (c *Client) sendMigrationsDeleteArchiveForAuthenticatedUser(ctx context.Context, params MigrationsDeleteArchiveForAuthenticatedUserParams) (res MigrationsDeleteArchiveForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/delete-archive-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/user/migrations/{migration_id}/archive"),
 	}
 
 	// Run stopwatch.
@@ -37008,6 +45343,8 @@ func (c *Client) MigrationsDeleteArchiveForOrg(ctx context.Context, params Migra
 func (c *Client) sendMigrationsDeleteArchiveForOrg(ctx context.Context, params MigrationsDeleteArchiveForOrgParams) (res MigrationsDeleteArchiveForOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/delete-archive-for-org"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/migrations/{migration_id}/archive"),
 	}
 
 	// Run stopwatch.
@@ -37117,6 +45454,8 @@ func (c *Client) MigrationsDownloadArchiveForOrg(ctx context.Context, params Mig
 func (c *Client) sendMigrationsDownloadArchiveForOrg(ctx context.Context, params MigrationsDownloadArchiveForOrgParams) (res MigrationsDownloadArchiveForOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/download-archive-for-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/migrations/{migration_id}/archive"),
 	}
 
 	// Run stopwatch.
@@ -37246,6 +45585,8 @@ func (c *Client) MigrationsGetArchiveForAuthenticatedUser(ctx context.Context, p
 func (c *Client) sendMigrationsGetArchiveForAuthenticatedUser(ctx context.Context, params MigrationsGetArchiveForAuthenticatedUserParams) (res MigrationsGetArchiveForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/get-archive-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user/migrations/{migration_id}/archive"),
 	}
 
 	// Run stopwatch.
@@ -37343,6 +45684,8 @@ func (c *Client) MigrationsGetCommitAuthors(ctx context.Context, params Migratio
 func (c *Client) sendMigrationsGetCommitAuthors(ctx context.Context, params MigrationsGetCommitAuthorsParams) (res MigrationsGetCommitAuthorsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/get-commit-authors"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import/authors"),
 	}
 
 	// Run stopwatch.
@@ -37525,6 +45868,8 @@ func (c *Client) MigrationsGetImportStatus(ctx context.Context, params Migration
 func (c *Client) sendMigrationsGetImportStatus(ctx context.Context, params MigrationsGetImportStatusParams) (res MigrationsGetImportStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/get-import-status"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import"),
 	}
 
 	// Run stopwatch.
@@ -37634,6 +45979,8 @@ func (c *Client) MigrationsGetLargeFiles(ctx context.Context, params MigrationsG
 func (c *Client) sendMigrationsGetLargeFiles(ctx context.Context, params MigrationsGetLargeFilesParams) (res []PorterLargeFile, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/get-large-files"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import/large_files"),
 	}
 
 	// Run stopwatch.
@@ -37750,6 +46097,8 @@ func (c *Client) MigrationsGetStatusForAuthenticatedUser(ctx context.Context, pa
 func (c *Client) sendMigrationsGetStatusForAuthenticatedUser(ctx context.Context, params MigrationsGetStatusForAuthenticatedUserParams) (res MigrationsGetStatusForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/get-status-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user/migrations/{migration_id}"),
 	}
 
 	// Run stopwatch.
@@ -37871,6 +46220,8 @@ func (c *Client) MigrationsGetStatusForOrg(ctx context.Context, params Migration
 func (c *Client) sendMigrationsGetStatusForOrg(ctx context.Context, params MigrationsGetStatusForOrgParams) (res MigrationsGetStatusForOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/get-status-for-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/migrations/{migration_id}"),
 	}
 
 	// Run stopwatch.
@@ -38006,6 +46357,8 @@ func (c *Client) MigrationsListForAuthenticatedUser(ctx context.Context, params 
 func (c *Client) sendMigrationsListForAuthenticatedUser(ctx context.Context, params MigrationsListForAuthenticatedUserParams) (res MigrationsListForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/list-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user/migrations"),
 	}
 
 	// Run stopwatch.
@@ -38115,6 +46468,8 @@ func (c *Client) MigrationsListForOrg(ctx context.Context, params MigrationsList
 func (c *Client) sendMigrationsListForOrg(ctx context.Context, params MigrationsListForOrgParams) (res *MigrationsListForOrgOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/list-for-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/migrations"),
 	}
 
 	// Run stopwatch.
@@ -38266,6 +46621,8 @@ func (c *Client) MigrationsListReposForOrg(ctx context.Context, params Migration
 func (c *Client) sendMigrationsListReposForOrg(ctx context.Context, params MigrationsListReposForOrgParams) (res MigrationsListReposForOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/list-repos-for-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/migrations/{migration_id}/repositories"),
 	}
 
 	// Run stopwatch.
@@ -38413,6 +46770,8 @@ func (c *Client) MigrationsListReposForUser(ctx context.Context, params Migratio
 func (c *Client) sendMigrationsListReposForUser(ctx context.Context, params MigrationsListReposForUserParams) (res MigrationsListReposForUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/list-repos-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user/migrations/{migration_id}/repositories"),
 	}
 
 	// Run stopwatch.
@@ -38542,6 +46901,8 @@ func (c *Client) MigrationsMapCommitAuthor(ctx context.Context, request OptMigra
 func (c *Client) sendMigrationsMapCommitAuthor(ctx context.Context, request OptMigrationsMapCommitAuthorReq, params MigrationsMapCommitAuthorParams) (res MigrationsMapCommitAuthorRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/map-commit-author"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import/authors/{author_id}"),
 	}
 
 	// Run stopwatch.
@@ -38675,6 +47036,8 @@ func (c *Client) MigrationsSetLfsPreference(ctx context.Context, request *Migrat
 func (c *Client) sendMigrationsSetLfsPreference(ctx context.Context, request *MigrationsSetLfsPreferenceReq, params MigrationsSetLfsPreferenceParams) (res MigrationsSetLfsPreferenceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/set-lfs-preference"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import/lfs"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -38796,6 +47159,8 @@ func (c *Client) MigrationsStartForAuthenticatedUser(ctx context.Context, reques
 func (c *Client) sendMigrationsStartForAuthenticatedUser(ctx context.Context, request *MigrationsStartForAuthenticatedUserReq) (res MigrationsStartForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/start-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/user/migrations"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -38879,6 +47244,8 @@ func (c *Client) MigrationsStartForOrg(ctx context.Context, request *MigrationsS
 func (c *Client) sendMigrationsStartForOrg(ctx context.Context, request *MigrationsStartForOrgReq, params MigrationsStartForOrgParams) (res MigrationsStartForOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/start-for-org"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/migrations"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -38981,6 +47348,8 @@ func (c *Client) MigrationsStartImport(ctx context.Context, request *MigrationsS
 func (c *Client) sendMigrationsStartImport(ctx context.Context, request *MigrationsStartImportReq, params MigrationsStartImportParams) (res MigrationsStartImportRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/start-import"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -39106,6 +47475,8 @@ func (c *Client) MigrationsUnlockRepoForAuthenticatedUser(ctx context.Context, p
 func (c *Client) sendMigrationsUnlockRepoForAuthenticatedUser(ctx context.Context, params MigrationsUnlockRepoForAuthenticatedUserParams) (res MigrationsUnlockRepoForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/unlock-repo-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/user/migrations/{migration_id}/repos/{repo_name}/lock"),
 	}
 
 	// Run stopwatch.
@@ -39217,6 +47588,8 @@ func (c *Client) MigrationsUnlockRepoForOrg(ctx context.Context, params Migratio
 func (c *Client) sendMigrationsUnlockRepoForOrg(ctx context.Context, params MigrationsUnlockRepoForOrgParams) (res MigrationsUnlockRepoForOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/unlock-repo-for-org"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock"),
 	}
 
 	// Run stopwatch.
@@ -39347,6 +47720,8 @@ func (c *Client) MigrationsUpdateImport(ctx context.Context, request OptNilMigra
 func (c *Client) sendMigrationsUpdateImport(ctx context.Context, request OptNilMigrationsUpdateImportReq, params MigrationsUpdateImportParams) (res *Import, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/update-import"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import"),
 	}
 
 	// Run stopwatch.
@@ -39488,6 +47863,8 @@ func (c *Client) OAuthAuthorizationsCreateAuthorization(ctx context.Context, req
 func (c *Client) sendOAuthAuthorizationsCreateAuthorization(ctx context.Context, request OptOAuthAuthorizationsCreateAuthorizationReq) (res OAuthAuthorizationsCreateAuthorizationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/create-authorization"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/authorizations"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -39587,6 +47964,8 @@ func (c *Client) OAuthAuthorizationsDeleteAuthorization(ctx context.Context, par
 func (c *Client) sendOAuthAuthorizationsDeleteAuthorization(ctx context.Context, params OAuthAuthorizationsDeleteAuthorizationParams) (res OAuthAuthorizationsDeleteAuthorizationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/delete-authorization"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/authorizations/{authorization_id}"),
 	}
 
 	// Run stopwatch.
@@ -39688,6 +48067,8 @@ func (c *Client) OAuthAuthorizationsDeleteGrant(ctx context.Context, params OAut
 func (c *Client) sendOAuthAuthorizationsDeleteGrant(ctx context.Context, params OAuthAuthorizationsDeleteGrantParams) (res OAuthAuthorizationsDeleteGrantRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/delete-grant"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/applications/grants/{grant_id}"),
 	}
 
 	// Run stopwatch.
@@ -39786,6 +48167,8 @@ func (c *Client) OAuthAuthorizationsGetAuthorization(ctx context.Context, params
 func (c *Client) sendOAuthAuthorizationsGetAuthorization(ctx context.Context, params OAuthAuthorizationsGetAuthorizationParams) (res OAuthAuthorizationsGetAuthorizationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/get-authorization"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/authorizations/{authorization_id}"),
 	}
 
 	// Run stopwatch.
@@ -39884,6 +48267,8 @@ func (c *Client) OAuthAuthorizationsGetGrant(ctx context.Context, params OAuthAu
 func (c *Client) sendOAuthAuthorizationsGetGrant(ctx context.Context, params OAuthAuthorizationsGetGrantParams) (res OAuthAuthorizationsGetGrantRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/get-grant"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/applications/grants/{grant_id}"),
 	}
 
 	// Run stopwatch.
@@ -40001,6 +48386,8 @@ func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx context.C
 func (c *Client) sendOAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx context.Context, request *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq, params OAuthAuthorizationsGetOrCreateAuthorizationForAppParams) (res OAuthAuthorizationsGetOrCreateAuthorizationForAppRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/get-or-create-authorization-for-app"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/authorizations/clients/{client_id}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -40125,6 +48512,8 @@ func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint
 func (c *Client) sendOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint(ctx context.Context, request *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq, params OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams) (res OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/authorizations/clients/{client_id}/{fingerprint}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -40254,6 +48643,8 @@ func (c *Client) OAuthAuthorizationsListAuthorizations(ctx context.Context, para
 func (c *Client) sendOAuthAuthorizationsListAuthorizations(ctx context.Context, params OAuthAuthorizationsListAuthorizationsParams) (res OAuthAuthorizationsListAuthorizationsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/list-authorizations"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/authorizations"),
 	}
 
 	// Run stopwatch.
@@ -40400,6 +48791,8 @@ func (c *Client) OAuthAuthorizationsListGrants(ctx context.Context, params OAuth
 func (c *Client) sendOAuthAuthorizationsListGrants(ctx context.Context, params OAuthAuthorizationsListGrantsParams) (res OAuthAuthorizationsListGrantsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/list-grants"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/applications/grants"),
 	}
 
 	// Run stopwatch.
@@ -40539,6 +48932,8 @@ func (c *Client) OAuthAuthorizationsUpdateAuthorization(ctx context.Context, req
 func (c *Client) sendOAuthAuthorizationsUpdateAuthorization(ctx context.Context, request OptOAuthAuthorizationsUpdateAuthorizationReq, params OAuthAuthorizationsUpdateAuthorizationParams) (res OAuthAuthorizationsUpdateAuthorizationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/update-authorization"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/authorizations/{authorization_id}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -40647,6 +49042,8 @@ func (c *Client) OrgsBlockUser(ctx context.Context, params OrgsBlockUserParams) 
 func (c *Client) sendOrgsBlockUser(ctx context.Context, params OrgsBlockUserParams) (res OrgsBlockUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/block-user"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/blocks/{username}"),
 	}
 
 	// Run stopwatch.
@@ -40758,6 +49155,8 @@ func (c *Client) OrgsCancelInvitation(ctx context.Context, params OrgsCancelInvi
 func (c *Client) sendOrgsCancelInvitation(ctx context.Context, params OrgsCancelInvitationParams) (res OrgsCancelInvitationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/cancel-invitation"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/invitations/{invitation_id}"),
 	}
 
 	// Run stopwatch.
@@ -40866,6 +49265,8 @@ func (c *Client) OrgsCheckBlockedUser(ctx context.Context, params OrgsCheckBlock
 func (c *Client) sendOrgsCheckBlockedUser(ctx context.Context, params OrgsCheckBlockedUserParams) (res OrgsCheckBlockedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/check-blocked-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/blocks/{username}"),
 	}
 
 	// Run stopwatch.
@@ -40974,6 +49375,8 @@ func (c *Client) OrgsCheckMembershipForUser(ctx context.Context, params OrgsChec
 func (c *Client) sendOrgsCheckMembershipForUser(ctx context.Context, params OrgsCheckMembershipForUserParams) (res OrgsCheckMembershipForUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/check-membership-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/members/{username}"),
 	}
 
 	// Run stopwatch.
@@ -41082,6 +49485,8 @@ func (c *Client) OrgsCheckPublicMembershipForUser(ctx context.Context, params Or
 func (c *Client) sendOrgsCheckPublicMembershipForUser(ctx context.Context, params OrgsCheckPublicMembershipForUserParams) (res OrgsCheckPublicMembershipForUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/check-public-membership-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/public_members/{username}"),
 	}
 
 	// Run stopwatch.
@@ -41194,6 +49599,8 @@ func (c *Client) OrgsConvertMemberToOutsideCollaborator(ctx context.Context, par
 func (c *Client) sendOrgsConvertMemberToOutsideCollaborator(ctx context.Context, params OrgsConvertMemberToOutsideCollaboratorParams) (res OrgsConvertMemberToOutsideCollaboratorRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/convert-member-to-outside-collaborator"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/outside_collaborators/{username}"),
 	}
 
 	// Run stopwatch.
@@ -41310,6 +49717,8 @@ func (c *Client) OrgsCreateInvitation(ctx context.Context, request OptOrgsCreate
 func (c *Client) sendOrgsCreateInvitation(ctx context.Context, request OptOrgsCreateInvitationReq, params OrgsCreateInvitationParams) (res OrgsCreateInvitationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/create-invitation"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/invitations"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -41419,6 +49828,8 @@ func (c *Client) OrgsCreateWebhook(ctx context.Context, request *OrgsCreateWebho
 func (c *Client) sendOrgsCreateWebhook(ctx context.Context, request *OrgsCreateWebhookReq, params OrgsCreateWebhookParams) (res OrgsCreateWebhookRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/create-webhook"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/hooks"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -41521,6 +49932,8 @@ func (c *Client) OrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWebhook
 func (c *Client) sendOrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWebhookParams) (res OrgsDeleteWebhookRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/delete-webhook"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}"),
 	}
 
 	// Run stopwatch.
@@ -41637,6 +50050,8 @@ func (c *Client) OrgsGet(ctx context.Context, params OrgsGetParams) (OrgsGetRes,
 func (c *Client) sendOrgsGet(ctx context.Context, params OrgsGetParams) (res OrgsGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}"),
 	}
 
 	// Run stopwatch.
@@ -41731,6 +50146,8 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 func (c *Client) sendOrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogParams) (res []AuditLogEvent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get-audit-log"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/audit-log"),
 	}
 
 	// Run stopwatch.
@@ -41944,6 +50361,8 @@ func (c *Client) OrgsGetMembershipForAuthenticatedUser(ctx context.Context, para
 func (c *Client) sendOrgsGetMembershipForAuthenticatedUser(ctx context.Context, params OrgsGetMembershipForAuthenticatedUserParams) (res OrgsGetMembershipForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get-membership-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user/memberships/orgs/{org}"),
 	}
 
 	// Run stopwatch.
@@ -42035,6 +50454,8 @@ func (c *Client) OrgsGetMembershipForUser(ctx context.Context, params OrgsGetMem
 func (c *Client) sendOrgsGetMembershipForUser(ctx context.Context, params OrgsGetMembershipForUserParams) (res OrgsGetMembershipForUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get-membership-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/memberships/{username}"),
 	}
 
 	// Run stopwatch.
@@ -42145,6 +50566,8 @@ func (c *Client) OrgsGetWebhook(ctx context.Context, params OrgsGetWebhookParams
 func (c *Client) sendOrgsGetWebhook(ctx context.Context, params OrgsGetWebhookParams) (res OrgsGetWebhookRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get-webhook"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}"),
 	}
 
 	// Run stopwatch.
@@ -42257,6 +50680,8 @@ func (c *Client) OrgsGetWebhookConfigForOrg(ctx context.Context, params OrgsGetW
 func (c *Client) sendOrgsGetWebhookConfigForOrg(ctx context.Context, params OrgsGetWebhookConfigForOrgParams) (res *WebhookConfig, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get-webhook-config-for-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}/config"),
 	}
 
 	// Run stopwatch.
@@ -42366,6 +50791,8 @@ func (c *Client) OrgsGetWebhookDelivery(ctx context.Context, params OrgsGetWebho
 func (c *Client) sendOrgsGetWebhookDelivery(ctx context.Context, params OrgsGetWebhookDeliveryParams) (res OrgsGetWebhookDeliveryRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get-webhook-delivery"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}"),
 	}
 
 	// Run stopwatch.
@@ -42496,6 +50923,8 @@ func (c *Client) OrgsList(ctx context.Context, params OrgsListParams) (OrgsListR
 func (c *Client) sendOrgsList(ctx context.Context, params OrgsListParams) (res OrgsListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/organizations"),
 	}
 
 	// Run stopwatch.
@@ -42605,6 +51034,8 @@ func (c *Client) OrgsListBlockedUsers(ctx context.Context, params OrgsListBlocke
 func (c *Client) sendOrgsListBlockedUsers(ctx context.Context, params OrgsListBlockedUsersParams) (res OrgsListBlockedUsersRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-blocked-users"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/blocks"),
 	}
 
 	// Run stopwatch.
@@ -42696,6 +51127,8 @@ func (c *Client) OrgsListFailedInvitations(ctx context.Context, params OrgsListF
 func (c *Client) sendOrgsListFailedInvitations(ctx context.Context, params OrgsListFailedInvitationsParams) (res OrgsListFailedInvitationsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-failed-invitations"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/failed_invitations"),
 	}
 
 	// Run stopwatch.
@@ -42829,6 +51262,8 @@ func (c *Client) OrgsListForAuthenticatedUser(ctx context.Context, params OrgsLi
 func (c *Client) sendOrgsListForAuthenticatedUser(ctx context.Context, params OrgsListForAuthenticatedUserParams) (res OrgsListForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user/orgs"),
 	}
 
 	// Run stopwatch.
@@ -42943,6 +51378,8 @@ func (c *Client) OrgsListForUser(ctx context.Context, params OrgsListForUserPara
 func (c *Client) sendOrgsListForUser(ctx context.Context, params OrgsListForUserParams) (res *OrgsListForUserOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/users/{username}/orgs"),
 	}
 
 	// Run stopwatch.
@@ -43072,6 +51509,8 @@ func (c *Client) OrgsListInvitationTeams(ctx context.Context, params OrgsListInv
 func (c *Client) sendOrgsListInvitationTeams(ctx context.Context, params OrgsListInvitationTeamsParams) (res OrgsListInvitationTeamsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-invitation-teams"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/invitations/{invitation_id}/teams"),
 	}
 
 	// Run stopwatch.
@@ -43220,6 +51659,8 @@ func (c *Client) OrgsListMembers(ctx context.Context, params OrgsListMembersPara
 func (c *Client) sendOrgsListMembers(ctx context.Context, params OrgsListMembersParams) (res OrgsListMembersRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-members"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/members"),
 	}
 
 	// Run stopwatch.
@@ -43382,6 +51823,8 @@ func (c *Client) OrgsListMembershipsForAuthenticatedUser(ctx context.Context, pa
 func (c *Client) sendOrgsListMembershipsForAuthenticatedUser(ctx context.Context, params OrgsListMembershipsForAuthenticatedUserParams) (res OrgsListMembershipsForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-memberships-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user/memberships/orgs"),
 	}
 
 	// Run stopwatch.
@@ -43508,6 +51951,8 @@ func (c *Client) OrgsListOutsideCollaborators(ctx context.Context, params OrgsLi
 func (c *Client) sendOrgsListOutsideCollaborators(ctx context.Context, params OrgsListOutsideCollaboratorsParams) (res *OrgsListOutsideCollaboratorsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-outside-collaborators"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/outside_collaborators"),
 	}
 
 	// Run stopwatch.
@@ -43656,6 +52101,8 @@ func (c *Client) OrgsListPendingInvitations(ctx context.Context, params OrgsList
 func (c *Client) sendOrgsListPendingInvitations(ctx context.Context, params OrgsListPendingInvitationsParams) (res OrgsListPendingInvitationsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-pending-invitations"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/invitations"),
 	}
 
 	// Run stopwatch.
@@ -43784,6 +52231,8 @@ func (c *Client) OrgsListPublicMembers(ctx context.Context, params OrgsListPubli
 func (c *Client) sendOrgsListPublicMembers(ctx context.Context, params OrgsListPublicMembersParams) (res *OrgsListPublicMembersOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-public-members"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/public_members"),
 	}
 
 	// Run stopwatch.
@@ -43919,6 +52368,8 @@ func (c *Client) OrgsListSamlSSOAuthorizations(ctx context.Context, params OrgsL
 func (c *Client) sendOrgsListSamlSSOAuthorizations(ctx context.Context, params OrgsListSamlSSOAuthorizationsParams) (res []CredentialAuthorization, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-saml-sso-authorizations"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/credential-authorizations"),
 	}
 
 	// Run stopwatch.
@@ -44009,6 +52460,8 @@ func (c *Client) OrgsListWebhookDeliveries(ctx context.Context, params OrgsListW
 func (c *Client) sendOrgsListWebhookDeliveries(ctx context.Context, params OrgsListWebhookDeliveriesParams) (res OrgsListWebhookDeliveriesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-webhook-deliveries"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}/deliveries"),
 	}
 
 	// Run stopwatch.
@@ -44156,6 +52609,8 @@ func (c *Client) OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksPa
 func (c *Client) sendOrgsListWebhooks(ctx context.Context, params OrgsListWebhooksParams) (res OrgsListWebhooksRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-webhooks"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/hooks"),
 	}
 
 	// Run stopwatch.
@@ -44285,6 +52740,8 @@ func (c *Client) OrgsPingWebhook(ctx context.Context, params OrgsPingWebhookPara
 func (c *Client) sendOrgsPingWebhook(ctx context.Context, params OrgsPingWebhookParams) (res OrgsPingWebhookRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/ping-webhook"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}/pings"),
 	}
 
 	// Run stopwatch.
@@ -44394,6 +52851,8 @@ func (c *Client) OrgsRedeliverWebhookDelivery(ctx context.Context, params OrgsRe
 func (c *Client) sendOrgsRedeliverWebhookDelivery(ctx context.Context, params OrgsRedeliverWebhookDeliveryParams) (res OrgsRedeliverWebhookDeliveryRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/redeliver-webhook-delivery"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}/attempts"),
 	}
 
 	// Run stopwatch.
@@ -44523,6 +52982,8 @@ func (c *Client) OrgsRemoveMember(ctx context.Context, params OrgsRemoveMemberPa
 func (c *Client) sendOrgsRemoveMember(ctx context.Context, params OrgsRemoveMemberParams) (res OrgsRemoveMemberRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/remove-member"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/members/{username}"),
 	}
 
 	// Run stopwatch.
@@ -44635,6 +53096,8 @@ func (c *Client) OrgsRemoveMembershipForUser(ctx context.Context, params OrgsRem
 func (c *Client) sendOrgsRemoveMembershipForUser(ctx context.Context, params OrgsRemoveMembershipForUserParams) (res OrgsRemoveMembershipForUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/remove-membership-for-user"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/memberships/{username}"),
 	}
 
 	// Run stopwatch.
@@ -44743,6 +53206,8 @@ func (c *Client) OrgsRemoveOutsideCollaborator(ctx context.Context, params OrgsR
 func (c *Client) sendOrgsRemoveOutsideCollaborator(ctx context.Context, params OrgsRemoveOutsideCollaboratorParams) (res OrgsRemoveOutsideCollaboratorRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/remove-outside-collaborator"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/outside_collaborators/{username}"),
 	}
 
 	// Run stopwatch.
@@ -44851,6 +53316,8 @@ func (c *Client) OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Cont
 func (c *Client) sendOrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsRemovePublicMembershipForAuthenticatedUserParams) (res *OrgsRemovePublicMembershipForAuthenticatedUserNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/remove-public-membership-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/public_members/{username}"),
 	}
 
 	// Run stopwatch.
@@ -44965,6 +53432,8 @@ func (c *Client) OrgsRemoveSamlSSOAuthorization(ctx context.Context, params Orgs
 func (c *Client) sendOrgsRemoveSamlSSOAuthorization(ctx context.Context, params OrgsRemoveSamlSSOAuthorizationParams) (res OrgsRemoveSamlSSOAuthorizationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/remove-saml-sso-authorization"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/credential-authorizations/{credential_id}"),
 	}
 
 	// Run stopwatch.
@@ -45086,6 +53555,8 @@ func (c *Client) OrgsSetMembershipForUser(ctx context.Context, request OptOrgsSe
 func (c *Client) sendOrgsSetMembershipForUser(ctx context.Context, request OptOrgsSetMembershipForUserReq, params OrgsSetMembershipForUserParams) (res OrgsSetMembershipForUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/set-membership-for-user"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/memberships/{username}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -45217,6 +53688,8 @@ func (c *Client) OrgsSetPublicMembershipForAuthenticatedUser(ctx context.Context
 func (c *Client) sendOrgsSetPublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsSetPublicMembershipForAuthenticatedUserParams) (res OrgsSetPublicMembershipForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/set-public-membership-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/public_members/{username}"),
 	}
 
 	// Run stopwatch.
@@ -45325,6 +53798,8 @@ func (c *Client) OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserPara
 func (c *Client) sendOrgsUnblockUser(ctx context.Context, params OrgsUnblockUserParams) (res *OrgsUnblockUserNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/unblock-user"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/blocks/{username}"),
 	}
 
 	// Run stopwatch.
@@ -45433,6 +53908,8 @@ func (c *Client) OrgsUpdateMembershipForAuthenticatedUser(ctx context.Context, r
 func (c *Client) sendOrgsUpdateMembershipForAuthenticatedUser(ctx context.Context, request *OrgsUpdateMembershipForAuthenticatedUserReq, params OrgsUpdateMembershipForAuthenticatedUserParams) (res OrgsUpdateMembershipForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/update-membership-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/user/memberships/orgs/{org}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -45538,6 +54015,8 @@ func (c *Client) OrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdateWeb
 func (c *Client) sendOrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdateWebhookReq, params OrgsUpdateWebhookParams) (res OrgsUpdateWebhookRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/update-webhook"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -45669,6 +54148,8 @@ func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request OptO
 func (c *Client) sendOrgsUpdateWebhookConfigForOrg(ctx context.Context, request OptOrgsUpdateWebhookConfigForOrgReq, params OrgsUpdateWebhookConfigForOrgParams) (res *WebhookConfig, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/update-webhook-config-for-org"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}/config"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -45802,6 +54283,8 @@ func (c *Client) PackagesDeletePackageForAuthenticatedUser(ctx context.Context, 
 func (c *Client) sendPackagesDeletePackageForAuthenticatedUser(ctx context.Context, params PackagesDeletePackageForAuthenticatedUserParams) (res PackagesDeletePackageForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/delete-package-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/user/packages/{package_type}/{package_name}"),
 	}
 
 	// Run stopwatch.
@@ -45917,6 +54400,8 @@ func (c *Client) PackagesDeletePackageForOrg(ctx context.Context, params Package
 func (c *Client) sendPackagesDeletePackageForOrg(ctx context.Context, params PackagesDeletePackageForOrgParams) (res PackagesDeletePackageForOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/delete-package-for-org"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/packages/{package_type}/{package_name}"),
 	}
 
 	// Run stopwatch.
@@ -46051,6 +54536,8 @@ func (c *Client) PackagesDeletePackageForUser(ctx context.Context, params Packag
 func (c *Client) sendPackagesDeletePackageForUser(ctx context.Context, params PackagesDeletePackageForUserParams) (res PackagesDeletePackageForUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/delete-package-for-user"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/users/{username}/packages/{package_type}/{package_name}"),
 	}
 
 	// Run stopwatch.
@@ -46183,6 +54670,8 @@ func (c *Client) PackagesDeletePackageVersionForAuthenticatedUser(ctx context.Co
 func (c *Client) sendPackagesDeletePackageVersionForAuthenticatedUser(ctx context.Context, params PackagesDeletePackageVersionForAuthenticatedUserParams) (res PackagesDeletePackageVersionForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/delete-package-version-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/user/packages/{package_type}/{package_name}/versions/{package_version_id}"),
 	}
 
 	// Run stopwatch.
@@ -46317,6 +54806,8 @@ func (c *Client) PackagesDeletePackageVersionForOrg(ctx context.Context, params 
 func (c *Client) sendPackagesDeletePackageVersionForOrg(ctx context.Context, params PackagesDeletePackageVersionForOrgParams) (res PackagesDeletePackageVersionForOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/delete-package-version-for-org"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}"),
 	}
 
 	// Run stopwatch.
@@ -46470,6 +54961,8 @@ func (c *Client) PackagesDeletePackageVersionForUser(ctx context.Context, params
 func (c *Client) sendPackagesDeletePackageVersionForUser(ctx context.Context, params PackagesDeletePackageVersionForUserParams) (res PackagesDeletePackageVersionForUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/delete-package-version-for-user"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}"),
 	}
 
 	// Run stopwatch.
@@ -46618,6 +55111,8 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser
 func (c *Client) sendPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser(ctx context.Context, params PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams) (res PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-all-package-versions-for-package-owned-by-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user/packages/{package_type}/{package_name}/versions"),
 	}
 
 	// Run stopwatch.
@@ -46784,6 +55279,8 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.C
 func (c *Client) sendPackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.Context, params PackagesGetAllPackageVersionsForPackageOwnedByOrgParams) (res PackagesGetAllPackageVersionsForPackageOwnedByOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-all-package-versions-for-package-owned-by-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/packages/{package_type}/{package_name}/versions"),
 	}
 
 	// Run stopwatch.
@@ -46969,6 +55466,8 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByUser(ctx context.
 func (c *Client) sendPackagesGetAllPackageVersionsForPackageOwnedByUser(ctx context.Context, params PackagesGetAllPackageVersionsForPackageOwnedByUserParams) (res PackagesGetAllPackageVersionsForPackageOwnedByUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-all-package-versions-for-package-owned-by-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/users/{username}/packages/{package_type}/{package_name}/versions"),
 	}
 
 	// Run stopwatch.
@@ -47099,6 +55598,8 @@ func (c *Client) PackagesGetPackageForAuthenticatedUser(ctx context.Context, par
 func (c *Client) sendPackagesGetPackageForAuthenticatedUser(ctx context.Context, params PackagesGetPackageForAuthenticatedUserParams) (res *Package, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-package-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user/packages/{package_type}/{package_name}"),
 	}
 
 	// Run stopwatch.
@@ -47209,6 +55710,8 @@ func (c *Client) PackagesGetPackageForOrganization(ctx context.Context, params P
 func (c *Client) sendPackagesGetPackageForOrganization(ctx context.Context, params PackagesGetPackageForOrganizationParams) (res *Package, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-package-for-organization"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/packages/{package_type}/{package_name}"),
 	}
 
 	// Run stopwatch.
@@ -47338,6 +55841,8 @@ func (c *Client) PackagesGetPackageForUser(ctx context.Context, params PackagesG
 func (c *Client) sendPackagesGetPackageForUser(ctx context.Context, params PackagesGetPackageForUserParams) (res *Package, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-package-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/users/{username}/packages/{package_type}/{package_name}"),
 	}
 
 	// Run stopwatch.
@@ -47467,6 +55972,8 @@ func (c *Client) PackagesGetPackageVersionForAuthenticatedUser(ctx context.Conte
 func (c *Client) sendPackagesGetPackageVersionForAuthenticatedUser(ctx context.Context, params PackagesGetPackageVersionForAuthenticatedUserParams) (res *PackageVersion, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-package-version-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user/packages/{package_type}/{package_name}/versions/{package_version_id}"),
 	}
 
 	// Run stopwatch.
@@ -47596,6 +56103,8 @@ func (c *Client) PackagesGetPackageVersionForOrganization(ctx context.Context, p
 func (c *Client) sendPackagesGetPackageVersionForOrganization(ctx context.Context, params PackagesGetPackageVersionForOrganizationParams) (res *PackageVersion, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-package-version-for-organization"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}"),
 	}
 
 	// Run stopwatch.
@@ -47745,6 +56254,8 @@ func (c *Client) PackagesGetPackageVersionForUser(ctx context.Context, params Pa
 func (c *Client) sendPackagesGetPackageVersionForUser(ctx context.Context, params PackagesGetPackageVersionForUserParams) (res *PackageVersion, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-package-version-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}"),
 	}
 
 	// Run stopwatch.
@@ -47893,6 +56404,8 @@ func (c *Client) PackagesListPackagesForAuthenticatedUser(ctx context.Context, p
 func (c *Client) sendPackagesListPackagesForAuthenticatedUser(ctx context.Context, params PackagesListPackagesForAuthenticatedUserParams) (res []Package, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/list-packages-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user/packages"),
 	}
 
 	// Run stopwatch.
@@ -48001,6 +56514,8 @@ func (c *Client) PackagesListPackagesForOrganization(ctx context.Context, params
 func (c *Client) sendPackagesListPackagesForOrganization(ctx context.Context, params PackagesListPackagesForOrganizationParams) (res PackagesListPackagesForOrganizationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/list-packages-for-organization"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/packages"),
 	}
 
 	// Run stopwatch.
@@ -48128,6 +56643,8 @@ func (c *Client) PackagesListPackagesForUser(ctx context.Context, params Package
 func (c *Client) sendPackagesListPackagesForUser(ctx context.Context, params PackagesListPackagesForUserParams) (res PackagesListPackagesForUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/list-packages-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/users/{username}/packages"),
 	}
 
 	// Run stopwatch.
@@ -48262,6 +56779,8 @@ func (c *Client) PackagesRestorePackageForAuthenticatedUser(ctx context.Context,
 func (c *Client) sendPackagesRestorePackageForAuthenticatedUser(ctx context.Context, params PackagesRestorePackageForAuthenticatedUserParams) (res PackagesRestorePackageForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/restore-package-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/user/packages/{package_type}/{package_name}/restore"),
 	}
 
 	// Run stopwatch.
@@ -48403,6 +56922,8 @@ func (c *Client) PackagesRestorePackageForOrg(ctx context.Context, params Packag
 func (c *Client) sendPackagesRestorePackageForOrg(ctx context.Context, params PackagesRestorePackageForOrgParams) (res PackagesRestorePackageForOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/restore-package-for-org"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/packages/{package_type}/{package_name}/restore"),
 	}
 
 	// Run stopwatch.
@@ -48563,6 +57084,8 @@ func (c *Client) PackagesRestorePackageForUser(ctx context.Context, params Packa
 func (c *Client) sendPackagesRestorePackageForUser(ctx context.Context, params PackagesRestorePackageForUserParams) (res PackagesRestorePackageForUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/restore-package-for-user"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/users/{username}/packages/{package_type}/{package_name}/restore"),
 	}
 
 	// Run stopwatch.
@@ -48721,6 +57244,8 @@ func (c *Client) PackagesRestorePackageVersionForAuthenticatedUser(ctx context.C
 func (c *Client) sendPackagesRestorePackageVersionForAuthenticatedUser(ctx context.Context, params PackagesRestorePackageVersionForAuthenticatedUserParams) (res PackagesRestorePackageVersionForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/restore-package-version-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"),
 	}
 
 	// Run stopwatch.
@@ -48860,6 +57385,8 @@ func (c *Client) PackagesRestorePackageVersionForOrg(ctx context.Context, params
 func (c *Client) sendPackagesRestorePackageVersionForOrg(ctx context.Context, params PackagesRestorePackageVersionForOrgParams) (res PackagesRestorePackageVersionForOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/restore-package-version-for-org"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"),
 	}
 
 	// Run stopwatch.
@@ -49018,6 +57545,8 @@ func (c *Client) PackagesRestorePackageVersionForUser(ctx context.Context, param
 func (c *Client) sendPackagesRestorePackageVersionForUser(ctx context.Context, params PackagesRestorePackageVersionForUserParams) (res PackagesRestorePackageVersionForUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/restore-package-version-for-user"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"),
 	}
 
 	// Run stopwatch.
@@ -49166,6 +57695,8 @@ func (c *Client) ProjectsAddCollaborator(ctx context.Context, request OptNilProj
 func (c *Client) sendProjectsAddCollaborator(ctx context.Context, request OptNilProjectsAddCollaboratorReq, params ProjectsAddCollaboratorParams) (res ProjectsAddCollaboratorRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/add-collaborator"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/projects/{project_id}/collaborators/{username}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -49293,6 +57824,8 @@ func (c *Client) ProjectsCreateColumn(ctx context.Context, request *ProjectsCrea
 func (c *Client) sendProjectsCreateColumn(ctx context.Context, request *ProjectsCreateColumnReq, params ProjectsCreateColumnParams) (res ProjectsCreateColumnRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/create-column"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/projects/{project_id}/columns"),
 	}
 
 	// Run stopwatch.
@@ -49386,6 +57919,8 @@ func (c *Client) ProjectsCreateForAuthenticatedUser(ctx context.Context, request
 func (c *Client) sendProjectsCreateForAuthenticatedUser(ctx context.Context, request *ProjectsCreateForAuthenticatedUserReq) (res ProjectsCreateForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/create-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/user/projects"),
 	}
 
 	// Run stopwatch.
@@ -49462,6 +57997,8 @@ func (c *Client) ProjectsCreateForOrg(ctx context.Context, request *ProjectsCrea
 func (c *Client) sendProjectsCreateForOrg(ctx context.Context, request *ProjectsCreateForOrgReq, params ProjectsCreateForOrgParams) (res ProjectsCreateForOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/create-for-org"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/projects"),
 	}
 
 	// Run stopwatch.
@@ -49557,6 +58094,8 @@ func (c *Client) ProjectsCreateForRepo(ctx context.Context, request *ProjectsCre
 func (c *Client) sendProjectsCreateForRepo(ctx context.Context, request *ProjectsCreateForRepoReq, params ProjectsCreateForRepoParams) (res ProjectsCreateForRepoRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/create-for-repo"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/projects"),
 	}
 
 	// Run stopwatch.
@@ -49669,6 +58208,8 @@ func (c *Client) ProjectsDelete(ctx context.Context, params ProjectsDeleteParams
 func (c *Client) sendProjectsDelete(ctx context.Context, params ProjectsDeleteParams) (res ProjectsDeleteRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/delete"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/projects/{project_id}"),
 	}
 
 	// Run stopwatch.
@@ -49758,6 +58299,8 @@ func (c *Client) ProjectsDeleteCard(ctx context.Context, params ProjectsDeleteCa
 func (c *Client) sendProjectsDeleteCard(ctx context.Context, params ProjectsDeleteCardParams) (res ProjectsDeleteCardRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/delete-card"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/projects/columns/cards/{card_id}"),
 	}
 
 	// Run stopwatch.
@@ -49847,6 +58390,8 @@ func (c *Client) ProjectsDeleteColumn(ctx context.Context, params ProjectsDelete
 func (c *Client) sendProjectsDeleteColumn(ctx context.Context, params ProjectsDeleteColumnParams) (res ProjectsDeleteColumnRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/delete-column"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/projects/columns/{column_id}"),
 	}
 
 	// Run stopwatch.
@@ -49938,6 +58483,8 @@ func (c *Client) ProjectsGet(ctx context.Context, params ProjectsGetParams) (Pro
 func (c *Client) sendProjectsGet(ctx context.Context, params ProjectsGetParams) (res ProjectsGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/get"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/projects/{project_id}"),
 	}
 
 	// Run stopwatch.
@@ -50027,6 +58574,8 @@ func (c *Client) ProjectsGetCard(ctx context.Context, params ProjectsGetCardPara
 func (c *Client) sendProjectsGetCard(ctx context.Context, params ProjectsGetCardParams) (res ProjectsGetCardRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/get-card"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/projects/columns/cards/{card_id}"),
 	}
 
 	// Run stopwatch.
@@ -50116,6 +58665,8 @@ func (c *Client) ProjectsGetColumn(ctx context.Context, params ProjectsGetColumn
 func (c *Client) sendProjectsGetColumn(ctx context.Context, params ProjectsGetColumnParams) (res ProjectsGetColumnRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/get-column"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/projects/columns/{column_id}"),
 	}
 
 	// Run stopwatch.
@@ -50207,6 +58758,8 @@ func (c *Client) ProjectsGetPermissionForUser(ctx context.Context, params Projec
 func (c *Client) sendProjectsGetPermissionForUser(ctx context.Context, params ProjectsGetPermissionForUserParams) (res ProjectsGetPermissionForUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/get-permission-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/projects/{project_id}/collaborators/{username}/permission"),
 	}
 
 	// Run stopwatch.
@@ -50316,6 +58869,8 @@ func (c *Client) ProjectsListCards(ctx context.Context, params ProjectsListCards
 func (c *Client) sendProjectsListCards(ctx context.Context, params ProjectsListCardsParams) (res ProjectsListCardsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/list-cards"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/projects/columns/{column_id}/cards"),
 	}
 
 	// Run stopwatch.
@@ -50465,6 +59020,8 @@ func (c *Client) ProjectsListCollaborators(ctx context.Context, params ProjectsL
 func (c *Client) sendProjectsListCollaborators(ctx context.Context, params ProjectsListCollaboratorsParams) (res ProjectsListCollaboratorsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/list-collaborators"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/projects/{project_id}/collaborators"),
 	}
 
 	// Run stopwatch.
@@ -50610,6 +59167,8 @@ func (c *Client) ProjectsListColumns(ctx context.Context, params ProjectsListCol
 func (c *Client) sendProjectsListColumns(ctx context.Context, params ProjectsListColumnsParams) (res ProjectsListColumnsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/list-columns"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/projects/{project_id}/columns"),
 	}
 
 	// Run stopwatch.
@@ -50740,6 +59299,8 @@ func (c *Client) ProjectsListForOrg(ctx context.Context, params ProjectsListForO
 func (c *Client) sendProjectsListForOrg(ctx context.Context, params ProjectsListForOrgParams) (res ProjectsListForOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/list-for-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/projects"),
 	}
 
 	// Run stopwatch.
@@ -50887,6 +59448,8 @@ func (c *Client) ProjectsListForRepo(ctx context.Context, params ProjectsListFor
 func (c *Client) sendProjectsListForRepo(ctx context.Context, params ProjectsListForRepoParams) (res ProjectsListForRepoRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/list-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/projects"),
 	}
 
 	// Run stopwatch.
@@ -51051,6 +59614,8 @@ func (c *Client) ProjectsListForUser(ctx context.Context, params ProjectsListFor
 func (c *Client) sendProjectsListForUser(ctx context.Context, params ProjectsListForUserParams) (res ProjectsListForUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/list-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/users/{username}/projects"),
 	}
 
 	// Run stopwatch.
@@ -51196,6 +59761,8 @@ func (c *Client) ProjectsMoveCard(ctx context.Context, request *ProjectsMoveCard
 func (c *Client) sendProjectsMoveCard(ctx context.Context, request *ProjectsMoveCardReq, params ProjectsMoveCardParams) (res ProjectsMoveCardRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/move-card"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/projects/columns/cards/{card_id}/moves"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -51298,6 +59865,8 @@ func (c *Client) ProjectsMoveColumn(ctx context.Context, request *ProjectsMoveCo
 func (c *Client) sendProjectsMoveColumn(ctx context.Context, request *ProjectsMoveColumnReq, params ProjectsMoveColumnParams) (res ProjectsMoveColumnRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/move-column"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/projects/columns/{column_id}/moves"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -51401,6 +59970,8 @@ func (c *Client) ProjectsRemoveCollaborator(ctx context.Context, params Projects
 func (c *Client) sendProjectsRemoveCollaborator(ctx context.Context, params ProjectsRemoveCollaboratorParams) (res ProjectsRemoveCollaboratorRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/remove-collaborator"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/projects/{project_id}/collaborators/{username}"),
 	}
 
 	// Run stopwatch.
@@ -51511,6 +60082,8 @@ func (c *Client) ProjectsUpdate(ctx context.Context, request OptProjectsUpdateRe
 func (c *Client) sendProjectsUpdate(ctx context.Context, request OptProjectsUpdateReq, params ProjectsUpdateParams) (res ProjectsUpdateRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/update"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/projects/{project_id}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -51619,6 +60192,8 @@ func (c *Client) ProjectsUpdateCard(ctx context.Context, request OptProjectsUpda
 func (c *Client) sendProjectsUpdateCard(ctx context.Context, request OptProjectsUpdateCardReq, params ProjectsUpdateCardParams) (res ProjectsUpdateCardRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/update-card"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/projects/columns/cards/{card_id}"),
 	}
 
 	// Run stopwatch.
@@ -51711,6 +60286,8 @@ func (c *Client) ProjectsUpdateColumn(ctx context.Context, request *ProjectsUpda
 func (c *Client) sendProjectsUpdateColumn(ctx context.Context, request *ProjectsUpdateColumnReq, params ProjectsUpdateColumnParams) (res ProjectsUpdateColumnRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/update-column"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/projects/columns/{column_id}"),
 	}
 
 	// Run stopwatch.
@@ -51803,6 +60380,8 @@ func (c *Client) PullsCheckIfMerged(ctx context.Context, params PullsCheckIfMerg
 func (c *Client) sendPullsCheckIfMerged(ctx context.Context, params PullsCheckIfMergedParams) (res PullsCheckIfMergedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/check-if-merged"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/merge"),
 	}
 
 	// Run stopwatch.
@@ -51946,6 +60525,8 @@ func (c *Client) PullsCreate(ctx context.Context, request *PullsCreateReq, param
 func (c *Client) sendPullsCreate(ctx context.Context, request *PullsCreateReq, params PullsCreateParams) (res PullsCreateRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/create"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls"),
 	}
 
 	// Run stopwatch.
@@ -52067,6 +60648,8 @@ func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request *
 func (c *Client) sendPullsCreateReplyForReviewComment(ctx context.Context, request *PullsCreateReplyForReviewCommentReq, params PullsCreateReplyForReviewCommentParams) (res PullsCreateReplyForReviewCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/create-reply-for-review-comment"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies"),
 	}
 
 	// Run stopwatch.
@@ -52235,6 +60818,8 @@ func (c *Client) PullsCreateReview(ctx context.Context, request OptPullsCreateRe
 func (c *Client) sendPullsCreateReview(ctx context.Context, request OptPullsCreateReviewReq, params PullsCreateReviewParams) (res PullsCreateReviewRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/create-review"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -52401,6 +60986,8 @@ func (c *Client) PullsCreateReviewComment(ctx context.Context, request *PullsCre
 func (c *Client) sendPullsCreateReviewComment(ctx context.Context, request *PullsCreateReviewCommentReq, params PullsCreateReviewCommentParams) (res PullsCreateReviewCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/create-review-comment"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/comments"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -52541,6 +61128,8 @@ func (c *Client) PullsDeletePendingReview(ctx context.Context, params PullsDelet
 func (c *Client) sendPullsDeletePendingReview(ctx context.Context, params PullsDeletePendingReviewParams) (res PullsDeletePendingReviewRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/delete-pending-review"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"),
 	}
 
 	// Run stopwatch.
@@ -52687,6 +61276,8 @@ func (c *Client) PullsDeleteReviewComment(ctx context.Context, params PullsDelet
 func (c *Client) sendPullsDeleteReviewComment(ctx context.Context, params PullsDeleteReviewCommentParams) (res PullsDeleteReviewCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/delete-review-comment"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/comments/{comment_id}"),
 	}
 
 	// Run stopwatch.
@@ -52816,6 +61407,8 @@ func (c *Client) PullsDismissReview(ctx context.Context, request *PullsDismissRe
 func (c *Client) sendPullsDismissReview(ctx context.Context, request *PullsDismissReviewReq, params PullsDismissReviewParams) (res PullsDismissReviewRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/dismiss-review"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals"),
 	}
 
 	// Run stopwatch.
@@ -52999,6 +61592,8 @@ func (c *Client) PullsGet(ctx context.Context, params PullsGetParams) (PullsGetR
 func (c *Client) sendPullsGet(ctx context.Context, params PullsGetParams) (res PullsGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/get"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}"),
 	}
 
 	// Run stopwatch.
@@ -53126,6 +61721,8 @@ func (c *Client) PullsGetReview(ctx context.Context, params PullsGetReviewParams
 func (c *Client) sendPullsGetReview(ctx context.Context, params PullsGetReviewParams) (res PullsGetReviewRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/get-review"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"),
 	}
 
 	// Run stopwatch.
@@ -53272,6 +61869,8 @@ func (c *Client) PullsGetReviewComment(ctx context.Context, params PullsGetRevie
 func (c *Client) sendPullsGetReviewComment(ctx context.Context, params PullsGetReviewCommentParams) (res PullsGetReviewCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/get-review-comment"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/comments/{comment_id}"),
 	}
 
 	// Run stopwatch.
@@ -53403,6 +62002,8 @@ func (c *Client) PullsList(ctx context.Context, params PullsListParams) (PullsLi
 func (c *Client) sendPullsList(ctx context.Context, params PullsListParams) (res PullsListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls"),
 	}
 
 	// Run stopwatch.
@@ -53635,6 +62236,8 @@ func (c *Client) PullsListCommentsForReview(ctx context.Context, params PullsLis
 func (c *Client) sendPullsListCommentsForReview(ctx context.Context, params PullsListCommentsForReviewParams) (res PullsListCommentsForReviewRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-comments-for-review"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments"),
 	}
 
 	// Run stopwatch.
@@ -53822,6 +62425,8 @@ func (c *Client) PullsListCommits(ctx context.Context, params PullsListCommitsPa
 func (c *Client) sendPullsListCommits(ctx context.Context, params PullsListCommitsParams) (res *PullsListCommitsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-commits"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/commits"),
 	}
 
 	// Run stopwatch.
@@ -53989,6 +62594,8 @@ func (c *Client) PullsListFiles(ctx context.Context, params PullsListFilesParams
 func (c *Client) sendPullsListFiles(ctx context.Context, params PullsListFilesParams) (res PullsListFilesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-files"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/files"),
 	}
 
 	// Run stopwatch.
@@ -54155,6 +62762,8 @@ func (c *Client) PullsListRequestedReviewers(ctx context.Context, params PullsLi
 func (c *Client) sendPullsListRequestedReviewers(ctx context.Context, params PullsListRequestedReviewersParams) (res *PullRequestReviewRequestHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-requested-reviewers"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"),
 	}
 
 	// Run stopwatch.
@@ -54322,6 +62931,8 @@ func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListRe
 func (c *Client) sendPullsListReviewComments(ctx context.Context, params PullsListReviewCommentsParams) (res *PullsListReviewCommentsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-review-comments"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/comments"),
 	}
 
 	// Run stopwatch.
@@ -54540,6 +63151,8 @@ func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params Pull
 func (c *Client) sendPullsListReviewCommentsForRepo(ctx context.Context, params PullsListReviewCommentsForRepoParams) (res *PullsListReviewCommentsForRepoOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-review-comments-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/comments"),
 	}
 
 	// Run stopwatch.
@@ -54738,6 +63351,8 @@ func (c *Client) PullsListReviews(ctx context.Context, params PullsListReviewsPa
 func (c *Client) sendPullsListReviews(ctx context.Context, params PullsListReviewsParams) (res *PullsListReviewsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-reviews"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews"),
 	}
 
 	// Run stopwatch.
@@ -54910,6 +63525,8 @@ func (c *Client) PullsMerge(ctx context.Context, request OptNilPullsMergeReq, pa
 func (c *Client) sendPullsMerge(ctx context.Context, request OptNilPullsMergeReq, params PullsMergeParams) (res PullsMergeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/merge"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/merge"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -55057,6 +63674,8 @@ func (c *Client) PullsRemoveRequestedReviewers(ctx context.Context, request *Pul
 func (c *Client) sendPullsRemoveRequestedReviewers(ctx context.Context, request *PullsRemoveRequestedReviewersReq, params PullsRemoveRequestedReviewersParams) (res PullsRemoveRequestedReviewersRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/remove-requested-reviewers"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -55197,6 +63816,8 @@ func (c *Client) PullsSubmitReview(ctx context.Context, request *PullsSubmitRevi
 func (c *Client) sendPullsSubmitReview(ctx context.Context, request *PullsSubmitReviewReq, params PullsSubmitReviewParams) (res PullsSubmitReviewRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/submit-review"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -55363,6 +63984,8 @@ func (c *Client) PullsUpdate(ctx context.Context, request OptPullsUpdateReq, par
 func (c *Client) sendPullsUpdate(ctx context.Context, request OptPullsUpdateReq, params PullsUpdateParams) (res PullsUpdateRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/update"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -55510,6 +64133,8 @@ func (c *Client) PullsUpdateBranch(ctx context.Context, request OptNilPullsUpdat
 func (c *Client) sendPullsUpdateBranch(ctx context.Context, request OptNilPullsUpdateBranchReq, params PullsUpdateBranchParams) (res PullsUpdateBranchRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/update-branch"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/update-branch"),
 	}
 
 	// Run stopwatch.
@@ -55641,6 +64266,8 @@ func (c *Client) PullsUpdateReview(ctx context.Context, request *PullsUpdateRevi
 func (c *Client) sendPullsUpdateReview(ctx context.Context, request *PullsUpdateReviewReq, params PullsUpdateReviewParams) (res PullsUpdateReviewRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/update-review"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"),
 	}
 
 	// Run stopwatch.
@@ -55790,6 +64417,8 @@ func (c *Client) PullsUpdateReviewComment(ctx context.Context, request *PullsUpd
 func (c *Client) sendPullsUpdateReviewComment(ctx context.Context, request *PullsUpdateReviewCommentReq, params PullsUpdateReviewCommentParams) (res *PullRequestReviewComment, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/update-review-comment"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/comments/{comment_id}"),
 	}
 
 	// Run stopwatch.
@@ -55923,6 +64552,8 @@ func (c *Client) RateLimitGet(ctx context.Context) (RateLimitGetRes, error) {
 func (c *Client) sendRateLimitGet(ctx context.Context) (res RateLimitGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("rate-limit/get"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/rate_limit"),
 	}
 
 	// Run stopwatch.
@@ -55996,6 +64627,8 @@ func (c *Client) ReactionsCreateForCommitComment(ctx context.Context, request *R
 func (c *Client) sendReactionsCreateForCommitComment(ctx context.Context, request *ReactionsCreateForCommitCommentReq, params ReactionsCreateForCommitCommentParams) (res ReactionsCreateForCommitCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-commit-comment"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/comments/{comment_id}/reactions"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -56137,6 +64770,8 @@ func (c *Client) ReactionsCreateForIssue(ctx context.Context, request *Reactions
 func (c *Client) sendReactionsCreateForIssue(ctx context.Context, request *ReactionsCreateForIssueReq, params ReactionsCreateForIssueParams) (res ReactionsCreateForIssueRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-issue"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/reactions"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -56279,6 +64914,8 @@ func (c *Client) ReactionsCreateForIssueComment(ctx context.Context, request *Re
 func (c *Client) sendReactionsCreateForIssueComment(ctx context.Context, request *ReactionsCreateForIssueCommentReq, params ReactionsCreateForIssueCommentParams) (res ReactionsCreateForIssueCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-issue-comment"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -56421,6 +65058,8 @@ func (c *Client) ReactionsCreateForPullRequestReviewComment(ctx context.Context,
 func (c *Client) sendReactionsCreateForPullRequestReviewComment(ctx context.Context, request *ReactionsCreateForPullRequestReviewCommentReq, params ReactionsCreateForPullRequestReviewCommentParams) (res ReactionsCreateForPullRequestReviewCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-pull-request-review-comment"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -56562,6 +65201,8 @@ func (c *Client) ReactionsCreateForRelease(ctx context.Context, request *Reactio
 func (c *Client) sendReactionsCreateForRelease(ctx context.Context, request *ReactionsCreateForReleaseReq, params ReactionsCreateForReleaseParams) (res ReactionsCreateForReleaseRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-release"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/{release_id}/reactions"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -56708,6 +65349,8 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Contex
 func (c *Client) sendReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Context, request *ReactionsCreateForTeamDiscussionCommentInOrgReq, params ReactionsCreateForTeamDiscussionCommentInOrgParams) (res ReactionsCreateForTeamDiscussionCommentInOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-team-discussion-comment-in-org"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -56877,6 +65520,8 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Conte
 func (c *Client) sendReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Context, request *ReactionsCreateForTeamDiscussionCommentLegacyReq, params ReactionsCreateForTeamDiscussionCommentLegacyParams) (res *Reaction, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-team-discussion-comment-legacy"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -57024,6 +65669,8 @@ func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, requ
 func (c *Client) sendReactionsCreateForTeamDiscussionInOrg(ctx context.Context, request *ReactionsCreateForTeamDiscussionInOrgReq, params ReactionsCreateForTeamDiscussionInOrgParams) (res ReactionsCreateForTeamDiscussionInOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-team-discussion-in-org"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -57175,6 +65822,8 @@ func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req
 func (c *Client) sendReactionsCreateForTeamDiscussionLegacy(ctx context.Context, request *ReactionsCreateForTeamDiscussionLegacyReq, params ReactionsCreateForTeamDiscussionLegacyParams) (res *Reaction, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-team-discussion-legacy"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/reactions"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -57298,6 +65947,8 @@ func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params Rea
 func (c *Client) sendReactionsDeleteForCommitComment(ctx context.Context, params ReactionsDeleteForCommitCommentParams) (res *ReactionsDeleteForCommitCommentNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-commit-comment"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}"),
 	}
 
 	// Run stopwatch.
@@ -57446,6 +66097,8 @@ func (c *Client) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDe
 func (c *Client) sendReactionsDeleteForIssue(ctx context.Context, params ReactionsDeleteForIssueParams) (res *ReactionsDeleteForIssueNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-issue"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}"),
 	}
 
 	// Run stopwatch.
@@ -57594,6 +66247,8 @@ func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params Reac
 func (c *Client) sendReactionsDeleteForIssueComment(ctx context.Context, params ReactionsDeleteForIssueCommentParams) (res *ReactionsDeleteForIssueCommentNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-issue-comment"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}"),
 	}
 
 	// Run stopwatch.
@@ -57743,6 +66398,8 @@ func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, param
 func (c *Client) sendReactionsDeleteForPullRequestComment(ctx context.Context, params ReactionsDeleteForPullRequestCommentParams) (res *ReactionsDeleteForPullRequestCommentNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-pull-request-comment"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}"),
 	}
 
 	// Run stopwatch.
@@ -57896,6 +66553,8 @@ func (c *Client) ReactionsDeleteForTeamDiscussion(ctx context.Context, params Re
 func (c *Client) sendReactionsDeleteForTeamDiscussion(ctx context.Context, params ReactionsDeleteForTeamDiscussionParams) (res *ReactionsDeleteForTeamDiscussionNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-team-discussion"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}"),
 	}
 
 	// Run stopwatch.
@@ -58047,6 +66706,8 @@ func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, pa
 func (c *Client) sendReactionsDeleteForTeamDiscussionComment(ctx context.Context, params ReactionsDeleteForTeamDiscussionCommentParams) (res *ReactionsDeleteForTeamDiscussionCommentNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-team-discussion-comment"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}"),
 	}
 
 	// Run stopwatch.
@@ -58221,6 +66882,8 @@ func (c *Client) ReactionsDeleteLegacy(ctx context.Context, params ReactionsDele
 func (c *Client) sendReactionsDeleteLegacy(ctx context.Context, params ReactionsDeleteLegacyParams) (res ReactionsDeleteLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-legacy"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/reactions/{reaction_id}"),
 	}
 
 	// Run stopwatch.
@@ -58310,6 +66973,8 @@ func (c *Client) ReactionsListForCommitComment(ctx context.Context, params React
 func (c *Client) sendReactionsListForCommitComment(ctx context.Context, params ReactionsListForCommitCommentParams) (res ReactionsListForCommitCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-commit-comment"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/comments/{comment_id}/reactions"),
 	}
 
 	// Run stopwatch.
@@ -58493,6 +67158,8 @@ func (c *Client) ReactionsListForIssue(ctx context.Context, params ReactionsList
 func (c *Client) sendReactionsListForIssue(ctx context.Context, params ReactionsListForIssueParams) (res ReactionsListForIssueRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-issue"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/reactions"),
 	}
 
 	// Run stopwatch.
@@ -58676,6 +67343,8 @@ func (c *Client) ReactionsListForIssueComment(ctx context.Context, params Reacti
 func (c *Client) sendReactionsListForIssueComment(ctx context.Context, params ReactionsListForIssueCommentParams) (res ReactionsListForIssueCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-issue-comment"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions"),
 	}
 
 	// Run stopwatch.
@@ -58860,6 +67529,8 @@ func (c *Client) ReactionsListForPullRequestReviewComment(ctx context.Context, p
 func (c *Client) sendReactionsListForPullRequestReviewComment(ctx context.Context, params ReactionsListForPullRequestReviewCommentParams) (res ReactionsListForPullRequestReviewCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-pull-request-review-comment"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions"),
 	}
 
 	// Run stopwatch.
@@ -59047,6 +67718,8 @@ func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context,
 func (c *Client) sendReactionsListForTeamDiscussionCommentInOrg(ctx context.Context, params ReactionsListForTeamDiscussionCommentInOrgParams) (res *ReactionsListForTeamDiscussionCommentInOrgOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-team-discussion-comment-in-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions"),
 	}
 
 	// Run stopwatch.
@@ -59257,6 +67930,8 @@ func (c *Client) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context
 func (c *Client) sendReactionsListForTeamDiscussionCommentLegacy(ctx context.Context, params ReactionsListForTeamDiscussionCommentLegacyParams) (res *ReactionsListForTeamDiscussionCommentLegacyOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-team-discussion-comment-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"),
 	}
 
 	// Run stopwatch.
@@ -59444,6 +68119,8 @@ func (c *Client) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params
 func (c *Client) sendReactionsListForTeamDiscussionInOrg(ctx context.Context, params ReactionsListForTeamDiscussionInOrgParams) (res *ReactionsListForTeamDiscussionInOrgOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-team-discussion-in-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions"),
 	}
 
 	// Run stopwatch.
@@ -59635,6 +68312,8 @@ func (c *Client) ReactionsListForTeamDiscussionLegacy(ctx context.Context, param
 func (c *Client) sendReactionsListForTeamDiscussionLegacy(ctx context.Context, params ReactionsListForTeamDiscussionLegacyParams) (res *ReactionsListForTeamDiscussionLegacyOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-team-discussion-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/reactions"),
 	}
 
 	// Run stopwatch.
@@ -59799,6 +68478,8 @@ func (c *Client) ReposAcceptInvitation(ctx context.Context, params ReposAcceptIn
 func (c *Client) sendReposAcceptInvitation(ctx context.Context, params ReposAcceptInvitationParams) (res ReposAcceptInvitationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/accept-invitation"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/user/repository_invitations/{invitation_id}"),
 	}
 
 	// Run stopwatch.
@@ -59902,6 +68583,8 @@ func (c *Client) ReposAddAppAccessRestrictions(ctx context.Context, request OptR
 func (c *Client) sendReposAddAppAccessRestrictions(ctx context.Context, request OptReposAddAppAccessRestrictionsReq, params ReposAddAppAccessRestrictionsParams) (res ReposAddAppAccessRestrictionsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/add-app-access-restrictions"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -60068,6 +68751,8 @@ func (c *Client) ReposAddCollaborator(ctx context.Context, request OptReposAddCo
 func (c *Client) sendReposAddCollaborator(ctx context.Context, request OptReposAddCollaboratorReq, params ReposAddCollaboratorParams) (res ReposAddCollaboratorRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/add-collaborator"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/collaborators/{username}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -60218,6 +68903,8 @@ func (c *Client) ReposAddStatusCheckContexts(ctx context.Context, request OptRep
 func (c *Client) sendReposAddStatusCheckContexts(ctx context.Context, request OptReposAddStatusCheckContextsReq, params ReposAddStatusCheckContextsParams) (res ReposAddStatusCheckContextsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/add-status-check-contexts"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -60379,6 +69066,8 @@ func (c *Client) ReposAddTeamAccessRestrictions(ctx context.Context, request Opt
 func (c *Client) sendReposAddTeamAccessRestrictions(ctx context.Context, request OptReposAddTeamAccessRestrictionsReq, params ReposAddTeamAccessRestrictionsParams) (res ReposAddTeamAccessRestrictionsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/add-team-access-restrictions"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -60539,6 +69228,8 @@ func (c *Client) ReposAddUserAccessRestrictions(ctx context.Context, request Opt
 func (c *Client) sendReposAddUserAccessRestrictions(ctx context.Context, request OptReposAddUserAccessRestrictionsReq, params ReposAddUserAccessRestrictionsParams) (res ReposAddUserAccessRestrictionsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/add-user-access-restrictions"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -60690,6 +69381,8 @@ func (c *Client) ReposCheckCollaborator(ctx context.Context, params ReposCheckCo
 func (c *Client) sendReposCheckCollaborator(ctx context.Context, params ReposCheckCollaboratorParams) (res ReposCheckCollaboratorRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/check-collaborator"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/collaborators/{username}"),
 	}
 
 	// Run stopwatch.
@@ -60820,6 +69513,8 @@ func (c *Client) ReposCheckVulnerabilityAlerts(ctx context.Context, params Repos
 func (c *Client) sendReposCheckVulnerabilityAlerts(ctx context.Context, params ReposCheckVulnerabilityAlertsParams) (res ReposCheckVulnerabilityAlertsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/check-vulnerability-alerts"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/vulnerability-alerts"),
 	}
 
 	// Run stopwatch.
@@ -60983,6 +69678,8 @@ func (c *Client) ReposCompareCommits(ctx context.Context, params ReposCompareCom
 func (c *Client) sendReposCompareCommits(ctx context.Context, params ReposCompareCommitsParams) (res ReposCompareCommitsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/compare-commits"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/compare/{basehead}"),
 	}
 
 	// Run stopwatch.
@@ -61148,6 +69845,8 @@ func (c *Client) ReposCreateAutolink(ctx context.Context, request *ReposCreateAu
 func (c *Client) sendReposCreateAutolink(ctx context.Context, request *ReposCreateAutolinkReq, params ReposCreateAutolinkParams) (res ReposCreateAutolinkRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-autolink"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/autolinks"),
 	}
 
 	// Run stopwatch.
@@ -61267,6 +69966,8 @@ func (c *Client) ReposCreateCommitComment(ctx context.Context, request *ReposCre
 func (c *Client) sendReposCreateCommitComment(ctx context.Context, request *ReposCreateCommitCommentReq, params ReposCreateCommitCommentParams) (res ReposCreateCommitCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-commit-comment"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{commit_sha}/comments"),
 	}
 
 	// Run stopwatch.
@@ -61404,6 +70105,8 @@ func (c *Client) ReposCreateCommitSignatureProtection(ctx context.Context, param
 func (c *Client) sendReposCreateCommitSignatureProtection(ctx context.Context, params ReposCreateCommitSignatureProtectionParams) (res ReposCreateCommitSignatureProtectionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-commit-signature-protection"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures"),
 	}
 
 	// Run stopwatch.
@@ -61534,6 +70237,8 @@ func (c *Client) ReposCreateCommitStatus(ctx context.Context, request *ReposCrea
 func (c *Client) sendReposCreateCommitStatus(ctx context.Context, request *ReposCreateCommitStatusReq, params ReposCreateCommitStatusParams) (res *StatusHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-commit-status"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/statuses/{sha}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -61673,6 +70378,8 @@ func (c *Client) ReposCreateDeployKey(ctx context.Context, request *ReposCreateD
 func (c *Client) sendReposCreateDeployKey(ctx context.Context, request *ReposCreateDeployKeyReq, params ReposCreateDeployKeyParams) (res ReposCreateDeployKeyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-deploy-key"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/keys"),
 	}
 
 	// Run stopwatch.
@@ -61840,6 +70547,8 @@ func (c *Client) ReposCreateDeployment(ctx context.Context, request *ReposCreate
 func (c *Client) sendReposCreateDeployment(ctx context.Context, request *ReposCreateDeploymentReq, params ReposCreateDeploymentParams) (res ReposCreateDeploymentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-deployment"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/deployments"),
 	}
 
 	// Run stopwatch.
@@ -61954,6 +70663,8 @@ func (c *Client) ReposCreateDeploymentStatus(ctx context.Context, request *Repos
 func (c *Client) sendReposCreateDeploymentStatus(ctx context.Context, request *ReposCreateDeploymentStatusReq, params ReposCreateDeploymentStatusParams) (res ReposCreateDeploymentStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-deployment-status"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -62113,6 +70824,8 @@ func (c *Client) ReposCreateDispatchEvent(ctx context.Context, request *ReposCre
 func (c *Client) sendReposCreateDispatchEvent(ctx context.Context, request *ReposCreateDispatchEventReq, params ReposCreateDispatchEventParams) (res ReposCreateDispatchEventRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-dispatch-event"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/dispatches"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -62240,6 +70953,8 @@ func (c *Client) ReposCreateForAuthenticatedUser(ctx context.Context, request *R
 func (c *Client) sendReposCreateForAuthenticatedUser(ctx context.Context, request *ReposCreateForAuthenticatedUserReq) (res ReposCreateForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/user/repos"),
 	}
 
 	// Run stopwatch.
@@ -62317,6 +71032,8 @@ func (c *Client) ReposCreateFork(ctx context.Context, request OptNilReposCreateF
 func (c *Client) sendReposCreateFork(ctx context.Context, request OptNilReposCreateForkReq, params ReposCreateForkParams) (res ReposCreateForkRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-fork"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/forks"),
 	}
 
 	// Run stopwatch.
@@ -62436,6 +71153,8 @@ func (c *Client) ReposCreateInOrg(ctx context.Context, request *ReposCreateInOrg
 func (c *Client) sendReposCreateInOrg(ctx context.Context, request *ReposCreateInOrgReq, params ReposCreateInOrgParams) (res ReposCreateInOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-in-org"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/repos"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -62538,6 +71257,8 @@ func (c *Client) ReposCreateOrUpdateFileContents(ctx context.Context, request *R
 func (c *Client) sendReposCreateOrUpdateFileContents(ctx context.Context, request *ReposCreateOrUpdateFileContentsReq, params ReposCreateOrUpdateFileContentsParams) (res ReposCreateOrUpdateFileContentsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-or-update-file-contents"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/contents/{path}"),
 	}
 
 	// Run stopwatch.
@@ -62669,6 +71390,8 @@ func (c *Client) ReposCreatePagesSite(ctx context.Context, request NilReposCreat
 func (c *Client) sendReposCreatePagesSite(ctx context.Context, request NilReposCreatePagesSiteReq, params ReposCreatePagesSiteParams) (res ReposCreatePagesSiteRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-pages-site"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -62804,6 +71527,8 @@ func (c *Client) ReposCreateRelease(ctx context.Context, request *ReposCreateRel
 func (c *Client) sendReposCreateRelease(ctx context.Context, request *ReposCreateReleaseReq, params ReposCreateReleaseParams) (res ReposCreateReleaseRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-release"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases"),
 	}
 
 	// Run stopwatch.
@@ -62927,6 +71652,8 @@ func (c *Client) ReposCreateUsingTemplate(ctx context.Context, request *ReposCre
 func (c *Client) sendReposCreateUsingTemplate(ctx context.Context, request *ReposCreateUsingTemplateReq, params ReposCreateUsingTemplateParams) (res *RepositoryHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-using-template"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{template_owner}/{template_repo}/generate"),
 	}
 
 	// Run stopwatch.
@@ -63041,6 +71768,8 @@ func (c *Client) ReposCreateWebhook(ctx context.Context, request OptNilReposCrea
 func (c *Client) sendReposCreateWebhook(ctx context.Context, request OptNilReposCreateWebhookReq, params ReposCreateWebhookParams) (res ReposCreateWebhookRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-webhook"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -63169,6 +71898,8 @@ func (c *Client) ReposDeclineInvitation(ctx context.Context, params ReposDecline
 func (c *Client) sendReposDeclineInvitation(ctx context.Context, params ReposDeclineInvitationParams) (res ReposDeclineInvitationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/decline-invitation"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/user/repository_invitations/{invitation_id}"),
 	}
 
 	// Run stopwatch.
@@ -63261,6 +71992,8 @@ func (c *Client) ReposDelete(ctx context.Context, params ReposDeleteParams) (Rep
 func (c *Client) sendReposDelete(ctx context.Context, params ReposDeleteParams) (res ReposDeleteRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}"),
 	}
 
 	// Run stopwatch.
@@ -63374,6 +72107,8 @@ func (c *Client) ReposDeleteAccessRestrictions(ctx context.Context, params Repos
 func (c *Client) sendReposDeleteAccessRestrictions(ctx context.Context, params ReposDeleteAccessRestrictionsParams) (res *ReposDeleteAccessRestrictionsNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-access-restrictions"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions"),
 	}
 
 	// Run stopwatch.
@@ -63508,6 +72243,8 @@ func (c *Client) ReposDeleteAdminBranchProtection(ctx context.Context, params Re
 func (c *Client) sendReposDeleteAdminBranchProtection(ctx context.Context, params ReposDeleteAdminBranchProtectionParams) (res ReposDeleteAdminBranchProtectionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-admin-branch-protection"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins"),
 	}
 
 	// Run stopwatch.
@@ -63636,6 +72373,8 @@ func (c *Client) ReposDeleteAnEnvironment(ctx context.Context, params ReposDelet
 func (c *Client) sendReposDeleteAnEnvironment(ctx context.Context, params ReposDeleteAnEnvironmentParams) (res *ReposDeleteAnEnvironmentNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-an-environment"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/environments/{environment_name}"),
 	}
 
 	// Run stopwatch.
@@ -63764,6 +72503,8 @@ func (c *Client) ReposDeleteAutolink(ctx context.Context, params ReposDeleteAuto
 func (c *Client) sendReposDeleteAutolink(ctx context.Context, params ReposDeleteAutolinkParams) (res ReposDeleteAutolinkRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-autolink"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/autolinks/{autolink_id}"),
 	}
 
 	// Run stopwatch.
@@ -63895,6 +72636,8 @@ func (c *Client) ReposDeleteBranchProtection(ctx context.Context, params ReposDe
 func (c *Client) sendReposDeleteBranchProtection(ctx context.Context, params ReposDeleteBranchProtectionParams) (res ReposDeleteBranchProtectionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-branch-protection"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection"),
 	}
 
 	// Run stopwatch.
@@ -64023,6 +72766,8 @@ func (c *Client) ReposDeleteCommitComment(ctx context.Context, params ReposDelet
 func (c *Client) sendReposDeleteCommitComment(ctx context.Context, params ReposDeleteCommitCommentParams) (res ReposDeleteCommitCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-commit-comment"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/comments/{comment_id}"),
 	}
 
 	// Run stopwatch.
@@ -64157,6 +72902,8 @@ func (c *Client) ReposDeleteCommitSignatureProtection(ctx context.Context, param
 func (c *Client) sendReposDeleteCommitSignatureProtection(ctx context.Context, params ReposDeleteCommitSignatureProtectionParams) (res ReposDeleteCommitSignatureProtectionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-commit-signature-protection"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures"),
 	}
 
 	// Run stopwatch.
@@ -64286,6 +73033,8 @@ func (c *Client) ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDep
 func (c *Client) sendReposDeleteDeployKey(ctx context.Context, params ReposDeleteDeployKeyParams) (res *ReposDeleteDeployKeyNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-deploy-key"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/keys/{key_id}"),
 	}
 
 	// Run stopwatch.
@@ -64421,6 +73170,8 @@ func (c *Client) ReposDeleteDeployment(ctx context.Context, params ReposDeleteDe
 func (c *Client) sendReposDeleteDeployment(ctx context.Context, params ReposDeleteDeploymentParams) (res ReposDeleteDeploymentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-deployment"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/deployments/{deployment_id}"),
 	}
 
 	// Run stopwatch.
@@ -64555,6 +73306,8 @@ func (c *Client) ReposDeleteFile(ctx context.Context, request *ReposDeleteFileRe
 func (c *Client) sendReposDeleteFile(ctx context.Context, request *ReposDeleteFileReq, params ReposDeleteFileParams) (res ReposDeleteFileRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-file"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/contents/{path}"),
 	}
 
 	// Run stopwatch.
@@ -64685,6 +73438,8 @@ func (c *Client) ReposDeleteInvitation(ctx context.Context, params ReposDeleteIn
 func (c *Client) sendReposDeleteInvitation(ctx context.Context, params ReposDeleteInvitationParams) (res *ReposDeleteInvitationNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-invitation"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/invitations/{invitation_id}"),
 	}
 
 	// Run stopwatch.
@@ -64812,6 +73567,8 @@ func (c *Client) ReposDeletePagesSite(ctx context.Context, params ReposDeletePag
 func (c *Client) sendReposDeletePagesSite(ctx context.Context, params ReposDeletePagesSiteParams) (res ReposDeletePagesSiteRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-pages-site"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages"),
 	}
 
 	// Run stopwatch.
@@ -64925,6 +73682,8 @@ func (c *Client) ReposDeletePullRequestReviewProtection(ctx context.Context, par
 func (c *Client) sendReposDeletePullRequestReviewProtection(ctx context.Context, params ReposDeletePullRequestReviewProtectionParams) (res ReposDeletePullRequestReviewProtectionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-pull-request-review-protection"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"),
 	}
 
 	// Run stopwatch.
@@ -65053,6 +73812,8 @@ func (c *Client) ReposDeleteRelease(ctx context.Context, params ReposDeleteRelea
 func (c *Client) sendReposDeleteRelease(ctx context.Context, params ReposDeleteReleaseParams) (res *ReposDeleteReleaseNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-release"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/{release_id}"),
 	}
 
 	// Run stopwatch.
@@ -65180,6 +73941,8 @@ func (c *Client) ReposDeleteReleaseAsset(ctx context.Context, params ReposDelete
 func (c *Client) sendReposDeleteReleaseAsset(ctx context.Context, params ReposDeleteReleaseAssetParams) (res *ReposDeleteReleaseAssetNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-release-asset"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/assets/{asset_id}"),
 	}
 
 	// Run stopwatch.
@@ -65307,6 +74070,8 @@ func (c *Client) ReposDeleteWebhook(ctx context.Context, params ReposDeleteWebho
 func (c *Client) sendReposDeleteWebhook(ctx context.Context, params ReposDeleteWebhookParams) (res ReposDeleteWebhookRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-webhook"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}"),
 	}
 
 	// Run stopwatch.
@@ -65436,6 +74201,8 @@ func (c *Client) ReposDisableAutomatedSecurityFixes(ctx context.Context, params 
 func (c *Client) sendReposDisableAutomatedSecurityFixes(ctx context.Context, params ReposDisableAutomatedSecurityFixesParams) (res *ReposDisableAutomatedSecurityFixesNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/disable-automated-security-fixes"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/automated-security-fixes"),
 	}
 
 	// Run stopwatch.
@@ -65545,6 +74312,8 @@ func (c *Client) ReposDisableLfsForRepo(ctx context.Context, params ReposDisable
 func (c *Client) sendReposDisableLfsForRepo(ctx context.Context, params ReposDisableLfsForRepoParams) (res *ReposDisableLfsForRepoNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/disable-lfs-for-repo"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/lfs"),
 	}
 
 	// Run stopwatch.
@@ -65657,6 +74426,8 @@ func (c *Client) ReposDisableVulnerabilityAlerts(ctx context.Context, params Rep
 func (c *Client) sendReposDisableVulnerabilityAlerts(ctx context.Context, params ReposDisableVulnerabilityAlertsParams) (res *ReposDisableVulnerabilityAlertsNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/disable-vulnerability-alerts"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/vulnerability-alerts"),
 	}
 
 	// Run stopwatch.
@@ -65771,6 +74542,8 @@ func (c *Client) ReposDownloadTarballArchive(ctx context.Context, params ReposDo
 func (c *Client) sendReposDownloadTarballArchive(ctx context.Context, params ReposDownloadTarballArchiveParams) (res *ReposDownloadTarballArchiveFound, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/download-tarball-archive"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/tarball/{ref}"),
 	}
 
 	// Run stopwatch.
@@ -65903,6 +74676,8 @@ func (c *Client) ReposDownloadZipballArchive(ctx context.Context, params ReposDo
 func (c *Client) sendReposDownloadZipballArchive(ctx context.Context, params ReposDownloadZipballArchiveParams) (res *ReposDownloadZipballArchiveFound, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/download-zipball-archive"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/zipball/{ref}"),
 	}
 
 	// Run stopwatch.
@@ -66032,6 +74807,8 @@ func (c *Client) ReposEnableAutomatedSecurityFixes(ctx context.Context, params R
 func (c *Client) sendReposEnableAutomatedSecurityFixes(ctx context.Context, params ReposEnableAutomatedSecurityFixesParams) (res *ReposEnableAutomatedSecurityFixesNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/enable-automated-security-fixes"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/automated-security-fixes"),
 	}
 
 	// Run stopwatch.
@@ -66141,6 +74918,8 @@ func (c *Client) ReposEnableLfsForRepo(ctx context.Context, params ReposEnableLf
 func (c *Client) sendReposEnableLfsForRepo(ctx context.Context, params ReposEnableLfsForRepoParams) (res ReposEnableLfsForRepoRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/enable-lfs-for-repo"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/lfs"),
 	}
 
 	// Run stopwatch.
@@ -66253,6 +75032,8 @@ func (c *Client) ReposEnableVulnerabilityAlerts(ctx context.Context, params Repo
 func (c *Client) sendReposEnableVulnerabilityAlerts(ctx context.Context, params ReposEnableVulnerabilityAlertsParams) (res *ReposEnableVulnerabilityAlertsNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/enable-vulnerability-alerts"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/vulnerability-alerts"),
 	}
 
 	// Run stopwatch.
@@ -66363,6 +75144,8 @@ func (c *Client) ReposGet(ctx context.Context, params ReposGetParams) (ReposGetR
 func (c *Client) sendReposGet(ctx context.Context, params ReposGetParams) (res ReposGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}"),
 	}
 
 	// Run stopwatch.
@@ -66478,6 +75261,8 @@ func (c *Client) ReposGetAccessRestrictions(ctx context.Context, params ReposGet
 func (c *Client) sendReposGetAccessRestrictions(ctx context.Context, params ReposGetAccessRestrictionsParams) (res ReposGetAccessRestrictionsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-access-restrictions"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions"),
 	}
 
 	// Run stopwatch.
@@ -66610,6 +75395,8 @@ func (c *Client) ReposGetAdminBranchProtection(ctx context.Context, params Repos
 func (c *Client) sendReposGetAdminBranchProtection(ctx context.Context, params ReposGetAdminBranchProtectionParams) (res *ProtectedBranchAdminEnforced, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-admin-branch-protection"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins"),
 	}
 
 	// Run stopwatch.
@@ -66742,6 +75529,8 @@ func (c *Client) ReposGetAllStatusCheckContexts(ctx context.Context, params Repo
 func (c *Client) sendReposGetAllStatusCheckContexts(ctx context.Context, params ReposGetAllStatusCheckContextsParams) (res ReposGetAllStatusCheckContextsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-all-status-check-contexts"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"),
 	}
 
 	// Run stopwatch.
@@ -66870,6 +75659,8 @@ func (c *Client) ReposGetAllTopics(ctx context.Context, params ReposGetAllTopics
 func (c *Client) sendReposGetAllTopics(ctx context.Context, params ReposGetAllTopicsParams) (res ReposGetAllTopicsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-all-topics"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/topics"),
 	}
 
 	// Run stopwatch.
@@ -67024,6 +75815,8 @@ func (c *Client) ReposGetAppsWithAccessToProtectedBranch(ctx context.Context, pa
 func (c *Client) sendReposGetAppsWithAccessToProtectedBranch(ctx context.Context, params ReposGetAppsWithAccessToProtectedBranchParams) (res ReposGetAppsWithAccessToProtectedBranchRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-apps-with-access-to-protected-branch"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"),
 	}
 
 	// Run stopwatch.
@@ -67153,6 +75946,8 @@ func (c *Client) ReposGetAutolink(ctx context.Context, params ReposGetAutolinkPa
 func (c *Client) sendReposGetAutolink(ctx context.Context, params ReposGetAutolinkParams) (res ReposGetAutolinkRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-autolink"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/autolinks/{autolink_id}"),
 	}
 
 	// Run stopwatch.
@@ -67280,6 +76075,8 @@ func (c *Client) ReposGetBranch(ctx context.Context, params ReposGetBranchParams
 func (c *Client) sendReposGetBranch(ctx context.Context, params ReposGetBranchParams) (res ReposGetBranchRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-branch"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}"),
 	}
 
 	// Run stopwatch.
@@ -67411,6 +76208,8 @@ func (c *Client) ReposGetBranchProtection(ctx context.Context, params ReposGetBr
 func (c *Client) sendReposGetBranchProtection(ctx context.Context, params ReposGetBranchProtectionParams) (res ReposGetBranchProtectionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-branch-protection"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection"),
 	}
 
 	// Run stopwatch.
@@ -67540,6 +76339,8 @@ func (c *Client) ReposGetClones(ctx context.Context, params ReposGetClonesParams
 func (c *Client) sendReposGetClones(ctx context.Context, params ReposGetClonesParams) (res ReposGetClonesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-clones"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/traffic/clones"),
 	}
 
 	// Run stopwatch.
@@ -67670,6 +76471,8 @@ func (c *Client) ReposGetCodeFrequencyStats(ctx context.Context, params ReposGet
 func (c *Client) sendReposGetCodeFrequencyStats(ctx context.Context, params ReposGetCodeFrequencyStatsParams) (res ReposGetCodeFrequencyStatsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-code-frequency-stats"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/stats/code_frequency"),
 	}
 
 	// Run stopwatch.
@@ -67780,6 +76583,8 @@ func (c *Client) ReposGetCollaboratorPermissionLevel(ctx context.Context, params
 func (c *Client) sendReposGetCollaboratorPermissionLevel(ctx context.Context, params ReposGetCollaboratorPermissionLevelParams) (res ReposGetCollaboratorPermissionLevelRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-collaborator-permission-level"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/collaborators/{username}/permission"),
 	}
 
 	// Run stopwatch.
@@ -67916,6 +76721,8 @@ func (c *Client) ReposGetCombinedStatusForRef(ctx context.Context, params ReposG
 func (c *Client) sendReposGetCombinedStatusForRef(ctx context.Context, params ReposGetCombinedStatusForRefParams) (res ReposGetCombinedStatusForRefRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-combined-status-for-ref"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{ref}/status"),
 	}
 
 	// Run stopwatch.
@@ -68128,6 +76935,8 @@ func (c *Client) ReposGetCommit(ctx context.Context, params ReposGetCommitParams
 func (c *Client) sendReposGetCommit(ctx context.Context, params ReposGetCommitParams) (res ReposGetCommitRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-commit"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{ref}"),
 	}
 
 	// Run stopwatch.
@@ -68294,6 +77103,8 @@ func (c *Client) ReposGetCommitActivityStats(ctx context.Context, params ReposGe
 func (c *Client) sendReposGetCommitActivityStats(ctx context.Context, params ReposGetCommitActivityStatsParams) (res ReposGetCommitActivityStatsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-commit-activity-stats"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/stats/commit_activity"),
 	}
 
 	// Run stopwatch.
@@ -68403,6 +77214,8 @@ func (c *Client) ReposGetCommitComment(ctx context.Context, params ReposGetCommi
 func (c *Client) sendReposGetCommitComment(ctx context.Context, params ReposGetCommitCommentParams) (res ReposGetCommitCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-commit-comment"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/comments/{comment_id}"),
 	}
 
 	// Run stopwatch.
@@ -68539,6 +77352,8 @@ func (c *Client) ReposGetCommitSignatureProtection(ctx context.Context, params R
 func (c *Client) sendReposGetCommitSignatureProtection(ctx context.Context, params ReposGetCommitSignatureProtectionParams) (res ReposGetCommitSignatureProtectionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-commit-signature-protection"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures"),
 	}
 
 	// Run stopwatch.
@@ -68676,6 +77491,8 @@ func (c *Client) ReposGetCommunityProfileMetrics(ctx context.Context, params Rep
 func (c *Client) sendReposGetCommunityProfileMetrics(ctx context.Context, params ReposGetCommunityProfileMetricsParams) (res *CommunityProfile, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-community-profile-metrics"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/community/profile"),
 	}
 
 	// Run stopwatch.
@@ -68790,6 +77607,8 @@ func (c *Client) ReposGetContributorsStats(ctx context.Context, params ReposGetC
 func (c *Client) sendReposGetContributorsStats(ctx context.Context, params ReposGetContributorsStatsParams) (res ReposGetContributorsStatsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-contributors-stats"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/stats/contributors"),
 	}
 
 	// Run stopwatch.
@@ -68899,6 +77718,8 @@ func (c *Client) ReposGetDeployKey(ctx context.Context, params ReposGetDeployKey
 func (c *Client) sendReposGetDeployKey(ctx context.Context, params ReposGetDeployKeyParams) (res ReposGetDeployKeyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-deploy-key"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/keys/{key_id}"),
 	}
 
 	// Run stopwatch.
@@ -69026,6 +77847,8 @@ func (c *Client) ReposGetDeployment(ctx context.Context, params ReposGetDeployme
 func (c *Client) sendReposGetDeployment(ctx context.Context, params ReposGetDeploymentParams) (res ReposGetDeploymentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-deployment"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/deployments/{deployment_id}"),
 	}
 
 	// Run stopwatch.
@@ -69153,6 +77976,8 @@ func (c *Client) ReposGetDeploymentStatus(ctx context.Context, params ReposGetDe
 func (c *Client) sendReposGetDeploymentStatus(ctx context.Context, params ReposGetDeploymentStatusParams) (res ReposGetDeploymentStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-deployment-status"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}"),
 	}
 
 	// Run stopwatch.
@@ -69299,6 +78124,8 @@ func (c *Client) ReposGetLatestPagesBuild(ctx context.Context, params ReposGetLa
 func (c *Client) sendReposGetLatestPagesBuild(ctx context.Context, params ReposGetLatestPagesBuildParams) (res *PageBuild, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-latest-pages-build"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages/builds/latest"),
 	}
 
 	// Run stopwatch.
@@ -69411,6 +78238,8 @@ func (c *Client) ReposGetLatestRelease(ctx context.Context, params ReposGetLates
 func (c *Client) sendReposGetLatestRelease(ctx context.Context, params ReposGetLatestReleaseParams) (res *Release, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-latest-release"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/latest"),
 	}
 
 	// Run stopwatch.
@@ -69520,6 +78349,8 @@ func (c *Client) ReposGetPages(ctx context.Context, params ReposGetPagesParams) 
 func (c *Client) sendReposGetPages(ctx context.Context, params ReposGetPagesParams) (res ReposGetPagesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-pages"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages"),
 	}
 
 	// Run stopwatch.
@@ -69629,6 +78460,8 @@ func (c *Client) ReposGetPagesBuild(ctx context.Context, params ReposGetPagesBui
 func (c *Client) sendReposGetPagesBuild(ctx context.Context, params ReposGetPagesBuildParams) (res *PageBuild, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-pages-build"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages/builds/{build_id}"),
 	}
 
 	// Run stopwatch.
@@ -69762,6 +78595,8 @@ func (c *Client) ReposGetPagesHealthCheck(ctx context.Context, params ReposGetPa
 func (c *Client) sendReposGetPagesHealthCheck(ctx context.Context, params ReposGetPagesHealthCheckParams) (res ReposGetPagesHealthCheckRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-pages-health-check"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages/health"),
 	}
 
 	// Run stopwatch.
@@ -69874,6 +78709,8 @@ func (c *Client) ReposGetParticipationStats(ctx context.Context, params ReposGet
 func (c *Client) sendReposGetParticipationStats(ctx context.Context, params ReposGetParticipationStatsParams) (res ReposGetParticipationStatsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-participation-stats"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/stats/participation"),
 	}
 
 	// Run stopwatch.
@@ -69987,6 +78824,8 @@ func (c *Client) ReposGetPullRequestReviewProtection(ctx context.Context, params
 func (c *Client) sendReposGetPullRequestReviewProtection(ctx context.Context, params ReposGetPullRequestReviewProtectionParams) (res *ProtectedBranchPullRequestReview, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-pull-request-review-protection"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"),
 	}
 
 	// Run stopwatch.
@@ -70120,6 +78959,8 @@ func (c *Client) ReposGetPunchCardStats(ctx context.Context, params ReposGetPunc
 func (c *Client) sendReposGetPunchCardStats(ctx context.Context, params ReposGetPunchCardStatsParams) (res ReposGetPunchCardStatsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-punch-card-stats"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/stats/punch_card"),
 	}
 
 	// Run stopwatch.
@@ -70231,6 +79072,8 @@ func (c *Client) ReposGetReadme(ctx context.Context, params ReposGetReadmeParams
 func (c *Client) sendReposGetReadme(ctx context.Context, params ReposGetReadmeParams) (res ReposGetReadmeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-readme"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/readme"),
 	}
 
 	// Run stopwatch.
@@ -70363,6 +79206,8 @@ func (c *Client) ReposGetReadmeInDirectory(ctx context.Context, params ReposGetR
 func (c *Client) sendReposGetReadmeInDirectory(ctx context.Context, params ReposGetReadmeInDirectoryParams) (res ReposGetReadmeInDirectoryRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-readme-in-directory"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/readme/{dir}"),
 	}
 
 	// Run stopwatch.
@@ -70513,6 +79358,8 @@ func (c *Client) ReposGetRelease(ctx context.Context, params ReposGetReleasePara
 func (c *Client) sendReposGetRelease(ctx context.Context, params ReposGetReleaseParams) (res ReposGetReleaseRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-release"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/{release_id}"),
 	}
 
 	// Run stopwatch.
@@ -70643,6 +79490,8 @@ func (c *Client) ReposGetReleaseAsset(ctx context.Context, params ReposGetReleas
 func (c *Client) sendReposGetReleaseAsset(ctx context.Context, params ReposGetReleaseAssetParams) (res ReposGetReleaseAssetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-release-asset"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/assets/{asset_id}"),
 	}
 
 	// Run stopwatch.
@@ -70770,6 +79619,8 @@ func (c *Client) ReposGetReleaseByTag(ctx context.Context, params ReposGetReleas
 func (c *Client) sendReposGetReleaseByTag(ctx context.Context, params ReposGetReleaseByTagParams) (res ReposGetReleaseByTagRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-release-by-tag"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/tags/{tag}"),
 	}
 
 	// Run stopwatch.
@@ -70901,6 +79752,8 @@ func (c *Client) ReposGetStatusChecksProtection(ctx context.Context, params Repo
 func (c *Client) sendReposGetStatusChecksProtection(ctx context.Context, params ReposGetStatusChecksProtectionParams) (res ReposGetStatusChecksProtectionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-status-checks-protection"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"),
 	}
 
 	// Run stopwatch.
@@ -71034,6 +79887,8 @@ func (c *Client) ReposGetTeamsWithAccessToProtectedBranch(ctx context.Context, p
 func (c *Client) sendReposGetTeamsWithAccessToProtectedBranch(ctx context.Context, params ReposGetTeamsWithAccessToProtectedBranchParams) (res ReposGetTeamsWithAccessToProtectedBranchRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-teams-with-access-to-protected-branch"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"),
 	}
 
 	// Run stopwatch.
@@ -71162,6 +80017,8 @@ func (c *Client) ReposGetTopPaths(ctx context.Context, params ReposGetTopPathsPa
 func (c *Client) sendReposGetTopPaths(ctx context.Context, params ReposGetTopPathsParams) (res ReposGetTopPathsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-top-paths"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/traffic/popular/paths"),
 	}
 
 	// Run stopwatch.
@@ -71271,6 +80128,8 @@ func (c *Client) ReposGetTopReferrers(ctx context.Context, params ReposGetTopRef
 func (c *Client) sendReposGetTopReferrers(ctx context.Context, params ReposGetTopReferrersParams) (res ReposGetTopReferrersRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-top-referrers"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/traffic/popular/referrers"),
 	}
 
 	// Run stopwatch.
@@ -71385,6 +80244,8 @@ func (c *Client) ReposGetUsersWithAccessToProtectedBranch(ctx context.Context, p
 func (c *Client) sendReposGetUsersWithAccessToProtectedBranch(ctx context.Context, params ReposGetUsersWithAccessToProtectedBranchParams) (res ReposGetUsersWithAccessToProtectedBranchRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-users-with-access-to-protected-branch"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"),
 	}
 
 	// Run stopwatch.
@@ -71514,6 +80375,8 @@ func (c *Client) ReposGetViews(ctx context.Context, params ReposGetViewsParams) 
 func (c *Client) sendReposGetViews(ctx context.Context, params ReposGetViewsParams) (res ReposGetViewsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-views"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/traffic/views"),
 	}
 
 	// Run stopwatch.
@@ -71646,6 +80509,8 @@ func (c *Client) ReposGetWebhook(ctx context.Context, params ReposGetWebhookPara
 func (c *Client) sendReposGetWebhook(ctx context.Context, params ReposGetWebhookParams) (res ReposGetWebhookRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-webhook"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}"),
 	}
 
 	// Run stopwatch.
@@ -71777,6 +80642,8 @@ func (c *Client) ReposGetWebhookConfigForRepo(ctx context.Context, params ReposG
 func (c *Client) sendReposGetWebhookConfigForRepo(ctx context.Context, params ReposGetWebhookConfigForRepoParams) (res *WebhookConfig, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-webhook-config-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/config"),
 	}
 
 	// Run stopwatch.
@@ -71905,6 +80772,8 @@ func (c *Client) ReposGetWebhookDelivery(ctx context.Context, params ReposGetWeb
 func (c *Client) sendReposGetWebhookDelivery(ctx context.Context, params ReposGetWebhookDeliveryParams) (res ReposGetWebhookDeliveryRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-webhook-delivery"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}"),
 	}
 
 	// Run stopwatch.
@@ -72052,6 +80921,8 @@ func (c *Client) ReposListAutolinks(ctx context.Context, params ReposListAutolin
 func (c *Client) sendReposListAutolinks(ctx context.Context, params ReposListAutolinksParams) (res []Autolink, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-autolinks"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/autolinks"),
 	}
 
 	// Run stopwatch.
@@ -72182,6 +81053,8 @@ func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranches
 func (c *Client) sendReposListBranches(ctx context.Context, params ReposListBranchesParams) (res ReposListBranchesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-branches"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches"),
 	}
 
 	// Run stopwatch.
@@ -72351,6 +81224,8 @@ func (c *Client) ReposListBranchesForHeadCommit(ctx context.Context, params Repo
 func (c *Client) sendReposListBranchesForHeadCommit(ctx context.Context, params ReposListBranchesForHeadCommitParams) (res ReposListBranchesForHeadCommitRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-branches-for-head-commit"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head"),
 	}
 
 	// Run stopwatch.
@@ -72483,6 +81358,8 @@ func (c *Client) ReposListCollaborators(ctx context.Context, params ReposListCol
 func (c *Client) sendReposListCollaborators(ctx context.Context, params ReposListCollaboratorsParams) (res ReposListCollaboratorsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-collaborators"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/collaborators"),
 	}
 
 	// Run stopwatch.
@@ -72647,6 +81524,8 @@ func (c *Client) ReposListCommentsForCommit(ctx context.Context, params ReposLis
 func (c *Client) sendReposListCommentsForCommit(ctx context.Context, params ReposListCommentsForCommitParams) (res *ReposListCommentsForCommitOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-comments-for-commit"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{commit_sha}/comments"),
 	}
 
 	// Run stopwatch.
@@ -72816,6 +81695,8 @@ func (c *Client) ReposListCommitCommentsForRepo(ctx context.Context, params Repo
 func (c *Client) sendReposListCommitCommentsForRepo(ctx context.Context, params ReposListCommitCommentsForRepoParams) (res *ReposListCommitCommentsForRepoOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-commit-comments-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/comments"),
 	}
 
 	// Run stopwatch.
@@ -72966,6 +81847,8 @@ func (c *Client) ReposListCommitStatusesForRef(ctx context.Context, params Repos
 func (c *Client) sendReposListCommitStatusesForRef(ctx context.Context, params ReposListCommitStatusesForRefParams) (res ReposListCommitStatusesForRefRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-commit-statuses-for-ref"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{ref}/statuses"),
 	}
 
 	// Run stopwatch.
@@ -73163,6 +82046,8 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 func (c *Client) sendReposListCommits(ctx context.Context, params ReposListCommitsParams) (res ReposListCommitsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-commits"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits"),
 	}
 
 	// Run stopwatch.
@@ -73401,6 +82286,8 @@ func (c *Client) ReposListContributors(ctx context.Context, params ReposListCont
 func (c *Client) sendReposListContributors(ctx context.Context, params ReposListContributorsParams) (res ReposListContributorsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-contributors"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/contributors"),
 	}
 
 	// Run stopwatch.
@@ -73565,6 +82452,8 @@ func (c *Client) ReposListDeployKeys(ctx context.Context, params ReposListDeploy
 func (c *Client) sendReposListDeployKeys(ctx context.Context, params ReposListDeployKeysParams) (res *ReposListDeployKeysOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-deploy-keys"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/keys"),
 	}
 
 	// Run stopwatch.
@@ -73712,6 +82601,8 @@ func (c *Client) ReposListDeploymentStatuses(ctx context.Context, params ReposLi
 func (c *Client) sendReposListDeploymentStatuses(ctx context.Context, params ReposListDeploymentStatusesParams) (res ReposListDeploymentStatusesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-deployment-statuses"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses"),
 	}
 
 	// Run stopwatch.
@@ -73878,6 +82769,8 @@ func (c *Client) ReposListDeployments(ctx context.Context, params ReposListDeplo
 func (c *Client) sendReposListDeployments(ctx context.Context, params ReposListDeploymentsParams) (res *ReposListDeploymentsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-deployments"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/deployments"),
 	}
 
 	// Run stopwatch.
@@ -74096,6 +82989,8 @@ func (c *Client) ReposListForAuthenticatedUser(ctx context.Context, params Repos
 func (c *Client) sendReposListForAuthenticatedUser(ctx context.Context, params ReposListForAuthenticatedUserParams) (res ReposListForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user/repos"),
 	}
 
 	// Run stopwatch.
@@ -74324,6 +83219,8 @@ func (c *Client) ReposListForOrg(ctx context.Context, params ReposListForOrgPara
 func (c *Client) sendReposListForOrg(ctx context.Context, params ReposListForOrgParams) (res *ReposListForOrgOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-for-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/repos"),
 	}
 
 	// Run stopwatch.
@@ -74504,6 +83401,8 @@ func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserPa
 func (c *Client) sendReposListForUser(ctx context.Context, params ReposListForUserParams) (res *ReposListForUserOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/users/{username}/repos"),
 	}
 
 	// Run stopwatch.
@@ -74683,6 +83582,8 @@ func (c *Client) ReposListForks(ctx context.Context, params ReposListForksParams
 func (c *Client) sendReposListForks(ctx context.Context, params ReposListForksParams) (res ReposListForksRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-forks"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/forks"),
 	}
 
 	// Run stopwatch.
@@ -74848,6 +83749,8 @@ func (c *Client) ReposListInvitations(ctx context.Context, params ReposListInvit
 func (c *Client) sendReposListInvitations(ctx context.Context, params ReposListInvitationsParams) (res *ReposListInvitationsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-invitations"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/invitations"),
 	}
 
 	// Run stopwatch.
@@ -74996,6 +83899,8 @@ func (c *Client) ReposListInvitationsForAuthenticatedUser(ctx context.Context, p
 func (c *Client) sendReposListInvitationsForAuthenticatedUser(ctx context.Context, params ReposListInvitationsForAuthenticatedUserParams) (res ReposListInvitationsForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-invitations-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user/repository_invitations"),
 	}
 
 	// Run stopwatch.
@@ -75106,6 +84011,8 @@ func (c *Client) ReposListLanguages(ctx context.Context, params ReposListLanguag
 func (c *Client) sendReposListLanguages(ctx context.Context, params ReposListLanguagesParams) (res Language, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-languages"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/languages"),
 	}
 
 	// Run stopwatch.
@@ -75215,6 +84122,8 @@ func (c *Client) ReposListPagesBuilds(ctx context.Context, params ReposListPages
 func (c *Client) sendReposListPagesBuilds(ctx context.Context, params ReposListPagesBuildsParams) (res *ReposListPagesBuildsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-pages-builds"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages/builds"),
 	}
 
 	// Run stopwatch.
@@ -75368,6 +84277,8 @@ func (c *Client) ReposListPublic(ctx context.Context, params ReposListPublicPara
 func (c *Client) sendReposListPublic(ctx context.Context, params ReposListPublicParams) (res ReposListPublicRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-public"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repositories"),
 	}
 
 	// Run stopwatch.
@@ -75465,6 +84376,8 @@ func (c *Client) ReposListPullRequestsAssociatedWithCommit(ctx context.Context, 
 func (c *Client) sendReposListPullRequestsAssociatedWithCommit(ctx context.Context, params ReposListPullRequestsAssociatedWithCommitParams) (res *ReposListPullRequestsAssociatedWithCommitOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-pull-requests-associated-with-commit"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{commit_sha}/pulls"),
 	}
 
 	// Run stopwatch.
@@ -75631,6 +84544,8 @@ func (c *Client) ReposListReleaseAssets(ctx context.Context, params ReposListRel
 func (c *Client) sendReposListReleaseAssets(ctx context.Context, params ReposListReleaseAssetsParams) (res *ReposListReleaseAssetsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-release-assets"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/{release_id}/assets"),
 	}
 
 	// Run stopwatch.
@@ -75801,6 +84716,8 @@ func (c *Client) ReposListReleases(ctx context.Context, params ReposListReleases
 func (c *Client) sendReposListReleases(ctx context.Context, params ReposListReleasesParams) (res ReposListReleasesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-releases"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases"),
 	}
 
 	// Run stopwatch.
@@ -75948,6 +84865,8 @@ func (c *Client) ReposListTags(ctx context.Context, params ReposListTagsParams) 
 func (c *Client) sendReposListTags(ctx context.Context, params ReposListTagsParams) (res *ReposListTagsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-tags"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/tags"),
 	}
 
 	// Run stopwatch.
@@ -76095,6 +85014,8 @@ func (c *Client) ReposListTeams(ctx context.Context, params ReposListTeamsParams
 func (c *Client) sendReposListTeams(ctx context.Context, params ReposListTeamsParams) (res *ReposListTeamsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-teams"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/teams"),
 	}
 
 	// Run stopwatch.
@@ -76242,6 +85163,8 @@ func (c *Client) ReposListWebhookDeliveries(ctx context.Context, params ReposLis
 func (c *Client) sendReposListWebhookDeliveries(ctx context.Context, params ReposListWebhookDeliveriesParams) (res ReposListWebhookDeliveriesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-webhook-deliveries"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/deliveries"),
 	}
 
 	// Run stopwatch.
@@ -76408,6 +85331,8 @@ func (c *Client) ReposListWebhooks(ctx context.Context, params ReposListWebhooks
 func (c *Client) sendReposListWebhooks(ctx context.Context, params ReposListWebhooksParams) (res ReposListWebhooksRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-webhooks"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks"),
 	}
 
 	// Run stopwatch.
@@ -76555,6 +85480,8 @@ func (c *Client) ReposMerge(ctx context.Context, request *ReposMergeReq, params 
 func (c *Client) sendReposMerge(ctx context.Context, request *ReposMergeReq, params ReposMergeParams) (res ReposMergeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/merge"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/merges"),
 	}
 
 	// Run stopwatch.
@@ -76668,6 +85595,8 @@ func (c *Client) ReposMergeUpstream(ctx context.Context, request *ReposMergeUpst
 func (c *Client) sendReposMergeUpstream(ctx context.Context, request *ReposMergeUpstreamReq, params ReposMergeUpstreamParams) (res ReposMergeUpstreamRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/merge-upstream"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/merge-upstream"),
 	}
 
 	// Run stopwatch.
@@ -76781,6 +85710,8 @@ func (c *Client) ReposPingWebhook(ctx context.Context, params ReposPingWebhookPa
 func (c *Client) sendReposPingWebhook(ctx context.Context, params ReposPingWebhookParams) (res ReposPingWebhookRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/ping-webhook"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/pings"),
 	}
 
 	// Run stopwatch.
@@ -76909,6 +85840,8 @@ func (c *Client) ReposRedeliverWebhookDelivery(ctx context.Context, params Repos
 func (c *Client) sendReposRedeliverWebhookDelivery(ctx context.Context, params ReposRedeliverWebhookDeliveryParams) (res ReposRedeliverWebhookDeliveryRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/redeliver-webhook-delivery"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}/attempts"),
 	}
 
 	// Run stopwatch.
@@ -77070,6 +86003,8 @@ func (c *Client) ReposRemoveAppAccessRestrictions(ctx context.Context, request O
 func (c *Client) sendReposRemoveAppAccessRestrictions(ctx context.Context, request OptReposRemoveAppAccessRestrictionsReq, params ReposRemoveAppAccessRestrictionsParams) (res ReposRemoveAppAccessRestrictionsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/remove-app-access-restrictions"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -77217,6 +86152,8 @@ func (c *Client) ReposRemoveCollaborator(ctx context.Context, params ReposRemove
 func (c *Client) sendReposRemoveCollaborator(ctx context.Context, params ReposRemoveCollaboratorParams) (res *ReposRemoveCollaboratorNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/remove-collaborator"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/collaborators/{username}"),
 	}
 
 	// Run stopwatch.
@@ -77348,6 +86285,8 @@ func (c *Client) ReposRemoveStatusCheckContexts(ctx context.Context, request Opt
 func (c *Client) sendReposRemoveStatusCheckContexts(ctx context.Context, request OptReposRemoveStatusCheckContextsReq, params ReposRemoveStatusCheckContextsParams) (res ReposRemoveStatusCheckContextsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/remove-status-check-contexts"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -77499,6 +86438,8 @@ func (c *Client) ReposRemoveStatusCheckProtection(ctx context.Context, params Re
 func (c *Client) sendReposRemoveStatusCheckProtection(ctx context.Context, params ReposRemoveStatusCheckProtectionParams) (res *ReposRemoveStatusCheckProtectionNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/remove-status-check-protection"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"),
 	}
 
 	// Run stopwatch.
@@ -77641,6 +86582,8 @@ func (c *Client) ReposRemoveTeamAccessRestrictions(ctx context.Context, request 
 func (c *Client) sendReposRemoveTeamAccessRestrictions(ctx context.Context, request OptReposRemoveTeamAccessRestrictionsReq, params ReposRemoveTeamAccessRestrictionsParams) (res ReposRemoveTeamAccessRestrictionsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/remove-team-access-restrictions"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -77801,6 +86744,8 @@ func (c *Client) ReposRemoveUserAccessRestrictions(ctx context.Context, request 
 func (c *Client) sendReposRemoveUserAccessRestrictions(ctx context.Context, request OptReposRemoveUserAccessRestrictionsReq, params ReposRemoveUserAccessRestrictionsParams) (res ReposRemoveUserAccessRestrictionsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/remove-user-access-restrictions"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -77960,6 +86905,8 @@ func (c *Client) ReposRenameBranch(ctx context.Context, request OptReposRenameBr
 func (c *Client) sendReposRenameBranch(ctx context.Context, request OptReposRenameBranchReq, params ReposRenameBranchParams) (res ReposRenameBranchRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/rename-branch"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/rename"),
 	}
 
 	// Run stopwatch.
@@ -78091,6 +87038,8 @@ func (c *Client) ReposReplaceAllTopics(ctx context.Context, request *ReposReplac
 func (c *Client) sendReposReplaceAllTopics(ctx context.Context, request *ReposReplaceAllTopicsReq, params ReposReplaceAllTopicsParams) (res ReposReplaceAllTopicsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/replace-all-topics"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/topics"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -78217,6 +87166,8 @@ func (c *Client) ReposRequestPagesBuild(ctx context.Context, params ReposRequest
 func (c *Client) sendReposRequestPagesBuild(ctx context.Context, params ReposRequestPagesBuildParams) (res *PageBuildStatus, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/request-pages-build"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages/builds"),
 	}
 
 	// Run stopwatch.
@@ -78332,6 +87283,8 @@ func (c *Client) ReposSetAdminBranchProtection(ctx context.Context, params Repos
 func (c *Client) sendReposSetAdminBranchProtection(ctx context.Context, params ReposSetAdminBranchProtectionParams) (res *ProtectedBranchAdminEnforced, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/set-admin-branch-protection"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins"),
 	}
 
 	// Run stopwatch.
@@ -78476,6 +87429,8 @@ func (c *Client) ReposSetAppAccessRestrictions(ctx context.Context, request OptR
 func (c *Client) sendReposSetAppAccessRestrictions(ctx context.Context, request OptReposSetAppAccessRestrictionsReq, params ReposSetAppAccessRestrictionsParams) (res ReposSetAppAccessRestrictionsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/set-app-access-restrictions"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -78627,6 +87582,8 @@ func (c *Client) ReposSetStatusCheckContexts(ctx context.Context, request OptRep
 func (c *Client) sendReposSetStatusCheckContexts(ctx context.Context, request OptReposSetStatusCheckContextsReq, params ReposSetStatusCheckContextsParams) (res ReposSetStatusCheckContextsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/set-status-check-contexts"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -78789,6 +87746,8 @@ func (c *Client) ReposSetTeamAccessRestrictions(ctx context.Context, request Opt
 func (c *Client) sendReposSetTeamAccessRestrictions(ctx context.Context, request OptReposSetTeamAccessRestrictionsReq, params ReposSetTeamAccessRestrictionsParams) (res ReposSetTeamAccessRestrictionsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/set-team-access-restrictions"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -78950,6 +87909,8 @@ func (c *Client) ReposSetUserAccessRestrictions(ctx context.Context, request Opt
 func (c *Client) sendReposSetUserAccessRestrictions(ctx context.Context, request OptReposSetUserAccessRestrictionsReq, params ReposSetUserAccessRestrictionsParams) (res ReposSetUserAccessRestrictionsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/set-user-access-restrictions"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -79100,6 +88061,8 @@ func (c *Client) ReposTestPushWebhook(ctx context.Context, params ReposTestPushW
 func (c *Client) sendReposTestPushWebhook(ctx context.Context, params ReposTestPushWebhookParams) (res ReposTestPushWebhookRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/test-push-webhook"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/tests"),
 	}
 
 	// Run stopwatch.
@@ -79232,6 +88195,8 @@ func (c *Client) ReposTransfer(ctx context.Context, request *ReposTransferReq, p
 func (c *Client) sendReposTransfer(ctx context.Context, request *ReposTransferReq, params ReposTransferParams) (res *MinimalRepository, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/transfer"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/transfer"),
 	}
 
 	// Run stopwatch.
@@ -79345,6 +88310,8 @@ func (c *Client) ReposUpdate(ctx context.Context, request OptReposUpdateReq, par
 func (c *Client) sendReposUpdate(ctx context.Context, request OptReposUpdateReq, params ReposUpdateParams) (res ReposUpdateRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -79479,6 +88446,8 @@ func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request *Repos
 func (c *Client) sendReposUpdateBranchProtection(ctx context.Context, request *ReposUpdateBranchProtectionReq, params ReposUpdateBranchProtectionParams) (res ReposUpdateBranchProtectionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-branch-protection"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -79619,6 +88588,8 @@ func (c *Client) ReposUpdateCommitComment(ctx context.Context, request *ReposUpd
 func (c *Client) sendReposUpdateCommitComment(ctx context.Context, request *ReposUpdateCommitCommentReq, params ReposUpdateCommitCommentParams) (res ReposUpdateCommitCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-commit-comment"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/comments/{comment_id}"),
 	}
 
 	// Run stopwatch.
@@ -79749,6 +88720,8 @@ func (c *Client) ReposUpdateInvitation(ctx context.Context, request OptReposUpda
 func (c *Client) sendReposUpdateInvitation(ctx context.Context, request OptReposUpdateInvitationReq, params ReposUpdateInvitationParams) (res *RepositoryInvitation, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-invitation"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/invitations/{invitation_id}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -79902,6 +88875,8 @@ func (c *Client) ReposUpdatePullRequestReviewProtection(ctx context.Context, req
 func (c *Client) sendReposUpdatePullRequestReviewProtection(ctx context.Context, request OptReposUpdatePullRequestReviewProtectionReq, params ReposUpdatePullRequestReviewProtectionParams) (res ReposUpdatePullRequestReviewProtectionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-pull-request-review-protection"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"),
 	}
 
 	// Run stopwatch.
@@ -80033,6 +89008,8 @@ func (c *Client) ReposUpdateRelease(ctx context.Context, request OptReposUpdateR
 func (c *Client) sendReposUpdateRelease(ctx context.Context, request OptReposUpdateReleaseReq, params ReposUpdateReleaseParams) (res ReposUpdateReleaseRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-release"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/{release_id}"),
 	}
 
 	// Run stopwatch.
@@ -80163,6 +89140,8 @@ func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request OptReposUp
 func (c *Client) sendReposUpdateReleaseAsset(ctx context.Context, request OptReposUpdateReleaseAssetReq, params ReposUpdateReleaseAssetParams) (res *ReleaseAsset, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-release-asset"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/assets/{asset_id}"),
 	}
 
 	// Run stopwatch.
@@ -80299,6 +89278,8 @@ func (c *Client) ReposUpdateStatusCheckProtection(ctx context.Context, request O
 func (c *Client) sendReposUpdateStatusCheckProtection(ctx context.Context, request OptReposUpdateStatusCheckProtectionReq, params ReposUpdateStatusCheckProtectionParams) (res ReposUpdateStatusCheckProtectionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-status-check-protection"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"),
 	}
 
 	// Run stopwatch.
@@ -80433,6 +89414,8 @@ func (c *Client) ReposUpdateWebhook(ctx context.Context, request OptReposUpdateW
 func (c *Client) sendReposUpdateWebhook(ctx context.Context, request OptReposUpdateWebhookReq, params ReposUpdateWebhookParams) (res ReposUpdateWebhookRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-webhook"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -80583,6 +89566,8 @@ func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request Op
 func (c *Client) sendReposUpdateWebhookConfigForRepo(ctx context.Context, request OptReposUpdateWebhookConfigForRepoReq, params ReposUpdateWebhookConfigForRepoParams) (res *WebhookConfig, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-webhook-config-for-repo"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/config"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -80755,6 +89740,8 @@ func (c *Client) ReposUploadReleaseAsset(ctx context.Context, request *ReposUplo
 func (c *Client) sendReposUploadReleaseAsset(ctx context.Context, request *ReposUploadReleaseAssetReqWithContentType, params ReposUploadReleaseAssetParams) (res *ReleaseAsset, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/upload-release-asset"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/{release_id}/assets"),
 	}
 
 	// Run stopwatch.
@@ -80921,6 +89908,8 @@ func (c *Client) ScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUse
 func (c *Client) sendScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUserFromOrgParams) (res ScimDeleteUserFromOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("scim/delete-user-from-org"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/scim/v2/organizations/{org}/Users/{scim_user_id}"),
 	}
 
 	// Run stopwatch.
@@ -81048,6 +90037,8 @@ func (c *Client) SearchCode(ctx context.Context, params SearchCodeParams) (Searc
 func (c *Client) sendSearchCode(ctx context.Context, params SearchCodeParams) (res SearchCodeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/code"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/search/code"),
 	}
 
 	// Run stopwatch.
@@ -81215,6 +90206,8 @@ func (c *Client) SearchCommits(ctx context.Context, params SearchCommitsParams) 
 func (c *Client) sendSearchCommits(ctx context.Context, params SearchCommitsParams) (res SearchCommitsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/commits"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/search/commits"),
 	}
 
 	// Run stopwatch.
@@ -81394,6 +90387,8 @@ func (c *Client) SearchIssuesAndPullRequests(ctx context.Context, params SearchI
 func (c *Client) sendSearchIssuesAndPullRequests(ctx context.Context, params SearchIssuesAndPullRequestsParams) (res SearchIssuesAndPullRequestsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/issues-and-pull-requests"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/search/issues"),
 	}
 
 	// Run stopwatch.
@@ -81560,6 +90555,8 @@ func (c *Client) SearchLabels(ctx context.Context, params SearchLabelsParams) (S
 func (c *Client) sendSearchLabels(ctx context.Context, params SearchLabelsParams) (res SearchLabelsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/labels"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/search/labels"),
 	}
 
 	// Run stopwatch.
@@ -81746,6 +90743,8 @@ func (c *Client) SearchRepos(ctx context.Context, params SearchReposParams) (Sea
 func (c *Client) sendSearchRepos(ctx context.Context, params SearchReposParams) (res SearchReposRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/repos"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/search/repositories"),
 	}
 
 	// Run stopwatch.
@@ -81916,6 +90915,8 @@ func (c *Client) SearchTopics(ctx context.Context, params SearchTopicsParams) (S
 func (c *Client) sendSearchTopics(ctx context.Context, params SearchTopicsParams) (res SearchTopicsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/topics"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/search/topics"),
 	}
 
 	// Run stopwatch.
@@ -82050,6 +91051,8 @@ func (c *Client) SearchUsers(ctx context.Context, params SearchUsersParams) (Sea
 func (c *Client) sendSearchUsers(ctx context.Context, params SearchUsersParams) (res SearchUsersRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/users"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/search/users"),
 	}
 
 	// Run stopwatch.
@@ -82210,6 +91213,8 @@ func (c *Client) SecretScanningGetAlert(ctx context.Context, params SecretScanni
 func (c *Client) sendSecretScanningGetAlert(ctx context.Context, params SecretScanningGetAlertParams) (res SecretScanningGetAlertRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("secret-scanning/get-alert"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"),
 	}
 
 	// Run stopwatch.
@@ -82344,6 +91349,8 @@ func (c *Client) SecretScanningListAlertsForOrg(ctx context.Context, params Secr
 func (c *Client) sendSecretScanningListAlertsForOrg(ctx context.Context, params SecretScanningListAlertsForOrgParams) (res SecretScanningListAlertsForOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("secret-scanning/list-alerts-for-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/secret-scanning/alerts"),
 	}
 
 	// Run stopwatch.
@@ -82509,6 +91516,8 @@ func (c *Client) SecretScanningListAlertsForRepo(ctx context.Context, params Sec
 func (c *Client) sendSecretScanningListAlertsForRepo(ctx context.Context, params SecretScanningListAlertsForRepoParams) (res SecretScanningListAlertsForRepoRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("secret-scanning/list-alerts-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/secret-scanning/alerts"),
 	}
 
 	// Run stopwatch.
@@ -82693,6 +91702,8 @@ func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request *SecretS
 func (c *Client) sendSecretScanningUpdateAlert(ctx context.Context, request *SecretScanningUpdateAlertReq, params SecretScanningUpdateAlertParams) (res SecretScanningUpdateAlertRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("secret-scanning/update-alert"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -82856,6 +91867,8 @@ func (c *Client) TeamsAddMemberLegacy(ctx context.Context, params TeamsAddMember
 func (c *Client) sendTeamsAddMemberLegacy(ctx context.Context, params TeamsAddMemberLegacyParams) (res TeamsAddMemberLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-member-legacy"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/members/{username}"),
 	}
 
 	// Run stopwatch.
@@ -82985,6 +91998,8 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req
 func (c *Client) sendTeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, request OptTeamsAddOrUpdateMembershipForUserInOrgReq, params TeamsAddOrUpdateMembershipForUserInOrgParams) (res TeamsAddOrUpdateMembershipForUserInOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-or-update-membership-for-user-in-org"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/memberships/{username}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -83157,6 +92172,8 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, re
 func (c *Client) sendTeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, request OptTeamsAddOrUpdateMembershipForUserLegacyReq, params TeamsAddOrUpdateMembershipForUserLegacyParams) (res TeamsAddOrUpdateMembershipForUserLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-or-update-membership-for-user-legacy"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/memberships/{username}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -83288,6 +92305,8 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 func (c *Client) sendTeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, request OptNilTeamsAddOrUpdateProjectPermissionsInOrgReq, params TeamsAddOrUpdateProjectPermissionsInOrgParams) (res TeamsAddOrUpdateProjectPermissionsInOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-or-update-project-permissions-in-org"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/projects/{project_id}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -83442,6 +92461,8 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Context, r
 func (c *Client) sendTeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Context, request OptTeamsAddOrUpdateProjectPermissionsLegacyReq, params TeamsAddOrUpdateProjectPermissionsLegacyParams) (res TeamsAddOrUpdateProjectPermissionsLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-or-update-project-permissions-legacy"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/projects/{project_id}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -83580,6 +92601,8 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 func (c *Client) sendTeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, request OptTeamsAddOrUpdateRepoPermissionsInOrgReq, params TeamsAddOrUpdateRepoPermissionsInOrgParams) (res *TeamsAddOrUpdateRepoPermissionsInOrgNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-or-update-repo-permissions-in-org"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -83758,6 +92781,8 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, requ
 func (c *Client) sendTeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, request OptTeamsAddOrUpdateRepoPermissionsLegacyReq, params TeamsAddOrUpdateRepoPermissionsLegacyParams) (res TeamsAddOrUpdateRepoPermissionsLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-or-update-repo-permissions-legacy"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/repos/{owner}/{repo}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -83907,6 +92932,8 @@ func (c *Client) TeamsCheckPermissionsForProjectInOrg(ctx context.Context, param
 func (c *Client) sendTeamsCheckPermissionsForProjectInOrg(ctx context.Context, params TeamsCheckPermissionsForProjectInOrgParams) (res TeamsCheckPermissionsForProjectInOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/check-permissions-for-project-in-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/projects/{project_id}"),
 	}
 
 	// Run stopwatch.
@@ -84041,6 +93068,8 @@ func (c *Client) TeamsCheckPermissionsForProjectLegacy(ctx context.Context, para
 func (c *Client) sendTeamsCheckPermissionsForProjectLegacy(ctx context.Context, params TeamsCheckPermissionsForProjectLegacyParams) (res TeamsCheckPermissionsForProjectLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/check-permissions-for-project-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/projects/{project_id}"),
 	}
 
 	// Run stopwatch.
@@ -84157,6 +93186,8 @@ func (c *Client) TeamsCheckPermissionsForRepoInOrg(ctx context.Context, params T
 func (c *Client) sendTeamsCheckPermissionsForRepoInOrg(ctx context.Context, params TeamsCheckPermissionsForRepoInOrgParams) (res TeamsCheckPermissionsForRepoInOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/check-permissions-for-repo-in-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"),
 	}
 
 	// Run stopwatch.
@@ -84312,6 +93343,8 @@ func (c *Client) TeamsCheckPermissionsForRepoLegacy(ctx context.Context, params 
 func (c *Client) sendTeamsCheckPermissionsForRepoLegacy(ctx context.Context, params TeamsCheckPermissionsForRepoLegacyParams) (res TeamsCheckPermissionsForRepoLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/check-permissions-for-repo-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/repos/{owner}/{repo}"),
 	}
 
 	// Run stopwatch.
@@ -84446,6 +93479,8 @@ func (c *Client) TeamsCreate(ctx context.Context, request *TeamsCreateReq, param
 func (c *Client) sendTeamsCreate(ctx context.Context, request *TeamsCreateReq, params TeamsCreateParams) (res TeamsCreateRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -84558,6 +93593,8 @@ func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, request 
 func (c *Client) sendTeamsCreateDiscussionCommentInOrg(ctx context.Context, request *TeamsCreateDiscussionCommentInOrgReq, params TeamsCreateDiscussionCommentInOrgParams) (res *TeamDiscussionComment, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-discussion-comment-in-org"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments"),
 	}
 
 	// Run stopwatch.
@@ -84702,6 +93739,8 @@ func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, request
 func (c *Client) sendTeamsCreateDiscussionCommentLegacy(ctx context.Context, request *TeamsCreateDiscussionCommentLegacyReq, params TeamsCreateDiscussionCommentLegacyParams) (res *TeamDiscussionComment, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-discussion-comment-legacy"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/comments"),
 	}
 
 	// Run stopwatch.
@@ -84824,6 +93863,8 @@ func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, request *TeamsC
 func (c *Client) sendTeamsCreateDiscussionInOrg(ctx context.Context, request *TeamsCreateDiscussionInOrgReq, params TeamsCreateDiscussionInOrgParams) (res *TeamDiscussion, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-discussion-in-org"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions"),
 	}
 
 	// Run stopwatch.
@@ -84949,6 +93990,8 @@ func (c *Client) TeamsCreateDiscussionLegacy(ctx context.Context, request *Teams
 func (c *Client) sendTeamsCreateDiscussionLegacy(ctx context.Context, request *TeamsCreateDiscussionLegacyReq, params TeamsCreateDiscussionLegacyParams) (res *TeamDiscussion, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-discussion-legacy"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions"),
 	}
 
 	// Run stopwatch.
@@ -85049,6 +94092,8 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context
 func (c *Client) sendTeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context, request *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq, params TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams) (res *GroupMapping, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-or-update-idp-group-connections-in-org"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/team-sync/group-mappings"),
 	}
 
 	// Run stopwatch.
@@ -85172,6 +94217,8 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Contex
 func (c *Client) sendTeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Context, request *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq, params TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams) (res TeamsCreateOrUpdateIdpGroupConnectionsLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-or-update-idp-group-connections-legacy"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/team-sync/group-mappings"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -85277,6 +94324,8 @@ func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params T
 func (c *Client) sendTeamsDeleteDiscussionCommentInOrg(ctx context.Context, params TeamsDeleteDiscussionCommentInOrgParams) (res *TeamsDeleteDiscussionCommentInOrgNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-discussion-comment-in-org"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"),
 	}
 
 	// Run stopwatch.
@@ -85429,6 +94478,8 @@ func (c *Client) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params 
 func (c *Client) sendTeamsDeleteDiscussionCommentLegacy(ctx context.Context, params TeamsDeleteDiscussionCommentLegacyParams) (res *TeamsDeleteDiscussionCommentLegacyNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-discussion-comment-legacy"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"),
 	}
 
 	// Run stopwatch.
@@ -85559,6 +94610,8 @@ func (c *Client) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDel
 func (c *Client) sendTeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDeleteDiscussionInOrgParams) (res *TeamsDeleteDiscussionInOrgNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-discussion-in-org"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"),
 	}
 
 	// Run stopwatch.
@@ -85692,6 +94745,8 @@ func (c *Client) TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDe
 func (c *Client) sendTeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDeleteDiscussionLegacyParams) (res *TeamsDeleteDiscussionLegacyNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-discussion-legacy"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}"),
 	}
 
 	// Run stopwatch.
@@ -85804,6 +94859,8 @@ func (c *Client) TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgPa
 func (c *Client) sendTeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgParams) (res *TeamsDeleteInOrgNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-in-org"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}"),
 	}
 
 	// Run stopwatch.
@@ -85919,6 +94976,8 @@ func (c *Client) TeamsDeleteLegacy(ctx context.Context, params TeamsDeleteLegacy
 func (c *Client) sendTeamsDeleteLegacy(ctx context.Context, params TeamsDeleteLegacyParams) (res TeamsDeleteLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-legacy"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}"),
 	}
 
 	// Run stopwatch.
@@ -86010,6 +95069,8 @@ func (c *Client) TeamsGetByName(ctx context.Context, params TeamsGetByNameParams
 func (c *Client) sendTeamsGetByName(ctx context.Context, params TeamsGetByNameParams) (res TeamsGetByNameRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-by-name"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}"),
 	}
 
 	// Run stopwatch.
@@ -86121,6 +95182,8 @@ func (c *Client) TeamsGetDiscussionCommentInOrg(ctx context.Context, params Team
 func (c *Client) sendTeamsGetDiscussionCommentInOrg(ctx context.Context, params TeamsGetDiscussionCommentInOrgParams) (res *TeamDiscussionComment, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-discussion-comment-in-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"),
 	}
 
 	// Run stopwatch.
@@ -86273,6 +95336,8 @@ func (c *Client) TeamsGetDiscussionCommentLegacy(ctx context.Context, params Tea
 func (c *Client) sendTeamsGetDiscussionCommentLegacy(ctx context.Context, params TeamsGetDiscussionCommentLegacyParams) (res *TeamDiscussionComment, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-discussion-comment-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"),
 	}
 
 	// Run stopwatch.
@@ -86403,6 +95468,8 @@ func (c *Client) TeamsGetDiscussionInOrg(ctx context.Context, params TeamsGetDis
 func (c *Client) sendTeamsGetDiscussionInOrg(ctx context.Context, params TeamsGetDiscussionInOrgParams) (res *TeamDiscussion, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-discussion-in-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"),
 	}
 
 	// Run stopwatch.
@@ -86536,6 +95603,8 @@ func (c *Client) TeamsGetDiscussionLegacy(ctx context.Context, params TeamsGetDi
 func (c *Client) sendTeamsGetDiscussionLegacy(ctx context.Context, params TeamsGetDiscussionLegacyParams) (res *TeamDiscussion, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-discussion-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}"),
 	}
 
 	// Run stopwatch.
@@ -86648,6 +95717,8 @@ func (c *Client) TeamsGetLegacy(ctx context.Context, params TeamsGetLegacyParams
 func (c *Client) sendTeamsGetLegacy(ctx context.Context, params TeamsGetLegacyParams) (res TeamsGetLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}"),
 	}
 
 	// Run stopwatch.
@@ -86743,6 +95814,8 @@ func (c *Client) TeamsGetMemberLegacy(ctx context.Context, params TeamsGetMember
 func (c *Client) sendTeamsGetMemberLegacy(ctx context.Context, params TeamsGetMemberLegacyParams) (res TeamsGetMemberLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-member-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/members/{username}"),
 	}
 
 	// Run stopwatch.
@@ -86858,6 +95931,8 @@ func (c *Client) TeamsGetMembershipForUserInOrg(ctx context.Context, params Team
 func (c *Client) sendTeamsGetMembershipForUserInOrg(ctx context.Context, params TeamsGetMembershipForUserInOrgParams) (res TeamsGetMembershipForUserInOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-membership-for-user-in-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/memberships/{username}"),
 	}
 
 	// Run stopwatch.
@@ -86995,6 +96070,8 @@ func (c *Client) TeamsGetMembershipForUserLegacy(ctx context.Context, params Tea
 func (c *Client) sendTeamsGetMembershipForUserLegacy(ctx context.Context, params TeamsGetMembershipForUserLegacyParams) (res TeamsGetMembershipForUserLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-membership-for-user-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/memberships/{username}"),
 	}
 
 	// Run stopwatch.
@@ -87103,6 +96180,8 @@ func (c *Client) TeamsList(ctx context.Context, params TeamsListParams) (TeamsLi
 func (c *Client) sendTeamsList(ctx context.Context, params TeamsListParams) (res TeamsListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams"),
 	}
 
 	// Run stopwatch.
@@ -87233,6 +96312,8 @@ func (c *Client) TeamsListChildInOrg(ctx context.Context, params TeamsListChildI
 func (c *Client) sendTeamsListChildInOrg(ctx context.Context, params TeamsListChildInOrgParams) (res *TeamsListChildInOrgOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-child-in-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/teams"),
 	}
 
 	// Run stopwatch.
@@ -87384,6 +96465,8 @@ func (c *Client) TeamsListChildLegacy(ctx context.Context, params TeamsListChild
 func (c *Client) sendTeamsListChildLegacy(ctx context.Context, params TeamsListChildLegacyParams) (res TeamsListChildLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-child-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/teams"),
 	}
 
 	// Run stopwatch.
@@ -87515,6 +96598,8 @@ func (c *Client) TeamsListDiscussionCommentsInOrg(ctx context.Context, params Te
 func (c *Client) sendTeamsListDiscussionCommentsInOrg(ctx context.Context, params TeamsListDiscussionCommentsInOrgParams) (res *TeamsListDiscussionCommentsInOrgOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-discussion-comments-in-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments"),
 	}
 
 	// Run stopwatch.
@@ -87704,6 +96789,8 @@ func (c *Client) TeamsListDiscussionCommentsLegacy(ctx context.Context, params T
 func (c *Client) sendTeamsListDiscussionCommentsLegacy(ctx context.Context, params TeamsListDiscussionCommentsLegacyParams) (res *TeamsListDiscussionCommentsLegacyOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-discussion-comments-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/comments"),
 	}
 
 	// Run stopwatch.
@@ -87871,6 +96958,8 @@ func (c *Client) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsList
 func (c *Client) sendTeamsListDiscussionsInOrg(ctx context.Context, params TeamsListDiscussionsInOrgParams) (res *TeamsListDiscussionsInOrgOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-discussions-in-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions"),
 	}
 
 	// Run stopwatch.
@@ -88058,6 +97147,8 @@ func (c *Client) TeamsListDiscussionsLegacy(ctx context.Context, params TeamsLis
 func (c *Client) sendTeamsListDiscussionsLegacy(ctx context.Context, params TeamsListDiscussionsLegacyParams) (res *TeamsListDiscussionsLegacyOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-discussions-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions"),
 	}
 
 	// Run stopwatch.
@@ -88206,6 +97297,8 @@ func (c *Client) TeamsListForAuthenticatedUser(ctx context.Context, params Teams
 func (c *Client) sendTeamsListForAuthenticatedUser(ctx context.Context, params TeamsListForAuthenticatedUserParams) (res TeamsListForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user/teams"),
 	}
 
 	// Run stopwatch.
@@ -88323,6 +97416,8 @@ func (c *Client) TeamsListIdpGroupsForLegacy(ctx context.Context, params TeamsLi
 func (c *Client) sendTeamsListIdpGroupsForLegacy(ctx context.Context, params TeamsListIdpGroupsForLegacyParams) (res TeamsListIdpGroupsForLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-idp-groups-for-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/team-sync/group-mappings"),
 	}
 
 	// Run stopwatch.
@@ -88419,6 +97514,8 @@ func (c *Client) TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListI
 func (c *Client) sendTeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListIdpGroupsForOrgParams) (res *GroupMappingHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-idp-groups-for-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/team-sync/groups"),
 	}
 
 	// Run stopwatch.
@@ -88552,6 +97649,8 @@ func (c *Client) TeamsListIdpGroupsInOrg(ctx context.Context, params TeamsListId
 func (c *Client) sendTeamsListIdpGroupsInOrg(ctx context.Context, params TeamsListIdpGroupsInOrgParams) (res *GroupMapping, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-idp-groups-in-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/team-sync/group-mappings"),
 	}
 
 	// Run stopwatch.
@@ -88662,6 +97761,8 @@ func (c *Client) TeamsListMembersInOrg(ctx context.Context, params TeamsListMemb
 func (c *Client) sendTeamsListMembersInOrg(ctx context.Context, params TeamsListMembersInOrgParams) (res *TeamsListMembersInOrgOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-members-in-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/members"),
 	}
 
 	// Run stopwatch.
@@ -88831,6 +97932,8 @@ func (c *Client) TeamsListMembersLegacy(ctx context.Context, params TeamsListMem
 func (c *Client) sendTeamsListMembersLegacy(ctx context.Context, params TeamsListMembersLegacyParams) (res TeamsListMembersLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-members-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/members"),
 	}
 
 	// Run stopwatch.
@@ -88981,6 +98084,8 @@ func (c *Client) TeamsListPendingInvitationsInOrg(ctx context.Context, params Te
 func (c *Client) sendTeamsListPendingInvitationsInOrg(ctx context.Context, params TeamsListPendingInvitationsInOrgParams) (res *TeamsListPendingInvitationsInOrgOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-pending-invitations-in-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/invitations"),
 	}
 
 	// Run stopwatch.
@@ -89136,6 +98241,8 @@ func (c *Client) TeamsListPendingInvitationsLegacy(ctx context.Context, params T
 func (c *Client) sendTeamsListPendingInvitationsLegacy(ctx context.Context, params TeamsListPendingInvitationsLegacyParams) (res *TeamsListPendingInvitationsLegacyOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-pending-invitations-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/invitations"),
 	}
 
 	// Run stopwatch.
@@ -89266,6 +98373,8 @@ func (c *Client) TeamsListProjectsInOrg(ctx context.Context, params TeamsListPro
 func (c *Client) sendTeamsListProjectsInOrg(ctx context.Context, params TeamsListProjectsInOrgParams) (res *TeamsListProjectsInOrgOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-projects-in-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/projects"),
 	}
 
 	// Run stopwatch.
@@ -89418,6 +98527,8 @@ func (c *Client) TeamsListProjectsLegacy(ctx context.Context, params TeamsListPr
 func (c *Client) sendTeamsListProjectsLegacy(ctx context.Context, params TeamsListProjectsLegacyParams) (res TeamsListProjectsLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-projects-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/projects"),
 	}
 
 	// Run stopwatch.
@@ -89548,6 +98659,8 @@ func (c *Client) TeamsListReposInOrg(ctx context.Context, params TeamsListReposI
 func (c *Client) sendTeamsListReposInOrg(ctx context.Context, params TeamsListReposInOrgParams) (res *TeamsListReposInOrgOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-repos-in-org"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/repos"),
 	}
 
 	// Run stopwatch.
@@ -89699,6 +98812,8 @@ func (c *Client) TeamsListReposLegacy(ctx context.Context, params TeamsListRepos
 func (c *Client) sendTeamsListReposLegacy(ctx context.Context, params TeamsListReposLegacyParams) (res TeamsListReposLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-repos-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/repos"),
 	}
 
 	// Run stopwatch.
@@ -89847,6 +98962,8 @@ func (c *Client) TeamsRemoveMemberLegacy(ctx context.Context, params TeamsRemove
 func (c *Client) sendTeamsRemoveMemberLegacy(ctx context.Context, params TeamsRemoveMemberLegacyParams) (res TeamsRemoveMemberLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-member-legacy"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/members/{username}"),
 	}
 
 	// Run stopwatch.
@@ -89969,6 +99086,8 @@ func (c *Client) TeamsRemoveMembershipForUserInOrg(ctx context.Context, params T
 func (c *Client) sendTeamsRemoveMembershipForUserInOrg(ctx context.Context, params TeamsRemoveMembershipForUserInOrgParams) (res TeamsRemoveMembershipForUserInOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-membership-for-user-in-org"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/memberships/{username}"),
 	}
 
 	// Run stopwatch.
@@ -90113,6 +99232,8 @@ func (c *Client) TeamsRemoveMembershipForUserLegacy(ctx context.Context, params 
 func (c *Client) sendTeamsRemoveMembershipForUserLegacy(ctx context.Context, params TeamsRemoveMembershipForUserLegacyParams) (res TeamsRemoveMembershipForUserLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-membership-for-user-legacy"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/memberships/{username}"),
 	}
 
 	// Run stopwatch.
@@ -90226,6 +99347,8 @@ func (c *Client) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemove
 func (c *Client) sendTeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemoveProjectInOrgParams) (res *TeamsRemoveProjectInOrgNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-project-in-org"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/projects/{project_id}"),
 	}
 
 	// Run stopwatch.
@@ -90361,6 +99484,8 @@ func (c *Client) TeamsRemoveProjectLegacy(ctx context.Context, params TeamsRemov
 func (c *Client) sendTeamsRemoveProjectLegacy(ctx context.Context, params TeamsRemoveProjectLegacyParams) (res TeamsRemoveProjectLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-project-legacy"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/projects/{project_id}"),
 	}
 
 	// Run stopwatch.
@@ -90474,6 +99599,8 @@ func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRep
 func (c *Client) sendTeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRepoInOrgParams) (res *TeamsRemoveRepoInOrgNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-repo-in-org"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"),
 	}
 
 	// Run stopwatch.
@@ -90628,6 +99755,8 @@ func (c *Client) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRe
 func (c *Client) sendTeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRepoLegacyParams) (res *TeamsRemoveRepoLegacyNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-repo-legacy"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/repos/{owner}/{repo}"),
 	}
 
 	// Run stopwatch.
@@ -90758,6 +99887,8 @@ func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request 
 func (c *Client) sendTeamsUpdateDiscussionCommentInOrg(ctx context.Context, request *TeamsUpdateDiscussionCommentInOrgReq, params TeamsUpdateDiscussionCommentInOrgParams) (res *TeamDiscussionComment, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-discussion-comment-in-org"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"),
 	}
 
 	// Run stopwatch.
@@ -90913,6 +100044,8 @@ func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request
 func (c *Client) sendTeamsUpdateDiscussionCommentLegacy(ctx context.Context, request *TeamsUpdateDiscussionCommentLegacyReq, params TeamsUpdateDiscussionCommentLegacyParams) (res *TeamDiscussionComment, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-discussion-comment-legacy"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"),
 	}
 
 	// Run stopwatch.
@@ -91047,6 +100180,8 @@ func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request OptTeam
 func (c *Client) sendTeamsUpdateDiscussionInOrg(ctx context.Context, request OptTeamsUpdateDiscussionInOrgReq, params TeamsUpdateDiscussionInOrgParams) (res *TeamDiscussion, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-discussion-in-org"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"),
 	}
 
 	// Run stopwatch.
@@ -91184,6 +100319,8 @@ func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, request OptTea
 func (c *Client) sendTeamsUpdateDiscussionLegacy(ctx context.Context, request OptTeamsUpdateDiscussionLegacyReq, params TeamsUpdateDiscussionLegacyParams) (res *TeamDiscussion, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-discussion-legacy"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}"),
 	}
 
 	// Run stopwatch.
@@ -91297,6 +100434,8 @@ func (c *Client) TeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdateInO
 func (c *Client) sendTeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdateInOrgReq, params TeamsUpdateInOrgParams) (res *TeamFull, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-in-org"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -91430,6 +100569,8 @@ func (c *Client) TeamsUpdateLegacy(ctx context.Context, request *TeamsUpdateLega
 func (c *Client) sendTeamsUpdateLegacy(ctx context.Context, request *TeamsUpdateLegacyReq, params TeamsUpdateLegacyParams) (res TeamsUpdateLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-legacy"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -91531,6 +100672,8 @@ func (c *Client) UsersAddEmailForAuthenticated(ctx context.Context, request OptU
 func (c *Client) sendUsersAddEmailForAuthenticated(ctx context.Context, request OptUsersAddEmailForAuthenticatedReq) (res UsersAddEmailForAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/add-email-for-authenticated"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/user/emails"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -91621,6 +100764,8 @@ func (c *Client) UsersBlock(ctx context.Context, params UsersBlockParams) (Users
 func (c *Client) sendUsersBlock(ctx context.Context, params UsersBlockParams) (res UsersBlockRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/block"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/user/blocks/{username}"),
 	}
 
 	// Run stopwatch.
@@ -91710,6 +100855,8 @@ func (c *Client) UsersCheckBlocked(ctx context.Context, params UsersCheckBlocked
 func (c *Client) sendUsersCheckBlocked(ctx context.Context, params UsersCheckBlockedParams) (res UsersCheckBlockedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/check-blocked"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user/blocks/{username}"),
 	}
 
 	// Run stopwatch.
@@ -91799,6 +100946,8 @@ func (c *Client) UsersCheckFollowingForUser(ctx context.Context, params UsersChe
 func (c *Client) sendUsersCheckFollowingForUser(ctx context.Context, params UsersCheckFollowingForUserParams) (res UsersCheckFollowingForUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/check-following-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/users/{username}/following/{target_user}"),
 	}
 
 	// Run stopwatch.
@@ -91907,6 +101056,8 @@ func (c *Client) UsersCheckPersonIsFollowedByAuthenticated(ctx context.Context, 
 func (c *Client) sendUsersCheckPersonIsFollowedByAuthenticated(ctx context.Context, params UsersCheckPersonIsFollowedByAuthenticatedParams) (res UsersCheckPersonIsFollowedByAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/check-person-is-followed-by-authenticated"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user/following/{username}"),
 	}
 
 	// Run stopwatch.
@@ -91998,6 +101149,8 @@ func (c *Client) UsersCreateGpgKeyForAuthenticated(ctx context.Context, request 
 func (c *Client) sendUsersCreateGpgKeyForAuthenticated(ctx context.Context, request *UsersCreateGpgKeyForAuthenticatedReq) (res UsersCreateGpgKeyForAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/create-gpg-key-for-authenticated"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/user/gpg_keys"),
 	}
 
 	// Run stopwatch.
@@ -92074,6 +101227,8 @@ func (c *Client) UsersCreatePublicSSHKeyForAuthenticated(ctx context.Context, re
 func (c *Client) sendUsersCreatePublicSSHKeyForAuthenticated(ctx context.Context, request *UsersCreatePublicSSHKeyForAuthenticatedReq) (res UsersCreatePublicSSHKeyForAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/create-public-ssh-key-for-authenticated"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/user/keys"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -92157,6 +101312,8 @@ func (c *Client) UsersDeleteEmailForAuthenticated(ctx context.Context, request O
 func (c *Client) sendUsersDeleteEmailForAuthenticated(ctx context.Context, request OptUsersDeleteEmailForAuthenticatedReq) (res UsersDeleteEmailForAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/delete-email-for-authenticated"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/user/emails"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -92249,6 +101406,8 @@ func (c *Client) UsersDeleteGpgKeyForAuthenticated(ctx context.Context, params U
 func (c *Client) sendUsersDeleteGpgKeyForAuthenticated(ctx context.Context, params UsersDeleteGpgKeyForAuthenticatedParams) (res UsersDeleteGpgKeyForAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/delete-gpg-key-for-authenticated"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/user/gpg_keys/{gpg_key_id}"),
 	}
 
 	// Run stopwatch.
@@ -92340,6 +101499,8 @@ func (c *Client) UsersDeletePublicSSHKeyForAuthenticated(ctx context.Context, pa
 func (c *Client) sendUsersDeletePublicSSHKeyForAuthenticated(ctx context.Context, params UsersDeletePublicSSHKeyForAuthenticatedParams) (res UsersDeletePublicSSHKeyForAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/delete-public-ssh-key-for-authenticated"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/user/keys/{key_id}"),
 	}
 
 	// Run stopwatch.
@@ -92433,6 +101594,8 @@ func (c *Client) UsersFollow(ctx context.Context, params UsersFollowParams) (Use
 func (c *Client) sendUsersFollow(ctx context.Context, params UsersFollowParams) (res UsersFollowRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/follow"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/user/following/{username}"),
 	}
 
 	// Run stopwatch.
@@ -92525,6 +101688,8 @@ func (c *Client) UsersGetAuthenticated(ctx context.Context) (UsersGetAuthenticat
 func (c *Client) sendUsersGetAuthenticated(ctx context.Context) (res UsersGetAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/get-authenticated"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user"),
 	}
 
 	// Run stopwatch.
@@ -92610,6 +101775,8 @@ func (c *Client) UsersGetByUsername(ctx context.Context, params UsersGetByUserna
 func (c *Client) sendUsersGetByUsername(ctx context.Context, params UsersGetByUsernameParams) (res UsersGetByUsernameRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/get-by-username"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/users/{username}"),
 	}
 
 	// Run stopwatch.
@@ -92708,6 +101875,8 @@ func (c *Client) UsersGetContextForUser(ctx context.Context, params UsersGetCont
 func (c *Client) sendUsersGetContextForUser(ctx context.Context, params UsersGetContextForUserParams) (res UsersGetContextForUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/get-context-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/users/{username}/hovercard"),
 	}
 
 	// Run stopwatch.
@@ -92838,6 +102007,8 @@ func (c *Client) UsersGetGpgKeyForAuthenticated(ctx context.Context, params User
 func (c *Client) sendUsersGetGpgKeyForAuthenticated(ctx context.Context, params UsersGetGpgKeyForAuthenticatedParams) (res UsersGetGpgKeyForAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/get-gpg-key-for-authenticated"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user/gpg_keys/{gpg_key_id}"),
 	}
 
 	// Run stopwatch.
@@ -92929,6 +102100,8 @@ func (c *Client) UsersGetPublicSSHKeyForAuthenticated(ctx context.Context, param
 func (c *Client) sendUsersGetPublicSSHKeyForAuthenticated(ctx context.Context, params UsersGetPublicSSHKeyForAuthenticatedParams) (res UsersGetPublicSSHKeyForAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/get-public-ssh-key-for-authenticated"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user/keys/{key_id}"),
 	}
 
 	// Run stopwatch.
@@ -93022,6 +102195,8 @@ func (c *Client) UsersList(ctx context.Context, params UsersListParams) (UsersLi
 func (c *Client) sendUsersList(ctx context.Context, params UsersListParams) (res UsersListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/users"),
 	}
 
 	// Run stopwatch.
@@ -93131,6 +102306,8 @@ func (c *Client) UsersListBlockedByAuthenticated(ctx context.Context) (UsersList
 func (c *Client) sendUsersListBlockedByAuthenticated(ctx context.Context) (res UsersListBlockedByAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-blocked-by-authenticated"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user/blocks"),
 	}
 
 	// Run stopwatch.
@@ -93203,6 +102380,8 @@ func (c *Client) UsersListEmailsForAuthenticated(ctx context.Context, params Use
 func (c *Client) sendUsersListEmailsForAuthenticated(ctx context.Context, params UsersListEmailsForAuthenticatedParams) (res UsersListEmailsForAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-emails-for-authenticated"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user/emails"),
 	}
 
 	// Run stopwatch.
@@ -93312,6 +102491,8 @@ func (c *Client) UsersListFollowedByAuthenticated(ctx context.Context, params Us
 func (c *Client) sendUsersListFollowedByAuthenticated(ctx context.Context, params UsersListFollowedByAuthenticatedParams) (res UsersListFollowedByAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-followed-by-authenticated"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user/following"),
 	}
 
 	// Run stopwatch.
@@ -93421,6 +102602,8 @@ func (c *Client) UsersListFollowersForAuthenticatedUser(ctx context.Context, par
 func (c *Client) sendUsersListFollowersForAuthenticatedUser(ctx context.Context, params UsersListFollowersForAuthenticatedUserParams) (res UsersListFollowersForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-followers-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user/followers"),
 	}
 
 	// Run stopwatch.
@@ -93530,6 +102713,8 @@ func (c *Client) UsersListFollowersForUser(ctx context.Context, params UsersList
 func (c *Client) sendUsersListFollowersForUser(ctx context.Context, params UsersListFollowersForUserParams) (res *UsersListFollowersForUserOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-followers-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/users/{username}/followers"),
 	}
 
 	// Run stopwatch.
@@ -93658,6 +102843,8 @@ func (c *Client) UsersListFollowingForUser(ctx context.Context, params UsersList
 func (c *Client) sendUsersListFollowingForUser(ctx context.Context, params UsersListFollowingForUserParams) (res *UsersListFollowingForUserOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-following-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/users/{username}/following"),
 	}
 
 	// Run stopwatch.
@@ -93788,6 +102975,8 @@ func (c *Client) UsersListGpgKeysForAuthenticated(ctx context.Context, params Us
 func (c *Client) sendUsersListGpgKeysForAuthenticated(ctx context.Context, params UsersListGpgKeysForAuthenticatedParams) (res UsersListGpgKeysForAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-gpg-keys-for-authenticated"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user/gpg_keys"),
 	}
 
 	// Run stopwatch.
@@ -93897,6 +103086,8 @@ func (c *Client) UsersListGpgKeysForUser(ctx context.Context, params UsersListGp
 func (c *Client) sendUsersListGpgKeysForUser(ctx context.Context, params UsersListGpgKeysForUserParams) (res *UsersListGpgKeysForUserOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-gpg-keys-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/users/{username}/gpg_keys"),
 	}
 
 	// Run stopwatch.
@@ -94028,6 +103219,8 @@ func (c *Client) UsersListPublicEmailsForAuthenticated(ctx context.Context, para
 func (c *Client) sendUsersListPublicEmailsForAuthenticated(ctx context.Context, params UsersListPublicEmailsForAuthenticatedParams) (res UsersListPublicEmailsForAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-public-emails-for-authenticated"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user/public_emails"),
 	}
 
 	// Run stopwatch.
@@ -94137,6 +103330,8 @@ func (c *Client) UsersListPublicKeysForUser(ctx context.Context, params UsersLis
 func (c *Client) sendUsersListPublicKeysForUser(ctx context.Context, params UsersListPublicKeysForUserParams) (res *UsersListPublicKeysForUserOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-public-keys-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/users/{username}/keys"),
 	}
 
 	// Run stopwatch.
@@ -94267,6 +103462,8 @@ func (c *Client) UsersListPublicSSHKeysForAuthenticated(ctx context.Context, par
 func (c *Client) sendUsersListPublicSSHKeysForAuthenticated(ctx context.Context, params UsersListPublicSSHKeysForAuthenticatedParams) (res UsersListPublicSSHKeysForAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-public-ssh-keys-for-authenticated"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user/keys"),
 	}
 
 	// Run stopwatch.
@@ -94376,6 +103573,8 @@ func (c *Client) UsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.Cont
 func (c *Client) sendUsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.Context, request *UsersSetPrimaryEmailVisibilityForAuthenticatedReq) (res UsersSetPrimaryEmailVisibilityForAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/set-primary-email-visibility-for-authenticated"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/user/email/visibility"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -94459,6 +103658,8 @@ func (c *Client) UsersUnblock(ctx context.Context, params UsersUnblockParams) (U
 func (c *Client) sendUsersUnblock(ctx context.Context, params UsersUnblockParams) (res UsersUnblockRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/unblock"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/user/blocks/{username}"),
 	}
 
 	// Run stopwatch.
@@ -94549,6 +103750,8 @@ func (c *Client) UsersUnfollow(ctx context.Context, params UsersUnfollowParams) 
 func (c *Client) sendUsersUnfollow(ctx context.Context, params UsersUnfollowParams) (res UsersUnfollowRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/unfollow"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/user/following/{username}"),
 	}
 
 	// Run stopwatch.
@@ -94640,6 +103843,8 @@ func (c *Client) UsersUpdateAuthenticated(ctx context.Context, request OptUsersU
 func (c *Client) sendUsersUpdateAuthenticated(ctx context.Context, request OptUsersUpdateAuthenticatedReq) (res UsersUpdateAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/update-authenticated"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/user"),
 	}
 
 	// Run stopwatch.

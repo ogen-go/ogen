@@ -12,12 +12,29 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
+	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
 	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 )
+
+// Invoker invokes operations described by OpenAPI v3 specification.
+type Invoker interface {
+	// DataCreate invokes dataCreate operation.
+	//
+	// Creates data.
+	//
+	// POST /data
+	DataCreate(ctx context.Context, request OptData) (*Data, error)
+	// DataGet invokes dataGet operation.
+	//
+	// Retrieve data.
+	//
+	// GET /data
+	DataGet(ctx context.Context) (*Data, error)
+}
 
 // Client implements OAS client.
 type Client struct {
@@ -88,6 +105,8 @@ func (c *Client) DataCreate(ctx context.Context, request OptData) (*Data, error)
 func (c *Client) sendDataCreate(ctx context.Context, request OptData) (res *Data, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataCreate"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/data"),
 	}
 
 	// Run stopwatch.
@@ -162,6 +181,8 @@ func (c *Client) DataGet(ctx context.Context) (*Data, error) {
 func (c *Client) sendDataGet(ctx context.Context) (res *Data, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataGet"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/data"),
 	}
 
 	// Run stopwatch.

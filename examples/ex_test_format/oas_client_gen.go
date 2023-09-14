@@ -16,6 +16,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
+	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/conv"
@@ -24,6 +25,4010 @@ import (
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 )
+
+// Invoker invokes operations described by OpenAPI v3 specification.
+type Invoker interface {
+	// TestQueryParameter invokes test_query_parameter operation.
+	//
+	// POST /test_query_parameter
+	TestQueryParameter(ctx context.Context, request string, params TestQueryParameterParams) (*Error, error)
+	// TestRequestAny invokes test_request_Any operation.
+	//
+	// POST /test_request_Any
+	TestRequestAny(ctx context.Context, request jx.Raw) (*Error, error)
+	// TestRequestBoolean invokes test_request_boolean operation.
+	//
+	// POST /test_request_boolean
+	TestRequestBoolean(ctx context.Context, request OptBool) (*Error, error)
+	// TestRequestBooleanArray invokes test_request_boolean_array operation.
+	//
+	// POST /test_request_boolean_array
+	TestRequestBooleanArray(ctx context.Context, request []bool) (*Error, error)
+	// TestRequestBooleanArrayArray invokes test_request_boolean_array_array operation.
+	//
+	// POST /test_request_boolean_array_array
+	TestRequestBooleanArrayArray(ctx context.Context, request [][]bool) (*Error, error)
+	// TestRequestBooleanNullable invokes test_request_boolean_nullable operation.
+	//
+	// POST /test_request_boolean_nullable
+	TestRequestBooleanNullable(ctx context.Context, request OptNilBool) (*Error, error)
+	// TestRequestBooleanNullableArray invokes test_request_boolean_nullable_array operation.
+	//
+	// POST /test_request_boolean_nullable_array
+	TestRequestBooleanNullableArray(ctx context.Context, request []NilBool) (*Error, error)
+	// TestRequestBooleanNullableArrayArray invokes test_request_boolean_nullable_array_array operation.
+	//
+	// POST /test_request_boolean_nullable_array_array
+	TestRequestBooleanNullableArrayArray(ctx context.Context, request [][]NilBool) (*Error, error)
+	// TestRequestEmptyStruct invokes test_request_EmptyStruct operation.
+	//
+	// POST /test_request_EmptyStruct
+	TestRequestEmptyStruct(ctx context.Context, request *TestRequestEmptyStructReq) (*Error, error)
+	// TestRequestFormatTest invokes test_request_FormatTest operation.
+	//
+	// POST /test_request_FormatTest
+	TestRequestFormatTest(ctx context.Context, request OptTestRequestFormatTestReq) (*Error, error)
+	// TestRequestInteger invokes test_request_integer operation.
+	//
+	// POST /test_request_integer
+	TestRequestInteger(ctx context.Context, request OptInt) (*Error, error)
+	// TestRequestIntegerArray invokes test_request_integer_array operation.
+	//
+	// POST /test_request_integer_array
+	TestRequestIntegerArray(ctx context.Context, request []int) (*Error, error)
+	// TestRequestIntegerArrayArray invokes test_request_integer_array_array operation.
+	//
+	// POST /test_request_integer_array_array
+	TestRequestIntegerArrayArray(ctx context.Context, request [][]int) (*Error, error)
+	// TestRequestIntegerInt16 invokes test_request_integer_int16 operation.
+	//
+	// POST /test_request_integer_int16
+	TestRequestIntegerInt16(ctx context.Context, request OptInt16) (*Error, error)
+	// TestRequestIntegerInt16Array invokes test_request_integer_int16_array operation.
+	//
+	// POST /test_request_integer_int16_array
+	TestRequestIntegerInt16Array(ctx context.Context, request []int16) (*Error, error)
+	// TestRequestIntegerInt16ArrayArray invokes test_request_integer_int16_array_array operation.
+	//
+	// POST /test_request_integer_int16_array_array
+	TestRequestIntegerInt16ArrayArray(ctx context.Context, request [][]int16) (*Error, error)
+	// TestRequestIntegerInt16Nullable invokes test_request_integer_int16_nullable operation.
+	//
+	// POST /test_request_integer_int16_nullable
+	TestRequestIntegerInt16Nullable(ctx context.Context, request OptNilInt16) (*Error, error)
+	// TestRequestIntegerInt16NullableArray invokes test_request_integer_int16_nullable_array operation.
+	//
+	// POST /test_request_integer_int16_nullable_array
+	TestRequestIntegerInt16NullableArray(ctx context.Context, request []NilInt16) (*Error, error)
+	// TestRequestIntegerInt16NullableArrayArray invokes test_request_integer_int16_nullable_array_array operation.
+	//
+	// POST /test_request_integer_int16_nullable_array_array
+	TestRequestIntegerInt16NullableArrayArray(ctx context.Context, request [][]NilInt16) (*Error, error)
+	// TestRequestIntegerInt32 invokes test_request_integer_int32 operation.
+	//
+	// POST /test_request_integer_int32
+	TestRequestIntegerInt32(ctx context.Context, request OptInt32) (*Error, error)
+	// TestRequestIntegerInt32Array invokes test_request_integer_int32_array operation.
+	//
+	// POST /test_request_integer_int32_array
+	TestRequestIntegerInt32Array(ctx context.Context, request []int32) (*Error, error)
+	// TestRequestIntegerInt32ArrayArray invokes test_request_integer_int32_array_array operation.
+	//
+	// POST /test_request_integer_int32_array_array
+	TestRequestIntegerInt32ArrayArray(ctx context.Context, request [][]int32) (*Error, error)
+	// TestRequestIntegerInt32Nullable invokes test_request_integer_int32_nullable operation.
+	//
+	// POST /test_request_integer_int32_nullable
+	TestRequestIntegerInt32Nullable(ctx context.Context, request OptNilInt32) (*Error, error)
+	// TestRequestIntegerInt32NullableArray invokes test_request_integer_int32_nullable_array operation.
+	//
+	// POST /test_request_integer_int32_nullable_array
+	TestRequestIntegerInt32NullableArray(ctx context.Context, request []NilInt32) (*Error, error)
+	// TestRequestIntegerInt32NullableArrayArray invokes test_request_integer_int32_nullable_array_array operation.
+	//
+	// POST /test_request_integer_int32_nullable_array_array
+	TestRequestIntegerInt32NullableArrayArray(ctx context.Context, request [][]NilInt32) (*Error, error)
+	// TestRequestIntegerInt64 invokes test_request_integer_int64 operation.
+	//
+	// POST /test_request_integer_int64
+	TestRequestIntegerInt64(ctx context.Context, request OptInt64) (*Error, error)
+	// TestRequestIntegerInt64Array invokes test_request_integer_int64_array operation.
+	//
+	// POST /test_request_integer_int64_array
+	TestRequestIntegerInt64Array(ctx context.Context, request []int64) (*Error, error)
+	// TestRequestIntegerInt64ArrayArray invokes test_request_integer_int64_array_array operation.
+	//
+	// POST /test_request_integer_int64_array_array
+	TestRequestIntegerInt64ArrayArray(ctx context.Context, request [][]int64) (*Error, error)
+	// TestRequestIntegerInt64Nullable invokes test_request_integer_int64_nullable operation.
+	//
+	// POST /test_request_integer_int64_nullable
+	TestRequestIntegerInt64Nullable(ctx context.Context, request OptNilInt64) (*Error, error)
+	// TestRequestIntegerInt64NullableArray invokes test_request_integer_int64_nullable_array operation.
+	//
+	// POST /test_request_integer_int64_nullable_array
+	TestRequestIntegerInt64NullableArray(ctx context.Context, request []NilInt64) (*Error, error)
+	// TestRequestIntegerInt64NullableArrayArray invokes test_request_integer_int64_nullable_array_array operation.
+	//
+	// POST /test_request_integer_int64_nullable_array_array
+	TestRequestIntegerInt64NullableArrayArray(ctx context.Context, request [][]NilInt64) (*Error, error)
+	// TestRequestIntegerInt8 invokes test_request_integer_int8 operation.
+	//
+	// POST /test_request_integer_int8
+	TestRequestIntegerInt8(ctx context.Context, request OptInt8) (*Error, error)
+	// TestRequestIntegerInt8Array invokes test_request_integer_int8_array operation.
+	//
+	// POST /test_request_integer_int8_array
+	TestRequestIntegerInt8Array(ctx context.Context, request []int8) (*Error, error)
+	// TestRequestIntegerInt8ArrayArray invokes test_request_integer_int8_array_array operation.
+	//
+	// POST /test_request_integer_int8_array_array
+	TestRequestIntegerInt8ArrayArray(ctx context.Context, request [][]int8) (*Error, error)
+	// TestRequestIntegerInt8Nullable invokes test_request_integer_int8_nullable operation.
+	//
+	// POST /test_request_integer_int8_nullable
+	TestRequestIntegerInt8Nullable(ctx context.Context, request OptNilInt8) (*Error, error)
+	// TestRequestIntegerInt8NullableArray invokes test_request_integer_int8_nullable_array operation.
+	//
+	// POST /test_request_integer_int8_nullable_array
+	TestRequestIntegerInt8NullableArray(ctx context.Context, request []NilInt8) (*Error, error)
+	// TestRequestIntegerInt8NullableArrayArray invokes test_request_integer_int8_nullable_array_array operation.
+	//
+	// POST /test_request_integer_int8_nullable_array_array
+	TestRequestIntegerInt8NullableArrayArray(ctx context.Context, request [][]NilInt8) (*Error, error)
+	// TestRequestIntegerNullable invokes test_request_integer_nullable operation.
+	//
+	// POST /test_request_integer_nullable
+	TestRequestIntegerNullable(ctx context.Context, request OptNilInt) (*Error, error)
+	// TestRequestIntegerNullableArray invokes test_request_integer_nullable_array operation.
+	//
+	// POST /test_request_integer_nullable_array
+	TestRequestIntegerNullableArray(ctx context.Context, request []NilInt) (*Error, error)
+	// TestRequestIntegerNullableArrayArray invokes test_request_integer_nullable_array_array operation.
+	//
+	// POST /test_request_integer_nullable_array_array
+	TestRequestIntegerNullableArrayArray(ctx context.Context, request [][]NilInt) (*Error, error)
+	// TestRequestIntegerUint invokes test_request_integer_uint operation.
+	//
+	// POST /test_request_integer_uint
+	TestRequestIntegerUint(ctx context.Context, request OptUint) (*Error, error)
+	// TestRequestIntegerUint16 invokes test_request_integer_uint16 operation.
+	//
+	// POST /test_request_integer_uint16
+	TestRequestIntegerUint16(ctx context.Context, request OptUint16) (*Error, error)
+	// TestRequestIntegerUint16Array invokes test_request_integer_uint16_array operation.
+	//
+	// POST /test_request_integer_uint16_array
+	TestRequestIntegerUint16Array(ctx context.Context, request []uint16) (*Error, error)
+	// TestRequestIntegerUint16ArrayArray invokes test_request_integer_uint16_array_array operation.
+	//
+	// POST /test_request_integer_uint16_array_array
+	TestRequestIntegerUint16ArrayArray(ctx context.Context, request [][]uint16) (*Error, error)
+	// TestRequestIntegerUint16Nullable invokes test_request_integer_uint16_nullable operation.
+	//
+	// POST /test_request_integer_uint16_nullable
+	TestRequestIntegerUint16Nullable(ctx context.Context, request OptNilUint16) (*Error, error)
+	// TestRequestIntegerUint16NullableArray invokes test_request_integer_uint16_nullable_array operation.
+	//
+	// POST /test_request_integer_uint16_nullable_array
+	TestRequestIntegerUint16NullableArray(ctx context.Context, request []NilUint16) (*Error, error)
+	// TestRequestIntegerUint16NullableArrayArray invokes test_request_integer_uint16_nullable_array_array operation.
+	//
+	// POST /test_request_integer_uint16_nullable_array_array
+	TestRequestIntegerUint16NullableArrayArray(ctx context.Context, request [][]NilUint16) (*Error, error)
+	// TestRequestIntegerUint32 invokes test_request_integer_uint32 operation.
+	//
+	// POST /test_request_integer_uint32
+	TestRequestIntegerUint32(ctx context.Context, request OptUint32) (*Error, error)
+	// TestRequestIntegerUint32Array invokes test_request_integer_uint32_array operation.
+	//
+	// POST /test_request_integer_uint32_array
+	TestRequestIntegerUint32Array(ctx context.Context, request []uint32) (*Error, error)
+	// TestRequestIntegerUint32ArrayArray invokes test_request_integer_uint32_array_array operation.
+	//
+	// POST /test_request_integer_uint32_array_array
+	TestRequestIntegerUint32ArrayArray(ctx context.Context, request [][]uint32) (*Error, error)
+	// TestRequestIntegerUint32Nullable invokes test_request_integer_uint32_nullable operation.
+	//
+	// POST /test_request_integer_uint32_nullable
+	TestRequestIntegerUint32Nullable(ctx context.Context, request OptNilUint32) (*Error, error)
+	// TestRequestIntegerUint32NullableArray invokes test_request_integer_uint32_nullable_array operation.
+	//
+	// POST /test_request_integer_uint32_nullable_array
+	TestRequestIntegerUint32NullableArray(ctx context.Context, request []NilUint32) (*Error, error)
+	// TestRequestIntegerUint32NullableArrayArray invokes test_request_integer_uint32_nullable_array_array operation.
+	//
+	// POST /test_request_integer_uint32_nullable_array_array
+	TestRequestIntegerUint32NullableArrayArray(ctx context.Context, request [][]NilUint32) (*Error, error)
+	// TestRequestIntegerUint64 invokes test_request_integer_uint64 operation.
+	//
+	// POST /test_request_integer_uint64
+	TestRequestIntegerUint64(ctx context.Context, request OptUint64) (*Error, error)
+	// TestRequestIntegerUint64Array invokes test_request_integer_uint64_array operation.
+	//
+	// POST /test_request_integer_uint64_array
+	TestRequestIntegerUint64Array(ctx context.Context, request []uint64) (*Error, error)
+	// TestRequestIntegerUint64ArrayArray invokes test_request_integer_uint64_array_array operation.
+	//
+	// POST /test_request_integer_uint64_array_array
+	TestRequestIntegerUint64ArrayArray(ctx context.Context, request [][]uint64) (*Error, error)
+	// TestRequestIntegerUint64Nullable invokes test_request_integer_uint64_nullable operation.
+	//
+	// POST /test_request_integer_uint64_nullable
+	TestRequestIntegerUint64Nullable(ctx context.Context, request OptNilUint64) (*Error, error)
+	// TestRequestIntegerUint64NullableArray invokes test_request_integer_uint64_nullable_array operation.
+	//
+	// POST /test_request_integer_uint64_nullable_array
+	TestRequestIntegerUint64NullableArray(ctx context.Context, request []NilUint64) (*Error, error)
+	// TestRequestIntegerUint64NullableArrayArray invokes test_request_integer_uint64_nullable_array_array operation.
+	//
+	// POST /test_request_integer_uint64_nullable_array_array
+	TestRequestIntegerUint64NullableArrayArray(ctx context.Context, request [][]NilUint64) (*Error, error)
+	// TestRequestIntegerUint8 invokes test_request_integer_uint8 operation.
+	//
+	// POST /test_request_integer_uint8
+	TestRequestIntegerUint8(ctx context.Context, request OptUint8) (*Error, error)
+	// TestRequestIntegerUint8Array invokes test_request_integer_uint8_array operation.
+	//
+	// POST /test_request_integer_uint8_array
+	TestRequestIntegerUint8Array(ctx context.Context, request []uint8) (*Error, error)
+	// TestRequestIntegerUint8ArrayArray invokes test_request_integer_uint8_array_array operation.
+	//
+	// POST /test_request_integer_uint8_array_array
+	TestRequestIntegerUint8ArrayArray(ctx context.Context, request [][]uint8) (*Error, error)
+	// TestRequestIntegerUint8Nullable invokes test_request_integer_uint8_nullable operation.
+	//
+	// POST /test_request_integer_uint8_nullable
+	TestRequestIntegerUint8Nullable(ctx context.Context, request OptNilUint8) (*Error, error)
+	// TestRequestIntegerUint8NullableArray invokes test_request_integer_uint8_nullable_array operation.
+	//
+	// POST /test_request_integer_uint8_nullable_array
+	TestRequestIntegerUint8NullableArray(ctx context.Context, request []NilUint8) (*Error, error)
+	// TestRequestIntegerUint8NullableArrayArray invokes test_request_integer_uint8_nullable_array_array operation.
+	//
+	// POST /test_request_integer_uint8_nullable_array_array
+	TestRequestIntegerUint8NullableArrayArray(ctx context.Context, request [][]NilUint8) (*Error, error)
+	// TestRequestIntegerUintArray invokes test_request_integer_uint_array operation.
+	//
+	// POST /test_request_integer_uint_array
+	TestRequestIntegerUintArray(ctx context.Context, request []uint) (*Error, error)
+	// TestRequestIntegerUintArrayArray invokes test_request_integer_uint_array_array operation.
+	//
+	// POST /test_request_integer_uint_array_array
+	TestRequestIntegerUintArrayArray(ctx context.Context, request [][]uint) (*Error, error)
+	// TestRequestIntegerUintNullable invokes test_request_integer_uint_nullable operation.
+	//
+	// POST /test_request_integer_uint_nullable
+	TestRequestIntegerUintNullable(ctx context.Context, request OptNilUint) (*Error, error)
+	// TestRequestIntegerUintNullableArray invokes test_request_integer_uint_nullable_array operation.
+	//
+	// POST /test_request_integer_uint_nullable_array
+	TestRequestIntegerUintNullableArray(ctx context.Context, request []NilUint) (*Error, error)
+	// TestRequestIntegerUintNullableArrayArray invokes test_request_integer_uint_nullable_array_array operation.
+	//
+	// POST /test_request_integer_uint_nullable_array_array
+	TestRequestIntegerUintNullableArrayArray(ctx context.Context, request [][]NilUint) (*Error, error)
+	// TestRequestIntegerUnix invokes test_request_integer_unix operation.
+	//
+	// POST /test_request_integer_unix
+	TestRequestIntegerUnix(ctx context.Context, request OptUnixSeconds) (*Error, error)
+	// TestRequestIntegerUnixArray invokes test_request_integer_unix_array operation.
+	//
+	// POST /test_request_integer_unix_array
+	TestRequestIntegerUnixArray(ctx context.Context, request []time.Time) (*Error, error)
+	// TestRequestIntegerUnixArrayArray invokes test_request_integer_unix_array_array operation.
+	//
+	// POST /test_request_integer_unix_array_array
+	TestRequestIntegerUnixArrayArray(ctx context.Context, request [][]time.Time) (*Error, error)
+	// TestRequestIntegerUnixMicro invokes test_request_integer_unix-micro operation.
+	//
+	// POST /test_request_integer_unix-micro
+	TestRequestIntegerUnixMicro(ctx context.Context, request OptUnixMicro) (*Error, error)
+	// TestRequestIntegerUnixMicroArray invokes test_request_integer_unix-micro_array operation.
+	//
+	// POST /test_request_integer_unix-micro_array
+	TestRequestIntegerUnixMicroArray(ctx context.Context, request []time.Time) (*Error, error)
+	// TestRequestIntegerUnixMicroArrayArray invokes test_request_integer_unix-micro_array_array operation.
+	//
+	// POST /test_request_integer_unix-micro_array_array
+	TestRequestIntegerUnixMicroArrayArray(ctx context.Context, request [][]time.Time) (*Error, error)
+	// TestRequestIntegerUnixMicroNullable invokes test_request_integer_unix-micro_nullable operation.
+	//
+	// POST /test_request_integer_unix-micro_nullable
+	TestRequestIntegerUnixMicroNullable(ctx context.Context, request OptNilUnixMicro) (*Error, error)
+	// TestRequestIntegerUnixMicroNullableArray invokes test_request_integer_unix-micro_nullable_array operation.
+	//
+	// POST /test_request_integer_unix-micro_nullable_array
+	TestRequestIntegerUnixMicroNullableArray(ctx context.Context, request []NilUnixMicro) (*Error, error)
+	// TestRequestIntegerUnixMicroNullableArrayArray invokes test_request_integer_unix-micro_nullable_array_array operation.
+	//
+	// POST /test_request_integer_unix-micro_nullable_array_array
+	TestRequestIntegerUnixMicroNullableArrayArray(ctx context.Context, request [][]NilUnixMicro) (*Error, error)
+	// TestRequestIntegerUnixMilli invokes test_request_integer_unix-milli operation.
+	//
+	// POST /test_request_integer_unix-milli
+	TestRequestIntegerUnixMilli(ctx context.Context, request OptUnixMilli) (*Error, error)
+	// TestRequestIntegerUnixMilliArray invokes test_request_integer_unix-milli_array operation.
+	//
+	// POST /test_request_integer_unix-milli_array
+	TestRequestIntegerUnixMilliArray(ctx context.Context, request []time.Time) (*Error, error)
+	// TestRequestIntegerUnixMilliArrayArray invokes test_request_integer_unix-milli_array_array operation.
+	//
+	// POST /test_request_integer_unix-milli_array_array
+	TestRequestIntegerUnixMilliArrayArray(ctx context.Context, request [][]time.Time) (*Error, error)
+	// TestRequestIntegerUnixMilliNullable invokes test_request_integer_unix-milli_nullable operation.
+	//
+	// POST /test_request_integer_unix-milli_nullable
+	TestRequestIntegerUnixMilliNullable(ctx context.Context, request OptNilUnixMilli) (*Error, error)
+	// TestRequestIntegerUnixMilliNullableArray invokes test_request_integer_unix-milli_nullable_array operation.
+	//
+	// POST /test_request_integer_unix-milli_nullable_array
+	TestRequestIntegerUnixMilliNullableArray(ctx context.Context, request []NilUnixMilli) (*Error, error)
+	// TestRequestIntegerUnixMilliNullableArrayArray invokes test_request_integer_unix-milli_nullable_array_array operation.
+	//
+	// POST /test_request_integer_unix-milli_nullable_array_array
+	TestRequestIntegerUnixMilliNullableArrayArray(ctx context.Context, request [][]NilUnixMilli) (*Error, error)
+	// TestRequestIntegerUnixNano invokes test_request_integer_unix-nano operation.
+	//
+	// POST /test_request_integer_unix-nano
+	TestRequestIntegerUnixNano(ctx context.Context, request OptUnixNano) (*Error, error)
+	// TestRequestIntegerUnixNanoArray invokes test_request_integer_unix-nano_array operation.
+	//
+	// POST /test_request_integer_unix-nano_array
+	TestRequestIntegerUnixNanoArray(ctx context.Context, request []time.Time) (*Error, error)
+	// TestRequestIntegerUnixNanoArrayArray invokes test_request_integer_unix-nano_array_array operation.
+	//
+	// POST /test_request_integer_unix-nano_array_array
+	TestRequestIntegerUnixNanoArrayArray(ctx context.Context, request [][]time.Time) (*Error, error)
+	// TestRequestIntegerUnixNanoNullable invokes test_request_integer_unix-nano_nullable operation.
+	//
+	// POST /test_request_integer_unix-nano_nullable
+	TestRequestIntegerUnixNanoNullable(ctx context.Context, request OptNilUnixNano) (*Error, error)
+	// TestRequestIntegerUnixNanoNullableArray invokes test_request_integer_unix-nano_nullable_array operation.
+	//
+	// POST /test_request_integer_unix-nano_nullable_array
+	TestRequestIntegerUnixNanoNullableArray(ctx context.Context, request []NilUnixNano) (*Error, error)
+	// TestRequestIntegerUnixNanoNullableArrayArray invokes test_request_integer_unix-nano_nullable_array_array operation.
+	//
+	// POST /test_request_integer_unix-nano_nullable_array_array
+	TestRequestIntegerUnixNanoNullableArrayArray(ctx context.Context, request [][]NilUnixNano) (*Error, error)
+	// TestRequestIntegerUnixNullable invokes test_request_integer_unix_nullable operation.
+	//
+	// POST /test_request_integer_unix_nullable
+	TestRequestIntegerUnixNullable(ctx context.Context, request OptNilUnixSeconds) (*Error, error)
+	// TestRequestIntegerUnixNullableArray invokes test_request_integer_unix_nullable_array operation.
+	//
+	// POST /test_request_integer_unix_nullable_array
+	TestRequestIntegerUnixNullableArray(ctx context.Context, request []NilUnixSeconds) (*Error, error)
+	// TestRequestIntegerUnixNullableArrayArray invokes test_request_integer_unix_nullable_array_array operation.
+	//
+	// POST /test_request_integer_unix_nullable_array_array
+	TestRequestIntegerUnixNullableArrayArray(ctx context.Context, request [][]NilUnixSeconds) (*Error, error)
+	// TestRequestIntegerUnixSeconds invokes test_request_integer_unix-seconds operation.
+	//
+	// POST /test_request_integer_unix-seconds
+	TestRequestIntegerUnixSeconds(ctx context.Context, request OptUnixSeconds) (*Error, error)
+	// TestRequestIntegerUnixSecondsArray invokes test_request_integer_unix-seconds_array operation.
+	//
+	// POST /test_request_integer_unix-seconds_array
+	TestRequestIntegerUnixSecondsArray(ctx context.Context, request []time.Time) (*Error, error)
+	// TestRequestIntegerUnixSecondsArrayArray invokes test_request_integer_unix-seconds_array_array operation.
+	//
+	// POST /test_request_integer_unix-seconds_array_array
+	TestRequestIntegerUnixSecondsArrayArray(ctx context.Context, request [][]time.Time) (*Error, error)
+	// TestRequestIntegerUnixSecondsNullable invokes test_request_integer_unix-seconds_nullable operation.
+	//
+	// POST /test_request_integer_unix-seconds_nullable
+	TestRequestIntegerUnixSecondsNullable(ctx context.Context, request OptNilUnixSeconds) (*Error, error)
+	// TestRequestIntegerUnixSecondsNullableArray invokes test_request_integer_unix-seconds_nullable_array operation.
+	//
+	// POST /test_request_integer_unix-seconds_nullable_array
+	TestRequestIntegerUnixSecondsNullableArray(ctx context.Context, request []NilUnixSeconds) (*Error, error)
+	// TestRequestIntegerUnixSecondsNullableArrayArray invokes test_request_integer_unix-seconds_nullable_array_array operation.
+	//
+	// POST /test_request_integer_unix-seconds_nullable_array_array
+	TestRequestIntegerUnixSecondsNullableArrayArray(ctx context.Context, request [][]NilUnixSeconds) (*Error, error)
+	// TestRequestNull invokes test_request_null operation.
+	//
+	// POST /test_request_null
+	TestRequestNull(ctx context.Context, request OptNull) (*Error, error)
+	// TestRequestNullArray invokes test_request_null_array operation.
+	//
+	// POST /test_request_null_array
+	TestRequestNullArray(ctx context.Context, request []struct{}) (*Error, error)
+	// TestRequestNullArrayArray invokes test_request_null_array_array operation.
+	//
+	// POST /test_request_null_array_array
+	TestRequestNullArrayArray(ctx context.Context, request [][]struct{}) (*Error, error)
+	// TestRequestNullNullable invokes test_request_null_nullable operation.
+	//
+	// POST /test_request_null_nullable
+	TestRequestNullNullable(ctx context.Context, request OptNull) (*Error, error)
+	// TestRequestNullNullableArray invokes test_request_null_nullable_array operation.
+	//
+	// POST /test_request_null_nullable_array
+	TestRequestNullNullableArray(ctx context.Context, request []struct{}) (*Error, error)
+	// TestRequestNullNullableArrayArray invokes test_request_null_nullable_array_array operation.
+	//
+	// POST /test_request_null_nullable_array_array
+	TestRequestNullNullableArrayArray(ctx context.Context, request [][]struct{}) (*Error, error)
+	// TestRequestNumber invokes test_request_number operation.
+	//
+	// POST /test_request_number
+	TestRequestNumber(ctx context.Context, request OptFloat64) (*Error, error)
+	// TestRequestNumberArray invokes test_request_number_array operation.
+	//
+	// POST /test_request_number_array
+	TestRequestNumberArray(ctx context.Context, request []float64) (*Error, error)
+	// TestRequestNumberArrayArray invokes test_request_number_array_array operation.
+	//
+	// POST /test_request_number_array_array
+	TestRequestNumberArrayArray(ctx context.Context, request [][]float64) (*Error, error)
+	// TestRequestNumberDouble invokes test_request_number_double operation.
+	//
+	// POST /test_request_number_double
+	TestRequestNumberDouble(ctx context.Context, request OptFloat64) (*Error, error)
+	// TestRequestNumberDoubleArray invokes test_request_number_double_array operation.
+	//
+	// POST /test_request_number_double_array
+	TestRequestNumberDoubleArray(ctx context.Context, request []float64) (*Error, error)
+	// TestRequestNumberDoubleArrayArray invokes test_request_number_double_array_array operation.
+	//
+	// POST /test_request_number_double_array_array
+	TestRequestNumberDoubleArrayArray(ctx context.Context, request [][]float64) (*Error, error)
+	// TestRequestNumberDoubleNullable invokes test_request_number_double_nullable operation.
+	//
+	// POST /test_request_number_double_nullable
+	TestRequestNumberDoubleNullable(ctx context.Context, request OptNilFloat64) (*Error, error)
+	// TestRequestNumberDoubleNullableArray invokes test_request_number_double_nullable_array operation.
+	//
+	// POST /test_request_number_double_nullable_array
+	TestRequestNumberDoubleNullableArray(ctx context.Context, request []NilFloat64) (*Error, error)
+	// TestRequestNumberDoubleNullableArrayArray invokes test_request_number_double_nullable_array_array operation.
+	//
+	// POST /test_request_number_double_nullable_array_array
+	TestRequestNumberDoubleNullableArrayArray(ctx context.Context, request [][]NilFloat64) (*Error, error)
+	// TestRequestNumberFloat invokes test_request_number_float operation.
+	//
+	// POST /test_request_number_float
+	TestRequestNumberFloat(ctx context.Context, request OptFloat32) (*Error, error)
+	// TestRequestNumberFloatArray invokes test_request_number_float_array operation.
+	//
+	// POST /test_request_number_float_array
+	TestRequestNumberFloatArray(ctx context.Context, request []float32) (*Error, error)
+	// TestRequestNumberFloatArrayArray invokes test_request_number_float_array_array operation.
+	//
+	// POST /test_request_number_float_array_array
+	TestRequestNumberFloatArrayArray(ctx context.Context, request [][]float32) (*Error, error)
+	// TestRequestNumberFloatNullable invokes test_request_number_float_nullable operation.
+	//
+	// POST /test_request_number_float_nullable
+	TestRequestNumberFloatNullable(ctx context.Context, request OptNilFloat32) (*Error, error)
+	// TestRequestNumberFloatNullableArray invokes test_request_number_float_nullable_array operation.
+	//
+	// POST /test_request_number_float_nullable_array
+	TestRequestNumberFloatNullableArray(ctx context.Context, request []NilFloat32) (*Error, error)
+	// TestRequestNumberFloatNullableArrayArray invokes test_request_number_float_nullable_array_array operation.
+	//
+	// POST /test_request_number_float_nullable_array_array
+	TestRequestNumberFloatNullableArrayArray(ctx context.Context, request [][]NilFloat32) (*Error, error)
+	// TestRequestNumberInt32 invokes test_request_number_int32 operation.
+	//
+	// POST /test_request_number_int32
+	TestRequestNumberInt32(ctx context.Context, request OptInt32) (*Error, error)
+	// TestRequestNumberInt32Array invokes test_request_number_int32_array operation.
+	//
+	// POST /test_request_number_int32_array
+	TestRequestNumberInt32Array(ctx context.Context, request []int32) (*Error, error)
+	// TestRequestNumberInt32ArrayArray invokes test_request_number_int32_array_array operation.
+	//
+	// POST /test_request_number_int32_array_array
+	TestRequestNumberInt32ArrayArray(ctx context.Context, request [][]int32) (*Error, error)
+	// TestRequestNumberInt32Nullable invokes test_request_number_int32_nullable operation.
+	//
+	// POST /test_request_number_int32_nullable
+	TestRequestNumberInt32Nullable(ctx context.Context, request OptNilInt32) (*Error, error)
+	// TestRequestNumberInt32NullableArray invokes test_request_number_int32_nullable_array operation.
+	//
+	// POST /test_request_number_int32_nullable_array
+	TestRequestNumberInt32NullableArray(ctx context.Context, request []NilInt32) (*Error, error)
+	// TestRequestNumberInt32NullableArrayArray invokes test_request_number_int32_nullable_array_array operation.
+	//
+	// POST /test_request_number_int32_nullable_array_array
+	TestRequestNumberInt32NullableArrayArray(ctx context.Context, request [][]NilInt32) (*Error, error)
+	// TestRequestNumberInt64 invokes test_request_number_int64 operation.
+	//
+	// POST /test_request_number_int64
+	TestRequestNumberInt64(ctx context.Context, request OptInt64) (*Error, error)
+	// TestRequestNumberInt64Array invokes test_request_number_int64_array operation.
+	//
+	// POST /test_request_number_int64_array
+	TestRequestNumberInt64Array(ctx context.Context, request []int64) (*Error, error)
+	// TestRequestNumberInt64ArrayArray invokes test_request_number_int64_array_array operation.
+	//
+	// POST /test_request_number_int64_array_array
+	TestRequestNumberInt64ArrayArray(ctx context.Context, request [][]int64) (*Error, error)
+	// TestRequestNumberInt64Nullable invokes test_request_number_int64_nullable operation.
+	//
+	// POST /test_request_number_int64_nullable
+	TestRequestNumberInt64Nullable(ctx context.Context, request OptNilInt64) (*Error, error)
+	// TestRequestNumberInt64NullableArray invokes test_request_number_int64_nullable_array operation.
+	//
+	// POST /test_request_number_int64_nullable_array
+	TestRequestNumberInt64NullableArray(ctx context.Context, request []NilInt64) (*Error, error)
+	// TestRequestNumberInt64NullableArrayArray invokes test_request_number_int64_nullable_array_array operation.
+	//
+	// POST /test_request_number_int64_nullable_array_array
+	TestRequestNumberInt64NullableArrayArray(ctx context.Context, request [][]NilInt64) (*Error, error)
+	// TestRequestNumberNullable invokes test_request_number_nullable operation.
+	//
+	// POST /test_request_number_nullable
+	TestRequestNumberNullable(ctx context.Context, request OptNilFloat64) (*Error, error)
+	// TestRequestNumberNullableArray invokes test_request_number_nullable_array operation.
+	//
+	// POST /test_request_number_nullable_array
+	TestRequestNumberNullableArray(ctx context.Context, request []NilFloat64) (*Error, error)
+	// TestRequestNumberNullableArrayArray invokes test_request_number_nullable_array_array operation.
+	//
+	// POST /test_request_number_nullable_array_array
+	TestRequestNumberNullableArrayArray(ctx context.Context, request [][]NilFloat64) (*Error, error)
+	// TestRequestRequiredAny invokes test_request_required_Any operation.
+	//
+	// POST /test_request_required_Any
+	TestRequestRequiredAny(ctx context.Context, request jx.Raw) (*Error, error)
+	// TestRequestRequiredBoolean invokes test_request_required_boolean operation.
+	//
+	// POST /test_request_required_boolean
+	TestRequestRequiredBoolean(ctx context.Context, request bool) (*Error, error)
+	// TestRequestRequiredBooleanArray invokes test_request_required_boolean_array operation.
+	//
+	// POST /test_request_required_boolean_array
+	TestRequestRequiredBooleanArray(ctx context.Context, request []bool) (*Error, error)
+	// TestRequestRequiredBooleanArrayArray invokes test_request_required_boolean_array_array operation.
+	//
+	// POST /test_request_required_boolean_array_array
+	TestRequestRequiredBooleanArrayArray(ctx context.Context, request [][]bool) (*Error, error)
+	// TestRequestRequiredBooleanNullable invokes test_request_required_boolean_nullable operation.
+	//
+	// POST /test_request_required_boolean_nullable
+	TestRequestRequiredBooleanNullable(ctx context.Context, request NilBool) (*Error, error)
+	// TestRequestRequiredBooleanNullableArray invokes test_request_required_boolean_nullable_array operation.
+	//
+	// POST /test_request_required_boolean_nullable_array
+	TestRequestRequiredBooleanNullableArray(ctx context.Context, request []NilBool) (*Error, error)
+	// TestRequestRequiredBooleanNullableArrayArray invokes test_request_required_boolean_nullable_array_array operation.
+	//
+	// POST /test_request_required_boolean_nullable_array_array
+	TestRequestRequiredBooleanNullableArrayArray(ctx context.Context, request [][]NilBool) (*Error, error)
+	// TestRequestRequiredEmptyStruct invokes test_request_required_EmptyStruct operation.
+	//
+	// POST /test_request_required_EmptyStruct
+	TestRequestRequiredEmptyStruct(ctx context.Context, request *TestRequestRequiredEmptyStructReq) (*Error, error)
+	// TestRequestRequiredFormatTest invokes test_request_required_FormatTest operation.
+	//
+	// POST /test_request_required_FormatTest
+	TestRequestRequiredFormatTest(ctx context.Context, request *TestRequestRequiredFormatTestReq) (*Error, error)
+	// TestRequestRequiredInteger invokes test_request_required_integer operation.
+	//
+	// POST /test_request_required_integer
+	TestRequestRequiredInteger(ctx context.Context, request int) (*Error, error)
+	// TestRequestRequiredIntegerArray invokes test_request_required_integer_array operation.
+	//
+	// POST /test_request_required_integer_array
+	TestRequestRequiredIntegerArray(ctx context.Context, request []int) (*Error, error)
+	// TestRequestRequiredIntegerArrayArray invokes test_request_required_integer_array_array operation.
+	//
+	// POST /test_request_required_integer_array_array
+	TestRequestRequiredIntegerArrayArray(ctx context.Context, request [][]int) (*Error, error)
+	// TestRequestRequiredIntegerInt16 invokes test_request_required_integer_int16 operation.
+	//
+	// POST /test_request_required_integer_int16
+	TestRequestRequiredIntegerInt16(ctx context.Context, request int16) (*Error, error)
+	// TestRequestRequiredIntegerInt16Array invokes test_request_required_integer_int16_array operation.
+	//
+	// POST /test_request_required_integer_int16_array
+	TestRequestRequiredIntegerInt16Array(ctx context.Context, request []int16) (*Error, error)
+	// TestRequestRequiredIntegerInt16ArrayArray invokes test_request_required_integer_int16_array_array operation.
+	//
+	// POST /test_request_required_integer_int16_array_array
+	TestRequestRequiredIntegerInt16ArrayArray(ctx context.Context, request [][]int16) (*Error, error)
+	// TestRequestRequiredIntegerInt16Nullable invokes test_request_required_integer_int16_nullable operation.
+	//
+	// POST /test_request_required_integer_int16_nullable
+	TestRequestRequiredIntegerInt16Nullable(ctx context.Context, request NilInt16) (*Error, error)
+	// TestRequestRequiredIntegerInt16NullableArray invokes test_request_required_integer_int16_nullable_array operation.
+	//
+	// POST /test_request_required_integer_int16_nullable_array
+	TestRequestRequiredIntegerInt16NullableArray(ctx context.Context, request []NilInt16) (*Error, error)
+	// TestRequestRequiredIntegerInt16NullableArrayArray invokes test_request_required_integer_int16_nullable_array_array operation.
+	//
+	// POST /test_request_required_integer_int16_nullable_array_array
+	TestRequestRequiredIntegerInt16NullableArrayArray(ctx context.Context, request [][]NilInt16) (*Error, error)
+	// TestRequestRequiredIntegerInt32 invokes test_request_required_integer_int32 operation.
+	//
+	// POST /test_request_required_integer_int32
+	TestRequestRequiredIntegerInt32(ctx context.Context, request int32) (*Error, error)
+	// TestRequestRequiredIntegerInt32Array invokes test_request_required_integer_int32_array operation.
+	//
+	// POST /test_request_required_integer_int32_array
+	TestRequestRequiredIntegerInt32Array(ctx context.Context, request []int32) (*Error, error)
+	// TestRequestRequiredIntegerInt32ArrayArray invokes test_request_required_integer_int32_array_array operation.
+	//
+	// POST /test_request_required_integer_int32_array_array
+	TestRequestRequiredIntegerInt32ArrayArray(ctx context.Context, request [][]int32) (*Error, error)
+	// TestRequestRequiredIntegerInt32Nullable invokes test_request_required_integer_int32_nullable operation.
+	//
+	// POST /test_request_required_integer_int32_nullable
+	TestRequestRequiredIntegerInt32Nullable(ctx context.Context, request NilInt32) (*Error, error)
+	// TestRequestRequiredIntegerInt32NullableArray invokes test_request_required_integer_int32_nullable_array operation.
+	//
+	// POST /test_request_required_integer_int32_nullable_array
+	TestRequestRequiredIntegerInt32NullableArray(ctx context.Context, request []NilInt32) (*Error, error)
+	// TestRequestRequiredIntegerInt32NullableArrayArray invokes test_request_required_integer_int32_nullable_array_array operation.
+	//
+	// POST /test_request_required_integer_int32_nullable_array_array
+	TestRequestRequiredIntegerInt32NullableArrayArray(ctx context.Context, request [][]NilInt32) (*Error, error)
+	// TestRequestRequiredIntegerInt64 invokes test_request_required_integer_int64 operation.
+	//
+	// POST /test_request_required_integer_int64
+	TestRequestRequiredIntegerInt64(ctx context.Context, request int64) (*Error, error)
+	// TestRequestRequiredIntegerInt64Array invokes test_request_required_integer_int64_array operation.
+	//
+	// POST /test_request_required_integer_int64_array
+	TestRequestRequiredIntegerInt64Array(ctx context.Context, request []int64) (*Error, error)
+	// TestRequestRequiredIntegerInt64ArrayArray invokes test_request_required_integer_int64_array_array operation.
+	//
+	// POST /test_request_required_integer_int64_array_array
+	TestRequestRequiredIntegerInt64ArrayArray(ctx context.Context, request [][]int64) (*Error, error)
+	// TestRequestRequiredIntegerInt64Nullable invokes test_request_required_integer_int64_nullable operation.
+	//
+	// POST /test_request_required_integer_int64_nullable
+	TestRequestRequiredIntegerInt64Nullable(ctx context.Context, request NilInt64) (*Error, error)
+	// TestRequestRequiredIntegerInt64NullableArray invokes test_request_required_integer_int64_nullable_array operation.
+	//
+	// POST /test_request_required_integer_int64_nullable_array
+	TestRequestRequiredIntegerInt64NullableArray(ctx context.Context, request []NilInt64) (*Error, error)
+	// TestRequestRequiredIntegerInt64NullableArrayArray invokes test_request_required_integer_int64_nullable_array_array operation.
+	//
+	// POST /test_request_required_integer_int64_nullable_array_array
+	TestRequestRequiredIntegerInt64NullableArrayArray(ctx context.Context, request [][]NilInt64) (*Error, error)
+	// TestRequestRequiredIntegerInt8 invokes test_request_required_integer_int8 operation.
+	//
+	// POST /test_request_required_integer_int8
+	TestRequestRequiredIntegerInt8(ctx context.Context, request int8) (*Error, error)
+	// TestRequestRequiredIntegerInt8Array invokes test_request_required_integer_int8_array operation.
+	//
+	// POST /test_request_required_integer_int8_array
+	TestRequestRequiredIntegerInt8Array(ctx context.Context, request []int8) (*Error, error)
+	// TestRequestRequiredIntegerInt8ArrayArray invokes test_request_required_integer_int8_array_array operation.
+	//
+	// POST /test_request_required_integer_int8_array_array
+	TestRequestRequiredIntegerInt8ArrayArray(ctx context.Context, request [][]int8) (*Error, error)
+	// TestRequestRequiredIntegerInt8Nullable invokes test_request_required_integer_int8_nullable operation.
+	//
+	// POST /test_request_required_integer_int8_nullable
+	TestRequestRequiredIntegerInt8Nullable(ctx context.Context, request NilInt8) (*Error, error)
+	// TestRequestRequiredIntegerInt8NullableArray invokes test_request_required_integer_int8_nullable_array operation.
+	//
+	// POST /test_request_required_integer_int8_nullable_array
+	TestRequestRequiredIntegerInt8NullableArray(ctx context.Context, request []NilInt8) (*Error, error)
+	// TestRequestRequiredIntegerInt8NullableArrayArray invokes test_request_required_integer_int8_nullable_array_array operation.
+	//
+	// POST /test_request_required_integer_int8_nullable_array_array
+	TestRequestRequiredIntegerInt8NullableArrayArray(ctx context.Context, request [][]NilInt8) (*Error, error)
+	// TestRequestRequiredIntegerNullable invokes test_request_required_integer_nullable operation.
+	//
+	// POST /test_request_required_integer_nullable
+	TestRequestRequiredIntegerNullable(ctx context.Context, request NilInt) (*Error, error)
+	// TestRequestRequiredIntegerNullableArray invokes test_request_required_integer_nullable_array operation.
+	//
+	// POST /test_request_required_integer_nullable_array
+	TestRequestRequiredIntegerNullableArray(ctx context.Context, request []NilInt) (*Error, error)
+	// TestRequestRequiredIntegerNullableArrayArray invokes test_request_required_integer_nullable_array_array operation.
+	//
+	// POST /test_request_required_integer_nullable_array_array
+	TestRequestRequiredIntegerNullableArrayArray(ctx context.Context, request [][]NilInt) (*Error, error)
+	// TestRequestRequiredIntegerUint invokes test_request_required_integer_uint operation.
+	//
+	// POST /test_request_required_integer_uint
+	TestRequestRequiredIntegerUint(ctx context.Context, request uint) (*Error, error)
+	// TestRequestRequiredIntegerUint16 invokes test_request_required_integer_uint16 operation.
+	//
+	// POST /test_request_required_integer_uint16
+	TestRequestRequiredIntegerUint16(ctx context.Context, request uint16) (*Error, error)
+	// TestRequestRequiredIntegerUint16Array invokes test_request_required_integer_uint16_array operation.
+	//
+	// POST /test_request_required_integer_uint16_array
+	TestRequestRequiredIntegerUint16Array(ctx context.Context, request []uint16) (*Error, error)
+	// TestRequestRequiredIntegerUint16ArrayArray invokes test_request_required_integer_uint16_array_array operation.
+	//
+	// POST /test_request_required_integer_uint16_array_array
+	TestRequestRequiredIntegerUint16ArrayArray(ctx context.Context, request [][]uint16) (*Error, error)
+	// TestRequestRequiredIntegerUint16Nullable invokes test_request_required_integer_uint16_nullable operation.
+	//
+	// POST /test_request_required_integer_uint16_nullable
+	TestRequestRequiredIntegerUint16Nullable(ctx context.Context, request NilUint16) (*Error, error)
+	// TestRequestRequiredIntegerUint16NullableArray invokes test_request_required_integer_uint16_nullable_array operation.
+	//
+	// POST /test_request_required_integer_uint16_nullable_array
+	TestRequestRequiredIntegerUint16NullableArray(ctx context.Context, request []NilUint16) (*Error, error)
+	// TestRequestRequiredIntegerUint16NullableArrayArray invokes test_request_required_integer_uint16_nullable_array_array operation.
+	//
+	// POST /test_request_required_integer_uint16_nullable_array_array
+	TestRequestRequiredIntegerUint16NullableArrayArray(ctx context.Context, request [][]NilUint16) (*Error, error)
+	// TestRequestRequiredIntegerUint32 invokes test_request_required_integer_uint32 operation.
+	//
+	// POST /test_request_required_integer_uint32
+	TestRequestRequiredIntegerUint32(ctx context.Context, request uint32) (*Error, error)
+	// TestRequestRequiredIntegerUint32Array invokes test_request_required_integer_uint32_array operation.
+	//
+	// POST /test_request_required_integer_uint32_array
+	TestRequestRequiredIntegerUint32Array(ctx context.Context, request []uint32) (*Error, error)
+	// TestRequestRequiredIntegerUint32ArrayArray invokes test_request_required_integer_uint32_array_array operation.
+	//
+	// POST /test_request_required_integer_uint32_array_array
+	TestRequestRequiredIntegerUint32ArrayArray(ctx context.Context, request [][]uint32) (*Error, error)
+	// TestRequestRequiredIntegerUint32Nullable invokes test_request_required_integer_uint32_nullable operation.
+	//
+	// POST /test_request_required_integer_uint32_nullable
+	TestRequestRequiredIntegerUint32Nullable(ctx context.Context, request NilUint32) (*Error, error)
+	// TestRequestRequiredIntegerUint32NullableArray invokes test_request_required_integer_uint32_nullable_array operation.
+	//
+	// POST /test_request_required_integer_uint32_nullable_array
+	TestRequestRequiredIntegerUint32NullableArray(ctx context.Context, request []NilUint32) (*Error, error)
+	// TestRequestRequiredIntegerUint32NullableArrayArray invokes test_request_required_integer_uint32_nullable_array_array operation.
+	//
+	// POST /test_request_required_integer_uint32_nullable_array_array
+	TestRequestRequiredIntegerUint32NullableArrayArray(ctx context.Context, request [][]NilUint32) (*Error, error)
+	// TestRequestRequiredIntegerUint64 invokes test_request_required_integer_uint64 operation.
+	//
+	// POST /test_request_required_integer_uint64
+	TestRequestRequiredIntegerUint64(ctx context.Context, request uint64) (*Error, error)
+	// TestRequestRequiredIntegerUint64Array invokes test_request_required_integer_uint64_array operation.
+	//
+	// POST /test_request_required_integer_uint64_array
+	TestRequestRequiredIntegerUint64Array(ctx context.Context, request []uint64) (*Error, error)
+	// TestRequestRequiredIntegerUint64ArrayArray invokes test_request_required_integer_uint64_array_array operation.
+	//
+	// POST /test_request_required_integer_uint64_array_array
+	TestRequestRequiredIntegerUint64ArrayArray(ctx context.Context, request [][]uint64) (*Error, error)
+	// TestRequestRequiredIntegerUint64Nullable invokes test_request_required_integer_uint64_nullable operation.
+	//
+	// POST /test_request_required_integer_uint64_nullable
+	TestRequestRequiredIntegerUint64Nullable(ctx context.Context, request NilUint64) (*Error, error)
+	// TestRequestRequiredIntegerUint64NullableArray invokes test_request_required_integer_uint64_nullable_array operation.
+	//
+	// POST /test_request_required_integer_uint64_nullable_array
+	TestRequestRequiredIntegerUint64NullableArray(ctx context.Context, request []NilUint64) (*Error, error)
+	// TestRequestRequiredIntegerUint64NullableArrayArray invokes test_request_required_integer_uint64_nullable_array_array operation.
+	//
+	// POST /test_request_required_integer_uint64_nullable_array_array
+	TestRequestRequiredIntegerUint64NullableArrayArray(ctx context.Context, request [][]NilUint64) (*Error, error)
+	// TestRequestRequiredIntegerUint8 invokes test_request_required_integer_uint8 operation.
+	//
+	// POST /test_request_required_integer_uint8
+	TestRequestRequiredIntegerUint8(ctx context.Context, request uint8) (*Error, error)
+	// TestRequestRequiredIntegerUint8Array invokes test_request_required_integer_uint8_array operation.
+	//
+	// POST /test_request_required_integer_uint8_array
+	TestRequestRequiredIntegerUint8Array(ctx context.Context, request []uint8) (*Error, error)
+	// TestRequestRequiredIntegerUint8ArrayArray invokes test_request_required_integer_uint8_array_array operation.
+	//
+	// POST /test_request_required_integer_uint8_array_array
+	TestRequestRequiredIntegerUint8ArrayArray(ctx context.Context, request [][]uint8) (*Error, error)
+	// TestRequestRequiredIntegerUint8Nullable invokes test_request_required_integer_uint8_nullable operation.
+	//
+	// POST /test_request_required_integer_uint8_nullable
+	TestRequestRequiredIntegerUint8Nullable(ctx context.Context, request NilUint8) (*Error, error)
+	// TestRequestRequiredIntegerUint8NullableArray invokes test_request_required_integer_uint8_nullable_array operation.
+	//
+	// POST /test_request_required_integer_uint8_nullable_array
+	TestRequestRequiredIntegerUint8NullableArray(ctx context.Context, request []NilUint8) (*Error, error)
+	// TestRequestRequiredIntegerUint8NullableArrayArray invokes test_request_required_integer_uint8_nullable_array_array operation.
+	//
+	// POST /test_request_required_integer_uint8_nullable_array_array
+	TestRequestRequiredIntegerUint8NullableArrayArray(ctx context.Context, request [][]NilUint8) (*Error, error)
+	// TestRequestRequiredIntegerUintArray invokes test_request_required_integer_uint_array operation.
+	//
+	// POST /test_request_required_integer_uint_array
+	TestRequestRequiredIntegerUintArray(ctx context.Context, request []uint) (*Error, error)
+	// TestRequestRequiredIntegerUintArrayArray invokes test_request_required_integer_uint_array_array operation.
+	//
+	// POST /test_request_required_integer_uint_array_array
+	TestRequestRequiredIntegerUintArrayArray(ctx context.Context, request [][]uint) (*Error, error)
+	// TestRequestRequiredIntegerUintNullable invokes test_request_required_integer_uint_nullable operation.
+	//
+	// POST /test_request_required_integer_uint_nullable
+	TestRequestRequiredIntegerUintNullable(ctx context.Context, request NilUint) (*Error, error)
+	// TestRequestRequiredIntegerUintNullableArray invokes test_request_required_integer_uint_nullable_array operation.
+	//
+	// POST /test_request_required_integer_uint_nullable_array
+	TestRequestRequiredIntegerUintNullableArray(ctx context.Context, request []NilUint) (*Error, error)
+	// TestRequestRequiredIntegerUintNullableArrayArray invokes test_request_required_integer_uint_nullable_array_array operation.
+	//
+	// POST /test_request_required_integer_uint_nullable_array_array
+	TestRequestRequiredIntegerUintNullableArrayArray(ctx context.Context, request [][]NilUint) (*Error, error)
+	// TestRequestRequiredIntegerUnix invokes test_request_required_integer_unix operation.
+	//
+	// POST /test_request_required_integer_unix
+	TestRequestRequiredIntegerUnix(ctx context.Context, request time.Time) (*Error, error)
+	// TestRequestRequiredIntegerUnixArray invokes test_request_required_integer_unix_array operation.
+	//
+	// POST /test_request_required_integer_unix_array
+	TestRequestRequiredIntegerUnixArray(ctx context.Context, request []time.Time) (*Error, error)
+	// TestRequestRequiredIntegerUnixArrayArray invokes test_request_required_integer_unix_array_array operation.
+	//
+	// POST /test_request_required_integer_unix_array_array
+	TestRequestRequiredIntegerUnixArrayArray(ctx context.Context, request [][]time.Time) (*Error, error)
+	// TestRequestRequiredIntegerUnixMicro invokes test_request_required_integer_unix-micro operation.
+	//
+	// POST /test_request_required_integer_unix-micro
+	TestRequestRequiredIntegerUnixMicro(ctx context.Context, request time.Time) (*Error, error)
+	// TestRequestRequiredIntegerUnixMicroArray invokes test_request_required_integer_unix-micro_array operation.
+	//
+	// POST /test_request_required_integer_unix-micro_array
+	TestRequestRequiredIntegerUnixMicroArray(ctx context.Context, request []time.Time) (*Error, error)
+	// TestRequestRequiredIntegerUnixMicroArrayArray invokes test_request_required_integer_unix-micro_array_array operation.
+	//
+	// POST /test_request_required_integer_unix-micro_array_array
+	TestRequestRequiredIntegerUnixMicroArrayArray(ctx context.Context, request [][]time.Time) (*Error, error)
+	// TestRequestRequiredIntegerUnixMicroNullable invokes test_request_required_integer_unix-micro_nullable operation.
+	//
+	// POST /test_request_required_integer_unix-micro_nullable
+	TestRequestRequiredIntegerUnixMicroNullable(ctx context.Context, request NilUnixMicro) (*Error, error)
+	// TestRequestRequiredIntegerUnixMicroNullableArray invokes test_request_required_integer_unix-micro_nullable_array operation.
+	//
+	// POST /test_request_required_integer_unix-micro_nullable_array
+	TestRequestRequiredIntegerUnixMicroNullableArray(ctx context.Context, request []NilUnixMicro) (*Error, error)
+	// TestRequestRequiredIntegerUnixMicroNullableArrayArray invokes test_request_required_integer_unix-micro_nullable_array_array operation.
+	//
+	// POST /test_request_required_integer_unix-micro_nullable_array_array
+	TestRequestRequiredIntegerUnixMicroNullableArrayArray(ctx context.Context, request [][]NilUnixMicro) (*Error, error)
+	// TestRequestRequiredIntegerUnixMilli invokes test_request_required_integer_unix-milli operation.
+	//
+	// POST /test_request_required_integer_unix-milli
+	TestRequestRequiredIntegerUnixMilli(ctx context.Context, request time.Time) (*Error, error)
+	// TestRequestRequiredIntegerUnixMilliArray invokes test_request_required_integer_unix-milli_array operation.
+	//
+	// POST /test_request_required_integer_unix-milli_array
+	TestRequestRequiredIntegerUnixMilliArray(ctx context.Context, request []time.Time) (*Error, error)
+	// TestRequestRequiredIntegerUnixMilliArrayArray invokes test_request_required_integer_unix-milli_array_array operation.
+	//
+	// POST /test_request_required_integer_unix-milli_array_array
+	TestRequestRequiredIntegerUnixMilliArrayArray(ctx context.Context, request [][]time.Time) (*Error, error)
+	// TestRequestRequiredIntegerUnixMilliNullable invokes test_request_required_integer_unix-milli_nullable operation.
+	//
+	// POST /test_request_required_integer_unix-milli_nullable
+	TestRequestRequiredIntegerUnixMilliNullable(ctx context.Context, request NilUnixMilli) (*Error, error)
+	// TestRequestRequiredIntegerUnixMilliNullableArray invokes test_request_required_integer_unix-milli_nullable_array operation.
+	//
+	// POST /test_request_required_integer_unix-milli_nullable_array
+	TestRequestRequiredIntegerUnixMilliNullableArray(ctx context.Context, request []NilUnixMilli) (*Error, error)
+	// TestRequestRequiredIntegerUnixMilliNullableArrayArray invokes test_request_required_integer_unix-milli_nullable_array_array operation.
+	//
+	// POST /test_request_required_integer_unix-milli_nullable_array_array
+	TestRequestRequiredIntegerUnixMilliNullableArrayArray(ctx context.Context, request [][]NilUnixMilli) (*Error, error)
+	// TestRequestRequiredIntegerUnixNano invokes test_request_required_integer_unix-nano operation.
+	//
+	// POST /test_request_required_integer_unix-nano
+	TestRequestRequiredIntegerUnixNano(ctx context.Context, request time.Time) (*Error, error)
+	// TestRequestRequiredIntegerUnixNanoArray invokes test_request_required_integer_unix-nano_array operation.
+	//
+	// POST /test_request_required_integer_unix-nano_array
+	TestRequestRequiredIntegerUnixNanoArray(ctx context.Context, request []time.Time) (*Error, error)
+	// TestRequestRequiredIntegerUnixNanoArrayArray invokes test_request_required_integer_unix-nano_array_array operation.
+	//
+	// POST /test_request_required_integer_unix-nano_array_array
+	TestRequestRequiredIntegerUnixNanoArrayArray(ctx context.Context, request [][]time.Time) (*Error, error)
+	// TestRequestRequiredIntegerUnixNanoNullable invokes test_request_required_integer_unix-nano_nullable operation.
+	//
+	// POST /test_request_required_integer_unix-nano_nullable
+	TestRequestRequiredIntegerUnixNanoNullable(ctx context.Context, request NilUnixNano) (*Error, error)
+	// TestRequestRequiredIntegerUnixNanoNullableArray invokes test_request_required_integer_unix-nano_nullable_array operation.
+	//
+	// POST /test_request_required_integer_unix-nano_nullable_array
+	TestRequestRequiredIntegerUnixNanoNullableArray(ctx context.Context, request []NilUnixNano) (*Error, error)
+	// TestRequestRequiredIntegerUnixNanoNullableArrayArray invokes test_request_required_integer_unix-nano_nullable_array_array operation.
+	//
+	// POST /test_request_required_integer_unix-nano_nullable_array_array
+	TestRequestRequiredIntegerUnixNanoNullableArrayArray(ctx context.Context, request [][]NilUnixNano) (*Error, error)
+	// TestRequestRequiredIntegerUnixNullable invokes test_request_required_integer_unix_nullable operation.
+	//
+	// POST /test_request_required_integer_unix_nullable
+	TestRequestRequiredIntegerUnixNullable(ctx context.Context, request NilUnixSeconds) (*Error, error)
+	// TestRequestRequiredIntegerUnixNullableArray invokes test_request_required_integer_unix_nullable_array operation.
+	//
+	// POST /test_request_required_integer_unix_nullable_array
+	TestRequestRequiredIntegerUnixNullableArray(ctx context.Context, request []NilUnixSeconds) (*Error, error)
+	// TestRequestRequiredIntegerUnixNullableArrayArray invokes test_request_required_integer_unix_nullable_array_array operation.
+	//
+	// POST /test_request_required_integer_unix_nullable_array_array
+	TestRequestRequiredIntegerUnixNullableArrayArray(ctx context.Context, request [][]NilUnixSeconds) (*Error, error)
+	// TestRequestRequiredIntegerUnixSeconds invokes test_request_required_integer_unix-seconds operation.
+	//
+	// POST /test_request_required_integer_unix-seconds
+	TestRequestRequiredIntegerUnixSeconds(ctx context.Context, request time.Time) (*Error, error)
+	// TestRequestRequiredIntegerUnixSecondsArray invokes test_request_required_integer_unix-seconds_array operation.
+	//
+	// POST /test_request_required_integer_unix-seconds_array
+	TestRequestRequiredIntegerUnixSecondsArray(ctx context.Context, request []time.Time) (*Error, error)
+	// TestRequestRequiredIntegerUnixSecondsArrayArray invokes test_request_required_integer_unix-seconds_array_array operation.
+	//
+	// POST /test_request_required_integer_unix-seconds_array_array
+	TestRequestRequiredIntegerUnixSecondsArrayArray(ctx context.Context, request [][]time.Time) (*Error, error)
+	// TestRequestRequiredIntegerUnixSecondsNullable invokes test_request_required_integer_unix-seconds_nullable operation.
+	//
+	// POST /test_request_required_integer_unix-seconds_nullable
+	TestRequestRequiredIntegerUnixSecondsNullable(ctx context.Context, request NilUnixSeconds) (*Error, error)
+	// TestRequestRequiredIntegerUnixSecondsNullableArray invokes test_request_required_integer_unix-seconds_nullable_array operation.
+	//
+	// POST /test_request_required_integer_unix-seconds_nullable_array
+	TestRequestRequiredIntegerUnixSecondsNullableArray(ctx context.Context, request []NilUnixSeconds) (*Error, error)
+	// TestRequestRequiredIntegerUnixSecondsNullableArrayArray invokes test_request_required_integer_unix-seconds_nullable_array_array operation.
+	//
+	// POST /test_request_required_integer_unix-seconds_nullable_array_array
+	TestRequestRequiredIntegerUnixSecondsNullableArrayArray(ctx context.Context, request [][]NilUnixSeconds) (*Error, error)
+	// TestRequestRequiredNull invokes test_request_required_null operation.
+	//
+	// POST /test_request_required_null
+	TestRequestRequiredNull(ctx context.Context, request struct{}) (*Error, error)
+	// TestRequestRequiredNullArray invokes test_request_required_null_array operation.
+	//
+	// POST /test_request_required_null_array
+	TestRequestRequiredNullArray(ctx context.Context, request []struct{}) (*Error, error)
+	// TestRequestRequiredNullArrayArray invokes test_request_required_null_array_array operation.
+	//
+	// POST /test_request_required_null_array_array
+	TestRequestRequiredNullArrayArray(ctx context.Context, request [][]struct{}) (*Error, error)
+	// TestRequestRequiredNullNullable invokes test_request_required_null_nullable operation.
+	//
+	// POST /test_request_required_null_nullable
+	TestRequestRequiredNullNullable(ctx context.Context, request struct{}) (*Error, error)
+	// TestRequestRequiredNullNullableArray invokes test_request_required_null_nullable_array operation.
+	//
+	// POST /test_request_required_null_nullable_array
+	TestRequestRequiredNullNullableArray(ctx context.Context, request []struct{}) (*Error, error)
+	// TestRequestRequiredNullNullableArrayArray invokes test_request_required_null_nullable_array_array operation.
+	//
+	// POST /test_request_required_null_nullable_array_array
+	TestRequestRequiredNullNullableArrayArray(ctx context.Context, request [][]struct{}) (*Error, error)
+	// TestRequestRequiredNumber invokes test_request_required_number operation.
+	//
+	// POST /test_request_required_number
+	TestRequestRequiredNumber(ctx context.Context, request float64) (*Error, error)
+	// TestRequestRequiredNumberArray invokes test_request_required_number_array operation.
+	//
+	// POST /test_request_required_number_array
+	TestRequestRequiredNumberArray(ctx context.Context, request []float64) (*Error, error)
+	// TestRequestRequiredNumberArrayArray invokes test_request_required_number_array_array operation.
+	//
+	// POST /test_request_required_number_array_array
+	TestRequestRequiredNumberArrayArray(ctx context.Context, request [][]float64) (*Error, error)
+	// TestRequestRequiredNumberDouble invokes test_request_required_number_double operation.
+	//
+	// POST /test_request_required_number_double
+	TestRequestRequiredNumberDouble(ctx context.Context, request float64) (*Error, error)
+	// TestRequestRequiredNumberDoubleArray invokes test_request_required_number_double_array operation.
+	//
+	// POST /test_request_required_number_double_array
+	TestRequestRequiredNumberDoubleArray(ctx context.Context, request []float64) (*Error, error)
+	// TestRequestRequiredNumberDoubleArrayArray invokes test_request_required_number_double_array_array operation.
+	//
+	// POST /test_request_required_number_double_array_array
+	TestRequestRequiredNumberDoubleArrayArray(ctx context.Context, request [][]float64) (*Error, error)
+	// TestRequestRequiredNumberDoubleNullable invokes test_request_required_number_double_nullable operation.
+	//
+	// POST /test_request_required_number_double_nullable
+	TestRequestRequiredNumberDoubleNullable(ctx context.Context, request NilFloat64) (*Error, error)
+	// TestRequestRequiredNumberDoubleNullableArray invokes test_request_required_number_double_nullable_array operation.
+	//
+	// POST /test_request_required_number_double_nullable_array
+	TestRequestRequiredNumberDoubleNullableArray(ctx context.Context, request []NilFloat64) (*Error, error)
+	// TestRequestRequiredNumberDoubleNullableArrayArray invokes test_request_required_number_double_nullable_array_array operation.
+	//
+	// POST /test_request_required_number_double_nullable_array_array
+	TestRequestRequiredNumberDoubleNullableArrayArray(ctx context.Context, request [][]NilFloat64) (*Error, error)
+	// TestRequestRequiredNumberFloat invokes test_request_required_number_float operation.
+	//
+	// POST /test_request_required_number_float
+	TestRequestRequiredNumberFloat(ctx context.Context, request float32) (*Error, error)
+	// TestRequestRequiredNumberFloatArray invokes test_request_required_number_float_array operation.
+	//
+	// POST /test_request_required_number_float_array
+	TestRequestRequiredNumberFloatArray(ctx context.Context, request []float32) (*Error, error)
+	// TestRequestRequiredNumberFloatArrayArray invokes test_request_required_number_float_array_array operation.
+	//
+	// POST /test_request_required_number_float_array_array
+	TestRequestRequiredNumberFloatArrayArray(ctx context.Context, request [][]float32) (*Error, error)
+	// TestRequestRequiredNumberFloatNullable invokes test_request_required_number_float_nullable operation.
+	//
+	// POST /test_request_required_number_float_nullable
+	TestRequestRequiredNumberFloatNullable(ctx context.Context, request NilFloat32) (*Error, error)
+	// TestRequestRequiredNumberFloatNullableArray invokes test_request_required_number_float_nullable_array operation.
+	//
+	// POST /test_request_required_number_float_nullable_array
+	TestRequestRequiredNumberFloatNullableArray(ctx context.Context, request []NilFloat32) (*Error, error)
+	// TestRequestRequiredNumberFloatNullableArrayArray invokes test_request_required_number_float_nullable_array_array operation.
+	//
+	// POST /test_request_required_number_float_nullable_array_array
+	TestRequestRequiredNumberFloatNullableArrayArray(ctx context.Context, request [][]NilFloat32) (*Error, error)
+	// TestRequestRequiredNumberInt32 invokes test_request_required_number_int32 operation.
+	//
+	// POST /test_request_required_number_int32
+	TestRequestRequiredNumberInt32(ctx context.Context, request int32) (*Error, error)
+	// TestRequestRequiredNumberInt32Array invokes test_request_required_number_int32_array operation.
+	//
+	// POST /test_request_required_number_int32_array
+	TestRequestRequiredNumberInt32Array(ctx context.Context, request []int32) (*Error, error)
+	// TestRequestRequiredNumberInt32ArrayArray invokes test_request_required_number_int32_array_array operation.
+	//
+	// POST /test_request_required_number_int32_array_array
+	TestRequestRequiredNumberInt32ArrayArray(ctx context.Context, request [][]int32) (*Error, error)
+	// TestRequestRequiredNumberInt32Nullable invokes test_request_required_number_int32_nullable operation.
+	//
+	// POST /test_request_required_number_int32_nullable
+	TestRequestRequiredNumberInt32Nullable(ctx context.Context, request NilInt32) (*Error, error)
+	// TestRequestRequiredNumberInt32NullableArray invokes test_request_required_number_int32_nullable_array operation.
+	//
+	// POST /test_request_required_number_int32_nullable_array
+	TestRequestRequiredNumberInt32NullableArray(ctx context.Context, request []NilInt32) (*Error, error)
+	// TestRequestRequiredNumberInt32NullableArrayArray invokes test_request_required_number_int32_nullable_array_array operation.
+	//
+	// POST /test_request_required_number_int32_nullable_array_array
+	TestRequestRequiredNumberInt32NullableArrayArray(ctx context.Context, request [][]NilInt32) (*Error, error)
+	// TestRequestRequiredNumberInt64 invokes test_request_required_number_int64 operation.
+	//
+	// POST /test_request_required_number_int64
+	TestRequestRequiredNumberInt64(ctx context.Context, request int64) (*Error, error)
+	// TestRequestRequiredNumberInt64Array invokes test_request_required_number_int64_array operation.
+	//
+	// POST /test_request_required_number_int64_array
+	TestRequestRequiredNumberInt64Array(ctx context.Context, request []int64) (*Error, error)
+	// TestRequestRequiredNumberInt64ArrayArray invokes test_request_required_number_int64_array_array operation.
+	//
+	// POST /test_request_required_number_int64_array_array
+	TestRequestRequiredNumberInt64ArrayArray(ctx context.Context, request [][]int64) (*Error, error)
+	// TestRequestRequiredNumberInt64Nullable invokes test_request_required_number_int64_nullable operation.
+	//
+	// POST /test_request_required_number_int64_nullable
+	TestRequestRequiredNumberInt64Nullable(ctx context.Context, request NilInt64) (*Error, error)
+	// TestRequestRequiredNumberInt64NullableArray invokes test_request_required_number_int64_nullable_array operation.
+	//
+	// POST /test_request_required_number_int64_nullable_array
+	TestRequestRequiredNumberInt64NullableArray(ctx context.Context, request []NilInt64) (*Error, error)
+	// TestRequestRequiredNumberInt64NullableArrayArray invokes test_request_required_number_int64_nullable_array_array operation.
+	//
+	// POST /test_request_required_number_int64_nullable_array_array
+	TestRequestRequiredNumberInt64NullableArrayArray(ctx context.Context, request [][]NilInt64) (*Error, error)
+	// TestRequestRequiredNumberNullable invokes test_request_required_number_nullable operation.
+	//
+	// POST /test_request_required_number_nullable
+	TestRequestRequiredNumberNullable(ctx context.Context, request NilFloat64) (*Error, error)
+	// TestRequestRequiredNumberNullableArray invokes test_request_required_number_nullable_array operation.
+	//
+	// POST /test_request_required_number_nullable_array
+	TestRequestRequiredNumberNullableArray(ctx context.Context, request []NilFloat64) (*Error, error)
+	// TestRequestRequiredNumberNullableArrayArray invokes test_request_required_number_nullable_array_array operation.
+	//
+	// POST /test_request_required_number_nullable_array_array
+	TestRequestRequiredNumberNullableArrayArray(ctx context.Context, request [][]NilFloat64) (*Error, error)
+	// TestRequestRequiredString invokes test_request_required_string operation.
+	//
+	// POST /test_request_required_string
+	TestRequestRequiredString(ctx context.Context, request string) (*Error, error)
+	// TestRequestRequiredStringArray invokes test_request_required_string_array operation.
+	//
+	// POST /test_request_required_string_array
+	TestRequestRequiredStringArray(ctx context.Context, request []string) (*Error, error)
+	// TestRequestRequiredStringArrayArray invokes test_request_required_string_array_array operation.
+	//
+	// POST /test_request_required_string_array_array
+	TestRequestRequiredStringArrayArray(ctx context.Context, request [][]string) (*Error, error)
+	// TestRequestRequiredStringBase64 invokes test_request_required_string_base64 operation.
+	//
+	// POST /test_request_required_string_base64
+	TestRequestRequiredStringBase64(ctx context.Context, request []byte) (*Error, error)
+	// TestRequestRequiredStringBase64Array invokes test_request_required_string_base64_array operation.
+	//
+	// POST /test_request_required_string_base64_array
+	TestRequestRequiredStringBase64Array(ctx context.Context, request [][]byte) (*Error, error)
+	// TestRequestRequiredStringBase64ArrayArray invokes test_request_required_string_base64_array_array operation.
+	//
+	// POST /test_request_required_string_base64_array_array
+	TestRequestRequiredStringBase64ArrayArray(ctx context.Context, request [][][]byte) (*Error, error)
+	// TestRequestRequiredStringBase64Nullable invokes test_request_required_string_base64_nullable operation.
+	//
+	// POST /test_request_required_string_base64_nullable
+	TestRequestRequiredStringBase64Nullable(ctx context.Context, request []byte) (*Error, error)
+	// TestRequestRequiredStringBase64NullableArray invokes test_request_required_string_base64_nullable_array operation.
+	//
+	// POST /test_request_required_string_base64_nullable_array
+	TestRequestRequiredStringBase64NullableArray(ctx context.Context, request [][]byte) (*Error, error)
+	// TestRequestRequiredStringBase64NullableArrayArray invokes test_request_required_string_base64_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_base64_nullable_array_array
+	TestRequestRequiredStringBase64NullableArrayArray(ctx context.Context, request [][][]byte) (*Error, error)
+	// TestRequestRequiredStringBinary invokes test_request_required_string_binary operation.
+	//
+	// POST /test_request_required_string_binary
+	TestRequestRequiredStringBinary(ctx context.Context, request string) (*Error, error)
+	// TestRequestRequiredStringBinaryArray invokes test_request_required_string_binary_array operation.
+	//
+	// POST /test_request_required_string_binary_array
+	TestRequestRequiredStringBinaryArray(ctx context.Context, request []string) (*Error, error)
+	// TestRequestRequiredStringBinaryArrayArray invokes test_request_required_string_binary_array_array operation.
+	//
+	// POST /test_request_required_string_binary_array_array
+	TestRequestRequiredStringBinaryArrayArray(ctx context.Context, request [][]string) (*Error, error)
+	// TestRequestRequiredStringBinaryNullable invokes test_request_required_string_binary_nullable operation.
+	//
+	// POST /test_request_required_string_binary_nullable
+	TestRequestRequiredStringBinaryNullable(ctx context.Context, request NilString) (*Error, error)
+	// TestRequestRequiredStringBinaryNullableArray invokes test_request_required_string_binary_nullable_array operation.
+	//
+	// POST /test_request_required_string_binary_nullable_array
+	TestRequestRequiredStringBinaryNullableArray(ctx context.Context, request []NilString) (*Error, error)
+	// TestRequestRequiredStringBinaryNullableArrayArray invokes test_request_required_string_binary_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_binary_nullable_array_array
+	TestRequestRequiredStringBinaryNullableArrayArray(ctx context.Context, request [][]NilString) (*Error, error)
+	// TestRequestRequiredStringByte invokes test_request_required_string_byte operation.
+	//
+	// POST /test_request_required_string_byte
+	TestRequestRequiredStringByte(ctx context.Context, request []byte) (*Error, error)
+	// TestRequestRequiredStringByteArray invokes test_request_required_string_byte_array operation.
+	//
+	// POST /test_request_required_string_byte_array
+	TestRequestRequiredStringByteArray(ctx context.Context, request [][]byte) (*Error, error)
+	// TestRequestRequiredStringByteArrayArray invokes test_request_required_string_byte_array_array operation.
+	//
+	// POST /test_request_required_string_byte_array_array
+	TestRequestRequiredStringByteArrayArray(ctx context.Context, request [][][]byte) (*Error, error)
+	// TestRequestRequiredStringByteNullable invokes test_request_required_string_byte_nullable operation.
+	//
+	// POST /test_request_required_string_byte_nullable
+	TestRequestRequiredStringByteNullable(ctx context.Context, request []byte) (*Error, error)
+	// TestRequestRequiredStringByteNullableArray invokes test_request_required_string_byte_nullable_array operation.
+	//
+	// POST /test_request_required_string_byte_nullable_array
+	TestRequestRequiredStringByteNullableArray(ctx context.Context, request [][]byte) (*Error, error)
+	// TestRequestRequiredStringByteNullableArrayArray invokes test_request_required_string_byte_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_byte_nullable_array_array
+	TestRequestRequiredStringByteNullableArrayArray(ctx context.Context, request [][][]byte) (*Error, error)
+	// TestRequestRequiredStringDate invokes test_request_required_string_date operation.
+	//
+	// POST /test_request_required_string_date
+	TestRequestRequiredStringDate(ctx context.Context, request time.Time) (*Error, error)
+	// TestRequestRequiredStringDateArray invokes test_request_required_string_date_array operation.
+	//
+	// POST /test_request_required_string_date_array
+	TestRequestRequiredStringDateArray(ctx context.Context, request []time.Time) (*Error, error)
+	// TestRequestRequiredStringDateArrayArray invokes test_request_required_string_date_array_array operation.
+	//
+	// POST /test_request_required_string_date_array_array
+	TestRequestRequiredStringDateArrayArray(ctx context.Context, request [][]time.Time) (*Error, error)
+	// TestRequestRequiredStringDateNullable invokes test_request_required_string_date_nullable operation.
+	//
+	// POST /test_request_required_string_date_nullable
+	TestRequestRequiredStringDateNullable(ctx context.Context, request NilDate) (*Error, error)
+	// TestRequestRequiredStringDateNullableArray invokes test_request_required_string_date_nullable_array operation.
+	//
+	// POST /test_request_required_string_date_nullable_array
+	TestRequestRequiredStringDateNullableArray(ctx context.Context, request []NilDate) (*Error, error)
+	// TestRequestRequiredStringDateNullableArrayArray invokes test_request_required_string_date_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_date_nullable_array_array
+	TestRequestRequiredStringDateNullableArrayArray(ctx context.Context, request [][]NilDate) (*Error, error)
+	// TestRequestRequiredStringDateTime invokes test_request_required_string_date-time operation.
+	//
+	// POST /test_request_required_string_date-time
+	TestRequestRequiredStringDateTime(ctx context.Context, request time.Time) (*Error, error)
+	// TestRequestRequiredStringDateTimeArray invokes test_request_required_string_date-time_array operation.
+	//
+	// POST /test_request_required_string_date-time_array
+	TestRequestRequiredStringDateTimeArray(ctx context.Context, request []time.Time) (*Error, error)
+	// TestRequestRequiredStringDateTimeArrayArray invokes test_request_required_string_date-time_array_array operation.
+	//
+	// POST /test_request_required_string_date-time_array_array
+	TestRequestRequiredStringDateTimeArrayArray(ctx context.Context, request [][]time.Time) (*Error, error)
+	// TestRequestRequiredStringDateTimeNullable invokes test_request_required_string_date-time_nullable operation.
+	//
+	// POST /test_request_required_string_date-time_nullable
+	TestRequestRequiredStringDateTimeNullable(ctx context.Context, request NilDateTime) (*Error, error)
+	// TestRequestRequiredStringDateTimeNullableArray invokes test_request_required_string_date-time_nullable_array operation.
+	//
+	// POST /test_request_required_string_date-time_nullable_array
+	TestRequestRequiredStringDateTimeNullableArray(ctx context.Context, request []NilDateTime) (*Error, error)
+	// TestRequestRequiredStringDateTimeNullableArrayArray invokes test_request_required_string_date-time_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_date-time_nullable_array_array
+	TestRequestRequiredStringDateTimeNullableArrayArray(ctx context.Context, request [][]NilDateTime) (*Error, error)
+	// TestRequestRequiredStringDuration invokes test_request_required_string_duration operation.
+	//
+	// POST /test_request_required_string_duration
+	TestRequestRequiredStringDuration(ctx context.Context, request time.Duration) (*Error, error)
+	// TestRequestRequiredStringDurationArray invokes test_request_required_string_duration_array operation.
+	//
+	// POST /test_request_required_string_duration_array
+	TestRequestRequiredStringDurationArray(ctx context.Context, request []time.Duration) (*Error, error)
+	// TestRequestRequiredStringDurationArrayArray invokes test_request_required_string_duration_array_array operation.
+	//
+	// POST /test_request_required_string_duration_array_array
+	TestRequestRequiredStringDurationArrayArray(ctx context.Context, request [][]time.Duration) (*Error, error)
+	// TestRequestRequiredStringDurationNullable invokes test_request_required_string_duration_nullable operation.
+	//
+	// POST /test_request_required_string_duration_nullable
+	TestRequestRequiredStringDurationNullable(ctx context.Context, request NilDuration) (*Error, error)
+	// TestRequestRequiredStringDurationNullableArray invokes test_request_required_string_duration_nullable_array operation.
+	//
+	// POST /test_request_required_string_duration_nullable_array
+	TestRequestRequiredStringDurationNullableArray(ctx context.Context, request []NilDuration) (*Error, error)
+	// TestRequestRequiredStringDurationNullableArrayArray invokes test_request_required_string_duration_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_duration_nullable_array_array
+	TestRequestRequiredStringDurationNullableArrayArray(ctx context.Context, request [][]NilDuration) (*Error, error)
+	// TestRequestRequiredStringEmail invokes test_request_required_string_email operation.
+	//
+	// POST /test_request_required_string_email
+	TestRequestRequiredStringEmail(ctx context.Context, request string) (*Error, error)
+	// TestRequestRequiredStringEmailArray invokes test_request_required_string_email_array operation.
+	//
+	// POST /test_request_required_string_email_array
+	TestRequestRequiredStringEmailArray(ctx context.Context, request []string) (*Error, error)
+	// TestRequestRequiredStringEmailArrayArray invokes test_request_required_string_email_array_array operation.
+	//
+	// POST /test_request_required_string_email_array_array
+	TestRequestRequiredStringEmailArrayArray(ctx context.Context, request [][]string) (*Error, error)
+	// TestRequestRequiredStringEmailNullable invokes test_request_required_string_email_nullable operation.
+	//
+	// POST /test_request_required_string_email_nullable
+	TestRequestRequiredStringEmailNullable(ctx context.Context, request NilString) (*Error, error)
+	// TestRequestRequiredStringEmailNullableArray invokes test_request_required_string_email_nullable_array operation.
+	//
+	// POST /test_request_required_string_email_nullable_array
+	TestRequestRequiredStringEmailNullableArray(ctx context.Context, request []NilString) (*Error, error)
+	// TestRequestRequiredStringEmailNullableArrayArray invokes test_request_required_string_email_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_email_nullable_array_array
+	TestRequestRequiredStringEmailNullableArrayArray(ctx context.Context, request [][]NilString) (*Error, error)
+	// TestRequestRequiredStringFloat32 invokes test_request_required_string_float32 operation.
+	//
+	// POST /test_request_required_string_float32
+	TestRequestRequiredStringFloat32(ctx context.Context, request float32) (*Error, error)
+	// TestRequestRequiredStringFloat32Array invokes test_request_required_string_float32_array operation.
+	//
+	// POST /test_request_required_string_float32_array
+	TestRequestRequiredStringFloat32Array(ctx context.Context, request []float32) (*Error, error)
+	// TestRequestRequiredStringFloat32ArrayArray invokes test_request_required_string_float32_array_array operation.
+	//
+	// POST /test_request_required_string_float32_array_array
+	TestRequestRequiredStringFloat32ArrayArray(ctx context.Context, request [][]float32) (*Error, error)
+	// TestRequestRequiredStringFloat32Nullable invokes test_request_required_string_float32_nullable operation.
+	//
+	// POST /test_request_required_string_float32_nullable
+	TestRequestRequiredStringFloat32Nullable(ctx context.Context, request NilFloat32) (*Error, error)
+	// TestRequestRequiredStringFloat32NullableArray invokes test_request_required_string_float32_nullable_array operation.
+	//
+	// POST /test_request_required_string_float32_nullable_array
+	TestRequestRequiredStringFloat32NullableArray(ctx context.Context, request []NilFloat32) (*Error, error)
+	// TestRequestRequiredStringFloat32NullableArrayArray invokes test_request_required_string_float32_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_float32_nullable_array_array
+	TestRequestRequiredStringFloat32NullableArrayArray(ctx context.Context, request [][]NilFloat32) (*Error, error)
+	// TestRequestRequiredStringFloat64 invokes test_request_required_string_float64 operation.
+	//
+	// POST /test_request_required_string_float64
+	TestRequestRequiredStringFloat64(ctx context.Context, request float64) (*Error, error)
+	// TestRequestRequiredStringFloat64Array invokes test_request_required_string_float64_array operation.
+	//
+	// POST /test_request_required_string_float64_array
+	TestRequestRequiredStringFloat64Array(ctx context.Context, request []float64) (*Error, error)
+	// TestRequestRequiredStringFloat64ArrayArray invokes test_request_required_string_float64_array_array operation.
+	//
+	// POST /test_request_required_string_float64_array_array
+	TestRequestRequiredStringFloat64ArrayArray(ctx context.Context, request [][]float64) (*Error, error)
+	// TestRequestRequiredStringFloat64Nullable invokes test_request_required_string_float64_nullable operation.
+	//
+	// POST /test_request_required_string_float64_nullable
+	TestRequestRequiredStringFloat64Nullable(ctx context.Context, request NilFloat64) (*Error, error)
+	// TestRequestRequiredStringFloat64NullableArray invokes test_request_required_string_float64_nullable_array operation.
+	//
+	// POST /test_request_required_string_float64_nullable_array
+	TestRequestRequiredStringFloat64NullableArray(ctx context.Context, request []NilFloat64) (*Error, error)
+	// TestRequestRequiredStringFloat64NullableArrayArray invokes test_request_required_string_float64_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_float64_nullable_array_array
+	TestRequestRequiredStringFloat64NullableArrayArray(ctx context.Context, request [][]NilFloat64) (*Error, error)
+	// TestRequestRequiredStringHostname invokes test_request_required_string_hostname operation.
+	//
+	// POST /test_request_required_string_hostname
+	TestRequestRequiredStringHostname(ctx context.Context, request string) (*Error, error)
+	// TestRequestRequiredStringHostnameArray invokes test_request_required_string_hostname_array operation.
+	//
+	// POST /test_request_required_string_hostname_array
+	TestRequestRequiredStringHostnameArray(ctx context.Context, request []string) (*Error, error)
+	// TestRequestRequiredStringHostnameArrayArray invokes test_request_required_string_hostname_array_array operation.
+	//
+	// POST /test_request_required_string_hostname_array_array
+	TestRequestRequiredStringHostnameArrayArray(ctx context.Context, request [][]string) (*Error, error)
+	// TestRequestRequiredStringHostnameNullable invokes test_request_required_string_hostname_nullable operation.
+	//
+	// POST /test_request_required_string_hostname_nullable
+	TestRequestRequiredStringHostnameNullable(ctx context.Context, request NilString) (*Error, error)
+	// TestRequestRequiredStringHostnameNullableArray invokes test_request_required_string_hostname_nullable_array operation.
+	//
+	// POST /test_request_required_string_hostname_nullable_array
+	TestRequestRequiredStringHostnameNullableArray(ctx context.Context, request []NilString) (*Error, error)
+	// TestRequestRequiredStringHostnameNullableArrayArray invokes test_request_required_string_hostname_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_hostname_nullable_array_array
+	TestRequestRequiredStringHostnameNullableArrayArray(ctx context.Context, request [][]NilString) (*Error, error)
+	// TestRequestRequiredStringIP invokes test_request_required_string_ip operation.
+	//
+	// POST /test_request_required_string_ip
+	TestRequestRequiredStringIP(ctx context.Context, request netip.Addr) (*Error, error)
+	// TestRequestRequiredStringIPArray invokes test_request_required_string_ip_array operation.
+	//
+	// POST /test_request_required_string_ip_array
+	TestRequestRequiredStringIPArray(ctx context.Context, request []netip.Addr) (*Error, error)
+	// TestRequestRequiredStringIPArrayArray invokes test_request_required_string_ip_array_array operation.
+	//
+	// POST /test_request_required_string_ip_array_array
+	TestRequestRequiredStringIPArrayArray(ctx context.Context, request [][]netip.Addr) (*Error, error)
+	// TestRequestRequiredStringIPNullable invokes test_request_required_string_ip_nullable operation.
+	//
+	// POST /test_request_required_string_ip_nullable
+	TestRequestRequiredStringIPNullable(ctx context.Context, request NilIP) (*Error, error)
+	// TestRequestRequiredStringIPNullableArray invokes test_request_required_string_ip_nullable_array operation.
+	//
+	// POST /test_request_required_string_ip_nullable_array
+	TestRequestRequiredStringIPNullableArray(ctx context.Context, request []NilIP) (*Error, error)
+	// TestRequestRequiredStringIPNullableArrayArray invokes test_request_required_string_ip_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_ip_nullable_array_array
+	TestRequestRequiredStringIPNullableArrayArray(ctx context.Context, request [][]NilIP) (*Error, error)
+	// TestRequestRequiredStringInt invokes test_request_required_string_int operation.
+	//
+	// POST /test_request_required_string_int
+	TestRequestRequiredStringInt(ctx context.Context, request int) (*Error, error)
+	// TestRequestRequiredStringInt16 invokes test_request_required_string_int16 operation.
+	//
+	// POST /test_request_required_string_int16
+	TestRequestRequiredStringInt16(ctx context.Context, request int16) (*Error, error)
+	// TestRequestRequiredStringInt16Array invokes test_request_required_string_int16_array operation.
+	//
+	// POST /test_request_required_string_int16_array
+	TestRequestRequiredStringInt16Array(ctx context.Context, request []int16) (*Error, error)
+	// TestRequestRequiredStringInt16ArrayArray invokes test_request_required_string_int16_array_array operation.
+	//
+	// POST /test_request_required_string_int16_array_array
+	TestRequestRequiredStringInt16ArrayArray(ctx context.Context, request [][]int16) (*Error, error)
+	// TestRequestRequiredStringInt16Nullable invokes test_request_required_string_int16_nullable operation.
+	//
+	// POST /test_request_required_string_int16_nullable
+	TestRequestRequiredStringInt16Nullable(ctx context.Context, request NilInt16) (*Error, error)
+	// TestRequestRequiredStringInt16NullableArray invokes test_request_required_string_int16_nullable_array operation.
+	//
+	// POST /test_request_required_string_int16_nullable_array
+	TestRequestRequiredStringInt16NullableArray(ctx context.Context, request []NilInt16) (*Error, error)
+	// TestRequestRequiredStringInt16NullableArrayArray invokes test_request_required_string_int16_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_int16_nullable_array_array
+	TestRequestRequiredStringInt16NullableArrayArray(ctx context.Context, request [][]NilInt16) (*Error, error)
+	// TestRequestRequiredStringInt32 invokes test_request_required_string_int32 operation.
+	//
+	// POST /test_request_required_string_int32
+	TestRequestRequiredStringInt32(ctx context.Context, request int32) (*Error, error)
+	// TestRequestRequiredStringInt32Array invokes test_request_required_string_int32_array operation.
+	//
+	// POST /test_request_required_string_int32_array
+	TestRequestRequiredStringInt32Array(ctx context.Context, request []int32) (*Error, error)
+	// TestRequestRequiredStringInt32ArrayArray invokes test_request_required_string_int32_array_array operation.
+	//
+	// POST /test_request_required_string_int32_array_array
+	TestRequestRequiredStringInt32ArrayArray(ctx context.Context, request [][]int32) (*Error, error)
+	// TestRequestRequiredStringInt32Nullable invokes test_request_required_string_int32_nullable operation.
+	//
+	// POST /test_request_required_string_int32_nullable
+	TestRequestRequiredStringInt32Nullable(ctx context.Context, request NilStringInt32) (*Error, error)
+	// TestRequestRequiredStringInt32NullableArray invokes test_request_required_string_int32_nullable_array operation.
+	//
+	// POST /test_request_required_string_int32_nullable_array
+	TestRequestRequiredStringInt32NullableArray(ctx context.Context, request []NilStringInt32) (*Error, error)
+	// TestRequestRequiredStringInt32NullableArrayArray invokes test_request_required_string_int32_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_int32_nullable_array_array
+	TestRequestRequiredStringInt32NullableArrayArray(ctx context.Context, request [][]NilStringInt32) (*Error, error)
+	// TestRequestRequiredStringInt64 invokes test_request_required_string_int64 operation.
+	//
+	// POST /test_request_required_string_int64
+	TestRequestRequiredStringInt64(ctx context.Context, request int64) (*Error, error)
+	// TestRequestRequiredStringInt64Array invokes test_request_required_string_int64_array operation.
+	//
+	// POST /test_request_required_string_int64_array
+	TestRequestRequiredStringInt64Array(ctx context.Context, request []int64) (*Error, error)
+	// TestRequestRequiredStringInt64ArrayArray invokes test_request_required_string_int64_array_array operation.
+	//
+	// POST /test_request_required_string_int64_array_array
+	TestRequestRequiredStringInt64ArrayArray(ctx context.Context, request [][]int64) (*Error, error)
+	// TestRequestRequiredStringInt64Nullable invokes test_request_required_string_int64_nullable operation.
+	//
+	// POST /test_request_required_string_int64_nullable
+	TestRequestRequiredStringInt64Nullable(ctx context.Context, request NilStringInt64) (*Error, error)
+	// TestRequestRequiredStringInt64NullableArray invokes test_request_required_string_int64_nullable_array operation.
+	//
+	// POST /test_request_required_string_int64_nullable_array
+	TestRequestRequiredStringInt64NullableArray(ctx context.Context, request []NilStringInt64) (*Error, error)
+	// TestRequestRequiredStringInt64NullableArrayArray invokes test_request_required_string_int64_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_int64_nullable_array_array
+	TestRequestRequiredStringInt64NullableArrayArray(ctx context.Context, request [][]NilStringInt64) (*Error, error)
+	// TestRequestRequiredStringInt8 invokes test_request_required_string_int8 operation.
+	//
+	// POST /test_request_required_string_int8
+	TestRequestRequiredStringInt8(ctx context.Context, request int8) (*Error, error)
+	// TestRequestRequiredStringInt8Array invokes test_request_required_string_int8_array operation.
+	//
+	// POST /test_request_required_string_int8_array
+	TestRequestRequiredStringInt8Array(ctx context.Context, request []int8) (*Error, error)
+	// TestRequestRequiredStringInt8ArrayArray invokes test_request_required_string_int8_array_array operation.
+	//
+	// POST /test_request_required_string_int8_array_array
+	TestRequestRequiredStringInt8ArrayArray(ctx context.Context, request [][]int8) (*Error, error)
+	// TestRequestRequiredStringInt8Nullable invokes test_request_required_string_int8_nullable operation.
+	//
+	// POST /test_request_required_string_int8_nullable
+	TestRequestRequiredStringInt8Nullable(ctx context.Context, request NilInt8) (*Error, error)
+	// TestRequestRequiredStringInt8NullableArray invokes test_request_required_string_int8_nullable_array operation.
+	//
+	// POST /test_request_required_string_int8_nullable_array
+	TestRequestRequiredStringInt8NullableArray(ctx context.Context, request []NilInt8) (*Error, error)
+	// TestRequestRequiredStringInt8NullableArrayArray invokes test_request_required_string_int8_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_int8_nullable_array_array
+	TestRequestRequiredStringInt8NullableArrayArray(ctx context.Context, request [][]NilInt8) (*Error, error)
+	// TestRequestRequiredStringIntArray invokes test_request_required_string_int_array operation.
+	//
+	// POST /test_request_required_string_int_array
+	TestRequestRequiredStringIntArray(ctx context.Context, request []int) (*Error, error)
+	// TestRequestRequiredStringIntArrayArray invokes test_request_required_string_int_array_array operation.
+	//
+	// POST /test_request_required_string_int_array_array
+	TestRequestRequiredStringIntArrayArray(ctx context.Context, request [][]int) (*Error, error)
+	// TestRequestRequiredStringIntNullable invokes test_request_required_string_int_nullable operation.
+	//
+	// POST /test_request_required_string_int_nullable
+	TestRequestRequiredStringIntNullable(ctx context.Context, request NilInt) (*Error, error)
+	// TestRequestRequiredStringIntNullableArray invokes test_request_required_string_int_nullable_array operation.
+	//
+	// POST /test_request_required_string_int_nullable_array
+	TestRequestRequiredStringIntNullableArray(ctx context.Context, request []NilInt) (*Error, error)
+	// TestRequestRequiredStringIntNullableArrayArray invokes test_request_required_string_int_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_int_nullable_array_array
+	TestRequestRequiredStringIntNullableArrayArray(ctx context.Context, request [][]NilInt) (*Error, error)
+	// TestRequestRequiredStringIpv4 invokes test_request_required_string_ipv4 operation.
+	//
+	// POST /test_request_required_string_ipv4
+	TestRequestRequiredStringIpv4(ctx context.Context, request netip.Addr) (*Error, error)
+	// TestRequestRequiredStringIpv4Array invokes test_request_required_string_ipv4_array operation.
+	//
+	// POST /test_request_required_string_ipv4_array
+	TestRequestRequiredStringIpv4Array(ctx context.Context, request []netip.Addr) (*Error, error)
+	// TestRequestRequiredStringIpv4ArrayArray invokes test_request_required_string_ipv4_array_array operation.
+	//
+	// POST /test_request_required_string_ipv4_array_array
+	TestRequestRequiredStringIpv4ArrayArray(ctx context.Context, request [][]netip.Addr) (*Error, error)
+	// TestRequestRequiredStringIpv4Nullable invokes test_request_required_string_ipv4_nullable operation.
+	//
+	// POST /test_request_required_string_ipv4_nullable
+	TestRequestRequiredStringIpv4Nullable(ctx context.Context, request NilIPv4) (*Error, error)
+	// TestRequestRequiredStringIpv4NullableArray invokes test_request_required_string_ipv4_nullable_array operation.
+	//
+	// POST /test_request_required_string_ipv4_nullable_array
+	TestRequestRequiredStringIpv4NullableArray(ctx context.Context, request []NilIPv4) (*Error, error)
+	// TestRequestRequiredStringIpv4NullableArrayArray invokes test_request_required_string_ipv4_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_ipv4_nullable_array_array
+	TestRequestRequiredStringIpv4NullableArrayArray(ctx context.Context, request [][]NilIPv4) (*Error, error)
+	// TestRequestRequiredStringIpv6 invokes test_request_required_string_ipv6 operation.
+	//
+	// POST /test_request_required_string_ipv6
+	TestRequestRequiredStringIpv6(ctx context.Context, request netip.Addr) (*Error, error)
+	// TestRequestRequiredStringIpv6Array invokes test_request_required_string_ipv6_array operation.
+	//
+	// POST /test_request_required_string_ipv6_array
+	TestRequestRequiredStringIpv6Array(ctx context.Context, request []netip.Addr) (*Error, error)
+	// TestRequestRequiredStringIpv6ArrayArray invokes test_request_required_string_ipv6_array_array operation.
+	//
+	// POST /test_request_required_string_ipv6_array_array
+	TestRequestRequiredStringIpv6ArrayArray(ctx context.Context, request [][]netip.Addr) (*Error, error)
+	// TestRequestRequiredStringIpv6Nullable invokes test_request_required_string_ipv6_nullable operation.
+	//
+	// POST /test_request_required_string_ipv6_nullable
+	TestRequestRequiredStringIpv6Nullable(ctx context.Context, request NilIPv6) (*Error, error)
+	// TestRequestRequiredStringIpv6NullableArray invokes test_request_required_string_ipv6_nullable_array operation.
+	//
+	// POST /test_request_required_string_ipv6_nullable_array
+	TestRequestRequiredStringIpv6NullableArray(ctx context.Context, request []NilIPv6) (*Error, error)
+	// TestRequestRequiredStringIpv6NullableArrayArray invokes test_request_required_string_ipv6_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_ipv6_nullable_array_array
+	TestRequestRequiredStringIpv6NullableArrayArray(ctx context.Context, request [][]NilIPv6) (*Error, error)
+	// TestRequestRequiredStringNullable invokes test_request_required_string_nullable operation.
+	//
+	// POST /test_request_required_string_nullable
+	TestRequestRequiredStringNullable(ctx context.Context, request NilString) (*Error, error)
+	// TestRequestRequiredStringNullableArray invokes test_request_required_string_nullable_array operation.
+	//
+	// POST /test_request_required_string_nullable_array
+	TestRequestRequiredStringNullableArray(ctx context.Context, request []NilString) (*Error, error)
+	// TestRequestRequiredStringNullableArrayArray invokes test_request_required_string_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_nullable_array_array
+	TestRequestRequiredStringNullableArrayArray(ctx context.Context, request [][]NilString) (*Error, error)
+	// TestRequestRequiredStringPassword invokes test_request_required_string_password operation.
+	//
+	// POST /test_request_required_string_password
+	TestRequestRequiredStringPassword(ctx context.Context, request string) (*Error, error)
+	// TestRequestRequiredStringPasswordArray invokes test_request_required_string_password_array operation.
+	//
+	// POST /test_request_required_string_password_array
+	TestRequestRequiredStringPasswordArray(ctx context.Context, request []string) (*Error, error)
+	// TestRequestRequiredStringPasswordArrayArray invokes test_request_required_string_password_array_array operation.
+	//
+	// POST /test_request_required_string_password_array_array
+	TestRequestRequiredStringPasswordArrayArray(ctx context.Context, request [][]string) (*Error, error)
+	// TestRequestRequiredStringPasswordNullable invokes test_request_required_string_password_nullable operation.
+	//
+	// POST /test_request_required_string_password_nullable
+	TestRequestRequiredStringPasswordNullable(ctx context.Context, request NilString) (*Error, error)
+	// TestRequestRequiredStringPasswordNullableArray invokes test_request_required_string_password_nullable_array operation.
+	//
+	// POST /test_request_required_string_password_nullable_array
+	TestRequestRequiredStringPasswordNullableArray(ctx context.Context, request []NilString) (*Error, error)
+	// TestRequestRequiredStringPasswordNullableArrayArray invokes test_request_required_string_password_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_password_nullable_array_array
+	TestRequestRequiredStringPasswordNullableArrayArray(ctx context.Context, request [][]NilString) (*Error, error)
+	// TestRequestRequiredStringTime invokes test_request_required_string_time operation.
+	//
+	// POST /test_request_required_string_time
+	TestRequestRequiredStringTime(ctx context.Context, request time.Time) (*Error, error)
+	// TestRequestRequiredStringTimeArray invokes test_request_required_string_time_array operation.
+	//
+	// POST /test_request_required_string_time_array
+	TestRequestRequiredStringTimeArray(ctx context.Context, request []time.Time) (*Error, error)
+	// TestRequestRequiredStringTimeArrayArray invokes test_request_required_string_time_array_array operation.
+	//
+	// POST /test_request_required_string_time_array_array
+	TestRequestRequiredStringTimeArrayArray(ctx context.Context, request [][]time.Time) (*Error, error)
+	// TestRequestRequiredStringTimeNullable invokes test_request_required_string_time_nullable operation.
+	//
+	// POST /test_request_required_string_time_nullable
+	TestRequestRequiredStringTimeNullable(ctx context.Context, request NilTime) (*Error, error)
+	// TestRequestRequiredStringTimeNullableArray invokes test_request_required_string_time_nullable_array operation.
+	//
+	// POST /test_request_required_string_time_nullable_array
+	TestRequestRequiredStringTimeNullableArray(ctx context.Context, request []NilTime) (*Error, error)
+	// TestRequestRequiredStringTimeNullableArrayArray invokes test_request_required_string_time_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_time_nullable_array_array
+	TestRequestRequiredStringTimeNullableArrayArray(ctx context.Context, request [][]NilTime) (*Error, error)
+	// TestRequestRequiredStringURI invokes test_request_required_string_uri operation.
+	//
+	// POST /test_request_required_string_uri
+	TestRequestRequiredStringURI(ctx context.Context, request url.URL) (*Error, error)
+	// TestRequestRequiredStringURIArray invokes test_request_required_string_uri_array operation.
+	//
+	// POST /test_request_required_string_uri_array
+	TestRequestRequiredStringURIArray(ctx context.Context, request []url.URL) (*Error, error)
+	// TestRequestRequiredStringURIArrayArray invokes test_request_required_string_uri_array_array operation.
+	//
+	// POST /test_request_required_string_uri_array_array
+	TestRequestRequiredStringURIArrayArray(ctx context.Context, request [][]url.URL) (*Error, error)
+	// TestRequestRequiredStringURINullable invokes test_request_required_string_uri_nullable operation.
+	//
+	// POST /test_request_required_string_uri_nullable
+	TestRequestRequiredStringURINullable(ctx context.Context, request NilURI) (*Error, error)
+	// TestRequestRequiredStringURINullableArray invokes test_request_required_string_uri_nullable_array operation.
+	//
+	// POST /test_request_required_string_uri_nullable_array
+	TestRequestRequiredStringURINullableArray(ctx context.Context, request []NilURI) (*Error, error)
+	// TestRequestRequiredStringURINullableArrayArray invokes test_request_required_string_uri_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_uri_nullable_array_array
+	TestRequestRequiredStringURINullableArrayArray(ctx context.Context, request [][]NilURI) (*Error, error)
+	// TestRequestRequiredStringUUID invokes test_request_required_string_uuid operation.
+	//
+	// POST /test_request_required_string_uuid
+	TestRequestRequiredStringUUID(ctx context.Context, request uuid.UUID) (*Error, error)
+	// TestRequestRequiredStringUUIDArray invokes test_request_required_string_uuid_array operation.
+	//
+	// POST /test_request_required_string_uuid_array
+	TestRequestRequiredStringUUIDArray(ctx context.Context, request []uuid.UUID) (*Error, error)
+	// TestRequestRequiredStringUUIDArrayArray invokes test_request_required_string_uuid_array_array operation.
+	//
+	// POST /test_request_required_string_uuid_array_array
+	TestRequestRequiredStringUUIDArrayArray(ctx context.Context, request [][]uuid.UUID) (*Error, error)
+	// TestRequestRequiredStringUUIDNullable invokes test_request_required_string_uuid_nullable operation.
+	//
+	// POST /test_request_required_string_uuid_nullable
+	TestRequestRequiredStringUUIDNullable(ctx context.Context, request NilUUID) (*Error, error)
+	// TestRequestRequiredStringUUIDNullableArray invokes test_request_required_string_uuid_nullable_array operation.
+	//
+	// POST /test_request_required_string_uuid_nullable_array
+	TestRequestRequiredStringUUIDNullableArray(ctx context.Context, request []NilUUID) (*Error, error)
+	// TestRequestRequiredStringUUIDNullableArrayArray invokes test_request_required_string_uuid_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_uuid_nullable_array_array
+	TestRequestRequiredStringUUIDNullableArrayArray(ctx context.Context, request [][]NilUUID) (*Error, error)
+	// TestRequestRequiredStringUint invokes test_request_required_string_uint operation.
+	//
+	// POST /test_request_required_string_uint
+	TestRequestRequiredStringUint(ctx context.Context, request uint) (*Error, error)
+	// TestRequestRequiredStringUint16 invokes test_request_required_string_uint16 operation.
+	//
+	// POST /test_request_required_string_uint16
+	TestRequestRequiredStringUint16(ctx context.Context, request uint16) (*Error, error)
+	// TestRequestRequiredStringUint16Array invokes test_request_required_string_uint16_array operation.
+	//
+	// POST /test_request_required_string_uint16_array
+	TestRequestRequiredStringUint16Array(ctx context.Context, request []uint16) (*Error, error)
+	// TestRequestRequiredStringUint16ArrayArray invokes test_request_required_string_uint16_array_array operation.
+	//
+	// POST /test_request_required_string_uint16_array_array
+	TestRequestRequiredStringUint16ArrayArray(ctx context.Context, request [][]uint16) (*Error, error)
+	// TestRequestRequiredStringUint16Nullable invokes test_request_required_string_uint16_nullable operation.
+	//
+	// POST /test_request_required_string_uint16_nullable
+	TestRequestRequiredStringUint16Nullable(ctx context.Context, request NilUint16) (*Error, error)
+	// TestRequestRequiredStringUint16NullableArray invokes test_request_required_string_uint16_nullable_array operation.
+	//
+	// POST /test_request_required_string_uint16_nullable_array
+	TestRequestRequiredStringUint16NullableArray(ctx context.Context, request []NilUint16) (*Error, error)
+	// TestRequestRequiredStringUint16NullableArrayArray invokes test_request_required_string_uint16_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_uint16_nullable_array_array
+	TestRequestRequiredStringUint16NullableArrayArray(ctx context.Context, request [][]NilUint16) (*Error, error)
+	// TestRequestRequiredStringUint32 invokes test_request_required_string_uint32 operation.
+	//
+	// POST /test_request_required_string_uint32
+	TestRequestRequiredStringUint32(ctx context.Context, request uint32) (*Error, error)
+	// TestRequestRequiredStringUint32Array invokes test_request_required_string_uint32_array operation.
+	//
+	// POST /test_request_required_string_uint32_array
+	TestRequestRequiredStringUint32Array(ctx context.Context, request []uint32) (*Error, error)
+	// TestRequestRequiredStringUint32ArrayArray invokes test_request_required_string_uint32_array_array operation.
+	//
+	// POST /test_request_required_string_uint32_array_array
+	TestRequestRequiredStringUint32ArrayArray(ctx context.Context, request [][]uint32) (*Error, error)
+	// TestRequestRequiredStringUint32Nullable invokes test_request_required_string_uint32_nullable operation.
+	//
+	// POST /test_request_required_string_uint32_nullable
+	TestRequestRequiredStringUint32Nullable(ctx context.Context, request NilUint32) (*Error, error)
+	// TestRequestRequiredStringUint32NullableArray invokes test_request_required_string_uint32_nullable_array operation.
+	//
+	// POST /test_request_required_string_uint32_nullable_array
+	TestRequestRequiredStringUint32NullableArray(ctx context.Context, request []NilUint32) (*Error, error)
+	// TestRequestRequiredStringUint32NullableArrayArray invokes test_request_required_string_uint32_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_uint32_nullable_array_array
+	TestRequestRequiredStringUint32NullableArrayArray(ctx context.Context, request [][]NilUint32) (*Error, error)
+	// TestRequestRequiredStringUint64 invokes test_request_required_string_uint64 operation.
+	//
+	// POST /test_request_required_string_uint64
+	TestRequestRequiredStringUint64(ctx context.Context, request uint64) (*Error, error)
+	// TestRequestRequiredStringUint64Array invokes test_request_required_string_uint64_array operation.
+	//
+	// POST /test_request_required_string_uint64_array
+	TestRequestRequiredStringUint64Array(ctx context.Context, request []uint64) (*Error, error)
+	// TestRequestRequiredStringUint64ArrayArray invokes test_request_required_string_uint64_array_array operation.
+	//
+	// POST /test_request_required_string_uint64_array_array
+	TestRequestRequiredStringUint64ArrayArray(ctx context.Context, request [][]uint64) (*Error, error)
+	// TestRequestRequiredStringUint64Nullable invokes test_request_required_string_uint64_nullable operation.
+	//
+	// POST /test_request_required_string_uint64_nullable
+	TestRequestRequiredStringUint64Nullable(ctx context.Context, request NilUint64) (*Error, error)
+	// TestRequestRequiredStringUint64NullableArray invokes test_request_required_string_uint64_nullable_array operation.
+	//
+	// POST /test_request_required_string_uint64_nullable_array
+	TestRequestRequiredStringUint64NullableArray(ctx context.Context, request []NilUint64) (*Error, error)
+	// TestRequestRequiredStringUint64NullableArrayArray invokes test_request_required_string_uint64_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_uint64_nullable_array_array
+	TestRequestRequiredStringUint64NullableArrayArray(ctx context.Context, request [][]NilUint64) (*Error, error)
+	// TestRequestRequiredStringUint8 invokes test_request_required_string_uint8 operation.
+	//
+	// POST /test_request_required_string_uint8
+	TestRequestRequiredStringUint8(ctx context.Context, request uint8) (*Error, error)
+	// TestRequestRequiredStringUint8Array invokes test_request_required_string_uint8_array operation.
+	//
+	// POST /test_request_required_string_uint8_array
+	TestRequestRequiredStringUint8Array(ctx context.Context, request []uint8) (*Error, error)
+	// TestRequestRequiredStringUint8ArrayArray invokes test_request_required_string_uint8_array_array operation.
+	//
+	// POST /test_request_required_string_uint8_array_array
+	TestRequestRequiredStringUint8ArrayArray(ctx context.Context, request [][]uint8) (*Error, error)
+	// TestRequestRequiredStringUint8Nullable invokes test_request_required_string_uint8_nullable operation.
+	//
+	// POST /test_request_required_string_uint8_nullable
+	TestRequestRequiredStringUint8Nullable(ctx context.Context, request NilUint8) (*Error, error)
+	// TestRequestRequiredStringUint8NullableArray invokes test_request_required_string_uint8_nullable_array operation.
+	//
+	// POST /test_request_required_string_uint8_nullable_array
+	TestRequestRequiredStringUint8NullableArray(ctx context.Context, request []NilUint8) (*Error, error)
+	// TestRequestRequiredStringUint8NullableArrayArray invokes test_request_required_string_uint8_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_uint8_nullable_array_array
+	TestRequestRequiredStringUint8NullableArrayArray(ctx context.Context, request [][]NilUint8) (*Error, error)
+	// TestRequestRequiredStringUintArray invokes test_request_required_string_uint_array operation.
+	//
+	// POST /test_request_required_string_uint_array
+	TestRequestRequiredStringUintArray(ctx context.Context, request []uint) (*Error, error)
+	// TestRequestRequiredStringUintArrayArray invokes test_request_required_string_uint_array_array operation.
+	//
+	// POST /test_request_required_string_uint_array_array
+	TestRequestRequiredStringUintArrayArray(ctx context.Context, request [][]uint) (*Error, error)
+	// TestRequestRequiredStringUintNullable invokes test_request_required_string_uint_nullable operation.
+	//
+	// POST /test_request_required_string_uint_nullable
+	TestRequestRequiredStringUintNullable(ctx context.Context, request NilUint) (*Error, error)
+	// TestRequestRequiredStringUintNullableArray invokes test_request_required_string_uint_nullable_array operation.
+	//
+	// POST /test_request_required_string_uint_nullable_array
+	TestRequestRequiredStringUintNullableArray(ctx context.Context, request []NilUint) (*Error, error)
+	// TestRequestRequiredStringUintNullableArrayArray invokes test_request_required_string_uint_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_uint_nullable_array_array
+	TestRequestRequiredStringUintNullableArrayArray(ctx context.Context, request [][]NilUint) (*Error, error)
+	// TestRequestRequiredStringUnix invokes test_request_required_string_unix operation.
+	//
+	// POST /test_request_required_string_unix
+	TestRequestRequiredStringUnix(ctx context.Context, request time.Time) (*Error, error)
+	// TestRequestRequiredStringUnixArray invokes test_request_required_string_unix_array operation.
+	//
+	// POST /test_request_required_string_unix_array
+	TestRequestRequiredStringUnixArray(ctx context.Context, request []time.Time) (*Error, error)
+	// TestRequestRequiredStringUnixArrayArray invokes test_request_required_string_unix_array_array operation.
+	//
+	// POST /test_request_required_string_unix_array_array
+	TestRequestRequiredStringUnixArrayArray(ctx context.Context, request [][]time.Time) (*Error, error)
+	// TestRequestRequiredStringUnixMicro invokes test_request_required_string_unix-micro operation.
+	//
+	// POST /test_request_required_string_unix-micro
+	TestRequestRequiredStringUnixMicro(ctx context.Context, request time.Time) (*Error, error)
+	// TestRequestRequiredStringUnixMicroArray invokes test_request_required_string_unix-micro_array operation.
+	//
+	// POST /test_request_required_string_unix-micro_array
+	TestRequestRequiredStringUnixMicroArray(ctx context.Context, request []time.Time) (*Error, error)
+	// TestRequestRequiredStringUnixMicroArrayArray invokes test_request_required_string_unix-micro_array_array operation.
+	//
+	// POST /test_request_required_string_unix-micro_array_array
+	TestRequestRequiredStringUnixMicroArrayArray(ctx context.Context, request [][]time.Time) (*Error, error)
+	// TestRequestRequiredStringUnixMicroNullable invokes test_request_required_string_unix-micro_nullable operation.
+	//
+	// POST /test_request_required_string_unix-micro_nullable
+	TestRequestRequiredStringUnixMicroNullable(ctx context.Context, request NilStringUnixMicro) (*Error, error)
+	// TestRequestRequiredStringUnixMicroNullableArray invokes test_request_required_string_unix-micro_nullable_array operation.
+	//
+	// POST /test_request_required_string_unix-micro_nullable_array
+	TestRequestRequiredStringUnixMicroNullableArray(ctx context.Context, request []NilStringUnixMicro) (*Error, error)
+	// TestRequestRequiredStringUnixMicroNullableArrayArray invokes test_request_required_string_unix-micro_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_unix-micro_nullable_array_array
+	TestRequestRequiredStringUnixMicroNullableArrayArray(ctx context.Context, request [][]NilStringUnixMicro) (*Error, error)
+	// TestRequestRequiredStringUnixMilli invokes test_request_required_string_unix-milli operation.
+	//
+	// POST /test_request_required_string_unix-milli
+	TestRequestRequiredStringUnixMilli(ctx context.Context, request time.Time) (*Error, error)
+	// TestRequestRequiredStringUnixMilliArray invokes test_request_required_string_unix-milli_array operation.
+	//
+	// POST /test_request_required_string_unix-milli_array
+	TestRequestRequiredStringUnixMilliArray(ctx context.Context, request []time.Time) (*Error, error)
+	// TestRequestRequiredStringUnixMilliArrayArray invokes test_request_required_string_unix-milli_array_array operation.
+	//
+	// POST /test_request_required_string_unix-milli_array_array
+	TestRequestRequiredStringUnixMilliArrayArray(ctx context.Context, request [][]time.Time) (*Error, error)
+	// TestRequestRequiredStringUnixMilliNullable invokes test_request_required_string_unix-milli_nullable operation.
+	//
+	// POST /test_request_required_string_unix-milli_nullable
+	TestRequestRequiredStringUnixMilliNullable(ctx context.Context, request NilStringUnixMilli) (*Error, error)
+	// TestRequestRequiredStringUnixMilliNullableArray invokes test_request_required_string_unix-milli_nullable_array operation.
+	//
+	// POST /test_request_required_string_unix-milli_nullable_array
+	TestRequestRequiredStringUnixMilliNullableArray(ctx context.Context, request []NilStringUnixMilli) (*Error, error)
+	// TestRequestRequiredStringUnixMilliNullableArrayArray invokes test_request_required_string_unix-milli_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_unix-milli_nullable_array_array
+	TestRequestRequiredStringUnixMilliNullableArrayArray(ctx context.Context, request [][]NilStringUnixMilli) (*Error, error)
+	// TestRequestRequiredStringUnixNano invokes test_request_required_string_unix-nano operation.
+	//
+	// POST /test_request_required_string_unix-nano
+	TestRequestRequiredStringUnixNano(ctx context.Context, request time.Time) (*Error, error)
+	// TestRequestRequiredStringUnixNanoArray invokes test_request_required_string_unix-nano_array operation.
+	//
+	// POST /test_request_required_string_unix-nano_array
+	TestRequestRequiredStringUnixNanoArray(ctx context.Context, request []time.Time) (*Error, error)
+	// TestRequestRequiredStringUnixNanoArrayArray invokes test_request_required_string_unix-nano_array_array operation.
+	//
+	// POST /test_request_required_string_unix-nano_array_array
+	TestRequestRequiredStringUnixNanoArrayArray(ctx context.Context, request [][]time.Time) (*Error, error)
+	// TestRequestRequiredStringUnixNanoNullable invokes test_request_required_string_unix-nano_nullable operation.
+	//
+	// POST /test_request_required_string_unix-nano_nullable
+	TestRequestRequiredStringUnixNanoNullable(ctx context.Context, request NilStringUnixNano) (*Error, error)
+	// TestRequestRequiredStringUnixNanoNullableArray invokes test_request_required_string_unix-nano_nullable_array operation.
+	//
+	// POST /test_request_required_string_unix-nano_nullable_array
+	TestRequestRequiredStringUnixNanoNullableArray(ctx context.Context, request []NilStringUnixNano) (*Error, error)
+	// TestRequestRequiredStringUnixNanoNullableArrayArray invokes test_request_required_string_unix-nano_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_unix-nano_nullable_array_array
+	TestRequestRequiredStringUnixNanoNullableArrayArray(ctx context.Context, request [][]NilStringUnixNano) (*Error, error)
+	// TestRequestRequiredStringUnixNullable invokes test_request_required_string_unix_nullable operation.
+	//
+	// POST /test_request_required_string_unix_nullable
+	TestRequestRequiredStringUnixNullable(ctx context.Context, request NilStringUnixSeconds) (*Error, error)
+	// TestRequestRequiredStringUnixNullableArray invokes test_request_required_string_unix_nullable_array operation.
+	//
+	// POST /test_request_required_string_unix_nullable_array
+	TestRequestRequiredStringUnixNullableArray(ctx context.Context, request []NilStringUnixSeconds) (*Error, error)
+	// TestRequestRequiredStringUnixNullableArrayArray invokes test_request_required_string_unix_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_unix_nullable_array_array
+	TestRequestRequiredStringUnixNullableArrayArray(ctx context.Context, request [][]NilStringUnixSeconds) (*Error, error)
+	// TestRequestRequiredStringUnixSeconds invokes test_request_required_string_unix-seconds operation.
+	//
+	// POST /test_request_required_string_unix-seconds
+	TestRequestRequiredStringUnixSeconds(ctx context.Context, request time.Time) (*Error, error)
+	// TestRequestRequiredStringUnixSecondsArray invokes test_request_required_string_unix-seconds_array operation.
+	//
+	// POST /test_request_required_string_unix-seconds_array
+	TestRequestRequiredStringUnixSecondsArray(ctx context.Context, request []time.Time) (*Error, error)
+	// TestRequestRequiredStringUnixSecondsArrayArray invokes test_request_required_string_unix-seconds_array_array operation.
+	//
+	// POST /test_request_required_string_unix-seconds_array_array
+	TestRequestRequiredStringUnixSecondsArrayArray(ctx context.Context, request [][]time.Time) (*Error, error)
+	// TestRequestRequiredStringUnixSecondsNullable invokes test_request_required_string_unix-seconds_nullable operation.
+	//
+	// POST /test_request_required_string_unix-seconds_nullable
+	TestRequestRequiredStringUnixSecondsNullable(ctx context.Context, request NilStringUnixSeconds) (*Error, error)
+	// TestRequestRequiredStringUnixSecondsNullableArray invokes test_request_required_string_unix-seconds_nullable_array operation.
+	//
+	// POST /test_request_required_string_unix-seconds_nullable_array
+	TestRequestRequiredStringUnixSecondsNullableArray(ctx context.Context, request []NilStringUnixSeconds) (*Error, error)
+	// TestRequestRequiredStringUnixSecondsNullableArrayArray invokes test_request_required_string_unix-seconds_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_unix-seconds_nullable_array_array
+	TestRequestRequiredStringUnixSecondsNullableArrayArray(ctx context.Context, request [][]NilStringUnixSeconds) (*Error, error)
+	// TestRequestString invokes test_request_string operation.
+	//
+	// POST /test_request_string
+	TestRequestString(ctx context.Context, request OptString) (*Error, error)
+	// TestRequestStringArray invokes test_request_string_array operation.
+	//
+	// POST /test_request_string_array
+	TestRequestStringArray(ctx context.Context, request []string) (*Error, error)
+	// TestRequestStringArrayArray invokes test_request_string_array_array operation.
+	//
+	// POST /test_request_string_array_array
+	TestRequestStringArrayArray(ctx context.Context, request [][]string) (*Error, error)
+	// TestRequestStringBase64 invokes test_request_string_base64 operation.
+	//
+	// POST /test_request_string_base64
+	TestRequestStringBase64(ctx context.Context, request []byte) (*Error, error)
+	// TestRequestStringBase64Array invokes test_request_string_base64_array operation.
+	//
+	// POST /test_request_string_base64_array
+	TestRequestStringBase64Array(ctx context.Context, request [][]byte) (*Error, error)
+	// TestRequestStringBase64ArrayArray invokes test_request_string_base64_array_array operation.
+	//
+	// POST /test_request_string_base64_array_array
+	TestRequestStringBase64ArrayArray(ctx context.Context, request [][][]byte) (*Error, error)
+	// TestRequestStringBase64Nullable invokes test_request_string_base64_nullable operation.
+	//
+	// POST /test_request_string_base64_nullable
+	TestRequestStringBase64Nullable(ctx context.Context, request OptNilByte) (*Error, error)
+	// TestRequestStringBase64NullableArray invokes test_request_string_base64_nullable_array operation.
+	//
+	// POST /test_request_string_base64_nullable_array
+	TestRequestStringBase64NullableArray(ctx context.Context, request [][]byte) (*Error, error)
+	// TestRequestStringBase64NullableArrayArray invokes test_request_string_base64_nullable_array_array operation.
+	//
+	// POST /test_request_string_base64_nullable_array_array
+	TestRequestStringBase64NullableArrayArray(ctx context.Context, request [][][]byte) (*Error, error)
+	// TestRequestStringBinary invokes test_request_string_binary operation.
+	//
+	// POST /test_request_string_binary
+	TestRequestStringBinary(ctx context.Context, request OptString) (*Error, error)
+	// TestRequestStringBinaryArray invokes test_request_string_binary_array operation.
+	//
+	// POST /test_request_string_binary_array
+	TestRequestStringBinaryArray(ctx context.Context, request []string) (*Error, error)
+	// TestRequestStringBinaryArrayArray invokes test_request_string_binary_array_array operation.
+	//
+	// POST /test_request_string_binary_array_array
+	TestRequestStringBinaryArrayArray(ctx context.Context, request [][]string) (*Error, error)
+	// TestRequestStringBinaryNullable invokes test_request_string_binary_nullable operation.
+	//
+	// POST /test_request_string_binary_nullable
+	TestRequestStringBinaryNullable(ctx context.Context, request OptNilString) (*Error, error)
+	// TestRequestStringBinaryNullableArray invokes test_request_string_binary_nullable_array operation.
+	//
+	// POST /test_request_string_binary_nullable_array
+	TestRequestStringBinaryNullableArray(ctx context.Context, request []NilString) (*Error, error)
+	// TestRequestStringBinaryNullableArrayArray invokes test_request_string_binary_nullable_array_array operation.
+	//
+	// POST /test_request_string_binary_nullable_array_array
+	TestRequestStringBinaryNullableArrayArray(ctx context.Context, request [][]NilString) (*Error, error)
+	// TestRequestStringByte invokes test_request_string_byte operation.
+	//
+	// POST /test_request_string_byte
+	TestRequestStringByte(ctx context.Context, request []byte) (*Error, error)
+	// TestRequestStringByteArray invokes test_request_string_byte_array operation.
+	//
+	// POST /test_request_string_byte_array
+	TestRequestStringByteArray(ctx context.Context, request [][]byte) (*Error, error)
+	// TestRequestStringByteArrayArray invokes test_request_string_byte_array_array operation.
+	//
+	// POST /test_request_string_byte_array_array
+	TestRequestStringByteArrayArray(ctx context.Context, request [][][]byte) (*Error, error)
+	// TestRequestStringByteNullable invokes test_request_string_byte_nullable operation.
+	//
+	// POST /test_request_string_byte_nullable
+	TestRequestStringByteNullable(ctx context.Context, request OptNilByte) (*Error, error)
+	// TestRequestStringByteNullableArray invokes test_request_string_byte_nullable_array operation.
+	//
+	// POST /test_request_string_byte_nullable_array
+	TestRequestStringByteNullableArray(ctx context.Context, request [][]byte) (*Error, error)
+	// TestRequestStringByteNullableArrayArray invokes test_request_string_byte_nullable_array_array operation.
+	//
+	// POST /test_request_string_byte_nullable_array_array
+	TestRequestStringByteNullableArrayArray(ctx context.Context, request [][][]byte) (*Error, error)
+	// TestRequestStringDate invokes test_request_string_date operation.
+	//
+	// POST /test_request_string_date
+	TestRequestStringDate(ctx context.Context, request OptDate) (*Error, error)
+	// TestRequestStringDateArray invokes test_request_string_date_array operation.
+	//
+	// POST /test_request_string_date_array
+	TestRequestStringDateArray(ctx context.Context, request []time.Time) (*Error, error)
+	// TestRequestStringDateArrayArray invokes test_request_string_date_array_array operation.
+	//
+	// POST /test_request_string_date_array_array
+	TestRequestStringDateArrayArray(ctx context.Context, request [][]time.Time) (*Error, error)
+	// TestRequestStringDateNullable invokes test_request_string_date_nullable operation.
+	//
+	// POST /test_request_string_date_nullable
+	TestRequestStringDateNullable(ctx context.Context, request OptNilDate) (*Error, error)
+	// TestRequestStringDateNullableArray invokes test_request_string_date_nullable_array operation.
+	//
+	// POST /test_request_string_date_nullable_array
+	TestRequestStringDateNullableArray(ctx context.Context, request []NilDate) (*Error, error)
+	// TestRequestStringDateNullableArrayArray invokes test_request_string_date_nullable_array_array operation.
+	//
+	// POST /test_request_string_date_nullable_array_array
+	TestRequestStringDateNullableArrayArray(ctx context.Context, request [][]NilDate) (*Error, error)
+	// TestRequestStringDateTime invokes test_request_string_date-time operation.
+	//
+	// POST /test_request_string_date-time
+	TestRequestStringDateTime(ctx context.Context, request OptDateTime) (*Error, error)
+	// TestRequestStringDateTimeArray invokes test_request_string_date-time_array operation.
+	//
+	// POST /test_request_string_date-time_array
+	TestRequestStringDateTimeArray(ctx context.Context, request []time.Time) (*Error, error)
+	// TestRequestStringDateTimeArrayArray invokes test_request_string_date-time_array_array operation.
+	//
+	// POST /test_request_string_date-time_array_array
+	TestRequestStringDateTimeArrayArray(ctx context.Context, request [][]time.Time) (*Error, error)
+	// TestRequestStringDateTimeNullable invokes test_request_string_date-time_nullable operation.
+	//
+	// POST /test_request_string_date-time_nullable
+	TestRequestStringDateTimeNullable(ctx context.Context, request OptNilDateTime) (*Error, error)
+	// TestRequestStringDateTimeNullableArray invokes test_request_string_date-time_nullable_array operation.
+	//
+	// POST /test_request_string_date-time_nullable_array
+	TestRequestStringDateTimeNullableArray(ctx context.Context, request []NilDateTime) (*Error, error)
+	// TestRequestStringDateTimeNullableArrayArray invokes test_request_string_date-time_nullable_array_array operation.
+	//
+	// POST /test_request_string_date-time_nullable_array_array
+	TestRequestStringDateTimeNullableArrayArray(ctx context.Context, request [][]NilDateTime) (*Error, error)
+	// TestRequestStringDuration invokes test_request_string_duration operation.
+	//
+	// POST /test_request_string_duration
+	TestRequestStringDuration(ctx context.Context, request OptDuration) (*Error, error)
+	// TestRequestStringDurationArray invokes test_request_string_duration_array operation.
+	//
+	// POST /test_request_string_duration_array
+	TestRequestStringDurationArray(ctx context.Context, request []time.Duration) (*Error, error)
+	// TestRequestStringDurationArrayArray invokes test_request_string_duration_array_array operation.
+	//
+	// POST /test_request_string_duration_array_array
+	TestRequestStringDurationArrayArray(ctx context.Context, request [][]time.Duration) (*Error, error)
+	// TestRequestStringDurationNullable invokes test_request_string_duration_nullable operation.
+	//
+	// POST /test_request_string_duration_nullable
+	TestRequestStringDurationNullable(ctx context.Context, request OptNilDuration) (*Error, error)
+	// TestRequestStringDurationNullableArray invokes test_request_string_duration_nullable_array operation.
+	//
+	// POST /test_request_string_duration_nullable_array
+	TestRequestStringDurationNullableArray(ctx context.Context, request []NilDuration) (*Error, error)
+	// TestRequestStringDurationNullableArrayArray invokes test_request_string_duration_nullable_array_array operation.
+	//
+	// POST /test_request_string_duration_nullable_array_array
+	TestRequestStringDurationNullableArrayArray(ctx context.Context, request [][]NilDuration) (*Error, error)
+	// TestRequestStringEmail invokes test_request_string_email operation.
+	//
+	// POST /test_request_string_email
+	TestRequestStringEmail(ctx context.Context, request OptString) (*Error, error)
+	// TestRequestStringEmailArray invokes test_request_string_email_array operation.
+	//
+	// POST /test_request_string_email_array
+	TestRequestStringEmailArray(ctx context.Context, request []string) (*Error, error)
+	// TestRequestStringEmailArrayArray invokes test_request_string_email_array_array operation.
+	//
+	// POST /test_request_string_email_array_array
+	TestRequestStringEmailArrayArray(ctx context.Context, request [][]string) (*Error, error)
+	// TestRequestStringEmailNullable invokes test_request_string_email_nullable operation.
+	//
+	// POST /test_request_string_email_nullable
+	TestRequestStringEmailNullable(ctx context.Context, request OptNilString) (*Error, error)
+	// TestRequestStringEmailNullableArray invokes test_request_string_email_nullable_array operation.
+	//
+	// POST /test_request_string_email_nullable_array
+	TestRequestStringEmailNullableArray(ctx context.Context, request []NilString) (*Error, error)
+	// TestRequestStringEmailNullableArrayArray invokes test_request_string_email_nullable_array_array operation.
+	//
+	// POST /test_request_string_email_nullable_array_array
+	TestRequestStringEmailNullableArrayArray(ctx context.Context, request [][]NilString) (*Error, error)
+	// TestRequestStringFloat32 invokes test_request_string_float32 operation.
+	//
+	// POST /test_request_string_float32
+	TestRequestStringFloat32(ctx context.Context, request OptFloat32) (*Error, error)
+	// TestRequestStringFloat32Array invokes test_request_string_float32_array operation.
+	//
+	// POST /test_request_string_float32_array
+	TestRequestStringFloat32Array(ctx context.Context, request []float32) (*Error, error)
+	// TestRequestStringFloat32ArrayArray invokes test_request_string_float32_array_array operation.
+	//
+	// POST /test_request_string_float32_array_array
+	TestRequestStringFloat32ArrayArray(ctx context.Context, request [][]float32) (*Error, error)
+	// TestRequestStringFloat32Nullable invokes test_request_string_float32_nullable operation.
+	//
+	// POST /test_request_string_float32_nullable
+	TestRequestStringFloat32Nullable(ctx context.Context, request OptNilFloat32) (*Error, error)
+	// TestRequestStringFloat32NullableArray invokes test_request_string_float32_nullable_array operation.
+	//
+	// POST /test_request_string_float32_nullable_array
+	TestRequestStringFloat32NullableArray(ctx context.Context, request []NilFloat32) (*Error, error)
+	// TestRequestStringFloat32NullableArrayArray invokes test_request_string_float32_nullable_array_array operation.
+	//
+	// POST /test_request_string_float32_nullable_array_array
+	TestRequestStringFloat32NullableArrayArray(ctx context.Context, request [][]NilFloat32) (*Error, error)
+	// TestRequestStringFloat64 invokes test_request_string_float64 operation.
+	//
+	// POST /test_request_string_float64
+	TestRequestStringFloat64(ctx context.Context, request OptFloat64) (*Error, error)
+	// TestRequestStringFloat64Array invokes test_request_string_float64_array operation.
+	//
+	// POST /test_request_string_float64_array
+	TestRequestStringFloat64Array(ctx context.Context, request []float64) (*Error, error)
+	// TestRequestStringFloat64ArrayArray invokes test_request_string_float64_array_array operation.
+	//
+	// POST /test_request_string_float64_array_array
+	TestRequestStringFloat64ArrayArray(ctx context.Context, request [][]float64) (*Error, error)
+	// TestRequestStringFloat64Nullable invokes test_request_string_float64_nullable operation.
+	//
+	// POST /test_request_string_float64_nullable
+	TestRequestStringFloat64Nullable(ctx context.Context, request OptNilFloat64) (*Error, error)
+	// TestRequestStringFloat64NullableArray invokes test_request_string_float64_nullable_array operation.
+	//
+	// POST /test_request_string_float64_nullable_array
+	TestRequestStringFloat64NullableArray(ctx context.Context, request []NilFloat64) (*Error, error)
+	// TestRequestStringFloat64NullableArrayArray invokes test_request_string_float64_nullable_array_array operation.
+	//
+	// POST /test_request_string_float64_nullable_array_array
+	TestRequestStringFloat64NullableArrayArray(ctx context.Context, request [][]NilFloat64) (*Error, error)
+	// TestRequestStringHostname invokes test_request_string_hostname operation.
+	//
+	// POST /test_request_string_hostname
+	TestRequestStringHostname(ctx context.Context, request OptString) (*Error, error)
+	// TestRequestStringHostnameArray invokes test_request_string_hostname_array operation.
+	//
+	// POST /test_request_string_hostname_array
+	TestRequestStringHostnameArray(ctx context.Context, request []string) (*Error, error)
+	// TestRequestStringHostnameArrayArray invokes test_request_string_hostname_array_array operation.
+	//
+	// POST /test_request_string_hostname_array_array
+	TestRequestStringHostnameArrayArray(ctx context.Context, request [][]string) (*Error, error)
+	// TestRequestStringHostnameNullable invokes test_request_string_hostname_nullable operation.
+	//
+	// POST /test_request_string_hostname_nullable
+	TestRequestStringHostnameNullable(ctx context.Context, request OptNilString) (*Error, error)
+	// TestRequestStringHostnameNullableArray invokes test_request_string_hostname_nullable_array operation.
+	//
+	// POST /test_request_string_hostname_nullable_array
+	TestRequestStringHostnameNullableArray(ctx context.Context, request []NilString) (*Error, error)
+	// TestRequestStringHostnameNullableArrayArray invokes test_request_string_hostname_nullable_array_array operation.
+	//
+	// POST /test_request_string_hostname_nullable_array_array
+	TestRequestStringHostnameNullableArrayArray(ctx context.Context, request [][]NilString) (*Error, error)
+	// TestRequestStringIP invokes test_request_string_ip operation.
+	//
+	// POST /test_request_string_ip
+	TestRequestStringIP(ctx context.Context, request OptIP) (*Error, error)
+	// TestRequestStringIPArray invokes test_request_string_ip_array operation.
+	//
+	// POST /test_request_string_ip_array
+	TestRequestStringIPArray(ctx context.Context, request []netip.Addr) (*Error, error)
+	// TestRequestStringIPArrayArray invokes test_request_string_ip_array_array operation.
+	//
+	// POST /test_request_string_ip_array_array
+	TestRequestStringIPArrayArray(ctx context.Context, request [][]netip.Addr) (*Error, error)
+	// TestRequestStringIPNullable invokes test_request_string_ip_nullable operation.
+	//
+	// POST /test_request_string_ip_nullable
+	TestRequestStringIPNullable(ctx context.Context, request OptNilIP) (*Error, error)
+	// TestRequestStringIPNullableArray invokes test_request_string_ip_nullable_array operation.
+	//
+	// POST /test_request_string_ip_nullable_array
+	TestRequestStringIPNullableArray(ctx context.Context, request []NilIP) (*Error, error)
+	// TestRequestStringIPNullableArrayArray invokes test_request_string_ip_nullable_array_array operation.
+	//
+	// POST /test_request_string_ip_nullable_array_array
+	TestRequestStringIPNullableArrayArray(ctx context.Context, request [][]NilIP) (*Error, error)
+	// TestRequestStringInt invokes test_request_string_int operation.
+	//
+	// POST /test_request_string_int
+	TestRequestStringInt(ctx context.Context, request OptInt) (*Error, error)
+	// TestRequestStringInt16 invokes test_request_string_int16 operation.
+	//
+	// POST /test_request_string_int16
+	TestRequestStringInt16(ctx context.Context, request OptInt16) (*Error, error)
+	// TestRequestStringInt16Array invokes test_request_string_int16_array operation.
+	//
+	// POST /test_request_string_int16_array
+	TestRequestStringInt16Array(ctx context.Context, request []int16) (*Error, error)
+	// TestRequestStringInt16ArrayArray invokes test_request_string_int16_array_array operation.
+	//
+	// POST /test_request_string_int16_array_array
+	TestRequestStringInt16ArrayArray(ctx context.Context, request [][]int16) (*Error, error)
+	// TestRequestStringInt16Nullable invokes test_request_string_int16_nullable operation.
+	//
+	// POST /test_request_string_int16_nullable
+	TestRequestStringInt16Nullable(ctx context.Context, request OptNilInt16) (*Error, error)
+	// TestRequestStringInt16NullableArray invokes test_request_string_int16_nullable_array operation.
+	//
+	// POST /test_request_string_int16_nullable_array
+	TestRequestStringInt16NullableArray(ctx context.Context, request []NilInt16) (*Error, error)
+	// TestRequestStringInt16NullableArrayArray invokes test_request_string_int16_nullable_array_array operation.
+	//
+	// POST /test_request_string_int16_nullable_array_array
+	TestRequestStringInt16NullableArrayArray(ctx context.Context, request [][]NilInt16) (*Error, error)
+	// TestRequestStringInt32 invokes test_request_string_int32 operation.
+	//
+	// POST /test_request_string_int32
+	TestRequestStringInt32(ctx context.Context, request OptStringInt32) (*Error, error)
+	// TestRequestStringInt32Array invokes test_request_string_int32_array operation.
+	//
+	// POST /test_request_string_int32_array
+	TestRequestStringInt32Array(ctx context.Context, request []int32) (*Error, error)
+	// TestRequestStringInt32ArrayArray invokes test_request_string_int32_array_array operation.
+	//
+	// POST /test_request_string_int32_array_array
+	TestRequestStringInt32ArrayArray(ctx context.Context, request [][]int32) (*Error, error)
+	// TestRequestStringInt32Nullable invokes test_request_string_int32_nullable operation.
+	//
+	// POST /test_request_string_int32_nullable
+	TestRequestStringInt32Nullable(ctx context.Context, request OptNilStringInt32) (*Error, error)
+	// TestRequestStringInt32NullableArray invokes test_request_string_int32_nullable_array operation.
+	//
+	// POST /test_request_string_int32_nullable_array
+	TestRequestStringInt32NullableArray(ctx context.Context, request []NilStringInt32) (*Error, error)
+	// TestRequestStringInt32NullableArrayArray invokes test_request_string_int32_nullable_array_array operation.
+	//
+	// POST /test_request_string_int32_nullable_array_array
+	TestRequestStringInt32NullableArrayArray(ctx context.Context, request [][]NilStringInt32) (*Error, error)
+	// TestRequestStringInt64 invokes test_request_string_int64 operation.
+	//
+	// POST /test_request_string_int64
+	TestRequestStringInt64(ctx context.Context, request OptStringInt64) (*Error, error)
+	// TestRequestStringInt64Array invokes test_request_string_int64_array operation.
+	//
+	// POST /test_request_string_int64_array
+	TestRequestStringInt64Array(ctx context.Context, request []int64) (*Error, error)
+	// TestRequestStringInt64ArrayArray invokes test_request_string_int64_array_array operation.
+	//
+	// POST /test_request_string_int64_array_array
+	TestRequestStringInt64ArrayArray(ctx context.Context, request [][]int64) (*Error, error)
+	// TestRequestStringInt64Nullable invokes test_request_string_int64_nullable operation.
+	//
+	// POST /test_request_string_int64_nullable
+	TestRequestStringInt64Nullable(ctx context.Context, request OptNilStringInt64) (*Error, error)
+	// TestRequestStringInt64NullableArray invokes test_request_string_int64_nullable_array operation.
+	//
+	// POST /test_request_string_int64_nullable_array
+	TestRequestStringInt64NullableArray(ctx context.Context, request []NilStringInt64) (*Error, error)
+	// TestRequestStringInt64NullableArrayArray invokes test_request_string_int64_nullable_array_array operation.
+	//
+	// POST /test_request_string_int64_nullable_array_array
+	TestRequestStringInt64NullableArrayArray(ctx context.Context, request [][]NilStringInt64) (*Error, error)
+	// TestRequestStringInt8 invokes test_request_string_int8 operation.
+	//
+	// POST /test_request_string_int8
+	TestRequestStringInt8(ctx context.Context, request OptInt8) (*Error, error)
+	// TestRequestStringInt8Array invokes test_request_string_int8_array operation.
+	//
+	// POST /test_request_string_int8_array
+	TestRequestStringInt8Array(ctx context.Context, request []int8) (*Error, error)
+	// TestRequestStringInt8ArrayArray invokes test_request_string_int8_array_array operation.
+	//
+	// POST /test_request_string_int8_array_array
+	TestRequestStringInt8ArrayArray(ctx context.Context, request [][]int8) (*Error, error)
+	// TestRequestStringInt8Nullable invokes test_request_string_int8_nullable operation.
+	//
+	// POST /test_request_string_int8_nullable
+	TestRequestStringInt8Nullable(ctx context.Context, request OptNilInt8) (*Error, error)
+	// TestRequestStringInt8NullableArray invokes test_request_string_int8_nullable_array operation.
+	//
+	// POST /test_request_string_int8_nullable_array
+	TestRequestStringInt8NullableArray(ctx context.Context, request []NilInt8) (*Error, error)
+	// TestRequestStringInt8NullableArrayArray invokes test_request_string_int8_nullable_array_array operation.
+	//
+	// POST /test_request_string_int8_nullable_array_array
+	TestRequestStringInt8NullableArrayArray(ctx context.Context, request [][]NilInt8) (*Error, error)
+	// TestRequestStringIntArray invokes test_request_string_int_array operation.
+	//
+	// POST /test_request_string_int_array
+	TestRequestStringIntArray(ctx context.Context, request []int) (*Error, error)
+	// TestRequestStringIntArrayArray invokes test_request_string_int_array_array operation.
+	//
+	// POST /test_request_string_int_array_array
+	TestRequestStringIntArrayArray(ctx context.Context, request [][]int) (*Error, error)
+	// TestRequestStringIntNullable invokes test_request_string_int_nullable operation.
+	//
+	// POST /test_request_string_int_nullable
+	TestRequestStringIntNullable(ctx context.Context, request OptNilInt) (*Error, error)
+	// TestRequestStringIntNullableArray invokes test_request_string_int_nullable_array operation.
+	//
+	// POST /test_request_string_int_nullable_array
+	TestRequestStringIntNullableArray(ctx context.Context, request []NilInt) (*Error, error)
+	// TestRequestStringIntNullableArrayArray invokes test_request_string_int_nullable_array_array operation.
+	//
+	// POST /test_request_string_int_nullable_array_array
+	TestRequestStringIntNullableArrayArray(ctx context.Context, request [][]NilInt) (*Error, error)
+	// TestRequestStringIpv4 invokes test_request_string_ipv4 operation.
+	//
+	// POST /test_request_string_ipv4
+	TestRequestStringIpv4(ctx context.Context, request OptIPv4) (*Error, error)
+	// TestRequestStringIpv4Array invokes test_request_string_ipv4_array operation.
+	//
+	// POST /test_request_string_ipv4_array
+	TestRequestStringIpv4Array(ctx context.Context, request []netip.Addr) (*Error, error)
+	// TestRequestStringIpv4ArrayArray invokes test_request_string_ipv4_array_array operation.
+	//
+	// POST /test_request_string_ipv4_array_array
+	TestRequestStringIpv4ArrayArray(ctx context.Context, request [][]netip.Addr) (*Error, error)
+	// TestRequestStringIpv4Nullable invokes test_request_string_ipv4_nullable operation.
+	//
+	// POST /test_request_string_ipv4_nullable
+	TestRequestStringIpv4Nullable(ctx context.Context, request OptNilIPv4) (*Error, error)
+	// TestRequestStringIpv4NullableArray invokes test_request_string_ipv4_nullable_array operation.
+	//
+	// POST /test_request_string_ipv4_nullable_array
+	TestRequestStringIpv4NullableArray(ctx context.Context, request []NilIPv4) (*Error, error)
+	// TestRequestStringIpv4NullableArrayArray invokes test_request_string_ipv4_nullable_array_array operation.
+	//
+	// POST /test_request_string_ipv4_nullable_array_array
+	TestRequestStringIpv4NullableArrayArray(ctx context.Context, request [][]NilIPv4) (*Error, error)
+	// TestRequestStringIpv6 invokes test_request_string_ipv6 operation.
+	//
+	// POST /test_request_string_ipv6
+	TestRequestStringIpv6(ctx context.Context, request OptIPv6) (*Error, error)
+	// TestRequestStringIpv6Array invokes test_request_string_ipv6_array operation.
+	//
+	// POST /test_request_string_ipv6_array
+	TestRequestStringIpv6Array(ctx context.Context, request []netip.Addr) (*Error, error)
+	// TestRequestStringIpv6ArrayArray invokes test_request_string_ipv6_array_array operation.
+	//
+	// POST /test_request_string_ipv6_array_array
+	TestRequestStringIpv6ArrayArray(ctx context.Context, request [][]netip.Addr) (*Error, error)
+	// TestRequestStringIpv6Nullable invokes test_request_string_ipv6_nullable operation.
+	//
+	// POST /test_request_string_ipv6_nullable
+	TestRequestStringIpv6Nullable(ctx context.Context, request OptNilIPv6) (*Error, error)
+	// TestRequestStringIpv6NullableArray invokes test_request_string_ipv6_nullable_array operation.
+	//
+	// POST /test_request_string_ipv6_nullable_array
+	TestRequestStringIpv6NullableArray(ctx context.Context, request []NilIPv6) (*Error, error)
+	// TestRequestStringIpv6NullableArrayArray invokes test_request_string_ipv6_nullable_array_array operation.
+	//
+	// POST /test_request_string_ipv6_nullable_array_array
+	TestRequestStringIpv6NullableArrayArray(ctx context.Context, request [][]NilIPv6) (*Error, error)
+	// TestRequestStringNullable invokes test_request_string_nullable operation.
+	//
+	// POST /test_request_string_nullable
+	TestRequestStringNullable(ctx context.Context, request OptNilString) (*Error, error)
+	// TestRequestStringNullableArray invokes test_request_string_nullable_array operation.
+	//
+	// POST /test_request_string_nullable_array
+	TestRequestStringNullableArray(ctx context.Context, request []NilString) (*Error, error)
+	// TestRequestStringNullableArrayArray invokes test_request_string_nullable_array_array operation.
+	//
+	// POST /test_request_string_nullable_array_array
+	TestRequestStringNullableArrayArray(ctx context.Context, request [][]NilString) (*Error, error)
+	// TestRequestStringPassword invokes test_request_string_password operation.
+	//
+	// POST /test_request_string_password
+	TestRequestStringPassword(ctx context.Context, request OptString) (*Error, error)
+	// TestRequestStringPasswordArray invokes test_request_string_password_array operation.
+	//
+	// POST /test_request_string_password_array
+	TestRequestStringPasswordArray(ctx context.Context, request []string) (*Error, error)
+	// TestRequestStringPasswordArrayArray invokes test_request_string_password_array_array operation.
+	//
+	// POST /test_request_string_password_array_array
+	TestRequestStringPasswordArrayArray(ctx context.Context, request [][]string) (*Error, error)
+	// TestRequestStringPasswordNullable invokes test_request_string_password_nullable operation.
+	//
+	// POST /test_request_string_password_nullable
+	TestRequestStringPasswordNullable(ctx context.Context, request OptNilString) (*Error, error)
+	// TestRequestStringPasswordNullableArray invokes test_request_string_password_nullable_array operation.
+	//
+	// POST /test_request_string_password_nullable_array
+	TestRequestStringPasswordNullableArray(ctx context.Context, request []NilString) (*Error, error)
+	// TestRequestStringPasswordNullableArrayArray invokes test_request_string_password_nullable_array_array operation.
+	//
+	// POST /test_request_string_password_nullable_array_array
+	TestRequestStringPasswordNullableArrayArray(ctx context.Context, request [][]NilString) (*Error, error)
+	// TestRequestStringTime invokes test_request_string_time operation.
+	//
+	// POST /test_request_string_time
+	TestRequestStringTime(ctx context.Context, request OptTime) (*Error, error)
+	// TestRequestStringTimeArray invokes test_request_string_time_array operation.
+	//
+	// POST /test_request_string_time_array
+	TestRequestStringTimeArray(ctx context.Context, request []time.Time) (*Error, error)
+	// TestRequestStringTimeArrayArray invokes test_request_string_time_array_array operation.
+	//
+	// POST /test_request_string_time_array_array
+	TestRequestStringTimeArrayArray(ctx context.Context, request [][]time.Time) (*Error, error)
+	// TestRequestStringTimeNullable invokes test_request_string_time_nullable operation.
+	//
+	// POST /test_request_string_time_nullable
+	TestRequestStringTimeNullable(ctx context.Context, request OptNilTime) (*Error, error)
+	// TestRequestStringTimeNullableArray invokes test_request_string_time_nullable_array operation.
+	//
+	// POST /test_request_string_time_nullable_array
+	TestRequestStringTimeNullableArray(ctx context.Context, request []NilTime) (*Error, error)
+	// TestRequestStringTimeNullableArrayArray invokes test_request_string_time_nullable_array_array operation.
+	//
+	// POST /test_request_string_time_nullable_array_array
+	TestRequestStringTimeNullableArrayArray(ctx context.Context, request [][]NilTime) (*Error, error)
+	// TestRequestStringURI invokes test_request_string_uri operation.
+	//
+	// POST /test_request_string_uri
+	TestRequestStringURI(ctx context.Context, request OptURI) (*Error, error)
+	// TestRequestStringURIArray invokes test_request_string_uri_array operation.
+	//
+	// POST /test_request_string_uri_array
+	TestRequestStringURIArray(ctx context.Context, request []url.URL) (*Error, error)
+	// TestRequestStringURIArrayArray invokes test_request_string_uri_array_array operation.
+	//
+	// POST /test_request_string_uri_array_array
+	TestRequestStringURIArrayArray(ctx context.Context, request [][]url.URL) (*Error, error)
+	// TestRequestStringURINullable invokes test_request_string_uri_nullable operation.
+	//
+	// POST /test_request_string_uri_nullable
+	TestRequestStringURINullable(ctx context.Context, request OptNilURI) (*Error, error)
+	// TestRequestStringURINullableArray invokes test_request_string_uri_nullable_array operation.
+	//
+	// POST /test_request_string_uri_nullable_array
+	TestRequestStringURINullableArray(ctx context.Context, request []NilURI) (*Error, error)
+	// TestRequestStringURINullableArrayArray invokes test_request_string_uri_nullable_array_array operation.
+	//
+	// POST /test_request_string_uri_nullable_array_array
+	TestRequestStringURINullableArrayArray(ctx context.Context, request [][]NilURI) (*Error, error)
+	// TestRequestStringUUID invokes test_request_string_uuid operation.
+	//
+	// POST /test_request_string_uuid
+	TestRequestStringUUID(ctx context.Context, request OptUUID) (*Error, error)
+	// TestRequestStringUUIDArray invokes test_request_string_uuid_array operation.
+	//
+	// POST /test_request_string_uuid_array
+	TestRequestStringUUIDArray(ctx context.Context, request []uuid.UUID) (*Error, error)
+	// TestRequestStringUUIDArrayArray invokes test_request_string_uuid_array_array operation.
+	//
+	// POST /test_request_string_uuid_array_array
+	TestRequestStringUUIDArrayArray(ctx context.Context, request [][]uuid.UUID) (*Error, error)
+	// TestRequestStringUUIDNullable invokes test_request_string_uuid_nullable operation.
+	//
+	// POST /test_request_string_uuid_nullable
+	TestRequestStringUUIDNullable(ctx context.Context, request OptNilUUID) (*Error, error)
+	// TestRequestStringUUIDNullableArray invokes test_request_string_uuid_nullable_array operation.
+	//
+	// POST /test_request_string_uuid_nullable_array
+	TestRequestStringUUIDNullableArray(ctx context.Context, request []NilUUID) (*Error, error)
+	// TestRequestStringUUIDNullableArrayArray invokes test_request_string_uuid_nullable_array_array operation.
+	//
+	// POST /test_request_string_uuid_nullable_array_array
+	TestRequestStringUUIDNullableArrayArray(ctx context.Context, request [][]NilUUID) (*Error, error)
+	// TestRequestStringUint invokes test_request_string_uint operation.
+	//
+	// POST /test_request_string_uint
+	TestRequestStringUint(ctx context.Context, request OptUint) (*Error, error)
+	// TestRequestStringUint16 invokes test_request_string_uint16 operation.
+	//
+	// POST /test_request_string_uint16
+	TestRequestStringUint16(ctx context.Context, request OptUint16) (*Error, error)
+	// TestRequestStringUint16Array invokes test_request_string_uint16_array operation.
+	//
+	// POST /test_request_string_uint16_array
+	TestRequestStringUint16Array(ctx context.Context, request []uint16) (*Error, error)
+	// TestRequestStringUint16ArrayArray invokes test_request_string_uint16_array_array operation.
+	//
+	// POST /test_request_string_uint16_array_array
+	TestRequestStringUint16ArrayArray(ctx context.Context, request [][]uint16) (*Error, error)
+	// TestRequestStringUint16Nullable invokes test_request_string_uint16_nullable operation.
+	//
+	// POST /test_request_string_uint16_nullable
+	TestRequestStringUint16Nullable(ctx context.Context, request OptNilUint16) (*Error, error)
+	// TestRequestStringUint16NullableArray invokes test_request_string_uint16_nullable_array operation.
+	//
+	// POST /test_request_string_uint16_nullable_array
+	TestRequestStringUint16NullableArray(ctx context.Context, request []NilUint16) (*Error, error)
+	// TestRequestStringUint16NullableArrayArray invokes test_request_string_uint16_nullable_array_array operation.
+	//
+	// POST /test_request_string_uint16_nullable_array_array
+	TestRequestStringUint16NullableArrayArray(ctx context.Context, request [][]NilUint16) (*Error, error)
+	// TestRequestStringUint32 invokes test_request_string_uint32 operation.
+	//
+	// POST /test_request_string_uint32
+	TestRequestStringUint32(ctx context.Context, request OptUint32) (*Error, error)
+	// TestRequestStringUint32Array invokes test_request_string_uint32_array operation.
+	//
+	// POST /test_request_string_uint32_array
+	TestRequestStringUint32Array(ctx context.Context, request []uint32) (*Error, error)
+	// TestRequestStringUint32ArrayArray invokes test_request_string_uint32_array_array operation.
+	//
+	// POST /test_request_string_uint32_array_array
+	TestRequestStringUint32ArrayArray(ctx context.Context, request [][]uint32) (*Error, error)
+	// TestRequestStringUint32Nullable invokes test_request_string_uint32_nullable operation.
+	//
+	// POST /test_request_string_uint32_nullable
+	TestRequestStringUint32Nullable(ctx context.Context, request OptNilUint32) (*Error, error)
+	// TestRequestStringUint32NullableArray invokes test_request_string_uint32_nullable_array operation.
+	//
+	// POST /test_request_string_uint32_nullable_array
+	TestRequestStringUint32NullableArray(ctx context.Context, request []NilUint32) (*Error, error)
+	// TestRequestStringUint32NullableArrayArray invokes test_request_string_uint32_nullable_array_array operation.
+	//
+	// POST /test_request_string_uint32_nullable_array_array
+	TestRequestStringUint32NullableArrayArray(ctx context.Context, request [][]NilUint32) (*Error, error)
+	// TestRequestStringUint64 invokes test_request_string_uint64 operation.
+	//
+	// POST /test_request_string_uint64
+	TestRequestStringUint64(ctx context.Context, request OptUint64) (*Error, error)
+	// TestRequestStringUint64Array invokes test_request_string_uint64_array operation.
+	//
+	// POST /test_request_string_uint64_array
+	TestRequestStringUint64Array(ctx context.Context, request []uint64) (*Error, error)
+	// TestRequestStringUint64ArrayArray invokes test_request_string_uint64_array_array operation.
+	//
+	// POST /test_request_string_uint64_array_array
+	TestRequestStringUint64ArrayArray(ctx context.Context, request [][]uint64) (*Error, error)
+	// TestRequestStringUint64Nullable invokes test_request_string_uint64_nullable operation.
+	//
+	// POST /test_request_string_uint64_nullable
+	TestRequestStringUint64Nullable(ctx context.Context, request OptNilUint64) (*Error, error)
+	// TestRequestStringUint64NullableArray invokes test_request_string_uint64_nullable_array operation.
+	//
+	// POST /test_request_string_uint64_nullable_array
+	TestRequestStringUint64NullableArray(ctx context.Context, request []NilUint64) (*Error, error)
+	// TestRequestStringUint64NullableArrayArray invokes test_request_string_uint64_nullable_array_array operation.
+	//
+	// POST /test_request_string_uint64_nullable_array_array
+	TestRequestStringUint64NullableArrayArray(ctx context.Context, request [][]NilUint64) (*Error, error)
+	// TestRequestStringUint8 invokes test_request_string_uint8 operation.
+	//
+	// POST /test_request_string_uint8
+	TestRequestStringUint8(ctx context.Context, request OptUint8) (*Error, error)
+	// TestRequestStringUint8Array invokes test_request_string_uint8_array operation.
+	//
+	// POST /test_request_string_uint8_array
+	TestRequestStringUint8Array(ctx context.Context, request []uint8) (*Error, error)
+	// TestRequestStringUint8ArrayArray invokes test_request_string_uint8_array_array operation.
+	//
+	// POST /test_request_string_uint8_array_array
+	TestRequestStringUint8ArrayArray(ctx context.Context, request [][]uint8) (*Error, error)
+	// TestRequestStringUint8Nullable invokes test_request_string_uint8_nullable operation.
+	//
+	// POST /test_request_string_uint8_nullable
+	TestRequestStringUint8Nullable(ctx context.Context, request OptNilUint8) (*Error, error)
+	// TestRequestStringUint8NullableArray invokes test_request_string_uint8_nullable_array operation.
+	//
+	// POST /test_request_string_uint8_nullable_array
+	TestRequestStringUint8NullableArray(ctx context.Context, request []NilUint8) (*Error, error)
+	// TestRequestStringUint8NullableArrayArray invokes test_request_string_uint8_nullable_array_array operation.
+	//
+	// POST /test_request_string_uint8_nullable_array_array
+	TestRequestStringUint8NullableArrayArray(ctx context.Context, request [][]NilUint8) (*Error, error)
+	// TestRequestStringUintArray invokes test_request_string_uint_array operation.
+	//
+	// POST /test_request_string_uint_array
+	TestRequestStringUintArray(ctx context.Context, request []uint) (*Error, error)
+	// TestRequestStringUintArrayArray invokes test_request_string_uint_array_array operation.
+	//
+	// POST /test_request_string_uint_array_array
+	TestRequestStringUintArrayArray(ctx context.Context, request [][]uint) (*Error, error)
+	// TestRequestStringUintNullable invokes test_request_string_uint_nullable operation.
+	//
+	// POST /test_request_string_uint_nullable
+	TestRequestStringUintNullable(ctx context.Context, request OptNilUint) (*Error, error)
+	// TestRequestStringUintNullableArray invokes test_request_string_uint_nullable_array operation.
+	//
+	// POST /test_request_string_uint_nullable_array
+	TestRequestStringUintNullableArray(ctx context.Context, request []NilUint) (*Error, error)
+	// TestRequestStringUintNullableArrayArray invokes test_request_string_uint_nullable_array_array operation.
+	//
+	// POST /test_request_string_uint_nullable_array_array
+	TestRequestStringUintNullableArrayArray(ctx context.Context, request [][]NilUint) (*Error, error)
+	// TestRequestStringUnix invokes test_request_string_unix operation.
+	//
+	// POST /test_request_string_unix
+	TestRequestStringUnix(ctx context.Context, request OptStringUnixSeconds) (*Error, error)
+	// TestRequestStringUnixArray invokes test_request_string_unix_array operation.
+	//
+	// POST /test_request_string_unix_array
+	TestRequestStringUnixArray(ctx context.Context, request []time.Time) (*Error, error)
+	// TestRequestStringUnixArrayArray invokes test_request_string_unix_array_array operation.
+	//
+	// POST /test_request_string_unix_array_array
+	TestRequestStringUnixArrayArray(ctx context.Context, request [][]time.Time) (*Error, error)
+	// TestRequestStringUnixMicro invokes test_request_string_unix-micro operation.
+	//
+	// POST /test_request_string_unix-micro
+	TestRequestStringUnixMicro(ctx context.Context, request OptStringUnixMicro) (*Error, error)
+	// TestRequestStringUnixMicroArray invokes test_request_string_unix-micro_array operation.
+	//
+	// POST /test_request_string_unix-micro_array
+	TestRequestStringUnixMicroArray(ctx context.Context, request []time.Time) (*Error, error)
+	// TestRequestStringUnixMicroArrayArray invokes test_request_string_unix-micro_array_array operation.
+	//
+	// POST /test_request_string_unix-micro_array_array
+	TestRequestStringUnixMicroArrayArray(ctx context.Context, request [][]time.Time) (*Error, error)
+	// TestRequestStringUnixMicroNullable invokes test_request_string_unix-micro_nullable operation.
+	//
+	// POST /test_request_string_unix-micro_nullable
+	TestRequestStringUnixMicroNullable(ctx context.Context, request OptNilStringUnixMicro) (*Error, error)
+	// TestRequestStringUnixMicroNullableArray invokes test_request_string_unix-micro_nullable_array operation.
+	//
+	// POST /test_request_string_unix-micro_nullable_array
+	TestRequestStringUnixMicroNullableArray(ctx context.Context, request []NilStringUnixMicro) (*Error, error)
+	// TestRequestStringUnixMicroNullableArrayArray invokes test_request_string_unix-micro_nullable_array_array operation.
+	//
+	// POST /test_request_string_unix-micro_nullable_array_array
+	TestRequestStringUnixMicroNullableArrayArray(ctx context.Context, request [][]NilStringUnixMicro) (*Error, error)
+	// TestRequestStringUnixMilli invokes test_request_string_unix-milli operation.
+	//
+	// POST /test_request_string_unix-milli
+	TestRequestStringUnixMilli(ctx context.Context, request OptStringUnixMilli) (*Error, error)
+	// TestRequestStringUnixMilliArray invokes test_request_string_unix-milli_array operation.
+	//
+	// POST /test_request_string_unix-milli_array
+	TestRequestStringUnixMilliArray(ctx context.Context, request []time.Time) (*Error, error)
+	// TestRequestStringUnixMilliArrayArray invokes test_request_string_unix-milli_array_array operation.
+	//
+	// POST /test_request_string_unix-milli_array_array
+	TestRequestStringUnixMilliArrayArray(ctx context.Context, request [][]time.Time) (*Error, error)
+	// TestRequestStringUnixMilliNullable invokes test_request_string_unix-milli_nullable operation.
+	//
+	// POST /test_request_string_unix-milli_nullable
+	TestRequestStringUnixMilliNullable(ctx context.Context, request OptNilStringUnixMilli) (*Error, error)
+	// TestRequestStringUnixMilliNullableArray invokes test_request_string_unix-milli_nullable_array operation.
+	//
+	// POST /test_request_string_unix-milli_nullable_array
+	TestRequestStringUnixMilliNullableArray(ctx context.Context, request []NilStringUnixMilli) (*Error, error)
+	// TestRequestStringUnixMilliNullableArrayArray invokes test_request_string_unix-milli_nullable_array_array operation.
+	//
+	// POST /test_request_string_unix-milli_nullable_array_array
+	TestRequestStringUnixMilliNullableArrayArray(ctx context.Context, request [][]NilStringUnixMilli) (*Error, error)
+	// TestRequestStringUnixNano invokes test_request_string_unix-nano operation.
+	//
+	// POST /test_request_string_unix-nano
+	TestRequestStringUnixNano(ctx context.Context, request OptStringUnixNano) (*Error, error)
+	// TestRequestStringUnixNanoArray invokes test_request_string_unix-nano_array operation.
+	//
+	// POST /test_request_string_unix-nano_array
+	TestRequestStringUnixNanoArray(ctx context.Context, request []time.Time) (*Error, error)
+	// TestRequestStringUnixNanoArrayArray invokes test_request_string_unix-nano_array_array operation.
+	//
+	// POST /test_request_string_unix-nano_array_array
+	TestRequestStringUnixNanoArrayArray(ctx context.Context, request [][]time.Time) (*Error, error)
+	// TestRequestStringUnixNanoNullable invokes test_request_string_unix-nano_nullable operation.
+	//
+	// POST /test_request_string_unix-nano_nullable
+	TestRequestStringUnixNanoNullable(ctx context.Context, request OptNilStringUnixNano) (*Error, error)
+	// TestRequestStringUnixNanoNullableArray invokes test_request_string_unix-nano_nullable_array operation.
+	//
+	// POST /test_request_string_unix-nano_nullable_array
+	TestRequestStringUnixNanoNullableArray(ctx context.Context, request []NilStringUnixNano) (*Error, error)
+	// TestRequestStringUnixNanoNullableArrayArray invokes test_request_string_unix-nano_nullable_array_array operation.
+	//
+	// POST /test_request_string_unix-nano_nullable_array_array
+	TestRequestStringUnixNanoNullableArrayArray(ctx context.Context, request [][]NilStringUnixNano) (*Error, error)
+	// TestRequestStringUnixNullable invokes test_request_string_unix_nullable operation.
+	//
+	// POST /test_request_string_unix_nullable
+	TestRequestStringUnixNullable(ctx context.Context, request OptNilStringUnixSeconds) (*Error, error)
+	// TestRequestStringUnixNullableArray invokes test_request_string_unix_nullable_array operation.
+	//
+	// POST /test_request_string_unix_nullable_array
+	TestRequestStringUnixNullableArray(ctx context.Context, request []NilStringUnixSeconds) (*Error, error)
+	// TestRequestStringUnixNullableArrayArray invokes test_request_string_unix_nullable_array_array operation.
+	//
+	// POST /test_request_string_unix_nullable_array_array
+	TestRequestStringUnixNullableArrayArray(ctx context.Context, request [][]NilStringUnixSeconds) (*Error, error)
+	// TestRequestStringUnixSeconds invokes test_request_string_unix-seconds operation.
+	//
+	// POST /test_request_string_unix-seconds
+	TestRequestStringUnixSeconds(ctx context.Context, request OptStringUnixSeconds) (*Error, error)
+	// TestRequestStringUnixSecondsArray invokes test_request_string_unix-seconds_array operation.
+	//
+	// POST /test_request_string_unix-seconds_array
+	TestRequestStringUnixSecondsArray(ctx context.Context, request []time.Time) (*Error, error)
+	// TestRequestStringUnixSecondsArrayArray invokes test_request_string_unix-seconds_array_array operation.
+	//
+	// POST /test_request_string_unix-seconds_array_array
+	TestRequestStringUnixSecondsArrayArray(ctx context.Context, request [][]time.Time) (*Error, error)
+	// TestRequestStringUnixSecondsNullable invokes test_request_string_unix-seconds_nullable operation.
+	//
+	// POST /test_request_string_unix-seconds_nullable
+	TestRequestStringUnixSecondsNullable(ctx context.Context, request OptNilStringUnixSeconds) (*Error, error)
+	// TestRequestStringUnixSecondsNullableArray invokes test_request_string_unix-seconds_nullable_array operation.
+	//
+	// POST /test_request_string_unix-seconds_nullable_array
+	TestRequestStringUnixSecondsNullableArray(ctx context.Context, request []NilStringUnixSeconds) (*Error, error)
+	// TestRequestStringUnixSecondsNullableArrayArray invokes test_request_string_unix-seconds_nullable_array_array operation.
+	//
+	// POST /test_request_string_unix-seconds_nullable_array_array
+	TestRequestStringUnixSecondsNullableArrayArray(ctx context.Context, request [][]NilStringUnixSeconds) (*Error, error)
+	// TestResponseAny invokes test_response_Any operation.
+	//
+	// POST /test_response_Any
+	TestResponseAny(ctx context.Context, request string) (jx.Raw, error)
+	// TestResponseBoolean invokes test_response_boolean operation.
+	//
+	// POST /test_response_boolean
+	TestResponseBoolean(ctx context.Context, request string) (bool, error)
+	// TestResponseBooleanArray invokes test_response_boolean_array operation.
+	//
+	// POST /test_response_boolean_array
+	TestResponseBooleanArray(ctx context.Context, request string) ([]bool, error)
+	// TestResponseBooleanArrayArray invokes test_response_boolean_array_array operation.
+	//
+	// POST /test_response_boolean_array_array
+	TestResponseBooleanArrayArray(ctx context.Context, request string) ([][]bool, error)
+	// TestResponseBooleanNullable invokes test_response_boolean_nullable operation.
+	//
+	// POST /test_response_boolean_nullable
+	TestResponseBooleanNullable(ctx context.Context, request string) (NilBool, error)
+	// TestResponseBooleanNullableArray invokes test_response_boolean_nullable_array operation.
+	//
+	// POST /test_response_boolean_nullable_array
+	TestResponseBooleanNullableArray(ctx context.Context, request string) ([]NilBool, error)
+	// TestResponseBooleanNullableArrayArray invokes test_response_boolean_nullable_array_array operation.
+	//
+	// POST /test_response_boolean_nullable_array_array
+	TestResponseBooleanNullableArrayArray(ctx context.Context, request string) ([][]NilBool, error)
+	// TestResponseEmptyStruct invokes test_response_EmptyStruct operation.
+	//
+	// POST /test_response_EmptyStruct
+	TestResponseEmptyStruct(ctx context.Context, request string) error
+	// TestResponseFormatTest invokes test_response_FormatTest operation.
+	//
+	// POST /test_response_FormatTest
+	TestResponseFormatTest(ctx context.Context, request string) (*TestResponseFormatTestOK, error)
+	// TestResponseInteger invokes test_response_integer operation.
+	//
+	// POST /test_response_integer
+	TestResponseInteger(ctx context.Context, request string) (int, error)
+	// TestResponseIntegerArray invokes test_response_integer_array operation.
+	//
+	// POST /test_response_integer_array
+	TestResponseIntegerArray(ctx context.Context, request string) ([]int, error)
+	// TestResponseIntegerArrayArray invokes test_response_integer_array_array operation.
+	//
+	// POST /test_response_integer_array_array
+	TestResponseIntegerArrayArray(ctx context.Context, request string) ([][]int, error)
+	// TestResponseIntegerInt16 invokes test_response_integer_int16 operation.
+	//
+	// POST /test_response_integer_int16
+	TestResponseIntegerInt16(ctx context.Context, request string) (int16, error)
+	// TestResponseIntegerInt16Array invokes test_response_integer_int16_array operation.
+	//
+	// POST /test_response_integer_int16_array
+	TestResponseIntegerInt16Array(ctx context.Context, request string) ([]int16, error)
+	// TestResponseIntegerInt16ArrayArray invokes test_response_integer_int16_array_array operation.
+	//
+	// POST /test_response_integer_int16_array_array
+	TestResponseIntegerInt16ArrayArray(ctx context.Context, request string) ([][]int16, error)
+	// TestResponseIntegerInt16Nullable invokes test_response_integer_int16_nullable operation.
+	//
+	// POST /test_response_integer_int16_nullable
+	TestResponseIntegerInt16Nullable(ctx context.Context, request string) (NilInt16, error)
+	// TestResponseIntegerInt16NullableArray invokes test_response_integer_int16_nullable_array operation.
+	//
+	// POST /test_response_integer_int16_nullable_array
+	TestResponseIntegerInt16NullableArray(ctx context.Context, request string) ([]NilInt16, error)
+	// TestResponseIntegerInt16NullableArrayArray invokes test_response_integer_int16_nullable_array_array operation.
+	//
+	// POST /test_response_integer_int16_nullable_array_array
+	TestResponseIntegerInt16NullableArrayArray(ctx context.Context, request string) ([][]NilInt16, error)
+	// TestResponseIntegerInt32 invokes test_response_integer_int32 operation.
+	//
+	// POST /test_response_integer_int32
+	TestResponseIntegerInt32(ctx context.Context, request string) (int32, error)
+	// TestResponseIntegerInt32Array invokes test_response_integer_int32_array operation.
+	//
+	// POST /test_response_integer_int32_array
+	TestResponseIntegerInt32Array(ctx context.Context, request string) ([]int32, error)
+	// TestResponseIntegerInt32ArrayArray invokes test_response_integer_int32_array_array operation.
+	//
+	// POST /test_response_integer_int32_array_array
+	TestResponseIntegerInt32ArrayArray(ctx context.Context, request string) ([][]int32, error)
+	// TestResponseIntegerInt32Nullable invokes test_response_integer_int32_nullable operation.
+	//
+	// POST /test_response_integer_int32_nullable
+	TestResponseIntegerInt32Nullable(ctx context.Context, request string) (NilInt32, error)
+	// TestResponseIntegerInt32NullableArray invokes test_response_integer_int32_nullable_array operation.
+	//
+	// POST /test_response_integer_int32_nullable_array
+	TestResponseIntegerInt32NullableArray(ctx context.Context, request string) ([]NilInt32, error)
+	// TestResponseIntegerInt32NullableArrayArray invokes test_response_integer_int32_nullable_array_array operation.
+	//
+	// POST /test_response_integer_int32_nullable_array_array
+	TestResponseIntegerInt32NullableArrayArray(ctx context.Context, request string) ([][]NilInt32, error)
+	// TestResponseIntegerInt64 invokes test_response_integer_int64 operation.
+	//
+	// POST /test_response_integer_int64
+	TestResponseIntegerInt64(ctx context.Context, request string) (int64, error)
+	// TestResponseIntegerInt64Array invokes test_response_integer_int64_array operation.
+	//
+	// POST /test_response_integer_int64_array
+	TestResponseIntegerInt64Array(ctx context.Context, request string) ([]int64, error)
+	// TestResponseIntegerInt64ArrayArray invokes test_response_integer_int64_array_array operation.
+	//
+	// POST /test_response_integer_int64_array_array
+	TestResponseIntegerInt64ArrayArray(ctx context.Context, request string) ([][]int64, error)
+	// TestResponseIntegerInt64Nullable invokes test_response_integer_int64_nullable operation.
+	//
+	// POST /test_response_integer_int64_nullable
+	TestResponseIntegerInt64Nullable(ctx context.Context, request string) (NilInt64, error)
+	// TestResponseIntegerInt64NullableArray invokes test_response_integer_int64_nullable_array operation.
+	//
+	// POST /test_response_integer_int64_nullable_array
+	TestResponseIntegerInt64NullableArray(ctx context.Context, request string) ([]NilInt64, error)
+	// TestResponseIntegerInt64NullableArrayArray invokes test_response_integer_int64_nullable_array_array operation.
+	//
+	// POST /test_response_integer_int64_nullable_array_array
+	TestResponseIntegerInt64NullableArrayArray(ctx context.Context, request string) ([][]NilInt64, error)
+	// TestResponseIntegerInt8 invokes test_response_integer_int8 operation.
+	//
+	// POST /test_response_integer_int8
+	TestResponseIntegerInt8(ctx context.Context, request string) (int8, error)
+	// TestResponseIntegerInt8Array invokes test_response_integer_int8_array operation.
+	//
+	// POST /test_response_integer_int8_array
+	TestResponseIntegerInt8Array(ctx context.Context, request string) ([]int8, error)
+	// TestResponseIntegerInt8ArrayArray invokes test_response_integer_int8_array_array operation.
+	//
+	// POST /test_response_integer_int8_array_array
+	TestResponseIntegerInt8ArrayArray(ctx context.Context, request string) ([][]int8, error)
+	// TestResponseIntegerInt8Nullable invokes test_response_integer_int8_nullable operation.
+	//
+	// POST /test_response_integer_int8_nullable
+	TestResponseIntegerInt8Nullable(ctx context.Context, request string) (NilInt8, error)
+	// TestResponseIntegerInt8NullableArray invokes test_response_integer_int8_nullable_array operation.
+	//
+	// POST /test_response_integer_int8_nullable_array
+	TestResponseIntegerInt8NullableArray(ctx context.Context, request string) ([]NilInt8, error)
+	// TestResponseIntegerInt8NullableArrayArray invokes test_response_integer_int8_nullable_array_array operation.
+	//
+	// POST /test_response_integer_int8_nullable_array_array
+	TestResponseIntegerInt8NullableArrayArray(ctx context.Context, request string) ([][]NilInt8, error)
+	// TestResponseIntegerNullable invokes test_response_integer_nullable operation.
+	//
+	// POST /test_response_integer_nullable
+	TestResponseIntegerNullable(ctx context.Context, request string) (NilInt, error)
+	// TestResponseIntegerNullableArray invokes test_response_integer_nullable_array operation.
+	//
+	// POST /test_response_integer_nullable_array
+	TestResponseIntegerNullableArray(ctx context.Context, request string) ([]NilInt, error)
+	// TestResponseIntegerNullableArrayArray invokes test_response_integer_nullable_array_array operation.
+	//
+	// POST /test_response_integer_nullable_array_array
+	TestResponseIntegerNullableArrayArray(ctx context.Context, request string) ([][]NilInt, error)
+	// TestResponseIntegerUint invokes test_response_integer_uint operation.
+	//
+	// POST /test_response_integer_uint
+	TestResponseIntegerUint(ctx context.Context, request string) (uint, error)
+	// TestResponseIntegerUint16 invokes test_response_integer_uint16 operation.
+	//
+	// POST /test_response_integer_uint16
+	TestResponseIntegerUint16(ctx context.Context, request string) (uint16, error)
+	// TestResponseIntegerUint16Array invokes test_response_integer_uint16_array operation.
+	//
+	// POST /test_response_integer_uint16_array
+	TestResponseIntegerUint16Array(ctx context.Context, request string) ([]uint16, error)
+	// TestResponseIntegerUint16ArrayArray invokes test_response_integer_uint16_array_array operation.
+	//
+	// POST /test_response_integer_uint16_array_array
+	TestResponseIntegerUint16ArrayArray(ctx context.Context, request string) ([][]uint16, error)
+	// TestResponseIntegerUint16Nullable invokes test_response_integer_uint16_nullable operation.
+	//
+	// POST /test_response_integer_uint16_nullable
+	TestResponseIntegerUint16Nullable(ctx context.Context, request string) (NilUint16, error)
+	// TestResponseIntegerUint16NullableArray invokes test_response_integer_uint16_nullable_array operation.
+	//
+	// POST /test_response_integer_uint16_nullable_array
+	TestResponseIntegerUint16NullableArray(ctx context.Context, request string) ([]NilUint16, error)
+	// TestResponseIntegerUint16NullableArrayArray invokes test_response_integer_uint16_nullable_array_array operation.
+	//
+	// POST /test_response_integer_uint16_nullable_array_array
+	TestResponseIntegerUint16NullableArrayArray(ctx context.Context, request string) ([][]NilUint16, error)
+	// TestResponseIntegerUint32 invokes test_response_integer_uint32 operation.
+	//
+	// POST /test_response_integer_uint32
+	TestResponseIntegerUint32(ctx context.Context, request string) (uint32, error)
+	// TestResponseIntegerUint32Array invokes test_response_integer_uint32_array operation.
+	//
+	// POST /test_response_integer_uint32_array
+	TestResponseIntegerUint32Array(ctx context.Context, request string) ([]uint32, error)
+	// TestResponseIntegerUint32ArrayArray invokes test_response_integer_uint32_array_array operation.
+	//
+	// POST /test_response_integer_uint32_array_array
+	TestResponseIntegerUint32ArrayArray(ctx context.Context, request string) ([][]uint32, error)
+	// TestResponseIntegerUint32Nullable invokes test_response_integer_uint32_nullable operation.
+	//
+	// POST /test_response_integer_uint32_nullable
+	TestResponseIntegerUint32Nullable(ctx context.Context, request string) (NilUint32, error)
+	// TestResponseIntegerUint32NullableArray invokes test_response_integer_uint32_nullable_array operation.
+	//
+	// POST /test_response_integer_uint32_nullable_array
+	TestResponseIntegerUint32NullableArray(ctx context.Context, request string) ([]NilUint32, error)
+	// TestResponseIntegerUint32NullableArrayArray invokes test_response_integer_uint32_nullable_array_array operation.
+	//
+	// POST /test_response_integer_uint32_nullable_array_array
+	TestResponseIntegerUint32NullableArrayArray(ctx context.Context, request string) ([][]NilUint32, error)
+	// TestResponseIntegerUint64 invokes test_response_integer_uint64 operation.
+	//
+	// POST /test_response_integer_uint64
+	TestResponseIntegerUint64(ctx context.Context, request string) (uint64, error)
+	// TestResponseIntegerUint64Array invokes test_response_integer_uint64_array operation.
+	//
+	// POST /test_response_integer_uint64_array
+	TestResponseIntegerUint64Array(ctx context.Context, request string) ([]uint64, error)
+	// TestResponseIntegerUint64ArrayArray invokes test_response_integer_uint64_array_array operation.
+	//
+	// POST /test_response_integer_uint64_array_array
+	TestResponseIntegerUint64ArrayArray(ctx context.Context, request string) ([][]uint64, error)
+	// TestResponseIntegerUint64Nullable invokes test_response_integer_uint64_nullable operation.
+	//
+	// POST /test_response_integer_uint64_nullable
+	TestResponseIntegerUint64Nullable(ctx context.Context, request string) (NilUint64, error)
+	// TestResponseIntegerUint64NullableArray invokes test_response_integer_uint64_nullable_array operation.
+	//
+	// POST /test_response_integer_uint64_nullable_array
+	TestResponseIntegerUint64NullableArray(ctx context.Context, request string) ([]NilUint64, error)
+	// TestResponseIntegerUint64NullableArrayArray invokes test_response_integer_uint64_nullable_array_array operation.
+	//
+	// POST /test_response_integer_uint64_nullable_array_array
+	TestResponseIntegerUint64NullableArrayArray(ctx context.Context, request string) ([][]NilUint64, error)
+	// TestResponseIntegerUint8 invokes test_response_integer_uint8 operation.
+	//
+	// POST /test_response_integer_uint8
+	TestResponseIntegerUint8(ctx context.Context, request string) (uint8, error)
+	// TestResponseIntegerUint8Array invokes test_response_integer_uint8_array operation.
+	//
+	// POST /test_response_integer_uint8_array
+	TestResponseIntegerUint8Array(ctx context.Context, request string) ([]uint8, error)
+	// TestResponseIntegerUint8ArrayArray invokes test_response_integer_uint8_array_array operation.
+	//
+	// POST /test_response_integer_uint8_array_array
+	TestResponseIntegerUint8ArrayArray(ctx context.Context, request string) ([][]uint8, error)
+	// TestResponseIntegerUint8Nullable invokes test_response_integer_uint8_nullable operation.
+	//
+	// POST /test_response_integer_uint8_nullable
+	TestResponseIntegerUint8Nullable(ctx context.Context, request string) (NilUint8, error)
+	// TestResponseIntegerUint8NullableArray invokes test_response_integer_uint8_nullable_array operation.
+	//
+	// POST /test_response_integer_uint8_nullable_array
+	TestResponseIntegerUint8NullableArray(ctx context.Context, request string) ([]NilUint8, error)
+	// TestResponseIntegerUint8NullableArrayArray invokes test_response_integer_uint8_nullable_array_array operation.
+	//
+	// POST /test_response_integer_uint8_nullable_array_array
+	TestResponseIntegerUint8NullableArrayArray(ctx context.Context, request string) ([][]NilUint8, error)
+	// TestResponseIntegerUintArray invokes test_response_integer_uint_array operation.
+	//
+	// POST /test_response_integer_uint_array
+	TestResponseIntegerUintArray(ctx context.Context, request string) ([]uint, error)
+	// TestResponseIntegerUintArrayArray invokes test_response_integer_uint_array_array operation.
+	//
+	// POST /test_response_integer_uint_array_array
+	TestResponseIntegerUintArrayArray(ctx context.Context, request string) ([][]uint, error)
+	// TestResponseIntegerUintNullable invokes test_response_integer_uint_nullable operation.
+	//
+	// POST /test_response_integer_uint_nullable
+	TestResponseIntegerUintNullable(ctx context.Context, request string) (NilUint, error)
+	// TestResponseIntegerUintNullableArray invokes test_response_integer_uint_nullable_array operation.
+	//
+	// POST /test_response_integer_uint_nullable_array
+	TestResponseIntegerUintNullableArray(ctx context.Context, request string) ([]NilUint, error)
+	// TestResponseIntegerUintNullableArrayArray invokes test_response_integer_uint_nullable_array_array operation.
+	//
+	// POST /test_response_integer_uint_nullable_array_array
+	TestResponseIntegerUintNullableArrayArray(ctx context.Context, request string) ([][]NilUint, error)
+	// TestResponseIntegerUnix invokes test_response_integer_unix operation.
+	//
+	// POST /test_response_integer_unix
+	TestResponseIntegerUnix(ctx context.Context, request string) (time.Time, error)
+	// TestResponseIntegerUnixArray invokes test_response_integer_unix_array operation.
+	//
+	// POST /test_response_integer_unix_array
+	TestResponseIntegerUnixArray(ctx context.Context, request string) ([]time.Time, error)
+	// TestResponseIntegerUnixArrayArray invokes test_response_integer_unix_array_array operation.
+	//
+	// POST /test_response_integer_unix_array_array
+	TestResponseIntegerUnixArrayArray(ctx context.Context, request string) ([][]time.Time, error)
+	// TestResponseIntegerUnixMicro invokes test_response_integer_unix-micro operation.
+	//
+	// POST /test_response_integer_unix-micro
+	TestResponseIntegerUnixMicro(ctx context.Context, request string) (time.Time, error)
+	// TestResponseIntegerUnixMicroArray invokes test_response_integer_unix-micro_array operation.
+	//
+	// POST /test_response_integer_unix-micro_array
+	TestResponseIntegerUnixMicroArray(ctx context.Context, request string) ([]time.Time, error)
+	// TestResponseIntegerUnixMicroArrayArray invokes test_response_integer_unix-micro_array_array operation.
+	//
+	// POST /test_response_integer_unix-micro_array_array
+	TestResponseIntegerUnixMicroArrayArray(ctx context.Context, request string) ([][]time.Time, error)
+	// TestResponseIntegerUnixMicroNullable invokes test_response_integer_unix-micro_nullable operation.
+	//
+	// POST /test_response_integer_unix-micro_nullable
+	TestResponseIntegerUnixMicroNullable(ctx context.Context, request string) (NilUnixMicro, error)
+	// TestResponseIntegerUnixMicroNullableArray invokes test_response_integer_unix-micro_nullable_array operation.
+	//
+	// POST /test_response_integer_unix-micro_nullable_array
+	TestResponseIntegerUnixMicroNullableArray(ctx context.Context, request string) ([]NilUnixMicro, error)
+	// TestResponseIntegerUnixMicroNullableArrayArray invokes test_response_integer_unix-micro_nullable_array_array operation.
+	//
+	// POST /test_response_integer_unix-micro_nullable_array_array
+	TestResponseIntegerUnixMicroNullableArrayArray(ctx context.Context, request string) ([][]NilUnixMicro, error)
+	// TestResponseIntegerUnixMilli invokes test_response_integer_unix-milli operation.
+	//
+	// POST /test_response_integer_unix-milli
+	TestResponseIntegerUnixMilli(ctx context.Context, request string) (time.Time, error)
+	// TestResponseIntegerUnixMilliArray invokes test_response_integer_unix-milli_array operation.
+	//
+	// POST /test_response_integer_unix-milli_array
+	TestResponseIntegerUnixMilliArray(ctx context.Context, request string) ([]time.Time, error)
+	// TestResponseIntegerUnixMilliArrayArray invokes test_response_integer_unix-milli_array_array operation.
+	//
+	// POST /test_response_integer_unix-milli_array_array
+	TestResponseIntegerUnixMilliArrayArray(ctx context.Context, request string) ([][]time.Time, error)
+	// TestResponseIntegerUnixMilliNullable invokes test_response_integer_unix-milli_nullable operation.
+	//
+	// POST /test_response_integer_unix-milli_nullable
+	TestResponseIntegerUnixMilliNullable(ctx context.Context, request string) (NilUnixMilli, error)
+	// TestResponseIntegerUnixMilliNullableArray invokes test_response_integer_unix-milli_nullable_array operation.
+	//
+	// POST /test_response_integer_unix-milli_nullable_array
+	TestResponseIntegerUnixMilliNullableArray(ctx context.Context, request string) ([]NilUnixMilli, error)
+	// TestResponseIntegerUnixMilliNullableArrayArray invokes test_response_integer_unix-milli_nullable_array_array operation.
+	//
+	// POST /test_response_integer_unix-milli_nullable_array_array
+	TestResponseIntegerUnixMilliNullableArrayArray(ctx context.Context, request string) ([][]NilUnixMilli, error)
+	// TestResponseIntegerUnixNano invokes test_response_integer_unix-nano operation.
+	//
+	// POST /test_response_integer_unix-nano
+	TestResponseIntegerUnixNano(ctx context.Context, request string) (time.Time, error)
+	// TestResponseIntegerUnixNanoArray invokes test_response_integer_unix-nano_array operation.
+	//
+	// POST /test_response_integer_unix-nano_array
+	TestResponseIntegerUnixNanoArray(ctx context.Context, request string) ([]time.Time, error)
+	// TestResponseIntegerUnixNanoArrayArray invokes test_response_integer_unix-nano_array_array operation.
+	//
+	// POST /test_response_integer_unix-nano_array_array
+	TestResponseIntegerUnixNanoArrayArray(ctx context.Context, request string) ([][]time.Time, error)
+	// TestResponseIntegerUnixNanoNullable invokes test_response_integer_unix-nano_nullable operation.
+	//
+	// POST /test_response_integer_unix-nano_nullable
+	TestResponseIntegerUnixNanoNullable(ctx context.Context, request string) (NilUnixNano, error)
+	// TestResponseIntegerUnixNanoNullableArray invokes test_response_integer_unix-nano_nullable_array operation.
+	//
+	// POST /test_response_integer_unix-nano_nullable_array
+	TestResponseIntegerUnixNanoNullableArray(ctx context.Context, request string) ([]NilUnixNano, error)
+	// TestResponseIntegerUnixNanoNullableArrayArray invokes test_response_integer_unix-nano_nullable_array_array operation.
+	//
+	// POST /test_response_integer_unix-nano_nullable_array_array
+	TestResponseIntegerUnixNanoNullableArrayArray(ctx context.Context, request string) ([][]NilUnixNano, error)
+	// TestResponseIntegerUnixNullable invokes test_response_integer_unix_nullable operation.
+	//
+	// POST /test_response_integer_unix_nullable
+	TestResponseIntegerUnixNullable(ctx context.Context, request string) (NilUnixSeconds, error)
+	// TestResponseIntegerUnixNullableArray invokes test_response_integer_unix_nullable_array operation.
+	//
+	// POST /test_response_integer_unix_nullable_array
+	TestResponseIntegerUnixNullableArray(ctx context.Context, request string) ([]NilUnixSeconds, error)
+	// TestResponseIntegerUnixNullableArrayArray invokes test_response_integer_unix_nullable_array_array operation.
+	//
+	// POST /test_response_integer_unix_nullable_array_array
+	TestResponseIntegerUnixNullableArrayArray(ctx context.Context, request string) ([][]NilUnixSeconds, error)
+	// TestResponseIntegerUnixSeconds invokes test_response_integer_unix-seconds operation.
+	//
+	// POST /test_response_integer_unix-seconds
+	TestResponseIntegerUnixSeconds(ctx context.Context, request string) (time.Time, error)
+	// TestResponseIntegerUnixSecondsArray invokes test_response_integer_unix-seconds_array operation.
+	//
+	// POST /test_response_integer_unix-seconds_array
+	TestResponseIntegerUnixSecondsArray(ctx context.Context, request string) ([]time.Time, error)
+	// TestResponseIntegerUnixSecondsArrayArray invokes test_response_integer_unix-seconds_array_array operation.
+	//
+	// POST /test_response_integer_unix-seconds_array_array
+	TestResponseIntegerUnixSecondsArrayArray(ctx context.Context, request string) ([][]time.Time, error)
+	// TestResponseIntegerUnixSecondsNullable invokes test_response_integer_unix-seconds_nullable operation.
+	//
+	// POST /test_response_integer_unix-seconds_nullable
+	TestResponseIntegerUnixSecondsNullable(ctx context.Context, request string) (NilUnixSeconds, error)
+	// TestResponseIntegerUnixSecondsNullableArray invokes test_response_integer_unix-seconds_nullable_array operation.
+	//
+	// POST /test_response_integer_unix-seconds_nullable_array
+	TestResponseIntegerUnixSecondsNullableArray(ctx context.Context, request string) ([]NilUnixSeconds, error)
+	// TestResponseIntegerUnixSecondsNullableArrayArray invokes test_response_integer_unix-seconds_nullable_array_array operation.
+	//
+	// POST /test_response_integer_unix-seconds_nullable_array_array
+	TestResponseIntegerUnixSecondsNullableArrayArray(ctx context.Context, request string) ([][]NilUnixSeconds, error)
+	// TestResponseNull invokes test_response_null operation.
+	//
+	// POST /test_response_null
+	TestResponseNull(ctx context.Context, request string) (struct{}, error)
+	// TestResponseNullArray invokes test_response_null_array operation.
+	//
+	// POST /test_response_null_array
+	TestResponseNullArray(ctx context.Context, request string) ([]struct{}, error)
+	// TestResponseNullArrayArray invokes test_response_null_array_array operation.
+	//
+	// POST /test_response_null_array_array
+	TestResponseNullArrayArray(ctx context.Context, request string) ([][]struct{}, error)
+	// TestResponseNullNullable invokes test_response_null_nullable operation.
+	//
+	// POST /test_response_null_nullable
+	TestResponseNullNullable(ctx context.Context, request string) (struct{}, error)
+	// TestResponseNullNullableArray invokes test_response_null_nullable_array operation.
+	//
+	// POST /test_response_null_nullable_array
+	TestResponseNullNullableArray(ctx context.Context, request string) ([]struct{}, error)
+	// TestResponseNullNullableArrayArray invokes test_response_null_nullable_array_array operation.
+	//
+	// POST /test_response_null_nullable_array_array
+	TestResponseNullNullableArrayArray(ctx context.Context, request string) ([][]struct{}, error)
+	// TestResponseNumber invokes test_response_number operation.
+	//
+	// POST /test_response_number
+	TestResponseNumber(ctx context.Context, request string) (float64, error)
+	// TestResponseNumberArray invokes test_response_number_array operation.
+	//
+	// POST /test_response_number_array
+	TestResponseNumberArray(ctx context.Context, request string) ([]float64, error)
+	// TestResponseNumberArrayArray invokes test_response_number_array_array operation.
+	//
+	// POST /test_response_number_array_array
+	TestResponseNumberArrayArray(ctx context.Context, request string) ([][]float64, error)
+	// TestResponseNumberDouble invokes test_response_number_double operation.
+	//
+	// POST /test_response_number_double
+	TestResponseNumberDouble(ctx context.Context, request string) (float64, error)
+	// TestResponseNumberDoubleArray invokes test_response_number_double_array operation.
+	//
+	// POST /test_response_number_double_array
+	TestResponseNumberDoubleArray(ctx context.Context, request string) ([]float64, error)
+	// TestResponseNumberDoubleArrayArray invokes test_response_number_double_array_array operation.
+	//
+	// POST /test_response_number_double_array_array
+	TestResponseNumberDoubleArrayArray(ctx context.Context, request string) ([][]float64, error)
+	// TestResponseNumberDoubleNullable invokes test_response_number_double_nullable operation.
+	//
+	// POST /test_response_number_double_nullable
+	TestResponseNumberDoubleNullable(ctx context.Context, request string) (NilFloat64, error)
+	// TestResponseNumberDoubleNullableArray invokes test_response_number_double_nullable_array operation.
+	//
+	// POST /test_response_number_double_nullable_array
+	TestResponseNumberDoubleNullableArray(ctx context.Context, request string) ([]NilFloat64, error)
+	// TestResponseNumberDoubleNullableArrayArray invokes test_response_number_double_nullable_array_array operation.
+	//
+	// POST /test_response_number_double_nullable_array_array
+	TestResponseNumberDoubleNullableArrayArray(ctx context.Context, request string) ([][]NilFloat64, error)
+	// TestResponseNumberFloat invokes test_response_number_float operation.
+	//
+	// POST /test_response_number_float
+	TestResponseNumberFloat(ctx context.Context, request string) (float32, error)
+	// TestResponseNumberFloatArray invokes test_response_number_float_array operation.
+	//
+	// POST /test_response_number_float_array
+	TestResponseNumberFloatArray(ctx context.Context, request string) ([]float32, error)
+	// TestResponseNumberFloatArrayArray invokes test_response_number_float_array_array operation.
+	//
+	// POST /test_response_number_float_array_array
+	TestResponseNumberFloatArrayArray(ctx context.Context, request string) ([][]float32, error)
+	// TestResponseNumberFloatNullable invokes test_response_number_float_nullable operation.
+	//
+	// POST /test_response_number_float_nullable
+	TestResponseNumberFloatNullable(ctx context.Context, request string) (NilFloat32, error)
+	// TestResponseNumberFloatNullableArray invokes test_response_number_float_nullable_array operation.
+	//
+	// POST /test_response_number_float_nullable_array
+	TestResponseNumberFloatNullableArray(ctx context.Context, request string) ([]NilFloat32, error)
+	// TestResponseNumberFloatNullableArrayArray invokes test_response_number_float_nullable_array_array operation.
+	//
+	// POST /test_response_number_float_nullable_array_array
+	TestResponseNumberFloatNullableArrayArray(ctx context.Context, request string) ([][]NilFloat32, error)
+	// TestResponseNumberInt32 invokes test_response_number_int32 operation.
+	//
+	// POST /test_response_number_int32
+	TestResponseNumberInt32(ctx context.Context, request string) (int32, error)
+	// TestResponseNumberInt32Array invokes test_response_number_int32_array operation.
+	//
+	// POST /test_response_number_int32_array
+	TestResponseNumberInt32Array(ctx context.Context, request string) ([]int32, error)
+	// TestResponseNumberInt32ArrayArray invokes test_response_number_int32_array_array operation.
+	//
+	// POST /test_response_number_int32_array_array
+	TestResponseNumberInt32ArrayArray(ctx context.Context, request string) ([][]int32, error)
+	// TestResponseNumberInt32Nullable invokes test_response_number_int32_nullable operation.
+	//
+	// POST /test_response_number_int32_nullable
+	TestResponseNumberInt32Nullable(ctx context.Context, request string) (NilInt32, error)
+	// TestResponseNumberInt32NullableArray invokes test_response_number_int32_nullable_array operation.
+	//
+	// POST /test_response_number_int32_nullable_array
+	TestResponseNumberInt32NullableArray(ctx context.Context, request string) ([]NilInt32, error)
+	// TestResponseNumberInt32NullableArrayArray invokes test_response_number_int32_nullable_array_array operation.
+	//
+	// POST /test_response_number_int32_nullable_array_array
+	TestResponseNumberInt32NullableArrayArray(ctx context.Context, request string) ([][]NilInt32, error)
+	// TestResponseNumberInt64 invokes test_response_number_int64 operation.
+	//
+	// POST /test_response_number_int64
+	TestResponseNumberInt64(ctx context.Context, request string) (int64, error)
+	// TestResponseNumberInt64Array invokes test_response_number_int64_array operation.
+	//
+	// POST /test_response_number_int64_array
+	TestResponseNumberInt64Array(ctx context.Context, request string) ([]int64, error)
+	// TestResponseNumberInt64ArrayArray invokes test_response_number_int64_array_array operation.
+	//
+	// POST /test_response_number_int64_array_array
+	TestResponseNumberInt64ArrayArray(ctx context.Context, request string) ([][]int64, error)
+	// TestResponseNumberInt64Nullable invokes test_response_number_int64_nullable operation.
+	//
+	// POST /test_response_number_int64_nullable
+	TestResponseNumberInt64Nullable(ctx context.Context, request string) (NilInt64, error)
+	// TestResponseNumberInt64NullableArray invokes test_response_number_int64_nullable_array operation.
+	//
+	// POST /test_response_number_int64_nullable_array
+	TestResponseNumberInt64NullableArray(ctx context.Context, request string) ([]NilInt64, error)
+	// TestResponseNumberInt64NullableArrayArray invokes test_response_number_int64_nullable_array_array operation.
+	//
+	// POST /test_response_number_int64_nullable_array_array
+	TestResponseNumberInt64NullableArrayArray(ctx context.Context, request string) ([][]NilInt64, error)
+	// TestResponseNumberNullable invokes test_response_number_nullable operation.
+	//
+	// POST /test_response_number_nullable
+	TestResponseNumberNullable(ctx context.Context, request string) (NilFloat64, error)
+	// TestResponseNumberNullableArray invokes test_response_number_nullable_array operation.
+	//
+	// POST /test_response_number_nullable_array
+	TestResponseNumberNullableArray(ctx context.Context, request string) ([]NilFloat64, error)
+	// TestResponseNumberNullableArrayArray invokes test_response_number_nullable_array_array operation.
+	//
+	// POST /test_response_number_nullable_array_array
+	TestResponseNumberNullableArrayArray(ctx context.Context, request string) ([][]NilFloat64, error)
+	// TestResponseString invokes test_response_string operation.
+	//
+	// POST /test_response_string
+	TestResponseString(ctx context.Context, request string) (string, error)
+	// TestResponseStringArray invokes test_response_string_array operation.
+	//
+	// POST /test_response_string_array
+	TestResponseStringArray(ctx context.Context, request string) ([]string, error)
+	// TestResponseStringArrayArray invokes test_response_string_array_array operation.
+	//
+	// POST /test_response_string_array_array
+	TestResponseStringArrayArray(ctx context.Context, request string) ([][]string, error)
+	// TestResponseStringBase64 invokes test_response_string_base64 operation.
+	//
+	// POST /test_response_string_base64
+	TestResponseStringBase64(ctx context.Context, request string) ([]byte, error)
+	// TestResponseStringBase64Array invokes test_response_string_base64_array operation.
+	//
+	// POST /test_response_string_base64_array
+	TestResponseStringBase64Array(ctx context.Context, request string) ([][]byte, error)
+	// TestResponseStringBase64ArrayArray invokes test_response_string_base64_array_array operation.
+	//
+	// POST /test_response_string_base64_array_array
+	TestResponseStringBase64ArrayArray(ctx context.Context, request string) ([][][]byte, error)
+	// TestResponseStringBase64Nullable invokes test_response_string_base64_nullable operation.
+	//
+	// POST /test_response_string_base64_nullable
+	TestResponseStringBase64Nullable(ctx context.Context, request string) ([]byte, error)
+	// TestResponseStringBase64NullableArray invokes test_response_string_base64_nullable_array operation.
+	//
+	// POST /test_response_string_base64_nullable_array
+	TestResponseStringBase64NullableArray(ctx context.Context, request string) ([][]byte, error)
+	// TestResponseStringBase64NullableArrayArray invokes test_response_string_base64_nullable_array_array operation.
+	//
+	// POST /test_response_string_base64_nullable_array_array
+	TestResponseStringBase64NullableArrayArray(ctx context.Context, request string) ([][][]byte, error)
+	// TestResponseStringBinary invokes test_response_string_binary operation.
+	//
+	// POST /test_response_string_binary
+	TestResponseStringBinary(ctx context.Context, request string) (string, error)
+	// TestResponseStringBinaryArray invokes test_response_string_binary_array operation.
+	//
+	// POST /test_response_string_binary_array
+	TestResponseStringBinaryArray(ctx context.Context, request string) ([]string, error)
+	// TestResponseStringBinaryArrayArray invokes test_response_string_binary_array_array operation.
+	//
+	// POST /test_response_string_binary_array_array
+	TestResponseStringBinaryArrayArray(ctx context.Context, request string) ([][]string, error)
+	// TestResponseStringBinaryNullable invokes test_response_string_binary_nullable operation.
+	//
+	// POST /test_response_string_binary_nullable
+	TestResponseStringBinaryNullable(ctx context.Context, request string) (NilString, error)
+	// TestResponseStringBinaryNullableArray invokes test_response_string_binary_nullable_array operation.
+	//
+	// POST /test_response_string_binary_nullable_array
+	TestResponseStringBinaryNullableArray(ctx context.Context, request string) ([]NilString, error)
+	// TestResponseStringBinaryNullableArrayArray invokes test_response_string_binary_nullable_array_array operation.
+	//
+	// POST /test_response_string_binary_nullable_array_array
+	TestResponseStringBinaryNullableArrayArray(ctx context.Context, request string) ([][]NilString, error)
+	// TestResponseStringByte invokes test_response_string_byte operation.
+	//
+	// POST /test_response_string_byte
+	TestResponseStringByte(ctx context.Context, request string) ([]byte, error)
+	// TestResponseStringByteArray invokes test_response_string_byte_array operation.
+	//
+	// POST /test_response_string_byte_array
+	TestResponseStringByteArray(ctx context.Context, request string) ([][]byte, error)
+	// TestResponseStringByteArrayArray invokes test_response_string_byte_array_array operation.
+	//
+	// POST /test_response_string_byte_array_array
+	TestResponseStringByteArrayArray(ctx context.Context, request string) ([][][]byte, error)
+	// TestResponseStringByteNullable invokes test_response_string_byte_nullable operation.
+	//
+	// POST /test_response_string_byte_nullable
+	TestResponseStringByteNullable(ctx context.Context, request string) ([]byte, error)
+	// TestResponseStringByteNullableArray invokes test_response_string_byte_nullable_array operation.
+	//
+	// POST /test_response_string_byte_nullable_array
+	TestResponseStringByteNullableArray(ctx context.Context, request string) ([][]byte, error)
+	// TestResponseStringByteNullableArrayArray invokes test_response_string_byte_nullable_array_array operation.
+	//
+	// POST /test_response_string_byte_nullable_array_array
+	TestResponseStringByteNullableArrayArray(ctx context.Context, request string) ([][][]byte, error)
+	// TestResponseStringDate invokes test_response_string_date operation.
+	//
+	// POST /test_response_string_date
+	TestResponseStringDate(ctx context.Context, request string) (time.Time, error)
+	// TestResponseStringDateArray invokes test_response_string_date_array operation.
+	//
+	// POST /test_response_string_date_array
+	TestResponseStringDateArray(ctx context.Context, request string) ([]time.Time, error)
+	// TestResponseStringDateArrayArray invokes test_response_string_date_array_array operation.
+	//
+	// POST /test_response_string_date_array_array
+	TestResponseStringDateArrayArray(ctx context.Context, request string) ([][]time.Time, error)
+	// TestResponseStringDateNullable invokes test_response_string_date_nullable operation.
+	//
+	// POST /test_response_string_date_nullable
+	TestResponseStringDateNullable(ctx context.Context, request string) (NilDate, error)
+	// TestResponseStringDateNullableArray invokes test_response_string_date_nullable_array operation.
+	//
+	// POST /test_response_string_date_nullable_array
+	TestResponseStringDateNullableArray(ctx context.Context, request string) ([]NilDate, error)
+	// TestResponseStringDateNullableArrayArray invokes test_response_string_date_nullable_array_array operation.
+	//
+	// POST /test_response_string_date_nullable_array_array
+	TestResponseStringDateNullableArrayArray(ctx context.Context, request string) ([][]NilDate, error)
+	// TestResponseStringDateTime invokes test_response_string_date-time operation.
+	//
+	// POST /test_response_string_date-time
+	TestResponseStringDateTime(ctx context.Context, request string) (time.Time, error)
+	// TestResponseStringDateTimeArray invokes test_response_string_date-time_array operation.
+	//
+	// POST /test_response_string_date-time_array
+	TestResponseStringDateTimeArray(ctx context.Context, request string) ([]time.Time, error)
+	// TestResponseStringDateTimeArrayArray invokes test_response_string_date-time_array_array operation.
+	//
+	// POST /test_response_string_date-time_array_array
+	TestResponseStringDateTimeArrayArray(ctx context.Context, request string) ([][]time.Time, error)
+	// TestResponseStringDateTimeNullable invokes test_response_string_date-time_nullable operation.
+	//
+	// POST /test_response_string_date-time_nullable
+	TestResponseStringDateTimeNullable(ctx context.Context, request string) (NilDateTime, error)
+	// TestResponseStringDateTimeNullableArray invokes test_response_string_date-time_nullable_array operation.
+	//
+	// POST /test_response_string_date-time_nullable_array
+	TestResponseStringDateTimeNullableArray(ctx context.Context, request string) ([]NilDateTime, error)
+	// TestResponseStringDateTimeNullableArrayArray invokes test_response_string_date-time_nullable_array_array operation.
+	//
+	// POST /test_response_string_date-time_nullable_array_array
+	TestResponseStringDateTimeNullableArrayArray(ctx context.Context, request string) ([][]NilDateTime, error)
+	// TestResponseStringDuration invokes test_response_string_duration operation.
+	//
+	// POST /test_response_string_duration
+	TestResponseStringDuration(ctx context.Context, request string) (time.Duration, error)
+	// TestResponseStringDurationArray invokes test_response_string_duration_array operation.
+	//
+	// POST /test_response_string_duration_array
+	TestResponseStringDurationArray(ctx context.Context, request string) ([]time.Duration, error)
+	// TestResponseStringDurationArrayArray invokes test_response_string_duration_array_array operation.
+	//
+	// POST /test_response_string_duration_array_array
+	TestResponseStringDurationArrayArray(ctx context.Context, request string) ([][]time.Duration, error)
+	// TestResponseStringDurationNullable invokes test_response_string_duration_nullable operation.
+	//
+	// POST /test_response_string_duration_nullable
+	TestResponseStringDurationNullable(ctx context.Context, request string) (NilDuration, error)
+	// TestResponseStringDurationNullableArray invokes test_response_string_duration_nullable_array operation.
+	//
+	// POST /test_response_string_duration_nullable_array
+	TestResponseStringDurationNullableArray(ctx context.Context, request string) ([]NilDuration, error)
+	// TestResponseStringDurationNullableArrayArray invokes test_response_string_duration_nullable_array_array operation.
+	//
+	// POST /test_response_string_duration_nullable_array_array
+	TestResponseStringDurationNullableArrayArray(ctx context.Context, request string) ([][]NilDuration, error)
+	// TestResponseStringEmail invokes test_response_string_email operation.
+	//
+	// POST /test_response_string_email
+	TestResponseStringEmail(ctx context.Context, request string) (string, error)
+	// TestResponseStringEmailArray invokes test_response_string_email_array operation.
+	//
+	// POST /test_response_string_email_array
+	TestResponseStringEmailArray(ctx context.Context, request string) ([]string, error)
+	// TestResponseStringEmailArrayArray invokes test_response_string_email_array_array operation.
+	//
+	// POST /test_response_string_email_array_array
+	TestResponseStringEmailArrayArray(ctx context.Context, request string) ([][]string, error)
+	// TestResponseStringEmailNullable invokes test_response_string_email_nullable operation.
+	//
+	// POST /test_response_string_email_nullable
+	TestResponseStringEmailNullable(ctx context.Context, request string) (NilString, error)
+	// TestResponseStringEmailNullableArray invokes test_response_string_email_nullable_array operation.
+	//
+	// POST /test_response_string_email_nullable_array
+	TestResponseStringEmailNullableArray(ctx context.Context, request string) ([]NilString, error)
+	// TestResponseStringEmailNullableArrayArray invokes test_response_string_email_nullable_array_array operation.
+	//
+	// POST /test_response_string_email_nullable_array_array
+	TestResponseStringEmailNullableArrayArray(ctx context.Context, request string) ([][]NilString, error)
+	// TestResponseStringFloat32 invokes test_response_string_float32 operation.
+	//
+	// POST /test_response_string_float32
+	TestResponseStringFloat32(ctx context.Context, request string) (float32, error)
+	// TestResponseStringFloat32Array invokes test_response_string_float32_array operation.
+	//
+	// POST /test_response_string_float32_array
+	TestResponseStringFloat32Array(ctx context.Context, request string) ([]float32, error)
+	// TestResponseStringFloat32ArrayArray invokes test_response_string_float32_array_array operation.
+	//
+	// POST /test_response_string_float32_array_array
+	TestResponseStringFloat32ArrayArray(ctx context.Context, request string) ([][]float32, error)
+	// TestResponseStringFloat32Nullable invokes test_response_string_float32_nullable operation.
+	//
+	// POST /test_response_string_float32_nullable
+	TestResponseStringFloat32Nullable(ctx context.Context, request string) (NilFloat32, error)
+	// TestResponseStringFloat32NullableArray invokes test_response_string_float32_nullable_array operation.
+	//
+	// POST /test_response_string_float32_nullable_array
+	TestResponseStringFloat32NullableArray(ctx context.Context, request string) ([]NilFloat32, error)
+	// TestResponseStringFloat32NullableArrayArray invokes test_response_string_float32_nullable_array_array operation.
+	//
+	// POST /test_response_string_float32_nullable_array_array
+	TestResponseStringFloat32NullableArrayArray(ctx context.Context, request string) ([][]NilFloat32, error)
+	// TestResponseStringFloat64 invokes test_response_string_float64 operation.
+	//
+	// POST /test_response_string_float64
+	TestResponseStringFloat64(ctx context.Context, request string) (float64, error)
+	// TestResponseStringFloat64Array invokes test_response_string_float64_array operation.
+	//
+	// POST /test_response_string_float64_array
+	TestResponseStringFloat64Array(ctx context.Context, request string) ([]float64, error)
+	// TestResponseStringFloat64ArrayArray invokes test_response_string_float64_array_array operation.
+	//
+	// POST /test_response_string_float64_array_array
+	TestResponseStringFloat64ArrayArray(ctx context.Context, request string) ([][]float64, error)
+	// TestResponseStringFloat64Nullable invokes test_response_string_float64_nullable operation.
+	//
+	// POST /test_response_string_float64_nullable
+	TestResponseStringFloat64Nullable(ctx context.Context, request string) (NilFloat64, error)
+	// TestResponseStringFloat64NullableArray invokes test_response_string_float64_nullable_array operation.
+	//
+	// POST /test_response_string_float64_nullable_array
+	TestResponseStringFloat64NullableArray(ctx context.Context, request string) ([]NilFloat64, error)
+	// TestResponseStringFloat64NullableArrayArray invokes test_response_string_float64_nullable_array_array operation.
+	//
+	// POST /test_response_string_float64_nullable_array_array
+	TestResponseStringFloat64NullableArrayArray(ctx context.Context, request string) ([][]NilFloat64, error)
+	// TestResponseStringHostname invokes test_response_string_hostname operation.
+	//
+	// POST /test_response_string_hostname
+	TestResponseStringHostname(ctx context.Context, request string) (string, error)
+	// TestResponseStringHostnameArray invokes test_response_string_hostname_array operation.
+	//
+	// POST /test_response_string_hostname_array
+	TestResponseStringHostnameArray(ctx context.Context, request string) ([]string, error)
+	// TestResponseStringHostnameArrayArray invokes test_response_string_hostname_array_array operation.
+	//
+	// POST /test_response_string_hostname_array_array
+	TestResponseStringHostnameArrayArray(ctx context.Context, request string) ([][]string, error)
+	// TestResponseStringHostnameNullable invokes test_response_string_hostname_nullable operation.
+	//
+	// POST /test_response_string_hostname_nullable
+	TestResponseStringHostnameNullable(ctx context.Context, request string) (NilString, error)
+	// TestResponseStringHostnameNullableArray invokes test_response_string_hostname_nullable_array operation.
+	//
+	// POST /test_response_string_hostname_nullable_array
+	TestResponseStringHostnameNullableArray(ctx context.Context, request string) ([]NilString, error)
+	// TestResponseStringHostnameNullableArrayArray invokes test_response_string_hostname_nullable_array_array operation.
+	//
+	// POST /test_response_string_hostname_nullable_array_array
+	TestResponseStringHostnameNullableArrayArray(ctx context.Context, request string) ([][]NilString, error)
+	// TestResponseStringIP invokes test_response_string_ip operation.
+	//
+	// POST /test_response_string_ip
+	TestResponseStringIP(ctx context.Context, request string) (netip.Addr, error)
+	// TestResponseStringIPArray invokes test_response_string_ip_array operation.
+	//
+	// POST /test_response_string_ip_array
+	TestResponseStringIPArray(ctx context.Context, request string) ([]netip.Addr, error)
+	// TestResponseStringIPArrayArray invokes test_response_string_ip_array_array operation.
+	//
+	// POST /test_response_string_ip_array_array
+	TestResponseStringIPArrayArray(ctx context.Context, request string) ([][]netip.Addr, error)
+	// TestResponseStringIPNullable invokes test_response_string_ip_nullable operation.
+	//
+	// POST /test_response_string_ip_nullable
+	TestResponseStringIPNullable(ctx context.Context, request string) (NilIP, error)
+	// TestResponseStringIPNullableArray invokes test_response_string_ip_nullable_array operation.
+	//
+	// POST /test_response_string_ip_nullable_array
+	TestResponseStringIPNullableArray(ctx context.Context, request string) ([]NilIP, error)
+	// TestResponseStringIPNullableArrayArray invokes test_response_string_ip_nullable_array_array operation.
+	//
+	// POST /test_response_string_ip_nullable_array_array
+	TestResponseStringIPNullableArrayArray(ctx context.Context, request string) ([][]NilIP, error)
+	// TestResponseStringInt invokes test_response_string_int operation.
+	//
+	// POST /test_response_string_int
+	TestResponseStringInt(ctx context.Context, request string) (int, error)
+	// TestResponseStringInt16 invokes test_response_string_int16 operation.
+	//
+	// POST /test_response_string_int16
+	TestResponseStringInt16(ctx context.Context, request string) (int16, error)
+	// TestResponseStringInt16Array invokes test_response_string_int16_array operation.
+	//
+	// POST /test_response_string_int16_array
+	TestResponseStringInt16Array(ctx context.Context, request string) ([]int16, error)
+	// TestResponseStringInt16ArrayArray invokes test_response_string_int16_array_array operation.
+	//
+	// POST /test_response_string_int16_array_array
+	TestResponseStringInt16ArrayArray(ctx context.Context, request string) ([][]int16, error)
+	// TestResponseStringInt16Nullable invokes test_response_string_int16_nullable operation.
+	//
+	// POST /test_response_string_int16_nullable
+	TestResponseStringInt16Nullable(ctx context.Context, request string) (NilInt16, error)
+	// TestResponseStringInt16NullableArray invokes test_response_string_int16_nullable_array operation.
+	//
+	// POST /test_response_string_int16_nullable_array
+	TestResponseStringInt16NullableArray(ctx context.Context, request string) ([]NilInt16, error)
+	// TestResponseStringInt16NullableArrayArray invokes test_response_string_int16_nullable_array_array operation.
+	//
+	// POST /test_response_string_int16_nullable_array_array
+	TestResponseStringInt16NullableArrayArray(ctx context.Context, request string) ([][]NilInt16, error)
+	// TestResponseStringInt32 invokes test_response_string_int32 operation.
+	//
+	// POST /test_response_string_int32
+	TestResponseStringInt32(ctx context.Context, request string) (int32, error)
+	// TestResponseStringInt32Array invokes test_response_string_int32_array operation.
+	//
+	// POST /test_response_string_int32_array
+	TestResponseStringInt32Array(ctx context.Context, request string) ([]int32, error)
+	// TestResponseStringInt32ArrayArray invokes test_response_string_int32_array_array operation.
+	//
+	// POST /test_response_string_int32_array_array
+	TestResponseStringInt32ArrayArray(ctx context.Context, request string) ([][]int32, error)
+	// TestResponseStringInt32Nullable invokes test_response_string_int32_nullable operation.
+	//
+	// POST /test_response_string_int32_nullable
+	TestResponseStringInt32Nullable(ctx context.Context, request string) (NilStringInt32, error)
+	// TestResponseStringInt32NullableArray invokes test_response_string_int32_nullable_array operation.
+	//
+	// POST /test_response_string_int32_nullable_array
+	TestResponseStringInt32NullableArray(ctx context.Context, request string) ([]NilStringInt32, error)
+	// TestResponseStringInt32NullableArrayArray invokes test_response_string_int32_nullable_array_array operation.
+	//
+	// POST /test_response_string_int32_nullable_array_array
+	TestResponseStringInt32NullableArrayArray(ctx context.Context, request string) ([][]NilStringInt32, error)
+	// TestResponseStringInt64 invokes test_response_string_int64 operation.
+	//
+	// POST /test_response_string_int64
+	TestResponseStringInt64(ctx context.Context, request string) (int64, error)
+	// TestResponseStringInt64Array invokes test_response_string_int64_array operation.
+	//
+	// POST /test_response_string_int64_array
+	TestResponseStringInt64Array(ctx context.Context, request string) ([]int64, error)
+	// TestResponseStringInt64ArrayArray invokes test_response_string_int64_array_array operation.
+	//
+	// POST /test_response_string_int64_array_array
+	TestResponseStringInt64ArrayArray(ctx context.Context, request string) ([][]int64, error)
+	// TestResponseStringInt64Nullable invokes test_response_string_int64_nullable operation.
+	//
+	// POST /test_response_string_int64_nullable
+	TestResponseStringInt64Nullable(ctx context.Context, request string) (NilStringInt64, error)
+	// TestResponseStringInt64NullableArray invokes test_response_string_int64_nullable_array operation.
+	//
+	// POST /test_response_string_int64_nullable_array
+	TestResponseStringInt64NullableArray(ctx context.Context, request string) ([]NilStringInt64, error)
+	// TestResponseStringInt64NullableArrayArray invokes test_response_string_int64_nullable_array_array operation.
+	//
+	// POST /test_response_string_int64_nullable_array_array
+	TestResponseStringInt64NullableArrayArray(ctx context.Context, request string) ([][]NilStringInt64, error)
+	// TestResponseStringInt8 invokes test_response_string_int8 operation.
+	//
+	// POST /test_response_string_int8
+	TestResponseStringInt8(ctx context.Context, request string) (int8, error)
+	// TestResponseStringInt8Array invokes test_response_string_int8_array operation.
+	//
+	// POST /test_response_string_int8_array
+	TestResponseStringInt8Array(ctx context.Context, request string) ([]int8, error)
+	// TestResponseStringInt8ArrayArray invokes test_response_string_int8_array_array operation.
+	//
+	// POST /test_response_string_int8_array_array
+	TestResponseStringInt8ArrayArray(ctx context.Context, request string) ([][]int8, error)
+	// TestResponseStringInt8Nullable invokes test_response_string_int8_nullable operation.
+	//
+	// POST /test_response_string_int8_nullable
+	TestResponseStringInt8Nullable(ctx context.Context, request string) (NilInt8, error)
+	// TestResponseStringInt8NullableArray invokes test_response_string_int8_nullable_array operation.
+	//
+	// POST /test_response_string_int8_nullable_array
+	TestResponseStringInt8NullableArray(ctx context.Context, request string) ([]NilInt8, error)
+	// TestResponseStringInt8NullableArrayArray invokes test_response_string_int8_nullable_array_array operation.
+	//
+	// POST /test_response_string_int8_nullable_array_array
+	TestResponseStringInt8NullableArrayArray(ctx context.Context, request string) ([][]NilInt8, error)
+	// TestResponseStringIntArray invokes test_response_string_int_array operation.
+	//
+	// POST /test_response_string_int_array
+	TestResponseStringIntArray(ctx context.Context, request string) ([]int, error)
+	// TestResponseStringIntArrayArray invokes test_response_string_int_array_array operation.
+	//
+	// POST /test_response_string_int_array_array
+	TestResponseStringIntArrayArray(ctx context.Context, request string) ([][]int, error)
+	// TestResponseStringIntNullable invokes test_response_string_int_nullable operation.
+	//
+	// POST /test_response_string_int_nullable
+	TestResponseStringIntNullable(ctx context.Context, request string) (NilInt, error)
+	// TestResponseStringIntNullableArray invokes test_response_string_int_nullable_array operation.
+	//
+	// POST /test_response_string_int_nullable_array
+	TestResponseStringIntNullableArray(ctx context.Context, request string) ([]NilInt, error)
+	// TestResponseStringIntNullableArrayArray invokes test_response_string_int_nullable_array_array operation.
+	//
+	// POST /test_response_string_int_nullable_array_array
+	TestResponseStringIntNullableArrayArray(ctx context.Context, request string) ([][]NilInt, error)
+	// TestResponseStringIpv4 invokes test_response_string_ipv4 operation.
+	//
+	// POST /test_response_string_ipv4
+	TestResponseStringIpv4(ctx context.Context, request string) (netip.Addr, error)
+	// TestResponseStringIpv4Array invokes test_response_string_ipv4_array operation.
+	//
+	// POST /test_response_string_ipv4_array
+	TestResponseStringIpv4Array(ctx context.Context, request string) ([]netip.Addr, error)
+	// TestResponseStringIpv4ArrayArray invokes test_response_string_ipv4_array_array operation.
+	//
+	// POST /test_response_string_ipv4_array_array
+	TestResponseStringIpv4ArrayArray(ctx context.Context, request string) ([][]netip.Addr, error)
+	// TestResponseStringIpv4Nullable invokes test_response_string_ipv4_nullable operation.
+	//
+	// POST /test_response_string_ipv4_nullable
+	TestResponseStringIpv4Nullable(ctx context.Context, request string) (NilIPv4, error)
+	// TestResponseStringIpv4NullableArray invokes test_response_string_ipv4_nullable_array operation.
+	//
+	// POST /test_response_string_ipv4_nullable_array
+	TestResponseStringIpv4NullableArray(ctx context.Context, request string) ([]NilIPv4, error)
+	// TestResponseStringIpv4NullableArrayArray invokes test_response_string_ipv4_nullable_array_array operation.
+	//
+	// POST /test_response_string_ipv4_nullable_array_array
+	TestResponseStringIpv4NullableArrayArray(ctx context.Context, request string) ([][]NilIPv4, error)
+	// TestResponseStringIpv6 invokes test_response_string_ipv6 operation.
+	//
+	// POST /test_response_string_ipv6
+	TestResponseStringIpv6(ctx context.Context, request string) (netip.Addr, error)
+	// TestResponseStringIpv6Array invokes test_response_string_ipv6_array operation.
+	//
+	// POST /test_response_string_ipv6_array
+	TestResponseStringIpv6Array(ctx context.Context, request string) ([]netip.Addr, error)
+	// TestResponseStringIpv6ArrayArray invokes test_response_string_ipv6_array_array operation.
+	//
+	// POST /test_response_string_ipv6_array_array
+	TestResponseStringIpv6ArrayArray(ctx context.Context, request string) ([][]netip.Addr, error)
+	// TestResponseStringIpv6Nullable invokes test_response_string_ipv6_nullable operation.
+	//
+	// POST /test_response_string_ipv6_nullable
+	TestResponseStringIpv6Nullable(ctx context.Context, request string) (NilIPv6, error)
+	// TestResponseStringIpv6NullableArray invokes test_response_string_ipv6_nullable_array operation.
+	//
+	// POST /test_response_string_ipv6_nullable_array
+	TestResponseStringIpv6NullableArray(ctx context.Context, request string) ([]NilIPv6, error)
+	// TestResponseStringIpv6NullableArrayArray invokes test_response_string_ipv6_nullable_array_array operation.
+	//
+	// POST /test_response_string_ipv6_nullable_array_array
+	TestResponseStringIpv6NullableArrayArray(ctx context.Context, request string) ([][]NilIPv6, error)
+	// TestResponseStringNullable invokes test_response_string_nullable operation.
+	//
+	// POST /test_response_string_nullable
+	TestResponseStringNullable(ctx context.Context, request string) (NilString, error)
+	// TestResponseStringNullableArray invokes test_response_string_nullable_array operation.
+	//
+	// POST /test_response_string_nullable_array
+	TestResponseStringNullableArray(ctx context.Context, request string) ([]NilString, error)
+	// TestResponseStringNullableArrayArray invokes test_response_string_nullable_array_array operation.
+	//
+	// POST /test_response_string_nullable_array_array
+	TestResponseStringNullableArrayArray(ctx context.Context, request string) ([][]NilString, error)
+	// TestResponseStringPassword invokes test_response_string_password operation.
+	//
+	// POST /test_response_string_password
+	TestResponseStringPassword(ctx context.Context, request string) (string, error)
+	// TestResponseStringPasswordArray invokes test_response_string_password_array operation.
+	//
+	// POST /test_response_string_password_array
+	TestResponseStringPasswordArray(ctx context.Context, request string) ([]string, error)
+	// TestResponseStringPasswordArrayArray invokes test_response_string_password_array_array operation.
+	//
+	// POST /test_response_string_password_array_array
+	TestResponseStringPasswordArrayArray(ctx context.Context, request string) ([][]string, error)
+	// TestResponseStringPasswordNullable invokes test_response_string_password_nullable operation.
+	//
+	// POST /test_response_string_password_nullable
+	TestResponseStringPasswordNullable(ctx context.Context, request string) (NilString, error)
+	// TestResponseStringPasswordNullableArray invokes test_response_string_password_nullable_array operation.
+	//
+	// POST /test_response_string_password_nullable_array
+	TestResponseStringPasswordNullableArray(ctx context.Context, request string) ([]NilString, error)
+	// TestResponseStringPasswordNullableArrayArray invokes test_response_string_password_nullable_array_array operation.
+	//
+	// POST /test_response_string_password_nullable_array_array
+	TestResponseStringPasswordNullableArrayArray(ctx context.Context, request string) ([][]NilString, error)
+	// TestResponseStringTime invokes test_response_string_time operation.
+	//
+	// POST /test_response_string_time
+	TestResponseStringTime(ctx context.Context, request string) (time.Time, error)
+	// TestResponseStringTimeArray invokes test_response_string_time_array operation.
+	//
+	// POST /test_response_string_time_array
+	TestResponseStringTimeArray(ctx context.Context, request string) ([]time.Time, error)
+	// TestResponseStringTimeArrayArray invokes test_response_string_time_array_array operation.
+	//
+	// POST /test_response_string_time_array_array
+	TestResponseStringTimeArrayArray(ctx context.Context, request string) ([][]time.Time, error)
+	// TestResponseStringTimeNullable invokes test_response_string_time_nullable operation.
+	//
+	// POST /test_response_string_time_nullable
+	TestResponseStringTimeNullable(ctx context.Context, request string) (NilTime, error)
+	// TestResponseStringTimeNullableArray invokes test_response_string_time_nullable_array operation.
+	//
+	// POST /test_response_string_time_nullable_array
+	TestResponseStringTimeNullableArray(ctx context.Context, request string) ([]NilTime, error)
+	// TestResponseStringTimeNullableArrayArray invokes test_response_string_time_nullable_array_array operation.
+	//
+	// POST /test_response_string_time_nullable_array_array
+	TestResponseStringTimeNullableArrayArray(ctx context.Context, request string) ([][]NilTime, error)
+	// TestResponseStringURI invokes test_response_string_uri operation.
+	//
+	// POST /test_response_string_uri
+	TestResponseStringURI(ctx context.Context, request string) (url.URL, error)
+	// TestResponseStringURIArray invokes test_response_string_uri_array operation.
+	//
+	// POST /test_response_string_uri_array
+	TestResponseStringURIArray(ctx context.Context, request string) ([]url.URL, error)
+	// TestResponseStringURIArrayArray invokes test_response_string_uri_array_array operation.
+	//
+	// POST /test_response_string_uri_array_array
+	TestResponseStringURIArrayArray(ctx context.Context, request string) ([][]url.URL, error)
+	// TestResponseStringURINullable invokes test_response_string_uri_nullable operation.
+	//
+	// POST /test_response_string_uri_nullable
+	TestResponseStringURINullable(ctx context.Context, request string) (NilURI, error)
+	// TestResponseStringURINullableArray invokes test_response_string_uri_nullable_array operation.
+	//
+	// POST /test_response_string_uri_nullable_array
+	TestResponseStringURINullableArray(ctx context.Context, request string) ([]NilURI, error)
+	// TestResponseStringURINullableArrayArray invokes test_response_string_uri_nullable_array_array operation.
+	//
+	// POST /test_response_string_uri_nullable_array_array
+	TestResponseStringURINullableArrayArray(ctx context.Context, request string) ([][]NilURI, error)
+	// TestResponseStringUUID invokes test_response_string_uuid operation.
+	//
+	// POST /test_response_string_uuid
+	TestResponseStringUUID(ctx context.Context, request string) (uuid.UUID, error)
+	// TestResponseStringUUIDArray invokes test_response_string_uuid_array operation.
+	//
+	// POST /test_response_string_uuid_array
+	TestResponseStringUUIDArray(ctx context.Context, request string) ([]uuid.UUID, error)
+	// TestResponseStringUUIDArrayArray invokes test_response_string_uuid_array_array operation.
+	//
+	// POST /test_response_string_uuid_array_array
+	TestResponseStringUUIDArrayArray(ctx context.Context, request string) ([][]uuid.UUID, error)
+	// TestResponseStringUUIDNullable invokes test_response_string_uuid_nullable operation.
+	//
+	// POST /test_response_string_uuid_nullable
+	TestResponseStringUUIDNullable(ctx context.Context, request string) (NilUUID, error)
+	// TestResponseStringUUIDNullableArray invokes test_response_string_uuid_nullable_array operation.
+	//
+	// POST /test_response_string_uuid_nullable_array
+	TestResponseStringUUIDNullableArray(ctx context.Context, request string) ([]NilUUID, error)
+	// TestResponseStringUUIDNullableArrayArray invokes test_response_string_uuid_nullable_array_array operation.
+	//
+	// POST /test_response_string_uuid_nullable_array_array
+	TestResponseStringUUIDNullableArrayArray(ctx context.Context, request string) ([][]NilUUID, error)
+	// TestResponseStringUint invokes test_response_string_uint operation.
+	//
+	// POST /test_response_string_uint
+	TestResponseStringUint(ctx context.Context, request string) (uint, error)
+	// TestResponseStringUint16 invokes test_response_string_uint16 operation.
+	//
+	// POST /test_response_string_uint16
+	TestResponseStringUint16(ctx context.Context, request string) (uint16, error)
+	// TestResponseStringUint16Array invokes test_response_string_uint16_array operation.
+	//
+	// POST /test_response_string_uint16_array
+	TestResponseStringUint16Array(ctx context.Context, request string) ([]uint16, error)
+	// TestResponseStringUint16ArrayArray invokes test_response_string_uint16_array_array operation.
+	//
+	// POST /test_response_string_uint16_array_array
+	TestResponseStringUint16ArrayArray(ctx context.Context, request string) ([][]uint16, error)
+	// TestResponseStringUint16Nullable invokes test_response_string_uint16_nullable operation.
+	//
+	// POST /test_response_string_uint16_nullable
+	TestResponseStringUint16Nullable(ctx context.Context, request string) (NilUint16, error)
+	// TestResponseStringUint16NullableArray invokes test_response_string_uint16_nullable_array operation.
+	//
+	// POST /test_response_string_uint16_nullable_array
+	TestResponseStringUint16NullableArray(ctx context.Context, request string) ([]NilUint16, error)
+	// TestResponseStringUint16NullableArrayArray invokes test_response_string_uint16_nullable_array_array operation.
+	//
+	// POST /test_response_string_uint16_nullable_array_array
+	TestResponseStringUint16NullableArrayArray(ctx context.Context, request string) ([][]NilUint16, error)
+	// TestResponseStringUint32 invokes test_response_string_uint32 operation.
+	//
+	// POST /test_response_string_uint32
+	TestResponseStringUint32(ctx context.Context, request string) (uint32, error)
+	// TestResponseStringUint32Array invokes test_response_string_uint32_array operation.
+	//
+	// POST /test_response_string_uint32_array
+	TestResponseStringUint32Array(ctx context.Context, request string) ([]uint32, error)
+	// TestResponseStringUint32ArrayArray invokes test_response_string_uint32_array_array operation.
+	//
+	// POST /test_response_string_uint32_array_array
+	TestResponseStringUint32ArrayArray(ctx context.Context, request string) ([][]uint32, error)
+	// TestResponseStringUint32Nullable invokes test_response_string_uint32_nullable operation.
+	//
+	// POST /test_response_string_uint32_nullable
+	TestResponseStringUint32Nullable(ctx context.Context, request string) (NilUint32, error)
+	// TestResponseStringUint32NullableArray invokes test_response_string_uint32_nullable_array operation.
+	//
+	// POST /test_response_string_uint32_nullable_array
+	TestResponseStringUint32NullableArray(ctx context.Context, request string) ([]NilUint32, error)
+	// TestResponseStringUint32NullableArrayArray invokes test_response_string_uint32_nullable_array_array operation.
+	//
+	// POST /test_response_string_uint32_nullable_array_array
+	TestResponseStringUint32NullableArrayArray(ctx context.Context, request string) ([][]NilUint32, error)
+	// TestResponseStringUint64 invokes test_response_string_uint64 operation.
+	//
+	// POST /test_response_string_uint64
+	TestResponseStringUint64(ctx context.Context, request string) (uint64, error)
+	// TestResponseStringUint64Array invokes test_response_string_uint64_array operation.
+	//
+	// POST /test_response_string_uint64_array
+	TestResponseStringUint64Array(ctx context.Context, request string) ([]uint64, error)
+	// TestResponseStringUint64ArrayArray invokes test_response_string_uint64_array_array operation.
+	//
+	// POST /test_response_string_uint64_array_array
+	TestResponseStringUint64ArrayArray(ctx context.Context, request string) ([][]uint64, error)
+	// TestResponseStringUint64Nullable invokes test_response_string_uint64_nullable operation.
+	//
+	// POST /test_response_string_uint64_nullable
+	TestResponseStringUint64Nullable(ctx context.Context, request string) (NilUint64, error)
+	// TestResponseStringUint64NullableArray invokes test_response_string_uint64_nullable_array operation.
+	//
+	// POST /test_response_string_uint64_nullable_array
+	TestResponseStringUint64NullableArray(ctx context.Context, request string) ([]NilUint64, error)
+	// TestResponseStringUint64NullableArrayArray invokes test_response_string_uint64_nullable_array_array operation.
+	//
+	// POST /test_response_string_uint64_nullable_array_array
+	TestResponseStringUint64NullableArrayArray(ctx context.Context, request string) ([][]NilUint64, error)
+	// TestResponseStringUint8 invokes test_response_string_uint8 operation.
+	//
+	// POST /test_response_string_uint8
+	TestResponseStringUint8(ctx context.Context, request string) (uint8, error)
+	// TestResponseStringUint8Array invokes test_response_string_uint8_array operation.
+	//
+	// POST /test_response_string_uint8_array
+	TestResponseStringUint8Array(ctx context.Context, request string) ([]uint8, error)
+	// TestResponseStringUint8ArrayArray invokes test_response_string_uint8_array_array operation.
+	//
+	// POST /test_response_string_uint8_array_array
+	TestResponseStringUint8ArrayArray(ctx context.Context, request string) ([][]uint8, error)
+	// TestResponseStringUint8Nullable invokes test_response_string_uint8_nullable operation.
+	//
+	// POST /test_response_string_uint8_nullable
+	TestResponseStringUint8Nullable(ctx context.Context, request string) (NilUint8, error)
+	// TestResponseStringUint8NullableArray invokes test_response_string_uint8_nullable_array operation.
+	//
+	// POST /test_response_string_uint8_nullable_array
+	TestResponseStringUint8NullableArray(ctx context.Context, request string) ([]NilUint8, error)
+	// TestResponseStringUint8NullableArrayArray invokes test_response_string_uint8_nullable_array_array operation.
+	//
+	// POST /test_response_string_uint8_nullable_array_array
+	TestResponseStringUint8NullableArrayArray(ctx context.Context, request string) ([][]NilUint8, error)
+	// TestResponseStringUintArray invokes test_response_string_uint_array operation.
+	//
+	// POST /test_response_string_uint_array
+	TestResponseStringUintArray(ctx context.Context, request string) ([]uint, error)
+	// TestResponseStringUintArrayArray invokes test_response_string_uint_array_array operation.
+	//
+	// POST /test_response_string_uint_array_array
+	TestResponseStringUintArrayArray(ctx context.Context, request string) ([][]uint, error)
+	// TestResponseStringUintNullable invokes test_response_string_uint_nullable operation.
+	//
+	// POST /test_response_string_uint_nullable
+	TestResponseStringUintNullable(ctx context.Context, request string) (NilUint, error)
+	// TestResponseStringUintNullableArray invokes test_response_string_uint_nullable_array operation.
+	//
+	// POST /test_response_string_uint_nullable_array
+	TestResponseStringUintNullableArray(ctx context.Context, request string) ([]NilUint, error)
+	// TestResponseStringUintNullableArrayArray invokes test_response_string_uint_nullable_array_array operation.
+	//
+	// POST /test_response_string_uint_nullable_array_array
+	TestResponseStringUintNullableArrayArray(ctx context.Context, request string) ([][]NilUint, error)
+	// TestResponseStringUnix invokes test_response_string_unix operation.
+	//
+	// POST /test_response_string_unix
+	TestResponseStringUnix(ctx context.Context, request string) (time.Time, error)
+	// TestResponseStringUnixArray invokes test_response_string_unix_array operation.
+	//
+	// POST /test_response_string_unix_array
+	TestResponseStringUnixArray(ctx context.Context, request string) ([]time.Time, error)
+	// TestResponseStringUnixArrayArray invokes test_response_string_unix_array_array operation.
+	//
+	// POST /test_response_string_unix_array_array
+	TestResponseStringUnixArrayArray(ctx context.Context, request string) ([][]time.Time, error)
+	// TestResponseStringUnixMicro invokes test_response_string_unix-micro operation.
+	//
+	// POST /test_response_string_unix-micro
+	TestResponseStringUnixMicro(ctx context.Context, request string) (time.Time, error)
+	// TestResponseStringUnixMicroArray invokes test_response_string_unix-micro_array operation.
+	//
+	// POST /test_response_string_unix-micro_array
+	TestResponseStringUnixMicroArray(ctx context.Context, request string) ([]time.Time, error)
+	// TestResponseStringUnixMicroArrayArray invokes test_response_string_unix-micro_array_array operation.
+	//
+	// POST /test_response_string_unix-micro_array_array
+	TestResponseStringUnixMicroArrayArray(ctx context.Context, request string) ([][]time.Time, error)
+	// TestResponseStringUnixMicroNullable invokes test_response_string_unix-micro_nullable operation.
+	//
+	// POST /test_response_string_unix-micro_nullable
+	TestResponseStringUnixMicroNullable(ctx context.Context, request string) (NilStringUnixMicro, error)
+	// TestResponseStringUnixMicroNullableArray invokes test_response_string_unix-micro_nullable_array operation.
+	//
+	// POST /test_response_string_unix-micro_nullable_array
+	TestResponseStringUnixMicroNullableArray(ctx context.Context, request string) ([]NilStringUnixMicro, error)
+	// TestResponseStringUnixMicroNullableArrayArray invokes test_response_string_unix-micro_nullable_array_array operation.
+	//
+	// POST /test_response_string_unix-micro_nullable_array_array
+	TestResponseStringUnixMicroNullableArrayArray(ctx context.Context, request string) ([][]NilStringUnixMicro, error)
+	// TestResponseStringUnixMilli invokes test_response_string_unix-milli operation.
+	//
+	// POST /test_response_string_unix-milli
+	TestResponseStringUnixMilli(ctx context.Context, request string) (time.Time, error)
+	// TestResponseStringUnixMilliArray invokes test_response_string_unix-milli_array operation.
+	//
+	// POST /test_response_string_unix-milli_array
+	TestResponseStringUnixMilliArray(ctx context.Context, request string) ([]time.Time, error)
+	// TestResponseStringUnixMilliArrayArray invokes test_response_string_unix-milli_array_array operation.
+	//
+	// POST /test_response_string_unix-milli_array_array
+	TestResponseStringUnixMilliArrayArray(ctx context.Context, request string) ([][]time.Time, error)
+	// TestResponseStringUnixMilliNullable invokes test_response_string_unix-milli_nullable operation.
+	//
+	// POST /test_response_string_unix-milli_nullable
+	TestResponseStringUnixMilliNullable(ctx context.Context, request string) (NilStringUnixMilli, error)
+	// TestResponseStringUnixMilliNullableArray invokes test_response_string_unix-milli_nullable_array operation.
+	//
+	// POST /test_response_string_unix-milli_nullable_array
+	TestResponseStringUnixMilliNullableArray(ctx context.Context, request string) ([]NilStringUnixMilli, error)
+	// TestResponseStringUnixMilliNullableArrayArray invokes test_response_string_unix-milli_nullable_array_array operation.
+	//
+	// POST /test_response_string_unix-milli_nullable_array_array
+	TestResponseStringUnixMilliNullableArrayArray(ctx context.Context, request string) ([][]NilStringUnixMilli, error)
+	// TestResponseStringUnixNano invokes test_response_string_unix-nano operation.
+	//
+	// POST /test_response_string_unix-nano
+	TestResponseStringUnixNano(ctx context.Context, request string) (time.Time, error)
+	// TestResponseStringUnixNanoArray invokes test_response_string_unix-nano_array operation.
+	//
+	// POST /test_response_string_unix-nano_array
+	TestResponseStringUnixNanoArray(ctx context.Context, request string) ([]time.Time, error)
+	// TestResponseStringUnixNanoArrayArray invokes test_response_string_unix-nano_array_array operation.
+	//
+	// POST /test_response_string_unix-nano_array_array
+	TestResponseStringUnixNanoArrayArray(ctx context.Context, request string) ([][]time.Time, error)
+	// TestResponseStringUnixNanoNullable invokes test_response_string_unix-nano_nullable operation.
+	//
+	// POST /test_response_string_unix-nano_nullable
+	TestResponseStringUnixNanoNullable(ctx context.Context, request string) (NilStringUnixNano, error)
+	// TestResponseStringUnixNanoNullableArray invokes test_response_string_unix-nano_nullable_array operation.
+	//
+	// POST /test_response_string_unix-nano_nullable_array
+	TestResponseStringUnixNanoNullableArray(ctx context.Context, request string) ([]NilStringUnixNano, error)
+	// TestResponseStringUnixNanoNullableArrayArray invokes test_response_string_unix-nano_nullable_array_array operation.
+	//
+	// POST /test_response_string_unix-nano_nullable_array_array
+	TestResponseStringUnixNanoNullableArrayArray(ctx context.Context, request string) ([][]NilStringUnixNano, error)
+	// TestResponseStringUnixNullable invokes test_response_string_unix_nullable operation.
+	//
+	// POST /test_response_string_unix_nullable
+	TestResponseStringUnixNullable(ctx context.Context, request string) (NilStringUnixSeconds, error)
+	// TestResponseStringUnixNullableArray invokes test_response_string_unix_nullable_array operation.
+	//
+	// POST /test_response_string_unix_nullable_array
+	TestResponseStringUnixNullableArray(ctx context.Context, request string) ([]NilStringUnixSeconds, error)
+	// TestResponseStringUnixNullableArrayArray invokes test_response_string_unix_nullable_array_array operation.
+	//
+	// POST /test_response_string_unix_nullable_array_array
+	TestResponseStringUnixNullableArrayArray(ctx context.Context, request string) ([][]NilStringUnixSeconds, error)
+	// TestResponseStringUnixSeconds invokes test_response_string_unix-seconds operation.
+	//
+	// POST /test_response_string_unix-seconds
+	TestResponseStringUnixSeconds(ctx context.Context, request string) (time.Time, error)
+	// TestResponseStringUnixSecondsArray invokes test_response_string_unix-seconds_array operation.
+	//
+	// POST /test_response_string_unix-seconds_array
+	TestResponseStringUnixSecondsArray(ctx context.Context, request string) ([]time.Time, error)
+	// TestResponseStringUnixSecondsArrayArray invokes test_response_string_unix-seconds_array_array operation.
+	//
+	// POST /test_response_string_unix-seconds_array_array
+	TestResponseStringUnixSecondsArrayArray(ctx context.Context, request string) ([][]time.Time, error)
+	// TestResponseStringUnixSecondsNullable invokes test_response_string_unix-seconds_nullable operation.
+	//
+	// POST /test_response_string_unix-seconds_nullable
+	TestResponseStringUnixSecondsNullable(ctx context.Context, request string) (NilStringUnixSeconds, error)
+	// TestResponseStringUnixSecondsNullableArray invokes test_response_string_unix-seconds_nullable_array operation.
+	//
+	// POST /test_response_string_unix-seconds_nullable_array
+	TestResponseStringUnixSecondsNullableArray(ctx context.Context, request string) ([]NilStringUnixSeconds, error)
+	// TestResponseStringUnixSecondsNullableArrayArray invokes test_response_string_unix-seconds_nullable_array_array operation.
+	//
+	// POST /test_response_string_unix-seconds_nullable_array_array
+	TestResponseStringUnixSecondsNullableArrayArray(ctx context.Context, request string) ([][]NilStringUnixSeconds, error)
+}
 
 // Client implements OAS client.
 type Client struct {
@@ -85,6 +4090,8 @@ func (c *Client) TestQueryParameter(ctx context.Context, request string, params 
 func (c *Client) sendTestQueryParameter(ctx context.Context, request string, params TestQueryParameterParams) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_query_parameter"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_query_parameter"),
 	}
 
 	// Run stopwatch.
@@ -2159,6 +6166,8 @@ func (c *Client) TestRequestAny(ctx context.Context, request jx.Raw) (*Error, er
 func (c *Client) sendTestRequestAny(ctx context.Context, request jx.Raw) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_Any"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_Any"),
 	}
 
 	// Run stopwatch.
@@ -2231,6 +6240,8 @@ func (c *Client) TestRequestBoolean(ctx context.Context, request OptBool) (*Erro
 func (c *Client) sendTestRequestBoolean(ctx context.Context, request OptBool) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_boolean"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_boolean"),
 	}
 
 	// Run stopwatch.
@@ -2303,6 +6314,8 @@ func (c *Client) TestRequestBooleanArray(ctx context.Context, request []bool) (*
 func (c *Client) sendTestRequestBooleanArray(ctx context.Context, request []bool) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_boolean_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_boolean_array"),
 	}
 
 	// Run stopwatch.
@@ -2375,6 +6388,8 @@ func (c *Client) TestRequestBooleanArrayArray(ctx context.Context, request [][]b
 func (c *Client) sendTestRequestBooleanArrayArray(ctx context.Context, request [][]bool) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_boolean_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_boolean_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -2470,6 +6485,8 @@ func (c *Client) TestRequestBooleanNullable(ctx context.Context, request OptNilB
 func (c *Client) sendTestRequestBooleanNullable(ctx context.Context, request OptNilBool) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_boolean_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_boolean_nullable"),
 	}
 
 	// Run stopwatch.
@@ -2542,6 +6559,8 @@ func (c *Client) TestRequestBooleanNullableArray(ctx context.Context, request []
 func (c *Client) sendTestRequestBooleanNullableArray(ctx context.Context, request []NilBool) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_boolean_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_boolean_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -2614,6 +6633,8 @@ func (c *Client) TestRequestBooleanNullableArrayArray(ctx context.Context, reque
 func (c *Client) sendTestRequestBooleanNullableArrayArray(ctx context.Context, request [][]NilBool) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_boolean_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_boolean_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -2709,6 +6730,8 @@ func (c *Client) TestRequestEmptyStruct(ctx context.Context, request *TestReques
 func (c *Client) sendTestRequestEmptyStruct(ctx context.Context, request *TestRequestEmptyStructReq) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_EmptyStruct"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_EmptyStruct"),
 	}
 
 	// Run stopwatch.
@@ -2781,6 +6804,8 @@ func (c *Client) TestRequestFormatTest(ctx context.Context, request OptTestReque
 func (c *Client) sendTestRequestFormatTest(ctx context.Context, request OptTestRequestFormatTestReq) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_FormatTest"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_FormatTest"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -2869,6 +6894,8 @@ func (c *Client) TestRequestInteger(ctx context.Context, request OptInt) (*Error
 func (c *Client) sendTestRequestInteger(ctx context.Context, request OptInt) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer"),
 	}
 
 	// Run stopwatch.
@@ -2941,6 +6968,8 @@ func (c *Client) TestRequestIntegerArray(ctx context.Context, request []int) (*E
 func (c *Client) sendTestRequestIntegerArray(ctx context.Context, request []int) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_array"),
 	}
 
 	// Run stopwatch.
@@ -3013,6 +7042,8 @@ func (c *Client) TestRequestIntegerArrayArray(ctx context.Context, request [][]i
 func (c *Client) sendTestRequestIntegerArrayArray(ctx context.Context, request [][]int) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -3108,6 +7139,8 @@ func (c *Client) TestRequestIntegerInt16(ctx context.Context, request OptInt16) 
 func (c *Client) sendTestRequestIntegerInt16(ctx context.Context, request OptInt16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int16"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_int16"),
 	}
 
 	// Run stopwatch.
@@ -3180,6 +7213,8 @@ func (c *Client) TestRequestIntegerInt16Array(ctx context.Context, request []int
 func (c *Client) sendTestRequestIntegerInt16Array(ctx context.Context, request []int16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int16_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_int16_array"),
 	}
 
 	// Run stopwatch.
@@ -3252,6 +7287,8 @@ func (c *Client) TestRequestIntegerInt16ArrayArray(ctx context.Context, request 
 func (c *Client) sendTestRequestIntegerInt16ArrayArray(ctx context.Context, request [][]int16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int16_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_int16_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -3347,6 +7384,8 @@ func (c *Client) TestRequestIntegerInt16Nullable(ctx context.Context, request Op
 func (c *Client) sendTestRequestIntegerInt16Nullable(ctx context.Context, request OptNilInt16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int16_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_int16_nullable"),
 	}
 
 	// Run stopwatch.
@@ -3419,6 +7458,8 @@ func (c *Client) TestRequestIntegerInt16NullableArray(ctx context.Context, reque
 func (c *Client) sendTestRequestIntegerInt16NullableArray(ctx context.Context, request []NilInt16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int16_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_int16_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -3491,6 +7532,8 @@ func (c *Client) TestRequestIntegerInt16NullableArrayArray(ctx context.Context, 
 func (c *Client) sendTestRequestIntegerInt16NullableArrayArray(ctx context.Context, request [][]NilInt16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int16_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_int16_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -3586,6 +7629,8 @@ func (c *Client) TestRequestIntegerInt32(ctx context.Context, request OptInt32) 
 func (c *Client) sendTestRequestIntegerInt32(ctx context.Context, request OptInt32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int32"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_int32"),
 	}
 
 	// Run stopwatch.
@@ -3658,6 +7703,8 @@ func (c *Client) TestRequestIntegerInt32Array(ctx context.Context, request []int
 func (c *Client) sendTestRequestIntegerInt32Array(ctx context.Context, request []int32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int32_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_int32_array"),
 	}
 
 	// Run stopwatch.
@@ -3730,6 +7777,8 @@ func (c *Client) TestRequestIntegerInt32ArrayArray(ctx context.Context, request 
 func (c *Client) sendTestRequestIntegerInt32ArrayArray(ctx context.Context, request [][]int32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int32_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_int32_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -3825,6 +7874,8 @@ func (c *Client) TestRequestIntegerInt32Nullable(ctx context.Context, request Op
 func (c *Client) sendTestRequestIntegerInt32Nullable(ctx context.Context, request OptNilInt32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int32_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_int32_nullable"),
 	}
 
 	// Run stopwatch.
@@ -3897,6 +7948,8 @@ func (c *Client) TestRequestIntegerInt32NullableArray(ctx context.Context, reque
 func (c *Client) sendTestRequestIntegerInt32NullableArray(ctx context.Context, request []NilInt32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int32_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_int32_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -3969,6 +8022,8 @@ func (c *Client) TestRequestIntegerInt32NullableArrayArray(ctx context.Context, 
 func (c *Client) sendTestRequestIntegerInt32NullableArrayArray(ctx context.Context, request [][]NilInt32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int32_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_int32_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -4064,6 +8119,8 @@ func (c *Client) TestRequestIntegerInt64(ctx context.Context, request OptInt64) 
 func (c *Client) sendTestRequestIntegerInt64(ctx context.Context, request OptInt64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int64"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_int64"),
 	}
 
 	// Run stopwatch.
@@ -4136,6 +8193,8 @@ func (c *Client) TestRequestIntegerInt64Array(ctx context.Context, request []int
 func (c *Client) sendTestRequestIntegerInt64Array(ctx context.Context, request []int64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int64_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_int64_array"),
 	}
 
 	// Run stopwatch.
@@ -4208,6 +8267,8 @@ func (c *Client) TestRequestIntegerInt64ArrayArray(ctx context.Context, request 
 func (c *Client) sendTestRequestIntegerInt64ArrayArray(ctx context.Context, request [][]int64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int64_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_int64_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -4303,6 +8364,8 @@ func (c *Client) TestRequestIntegerInt64Nullable(ctx context.Context, request Op
 func (c *Client) sendTestRequestIntegerInt64Nullable(ctx context.Context, request OptNilInt64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int64_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_int64_nullable"),
 	}
 
 	// Run stopwatch.
@@ -4375,6 +8438,8 @@ func (c *Client) TestRequestIntegerInt64NullableArray(ctx context.Context, reque
 func (c *Client) sendTestRequestIntegerInt64NullableArray(ctx context.Context, request []NilInt64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int64_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_int64_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -4447,6 +8512,8 @@ func (c *Client) TestRequestIntegerInt64NullableArrayArray(ctx context.Context, 
 func (c *Client) sendTestRequestIntegerInt64NullableArrayArray(ctx context.Context, request [][]NilInt64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int64_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_int64_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -4542,6 +8609,8 @@ func (c *Client) TestRequestIntegerInt8(ctx context.Context, request OptInt8) (*
 func (c *Client) sendTestRequestIntegerInt8(ctx context.Context, request OptInt8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int8"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_int8"),
 	}
 
 	// Run stopwatch.
@@ -4614,6 +8683,8 @@ func (c *Client) TestRequestIntegerInt8Array(ctx context.Context, request []int8
 func (c *Client) sendTestRequestIntegerInt8Array(ctx context.Context, request []int8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int8_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_int8_array"),
 	}
 
 	// Run stopwatch.
@@ -4686,6 +8757,8 @@ func (c *Client) TestRequestIntegerInt8ArrayArray(ctx context.Context, request [
 func (c *Client) sendTestRequestIntegerInt8ArrayArray(ctx context.Context, request [][]int8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int8_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_int8_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -4781,6 +8854,8 @@ func (c *Client) TestRequestIntegerInt8Nullable(ctx context.Context, request Opt
 func (c *Client) sendTestRequestIntegerInt8Nullable(ctx context.Context, request OptNilInt8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int8_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_int8_nullable"),
 	}
 
 	// Run stopwatch.
@@ -4853,6 +8928,8 @@ func (c *Client) TestRequestIntegerInt8NullableArray(ctx context.Context, reques
 func (c *Client) sendTestRequestIntegerInt8NullableArray(ctx context.Context, request []NilInt8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int8_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_int8_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -4925,6 +9002,8 @@ func (c *Client) TestRequestIntegerInt8NullableArrayArray(ctx context.Context, r
 func (c *Client) sendTestRequestIntegerInt8NullableArrayArray(ctx context.Context, request [][]NilInt8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int8_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_int8_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -5020,6 +9099,8 @@ func (c *Client) TestRequestIntegerNullable(ctx context.Context, request OptNilI
 func (c *Client) sendTestRequestIntegerNullable(ctx context.Context, request OptNilInt) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_nullable"),
 	}
 
 	// Run stopwatch.
@@ -5092,6 +9173,8 @@ func (c *Client) TestRequestIntegerNullableArray(ctx context.Context, request []
 func (c *Client) sendTestRequestIntegerNullableArray(ctx context.Context, request []NilInt) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -5164,6 +9247,8 @@ func (c *Client) TestRequestIntegerNullableArrayArray(ctx context.Context, reque
 func (c *Client) sendTestRequestIntegerNullableArrayArray(ctx context.Context, request [][]NilInt) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -5259,6 +9344,8 @@ func (c *Client) TestRequestIntegerUint(ctx context.Context, request OptUint) (*
 func (c *Client) sendTestRequestIntegerUint(ctx context.Context, request OptUint) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_uint"),
 	}
 
 	// Run stopwatch.
@@ -5331,6 +9418,8 @@ func (c *Client) TestRequestIntegerUint16(ctx context.Context, request OptUint16
 func (c *Client) sendTestRequestIntegerUint16(ctx context.Context, request OptUint16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint16"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_uint16"),
 	}
 
 	// Run stopwatch.
@@ -5403,6 +9492,8 @@ func (c *Client) TestRequestIntegerUint16Array(ctx context.Context, request []ui
 func (c *Client) sendTestRequestIntegerUint16Array(ctx context.Context, request []uint16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint16_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_uint16_array"),
 	}
 
 	// Run stopwatch.
@@ -5475,6 +9566,8 @@ func (c *Client) TestRequestIntegerUint16ArrayArray(ctx context.Context, request
 func (c *Client) sendTestRequestIntegerUint16ArrayArray(ctx context.Context, request [][]uint16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint16_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_uint16_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -5570,6 +9663,8 @@ func (c *Client) TestRequestIntegerUint16Nullable(ctx context.Context, request O
 func (c *Client) sendTestRequestIntegerUint16Nullable(ctx context.Context, request OptNilUint16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint16_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_uint16_nullable"),
 	}
 
 	// Run stopwatch.
@@ -5642,6 +9737,8 @@ func (c *Client) TestRequestIntegerUint16NullableArray(ctx context.Context, requ
 func (c *Client) sendTestRequestIntegerUint16NullableArray(ctx context.Context, request []NilUint16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint16_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_uint16_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -5714,6 +9811,8 @@ func (c *Client) TestRequestIntegerUint16NullableArrayArray(ctx context.Context,
 func (c *Client) sendTestRequestIntegerUint16NullableArrayArray(ctx context.Context, request [][]NilUint16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint16_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_uint16_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -5809,6 +9908,8 @@ func (c *Client) TestRequestIntegerUint32(ctx context.Context, request OptUint32
 func (c *Client) sendTestRequestIntegerUint32(ctx context.Context, request OptUint32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint32"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_uint32"),
 	}
 
 	// Run stopwatch.
@@ -5881,6 +9982,8 @@ func (c *Client) TestRequestIntegerUint32Array(ctx context.Context, request []ui
 func (c *Client) sendTestRequestIntegerUint32Array(ctx context.Context, request []uint32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint32_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_uint32_array"),
 	}
 
 	// Run stopwatch.
@@ -5953,6 +10056,8 @@ func (c *Client) TestRequestIntegerUint32ArrayArray(ctx context.Context, request
 func (c *Client) sendTestRequestIntegerUint32ArrayArray(ctx context.Context, request [][]uint32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint32_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_uint32_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -6048,6 +10153,8 @@ func (c *Client) TestRequestIntegerUint32Nullable(ctx context.Context, request O
 func (c *Client) sendTestRequestIntegerUint32Nullable(ctx context.Context, request OptNilUint32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint32_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_uint32_nullable"),
 	}
 
 	// Run stopwatch.
@@ -6120,6 +10227,8 @@ func (c *Client) TestRequestIntegerUint32NullableArray(ctx context.Context, requ
 func (c *Client) sendTestRequestIntegerUint32NullableArray(ctx context.Context, request []NilUint32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint32_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_uint32_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -6192,6 +10301,8 @@ func (c *Client) TestRequestIntegerUint32NullableArrayArray(ctx context.Context,
 func (c *Client) sendTestRequestIntegerUint32NullableArrayArray(ctx context.Context, request [][]NilUint32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint32_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_uint32_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -6287,6 +10398,8 @@ func (c *Client) TestRequestIntegerUint64(ctx context.Context, request OptUint64
 func (c *Client) sendTestRequestIntegerUint64(ctx context.Context, request OptUint64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint64"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_uint64"),
 	}
 
 	// Run stopwatch.
@@ -6359,6 +10472,8 @@ func (c *Client) TestRequestIntegerUint64Array(ctx context.Context, request []ui
 func (c *Client) sendTestRequestIntegerUint64Array(ctx context.Context, request []uint64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint64_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_uint64_array"),
 	}
 
 	// Run stopwatch.
@@ -6431,6 +10546,8 @@ func (c *Client) TestRequestIntegerUint64ArrayArray(ctx context.Context, request
 func (c *Client) sendTestRequestIntegerUint64ArrayArray(ctx context.Context, request [][]uint64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint64_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_uint64_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -6526,6 +10643,8 @@ func (c *Client) TestRequestIntegerUint64Nullable(ctx context.Context, request O
 func (c *Client) sendTestRequestIntegerUint64Nullable(ctx context.Context, request OptNilUint64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint64_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_uint64_nullable"),
 	}
 
 	// Run stopwatch.
@@ -6598,6 +10717,8 @@ func (c *Client) TestRequestIntegerUint64NullableArray(ctx context.Context, requ
 func (c *Client) sendTestRequestIntegerUint64NullableArray(ctx context.Context, request []NilUint64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint64_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_uint64_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -6670,6 +10791,8 @@ func (c *Client) TestRequestIntegerUint64NullableArrayArray(ctx context.Context,
 func (c *Client) sendTestRequestIntegerUint64NullableArrayArray(ctx context.Context, request [][]NilUint64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint64_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_uint64_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -6765,6 +10888,8 @@ func (c *Client) TestRequestIntegerUint8(ctx context.Context, request OptUint8) 
 func (c *Client) sendTestRequestIntegerUint8(ctx context.Context, request OptUint8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint8"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_uint8"),
 	}
 
 	// Run stopwatch.
@@ -6837,6 +10962,8 @@ func (c *Client) TestRequestIntegerUint8Array(ctx context.Context, request []uin
 func (c *Client) sendTestRequestIntegerUint8Array(ctx context.Context, request []uint8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint8_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_uint8_array"),
 	}
 
 	// Run stopwatch.
@@ -6909,6 +11036,8 @@ func (c *Client) TestRequestIntegerUint8ArrayArray(ctx context.Context, request 
 func (c *Client) sendTestRequestIntegerUint8ArrayArray(ctx context.Context, request [][]uint8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint8_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_uint8_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -7004,6 +11133,8 @@ func (c *Client) TestRequestIntegerUint8Nullable(ctx context.Context, request Op
 func (c *Client) sendTestRequestIntegerUint8Nullable(ctx context.Context, request OptNilUint8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint8_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_uint8_nullable"),
 	}
 
 	// Run stopwatch.
@@ -7076,6 +11207,8 @@ func (c *Client) TestRequestIntegerUint8NullableArray(ctx context.Context, reque
 func (c *Client) sendTestRequestIntegerUint8NullableArray(ctx context.Context, request []NilUint8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint8_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_uint8_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -7148,6 +11281,8 @@ func (c *Client) TestRequestIntegerUint8NullableArrayArray(ctx context.Context, 
 func (c *Client) sendTestRequestIntegerUint8NullableArrayArray(ctx context.Context, request [][]NilUint8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint8_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_uint8_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -7243,6 +11378,8 @@ func (c *Client) TestRequestIntegerUintArray(ctx context.Context, request []uint
 func (c *Client) sendTestRequestIntegerUintArray(ctx context.Context, request []uint) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_uint_array"),
 	}
 
 	// Run stopwatch.
@@ -7315,6 +11452,8 @@ func (c *Client) TestRequestIntegerUintArrayArray(ctx context.Context, request [
 func (c *Client) sendTestRequestIntegerUintArrayArray(ctx context.Context, request [][]uint) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_uint_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -7410,6 +11549,8 @@ func (c *Client) TestRequestIntegerUintNullable(ctx context.Context, request Opt
 func (c *Client) sendTestRequestIntegerUintNullable(ctx context.Context, request OptNilUint) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_uint_nullable"),
 	}
 
 	// Run stopwatch.
@@ -7482,6 +11623,8 @@ func (c *Client) TestRequestIntegerUintNullableArray(ctx context.Context, reques
 func (c *Client) sendTestRequestIntegerUintNullableArray(ctx context.Context, request []NilUint) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_uint_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -7554,6 +11697,8 @@ func (c *Client) TestRequestIntegerUintNullableArrayArray(ctx context.Context, r
 func (c *Client) sendTestRequestIntegerUintNullableArrayArray(ctx context.Context, request [][]NilUint) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_uint_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -7649,6 +11794,8 @@ func (c *Client) TestRequestIntegerUnix(ctx context.Context, request OptUnixSeco
 func (c *Client) sendTestRequestIntegerUnix(ctx context.Context, request OptUnixSeconds) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_unix"),
 	}
 
 	// Run stopwatch.
@@ -7721,6 +11868,8 @@ func (c *Client) TestRequestIntegerUnixArray(ctx context.Context, request []time
 func (c *Client) sendTestRequestIntegerUnixArray(ctx context.Context, request []time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_unix_array"),
 	}
 
 	// Run stopwatch.
@@ -7793,6 +11942,8 @@ func (c *Client) TestRequestIntegerUnixArrayArray(ctx context.Context, request [
 func (c *Client) sendTestRequestIntegerUnixArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_unix_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -7888,6 +12039,8 @@ func (c *Client) TestRequestIntegerUnixMicro(ctx context.Context, request OptUni
 func (c *Client) sendTestRequestIntegerUnixMicro(ctx context.Context, request OptUnixMicro) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-micro"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_unix-micro"),
 	}
 
 	// Run stopwatch.
@@ -7960,6 +12113,8 @@ func (c *Client) TestRequestIntegerUnixMicroArray(ctx context.Context, request [
 func (c *Client) sendTestRequestIntegerUnixMicroArray(ctx context.Context, request []time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-micro_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_unix-micro_array"),
 	}
 
 	// Run stopwatch.
@@ -8032,6 +12187,8 @@ func (c *Client) TestRequestIntegerUnixMicroArrayArray(ctx context.Context, requ
 func (c *Client) sendTestRequestIntegerUnixMicroArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-micro_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_unix-micro_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -8127,6 +12284,8 @@ func (c *Client) TestRequestIntegerUnixMicroNullable(ctx context.Context, reques
 func (c *Client) sendTestRequestIntegerUnixMicroNullable(ctx context.Context, request OptNilUnixMicro) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-micro_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_unix-micro_nullable"),
 	}
 
 	// Run stopwatch.
@@ -8199,6 +12358,8 @@ func (c *Client) TestRequestIntegerUnixMicroNullableArray(ctx context.Context, r
 func (c *Client) sendTestRequestIntegerUnixMicroNullableArray(ctx context.Context, request []NilUnixMicro) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-micro_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_unix-micro_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -8271,6 +12432,8 @@ func (c *Client) TestRequestIntegerUnixMicroNullableArrayArray(ctx context.Conte
 func (c *Client) sendTestRequestIntegerUnixMicroNullableArrayArray(ctx context.Context, request [][]NilUnixMicro) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-micro_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_unix-micro_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -8366,6 +12529,8 @@ func (c *Client) TestRequestIntegerUnixMilli(ctx context.Context, request OptUni
 func (c *Client) sendTestRequestIntegerUnixMilli(ctx context.Context, request OptUnixMilli) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-milli"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_unix-milli"),
 	}
 
 	// Run stopwatch.
@@ -8438,6 +12603,8 @@ func (c *Client) TestRequestIntegerUnixMilliArray(ctx context.Context, request [
 func (c *Client) sendTestRequestIntegerUnixMilliArray(ctx context.Context, request []time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-milli_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_unix-milli_array"),
 	}
 
 	// Run stopwatch.
@@ -8510,6 +12677,8 @@ func (c *Client) TestRequestIntegerUnixMilliArrayArray(ctx context.Context, requ
 func (c *Client) sendTestRequestIntegerUnixMilliArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-milli_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_unix-milli_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -8605,6 +12774,8 @@ func (c *Client) TestRequestIntegerUnixMilliNullable(ctx context.Context, reques
 func (c *Client) sendTestRequestIntegerUnixMilliNullable(ctx context.Context, request OptNilUnixMilli) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-milli_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_unix-milli_nullable"),
 	}
 
 	// Run stopwatch.
@@ -8677,6 +12848,8 @@ func (c *Client) TestRequestIntegerUnixMilliNullableArray(ctx context.Context, r
 func (c *Client) sendTestRequestIntegerUnixMilliNullableArray(ctx context.Context, request []NilUnixMilli) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-milli_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_unix-milli_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -8749,6 +12922,8 @@ func (c *Client) TestRequestIntegerUnixMilliNullableArrayArray(ctx context.Conte
 func (c *Client) sendTestRequestIntegerUnixMilliNullableArrayArray(ctx context.Context, request [][]NilUnixMilli) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-milli_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_unix-milli_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -8844,6 +13019,8 @@ func (c *Client) TestRequestIntegerUnixNano(ctx context.Context, request OptUnix
 func (c *Client) sendTestRequestIntegerUnixNano(ctx context.Context, request OptUnixNano) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-nano"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_unix-nano"),
 	}
 
 	// Run stopwatch.
@@ -8916,6 +13093,8 @@ func (c *Client) TestRequestIntegerUnixNanoArray(ctx context.Context, request []
 func (c *Client) sendTestRequestIntegerUnixNanoArray(ctx context.Context, request []time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-nano_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_unix-nano_array"),
 	}
 
 	// Run stopwatch.
@@ -8988,6 +13167,8 @@ func (c *Client) TestRequestIntegerUnixNanoArrayArray(ctx context.Context, reque
 func (c *Client) sendTestRequestIntegerUnixNanoArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-nano_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_unix-nano_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -9083,6 +13264,8 @@ func (c *Client) TestRequestIntegerUnixNanoNullable(ctx context.Context, request
 func (c *Client) sendTestRequestIntegerUnixNanoNullable(ctx context.Context, request OptNilUnixNano) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-nano_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_unix-nano_nullable"),
 	}
 
 	// Run stopwatch.
@@ -9155,6 +13338,8 @@ func (c *Client) TestRequestIntegerUnixNanoNullableArray(ctx context.Context, re
 func (c *Client) sendTestRequestIntegerUnixNanoNullableArray(ctx context.Context, request []NilUnixNano) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-nano_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_unix-nano_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -9227,6 +13412,8 @@ func (c *Client) TestRequestIntegerUnixNanoNullableArrayArray(ctx context.Contex
 func (c *Client) sendTestRequestIntegerUnixNanoNullableArrayArray(ctx context.Context, request [][]NilUnixNano) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-nano_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_unix-nano_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -9322,6 +13509,8 @@ func (c *Client) TestRequestIntegerUnixNullable(ctx context.Context, request Opt
 func (c *Client) sendTestRequestIntegerUnixNullable(ctx context.Context, request OptNilUnixSeconds) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_unix_nullable"),
 	}
 
 	// Run stopwatch.
@@ -9394,6 +13583,8 @@ func (c *Client) TestRequestIntegerUnixNullableArray(ctx context.Context, reques
 func (c *Client) sendTestRequestIntegerUnixNullableArray(ctx context.Context, request []NilUnixSeconds) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_unix_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -9466,6 +13657,8 @@ func (c *Client) TestRequestIntegerUnixNullableArrayArray(ctx context.Context, r
 func (c *Client) sendTestRequestIntegerUnixNullableArrayArray(ctx context.Context, request [][]NilUnixSeconds) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_unix_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -9561,6 +13754,8 @@ func (c *Client) TestRequestIntegerUnixSeconds(ctx context.Context, request OptU
 func (c *Client) sendTestRequestIntegerUnixSeconds(ctx context.Context, request OptUnixSeconds) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-seconds"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_unix-seconds"),
 	}
 
 	// Run stopwatch.
@@ -9633,6 +13828,8 @@ func (c *Client) TestRequestIntegerUnixSecondsArray(ctx context.Context, request
 func (c *Client) sendTestRequestIntegerUnixSecondsArray(ctx context.Context, request []time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-seconds_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_unix-seconds_array"),
 	}
 
 	// Run stopwatch.
@@ -9705,6 +13902,8 @@ func (c *Client) TestRequestIntegerUnixSecondsArrayArray(ctx context.Context, re
 func (c *Client) sendTestRequestIntegerUnixSecondsArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-seconds_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_unix-seconds_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -9800,6 +13999,8 @@ func (c *Client) TestRequestIntegerUnixSecondsNullable(ctx context.Context, requ
 func (c *Client) sendTestRequestIntegerUnixSecondsNullable(ctx context.Context, request OptNilUnixSeconds) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-seconds_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_unix-seconds_nullable"),
 	}
 
 	// Run stopwatch.
@@ -9872,6 +14073,8 @@ func (c *Client) TestRequestIntegerUnixSecondsNullableArray(ctx context.Context,
 func (c *Client) sendTestRequestIntegerUnixSecondsNullableArray(ctx context.Context, request []NilUnixSeconds) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-seconds_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_unix-seconds_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -9944,6 +14147,8 @@ func (c *Client) TestRequestIntegerUnixSecondsNullableArrayArray(ctx context.Con
 func (c *Client) sendTestRequestIntegerUnixSecondsNullableArrayArray(ctx context.Context, request [][]NilUnixSeconds) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-seconds_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_integer_unix-seconds_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -10039,6 +14244,8 @@ func (c *Client) TestRequestNull(ctx context.Context, request OptNull) (*Error, 
 func (c *Client) sendTestRequestNull(ctx context.Context, request OptNull) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_null"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_null"),
 	}
 
 	// Run stopwatch.
@@ -10111,6 +14318,8 @@ func (c *Client) TestRequestNullArray(ctx context.Context, request []struct{}) (
 func (c *Client) sendTestRequestNullArray(ctx context.Context, request []struct{}) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_null_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_null_array"),
 	}
 
 	// Run stopwatch.
@@ -10183,6 +14392,8 @@ func (c *Client) TestRequestNullArrayArray(ctx context.Context, request [][]stru
 func (c *Client) sendTestRequestNullArrayArray(ctx context.Context, request [][]struct{}) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_null_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_null_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -10278,6 +14489,8 @@ func (c *Client) TestRequestNullNullable(ctx context.Context, request OptNull) (
 func (c *Client) sendTestRequestNullNullable(ctx context.Context, request OptNull) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_null_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_null_nullable"),
 	}
 
 	// Run stopwatch.
@@ -10350,6 +14563,8 @@ func (c *Client) TestRequestNullNullableArray(ctx context.Context, request []str
 func (c *Client) sendTestRequestNullNullableArray(ctx context.Context, request []struct{}) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_null_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_null_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -10422,6 +14637,8 @@ func (c *Client) TestRequestNullNullableArrayArray(ctx context.Context, request 
 func (c *Client) sendTestRequestNullNullableArrayArray(ctx context.Context, request [][]struct{}) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_null_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_null_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -10517,6 +14734,8 @@ func (c *Client) TestRequestNumber(ctx context.Context, request OptFloat64) (*Er
 func (c *Client) sendTestRequestNumber(ctx context.Context, request OptFloat64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_number"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -10605,6 +14824,8 @@ func (c *Client) TestRequestNumberArray(ctx context.Context, request []float64) 
 func (c *Client) sendTestRequestNumberArray(ctx context.Context, request []float64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_number_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -10700,6 +14921,8 @@ func (c *Client) TestRequestNumberArrayArray(ctx context.Context, request [][]fl
 func (c *Client) sendTestRequestNumberArrayArray(ctx context.Context, request [][]float64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_number_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -10812,6 +15035,8 @@ func (c *Client) TestRequestNumberDouble(ctx context.Context, request OptFloat64
 func (c *Client) sendTestRequestNumberDouble(ctx context.Context, request OptFloat64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_double"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_number_double"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -10900,6 +15125,8 @@ func (c *Client) TestRequestNumberDoubleArray(ctx context.Context, request []flo
 func (c *Client) sendTestRequestNumberDoubleArray(ctx context.Context, request []float64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_double_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_number_double_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -10995,6 +15222,8 @@ func (c *Client) TestRequestNumberDoubleArrayArray(ctx context.Context, request 
 func (c *Client) sendTestRequestNumberDoubleArrayArray(ctx context.Context, request [][]float64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_double_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_number_double_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -11107,6 +15336,8 @@ func (c *Client) TestRequestNumberDoubleNullable(ctx context.Context, request Op
 func (c *Client) sendTestRequestNumberDoubleNullable(ctx context.Context, request OptNilFloat64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_double_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_number_double_nullable"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -11195,6 +15426,8 @@ func (c *Client) TestRequestNumberDoubleNullableArray(ctx context.Context, reque
 func (c *Client) sendTestRequestNumberDoubleNullableArray(ctx context.Context, request []NilFloat64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_double_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_number_double_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -11297,6 +15530,8 @@ func (c *Client) TestRequestNumberDoubleNullableArrayArray(ctx context.Context, 
 func (c *Client) sendTestRequestNumberDoubleNullableArrayArray(ctx context.Context, request [][]NilFloat64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_double_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_number_double_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -11416,6 +15651,8 @@ func (c *Client) TestRequestNumberFloat(ctx context.Context, request OptFloat32)
 func (c *Client) sendTestRequestNumberFloat(ctx context.Context, request OptFloat32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_float"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_number_float"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -11504,6 +15741,8 @@ func (c *Client) TestRequestNumberFloatArray(ctx context.Context, request []floa
 func (c *Client) sendTestRequestNumberFloatArray(ctx context.Context, request []float32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_float_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_number_float_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -11599,6 +15838,8 @@ func (c *Client) TestRequestNumberFloatArrayArray(ctx context.Context, request [
 func (c *Client) sendTestRequestNumberFloatArrayArray(ctx context.Context, request [][]float32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_float_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_number_float_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -11711,6 +15952,8 @@ func (c *Client) TestRequestNumberFloatNullable(ctx context.Context, request Opt
 func (c *Client) sendTestRequestNumberFloatNullable(ctx context.Context, request OptNilFloat32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_float_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_number_float_nullable"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -11799,6 +16042,8 @@ func (c *Client) TestRequestNumberFloatNullableArray(ctx context.Context, reques
 func (c *Client) sendTestRequestNumberFloatNullableArray(ctx context.Context, request []NilFloat32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_float_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_number_float_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -11901,6 +16146,8 @@ func (c *Client) TestRequestNumberFloatNullableArrayArray(ctx context.Context, r
 func (c *Client) sendTestRequestNumberFloatNullableArrayArray(ctx context.Context, request [][]NilFloat32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_float_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_number_float_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -12020,6 +16267,8 @@ func (c *Client) TestRequestNumberInt32(ctx context.Context, request OptInt32) (
 func (c *Client) sendTestRequestNumberInt32(ctx context.Context, request OptInt32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int32"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_number_int32"),
 	}
 
 	// Run stopwatch.
@@ -12092,6 +16341,8 @@ func (c *Client) TestRequestNumberInt32Array(ctx context.Context, request []int3
 func (c *Client) sendTestRequestNumberInt32Array(ctx context.Context, request []int32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int32_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_number_int32_array"),
 	}
 
 	// Run stopwatch.
@@ -12164,6 +16415,8 @@ func (c *Client) TestRequestNumberInt32ArrayArray(ctx context.Context, request [
 func (c *Client) sendTestRequestNumberInt32ArrayArray(ctx context.Context, request [][]int32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int32_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_number_int32_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -12259,6 +16512,8 @@ func (c *Client) TestRequestNumberInt32Nullable(ctx context.Context, request Opt
 func (c *Client) sendTestRequestNumberInt32Nullable(ctx context.Context, request OptNilInt32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int32_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_number_int32_nullable"),
 	}
 
 	// Run stopwatch.
@@ -12331,6 +16586,8 @@ func (c *Client) TestRequestNumberInt32NullableArray(ctx context.Context, reques
 func (c *Client) sendTestRequestNumberInt32NullableArray(ctx context.Context, request []NilInt32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int32_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_number_int32_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -12403,6 +16660,8 @@ func (c *Client) TestRequestNumberInt32NullableArrayArray(ctx context.Context, r
 func (c *Client) sendTestRequestNumberInt32NullableArrayArray(ctx context.Context, request [][]NilInt32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int32_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_number_int32_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -12498,6 +16757,8 @@ func (c *Client) TestRequestNumberInt64(ctx context.Context, request OptInt64) (
 func (c *Client) sendTestRequestNumberInt64(ctx context.Context, request OptInt64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int64"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_number_int64"),
 	}
 
 	// Run stopwatch.
@@ -12570,6 +16831,8 @@ func (c *Client) TestRequestNumberInt64Array(ctx context.Context, request []int6
 func (c *Client) sendTestRequestNumberInt64Array(ctx context.Context, request []int64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int64_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_number_int64_array"),
 	}
 
 	// Run stopwatch.
@@ -12642,6 +16905,8 @@ func (c *Client) TestRequestNumberInt64ArrayArray(ctx context.Context, request [
 func (c *Client) sendTestRequestNumberInt64ArrayArray(ctx context.Context, request [][]int64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int64_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_number_int64_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -12737,6 +17002,8 @@ func (c *Client) TestRequestNumberInt64Nullable(ctx context.Context, request Opt
 func (c *Client) sendTestRequestNumberInt64Nullable(ctx context.Context, request OptNilInt64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int64_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_number_int64_nullable"),
 	}
 
 	// Run stopwatch.
@@ -12809,6 +17076,8 @@ func (c *Client) TestRequestNumberInt64NullableArray(ctx context.Context, reques
 func (c *Client) sendTestRequestNumberInt64NullableArray(ctx context.Context, request []NilInt64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int64_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_number_int64_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -12881,6 +17150,8 @@ func (c *Client) TestRequestNumberInt64NullableArrayArray(ctx context.Context, r
 func (c *Client) sendTestRequestNumberInt64NullableArrayArray(ctx context.Context, request [][]NilInt64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int64_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_number_int64_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -12976,6 +17247,8 @@ func (c *Client) TestRequestNumberNullable(ctx context.Context, request OptNilFl
 func (c *Client) sendTestRequestNumberNullable(ctx context.Context, request OptNilFloat64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_number_nullable"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -13064,6 +17337,8 @@ func (c *Client) TestRequestNumberNullableArray(ctx context.Context, request []N
 func (c *Client) sendTestRequestNumberNullableArray(ctx context.Context, request []NilFloat64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_number_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -13166,6 +17441,8 @@ func (c *Client) TestRequestNumberNullableArrayArray(ctx context.Context, reques
 func (c *Client) sendTestRequestNumberNullableArrayArray(ctx context.Context, request [][]NilFloat64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_number_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -13285,6 +17562,8 @@ func (c *Client) TestRequestRequiredAny(ctx context.Context, request jx.Raw) (*E
 func (c *Client) sendTestRequestRequiredAny(ctx context.Context, request jx.Raw) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_Any"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_Any"),
 	}
 
 	// Run stopwatch.
@@ -13357,6 +17636,8 @@ func (c *Client) TestRequestRequiredBoolean(ctx context.Context, request bool) (
 func (c *Client) sendTestRequestRequiredBoolean(ctx context.Context, request bool) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_boolean"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_boolean"),
 	}
 
 	// Run stopwatch.
@@ -13429,6 +17710,8 @@ func (c *Client) TestRequestRequiredBooleanArray(ctx context.Context, request []
 func (c *Client) sendTestRequestRequiredBooleanArray(ctx context.Context, request []bool) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_boolean_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_boolean_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -13510,6 +17793,8 @@ func (c *Client) TestRequestRequiredBooleanArrayArray(ctx context.Context, reque
 func (c *Client) sendTestRequestRequiredBooleanArrayArray(ctx context.Context, request [][]bool) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_boolean_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_boolean_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -13608,6 +17893,8 @@ func (c *Client) TestRequestRequiredBooleanNullable(ctx context.Context, request
 func (c *Client) sendTestRequestRequiredBooleanNullable(ctx context.Context, request NilBool) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_boolean_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_boolean_nullable"),
 	}
 
 	// Run stopwatch.
@@ -13680,6 +17967,8 @@ func (c *Client) TestRequestRequiredBooleanNullableArray(ctx context.Context, re
 func (c *Client) sendTestRequestRequiredBooleanNullableArray(ctx context.Context, request []NilBool) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_boolean_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_boolean_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -13761,6 +18050,8 @@ func (c *Client) TestRequestRequiredBooleanNullableArrayArray(ctx context.Contex
 func (c *Client) sendTestRequestRequiredBooleanNullableArrayArray(ctx context.Context, request [][]NilBool) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_boolean_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_boolean_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -13859,6 +18150,8 @@ func (c *Client) TestRequestRequiredEmptyStruct(ctx context.Context, request *Te
 func (c *Client) sendTestRequestRequiredEmptyStruct(ctx context.Context, request *TestRequestRequiredEmptyStructReq) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_EmptyStruct"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_EmptyStruct"),
 	}
 
 	// Run stopwatch.
@@ -13931,6 +18224,8 @@ func (c *Client) TestRequestRequiredFormatTest(ctx context.Context, request *Tes
 func (c *Client) sendTestRequestRequiredFormatTest(ctx context.Context, request *TestRequestRequiredFormatTestReq) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_FormatTest"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_FormatTest"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -14012,6 +18307,8 @@ func (c *Client) TestRequestRequiredInteger(ctx context.Context, request int) (*
 func (c *Client) sendTestRequestRequiredInteger(ctx context.Context, request int) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer"),
 	}
 
 	// Run stopwatch.
@@ -14084,6 +18381,8 @@ func (c *Client) TestRequestRequiredIntegerArray(ctx context.Context, request []
 func (c *Client) sendTestRequestRequiredIntegerArray(ctx context.Context, request []int) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -14165,6 +18464,8 @@ func (c *Client) TestRequestRequiredIntegerArrayArray(ctx context.Context, reque
 func (c *Client) sendTestRequestRequiredIntegerArrayArray(ctx context.Context, request [][]int) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -14263,6 +18564,8 @@ func (c *Client) TestRequestRequiredIntegerInt16(ctx context.Context, request in
 func (c *Client) sendTestRequestRequiredIntegerInt16(ctx context.Context, request int16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int16"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_int16"),
 	}
 
 	// Run stopwatch.
@@ -14335,6 +18638,8 @@ func (c *Client) TestRequestRequiredIntegerInt16Array(ctx context.Context, reque
 func (c *Client) sendTestRequestRequiredIntegerInt16Array(ctx context.Context, request []int16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int16_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_int16_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -14416,6 +18721,8 @@ func (c *Client) TestRequestRequiredIntegerInt16ArrayArray(ctx context.Context, 
 func (c *Client) sendTestRequestRequiredIntegerInt16ArrayArray(ctx context.Context, request [][]int16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int16_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_int16_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -14514,6 +18821,8 @@ func (c *Client) TestRequestRequiredIntegerInt16Nullable(ctx context.Context, re
 func (c *Client) sendTestRequestRequiredIntegerInt16Nullable(ctx context.Context, request NilInt16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int16_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_int16_nullable"),
 	}
 
 	// Run stopwatch.
@@ -14586,6 +18895,8 @@ func (c *Client) TestRequestRequiredIntegerInt16NullableArray(ctx context.Contex
 func (c *Client) sendTestRequestRequiredIntegerInt16NullableArray(ctx context.Context, request []NilInt16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int16_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_int16_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -14667,6 +18978,8 @@ func (c *Client) TestRequestRequiredIntegerInt16NullableArrayArray(ctx context.C
 func (c *Client) sendTestRequestRequiredIntegerInt16NullableArrayArray(ctx context.Context, request [][]NilInt16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int16_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_int16_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -14765,6 +19078,8 @@ func (c *Client) TestRequestRequiredIntegerInt32(ctx context.Context, request in
 func (c *Client) sendTestRequestRequiredIntegerInt32(ctx context.Context, request int32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int32"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_int32"),
 	}
 
 	// Run stopwatch.
@@ -14837,6 +19152,8 @@ func (c *Client) TestRequestRequiredIntegerInt32Array(ctx context.Context, reque
 func (c *Client) sendTestRequestRequiredIntegerInt32Array(ctx context.Context, request []int32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int32_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_int32_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -14918,6 +19235,8 @@ func (c *Client) TestRequestRequiredIntegerInt32ArrayArray(ctx context.Context, 
 func (c *Client) sendTestRequestRequiredIntegerInt32ArrayArray(ctx context.Context, request [][]int32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int32_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_int32_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -15016,6 +19335,8 @@ func (c *Client) TestRequestRequiredIntegerInt32Nullable(ctx context.Context, re
 func (c *Client) sendTestRequestRequiredIntegerInt32Nullable(ctx context.Context, request NilInt32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int32_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_int32_nullable"),
 	}
 
 	// Run stopwatch.
@@ -15088,6 +19409,8 @@ func (c *Client) TestRequestRequiredIntegerInt32NullableArray(ctx context.Contex
 func (c *Client) sendTestRequestRequiredIntegerInt32NullableArray(ctx context.Context, request []NilInt32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int32_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_int32_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -15169,6 +19492,8 @@ func (c *Client) TestRequestRequiredIntegerInt32NullableArrayArray(ctx context.C
 func (c *Client) sendTestRequestRequiredIntegerInt32NullableArrayArray(ctx context.Context, request [][]NilInt32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int32_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_int32_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -15267,6 +19592,8 @@ func (c *Client) TestRequestRequiredIntegerInt64(ctx context.Context, request in
 func (c *Client) sendTestRequestRequiredIntegerInt64(ctx context.Context, request int64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int64"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_int64"),
 	}
 
 	// Run stopwatch.
@@ -15339,6 +19666,8 @@ func (c *Client) TestRequestRequiredIntegerInt64Array(ctx context.Context, reque
 func (c *Client) sendTestRequestRequiredIntegerInt64Array(ctx context.Context, request []int64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int64_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_int64_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -15420,6 +19749,8 @@ func (c *Client) TestRequestRequiredIntegerInt64ArrayArray(ctx context.Context, 
 func (c *Client) sendTestRequestRequiredIntegerInt64ArrayArray(ctx context.Context, request [][]int64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int64_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_int64_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -15518,6 +19849,8 @@ func (c *Client) TestRequestRequiredIntegerInt64Nullable(ctx context.Context, re
 func (c *Client) sendTestRequestRequiredIntegerInt64Nullable(ctx context.Context, request NilInt64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int64_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_int64_nullable"),
 	}
 
 	// Run stopwatch.
@@ -15590,6 +19923,8 @@ func (c *Client) TestRequestRequiredIntegerInt64NullableArray(ctx context.Contex
 func (c *Client) sendTestRequestRequiredIntegerInt64NullableArray(ctx context.Context, request []NilInt64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int64_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_int64_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -15671,6 +20006,8 @@ func (c *Client) TestRequestRequiredIntegerInt64NullableArrayArray(ctx context.C
 func (c *Client) sendTestRequestRequiredIntegerInt64NullableArrayArray(ctx context.Context, request [][]NilInt64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int64_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_int64_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -15769,6 +20106,8 @@ func (c *Client) TestRequestRequiredIntegerInt8(ctx context.Context, request int
 func (c *Client) sendTestRequestRequiredIntegerInt8(ctx context.Context, request int8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int8"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_int8"),
 	}
 
 	// Run stopwatch.
@@ -15841,6 +20180,8 @@ func (c *Client) TestRequestRequiredIntegerInt8Array(ctx context.Context, reques
 func (c *Client) sendTestRequestRequiredIntegerInt8Array(ctx context.Context, request []int8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int8_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_int8_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -15922,6 +20263,8 @@ func (c *Client) TestRequestRequiredIntegerInt8ArrayArray(ctx context.Context, r
 func (c *Client) sendTestRequestRequiredIntegerInt8ArrayArray(ctx context.Context, request [][]int8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int8_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_int8_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -16020,6 +20363,8 @@ func (c *Client) TestRequestRequiredIntegerInt8Nullable(ctx context.Context, req
 func (c *Client) sendTestRequestRequiredIntegerInt8Nullable(ctx context.Context, request NilInt8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int8_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_int8_nullable"),
 	}
 
 	// Run stopwatch.
@@ -16092,6 +20437,8 @@ func (c *Client) TestRequestRequiredIntegerInt8NullableArray(ctx context.Context
 func (c *Client) sendTestRequestRequiredIntegerInt8NullableArray(ctx context.Context, request []NilInt8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int8_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_int8_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -16173,6 +20520,8 @@ func (c *Client) TestRequestRequiredIntegerInt8NullableArrayArray(ctx context.Co
 func (c *Client) sendTestRequestRequiredIntegerInt8NullableArrayArray(ctx context.Context, request [][]NilInt8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int8_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_int8_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -16271,6 +20620,8 @@ func (c *Client) TestRequestRequiredIntegerNullable(ctx context.Context, request
 func (c *Client) sendTestRequestRequiredIntegerNullable(ctx context.Context, request NilInt) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_nullable"),
 	}
 
 	// Run stopwatch.
@@ -16343,6 +20694,8 @@ func (c *Client) TestRequestRequiredIntegerNullableArray(ctx context.Context, re
 func (c *Client) sendTestRequestRequiredIntegerNullableArray(ctx context.Context, request []NilInt) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -16424,6 +20777,8 @@ func (c *Client) TestRequestRequiredIntegerNullableArrayArray(ctx context.Contex
 func (c *Client) sendTestRequestRequiredIntegerNullableArrayArray(ctx context.Context, request [][]NilInt) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -16522,6 +20877,8 @@ func (c *Client) TestRequestRequiredIntegerUint(ctx context.Context, request uin
 func (c *Client) sendTestRequestRequiredIntegerUint(ctx context.Context, request uint) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_uint"),
 	}
 
 	// Run stopwatch.
@@ -16594,6 +20951,8 @@ func (c *Client) TestRequestRequiredIntegerUint16(ctx context.Context, request u
 func (c *Client) sendTestRequestRequiredIntegerUint16(ctx context.Context, request uint16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint16"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_uint16"),
 	}
 
 	// Run stopwatch.
@@ -16666,6 +21025,8 @@ func (c *Client) TestRequestRequiredIntegerUint16Array(ctx context.Context, requ
 func (c *Client) sendTestRequestRequiredIntegerUint16Array(ctx context.Context, request []uint16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint16_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_uint16_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -16747,6 +21108,8 @@ func (c *Client) TestRequestRequiredIntegerUint16ArrayArray(ctx context.Context,
 func (c *Client) sendTestRequestRequiredIntegerUint16ArrayArray(ctx context.Context, request [][]uint16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint16_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_uint16_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -16845,6 +21208,8 @@ func (c *Client) TestRequestRequiredIntegerUint16Nullable(ctx context.Context, r
 func (c *Client) sendTestRequestRequiredIntegerUint16Nullable(ctx context.Context, request NilUint16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint16_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_uint16_nullable"),
 	}
 
 	// Run stopwatch.
@@ -16917,6 +21282,8 @@ func (c *Client) TestRequestRequiredIntegerUint16NullableArray(ctx context.Conte
 func (c *Client) sendTestRequestRequiredIntegerUint16NullableArray(ctx context.Context, request []NilUint16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint16_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_uint16_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -16998,6 +21365,8 @@ func (c *Client) TestRequestRequiredIntegerUint16NullableArrayArray(ctx context.
 func (c *Client) sendTestRequestRequiredIntegerUint16NullableArrayArray(ctx context.Context, request [][]NilUint16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint16_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_uint16_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -17096,6 +21465,8 @@ func (c *Client) TestRequestRequiredIntegerUint32(ctx context.Context, request u
 func (c *Client) sendTestRequestRequiredIntegerUint32(ctx context.Context, request uint32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint32"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_uint32"),
 	}
 
 	// Run stopwatch.
@@ -17168,6 +21539,8 @@ func (c *Client) TestRequestRequiredIntegerUint32Array(ctx context.Context, requ
 func (c *Client) sendTestRequestRequiredIntegerUint32Array(ctx context.Context, request []uint32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint32_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_uint32_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -17249,6 +21622,8 @@ func (c *Client) TestRequestRequiredIntegerUint32ArrayArray(ctx context.Context,
 func (c *Client) sendTestRequestRequiredIntegerUint32ArrayArray(ctx context.Context, request [][]uint32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint32_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_uint32_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -17347,6 +21722,8 @@ func (c *Client) TestRequestRequiredIntegerUint32Nullable(ctx context.Context, r
 func (c *Client) sendTestRequestRequiredIntegerUint32Nullable(ctx context.Context, request NilUint32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint32_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_uint32_nullable"),
 	}
 
 	// Run stopwatch.
@@ -17419,6 +21796,8 @@ func (c *Client) TestRequestRequiredIntegerUint32NullableArray(ctx context.Conte
 func (c *Client) sendTestRequestRequiredIntegerUint32NullableArray(ctx context.Context, request []NilUint32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint32_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_uint32_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -17500,6 +21879,8 @@ func (c *Client) TestRequestRequiredIntegerUint32NullableArrayArray(ctx context.
 func (c *Client) sendTestRequestRequiredIntegerUint32NullableArrayArray(ctx context.Context, request [][]NilUint32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint32_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_uint32_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -17598,6 +21979,8 @@ func (c *Client) TestRequestRequiredIntegerUint64(ctx context.Context, request u
 func (c *Client) sendTestRequestRequiredIntegerUint64(ctx context.Context, request uint64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint64"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_uint64"),
 	}
 
 	// Run stopwatch.
@@ -17670,6 +22053,8 @@ func (c *Client) TestRequestRequiredIntegerUint64Array(ctx context.Context, requ
 func (c *Client) sendTestRequestRequiredIntegerUint64Array(ctx context.Context, request []uint64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint64_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_uint64_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -17751,6 +22136,8 @@ func (c *Client) TestRequestRequiredIntegerUint64ArrayArray(ctx context.Context,
 func (c *Client) sendTestRequestRequiredIntegerUint64ArrayArray(ctx context.Context, request [][]uint64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint64_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_uint64_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -17849,6 +22236,8 @@ func (c *Client) TestRequestRequiredIntegerUint64Nullable(ctx context.Context, r
 func (c *Client) sendTestRequestRequiredIntegerUint64Nullable(ctx context.Context, request NilUint64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint64_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_uint64_nullable"),
 	}
 
 	// Run stopwatch.
@@ -17921,6 +22310,8 @@ func (c *Client) TestRequestRequiredIntegerUint64NullableArray(ctx context.Conte
 func (c *Client) sendTestRequestRequiredIntegerUint64NullableArray(ctx context.Context, request []NilUint64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint64_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_uint64_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -18002,6 +22393,8 @@ func (c *Client) TestRequestRequiredIntegerUint64NullableArrayArray(ctx context.
 func (c *Client) sendTestRequestRequiredIntegerUint64NullableArrayArray(ctx context.Context, request [][]NilUint64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint64_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_uint64_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -18100,6 +22493,8 @@ func (c *Client) TestRequestRequiredIntegerUint8(ctx context.Context, request ui
 func (c *Client) sendTestRequestRequiredIntegerUint8(ctx context.Context, request uint8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint8"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_uint8"),
 	}
 
 	// Run stopwatch.
@@ -18172,6 +22567,8 @@ func (c *Client) TestRequestRequiredIntegerUint8Array(ctx context.Context, reque
 func (c *Client) sendTestRequestRequiredIntegerUint8Array(ctx context.Context, request []uint8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint8_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_uint8_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -18253,6 +22650,8 @@ func (c *Client) TestRequestRequiredIntegerUint8ArrayArray(ctx context.Context, 
 func (c *Client) sendTestRequestRequiredIntegerUint8ArrayArray(ctx context.Context, request [][]uint8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint8_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_uint8_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -18351,6 +22750,8 @@ func (c *Client) TestRequestRequiredIntegerUint8Nullable(ctx context.Context, re
 func (c *Client) sendTestRequestRequiredIntegerUint8Nullable(ctx context.Context, request NilUint8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint8_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_uint8_nullable"),
 	}
 
 	// Run stopwatch.
@@ -18423,6 +22824,8 @@ func (c *Client) TestRequestRequiredIntegerUint8NullableArray(ctx context.Contex
 func (c *Client) sendTestRequestRequiredIntegerUint8NullableArray(ctx context.Context, request []NilUint8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint8_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_uint8_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -18504,6 +22907,8 @@ func (c *Client) TestRequestRequiredIntegerUint8NullableArrayArray(ctx context.C
 func (c *Client) sendTestRequestRequiredIntegerUint8NullableArrayArray(ctx context.Context, request [][]NilUint8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint8_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_uint8_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -18602,6 +23007,8 @@ func (c *Client) TestRequestRequiredIntegerUintArray(ctx context.Context, reques
 func (c *Client) sendTestRequestRequiredIntegerUintArray(ctx context.Context, request []uint) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_uint_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -18683,6 +23090,8 @@ func (c *Client) TestRequestRequiredIntegerUintArrayArray(ctx context.Context, r
 func (c *Client) sendTestRequestRequiredIntegerUintArrayArray(ctx context.Context, request [][]uint) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_uint_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -18781,6 +23190,8 @@ func (c *Client) TestRequestRequiredIntegerUintNullable(ctx context.Context, req
 func (c *Client) sendTestRequestRequiredIntegerUintNullable(ctx context.Context, request NilUint) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_uint_nullable"),
 	}
 
 	// Run stopwatch.
@@ -18853,6 +23264,8 @@ func (c *Client) TestRequestRequiredIntegerUintNullableArray(ctx context.Context
 func (c *Client) sendTestRequestRequiredIntegerUintNullableArray(ctx context.Context, request []NilUint) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_uint_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -18934,6 +23347,8 @@ func (c *Client) TestRequestRequiredIntegerUintNullableArrayArray(ctx context.Co
 func (c *Client) sendTestRequestRequiredIntegerUintNullableArrayArray(ctx context.Context, request [][]NilUint) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_uint_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -19032,6 +23447,8 @@ func (c *Client) TestRequestRequiredIntegerUnix(ctx context.Context, request tim
 func (c *Client) sendTestRequestRequiredIntegerUnix(ctx context.Context, request time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_unix"),
 	}
 
 	// Run stopwatch.
@@ -19104,6 +23521,8 @@ func (c *Client) TestRequestRequiredIntegerUnixArray(ctx context.Context, reques
 func (c *Client) sendTestRequestRequiredIntegerUnixArray(ctx context.Context, request []time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_unix_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -19185,6 +23604,8 @@ func (c *Client) TestRequestRequiredIntegerUnixArrayArray(ctx context.Context, r
 func (c *Client) sendTestRequestRequiredIntegerUnixArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_unix_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -19283,6 +23704,8 @@ func (c *Client) TestRequestRequiredIntegerUnixMicro(ctx context.Context, reques
 func (c *Client) sendTestRequestRequiredIntegerUnixMicro(ctx context.Context, request time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-micro"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-micro"),
 	}
 
 	// Run stopwatch.
@@ -19355,6 +23778,8 @@ func (c *Client) TestRequestRequiredIntegerUnixMicroArray(ctx context.Context, r
 func (c *Client) sendTestRequestRequiredIntegerUnixMicroArray(ctx context.Context, request []time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-micro_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-micro_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -19436,6 +23861,8 @@ func (c *Client) TestRequestRequiredIntegerUnixMicroArrayArray(ctx context.Conte
 func (c *Client) sendTestRequestRequiredIntegerUnixMicroArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-micro_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-micro_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -19534,6 +23961,8 @@ func (c *Client) TestRequestRequiredIntegerUnixMicroNullable(ctx context.Context
 func (c *Client) sendTestRequestRequiredIntegerUnixMicroNullable(ctx context.Context, request NilUnixMicro) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-micro_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-micro_nullable"),
 	}
 
 	// Run stopwatch.
@@ -19606,6 +24035,8 @@ func (c *Client) TestRequestRequiredIntegerUnixMicroNullableArray(ctx context.Co
 func (c *Client) sendTestRequestRequiredIntegerUnixMicroNullableArray(ctx context.Context, request []NilUnixMicro) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-micro_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-micro_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -19687,6 +24118,8 @@ func (c *Client) TestRequestRequiredIntegerUnixMicroNullableArrayArray(ctx conte
 func (c *Client) sendTestRequestRequiredIntegerUnixMicroNullableArrayArray(ctx context.Context, request [][]NilUnixMicro) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-micro_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-micro_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -19785,6 +24218,8 @@ func (c *Client) TestRequestRequiredIntegerUnixMilli(ctx context.Context, reques
 func (c *Client) sendTestRequestRequiredIntegerUnixMilli(ctx context.Context, request time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-milli"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-milli"),
 	}
 
 	// Run stopwatch.
@@ -19857,6 +24292,8 @@ func (c *Client) TestRequestRequiredIntegerUnixMilliArray(ctx context.Context, r
 func (c *Client) sendTestRequestRequiredIntegerUnixMilliArray(ctx context.Context, request []time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-milli_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-milli_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -19938,6 +24375,8 @@ func (c *Client) TestRequestRequiredIntegerUnixMilliArrayArray(ctx context.Conte
 func (c *Client) sendTestRequestRequiredIntegerUnixMilliArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-milli_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-milli_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -20036,6 +24475,8 @@ func (c *Client) TestRequestRequiredIntegerUnixMilliNullable(ctx context.Context
 func (c *Client) sendTestRequestRequiredIntegerUnixMilliNullable(ctx context.Context, request NilUnixMilli) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-milli_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-milli_nullable"),
 	}
 
 	// Run stopwatch.
@@ -20108,6 +24549,8 @@ func (c *Client) TestRequestRequiredIntegerUnixMilliNullableArray(ctx context.Co
 func (c *Client) sendTestRequestRequiredIntegerUnixMilliNullableArray(ctx context.Context, request []NilUnixMilli) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-milli_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-milli_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -20189,6 +24632,8 @@ func (c *Client) TestRequestRequiredIntegerUnixMilliNullableArrayArray(ctx conte
 func (c *Client) sendTestRequestRequiredIntegerUnixMilliNullableArrayArray(ctx context.Context, request [][]NilUnixMilli) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-milli_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-milli_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -20287,6 +24732,8 @@ func (c *Client) TestRequestRequiredIntegerUnixNano(ctx context.Context, request
 func (c *Client) sendTestRequestRequiredIntegerUnixNano(ctx context.Context, request time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-nano"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-nano"),
 	}
 
 	// Run stopwatch.
@@ -20359,6 +24806,8 @@ func (c *Client) TestRequestRequiredIntegerUnixNanoArray(ctx context.Context, re
 func (c *Client) sendTestRequestRequiredIntegerUnixNanoArray(ctx context.Context, request []time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-nano_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-nano_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -20440,6 +24889,8 @@ func (c *Client) TestRequestRequiredIntegerUnixNanoArrayArray(ctx context.Contex
 func (c *Client) sendTestRequestRequiredIntegerUnixNanoArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-nano_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-nano_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -20538,6 +24989,8 @@ func (c *Client) TestRequestRequiredIntegerUnixNanoNullable(ctx context.Context,
 func (c *Client) sendTestRequestRequiredIntegerUnixNanoNullable(ctx context.Context, request NilUnixNano) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-nano_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-nano_nullable"),
 	}
 
 	// Run stopwatch.
@@ -20610,6 +25063,8 @@ func (c *Client) TestRequestRequiredIntegerUnixNanoNullableArray(ctx context.Con
 func (c *Client) sendTestRequestRequiredIntegerUnixNanoNullableArray(ctx context.Context, request []NilUnixNano) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-nano_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-nano_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -20691,6 +25146,8 @@ func (c *Client) TestRequestRequiredIntegerUnixNanoNullableArrayArray(ctx contex
 func (c *Client) sendTestRequestRequiredIntegerUnixNanoNullableArrayArray(ctx context.Context, request [][]NilUnixNano) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-nano_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-nano_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -20789,6 +25246,8 @@ func (c *Client) TestRequestRequiredIntegerUnixNullable(ctx context.Context, req
 func (c *Client) sendTestRequestRequiredIntegerUnixNullable(ctx context.Context, request NilUnixSeconds) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_unix_nullable"),
 	}
 
 	// Run stopwatch.
@@ -20861,6 +25320,8 @@ func (c *Client) TestRequestRequiredIntegerUnixNullableArray(ctx context.Context
 func (c *Client) sendTestRequestRequiredIntegerUnixNullableArray(ctx context.Context, request []NilUnixSeconds) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_unix_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -20942,6 +25403,8 @@ func (c *Client) TestRequestRequiredIntegerUnixNullableArrayArray(ctx context.Co
 func (c *Client) sendTestRequestRequiredIntegerUnixNullableArrayArray(ctx context.Context, request [][]NilUnixSeconds) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_unix_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -21040,6 +25503,8 @@ func (c *Client) TestRequestRequiredIntegerUnixSeconds(ctx context.Context, requ
 func (c *Client) sendTestRequestRequiredIntegerUnixSeconds(ctx context.Context, request time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-seconds"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-seconds"),
 	}
 
 	// Run stopwatch.
@@ -21112,6 +25577,8 @@ func (c *Client) TestRequestRequiredIntegerUnixSecondsArray(ctx context.Context,
 func (c *Client) sendTestRequestRequiredIntegerUnixSecondsArray(ctx context.Context, request []time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-seconds_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-seconds_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -21193,6 +25660,8 @@ func (c *Client) TestRequestRequiredIntegerUnixSecondsArrayArray(ctx context.Con
 func (c *Client) sendTestRequestRequiredIntegerUnixSecondsArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-seconds_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-seconds_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -21291,6 +25760,8 @@ func (c *Client) TestRequestRequiredIntegerUnixSecondsNullable(ctx context.Conte
 func (c *Client) sendTestRequestRequiredIntegerUnixSecondsNullable(ctx context.Context, request NilUnixSeconds) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-seconds_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-seconds_nullable"),
 	}
 
 	// Run stopwatch.
@@ -21363,6 +25834,8 @@ func (c *Client) TestRequestRequiredIntegerUnixSecondsNullableArray(ctx context.
 func (c *Client) sendTestRequestRequiredIntegerUnixSecondsNullableArray(ctx context.Context, request []NilUnixSeconds) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-seconds_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-seconds_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -21444,6 +25917,8 @@ func (c *Client) TestRequestRequiredIntegerUnixSecondsNullableArrayArray(ctx con
 func (c *Client) sendTestRequestRequiredIntegerUnixSecondsNullableArrayArray(ctx context.Context, request [][]NilUnixSeconds) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-seconds_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-seconds_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -21542,6 +26017,8 @@ func (c *Client) TestRequestRequiredNull(ctx context.Context, request struct{}) 
 func (c *Client) sendTestRequestRequiredNull(ctx context.Context, request struct{}) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_null"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_null"),
 	}
 
 	// Run stopwatch.
@@ -21614,6 +26091,8 @@ func (c *Client) TestRequestRequiredNullArray(ctx context.Context, request []str
 func (c *Client) sendTestRequestRequiredNullArray(ctx context.Context, request []struct{}) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_null_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_null_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -21695,6 +26174,8 @@ func (c *Client) TestRequestRequiredNullArrayArray(ctx context.Context, request 
 func (c *Client) sendTestRequestRequiredNullArrayArray(ctx context.Context, request [][]struct{}) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_null_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_null_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -21793,6 +26274,8 @@ func (c *Client) TestRequestRequiredNullNullable(ctx context.Context, request st
 func (c *Client) sendTestRequestRequiredNullNullable(ctx context.Context, request struct{}) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_null_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_null_nullable"),
 	}
 
 	// Run stopwatch.
@@ -21865,6 +26348,8 @@ func (c *Client) TestRequestRequiredNullNullableArray(ctx context.Context, reque
 func (c *Client) sendTestRequestRequiredNullNullableArray(ctx context.Context, request []struct{}) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_null_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_null_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -21946,6 +26431,8 @@ func (c *Client) TestRequestRequiredNullNullableArrayArray(ctx context.Context, 
 func (c *Client) sendTestRequestRequiredNullNullableArrayArray(ctx context.Context, request [][]struct{}) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_null_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_null_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -22044,6 +26531,8 @@ func (c *Client) TestRequestRequiredNumber(ctx context.Context, request float64)
 func (c *Client) sendTestRequestRequiredNumber(ctx context.Context, request float64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_number"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -22125,6 +26614,8 @@ func (c *Client) TestRequestRequiredNumberArray(ctx context.Context, request []f
 func (c *Client) sendTestRequestRequiredNumberArray(ctx context.Context, request []float64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_number_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -22223,6 +26714,8 @@ func (c *Client) TestRequestRequiredNumberArrayArray(ctx context.Context, reques
 func (c *Client) sendTestRequestRequiredNumberArrayArray(ctx context.Context, request [][]float64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_number_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -22338,6 +26831,8 @@ func (c *Client) TestRequestRequiredNumberDouble(ctx context.Context, request fl
 func (c *Client) sendTestRequestRequiredNumberDouble(ctx context.Context, request float64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_double"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_number_double"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -22419,6 +26914,8 @@ func (c *Client) TestRequestRequiredNumberDoubleArray(ctx context.Context, reque
 func (c *Client) sendTestRequestRequiredNumberDoubleArray(ctx context.Context, request []float64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_double_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_number_double_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -22517,6 +27014,8 @@ func (c *Client) TestRequestRequiredNumberDoubleArrayArray(ctx context.Context, 
 func (c *Client) sendTestRequestRequiredNumberDoubleArrayArray(ctx context.Context, request [][]float64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_double_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_number_double_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -22632,6 +27131,8 @@ func (c *Client) TestRequestRequiredNumberDoubleNullable(ctx context.Context, re
 func (c *Client) sendTestRequestRequiredNumberDoubleNullable(ctx context.Context, request NilFloat64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_double_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_number_double_nullable"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -22720,6 +27221,8 @@ func (c *Client) TestRequestRequiredNumberDoubleNullableArray(ctx context.Contex
 func (c *Client) sendTestRequestRequiredNumberDoubleNullableArray(ctx context.Context, request []NilFloat64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_double_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_number_double_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -22825,6 +27328,8 @@ func (c *Client) TestRequestRequiredNumberDoubleNullableArrayArray(ctx context.C
 func (c *Client) sendTestRequestRequiredNumberDoubleNullableArrayArray(ctx context.Context, request [][]NilFloat64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_double_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_number_double_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -22947,6 +27452,8 @@ func (c *Client) TestRequestRequiredNumberFloat(ctx context.Context, request flo
 func (c *Client) sendTestRequestRequiredNumberFloat(ctx context.Context, request float32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_float"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_number_float"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -23028,6 +27535,8 @@ func (c *Client) TestRequestRequiredNumberFloatArray(ctx context.Context, reques
 func (c *Client) sendTestRequestRequiredNumberFloatArray(ctx context.Context, request []float32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_float_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_number_float_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -23126,6 +27635,8 @@ func (c *Client) TestRequestRequiredNumberFloatArrayArray(ctx context.Context, r
 func (c *Client) sendTestRequestRequiredNumberFloatArrayArray(ctx context.Context, request [][]float32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_float_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_number_float_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -23241,6 +27752,8 @@ func (c *Client) TestRequestRequiredNumberFloatNullable(ctx context.Context, req
 func (c *Client) sendTestRequestRequiredNumberFloatNullable(ctx context.Context, request NilFloat32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_float_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_number_float_nullable"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -23329,6 +27842,8 @@ func (c *Client) TestRequestRequiredNumberFloatNullableArray(ctx context.Context
 func (c *Client) sendTestRequestRequiredNumberFloatNullableArray(ctx context.Context, request []NilFloat32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_float_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_number_float_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -23434,6 +27949,8 @@ func (c *Client) TestRequestRequiredNumberFloatNullableArrayArray(ctx context.Co
 func (c *Client) sendTestRequestRequiredNumberFloatNullableArrayArray(ctx context.Context, request [][]NilFloat32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_float_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_number_float_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -23556,6 +28073,8 @@ func (c *Client) TestRequestRequiredNumberInt32(ctx context.Context, request int
 func (c *Client) sendTestRequestRequiredNumberInt32(ctx context.Context, request int32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int32"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_number_int32"),
 	}
 
 	// Run stopwatch.
@@ -23628,6 +28147,8 @@ func (c *Client) TestRequestRequiredNumberInt32Array(ctx context.Context, reques
 func (c *Client) sendTestRequestRequiredNumberInt32Array(ctx context.Context, request []int32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int32_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_number_int32_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -23709,6 +28230,8 @@ func (c *Client) TestRequestRequiredNumberInt32ArrayArray(ctx context.Context, r
 func (c *Client) sendTestRequestRequiredNumberInt32ArrayArray(ctx context.Context, request [][]int32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int32_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_number_int32_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -23807,6 +28330,8 @@ func (c *Client) TestRequestRequiredNumberInt32Nullable(ctx context.Context, req
 func (c *Client) sendTestRequestRequiredNumberInt32Nullable(ctx context.Context, request NilInt32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int32_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_number_int32_nullable"),
 	}
 
 	// Run stopwatch.
@@ -23879,6 +28404,8 @@ func (c *Client) TestRequestRequiredNumberInt32NullableArray(ctx context.Context
 func (c *Client) sendTestRequestRequiredNumberInt32NullableArray(ctx context.Context, request []NilInt32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int32_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_number_int32_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -23960,6 +28487,8 @@ func (c *Client) TestRequestRequiredNumberInt32NullableArrayArray(ctx context.Co
 func (c *Client) sendTestRequestRequiredNumberInt32NullableArrayArray(ctx context.Context, request [][]NilInt32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int32_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_number_int32_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -24058,6 +28587,8 @@ func (c *Client) TestRequestRequiredNumberInt64(ctx context.Context, request int
 func (c *Client) sendTestRequestRequiredNumberInt64(ctx context.Context, request int64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int64"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_number_int64"),
 	}
 
 	// Run stopwatch.
@@ -24130,6 +28661,8 @@ func (c *Client) TestRequestRequiredNumberInt64Array(ctx context.Context, reques
 func (c *Client) sendTestRequestRequiredNumberInt64Array(ctx context.Context, request []int64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int64_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_number_int64_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -24211,6 +28744,8 @@ func (c *Client) TestRequestRequiredNumberInt64ArrayArray(ctx context.Context, r
 func (c *Client) sendTestRequestRequiredNumberInt64ArrayArray(ctx context.Context, request [][]int64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int64_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_number_int64_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -24309,6 +28844,8 @@ func (c *Client) TestRequestRequiredNumberInt64Nullable(ctx context.Context, req
 func (c *Client) sendTestRequestRequiredNumberInt64Nullable(ctx context.Context, request NilInt64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int64_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_number_int64_nullable"),
 	}
 
 	// Run stopwatch.
@@ -24381,6 +28918,8 @@ func (c *Client) TestRequestRequiredNumberInt64NullableArray(ctx context.Context
 func (c *Client) sendTestRequestRequiredNumberInt64NullableArray(ctx context.Context, request []NilInt64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int64_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_number_int64_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -24462,6 +29001,8 @@ func (c *Client) TestRequestRequiredNumberInt64NullableArrayArray(ctx context.Co
 func (c *Client) sendTestRequestRequiredNumberInt64NullableArrayArray(ctx context.Context, request [][]NilInt64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int64_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_number_int64_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -24560,6 +29101,8 @@ func (c *Client) TestRequestRequiredNumberNullable(ctx context.Context, request 
 func (c *Client) sendTestRequestRequiredNumberNullable(ctx context.Context, request NilFloat64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_number_nullable"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -24648,6 +29191,8 @@ func (c *Client) TestRequestRequiredNumberNullableArray(ctx context.Context, req
 func (c *Client) sendTestRequestRequiredNumberNullableArray(ctx context.Context, request []NilFloat64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_number_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -24753,6 +29298,8 @@ func (c *Client) TestRequestRequiredNumberNullableArrayArray(ctx context.Context
 func (c *Client) sendTestRequestRequiredNumberNullableArrayArray(ctx context.Context, request [][]NilFloat64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_number_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -24875,6 +29422,8 @@ func (c *Client) TestRequestRequiredString(ctx context.Context, request string) 
 func (c *Client) sendTestRequestRequiredString(ctx context.Context, request string) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string"),
 	}
 
 	// Run stopwatch.
@@ -24947,6 +29496,8 @@ func (c *Client) TestRequestRequiredStringArray(ctx context.Context, request []s
 func (c *Client) sendTestRequestRequiredStringArray(ctx context.Context, request []string) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -25028,6 +29579,8 @@ func (c *Client) TestRequestRequiredStringArrayArray(ctx context.Context, reques
 func (c *Client) sendTestRequestRequiredStringArrayArray(ctx context.Context, request [][]string) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -25126,6 +29679,8 @@ func (c *Client) TestRequestRequiredStringBase64(ctx context.Context, request []
 func (c *Client) sendTestRequestRequiredStringBase64(ctx context.Context, request []byte) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_base64"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_base64"),
 	}
 
 	// Run stopwatch.
@@ -25198,6 +29753,8 @@ func (c *Client) TestRequestRequiredStringBase64Array(ctx context.Context, reque
 func (c *Client) sendTestRequestRequiredStringBase64Array(ctx context.Context, request [][]byte) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_base64_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_base64_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -25279,6 +29836,8 @@ func (c *Client) TestRequestRequiredStringBase64ArrayArray(ctx context.Context, 
 func (c *Client) sendTestRequestRequiredStringBase64ArrayArray(ctx context.Context, request [][][]byte) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_base64_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_base64_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -25377,6 +29936,8 @@ func (c *Client) TestRequestRequiredStringBase64Nullable(ctx context.Context, re
 func (c *Client) sendTestRequestRequiredStringBase64Nullable(ctx context.Context, request []byte) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_base64_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_base64_nullable"),
 	}
 
 	// Run stopwatch.
@@ -25449,6 +30010,8 @@ func (c *Client) TestRequestRequiredStringBase64NullableArray(ctx context.Contex
 func (c *Client) sendTestRequestRequiredStringBase64NullableArray(ctx context.Context, request [][]byte) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_base64_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_base64_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -25530,6 +30093,8 @@ func (c *Client) TestRequestRequiredStringBase64NullableArrayArray(ctx context.C
 func (c *Client) sendTestRequestRequiredStringBase64NullableArrayArray(ctx context.Context, request [][][]byte) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_base64_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_base64_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -25628,6 +30193,8 @@ func (c *Client) TestRequestRequiredStringBinary(ctx context.Context, request st
 func (c *Client) sendTestRequestRequiredStringBinary(ctx context.Context, request string) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_binary"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_binary"),
 	}
 
 	// Run stopwatch.
@@ -25700,6 +30267,8 @@ func (c *Client) TestRequestRequiredStringBinaryArray(ctx context.Context, reque
 func (c *Client) sendTestRequestRequiredStringBinaryArray(ctx context.Context, request []string) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_binary_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_binary_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -25781,6 +30350,8 @@ func (c *Client) TestRequestRequiredStringBinaryArrayArray(ctx context.Context, 
 func (c *Client) sendTestRequestRequiredStringBinaryArrayArray(ctx context.Context, request [][]string) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_binary_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_binary_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -25879,6 +30450,8 @@ func (c *Client) TestRequestRequiredStringBinaryNullable(ctx context.Context, re
 func (c *Client) sendTestRequestRequiredStringBinaryNullable(ctx context.Context, request NilString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_binary_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_binary_nullable"),
 	}
 
 	// Run stopwatch.
@@ -25951,6 +30524,8 @@ func (c *Client) TestRequestRequiredStringBinaryNullableArray(ctx context.Contex
 func (c *Client) sendTestRequestRequiredStringBinaryNullableArray(ctx context.Context, request []NilString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_binary_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_binary_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -26032,6 +30607,8 @@ func (c *Client) TestRequestRequiredStringBinaryNullableArrayArray(ctx context.C
 func (c *Client) sendTestRequestRequiredStringBinaryNullableArrayArray(ctx context.Context, request [][]NilString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_binary_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_binary_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -26130,6 +30707,8 @@ func (c *Client) TestRequestRequiredStringByte(ctx context.Context, request []by
 func (c *Client) sendTestRequestRequiredStringByte(ctx context.Context, request []byte) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_byte"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_byte"),
 	}
 
 	// Run stopwatch.
@@ -26202,6 +30781,8 @@ func (c *Client) TestRequestRequiredStringByteArray(ctx context.Context, request
 func (c *Client) sendTestRequestRequiredStringByteArray(ctx context.Context, request [][]byte) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_byte_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_byte_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -26283,6 +30864,8 @@ func (c *Client) TestRequestRequiredStringByteArrayArray(ctx context.Context, re
 func (c *Client) sendTestRequestRequiredStringByteArrayArray(ctx context.Context, request [][][]byte) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_byte_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_byte_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -26381,6 +30964,8 @@ func (c *Client) TestRequestRequiredStringByteNullable(ctx context.Context, requ
 func (c *Client) sendTestRequestRequiredStringByteNullable(ctx context.Context, request []byte) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_byte_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_byte_nullable"),
 	}
 
 	// Run stopwatch.
@@ -26453,6 +31038,8 @@ func (c *Client) TestRequestRequiredStringByteNullableArray(ctx context.Context,
 func (c *Client) sendTestRequestRequiredStringByteNullableArray(ctx context.Context, request [][]byte) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_byte_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_byte_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -26534,6 +31121,8 @@ func (c *Client) TestRequestRequiredStringByteNullableArrayArray(ctx context.Con
 func (c *Client) sendTestRequestRequiredStringByteNullableArrayArray(ctx context.Context, request [][][]byte) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_byte_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_byte_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -26632,6 +31221,8 @@ func (c *Client) TestRequestRequiredStringDate(ctx context.Context, request time
 func (c *Client) sendTestRequestRequiredStringDate(ctx context.Context, request time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_date"),
 	}
 
 	// Run stopwatch.
@@ -26704,6 +31295,8 @@ func (c *Client) TestRequestRequiredStringDateArray(ctx context.Context, request
 func (c *Client) sendTestRequestRequiredStringDateArray(ctx context.Context, request []time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_date_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -26785,6 +31378,8 @@ func (c *Client) TestRequestRequiredStringDateArrayArray(ctx context.Context, re
 func (c *Client) sendTestRequestRequiredStringDateArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_date_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -26883,6 +31478,8 @@ func (c *Client) TestRequestRequiredStringDateNullable(ctx context.Context, requ
 func (c *Client) sendTestRequestRequiredStringDateNullable(ctx context.Context, request NilDate) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_date_nullable"),
 	}
 
 	// Run stopwatch.
@@ -26955,6 +31552,8 @@ func (c *Client) TestRequestRequiredStringDateNullableArray(ctx context.Context,
 func (c *Client) sendTestRequestRequiredStringDateNullableArray(ctx context.Context, request []NilDate) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_date_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -27036,6 +31635,8 @@ func (c *Client) TestRequestRequiredStringDateNullableArrayArray(ctx context.Con
 func (c *Client) sendTestRequestRequiredStringDateNullableArrayArray(ctx context.Context, request [][]NilDate) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_date_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -27134,6 +31735,8 @@ func (c *Client) TestRequestRequiredStringDateTime(ctx context.Context, request 
 func (c *Client) sendTestRequestRequiredStringDateTime(ctx context.Context, request time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date-time"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_date-time"),
 	}
 
 	// Run stopwatch.
@@ -27206,6 +31809,8 @@ func (c *Client) TestRequestRequiredStringDateTimeArray(ctx context.Context, req
 func (c *Client) sendTestRequestRequiredStringDateTimeArray(ctx context.Context, request []time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date-time_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_date-time_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -27287,6 +31892,8 @@ func (c *Client) TestRequestRequiredStringDateTimeArrayArray(ctx context.Context
 func (c *Client) sendTestRequestRequiredStringDateTimeArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date-time_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_date-time_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -27385,6 +31992,8 @@ func (c *Client) TestRequestRequiredStringDateTimeNullable(ctx context.Context, 
 func (c *Client) sendTestRequestRequiredStringDateTimeNullable(ctx context.Context, request NilDateTime) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date-time_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_date-time_nullable"),
 	}
 
 	// Run stopwatch.
@@ -27457,6 +32066,8 @@ func (c *Client) TestRequestRequiredStringDateTimeNullableArray(ctx context.Cont
 func (c *Client) sendTestRequestRequiredStringDateTimeNullableArray(ctx context.Context, request []NilDateTime) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date-time_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_date-time_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -27538,6 +32149,8 @@ func (c *Client) TestRequestRequiredStringDateTimeNullableArrayArray(ctx context
 func (c *Client) sendTestRequestRequiredStringDateTimeNullableArrayArray(ctx context.Context, request [][]NilDateTime) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date-time_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_date-time_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -27636,6 +32249,8 @@ func (c *Client) TestRequestRequiredStringDuration(ctx context.Context, request 
 func (c *Client) sendTestRequestRequiredStringDuration(ctx context.Context, request time.Duration) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_duration"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_duration"),
 	}
 
 	// Run stopwatch.
@@ -27708,6 +32323,8 @@ func (c *Client) TestRequestRequiredStringDurationArray(ctx context.Context, req
 func (c *Client) sendTestRequestRequiredStringDurationArray(ctx context.Context, request []time.Duration) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_duration_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_duration_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -27789,6 +32406,8 @@ func (c *Client) TestRequestRequiredStringDurationArrayArray(ctx context.Context
 func (c *Client) sendTestRequestRequiredStringDurationArrayArray(ctx context.Context, request [][]time.Duration) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_duration_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_duration_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -27887,6 +32506,8 @@ func (c *Client) TestRequestRequiredStringDurationNullable(ctx context.Context, 
 func (c *Client) sendTestRequestRequiredStringDurationNullable(ctx context.Context, request NilDuration) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_duration_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_duration_nullable"),
 	}
 
 	// Run stopwatch.
@@ -27959,6 +32580,8 @@ func (c *Client) TestRequestRequiredStringDurationNullableArray(ctx context.Cont
 func (c *Client) sendTestRequestRequiredStringDurationNullableArray(ctx context.Context, request []NilDuration) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_duration_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_duration_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -28040,6 +32663,8 @@ func (c *Client) TestRequestRequiredStringDurationNullableArrayArray(ctx context
 func (c *Client) sendTestRequestRequiredStringDurationNullableArrayArray(ctx context.Context, request [][]NilDuration) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_duration_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_duration_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -28138,6 +32763,8 @@ func (c *Client) TestRequestRequiredStringEmail(ctx context.Context, request str
 func (c *Client) sendTestRequestRequiredStringEmail(ctx context.Context, request string) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_email"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_email"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -28227,6 +32854,8 @@ func (c *Client) TestRequestRequiredStringEmailArray(ctx context.Context, reques
 func (c *Client) sendTestRequestRequiredStringEmailArray(ctx context.Context, request []string) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_email_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_email_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -28333,6 +32962,8 @@ func (c *Client) TestRequestRequiredStringEmailArrayArray(ctx context.Context, r
 func (c *Client) sendTestRequestRequiredStringEmailArrayArray(ctx context.Context, request [][]string) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_email_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_email_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -28456,6 +33087,8 @@ func (c *Client) TestRequestRequiredStringEmailNullable(ctx context.Context, req
 func (c *Client) sendTestRequestRequiredStringEmailNullable(ctx context.Context, request NilString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_email_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_email_nullable"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -28552,6 +33185,8 @@ func (c *Client) TestRequestRequiredStringEmailNullableArray(ctx context.Context
 func (c *Client) sendTestRequestRequiredStringEmailNullableArray(ctx context.Context, request []NilString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_email_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_email_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -28665,6 +33300,8 @@ func (c *Client) TestRequestRequiredStringEmailNullableArrayArray(ctx context.Co
 func (c *Client) sendTestRequestRequiredStringEmailNullableArrayArray(ctx context.Context, request [][]NilString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_email_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_email_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -28795,6 +33432,8 @@ func (c *Client) TestRequestRequiredStringFloat32(ctx context.Context, request f
 func (c *Client) sendTestRequestRequiredStringFloat32(ctx context.Context, request float32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float32"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_float32"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -28876,6 +33515,8 @@ func (c *Client) TestRequestRequiredStringFloat32Array(ctx context.Context, requ
 func (c *Client) sendTestRequestRequiredStringFloat32Array(ctx context.Context, request []float32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float32_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_float32_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -28974,6 +33615,8 @@ func (c *Client) TestRequestRequiredStringFloat32ArrayArray(ctx context.Context,
 func (c *Client) sendTestRequestRequiredStringFloat32ArrayArray(ctx context.Context, request [][]float32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float32_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_float32_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -29089,6 +33732,8 @@ func (c *Client) TestRequestRequiredStringFloat32Nullable(ctx context.Context, r
 func (c *Client) sendTestRequestRequiredStringFloat32Nullable(ctx context.Context, request NilFloat32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float32_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_float32_nullable"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -29177,6 +33822,8 @@ func (c *Client) TestRequestRequiredStringFloat32NullableArray(ctx context.Conte
 func (c *Client) sendTestRequestRequiredStringFloat32NullableArray(ctx context.Context, request []NilFloat32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float32_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_float32_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -29282,6 +33929,8 @@ func (c *Client) TestRequestRequiredStringFloat32NullableArrayArray(ctx context.
 func (c *Client) sendTestRequestRequiredStringFloat32NullableArrayArray(ctx context.Context, request [][]NilFloat32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float32_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_float32_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -29404,6 +34053,8 @@ func (c *Client) TestRequestRequiredStringFloat64(ctx context.Context, request f
 func (c *Client) sendTestRequestRequiredStringFloat64(ctx context.Context, request float64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float64"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_float64"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -29485,6 +34136,8 @@ func (c *Client) TestRequestRequiredStringFloat64Array(ctx context.Context, requ
 func (c *Client) sendTestRequestRequiredStringFloat64Array(ctx context.Context, request []float64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float64_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_float64_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -29583,6 +34236,8 @@ func (c *Client) TestRequestRequiredStringFloat64ArrayArray(ctx context.Context,
 func (c *Client) sendTestRequestRequiredStringFloat64ArrayArray(ctx context.Context, request [][]float64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float64_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_float64_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -29698,6 +34353,8 @@ func (c *Client) TestRequestRequiredStringFloat64Nullable(ctx context.Context, r
 func (c *Client) sendTestRequestRequiredStringFloat64Nullable(ctx context.Context, request NilFloat64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float64_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_float64_nullable"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -29786,6 +34443,8 @@ func (c *Client) TestRequestRequiredStringFloat64NullableArray(ctx context.Conte
 func (c *Client) sendTestRequestRequiredStringFloat64NullableArray(ctx context.Context, request []NilFloat64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float64_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_float64_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -29891,6 +34550,8 @@ func (c *Client) TestRequestRequiredStringFloat64NullableArrayArray(ctx context.
 func (c *Client) sendTestRequestRequiredStringFloat64NullableArrayArray(ctx context.Context, request [][]NilFloat64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float64_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_float64_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -30013,6 +34674,8 @@ func (c *Client) TestRequestRequiredStringHostname(ctx context.Context, request 
 func (c *Client) sendTestRequestRequiredStringHostname(ctx context.Context, request string) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_hostname"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_hostname"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -30102,6 +34765,8 @@ func (c *Client) TestRequestRequiredStringHostnameArray(ctx context.Context, req
 func (c *Client) sendTestRequestRequiredStringHostnameArray(ctx context.Context, request []string) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_hostname_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_hostname_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -30208,6 +34873,8 @@ func (c *Client) TestRequestRequiredStringHostnameArrayArray(ctx context.Context
 func (c *Client) sendTestRequestRequiredStringHostnameArrayArray(ctx context.Context, request [][]string) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_hostname_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_hostname_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -30331,6 +34998,8 @@ func (c *Client) TestRequestRequiredStringHostnameNullable(ctx context.Context, 
 func (c *Client) sendTestRequestRequiredStringHostnameNullable(ctx context.Context, request NilString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_hostname_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_hostname_nullable"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -30427,6 +35096,8 @@ func (c *Client) TestRequestRequiredStringHostnameNullableArray(ctx context.Cont
 func (c *Client) sendTestRequestRequiredStringHostnameNullableArray(ctx context.Context, request []NilString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_hostname_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_hostname_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -30540,6 +35211,8 @@ func (c *Client) TestRequestRequiredStringHostnameNullableArrayArray(ctx context
 func (c *Client) sendTestRequestRequiredStringHostnameNullableArrayArray(ctx context.Context, request [][]NilString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_hostname_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_hostname_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -30670,6 +35343,8 @@ func (c *Client) TestRequestRequiredStringIP(ctx context.Context, request netip.
 func (c *Client) sendTestRequestRequiredStringIP(ctx context.Context, request netip.Addr) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ip"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_ip"),
 	}
 
 	// Run stopwatch.
@@ -30742,6 +35417,8 @@ func (c *Client) TestRequestRequiredStringIPArray(ctx context.Context, request [
 func (c *Client) sendTestRequestRequiredStringIPArray(ctx context.Context, request []netip.Addr) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ip_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_ip_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -30823,6 +35500,8 @@ func (c *Client) TestRequestRequiredStringIPArrayArray(ctx context.Context, requ
 func (c *Client) sendTestRequestRequiredStringIPArrayArray(ctx context.Context, request [][]netip.Addr) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ip_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_ip_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -30921,6 +35600,8 @@ func (c *Client) TestRequestRequiredStringIPNullable(ctx context.Context, reques
 func (c *Client) sendTestRequestRequiredStringIPNullable(ctx context.Context, request NilIP) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ip_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_ip_nullable"),
 	}
 
 	// Run stopwatch.
@@ -30993,6 +35674,8 @@ func (c *Client) TestRequestRequiredStringIPNullableArray(ctx context.Context, r
 func (c *Client) sendTestRequestRequiredStringIPNullableArray(ctx context.Context, request []NilIP) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ip_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_ip_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -31074,6 +35757,8 @@ func (c *Client) TestRequestRequiredStringIPNullableArrayArray(ctx context.Conte
 func (c *Client) sendTestRequestRequiredStringIPNullableArrayArray(ctx context.Context, request [][]NilIP) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ip_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_ip_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -31172,6 +35857,8 @@ func (c *Client) TestRequestRequiredStringInt(ctx context.Context, request int) 
 func (c *Client) sendTestRequestRequiredStringInt(ctx context.Context, request int) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_int"),
 	}
 
 	// Run stopwatch.
@@ -31244,6 +35931,8 @@ func (c *Client) TestRequestRequiredStringInt16(ctx context.Context, request int
 func (c *Client) sendTestRequestRequiredStringInt16(ctx context.Context, request int16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int16"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_int16"),
 	}
 
 	// Run stopwatch.
@@ -31316,6 +36005,8 @@ func (c *Client) TestRequestRequiredStringInt16Array(ctx context.Context, reques
 func (c *Client) sendTestRequestRequiredStringInt16Array(ctx context.Context, request []int16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int16_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_int16_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -31397,6 +36088,8 @@ func (c *Client) TestRequestRequiredStringInt16ArrayArray(ctx context.Context, r
 func (c *Client) sendTestRequestRequiredStringInt16ArrayArray(ctx context.Context, request [][]int16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int16_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_int16_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -31495,6 +36188,8 @@ func (c *Client) TestRequestRequiredStringInt16Nullable(ctx context.Context, req
 func (c *Client) sendTestRequestRequiredStringInt16Nullable(ctx context.Context, request NilInt16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int16_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_int16_nullable"),
 	}
 
 	// Run stopwatch.
@@ -31567,6 +36262,8 @@ func (c *Client) TestRequestRequiredStringInt16NullableArray(ctx context.Context
 func (c *Client) sendTestRequestRequiredStringInt16NullableArray(ctx context.Context, request []NilInt16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int16_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_int16_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -31648,6 +36345,8 @@ func (c *Client) TestRequestRequiredStringInt16NullableArrayArray(ctx context.Co
 func (c *Client) sendTestRequestRequiredStringInt16NullableArrayArray(ctx context.Context, request [][]NilInt16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int16_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_int16_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -31746,6 +36445,8 @@ func (c *Client) TestRequestRequiredStringInt32(ctx context.Context, request int
 func (c *Client) sendTestRequestRequiredStringInt32(ctx context.Context, request int32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int32"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_int32"),
 	}
 
 	// Run stopwatch.
@@ -31818,6 +36519,8 @@ func (c *Client) TestRequestRequiredStringInt32Array(ctx context.Context, reques
 func (c *Client) sendTestRequestRequiredStringInt32Array(ctx context.Context, request []int32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int32_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_int32_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -31899,6 +36602,8 @@ func (c *Client) TestRequestRequiredStringInt32ArrayArray(ctx context.Context, r
 func (c *Client) sendTestRequestRequiredStringInt32ArrayArray(ctx context.Context, request [][]int32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int32_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_int32_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -31997,6 +36702,8 @@ func (c *Client) TestRequestRequiredStringInt32Nullable(ctx context.Context, req
 func (c *Client) sendTestRequestRequiredStringInt32Nullable(ctx context.Context, request NilStringInt32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int32_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_int32_nullable"),
 	}
 
 	// Run stopwatch.
@@ -32069,6 +36776,8 @@ func (c *Client) TestRequestRequiredStringInt32NullableArray(ctx context.Context
 func (c *Client) sendTestRequestRequiredStringInt32NullableArray(ctx context.Context, request []NilStringInt32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int32_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_int32_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -32150,6 +36859,8 @@ func (c *Client) TestRequestRequiredStringInt32NullableArrayArray(ctx context.Co
 func (c *Client) sendTestRequestRequiredStringInt32NullableArrayArray(ctx context.Context, request [][]NilStringInt32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int32_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_int32_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -32248,6 +36959,8 @@ func (c *Client) TestRequestRequiredStringInt64(ctx context.Context, request int
 func (c *Client) sendTestRequestRequiredStringInt64(ctx context.Context, request int64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int64"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_int64"),
 	}
 
 	// Run stopwatch.
@@ -32320,6 +37033,8 @@ func (c *Client) TestRequestRequiredStringInt64Array(ctx context.Context, reques
 func (c *Client) sendTestRequestRequiredStringInt64Array(ctx context.Context, request []int64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int64_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_int64_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -32401,6 +37116,8 @@ func (c *Client) TestRequestRequiredStringInt64ArrayArray(ctx context.Context, r
 func (c *Client) sendTestRequestRequiredStringInt64ArrayArray(ctx context.Context, request [][]int64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int64_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_int64_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -32499,6 +37216,8 @@ func (c *Client) TestRequestRequiredStringInt64Nullable(ctx context.Context, req
 func (c *Client) sendTestRequestRequiredStringInt64Nullable(ctx context.Context, request NilStringInt64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int64_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_int64_nullable"),
 	}
 
 	// Run stopwatch.
@@ -32571,6 +37290,8 @@ func (c *Client) TestRequestRequiredStringInt64NullableArray(ctx context.Context
 func (c *Client) sendTestRequestRequiredStringInt64NullableArray(ctx context.Context, request []NilStringInt64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int64_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_int64_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -32652,6 +37373,8 @@ func (c *Client) TestRequestRequiredStringInt64NullableArrayArray(ctx context.Co
 func (c *Client) sendTestRequestRequiredStringInt64NullableArrayArray(ctx context.Context, request [][]NilStringInt64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int64_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_int64_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -32750,6 +37473,8 @@ func (c *Client) TestRequestRequiredStringInt8(ctx context.Context, request int8
 func (c *Client) sendTestRequestRequiredStringInt8(ctx context.Context, request int8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int8"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_int8"),
 	}
 
 	// Run stopwatch.
@@ -32822,6 +37547,8 @@ func (c *Client) TestRequestRequiredStringInt8Array(ctx context.Context, request
 func (c *Client) sendTestRequestRequiredStringInt8Array(ctx context.Context, request []int8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int8_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_int8_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -32903,6 +37630,8 @@ func (c *Client) TestRequestRequiredStringInt8ArrayArray(ctx context.Context, re
 func (c *Client) sendTestRequestRequiredStringInt8ArrayArray(ctx context.Context, request [][]int8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int8_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_int8_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -33001,6 +37730,8 @@ func (c *Client) TestRequestRequiredStringInt8Nullable(ctx context.Context, requ
 func (c *Client) sendTestRequestRequiredStringInt8Nullable(ctx context.Context, request NilInt8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int8_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_int8_nullable"),
 	}
 
 	// Run stopwatch.
@@ -33073,6 +37804,8 @@ func (c *Client) TestRequestRequiredStringInt8NullableArray(ctx context.Context,
 func (c *Client) sendTestRequestRequiredStringInt8NullableArray(ctx context.Context, request []NilInt8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int8_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_int8_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -33154,6 +37887,8 @@ func (c *Client) TestRequestRequiredStringInt8NullableArrayArray(ctx context.Con
 func (c *Client) sendTestRequestRequiredStringInt8NullableArrayArray(ctx context.Context, request [][]NilInt8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int8_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_int8_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -33252,6 +37987,8 @@ func (c *Client) TestRequestRequiredStringIntArray(ctx context.Context, request 
 func (c *Client) sendTestRequestRequiredStringIntArray(ctx context.Context, request []int) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_int_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -33333,6 +38070,8 @@ func (c *Client) TestRequestRequiredStringIntArrayArray(ctx context.Context, req
 func (c *Client) sendTestRequestRequiredStringIntArrayArray(ctx context.Context, request [][]int) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_int_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -33431,6 +38170,8 @@ func (c *Client) TestRequestRequiredStringIntNullable(ctx context.Context, reque
 func (c *Client) sendTestRequestRequiredStringIntNullable(ctx context.Context, request NilInt) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_int_nullable"),
 	}
 
 	// Run stopwatch.
@@ -33503,6 +38244,8 @@ func (c *Client) TestRequestRequiredStringIntNullableArray(ctx context.Context, 
 func (c *Client) sendTestRequestRequiredStringIntNullableArray(ctx context.Context, request []NilInt) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_int_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -33584,6 +38327,8 @@ func (c *Client) TestRequestRequiredStringIntNullableArrayArray(ctx context.Cont
 func (c *Client) sendTestRequestRequiredStringIntNullableArrayArray(ctx context.Context, request [][]NilInt) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_int_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -33682,6 +38427,8 @@ func (c *Client) TestRequestRequiredStringIpv4(ctx context.Context, request neti
 func (c *Client) sendTestRequestRequiredStringIpv4(ctx context.Context, request netip.Addr) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv4"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_ipv4"),
 	}
 
 	// Run stopwatch.
@@ -33754,6 +38501,8 @@ func (c *Client) TestRequestRequiredStringIpv4Array(ctx context.Context, request
 func (c *Client) sendTestRequestRequiredStringIpv4Array(ctx context.Context, request []netip.Addr) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv4_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_ipv4_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -33835,6 +38584,8 @@ func (c *Client) TestRequestRequiredStringIpv4ArrayArray(ctx context.Context, re
 func (c *Client) sendTestRequestRequiredStringIpv4ArrayArray(ctx context.Context, request [][]netip.Addr) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv4_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_ipv4_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -33933,6 +38684,8 @@ func (c *Client) TestRequestRequiredStringIpv4Nullable(ctx context.Context, requ
 func (c *Client) sendTestRequestRequiredStringIpv4Nullable(ctx context.Context, request NilIPv4) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv4_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_ipv4_nullable"),
 	}
 
 	// Run stopwatch.
@@ -34005,6 +38758,8 @@ func (c *Client) TestRequestRequiredStringIpv4NullableArray(ctx context.Context,
 func (c *Client) sendTestRequestRequiredStringIpv4NullableArray(ctx context.Context, request []NilIPv4) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv4_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_ipv4_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -34086,6 +38841,8 @@ func (c *Client) TestRequestRequiredStringIpv4NullableArrayArray(ctx context.Con
 func (c *Client) sendTestRequestRequiredStringIpv4NullableArrayArray(ctx context.Context, request [][]NilIPv4) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv4_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_ipv4_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -34184,6 +38941,8 @@ func (c *Client) TestRequestRequiredStringIpv6(ctx context.Context, request neti
 func (c *Client) sendTestRequestRequiredStringIpv6(ctx context.Context, request netip.Addr) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv6"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_ipv6"),
 	}
 
 	// Run stopwatch.
@@ -34256,6 +39015,8 @@ func (c *Client) TestRequestRequiredStringIpv6Array(ctx context.Context, request
 func (c *Client) sendTestRequestRequiredStringIpv6Array(ctx context.Context, request []netip.Addr) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv6_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_ipv6_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -34337,6 +39098,8 @@ func (c *Client) TestRequestRequiredStringIpv6ArrayArray(ctx context.Context, re
 func (c *Client) sendTestRequestRequiredStringIpv6ArrayArray(ctx context.Context, request [][]netip.Addr) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv6_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_ipv6_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -34435,6 +39198,8 @@ func (c *Client) TestRequestRequiredStringIpv6Nullable(ctx context.Context, requ
 func (c *Client) sendTestRequestRequiredStringIpv6Nullable(ctx context.Context, request NilIPv6) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv6_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_ipv6_nullable"),
 	}
 
 	// Run stopwatch.
@@ -34507,6 +39272,8 @@ func (c *Client) TestRequestRequiredStringIpv6NullableArray(ctx context.Context,
 func (c *Client) sendTestRequestRequiredStringIpv6NullableArray(ctx context.Context, request []NilIPv6) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv6_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_ipv6_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -34588,6 +39355,8 @@ func (c *Client) TestRequestRequiredStringIpv6NullableArrayArray(ctx context.Con
 func (c *Client) sendTestRequestRequiredStringIpv6NullableArrayArray(ctx context.Context, request [][]NilIPv6) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv6_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_ipv6_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -34686,6 +39455,8 @@ func (c *Client) TestRequestRequiredStringNullable(ctx context.Context, request 
 func (c *Client) sendTestRequestRequiredStringNullable(ctx context.Context, request NilString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_nullable"),
 	}
 
 	// Run stopwatch.
@@ -34758,6 +39529,8 @@ func (c *Client) TestRequestRequiredStringNullableArray(ctx context.Context, req
 func (c *Client) sendTestRequestRequiredStringNullableArray(ctx context.Context, request []NilString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -34839,6 +39612,8 @@ func (c *Client) TestRequestRequiredStringNullableArrayArray(ctx context.Context
 func (c *Client) sendTestRequestRequiredStringNullableArrayArray(ctx context.Context, request [][]NilString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -34937,6 +39712,8 @@ func (c *Client) TestRequestRequiredStringPassword(ctx context.Context, request 
 func (c *Client) sendTestRequestRequiredStringPassword(ctx context.Context, request string) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_password"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_password"),
 	}
 
 	// Run stopwatch.
@@ -35009,6 +39786,8 @@ func (c *Client) TestRequestRequiredStringPasswordArray(ctx context.Context, req
 func (c *Client) sendTestRequestRequiredStringPasswordArray(ctx context.Context, request []string) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_password_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_password_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -35090,6 +39869,8 @@ func (c *Client) TestRequestRequiredStringPasswordArrayArray(ctx context.Context
 func (c *Client) sendTestRequestRequiredStringPasswordArrayArray(ctx context.Context, request [][]string) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_password_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_password_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -35188,6 +39969,8 @@ func (c *Client) TestRequestRequiredStringPasswordNullable(ctx context.Context, 
 func (c *Client) sendTestRequestRequiredStringPasswordNullable(ctx context.Context, request NilString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_password_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_password_nullable"),
 	}
 
 	// Run stopwatch.
@@ -35260,6 +40043,8 @@ func (c *Client) TestRequestRequiredStringPasswordNullableArray(ctx context.Cont
 func (c *Client) sendTestRequestRequiredStringPasswordNullableArray(ctx context.Context, request []NilString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_password_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_password_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -35341,6 +40126,8 @@ func (c *Client) TestRequestRequiredStringPasswordNullableArrayArray(ctx context
 func (c *Client) sendTestRequestRequiredStringPasswordNullableArrayArray(ctx context.Context, request [][]NilString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_password_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_password_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -35439,6 +40226,8 @@ func (c *Client) TestRequestRequiredStringTime(ctx context.Context, request time
 func (c *Client) sendTestRequestRequiredStringTime(ctx context.Context, request time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_time"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_time"),
 	}
 
 	// Run stopwatch.
@@ -35511,6 +40300,8 @@ func (c *Client) TestRequestRequiredStringTimeArray(ctx context.Context, request
 func (c *Client) sendTestRequestRequiredStringTimeArray(ctx context.Context, request []time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_time_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_time_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -35592,6 +40383,8 @@ func (c *Client) TestRequestRequiredStringTimeArrayArray(ctx context.Context, re
 func (c *Client) sendTestRequestRequiredStringTimeArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_time_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_time_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -35690,6 +40483,8 @@ func (c *Client) TestRequestRequiredStringTimeNullable(ctx context.Context, requ
 func (c *Client) sendTestRequestRequiredStringTimeNullable(ctx context.Context, request NilTime) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_time_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_time_nullable"),
 	}
 
 	// Run stopwatch.
@@ -35762,6 +40557,8 @@ func (c *Client) TestRequestRequiredStringTimeNullableArray(ctx context.Context,
 func (c *Client) sendTestRequestRequiredStringTimeNullableArray(ctx context.Context, request []NilTime) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_time_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_time_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -35843,6 +40640,8 @@ func (c *Client) TestRequestRequiredStringTimeNullableArrayArray(ctx context.Con
 func (c *Client) sendTestRequestRequiredStringTimeNullableArrayArray(ctx context.Context, request [][]NilTime) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_time_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_time_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -35941,6 +40740,8 @@ func (c *Client) TestRequestRequiredStringURI(ctx context.Context, request url.U
 func (c *Client) sendTestRequestRequiredStringURI(ctx context.Context, request url.URL) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uri"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uri"),
 	}
 
 	// Run stopwatch.
@@ -36013,6 +40814,8 @@ func (c *Client) TestRequestRequiredStringURIArray(ctx context.Context, request 
 func (c *Client) sendTestRequestRequiredStringURIArray(ctx context.Context, request []url.URL) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uri_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uri_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -36094,6 +40897,8 @@ func (c *Client) TestRequestRequiredStringURIArrayArray(ctx context.Context, req
 func (c *Client) sendTestRequestRequiredStringURIArrayArray(ctx context.Context, request [][]url.URL) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uri_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uri_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -36192,6 +40997,8 @@ func (c *Client) TestRequestRequiredStringURINullable(ctx context.Context, reque
 func (c *Client) sendTestRequestRequiredStringURINullable(ctx context.Context, request NilURI) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uri_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uri_nullable"),
 	}
 
 	// Run stopwatch.
@@ -36264,6 +41071,8 @@ func (c *Client) TestRequestRequiredStringURINullableArray(ctx context.Context, 
 func (c *Client) sendTestRequestRequiredStringURINullableArray(ctx context.Context, request []NilURI) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uri_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uri_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -36345,6 +41154,8 @@ func (c *Client) TestRequestRequiredStringURINullableArrayArray(ctx context.Cont
 func (c *Client) sendTestRequestRequiredStringURINullableArrayArray(ctx context.Context, request [][]NilURI) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uri_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uri_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -36443,6 +41254,8 @@ func (c *Client) TestRequestRequiredStringUUID(ctx context.Context, request uuid
 func (c *Client) sendTestRequestRequiredStringUUID(ctx context.Context, request uuid.UUID) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uuid"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uuid"),
 	}
 
 	// Run stopwatch.
@@ -36515,6 +41328,8 @@ func (c *Client) TestRequestRequiredStringUUIDArray(ctx context.Context, request
 func (c *Client) sendTestRequestRequiredStringUUIDArray(ctx context.Context, request []uuid.UUID) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uuid_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uuid_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -36596,6 +41411,8 @@ func (c *Client) TestRequestRequiredStringUUIDArrayArray(ctx context.Context, re
 func (c *Client) sendTestRequestRequiredStringUUIDArrayArray(ctx context.Context, request [][]uuid.UUID) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uuid_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uuid_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -36694,6 +41511,8 @@ func (c *Client) TestRequestRequiredStringUUIDNullable(ctx context.Context, requ
 func (c *Client) sendTestRequestRequiredStringUUIDNullable(ctx context.Context, request NilUUID) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uuid_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uuid_nullable"),
 	}
 
 	// Run stopwatch.
@@ -36766,6 +41585,8 @@ func (c *Client) TestRequestRequiredStringUUIDNullableArray(ctx context.Context,
 func (c *Client) sendTestRequestRequiredStringUUIDNullableArray(ctx context.Context, request []NilUUID) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uuid_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uuid_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -36847,6 +41668,8 @@ func (c *Client) TestRequestRequiredStringUUIDNullableArrayArray(ctx context.Con
 func (c *Client) sendTestRequestRequiredStringUUIDNullableArrayArray(ctx context.Context, request [][]NilUUID) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uuid_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uuid_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -36945,6 +41768,8 @@ func (c *Client) TestRequestRequiredStringUint(ctx context.Context, request uint
 func (c *Client) sendTestRequestRequiredStringUint(ctx context.Context, request uint) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uint"),
 	}
 
 	// Run stopwatch.
@@ -37017,6 +41842,8 @@ func (c *Client) TestRequestRequiredStringUint16(ctx context.Context, request ui
 func (c *Client) sendTestRequestRequiredStringUint16(ctx context.Context, request uint16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint16"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uint16"),
 	}
 
 	// Run stopwatch.
@@ -37089,6 +41916,8 @@ func (c *Client) TestRequestRequiredStringUint16Array(ctx context.Context, reque
 func (c *Client) sendTestRequestRequiredStringUint16Array(ctx context.Context, request []uint16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint16_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uint16_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -37170,6 +41999,8 @@ func (c *Client) TestRequestRequiredStringUint16ArrayArray(ctx context.Context, 
 func (c *Client) sendTestRequestRequiredStringUint16ArrayArray(ctx context.Context, request [][]uint16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint16_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uint16_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -37268,6 +42099,8 @@ func (c *Client) TestRequestRequiredStringUint16Nullable(ctx context.Context, re
 func (c *Client) sendTestRequestRequiredStringUint16Nullable(ctx context.Context, request NilUint16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint16_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uint16_nullable"),
 	}
 
 	// Run stopwatch.
@@ -37340,6 +42173,8 @@ func (c *Client) TestRequestRequiredStringUint16NullableArray(ctx context.Contex
 func (c *Client) sendTestRequestRequiredStringUint16NullableArray(ctx context.Context, request []NilUint16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint16_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uint16_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -37421,6 +42256,8 @@ func (c *Client) TestRequestRequiredStringUint16NullableArrayArray(ctx context.C
 func (c *Client) sendTestRequestRequiredStringUint16NullableArrayArray(ctx context.Context, request [][]NilUint16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint16_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uint16_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -37519,6 +42356,8 @@ func (c *Client) TestRequestRequiredStringUint32(ctx context.Context, request ui
 func (c *Client) sendTestRequestRequiredStringUint32(ctx context.Context, request uint32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint32"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uint32"),
 	}
 
 	// Run stopwatch.
@@ -37591,6 +42430,8 @@ func (c *Client) TestRequestRequiredStringUint32Array(ctx context.Context, reque
 func (c *Client) sendTestRequestRequiredStringUint32Array(ctx context.Context, request []uint32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint32_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uint32_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -37672,6 +42513,8 @@ func (c *Client) TestRequestRequiredStringUint32ArrayArray(ctx context.Context, 
 func (c *Client) sendTestRequestRequiredStringUint32ArrayArray(ctx context.Context, request [][]uint32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint32_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uint32_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -37770,6 +42613,8 @@ func (c *Client) TestRequestRequiredStringUint32Nullable(ctx context.Context, re
 func (c *Client) sendTestRequestRequiredStringUint32Nullable(ctx context.Context, request NilUint32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint32_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uint32_nullable"),
 	}
 
 	// Run stopwatch.
@@ -37842,6 +42687,8 @@ func (c *Client) TestRequestRequiredStringUint32NullableArray(ctx context.Contex
 func (c *Client) sendTestRequestRequiredStringUint32NullableArray(ctx context.Context, request []NilUint32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint32_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uint32_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -37923,6 +42770,8 @@ func (c *Client) TestRequestRequiredStringUint32NullableArrayArray(ctx context.C
 func (c *Client) sendTestRequestRequiredStringUint32NullableArrayArray(ctx context.Context, request [][]NilUint32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint32_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uint32_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -38021,6 +42870,8 @@ func (c *Client) TestRequestRequiredStringUint64(ctx context.Context, request ui
 func (c *Client) sendTestRequestRequiredStringUint64(ctx context.Context, request uint64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint64"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uint64"),
 	}
 
 	// Run stopwatch.
@@ -38093,6 +42944,8 @@ func (c *Client) TestRequestRequiredStringUint64Array(ctx context.Context, reque
 func (c *Client) sendTestRequestRequiredStringUint64Array(ctx context.Context, request []uint64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint64_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uint64_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -38174,6 +43027,8 @@ func (c *Client) TestRequestRequiredStringUint64ArrayArray(ctx context.Context, 
 func (c *Client) sendTestRequestRequiredStringUint64ArrayArray(ctx context.Context, request [][]uint64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint64_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uint64_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -38272,6 +43127,8 @@ func (c *Client) TestRequestRequiredStringUint64Nullable(ctx context.Context, re
 func (c *Client) sendTestRequestRequiredStringUint64Nullable(ctx context.Context, request NilUint64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint64_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uint64_nullable"),
 	}
 
 	// Run stopwatch.
@@ -38344,6 +43201,8 @@ func (c *Client) TestRequestRequiredStringUint64NullableArray(ctx context.Contex
 func (c *Client) sendTestRequestRequiredStringUint64NullableArray(ctx context.Context, request []NilUint64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint64_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uint64_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -38425,6 +43284,8 @@ func (c *Client) TestRequestRequiredStringUint64NullableArrayArray(ctx context.C
 func (c *Client) sendTestRequestRequiredStringUint64NullableArrayArray(ctx context.Context, request [][]NilUint64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint64_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uint64_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -38523,6 +43384,8 @@ func (c *Client) TestRequestRequiredStringUint8(ctx context.Context, request uin
 func (c *Client) sendTestRequestRequiredStringUint8(ctx context.Context, request uint8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint8"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uint8"),
 	}
 
 	// Run stopwatch.
@@ -38595,6 +43458,8 @@ func (c *Client) TestRequestRequiredStringUint8Array(ctx context.Context, reques
 func (c *Client) sendTestRequestRequiredStringUint8Array(ctx context.Context, request []uint8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint8_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uint8_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -38676,6 +43541,8 @@ func (c *Client) TestRequestRequiredStringUint8ArrayArray(ctx context.Context, r
 func (c *Client) sendTestRequestRequiredStringUint8ArrayArray(ctx context.Context, request [][]uint8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint8_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uint8_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -38774,6 +43641,8 @@ func (c *Client) TestRequestRequiredStringUint8Nullable(ctx context.Context, req
 func (c *Client) sendTestRequestRequiredStringUint8Nullable(ctx context.Context, request NilUint8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint8_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uint8_nullable"),
 	}
 
 	// Run stopwatch.
@@ -38846,6 +43715,8 @@ func (c *Client) TestRequestRequiredStringUint8NullableArray(ctx context.Context
 func (c *Client) sendTestRequestRequiredStringUint8NullableArray(ctx context.Context, request []NilUint8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint8_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uint8_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -38927,6 +43798,8 @@ func (c *Client) TestRequestRequiredStringUint8NullableArrayArray(ctx context.Co
 func (c *Client) sendTestRequestRequiredStringUint8NullableArrayArray(ctx context.Context, request [][]NilUint8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint8_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uint8_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -39025,6 +43898,8 @@ func (c *Client) TestRequestRequiredStringUintArray(ctx context.Context, request
 func (c *Client) sendTestRequestRequiredStringUintArray(ctx context.Context, request []uint) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uint_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -39106,6 +43981,8 @@ func (c *Client) TestRequestRequiredStringUintArrayArray(ctx context.Context, re
 func (c *Client) sendTestRequestRequiredStringUintArrayArray(ctx context.Context, request [][]uint) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uint_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -39204,6 +44081,8 @@ func (c *Client) TestRequestRequiredStringUintNullable(ctx context.Context, requ
 func (c *Client) sendTestRequestRequiredStringUintNullable(ctx context.Context, request NilUint) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uint_nullable"),
 	}
 
 	// Run stopwatch.
@@ -39276,6 +44155,8 @@ func (c *Client) TestRequestRequiredStringUintNullableArray(ctx context.Context,
 func (c *Client) sendTestRequestRequiredStringUintNullableArray(ctx context.Context, request []NilUint) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uint_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -39357,6 +44238,8 @@ func (c *Client) TestRequestRequiredStringUintNullableArrayArray(ctx context.Con
 func (c *Client) sendTestRequestRequiredStringUintNullableArrayArray(ctx context.Context, request [][]NilUint) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_uint_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -39455,6 +44338,8 @@ func (c *Client) TestRequestRequiredStringUnix(ctx context.Context, request time
 func (c *Client) sendTestRequestRequiredStringUnix(ctx context.Context, request time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_unix"),
 	}
 
 	// Run stopwatch.
@@ -39527,6 +44412,8 @@ func (c *Client) TestRequestRequiredStringUnixArray(ctx context.Context, request
 func (c *Client) sendTestRequestRequiredStringUnixArray(ctx context.Context, request []time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_unix_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -39608,6 +44495,8 @@ func (c *Client) TestRequestRequiredStringUnixArrayArray(ctx context.Context, re
 func (c *Client) sendTestRequestRequiredStringUnixArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_unix_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -39706,6 +44595,8 @@ func (c *Client) TestRequestRequiredStringUnixMicro(ctx context.Context, request
 func (c *Client) sendTestRequestRequiredStringUnixMicro(ctx context.Context, request time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-micro"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_unix-micro"),
 	}
 
 	// Run stopwatch.
@@ -39778,6 +44669,8 @@ func (c *Client) TestRequestRequiredStringUnixMicroArray(ctx context.Context, re
 func (c *Client) sendTestRequestRequiredStringUnixMicroArray(ctx context.Context, request []time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-micro_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_unix-micro_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -39859,6 +44752,8 @@ func (c *Client) TestRequestRequiredStringUnixMicroArrayArray(ctx context.Contex
 func (c *Client) sendTestRequestRequiredStringUnixMicroArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-micro_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_unix-micro_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -39957,6 +44852,8 @@ func (c *Client) TestRequestRequiredStringUnixMicroNullable(ctx context.Context,
 func (c *Client) sendTestRequestRequiredStringUnixMicroNullable(ctx context.Context, request NilStringUnixMicro) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-micro_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_unix-micro_nullable"),
 	}
 
 	// Run stopwatch.
@@ -40029,6 +44926,8 @@ func (c *Client) TestRequestRequiredStringUnixMicroNullableArray(ctx context.Con
 func (c *Client) sendTestRequestRequiredStringUnixMicroNullableArray(ctx context.Context, request []NilStringUnixMicro) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-micro_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_unix-micro_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -40110,6 +45009,8 @@ func (c *Client) TestRequestRequiredStringUnixMicroNullableArrayArray(ctx contex
 func (c *Client) sendTestRequestRequiredStringUnixMicroNullableArrayArray(ctx context.Context, request [][]NilStringUnixMicro) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-micro_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_unix-micro_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -40208,6 +45109,8 @@ func (c *Client) TestRequestRequiredStringUnixMilli(ctx context.Context, request
 func (c *Client) sendTestRequestRequiredStringUnixMilli(ctx context.Context, request time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-milli"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_unix-milli"),
 	}
 
 	// Run stopwatch.
@@ -40280,6 +45183,8 @@ func (c *Client) TestRequestRequiredStringUnixMilliArray(ctx context.Context, re
 func (c *Client) sendTestRequestRequiredStringUnixMilliArray(ctx context.Context, request []time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-milli_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_unix-milli_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -40361,6 +45266,8 @@ func (c *Client) TestRequestRequiredStringUnixMilliArrayArray(ctx context.Contex
 func (c *Client) sendTestRequestRequiredStringUnixMilliArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-milli_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_unix-milli_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -40459,6 +45366,8 @@ func (c *Client) TestRequestRequiredStringUnixMilliNullable(ctx context.Context,
 func (c *Client) sendTestRequestRequiredStringUnixMilliNullable(ctx context.Context, request NilStringUnixMilli) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-milli_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_unix-milli_nullable"),
 	}
 
 	// Run stopwatch.
@@ -40531,6 +45440,8 @@ func (c *Client) TestRequestRequiredStringUnixMilliNullableArray(ctx context.Con
 func (c *Client) sendTestRequestRequiredStringUnixMilliNullableArray(ctx context.Context, request []NilStringUnixMilli) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-milli_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_unix-milli_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -40612,6 +45523,8 @@ func (c *Client) TestRequestRequiredStringUnixMilliNullableArrayArray(ctx contex
 func (c *Client) sendTestRequestRequiredStringUnixMilliNullableArrayArray(ctx context.Context, request [][]NilStringUnixMilli) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-milli_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_unix-milli_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -40710,6 +45623,8 @@ func (c *Client) TestRequestRequiredStringUnixNano(ctx context.Context, request 
 func (c *Client) sendTestRequestRequiredStringUnixNano(ctx context.Context, request time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-nano"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_unix-nano"),
 	}
 
 	// Run stopwatch.
@@ -40782,6 +45697,8 @@ func (c *Client) TestRequestRequiredStringUnixNanoArray(ctx context.Context, req
 func (c *Client) sendTestRequestRequiredStringUnixNanoArray(ctx context.Context, request []time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-nano_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_unix-nano_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -40863,6 +45780,8 @@ func (c *Client) TestRequestRequiredStringUnixNanoArrayArray(ctx context.Context
 func (c *Client) sendTestRequestRequiredStringUnixNanoArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-nano_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_unix-nano_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -40961,6 +45880,8 @@ func (c *Client) TestRequestRequiredStringUnixNanoNullable(ctx context.Context, 
 func (c *Client) sendTestRequestRequiredStringUnixNanoNullable(ctx context.Context, request NilStringUnixNano) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-nano_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_unix-nano_nullable"),
 	}
 
 	// Run stopwatch.
@@ -41033,6 +45954,8 @@ func (c *Client) TestRequestRequiredStringUnixNanoNullableArray(ctx context.Cont
 func (c *Client) sendTestRequestRequiredStringUnixNanoNullableArray(ctx context.Context, request []NilStringUnixNano) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-nano_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_unix-nano_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -41114,6 +46037,8 @@ func (c *Client) TestRequestRequiredStringUnixNanoNullableArrayArray(ctx context
 func (c *Client) sendTestRequestRequiredStringUnixNanoNullableArrayArray(ctx context.Context, request [][]NilStringUnixNano) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-nano_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_unix-nano_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -41212,6 +46137,8 @@ func (c *Client) TestRequestRequiredStringUnixNullable(ctx context.Context, requ
 func (c *Client) sendTestRequestRequiredStringUnixNullable(ctx context.Context, request NilStringUnixSeconds) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_unix_nullable"),
 	}
 
 	// Run stopwatch.
@@ -41284,6 +46211,8 @@ func (c *Client) TestRequestRequiredStringUnixNullableArray(ctx context.Context,
 func (c *Client) sendTestRequestRequiredStringUnixNullableArray(ctx context.Context, request []NilStringUnixSeconds) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_unix_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -41365,6 +46294,8 @@ func (c *Client) TestRequestRequiredStringUnixNullableArrayArray(ctx context.Con
 func (c *Client) sendTestRequestRequiredStringUnixNullableArrayArray(ctx context.Context, request [][]NilStringUnixSeconds) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_unix_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -41463,6 +46394,8 @@ func (c *Client) TestRequestRequiredStringUnixSeconds(ctx context.Context, reque
 func (c *Client) sendTestRequestRequiredStringUnixSeconds(ctx context.Context, request time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-seconds"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_unix-seconds"),
 	}
 
 	// Run stopwatch.
@@ -41535,6 +46468,8 @@ func (c *Client) TestRequestRequiredStringUnixSecondsArray(ctx context.Context, 
 func (c *Client) sendTestRequestRequiredStringUnixSecondsArray(ctx context.Context, request []time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-seconds_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_unix-seconds_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -41616,6 +46551,8 @@ func (c *Client) TestRequestRequiredStringUnixSecondsArrayArray(ctx context.Cont
 func (c *Client) sendTestRequestRequiredStringUnixSecondsArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-seconds_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_unix-seconds_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -41714,6 +46651,8 @@ func (c *Client) TestRequestRequiredStringUnixSecondsNullable(ctx context.Contex
 func (c *Client) sendTestRequestRequiredStringUnixSecondsNullable(ctx context.Context, request NilStringUnixSeconds) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-seconds_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_unix-seconds_nullable"),
 	}
 
 	// Run stopwatch.
@@ -41786,6 +46725,8 @@ func (c *Client) TestRequestRequiredStringUnixSecondsNullableArray(ctx context.C
 func (c *Client) sendTestRequestRequiredStringUnixSecondsNullableArray(ctx context.Context, request []NilStringUnixSeconds) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-seconds_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_unix-seconds_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -41867,6 +46808,8 @@ func (c *Client) TestRequestRequiredStringUnixSecondsNullableArrayArray(ctx cont
 func (c *Client) sendTestRequestRequiredStringUnixSecondsNullableArrayArray(ctx context.Context, request [][]NilStringUnixSeconds) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-seconds_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_unix-seconds_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -41965,6 +46908,8 @@ func (c *Client) TestRequestString(ctx context.Context, request OptString) (*Err
 func (c *Client) sendTestRequestString(ctx context.Context, request OptString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string"),
 	}
 
 	// Run stopwatch.
@@ -42037,6 +46982,8 @@ func (c *Client) TestRequestStringArray(ctx context.Context, request []string) (
 func (c *Client) sendTestRequestStringArray(ctx context.Context, request []string) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_array"),
 	}
 
 	// Run stopwatch.
@@ -42109,6 +47056,8 @@ func (c *Client) TestRequestStringArrayArray(ctx context.Context, request [][]st
 func (c *Client) sendTestRequestStringArrayArray(ctx context.Context, request [][]string) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -42204,6 +47153,8 @@ func (c *Client) TestRequestStringBase64(ctx context.Context, request []byte) (*
 func (c *Client) sendTestRequestStringBase64(ctx context.Context, request []byte) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_base64"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_base64"),
 	}
 
 	// Run stopwatch.
@@ -42276,6 +47227,8 @@ func (c *Client) TestRequestStringBase64Array(ctx context.Context, request [][]b
 func (c *Client) sendTestRequestStringBase64Array(ctx context.Context, request [][]byte) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_base64_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_base64_array"),
 	}
 
 	// Run stopwatch.
@@ -42348,6 +47301,8 @@ func (c *Client) TestRequestStringBase64ArrayArray(ctx context.Context, request 
 func (c *Client) sendTestRequestStringBase64ArrayArray(ctx context.Context, request [][][]byte) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_base64_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_base64_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -42443,6 +47398,8 @@ func (c *Client) TestRequestStringBase64Nullable(ctx context.Context, request Op
 func (c *Client) sendTestRequestStringBase64Nullable(ctx context.Context, request OptNilByte) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_base64_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_base64_nullable"),
 	}
 
 	// Run stopwatch.
@@ -42515,6 +47472,8 @@ func (c *Client) TestRequestStringBase64NullableArray(ctx context.Context, reque
 func (c *Client) sendTestRequestStringBase64NullableArray(ctx context.Context, request [][]byte) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_base64_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_base64_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -42587,6 +47546,8 @@ func (c *Client) TestRequestStringBase64NullableArrayArray(ctx context.Context, 
 func (c *Client) sendTestRequestStringBase64NullableArrayArray(ctx context.Context, request [][][]byte) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_base64_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_base64_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -42682,6 +47643,8 @@ func (c *Client) TestRequestStringBinary(ctx context.Context, request OptString)
 func (c *Client) sendTestRequestStringBinary(ctx context.Context, request OptString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_binary"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_binary"),
 	}
 
 	// Run stopwatch.
@@ -42754,6 +47717,8 @@ func (c *Client) TestRequestStringBinaryArray(ctx context.Context, request []str
 func (c *Client) sendTestRequestStringBinaryArray(ctx context.Context, request []string) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_binary_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_binary_array"),
 	}
 
 	// Run stopwatch.
@@ -42826,6 +47791,8 @@ func (c *Client) TestRequestStringBinaryArrayArray(ctx context.Context, request 
 func (c *Client) sendTestRequestStringBinaryArrayArray(ctx context.Context, request [][]string) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_binary_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_binary_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -42921,6 +47888,8 @@ func (c *Client) TestRequestStringBinaryNullable(ctx context.Context, request Op
 func (c *Client) sendTestRequestStringBinaryNullable(ctx context.Context, request OptNilString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_binary_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_binary_nullable"),
 	}
 
 	// Run stopwatch.
@@ -42993,6 +47962,8 @@ func (c *Client) TestRequestStringBinaryNullableArray(ctx context.Context, reque
 func (c *Client) sendTestRequestStringBinaryNullableArray(ctx context.Context, request []NilString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_binary_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_binary_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -43065,6 +48036,8 @@ func (c *Client) TestRequestStringBinaryNullableArrayArray(ctx context.Context, 
 func (c *Client) sendTestRequestStringBinaryNullableArrayArray(ctx context.Context, request [][]NilString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_binary_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_binary_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -43160,6 +48133,8 @@ func (c *Client) TestRequestStringByte(ctx context.Context, request []byte) (*Er
 func (c *Client) sendTestRequestStringByte(ctx context.Context, request []byte) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_byte"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_byte"),
 	}
 
 	// Run stopwatch.
@@ -43232,6 +48207,8 @@ func (c *Client) TestRequestStringByteArray(ctx context.Context, request [][]byt
 func (c *Client) sendTestRequestStringByteArray(ctx context.Context, request [][]byte) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_byte_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_byte_array"),
 	}
 
 	// Run stopwatch.
@@ -43304,6 +48281,8 @@ func (c *Client) TestRequestStringByteArrayArray(ctx context.Context, request []
 func (c *Client) sendTestRequestStringByteArrayArray(ctx context.Context, request [][][]byte) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_byte_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_byte_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -43399,6 +48378,8 @@ func (c *Client) TestRequestStringByteNullable(ctx context.Context, request OptN
 func (c *Client) sendTestRequestStringByteNullable(ctx context.Context, request OptNilByte) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_byte_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_byte_nullable"),
 	}
 
 	// Run stopwatch.
@@ -43471,6 +48452,8 @@ func (c *Client) TestRequestStringByteNullableArray(ctx context.Context, request
 func (c *Client) sendTestRequestStringByteNullableArray(ctx context.Context, request [][]byte) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_byte_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_byte_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -43543,6 +48526,8 @@ func (c *Client) TestRequestStringByteNullableArrayArray(ctx context.Context, re
 func (c *Client) sendTestRequestStringByteNullableArrayArray(ctx context.Context, request [][][]byte) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_byte_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_byte_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -43638,6 +48623,8 @@ func (c *Client) TestRequestStringDate(ctx context.Context, request OptDate) (*E
 func (c *Client) sendTestRequestStringDate(ctx context.Context, request OptDate) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_date"),
 	}
 
 	// Run stopwatch.
@@ -43710,6 +48697,8 @@ func (c *Client) TestRequestStringDateArray(ctx context.Context, request []time.
 func (c *Client) sendTestRequestStringDateArray(ctx context.Context, request []time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_date_array"),
 	}
 
 	// Run stopwatch.
@@ -43782,6 +48771,8 @@ func (c *Client) TestRequestStringDateArrayArray(ctx context.Context, request []
 func (c *Client) sendTestRequestStringDateArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_date_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -43877,6 +48868,8 @@ func (c *Client) TestRequestStringDateNullable(ctx context.Context, request OptN
 func (c *Client) sendTestRequestStringDateNullable(ctx context.Context, request OptNilDate) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_date_nullable"),
 	}
 
 	// Run stopwatch.
@@ -43949,6 +48942,8 @@ func (c *Client) TestRequestStringDateNullableArray(ctx context.Context, request
 func (c *Client) sendTestRequestStringDateNullableArray(ctx context.Context, request []NilDate) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_date_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -44021,6 +49016,8 @@ func (c *Client) TestRequestStringDateNullableArrayArray(ctx context.Context, re
 func (c *Client) sendTestRequestStringDateNullableArrayArray(ctx context.Context, request [][]NilDate) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_date_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -44116,6 +49113,8 @@ func (c *Client) TestRequestStringDateTime(ctx context.Context, request OptDateT
 func (c *Client) sendTestRequestStringDateTime(ctx context.Context, request OptDateTime) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date-time"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_date-time"),
 	}
 
 	// Run stopwatch.
@@ -44188,6 +49187,8 @@ func (c *Client) TestRequestStringDateTimeArray(ctx context.Context, request []t
 func (c *Client) sendTestRequestStringDateTimeArray(ctx context.Context, request []time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date-time_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_date-time_array"),
 	}
 
 	// Run stopwatch.
@@ -44260,6 +49261,8 @@ func (c *Client) TestRequestStringDateTimeArrayArray(ctx context.Context, reques
 func (c *Client) sendTestRequestStringDateTimeArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date-time_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_date-time_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -44355,6 +49358,8 @@ func (c *Client) TestRequestStringDateTimeNullable(ctx context.Context, request 
 func (c *Client) sendTestRequestStringDateTimeNullable(ctx context.Context, request OptNilDateTime) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date-time_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_date-time_nullable"),
 	}
 
 	// Run stopwatch.
@@ -44427,6 +49432,8 @@ func (c *Client) TestRequestStringDateTimeNullableArray(ctx context.Context, req
 func (c *Client) sendTestRequestStringDateTimeNullableArray(ctx context.Context, request []NilDateTime) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date-time_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_date-time_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -44499,6 +49506,8 @@ func (c *Client) TestRequestStringDateTimeNullableArrayArray(ctx context.Context
 func (c *Client) sendTestRequestStringDateTimeNullableArrayArray(ctx context.Context, request [][]NilDateTime) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date-time_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_date-time_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -44594,6 +49603,8 @@ func (c *Client) TestRequestStringDuration(ctx context.Context, request OptDurat
 func (c *Client) sendTestRequestStringDuration(ctx context.Context, request OptDuration) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_duration"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_duration"),
 	}
 
 	// Run stopwatch.
@@ -44666,6 +49677,8 @@ func (c *Client) TestRequestStringDurationArray(ctx context.Context, request []t
 func (c *Client) sendTestRequestStringDurationArray(ctx context.Context, request []time.Duration) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_duration_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_duration_array"),
 	}
 
 	// Run stopwatch.
@@ -44738,6 +49751,8 @@ func (c *Client) TestRequestStringDurationArrayArray(ctx context.Context, reques
 func (c *Client) sendTestRequestStringDurationArrayArray(ctx context.Context, request [][]time.Duration) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_duration_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_duration_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -44833,6 +49848,8 @@ func (c *Client) TestRequestStringDurationNullable(ctx context.Context, request 
 func (c *Client) sendTestRequestStringDurationNullable(ctx context.Context, request OptNilDuration) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_duration_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_duration_nullable"),
 	}
 
 	// Run stopwatch.
@@ -44905,6 +49922,8 @@ func (c *Client) TestRequestStringDurationNullableArray(ctx context.Context, req
 func (c *Client) sendTestRequestStringDurationNullableArray(ctx context.Context, request []NilDuration) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_duration_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_duration_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -44977,6 +49996,8 @@ func (c *Client) TestRequestStringDurationNullableArrayArray(ctx context.Context
 func (c *Client) sendTestRequestStringDurationNullableArrayArray(ctx context.Context, request [][]NilDuration) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_duration_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_duration_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -45072,6 +50093,8 @@ func (c *Client) TestRequestStringEmail(ctx context.Context, request OptString) 
 func (c *Client) sendTestRequestStringEmail(ctx context.Context, request OptString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_email"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_email"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -45168,6 +50191,8 @@ func (c *Client) TestRequestStringEmailArray(ctx context.Context, request []stri
 func (c *Client) sendTestRequestStringEmailArray(ctx context.Context, request []string) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_email_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_email_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -45271,6 +50296,8 @@ func (c *Client) TestRequestStringEmailArrayArray(ctx context.Context, request [
 func (c *Client) sendTestRequestStringEmailArrayArray(ctx context.Context, request [][]string) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_email_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_email_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -45391,6 +50418,8 @@ func (c *Client) TestRequestStringEmailNullable(ctx context.Context, request Opt
 func (c *Client) sendTestRequestStringEmailNullable(ctx context.Context, request OptNilString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_email_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_email_nullable"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -45487,6 +50516,8 @@ func (c *Client) TestRequestStringEmailNullableArray(ctx context.Context, reques
 func (c *Client) sendTestRequestStringEmailNullableArray(ctx context.Context, request []NilString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_email_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_email_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -45597,6 +50628,8 @@ func (c *Client) TestRequestStringEmailNullableArrayArray(ctx context.Context, r
 func (c *Client) sendTestRequestStringEmailNullableArrayArray(ctx context.Context, request [][]NilString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_email_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_email_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -45724,6 +50757,8 @@ func (c *Client) TestRequestStringFloat32(ctx context.Context, request OptFloat3
 func (c *Client) sendTestRequestStringFloat32(ctx context.Context, request OptFloat32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float32"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_float32"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -45812,6 +50847,8 @@ func (c *Client) TestRequestStringFloat32Array(ctx context.Context, request []fl
 func (c *Client) sendTestRequestStringFloat32Array(ctx context.Context, request []float32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float32_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_float32_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -45907,6 +50944,8 @@ func (c *Client) TestRequestStringFloat32ArrayArray(ctx context.Context, request
 func (c *Client) sendTestRequestStringFloat32ArrayArray(ctx context.Context, request [][]float32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float32_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_float32_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -46019,6 +51058,8 @@ func (c *Client) TestRequestStringFloat32Nullable(ctx context.Context, request O
 func (c *Client) sendTestRequestStringFloat32Nullable(ctx context.Context, request OptNilFloat32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float32_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_float32_nullable"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -46107,6 +51148,8 @@ func (c *Client) TestRequestStringFloat32NullableArray(ctx context.Context, requ
 func (c *Client) sendTestRequestStringFloat32NullableArray(ctx context.Context, request []NilFloat32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float32_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_float32_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -46209,6 +51252,8 @@ func (c *Client) TestRequestStringFloat32NullableArrayArray(ctx context.Context,
 func (c *Client) sendTestRequestStringFloat32NullableArrayArray(ctx context.Context, request [][]NilFloat32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float32_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_float32_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -46328,6 +51373,8 @@ func (c *Client) TestRequestStringFloat64(ctx context.Context, request OptFloat6
 func (c *Client) sendTestRequestStringFloat64(ctx context.Context, request OptFloat64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float64"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_float64"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -46416,6 +51463,8 @@ func (c *Client) TestRequestStringFloat64Array(ctx context.Context, request []fl
 func (c *Client) sendTestRequestStringFloat64Array(ctx context.Context, request []float64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float64_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_float64_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -46511,6 +51560,8 @@ func (c *Client) TestRequestStringFloat64ArrayArray(ctx context.Context, request
 func (c *Client) sendTestRequestStringFloat64ArrayArray(ctx context.Context, request [][]float64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float64_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_float64_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -46623,6 +51674,8 @@ func (c *Client) TestRequestStringFloat64Nullable(ctx context.Context, request O
 func (c *Client) sendTestRequestStringFloat64Nullable(ctx context.Context, request OptNilFloat64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float64_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_float64_nullable"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -46711,6 +51764,8 @@ func (c *Client) TestRequestStringFloat64NullableArray(ctx context.Context, requ
 func (c *Client) sendTestRequestStringFloat64NullableArray(ctx context.Context, request []NilFloat64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float64_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_float64_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -46813,6 +51868,8 @@ func (c *Client) TestRequestStringFloat64NullableArrayArray(ctx context.Context,
 func (c *Client) sendTestRequestStringFloat64NullableArrayArray(ctx context.Context, request [][]NilFloat64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float64_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_float64_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -46932,6 +51989,8 @@ func (c *Client) TestRequestStringHostname(ctx context.Context, request OptStrin
 func (c *Client) sendTestRequestStringHostname(ctx context.Context, request OptString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_hostname"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_hostname"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -47028,6 +52087,8 @@ func (c *Client) TestRequestStringHostnameArray(ctx context.Context, request []s
 func (c *Client) sendTestRequestStringHostnameArray(ctx context.Context, request []string) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_hostname_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_hostname_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -47131,6 +52192,8 @@ func (c *Client) TestRequestStringHostnameArrayArray(ctx context.Context, reques
 func (c *Client) sendTestRequestStringHostnameArrayArray(ctx context.Context, request [][]string) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_hostname_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_hostname_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -47251,6 +52314,8 @@ func (c *Client) TestRequestStringHostnameNullable(ctx context.Context, request 
 func (c *Client) sendTestRequestStringHostnameNullable(ctx context.Context, request OptNilString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_hostname_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_hostname_nullable"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -47347,6 +52412,8 @@ func (c *Client) TestRequestStringHostnameNullableArray(ctx context.Context, req
 func (c *Client) sendTestRequestStringHostnameNullableArray(ctx context.Context, request []NilString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_hostname_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_hostname_nullable_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -47457,6 +52524,8 @@ func (c *Client) TestRequestStringHostnameNullableArrayArray(ctx context.Context
 func (c *Client) sendTestRequestStringHostnameNullableArrayArray(ctx context.Context, request [][]NilString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_hostname_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_hostname_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -47584,6 +52653,8 @@ func (c *Client) TestRequestStringIP(ctx context.Context, request OptIP) (*Error
 func (c *Client) sendTestRequestStringIP(ctx context.Context, request OptIP) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ip"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_ip"),
 	}
 
 	// Run stopwatch.
@@ -47656,6 +52727,8 @@ func (c *Client) TestRequestStringIPArray(ctx context.Context, request []netip.A
 func (c *Client) sendTestRequestStringIPArray(ctx context.Context, request []netip.Addr) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ip_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_ip_array"),
 	}
 
 	// Run stopwatch.
@@ -47728,6 +52801,8 @@ func (c *Client) TestRequestStringIPArrayArray(ctx context.Context, request [][]
 func (c *Client) sendTestRequestStringIPArrayArray(ctx context.Context, request [][]netip.Addr) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ip_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_ip_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -47823,6 +52898,8 @@ func (c *Client) TestRequestStringIPNullable(ctx context.Context, request OptNil
 func (c *Client) sendTestRequestStringIPNullable(ctx context.Context, request OptNilIP) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ip_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_ip_nullable"),
 	}
 
 	// Run stopwatch.
@@ -47895,6 +52972,8 @@ func (c *Client) TestRequestStringIPNullableArray(ctx context.Context, request [
 func (c *Client) sendTestRequestStringIPNullableArray(ctx context.Context, request []NilIP) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ip_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_ip_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -47967,6 +53046,8 @@ func (c *Client) TestRequestStringIPNullableArrayArray(ctx context.Context, requ
 func (c *Client) sendTestRequestStringIPNullableArrayArray(ctx context.Context, request [][]NilIP) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ip_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_ip_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -48062,6 +53143,8 @@ func (c *Client) TestRequestStringInt(ctx context.Context, request OptInt) (*Err
 func (c *Client) sendTestRequestStringInt(ctx context.Context, request OptInt) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_int"),
 	}
 
 	// Run stopwatch.
@@ -48134,6 +53217,8 @@ func (c *Client) TestRequestStringInt16(ctx context.Context, request OptInt16) (
 func (c *Client) sendTestRequestStringInt16(ctx context.Context, request OptInt16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int16"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_int16"),
 	}
 
 	// Run stopwatch.
@@ -48206,6 +53291,8 @@ func (c *Client) TestRequestStringInt16Array(ctx context.Context, request []int1
 func (c *Client) sendTestRequestStringInt16Array(ctx context.Context, request []int16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int16_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_int16_array"),
 	}
 
 	// Run stopwatch.
@@ -48278,6 +53365,8 @@ func (c *Client) TestRequestStringInt16ArrayArray(ctx context.Context, request [
 func (c *Client) sendTestRequestStringInt16ArrayArray(ctx context.Context, request [][]int16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int16_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_int16_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -48373,6 +53462,8 @@ func (c *Client) TestRequestStringInt16Nullable(ctx context.Context, request Opt
 func (c *Client) sendTestRequestStringInt16Nullable(ctx context.Context, request OptNilInt16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int16_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_int16_nullable"),
 	}
 
 	// Run stopwatch.
@@ -48445,6 +53536,8 @@ func (c *Client) TestRequestStringInt16NullableArray(ctx context.Context, reques
 func (c *Client) sendTestRequestStringInt16NullableArray(ctx context.Context, request []NilInt16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int16_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_int16_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -48517,6 +53610,8 @@ func (c *Client) TestRequestStringInt16NullableArrayArray(ctx context.Context, r
 func (c *Client) sendTestRequestStringInt16NullableArrayArray(ctx context.Context, request [][]NilInt16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int16_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_int16_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -48612,6 +53707,8 @@ func (c *Client) TestRequestStringInt32(ctx context.Context, request OptStringIn
 func (c *Client) sendTestRequestStringInt32(ctx context.Context, request OptStringInt32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int32"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_int32"),
 	}
 
 	// Run stopwatch.
@@ -48684,6 +53781,8 @@ func (c *Client) TestRequestStringInt32Array(ctx context.Context, request []int3
 func (c *Client) sendTestRequestStringInt32Array(ctx context.Context, request []int32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int32_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_int32_array"),
 	}
 
 	// Run stopwatch.
@@ -48756,6 +53855,8 @@ func (c *Client) TestRequestStringInt32ArrayArray(ctx context.Context, request [
 func (c *Client) sendTestRequestStringInt32ArrayArray(ctx context.Context, request [][]int32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int32_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_int32_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -48851,6 +53952,8 @@ func (c *Client) TestRequestStringInt32Nullable(ctx context.Context, request Opt
 func (c *Client) sendTestRequestStringInt32Nullable(ctx context.Context, request OptNilStringInt32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int32_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_int32_nullable"),
 	}
 
 	// Run stopwatch.
@@ -48923,6 +54026,8 @@ func (c *Client) TestRequestStringInt32NullableArray(ctx context.Context, reques
 func (c *Client) sendTestRequestStringInt32NullableArray(ctx context.Context, request []NilStringInt32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int32_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_int32_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -48995,6 +54100,8 @@ func (c *Client) TestRequestStringInt32NullableArrayArray(ctx context.Context, r
 func (c *Client) sendTestRequestStringInt32NullableArrayArray(ctx context.Context, request [][]NilStringInt32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int32_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_int32_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -49090,6 +54197,8 @@ func (c *Client) TestRequestStringInt64(ctx context.Context, request OptStringIn
 func (c *Client) sendTestRequestStringInt64(ctx context.Context, request OptStringInt64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int64"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_int64"),
 	}
 
 	// Run stopwatch.
@@ -49162,6 +54271,8 @@ func (c *Client) TestRequestStringInt64Array(ctx context.Context, request []int6
 func (c *Client) sendTestRequestStringInt64Array(ctx context.Context, request []int64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int64_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_int64_array"),
 	}
 
 	// Run stopwatch.
@@ -49234,6 +54345,8 @@ func (c *Client) TestRequestStringInt64ArrayArray(ctx context.Context, request [
 func (c *Client) sendTestRequestStringInt64ArrayArray(ctx context.Context, request [][]int64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int64_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_int64_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -49329,6 +54442,8 @@ func (c *Client) TestRequestStringInt64Nullable(ctx context.Context, request Opt
 func (c *Client) sendTestRequestStringInt64Nullable(ctx context.Context, request OptNilStringInt64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int64_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_int64_nullable"),
 	}
 
 	// Run stopwatch.
@@ -49401,6 +54516,8 @@ func (c *Client) TestRequestStringInt64NullableArray(ctx context.Context, reques
 func (c *Client) sendTestRequestStringInt64NullableArray(ctx context.Context, request []NilStringInt64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int64_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_int64_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -49473,6 +54590,8 @@ func (c *Client) TestRequestStringInt64NullableArrayArray(ctx context.Context, r
 func (c *Client) sendTestRequestStringInt64NullableArrayArray(ctx context.Context, request [][]NilStringInt64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int64_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_int64_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -49568,6 +54687,8 @@ func (c *Client) TestRequestStringInt8(ctx context.Context, request OptInt8) (*E
 func (c *Client) sendTestRequestStringInt8(ctx context.Context, request OptInt8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int8"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_int8"),
 	}
 
 	// Run stopwatch.
@@ -49640,6 +54761,8 @@ func (c *Client) TestRequestStringInt8Array(ctx context.Context, request []int8)
 func (c *Client) sendTestRequestStringInt8Array(ctx context.Context, request []int8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int8_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_int8_array"),
 	}
 
 	// Run stopwatch.
@@ -49712,6 +54835,8 @@ func (c *Client) TestRequestStringInt8ArrayArray(ctx context.Context, request []
 func (c *Client) sendTestRequestStringInt8ArrayArray(ctx context.Context, request [][]int8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int8_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_int8_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -49807,6 +54932,8 @@ func (c *Client) TestRequestStringInt8Nullable(ctx context.Context, request OptN
 func (c *Client) sendTestRequestStringInt8Nullable(ctx context.Context, request OptNilInt8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int8_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_int8_nullable"),
 	}
 
 	// Run stopwatch.
@@ -49879,6 +55006,8 @@ func (c *Client) TestRequestStringInt8NullableArray(ctx context.Context, request
 func (c *Client) sendTestRequestStringInt8NullableArray(ctx context.Context, request []NilInt8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int8_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_int8_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -49951,6 +55080,8 @@ func (c *Client) TestRequestStringInt8NullableArrayArray(ctx context.Context, re
 func (c *Client) sendTestRequestStringInt8NullableArrayArray(ctx context.Context, request [][]NilInt8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int8_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_int8_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -50046,6 +55177,8 @@ func (c *Client) TestRequestStringIntArray(ctx context.Context, request []int) (
 func (c *Client) sendTestRequestStringIntArray(ctx context.Context, request []int) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_int_array"),
 	}
 
 	// Run stopwatch.
@@ -50118,6 +55251,8 @@ func (c *Client) TestRequestStringIntArrayArray(ctx context.Context, request [][
 func (c *Client) sendTestRequestStringIntArrayArray(ctx context.Context, request [][]int) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_int_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -50213,6 +55348,8 @@ func (c *Client) TestRequestStringIntNullable(ctx context.Context, request OptNi
 func (c *Client) sendTestRequestStringIntNullable(ctx context.Context, request OptNilInt) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_int_nullable"),
 	}
 
 	// Run stopwatch.
@@ -50285,6 +55422,8 @@ func (c *Client) TestRequestStringIntNullableArray(ctx context.Context, request 
 func (c *Client) sendTestRequestStringIntNullableArray(ctx context.Context, request []NilInt) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_int_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -50357,6 +55496,8 @@ func (c *Client) TestRequestStringIntNullableArrayArray(ctx context.Context, req
 func (c *Client) sendTestRequestStringIntNullableArrayArray(ctx context.Context, request [][]NilInt) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_int_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -50452,6 +55593,8 @@ func (c *Client) TestRequestStringIpv4(ctx context.Context, request OptIPv4) (*E
 func (c *Client) sendTestRequestStringIpv4(ctx context.Context, request OptIPv4) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv4"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_ipv4"),
 	}
 
 	// Run stopwatch.
@@ -50524,6 +55667,8 @@ func (c *Client) TestRequestStringIpv4Array(ctx context.Context, request []netip
 func (c *Client) sendTestRequestStringIpv4Array(ctx context.Context, request []netip.Addr) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv4_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_ipv4_array"),
 	}
 
 	// Run stopwatch.
@@ -50596,6 +55741,8 @@ func (c *Client) TestRequestStringIpv4ArrayArray(ctx context.Context, request []
 func (c *Client) sendTestRequestStringIpv4ArrayArray(ctx context.Context, request [][]netip.Addr) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv4_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_ipv4_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -50691,6 +55838,8 @@ func (c *Client) TestRequestStringIpv4Nullable(ctx context.Context, request OptN
 func (c *Client) sendTestRequestStringIpv4Nullable(ctx context.Context, request OptNilIPv4) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv4_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_ipv4_nullable"),
 	}
 
 	// Run stopwatch.
@@ -50763,6 +55912,8 @@ func (c *Client) TestRequestStringIpv4NullableArray(ctx context.Context, request
 func (c *Client) sendTestRequestStringIpv4NullableArray(ctx context.Context, request []NilIPv4) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv4_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_ipv4_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -50835,6 +55986,8 @@ func (c *Client) TestRequestStringIpv4NullableArrayArray(ctx context.Context, re
 func (c *Client) sendTestRequestStringIpv4NullableArrayArray(ctx context.Context, request [][]NilIPv4) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv4_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_ipv4_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -50930,6 +56083,8 @@ func (c *Client) TestRequestStringIpv6(ctx context.Context, request OptIPv6) (*E
 func (c *Client) sendTestRequestStringIpv6(ctx context.Context, request OptIPv6) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv6"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_ipv6"),
 	}
 
 	// Run stopwatch.
@@ -51002,6 +56157,8 @@ func (c *Client) TestRequestStringIpv6Array(ctx context.Context, request []netip
 func (c *Client) sendTestRequestStringIpv6Array(ctx context.Context, request []netip.Addr) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv6_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_ipv6_array"),
 	}
 
 	// Run stopwatch.
@@ -51074,6 +56231,8 @@ func (c *Client) TestRequestStringIpv6ArrayArray(ctx context.Context, request []
 func (c *Client) sendTestRequestStringIpv6ArrayArray(ctx context.Context, request [][]netip.Addr) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv6_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_ipv6_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -51169,6 +56328,8 @@ func (c *Client) TestRequestStringIpv6Nullable(ctx context.Context, request OptN
 func (c *Client) sendTestRequestStringIpv6Nullable(ctx context.Context, request OptNilIPv6) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv6_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_ipv6_nullable"),
 	}
 
 	// Run stopwatch.
@@ -51241,6 +56402,8 @@ func (c *Client) TestRequestStringIpv6NullableArray(ctx context.Context, request
 func (c *Client) sendTestRequestStringIpv6NullableArray(ctx context.Context, request []NilIPv6) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv6_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_ipv6_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -51313,6 +56476,8 @@ func (c *Client) TestRequestStringIpv6NullableArrayArray(ctx context.Context, re
 func (c *Client) sendTestRequestStringIpv6NullableArrayArray(ctx context.Context, request [][]NilIPv6) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv6_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_ipv6_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -51408,6 +56573,8 @@ func (c *Client) TestRequestStringNullable(ctx context.Context, request OptNilSt
 func (c *Client) sendTestRequestStringNullable(ctx context.Context, request OptNilString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_nullable"),
 	}
 
 	// Run stopwatch.
@@ -51480,6 +56647,8 @@ func (c *Client) TestRequestStringNullableArray(ctx context.Context, request []N
 func (c *Client) sendTestRequestStringNullableArray(ctx context.Context, request []NilString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -51552,6 +56721,8 @@ func (c *Client) TestRequestStringNullableArrayArray(ctx context.Context, reques
 func (c *Client) sendTestRequestStringNullableArrayArray(ctx context.Context, request [][]NilString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -51647,6 +56818,8 @@ func (c *Client) TestRequestStringPassword(ctx context.Context, request OptStrin
 func (c *Client) sendTestRequestStringPassword(ctx context.Context, request OptString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_password"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_password"),
 	}
 
 	// Run stopwatch.
@@ -51719,6 +56892,8 @@ func (c *Client) TestRequestStringPasswordArray(ctx context.Context, request []s
 func (c *Client) sendTestRequestStringPasswordArray(ctx context.Context, request []string) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_password_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_password_array"),
 	}
 
 	// Run stopwatch.
@@ -51791,6 +56966,8 @@ func (c *Client) TestRequestStringPasswordArrayArray(ctx context.Context, reques
 func (c *Client) sendTestRequestStringPasswordArrayArray(ctx context.Context, request [][]string) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_password_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_password_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -51886,6 +57063,8 @@ func (c *Client) TestRequestStringPasswordNullable(ctx context.Context, request 
 func (c *Client) sendTestRequestStringPasswordNullable(ctx context.Context, request OptNilString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_password_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_password_nullable"),
 	}
 
 	// Run stopwatch.
@@ -51958,6 +57137,8 @@ func (c *Client) TestRequestStringPasswordNullableArray(ctx context.Context, req
 func (c *Client) sendTestRequestStringPasswordNullableArray(ctx context.Context, request []NilString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_password_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_password_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -52030,6 +57211,8 @@ func (c *Client) TestRequestStringPasswordNullableArrayArray(ctx context.Context
 func (c *Client) sendTestRequestStringPasswordNullableArrayArray(ctx context.Context, request [][]NilString) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_password_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_password_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -52125,6 +57308,8 @@ func (c *Client) TestRequestStringTime(ctx context.Context, request OptTime) (*E
 func (c *Client) sendTestRequestStringTime(ctx context.Context, request OptTime) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_time"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_time"),
 	}
 
 	// Run stopwatch.
@@ -52197,6 +57382,8 @@ func (c *Client) TestRequestStringTimeArray(ctx context.Context, request []time.
 func (c *Client) sendTestRequestStringTimeArray(ctx context.Context, request []time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_time_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_time_array"),
 	}
 
 	// Run stopwatch.
@@ -52269,6 +57456,8 @@ func (c *Client) TestRequestStringTimeArrayArray(ctx context.Context, request []
 func (c *Client) sendTestRequestStringTimeArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_time_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_time_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -52364,6 +57553,8 @@ func (c *Client) TestRequestStringTimeNullable(ctx context.Context, request OptN
 func (c *Client) sendTestRequestStringTimeNullable(ctx context.Context, request OptNilTime) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_time_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_time_nullable"),
 	}
 
 	// Run stopwatch.
@@ -52436,6 +57627,8 @@ func (c *Client) TestRequestStringTimeNullableArray(ctx context.Context, request
 func (c *Client) sendTestRequestStringTimeNullableArray(ctx context.Context, request []NilTime) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_time_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_time_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -52508,6 +57701,8 @@ func (c *Client) TestRequestStringTimeNullableArrayArray(ctx context.Context, re
 func (c *Client) sendTestRequestStringTimeNullableArrayArray(ctx context.Context, request [][]NilTime) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_time_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_time_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -52603,6 +57798,8 @@ func (c *Client) TestRequestStringURI(ctx context.Context, request OptURI) (*Err
 func (c *Client) sendTestRequestStringURI(ctx context.Context, request OptURI) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uri"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uri"),
 	}
 
 	// Run stopwatch.
@@ -52675,6 +57872,8 @@ func (c *Client) TestRequestStringURIArray(ctx context.Context, request []url.UR
 func (c *Client) sendTestRequestStringURIArray(ctx context.Context, request []url.URL) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uri_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uri_array"),
 	}
 
 	// Run stopwatch.
@@ -52747,6 +57946,8 @@ func (c *Client) TestRequestStringURIArrayArray(ctx context.Context, request [][
 func (c *Client) sendTestRequestStringURIArrayArray(ctx context.Context, request [][]url.URL) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uri_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uri_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -52842,6 +58043,8 @@ func (c *Client) TestRequestStringURINullable(ctx context.Context, request OptNi
 func (c *Client) sendTestRequestStringURINullable(ctx context.Context, request OptNilURI) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uri_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uri_nullable"),
 	}
 
 	// Run stopwatch.
@@ -52914,6 +58117,8 @@ func (c *Client) TestRequestStringURINullableArray(ctx context.Context, request 
 func (c *Client) sendTestRequestStringURINullableArray(ctx context.Context, request []NilURI) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uri_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uri_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -52986,6 +58191,8 @@ func (c *Client) TestRequestStringURINullableArrayArray(ctx context.Context, req
 func (c *Client) sendTestRequestStringURINullableArrayArray(ctx context.Context, request [][]NilURI) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uri_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uri_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -53081,6 +58288,8 @@ func (c *Client) TestRequestStringUUID(ctx context.Context, request OptUUID) (*E
 func (c *Client) sendTestRequestStringUUID(ctx context.Context, request OptUUID) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uuid"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uuid"),
 	}
 
 	// Run stopwatch.
@@ -53153,6 +58362,8 @@ func (c *Client) TestRequestStringUUIDArray(ctx context.Context, request []uuid.
 func (c *Client) sendTestRequestStringUUIDArray(ctx context.Context, request []uuid.UUID) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uuid_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uuid_array"),
 	}
 
 	// Run stopwatch.
@@ -53225,6 +58436,8 @@ func (c *Client) TestRequestStringUUIDArrayArray(ctx context.Context, request []
 func (c *Client) sendTestRequestStringUUIDArrayArray(ctx context.Context, request [][]uuid.UUID) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uuid_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uuid_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -53320,6 +58533,8 @@ func (c *Client) TestRequestStringUUIDNullable(ctx context.Context, request OptN
 func (c *Client) sendTestRequestStringUUIDNullable(ctx context.Context, request OptNilUUID) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uuid_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uuid_nullable"),
 	}
 
 	// Run stopwatch.
@@ -53392,6 +58607,8 @@ func (c *Client) TestRequestStringUUIDNullableArray(ctx context.Context, request
 func (c *Client) sendTestRequestStringUUIDNullableArray(ctx context.Context, request []NilUUID) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uuid_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uuid_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -53464,6 +58681,8 @@ func (c *Client) TestRequestStringUUIDNullableArrayArray(ctx context.Context, re
 func (c *Client) sendTestRequestStringUUIDNullableArrayArray(ctx context.Context, request [][]NilUUID) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uuid_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uuid_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -53559,6 +58778,8 @@ func (c *Client) TestRequestStringUint(ctx context.Context, request OptUint) (*E
 func (c *Client) sendTestRequestStringUint(ctx context.Context, request OptUint) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uint"),
 	}
 
 	// Run stopwatch.
@@ -53631,6 +58852,8 @@ func (c *Client) TestRequestStringUint16(ctx context.Context, request OptUint16)
 func (c *Client) sendTestRequestStringUint16(ctx context.Context, request OptUint16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint16"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uint16"),
 	}
 
 	// Run stopwatch.
@@ -53703,6 +58926,8 @@ func (c *Client) TestRequestStringUint16Array(ctx context.Context, request []uin
 func (c *Client) sendTestRequestStringUint16Array(ctx context.Context, request []uint16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint16_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uint16_array"),
 	}
 
 	// Run stopwatch.
@@ -53775,6 +59000,8 @@ func (c *Client) TestRequestStringUint16ArrayArray(ctx context.Context, request 
 func (c *Client) sendTestRequestStringUint16ArrayArray(ctx context.Context, request [][]uint16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint16_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uint16_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -53870,6 +59097,8 @@ func (c *Client) TestRequestStringUint16Nullable(ctx context.Context, request Op
 func (c *Client) sendTestRequestStringUint16Nullable(ctx context.Context, request OptNilUint16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint16_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uint16_nullable"),
 	}
 
 	// Run stopwatch.
@@ -53942,6 +59171,8 @@ func (c *Client) TestRequestStringUint16NullableArray(ctx context.Context, reque
 func (c *Client) sendTestRequestStringUint16NullableArray(ctx context.Context, request []NilUint16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint16_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uint16_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -54014,6 +59245,8 @@ func (c *Client) TestRequestStringUint16NullableArrayArray(ctx context.Context, 
 func (c *Client) sendTestRequestStringUint16NullableArrayArray(ctx context.Context, request [][]NilUint16) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint16_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uint16_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -54109,6 +59342,8 @@ func (c *Client) TestRequestStringUint32(ctx context.Context, request OptUint32)
 func (c *Client) sendTestRequestStringUint32(ctx context.Context, request OptUint32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint32"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uint32"),
 	}
 
 	// Run stopwatch.
@@ -54181,6 +59416,8 @@ func (c *Client) TestRequestStringUint32Array(ctx context.Context, request []uin
 func (c *Client) sendTestRequestStringUint32Array(ctx context.Context, request []uint32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint32_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uint32_array"),
 	}
 
 	// Run stopwatch.
@@ -54253,6 +59490,8 @@ func (c *Client) TestRequestStringUint32ArrayArray(ctx context.Context, request 
 func (c *Client) sendTestRequestStringUint32ArrayArray(ctx context.Context, request [][]uint32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint32_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uint32_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -54348,6 +59587,8 @@ func (c *Client) TestRequestStringUint32Nullable(ctx context.Context, request Op
 func (c *Client) sendTestRequestStringUint32Nullable(ctx context.Context, request OptNilUint32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint32_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uint32_nullable"),
 	}
 
 	// Run stopwatch.
@@ -54420,6 +59661,8 @@ func (c *Client) TestRequestStringUint32NullableArray(ctx context.Context, reque
 func (c *Client) sendTestRequestStringUint32NullableArray(ctx context.Context, request []NilUint32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint32_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uint32_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -54492,6 +59735,8 @@ func (c *Client) TestRequestStringUint32NullableArrayArray(ctx context.Context, 
 func (c *Client) sendTestRequestStringUint32NullableArrayArray(ctx context.Context, request [][]NilUint32) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint32_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uint32_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -54587,6 +59832,8 @@ func (c *Client) TestRequestStringUint64(ctx context.Context, request OptUint64)
 func (c *Client) sendTestRequestStringUint64(ctx context.Context, request OptUint64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint64"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uint64"),
 	}
 
 	// Run stopwatch.
@@ -54659,6 +59906,8 @@ func (c *Client) TestRequestStringUint64Array(ctx context.Context, request []uin
 func (c *Client) sendTestRequestStringUint64Array(ctx context.Context, request []uint64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint64_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uint64_array"),
 	}
 
 	// Run stopwatch.
@@ -54731,6 +59980,8 @@ func (c *Client) TestRequestStringUint64ArrayArray(ctx context.Context, request 
 func (c *Client) sendTestRequestStringUint64ArrayArray(ctx context.Context, request [][]uint64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint64_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uint64_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -54826,6 +60077,8 @@ func (c *Client) TestRequestStringUint64Nullable(ctx context.Context, request Op
 func (c *Client) sendTestRequestStringUint64Nullable(ctx context.Context, request OptNilUint64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint64_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uint64_nullable"),
 	}
 
 	// Run stopwatch.
@@ -54898,6 +60151,8 @@ func (c *Client) TestRequestStringUint64NullableArray(ctx context.Context, reque
 func (c *Client) sendTestRequestStringUint64NullableArray(ctx context.Context, request []NilUint64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint64_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uint64_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -54970,6 +60225,8 @@ func (c *Client) TestRequestStringUint64NullableArrayArray(ctx context.Context, 
 func (c *Client) sendTestRequestStringUint64NullableArrayArray(ctx context.Context, request [][]NilUint64) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint64_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uint64_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -55065,6 +60322,8 @@ func (c *Client) TestRequestStringUint8(ctx context.Context, request OptUint8) (
 func (c *Client) sendTestRequestStringUint8(ctx context.Context, request OptUint8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint8"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uint8"),
 	}
 
 	// Run stopwatch.
@@ -55137,6 +60396,8 @@ func (c *Client) TestRequestStringUint8Array(ctx context.Context, request []uint
 func (c *Client) sendTestRequestStringUint8Array(ctx context.Context, request []uint8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint8_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uint8_array"),
 	}
 
 	// Run stopwatch.
@@ -55209,6 +60470,8 @@ func (c *Client) TestRequestStringUint8ArrayArray(ctx context.Context, request [
 func (c *Client) sendTestRequestStringUint8ArrayArray(ctx context.Context, request [][]uint8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint8_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uint8_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -55304,6 +60567,8 @@ func (c *Client) TestRequestStringUint8Nullable(ctx context.Context, request Opt
 func (c *Client) sendTestRequestStringUint8Nullable(ctx context.Context, request OptNilUint8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint8_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uint8_nullable"),
 	}
 
 	// Run stopwatch.
@@ -55376,6 +60641,8 @@ func (c *Client) TestRequestStringUint8NullableArray(ctx context.Context, reques
 func (c *Client) sendTestRequestStringUint8NullableArray(ctx context.Context, request []NilUint8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint8_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uint8_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -55448,6 +60715,8 @@ func (c *Client) TestRequestStringUint8NullableArrayArray(ctx context.Context, r
 func (c *Client) sendTestRequestStringUint8NullableArrayArray(ctx context.Context, request [][]NilUint8) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint8_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uint8_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -55543,6 +60812,8 @@ func (c *Client) TestRequestStringUintArray(ctx context.Context, request []uint)
 func (c *Client) sendTestRequestStringUintArray(ctx context.Context, request []uint) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uint_array"),
 	}
 
 	// Run stopwatch.
@@ -55615,6 +60886,8 @@ func (c *Client) TestRequestStringUintArrayArray(ctx context.Context, request []
 func (c *Client) sendTestRequestStringUintArrayArray(ctx context.Context, request [][]uint) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uint_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -55710,6 +60983,8 @@ func (c *Client) TestRequestStringUintNullable(ctx context.Context, request OptN
 func (c *Client) sendTestRequestStringUintNullable(ctx context.Context, request OptNilUint) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uint_nullable"),
 	}
 
 	// Run stopwatch.
@@ -55782,6 +61057,8 @@ func (c *Client) TestRequestStringUintNullableArray(ctx context.Context, request
 func (c *Client) sendTestRequestStringUintNullableArray(ctx context.Context, request []NilUint) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uint_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -55854,6 +61131,8 @@ func (c *Client) TestRequestStringUintNullableArrayArray(ctx context.Context, re
 func (c *Client) sendTestRequestStringUintNullableArrayArray(ctx context.Context, request [][]NilUint) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_uint_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -55949,6 +61228,8 @@ func (c *Client) TestRequestStringUnix(ctx context.Context, request OptStringUni
 func (c *Client) sendTestRequestStringUnix(ctx context.Context, request OptStringUnixSeconds) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_unix"),
 	}
 
 	// Run stopwatch.
@@ -56021,6 +61302,8 @@ func (c *Client) TestRequestStringUnixArray(ctx context.Context, request []time.
 func (c *Client) sendTestRequestStringUnixArray(ctx context.Context, request []time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_unix_array"),
 	}
 
 	// Run stopwatch.
@@ -56093,6 +61376,8 @@ func (c *Client) TestRequestStringUnixArrayArray(ctx context.Context, request []
 func (c *Client) sendTestRequestStringUnixArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_unix_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -56188,6 +61473,8 @@ func (c *Client) TestRequestStringUnixMicro(ctx context.Context, request OptStri
 func (c *Client) sendTestRequestStringUnixMicro(ctx context.Context, request OptStringUnixMicro) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-micro"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_unix-micro"),
 	}
 
 	// Run stopwatch.
@@ -56260,6 +61547,8 @@ func (c *Client) TestRequestStringUnixMicroArray(ctx context.Context, request []
 func (c *Client) sendTestRequestStringUnixMicroArray(ctx context.Context, request []time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-micro_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_unix-micro_array"),
 	}
 
 	// Run stopwatch.
@@ -56332,6 +61621,8 @@ func (c *Client) TestRequestStringUnixMicroArrayArray(ctx context.Context, reque
 func (c *Client) sendTestRequestStringUnixMicroArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-micro_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_unix-micro_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -56427,6 +61718,8 @@ func (c *Client) TestRequestStringUnixMicroNullable(ctx context.Context, request
 func (c *Client) sendTestRequestStringUnixMicroNullable(ctx context.Context, request OptNilStringUnixMicro) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-micro_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_unix-micro_nullable"),
 	}
 
 	// Run stopwatch.
@@ -56499,6 +61792,8 @@ func (c *Client) TestRequestStringUnixMicroNullableArray(ctx context.Context, re
 func (c *Client) sendTestRequestStringUnixMicroNullableArray(ctx context.Context, request []NilStringUnixMicro) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-micro_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_unix-micro_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -56571,6 +61866,8 @@ func (c *Client) TestRequestStringUnixMicroNullableArrayArray(ctx context.Contex
 func (c *Client) sendTestRequestStringUnixMicroNullableArrayArray(ctx context.Context, request [][]NilStringUnixMicro) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-micro_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_unix-micro_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -56666,6 +61963,8 @@ func (c *Client) TestRequestStringUnixMilli(ctx context.Context, request OptStri
 func (c *Client) sendTestRequestStringUnixMilli(ctx context.Context, request OptStringUnixMilli) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-milli"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_unix-milli"),
 	}
 
 	// Run stopwatch.
@@ -56738,6 +62037,8 @@ func (c *Client) TestRequestStringUnixMilliArray(ctx context.Context, request []
 func (c *Client) sendTestRequestStringUnixMilliArray(ctx context.Context, request []time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-milli_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_unix-milli_array"),
 	}
 
 	// Run stopwatch.
@@ -56810,6 +62111,8 @@ func (c *Client) TestRequestStringUnixMilliArrayArray(ctx context.Context, reque
 func (c *Client) sendTestRequestStringUnixMilliArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-milli_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_unix-milli_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -56905,6 +62208,8 @@ func (c *Client) TestRequestStringUnixMilliNullable(ctx context.Context, request
 func (c *Client) sendTestRequestStringUnixMilliNullable(ctx context.Context, request OptNilStringUnixMilli) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-milli_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_unix-milli_nullable"),
 	}
 
 	// Run stopwatch.
@@ -56977,6 +62282,8 @@ func (c *Client) TestRequestStringUnixMilliNullableArray(ctx context.Context, re
 func (c *Client) sendTestRequestStringUnixMilliNullableArray(ctx context.Context, request []NilStringUnixMilli) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-milli_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_unix-milli_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -57049,6 +62356,8 @@ func (c *Client) TestRequestStringUnixMilliNullableArrayArray(ctx context.Contex
 func (c *Client) sendTestRequestStringUnixMilliNullableArrayArray(ctx context.Context, request [][]NilStringUnixMilli) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-milli_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_unix-milli_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -57144,6 +62453,8 @@ func (c *Client) TestRequestStringUnixNano(ctx context.Context, request OptStrin
 func (c *Client) sendTestRequestStringUnixNano(ctx context.Context, request OptStringUnixNano) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-nano"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_unix-nano"),
 	}
 
 	// Run stopwatch.
@@ -57216,6 +62527,8 @@ func (c *Client) TestRequestStringUnixNanoArray(ctx context.Context, request []t
 func (c *Client) sendTestRequestStringUnixNanoArray(ctx context.Context, request []time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-nano_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_unix-nano_array"),
 	}
 
 	// Run stopwatch.
@@ -57288,6 +62601,8 @@ func (c *Client) TestRequestStringUnixNanoArrayArray(ctx context.Context, reques
 func (c *Client) sendTestRequestStringUnixNanoArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-nano_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_unix-nano_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -57383,6 +62698,8 @@ func (c *Client) TestRequestStringUnixNanoNullable(ctx context.Context, request 
 func (c *Client) sendTestRequestStringUnixNanoNullable(ctx context.Context, request OptNilStringUnixNano) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-nano_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_unix-nano_nullable"),
 	}
 
 	// Run stopwatch.
@@ -57455,6 +62772,8 @@ func (c *Client) TestRequestStringUnixNanoNullableArray(ctx context.Context, req
 func (c *Client) sendTestRequestStringUnixNanoNullableArray(ctx context.Context, request []NilStringUnixNano) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-nano_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_unix-nano_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -57527,6 +62846,8 @@ func (c *Client) TestRequestStringUnixNanoNullableArrayArray(ctx context.Context
 func (c *Client) sendTestRequestStringUnixNanoNullableArrayArray(ctx context.Context, request [][]NilStringUnixNano) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-nano_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_unix-nano_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -57622,6 +62943,8 @@ func (c *Client) TestRequestStringUnixNullable(ctx context.Context, request OptN
 func (c *Client) sendTestRequestStringUnixNullable(ctx context.Context, request OptNilStringUnixSeconds) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_unix_nullable"),
 	}
 
 	// Run stopwatch.
@@ -57694,6 +63017,8 @@ func (c *Client) TestRequestStringUnixNullableArray(ctx context.Context, request
 func (c *Client) sendTestRequestStringUnixNullableArray(ctx context.Context, request []NilStringUnixSeconds) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_unix_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -57766,6 +63091,8 @@ func (c *Client) TestRequestStringUnixNullableArrayArray(ctx context.Context, re
 func (c *Client) sendTestRequestStringUnixNullableArrayArray(ctx context.Context, request [][]NilStringUnixSeconds) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_unix_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -57861,6 +63188,8 @@ func (c *Client) TestRequestStringUnixSeconds(ctx context.Context, request OptSt
 func (c *Client) sendTestRequestStringUnixSeconds(ctx context.Context, request OptStringUnixSeconds) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-seconds"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_unix-seconds"),
 	}
 
 	// Run stopwatch.
@@ -57933,6 +63262,8 @@ func (c *Client) TestRequestStringUnixSecondsArray(ctx context.Context, request 
 func (c *Client) sendTestRequestStringUnixSecondsArray(ctx context.Context, request []time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-seconds_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_unix-seconds_array"),
 	}
 
 	// Run stopwatch.
@@ -58005,6 +63336,8 @@ func (c *Client) TestRequestStringUnixSecondsArrayArray(ctx context.Context, req
 func (c *Client) sendTestRequestStringUnixSecondsArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-seconds_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_unix-seconds_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -58100,6 +63433,8 @@ func (c *Client) TestRequestStringUnixSecondsNullable(ctx context.Context, reque
 func (c *Client) sendTestRequestStringUnixSecondsNullable(ctx context.Context, request OptNilStringUnixSeconds) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-seconds_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_unix-seconds_nullable"),
 	}
 
 	// Run stopwatch.
@@ -58172,6 +63507,8 @@ func (c *Client) TestRequestStringUnixSecondsNullableArray(ctx context.Context, 
 func (c *Client) sendTestRequestStringUnixSecondsNullableArray(ctx context.Context, request []NilStringUnixSeconds) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-seconds_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_unix-seconds_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -58244,6 +63581,8 @@ func (c *Client) TestRequestStringUnixSecondsNullableArrayArray(ctx context.Cont
 func (c *Client) sendTestRequestStringUnixSecondsNullableArrayArray(ctx context.Context, request [][]NilStringUnixSeconds) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-seconds_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_unix-seconds_nullable_array_array"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -58339,6 +63678,8 @@ func (c *Client) TestResponseAny(ctx context.Context, request string) (jx.Raw, e
 func (c *Client) sendTestResponseAny(ctx context.Context, request string) (res jx.Raw, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_Any"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_Any"),
 	}
 
 	// Run stopwatch.
@@ -58411,6 +63752,8 @@ func (c *Client) TestResponseBoolean(ctx context.Context, request string) (bool,
 func (c *Client) sendTestResponseBoolean(ctx context.Context, request string) (res bool, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_boolean"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_boolean"),
 	}
 
 	// Run stopwatch.
@@ -58483,6 +63826,8 @@ func (c *Client) TestResponseBooleanArray(ctx context.Context, request string) (
 func (c *Client) sendTestResponseBooleanArray(ctx context.Context, request string) (res []bool, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_boolean_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_boolean_array"),
 	}
 
 	// Run stopwatch.
@@ -58555,6 +63900,8 @@ func (c *Client) TestResponseBooleanArrayArray(ctx context.Context, request stri
 func (c *Client) sendTestResponseBooleanArrayArray(ctx context.Context, request string) (res [][]bool, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_boolean_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_boolean_array_array"),
 	}
 
 	// Run stopwatch.
@@ -58627,6 +63974,8 @@ func (c *Client) TestResponseBooleanNullable(ctx context.Context, request string
 func (c *Client) sendTestResponseBooleanNullable(ctx context.Context, request string) (res NilBool, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_boolean_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_boolean_nullable"),
 	}
 
 	// Run stopwatch.
@@ -58699,6 +64048,8 @@ func (c *Client) TestResponseBooleanNullableArray(ctx context.Context, request s
 func (c *Client) sendTestResponseBooleanNullableArray(ctx context.Context, request string) (res []NilBool, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_boolean_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_boolean_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -58771,6 +64122,8 @@ func (c *Client) TestResponseBooleanNullableArrayArray(ctx context.Context, requ
 func (c *Client) sendTestResponseBooleanNullableArrayArray(ctx context.Context, request string) (res [][]NilBool, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_boolean_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_boolean_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -58843,6 +64196,8 @@ func (c *Client) TestResponseEmptyStruct(ctx context.Context, request string) er
 func (c *Client) sendTestResponseEmptyStruct(ctx context.Context, request string) (res *TestResponseEmptyStructOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_EmptyStruct"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_EmptyStruct"),
 	}
 
 	// Run stopwatch.
@@ -58915,6 +64270,8 @@ func (c *Client) TestResponseFormatTest(ctx context.Context, request string) (*T
 func (c *Client) sendTestResponseFormatTest(ctx context.Context, request string) (res *TestResponseFormatTestOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_FormatTest"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_FormatTest"),
 	}
 
 	// Run stopwatch.
@@ -58987,6 +64344,8 @@ func (c *Client) TestResponseInteger(ctx context.Context, request string) (int, 
 func (c *Client) sendTestResponseInteger(ctx context.Context, request string) (res int, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer"),
 	}
 
 	// Run stopwatch.
@@ -59059,6 +64418,8 @@ func (c *Client) TestResponseIntegerArray(ctx context.Context, request string) (
 func (c *Client) sendTestResponseIntegerArray(ctx context.Context, request string) (res []int, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_array"),
 	}
 
 	// Run stopwatch.
@@ -59131,6 +64492,8 @@ func (c *Client) TestResponseIntegerArrayArray(ctx context.Context, request stri
 func (c *Client) sendTestResponseIntegerArrayArray(ctx context.Context, request string) (res [][]int, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_array_array"),
 	}
 
 	// Run stopwatch.
@@ -59203,6 +64566,8 @@ func (c *Client) TestResponseIntegerInt16(ctx context.Context, request string) (
 func (c *Client) sendTestResponseIntegerInt16(ctx context.Context, request string) (res int16, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int16"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_int16"),
 	}
 
 	// Run stopwatch.
@@ -59275,6 +64640,8 @@ func (c *Client) TestResponseIntegerInt16Array(ctx context.Context, request stri
 func (c *Client) sendTestResponseIntegerInt16Array(ctx context.Context, request string) (res []int16, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int16_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_int16_array"),
 	}
 
 	// Run stopwatch.
@@ -59347,6 +64714,8 @@ func (c *Client) TestResponseIntegerInt16ArrayArray(ctx context.Context, request
 func (c *Client) sendTestResponseIntegerInt16ArrayArray(ctx context.Context, request string) (res [][]int16, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int16_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_int16_array_array"),
 	}
 
 	// Run stopwatch.
@@ -59419,6 +64788,8 @@ func (c *Client) TestResponseIntegerInt16Nullable(ctx context.Context, request s
 func (c *Client) sendTestResponseIntegerInt16Nullable(ctx context.Context, request string) (res NilInt16, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int16_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_int16_nullable"),
 	}
 
 	// Run stopwatch.
@@ -59491,6 +64862,8 @@ func (c *Client) TestResponseIntegerInt16NullableArray(ctx context.Context, requ
 func (c *Client) sendTestResponseIntegerInt16NullableArray(ctx context.Context, request string) (res []NilInt16, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int16_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_int16_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -59563,6 +64936,8 @@ func (c *Client) TestResponseIntegerInt16NullableArrayArray(ctx context.Context,
 func (c *Client) sendTestResponseIntegerInt16NullableArrayArray(ctx context.Context, request string) (res [][]NilInt16, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int16_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_int16_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -59635,6 +65010,8 @@ func (c *Client) TestResponseIntegerInt32(ctx context.Context, request string) (
 func (c *Client) sendTestResponseIntegerInt32(ctx context.Context, request string) (res int32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int32"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_int32"),
 	}
 
 	// Run stopwatch.
@@ -59707,6 +65084,8 @@ func (c *Client) TestResponseIntegerInt32Array(ctx context.Context, request stri
 func (c *Client) sendTestResponseIntegerInt32Array(ctx context.Context, request string) (res []int32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int32_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_int32_array"),
 	}
 
 	// Run stopwatch.
@@ -59779,6 +65158,8 @@ func (c *Client) TestResponseIntegerInt32ArrayArray(ctx context.Context, request
 func (c *Client) sendTestResponseIntegerInt32ArrayArray(ctx context.Context, request string) (res [][]int32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int32_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_int32_array_array"),
 	}
 
 	// Run stopwatch.
@@ -59851,6 +65232,8 @@ func (c *Client) TestResponseIntegerInt32Nullable(ctx context.Context, request s
 func (c *Client) sendTestResponseIntegerInt32Nullable(ctx context.Context, request string) (res NilInt32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int32_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_int32_nullable"),
 	}
 
 	// Run stopwatch.
@@ -59923,6 +65306,8 @@ func (c *Client) TestResponseIntegerInt32NullableArray(ctx context.Context, requ
 func (c *Client) sendTestResponseIntegerInt32NullableArray(ctx context.Context, request string) (res []NilInt32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int32_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_int32_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -59995,6 +65380,8 @@ func (c *Client) TestResponseIntegerInt32NullableArrayArray(ctx context.Context,
 func (c *Client) sendTestResponseIntegerInt32NullableArrayArray(ctx context.Context, request string) (res [][]NilInt32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int32_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_int32_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -60067,6 +65454,8 @@ func (c *Client) TestResponseIntegerInt64(ctx context.Context, request string) (
 func (c *Client) sendTestResponseIntegerInt64(ctx context.Context, request string) (res int64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int64"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_int64"),
 	}
 
 	// Run stopwatch.
@@ -60139,6 +65528,8 @@ func (c *Client) TestResponseIntegerInt64Array(ctx context.Context, request stri
 func (c *Client) sendTestResponseIntegerInt64Array(ctx context.Context, request string) (res []int64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int64_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_int64_array"),
 	}
 
 	// Run stopwatch.
@@ -60211,6 +65602,8 @@ func (c *Client) TestResponseIntegerInt64ArrayArray(ctx context.Context, request
 func (c *Client) sendTestResponseIntegerInt64ArrayArray(ctx context.Context, request string) (res [][]int64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int64_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_int64_array_array"),
 	}
 
 	// Run stopwatch.
@@ -60283,6 +65676,8 @@ func (c *Client) TestResponseIntegerInt64Nullable(ctx context.Context, request s
 func (c *Client) sendTestResponseIntegerInt64Nullable(ctx context.Context, request string) (res NilInt64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int64_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_int64_nullable"),
 	}
 
 	// Run stopwatch.
@@ -60355,6 +65750,8 @@ func (c *Client) TestResponseIntegerInt64NullableArray(ctx context.Context, requ
 func (c *Client) sendTestResponseIntegerInt64NullableArray(ctx context.Context, request string) (res []NilInt64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int64_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_int64_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -60427,6 +65824,8 @@ func (c *Client) TestResponseIntegerInt64NullableArrayArray(ctx context.Context,
 func (c *Client) sendTestResponseIntegerInt64NullableArrayArray(ctx context.Context, request string) (res [][]NilInt64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int64_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_int64_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -60499,6 +65898,8 @@ func (c *Client) TestResponseIntegerInt8(ctx context.Context, request string) (i
 func (c *Client) sendTestResponseIntegerInt8(ctx context.Context, request string) (res int8, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int8"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_int8"),
 	}
 
 	// Run stopwatch.
@@ -60571,6 +65972,8 @@ func (c *Client) TestResponseIntegerInt8Array(ctx context.Context, request strin
 func (c *Client) sendTestResponseIntegerInt8Array(ctx context.Context, request string) (res []int8, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int8_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_int8_array"),
 	}
 
 	// Run stopwatch.
@@ -60643,6 +66046,8 @@ func (c *Client) TestResponseIntegerInt8ArrayArray(ctx context.Context, request 
 func (c *Client) sendTestResponseIntegerInt8ArrayArray(ctx context.Context, request string) (res [][]int8, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int8_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_int8_array_array"),
 	}
 
 	// Run stopwatch.
@@ -60715,6 +66120,8 @@ func (c *Client) TestResponseIntegerInt8Nullable(ctx context.Context, request st
 func (c *Client) sendTestResponseIntegerInt8Nullable(ctx context.Context, request string) (res NilInt8, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int8_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_int8_nullable"),
 	}
 
 	// Run stopwatch.
@@ -60787,6 +66194,8 @@ func (c *Client) TestResponseIntegerInt8NullableArray(ctx context.Context, reque
 func (c *Client) sendTestResponseIntegerInt8NullableArray(ctx context.Context, request string) (res []NilInt8, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int8_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_int8_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -60859,6 +66268,8 @@ func (c *Client) TestResponseIntegerInt8NullableArrayArray(ctx context.Context, 
 func (c *Client) sendTestResponseIntegerInt8NullableArrayArray(ctx context.Context, request string) (res [][]NilInt8, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int8_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_int8_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -60931,6 +66342,8 @@ func (c *Client) TestResponseIntegerNullable(ctx context.Context, request string
 func (c *Client) sendTestResponseIntegerNullable(ctx context.Context, request string) (res NilInt, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_nullable"),
 	}
 
 	// Run stopwatch.
@@ -61003,6 +66416,8 @@ func (c *Client) TestResponseIntegerNullableArray(ctx context.Context, request s
 func (c *Client) sendTestResponseIntegerNullableArray(ctx context.Context, request string) (res []NilInt, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -61075,6 +66490,8 @@ func (c *Client) TestResponseIntegerNullableArrayArray(ctx context.Context, requ
 func (c *Client) sendTestResponseIntegerNullableArrayArray(ctx context.Context, request string) (res [][]NilInt, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -61147,6 +66564,8 @@ func (c *Client) TestResponseIntegerUint(ctx context.Context, request string) (u
 func (c *Client) sendTestResponseIntegerUint(ctx context.Context, request string) (res uint, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_uint"),
 	}
 
 	// Run stopwatch.
@@ -61219,6 +66638,8 @@ func (c *Client) TestResponseIntegerUint16(ctx context.Context, request string) 
 func (c *Client) sendTestResponseIntegerUint16(ctx context.Context, request string) (res uint16, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint16"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_uint16"),
 	}
 
 	// Run stopwatch.
@@ -61291,6 +66712,8 @@ func (c *Client) TestResponseIntegerUint16Array(ctx context.Context, request str
 func (c *Client) sendTestResponseIntegerUint16Array(ctx context.Context, request string) (res []uint16, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint16_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_uint16_array"),
 	}
 
 	// Run stopwatch.
@@ -61363,6 +66786,8 @@ func (c *Client) TestResponseIntegerUint16ArrayArray(ctx context.Context, reques
 func (c *Client) sendTestResponseIntegerUint16ArrayArray(ctx context.Context, request string) (res [][]uint16, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint16_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_uint16_array_array"),
 	}
 
 	// Run stopwatch.
@@ -61435,6 +66860,8 @@ func (c *Client) TestResponseIntegerUint16Nullable(ctx context.Context, request 
 func (c *Client) sendTestResponseIntegerUint16Nullable(ctx context.Context, request string) (res NilUint16, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint16_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_uint16_nullable"),
 	}
 
 	// Run stopwatch.
@@ -61507,6 +66934,8 @@ func (c *Client) TestResponseIntegerUint16NullableArray(ctx context.Context, req
 func (c *Client) sendTestResponseIntegerUint16NullableArray(ctx context.Context, request string) (res []NilUint16, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint16_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_uint16_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -61579,6 +67008,8 @@ func (c *Client) TestResponseIntegerUint16NullableArrayArray(ctx context.Context
 func (c *Client) sendTestResponseIntegerUint16NullableArrayArray(ctx context.Context, request string) (res [][]NilUint16, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint16_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_uint16_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -61651,6 +67082,8 @@ func (c *Client) TestResponseIntegerUint32(ctx context.Context, request string) 
 func (c *Client) sendTestResponseIntegerUint32(ctx context.Context, request string) (res uint32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint32"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_uint32"),
 	}
 
 	// Run stopwatch.
@@ -61723,6 +67156,8 @@ func (c *Client) TestResponseIntegerUint32Array(ctx context.Context, request str
 func (c *Client) sendTestResponseIntegerUint32Array(ctx context.Context, request string) (res []uint32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint32_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_uint32_array"),
 	}
 
 	// Run stopwatch.
@@ -61795,6 +67230,8 @@ func (c *Client) TestResponseIntegerUint32ArrayArray(ctx context.Context, reques
 func (c *Client) sendTestResponseIntegerUint32ArrayArray(ctx context.Context, request string) (res [][]uint32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint32_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_uint32_array_array"),
 	}
 
 	// Run stopwatch.
@@ -61867,6 +67304,8 @@ func (c *Client) TestResponseIntegerUint32Nullable(ctx context.Context, request 
 func (c *Client) sendTestResponseIntegerUint32Nullable(ctx context.Context, request string) (res NilUint32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint32_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_uint32_nullable"),
 	}
 
 	// Run stopwatch.
@@ -61939,6 +67378,8 @@ func (c *Client) TestResponseIntegerUint32NullableArray(ctx context.Context, req
 func (c *Client) sendTestResponseIntegerUint32NullableArray(ctx context.Context, request string) (res []NilUint32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint32_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_uint32_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -62011,6 +67452,8 @@ func (c *Client) TestResponseIntegerUint32NullableArrayArray(ctx context.Context
 func (c *Client) sendTestResponseIntegerUint32NullableArrayArray(ctx context.Context, request string) (res [][]NilUint32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint32_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_uint32_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -62083,6 +67526,8 @@ func (c *Client) TestResponseIntegerUint64(ctx context.Context, request string) 
 func (c *Client) sendTestResponseIntegerUint64(ctx context.Context, request string) (res uint64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint64"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_uint64"),
 	}
 
 	// Run stopwatch.
@@ -62155,6 +67600,8 @@ func (c *Client) TestResponseIntegerUint64Array(ctx context.Context, request str
 func (c *Client) sendTestResponseIntegerUint64Array(ctx context.Context, request string) (res []uint64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint64_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_uint64_array"),
 	}
 
 	// Run stopwatch.
@@ -62227,6 +67674,8 @@ func (c *Client) TestResponseIntegerUint64ArrayArray(ctx context.Context, reques
 func (c *Client) sendTestResponseIntegerUint64ArrayArray(ctx context.Context, request string) (res [][]uint64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint64_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_uint64_array_array"),
 	}
 
 	// Run stopwatch.
@@ -62299,6 +67748,8 @@ func (c *Client) TestResponseIntegerUint64Nullable(ctx context.Context, request 
 func (c *Client) sendTestResponseIntegerUint64Nullable(ctx context.Context, request string) (res NilUint64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint64_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_uint64_nullable"),
 	}
 
 	// Run stopwatch.
@@ -62371,6 +67822,8 @@ func (c *Client) TestResponseIntegerUint64NullableArray(ctx context.Context, req
 func (c *Client) sendTestResponseIntegerUint64NullableArray(ctx context.Context, request string) (res []NilUint64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint64_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_uint64_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -62443,6 +67896,8 @@ func (c *Client) TestResponseIntegerUint64NullableArrayArray(ctx context.Context
 func (c *Client) sendTestResponseIntegerUint64NullableArrayArray(ctx context.Context, request string) (res [][]NilUint64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint64_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_uint64_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -62515,6 +67970,8 @@ func (c *Client) TestResponseIntegerUint8(ctx context.Context, request string) (
 func (c *Client) sendTestResponseIntegerUint8(ctx context.Context, request string) (res uint8, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint8"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_uint8"),
 	}
 
 	// Run stopwatch.
@@ -62587,6 +68044,8 @@ func (c *Client) TestResponseIntegerUint8Array(ctx context.Context, request stri
 func (c *Client) sendTestResponseIntegerUint8Array(ctx context.Context, request string) (res []uint8, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint8_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_uint8_array"),
 	}
 
 	// Run stopwatch.
@@ -62659,6 +68118,8 @@ func (c *Client) TestResponseIntegerUint8ArrayArray(ctx context.Context, request
 func (c *Client) sendTestResponseIntegerUint8ArrayArray(ctx context.Context, request string) (res [][]uint8, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint8_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_uint8_array_array"),
 	}
 
 	// Run stopwatch.
@@ -62731,6 +68192,8 @@ func (c *Client) TestResponseIntegerUint8Nullable(ctx context.Context, request s
 func (c *Client) sendTestResponseIntegerUint8Nullable(ctx context.Context, request string) (res NilUint8, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint8_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_uint8_nullable"),
 	}
 
 	// Run stopwatch.
@@ -62803,6 +68266,8 @@ func (c *Client) TestResponseIntegerUint8NullableArray(ctx context.Context, requ
 func (c *Client) sendTestResponseIntegerUint8NullableArray(ctx context.Context, request string) (res []NilUint8, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint8_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_uint8_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -62875,6 +68340,8 @@ func (c *Client) TestResponseIntegerUint8NullableArrayArray(ctx context.Context,
 func (c *Client) sendTestResponseIntegerUint8NullableArrayArray(ctx context.Context, request string) (res [][]NilUint8, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint8_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_uint8_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -62947,6 +68414,8 @@ func (c *Client) TestResponseIntegerUintArray(ctx context.Context, request strin
 func (c *Client) sendTestResponseIntegerUintArray(ctx context.Context, request string) (res []uint, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_uint_array"),
 	}
 
 	// Run stopwatch.
@@ -63019,6 +68488,8 @@ func (c *Client) TestResponseIntegerUintArrayArray(ctx context.Context, request 
 func (c *Client) sendTestResponseIntegerUintArrayArray(ctx context.Context, request string) (res [][]uint, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_uint_array_array"),
 	}
 
 	// Run stopwatch.
@@ -63091,6 +68562,8 @@ func (c *Client) TestResponseIntegerUintNullable(ctx context.Context, request st
 func (c *Client) sendTestResponseIntegerUintNullable(ctx context.Context, request string) (res NilUint, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_uint_nullable"),
 	}
 
 	// Run stopwatch.
@@ -63163,6 +68636,8 @@ func (c *Client) TestResponseIntegerUintNullableArray(ctx context.Context, reque
 func (c *Client) sendTestResponseIntegerUintNullableArray(ctx context.Context, request string) (res []NilUint, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_uint_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -63235,6 +68710,8 @@ func (c *Client) TestResponseIntegerUintNullableArrayArray(ctx context.Context, 
 func (c *Client) sendTestResponseIntegerUintNullableArrayArray(ctx context.Context, request string) (res [][]NilUint, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_uint_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -63307,6 +68784,8 @@ func (c *Client) TestResponseIntegerUnix(ctx context.Context, request string) (t
 func (c *Client) sendTestResponseIntegerUnix(ctx context.Context, request string) (res time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_unix"),
 	}
 
 	// Run stopwatch.
@@ -63379,6 +68858,8 @@ func (c *Client) TestResponseIntegerUnixArray(ctx context.Context, request strin
 func (c *Client) sendTestResponseIntegerUnixArray(ctx context.Context, request string) (res []time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_unix_array"),
 	}
 
 	// Run stopwatch.
@@ -63451,6 +68932,8 @@ func (c *Client) TestResponseIntegerUnixArrayArray(ctx context.Context, request 
 func (c *Client) sendTestResponseIntegerUnixArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_unix_array_array"),
 	}
 
 	// Run stopwatch.
@@ -63523,6 +69006,8 @@ func (c *Client) TestResponseIntegerUnixMicro(ctx context.Context, request strin
 func (c *Client) sendTestResponseIntegerUnixMicro(ctx context.Context, request string) (res time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-micro"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_unix-micro"),
 	}
 
 	// Run stopwatch.
@@ -63595,6 +69080,8 @@ func (c *Client) TestResponseIntegerUnixMicroArray(ctx context.Context, request 
 func (c *Client) sendTestResponseIntegerUnixMicroArray(ctx context.Context, request string) (res []time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-micro_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_unix-micro_array"),
 	}
 
 	// Run stopwatch.
@@ -63667,6 +69154,8 @@ func (c *Client) TestResponseIntegerUnixMicroArrayArray(ctx context.Context, req
 func (c *Client) sendTestResponseIntegerUnixMicroArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-micro_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_unix-micro_array_array"),
 	}
 
 	// Run stopwatch.
@@ -63739,6 +69228,8 @@ func (c *Client) TestResponseIntegerUnixMicroNullable(ctx context.Context, reque
 func (c *Client) sendTestResponseIntegerUnixMicroNullable(ctx context.Context, request string) (res NilUnixMicro, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-micro_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_unix-micro_nullable"),
 	}
 
 	// Run stopwatch.
@@ -63811,6 +69302,8 @@ func (c *Client) TestResponseIntegerUnixMicroNullableArray(ctx context.Context, 
 func (c *Client) sendTestResponseIntegerUnixMicroNullableArray(ctx context.Context, request string) (res []NilUnixMicro, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-micro_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_unix-micro_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -63883,6 +69376,8 @@ func (c *Client) TestResponseIntegerUnixMicroNullableArrayArray(ctx context.Cont
 func (c *Client) sendTestResponseIntegerUnixMicroNullableArrayArray(ctx context.Context, request string) (res [][]NilUnixMicro, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-micro_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_unix-micro_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -63955,6 +69450,8 @@ func (c *Client) TestResponseIntegerUnixMilli(ctx context.Context, request strin
 func (c *Client) sendTestResponseIntegerUnixMilli(ctx context.Context, request string) (res time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-milli"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_unix-milli"),
 	}
 
 	// Run stopwatch.
@@ -64027,6 +69524,8 @@ func (c *Client) TestResponseIntegerUnixMilliArray(ctx context.Context, request 
 func (c *Client) sendTestResponseIntegerUnixMilliArray(ctx context.Context, request string) (res []time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-milli_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_unix-milli_array"),
 	}
 
 	// Run stopwatch.
@@ -64099,6 +69598,8 @@ func (c *Client) TestResponseIntegerUnixMilliArrayArray(ctx context.Context, req
 func (c *Client) sendTestResponseIntegerUnixMilliArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-milli_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_unix-milli_array_array"),
 	}
 
 	// Run stopwatch.
@@ -64171,6 +69672,8 @@ func (c *Client) TestResponseIntegerUnixMilliNullable(ctx context.Context, reque
 func (c *Client) sendTestResponseIntegerUnixMilliNullable(ctx context.Context, request string) (res NilUnixMilli, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-milli_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_unix-milli_nullable"),
 	}
 
 	// Run stopwatch.
@@ -64243,6 +69746,8 @@ func (c *Client) TestResponseIntegerUnixMilliNullableArray(ctx context.Context, 
 func (c *Client) sendTestResponseIntegerUnixMilliNullableArray(ctx context.Context, request string) (res []NilUnixMilli, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-milli_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_unix-milli_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -64315,6 +69820,8 @@ func (c *Client) TestResponseIntegerUnixMilliNullableArrayArray(ctx context.Cont
 func (c *Client) sendTestResponseIntegerUnixMilliNullableArrayArray(ctx context.Context, request string) (res [][]NilUnixMilli, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-milli_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_unix-milli_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -64387,6 +69894,8 @@ func (c *Client) TestResponseIntegerUnixNano(ctx context.Context, request string
 func (c *Client) sendTestResponseIntegerUnixNano(ctx context.Context, request string) (res time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-nano"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_unix-nano"),
 	}
 
 	// Run stopwatch.
@@ -64459,6 +69968,8 @@ func (c *Client) TestResponseIntegerUnixNanoArray(ctx context.Context, request s
 func (c *Client) sendTestResponseIntegerUnixNanoArray(ctx context.Context, request string) (res []time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-nano_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_unix-nano_array"),
 	}
 
 	// Run stopwatch.
@@ -64531,6 +70042,8 @@ func (c *Client) TestResponseIntegerUnixNanoArrayArray(ctx context.Context, requ
 func (c *Client) sendTestResponseIntegerUnixNanoArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-nano_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_unix-nano_array_array"),
 	}
 
 	// Run stopwatch.
@@ -64603,6 +70116,8 @@ func (c *Client) TestResponseIntegerUnixNanoNullable(ctx context.Context, reques
 func (c *Client) sendTestResponseIntegerUnixNanoNullable(ctx context.Context, request string) (res NilUnixNano, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-nano_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_unix-nano_nullable"),
 	}
 
 	// Run stopwatch.
@@ -64675,6 +70190,8 @@ func (c *Client) TestResponseIntegerUnixNanoNullableArray(ctx context.Context, r
 func (c *Client) sendTestResponseIntegerUnixNanoNullableArray(ctx context.Context, request string) (res []NilUnixNano, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-nano_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_unix-nano_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -64747,6 +70264,8 @@ func (c *Client) TestResponseIntegerUnixNanoNullableArrayArray(ctx context.Conte
 func (c *Client) sendTestResponseIntegerUnixNanoNullableArrayArray(ctx context.Context, request string) (res [][]NilUnixNano, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-nano_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_unix-nano_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -64819,6 +70338,8 @@ func (c *Client) TestResponseIntegerUnixNullable(ctx context.Context, request st
 func (c *Client) sendTestResponseIntegerUnixNullable(ctx context.Context, request string) (res NilUnixSeconds, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_unix_nullable"),
 	}
 
 	// Run stopwatch.
@@ -64891,6 +70412,8 @@ func (c *Client) TestResponseIntegerUnixNullableArray(ctx context.Context, reque
 func (c *Client) sendTestResponseIntegerUnixNullableArray(ctx context.Context, request string) (res []NilUnixSeconds, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_unix_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -64963,6 +70486,8 @@ func (c *Client) TestResponseIntegerUnixNullableArrayArray(ctx context.Context, 
 func (c *Client) sendTestResponseIntegerUnixNullableArrayArray(ctx context.Context, request string) (res [][]NilUnixSeconds, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_unix_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -65035,6 +70560,8 @@ func (c *Client) TestResponseIntegerUnixSeconds(ctx context.Context, request str
 func (c *Client) sendTestResponseIntegerUnixSeconds(ctx context.Context, request string) (res time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-seconds"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_unix-seconds"),
 	}
 
 	// Run stopwatch.
@@ -65107,6 +70634,8 @@ func (c *Client) TestResponseIntegerUnixSecondsArray(ctx context.Context, reques
 func (c *Client) sendTestResponseIntegerUnixSecondsArray(ctx context.Context, request string) (res []time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-seconds_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_unix-seconds_array"),
 	}
 
 	// Run stopwatch.
@@ -65179,6 +70708,8 @@ func (c *Client) TestResponseIntegerUnixSecondsArrayArray(ctx context.Context, r
 func (c *Client) sendTestResponseIntegerUnixSecondsArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-seconds_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_unix-seconds_array_array"),
 	}
 
 	// Run stopwatch.
@@ -65251,6 +70782,8 @@ func (c *Client) TestResponseIntegerUnixSecondsNullable(ctx context.Context, req
 func (c *Client) sendTestResponseIntegerUnixSecondsNullable(ctx context.Context, request string) (res NilUnixSeconds, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-seconds_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_unix-seconds_nullable"),
 	}
 
 	// Run stopwatch.
@@ -65323,6 +70856,8 @@ func (c *Client) TestResponseIntegerUnixSecondsNullableArray(ctx context.Context
 func (c *Client) sendTestResponseIntegerUnixSecondsNullableArray(ctx context.Context, request string) (res []NilUnixSeconds, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-seconds_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_unix-seconds_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -65395,6 +70930,8 @@ func (c *Client) TestResponseIntegerUnixSecondsNullableArrayArray(ctx context.Co
 func (c *Client) sendTestResponseIntegerUnixSecondsNullableArrayArray(ctx context.Context, request string) (res [][]NilUnixSeconds, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-seconds_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_integer_unix-seconds_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -65467,6 +71004,8 @@ func (c *Client) TestResponseNull(ctx context.Context, request string) (struct{}
 func (c *Client) sendTestResponseNull(ctx context.Context, request string) (res struct{}, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_null"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_null"),
 	}
 
 	// Run stopwatch.
@@ -65539,6 +71078,8 @@ func (c *Client) TestResponseNullArray(ctx context.Context, request string) ([]s
 func (c *Client) sendTestResponseNullArray(ctx context.Context, request string) (res []struct{}, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_null_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_null_array"),
 	}
 
 	// Run stopwatch.
@@ -65611,6 +71152,8 @@ func (c *Client) TestResponseNullArrayArray(ctx context.Context, request string)
 func (c *Client) sendTestResponseNullArrayArray(ctx context.Context, request string) (res [][]struct{}, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_null_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_null_array_array"),
 	}
 
 	// Run stopwatch.
@@ -65683,6 +71226,8 @@ func (c *Client) TestResponseNullNullable(ctx context.Context, request string) (
 func (c *Client) sendTestResponseNullNullable(ctx context.Context, request string) (res struct{}, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_null_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_null_nullable"),
 	}
 
 	// Run stopwatch.
@@ -65755,6 +71300,8 @@ func (c *Client) TestResponseNullNullableArray(ctx context.Context, request stri
 func (c *Client) sendTestResponseNullNullableArray(ctx context.Context, request string) (res []struct{}, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_null_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_null_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -65827,6 +71374,8 @@ func (c *Client) TestResponseNullNullableArrayArray(ctx context.Context, request
 func (c *Client) sendTestResponseNullNullableArrayArray(ctx context.Context, request string) (res [][]struct{}, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_null_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_null_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -65899,6 +71448,8 @@ func (c *Client) TestResponseNumber(ctx context.Context, request string) (float6
 func (c *Client) sendTestResponseNumber(ctx context.Context, request string) (res float64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_number"),
 	}
 
 	// Run stopwatch.
@@ -65971,6 +71522,8 @@ func (c *Client) TestResponseNumberArray(ctx context.Context, request string) ([
 func (c *Client) sendTestResponseNumberArray(ctx context.Context, request string) (res []float64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_number_array"),
 	}
 
 	// Run stopwatch.
@@ -66043,6 +71596,8 @@ func (c *Client) TestResponseNumberArrayArray(ctx context.Context, request strin
 func (c *Client) sendTestResponseNumberArrayArray(ctx context.Context, request string) (res [][]float64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_number_array_array"),
 	}
 
 	// Run stopwatch.
@@ -66115,6 +71670,8 @@ func (c *Client) TestResponseNumberDouble(ctx context.Context, request string) (
 func (c *Client) sendTestResponseNumberDouble(ctx context.Context, request string) (res float64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_double"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_number_double"),
 	}
 
 	// Run stopwatch.
@@ -66187,6 +71744,8 @@ func (c *Client) TestResponseNumberDoubleArray(ctx context.Context, request stri
 func (c *Client) sendTestResponseNumberDoubleArray(ctx context.Context, request string) (res []float64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_double_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_number_double_array"),
 	}
 
 	// Run stopwatch.
@@ -66259,6 +71818,8 @@ func (c *Client) TestResponseNumberDoubleArrayArray(ctx context.Context, request
 func (c *Client) sendTestResponseNumberDoubleArrayArray(ctx context.Context, request string) (res [][]float64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_double_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_number_double_array_array"),
 	}
 
 	// Run stopwatch.
@@ -66331,6 +71892,8 @@ func (c *Client) TestResponseNumberDoubleNullable(ctx context.Context, request s
 func (c *Client) sendTestResponseNumberDoubleNullable(ctx context.Context, request string) (res NilFloat64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_double_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_number_double_nullable"),
 	}
 
 	// Run stopwatch.
@@ -66403,6 +71966,8 @@ func (c *Client) TestResponseNumberDoubleNullableArray(ctx context.Context, requ
 func (c *Client) sendTestResponseNumberDoubleNullableArray(ctx context.Context, request string) (res []NilFloat64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_double_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_number_double_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -66475,6 +72040,8 @@ func (c *Client) TestResponseNumberDoubleNullableArrayArray(ctx context.Context,
 func (c *Client) sendTestResponseNumberDoubleNullableArrayArray(ctx context.Context, request string) (res [][]NilFloat64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_double_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_number_double_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -66547,6 +72114,8 @@ func (c *Client) TestResponseNumberFloat(ctx context.Context, request string) (f
 func (c *Client) sendTestResponseNumberFloat(ctx context.Context, request string) (res float32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_float"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_number_float"),
 	}
 
 	// Run stopwatch.
@@ -66619,6 +72188,8 @@ func (c *Client) TestResponseNumberFloatArray(ctx context.Context, request strin
 func (c *Client) sendTestResponseNumberFloatArray(ctx context.Context, request string) (res []float32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_float_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_number_float_array"),
 	}
 
 	// Run stopwatch.
@@ -66691,6 +72262,8 @@ func (c *Client) TestResponseNumberFloatArrayArray(ctx context.Context, request 
 func (c *Client) sendTestResponseNumberFloatArrayArray(ctx context.Context, request string) (res [][]float32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_float_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_number_float_array_array"),
 	}
 
 	// Run stopwatch.
@@ -66763,6 +72336,8 @@ func (c *Client) TestResponseNumberFloatNullable(ctx context.Context, request st
 func (c *Client) sendTestResponseNumberFloatNullable(ctx context.Context, request string) (res NilFloat32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_float_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_number_float_nullable"),
 	}
 
 	// Run stopwatch.
@@ -66835,6 +72410,8 @@ func (c *Client) TestResponseNumberFloatNullableArray(ctx context.Context, reque
 func (c *Client) sendTestResponseNumberFloatNullableArray(ctx context.Context, request string) (res []NilFloat32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_float_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_number_float_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -66907,6 +72484,8 @@ func (c *Client) TestResponseNumberFloatNullableArrayArray(ctx context.Context, 
 func (c *Client) sendTestResponseNumberFloatNullableArrayArray(ctx context.Context, request string) (res [][]NilFloat32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_float_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_number_float_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -66979,6 +72558,8 @@ func (c *Client) TestResponseNumberInt32(ctx context.Context, request string) (i
 func (c *Client) sendTestResponseNumberInt32(ctx context.Context, request string) (res int32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int32"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_number_int32"),
 	}
 
 	// Run stopwatch.
@@ -67051,6 +72632,8 @@ func (c *Client) TestResponseNumberInt32Array(ctx context.Context, request strin
 func (c *Client) sendTestResponseNumberInt32Array(ctx context.Context, request string) (res []int32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int32_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_number_int32_array"),
 	}
 
 	// Run stopwatch.
@@ -67123,6 +72706,8 @@ func (c *Client) TestResponseNumberInt32ArrayArray(ctx context.Context, request 
 func (c *Client) sendTestResponseNumberInt32ArrayArray(ctx context.Context, request string) (res [][]int32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int32_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_number_int32_array_array"),
 	}
 
 	// Run stopwatch.
@@ -67195,6 +72780,8 @@ func (c *Client) TestResponseNumberInt32Nullable(ctx context.Context, request st
 func (c *Client) sendTestResponseNumberInt32Nullable(ctx context.Context, request string) (res NilInt32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int32_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_number_int32_nullable"),
 	}
 
 	// Run stopwatch.
@@ -67267,6 +72854,8 @@ func (c *Client) TestResponseNumberInt32NullableArray(ctx context.Context, reque
 func (c *Client) sendTestResponseNumberInt32NullableArray(ctx context.Context, request string) (res []NilInt32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int32_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_number_int32_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -67339,6 +72928,8 @@ func (c *Client) TestResponseNumberInt32NullableArrayArray(ctx context.Context, 
 func (c *Client) sendTestResponseNumberInt32NullableArrayArray(ctx context.Context, request string) (res [][]NilInt32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int32_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_number_int32_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -67411,6 +73002,8 @@ func (c *Client) TestResponseNumberInt64(ctx context.Context, request string) (i
 func (c *Client) sendTestResponseNumberInt64(ctx context.Context, request string) (res int64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int64"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_number_int64"),
 	}
 
 	// Run stopwatch.
@@ -67483,6 +73076,8 @@ func (c *Client) TestResponseNumberInt64Array(ctx context.Context, request strin
 func (c *Client) sendTestResponseNumberInt64Array(ctx context.Context, request string) (res []int64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int64_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_number_int64_array"),
 	}
 
 	// Run stopwatch.
@@ -67555,6 +73150,8 @@ func (c *Client) TestResponseNumberInt64ArrayArray(ctx context.Context, request 
 func (c *Client) sendTestResponseNumberInt64ArrayArray(ctx context.Context, request string) (res [][]int64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int64_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_number_int64_array_array"),
 	}
 
 	// Run stopwatch.
@@ -67627,6 +73224,8 @@ func (c *Client) TestResponseNumberInt64Nullable(ctx context.Context, request st
 func (c *Client) sendTestResponseNumberInt64Nullable(ctx context.Context, request string) (res NilInt64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int64_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_number_int64_nullable"),
 	}
 
 	// Run stopwatch.
@@ -67699,6 +73298,8 @@ func (c *Client) TestResponseNumberInt64NullableArray(ctx context.Context, reque
 func (c *Client) sendTestResponseNumberInt64NullableArray(ctx context.Context, request string) (res []NilInt64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int64_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_number_int64_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -67771,6 +73372,8 @@ func (c *Client) TestResponseNumberInt64NullableArrayArray(ctx context.Context, 
 func (c *Client) sendTestResponseNumberInt64NullableArrayArray(ctx context.Context, request string) (res [][]NilInt64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int64_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_number_int64_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -67843,6 +73446,8 @@ func (c *Client) TestResponseNumberNullable(ctx context.Context, request string)
 func (c *Client) sendTestResponseNumberNullable(ctx context.Context, request string) (res NilFloat64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_number_nullable"),
 	}
 
 	// Run stopwatch.
@@ -67915,6 +73520,8 @@ func (c *Client) TestResponseNumberNullableArray(ctx context.Context, request st
 func (c *Client) sendTestResponseNumberNullableArray(ctx context.Context, request string) (res []NilFloat64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_number_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -67987,6 +73594,8 @@ func (c *Client) TestResponseNumberNullableArrayArray(ctx context.Context, reque
 func (c *Client) sendTestResponseNumberNullableArrayArray(ctx context.Context, request string) (res [][]NilFloat64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_number_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -68059,6 +73668,8 @@ func (c *Client) TestResponseString(ctx context.Context, request string) (string
 func (c *Client) sendTestResponseString(ctx context.Context, request string) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string"),
 	}
 
 	// Run stopwatch.
@@ -68131,6 +73742,8 @@ func (c *Client) TestResponseStringArray(ctx context.Context, request string) ([
 func (c *Client) sendTestResponseStringArray(ctx context.Context, request string) (res []string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_array"),
 	}
 
 	// Run stopwatch.
@@ -68203,6 +73816,8 @@ func (c *Client) TestResponseStringArrayArray(ctx context.Context, request strin
 func (c *Client) sendTestResponseStringArrayArray(ctx context.Context, request string) (res [][]string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_array_array"),
 	}
 
 	// Run stopwatch.
@@ -68275,6 +73890,8 @@ func (c *Client) TestResponseStringBase64(ctx context.Context, request string) (
 func (c *Client) sendTestResponseStringBase64(ctx context.Context, request string) (res []byte, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_base64"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_base64"),
 	}
 
 	// Run stopwatch.
@@ -68347,6 +73964,8 @@ func (c *Client) TestResponseStringBase64Array(ctx context.Context, request stri
 func (c *Client) sendTestResponseStringBase64Array(ctx context.Context, request string) (res [][]byte, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_base64_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_base64_array"),
 	}
 
 	// Run stopwatch.
@@ -68419,6 +74038,8 @@ func (c *Client) TestResponseStringBase64ArrayArray(ctx context.Context, request
 func (c *Client) sendTestResponseStringBase64ArrayArray(ctx context.Context, request string) (res [][][]byte, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_base64_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_base64_array_array"),
 	}
 
 	// Run stopwatch.
@@ -68491,6 +74112,8 @@ func (c *Client) TestResponseStringBase64Nullable(ctx context.Context, request s
 func (c *Client) sendTestResponseStringBase64Nullable(ctx context.Context, request string) (res []byte, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_base64_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_base64_nullable"),
 	}
 
 	// Run stopwatch.
@@ -68563,6 +74186,8 @@ func (c *Client) TestResponseStringBase64NullableArray(ctx context.Context, requ
 func (c *Client) sendTestResponseStringBase64NullableArray(ctx context.Context, request string) (res [][]byte, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_base64_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_base64_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -68635,6 +74260,8 @@ func (c *Client) TestResponseStringBase64NullableArrayArray(ctx context.Context,
 func (c *Client) sendTestResponseStringBase64NullableArrayArray(ctx context.Context, request string) (res [][][]byte, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_base64_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_base64_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -68707,6 +74334,8 @@ func (c *Client) TestResponseStringBinary(ctx context.Context, request string) (
 func (c *Client) sendTestResponseStringBinary(ctx context.Context, request string) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_binary"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_binary"),
 	}
 
 	// Run stopwatch.
@@ -68779,6 +74408,8 @@ func (c *Client) TestResponseStringBinaryArray(ctx context.Context, request stri
 func (c *Client) sendTestResponseStringBinaryArray(ctx context.Context, request string) (res []string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_binary_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_binary_array"),
 	}
 
 	// Run stopwatch.
@@ -68851,6 +74482,8 @@ func (c *Client) TestResponseStringBinaryArrayArray(ctx context.Context, request
 func (c *Client) sendTestResponseStringBinaryArrayArray(ctx context.Context, request string) (res [][]string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_binary_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_binary_array_array"),
 	}
 
 	// Run stopwatch.
@@ -68923,6 +74556,8 @@ func (c *Client) TestResponseStringBinaryNullable(ctx context.Context, request s
 func (c *Client) sendTestResponseStringBinaryNullable(ctx context.Context, request string) (res NilString, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_binary_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_binary_nullable"),
 	}
 
 	// Run stopwatch.
@@ -68995,6 +74630,8 @@ func (c *Client) TestResponseStringBinaryNullableArray(ctx context.Context, requ
 func (c *Client) sendTestResponseStringBinaryNullableArray(ctx context.Context, request string) (res []NilString, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_binary_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_binary_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -69067,6 +74704,8 @@ func (c *Client) TestResponseStringBinaryNullableArrayArray(ctx context.Context,
 func (c *Client) sendTestResponseStringBinaryNullableArrayArray(ctx context.Context, request string) (res [][]NilString, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_binary_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_binary_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -69139,6 +74778,8 @@ func (c *Client) TestResponseStringByte(ctx context.Context, request string) ([]
 func (c *Client) sendTestResponseStringByte(ctx context.Context, request string) (res []byte, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_byte"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_byte"),
 	}
 
 	// Run stopwatch.
@@ -69211,6 +74852,8 @@ func (c *Client) TestResponseStringByteArray(ctx context.Context, request string
 func (c *Client) sendTestResponseStringByteArray(ctx context.Context, request string) (res [][]byte, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_byte_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_byte_array"),
 	}
 
 	// Run stopwatch.
@@ -69283,6 +74926,8 @@ func (c *Client) TestResponseStringByteArrayArray(ctx context.Context, request s
 func (c *Client) sendTestResponseStringByteArrayArray(ctx context.Context, request string) (res [][][]byte, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_byte_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_byte_array_array"),
 	}
 
 	// Run stopwatch.
@@ -69355,6 +75000,8 @@ func (c *Client) TestResponseStringByteNullable(ctx context.Context, request str
 func (c *Client) sendTestResponseStringByteNullable(ctx context.Context, request string) (res []byte, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_byte_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_byte_nullable"),
 	}
 
 	// Run stopwatch.
@@ -69427,6 +75074,8 @@ func (c *Client) TestResponseStringByteNullableArray(ctx context.Context, reques
 func (c *Client) sendTestResponseStringByteNullableArray(ctx context.Context, request string) (res [][]byte, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_byte_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_byte_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -69499,6 +75148,8 @@ func (c *Client) TestResponseStringByteNullableArrayArray(ctx context.Context, r
 func (c *Client) sendTestResponseStringByteNullableArrayArray(ctx context.Context, request string) (res [][][]byte, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_byte_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_byte_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -69571,6 +75222,8 @@ func (c *Client) TestResponseStringDate(ctx context.Context, request string) (ti
 func (c *Client) sendTestResponseStringDate(ctx context.Context, request string) (res time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_date"),
 	}
 
 	// Run stopwatch.
@@ -69643,6 +75296,8 @@ func (c *Client) TestResponseStringDateArray(ctx context.Context, request string
 func (c *Client) sendTestResponseStringDateArray(ctx context.Context, request string) (res []time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_date_array"),
 	}
 
 	// Run stopwatch.
@@ -69715,6 +75370,8 @@ func (c *Client) TestResponseStringDateArrayArray(ctx context.Context, request s
 func (c *Client) sendTestResponseStringDateArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_date_array_array"),
 	}
 
 	// Run stopwatch.
@@ -69787,6 +75444,8 @@ func (c *Client) TestResponseStringDateNullable(ctx context.Context, request str
 func (c *Client) sendTestResponseStringDateNullable(ctx context.Context, request string) (res NilDate, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_date_nullable"),
 	}
 
 	// Run stopwatch.
@@ -69859,6 +75518,8 @@ func (c *Client) TestResponseStringDateNullableArray(ctx context.Context, reques
 func (c *Client) sendTestResponseStringDateNullableArray(ctx context.Context, request string) (res []NilDate, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_date_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -69931,6 +75592,8 @@ func (c *Client) TestResponseStringDateNullableArrayArray(ctx context.Context, r
 func (c *Client) sendTestResponseStringDateNullableArrayArray(ctx context.Context, request string) (res [][]NilDate, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_date_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -70003,6 +75666,8 @@ func (c *Client) TestResponseStringDateTime(ctx context.Context, request string)
 func (c *Client) sendTestResponseStringDateTime(ctx context.Context, request string) (res time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date-time"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_date-time"),
 	}
 
 	// Run stopwatch.
@@ -70075,6 +75740,8 @@ func (c *Client) TestResponseStringDateTimeArray(ctx context.Context, request st
 func (c *Client) sendTestResponseStringDateTimeArray(ctx context.Context, request string) (res []time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date-time_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_date-time_array"),
 	}
 
 	// Run stopwatch.
@@ -70147,6 +75814,8 @@ func (c *Client) TestResponseStringDateTimeArrayArray(ctx context.Context, reque
 func (c *Client) sendTestResponseStringDateTimeArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date-time_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_date-time_array_array"),
 	}
 
 	// Run stopwatch.
@@ -70219,6 +75888,8 @@ func (c *Client) TestResponseStringDateTimeNullable(ctx context.Context, request
 func (c *Client) sendTestResponseStringDateTimeNullable(ctx context.Context, request string) (res NilDateTime, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date-time_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_date-time_nullable"),
 	}
 
 	// Run stopwatch.
@@ -70291,6 +75962,8 @@ func (c *Client) TestResponseStringDateTimeNullableArray(ctx context.Context, re
 func (c *Client) sendTestResponseStringDateTimeNullableArray(ctx context.Context, request string) (res []NilDateTime, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date-time_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_date-time_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -70363,6 +76036,8 @@ func (c *Client) TestResponseStringDateTimeNullableArrayArray(ctx context.Contex
 func (c *Client) sendTestResponseStringDateTimeNullableArrayArray(ctx context.Context, request string) (res [][]NilDateTime, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date-time_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_date-time_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -70435,6 +76110,8 @@ func (c *Client) TestResponseStringDuration(ctx context.Context, request string)
 func (c *Client) sendTestResponseStringDuration(ctx context.Context, request string) (res time.Duration, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_duration"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_duration"),
 	}
 
 	// Run stopwatch.
@@ -70507,6 +76184,8 @@ func (c *Client) TestResponseStringDurationArray(ctx context.Context, request st
 func (c *Client) sendTestResponseStringDurationArray(ctx context.Context, request string) (res []time.Duration, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_duration_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_duration_array"),
 	}
 
 	// Run stopwatch.
@@ -70579,6 +76258,8 @@ func (c *Client) TestResponseStringDurationArrayArray(ctx context.Context, reque
 func (c *Client) sendTestResponseStringDurationArrayArray(ctx context.Context, request string) (res [][]time.Duration, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_duration_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_duration_array_array"),
 	}
 
 	// Run stopwatch.
@@ -70651,6 +76332,8 @@ func (c *Client) TestResponseStringDurationNullable(ctx context.Context, request
 func (c *Client) sendTestResponseStringDurationNullable(ctx context.Context, request string) (res NilDuration, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_duration_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_duration_nullable"),
 	}
 
 	// Run stopwatch.
@@ -70723,6 +76406,8 @@ func (c *Client) TestResponseStringDurationNullableArray(ctx context.Context, re
 func (c *Client) sendTestResponseStringDurationNullableArray(ctx context.Context, request string) (res []NilDuration, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_duration_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_duration_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -70795,6 +76480,8 @@ func (c *Client) TestResponseStringDurationNullableArrayArray(ctx context.Contex
 func (c *Client) sendTestResponseStringDurationNullableArrayArray(ctx context.Context, request string) (res [][]NilDuration, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_duration_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_duration_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -70867,6 +76554,8 @@ func (c *Client) TestResponseStringEmail(ctx context.Context, request string) (s
 func (c *Client) sendTestResponseStringEmail(ctx context.Context, request string) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_email"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_email"),
 	}
 
 	// Run stopwatch.
@@ -70939,6 +76628,8 @@ func (c *Client) TestResponseStringEmailArray(ctx context.Context, request strin
 func (c *Client) sendTestResponseStringEmailArray(ctx context.Context, request string) (res []string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_email_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_email_array"),
 	}
 
 	// Run stopwatch.
@@ -71011,6 +76702,8 @@ func (c *Client) TestResponseStringEmailArrayArray(ctx context.Context, request 
 func (c *Client) sendTestResponseStringEmailArrayArray(ctx context.Context, request string) (res [][]string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_email_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_email_array_array"),
 	}
 
 	// Run stopwatch.
@@ -71083,6 +76776,8 @@ func (c *Client) TestResponseStringEmailNullable(ctx context.Context, request st
 func (c *Client) sendTestResponseStringEmailNullable(ctx context.Context, request string) (res NilString, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_email_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_email_nullable"),
 	}
 
 	// Run stopwatch.
@@ -71155,6 +76850,8 @@ func (c *Client) TestResponseStringEmailNullableArray(ctx context.Context, reque
 func (c *Client) sendTestResponseStringEmailNullableArray(ctx context.Context, request string) (res []NilString, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_email_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_email_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -71227,6 +76924,8 @@ func (c *Client) TestResponseStringEmailNullableArrayArray(ctx context.Context, 
 func (c *Client) sendTestResponseStringEmailNullableArrayArray(ctx context.Context, request string) (res [][]NilString, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_email_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_email_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -71299,6 +76998,8 @@ func (c *Client) TestResponseStringFloat32(ctx context.Context, request string) 
 func (c *Client) sendTestResponseStringFloat32(ctx context.Context, request string) (res float32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_float32"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_float32"),
 	}
 
 	// Run stopwatch.
@@ -71371,6 +77072,8 @@ func (c *Client) TestResponseStringFloat32Array(ctx context.Context, request str
 func (c *Client) sendTestResponseStringFloat32Array(ctx context.Context, request string) (res []float32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_float32_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_float32_array"),
 	}
 
 	// Run stopwatch.
@@ -71443,6 +77146,8 @@ func (c *Client) TestResponseStringFloat32ArrayArray(ctx context.Context, reques
 func (c *Client) sendTestResponseStringFloat32ArrayArray(ctx context.Context, request string) (res [][]float32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_float32_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_float32_array_array"),
 	}
 
 	// Run stopwatch.
@@ -71515,6 +77220,8 @@ func (c *Client) TestResponseStringFloat32Nullable(ctx context.Context, request 
 func (c *Client) sendTestResponseStringFloat32Nullable(ctx context.Context, request string) (res NilFloat32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_float32_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_float32_nullable"),
 	}
 
 	// Run stopwatch.
@@ -71587,6 +77294,8 @@ func (c *Client) TestResponseStringFloat32NullableArray(ctx context.Context, req
 func (c *Client) sendTestResponseStringFloat32NullableArray(ctx context.Context, request string) (res []NilFloat32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_float32_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_float32_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -71659,6 +77368,8 @@ func (c *Client) TestResponseStringFloat32NullableArrayArray(ctx context.Context
 func (c *Client) sendTestResponseStringFloat32NullableArrayArray(ctx context.Context, request string) (res [][]NilFloat32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_float32_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_float32_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -71731,6 +77442,8 @@ func (c *Client) TestResponseStringFloat64(ctx context.Context, request string) 
 func (c *Client) sendTestResponseStringFloat64(ctx context.Context, request string) (res float64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_float64"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_float64"),
 	}
 
 	// Run stopwatch.
@@ -71803,6 +77516,8 @@ func (c *Client) TestResponseStringFloat64Array(ctx context.Context, request str
 func (c *Client) sendTestResponseStringFloat64Array(ctx context.Context, request string) (res []float64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_float64_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_float64_array"),
 	}
 
 	// Run stopwatch.
@@ -71875,6 +77590,8 @@ func (c *Client) TestResponseStringFloat64ArrayArray(ctx context.Context, reques
 func (c *Client) sendTestResponseStringFloat64ArrayArray(ctx context.Context, request string) (res [][]float64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_float64_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_float64_array_array"),
 	}
 
 	// Run stopwatch.
@@ -71947,6 +77664,8 @@ func (c *Client) TestResponseStringFloat64Nullable(ctx context.Context, request 
 func (c *Client) sendTestResponseStringFloat64Nullable(ctx context.Context, request string) (res NilFloat64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_float64_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_float64_nullable"),
 	}
 
 	// Run stopwatch.
@@ -72019,6 +77738,8 @@ func (c *Client) TestResponseStringFloat64NullableArray(ctx context.Context, req
 func (c *Client) sendTestResponseStringFloat64NullableArray(ctx context.Context, request string) (res []NilFloat64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_float64_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_float64_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -72091,6 +77812,8 @@ func (c *Client) TestResponseStringFloat64NullableArrayArray(ctx context.Context
 func (c *Client) sendTestResponseStringFloat64NullableArrayArray(ctx context.Context, request string) (res [][]NilFloat64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_float64_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_float64_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -72163,6 +77886,8 @@ func (c *Client) TestResponseStringHostname(ctx context.Context, request string)
 func (c *Client) sendTestResponseStringHostname(ctx context.Context, request string) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_hostname"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_hostname"),
 	}
 
 	// Run stopwatch.
@@ -72235,6 +77960,8 @@ func (c *Client) TestResponseStringHostnameArray(ctx context.Context, request st
 func (c *Client) sendTestResponseStringHostnameArray(ctx context.Context, request string) (res []string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_hostname_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_hostname_array"),
 	}
 
 	// Run stopwatch.
@@ -72307,6 +78034,8 @@ func (c *Client) TestResponseStringHostnameArrayArray(ctx context.Context, reque
 func (c *Client) sendTestResponseStringHostnameArrayArray(ctx context.Context, request string) (res [][]string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_hostname_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_hostname_array_array"),
 	}
 
 	// Run stopwatch.
@@ -72379,6 +78108,8 @@ func (c *Client) TestResponseStringHostnameNullable(ctx context.Context, request
 func (c *Client) sendTestResponseStringHostnameNullable(ctx context.Context, request string) (res NilString, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_hostname_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_hostname_nullable"),
 	}
 
 	// Run stopwatch.
@@ -72451,6 +78182,8 @@ func (c *Client) TestResponseStringHostnameNullableArray(ctx context.Context, re
 func (c *Client) sendTestResponseStringHostnameNullableArray(ctx context.Context, request string) (res []NilString, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_hostname_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_hostname_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -72523,6 +78256,8 @@ func (c *Client) TestResponseStringHostnameNullableArrayArray(ctx context.Contex
 func (c *Client) sendTestResponseStringHostnameNullableArrayArray(ctx context.Context, request string) (res [][]NilString, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_hostname_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_hostname_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -72595,6 +78330,8 @@ func (c *Client) TestResponseStringIP(ctx context.Context, request string) (neti
 func (c *Client) sendTestResponseStringIP(ctx context.Context, request string) (res netip.Addr, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ip"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_ip"),
 	}
 
 	// Run stopwatch.
@@ -72667,6 +78404,8 @@ func (c *Client) TestResponseStringIPArray(ctx context.Context, request string) 
 func (c *Client) sendTestResponseStringIPArray(ctx context.Context, request string) (res []netip.Addr, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ip_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_ip_array"),
 	}
 
 	// Run stopwatch.
@@ -72739,6 +78478,8 @@ func (c *Client) TestResponseStringIPArrayArray(ctx context.Context, request str
 func (c *Client) sendTestResponseStringIPArrayArray(ctx context.Context, request string) (res [][]netip.Addr, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ip_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_ip_array_array"),
 	}
 
 	// Run stopwatch.
@@ -72811,6 +78552,8 @@ func (c *Client) TestResponseStringIPNullable(ctx context.Context, request strin
 func (c *Client) sendTestResponseStringIPNullable(ctx context.Context, request string) (res NilIP, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ip_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_ip_nullable"),
 	}
 
 	// Run stopwatch.
@@ -72883,6 +78626,8 @@ func (c *Client) TestResponseStringIPNullableArray(ctx context.Context, request 
 func (c *Client) sendTestResponseStringIPNullableArray(ctx context.Context, request string) (res []NilIP, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ip_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_ip_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -72955,6 +78700,8 @@ func (c *Client) TestResponseStringIPNullableArrayArray(ctx context.Context, req
 func (c *Client) sendTestResponseStringIPNullableArrayArray(ctx context.Context, request string) (res [][]NilIP, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ip_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_ip_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -73027,6 +78774,8 @@ func (c *Client) TestResponseStringInt(ctx context.Context, request string) (int
 func (c *Client) sendTestResponseStringInt(ctx context.Context, request string) (res int, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_int"),
 	}
 
 	// Run stopwatch.
@@ -73099,6 +78848,8 @@ func (c *Client) TestResponseStringInt16(ctx context.Context, request string) (i
 func (c *Client) sendTestResponseStringInt16(ctx context.Context, request string) (res int16, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int16"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_int16"),
 	}
 
 	// Run stopwatch.
@@ -73171,6 +78922,8 @@ func (c *Client) TestResponseStringInt16Array(ctx context.Context, request strin
 func (c *Client) sendTestResponseStringInt16Array(ctx context.Context, request string) (res []int16, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int16_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_int16_array"),
 	}
 
 	// Run stopwatch.
@@ -73243,6 +78996,8 @@ func (c *Client) TestResponseStringInt16ArrayArray(ctx context.Context, request 
 func (c *Client) sendTestResponseStringInt16ArrayArray(ctx context.Context, request string) (res [][]int16, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int16_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_int16_array_array"),
 	}
 
 	// Run stopwatch.
@@ -73315,6 +79070,8 @@ func (c *Client) TestResponseStringInt16Nullable(ctx context.Context, request st
 func (c *Client) sendTestResponseStringInt16Nullable(ctx context.Context, request string) (res NilInt16, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int16_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_int16_nullable"),
 	}
 
 	// Run stopwatch.
@@ -73387,6 +79144,8 @@ func (c *Client) TestResponseStringInt16NullableArray(ctx context.Context, reque
 func (c *Client) sendTestResponseStringInt16NullableArray(ctx context.Context, request string) (res []NilInt16, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int16_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_int16_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -73459,6 +79218,8 @@ func (c *Client) TestResponseStringInt16NullableArrayArray(ctx context.Context, 
 func (c *Client) sendTestResponseStringInt16NullableArrayArray(ctx context.Context, request string) (res [][]NilInt16, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int16_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_int16_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -73531,6 +79292,8 @@ func (c *Client) TestResponseStringInt32(ctx context.Context, request string) (i
 func (c *Client) sendTestResponseStringInt32(ctx context.Context, request string) (res int32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int32"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_int32"),
 	}
 
 	// Run stopwatch.
@@ -73603,6 +79366,8 @@ func (c *Client) TestResponseStringInt32Array(ctx context.Context, request strin
 func (c *Client) sendTestResponseStringInt32Array(ctx context.Context, request string) (res []int32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int32_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_int32_array"),
 	}
 
 	// Run stopwatch.
@@ -73675,6 +79440,8 @@ func (c *Client) TestResponseStringInt32ArrayArray(ctx context.Context, request 
 func (c *Client) sendTestResponseStringInt32ArrayArray(ctx context.Context, request string) (res [][]int32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int32_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_int32_array_array"),
 	}
 
 	// Run stopwatch.
@@ -73747,6 +79514,8 @@ func (c *Client) TestResponseStringInt32Nullable(ctx context.Context, request st
 func (c *Client) sendTestResponseStringInt32Nullable(ctx context.Context, request string) (res NilStringInt32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int32_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_int32_nullable"),
 	}
 
 	// Run stopwatch.
@@ -73819,6 +79588,8 @@ func (c *Client) TestResponseStringInt32NullableArray(ctx context.Context, reque
 func (c *Client) sendTestResponseStringInt32NullableArray(ctx context.Context, request string) (res []NilStringInt32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int32_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_int32_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -73891,6 +79662,8 @@ func (c *Client) TestResponseStringInt32NullableArrayArray(ctx context.Context, 
 func (c *Client) sendTestResponseStringInt32NullableArrayArray(ctx context.Context, request string) (res [][]NilStringInt32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int32_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_int32_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -73963,6 +79736,8 @@ func (c *Client) TestResponseStringInt64(ctx context.Context, request string) (i
 func (c *Client) sendTestResponseStringInt64(ctx context.Context, request string) (res int64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int64"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_int64"),
 	}
 
 	// Run stopwatch.
@@ -74035,6 +79810,8 @@ func (c *Client) TestResponseStringInt64Array(ctx context.Context, request strin
 func (c *Client) sendTestResponseStringInt64Array(ctx context.Context, request string) (res []int64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int64_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_int64_array"),
 	}
 
 	// Run stopwatch.
@@ -74107,6 +79884,8 @@ func (c *Client) TestResponseStringInt64ArrayArray(ctx context.Context, request 
 func (c *Client) sendTestResponseStringInt64ArrayArray(ctx context.Context, request string) (res [][]int64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int64_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_int64_array_array"),
 	}
 
 	// Run stopwatch.
@@ -74179,6 +79958,8 @@ func (c *Client) TestResponseStringInt64Nullable(ctx context.Context, request st
 func (c *Client) sendTestResponseStringInt64Nullable(ctx context.Context, request string) (res NilStringInt64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int64_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_int64_nullable"),
 	}
 
 	// Run stopwatch.
@@ -74251,6 +80032,8 @@ func (c *Client) TestResponseStringInt64NullableArray(ctx context.Context, reque
 func (c *Client) sendTestResponseStringInt64NullableArray(ctx context.Context, request string) (res []NilStringInt64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int64_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_int64_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -74323,6 +80106,8 @@ func (c *Client) TestResponseStringInt64NullableArrayArray(ctx context.Context, 
 func (c *Client) sendTestResponseStringInt64NullableArrayArray(ctx context.Context, request string) (res [][]NilStringInt64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int64_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_int64_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -74395,6 +80180,8 @@ func (c *Client) TestResponseStringInt8(ctx context.Context, request string) (in
 func (c *Client) sendTestResponseStringInt8(ctx context.Context, request string) (res int8, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int8"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_int8"),
 	}
 
 	// Run stopwatch.
@@ -74467,6 +80254,8 @@ func (c *Client) TestResponseStringInt8Array(ctx context.Context, request string
 func (c *Client) sendTestResponseStringInt8Array(ctx context.Context, request string) (res []int8, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int8_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_int8_array"),
 	}
 
 	// Run stopwatch.
@@ -74539,6 +80328,8 @@ func (c *Client) TestResponseStringInt8ArrayArray(ctx context.Context, request s
 func (c *Client) sendTestResponseStringInt8ArrayArray(ctx context.Context, request string) (res [][]int8, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int8_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_int8_array_array"),
 	}
 
 	// Run stopwatch.
@@ -74611,6 +80402,8 @@ func (c *Client) TestResponseStringInt8Nullable(ctx context.Context, request str
 func (c *Client) sendTestResponseStringInt8Nullable(ctx context.Context, request string) (res NilInt8, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int8_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_int8_nullable"),
 	}
 
 	// Run stopwatch.
@@ -74683,6 +80476,8 @@ func (c *Client) TestResponseStringInt8NullableArray(ctx context.Context, reques
 func (c *Client) sendTestResponseStringInt8NullableArray(ctx context.Context, request string) (res []NilInt8, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int8_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_int8_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -74755,6 +80550,8 @@ func (c *Client) TestResponseStringInt8NullableArrayArray(ctx context.Context, r
 func (c *Client) sendTestResponseStringInt8NullableArrayArray(ctx context.Context, request string) (res [][]NilInt8, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int8_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_int8_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -74827,6 +80624,8 @@ func (c *Client) TestResponseStringIntArray(ctx context.Context, request string)
 func (c *Client) sendTestResponseStringIntArray(ctx context.Context, request string) (res []int, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_int_array"),
 	}
 
 	// Run stopwatch.
@@ -74899,6 +80698,8 @@ func (c *Client) TestResponseStringIntArrayArray(ctx context.Context, request st
 func (c *Client) sendTestResponseStringIntArrayArray(ctx context.Context, request string) (res [][]int, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_int_array_array"),
 	}
 
 	// Run stopwatch.
@@ -74971,6 +80772,8 @@ func (c *Client) TestResponseStringIntNullable(ctx context.Context, request stri
 func (c *Client) sendTestResponseStringIntNullable(ctx context.Context, request string) (res NilInt, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_int_nullable"),
 	}
 
 	// Run stopwatch.
@@ -75043,6 +80846,8 @@ func (c *Client) TestResponseStringIntNullableArray(ctx context.Context, request
 func (c *Client) sendTestResponseStringIntNullableArray(ctx context.Context, request string) (res []NilInt, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_int_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -75115,6 +80920,8 @@ func (c *Client) TestResponseStringIntNullableArrayArray(ctx context.Context, re
 func (c *Client) sendTestResponseStringIntNullableArrayArray(ctx context.Context, request string) (res [][]NilInt, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_int_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -75187,6 +80994,8 @@ func (c *Client) TestResponseStringIpv4(ctx context.Context, request string) (ne
 func (c *Client) sendTestResponseStringIpv4(ctx context.Context, request string) (res netip.Addr, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv4"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_ipv4"),
 	}
 
 	// Run stopwatch.
@@ -75259,6 +81068,8 @@ func (c *Client) TestResponseStringIpv4Array(ctx context.Context, request string
 func (c *Client) sendTestResponseStringIpv4Array(ctx context.Context, request string) (res []netip.Addr, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv4_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_ipv4_array"),
 	}
 
 	// Run stopwatch.
@@ -75331,6 +81142,8 @@ func (c *Client) TestResponseStringIpv4ArrayArray(ctx context.Context, request s
 func (c *Client) sendTestResponseStringIpv4ArrayArray(ctx context.Context, request string) (res [][]netip.Addr, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv4_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_ipv4_array_array"),
 	}
 
 	// Run stopwatch.
@@ -75403,6 +81216,8 @@ func (c *Client) TestResponseStringIpv4Nullable(ctx context.Context, request str
 func (c *Client) sendTestResponseStringIpv4Nullable(ctx context.Context, request string) (res NilIPv4, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv4_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_ipv4_nullable"),
 	}
 
 	// Run stopwatch.
@@ -75475,6 +81290,8 @@ func (c *Client) TestResponseStringIpv4NullableArray(ctx context.Context, reques
 func (c *Client) sendTestResponseStringIpv4NullableArray(ctx context.Context, request string) (res []NilIPv4, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv4_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_ipv4_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -75547,6 +81364,8 @@ func (c *Client) TestResponseStringIpv4NullableArrayArray(ctx context.Context, r
 func (c *Client) sendTestResponseStringIpv4NullableArrayArray(ctx context.Context, request string) (res [][]NilIPv4, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv4_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_ipv4_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -75619,6 +81438,8 @@ func (c *Client) TestResponseStringIpv6(ctx context.Context, request string) (ne
 func (c *Client) sendTestResponseStringIpv6(ctx context.Context, request string) (res netip.Addr, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv6"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_ipv6"),
 	}
 
 	// Run stopwatch.
@@ -75691,6 +81512,8 @@ func (c *Client) TestResponseStringIpv6Array(ctx context.Context, request string
 func (c *Client) sendTestResponseStringIpv6Array(ctx context.Context, request string) (res []netip.Addr, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv6_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_ipv6_array"),
 	}
 
 	// Run stopwatch.
@@ -75763,6 +81586,8 @@ func (c *Client) TestResponseStringIpv6ArrayArray(ctx context.Context, request s
 func (c *Client) sendTestResponseStringIpv6ArrayArray(ctx context.Context, request string) (res [][]netip.Addr, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv6_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_ipv6_array_array"),
 	}
 
 	// Run stopwatch.
@@ -75835,6 +81660,8 @@ func (c *Client) TestResponseStringIpv6Nullable(ctx context.Context, request str
 func (c *Client) sendTestResponseStringIpv6Nullable(ctx context.Context, request string) (res NilIPv6, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv6_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_ipv6_nullable"),
 	}
 
 	// Run stopwatch.
@@ -75907,6 +81734,8 @@ func (c *Client) TestResponseStringIpv6NullableArray(ctx context.Context, reques
 func (c *Client) sendTestResponseStringIpv6NullableArray(ctx context.Context, request string) (res []NilIPv6, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv6_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_ipv6_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -75979,6 +81808,8 @@ func (c *Client) TestResponseStringIpv6NullableArrayArray(ctx context.Context, r
 func (c *Client) sendTestResponseStringIpv6NullableArrayArray(ctx context.Context, request string) (res [][]NilIPv6, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv6_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_ipv6_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -76051,6 +81882,8 @@ func (c *Client) TestResponseStringNullable(ctx context.Context, request string)
 func (c *Client) sendTestResponseStringNullable(ctx context.Context, request string) (res NilString, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_nullable"),
 	}
 
 	// Run stopwatch.
@@ -76123,6 +81956,8 @@ func (c *Client) TestResponseStringNullableArray(ctx context.Context, request st
 func (c *Client) sendTestResponseStringNullableArray(ctx context.Context, request string) (res []NilString, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -76195,6 +82030,8 @@ func (c *Client) TestResponseStringNullableArrayArray(ctx context.Context, reque
 func (c *Client) sendTestResponseStringNullableArrayArray(ctx context.Context, request string) (res [][]NilString, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -76267,6 +82104,8 @@ func (c *Client) TestResponseStringPassword(ctx context.Context, request string)
 func (c *Client) sendTestResponseStringPassword(ctx context.Context, request string) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_password"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_password"),
 	}
 
 	// Run stopwatch.
@@ -76339,6 +82178,8 @@ func (c *Client) TestResponseStringPasswordArray(ctx context.Context, request st
 func (c *Client) sendTestResponseStringPasswordArray(ctx context.Context, request string) (res []string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_password_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_password_array"),
 	}
 
 	// Run stopwatch.
@@ -76411,6 +82252,8 @@ func (c *Client) TestResponseStringPasswordArrayArray(ctx context.Context, reque
 func (c *Client) sendTestResponseStringPasswordArrayArray(ctx context.Context, request string) (res [][]string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_password_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_password_array_array"),
 	}
 
 	// Run stopwatch.
@@ -76483,6 +82326,8 @@ func (c *Client) TestResponseStringPasswordNullable(ctx context.Context, request
 func (c *Client) sendTestResponseStringPasswordNullable(ctx context.Context, request string) (res NilString, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_password_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_password_nullable"),
 	}
 
 	// Run stopwatch.
@@ -76555,6 +82400,8 @@ func (c *Client) TestResponseStringPasswordNullableArray(ctx context.Context, re
 func (c *Client) sendTestResponseStringPasswordNullableArray(ctx context.Context, request string) (res []NilString, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_password_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_password_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -76627,6 +82474,8 @@ func (c *Client) TestResponseStringPasswordNullableArrayArray(ctx context.Contex
 func (c *Client) sendTestResponseStringPasswordNullableArrayArray(ctx context.Context, request string) (res [][]NilString, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_password_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_password_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -76699,6 +82548,8 @@ func (c *Client) TestResponseStringTime(ctx context.Context, request string) (ti
 func (c *Client) sendTestResponseStringTime(ctx context.Context, request string) (res time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_time"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_time"),
 	}
 
 	// Run stopwatch.
@@ -76771,6 +82622,8 @@ func (c *Client) TestResponseStringTimeArray(ctx context.Context, request string
 func (c *Client) sendTestResponseStringTimeArray(ctx context.Context, request string) (res []time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_time_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_time_array"),
 	}
 
 	// Run stopwatch.
@@ -76843,6 +82696,8 @@ func (c *Client) TestResponseStringTimeArrayArray(ctx context.Context, request s
 func (c *Client) sendTestResponseStringTimeArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_time_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_time_array_array"),
 	}
 
 	// Run stopwatch.
@@ -76915,6 +82770,8 @@ func (c *Client) TestResponseStringTimeNullable(ctx context.Context, request str
 func (c *Client) sendTestResponseStringTimeNullable(ctx context.Context, request string) (res NilTime, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_time_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_time_nullable"),
 	}
 
 	// Run stopwatch.
@@ -76987,6 +82844,8 @@ func (c *Client) TestResponseStringTimeNullableArray(ctx context.Context, reques
 func (c *Client) sendTestResponseStringTimeNullableArray(ctx context.Context, request string) (res []NilTime, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_time_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_time_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -77059,6 +82918,8 @@ func (c *Client) TestResponseStringTimeNullableArrayArray(ctx context.Context, r
 func (c *Client) sendTestResponseStringTimeNullableArrayArray(ctx context.Context, request string) (res [][]NilTime, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_time_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_time_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -77131,6 +82992,8 @@ func (c *Client) TestResponseStringURI(ctx context.Context, request string) (url
 func (c *Client) sendTestResponseStringURI(ctx context.Context, request string) (res url.URL, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uri"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uri"),
 	}
 
 	// Run stopwatch.
@@ -77203,6 +83066,8 @@ func (c *Client) TestResponseStringURIArray(ctx context.Context, request string)
 func (c *Client) sendTestResponseStringURIArray(ctx context.Context, request string) (res []url.URL, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uri_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uri_array"),
 	}
 
 	// Run stopwatch.
@@ -77275,6 +83140,8 @@ func (c *Client) TestResponseStringURIArrayArray(ctx context.Context, request st
 func (c *Client) sendTestResponseStringURIArrayArray(ctx context.Context, request string) (res [][]url.URL, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uri_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uri_array_array"),
 	}
 
 	// Run stopwatch.
@@ -77347,6 +83214,8 @@ func (c *Client) TestResponseStringURINullable(ctx context.Context, request stri
 func (c *Client) sendTestResponseStringURINullable(ctx context.Context, request string) (res NilURI, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uri_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uri_nullable"),
 	}
 
 	// Run stopwatch.
@@ -77419,6 +83288,8 @@ func (c *Client) TestResponseStringURINullableArray(ctx context.Context, request
 func (c *Client) sendTestResponseStringURINullableArray(ctx context.Context, request string) (res []NilURI, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uri_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uri_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -77491,6 +83362,8 @@ func (c *Client) TestResponseStringURINullableArrayArray(ctx context.Context, re
 func (c *Client) sendTestResponseStringURINullableArrayArray(ctx context.Context, request string) (res [][]NilURI, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uri_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uri_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -77563,6 +83436,8 @@ func (c *Client) TestResponseStringUUID(ctx context.Context, request string) (uu
 func (c *Client) sendTestResponseStringUUID(ctx context.Context, request string) (res uuid.UUID, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uuid"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uuid"),
 	}
 
 	// Run stopwatch.
@@ -77635,6 +83510,8 @@ func (c *Client) TestResponseStringUUIDArray(ctx context.Context, request string
 func (c *Client) sendTestResponseStringUUIDArray(ctx context.Context, request string) (res []uuid.UUID, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uuid_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uuid_array"),
 	}
 
 	// Run stopwatch.
@@ -77707,6 +83584,8 @@ func (c *Client) TestResponseStringUUIDArrayArray(ctx context.Context, request s
 func (c *Client) sendTestResponseStringUUIDArrayArray(ctx context.Context, request string) (res [][]uuid.UUID, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uuid_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uuid_array_array"),
 	}
 
 	// Run stopwatch.
@@ -77779,6 +83658,8 @@ func (c *Client) TestResponseStringUUIDNullable(ctx context.Context, request str
 func (c *Client) sendTestResponseStringUUIDNullable(ctx context.Context, request string) (res NilUUID, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uuid_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uuid_nullable"),
 	}
 
 	// Run stopwatch.
@@ -77851,6 +83732,8 @@ func (c *Client) TestResponseStringUUIDNullableArray(ctx context.Context, reques
 func (c *Client) sendTestResponseStringUUIDNullableArray(ctx context.Context, request string) (res []NilUUID, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uuid_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uuid_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -77923,6 +83806,8 @@ func (c *Client) TestResponseStringUUIDNullableArrayArray(ctx context.Context, r
 func (c *Client) sendTestResponseStringUUIDNullableArrayArray(ctx context.Context, request string) (res [][]NilUUID, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uuid_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uuid_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -77995,6 +83880,8 @@ func (c *Client) TestResponseStringUint(ctx context.Context, request string) (ui
 func (c *Client) sendTestResponseStringUint(ctx context.Context, request string) (res uint, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uint"),
 	}
 
 	// Run stopwatch.
@@ -78067,6 +83954,8 @@ func (c *Client) TestResponseStringUint16(ctx context.Context, request string) (
 func (c *Client) sendTestResponseStringUint16(ctx context.Context, request string) (res uint16, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint16"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uint16"),
 	}
 
 	// Run stopwatch.
@@ -78139,6 +84028,8 @@ func (c *Client) TestResponseStringUint16Array(ctx context.Context, request stri
 func (c *Client) sendTestResponseStringUint16Array(ctx context.Context, request string) (res []uint16, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint16_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uint16_array"),
 	}
 
 	// Run stopwatch.
@@ -78211,6 +84102,8 @@ func (c *Client) TestResponseStringUint16ArrayArray(ctx context.Context, request
 func (c *Client) sendTestResponseStringUint16ArrayArray(ctx context.Context, request string) (res [][]uint16, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint16_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uint16_array_array"),
 	}
 
 	// Run stopwatch.
@@ -78283,6 +84176,8 @@ func (c *Client) TestResponseStringUint16Nullable(ctx context.Context, request s
 func (c *Client) sendTestResponseStringUint16Nullable(ctx context.Context, request string) (res NilUint16, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint16_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uint16_nullable"),
 	}
 
 	// Run stopwatch.
@@ -78355,6 +84250,8 @@ func (c *Client) TestResponseStringUint16NullableArray(ctx context.Context, requ
 func (c *Client) sendTestResponseStringUint16NullableArray(ctx context.Context, request string) (res []NilUint16, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint16_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uint16_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -78427,6 +84324,8 @@ func (c *Client) TestResponseStringUint16NullableArrayArray(ctx context.Context,
 func (c *Client) sendTestResponseStringUint16NullableArrayArray(ctx context.Context, request string) (res [][]NilUint16, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint16_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uint16_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -78499,6 +84398,8 @@ func (c *Client) TestResponseStringUint32(ctx context.Context, request string) (
 func (c *Client) sendTestResponseStringUint32(ctx context.Context, request string) (res uint32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint32"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uint32"),
 	}
 
 	// Run stopwatch.
@@ -78571,6 +84472,8 @@ func (c *Client) TestResponseStringUint32Array(ctx context.Context, request stri
 func (c *Client) sendTestResponseStringUint32Array(ctx context.Context, request string) (res []uint32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint32_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uint32_array"),
 	}
 
 	// Run stopwatch.
@@ -78643,6 +84546,8 @@ func (c *Client) TestResponseStringUint32ArrayArray(ctx context.Context, request
 func (c *Client) sendTestResponseStringUint32ArrayArray(ctx context.Context, request string) (res [][]uint32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint32_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uint32_array_array"),
 	}
 
 	// Run stopwatch.
@@ -78715,6 +84620,8 @@ func (c *Client) TestResponseStringUint32Nullable(ctx context.Context, request s
 func (c *Client) sendTestResponseStringUint32Nullable(ctx context.Context, request string) (res NilUint32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint32_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uint32_nullable"),
 	}
 
 	// Run stopwatch.
@@ -78787,6 +84694,8 @@ func (c *Client) TestResponseStringUint32NullableArray(ctx context.Context, requ
 func (c *Client) sendTestResponseStringUint32NullableArray(ctx context.Context, request string) (res []NilUint32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint32_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uint32_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -78859,6 +84768,8 @@ func (c *Client) TestResponseStringUint32NullableArrayArray(ctx context.Context,
 func (c *Client) sendTestResponseStringUint32NullableArrayArray(ctx context.Context, request string) (res [][]NilUint32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint32_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uint32_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -78931,6 +84842,8 @@ func (c *Client) TestResponseStringUint64(ctx context.Context, request string) (
 func (c *Client) sendTestResponseStringUint64(ctx context.Context, request string) (res uint64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint64"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uint64"),
 	}
 
 	// Run stopwatch.
@@ -79003,6 +84916,8 @@ func (c *Client) TestResponseStringUint64Array(ctx context.Context, request stri
 func (c *Client) sendTestResponseStringUint64Array(ctx context.Context, request string) (res []uint64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint64_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uint64_array"),
 	}
 
 	// Run stopwatch.
@@ -79075,6 +84990,8 @@ func (c *Client) TestResponseStringUint64ArrayArray(ctx context.Context, request
 func (c *Client) sendTestResponseStringUint64ArrayArray(ctx context.Context, request string) (res [][]uint64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint64_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uint64_array_array"),
 	}
 
 	// Run stopwatch.
@@ -79147,6 +85064,8 @@ func (c *Client) TestResponseStringUint64Nullable(ctx context.Context, request s
 func (c *Client) sendTestResponseStringUint64Nullable(ctx context.Context, request string) (res NilUint64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint64_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uint64_nullable"),
 	}
 
 	// Run stopwatch.
@@ -79219,6 +85138,8 @@ func (c *Client) TestResponseStringUint64NullableArray(ctx context.Context, requ
 func (c *Client) sendTestResponseStringUint64NullableArray(ctx context.Context, request string) (res []NilUint64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint64_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uint64_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -79291,6 +85212,8 @@ func (c *Client) TestResponseStringUint64NullableArrayArray(ctx context.Context,
 func (c *Client) sendTestResponseStringUint64NullableArrayArray(ctx context.Context, request string) (res [][]NilUint64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint64_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uint64_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -79363,6 +85286,8 @@ func (c *Client) TestResponseStringUint8(ctx context.Context, request string) (u
 func (c *Client) sendTestResponseStringUint8(ctx context.Context, request string) (res uint8, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint8"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uint8"),
 	}
 
 	// Run stopwatch.
@@ -79435,6 +85360,8 @@ func (c *Client) TestResponseStringUint8Array(ctx context.Context, request strin
 func (c *Client) sendTestResponseStringUint8Array(ctx context.Context, request string) (res []uint8, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint8_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uint8_array"),
 	}
 
 	// Run stopwatch.
@@ -79507,6 +85434,8 @@ func (c *Client) TestResponseStringUint8ArrayArray(ctx context.Context, request 
 func (c *Client) sendTestResponseStringUint8ArrayArray(ctx context.Context, request string) (res [][]uint8, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint8_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uint8_array_array"),
 	}
 
 	// Run stopwatch.
@@ -79579,6 +85508,8 @@ func (c *Client) TestResponseStringUint8Nullable(ctx context.Context, request st
 func (c *Client) sendTestResponseStringUint8Nullable(ctx context.Context, request string) (res NilUint8, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint8_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uint8_nullable"),
 	}
 
 	// Run stopwatch.
@@ -79651,6 +85582,8 @@ func (c *Client) TestResponseStringUint8NullableArray(ctx context.Context, reque
 func (c *Client) sendTestResponseStringUint8NullableArray(ctx context.Context, request string) (res []NilUint8, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint8_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uint8_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -79723,6 +85656,8 @@ func (c *Client) TestResponseStringUint8NullableArrayArray(ctx context.Context, 
 func (c *Client) sendTestResponseStringUint8NullableArrayArray(ctx context.Context, request string) (res [][]NilUint8, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint8_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uint8_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -79795,6 +85730,8 @@ func (c *Client) TestResponseStringUintArray(ctx context.Context, request string
 func (c *Client) sendTestResponseStringUintArray(ctx context.Context, request string) (res []uint, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uint_array"),
 	}
 
 	// Run stopwatch.
@@ -79867,6 +85804,8 @@ func (c *Client) TestResponseStringUintArrayArray(ctx context.Context, request s
 func (c *Client) sendTestResponseStringUintArrayArray(ctx context.Context, request string) (res [][]uint, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uint_array_array"),
 	}
 
 	// Run stopwatch.
@@ -79939,6 +85878,8 @@ func (c *Client) TestResponseStringUintNullable(ctx context.Context, request str
 func (c *Client) sendTestResponseStringUintNullable(ctx context.Context, request string) (res NilUint, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uint_nullable"),
 	}
 
 	// Run stopwatch.
@@ -80011,6 +85952,8 @@ func (c *Client) TestResponseStringUintNullableArray(ctx context.Context, reques
 func (c *Client) sendTestResponseStringUintNullableArray(ctx context.Context, request string) (res []NilUint, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uint_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -80083,6 +86026,8 @@ func (c *Client) TestResponseStringUintNullableArrayArray(ctx context.Context, r
 func (c *Client) sendTestResponseStringUintNullableArrayArray(ctx context.Context, request string) (res [][]NilUint, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_uint_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -80155,6 +86100,8 @@ func (c *Client) TestResponseStringUnix(ctx context.Context, request string) (ti
 func (c *Client) sendTestResponseStringUnix(ctx context.Context, request string) (res time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_unix"),
 	}
 
 	// Run stopwatch.
@@ -80227,6 +86174,8 @@ func (c *Client) TestResponseStringUnixArray(ctx context.Context, request string
 func (c *Client) sendTestResponseStringUnixArray(ctx context.Context, request string) (res []time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_unix_array"),
 	}
 
 	// Run stopwatch.
@@ -80299,6 +86248,8 @@ func (c *Client) TestResponseStringUnixArrayArray(ctx context.Context, request s
 func (c *Client) sendTestResponseStringUnixArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_unix_array_array"),
 	}
 
 	// Run stopwatch.
@@ -80371,6 +86322,8 @@ func (c *Client) TestResponseStringUnixMicro(ctx context.Context, request string
 func (c *Client) sendTestResponseStringUnixMicro(ctx context.Context, request string) (res time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-micro"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_unix-micro"),
 	}
 
 	// Run stopwatch.
@@ -80443,6 +86396,8 @@ func (c *Client) TestResponseStringUnixMicroArray(ctx context.Context, request s
 func (c *Client) sendTestResponseStringUnixMicroArray(ctx context.Context, request string) (res []time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-micro_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_unix-micro_array"),
 	}
 
 	// Run stopwatch.
@@ -80515,6 +86470,8 @@ func (c *Client) TestResponseStringUnixMicroArrayArray(ctx context.Context, requ
 func (c *Client) sendTestResponseStringUnixMicroArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-micro_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_unix-micro_array_array"),
 	}
 
 	// Run stopwatch.
@@ -80587,6 +86544,8 @@ func (c *Client) TestResponseStringUnixMicroNullable(ctx context.Context, reques
 func (c *Client) sendTestResponseStringUnixMicroNullable(ctx context.Context, request string) (res NilStringUnixMicro, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-micro_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_unix-micro_nullable"),
 	}
 
 	// Run stopwatch.
@@ -80659,6 +86618,8 @@ func (c *Client) TestResponseStringUnixMicroNullableArray(ctx context.Context, r
 func (c *Client) sendTestResponseStringUnixMicroNullableArray(ctx context.Context, request string) (res []NilStringUnixMicro, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-micro_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_unix-micro_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -80731,6 +86692,8 @@ func (c *Client) TestResponseStringUnixMicroNullableArrayArray(ctx context.Conte
 func (c *Client) sendTestResponseStringUnixMicroNullableArrayArray(ctx context.Context, request string) (res [][]NilStringUnixMicro, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-micro_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_unix-micro_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -80803,6 +86766,8 @@ func (c *Client) TestResponseStringUnixMilli(ctx context.Context, request string
 func (c *Client) sendTestResponseStringUnixMilli(ctx context.Context, request string) (res time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-milli"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_unix-milli"),
 	}
 
 	// Run stopwatch.
@@ -80875,6 +86840,8 @@ func (c *Client) TestResponseStringUnixMilliArray(ctx context.Context, request s
 func (c *Client) sendTestResponseStringUnixMilliArray(ctx context.Context, request string) (res []time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-milli_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_unix-milli_array"),
 	}
 
 	// Run stopwatch.
@@ -80947,6 +86914,8 @@ func (c *Client) TestResponseStringUnixMilliArrayArray(ctx context.Context, requ
 func (c *Client) sendTestResponseStringUnixMilliArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-milli_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_unix-milli_array_array"),
 	}
 
 	// Run stopwatch.
@@ -81019,6 +86988,8 @@ func (c *Client) TestResponseStringUnixMilliNullable(ctx context.Context, reques
 func (c *Client) sendTestResponseStringUnixMilliNullable(ctx context.Context, request string) (res NilStringUnixMilli, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-milli_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_unix-milli_nullable"),
 	}
 
 	// Run stopwatch.
@@ -81091,6 +87062,8 @@ func (c *Client) TestResponseStringUnixMilliNullableArray(ctx context.Context, r
 func (c *Client) sendTestResponseStringUnixMilliNullableArray(ctx context.Context, request string) (res []NilStringUnixMilli, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-milli_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_unix-milli_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -81163,6 +87136,8 @@ func (c *Client) TestResponseStringUnixMilliNullableArrayArray(ctx context.Conte
 func (c *Client) sendTestResponseStringUnixMilliNullableArrayArray(ctx context.Context, request string) (res [][]NilStringUnixMilli, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-milli_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_unix-milli_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -81235,6 +87210,8 @@ func (c *Client) TestResponseStringUnixNano(ctx context.Context, request string)
 func (c *Client) sendTestResponseStringUnixNano(ctx context.Context, request string) (res time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-nano"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_unix-nano"),
 	}
 
 	// Run stopwatch.
@@ -81307,6 +87284,8 @@ func (c *Client) TestResponseStringUnixNanoArray(ctx context.Context, request st
 func (c *Client) sendTestResponseStringUnixNanoArray(ctx context.Context, request string) (res []time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-nano_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_unix-nano_array"),
 	}
 
 	// Run stopwatch.
@@ -81379,6 +87358,8 @@ func (c *Client) TestResponseStringUnixNanoArrayArray(ctx context.Context, reque
 func (c *Client) sendTestResponseStringUnixNanoArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-nano_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_unix-nano_array_array"),
 	}
 
 	// Run stopwatch.
@@ -81451,6 +87432,8 @@ func (c *Client) TestResponseStringUnixNanoNullable(ctx context.Context, request
 func (c *Client) sendTestResponseStringUnixNanoNullable(ctx context.Context, request string) (res NilStringUnixNano, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-nano_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_unix-nano_nullable"),
 	}
 
 	// Run stopwatch.
@@ -81523,6 +87506,8 @@ func (c *Client) TestResponseStringUnixNanoNullableArray(ctx context.Context, re
 func (c *Client) sendTestResponseStringUnixNanoNullableArray(ctx context.Context, request string) (res []NilStringUnixNano, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-nano_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_unix-nano_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -81595,6 +87580,8 @@ func (c *Client) TestResponseStringUnixNanoNullableArrayArray(ctx context.Contex
 func (c *Client) sendTestResponseStringUnixNanoNullableArrayArray(ctx context.Context, request string) (res [][]NilStringUnixNano, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-nano_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_unix-nano_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -81667,6 +87654,8 @@ func (c *Client) TestResponseStringUnixNullable(ctx context.Context, request str
 func (c *Client) sendTestResponseStringUnixNullable(ctx context.Context, request string) (res NilStringUnixSeconds, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_unix_nullable"),
 	}
 
 	// Run stopwatch.
@@ -81739,6 +87728,8 @@ func (c *Client) TestResponseStringUnixNullableArray(ctx context.Context, reques
 func (c *Client) sendTestResponseStringUnixNullableArray(ctx context.Context, request string) (res []NilStringUnixSeconds, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_unix_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -81811,6 +87802,8 @@ func (c *Client) TestResponseStringUnixNullableArrayArray(ctx context.Context, r
 func (c *Client) sendTestResponseStringUnixNullableArrayArray(ctx context.Context, request string) (res [][]NilStringUnixSeconds, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_unix_nullable_array_array"),
 	}
 
 	// Run stopwatch.
@@ -81883,6 +87876,8 @@ func (c *Client) TestResponseStringUnixSeconds(ctx context.Context, request stri
 func (c *Client) sendTestResponseStringUnixSeconds(ctx context.Context, request string) (res time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-seconds"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_unix-seconds"),
 	}
 
 	// Run stopwatch.
@@ -81955,6 +87950,8 @@ func (c *Client) TestResponseStringUnixSecondsArray(ctx context.Context, request
 func (c *Client) sendTestResponseStringUnixSecondsArray(ctx context.Context, request string) (res []time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-seconds_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_unix-seconds_array"),
 	}
 
 	// Run stopwatch.
@@ -82027,6 +88024,8 @@ func (c *Client) TestResponseStringUnixSecondsArrayArray(ctx context.Context, re
 func (c *Client) sendTestResponseStringUnixSecondsArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-seconds_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_unix-seconds_array_array"),
 	}
 
 	// Run stopwatch.
@@ -82099,6 +88098,8 @@ func (c *Client) TestResponseStringUnixSecondsNullable(ctx context.Context, requ
 func (c *Client) sendTestResponseStringUnixSecondsNullable(ctx context.Context, request string) (res NilStringUnixSeconds, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-seconds_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_unix-seconds_nullable"),
 	}
 
 	// Run stopwatch.
@@ -82171,6 +88172,8 @@ func (c *Client) TestResponseStringUnixSecondsNullableArray(ctx context.Context,
 func (c *Client) sendTestResponseStringUnixSecondsNullableArray(ctx context.Context, request string) (res []NilStringUnixSeconds, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-seconds_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_unix-seconds_nullable_array"),
 	}
 
 	// Run stopwatch.
@@ -82243,6 +88246,8 @@ func (c *Client) TestResponseStringUnixSecondsNullableArrayArray(ctx context.Con
 func (c *Client) sendTestResponseStringUnixSecondsNullableArrayArray(ctx context.Context, request string) (res [][]NilStringUnixSeconds, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-seconds_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_unix-seconds_nullable_array_array"),
 	}
 
 	// Run stopwatch.

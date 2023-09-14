@@ -23,14 +23,15 @@
 {{- template "godoc_op" $op }}
 func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	{{- $hasOTELAttrs := false }}
-	{{- with $attrs := $op.OTELAttributes }}
+	{{- $ogenAttrs := $op.OTELAttributes }}
+	{{- if or $ogenAttrs (not $op.WebhookInfo) }}
 	{{- $hasOTELAttrs = true }}
 	otelAttrs := []attribute.KeyValue{
-		{{- range $attr := $attrs }}
+		{{- range $attr := $ogenAttrs }}
 		{{ $attr.String }},
 		{{- end }}
 		{{- if not $op.WebhookInfo }}
-		semconv.HTTPMethodKey.String("{{ upper $op.Spec.HTTPMethod }}"),
+		semconv.HTTPMethodKey.String({{ upper $op.Spec.HTTPMethod | quote }}),
 		semconv.HTTPRouteKey.String({{ quote $op.Spec.Path }}),
 		{{- end }}
 	}
@@ -88,8 +89,14 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 					Security: {{ quote $securityName }},
 					Err: err,
 				}
+				{{- if and $.Config.Error (not $op.WebhookInfo) }}
+				if encodeErr := encodeErrorResponse(s.h.NewError(ctx, err), w, span); encodeErr != nil {
+					recordError({{ printf "Security:%s" $securityName | quote }}, err)
+				}
+				{{- else }}
 				recordError({{ printf "Security:%s" $securityName | quote }}, err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
+				{{- end }}
 				return
 			}
 			if ok {
@@ -121,8 +128,14 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 				OperationContext: opErrContext,
 				Err: ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
+			{{- if and $.Config.Error (not $op.WebhookInfo) }}
+			if encodeErr := encodeErrorResponse(s.h.NewError(ctx, err), w, span); encodeErr != nil {
+				recordError({{ quote "Security" }}, err)
+			}
+			{{- else }}
 			recordError({{ quote "Security" }}, err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
+			{{- end }}
 			return
 		}
 	}
@@ -200,26 +213,32 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 	}
 	if err != nil {
 		{{- /* It is not secure to expose internal error to client, but better than nothing. */ -}}
-		recordError("Internal", err)
 		{{- if and $.Config.Error (not $op.WebhookInfo) }}
 		if errRes, ok := errors.Into[{{ $.Config.ErrorGoType }}](err); ok {
-			encodeErrorResponse(errRes, w, span)
+			if err := encodeErrorResponse(errRes, w, span); err != nil {
+				recordError("Internal", err)
+			}
 			return
 		}
 		if errors.Is(err, ht.ErrNotImplemented) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
-		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
+		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, span); err != nil {
+			recordError("Internal", err)
+		}
 		{{- else }}
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
-        {{- end }}
+		{{- end }}
 		return
 	}
 
 	if err := encode{{ $op.Name }}Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }

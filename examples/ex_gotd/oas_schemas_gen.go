@@ -2669,6 +2669,16 @@ const (
 	ChatTypeChannel    ChatType = "channel"
 )
 
+// AllValues returns all ChatType values.
+func (ChatType) AllValues() []ChatType {
+	return []ChatType{
+		ChatTypePrivate,
+		ChatTypeGroup,
+		ChatTypeSupergroup,
+		ChatTypeChannel,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s ChatType) MarshalText() ([]byte, error) {
 	switch s {
@@ -4105,6 +4115,25 @@ const (
 	EncryptedPassportElementTypeEmail                 EncryptedPassportElementType = "email"
 )
 
+// AllValues returns all EncryptedPassportElementType values.
+func (EncryptedPassportElementType) AllValues() []EncryptedPassportElementType {
+	return []EncryptedPassportElementType{
+		EncryptedPassportElementTypePersonalDetails,
+		EncryptedPassportElementTypePassport,
+		EncryptedPassportElementTypeDriverLicense,
+		EncryptedPassportElementTypeIdentityCard,
+		EncryptedPassportElementTypeInternalPassport,
+		EncryptedPassportElementTypeAddress,
+		EncryptedPassportElementTypeUtilityBill,
+		EncryptedPassportElementTypeBankStatement,
+		EncryptedPassportElementTypeRentalAgreement,
+		EncryptedPassportElementTypePassportRegistration,
+		EncryptedPassportElementTypeTemporaryRegistration,
+		EncryptedPassportElementTypePhoneNumber,
+		EncryptedPassportElementTypeEmail,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s EncryptedPassportElementType) MarshalText() ([]byte, error) {
 	switch s {
@@ -5188,6 +5217,17 @@ const (
 	InlineQueryChatTypeSupergroup InlineQueryChatType = "supergroup"
 	InlineQueryChatTypeChannel    InlineQueryChatType = "channel"
 )
+
+// AllValues returns all InlineQueryChatType values.
+func (InlineQueryChatType) AllValues() []InlineQueryChatType {
+	return []InlineQueryChatType{
+		InlineQueryChatTypeSender,
+		InlineQueryChatTypePrivate,
+		InlineQueryChatTypeGroup,
+		InlineQueryChatTypeSupergroup,
+		InlineQueryChatTypeChannel,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s InlineQueryChatType) MarshalText() ([]byte, error) {
@@ -11115,6 +11155,28 @@ const (
 	MessageEntityTypeTextMention   MessageEntityType = "text_mention"
 )
 
+// AllValues returns all MessageEntityType values.
+func (MessageEntityType) AllValues() []MessageEntityType {
+	return []MessageEntityType{
+		MessageEntityTypeMention,
+		MessageEntityTypeHashtag,
+		MessageEntityTypeCashtag,
+		MessageEntityTypeBotCommand,
+		MessageEntityTypeURL,
+		MessageEntityTypeEmail,
+		MessageEntityTypePhoneNumber,
+		MessageEntityTypeBold,
+		MessageEntityTypeItalic,
+		MessageEntityTypeUnderline,
+		MessageEntityTypeStrikethrough,
+		MessageEntityTypeSpoiler,
+		MessageEntityTypeCode,
+		MessageEntityTypePre,
+		MessageEntityTypeTextLink,
+		MessageEntityTypeTextMention,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s MessageEntityType) MarshalText() ([]byte, error) {
 	switch s {
@@ -15047,6 +15109,18 @@ const (
 	PassportElementErrorDataFieldTypeAddress          PassportElementErrorDataFieldType = "address"
 )
 
+// AllValues returns all PassportElementErrorDataFieldType values.
+func (PassportElementErrorDataFieldType) AllValues() []PassportElementErrorDataFieldType {
+	return []PassportElementErrorDataFieldType{
+		PassportElementErrorDataFieldTypePersonalDetails,
+		PassportElementErrorDataFieldTypePassport,
+		PassportElementErrorDataFieldTypeDriverLicense,
+		PassportElementErrorDataFieldTypeIdentityCard,
+		PassportElementErrorDataFieldTypeInternalPassport,
+		PassportElementErrorDataFieldTypeAddress,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PassportElementErrorDataFieldType) MarshalText() ([]byte, error) {
 	switch s {
@@ -15147,6 +15221,17 @@ const (
 	PassportElementErrorFileTypeTemporaryRegistration PassportElementErrorFileType = "temporary_registration"
 )
 
+// AllValues returns all PassportElementErrorFileType values.
+func (PassportElementErrorFileType) AllValues() []PassportElementErrorFileType {
+	return []PassportElementErrorFileType{
+		PassportElementErrorFileTypeUtilityBill,
+		PassportElementErrorFileTypeBankStatement,
+		PassportElementErrorFileTypeRentalAgreement,
+		PassportElementErrorFileTypePassportRegistration,
+		PassportElementErrorFileTypeTemporaryRegistration,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PassportElementErrorFileType) MarshalText() ([]byte, error) {
 	switch s {
@@ -15242,6 +15327,17 @@ const (
 	PassportElementErrorFilesTypeTemporaryRegistration PassportElementErrorFilesType = "temporary_registration"
 )
 
+// AllValues returns all PassportElementErrorFilesType values.
+func (PassportElementErrorFilesType) AllValues() []PassportElementErrorFilesType {
+	return []PassportElementErrorFilesType{
+		PassportElementErrorFilesTypeUtilityBill,
+		PassportElementErrorFilesTypeBankStatement,
+		PassportElementErrorFilesTypeRentalAgreement,
+		PassportElementErrorFilesTypePassportRegistration,
+		PassportElementErrorFilesTypeTemporaryRegistration,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PassportElementErrorFilesType) MarshalText() ([]byte, error) {
 	switch s {
@@ -15336,6 +15432,16 @@ const (
 	PassportElementErrorFrontSideTypeInternalPassport PassportElementErrorFrontSideType = "internal_passport"
 )
 
+// AllValues returns all PassportElementErrorFrontSideType values.
+func (PassportElementErrorFrontSideType) AllValues() []PassportElementErrorFrontSideType {
+	return []PassportElementErrorFrontSideType{
+		PassportElementErrorFrontSideTypePassport,
+		PassportElementErrorFrontSideTypeDriverLicense,
+		PassportElementErrorFrontSideTypeIdentityCard,
+		PassportElementErrorFrontSideTypeInternalPassport,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PassportElementErrorFrontSideType) MarshalText() ([]byte, error) {
 	switch s {
@@ -15423,6 +15529,14 @@ const (
 	PassportElementErrorReverseSideTypeIdentityCard  PassportElementErrorReverseSideType = "identity_card"
 )
 
+// AllValues returns all PassportElementErrorReverseSideType values.
+func (PassportElementErrorReverseSideType) AllValues() []PassportElementErrorReverseSideType {
+	return []PassportElementErrorReverseSideType{
+		PassportElementErrorReverseSideTypeDriverLicense,
+		PassportElementErrorReverseSideTypeIdentityCard,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PassportElementErrorReverseSideType) MarshalText() ([]byte, error) {
 	switch s {
@@ -15501,6 +15615,16 @@ const (
 	PassportElementErrorSelfieTypeIdentityCard     PassportElementErrorSelfieType = "identity_card"
 	PassportElementErrorSelfieTypeInternalPassport PassportElementErrorSelfieType = "internal_passport"
 )
+
+// AllValues returns all PassportElementErrorSelfieType values.
+func (PassportElementErrorSelfieType) AllValues() []PassportElementErrorSelfieType {
+	return []PassportElementErrorSelfieType{
+		PassportElementErrorSelfieTypePassport,
+		PassportElementErrorSelfieTypeDriverLicense,
+		PassportElementErrorSelfieTypeIdentityCard,
+		PassportElementErrorSelfieTypeInternalPassport,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s PassportElementErrorSelfieType) MarshalText() ([]byte, error) {
@@ -15596,6 +15720,21 @@ const (
 	PassportElementErrorTranslationFileTypePassportRegistration  PassportElementErrorTranslationFileType = "passport_registration"
 	PassportElementErrorTranslationFileTypeTemporaryRegistration PassportElementErrorTranslationFileType = "temporary_registration"
 )
+
+// AllValues returns all PassportElementErrorTranslationFileType values.
+func (PassportElementErrorTranslationFileType) AllValues() []PassportElementErrorTranslationFileType {
+	return []PassportElementErrorTranslationFileType{
+		PassportElementErrorTranslationFileTypePassport,
+		PassportElementErrorTranslationFileTypeDriverLicense,
+		PassportElementErrorTranslationFileTypeIdentityCard,
+		PassportElementErrorTranslationFileTypeInternalPassport,
+		PassportElementErrorTranslationFileTypeUtilityBill,
+		PassportElementErrorTranslationFileTypeBankStatement,
+		PassportElementErrorTranslationFileTypeRentalAgreement,
+		PassportElementErrorTranslationFileTypePassportRegistration,
+		PassportElementErrorTranslationFileTypeTemporaryRegistration,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s PassportElementErrorTranslationFileType) MarshalText() ([]byte, error) {
@@ -15716,6 +15855,21 @@ const (
 	PassportElementErrorTranslationFilesTypePassportRegistration  PassportElementErrorTranslationFilesType = "passport_registration"
 	PassportElementErrorTranslationFilesTypeTemporaryRegistration PassportElementErrorTranslationFilesType = "temporary_registration"
 )
+
+// AllValues returns all PassportElementErrorTranslationFilesType values.
+func (PassportElementErrorTranslationFilesType) AllValues() []PassportElementErrorTranslationFilesType {
+	return []PassportElementErrorTranslationFilesType{
+		PassportElementErrorTranslationFilesTypePassport,
+		PassportElementErrorTranslationFilesTypeDriverLicense,
+		PassportElementErrorTranslationFilesTypeIdentityCard,
+		PassportElementErrorTranslationFilesTypeInternalPassport,
+		PassportElementErrorTranslationFilesTypeUtilityBill,
+		PassportElementErrorTranslationFilesTypeBankStatement,
+		PassportElementErrorTranslationFilesTypeRentalAgreement,
+		PassportElementErrorTranslationFilesTypePassportRegistration,
+		PassportElementErrorTranslationFilesTypeTemporaryRegistration,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s PassportElementErrorTranslationFilesType) MarshalText() ([]byte, error) {
@@ -16222,6 +16376,14 @@ const (
 	PollTypeRegular PollType = "regular"
 	PollTypeQuiz    PollType = "quiz"
 )
+
+// AllValues returns all PollType values.
+func (PollType) AllValues() []PollType {
+	return []PollType{
+		PollTypeRegular,
+		PollTypeQuiz,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s PollType) MarshalText() ([]byte, error) {

@@ -55,7 +55,7 @@ func (g *Generator) generateOperation(ctx *genctx, webhookName string, spec *ope
 		return nil, errors.Wrap(err, "responses")
 	}
 
-	op.Security, err = g.generateSecurities(ctx, spec.Security)
+	op.Security, err = g.generateSecurities(ctx, opName, spec.Security)
 	if err != nil {
 		return nil, errors.Wrap(err, "security")
 	}

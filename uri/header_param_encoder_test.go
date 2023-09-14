@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"testing"
+	"time"
 
 	"github.com/stretchr/testify/require"
 )
@@ -68,6 +69,27 @@ func TestHeaderParamEncoder(t *testing.T) {
 				Explode:    true,
 				Expect: http.Header{
 					"X-Myheader": []string{"3,4,5"},
+				},
+			},
+			{
+				HeaderName: "Set-Cookie",
+				Input: []string{
+					(&http.Cookie{
+						Name:  "key1",
+						Value: "value1",
+					}).String(),
+					(&http.Cookie{
+						Name:    "key2",
+						Value:   "value2",
+						Expires: time.Date(2023, 9, 6, 10, 11, 12, 0, time.UTC),
+					}).String(),
+				},
+				Explode: true,
+				Expect: http.Header{
+					"Set-Cookie": []string{
+						"key1=value1",
+						"key2=value2; Expires=Wed, 06 Sep 2023 10:11:12 GMT",
+					},
 				},
 			},
 		}

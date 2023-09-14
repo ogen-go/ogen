@@ -28,6 +28,7 @@ func encodeContentParametersResponse(response *ContentParameters, w http.Respons
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -41,6 +42,7 @@ func encodeCookieParameterResponse(response *Value, w http.ResponseWriter, span 
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -54,6 +56,7 @@ func encodeHeaderParameterResponse(response *Value, w http.ResponseWriter, span 
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -67,6 +70,7 @@ func encodeObjectCookieParameterResponse(response *OneLevelObject, w http.Respon
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -80,6 +84,7 @@ func encodeObjectQueryParameterResponse(response *ObjectQueryParameterOK, w http
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -93,6 +98,7 @@ func encodePathParameterResponse(response *Value, w http.ResponseWriter, span tr
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 

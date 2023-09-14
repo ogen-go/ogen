@@ -12,6 +12,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
+	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/conv"
@@ -19,6 +20,28 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 )
+
+// Invoker invokes operations described by OpenAPI v3 specification.
+type Invoker interface {
+	// CreatePets invokes createPets operation.
+	//
+	// Create a pet.
+	//
+	// POST /pets
+	CreatePets(ctx context.Context) error
+	// ListPets invokes listPets operation.
+	//
+	// List all pets.
+	//
+	// GET /pets
+	ListPets(ctx context.Context, params ListPetsParams) (*PetsHeaders, error)
+	// ShowPetById invokes showPetById operation.
+	//
+	// Info for a specific pet.
+	//
+	// GET /pets/{petId}
+	ShowPetById(ctx context.Context, params ShowPetByIdParams) (*Pet, error)
+}
 
 // Client implements OAS client.
 type Client struct {
@@ -86,6 +109,8 @@ func (c *Client) CreatePets(ctx context.Context) error {
 func (c *Client) sendCreatePets(ctx context.Context) (res *CreatePetsCreated, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createPets"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/pets"),
 	}
 
 	// Run stopwatch.
@@ -157,6 +182,8 @@ func (c *Client) ListPets(ctx context.Context, params ListPetsParams) (*PetsHead
 func (c *Client) sendListPets(ctx context.Context, params ListPetsParams) (res *PetsHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPets"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/pets"),
 	}
 
 	// Run stopwatch.
@@ -249,6 +276,8 @@ func (c *Client) ShowPetById(ctx context.Context, params ShowPetByIdParams) (*Pe
 func (c *Client) sendShowPetById(ctx context.Context, params ShowPetByIdParams) (res *Pet, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("showPetById"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/pets/{petId}"),
 	}
 
 	// Run stopwatch.

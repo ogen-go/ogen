@@ -12,12 +12,23 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
+	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
 	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 )
+
+// Invoker invokes operations described by OpenAPI v3 specification.
+type Invoker interface {
+	// ProbeLiveness invokes probeLiveness operation.
+	//
+	// Liveness probe for kubernetes.
+	//
+	// GET /healthz
+	ProbeLiveness(ctx context.Context) (string, error)
+}
 
 // Client implements OAS client.
 type Client struct {
@@ -88,6 +99,8 @@ func (c *Client) ProbeLiveness(ctx context.Context) (string, error) {
 func (c *Client) sendProbeLiveness(ctx context.Context) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("probeLiveness"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/healthz"),
 	}
 
 	// Run stopwatch.

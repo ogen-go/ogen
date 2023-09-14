@@ -12,6 +12,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
+	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/conv"
@@ -19,6 +20,28 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 )
+
+// Invoker invokes operations described by OpenAPI v3 specification.
+type Invoker interface {
+	// DataGet invokes dataGet operation.
+	//
+	// Retrieve data.
+	//
+	// GET /name/{id}/{key}
+	DataGet(ctx context.Context, params DataGetParams) (string, error)
+	// DataGetAny invokes dataGetAny operation.
+	//
+	// Retrieve any data.
+	//
+	// GET /name
+	DataGetAny(ctx context.Context) (string, error)
+	// DataGetID invokes dataGetID operation.
+	//
+	// Retrieve data.
+	//
+	// GET /name/{id}
+	DataGetID(ctx context.Context, params DataGetIDParams) (string, error)
+}
 
 // Client implements OAS client.
 type Client struct {
@@ -82,6 +105,8 @@ func (c *Client) DataGet(ctx context.Context, params DataGetParams) (string, err
 func (c *Client) sendDataGet(ctx context.Context, params DataGetParams) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataGet"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/name/{id}/{key}"),
 	}
 
 	// Run stopwatch.
@@ -190,6 +215,8 @@ func (c *Client) DataGetAny(ctx context.Context) (string, error) {
 func (c *Client) sendDataGetAny(ctx context.Context) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataGetAny"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/name"),
 	}
 
 	// Run stopwatch.
@@ -261,6 +288,8 @@ func (c *Client) DataGetID(ctx context.Context, params DataGetIDParams) (string,
 func (c *Client) sendDataGetID(ctx context.Context, params DataGetIDParams) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataGetID"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/name/{id}"),
 	}
 
 	// Run stopwatch.

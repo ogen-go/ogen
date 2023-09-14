@@ -12,6 +12,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
+	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/conv"
@@ -19,6 +20,214 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 )
+
+// Invoker invokes operations described by OpenAPI v3 specification.
+type Invoker interface {
+	// CancelFineTune invokes cancelFineTune operation.
+	//
+	// Immediately cancel a fine-tune job.
+	//
+	// POST /fine-tunes/{fine_tune_id}/cancel
+	CancelFineTune(ctx context.Context, params CancelFineTuneParams) (FineTune, error)
+	// CreateAnswer invokes createAnswer operation.
+	//
+	// Answers the specified question using the provided documents and examples.
+	// The endpoint first [searches](/docs/api-reference/searches) over provided documents or files to
+	// find relevant context. The relevant context is combined with the provided examples and question to
+	// create the prompt for [completion](/docs/api-reference/completions).
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// POST /answers
+	CreateAnswer(ctx context.Context, request *CreateAnswerRequest) (*CreateAnswerResponse, error)
+	// CreateChatCompletion invokes createChatCompletion operation.
+	//
+	// Creates a completion for the chat message.
+	//
+	// POST /chat/completions
+	CreateChatCompletion(ctx context.Context, request *CreateChatCompletionRequest) (*CreateChatCompletionResponse, error)
+	// CreateClassification invokes createClassification operation.
+	//
+	// Classifies the specified `query` using provided examples.
+	// The endpoint first [searches](/docs/api-reference/searches) over the labeled examples
+	// to select the ones most relevant for the particular query. Then, the relevant examples
+	// are combined with the query to construct a prompt to produce the final label via the
+	// [completions](/docs/api-reference/completions) endpoint.
+	// Labeled examples can be provided via an uploaded `file`, or explicitly listed in the
+	// request using the `examples` parameter for quick tests and small scale use cases.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// POST /classifications
+	CreateClassification(ctx context.Context, request *CreateClassificationRequest) (*CreateClassificationResponse, error)
+	// CreateCompletion invokes createCompletion operation.
+	//
+	// Creates a completion for the provided prompt and parameters.
+	//
+	// POST /completions
+	CreateCompletion(ctx context.Context, request *CreateCompletionRequest) (*CreateCompletionResponse, error)
+	// CreateEdit invokes createEdit operation.
+	//
+	// Creates a new edit for the provided input, instruction, and parameters.
+	//
+	// POST /edits
+	CreateEdit(ctx context.Context, request *CreateEditRequest) (*CreateEditResponse, error)
+	// CreateEmbedding invokes createEmbedding operation.
+	//
+	// Creates an embedding vector representing the input text.
+	//
+	// POST /embeddings
+	CreateEmbedding(ctx context.Context, request *CreateEmbeddingRequest) (*CreateEmbeddingResponse, error)
+	// CreateFile invokes createFile operation.
+	//
+	// Upload a file that contains document(s) to be used across various endpoints/features. Currently,
+	// the size of all the files uploaded by one organization can be up to 1 GB. Please contact us if you
+	// need to increase the storage limit.
+	//
+	// POST /files
+	CreateFile(ctx context.Context, request *CreateFileRequestMultipart) (OpenAIFile, error)
+	// CreateFineTune invokes createFineTune operation.
+	//
+	// Creates a job that fine-tunes a specified model from a given dataset.
+	// Response includes details of the enqueued job including job status and the name of the fine-tuned
+	// models once complete.
+	// [Learn more about Fine-tuning](/docs/guides/fine-tuning).
+	//
+	// POST /fine-tunes
+	CreateFineTune(ctx context.Context, request *CreateFineTuneRequest) (FineTune, error)
+	// CreateImage invokes createImage operation.
+	//
+	// Creates an image given a prompt.
+	//
+	// POST /images/generations
+	CreateImage(ctx context.Context, request *CreateImageRequest) (ImagesResponse, error)
+	// CreateImageEdit invokes createImageEdit operation.
+	//
+	// Creates an edited or extended image given an original image and a prompt.
+	//
+	// POST /images/edits
+	CreateImageEdit(ctx context.Context, request *CreateImageEditRequestMultipart) (ImagesResponse, error)
+	// CreateImageVariation invokes createImageVariation operation.
+	//
+	// Creates a variation of a given image.
+	//
+	// POST /images/variations
+	CreateImageVariation(ctx context.Context, request *CreateImageVariationRequestMultipart) (ImagesResponse, error)
+	// CreateModeration invokes createModeration operation.
+	//
+	// Classifies if text violates OpenAI's Content Policy.
+	//
+	// POST /moderations
+	CreateModeration(ctx context.Context, request *CreateModerationRequest) (*CreateModerationResponse, error)
+	// CreateSearch invokes createSearch operation.
+	//
+	// The search endpoint computes similarity scores between provided query and documents. Documents can
+	// be passed directly to the API if there are no more than 200 of them.
+	// To go beyond the 200 document limit, documents can be processed offline and then used for
+	// efficient retrieval at query time. When `file` is set, the search endpoint searches over all the
+	// documents in the given file and returns up to the `max_rerank` number of documents. These
+	// documents will be returned along with their search scores.
+	// The similarity score is a positive score that usually ranges from 0 to 300 (but can sometimes go
+	// higher), where a score above 200 usually means the document is semantically similar to the query.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// POST /engines/{engine_id}/search
+	CreateSearch(ctx context.Context, request *CreateSearchRequest, params CreateSearchParams) (*CreateSearchResponse, error)
+	// CreateTranscription invokes createTranscription operation.
+	//
+	// Transcribes audio into the input language.
+	//
+	// POST /audio/transcriptions
+	CreateTranscription(ctx context.Context, request *CreateTranscriptionRequestMultipart) (*CreateTranscriptionResponse, error)
+	// CreateTranslation invokes createTranslation operation.
+	//
+	// Translates audio into into English.
+	//
+	// POST /audio/translations
+	CreateTranslation(ctx context.Context, request *CreateTranslationRequestMultipart) (*CreateTranslationResponse, error)
+	// DeleteFile invokes deleteFile operation.
+	//
+	// Delete a file.
+	//
+	// DELETE /files/{file_id}
+	DeleteFile(ctx context.Context, params DeleteFileParams) (*DeleteFileResponse, error)
+	// DeleteModel invokes deleteModel operation.
+	//
+	// Delete a fine-tuned model. You must have the Owner role in your organization.
+	//
+	// DELETE /models/{model}
+	DeleteModel(ctx context.Context, params DeleteModelParams) (*DeleteModelResponse, error)
+	// DownloadFile invokes downloadFile operation.
+	//
+	// Returns the contents of the specified file.
+	//
+	// GET /files/{file_id}/content
+	DownloadFile(ctx context.Context, params DownloadFileParams) (string, error)
+	// ListEngines invokes listEngines operation.
+	//
+	// Lists the currently available (non-finetuned) models, and provides basic information about each
+	// one such as the owner and availability.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /engines
+	ListEngines(ctx context.Context) (*ListEnginesResponse, error)
+	// ListFiles invokes listFiles operation.
+	//
+	// Returns a list of files that belong to the user's organization.
+	//
+	// GET /files
+	ListFiles(ctx context.Context) (*ListFilesResponse, error)
+	// ListFineTuneEvents invokes listFineTuneEvents operation.
+	//
+	// Get fine-grained status updates for a fine-tune job.
+	//
+	// GET /fine-tunes/{fine_tune_id}/events
+	ListFineTuneEvents(ctx context.Context, params ListFineTuneEventsParams) (*ListFineTuneEventsResponse, error)
+	// ListFineTunes invokes listFineTunes operation.
+	//
+	// List your organization's fine-tuning jobs.
+	//
+	// GET /fine-tunes
+	ListFineTunes(ctx context.Context) (*ListFineTunesResponse, error)
+	// ListModels invokes listModels operation.
+	//
+	// Lists the currently available models, and provides basic information about each one such as the
+	// owner and availability.
+	//
+	// GET /models
+	ListModels(ctx context.Context) (*ListModelsResponse, error)
+	// RetrieveEngine invokes retrieveEngine operation.
+	//
+	// Retrieves a model instance, providing basic information about it such as the owner and
+	// availability.
+	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
+	// GET /engines/{engine_id}
+	RetrieveEngine(ctx context.Context, params RetrieveEngineParams) (Engine, error)
+	// RetrieveFile invokes retrieveFile operation.
+	//
+	// Returns information about a specific file.
+	//
+	// GET /files/{file_id}
+	RetrieveFile(ctx context.Context, params RetrieveFileParams) (OpenAIFile, error)
+	// RetrieveFineTune invokes retrieveFineTune operation.
+	//
+	// Gets info about the fine-tune job.
+	// [Learn more about Fine-tuning](/docs/guides/fine-tuning).
+	//
+	// GET /fine-tunes/{fine_tune_id}
+	RetrieveFineTune(ctx context.Context, params RetrieveFineTuneParams) (FineTune, error)
+	// RetrieveModel invokes retrieveModel operation.
+	//
+	// Retrieves a model instance, providing basic information about the model such as the owner and
+	// permissioning.
+	//
+	// GET /models/{model}
+	RetrieveModel(ctx context.Context, params RetrieveModelParams) (Model, error)
+}
 
 // Client implements OAS client.
 type Client struct {
@@ -82,6 +291,8 @@ func (c *Client) CancelFineTune(ctx context.Context, params CancelFineTuneParams
 func (c *Client) sendCancelFineTune(ctx context.Context, params CancelFineTuneParams) (res FineTune, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("cancelFineTune"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/fine-tunes/{fine_tune_id}/cancel"),
 	}
 
 	// Run stopwatch.
@@ -177,6 +388,8 @@ func (c *Client) CreateAnswer(ctx context.Context, request *CreateAnswerRequest)
 func (c *Client) sendCreateAnswer(ctx context.Context, request *CreateAnswerRequest) (res *CreateAnswerResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createAnswer"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/answers"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -260,6 +473,8 @@ func (c *Client) CreateChatCompletion(ctx context.Context, request *CreateChatCo
 func (c *Client) sendCreateChatCompletion(ctx context.Context, request *CreateChatCompletionRequest) (res *CreateChatCompletionResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createChatCompletion"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/chat/completions"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -351,6 +566,8 @@ func (c *Client) CreateClassification(ctx context.Context, request *CreateClassi
 func (c *Client) sendCreateClassification(ctx context.Context, request *CreateClassificationRequest) (res *CreateClassificationResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createClassification"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/classifications"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -434,6 +651,8 @@ func (c *Client) CreateCompletion(ctx context.Context, request *CreateCompletion
 func (c *Client) sendCreateCompletion(ctx context.Context, request *CreateCompletionRequest) (res *CreateCompletionResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createCompletion"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/completions"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -517,6 +736,8 @@ func (c *Client) CreateEdit(ctx context.Context, request *CreateEditRequest) (*C
 func (c *Client) sendCreateEdit(ctx context.Context, request *CreateEditRequest) (res *CreateEditResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createEdit"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/edits"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -600,6 +821,8 @@ func (c *Client) CreateEmbedding(ctx context.Context, request *CreateEmbeddingRe
 func (c *Client) sendCreateEmbedding(ctx context.Context, request *CreateEmbeddingRequest) (res *CreateEmbeddingResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createEmbedding"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/embeddings"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -685,6 +908,8 @@ func (c *Client) CreateFile(ctx context.Context, request *CreateFileRequestMulti
 func (c *Client) sendCreateFile(ctx context.Context, request *CreateFileRequestMultipart) (res OpenAIFile, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createFile"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/files"),
 	}
 
 	// Run stopwatch.
@@ -762,6 +987,8 @@ func (c *Client) CreateFineTune(ctx context.Context, request *CreateFineTuneRequ
 func (c *Client) sendCreateFineTune(ctx context.Context, request *CreateFineTuneRequest) (res FineTune, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createFineTune"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/fine-tunes"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -845,6 +1072,8 @@ func (c *Client) CreateImage(ctx context.Context, request *CreateImageRequest) (
 func (c *Client) sendCreateImage(ctx context.Context, request *CreateImageRequest) (res ImagesResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createImage"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/images/generations"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -928,6 +1157,8 @@ func (c *Client) CreateImageEdit(ctx context.Context, request *CreateImageEditRe
 func (c *Client) sendCreateImageEdit(ctx context.Context, request *CreateImageEditRequestMultipart) (res ImagesResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createImageEdit"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/images/edits"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -1011,6 +1242,8 @@ func (c *Client) CreateImageVariation(ctx context.Context, request *CreateImageV
 func (c *Client) sendCreateImageVariation(ctx context.Context, request *CreateImageVariationRequestMultipart) (res ImagesResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createImageVariation"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/images/variations"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -1094,6 +1327,8 @@ func (c *Client) CreateModeration(ctx context.Context, request *CreateModeration
 func (c *Client) sendCreateModeration(ctx context.Context, request *CreateModerationRequest) (res *CreateModerationResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createModeration"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/moderations"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -1186,6 +1421,8 @@ func (c *Client) CreateSearch(ctx context.Context, request *CreateSearchRequest,
 func (c *Client) sendCreateSearch(ctx context.Context, request *CreateSearchRequest, params CreateSearchParams) (res *CreateSearchResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createSearch"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/engines/{engine_id}/search"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -1288,6 +1525,8 @@ func (c *Client) CreateTranscription(ctx context.Context, request *CreateTranscr
 func (c *Client) sendCreateTranscription(ctx context.Context, request *CreateTranscriptionRequestMultipart) (res *CreateTranscriptionResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createTranscription"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/audio/transcriptions"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -1371,6 +1610,8 @@ func (c *Client) CreateTranslation(ctx context.Context, request *CreateTranslati
 func (c *Client) sendCreateTranslation(ctx context.Context, request *CreateTranslationRequestMultipart) (res *CreateTranslationResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createTranslation"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/audio/translations"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -1454,6 +1695,8 @@ func (c *Client) DeleteFile(ctx context.Context, params DeleteFileParams) (*Dele
 func (c *Client) sendDeleteFile(ctx context.Context, params DeleteFileParams) (res *DeleteFileResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteFile"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/files/{file_id}"),
 	}
 
 	// Run stopwatch.
@@ -1543,6 +1786,8 @@ func (c *Client) DeleteModel(ctx context.Context, params DeleteModelParams) (*De
 func (c *Client) sendDeleteModel(ctx context.Context, params DeleteModelParams) (res *DeleteModelResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteModel"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/models/{model}"),
 	}
 
 	// Run stopwatch.
@@ -1632,6 +1877,8 @@ func (c *Client) DownloadFile(ctx context.Context, params DownloadFileParams) (s
 func (c *Client) sendDownloadFile(ctx context.Context, params DownloadFileParams) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("downloadFile"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/files/{file_id}/content"),
 	}
 
 	// Run stopwatch.
@@ -1725,6 +1972,8 @@ func (c *Client) ListEngines(ctx context.Context) (*ListEnginesResponse, error) 
 func (c *Client) sendListEngines(ctx context.Context) (res *ListEnginesResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listEngines"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/engines"),
 	}
 
 	// Run stopwatch.
@@ -1796,6 +2045,8 @@ func (c *Client) ListFiles(ctx context.Context) (*ListFilesResponse, error) {
 func (c *Client) sendListFiles(ctx context.Context) (res *ListFilesResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listFiles"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/files"),
 	}
 
 	// Run stopwatch.
@@ -1867,6 +2118,8 @@ func (c *Client) ListFineTuneEvents(ctx context.Context, params ListFineTuneEven
 func (c *Client) sendListFineTuneEvents(ctx context.Context, params ListFineTuneEventsParams) (res *ListFineTuneEventsResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listFineTuneEvents"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/fine-tunes/{fine_tune_id}/events"),
 	}
 
 	// Run stopwatch.
@@ -1978,6 +2231,8 @@ func (c *Client) ListFineTunes(ctx context.Context) (*ListFineTunesResponse, err
 func (c *Client) sendListFineTunes(ctx context.Context) (res *ListFineTunesResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listFineTunes"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/fine-tunes"),
 	}
 
 	// Run stopwatch.
@@ -2050,6 +2305,8 @@ func (c *Client) ListModels(ctx context.Context) (*ListModelsResponse, error) {
 func (c *Client) sendListModels(ctx context.Context) (res *ListModelsResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listModels"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/models"),
 	}
 
 	// Run stopwatch.
@@ -2124,6 +2381,8 @@ func (c *Client) RetrieveEngine(ctx context.Context, params RetrieveEngineParams
 func (c *Client) sendRetrieveEngine(ctx context.Context, params RetrieveEngineParams) (res Engine, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("retrieveEngine"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/engines/{engine_id}"),
 	}
 
 	// Run stopwatch.
@@ -2213,6 +2472,8 @@ func (c *Client) RetrieveFile(ctx context.Context, params RetrieveFileParams) (O
 func (c *Client) sendRetrieveFile(ctx context.Context, params RetrieveFileParams) (res OpenAIFile, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("retrieveFile"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/files/{file_id}"),
 	}
 
 	// Run stopwatch.
@@ -2303,6 +2564,8 @@ func (c *Client) RetrieveFineTune(ctx context.Context, params RetrieveFineTunePa
 func (c *Client) sendRetrieveFineTune(ctx context.Context, params RetrieveFineTuneParams) (res FineTune, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("retrieveFineTune"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/fine-tunes/{fine_tune_id}"),
 	}
 
 	// Run stopwatch.
@@ -2393,6 +2656,8 @@ func (c *Client) RetrieveModel(ctx context.Context, params RetrieveModelParams) 
 func (c *Client) sendRetrieveModel(ctx context.Context, params RetrieveModelParams) (res Model, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("retrieveModel"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/models/{model}"),
 	}
 
 	// Run stopwatch.

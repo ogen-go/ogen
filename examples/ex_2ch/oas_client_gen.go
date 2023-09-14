@@ -12,11 +12,119 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
+	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
+	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/uri"
 )
+
+// Invoker invokes operations described by OpenAPI v3 specification.
+type Invoker interface {
+	// APICaptcha2chcaptchaIDGet invokes GET /api/captcha/2chcaptcha/id operation.
+	//
+	// Получение ид для использования 2chcaptcha.
+	//
+	// GET /api/captcha/2chcaptcha/id
+	APICaptcha2chcaptchaIDGet(ctx context.Context, params APICaptcha2chcaptchaIDGetParams) (*Captcha, error)
+	// APICaptcha2chcaptchaShowGet invokes GET /api/captcha/2chcaptcha/show operation.
+	//
+	// Отображение 2chcaptcha по id.
+	//
+	// GET /api/captcha/2chcaptcha/show
+	APICaptcha2chcaptchaShowGet(ctx context.Context, params APICaptcha2chcaptchaShowGetParams) (APICaptcha2chcaptchaShowGetRes, error)
+	// APICaptchaAppIDPublicKeyGet invokes GET /api/captcha/app/id/{public_key} operation.
+	//
+	// Полученный id вам нужно отправить вместе с постом как
+	// app_response_id.
+	// При этом нужно отправить app_response = sha256(app_response_id + '|' +
+	// private key).
+	// Срок жизни id: 180 секунд.
+	//
+	// GET /api/captcha/app/id/{public_key}
+	APICaptchaAppIDPublicKeyGet(ctx context.Context, params APICaptchaAppIDPublicKeyGetParams) (*Captcha, error)
+	// APICaptchaInvisibleRecaptchaIDGet invokes GET /api/captcha/invisible_recaptcha/id operation.
+	//
+	// Получение публичного ключа invisible recaptcha.
+	//
+	// GET /api/captcha/invisible_recaptcha/id
+	APICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params APICaptchaInvisibleRecaptchaIDGetParams) (*Captcha, error)
+	// APICaptchaInvisibleRecaptchaMobileGet invokes GET /api/captcha/invisible_recaptcha/mobile operation.
+	//
+	// Получение html страницы для решения капчи, CORS отключён.
+	//
+	// GET /api/captcha/invisible_recaptcha/mobile
+	APICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) error
+	// APICaptchaRecaptchaIDGet invokes GET /api/captcha/recaptcha/id operation.
+	//
+	// Получение публичного ключа recaptcha v2.
+	//
+	// GET /api/captcha/recaptcha/id
+	APICaptchaRecaptchaIDGet(ctx context.Context, params APICaptchaRecaptchaIDGetParams) (*Captcha, error)
+	// APICaptchaRecaptchaMobileGet invokes GET /api/captcha/recaptcha/mobile operation.
+	//
+	// Получение html страницы для решения капчи, CORS отключён.
+	//
+	// GET /api/captcha/recaptcha/mobile
+	APICaptchaRecaptchaMobileGet(ctx context.Context) error
+	// APIDislikeGet invokes GET /api/dislike operation.
+	//
+	// Добавление дизлайка на пост.
+	//
+	// GET /api/dislike
+	APIDislikeGet(ctx context.Context, params APIDislikeGetParams) (*Like, error)
+	// APILikeGet invokes GET /api/like operation.
+	//
+	// Добавление лайка на пост.
+	//
+	// GET /api/like
+	APILikeGet(ctx context.Context, params APILikeGetParams) (*Like, error)
+	// APIMobileV2AfterBoardThreadNumGet invokes GET /api/mobile/v2/after/{board}/{thread}/{num} operation.
+	//
+	// Получение постов в треде >= указанного. Не
+	// рекомендуется использовать для получения треда
+	// целиком, только для проверки новых постов.
+	//
+	// GET /api/mobile/v2/after/{board}/{thread}/{num}
+	APIMobileV2AfterBoardThreadNumGet(ctx context.Context, params APIMobileV2AfterBoardThreadNumGetParams) (*MobileThreadPostsAfter, error)
+	// APIMobileV2BoardsGet invokes GET /api/mobile/v2/boards operation.
+	//
+	// Получение списка досок и их настроек.
+	//
+	// GET /api/mobile/v2/boards
+	APIMobileV2BoardsGet(ctx context.Context) (Boards, error)
+	// APIMobileV2InfoBoardThreadGet invokes GET /api/mobile/v2/info/{board}/{thread} operation.
+	//
+	// Получение информации о треде.
+	//
+	// GET /api/mobile/v2/info/{board}/{thread}
+	APIMobileV2InfoBoardThreadGet(ctx context.Context, params APIMobileV2InfoBoardThreadGetParams) (*MobileThreadLastInfo, error)
+	// APIMobileV2PostBoardNumGet invokes GET /api/mobile/v2/post/{board}/{num} operation.
+	//
+	// Получение информации о посте.
+	//
+	// GET /api/mobile/v2/post/{board}/{num}
+	APIMobileV2PostBoardNumGet(ctx context.Context, params APIMobileV2PostBoardNumGetParams) (*MobilePost, error)
+	// UserPassloginPost invokes POST /user/passlogin operation.
+	//
+	// Авторизация пасскода.
+	//
+	// POST /user/passlogin
+	UserPassloginPost(ctx context.Context, request OptUserPassloginPostReq, params UserPassloginPostParams) (*Passcode, error)
+	// UserPostingPost invokes POST /user/posting operation.
+	//
+	// Создание нового поста или треда.
+	//
+	// POST /user/posting
+	UserPostingPost(ctx context.Context, request OptUserPostingPostReq) (UserPostingPostOK, error)
+	// UserReportPost invokes POST /user/report operation.
+	//
+	// Отправка жалобы.
+	//
+	// POST /user/report
+	UserReportPost(ctx context.Context, request OptUserReportPostReq) (*Report, error)
+}
 
 // Client implements OAS client.
 type Client struct {
@@ -78,7 +186,10 @@ func (c *Client) APICaptcha2chcaptchaIDGet(ctx context.Context, params APICaptch
 }
 
 func (c *Client) sendAPICaptcha2chcaptchaIDGet(ctx context.Context, params APICaptcha2chcaptchaIDGetParams) (res *Captcha, err error) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/captcha/2chcaptcha/id"),
+	}
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -93,6 +204,7 @@ func (c *Client) sendAPICaptcha2chcaptchaIDGet(ctx context.Context, params APICa
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptcha2chcaptchaIDGet",
+		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
 	// Track stage for error reporting.
@@ -184,7 +296,10 @@ func (c *Client) APICaptcha2chcaptchaShowGet(ctx context.Context, params APICapt
 }
 
 func (c *Client) sendAPICaptcha2chcaptchaShowGet(ctx context.Context, params APICaptcha2chcaptchaShowGetParams) (res APICaptcha2chcaptchaShowGetRes, err error) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/captcha/2chcaptcha/show"),
+	}
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -199,6 +314,7 @@ func (c *Client) sendAPICaptcha2chcaptchaShowGet(ctx context.Context, params API
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptcha2chcaptchaShowGet",
+		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
 	// Track stage for error reporting.
@@ -274,7 +390,10 @@ func (c *Client) APICaptchaAppIDPublicKeyGet(ctx context.Context, params APICapt
 }
 
 func (c *Client) sendAPICaptchaAppIDPublicKeyGet(ctx context.Context, params APICaptchaAppIDPublicKeyGetParams) (res *Captcha, err error) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/captcha/app/id/{public_key}"),
+	}
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -289,6 +408,7 @@ func (c *Client) sendAPICaptchaAppIDPublicKeyGet(ctx context.Context, params API
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptchaAppIDPublicKeyGet",
+		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
 	// Track stage for error reporting.
@@ -398,7 +518,10 @@ func (c *Client) APICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params A
 }
 
 func (c *Client) sendAPICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params APICaptchaInvisibleRecaptchaIDGetParams) (res *Captcha, err error) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/captcha/invisible_recaptcha/id"),
+	}
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -413,6 +536,7 @@ func (c *Client) sendAPICaptchaInvisibleRecaptchaIDGet(ctx context.Context, para
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptchaInvisibleRecaptchaIDGet",
+		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
 	// Track stage for error reporting.
@@ -504,7 +628,10 @@ func (c *Client) APICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) erro
 }
 
 func (c *Client) sendAPICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) (res *APICaptchaInvisibleRecaptchaMobileGetOK, err error) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/captcha/invisible_recaptcha/mobile"),
+	}
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -519,6 +646,7 @@ func (c *Client) sendAPICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) 
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptchaInvisibleRecaptchaMobileGet",
+		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
 	// Track stage for error reporting.
@@ -572,7 +700,10 @@ func (c *Client) APICaptchaRecaptchaIDGet(ctx context.Context, params APICaptcha
 }
 
 func (c *Client) sendAPICaptchaRecaptchaIDGet(ctx context.Context, params APICaptchaRecaptchaIDGetParams) (res *Captcha, err error) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/captcha/recaptcha/id"),
+	}
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -587,6 +718,7 @@ func (c *Client) sendAPICaptchaRecaptchaIDGet(ctx context.Context, params APICap
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptchaRecaptchaIDGet",
+		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
 	// Track stage for error reporting.
@@ -678,7 +810,10 @@ func (c *Client) APICaptchaRecaptchaMobileGet(ctx context.Context) error {
 }
 
 func (c *Client) sendAPICaptchaRecaptchaMobileGet(ctx context.Context) (res *APICaptchaRecaptchaMobileGetOK, err error) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/captcha/recaptcha/mobile"),
+	}
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -693,6 +828,7 @@ func (c *Client) sendAPICaptchaRecaptchaMobileGet(ctx context.Context) (res *API
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptchaRecaptchaMobileGet",
+		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
 	// Track stage for error reporting.
@@ -746,7 +882,10 @@ func (c *Client) APIDislikeGet(ctx context.Context, params APIDislikeGetParams) 
 }
 
 func (c *Client) sendAPIDislikeGet(ctx context.Context, params APIDislikeGetParams) (res *Like, err error) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/dislike"),
+	}
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -761,6 +900,7 @@ func (c *Client) sendAPIDislikeGet(ctx context.Context, params APIDislikeGetPara
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APIDislikeGet",
+		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
 	// Track stage for error reporting.
@@ -846,7 +986,10 @@ func (c *Client) APILikeGet(ctx context.Context, params APILikeGetParams) (*Like
 }
 
 func (c *Client) sendAPILikeGet(ctx context.Context, params APILikeGetParams) (res *Like, err error) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/like"),
+	}
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -861,6 +1004,7 @@ func (c *Client) sendAPILikeGet(ctx context.Context, params APILikeGetParams) (r
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APILikeGet",
+		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
 	// Track stage for error reporting.
@@ -948,7 +1092,10 @@ func (c *Client) APIMobileV2AfterBoardThreadNumGet(ctx context.Context, params A
 }
 
 func (c *Client) sendAPIMobileV2AfterBoardThreadNumGet(ctx context.Context, params APIMobileV2AfterBoardThreadNumGetParams) (res *MobileThreadPostsAfter, err error) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/mobile/v2/after/{board}/{thread}/{num}"),
+	}
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -963,6 +1110,7 @@ func (c *Client) sendAPIMobileV2AfterBoardThreadNumGet(ctx context.Context, para
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APIMobileV2AfterBoardThreadNumGet",
+		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
 	// Track stage for error reporting.
@@ -1072,7 +1220,10 @@ func (c *Client) APIMobileV2BoardsGet(ctx context.Context) (Boards, error) {
 }
 
 func (c *Client) sendAPIMobileV2BoardsGet(ctx context.Context) (res Boards, err error) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/mobile/v2/boards"),
+	}
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1087,6 +1238,7 @@ func (c *Client) sendAPIMobileV2BoardsGet(ctx context.Context) (res Boards, err 
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APIMobileV2BoardsGet",
+		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
 	// Track stage for error reporting.
@@ -1140,7 +1292,10 @@ func (c *Client) APIMobileV2InfoBoardThreadGet(ctx context.Context, params APIMo
 }
 
 func (c *Client) sendAPIMobileV2InfoBoardThreadGet(ctx context.Context, params APIMobileV2InfoBoardThreadGetParams) (res *MobileThreadLastInfo, err error) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/mobile/v2/info/{board}/{thread}"),
+	}
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1155,6 +1310,7 @@ func (c *Client) sendAPIMobileV2InfoBoardThreadGet(ctx context.Context, params A
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APIMobileV2InfoBoardThreadGet",
+		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
 	// Track stage for error reporting.
@@ -1245,7 +1401,10 @@ func (c *Client) APIMobileV2PostBoardNumGet(ctx context.Context, params APIMobil
 }
 
 func (c *Client) sendAPIMobileV2PostBoardNumGet(ctx context.Context, params APIMobileV2PostBoardNumGetParams) (res *MobilePost, err error) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/mobile/v2/post/{board}/{num}"),
+	}
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1260,6 +1419,7 @@ func (c *Client) sendAPIMobileV2PostBoardNumGet(ctx context.Context, params APIM
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APIMobileV2PostBoardNumGet",
+		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
 	// Track stage for error reporting.
@@ -1350,7 +1510,10 @@ func (c *Client) UserPassloginPost(ctx context.Context, request OptUserPasslogin
 }
 
 func (c *Client) sendUserPassloginPost(ctx context.Context, request OptUserPassloginPostReq, params UserPassloginPostParams) (res *Passcode, err error) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/user/passlogin"),
+	}
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1365,6 +1528,7 @@ func (c *Client) sendUserPassloginPost(ctx context.Context, request OptUserPassl
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UserPassloginPost",
+		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
 	// Track stage for error reporting.
@@ -1439,7 +1603,10 @@ func (c *Client) UserPostingPost(ctx context.Context, request OptUserPostingPost
 }
 
 func (c *Client) sendUserPostingPost(ctx context.Context, request OptUserPostingPostReq) (res UserPostingPostOK, err error) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/user/posting"),
+	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -1470,6 +1637,7 @@ func (c *Client) sendUserPostingPost(ctx context.Context, request OptUserPosting
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UserPostingPost",
+		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
 	// Track stage for error reporting.
@@ -1526,7 +1694,10 @@ func (c *Client) UserReportPost(ctx context.Context, request OptUserReportPostRe
 }
 
 func (c *Client) sendUserReportPost(ctx context.Context, request OptUserReportPostReq) (res *Report, err error) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/user/report"),
+	}
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1541,6 +1712,7 @@ func (c *Client) sendUserReportPost(ctx context.Context, request OptUserReportPo
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UserReportPost",
+		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
 	// Track stage for error reporting.

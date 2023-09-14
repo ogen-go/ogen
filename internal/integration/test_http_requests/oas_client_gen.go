@@ -13,6 +13,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
+	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
 	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
@@ -20,6 +21,34 @@ import (
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 )
+
+// Invoker invokes operations described by OpenAPI v3 specification.
+type Invoker interface {
+	// AllRequestBodies invokes allRequestBodies operation.
+	//
+	// POST /allRequestBodies
+	AllRequestBodies(ctx context.Context, request AllRequestBodiesReq) (AllRequestBodiesOK, error)
+	// AllRequestBodiesOptional invokes allRequestBodiesOptional operation.
+	//
+	// POST /allRequestBodiesOptional
+	AllRequestBodiesOptional(ctx context.Context, request AllRequestBodiesOptionalReq) (AllRequestBodiesOptionalOK, error)
+	// Base64Request invokes base64Request operation.
+	//
+	// POST /base64Request
+	Base64Request(ctx context.Context, request Base64RequestReq) (Base64RequestOK, error)
+	// MaskContentType invokes maskContentType operation.
+	//
+	// POST /maskContentType
+	MaskContentType(ctx context.Context, request *MaskContentTypeReqWithContentType) (*MaskResponse, error)
+	// MaskContentTypeOptional invokes maskContentTypeOptional operation.
+	//
+	// POST /maskContentTypeOptional
+	MaskContentTypeOptional(ctx context.Context, request *MaskContentTypeOptionalReqWithContentType) (*MaskResponse, error)
+	// StreamJSON invokes streamJSON operation.
+	//
+	// POST /streamJSON
+	StreamJSON(ctx context.Context, request []float64) (float64, error)
+}
 
 // Client implements OAS client.
 type Client struct {
@@ -82,6 +111,8 @@ func (c *Client) AllRequestBodies(ctx context.Context, request AllRequestBodiesR
 func (c *Client) sendAllRequestBodies(ctx context.Context, request AllRequestBodiesReq) (res AllRequestBodiesOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("allRequestBodies"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/allRequestBodies"),
 	}
 	// Validate request before sending.
 	switch request := request.(type) {
@@ -169,6 +200,8 @@ func (c *Client) AllRequestBodiesOptional(ctx context.Context, request AllReques
 func (c *Client) sendAllRequestBodiesOptional(ctx context.Context, request AllRequestBodiesOptionalReq) (res AllRequestBodiesOptionalOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("allRequestBodiesOptional"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/allRequestBodiesOptional"),
 	}
 	// Validate request before sending.
 	switch request := request.(type) {
@@ -258,6 +291,8 @@ func (c *Client) Base64Request(ctx context.Context, request Base64RequestReq) (B
 func (c *Client) sendBase64Request(ctx context.Context, request Base64RequestReq) (res Base64RequestOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("base64Request"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/base64Request"),
 	}
 
 	// Run stopwatch.
@@ -330,6 +365,8 @@ func (c *Client) MaskContentType(ctx context.Context, request *MaskContentTypeRe
 func (c *Client) sendMaskContentType(ctx context.Context, request *MaskContentTypeReqWithContentType) (res *MaskResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("maskContentType"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/maskContentType"),
 	}
 
 	// Run stopwatch.
@@ -402,6 +439,8 @@ func (c *Client) MaskContentTypeOptional(ctx context.Context, request *MaskConte
 func (c *Client) sendMaskContentTypeOptional(ctx context.Context, request *MaskContentTypeOptionalReqWithContentType) (res *MaskResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("maskContentTypeOptional"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/maskContentTypeOptional"),
 	}
 
 	// Run stopwatch.
@@ -474,6 +513,8 @@ func (c *Client) StreamJSON(ctx context.Context, request []float64) (float64, er
 func (c *Client) sendStreamJSON(ctx context.Context, request []float64) (res float64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("streamJSON"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/streamJSON"),
 	}
 	// Validate request before sending.
 	if err := func() error {

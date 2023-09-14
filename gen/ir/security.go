@@ -54,6 +54,9 @@ const (
 	//
 	// Unsupported yet.
 	DigestHTTPSecurityFormat SecurityFormat = "digest"
+
+	// Oauth2SecurityFormat is Oauth2 security format.
+	Oauth2SecurityFormat SecurityFormat = "oauth2"
 )
 
 // IsAPIKeySecurity whether s is APIKeySecurityFormat.
@@ -76,12 +79,18 @@ func (s SecurityFormat) IsDigestHTTPSecurity() bool {
 	return s == DigestHTTPSecurityFormat
 }
 
+// IsOAuth2Security whether s is Oauth2SecurityFormat.
+func (s SecurityFormat) IsOAuth2Security() bool {
+	return s == Oauth2SecurityFormat
+}
+
 type Security struct {
 	Kind          SecurityKind
 	Format        SecurityFormat
 	ParameterName string
 	Description   string
 	Type          *Type
+	Scopes        map[string][]string
 }
 
 func (s *Security) GoDoc() []string {

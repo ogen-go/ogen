@@ -12,6 +12,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
+	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
 	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
@@ -19,6 +20,22 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 )
+
+// Invoker invokes operations described by OpenAPI v3 specification.
+type Invoker interface {
+	// DisjointSecurity invokes disjointSecurity operation.
+	//
+	// GET /disjointSecurity
+	DisjointSecurity(ctx context.Context) error
+	// IntersectSecurity invokes intersectSecurity operation.
+	//
+	// GET /intersectSecurity
+	IntersectSecurity(ctx context.Context) error
+	// OptionalSecurity invokes optionalSecurity operation.
+	//
+	// GET /optionalSecurity
+	OptionalSecurity(ctx context.Context) error
+}
 
 // Client implements OAS client.
 type Client struct {
@@ -83,6 +100,8 @@ func (c *Client) DisjointSecurity(ctx context.Context) error {
 func (c *Client) sendDisjointSecurity(ctx context.Context) (res *DisjointSecurityOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("disjointSecurity"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/disjointSecurity"),
 	}
 
 	// Run stopwatch.
@@ -219,6 +238,8 @@ func (c *Client) IntersectSecurity(ctx context.Context) error {
 func (c *Client) sendIntersectSecurity(ctx context.Context) (res *IntersectSecurityOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("intersectSecurity"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/intersectSecurity"),
 	}
 
 	// Run stopwatch.
@@ -344,6 +365,8 @@ func (c *Client) OptionalSecurity(ctx context.Context) error {
 func (c *Client) sendOptionalSecurity(ctx context.Context) (res *OptionalSecurityOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("optionalSecurity"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/optionalSecurity"),
 	}
 
 	// Run stopwatch.

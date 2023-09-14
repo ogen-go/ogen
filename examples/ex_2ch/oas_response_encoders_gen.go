@@ -21,6 +21,7 @@ func encodeAPICaptcha2chcaptchaIDGetResponse(response *Captcha, w http.ResponseW
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -53,6 +54,7 @@ func encodeAPICaptchaAppIDPublicKeyGetResponse(response *Captcha, w http.Respons
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -66,6 +68,7 @@ func encodeAPICaptchaInvisibleRecaptchaIDGetResponse(response *Captcha, w http.R
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -86,6 +89,7 @@ func encodeAPICaptchaRecaptchaIDGetResponse(response *Captcha, w http.ResponseWr
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -106,6 +110,7 @@ func encodeAPIDislikeGetResponse(response *Like, w http.ResponseWriter, span tra
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -119,6 +124,7 @@ func encodeAPILikeGetResponse(response *Like, w http.ResponseWriter, span trace.
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -132,6 +138,7 @@ func encodeAPIMobileV2AfterBoardThreadNumGetResponse(response *MobileThreadPosts
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -145,6 +152,7 @@ func encodeAPIMobileV2BoardsGetResponse(response Boards, w http.ResponseWriter, 
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -158,6 +166,7 @@ func encodeAPIMobileV2InfoBoardThreadGetResponse(response *MobileThreadLastInfo,
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -171,6 +180,7 @@ func encodeAPIMobileV2PostBoardNumGetResponse(response *MobilePost, w http.Respo
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -184,6 +194,7 @@ func encodeUserPassloginPostResponse(response *Passcode, w http.ResponseWriter, 
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -197,6 +208,7 @@ func encodeUserPostingPostResponse(response UserPostingPostOK, w http.ResponseWr
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -210,5 +222,6 @@ func encodeUserReportPostResponse(response *Report, w http.ResponseWriter, span 
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }

@@ -21,5 +21,6 @@ func encodeFooGetResponse(response string, w http.ResponseWriter, span trace.Spa
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }

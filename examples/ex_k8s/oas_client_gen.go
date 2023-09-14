@@ -12,6 +12,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
+	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/conv"
@@ -20,6 +21,2941 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 )
+
+// Invoker invokes operations described by OpenAPI v3 specification.
+type Invoker interface {
+	// ConnectCoreV1DeleteNamespacedPodProxy invokes connectCoreV1DeleteNamespacedPodProxy operation.
+	//
+	// Connect DELETE requests to proxy of Pod.
+	//
+	// DELETE /api/v1/namespaces/{namespace}/pods/{name}/proxy
+	ConnectCoreV1DeleteNamespacedPodProxy(ctx context.Context, params ConnectCoreV1DeleteNamespacedPodProxyParams) (ConnectCoreV1DeleteNamespacedPodProxyRes, error)
+	// ConnectCoreV1DeleteNamespacedPodProxyWithPath invokes connectCoreV1DeleteNamespacedPodProxyWithPath operation.
+	//
+	// Connect DELETE requests to proxy of Pod.
+	//
+	// DELETE /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
+	ConnectCoreV1DeleteNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1DeleteNamespacedPodProxyWithPathParams) (ConnectCoreV1DeleteNamespacedPodProxyWithPathRes, error)
+	// ConnectCoreV1DeleteNamespacedServiceProxy invokes connectCoreV1DeleteNamespacedServiceProxy operation.
+	//
+	// Connect DELETE requests to proxy of Service.
+	//
+	// DELETE /api/v1/namespaces/{namespace}/services/{name}/proxy
+	ConnectCoreV1DeleteNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1DeleteNamespacedServiceProxyParams) (ConnectCoreV1DeleteNamespacedServiceProxyRes, error)
+	// ConnectCoreV1DeleteNamespacedServiceProxyWithPath invokes connectCoreV1DeleteNamespacedServiceProxyWithPath operation.
+	//
+	// Connect DELETE requests to proxy of Service.
+	//
+	// DELETE /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
+	ConnectCoreV1DeleteNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1DeleteNamespacedServiceProxyWithPathParams) (ConnectCoreV1DeleteNamespacedServiceProxyWithPathRes, error)
+	// ConnectCoreV1DeleteNodeProxy invokes connectCoreV1DeleteNodeProxy operation.
+	//
+	// Connect DELETE requests to proxy of Node.
+	//
+	// DELETE /api/v1/nodes/{name}/proxy
+	ConnectCoreV1DeleteNodeProxy(ctx context.Context, params ConnectCoreV1DeleteNodeProxyParams) (ConnectCoreV1DeleteNodeProxyRes, error)
+	// ConnectCoreV1DeleteNodeProxyWithPath invokes connectCoreV1DeleteNodeProxyWithPath operation.
+	//
+	// Connect DELETE requests to proxy of Node.
+	//
+	// DELETE /api/v1/nodes/{name}/proxy/{path}
+	ConnectCoreV1DeleteNodeProxyWithPath(ctx context.Context, params ConnectCoreV1DeleteNodeProxyWithPathParams) (ConnectCoreV1DeleteNodeProxyWithPathRes, error)
+	// ConnectCoreV1GetNamespacedPodAttach invokes connectCoreV1GetNamespacedPodAttach operation.
+	//
+	// Connect GET requests to attach of Pod.
+	//
+	// GET /api/v1/namespaces/{namespace}/pods/{name}/attach
+	ConnectCoreV1GetNamespacedPodAttach(ctx context.Context, params ConnectCoreV1GetNamespacedPodAttachParams) (ConnectCoreV1GetNamespacedPodAttachRes, error)
+	// ConnectCoreV1GetNamespacedPodExec invokes connectCoreV1GetNamespacedPodExec operation.
+	//
+	// Connect GET requests to exec of Pod.
+	//
+	// GET /api/v1/namespaces/{namespace}/pods/{name}/exec
+	ConnectCoreV1GetNamespacedPodExec(ctx context.Context, params ConnectCoreV1GetNamespacedPodExecParams) (ConnectCoreV1GetNamespacedPodExecRes, error)
+	// ConnectCoreV1GetNamespacedPodPortforward invokes connectCoreV1GetNamespacedPodPortforward operation.
+	//
+	// Connect GET requests to portforward of Pod.
+	//
+	// GET /api/v1/namespaces/{namespace}/pods/{name}/portforward
+	ConnectCoreV1GetNamespacedPodPortforward(ctx context.Context, params ConnectCoreV1GetNamespacedPodPortforwardParams) (ConnectCoreV1GetNamespacedPodPortforwardRes, error)
+	// ConnectCoreV1GetNamespacedPodProxy invokes connectCoreV1GetNamespacedPodProxy operation.
+	//
+	// Connect GET requests to proxy of Pod.
+	//
+	// GET /api/v1/namespaces/{namespace}/pods/{name}/proxy
+	ConnectCoreV1GetNamespacedPodProxy(ctx context.Context, params ConnectCoreV1GetNamespacedPodProxyParams) (ConnectCoreV1GetNamespacedPodProxyRes, error)
+	// ConnectCoreV1GetNamespacedPodProxyWithPath invokes connectCoreV1GetNamespacedPodProxyWithPath operation.
+	//
+	// Connect GET requests to proxy of Pod.
+	//
+	// GET /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
+	ConnectCoreV1GetNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1GetNamespacedPodProxyWithPathParams) (ConnectCoreV1GetNamespacedPodProxyWithPathRes, error)
+	// ConnectCoreV1GetNamespacedServiceProxy invokes connectCoreV1GetNamespacedServiceProxy operation.
+	//
+	// Connect GET requests to proxy of Service.
+	//
+	// GET /api/v1/namespaces/{namespace}/services/{name}/proxy
+	ConnectCoreV1GetNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1GetNamespacedServiceProxyParams) (ConnectCoreV1GetNamespacedServiceProxyRes, error)
+	// ConnectCoreV1GetNamespacedServiceProxyWithPath invokes connectCoreV1GetNamespacedServiceProxyWithPath operation.
+	//
+	// Connect GET requests to proxy of Service.
+	//
+	// GET /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
+	ConnectCoreV1GetNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1GetNamespacedServiceProxyWithPathParams) (ConnectCoreV1GetNamespacedServiceProxyWithPathRes, error)
+	// ConnectCoreV1GetNodeProxy invokes connectCoreV1GetNodeProxy operation.
+	//
+	// Connect GET requests to proxy of Node.
+	//
+	// GET /api/v1/nodes/{name}/proxy
+	ConnectCoreV1GetNodeProxy(ctx context.Context, params ConnectCoreV1GetNodeProxyParams) (ConnectCoreV1GetNodeProxyRes, error)
+	// ConnectCoreV1GetNodeProxyWithPath invokes connectCoreV1GetNodeProxyWithPath operation.
+	//
+	// Connect GET requests to proxy of Node.
+	//
+	// GET /api/v1/nodes/{name}/proxy/{path}
+	ConnectCoreV1GetNodeProxyWithPath(ctx context.Context, params ConnectCoreV1GetNodeProxyWithPathParams) (ConnectCoreV1GetNodeProxyWithPathRes, error)
+	// ConnectCoreV1HeadNamespacedPodProxy invokes connectCoreV1HeadNamespacedPodProxy operation.
+	//
+	// Connect HEAD requests to proxy of Pod.
+	//
+	// HEAD /api/v1/namespaces/{namespace}/pods/{name}/proxy
+	ConnectCoreV1HeadNamespacedPodProxy(ctx context.Context, params ConnectCoreV1HeadNamespacedPodProxyParams) (ConnectCoreV1HeadNamespacedPodProxyRes, error)
+	// ConnectCoreV1HeadNamespacedPodProxyWithPath invokes connectCoreV1HeadNamespacedPodProxyWithPath operation.
+	//
+	// Connect HEAD requests to proxy of Pod.
+	//
+	// HEAD /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
+	ConnectCoreV1HeadNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1HeadNamespacedPodProxyWithPathParams) (ConnectCoreV1HeadNamespacedPodProxyWithPathRes, error)
+	// ConnectCoreV1HeadNamespacedServiceProxy invokes connectCoreV1HeadNamespacedServiceProxy operation.
+	//
+	// Connect HEAD requests to proxy of Service.
+	//
+	// HEAD /api/v1/namespaces/{namespace}/services/{name}/proxy
+	ConnectCoreV1HeadNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1HeadNamespacedServiceProxyParams) (ConnectCoreV1HeadNamespacedServiceProxyRes, error)
+	// ConnectCoreV1HeadNamespacedServiceProxyWithPath invokes connectCoreV1HeadNamespacedServiceProxyWithPath operation.
+	//
+	// Connect HEAD requests to proxy of Service.
+	//
+	// HEAD /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
+	ConnectCoreV1HeadNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1HeadNamespacedServiceProxyWithPathParams) (ConnectCoreV1HeadNamespacedServiceProxyWithPathRes, error)
+	// ConnectCoreV1HeadNodeProxy invokes connectCoreV1HeadNodeProxy operation.
+	//
+	// Connect HEAD requests to proxy of Node.
+	//
+	// HEAD /api/v1/nodes/{name}/proxy
+	ConnectCoreV1HeadNodeProxy(ctx context.Context, params ConnectCoreV1HeadNodeProxyParams) (ConnectCoreV1HeadNodeProxyRes, error)
+	// ConnectCoreV1HeadNodeProxyWithPath invokes connectCoreV1HeadNodeProxyWithPath operation.
+	//
+	// Connect HEAD requests to proxy of Node.
+	//
+	// HEAD /api/v1/nodes/{name}/proxy/{path}
+	ConnectCoreV1HeadNodeProxyWithPath(ctx context.Context, params ConnectCoreV1HeadNodeProxyWithPathParams) (ConnectCoreV1HeadNodeProxyWithPathRes, error)
+	// ConnectCoreV1OptionsNamespacedPodProxy invokes connectCoreV1OptionsNamespacedPodProxy operation.
+	//
+	// Connect OPTIONS requests to proxy of Pod.
+	//
+	// OPTIONS /api/v1/namespaces/{namespace}/pods/{name}/proxy
+	ConnectCoreV1OptionsNamespacedPodProxy(ctx context.Context, params ConnectCoreV1OptionsNamespacedPodProxyParams) (ConnectCoreV1OptionsNamespacedPodProxyRes, error)
+	// ConnectCoreV1OptionsNamespacedPodProxyWithPath invokes connectCoreV1OptionsNamespacedPodProxyWithPath operation.
+	//
+	// Connect OPTIONS requests to proxy of Pod.
+	//
+	// OPTIONS /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
+	ConnectCoreV1OptionsNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1OptionsNamespacedPodProxyWithPathParams) (ConnectCoreV1OptionsNamespacedPodProxyWithPathRes, error)
+	// ConnectCoreV1OptionsNamespacedServiceProxy invokes connectCoreV1OptionsNamespacedServiceProxy operation.
+	//
+	// Connect OPTIONS requests to proxy of Service.
+	//
+	// OPTIONS /api/v1/namespaces/{namespace}/services/{name}/proxy
+	ConnectCoreV1OptionsNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1OptionsNamespacedServiceProxyParams) (ConnectCoreV1OptionsNamespacedServiceProxyRes, error)
+	// ConnectCoreV1OptionsNamespacedServiceProxyWithPath invokes connectCoreV1OptionsNamespacedServiceProxyWithPath operation.
+	//
+	// Connect OPTIONS requests to proxy of Service.
+	//
+	// OPTIONS /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
+	ConnectCoreV1OptionsNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1OptionsNamespacedServiceProxyWithPathParams) (ConnectCoreV1OptionsNamespacedServiceProxyWithPathRes, error)
+	// ConnectCoreV1OptionsNodeProxy invokes connectCoreV1OptionsNodeProxy operation.
+	//
+	// Connect OPTIONS requests to proxy of Node.
+	//
+	// OPTIONS /api/v1/nodes/{name}/proxy
+	ConnectCoreV1OptionsNodeProxy(ctx context.Context, params ConnectCoreV1OptionsNodeProxyParams) (ConnectCoreV1OptionsNodeProxyRes, error)
+	// ConnectCoreV1OptionsNodeProxyWithPath invokes connectCoreV1OptionsNodeProxyWithPath operation.
+	//
+	// Connect OPTIONS requests to proxy of Node.
+	//
+	// OPTIONS /api/v1/nodes/{name}/proxy/{path}
+	ConnectCoreV1OptionsNodeProxyWithPath(ctx context.Context, params ConnectCoreV1OptionsNodeProxyWithPathParams) (ConnectCoreV1OptionsNodeProxyWithPathRes, error)
+	// ConnectCoreV1PatchNamespacedPodProxy invokes connectCoreV1PatchNamespacedPodProxy operation.
+	//
+	// Connect PATCH requests to proxy of Pod.
+	//
+	// PATCH /api/v1/namespaces/{namespace}/pods/{name}/proxy
+	ConnectCoreV1PatchNamespacedPodProxy(ctx context.Context, params ConnectCoreV1PatchNamespacedPodProxyParams) (ConnectCoreV1PatchNamespacedPodProxyRes, error)
+	// ConnectCoreV1PatchNamespacedPodProxyWithPath invokes connectCoreV1PatchNamespacedPodProxyWithPath operation.
+	//
+	// Connect PATCH requests to proxy of Pod.
+	//
+	// PATCH /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
+	ConnectCoreV1PatchNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1PatchNamespacedPodProxyWithPathParams) (ConnectCoreV1PatchNamespacedPodProxyWithPathRes, error)
+	// ConnectCoreV1PatchNamespacedServiceProxy invokes connectCoreV1PatchNamespacedServiceProxy operation.
+	//
+	// Connect PATCH requests to proxy of Service.
+	//
+	// PATCH /api/v1/namespaces/{namespace}/services/{name}/proxy
+	ConnectCoreV1PatchNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1PatchNamespacedServiceProxyParams) (ConnectCoreV1PatchNamespacedServiceProxyRes, error)
+	// ConnectCoreV1PatchNamespacedServiceProxyWithPath invokes connectCoreV1PatchNamespacedServiceProxyWithPath operation.
+	//
+	// Connect PATCH requests to proxy of Service.
+	//
+	// PATCH /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
+	ConnectCoreV1PatchNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1PatchNamespacedServiceProxyWithPathParams) (ConnectCoreV1PatchNamespacedServiceProxyWithPathRes, error)
+	// ConnectCoreV1PatchNodeProxy invokes connectCoreV1PatchNodeProxy operation.
+	//
+	// Connect PATCH requests to proxy of Node.
+	//
+	// PATCH /api/v1/nodes/{name}/proxy
+	ConnectCoreV1PatchNodeProxy(ctx context.Context, params ConnectCoreV1PatchNodeProxyParams) (ConnectCoreV1PatchNodeProxyRes, error)
+	// ConnectCoreV1PatchNodeProxyWithPath invokes connectCoreV1PatchNodeProxyWithPath operation.
+	//
+	// Connect PATCH requests to proxy of Node.
+	//
+	// PATCH /api/v1/nodes/{name}/proxy/{path}
+	ConnectCoreV1PatchNodeProxyWithPath(ctx context.Context, params ConnectCoreV1PatchNodeProxyWithPathParams) (ConnectCoreV1PatchNodeProxyWithPathRes, error)
+	// ConnectCoreV1PostNamespacedPodAttach invokes connectCoreV1PostNamespacedPodAttach operation.
+	//
+	// Connect POST requests to attach of Pod.
+	//
+	// POST /api/v1/namespaces/{namespace}/pods/{name}/attach
+	ConnectCoreV1PostNamespacedPodAttach(ctx context.Context, params ConnectCoreV1PostNamespacedPodAttachParams) (ConnectCoreV1PostNamespacedPodAttachRes, error)
+	// ConnectCoreV1PostNamespacedPodExec invokes connectCoreV1PostNamespacedPodExec operation.
+	//
+	// Connect POST requests to exec of Pod.
+	//
+	// POST /api/v1/namespaces/{namespace}/pods/{name}/exec
+	ConnectCoreV1PostNamespacedPodExec(ctx context.Context, params ConnectCoreV1PostNamespacedPodExecParams) (ConnectCoreV1PostNamespacedPodExecRes, error)
+	// ConnectCoreV1PostNamespacedPodPortforward invokes connectCoreV1PostNamespacedPodPortforward operation.
+	//
+	// Connect POST requests to portforward of Pod.
+	//
+	// POST /api/v1/namespaces/{namespace}/pods/{name}/portforward
+	ConnectCoreV1PostNamespacedPodPortforward(ctx context.Context, params ConnectCoreV1PostNamespacedPodPortforwardParams) (ConnectCoreV1PostNamespacedPodPortforwardRes, error)
+	// ConnectCoreV1PostNamespacedPodProxy invokes connectCoreV1PostNamespacedPodProxy operation.
+	//
+	// Connect POST requests to proxy of Pod.
+	//
+	// POST /api/v1/namespaces/{namespace}/pods/{name}/proxy
+	ConnectCoreV1PostNamespacedPodProxy(ctx context.Context, params ConnectCoreV1PostNamespacedPodProxyParams) (ConnectCoreV1PostNamespacedPodProxyRes, error)
+	// ConnectCoreV1PostNamespacedPodProxyWithPath invokes connectCoreV1PostNamespacedPodProxyWithPath operation.
+	//
+	// Connect POST requests to proxy of Pod.
+	//
+	// POST /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
+	ConnectCoreV1PostNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1PostNamespacedPodProxyWithPathParams) (ConnectCoreV1PostNamespacedPodProxyWithPathRes, error)
+	// ConnectCoreV1PostNamespacedServiceProxy invokes connectCoreV1PostNamespacedServiceProxy operation.
+	//
+	// Connect POST requests to proxy of Service.
+	//
+	// POST /api/v1/namespaces/{namespace}/services/{name}/proxy
+	ConnectCoreV1PostNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1PostNamespacedServiceProxyParams) (ConnectCoreV1PostNamespacedServiceProxyRes, error)
+	// ConnectCoreV1PostNamespacedServiceProxyWithPath invokes connectCoreV1PostNamespacedServiceProxyWithPath operation.
+	//
+	// Connect POST requests to proxy of Service.
+	//
+	// POST /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
+	ConnectCoreV1PostNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1PostNamespacedServiceProxyWithPathParams) (ConnectCoreV1PostNamespacedServiceProxyWithPathRes, error)
+	// ConnectCoreV1PostNodeProxy invokes connectCoreV1PostNodeProxy operation.
+	//
+	// Connect POST requests to proxy of Node.
+	//
+	// POST /api/v1/nodes/{name}/proxy
+	ConnectCoreV1PostNodeProxy(ctx context.Context, params ConnectCoreV1PostNodeProxyParams) (ConnectCoreV1PostNodeProxyRes, error)
+	// ConnectCoreV1PostNodeProxyWithPath invokes connectCoreV1PostNodeProxyWithPath operation.
+	//
+	// Connect POST requests to proxy of Node.
+	//
+	// POST /api/v1/nodes/{name}/proxy/{path}
+	ConnectCoreV1PostNodeProxyWithPath(ctx context.Context, params ConnectCoreV1PostNodeProxyWithPathParams) (ConnectCoreV1PostNodeProxyWithPathRes, error)
+	// ConnectCoreV1PutNamespacedPodProxy invokes connectCoreV1PutNamespacedPodProxy operation.
+	//
+	// Connect PUT requests to proxy of Pod.
+	//
+	// PUT /api/v1/namespaces/{namespace}/pods/{name}/proxy
+	ConnectCoreV1PutNamespacedPodProxy(ctx context.Context, params ConnectCoreV1PutNamespacedPodProxyParams) (ConnectCoreV1PutNamespacedPodProxyRes, error)
+	// ConnectCoreV1PutNamespacedPodProxyWithPath invokes connectCoreV1PutNamespacedPodProxyWithPath operation.
+	//
+	// Connect PUT requests to proxy of Pod.
+	//
+	// PUT /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
+	ConnectCoreV1PutNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1PutNamespacedPodProxyWithPathParams) (ConnectCoreV1PutNamespacedPodProxyWithPathRes, error)
+	// ConnectCoreV1PutNamespacedServiceProxy invokes connectCoreV1PutNamespacedServiceProxy operation.
+	//
+	// Connect PUT requests to proxy of Service.
+	//
+	// PUT /api/v1/namespaces/{namespace}/services/{name}/proxy
+	ConnectCoreV1PutNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1PutNamespacedServiceProxyParams) (ConnectCoreV1PutNamespacedServiceProxyRes, error)
+	// ConnectCoreV1PutNamespacedServiceProxyWithPath invokes connectCoreV1PutNamespacedServiceProxyWithPath operation.
+	//
+	// Connect PUT requests to proxy of Service.
+	//
+	// PUT /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
+	ConnectCoreV1PutNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1PutNamespacedServiceProxyWithPathParams) (ConnectCoreV1PutNamespacedServiceProxyWithPathRes, error)
+	// ConnectCoreV1PutNodeProxy invokes connectCoreV1PutNodeProxy operation.
+	//
+	// Connect PUT requests to proxy of Node.
+	//
+	// PUT /api/v1/nodes/{name}/proxy
+	ConnectCoreV1PutNodeProxy(ctx context.Context, params ConnectCoreV1PutNodeProxyParams) (ConnectCoreV1PutNodeProxyRes, error)
+	// ConnectCoreV1PutNodeProxyWithPath invokes connectCoreV1PutNodeProxyWithPath operation.
+	//
+	// Connect PUT requests to proxy of Node.
+	//
+	// PUT /api/v1/nodes/{name}/proxy/{path}
+	ConnectCoreV1PutNodeProxyWithPath(ctx context.Context, params ConnectCoreV1PutNodeProxyWithPathParams) (ConnectCoreV1PutNodeProxyWithPathRes, error)
+	// GetAPIVersions invokes getAPIVersions operation.
+	//
+	// Get available API versions.
+	//
+	// GET /apis/
+	GetAPIVersions(ctx context.Context) (GetAPIVersionsRes, error)
+	// GetAdmissionregistrationAPIGroup invokes getAdmissionregistrationAPIGroup operation.
+	//
+	// Get information of a group.
+	//
+	// GET /apis/admissionregistration.k8s.io/
+	GetAdmissionregistrationAPIGroup(ctx context.Context) (GetAdmissionregistrationAPIGroupRes, error)
+	// GetAdmissionregistrationV1APIResources invokes getAdmissionregistrationV1APIResources operation.
+	//
+	// Get available resources.
+	//
+	// GET /apis/admissionregistration.k8s.io/v1/
+	GetAdmissionregistrationV1APIResources(ctx context.Context) (GetAdmissionregistrationV1APIResourcesRes, error)
+	// GetApiextensionsAPIGroup invokes getApiextensionsAPIGroup operation.
+	//
+	// Get information of a group.
+	//
+	// GET /apis/apiextensions.k8s.io/
+	GetApiextensionsAPIGroup(ctx context.Context) (GetApiextensionsAPIGroupRes, error)
+	// GetApiextensionsV1APIResources invokes getApiextensionsV1APIResources operation.
+	//
+	// Get available resources.
+	//
+	// GET /apis/apiextensions.k8s.io/v1/
+	GetApiextensionsV1APIResources(ctx context.Context) (GetApiextensionsV1APIResourcesRes, error)
+	// GetApiregistrationAPIGroup invokes getApiregistrationAPIGroup operation.
+	//
+	// Get information of a group.
+	//
+	// GET /apis/apiregistration.k8s.io/
+	GetApiregistrationAPIGroup(ctx context.Context) (GetApiregistrationAPIGroupRes, error)
+	// GetApiregistrationV1APIResources invokes getApiregistrationV1APIResources operation.
+	//
+	// Get available resources.
+	//
+	// GET /apis/apiregistration.k8s.io/v1/
+	GetApiregistrationV1APIResources(ctx context.Context) (GetApiregistrationV1APIResourcesRes, error)
+	// GetAppsAPIGroup invokes getAppsAPIGroup operation.
+	//
+	// Get information of a group.
+	//
+	// GET /apis/apps/
+	GetAppsAPIGroup(ctx context.Context) (GetAppsAPIGroupRes, error)
+	// GetAppsV1APIResources invokes getAppsV1APIResources operation.
+	//
+	// Get available resources.
+	//
+	// GET /apis/apps/v1/
+	GetAppsV1APIResources(ctx context.Context) (GetAppsV1APIResourcesRes, error)
+	// GetAuthenticationAPIGroup invokes getAuthenticationAPIGroup operation.
+	//
+	// Get information of a group.
+	//
+	// GET /apis/authentication.k8s.io/
+	GetAuthenticationAPIGroup(ctx context.Context) (GetAuthenticationAPIGroupRes, error)
+	// GetAuthenticationV1APIResources invokes getAuthenticationV1APIResources operation.
+	//
+	// Get available resources.
+	//
+	// GET /apis/authentication.k8s.io/v1/
+	GetAuthenticationV1APIResources(ctx context.Context) (GetAuthenticationV1APIResourcesRes, error)
+	// GetAuthorizationAPIGroup invokes getAuthorizationAPIGroup operation.
+	//
+	// Get information of a group.
+	//
+	// GET /apis/authorization.k8s.io/
+	GetAuthorizationAPIGroup(ctx context.Context) (GetAuthorizationAPIGroupRes, error)
+	// GetAuthorizationV1APIResources invokes getAuthorizationV1APIResources operation.
+	//
+	// Get available resources.
+	//
+	// GET /apis/authorization.k8s.io/v1/
+	GetAuthorizationV1APIResources(ctx context.Context) (GetAuthorizationV1APIResourcesRes, error)
+	// GetAutoscalingAPIGroup invokes getAutoscalingAPIGroup operation.
+	//
+	// Get information of a group.
+	//
+	// GET /apis/autoscaling/
+	GetAutoscalingAPIGroup(ctx context.Context) (GetAutoscalingAPIGroupRes, error)
+	// GetAutoscalingV1APIResources invokes getAutoscalingV1APIResources operation.
+	//
+	// Get available resources.
+	//
+	// GET /apis/autoscaling/v1/
+	GetAutoscalingV1APIResources(ctx context.Context) (GetAutoscalingV1APIResourcesRes, error)
+	// GetAutoscalingV2beta1APIResources invokes getAutoscalingV2beta1APIResources operation.
+	//
+	// Get available resources.
+	//
+	// GET /apis/autoscaling/v2beta1/
+	GetAutoscalingV2beta1APIResources(ctx context.Context) (GetAutoscalingV2beta1APIResourcesRes, error)
+	// GetAutoscalingV2beta2APIResources invokes getAutoscalingV2beta2APIResources operation.
+	//
+	// Get available resources.
+	//
+	// GET /apis/autoscaling/v2beta2/
+	GetAutoscalingV2beta2APIResources(ctx context.Context) (GetAutoscalingV2beta2APIResourcesRes, error)
+	// GetBatchAPIGroup invokes getBatchAPIGroup operation.
+	//
+	// Get information of a group.
+	//
+	// GET /apis/batch/
+	GetBatchAPIGroup(ctx context.Context) (GetBatchAPIGroupRes, error)
+	// GetBatchV1APIResources invokes getBatchV1APIResources operation.
+	//
+	// Get available resources.
+	//
+	// GET /apis/batch/v1/
+	GetBatchV1APIResources(ctx context.Context) (GetBatchV1APIResourcesRes, error)
+	// GetBatchV1beta1APIResources invokes getBatchV1beta1APIResources operation.
+	//
+	// Get available resources.
+	//
+	// GET /apis/batch/v1beta1/
+	GetBatchV1beta1APIResources(ctx context.Context) (GetBatchV1beta1APIResourcesRes, error)
+	// GetCertificatesAPIGroup invokes getCertificatesAPIGroup operation.
+	//
+	// Get information of a group.
+	//
+	// GET /apis/certificates.k8s.io/
+	GetCertificatesAPIGroup(ctx context.Context) (GetCertificatesAPIGroupRes, error)
+	// GetCertificatesV1APIResources invokes getCertificatesV1APIResources operation.
+	//
+	// Get available resources.
+	//
+	// GET /apis/certificates.k8s.io/v1/
+	GetCertificatesV1APIResources(ctx context.Context) (GetCertificatesV1APIResourcesRes, error)
+	// GetCodeVersion invokes getCodeVersion operation.
+	//
+	// Get the code version.
+	//
+	// GET /version/
+	GetCodeVersion(ctx context.Context) (GetCodeVersionRes, error)
+	// GetCoordinationAPIGroup invokes getCoordinationAPIGroup operation.
+	//
+	// Get information of a group.
+	//
+	// GET /apis/coordination.k8s.io/
+	GetCoordinationAPIGroup(ctx context.Context) (GetCoordinationAPIGroupRes, error)
+	// GetCoordinationV1APIResources invokes getCoordinationV1APIResources operation.
+	//
+	// Get available resources.
+	//
+	// GET /apis/coordination.k8s.io/v1/
+	GetCoordinationV1APIResources(ctx context.Context) (GetCoordinationV1APIResourcesRes, error)
+	// GetCoreAPIVersions invokes getCoreAPIVersions operation.
+	//
+	// Get available API versions.
+	//
+	// GET /api/
+	GetCoreAPIVersions(ctx context.Context) (GetCoreAPIVersionsRes, error)
+	// GetCoreV1APIResources invokes getCoreV1APIResources operation.
+	//
+	// Get available resources.
+	//
+	// GET /api/v1/
+	GetCoreV1APIResources(ctx context.Context) (GetCoreV1APIResourcesRes, error)
+	// GetDiscoveryAPIGroup invokes getDiscoveryAPIGroup operation.
+	//
+	// Get information of a group.
+	//
+	// GET /apis/discovery.k8s.io/
+	GetDiscoveryAPIGroup(ctx context.Context) (GetDiscoveryAPIGroupRes, error)
+	// GetDiscoveryV1APIResources invokes getDiscoveryV1APIResources operation.
+	//
+	// Get available resources.
+	//
+	// GET /apis/discovery.k8s.io/v1/
+	GetDiscoveryV1APIResources(ctx context.Context) (GetDiscoveryV1APIResourcesRes, error)
+	// GetDiscoveryV1beta1APIResources invokes getDiscoveryV1beta1APIResources operation.
+	//
+	// Get available resources.
+	//
+	// GET /apis/discovery.k8s.io/v1beta1/
+	GetDiscoveryV1beta1APIResources(ctx context.Context) (GetDiscoveryV1beta1APIResourcesRes, error)
+	// GetEventsAPIGroup invokes getEventsAPIGroup operation.
+	//
+	// Get information of a group.
+	//
+	// GET /apis/events.k8s.io/
+	GetEventsAPIGroup(ctx context.Context) (GetEventsAPIGroupRes, error)
+	// GetEventsV1APIResources invokes getEventsV1APIResources operation.
+	//
+	// Get available resources.
+	//
+	// GET /apis/events.k8s.io/v1/
+	GetEventsV1APIResources(ctx context.Context) (GetEventsV1APIResourcesRes, error)
+	// GetEventsV1beta1APIResources invokes getEventsV1beta1APIResources operation.
+	//
+	// Get available resources.
+	//
+	// GET /apis/events.k8s.io/v1beta1/
+	GetEventsV1beta1APIResources(ctx context.Context) (GetEventsV1beta1APIResourcesRes, error)
+	// GetFlowcontrolApiserverAPIGroup invokes getFlowcontrolApiserverAPIGroup operation.
+	//
+	// Get information of a group.
+	//
+	// GET /apis/flowcontrol.apiserver.k8s.io/
+	GetFlowcontrolApiserverAPIGroup(ctx context.Context) (GetFlowcontrolApiserverAPIGroupRes, error)
+	// GetFlowcontrolApiserverV1beta1APIResources invokes getFlowcontrolApiserverV1beta1APIResources operation.
+	//
+	// Get available resources.
+	//
+	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/
+	GetFlowcontrolApiserverV1beta1APIResources(ctx context.Context) (GetFlowcontrolApiserverV1beta1APIResourcesRes, error)
+	// GetFlowcontrolApiserverV1beta2APIResources invokes getFlowcontrolApiserverV1beta2APIResources operation.
+	//
+	// Get available resources.
+	//
+	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/
+	GetFlowcontrolApiserverV1beta2APIResources(ctx context.Context) (GetFlowcontrolApiserverV1beta2APIResourcesRes, error)
+	// GetInternalApiserverAPIGroup invokes getInternalApiserverAPIGroup operation.
+	//
+	// Get information of a group.
+	//
+	// GET /apis/internal.apiserver.k8s.io/
+	GetInternalApiserverAPIGroup(ctx context.Context) (GetInternalApiserverAPIGroupRes, error)
+	// GetInternalApiserverV1alpha1APIResources invokes getInternalApiserverV1alpha1APIResources operation.
+	//
+	// Get available resources.
+	//
+	// GET /apis/internal.apiserver.k8s.io/v1alpha1/
+	GetInternalApiserverV1alpha1APIResources(ctx context.Context) (GetInternalApiserverV1alpha1APIResourcesRes, error)
+	// GetNetworkingAPIGroup invokes getNetworkingAPIGroup operation.
+	//
+	// Get information of a group.
+	//
+	// GET /apis/networking.k8s.io/
+	GetNetworkingAPIGroup(ctx context.Context) (GetNetworkingAPIGroupRes, error)
+	// GetNetworkingV1APIResources invokes getNetworkingV1APIResources operation.
+	//
+	// Get available resources.
+	//
+	// GET /apis/networking.k8s.io/v1/
+	GetNetworkingV1APIResources(ctx context.Context) (GetNetworkingV1APIResourcesRes, error)
+	// GetNodeAPIGroup invokes getNodeAPIGroup operation.
+	//
+	// Get information of a group.
+	//
+	// GET /apis/node.k8s.io/
+	GetNodeAPIGroup(ctx context.Context) (GetNodeAPIGroupRes, error)
+	// GetNodeV1APIResources invokes getNodeV1APIResources operation.
+	//
+	// Get available resources.
+	//
+	// GET /apis/node.k8s.io/v1/
+	GetNodeV1APIResources(ctx context.Context) (GetNodeV1APIResourcesRes, error)
+	// GetNodeV1alpha1APIResources invokes getNodeV1alpha1APIResources operation.
+	//
+	// Get available resources.
+	//
+	// GET /apis/node.k8s.io/v1alpha1/
+	GetNodeV1alpha1APIResources(ctx context.Context) (GetNodeV1alpha1APIResourcesRes, error)
+	// GetNodeV1beta1APIResources invokes getNodeV1beta1APIResources operation.
+	//
+	// Get available resources.
+	//
+	// GET /apis/node.k8s.io/v1beta1/
+	GetNodeV1beta1APIResources(ctx context.Context) (GetNodeV1beta1APIResourcesRes, error)
+	// GetPolicyAPIGroup invokes getPolicyAPIGroup operation.
+	//
+	// Get information of a group.
+	//
+	// GET /apis/policy/
+	GetPolicyAPIGroup(ctx context.Context) (GetPolicyAPIGroupRes, error)
+	// GetPolicyV1APIResources invokes getPolicyV1APIResources operation.
+	//
+	// Get available resources.
+	//
+	// GET /apis/policy/v1/
+	GetPolicyV1APIResources(ctx context.Context) (GetPolicyV1APIResourcesRes, error)
+	// GetPolicyV1beta1APIResources invokes getPolicyV1beta1APIResources operation.
+	//
+	// Get available resources.
+	//
+	// GET /apis/policy/v1beta1/
+	GetPolicyV1beta1APIResources(ctx context.Context) (GetPolicyV1beta1APIResourcesRes, error)
+	// GetRbacAuthorizationAPIGroup invokes getRbacAuthorizationAPIGroup operation.
+	//
+	// Get information of a group.
+	//
+	// GET /apis/rbac.authorization.k8s.io/
+	GetRbacAuthorizationAPIGroup(ctx context.Context) (GetRbacAuthorizationAPIGroupRes, error)
+	// GetRbacAuthorizationV1APIResources invokes getRbacAuthorizationV1APIResources operation.
+	//
+	// Get available resources.
+	//
+	// GET /apis/rbac.authorization.k8s.io/v1/
+	GetRbacAuthorizationV1APIResources(ctx context.Context) (GetRbacAuthorizationV1APIResourcesRes, error)
+	// GetSchedulingAPIGroup invokes getSchedulingAPIGroup operation.
+	//
+	// Get information of a group.
+	//
+	// GET /apis/scheduling.k8s.io/
+	GetSchedulingAPIGroup(ctx context.Context) (GetSchedulingAPIGroupRes, error)
+	// GetSchedulingV1APIResources invokes getSchedulingV1APIResources operation.
+	//
+	// Get available resources.
+	//
+	// GET /apis/scheduling.k8s.io/v1/
+	GetSchedulingV1APIResources(ctx context.Context) (GetSchedulingV1APIResourcesRes, error)
+	// GetServiceAccountIssuerOpenIDConfiguration invokes getServiceAccountIssuerOpenIDConfiguration operation.
+	//
+	// Get service account issuer OpenID configuration, also known as the 'OIDC discovery doc'.
+	//
+	// GET /.well-known/openid-configuration/
+	GetServiceAccountIssuerOpenIDConfiguration(ctx context.Context) (GetServiceAccountIssuerOpenIDConfigurationRes, error)
+	// GetServiceAccountIssuerOpenIDKeyset invokes getServiceAccountIssuerOpenIDKeyset operation.
+	//
+	// Get service account issuer OpenID JSON Web Key Set (contains public token verification keys).
+	//
+	// GET /openid/v1/jwks/
+	GetServiceAccountIssuerOpenIDKeyset(ctx context.Context) (GetServiceAccountIssuerOpenIDKeysetRes, error)
+	// GetStorageAPIGroup invokes getStorageAPIGroup operation.
+	//
+	// Get information of a group.
+	//
+	// GET /apis/storage.k8s.io/
+	GetStorageAPIGroup(ctx context.Context) (GetStorageAPIGroupRes, error)
+	// GetStorageV1APIResources invokes getStorageV1APIResources operation.
+	//
+	// Get available resources.
+	//
+	// GET /apis/storage.k8s.io/v1/
+	GetStorageV1APIResources(ctx context.Context) (GetStorageV1APIResourcesRes, error)
+	// GetStorageV1alpha1APIResources invokes getStorageV1alpha1APIResources operation.
+	//
+	// Get available resources.
+	//
+	// GET /apis/storage.k8s.io/v1alpha1/
+	GetStorageV1alpha1APIResources(ctx context.Context) (GetStorageV1alpha1APIResourcesRes, error)
+	// GetStorageV1beta1APIResources invokes getStorageV1beta1APIResources operation.
+	//
+	// Get available resources.
+	//
+	// GET /apis/storage.k8s.io/v1beta1/
+	GetStorageV1beta1APIResources(ctx context.Context) (GetStorageV1beta1APIResourcesRes, error)
+	// ListAdmissionregistrationV1MutatingWebhookConfiguration invokes listAdmissionregistrationV1MutatingWebhookConfiguration operation.
+	//
+	// List or watch objects of kind MutatingWebhookConfiguration.
+	//
+	// GET /apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations
+	ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, params ListAdmissionregistrationV1MutatingWebhookConfigurationParams) (ListAdmissionregistrationV1MutatingWebhookConfigurationRes, error)
+	// ListAdmissionregistrationV1ValidatingWebhookConfiguration invokes listAdmissionregistrationV1ValidatingWebhookConfiguration operation.
+	//
+	// List or watch objects of kind ValidatingWebhookConfiguration.
+	//
+	// GET /apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations
+	ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, params ListAdmissionregistrationV1ValidatingWebhookConfigurationParams) (ListAdmissionregistrationV1ValidatingWebhookConfigurationRes, error)
+	// ListApiextensionsV1CustomResourceDefinition invokes listApiextensionsV1CustomResourceDefinition operation.
+	//
+	// List or watch objects of kind CustomResourceDefinition.
+	//
+	// GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions
+	ListApiextensionsV1CustomResourceDefinition(ctx context.Context, params ListApiextensionsV1CustomResourceDefinitionParams) (ListApiextensionsV1CustomResourceDefinitionRes, error)
+	// ListApiregistrationV1APIService invokes listApiregistrationV1APIService operation.
+	//
+	// List or watch objects of kind APIService.
+	//
+	// GET /apis/apiregistration.k8s.io/v1/apiservices
+	ListApiregistrationV1APIService(ctx context.Context, params ListApiregistrationV1APIServiceParams) (ListApiregistrationV1APIServiceRes, error)
+	// ListAppsV1ControllerRevisionForAllNamespaces invokes listAppsV1ControllerRevisionForAllNamespaces operation.
+	//
+	// List or watch objects of kind ControllerRevision.
+	//
+	// GET /apis/apps/v1/controllerrevisions
+	ListAppsV1ControllerRevisionForAllNamespaces(ctx context.Context, params ListAppsV1ControllerRevisionForAllNamespacesParams) (ListAppsV1ControllerRevisionForAllNamespacesRes, error)
+	// ListAppsV1DaemonSetForAllNamespaces invokes listAppsV1DaemonSetForAllNamespaces operation.
+	//
+	// List or watch objects of kind DaemonSet.
+	//
+	// GET /apis/apps/v1/daemonsets
+	ListAppsV1DaemonSetForAllNamespaces(ctx context.Context, params ListAppsV1DaemonSetForAllNamespacesParams) (ListAppsV1DaemonSetForAllNamespacesRes, error)
+	// ListAppsV1DeploymentForAllNamespaces invokes listAppsV1DeploymentForAllNamespaces operation.
+	//
+	// List or watch objects of kind Deployment.
+	//
+	// GET /apis/apps/v1/deployments
+	ListAppsV1DeploymentForAllNamespaces(ctx context.Context, params ListAppsV1DeploymentForAllNamespacesParams) (ListAppsV1DeploymentForAllNamespacesRes, error)
+	// ListAppsV1NamespacedControllerRevision invokes listAppsV1NamespacedControllerRevision operation.
+	//
+	// List or watch objects of kind ControllerRevision.
+	//
+	// GET /apis/apps/v1/namespaces/{namespace}/controllerrevisions
+	ListAppsV1NamespacedControllerRevision(ctx context.Context, params ListAppsV1NamespacedControllerRevisionParams) (ListAppsV1NamespacedControllerRevisionRes, error)
+	// ListAppsV1NamespacedDaemonSet invokes listAppsV1NamespacedDaemonSet operation.
+	//
+	// List or watch objects of kind DaemonSet.
+	//
+	// GET /apis/apps/v1/namespaces/{namespace}/daemonsets
+	ListAppsV1NamespacedDaemonSet(ctx context.Context, params ListAppsV1NamespacedDaemonSetParams) (ListAppsV1NamespacedDaemonSetRes, error)
+	// ListAppsV1NamespacedDeployment invokes listAppsV1NamespacedDeployment operation.
+	//
+	// List or watch objects of kind Deployment.
+	//
+	// GET /apis/apps/v1/namespaces/{namespace}/deployments
+	ListAppsV1NamespacedDeployment(ctx context.Context, params ListAppsV1NamespacedDeploymentParams) (ListAppsV1NamespacedDeploymentRes, error)
+	// ListAppsV1NamespacedReplicaSet invokes listAppsV1NamespacedReplicaSet operation.
+	//
+	// List or watch objects of kind ReplicaSet.
+	//
+	// GET /apis/apps/v1/namespaces/{namespace}/replicasets
+	ListAppsV1NamespacedReplicaSet(ctx context.Context, params ListAppsV1NamespacedReplicaSetParams) (ListAppsV1NamespacedReplicaSetRes, error)
+	// ListAppsV1NamespacedStatefulSet invokes listAppsV1NamespacedStatefulSet operation.
+	//
+	// List or watch objects of kind StatefulSet.
+	//
+	// GET /apis/apps/v1/namespaces/{namespace}/statefulsets
+	ListAppsV1NamespacedStatefulSet(ctx context.Context, params ListAppsV1NamespacedStatefulSetParams) (ListAppsV1NamespacedStatefulSetRes, error)
+	// ListAppsV1ReplicaSetForAllNamespaces invokes listAppsV1ReplicaSetForAllNamespaces operation.
+	//
+	// List or watch objects of kind ReplicaSet.
+	//
+	// GET /apis/apps/v1/replicasets
+	ListAppsV1ReplicaSetForAllNamespaces(ctx context.Context, params ListAppsV1ReplicaSetForAllNamespacesParams) (ListAppsV1ReplicaSetForAllNamespacesRes, error)
+	// ListAppsV1StatefulSetForAllNamespaces invokes listAppsV1StatefulSetForAllNamespaces operation.
+	//
+	// List or watch objects of kind StatefulSet.
+	//
+	// GET /apis/apps/v1/statefulsets
+	ListAppsV1StatefulSetForAllNamespaces(ctx context.Context, params ListAppsV1StatefulSetForAllNamespacesParams) (ListAppsV1StatefulSetForAllNamespacesRes, error)
+	// ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces invokes listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces operation.
+	//
+	// List or watch objects of kind HorizontalPodAutoscaler.
+	//
+	// GET /apis/autoscaling/v1/horizontalpodautoscalers
+	ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx context.Context, params ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams) (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRes, error)
+	// ListAutoscalingV1NamespacedHorizontalPodAutoscaler invokes listAutoscalingV1NamespacedHorizontalPodAutoscaler operation.
+	//
+	// List or watch objects of kind HorizontalPodAutoscaler.
+	//
+	// GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers
+	ListAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.Context, params ListAutoscalingV1NamespacedHorizontalPodAutoscalerParams) (ListAutoscalingV1NamespacedHorizontalPodAutoscalerRes, error)
+	// ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces invokes listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces operation.
+	//
+	// List or watch objects of kind HorizontalPodAutoscaler.
+	//
+	// GET /apis/autoscaling/v2beta1/horizontalpodautoscalers
+	ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(ctx context.Context, params ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams) (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRes, error)
+	// ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler invokes listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler operation.
+	//
+	// List or watch objects of kind HorizontalPodAutoscaler.
+	//
+	// GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers
+	ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx context.Context, params ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) (ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, error)
+	// ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces invokes listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces operation.
+	//
+	// List or watch objects of kind HorizontalPodAutoscaler.
+	//
+	// GET /apis/autoscaling/v2beta2/horizontalpodautoscalers
+	ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(ctx context.Context, params ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams) (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRes, error)
+	// ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler invokes listAutoscalingV2beta2NamespacedHorizontalPodAutoscaler operation.
+	//
+	// List or watch objects of kind HorizontalPodAutoscaler.
+	//
+	// GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers
+	ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx context.Context, params ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) (ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, error)
+	// ListBatchV1CronJobForAllNamespaces invokes listBatchV1CronJobForAllNamespaces operation.
+	//
+	// List or watch objects of kind CronJob.
+	//
+	// GET /apis/batch/v1/cronjobs
+	ListBatchV1CronJobForAllNamespaces(ctx context.Context, params ListBatchV1CronJobForAllNamespacesParams) (ListBatchV1CronJobForAllNamespacesRes, error)
+	// ListBatchV1JobForAllNamespaces invokes listBatchV1JobForAllNamespaces operation.
+	//
+	// List or watch objects of kind Job.
+	//
+	// GET /apis/batch/v1/jobs
+	ListBatchV1JobForAllNamespaces(ctx context.Context, params ListBatchV1JobForAllNamespacesParams) (ListBatchV1JobForAllNamespacesRes, error)
+	// ListBatchV1NamespacedCronJob invokes listBatchV1NamespacedCronJob operation.
+	//
+	// List or watch objects of kind CronJob.
+	//
+	// GET /apis/batch/v1/namespaces/{namespace}/cronjobs
+	ListBatchV1NamespacedCronJob(ctx context.Context, params ListBatchV1NamespacedCronJobParams) (ListBatchV1NamespacedCronJobRes, error)
+	// ListBatchV1NamespacedJob invokes listBatchV1NamespacedJob operation.
+	//
+	// List or watch objects of kind Job.
+	//
+	// GET /apis/batch/v1/namespaces/{namespace}/jobs
+	ListBatchV1NamespacedJob(ctx context.Context, params ListBatchV1NamespacedJobParams) (ListBatchV1NamespacedJobRes, error)
+	// ListBatchV1beta1CronJobForAllNamespaces invokes listBatchV1beta1CronJobForAllNamespaces operation.
+	//
+	// List or watch objects of kind CronJob.
+	//
+	// GET /apis/batch/v1beta1/cronjobs
+	ListBatchV1beta1CronJobForAllNamespaces(ctx context.Context, params ListBatchV1beta1CronJobForAllNamespacesParams) (ListBatchV1beta1CronJobForAllNamespacesRes, error)
+	// ListBatchV1beta1NamespacedCronJob invokes listBatchV1beta1NamespacedCronJob operation.
+	//
+	// List or watch objects of kind CronJob.
+	//
+	// GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs
+	ListBatchV1beta1NamespacedCronJob(ctx context.Context, params ListBatchV1beta1NamespacedCronJobParams) (ListBatchV1beta1NamespacedCronJobRes, error)
+	// ListCertificatesV1CertificateSigningRequest invokes listCertificatesV1CertificateSigningRequest operation.
+	//
+	// List or watch objects of kind CertificateSigningRequest.
+	//
+	// GET /apis/certificates.k8s.io/v1/certificatesigningrequests
+	ListCertificatesV1CertificateSigningRequest(ctx context.Context, params ListCertificatesV1CertificateSigningRequestParams) (ListCertificatesV1CertificateSigningRequestRes, error)
+	// ListCoordinationV1LeaseForAllNamespaces invokes listCoordinationV1LeaseForAllNamespaces operation.
+	//
+	// List or watch objects of kind Lease.
+	//
+	// GET /apis/coordination.k8s.io/v1/leases
+	ListCoordinationV1LeaseForAllNamespaces(ctx context.Context, params ListCoordinationV1LeaseForAllNamespacesParams) (ListCoordinationV1LeaseForAllNamespacesRes, error)
+	// ListCoordinationV1NamespacedLease invokes listCoordinationV1NamespacedLease operation.
+	//
+	// List or watch objects of kind Lease.
+	//
+	// GET /apis/coordination.k8s.io/v1/namespaces/{namespace}/leases
+	ListCoordinationV1NamespacedLease(ctx context.Context, params ListCoordinationV1NamespacedLeaseParams) (ListCoordinationV1NamespacedLeaseRes, error)
+	// ListCoreV1ComponentStatus invokes listCoreV1ComponentStatus operation.
+	//
+	// List objects of kind ComponentStatus.
+	//
+	// GET /api/v1/componentstatuses
+	ListCoreV1ComponentStatus(ctx context.Context, params ListCoreV1ComponentStatusParams) (ListCoreV1ComponentStatusRes, error)
+	// ListCoreV1ConfigMapForAllNamespaces invokes listCoreV1ConfigMapForAllNamespaces operation.
+	//
+	// List or watch objects of kind ConfigMap.
+	//
+	// GET /api/v1/configmaps
+	ListCoreV1ConfigMapForAllNamespaces(ctx context.Context, params ListCoreV1ConfigMapForAllNamespacesParams) (ListCoreV1ConfigMapForAllNamespacesRes, error)
+	// ListCoreV1EndpointsForAllNamespaces invokes listCoreV1EndpointsForAllNamespaces operation.
+	//
+	// List or watch objects of kind Endpoints.
+	//
+	// GET /api/v1/endpoints
+	ListCoreV1EndpointsForAllNamespaces(ctx context.Context, params ListCoreV1EndpointsForAllNamespacesParams) (ListCoreV1EndpointsForAllNamespacesRes, error)
+	// ListCoreV1EventForAllNamespaces invokes listCoreV1EventForAllNamespaces operation.
+	//
+	// List or watch objects of kind Event.
+	//
+	// GET /api/v1/events
+	ListCoreV1EventForAllNamespaces(ctx context.Context, params ListCoreV1EventForAllNamespacesParams) (ListCoreV1EventForAllNamespacesRes, error)
+	// ListCoreV1LimitRangeForAllNamespaces invokes listCoreV1LimitRangeForAllNamespaces operation.
+	//
+	// List or watch objects of kind LimitRange.
+	//
+	// GET /api/v1/limitranges
+	ListCoreV1LimitRangeForAllNamespaces(ctx context.Context, params ListCoreV1LimitRangeForAllNamespacesParams) (ListCoreV1LimitRangeForAllNamespacesRes, error)
+	// ListCoreV1Namespace invokes listCoreV1Namespace operation.
+	//
+	// List or watch objects of kind Namespace.
+	//
+	// GET /api/v1/namespaces
+	ListCoreV1Namespace(ctx context.Context, params ListCoreV1NamespaceParams) (ListCoreV1NamespaceRes, error)
+	// ListCoreV1NamespacedConfigMap invokes listCoreV1NamespacedConfigMap operation.
+	//
+	// List or watch objects of kind ConfigMap.
+	//
+	// GET /api/v1/namespaces/{namespace}/configmaps
+	ListCoreV1NamespacedConfigMap(ctx context.Context, params ListCoreV1NamespacedConfigMapParams) (ListCoreV1NamespacedConfigMapRes, error)
+	// ListCoreV1NamespacedEndpoints invokes listCoreV1NamespacedEndpoints operation.
+	//
+	// List or watch objects of kind Endpoints.
+	//
+	// GET /api/v1/namespaces/{namespace}/endpoints
+	ListCoreV1NamespacedEndpoints(ctx context.Context, params ListCoreV1NamespacedEndpointsParams) (ListCoreV1NamespacedEndpointsRes, error)
+	// ListCoreV1NamespacedEvent invokes listCoreV1NamespacedEvent operation.
+	//
+	// List or watch objects of kind Event.
+	//
+	// GET /api/v1/namespaces/{namespace}/events
+	ListCoreV1NamespacedEvent(ctx context.Context, params ListCoreV1NamespacedEventParams) (ListCoreV1NamespacedEventRes, error)
+	// ListCoreV1NamespacedLimitRange invokes listCoreV1NamespacedLimitRange operation.
+	//
+	// List or watch objects of kind LimitRange.
+	//
+	// GET /api/v1/namespaces/{namespace}/limitranges
+	ListCoreV1NamespacedLimitRange(ctx context.Context, params ListCoreV1NamespacedLimitRangeParams) (ListCoreV1NamespacedLimitRangeRes, error)
+	// ListCoreV1NamespacedPersistentVolumeClaim invokes listCoreV1NamespacedPersistentVolumeClaim operation.
+	//
+	// List or watch objects of kind PersistentVolumeClaim.
+	//
+	// GET /api/v1/namespaces/{namespace}/persistentvolumeclaims
+	ListCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, params ListCoreV1NamespacedPersistentVolumeClaimParams) (ListCoreV1NamespacedPersistentVolumeClaimRes, error)
+	// ListCoreV1NamespacedPod invokes listCoreV1NamespacedPod operation.
+	//
+	// List or watch objects of kind Pod.
+	//
+	// GET /api/v1/namespaces/{namespace}/pods
+	ListCoreV1NamespacedPod(ctx context.Context, params ListCoreV1NamespacedPodParams) (ListCoreV1NamespacedPodRes, error)
+	// ListCoreV1NamespacedPodTemplate invokes listCoreV1NamespacedPodTemplate operation.
+	//
+	// List or watch objects of kind PodTemplate.
+	//
+	// GET /api/v1/namespaces/{namespace}/podtemplates
+	ListCoreV1NamespacedPodTemplate(ctx context.Context, params ListCoreV1NamespacedPodTemplateParams) (ListCoreV1NamespacedPodTemplateRes, error)
+	// ListCoreV1NamespacedReplicationController invokes listCoreV1NamespacedReplicationController operation.
+	//
+	// List or watch objects of kind ReplicationController.
+	//
+	// GET /api/v1/namespaces/{namespace}/replicationcontrollers
+	ListCoreV1NamespacedReplicationController(ctx context.Context, params ListCoreV1NamespacedReplicationControllerParams) (ListCoreV1NamespacedReplicationControllerRes, error)
+	// ListCoreV1NamespacedResourceQuota invokes listCoreV1NamespacedResourceQuota operation.
+	//
+	// List or watch objects of kind ResourceQuota.
+	//
+	// GET /api/v1/namespaces/{namespace}/resourcequotas
+	ListCoreV1NamespacedResourceQuota(ctx context.Context, params ListCoreV1NamespacedResourceQuotaParams) (ListCoreV1NamespacedResourceQuotaRes, error)
+	// ListCoreV1NamespacedSecret invokes listCoreV1NamespacedSecret operation.
+	//
+	// List or watch objects of kind Secret.
+	//
+	// GET /api/v1/namespaces/{namespace}/secrets
+	ListCoreV1NamespacedSecret(ctx context.Context, params ListCoreV1NamespacedSecretParams) (ListCoreV1NamespacedSecretRes, error)
+	// ListCoreV1NamespacedService invokes listCoreV1NamespacedService operation.
+	//
+	// List or watch objects of kind Service.
+	//
+	// GET /api/v1/namespaces/{namespace}/services
+	ListCoreV1NamespacedService(ctx context.Context, params ListCoreV1NamespacedServiceParams) (ListCoreV1NamespacedServiceRes, error)
+	// ListCoreV1NamespacedServiceAccount invokes listCoreV1NamespacedServiceAccount operation.
+	//
+	// List or watch objects of kind ServiceAccount.
+	//
+	// GET /api/v1/namespaces/{namespace}/serviceaccounts
+	ListCoreV1NamespacedServiceAccount(ctx context.Context, params ListCoreV1NamespacedServiceAccountParams) (ListCoreV1NamespacedServiceAccountRes, error)
+	// ListCoreV1Node invokes listCoreV1Node operation.
+	//
+	// List or watch objects of kind Node.
+	//
+	// GET /api/v1/nodes
+	ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams) (ListCoreV1NodeRes, error)
+	// ListCoreV1PersistentVolume invokes listCoreV1PersistentVolume operation.
+	//
+	// List or watch objects of kind PersistentVolume.
+	//
+	// GET /api/v1/persistentvolumes
+	ListCoreV1PersistentVolume(ctx context.Context, params ListCoreV1PersistentVolumeParams) (ListCoreV1PersistentVolumeRes, error)
+	// ListCoreV1PersistentVolumeClaimForAllNamespaces invokes listCoreV1PersistentVolumeClaimForAllNamespaces operation.
+	//
+	// List or watch objects of kind PersistentVolumeClaim.
+	//
+	// GET /api/v1/persistentvolumeclaims
+	ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context.Context, params ListCoreV1PersistentVolumeClaimForAllNamespacesParams) (ListCoreV1PersistentVolumeClaimForAllNamespacesRes, error)
+	// ListCoreV1PodForAllNamespaces invokes listCoreV1PodForAllNamespaces operation.
+	//
+	// List or watch objects of kind Pod.
+	//
+	// GET /api/v1/pods
+	ListCoreV1PodForAllNamespaces(ctx context.Context, params ListCoreV1PodForAllNamespacesParams) (ListCoreV1PodForAllNamespacesRes, error)
+	// ListCoreV1PodTemplateForAllNamespaces invokes listCoreV1PodTemplateForAllNamespaces operation.
+	//
+	// List or watch objects of kind PodTemplate.
+	//
+	// GET /api/v1/podtemplates
+	ListCoreV1PodTemplateForAllNamespaces(ctx context.Context, params ListCoreV1PodTemplateForAllNamespacesParams) (ListCoreV1PodTemplateForAllNamespacesRes, error)
+	// ListCoreV1ReplicationControllerForAllNamespaces invokes listCoreV1ReplicationControllerForAllNamespaces operation.
+	//
+	// List or watch objects of kind ReplicationController.
+	//
+	// GET /api/v1/replicationcontrollers
+	ListCoreV1ReplicationControllerForAllNamespaces(ctx context.Context, params ListCoreV1ReplicationControllerForAllNamespacesParams) (ListCoreV1ReplicationControllerForAllNamespacesRes, error)
+	// ListCoreV1ResourceQuotaForAllNamespaces invokes listCoreV1ResourceQuotaForAllNamespaces operation.
+	//
+	// List or watch objects of kind ResourceQuota.
+	//
+	// GET /api/v1/resourcequotas
+	ListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context, params ListCoreV1ResourceQuotaForAllNamespacesParams) (ListCoreV1ResourceQuotaForAllNamespacesRes, error)
+	// ListCoreV1SecretForAllNamespaces invokes listCoreV1SecretForAllNamespaces operation.
+	//
+	// List or watch objects of kind Secret.
+	//
+	// GET /api/v1/secrets
+	ListCoreV1SecretForAllNamespaces(ctx context.Context, params ListCoreV1SecretForAllNamespacesParams) (ListCoreV1SecretForAllNamespacesRes, error)
+	// ListCoreV1ServiceAccountForAllNamespaces invokes listCoreV1ServiceAccountForAllNamespaces operation.
+	//
+	// List or watch objects of kind ServiceAccount.
+	//
+	// GET /api/v1/serviceaccounts
+	ListCoreV1ServiceAccountForAllNamespaces(ctx context.Context, params ListCoreV1ServiceAccountForAllNamespacesParams) (ListCoreV1ServiceAccountForAllNamespacesRes, error)
+	// ListCoreV1ServiceForAllNamespaces invokes listCoreV1ServiceForAllNamespaces operation.
+	//
+	// List or watch objects of kind Service.
+	//
+	// GET /api/v1/services
+	ListCoreV1ServiceForAllNamespaces(ctx context.Context, params ListCoreV1ServiceForAllNamespacesParams) (ListCoreV1ServiceForAllNamespacesRes, error)
+	// ListDiscoveryV1EndpointSliceForAllNamespaces invokes listDiscoveryV1EndpointSliceForAllNamespaces operation.
+	//
+	// List or watch objects of kind EndpointSlice.
+	//
+	// GET /apis/discovery.k8s.io/v1/endpointslices
+	ListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Context, params ListDiscoveryV1EndpointSliceForAllNamespacesParams) (ListDiscoveryV1EndpointSliceForAllNamespacesRes, error)
+	// ListDiscoveryV1NamespacedEndpointSlice invokes listDiscoveryV1NamespacedEndpointSlice operation.
+	//
+	// List or watch objects of kind EndpointSlice.
+	//
+	// GET /apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices
+	ListDiscoveryV1NamespacedEndpointSlice(ctx context.Context, params ListDiscoveryV1NamespacedEndpointSliceParams) (ListDiscoveryV1NamespacedEndpointSliceRes, error)
+	// ListDiscoveryV1beta1EndpointSliceForAllNamespaces invokes listDiscoveryV1beta1EndpointSliceForAllNamespaces operation.
+	//
+	// List or watch objects of kind EndpointSlice.
+	//
+	// GET /apis/discovery.k8s.io/v1beta1/endpointslices
+	ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx context.Context, params ListDiscoveryV1beta1EndpointSliceForAllNamespacesParams) (ListDiscoveryV1beta1EndpointSliceForAllNamespacesRes, error)
+	// ListDiscoveryV1beta1NamespacedEndpointSlice invokes listDiscoveryV1beta1NamespacedEndpointSlice operation.
+	//
+	// List or watch objects of kind EndpointSlice.
+	//
+	// GET /apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices
+	ListDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context, params ListDiscoveryV1beta1NamespacedEndpointSliceParams) (ListDiscoveryV1beta1NamespacedEndpointSliceRes, error)
+	// ListEventsV1EventForAllNamespaces invokes listEventsV1EventForAllNamespaces operation.
+	//
+	// List or watch objects of kind Event.
+	//
+	// GET /apis/events.k8s.io/v1/events
+	ListEventsV1EventForAllNamespaces(ctx context.Context, params ListEventsV1EventForAllNamespacesParams) (ListEventsV1EventForAllNamespacesRes, error)
+	// ListEventsV1NamespacedEvent invokes listEventsV1NamespacedEvent operation.
+	//
+	// List or watch objects of kind Event.
+	//
+	// GET /apis/events.k8s.io/v1/namespaces/{namespace}/events
+	ListEventsV1NamespacedEvent(ctx context.Context, params ListEventsV1NamespacedEventParams) (ListEventsV1NamespacedEventRes, error)
+	// ListEventsV1beta1EventForAllNamespaces invokes listEventsV1beta1EventForAllNamespaces operation.
+	//
+	// List or watch objects of kind Event.
+	//
+	// GET /apis/events.k8s.io/v1beta1/events
+	ListEventsV1beta1EventForAllNamespaces(ctx context.Context, params ListEventsV1beta1EventForAllNamespacesParams) (ListEventsV1beta1EventForAllNamespacesRes, error)
+	// ListEventsV1beta1NamespacedEvent invokes listEventsV1beta1NamespacedEvent operation.
+	//
+	// List or watch objects of kind Event.
+	//
+	// GET /apis/events.k8s.io/v1beta1/namespaces/{namespace}/events
+	ListEventsV1beta1NamespacedEvent(ctx context.Context, params ListEventsV1beta1NamespacedEventParams) (ListEventsV1beta1NamespacedEventRes, error)
+	// ListFlowcontrolApiserverV1beta1FlowSchema invokes listFlowcontrolApiserverV1beta1FlowSchema operation.
+	//
+	// List or watch objects of kind FlowSchema.
+	//
+	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas
+	ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, params ListFlowcontrolApiserverV1beta1FlowSchemaParams) (ListFlowcontrolApiserverV1beta1FlowSchemaRes, error)
+	// ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration invokes listFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
+	//
+	// List or watch objects of kind PriorityLevelConfiguration.
+	//
+	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations
+	ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, params ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, error)
+	// ListFlowcontrolApiserverV1beta2FlowSchema invokes listFlowcontrolApiserverV1beta2FlowSchema operation.
+	//
+	// List or watch objects of kind FlowSchema.
+	//
+	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas
+	ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, params ListFlowcontrolApiserverV1beta2FlowSchemaParams) (ListFlowcontrolApiserverV1beta2FlowSchemaRes, error)
+	// ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration invokes listFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
+	//
+	// List or watch objects of kind PriorityLevelConfiguration.
+	//
+	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations
+	ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, params ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, error)
+	// ListInternalApiserverV1alpha1StorageVersion invokes listInternalApiserverV1alpha1StorageVersion operation.
+	//
+	// List or watch objects of kind StorageVersion.
+	//
+	// GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions
+	ListInternalApiserverV1alpha1StorageVersion(ctx context.Context, params ListInternalApiserverV1alpha1StorageVersionParams) (ListInternalApiserverV1alpha1StorageVersionRes, error)
+	// ListNetworkingV1IngressClass invokes listNetworkingV1IngressClass operation.
+	//
+	// List or watch objects of kind IngressClass.
+	//
+	// GET /apis/networking.k8s.io/v1/ingressclasses
+	ListNetworkingV1IngressClass(ctx context.Context, params ListNetworkingV1IngressClassParams) (ListNetworkingV1IngressClassRes, error)
+	// ListNetworkingV1IngressForAllNamespaces invokes listNetworkingV1IngressForAllNamespaces operation.
+	//
+	// List or watch objects of kind Ingress.
+	//
+	// GET /apis/networking.k8s.io/v1/ingresses
+	ListNetworkingV1IngressForAllNamespaces(ctx context.Context, params ListNetworkingV1IngressForAllNamespacesParams) (ListNetworkingV1IngressForAllNamespacesRes, error)
+	// ListNetworkingV1NamespacedIngress invokes listNetworkingV1NamespacedIngress operation.
+	//
+	// List or watch objects of kind Ingress.
+	//
+	// GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses
+	ListNetworkingV1NamespacedIngress(ctx context.Context, params ListNetworkingV1NamespacedIngressParams) (ListNetworkingV1NamespacedIngressRes, error)
+	// ListNetworkingV1NamespacedNetworkPolicy invokes listNetworkingV1NamespacedNetworkPolicy operation.
+	//
+	// List or watch objects of kind NetworkPolicy.
+	//
+	// GET /apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies
+	ListNetworkingV1NamespacedNetworkPolicy(ctx context.Context, params ListNetworkingV1NamespacedNetworkPolicyParams) (ListNetworkingV1NamespacedNetworkPolicyRes, error)
+	// ListNetworkingV1NetworkPolicyForAllNamespaces invokes listNetworkingV1NetworkPolicyForAllNamespaces operation.
+	//
+	// List or watch objects of kind NetworkPolicy.
+	//
+	// GET /apis/networking.k8s.io/v1/networkpolicies
+	ListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.Context, params ListNetworkingV1NetworkPolicyForAllNamespacesParams) (ListNetworkingV1NetworkPolicyForAllNamespacesRes, error)
+	// ListNodeV1RuntimeClass invokes listNodeV1RuntimeClass operation.
+	//
+	// List or watch objects of kind RuntimeClass.
+	//
+	// GET /apis/node.k8s.io/v1/runtimeclasses
+	ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1RuntimeClassParams) (ListNodeV1RuntimeClassRes, error)
+	// ListNodeV1alpha1RuntimeClass invokes listNodeV1alpha1RuntimeClass operation.
+	//
+	// List or watch objects of kind RuntimeClass.
+	//
+	// GET /apis/node.k8s.io/v1alpha1/runtimeclasses
+	ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNodeV1alpha1RuntimeClassParams) (ListNodeV1alpha1RuntimeClassRes, error)
+	// ListNodeV1beta1RuntimeClass invokes listNodeV1beta1RuntimeClass operation.
+	//
+	// List or watch objects of kind RuntimeClass.
+	//
+	// GET /apis/node.k8s.io/v1beta1/runtimeclasses
+	ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNodeV1beta1RuntimeClassParams) (ListNodeV1beta1RuntimeClassRes, error)
+	// ListPolicyV1NamespacedPodDisruptionBudget invokes listPolicyV1NamespacedPodDisruptionBudget operation.
+	//
+	// List or watch objects of kind PodDisruptionBudget.
+	//
+	// GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets
+	ListPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, params ListPolicyV1NamespacedPodDisruptionBudgetParams) (ListPolicyV1NamespacedPodDisruptionBudgetRes, error)
+	// ListPolicyV1PodDisruptionBudgetForAllNamespaces invokes listPolicyV1PodDisruptionBudgetForAllNamespaces operation.
+	//
+	// List or watch objects of kind PodDisruptionBudget.
+	//
+	// GET /apis/policy/v1/poddisruptionbudgets
+	ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context.Context, params ListPolicyV1PodDisruptionBudgetForAllNamespacesParams) (ListPolicyV1PodDisruptionBudgetForAllNamespacesRes, error)
+	// ListPolicyV1beta1NamespacedPodDisruptionBudget invokes listPolicyV1beta1NamespacedPodDisruptionBudget operation.
+	//
+	// List or watch objects of kind PodDisruptionBudget.
+	//
+	// GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets
+	ListPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Context, params ListPolicyV1beta1NamespacedPodDisruptionBudgetParams) (ListPolicyV1beta1NamespacedPodDisruptionBudgetRes, error)
+	// ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces invokes listPolicyV1beta1PodDisruptionBudgetForAllNamespaces operation.
+	//
+	// List or watch objects of kind PodDisruptionBudget.
+	//
+	// GET /apis/policy/v1beta1/poddisruptionbudgets
+	ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx context.Context, params ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams) (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRes, error)
+	// ListPolicyV1beta1PodSecurityPolicy invokes listPolicyV1beta1PodSecurityPolicy operation.
+	//
+	// List or watch objects of kind PodSecurityPolicy.
+	//
+	// GET /apis/policy/v1beta1/podsecuritypolicies
+	ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params ListPolicyV1beta1PodSecurityPolicyParams) (ListPolicyV1beta1PodSecurityPolicyRes, error)
+	// ListRbacAuthorizationV1ClusterRole invokes listRbacAuthorizationV1ClusterRole operation.
+	//
+	// List or watch objects of kind ClusterRole.
+	//
+	// GET /apis/rbac.authorization.k8s.io/v1/clusterroles
+	ListRbacAuthorizationV1ClusterRole(ctx context.Context, params ListRbacAuthorizationV1ClusterRoleParams) (ListRbacAuthorizationV1ClusterRoleRes, error)
+	// ListRbacAuthorizationV1ClusterRoleBinding invokes listRbacAuthorizationV1ClusterRoleBinding operation.
+	//
+	// List or watch objects of kind ClusterRoleBinding.
+	//
+	// GET /apis/rbac.authorization.k8s.io/v1/clusterrolebindings
+	ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, params ListRbacAuthorizationV1ClusterRoleBindingParams) (ListRbacAuthorizationV1ClusterRoleBindingRes, error)
+	// ListRbacAuthorizationV1NamespacedRole invokes listRbacAuthorizationV1NamespacedRole operation.
+	//
+	// List or watch objects of kind Role.
+	//
+	// GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles
+	ListRbacAuthorizationV1NamespacedRole(ctx context.Context, params ListRbacAuthorizationV1NamespacedRoleParams) (ListRbacAuthorizationV1NamespacedRoleRes, error)
+	// ListRbacAuthorizationV1NamespacedRoleBinding invokes listRbacAuthorizationV1NamespacedRoleBinding operation.
+	//
+	// List or watch objects of kind RoleBinding.
+	//
+	// GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings
+	ListRbacAuthorizationV1NamespacedRoleBinding(ctx context.Context, params ListRbacAuthorizationV1NamespacedRoleBindingParams) (ListRbacAuthorizationV1NamespacedRoleBindingRes, error)
+	// ListRbacAuthorizationV1RoleBindingForAllNamespaces invokes listRbacAuthorizationV1RoleBindingForAllNamespaces operation.
+	//
+	// List or watch objects of kind RoleBinding.
+	//
+	// GET /apis/rbac.authorization.k8s.io/v1/rolebindings
+	ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx context.Context, params ListRbacAuthorizationV1RoleBindingForAllNamespacesParams) (ListRbacAuthorizationV1RoleBindingForAllNamespacesRes, error)
+	// ListRbacAuthorizationV1RoleForAllNamespaces invokes listRbacAuthorizationV1RoleForAllNamespaces operation.
+	//
+	// List or watch objects of kind Role.
+	//
+	// GET /apis/rbac.authorization.k8s.io/v1/roles
+	ListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Context, params ListRbacAuthorizationV1RoleForAllNamespacesParams) (ListRbacAuthorizationV1RoleForAllNamespacesRes, error)
+	// ListSchedulingV1PriorityClass invokes listSchedulingV1PriorityClass operation.
+	//
+	// List or watch objects of kind PriorityClass.
+	//
+	// GET /apis/scheduling.k8s.io/v1/priorityclasses
+	ListSchedulingV1PriorityClass(ctx context.Context, params ListSchedulingV1PriorityClassParams) (ListSchedulingV1PriorityClassRes, error)
+	// ListStorageV1CSIDriver invokes listStorageV1CSIDriver operation.
+	//
+	// List or watch objects of kind CSIDriver.
+	//
+	// GET /apis/storage.k8s.io/v1/csidrivers
+	ListStorageV1CSIDriver(ctx context.Context, params ListStorageV1CSIDriverParams) (ListStorageV1CSIDriverRes, error)
+	// ListStorageV1CSINode invokes listStorageV1CSINode operation.
+	//
+	// List or watch objects of kind CSINode.
+	//
+	// GET /apis/storage.k8s.io/v1/csinodes
+	ListStorageV1CSINode(ctx context.Context, params ListStorageV1CSINodeParams) (ListStorageV1CSINodeRes, error)
+	// ListStorageV1StorageClass invokes listStorageV1StorageClass operation.
+	//
+	// List or watch objects of kind StorageClass.
+	//
+	// GET /apis/storage.k8s.io/v1/storageclasses
+	ListStorageV1StorageClass(ctx context.Context, params ListStorageV1StorageClassParams) (ListStorageV1StorageClassRes, error)
+	// ListStorageV1VolumeAttachment invokes listStorageV1VolumeAttachment operation.
+	//
+	// List or watch objects of kind VolumeAttachment.
+	//
+	// GET /apis/storage.k8s.io/v1/volumeattachments
+	ListStorageV1VolumeAttachment(ctx context.Context, params ListStorageV1VolumeAttachmentParams) (ListStorageV1VolumeAttachmentRes, error)
+	// ListStorageV1alpha1CSIStorageCapacityForAllNamespaces invokes listStorageV1alpha1CSIStorageCapacityForAllNamespaces operation.
+	//
+	// List or watch objects of kind CSIStorageCapacity.
+	//
+	// GET /apis/storage.k8s.io/v1alpha1/csistoragecapacities
+	ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx context.Context, params ListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams) (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesRes, error)
+	// ListStorageV1alpha1NamespacedCSIStorageCapacity invokes listStorageV1alpha1NamespacedCSIStorageCapacity operation.
+	//
+	// List or watch objects of kind CSIStorageCapacity.
+	//
+	// GET /apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities
+	ListStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Context, params ListStorageV1alpha1NamespacedCSIStorageCapacityParams) (ListStorageV1alpha1NamespacedCSIStorageCapacityRes, error)
+	// ListStorageV1beta1CSIStorageCapacityForAllNamespaces invokes listStorageV1beta1CSIStorageCapacityForAllNamespaces operation.
+	//
+	// List or watch objects of kind CSIStorageCapacity.
+	//
+	// GET /apis/storage.k8s.io/v1beta1/csistoragecapacities
+	ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx context.Context, params ListStorageV1beta1CSIStorageCapacityForAllNamespacesParams) (ListStorageV1beta1CSIStorageCapacityForAllNamespacesRes, error)
+	// ListStorageV1beta1NamespacedCSIStorageCapacity invokes listStorageV1beta1NamespacedCSIStorageCapacity operation.
+	//
+	// List or watch objects of kind CSIStorageCapacity.
+	//
+	// GET /apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities
+	ListStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Context, params ListStorageV1beta1NamespacedCSIStorageCapacityParams) (ListStorageV1beta1NamespacedCSIStorageCapacityRes, error)
+	// LogFileHandler invokes logFileHandler operation.
+	//
+	// GET /logs/{logpath}
+	LogFileHandler(ctx context.Context, params LogFileHandlerParams) error
+	// LogFileListHandler invokes logFileListHandler operation.
+	//
+	// GET /logs/
+	LogFileListHandler(ctx context.Context) error
+	// ReadAdmissionregistrationV1MutatingWebhookConfiguration invokes readAdmissionregistrationV1MutatingWebhookConfiguration operation.
+	//
+	// Read the specified MutatingWebhookConfiguration.
+	//
+	// GET /apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}
+	ReadAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, params ReadAdmissionregistrationV1MutatingWebhookConfigurationParams) (ReadAdmissionregistrationV1MutatingWebhookConfigurationRes, error)
+	// ReadAdmissionregistrationV1ValidatingWebhookConfiguration invokes readAdmissionregistrationV1ValidatingWebhookConfiguration operation.
+	//
+	// Read the specified ValidatingWebhookConfiguration.
+	//
+	// GET /apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/{name}
+	ReadAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, params ReadAdmissionregistrationV1ValidatingWebhookConfigurationParams) (ReadAdmissionregistrationV1ValidatingWebhookConfigurationRes, error)
+	// ReadApiextensionsV1CustomResourceDefinition invokes readApiextensionsV1CustomResourceDefinition operation.
+	//
+	// Read the specified CustomResourceDefinition.
+	//
+	// GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}
+	ReadApiextensionsV1CustomResourceDefinition(ctx context.Context, params ReadApiextensionsV1CustomResourceDefinitionParams) (ReadApiextensionsV1CustomResourceDefinitionRes, error)
+	// ReadApiextensionsV1CustomResourceDefinitionStatus invokes readApiextensionsV1CustomResourceDefinitionStatus operation.
+	//
+	// Read status of the specified CustomResourceDefinition.
+	//
+	// GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status
+	ReadApiextensionsV1CustomResourceDefinitionStatus(ctx context.Context, params ReadApiextensionsV1CustomResourceDefinitionStatusParams) (ReadApiextensionsV1CustomResourceDefinitionStatusRes, error)
+	// ReadApiregistrationV1APIService invokes readApiregistrationV1APIService operation.
+	//
+	// Read the specified APIService.
+	//
+	// GET /apis/apiregistration.k8s.io/v1/apiservices/{name}
+	ReadApiregistrationV1APIService(ctx context.Context, params ReadApiregistrationV1APIServiceParams) (ReadApiregistrationV1APIServiceRes, error)
+	// ReadApiregistrationV1APIServiceStatus invokes readApiregistrationV1APIServiceStatus operation.
+	//
+	// Read status of the specified APIService.
+	//
+	// GET /apis/apiregistration.k8s.io/v1/apiservices/{name}/status
+	ReadApiregistrationV1APIServiceStatus(ctx context.Context, params ReadApiregistrationV1APIServiceStatusParams) (ReadApiregistrationV1APIServiceStatusRes, error)
+	// ReadAppsV1NamespacedControllerRevision invokes readAppsV1NamespacedControllerRevision operation.
+	//
+	// Read the specified ControllerRevision.
+	//
+	// GET /apis/apps/v1/namespaces/{namespace}/controllerrevisions/{name}
+	ReadAppsV1NamespacedControllerRevision(ctx context.Context, params ReadAppsV1NamespacedControllerRevisionParams) (ReadAppsV1NamespacedControllerRevisionRes, error)
+	// ReadAppsV1NamespacedDaemonSet invokes readAppsV1NamespacedDaemonSet operation.
+	//
+	// Read the specified DaemonSet.
+	//
+	// GET /apis/apps/v1/namespaces/{namespace}/daemonsets/{name}
+	ReadAppsV1NamespacedDaemonSet(ctx context.Context, params ReadAppsV1NamespacedDaemonSetParams) (ReadAppsV1NamespacedDaemonSetRes, error)
+	// ReadAppsV1NamespacedDaemonSetStatus invokes readAppsV1NamespacedDaemonSetStatus operation.
+	//
+	// Read status of the specified DaemonSet.
+	//
+	// GET /apis/apps/v1/namespaces/{namespace}/daemonsets/{name}/status
+	ReadAppsV1NamespacedDaemonSetStatus(ctx context.Context, params ReadAppsV1NamespacedDaemonSetStatusParams) (ReadAppsV1NamespacedDaemonSetStatusRes, error)
+	// ReadAppsV1NamespacedDeployment invokes readAppsV1NamespacedDeployment operation.
+	//
+	// Read the specified Deployment.
+	//
+	// GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}
+	ReadAppsV1NamespacedDeployment(ctx context.Context, params ReadAppsV1NamespacedDeploymentParams) (ReadAppsV1NamespacedDeploymentRes, error)
+	// ReadAppsV1NamespacedDeploymentScale invokes readAppsV1NamespacedDeploymentScale operation.
+	//
+	// Read scale of the specified Deployment.
+	//
+	// GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}/scale
+	ReadAppsV1NamespacedDeploymentScale(ctx context.Context, params ReadAppsV1NamespacedDeploymentScaleParams) (ReadAppsV1NamespacedDeploymentScaleRes, error)
+	// ReadAppsV1NamespacedDeploymentStatus invokes readAppsV1NamespacedDeploymentStatus operation.
+	//
+	// Read status of the specified Deployment.
+	//
+	// GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}/status
+	ReadAppsV1NamespacedDeploymentStatus(ctx context.Context, params ReadAppsV1NamespacedDeploymentStatusParams) (ReadAppsV1NamespacedDeploymentStatusRes, error)
+	// ReadAppsV1NamespacedReplicaSet invokes readAppsV1NamespacedReplicaSet operation.
+	//
+	// Read the specified ReplicaSet.
+	//
+	// GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}
+	ReadAppsV1NamespacedReplicaSet(ctx context.Context, params ReadAppsV1NamespacedReplicaSetParams) (ReadAppsV1NamespacedReplicaSetRes, error)
+	// ReadAppsV1NamespacedReplicaSetScale invokes readAppsV1NamespacedReplicaSetScale operation.
+	//
+	// Read scale of the specified ReplicaSet.
+	//
+	// GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}/scale
+	ReadAppsV1NamespacedReplicaSetScale(ctx context.Context, params ReadAppsV1NamespacedReplicaSetScaleParams) (ReadAppsV1NamespacedReplicaSetScaleRes, error)
+	// ReadAppsV1NamespacedReplicaSetStatus invokes readAppsV1NamespacedReplicaSetStatus operation.
+	//
+	// Read status of the specified ReplicaSet.
+	//
+	// GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}/status
+	ReadAppsV1NamespacedReplicaSetStatus(ctx context.Context, params ReadAppsV1NamespacedReplicaSetStatusParams) (ReadAppsV1NamespacedReplicaSetStatusRes, error)
+	// ReadAppsV1NamespacedStatefulSet invokes readAppsV1NamespacedStatefulSet operation.
+	//
+	// Read the specified StatefulSet.
+	//
+	// GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}
+	ReadAppsV1NamespacedStatefulSet(ctx context.Context, params ReadAppsV1NamespacedStatefulSetParams) (ReadAppsV1NamespacedStatefulSetRes, error)
+	// ReadAppsV1NamespacedStatefulSetScale invokes readAppsV1NamespacedStatefulSetScale operation.
+	//
+	// Read scale of the specified StatefulSet.
+	//
+	// GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/scale
+	ReadAppsV1NamespacedStatefulSetScale(ctx context.Context, params ReadAppsV1NamespacedStatefulSetScaleParams) (ReadAppsV1NamespacedStatefulSetScaleRes, error)
+	// ReadAppsV1NamespacedStatefulSetStatus invokes readAppsV1NamespacedStatefulSetStatus operation.
+	//
+	// Read status of the specified StatefulSet.
+	//
+	// GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/status
+	ReadAppsV1NamespacedStatefulSetStatus(ctx context.Context, params ReadAppsV1NamespacedStatefulSetStatusParams) (ReadAppsV1NamespacedStatefulSetStatusRes, error)
+	// ReadAutoscalingV1NamespacedHorizontalPodAutoscaler invokes readAutoscalingV1NamespacedHorizontalPodAutoscaler operation.
+	//
+	// Read the specified HorizontalPodAutoscaler.
+	//
+	// GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}
+	ReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.Context, params ReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams) (ReadAutoscalingV1NamespacedHorizontalPodAutoscalerRes, error)
+	// ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus invokes readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus operation.
+	//
+	// Read status of the specified HorizontalPodAutoscaler.
+	//
+	// GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
+	ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ctx context.Context, params ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams) (ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRes, error)
+	// ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler invokes readAutoscalingV2beta1NamespacedHorizontalPodAutoscaler operation.
+	//
+	// Read the specified HorizontalPodAutoscaler.
+	//
+	// GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}
+	ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx context.Context, params ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) (ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, error)
+	// ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus invokes readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus operation.
+	//
+	// Read status of the specified HorizontalPodAutoscaler.
+	//
+	// GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
+	ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus(ctx context.Context, params ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams) (ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRes, error)
+	// ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler invokes readAutoscalingV2beta2NamespacedHorizontalPodAutoscaler operation.
+	//
+	// Read the specified HorizontalPodAutoscaler.
+	//
+	// GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}
+	ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx context.Context, params ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) (ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, error)
+	// ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus invokes readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus operation.
+	//
+	// Read status of the specified HorizontalPodAutoscaler.
+	//
+	// GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
+	ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus(ctx context.Context, params ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams) (ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRes, error)
+	// ReadBatchV1NamespacedCronJob invokes readBatchV1NamespacedCronJob operation.
+	//
+	// Read the specified CronJob.
+	//
+	// GET /apis/batch/v1/namespaces/{namespace}/cronjobs/{name}
+	ReadBatchV1NamespacedCronJob(ctx context.Context, params ReadBatchV1NamespacedCronJobParams) (ReadBatchV1NamespacedCronJobRes, error)
+	// ReadBatchV1NamespacedCronJobStatus invokes readBatchV1NamespacedCronJobStatus operation.
+	//
+	// Read status of the specified CronJob.
+	//
+	// GET /apis/batch/v1/namespaces/{namespace}/cronjobs/{name}/status
+	ReadBatchV1NamespacedCronJobStatus(ctx context.Context, params ReadBatchV1NamespacedCronJobStatusParams) (ReadBatchV1NamespacedCronJobStatusRes, error)
+	// ReadBatchV1NamespacedJob invokes readBatchV1NamespacedJob operation.
+	//
+	// Read the specified Job.
+	//
+	// GET /apis/batch/v1/namespaces/{namespace}/jobs/{name}
+	ReadBatchV1NamespacedJob(ctx context.Context, params ReadBatchV1NamespacedJobParams) (ReadBatchV1NamespacedJobRes, error)
+	// ReadBatchV1NamespacedJobStatus invokes readBatchV1NamespacedJobStatus operation.
+	//
+	// Read status of the specified Job.
+	//
+	// GET /apis/batch/v1/namespaces/{namespace}/jobs/{name}/status
+	ReadBatchV1NamespacedJobStatus(ctx context.Context, params ReadBatchV1NamespacedJobStatusParams) (ReadBatchV1NamespacedJobStatusRes, error)
+	// ReadBatchV1beta1NamespacedCronJob invokes readBatchV1beta1NamespacedCronJob operation.
+	//
+	// Read the specified CronJob.
+	//
+	// GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}
+	ReadBatchV1beta1NamespacedCronJob(ctx context.Context, params ReadBatchV1beta1NamespacedCronJobParams) (ReadBatchV1beta1NamespacedCronJobRes, error)
+	// ReadBatchV1beta1NamespacedCronJobStatus invokes readBatchV1beta1NamespacedCronJobStatus operation.
+	//
+	// Read status of the specified CronJob.
+	//
+	// GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status
+	ReadBatchV1beta1NamespacedCronJobStatus(ctx context.Context, params ReadBatchV1beta1NamespacedCronJobStatusParams) (ReadBatchV1beta1NamespacedCronJobStatusRes, error)
+	// ReadCertificatesV1CertificateSigningRequest invokes readCertificatesV1CertificateSigningRequest operation.
+	//
+	// Read the specified CertificateSigningRequest.
+	//
+	// GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}
+	ReadCertificatesV1CertificateSigningRequest(ctx context.Context, params ReadCertificatesV1CertificateSigningRequestParams) (ReadCertificatesV1CertificateSigningRequestRes, error)
+	// ReadCertificatesV1CertificateSigningRequestApproval invokes readCertificatesV1CertificateSigningRequestApproval operation.
+	//
+	// Read approval of the specified CertificateSigningRequest.
+	//
+	// GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/approval
+	ReadCertificatesV1CertificateSigningRequestApproval(ctx context.Context, params ReadCertificatesV1CertificateSigningRequestApprovalParams) (ReadCertificatesV1CertificateSigningRequestApprovalRes, error)
+	// ReadCertificatesV1CertificateSigningRequestStatus invokes readCertificatesV1CertificateSigningRequestStatus operation.
+	//
+	// Read status of the specified CertificateSigningRequest.
+	//
+	// GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/status
+	ReadCertificatesV1CertificateSigningRequestStatus(ctx context.Context, params ReadCertificatesV1CertificateSigningRequestStatusParams) (ReadCertificatesV1CertificateSigningRequestStatusRes, error)
+	// ReadCoordinationV1NamespacedLease invokes readCoordinationV1NamespacedLease operation.
+	//
+	// Read the specified Lease.
+	//
+	// GET /apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}
+	ReadCoordinationV1NamespacedLease(ctx context.Context, params ReadCoordinationV1NamespacedLeaseParams) (ReadCoordinationV1NamespacedLeaseRes, error)
+	// ReadCoreV1ComponentStatus invokes readCoreV1ComponentStatus operation.
+	//
+	// Read the specified ComponentStatus.
+	//
+	// GET /api/v1/componentstatuses/{name}
+	ReadCoreV1ComponentStatus(ctx context.Context, params ReadCoreV1ComponentStatusParams) (ReadCoreV1ComponentStatusRes, error)
+	// ReadCoreV1Namespace invokes readCoreV1Namespace operation.
+	//
+	// Read the specified Namespace.
+	//
+	// GET /api/v1/namespaces/{name}
+	ReadCoreV1Namespace(ctx context.Context, params ReadCoreV1NamespaceParams) (ReadCoreV1NamespaceRes, error)
+	// ReadCoreV1NamespaceStatus invokes readCoreV1NamespaceStatus operation.
+	//
+	// Read status of the specified Namespace.
+	//
+	// GET /api/v1/namespaces/{name}/status
+	ReadCoreV1NamespaceStatus(ctx context.Context, params ReadCoreV1NamespaceStatusParams) (ReadCoreV1NamespaceStatusRes, error)
+	// ReadCoreV1NamespacedConfigMap invokes readCoreV1NamespacedConfigMap operation.
+	//
+	// Read the specified ConfigMap.
+	//
+	// GET /api/v1/namespaces/{namespace}/configmaps/{name}
+	ReadCoreV1NamespacedConfigMap(ctx context.Context, params ReadCoreV1NamespacedConfigMapParams) (ReadCoreV1NamespacedConfigMapRes, error)
+	// ReadCoreV1NamespacedEndpoints invokes readCoreV1NamespacedEndpoints operation.
+	//
+	// Read the specified Endpoints.
+	//
+	// GET /api/v1/namespaces/{namespace}/endpoints/{name}
+	ReadCoreV1NamespacedEndpoints(ctx context.Context, params ReadCoreV1NamespacedEndpointsParams) (ReadCoreV1NamespacedEndpointsRes, error)
+	// ReadCoreV1NamespacedEvent invokes readCoreV1NamespacedEvent operation.
+	//
+	// Read the specified Event.
+	//
+	// GET /api/v1/namespaces/{namespace}/events/{name}
+	ReadCoreV1NamespacedEvent(ctx context.Context, params ReadCoreV1NamespacedEventParams) (ReadCoreV1NamespacedEventRes, error)
+	// ReadCoreV1NamespacedLimitRange invokes readCoreV1NamespacedLimitRange operation.
+	//
+	// Read the specified LimitRange.
+	//
+	// GET /api/v1/namespaces/{namespace}/limitranges/{name}
+	ReadCoreV1NamespacedLimitRange(ctx context.Context, params ReadCoreV1NamespacedLimitRangeParams) (ReadCoreV1NamespacedLimitRangeRes, error)
+	// ReadCoreV1NamespacedPersistentVolumeClaim invokes readCoreV1NamespacedPersistentVolumeClaim operation.
+	//
+	// Read the specified PersistentVolumeClaim.
+	//
+	// GET /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}
+	ReadCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, params ReadCoreV1NamespacedPersistentVolumeClaimParams) (ReadCoreV1NamespacedPersistentVolumeClaimRes, error)
+	// ReadCoreV1NamespacedPersistentVolumeClaimStatus invokes readCoreV1NamespacedPersistentVolumeClaimStatus operation.
+	//
+	// Read status of the specified PersistentVolumeClaim.
+	//
+	// GET /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status
+	ReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx context.Context, params ReadCoreV1NamespacedPersistentVolumeClaimStatusParams) (ReadCoreV1NamespacedPersistentVolumeClaimStatusRes, error)
+	// ReadCoreV1NamespacedPod invokes readCoreV1NamespacedPod operation.
+	//
+	// Read the specified Pod.
+	//
+	// GET /api/v1/namespaces/{namespace}/pods/{name}
+	ReadCoreV1NamespacedPod(ctx context.Context, params ReadCoreV1NamespacedPodParams) (ReadCoreV1NamespacedPodRes, error)
+	// ReadCoreV1NamespacedPodEphemeralcontainers invokes readCoreV1NamespacedPodEphemeralcontainers operation.
+	//
+	// Read ephemeralcontainers of the specified Pod.
+	//
+	// GET /api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers
+	ReadCoreV1NamespacedPodEphemeralcontainers(ctx context.Context, params ReadCoreV1NamespacedPodEphemeralcontainersParams) (ReadCoreV1NamespacedPodEphemeralcontainersRes, error)
+	// ReadCoreV1NamespacedPodLog invokes readCoreV1NamespacedPodLog operation.
+	//
+	// Read log of the specified Pod.
+	//
+	// GET /api/v1/namespaces/{namespace}/pods/{name}/log
+	ReadCoreV1NamespacedPodLog(ctx context.Context, params ReadCoreV1NamespacedPodLogParams) (ReadCoreV1NamespacedPodLogRes, error)
+	// ReadCoreV1NamespacedPodStatus invokes readCoreV1NamespacedPodStatus operation.
+	//
+	// Read status of the specified Pod.
+	//
+	// GET /api/v1/namespaces/{namespace}/pods/{name}/status
+	ReadCoreV1NamespacedPodStatus(ctx context.Context, params ReadCoreV1NamespacedPodStatusParams) (ReadCoreV1NamespacedPodStatusRes, error)
+	// ReadCoreV1NamespacedPodTemplate invokes readCoreV1NamespacedPodTemplate operation.
+	//
+	// Read the specified PodTemplate.
+	//
+	// GET /api/v1/namespaces/{namespace}/podtemplates/{name}
+	ReadCoreV1NamespacedPodTemplate(ctx context.Context, params ReadCoreV1NamespacedPodTemplateParams) (ReadCoreV1NamespacedPodTemplateRes, error)
+	// ReadCoreV1NamespacedReplicationController invokes readCoreV1NamespacedReplicationController operation.
+	//
+	// Read the specified ReplicationController.
+	//
+	// GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}
+	ReadCoreV1NamespacedReplicationController(ctx context.Context, params ReadCoreV1NamespacedReplicationControllerParams) (ReadCoreV1NamespacedReplicationControllerRes, error)
+	// ReadCoreV1NamespacedReplicationControllerScale invokes readCoreV1NamespacedReplicationControllerScale operation.
+	//
+	// Read scale of the specified ReplicationController.
+	//
+	// GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale
+	ReadCoreV1NamespacedReplicationControllerScale(ctx context.Context, params ReadCoreV1NamespacedReplicationControllerScaleParams) (ReadCoreV1NamespacedReplicationControllerScaleRes, error)
+	// ReadCoreV1NamespacedReplicationControllerStatus invokes readCoreV1NamespacedReplicationControllerStatus operation.
+	//
+	// Read status of the specified ReplicationController.
+	//
+	// GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status
+	ReadCoreV1NamespacedReplicationControllerStatus(ctx context.Context, params ReadCoreV1NamespacedReplicationControllerStatusParams) (ReadCoreV1NamespacedReplicationControllerStatusRes, error)
+	// ReadCoreV1NamespacedResourceQuota invokes readCoreV1NamespacedResourceQuota operation.
+	//
+	// Read the specified ResourceQuota.
+	//
+	// GET /api/v1/namespaces/{namespace}/resourcequotas/{name}
+	ReadCoreV1NamespacedResourceQuota(ctx context.Context, params ReadCoreV1NamespacedResourceQuotaParams) (ReadCoreV1NamespacedResourceQuotaRes, error)
+	// ReadCoreV1NamespacedResourceQuotaStatus invokes readCoreV1NamespacedResourceQuotaStatus operation.
+	//
+	// Read status of the specified ResourceQuota.
+	//
+	// GET /api/v1/namespaces/{namespace}/resourcequotas/{name}/status
+	ReadCoreV1NamespacedResourceQuotaStatus(ctx context.Context, params ReadCoreV1NamespacedResourceQuotaStatusParams) (ReadCoreV1NamespacedResourceQuotaStatusRes, error)
+	// ReadCoreV1NamespacedSecret invokes readCoreV1NamespacedSecret operation.
+	//
+	// Read the specified Secret.
+	//
+	// GET /api/v1/namespaces/{namespace}/secrets/{name}
+	ReadCoreV1NamespacedSecret(ctx context.Context, params ReadCoreV1NamespacedSecretParams) (ReadCoreV1NamespacedSecretRes, error)
+	// ReadCoreV1NamespacedService invokes readCoreV1NamespacedService operation.
+	//
+	// Read the specified Service.
+	//
+	// GET /api/v1/namespaces/{namespace}/services/{name}
+	ReadCoreV1NamespacedService(ctx context.Context, params ReadCoreV1NamespacedServiceParams) (ReadCoreV1NamespacedServiceRes, error)
+	// ReadCoreV1NamespacedServiceAccount invokes readCoreV1NamespacedServiceAccount operation.
+	//
+	// Read the specified ServiceAccount.
+	//
+	// GET /api/v1/namespaces/{namespace}/serviceaccounts/{name}
+	ReadCoreV1NamespacedServiceAccount(ctx context.Context, params ReadCoreV1NamespacedServiceAccountParams) (ReadCoreV1NamespacedServiceAccountRes, error)
+	// ReadCoreV1NamespacedServiceStatus invokes readCoreV1NamespacedServiceStatus operation.
+	//
+	// Read status of the specified Service.
+	//
+	// GET /api/v1/namespaces/{namespace}/services/{name}/status
+	ReadCoreV1NamespacedServiceStatus(ctx context.Context, params ReadCoreV1NamespacedServiceStatusParams) (ReadCoreV1NamespacedServiceStatusRes, error)
+	// ReadCoreV1Node invokes readCoreV1Node operation.
+	//
+	// Read the specified Node.
+	//
+	// GET /api/v1/nodes/{name}
+	ReadCoreV1Node(ctx context.Context, params ReadCoreV1NodeParams) (ReadCoreV1NodeRes, error)
+	// ReadCoreV1NodeStatus invokes readCoreV1NodeStatus operation.
+	//
+	// Read status of the specified Node.
+	//
+	// GET /api/v1/nodes/{name}/status
+	ReadCoreV1NodeStatus(ctx context.Context, params ReadCoreV1NodeStatusParams) (ReadCoreV1NodeStatusRes, error)
+	// ReadCoreV1PersistentVolume invokes readCoreV1PersistentVolume operation.
+	//
+	// Read the specified PersistentVolume.
+	//
+	// GET /api/v1/persistentvolumes/{name}
+	ReadCoreV1PersistentVolume(ctx context.Context, params ReadCoreV1PersistentVolumeParams) (ReadCoreV1PersistentVolumeRes, error)
+	// ReadCoreV1PersistentVolumeStatus invokes readCoreV1PersistentVolumeStatus operation.
+	//
+	// Read status of the specified PersistentVolume.
+	//
+	// GET /api/v1/persistentvolumes/{name}/status
+	ReadCoreV1PersistentVolumeStatus(ctx context.Context, params ReadCoreV1PersistentVolumeStatusParams) (ReadCoreV1PersistentVolumeStatusRes, error)
+	// ReadDiscoveryV1NamespacedEndpointSlice invokes readDiscoveryV1NamespacedEndpointSlice operation.
+	//
+	// Read the specified EndpointSlice.
+	//
+	// GET /apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}
+	ReadDiscoveryV1NamespacedEndpointSlice(ctx context.Context, params ReadDiscoveryV1NamespacedEndpointSliceParams) (ReadDiscoveryV1NamespacedEndpointSliceRes, error)
+	// ReadDiscoveryV1beta1NamespacedEndpointSlice invokes readDiscoveryV1beta1NamespacedEndpointSlice operation.
+	//
+	// Read the specified EndpointSlice.
+	//
+	// GET /apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}
+	ReadDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context, params ReadDiscoveryV1beta1NamespacedEndpointSliceParams) (ReadDiscoveryV1beta1NamespacedEndpointSliceRes, error)
+	// ReadEventsV1NamespacedEvent invokes readEventsV1NamespacedEvent operation.
+	//
+	// Read the specified Event.
+	//
+	// GET /apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}
+	ReadEventsV1NamespacedEvent(ctx context.Context, params ReadEventsV1NamespacedEventParams) (ReadEventsV1NamespacedEventRes, error)
+	// ReadEventsV1beta1NamespacedEvent invokes readEventsV1beta1NamespacedEvent operation.
+	//
+	// Read the specified Event.
+	//
+	// GET /apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}
+	ReadEventsV1beta1NamespacedEvent(ctx context.Context, params ReadEventsV1beta1NamespacedEventParams) (ReadEventsV1beta1NamespacedEventRes, error)
+	// ReadFlowcontrolApiserverV1beta1FlowSchema invokes readFlowcontrolApiserverV1beta1FlowSchema operation.
+	//
+	// Read the specified FlowSchema.
+	//
+	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}
+	ReadFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, params ReadFlowcontrolApiserverV1beta1FlowSchemaParams) (ReadFlowcontrolApiserverV1beta1FlowSchemaRes, error)
+	// ReadFlowcontrolApiserverV1beta1FlowSchemaStatus invokes readFlowcontrolApiserverV1beta1FlowSchemaStatus operation.
+	//
+	// Read status of the specified FlowSchema.
+	//
+	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}/status
+	ReadFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx context.Context, params ReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams) (ReadFlowcontrolApiserverV1beta1FlowSchemaStatusRes, error)
+	// ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration invokes readFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
+	//
+	// Read the specified PriorityLevelConfiguration.
+	//
+	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}
+	ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, params ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, error)
+	// ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus invokes readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus operation.
+	//
+	// Read status of the specified PriorityLevelConfiguration.
+	//
+	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}/status
+	ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus(ctx context.Context, params ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams) (ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRes, error)
+	// ReadFlowcontrolApiserverV1beta2FlowSchema invokes readFlowcontrolApiserverV1beta2FlowSchema operation.
+	//
+	// Read the specified FlowSchema.
+	//
+	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}
+	ReadFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, params ReadFlowcontrolApiserverV1beta2FlowSchemaParams) (ReadFlowcontrolApiserverV1beta2FlowSchemaRes, error)
+	// ReadFlowcontrolApiserverV1beta2FlowSchemaStatus invokes readFlowcontrolApiserverV1beta2FlowSchemaStatus operation.
+	//
+	// Read status of the specified FlowSchema.
+	//
+	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}/status
+	ReadFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx context.Context, params ReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams) (ReadFlowcontrolApiserverV1beta2FlowSchemaStatusRes, error)
+	// ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration invokes readFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
+	//
+	// Read the specified PriorityLevelConfiguration.
+	//
+	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}
+	ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, params ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, error)
+	// ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus invokes readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus operation.
+	//
+	// Read status of the specified PriorityLevelConfiguration.
+	//
+	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}/status
+	ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus(ctx context.Context, params ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams) (ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRes, error)
+	// ReadInternalApiserverV1alpha1StorageVersion invokes readInternalApiserverV1alpha1StorageVersion operation.
+	//
+	// Read the specified StorageVersion.
+	//
+	// GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}
+	ReadInternalApiserverV1alpha1StorageVersion(ctx context.Context, params ReadInternalApiserverV1alpha1StorageVersionParams) (ReadInternalApiserverV1alpha1StorageVersionRes, error)
+	// ReadInternalApiserverV1alpha1StorageVersionStatus invokes readInternalApiserverV1alpha1StorageVersionStatus operation.
+	//
+	// Read status of the specified StorageVersion.
+	//
+	// GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}/status
+	ReadInternalApiserverV1alpha1StorageVersionStatus(ctx context.Context, params ReadInternalApiserverV1alpha1StorageVersionStatusParams) (ReadInternalApiserverV1alpha1StorageVersionStatusRes, error)
+	// ReadNetworkingV1IngressClass invokes readNetworkingV1IngressClass operation.
+	//
+	// Read the specified IngressClass.
+	//
+	// GET /apis/networking.k8s.io/v1/ingressclasses/{name}
+	ReadNetworkingV1IngressClass(ctx context.Context, params ReadNetworkingV1IngressClassParams) (ReadNetworkingV1IngressClassRes, error)
+	// ReadNetworkingV1NamespacedIngress invokes readNetworkingV1NamespacedIngress operation.
+	//
+	// Read the specified Ingress.
+	//
+	// GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}
+	ReadNetworkingV1NamespacedIngress(ctx context.Context, params ReadNetworkingV1NamespacedIngressParams) (ReadNetworkingV1NamespacedIngressRes, error)
+	// ReadNetworkingV1NamespacedIngressStatus invokes readNetworkingV1NamespacedIngressStatus operation.
+	//
+	// Read status of the specified Ingress.
+	//
+	// GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status
+	ReadNetworkingV1NamespacedIngressStatus(ctx context.Context, params ReadNetworkingV1NamespacedIngressStatusParams) (ReadNetworkingV1NamespacedIngressStatusRes, error)
+	// ReadNetworkingV1NamespacedNetworkPolicy invokes readNetworkingV1NamespacedNetworkPolicy operation.
+	//
+	// Read the specified NetworkPolicy.
+	//
+	// GET /apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}
+	ReadNetworkingV1NamespacedNetworkPolicy(ctx context.Context, params ReadNetworkingV1NamespacedNetworkPolicyParams) (ReadNetworkingV1NamespacedNetworkPolicyRes, error)
+	// ReadNodeV1RuntimeClass invokes readNodeV1RuntimeClass operation.
+	//
+	// Read the specified RuntimeClass.
+	//
+	// GET /apis/node.k8s.io/v1/runtimeclasses/{name}
+	ReadNodeV1RuntimeClass(ctx context.Context, params ReadNodeV1RuntimeClassParams) (ReadNodeV1RuntimeClassRes, error)
+	// ReadNodeV1alpha1RuntimeClass invokes readNodeV1alpha1RuntimeClass operation.
+	//
+	// Read the specified RuntimeClass.
+	//
+	// GET /apis/node.k8s.io/v1alpha1/runtimeclasses/{name}
+	ReadNodeV1alpha1RuntimeClass(ctx context.Context, params ReadNodeV1alpha1RuntimeClassParams) (ReadNodeV1alpha1RuntimeClassRes, error)
+	// ReadNodeV1beta1RuntimeClass invokes readNodeV1beta1RuntimeClass operation.
+	//
+	// Read the specified RuntimeClass.
+	//
+	// GET /apis/node.k8s.io/v1beta1/runtimeclasses/{name}
+	ReadNodeV1beta1RuntimeClass(ctx context.Context, params ReadNodeV1beta1RuntimeClassParams) (ReadNodeV1beta1RuntimeClassRes, error)
+	// ReadPolicyV1NamespacedPodDisruptionBudget invokes readPolicyV1NamespacedPodDisruptionBudget operation.
+	//
+	// Read the specified PodDisruptionBudget.
+	//
+	// GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}
+	ReadPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, params ReadPolicyV1NamespacedPodDisruptionBudgetParams) (ReadPolicyV1NamespacedPodDisruptionBudgetRes, error)
+	// ReadPolicyV1NamespacedPodDisruptionBudgetStatus invokes readPolicyV1NamespacedPodDisruptionBudgetStatus operation.
+	//
+	// Read status of the specified PodDisruptionBudget.
+	//
+	// GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status
+	ReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx context.Context, params ReadPolicyV1NamespacedPodDisruptionBudgetStatusParams) (ReadPolicyV1NamespacedPodDisruptionBudgetStatusRes, error)
+	// ReadPolicyV1beta1NamespacedPodDisruptionBudget invokes readPolicyV1beta1NamespacedPodDisruptionBudget operation.
+	//
+	// Read the specified PodDisruptionBudget.
+	//
+	// GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}
+	ReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Context, params ReadPolicyV1beta1NamespacedPodDisruptionBudgetParams) (ReadPolicyV1beta1NamespacedPodDisruptionBudgetRes, error)
+	// ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus invokes readPolicyV1beta1NamespacedPodDisruptionBudgetStatus operation.
+	//
+	// Read status of the specified PodDisruptionBudget.
+	//
+	// GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status
+	ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx context.Context, params ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams) (ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRes, error)
+	// ReadPolicyV1beta1PodSecurityPolicy invokes readPolicyV1beta1PodSecurityPolicy operation.
+	//
+	// Read the specified PodSecurityPolicy.
+	//
+	// GET /apis/policy/v1beta1/podsecuritypolicies/{name}
+	ReadPolicyV1beta1PodSecurityPolicy(ctx context.Context, params ReadPolicyV1beta1PodSecurityPolicyParams) (ReadPolicyV1beta1PodSecurityPolicyRes, error)
+	// ReadRbacAuthorizationV1ClusterRole invokes readRbacAuthorizationV1ClusterRole operation.
+	//
+	// Read the specified ClusterRole.
+	//
+	// GET /apis/rbac.authorization.k8s.io/v1/clusterroles/{name}
+	ReadRbacAuthorizationV1ClusterRole(ctx context.Context, params ReadRbacAuthorizationV1ClusterRoleParams) (ReadRbacAuthorizationV1ClusterRoleRes, error)
+	// ReadRbacAuthorizationV1ClusterRoleBinding invokes readRbacAuthorizationV1ClusterRoleBinding operation.
+	//
+	// Read the specified ClusterRoleBinding.
+	//
+	// GET /apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}
+	ReadRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, params ReadRbacAuthorizationV1ClusterRoleBindingParams) (ReadRbacAuthorizationV1ClusterRoleBindingRes, error)
+	// ReadRbacAuthorizationV1NamespacedRole invokes readRbacAuthorizationV1NamespacedRole operation.
+	//
+	// Read the specified Role.
+	//
+	// GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}
+	ReadRbacAuthorizationV1NamespacedRole(ctx context.Context, params ReadRbacAuthorizationV1NamespacedRoleParams) (ReadRbacAuthorizationV1NamespacedRoleRes, error)
+	// ReadRbacAuthorizationV1NamespacedRoleBinding invokes readRbacAuthorizationV1NamespacedRoleBinding operation.
+	//
+	// Read the specified RoleBinding.
+	//
+	// GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}
+	ReadRbacAuthorizationV1NamespacedRoleBinding(ctx context.Context, params ReadRbacAuthorizationV1NamespacedRoleBindingParams) (ReadRbacAuthorizationV1NamespacedRoleBindingRes, error)
+	// ReadSchedulingV1PriorityClass invokes readSchedulingV1PriorityClass operation.
+	//
+	// Read the specified PriorityClass.
+	//
+	// GET /apis/scheduling.k8s.io/v1/priorityclasses/{name}
+	ReadSchedulingV1PriorityClass(ctx context.Context, params ReadSchedulingV1PriorityClassParams) (ReadSchedulingV1PriorityClassRes, error)
+	// ReadStorageV1CSIDriver invokes readStorageV1CSIDriver operation.
+	//
+	// Read the specified CSIDriver.
+	//
+	// GET /apis/storage.k8s.io/v1/csidrivers/{name}
+	ReadStorageV1CSIDriver(ctx context.Context, params ReadStorageV1CSIDriverParams) (ReadStorageV1CSIDriverRes, error)
+	// ReadStorageV1CSINode invokes readStorageV1CSINode operation.
+	//
+	// Read the specified CSINode.
+	//
+	// GET /apis/storage.k8s.io/v1/csinodes/{name}
+	ReadStorageV1CSINode(ctx context.Context, params ReadStorageV1CSINodeParams) (ReadStorageV1CSINodeRes, error)
+	// ReadStorageV1StorageClass invokes readStorageV1StorageClass operation.
+	//
+	// Read the specified StorageClass.
+	//
+	// GET /apis/storage.k8s.io/v1/storageclasses/{name}
+	ReadStorageV1StorageClass(ctx context.Context, params ReadStorageV1StorageClassParams) (ReadStorageV1StorageClassRes, error)
+	// ReadStorageV1VolumeAttachment invokes readStorageV1VolumeAttachment operation.
+	//
+	// Read the specified VolumeAttachment.
+	//
+	// GET /apis/storage.k8s.io/v1/volumeattachments/{name}
+	ReadStorageV1VolumeAttachment(ctx context.Context, params ReadStorageV1VolumeAttachmentParams) (ReadStorageV1VolumeAttachmentRes, error)
+	// ReadStorageV1VolumeAttachmentStatus invokes readStorageV1VolumeAttachmentStatus operation.
+	//
+	// Read status of the specified VolumeAttachment.
+	//
+	// GET /apis/storage.k8s.io/v1/volumeattachments/{name}/status
+	ReadStorageV1VolumeAttachmentStatus(ctx context.Context, params ReadStorageV1VolumeAttachmentStatusParams) (ReadStorageV1VolumeAttachmentStatusRes, error)
+	// ReadStorageV1alpha1NamespacedCSIStorageCapacity invokes readStorageV1alpha1NamespacedCSIStorageCapacity operation.
+	//
+	// Read the specified CSIStorageCapacity.
+	//
+	// GET /apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities/{name}
+	ReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Context, params ReadStorageV1alpha1NamespacedCSIStorageCapacityParams) (ReadStorageV1alpha1NamespacedCSIStorageCapacityRes, error)
+	// ReadStorageV1beta1NamespacedCSIStorageCapacity invokes readStorageV1beta1NamespacedCSIStorageCapacity operation.
+	//
+	// Read the specified CSIStorageCapacity.
+	//
+	// GET /apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities/{name}
+	ReadStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Context, params ReadStorageV1beta1NamespacedCSIStorageCapacityParams) (ReadStorageV1beta1NamespacedCSIStorageCapacityRes, error)
+	// WatchAdmissionregistrationV1MutatingWebhookConfiguration invokes watchAdmissionregistrationV1MutatingWebhookConfiguration operation.
+	//
+	// Watch changes to an object of kind MutatingWebhookConfiguration. deprecated: use the 'watch'
+	// parameter with a list operation instead, filtered to a single item with the 'fieldSelector'
+	// parameter.
+	//
+	// GET /apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations/{name}
+	WatchAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, params WatchAdmissionregistrationV1MutatingWebhookConfigurationParams) (WatchAdmissionregistrationV1MutatingWebhookConfigurationRes, error)
+	// WatchAdmissionregistrationV1MutatingWebhookConfigurationList invokes watchAdmissionregistrationV1MutatingWebhookConfigurationList operation.
+	//
+	// Watch individual changes to a list of MutatingWebhookConfiguration. deprecated: use the 'watch'
+	// parameter with a list operation instead.
+	//
+	// GET /apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations
+	WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ctx context.Context, params WatchAdmissionregistrationV1MutatingWebhookConfigurationListParams) (WatchAdmissionregistrationV1MutatingWebhookConfigurationListRes, error)
+	// WatchAdmissionregistrationV1ValidatingWebhookConfiguration invokes watchAdmissionregistrationV1ValidatingWebhookConfiguration operation.
+	//
+	// Watch changes to an object of kind ValidatingWebhookConfiguration. deprecated: use the 'watch'
+	// parameter with a list operation instead, filtered to a single item with the 'fieldSelector'
+	// parameter.
+	//
+	// GET /apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations/{name}
+	WatchAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, params WatchAdmissionregistrationV1ValidatingWebhookConfigurationParams) (WatchAdmissionregistrationV1ValidatingWebhookConfigurationRes, error)
+	// WatchAdmissionregistrationV1ValidatingWebhookConfigurationList invokes watchAdmissionregistrationV1ValidatingWebhookConfigurationList operation.
+	//
+	// Watch individual changes to a list of ValidatingWebhookConfiguration. deprecated: use the 'watch'
+	// parameter with a list operation instead.
+	//
+	// GET /apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations
+	WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(ctx context.Context, params WatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams) (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListRes, error)
+	// WatchApiextensionsV1CustomResourceDefinition invokes watchApiextensionsV1CustomResourceDefinition operation.
+	//
+	// Watch changes to an object of kind CustomResourceDefinition. deprecated: use the 'watch' parameter
+	// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions/{name}
+	WatchApiextensionsV1CustomResourceDefinition(ctx context.Context, params WatchApiextensionsV1CustomResourceDefinitionParams) (WatchApiextensionsV1CustomResourceDefinitionRes, error)
+	// WatchApiextensionsV1CustomResourceDefinitionList invokes watchApiextensionsV1CustomResourceDefinitionList operation.
+	//
+	// Watch individual changes to a list of CustomResourceDefinition. deprecated: use the 'watch'
+	// parameter with a list operation instead.
+	//
+	// GET /apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions
+	WatchApiextensionsV1CustomResourceDefinitionList(ctx context.Context, params WatchApiextensionsV1CustomResourceDefinitionListParams) (WatchApiextensionsV1CustomResourceDefinitionListRes, error)
+	// WatchApiregistrationV1APIService invokes watchApiregistrationV1APIService operation.
+	//
+	// Watch changes to an object of kind APIService. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/apiregistration.k8s.io/v1/watch/apiservices/{name}
+	WatchApiregistrationV1APIService(ctx context.Context, params WatchApiregistrationV1APIServiceParams) (WatchApiregistrationV1APIServiceRes, error)
+	// WatchApiregistrationV1APIServiceList invokes watchApiregistrationV1APIServiceList operation.
+	//
+	// Watch individual changes to a list of APIService. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
+	// GET /apis/apiregistration.k8s.io/v1/watch/apiservices
+	WatchApiregistrationV1APIServiceList(ctx context.Context, params WatchApiregistrationV1APIServiceListParams) (WatchApiregistrationV1APIServiceListRes, error)
+	// WatchAppsV1ControllerRevisionListForAllNamespaces invokes watchAppsV1ControllerRevisionListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of ControllerRevision. deprecated: use the 'watch' parameter
+	// with a list operation instead.
+	//
+	// GET /apis/apps/v1/watch/controllerrevisions
+	WatchAppsV1ControllerRevisionListForAllNamespaces(ctx context.Context, params WatchAppsV1ControllerRevisionListForAllNamespacesParams) (WatchAppsV1ControllerRevisionListForAllNamespacesRes, error)
+	// WatchAppsV1DaemonSetListForAllNamespaces invokes watchAppsV1DaemonSetListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of DaemonSet. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /apis/apps/v1/watch/daemonsets
+	WatchAppsV1DaemonSetListForAllNamespaces(ctx context.Context, params WatchAppsV1DaemonSetListForAllNamespacesParams) (WatchAppsV1DaemonSetListForAllNamespacesRes, error)
+	// WatchAppsV1DeploymentListForAllNamespaces invokes watchAppsV1DeploymentListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of Deployment. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
+	// GET /apis/apps/v1/watch/deployments
+	WatchAppsV1DeploymentListForAllNamespaces(ctx context.Context, params WatchAppsV1DeploymentListForAllNamespacesParams) (WatchAppsV1DeploymentListForAllNamespacesRes, error)
+	// WatchAppsV1NamespacedControllerRevision invokes watchAppsV1NamespacedControllerRevision operation.
+	//
+	// Watch changes to an object of kind ControllerRevision. deprecated: use the 'watch' parameter with
+	// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions/{name}
+	WatchAppsV1NamespacedControllerRevision(ctx context.Context, params WatchAppsV1NamespacedControllerRevisionParams) (WatchAppsV1NamespacedControllerRevisionRes, error)
+	// WatchAppsV1NamespacedControllerRevisionList invokes watchAppsV1NamespacedControllerRevisionList operation.
+	//
+	// Watch individual changes to a list of ControllerRevision. deprecated: use the 'watch' parameter
+	// with a list operation instead.
+	//
+	// GET /apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions
+	WatchAppsV1NamespacedControllerRevisionList(ctx context.Context, params WatchAppsV1NamespacedControllerRevisionListParams) (WatchAppsV1NamespacedControllerRevisionListRes, error)
+	// WatchAppsV1NamespacedDaemonSet invokes watchAppsV1NamespacedDaemonSet operation.
+	//
+	// Watch changes to an object of kind DaemonSet. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/apps/v1/watch/namespaces/{namespace}/daemonsets/{name}
+	WatchAppsV1NamespacedDaemonSet(ctx context.Context, params WatchAppsV1NamespacedDaemonSetParams) (WatchAppsV1NamespacedDaemonSetRes, error)
+	// WatchAppsV1NamespacedDaemonSetList invokes watchAppsV1NamespacedDaemonSetList operation.
+	//
+	// Watch individual changes to a list of DaemonSet. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /apis/apps/v1/watch/namespaces/{namespace}/daemonsets
+	WatchAppsV1NamespacedDaemonSetList(ctx context.Context, params WatchAppsV1NamespacedDaemonSetListParams) (WatchAppsV1NamespacedDaemonSetListRes, error)
+	// WatchAppsV1NamespacedDeployment invokes watchAppsV1NamespacedDeployment operation.
+	//
+	// Watch changes to an object of kind Deployment. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/apps/v1/watch/namespaces/{namespace}/deployments/{name}
+	WatchAppsV1NamespacedDeployment(ctx context.Context, params WatchAppsV1NamespacedDeploymentParams) (WatchAppsV1NamespacedDeploymentRes, error)
+	// WatchAppsV1NamespacedDeploymentList invokes watchAppsV1NamespacedDeploymentList operation.
+	//
+	// Watch individual changes to a list of Deployment. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
+	// GET /apis/apps/v1/watch/namespaces/{namespace}/deployments
+	WatchAppsV1NamespacedDeploymentList(ctx context.Context, params WatchAppsV1NamespacedDeploymentListParams) (WatchAppsV1NamespacedDeploymentListRes, error)
+	// WatchAppsV1NamespacedReplicaSet invokes watchAppsV1NamespacedReplicaSet operation.
+	//
+	// Watch changes to an object of kind ReplicaSet. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/apps/v1/watch/namespaces/{namespace}/replicasets/{name}
+	WatchAppsV1NamespacedReplicaSet(ctx context.Context, params WatchAppsV1NamespacedReplicaSetParams) (WatchAppsV1NamespacedReplicaSetRes, error)
+	// WatchAppsV1NamespacedReplicaSetList invokes watchAppsV1NamespacedReplicaSetList operation.
+	//
+	// Watch individual changes to a list of ReplicaSet. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
+	// GET /apis/apps/v1/watch/namespaces/{namespace}/replicasets
+	WatchAppsV1NamespacedReplicaSetList(ctx context.Context, params WatchAppsV1NamespacedReplicaSetListParams) (WatchAppsV1NamespacedReplicaSetListRes, error)
+	// WatchAppsV1NamespacedStatefulSet invokes watchAppsV1NamespacedStatefulSet operation.
+	//
+	// Watch changes to an object of kind StatefulSet. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/apps/v1/watch/namespaces/{namespace}/statefulsets/{name}
+	WatchAppsV1NamespacedStatefulSet(ctx context.Context, params WatchAppsV1NamespacedStatefulSetParams) (WatchAppsV1NamespacedStatefulSetRes, error)
+	// WatchAppsV1NamespacedStatefulSetList invokes watchAppsV1NamespacedStatefulSetList operation.
+	//
+	// Watch individual changes to a list of StatefulSet. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
+	// GET /apis/apps/v1/watch/namespaces/{namespace}/statefulsets
+	WatchAppsV1NamespacedStatefulSetList(ctx context.Context, params WatchAppsV1NamespacedStatefulSetListParams) (WatchAppsV1NamespacedStatefulSetListRes, error)
+	// WatchAppsV1ReplicaSetListForAllNamespaces invokes watchAppsV1ReplicaSetListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of ReplicaSet. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
+	// GET /apis/apps/v1/watch/replicasets
+	WatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Context, params WatchAppsV1ReplicaSetListForAllNamespacesParams) (WatchAppsV1ReplicaSetListForAllNamespacesRes, error)
+	// WatchAppsV1StatefulSetListForAllNamespaces invokes watchAppsV1StatefulSetListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of StatefulSet. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
+	// GET /apis/apps/v1/watch/statefulsets
+	WatchAppsV1StatefulSetListForAllNamespaces(ctx context.Context, params WatchAppsV1StatefulSetListForAllNamespacesParams) (WatchAppsV1StatefulSetListForAllNamespacesRes, error)
+	// WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces invokes watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
+	// parameter with a list operation instead.
+	//
+	// GET /apis/autoscaling/v1/watch/horizontalpodautoscalers
+	WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context, params WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams) (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRes, error)
+	// WatchAutoscalingV1NamespacedHorizontalPodAutoscaler invokes watchAutoscalingV1NamespacedHorizontalPodAutoscaler operation.
+	//
+	// Watch changes to an object of kind HorizontalPodAutoscaler. deprecated: use the 'watch' parameter
+	// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
+	WatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.Context, params WatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams) (WatchAutoscalingV1NamespacedHorizontalPodAutoscalerRes, error)
+	// WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList invokes watchAutoscalingV1NamespacedHorizontalPodAutoscalerList operation.
+	//
+	// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
+	// parameter with a list operation instead.
+	//
+	// GET /apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers
+	WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx context.Context, params WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams) (WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRes, error)
+	// WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces invokes watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
+	// parameter with a list operation instead.
+	//
+	// GET /apis/autoscaling/v2beta1/watch/horizontalpodautoscalers
+	WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context, params WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams) (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes, error)
+	// WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler invokes watchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler operation.
+	//
+	// Watch changes to an object of kind HorizontalPodAutoscaler. deprecated: use the 'watch' parameter
+	// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
+	WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx context.Context, params WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) (WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, error)
+	// WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList invokes watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList operation.
+	//
+	// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
+	// parameter with a list operation instead.
+	//
+	// GET /apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers
+	WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList(ctx context.Context, params WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams) (WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRes, error)
+	// WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces invokes watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
+	// parameter with a list operation instead.
+	//
+	// GET /apis/autoscaling/v2beta2/watch/horizontalpodautoscalers
+	WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context, params WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams) (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes, error)
+	// WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler invokes watchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler operation.
+	//
+	// Watch changes to an object of kind HorizontalPodAutoscaler. deprecated: use the 'watch' parameter
+	// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
+	WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx context.Context, params WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) (WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, error)
+	// WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList invokes watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList operation.
+	//
+	// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
+	// parameter with a list operation instead.
+	//
+	// GET /apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers
+	WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList(ctx context.Context, params WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams) (WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRes, error)
+	// WatchBatchV1CronJobListForAllNamespaces invokes watchBatchV1CronJobListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of CronJob. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /apis/batch/v1/watch/cronjobs
+	WatchBatchV1CronJobListForAllNamespaces(ctx context.Context, params WatchBatchV1CronJobListForAllNamespacesParams) (WatchBatchV1CronJobListForAllNamespacesRes, error)
+	// WatchBatchV1JobListForAllNamespaces invokes watchBatchV1JobListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of Job. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /apis/batch/v1/watch/jobs
+	WatchBatchV1JobListForAllNamespaces(ctx context.Context, params WatchBatchV1JobListForAllNamespacesParams) (WatchBatchV1JobListForAllNamespacesRes, error)
+	// WatchBatchV1NamespacedCronJob invokes watchBatchV1NamespacedCronJob operation.
+	//
+	// Watch changes to an object of kind CronJob. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/batch/v1/watch/namespaces/{namespace}/cronjobs/{name}
+	WatchBatchV1NamespacedCronJob(ctx context.Context, params WatchBatchV1NamespacedCronJobParams) (WatchBatchV1NamespacedCronJobRes, error)
+	// WatchBatchV1NamespacedCronJobList invokes watchBatchV1NamespacedCronJobList operation.
+	//
+	// Watch individual changes to a list of CronJob. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /apis/batch/v1/watch/namespaces/{namespace}/cronjobs
+	WatchBatchV1NamespacedCronJobList(ctx context.Context, params WatchBatchV1NamespacedCronJobListParams) (WatchBatchV1NamespacedCronJobListRes, error)
+	// WatchBatchV1NamespacedJob invokes watchBatchV1NamespacedJob operation.
+	//
+	// Watch changes to an object of kind Job. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/batch/v1/watch/namespaces/{namespace}/jobs/{name}
+	WatchBatchV1NamespacedJob(ctx context.Context, params WatchBatchV1NamespacedJobParams) (WatchBatchV1NamespacedJobRes, error)
+	// WatchBatchV1NamespacedJobList invokes watchBatchV1NamespacedJobList operation.
+	//
+	// Watch individual changes to a list of Job. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /apis/batch/v1/watch/namespaces/{namespace}/jobs
+	WatchBatchV1NamespacedJobList(ctx context.Context, params WatchBatchV1NamespacedJobListParams) (WatchBatchV1NamespacedJobListRes, error)
+	// WatchBatchV1beta1CronJobListForAllNamespaces invokes watchBatchV1beta1CronJobListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of CronJob. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /apis/batch/v1beta1/watch/cronjobs
+	WatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Context, params WatchBatchV1beta1CronJobListForAllNamespacesParams) (WatchBatchV1beta1CronJobListForAllNamespacesRes, error)
+	// WatchBatchV1beta1NamespacedCronJob invokes watchBatchV1beta1NamespacedCronJob operation.
+	//
+	// Watch changes to an object of kind CronJob. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs/{name}
+	WatchBatchV1beta1NamespacedCronJob(ctx context.Context, params WatchBatchV1beta1NamespacedCronJobParams) (WatchBatchV1beta1NamespacedCronJobRes, error)
+	// WatchBatchV1beta1NamespacedCronJobList invokes watchBatchV1beta1NamespacedCronJobList operation.
+	//
+	// Watch individual changes to a list of CronJob. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs
+	WatchBatchV1beta1NamespacedCronJobList(ctx context.Context, params WatchBatchV1beta1NamespacedCronJobListParams) (WatchBatchV1beta1NamespacedCronJobListRes, error)
+	// WatchCertificatesV1CertificateSigningRequest invokes watchCertificatesV1CertificateSigningRequest operation.
+	//
+	// Watch changes to an object of kind CertificateSigningRequest. deprecated: use the 'watch'
+	// parameter with a list operation instead, filtered to a single item with the 'fieldSelector'
+	// parameter.
+	//
+	// GET /apis/certificates.k8s.io/v1/watch/certificatesigningrequests/{name}
+	WatchCertificatesV1CertificateSigningRequest(ctx context.Context, params WatchCertificatesV1CertificateSigningRequestParams) (WatchCertificatesV1CertificateSigningRequestRes, error)
+	// WatchCertificatesV1CertificateSigningRequestList invokes watchCertificatesV1CertificateSigningRequestList operation.
+	//
+	// Watch individual changes to a list of CertificateSigningRequest. deprecated: use the 'watch'
+	// parameter with a list operation instead.
+	//
+	// GET /apis/certificates.k8s.io/v1/watch/certificatesigningrequests
+	WatchCertificatesV1CertificateSigningRequestList(ctx context.Context, params WatchCertificatesV1CertificateSigningRequestListParams) (WatchCertificatesV1CertificateSigningRequestListRes, error)
+	// WatchCoordinationV1LeaseListForAllNamespaces invokes watchCoordinationV1LeaseListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of Lease. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /apis/coordination.k8s.io/v1/watch/leases
+	WatchCoordinationV1LeaseListForAllNamespaces(ctx context.Context, params WatchCoordinationV1LeaseListForAllNamespacesParams) (WatchCoordinationV1LeaseListForAllNamespacesRes, error)
+	// WatchCoordinationV1NamespacedLease invokes watchCoordinationV1NamespacedLease operation.
+	//
+	// Watch changes to an object of kind Lease. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases/{name}
+	WatchCoordinationV1NamespacedLease(ctx context.Context, params WatchCoordinationV1NamespacedLeaseParams) (WatchCoordinationV1NamespacedLeaseRes, error)
+	// WatchCoordinationV1NamespacedLeaseList invokes watchCoordinationV1NamespacedLeaseList operation.
+	//
+	// Watch individual changes to a list of Lease. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases
+	WatchCoordinationV1NamespacedLeaseList(ctx context.Context, params WatchCoordinationV1NamespacedLeaseListParams) (WatchCoordinationV1NamespacedLeaseListRes, error)
+	// WatchCoreV1ConfigMapListForAllNamespaces invokes watchCoreV1ConfigMapListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of ConfigMap. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /api/v1/watch/configmaps
+	WatchCoreV1ConfigMapListForAllNamespaces(ctx context.Context, params WatchCoreV1ConfigMapListForAllNamespacesParams) (WatchCoreV1ConfigMapListForAllNamespacesRes, error)
+	// WatchCoreV1EndpointsListForAllNamespaces invokes watchCoreV1EndpointsListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of Endpoints. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /api/v1/watch/endpoints
+	WatchCoreV1EndpointsListForAllNamespaces(ctx context.Context, params WatchCoreV1EndpointsListForAllNamespacesParams) (WatchCoreV1EndpointsListForAllNamespacesRes, error)
+	// WatchCoreV1EventListForAllNamespaces invokes watchCoreV1EventListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /api/v1/watch/events
+	WatchCoreV1EventListForAllNamespaces(ctx context.Context, params WatchCoreV1EventListForAllNamespacesParams) (WatchCoreV1EventListForAllNamespacesRes, error)
+	// WatchCoreV1LimitRangeListForAllNamespaces invokes watchCoreV1LimitRangeListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of LimitRange. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
+	// GET /api/v1/watch/limitranges
+	WatchCoreV1LimitRangeListForAllNamespaces(ctx context.Context, params WatchCoreV1LimitRangeListForAllNamespacesParams) (WatchCoreV1LimitRangeListForAllNamespacesRes, error)
+	// WatchCoreV1Namespace invokes watchCoreV1Namespace operation.
+	//
+	// Watch changes to an object of kind Namespace. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /api/v1/watch/namespaces/{name}
+	WatchCoreV1Namespace(ctx context.Context, params WatchCoreV1NamespaceParams) (WatchCoreV1NamespaceRes, error)
+	// WatchCoreV1NamespaceList invokes watchCoreV1NamespaceList operation.
+	//
+	// Watch individual changes to a list of Namespace. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /api/v1/watch/namespaces
+	WatchCoreV1NamespaceList(ctx context.Context, params WatchCoreV1NamespaceListParams) (WatchCoreV1NamespaceListRes, error)
+	// WatchCoreV1NamespacedConfigMap invokes watchCoreV1NamespacedConfigMap operation.
+	//
+	// Watch changes to an object of kind ConfigMap. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /api/v1/watch/namespaces/{namespace}/configmaps/{name}
+	WatchCoreV1NamespacedConfigMap(ctx context.Context, params WatchCoreV1NamespacedConfigMapParams) (WatchCoreV1NamespacedConfigMapRes, error)
+	// WatchCoreV1NamespacedConfigMapList invokes watchCoreV1NamespacedConfigMapList operation.
+	//
+	// Watch individual changes to a list of ConfigMap. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /api/v1/watch/namespaces/{namespace}/configmaps
+	WatchCoreV1NamespacedConfigMapList(ctx context.Context, params WatchCoreV1NamespacedConfigMapListParams) (WatchCoreV1NamespacedConfigMapListRes, error)
+	// WatchCoreV1NamespacedEndpoints invokes watchCoreV1NamespacedEndpoints operation.
+	//
+	// Watch changes to an object of kind Endpoints. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /api/v1/watch/namespaces/{namespace}/endpoints/{name}
+	WatchCoreV1NamespacedEndpoints(ctx context.Context, params WatchCoreV1NamespacedEndpointsParams) (WatchCoreV1NamespacedEndpointsRes, error)
+	// WatchCoreV1NamespacedEndpointsList invokes watchCoreV1NamespacedEndpointsList operation.
+	//
+	// Watch individual changes to a list of Endpoints. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /api/v1/watch/namespaces/{namespace}/endpoints
+	WatchCoreV1NamespacedEndpointsList(ctx context.Context, params WatchCoreV1NamespacedEndpointsListParams) (WatchCoreV1NamespacedEndpointsListRes, error)
+	// WatchCoreV1NamespacedEvent invokes watchCoreV1NamespacedEvent operation.
+	//
+	// Watch changes to an object of kind Event. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /api/v1/watch/namespaces/{namespace}/events/{name}
+	WatchCoreV1NamespacedEvent(ctx context.Context, params WatchCoreV1NamespacedEventParams) (WatchCoreV1NamespacedEventRes, error)
+	// WatchCoreV1NamespacedEventList invokes watchCoreV1NamespacedEventList operation.
+	//
+	// Watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /api/v1/watch/namespaces/{namespace}/events
+	WatchCoreV1NamespacedEventList(ctx context.Context, params WatchCoreV1NamespacedEventListParams) (WatchCoreV1NamespacedEventListRes, error)
+	// WatchCoreV1NamespacedLimitRange invokes watchCoreV1NamespacedLimitRange operation.
+	//
+	// Watch changes to an object of kind LimitRange. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /api/v1/watch/namespaces/{namespace}/limitranges/{name}
+	WatchCoreV1NamespacedLimitRange(ctx context.Context, params WatchCoreV1NamespacedLimitRangeParams) (WatchCoreV1NamespacedLimitRangeRes, error)
+	// WatchCoreV1NamespacedLimitRangeList invokes watchCoreV1NamespacedLimitRangeList operation.
+	//
+	// Watch individual changes to a list of LimitRange. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
+	// GET /api/v1/watch/namespaces/{namespace}/limitranges
+	WatchCoreV1NamespacedLimitRangeList(ctx context.Context, params WatchCoreV1NamespacedLimitRangeListParams) (WatchCoreV1NamespacedLimitRangeListRes, error)
+	// WatchCoreV1NamespacedPersistentVolumeClaim invokes watchCoreV1NamespacedPersistentVolumeClaim operation.
+	//
+	// Watch changes to an object of kind PersistentVolumeClaim. deprecated: use the 'watch' parameter
+	// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /api/v1/watch/namespaces/{namespace}/persistentvolumeclaims/{name}
+	WatchCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, params WatchCoreV1NamespacedPersistentVolumeClaimParams) (WatchCoreV1NamespacedPersistentVolumeClaimRes, error)
+	// WatchCoreV1NamespacedPersistentVolumeClaimList invokes watchCoreV1NamespacedPersistentVolumeClaimList operation.
+	//
+	// Watch individual changes to a list of PersistentVolumeClaim. deprecated: use the 'watch' parameter
+	// with a list operation instead.
+	//
+	// GET /api/v1/watch/namespaces/{namespace}/persistentvolumeclaims
+	WatchCoreV1NamespacedPersistentVolumeClaimList(ctx context.Context, params WatchCoreV1NamespacedPersistentVolumeClaimListParams) (WatchCoreV1NamespacedPersistentVolumeClaimListRes, error)
+	// WatchCoreV1NamespacedPod invokes watchCoreV1NamespacedPod operation.
+	//
+	// Watch changes to an object of kind Pod. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /api/v1/watch/namespaces/{namespace}/pods/{name}
+	WatchCoreV1NamespacedPod(ctx context.Context, params WatchCoreV1NamespacedPodParams) (WatchCoreV1NamespacedPodRes, error)
+	// WatchCoreV1NamespacedPodList invokes watchCoreV1NamespacedPodList operation.
+	//
+	// Watch individual changes to a list of Pod. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /api/v1/watch/namespaces/{namespace}/pods
+	WatchCoreV1NamespacedPodList(ctx context.Context, params WatchCoreV1NamespacedPodListParams) (WatchCoreV1NamespacedPodListRes, error)
+	// WatchCoreV1NamespacedPodTemplate invokes watchCoreV1NamespacedPodTemplate operation.
+	//
+	// Watch changes to an object of kind PodTemplate. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /api/v1/watch/namespaces/{namespace}/podtemplates/{name}
+	WatchCoreV1NamespacedPodTemplate(ctx context.Context, params WatchCoreV1NamespacedPodTemplateParams) (WatchCoreV1NamespacedPodTemplateRes, error)
+	// WatchCoreV1NamespacedPodTemplateList invokes watchCoreV1NamespacedPodTemplateList operation.
+	//
+	// Watch individual changes to a list of PodTemplate. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
+	// GET /api/v1/watch/namespaces/{namespace}/podtemplates
+	WatchCoreV1NamespacedPodTemplateList(ctx context.Context, params WatchCoreV1NamespacedPodTemplateListParams) (WatchCoreV1NamespacedPodTemplateListRes, error)
+	// WatchCoreV1NamespacedReplicationController invokes watchCoreV1NamespacedReplicationController operation.
+	//
+	// Watch changes to an object of kind ReplicationController. deprecated: use the 'watch' parameter
+	// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /api/v1/watch/namespaces/{namespace}/replicationcontrollers/{name}
+	WatchCoreV1NamespacedReplicationController(ctx context.Context, params WatchCoreV1NamespacedReplicationControllerParams) (WatchCoreV1NamespacedReplicationControllerRes, error)
+	// WatchCoreV1NamespacedReplicationControllerList invokes watchCoreV1NamespacedReplicationControllerList operation.
+	//
+	// Watch individual changes to a list of ReplicationController. deprecated: use the 'watch' parameter
+	// with a list operation instead.
+	//
+	// GET /api/v1/watch/namespaces/{namespace}/replicationcontrollers
+	WatchCoreV1NamespacedReplicationControllerList(ctx context.Context, params WatchCoreV1NamespacedReplicationControllerListParams) (WatchCoreV1NamespacedReplicationControllerListRes, error)
+	// WatchCoreV1NamespacedResourceQuota invokes watchCoreV1NamespacedResourceQuota operation.
+	//
+	// Watch changes to an object of kind ResourceQuota. deprecated: use the 'watch' parameter with a
+	// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /api/v1/watch/namespaces/{namespace}/resourcequotas/{name}
+	WatchCoreV1NamespacedResourceQuota(ctx context.Context, params WatchCoreV1NamespacedResourceQuotaParams) (WatchCoreV1NamespacedResourceQuotaRes, error)
+	// WatchCoreV1NamespacedResourceQuotaList invokes watchCoreV1NamespacedResourceQuotaList operation.
+	//
+	// Watch individual changes to a list of ResourceQuota. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
+	// GET /api/v1/watch/namespaces/{namespace}/resourcequotas
+	WatchCoreV1NamespacedResourceQuotaList(ctx context.Context, params WatchCoreV1NamespacedResourceQuotaListParams) (WatchCoreV1NamespacedResourceQuotaListRes, error)
+	// WatchCoreV1NamespacedSecret invokes watchCoreV1NamespacedSecret operation.
+	//
+	// Watch changes to an object of kind Secret. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /api/v1/watch/namespaces/{namespace}/secrets/{name}
+	WatchCoreV1NamespacedSecret(ctx context.Context, params WatchCoreV1NamespacedSecretParams) (WatchCoreV1NamespacedSecretRes, error)
+	// WatchCoreV1NamespacedSecretList invokes watchCoreV1NamespacedSecretList operation.
+	//
+	// Watch individual changes to a list of Secret. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /api/v1/watch/namespaces/{namespace}/secrets
+	WatchCoreV1NamespacedSecretList(ctx context.Context, params WatchCoreV1NamespacedSecretListParams) (WatchCoreV1NamespacedSecretListRes, error)
+	// WatchCoreV1NamespacedService invokes watchCoreV1NamespacedService operation.
+	//
+	// Watch changes to an object of kind Service. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /api/v1/watch/namespaces/{namespace}/services/{name}
+	WatchCoreV1NamespacedService(ctx context.Context, params WatchCoreV1NamespacedServiceParams) (WatchCoreV1NamespacedServiceRes, error)
+	// WatchCoreV1NamespacedServiceAccount invokes watchCoreV1NamespacedServiceAccount operation.
+	//
+	// Watch changes to an object of kind ServiceAccount. deprecated: use the 'watch' parameter with a
+	// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /api/v1/watch/namespaces/{namespace}/serviceaccounts/{name}
+	WatchCoreV1NamespacedServiceAccount(ctx context.Context, params WatchCoreV1NamespacedServiceAccountParams) (WatchCoreV1NamespacedServiceAccountRes, error)
+	// WatchCoreV1NamespacedServiceAccountList invokes watchCoreV1NamespacedServiceAccountList operation.
+	//
+	// Watch individual changes to a list of ServiceAccount. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
+	// GET /api/v1/watch/namespaces/{namespace}/serviceaccounts
+	WatchCoreV1NamespacedServiceAccountList(ctx context.Context, params WatchCoreV1NamespacedServiceAccountListParams) (WatchCoreV1NamespacedServiceAccountListRes, error)
+	// WatchCoreV1NamespacedServiceList invokes watchCoreV1NamespacedServiceList operation.
+	//
+	// Watch individual changes to a list of Service. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /api/v1/watch/namespaces/{namespace}/services
+	WatchCoreV1NamespacedServiceList(ctx context.Context, params WatchCoreV1NamespacedServiceListParams) (WatchCoreV1NamespacedServiceListRes, error)
+	// WatchCoreV1Node invokes watchCoreV1Node operation.
+	//
+	// Watch changes to an object of kind Node. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /api/v1/watch/nodes/{name}
+	WatchCoreV1Node(ctx context.Context, params WatchCoreV1NodeParams) (WatchCoreV1NodeRes, error)
+	// WatchCoreV1NodeList invokes watchCoreV1NodeList operation.
+	//
+	// Watch individual changes to a list of Node. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /api/v1/watch/nodes
+	WatchCoreV1NodeList(ctx context.Context, params WatchCoreV1NodeListParams) (WatchCoreV1NodeListRes, error)
+	// WatchCoreV1PersistentVolume invokes watchCoreV1PersistentVolume operation.
+	//
+	// Watch changes to an object of kind PersistentVolume. deprecated: use the 'watch' parameter with a
+	// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /api/v1/watch/persistentvolumes/{name}
+	WatchCoreV1PersistentVolume(ctx context.Context, params WatchCoreV1PersistentVolumeParams) (WatchCoreV1PersistentVolumeRes, error)
+	// WatchCoreV1PersistentVolumeClaimListForAllNamespaces invokes watchCoreV1PersistentVolumeClaimListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of PersistentVolumeClaim. deprecated: use the 'watch' parameter
+	// with a list operation instead.
+	//
+	// GET /api/v1/watch/persistentvolumeclaims
+	WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx context.Context, params WatchCoreV1PersistentVolumeClaimListForAllNamespacesParams) (WatchCoreV1PersistentVolumeClaimListForAllNamespacesRes, error)
+	// WatchCoreV1PersistentVolumeList invokes watchCoreV1PersistentVolumeList operation.
+	//
+	// Watch individual changes to a list of PersistentVolume. deprecated: use the 'watch' parameter with
+	// a list operation instead.
+	//
+	// GET /api/v1/watch/persistentvolumes
+	WatchCoreV1PersistentVolumeList(ctx context.Context, params WatchCoreV1PersistentVolumeListParams) (WatchCoreV1PersistentVolumeListRes, error)
+	// WatchCoreV1PodListForAllNamespaces invokes watchCoreV1PodListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of Pod. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /api/v1/watch/pods
+	WatchCoreV1PodListForAllNamespaces(ctx context.Context, params WatchCoreV1PodListForAllNamespacesParams) (WatchCoreV1PodListForAllNamespacesRes, error)
+	// WatchCoreV1PodTemplateListForAllNamespaces invokes watchCoreV1PodTemplateListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of PodTemplate. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
+	// GET /api/v1/watch/podtemplates
+	WatchCoreV1PodTemplateListForAllNamespaces(ctx context.Context, params WatchCoreV1PodTemplateListForAllNamespacesParams) (WatchCoreV1PodTemplateListForAllNamespacesRes, error)
+	// WatchCoreV1ReplicationControllerListForAllNamespaces invokes watchCoreV1ReplicationControllerListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of ReplicationController. deprecated: use the 'watch' parameter
+	// with a list operation instead.
+	//
+	// GET /api/v1/watch/replicationcontrollers
+	WatchCoreV1ReplicationControllerListForAllNamespaces(ctx context.Context, params WatchCoreV1ReplicationControllerListForAllNamespacesParams) (WatchCoreV1ReplicationControllerListForAllNamespacesRes, error)
+	// WatchCoreV1ResourceQuotaListForAllNamespaces invokes watchCoreV1ResourceQuotaListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of ResourceQuota. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
+	// GET /api/v1/watch/resourcequotas
+	WatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Context, params WatchCoreV1ResourceQuotaListForAllNamespacesParams) (WatchCoreV1ResourceQuotaListForAllNamespacesRes, error)
+	// WatchCoreV1SecretListForAllNamespaces invokes watchCoreV1SecretListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of Secret. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /api/v1/watch/secrets
+	WatchCoreV1SecretListForAllNamespaces(ctx context.Context, params WatchCoreV1SecretListForAllNamespacesParams) (WatchCoreV1SecretListForAllNamespacesRes, error)
+	// WatchCoreV1ServiceAccountListForAllNamespaces invokes watchCoreV1ServiceAccountListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of ServiceAccount. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
+	// GET /api/v1/watch/serviceaccounts
+	WatchCoreV1ServiceAccountListForAllNamespaces(ctx context.Context, params WatchCoreV1ServiceAccountListForAllNamespacesParams) (WatchCoreV1ServiceAccountListForAllNamespacesRes, error)
+	// WatchCoreV1ServiceListForAllNamespaces invokes watchCoreV1ServiceListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of Service. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /api/v1/watch/services
+	WatchCoreV1ServiceListForAllNamespaces(ctx context.Context, params WatchCoreV1ServiceListForAllNamespacesParams) (WatchCoreV1ServiceListForAllNamespacesRes, error)
+	// WatchDiscoveryV1EndpointSliceListForAllNamespaces invokes watchDiscoveryV1EndpointSliceListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of EndpointSlice. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
+	// GET /apis/discovery.k8s.io/v1/watch/endpointslices
+	WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx context.Context, params WatchDiscoveryV1EndpointSliceListForAllNamespacesParams) (WatchDiscoveryV1EndpointSliceListForAllNamespacesRes, error)
+	// WatchDiscoveryV1NamespacedEndpointSlice invokes watchDiscoveryV1NamespacedEndpointSlice operation.
+	//
+	// Watch changes to an object of kind EndpointSlice. deprecated: use the 'watch' parameter with a
+	// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices/{name}
+	WatchDiscoveryV1NamespacedEndpointSlice(ctx context.Context, params WatchDiscoveryV1NamespacedEndpointSliceParams) (WatchDiscoveryV1NamespacedEndpointSliceRes, error)
+	// WatchDiscoveryV1NamespacedEndpointSliceList invokes watchDiscoveryV1NamespacedEndpointSliceList operation.
+	//
+	// Watch individual changes to a list of EndpointSlice. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
+	// GET /apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices
+	WatchDiscoveryV1NamespacedEndpointSliceList(ctx context.Context, params WatchDiscoveryV1NamespacedEndpointSliceListParams) (WatchDiscoveryV1NamespacedEndpointSliceListRes, error)
+	// WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces invokes watchDiscoveryV1beta1EndpointSliceListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of EndpointSlice. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
+	// GET /apis/discovery.k8s.io/v1beta1/watch/endpointslices
+	WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx context.Context, params WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams) (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRes, error)
+	// WatchDiscoveryV1beta1NamespacedEndpointSlice invokes watchDiscoveryV1beta1NamespacedEndpointSlice operation.
+	//
+	// Watch changes to an object of kind EndpointSlice. deprecated: use the 'watch' parameter with a
+	// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices/{name}
+	WatchDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context, params WatchDiscoveryV1beta1NamespacedEndpointSliceParams) (WatchDiscoveryV1beta1NamespacedEndpointSliceRes, error)
+	// WatchDiscoveryV1beta1NamespacedEndpointSliceList invokes watchDiscoveryV1beta1NamespacedEndpointSliceList operation.
+	//
+	// Watch individual changes to a list of EndpointSlice. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
+	// GET /apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices
+	WatchDiscoveryV1beta1NamespacedEndpointSliceList(ctx context.Context, params WatchDiscoveryV1beta1NamespacedEndpointSliceListParams) (WatchDiscoveryV1beta1NamespacedEndpointSliceListRes, error)
+	// WatchEventsV1EventListForAllNamespaces invokes watchEventsV1EventListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /apis/events.k8s.io/v1/watch/events
+	WatchEventsV1EventListForAllNamespaces(ctx context.Context, params WatchEventsV1EventListForAllNamespacesParams) (WatchEventsV1EventListForAllNamespacesRes, error)
+	// WatchEventsV1NamespacedEvent invokes watchEventsV1NamespacedEvent operation.
+	//
+	// Watch changes to an object of kind Event. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/events.k8s.io/v1/watch/namespaces/{namespace}/events/{name}
+	WatchEventsV1NamespacedEvent(ctx context.Context, params WatchEventsV1NamespacedEventParams) (WatchEventsV1NamespacedEventRes, error)
+	// WatchEventsV1NamespacedEventList invokes watchEventsV1NamespacedEventList operation.
+	//
+	// Watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /apis/events.k8s.io/v1/watch/namespaces/{namespace}/events
+	WatchEventsV1NamespacedEventList(ctx context.Context, params WatchEventsV1NamespacedEventListParams) (WatchEventsV1NamespacedEventListRes, error)
+	// WatchEventsV1beta1EventListForAllNamespaces invokes watchEventsV1beta1EventListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /apis/events.k8s.io/v1beta1/watch/events
+	WatchEventsV1beta1EventListForAllNamespaces(ctx context.Context, params WatchEventsV1beta1EventListForAllNamespacesParams) (WatchEventsV1beta1EventListForAllNamespacesRes, error)
+	// WatchEventsV1beta1NamespacedEvent invokes watchEventsV1beta1NamespacedEvent operation.
+	//
+	// Watch changes to an object of kind Event. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events/{name}
+	WatchEventsV1beta1NamespacedEvent(ctx context.Context, params WatchEventsV1beta1NamespacedEventParams) (WatchEventsV1beta1NamespacedEventRes, error)
+	// WatchEventsV1beta1NamespacedEventList invokes watchEventsV1beta1NamespacedEventList operation.
+	//
+	// Watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events
+	WatchEventsV1beta1NamespacedEventList(ctx context.Context, params WatchEventsV1beta1NamespacedEventListParams) (WatchEventsV1beta1NamespacedEventListRes, error)
+	// WatchFlowcontrolApiserverV1beta1FlowSchema invokes watchFlowcontrolApiserverV1beta1FlowSchema operation.
+	//
+	// Watch changes to an object of kind FlowSchema. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas/{name}
+	WatchFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, params WatchFlowcontrolApiserverV1beta1FlowSchemaParams) (WatchFlowcontrolApiserverV1beta1FlowSchemaRes, error)
+	// WatchFlowcontrolApiserverV1beta1FlowSchemaList invokes watchFlowcontrolApiserverV1beta1FlowSchemaList operation.
+	//
+	// Watch individual changes to a list of FlowSchema. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
+	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas
+	WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.Context, params WatchFlowcontrolApiserverV1beta1FlowSchemaListParams) (WatchFlowcontrolApiserverV1beta1FlowSchemaListRes, error)
+	// WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration invokes watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
+	//
+	// Watch changes to an object of kind PriorityLevelConfiguration. deprecated: use the 'watch'
+	// parameter with a list operation instead, filtered to a single item with the 'fieldSelector'
+	// parameter.
+	//
+	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations/{name}
+	WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, params WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, error)
+	// WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList invokes watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList operation.
+	//
+	// Watch individual changes to a list of PriorityLevelConfiguration. deprecated: use the 'watch'
+	// parameter with a list operation instead.
+	//
+	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations
+	WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(ctx context.Context, params WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams) (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRes, error)
+	// WatchFlowcontrolApiserverV1beta2FlowSchema invokes watchFlowcontrolApiserverV1beta2FlowSchema operation.
+	//
+	// Watch changes to an object of kind FlowSchema. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas/{name}
+	WatchFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, params WatchFlowcontrolApiserverV1beta2FlowSchemaParams) (WatchFlowcontrolApiserverV1beta2FlowSchemaRes, error)
+	// WatchFlowcontrolApiserverV1beta2FlowSchemaList invokes watchFlowcontrolApiserverV1beta2FlowSchemaList operation.
+	//
+	// Watch individual changes to a list of FlowSchema. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
+	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas
+	WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.Context, params WatchFlowcontrolApiserverV1beta2FlowSchemaListParams) (WatchFlowcontrolApiserverV1beta2FlowSchemaListRes, error)
+	// WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration invokes watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
+	//
+	// Watch changes to an object of kind PriorityLevelConfiguration. deprecated: use the 'watch'
+	// parameter with a list operation instead, filtered to a single item with the 'fieldSelector'
+	// parameter.
+	//
+	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations/{name}
+	WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, params WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, error)
+	// WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList invokes watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList operation.
+	//
+	// Watch individual changes to a list of PriorityLevelConfiguration. deprecated: use the 'watch'
+	// parameter with a list operation instead.
+	//
+	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations
+	WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(ctx context.Context, params WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams) (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRes, error)
+	// WatchInternalApiserverV1alpha1StorageVersion invokes watchInternalApiserverV1alpha1StorageVersion operation.
+	//
+	// Watch changes to an object of kind StorageVersion. deprecated: use the 'watch' parameter with a
+	// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions/{name}
+	WatchInternalApiserverV1alpha1StorageVersion(ctx context.Context, params WatchInternalApiserverV1alpha1StorageVersionParams) (WatchInternalApiserverV1alpha1StorageVersionRes, error)
+	// WatchInternalApiserverV1alpha1StorageVersionList invokes watchInternalApiserverV1alpha1StorageVersionList operation.
+	//
+	// Watch individual changes to a list of StorageVersion. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
+	// GET /apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions
+	WatchInternalApiserverV1alpha1StorageVersionList(ctx context.Context, params WatchInternalApiserverV1alpha1StorageVersionListParams) (WatchInternalApiserverV1alpha1StorageVersionListRes, error)
+	// WatchNetworkingV1IngressClass invokes watchNetworkingV1IngressClass operation.
+	//
+	// Watch changes to an object of kind IngressClass. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/networking.k8s.io/v1/watch/ingressclasses/{name}
+	WatchNetworkingV1IngressClass(ctx context.Context, params WatchNetworkingV1IngressClassParams) (WatchNetworkingV1IngressClassRes, error)
+	// WatchNetworkingV1IngressClassList invokes watchNetworkingV1IngressClassList operation.
+	//
+	// Watch individual changes to a list of IngressClass. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
+	// GET /apis/networking.k8s.io/v1/watch/ingressclasses
+	WatchNetworkingV1IngressClassList(ctx context.Context, params WatchNetworkingV1IngressClassListParams) (WatchNetworkingV1IngressClassListRes, error)
+	// WatchNetworkingV1IngressListForAllNamespaces invokes watchNetworkingV1IngressListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of Ingress. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /apis/networking.k8s.io/v1/watch/ingresses
+	WatchNetworkingV1IngressListForAllNamespaces(ctx context.Context, params WatchNetworkingV1IngressListForAllNamespacesParams) (WatchNetworkingV1IngressListForAllNamespacesRes, error)
+	// WatchNetworkingV1NamespacedIngress invokes watchNetworkingV1NamespacedIngress operation.
+	//
+	// Watch changes to an object of kind Ingress. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses/{name}
+	WatchNetworkingV1NamespacedIngress(ctx context.Context, params WatchNetworkingV1NamespacedIngressParams) (WatchNetworkingV1NamespacedIngressRes, error)
+	// WatchNetworkingV1NamespacedIngressList invokes watchNetworkingV1NamespacedIngressList operation.
+	//
+	// Watch individual changes to a list of Ingress. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses
+	WatchNetworkingV1NamespacedIngressList(ctx context.Context, params WatchNetworkingV1NamespacedIngressListParams) (WatchNetworkingV1NamespacedIngressListRes, error)
+	// WatchNetworkingV1NamespacedNetworkPolicy invokes watchNetworkingV1NamespacedNetworkPolicy operation.
+	//
+	// Watch changes to an object of kind NetworkPolicy. deprecated: use the 'watch' parameter with a
+	// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies/{name}
+	WatchNetworkingV1NamespacedNetworkPolicy(ctx context.Context, params WatchNetworkingV1NamespacedNetworkPolicyParams) (WatchNetworkingV1NamespacedNetworkPolicyRes, error)
+	// WatchNetworkingV1NamespacedNetworkPolicyList invokes watchNetworkingV1NamespacedNetworkPolicyList operation.
+	//
+	// Watch individual changes to a list of NetworkPolicy. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
+	// GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies
+	WatchNetworkingV1NamespacedNetworkPolicyList(ctx context.Context, params WatchNetworkingV1NamespacedNetworkPolicyListParams) (WatchNetworkingV1NamespacedNetworkPolicyListRes, error)
+	// WatchNetworkingV1NetworkPolicyListForAllNamespaces invokes watchNetworkingV1NetworkPolicyListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of NetworkPolicy. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
+	// GET /apis/networking.k8s.io/v1/watch/networkpolicies
+	WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx context.Context, params WatchNetworkingV1NetworkPolicyListForAllNamespacesParams) (WatchNetworkingV1NetworkPolicyListForAllNamespacesRes, error)
+	// WatchNodeV1RuntimeClass invokes watchNodeV1RuntimeClass operation.
+	//
+	// Watch changes to an object of kind RuntimeClass. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/node.k8s.io/v1/watch/runtimeclasses/{name}
+	WatchNodeV1RuntimeClass(ctx context.Context, params WatchNodeV1RuntimeClassParams) (WatchNodeV1RuntimeClassRes, error)
+	// WatchNodeV1RuntimeClassList invokes watchNodeV1RuntimeClassList operation.
+	//
+	// Watch individual changes to a list of RuntimeClass. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
+	// GET /apis/node.k8s.io/v1/watch/runtimeclasses
+	WatchNodeV1RuntimeClassList(ctx context.Context, params WatchNodeV1RuntimeClassListParams) (WatchNodeV1RuntimeClassListRes, error)
+	// WatchNodeV1alpha1RuntimeClass invokes watchNodeV1alpha1RuntimeClass operation.
+	//
+	// Watch changes to an object of kind RuntimeClass. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/node.k8s.io/v1alpha1/watch/runtimeclasses/{name}
+	WatchNodeV1alpha1RuntimeClass(ctx context.Context, params WatchNodeV1alpha1RuntimeClassParams) (WatchNodeV1alpha1RuntimeClassRes, error)
+	// WatchNodeV1alpha1RuntimeClassList invokes watchNodeV1alpha1RuntimeClassList operation.
+	//
+	// Watch individual changes to a list of RuntimeClass. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
+	// GET /apis/node.k8s.io/v1alpha1/watch/runtimeclasses
+	WatchNodeV1alpha1RuntimeClassList(ctx context.Context, params WatchNodeV1alpha1RuntimeClassListParams) (WatchNodeV1alpha1RuntimeClassListRes, error)
+	// WatchNodeV1beta1RuntimeClass invokes watchNodeV1beta1RuntimeClass operation.
+	//
+	// Watch changes to an object of kind RuntimeClass. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/node.k8s.io/v1beta1/watch/runtimeclasses/{name}
+	WatchNodeV1beta1RuntimeClass(ctx context.Context, params WatchNodeV1beta1RuntimeClassParams) (WatchNodeV1beta1RuntimeClassRes, error)
+	// WatchNodeV1beta1RuntimeClassList invokes watchNodeV1beta1RuntimeClassList operation.
+	//
+	// Watch individual changes to a list of RuntimeClass. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
+	// GET /apis/node.k8s.io/v1beta1/watch/runtimeclasses
+	WatchNodeV1beta1RuntimeClassList(ctx context.Context, params WatchNodeV1beta1RuntimeClassListParams) (WatchNodeV1beta1RuntimeClassListRes, error)
+	// WatchPolicyV1NamespacedPodDisruptionBudget invokes watchPolicyV1NamespacedPodDisruptionBudget operation.
+	//
+	// Watch changes to an object of kind PodDisruptionBudget. deprecated: use the 'watch' parameter with
+	// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}
+	WatchPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, params WatchPolicyV1NamespacedPodDisruptionBudgetParams) (WatchPolicyV1NamespacedPodDisruptionBudgetRes, error)
+	// WatchPolicyV1NamespacedPodDisruptionBudgetList invokes watchPolicyV1NamespacedPodDisruptionBudgetList operation.
+	//
+	// Watch individual changes to a list of PodDisruptionBudget. deprecated: use the 'watch' parameter
+	// with a list operation instead.
+	//
+	// GET /apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets
+	WatchPolicyV1NamespacedPodDisruptionBudgetList(ctx context.Context, params WatchPolicyV1NamespacedPodDisruptionBudgetListParams) (WatchPolicyV1NamespacedPodDisruptionBudgetListRes, error)
+	// WatchPolicyV1PodDisruptionBudgetListForAllNamespaces invokes watchPolicyV1PodDisruptionBudgetListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of PodDisruptionBudget. deprecated: use the 'watch' parameter
+	// with a list operation instead.
+	//
+	// GET /apis/policy/v1/watch/poddisruptionbudgets
+	WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx context.Context, params WatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams) (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesRes, error)
+	// WatchPolicyV1beta1NamespacedPodDisruptionBudget invokes watchPolicyV1beta1NamespacedPodDisruptionBudget operation.
+	//
+	// Watch changes to an object of kind PodDisruptionBudget. deprecated: use the 'watch' parameter with
+	// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}
+	WatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Context, params WatchPolicyV1beta1NamespacedPodDisruptionBudgetParams) (WatchPolicyV1beta1NamespacedPodDisruptionBudgetRes, error)
+	// WatchPolicyV1beta1NamespacedPodDisruptionBudgetList invokes watchPolicyV1beta1NamespacedPodDisruptionBudgetList operation.
+	//
+	// Watch individual changes to a list of PodDisruptionBudget. deprecated: use the 'watch' parameter
+	// with a list operation instead.
+	//
+	// GET /apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets
+	WatchPolicyV1beta1NamespacedPodDisruptionBudgetList(ctx context.Context, params WatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams) (WatchPolicyV1beta1NamespacedPodDisruptionBudgetListRes, error)
+	// WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces invokes watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of PodDisruptionBudget. deprecated: use the 'watch' parameter
+	// with a list operation instead.
+	//
+	// GET /apis/policy/v1beta1/watch/poddisruptionbudgets
+	WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx context.Context, params WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams) (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRes, error)
+	// WatchPolicyV1beta1PodSecurityPolicy invokes watchPolicyV1beta1PodSecurityPolicy operation.
+	//
+	// Watch changes to an object of kind PodSecurityPolicy. deprecated: use the 'watch' parameter with a
+	// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/policy/v1beta1/watch/podsecuritypolicies/{name}
+	WatchPolicyV1beta1PodSecurityPolicy(ctx context.Context, params WatchPolicyV1beta1PodSecurityPolicyParams) (WatchPolicyV1beta1PodSecurityPolicyRes, error)
+	// WatchPolicyV1beta1PodSecurityPolicyList invokes watchPolicyV1beta1PodSecurityPolicyList operation.
+	//
+	// Watch individual changes to a list of PodSecurityPolicy. deprecated: use the 'watch' parameter
+	// with a list operation instead.
+	//
+	// GET /apis/policy/v1beta1/watch/podsecuritypolicies
+	WatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context, params WatchPolicyV1beta1PodSecurityPolicyListParams) (WatchPolicyV1beta1PodSecurityPolicyListRes, error)
+	// WatchRbacAuthorizationV1ClusterRole invokes watchRbacAuthorizationV1ClusterRole operation.
+	//
+	// Watch changes to an object of kind ClusterRole. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/rbac.authorization.k8s.io/v1/watch/clusterroles/{name}
+	WatchRbacAuthorizationV1ClusterRole(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleParams) (WatchRbacAuthorizationV1ClusterRoleRes, error)
+	// WatchRbacAuthorizationV1ClusterRoleBinding invokes watchRbacAuthorizationV1ClusterRoleBinding operation.
+	//
+	// Watch changes to an object of kind ClusterRoleBinding. deprecated: use the 'watch' parameter with
+	// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings/{name}
+	WatchRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleBindingParams) (WatchRbacAuthorizationV1ClusterRoleBindingRes, error)
+	// WatchRbacAuthorizationV1ClusterRoleBindingList invokes watchRbacAuthorizationV1ClusterRoleBindingList operation.
+	//
+	// Watch individual changes to a list of ClusterRoleBinding. deprecated: use the 'watch' parameter
+	// with a list operation instead.
+	//
+	// GET /apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings
+	WatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleBindingListParams) (WatchRbacAuthorizationV1ClusterRoleBindingListRes, error)
+	// WatchRbacAuthorizationV1ClusterRoleList invokes watchRbacAuthorizationV1ClusterRoleList operation.
+	//
+	// Watch individual changes to a list of ClusterRole. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
+	// GET /apis/rbac.authorization.k8s.io/v1/watch/clusterroles
+	WatchRbacAuthorizationV1ClusterRoleList(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleListParams) (WatchRbacAuthorizationV1ClusterRoleListRes, error)
+	// WatchRbacAuthorizationV1NamespacedRole invokes watchRbacAuthorizationV1NamespacedRole operation.
+	//
+	// Watch changes to an object of kind Role. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles/{name}
+	WatchRbacAuthorizationV1NamespacedRole(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleParams) (WatchRbacAuthorizationV1NamespacedRoleRes, error)
+	// WatchRbacAuthorizationV1NamespacedRoleBinding invokes watchRbacAuthorizationV1NamespacedRoleBinding operation.
+	//
+	// Watch changes to an object of kind RoleBinding. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings/{name}
+	WatchRbacAuthorizationV1NamespacedRoleBinding(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleBindingParams) (WatchRbacAuthorizationV1NamespacedRoleBindingRes, error)
+	// WatchRbacAuthorizationV1NamespacedRoleBindingList invokes watchRbacAuthorizationV1NamespacedRoleBindingList operation.
+	//
+	// Watch individual changes to a list of RoleBinding. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
+	// GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings
+	WatchRbacAuthorizationV1NamespacedRoleBindingList(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleBindingListParams) (WatchRbacAuthorizationV1NamespacedRoleBindingListRes, error)
+	// WatchRbacAuthorizationV1NamespacedRoleList invokes watchRbacAuthorizationV1NamespacedRoleList operation.
+	//
+	// Watch individual changes to a list of Role. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles
+	WatchRbacAuthorizationV1NamespacedRoleList(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleListParams) (WatchRbacAuthorizationV1NamespacedRoleListRes, error)
+	// WatchRbacAuthorizationV1RoleBindingListForAllNamespaces invokes watchRbacAuthorizationV1RoleBindingListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of RoleBinding. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
+	// GET /apis/rbac.authorization.k8s.io/v1/watch/rolebindings
+	WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx context.Context, params WatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams) (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRes, error)
+	// WatchRbacAuthorizationV1RoleListForAllNamespaces invokes watchRbacAuthorizationV1RoleListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of Role. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /apis/rbac.authorization.k8s.io/v1/watch/roles
+	WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx context.Context, params WatchRbacAuthorizationV1RoleListForAllNamespacesParams) (WatchRbacAuthorizationV1RoleListForAllNamespacesRes, error)
+	// WatchSchedulingV1PriorityClass invokes watchSchedulingV1PriorityClass operation.
+	//
+	// Watch changes to an object of kind PriorityClass. deprecated: use the 'watch' parameter with a
+	// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/scheduling.k8s.io/v1/watch/priorityclasses/{name}
+	WatchSchedulingV1PriorityClass(ctx context.Context, params WatchSchedulingV1PriorityClassParams) (WatchSchedulingV1PriorityClassRes, error)
+	// WatchSchedulingV1PriorityClassList invokes watchSchedulingV1PriorityClassList operation.
+	//
+	// Watch individual changes to a list of PriorityClass. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
+	// GET /apis/scheduling.k8s.io/v1/watch/priorityclasses
+	WatchSchedulingV1PriorityClassList(ctx context.Context, params WatchSchedulingV1PriorityClassListParams) (WatchSchedulingV1PriorityClassListRes, error)
+	// WatchStorageV1CSIDriver invokes watchStorageV1CSIDriver operation.
+	//
+	// Watch changes to an object of kind CSIDriver. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/storage.k8s.io/v1/watch/csidrivers/{name}
+	WatchStorageV1CSIDriver(ctx context.Context, params WatchStorageV1CSIDriverParams) (WatchStorageV1CSIDriverRes, error)
+	// WatchStorageV1CSIDriverList invokes watchStorageV1CSIDriverList operation.
+	//
+	// Watch individual changes to a list of CSIDriver. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /apis/storage.k8s.io/v1/watch/csidrivers
+	WatchStorageV1CSIDriverList(ctx context.Context, params WatchStorageV1CSIDriverListParams) (WatchStorageV1CSIDriverListRes, error)
+	// WatchStorageV1CSINode invokes watchStorageV1CSINode operation.
+	//
+	// Watch changes to an object of kind CSINode. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/storage.k8s.io/v1/watch/csinodes/{name}
+	WatchStorageV1CSINode(ctx context.Context, params WatchStorageV1CSINodeParams) (WatchStorageV1CSINodeRes, error)
+	// WatchStorageV1CSINodeList invokes watchStorageV1CSINodeList operation.
+	//
+	// Watch individual changes to a list of CSINode. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
+	// GET /apis/storage.k8s.io/v1/watch/csinodes
+	WatchStorageV1CSINodeList(ctx context.Context, params WatchStorageV1CSINodeListParams) (WatchStorageV1CSINodeListRes, error)
+	// WatchStorageV1StorageClass invokes watchStorageV1StorageClass operation.
+	//
+	// Watch changes to an object of kind StorageClass. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/storage.k8s.io/v1/watch/storageclasses/{name}
+	WatchStorageV1StorageClass(ctx context.Context, params WatchStorageV1StorageClassParams) (WatchStorageV1StorageClassRes, error)
+	// WatchStorageV1StorageClassList invokes watchStorageV1StorageClassList operation.
+	//
+	// Watch individual changes to a list of StorageClass. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
+	// GET /apis/storage.k8s.io/v1/watch/storageclasses
+	WatchStorageV1StorageClassList(ctx context.Context, params WatchStorageV1StorageClassListParams) (WatchStorageV1StorageClassListRes, error)
+	// WatchStorageV1VolumeAttachment invokes watchStorageV1VolumeAttachment operation.
+	//
+	// Watch changes to an object of kind VolumeAttachment. deprecated: use the 'watch' parameter with a
+	// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/storage.k8s.io/v1/watch/volumeattachments/{name}
+	WatchStorageV1VolumeAttachment(ctx context.Context, params WatchStorageV1VolumeAttachmentParams) (WatchStorageV1VolumeAttachmentRes, error)
+	// WatchStorageV1VolumeAttachmentList invokes watchStorageV1VolumeAttachmentList operation.
+	//
+	// Watch individual changes to a list of VolumeAttachment. deprecated: use the 'watch' parameter with
+	// a list operation instead.
+	//
+	// GET /apis/storage.k8s.io/v1/watch/volumeattachments
+	WatchStorageV1VolumeAttachmentList(ctx context.Context, params WatchStorageV1VolumeAttachmentListParams) (WatchStorageV1VolumeAttachmentListRes, error)
+	// WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces invokes watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter
+	// with a list operation instead.
+	//
+	// GET /apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities
+	WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx context.Context, params WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams) (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRes, error)
+	// WatchStorageV1alpha1NamespacedCSIStorageCapacity invokes watchStorageV1alpha1NamespacedCSIStorageCapacity operation.
+	//
+	// Watch changes to an object of kind CSIStorageCapacity. deprecated: use the 'watch' parameter with
+	// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities/{name}
+	WatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Context, params WatchStorageV1alpha1NamespacedCSIStorageCapacityParams) (WatchStorageV1alpha1NamespacedCSIStorageCapacityRes, error)
+	// WatchStorageV1alpha1NamespacedCSIStorageCapacityList invokes watchStorageV1alpha1NamespacedCSIStorageCapacityList operation.
+	//
+	// Watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter
+	// with a list operation instead.
+	//
+	// GET /apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities
+	WatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx context.Context, params WatchStorageV1alpha1NamespacedCSIStorageCapacityListParams) (WatchStorageV1alpha1NamespacedCSIStorageCapacityListRes, error)
+	// WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces invokes watchStorageV1beta1CSIStorageCapacityListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter
+	// with a list operation instead.
+	//
+	// GET /apis/storage.k8s.io/v1beta1/watch/csistoragecapacities
+	WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx context.Context, params WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams) (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes, error)
+	// WatchStorageV1beta1NamespacedCSIStorageCapacity invokes watchStorageV1beta1NamespacedCSIStorageCapacity operation.
+	//
+	// Watch changes to an object of kind CSIStorageCapacity. deprecated: use the 'watch' parameter with
+	// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
+	// GET /apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities/{name}
+	WatchStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Context, params WatchStorageV1beta1NamespacedCSIStorageCapacityParams) (WatchStorageV1beta1NamespacedCSIStorageCapacityRes, error)
+	// WatchStorageV1beta1NamespacedCSIStorageCapacityList invokes watchStorageV1beta1NamespacedCSIStorageCapacityList operation.
+	//
+	// Watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter
+	// with a list operation instead.
+	//
+	// GET /apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities
+	WatchStorageV1beta1NamespacedCSIStorageCapacityList(ctx context.Context, params WatchStorageV1beta1NamespacedCSIStorageCapacityListParams) (WatchStorageV1beta1NamespacedCSIStorageCapacityListRes, error)
+}
 
 // Client implements OAS client.
 type Client struct {
@@ -85,6 +3021,8 @@ func (c *Client) ConnectCoreV1DeleteNamespacedPodProxy(ctx context.Context, para
 func (c *Client) sendConnectCoreV1DeleteNamespacedPodProxy(ctx context.Context, params ConnectCoreV1DeleteNamespacedPodProxyParams) (res ConnectCoreV1DeleteNamespacedPodProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1DeleteNamespacedPodProxy"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -248,6 +3186,8 @@ func (c *Client) ConnectCoreV1DeleteNamespacedPodProxyWithPath(ctx context.Conte
 func (c *Client) sendConnectCoreV1DeleteNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1DeleteNamespacedPodProxyWithPathParams) (res ConnectCoreV1DeleteNamespacedPodProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1DeleteNamespacedPodProxyWithPath"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -429,6 +3369,8 @@ func (c *Client) ConnectCoreV1DeleteNamespacedServiceProxy(ctx context.Context, 
 func (c *Client) sendConnectCoreV1DeleteNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1DeleteNamespacedServiceProxyParams) (res ConnectCoreV1DeleteNamespacedServiceProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1DeleteNamespacedServiceProxy"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -592,6 +3534,8 @@ func (c *Client) ConnectCoreV1DeleteNamespacedServiceProxyWithPath(ctx context.C
 func (c *Client) sendConnectCoreV1DeleteNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1DeleteNamespacedServiceProxyWithPathParams) (res ConnectCoreV1DeleteNamespacedServiceProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1DeleteNamespacedServiceProxyWithPath"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -773,6 +3717,8 @@ func (c *Client) ConnectCoreV1DeleteNodeProxy(ctx context.Context, params Connec
 func (c *Client) sendConnectCoreV1DeleteNodeProxy(ctx context.Context, params ConnectCoreV1DeleteNodeProxyParams) (res ConnectCoreV1DeleteNodeProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1DeleteNodeProxy"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -917,6 +3863,8 @@ func (c *Client) ConnectCoreV1DeleteNodeProxyWithPath(ctx context.Context, param
 func (c *Client) sendConnectCoreV1DeleteNodeProxyWithPath(ctx context.Context, params ConnectCoreV1DeleteNodeProxyWithPathParams) (res ConnectCoreV1DeleteNodeProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1DeleteNodeProxyWithPath"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -1079,6 +4027,8 @@ func (c *Client) ConnectCoreV1GetNamespacedPodAttach(ctx context.Context, params
 func (c *Client) sendConnectCoreV1GetNamespacedPodAttach(ctx context.Context, params ConnectCoreV1GetNamespacedPodAttachParams) (res ConnectCoreV1GetNamespacedPodAttachRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNamespacedPodAttach"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/attach"),
 	}
 
 	// Run stopwatch.
@@ -1310,6 +4260,8 @@ func (c *Client) ConnectCoreV1GetNamespacedPodExec(ctx context.Context, params C
 func (c *Client) sendConnectCoreV1GetNamespacedPodExec(ctx context.Context, params ConnectCoreV1GetNamespacedPodExecParams) (res ConnectCoreV1GetNamespacedPodExecRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNamespacedPodExec"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/exec"),
 	}
 
 	// Run stopwatch.
@@ -1558,6 +4510,8 @@ func (c *Client) ConnectCoreV1GetNamespacedPodPortforward(ctx context.Context, p
 func (c *Client) sendConnectCoreV1GetNamespacedPodPortforward(ctx context.Context, params ConnectCoreV1GetNamespacedPodPortforwardParams) (res ConnectCoreV1GetNamespacedPodPortforwardRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNamespacedPodPortforward"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/portforward"),
 	}
 
 	// Run stopwatch.
@@ -1721,6 +4675,8 @@ func (c *Client) ConnectCoreV1GetNamespacedPodProxy(ctx context.Context, params 
 func (c *Client) sendConnectCoreV1GetNamespacedPodProxy(ctx context.Context, params ConnectCoreV1GetNamespacedPodProxyParams) (res ConnectCoreV1GetNamespacedPodProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNamespacedPodProxy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -1884,6 +4840,8 @@ func (c *Client) ConnectCoreV1GetNamespacedPodProxyWithPath(ctx context.Context,
 func (c *Client) sendConnectCoreV1GetNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1GetNamespacedPodProxyWithPathParams) (res ConnectCoreV1GetNamespacedPodProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNamespacedPodProxyWithPath"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -2065,6 +5023,8 @@ func (c *Client) ConnectCoreV1GetNamespacedServiceProxy(ctx context.Context, par
 func (c *Client) sendConnectCoreV1GetNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1GetNamespacedServiceProxyParams) (res ConnectCoreV1GetNamespacedServiceProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNamespacedServiceProxy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -2228,6 +5188,8 @@ func (c *Client) ConnectCoreV1GetNamespacedServiceProxyWithPath(ctx context.Cont
 func (c *Client) sendConnectCoreV1GetNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1GetNamespacedServiceProxyWithPathParams) (res ConnectCoreV1GetNamespacedServiceProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNamespacedServiceProxyWithPath"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -2409,6 +5371,8 @@ func (c *Client) ConnectCoreV1GetNodeProxy(ctx context.Context, params ConnectCo
 func (c *Client) sendConnectCoreV1GetNodeProxy(ctx context.Context, params ConnectCoreV1GetNodeProxyParams) (res ConnectCoreV1GetNodeProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNodeProxy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -2553,6 +5517,8 @@ func (c *Client) ConnectCoreV1GetNodeProxyWithPath(ctx context.Context, params C
 func (c *Client) sendConnectCoreV1GetNodeProxyWithPath(ctx context.Context, params ConnectCoreV1GetNodeProxyWithPathParams) (res ConnectCoreV1GetNodeProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNodeProxyWithPath"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -2715,6 +5681,8 @@ func (c *Client) ConnectCoreV1HeadNamespacedPodProxy(ctx context.Context, params
 func (c *Client) sendConnectCoreV1HeadNamespacedPodProxy(ctx context.Context, params ConnectCoreV1HeadNamespacedPodProxyParams) (res ConnectCoreV1HeadNamespacedPodProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1HeadNamespacedPodProxy"),
+		semconv.HTTPMethodKey.String("HEAD"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -2878,6 +5846,8 @@ func (c *Client) ConnectCoreV1HeadNamespacedPodProxyWithPath(ctx context.Context
 func (c *Client) sendConnectCoreV1HeadNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1HeadNamespacedPodProxyWithPathParams) (res ConnectCoreV1HeadNamespacedPodProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1HeadNamespacedPodProxyWithPath"),
+		semconv.HTTPMethodKey.String("HEAD"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -3059,6 +6029,8 @@ func (c *Client) ConnectCoreV1HeadNamespacedServiceProxy(ctx context.Context, pa
 func (c *Client) sendConnectCoreV1HeadNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1HeadNamespacedServiceProxyParams) (res ConnectCoreV1HeadNamespacedServiceProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1HeadNamespacedServiceProxy"),
+		semconv.HTTPMethodKey.String("HEAD"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -3222,6 +6194,8 @@ func (c *Client) ConnectCoreV1HeadNamespacedServiceProxyWithPath(ctx context.Con
 func (c *Client) sendConnectCoreV1HeadNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1HeadNamespacedServiceProxyWithPathParams) (res ConnectCoreV1HeadNamespacedServiceProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1HeadNamespacedServiceProxyWithPath"),
+		semconv.HTTPMethodKey.String("HEAD"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -3403,6 +6377,8 @@ func (c *Client) ConnectCoreV1HeadNodeProxy(ctx context.Context, params ConnectC
 func (c *Client) sendConnectCoreV1HeadNodeProxy(ctx context.Context, params ConnectCoreV1HeadNodeProxyParams) (res ConnectCoreV1HeadNodeProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1HeadNodeProxy"),
+		semconv.HTTPMethodKey.String("HEAD"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -3547,6 +6523,8 @@ func (c *Client) ConnectCoreV1HeadNodeProxyWithPath(ctx context.Context, params 
 func (c *Client) sendConnectCoreV1HeadNodeProxyWithPath(ctx context.Context, params ConnectCoreV1HeadNodeProxyWithPathParams) (res ConnectCoreV1HeadNodeProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1HeadNodeProxyWithPath"),
+		semconv.HTTPMethodKey.String("HEAD"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -3709,6 +6687,8 @@ func (c *Client) ConnectCoreV1OptionsNamespacedPodProxy(ctx context.Context, par
 func (c *Client) sendConnectCoreV1OptionsNamespacedPodProxy(ctx context.Context, params ConnectCoreV1OptionsNamespacedPodProxyParams) (res ConnectCoreV1OptionsNamespacedPodProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1OptionsNamespacedPodProxy"),
+		semconv.HTTPMethodKey.String("OPTIONS"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -3872,6 +6852,8 @@ func (c *Client) ConnectCoreV1OptionsNamespacedPodProxyWithPath(ctx context.Cont
 func (c *Client) sendConnectCoreV1OptionsNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1OptionsNamespacedPodProxyWithPathParams) (res ConnectCoreV1OptionsNamespacedPodProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1OptionsNamespacedPodProxyWithPath"),
+		semconv.HTTPMethodKey.String("OPTIONS"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -4053,6 +7035,8 @@ func (c *Client) ConnectCoreV1OptionsNamespacedServiceProxy(ctx context.Context,
 func (c *Client) sendConnectCoreV1OptionsNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1OptionsNamespacedServiceProxyParams) (res ConnectCoreV1OptionsNamespacedServiceProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1OptionsNamespacedServiceProxy"),
+		semconv.HTTPMethodKey.String("OPTIONS"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -4216,6 +7200,8 @@ func (c *Client) ConnectCoreV1OptionsNamespacedServiceProxyWithPath(ctx context.
 func (c *Client) sendConnectCoreV1OptionsNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1OptionsNamespacedServiceProxyWithPathParams) (res ConnectCoreV1OptionsNamespacedServiceProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1OptionsNamespacedServiceProxyWithPath"),
+		semconv.HTTPMethodKey.String("OPTIONS"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -4397,6 +7383,8 @@ func (c *Client) ConnectCoreV1OptionsNodeProxy(ctx context.Context, params Conne
 func (c *Client) sendConnectCoreV1OptionsNodeProxy(ctx context.Context, params ConnectCoreV1OptionsNodeProxyParams) (res ConnectCoreV1OptionsNodeProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1OptionsNodeProxy"),
+		semconv.HTTPMethodKey.String("OPTIONS"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -4541,6 +7529,8 @@ func (c *Client) ConnectCoreV1OptionsNodeProxyWithPath(ctx context.Context, para
 func (c *Client) sendConnectCoreV1OptionsNodeProxyWithPath(ctx context.Context, params ConnectCoreV1OptionsNodeProxyWithPathParams) (res ConnectCoreV1OptionsNodeProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1OptionsNodeProxyWithPath"),
+		semconv.HTTPMethodKey.String("OPTIONS"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -4703,6 +7693,8 @@ func (c *Client) ConnectCoreV1PatchNamespacedPodProxy(ctx context.Context, param
 func (c *Client) sendConnectCoreV1PatchNamespacedPodProxy(ctx context.Context, params ConnectCoreV1PatchNamespacedPodProxyParams) (res ConnectCoreV1PatchNamespacedPodProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PatchNamespacedPodProxy"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -4866,6 +7858,8 @@ func (c *Client) ConnectCoreV1PatchNamespacedPodProxyWithPath(ctx context.Contex
 func (c *Client) sendConnectCoreV1PatchNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1PatchNamespacedPodProxyWithPathParams) (res ConnectCoreV1PatchNamespacedPodProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PatchNamespacedPodProxyWithPath"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -5047,6 +8041,8 @@ func (c *Client) ConnectCoreV1PatchNamespacedServiceProxy(ctx context.Context, p
 func (c *Client) sendConnectCoreV1PatchNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1PatchNamespacedServiceProxyParams) (res ConnectCoreV1PatchNamespacedServiceProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PatchNamespacedServiceProxy"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -5210,6 +8206,8 @@ func (c *Client) ConnectCoreV1PatchNamespacedServiceProxyWithPath(ctx context.Co
 func (c *Client) sendConnectCoreV1PatchNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1PatchNamespacedServiceProxyWithPathParams) (res ConnectCoreV1PatchNamespacedServiceProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PatchNamespacedServiceProxyWithPath"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -5391,6 +8389,8 @@ func (c *Client) ConnectCoreV1PatchNodeProxy(ctx context.Context, params Connect
 func (c *Client) sendConnectCoreV1PatchNodeProxy(ctx context.Context, params ConnectCoreV1PatchNodeProxyParams) (res ConnectCoreV1PatchNodeProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PatchNodeProxy"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -5535,6 +8535,8 @@ func (c *Client) ConnectCoreV1PatchNodeProxyWithPath(ctx context.Context, params
 func (c *Client) sendConnectCoreV1PatchNodeProxyWithPath(ctx context.Context, params ConnectCoreV1PatchNodeProxyWithPathParams) (res ConnectCoreV1PatchNodeProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PatchNodeProxyWithPath"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -5697,6 +8699,8 @@ func (c *Client) ConnectCoreV1PostNamespacedPodAttach(ctx context.Context, param
 func (c *Client) sendConnectCoreV1PostNamespacedPodAttach(ctx context.Context, params ConnectCoreV1PostNamespacedPodAttachParams) (res ConnectCoreV1PostNamespacedPodAttachRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNamespacedPodAttach"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/attach"),
 	}
 
 	// Run stopwatch.
@@ -5928,6 +8932,8 @@ func (c *Client) ConnectCoreV1PostNamespacedPodExec(ctx context.Context, params 
 func (c *Client) sendConnectCoreV1PostNamespacedPodExec(ctx context.Context, params ConnectCoreV1PostNamespacedPodExecParams) (res ConnectCoreV1PostNamespacedPodExecRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNamespacedPodExec"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/exec"),
 	}
 
 	// Run stopwatch.
@@ -6176,6 +9182,8 @@ func (c *Client) ConnectCoreV1PostNamespacedPodPortforward(ctx context.Context, 
 func (c *Client) sendConnectCoreV1PostNamespacedPodPortforward(ctx context.Context, params ConnectCoreV1PostNamespacedPodPortforwardParams) (res ConnectCoreV1PostNamespacedPodPortforwardRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNamespacedPodPortforward"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/portforward"),
 	}
 
 	// Run stopwatch.
@@ -6339,6 +9347,8 @@ func (c *Client) ConnectCoreV1PostNamespacedPodProxy(ctx context.Context, params
 func (c *Client) sendConnectCoreV1PostNamespacedPodProxy(ctx context.Context, params ConnectCoreV1PostNamespacedPodProxyParams) (res ConnectCoreV1PostNamespacedPodProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNamespacedPodProxy"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -6502,6 +9512,8 @@ func (c *Client) ConnectCoreV1PostNamespacedPodProxyWithPath(ctx context.Context
 func (c *Client) sendConnectCoreV1PostNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1PostNamespacedPodProxyWithPathParams) (res ConnectCoreV1PostNamespacedPodProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNamespacedPodProxyWithPath"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -6683,6 +9695,8 @@ func (c *Client) ConnectCoreV1PostNamespacedServiceProxy(ctx context.Context, pa
 func (c *Client) sendConnectCoreV1PostNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1PostNamespacedServiceProxyParams) (res ConnectCoreV1PostNamespacedServiceProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNamespacedServiceProxy"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -6846,6 +9860,8 @@ func (c *Client) ConnectCoreV1PostNamespacedServiceProxyWithPath(ctx context.Con
 func (c *Client) sendConnectCoreV1PostNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1PostNamespacedServiceProxyWithPathParams) (res ConnectCoreV1PostNamespacedServiceProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNamespacedServiceProxyWithPath"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -7027,6 +10043,8 @@ func (c *Client) ConnectCoreV1PostNodeProxy(ctx context.Context, params ConnectC
 func (c *Client) sendConnectCoreV1PostNodeProxy(ctx context.Context, params ConnectCoreV1PostNodeProxyParams) (res ConnectCoreV1PostNodeProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNodeProxy"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -7171,6 +10189,8 @@ func (c *Client) ConnectCoreV1PostNodeProxyWithPath(ctx context.Context, params 
 func (c *Client) sendConnectCoreV1PostNodeProxyWithPath(ctx context.Context, params ConnectCoreV1PostNodeProxyWithPathParams) (res ConnectCoreV1PostNodeProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNodeProxyWithPath"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -7333,6 +10353,8 @@ func (c *Client) ConnectCoreV1PutNamespacedPodProxy(ctx context.Context, params 
 func (c *Client) sendConnectCoreV1PutNamespacedPodProxy(ctx context.Context, params ConnectCoreV1PutNamespacedPodProxyParams) (res ConnectCoreV1PutNamespacedPodProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PutNamespacedPodProxy"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -7496,6 +10518,8 @@ func (c *Client) ConnectCoreV1PutNamespacedPodProxyWithPath(ctx context.Context,
 func (c *Client) sendConnectCoreV1PutNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1PutNamespacedPodProxyWithPathParams) (res ConnectCoreV1PutNamespacedPodProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PutNamespacedPodProxyWithPath"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -7677,6 +10701,8 @@ func (c *Client) ConnectCoreV1PutNamespacedServiceProxy(ctx context.Context, par
 func (c *Client) sendConnectCoreV1PutNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1PutNamespacedServiceProxyParams) (res ConnectCoreV1PutNamespacedServiceProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PutNamespacedServiceProxy"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -7840,6 +10866,8 @@ func (c *Client) ConnectCoreV1PutNamespacedServiceProxyWithPath(ctx context.Cont
 func (c *Client) sendConnectCoreV1PutNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1PutNamespacedServiceProxyWithPathParams) (res ConnectCoreV1PutNamespacedServiceProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PutNamespacedServiceProxyWithPath"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -8021,6 +11049,8 @@ func (c *Client) ConnectCoreV1PutNodeProxy(ctx context.Context, params ConnectCo
 func (c *Client) sendConnectCoreV1PutNodeProxy(ctx context.Context, params ConnectCoreV1PutNodeProxyParams) (res ConnectCoreV1PutNodeProxyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PutNodeProxy"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
 	}
 
 	// Run stopwatch.
@@ -8165,6 +11195,8 @@ func (c *Client) ConnectCoreV1PutNodeProxyWithPath(ctx context.Context, params C
 func (c *Client) sendConnectCoreV1PutNodeProxyWithPath(ctx context.Context, params ConnectCoreV1PutNodeProxyWithPathParams) (res ConnectCoreV1PutNodeProxyWithPathRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PutNodeProxyWithPath"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
 	}
 
 	// Run stopwatch.
@@ -8327,6 +11359,8 @@ func (c *Client) GetAPIVersions(ctx context.Context) (GetAPIVersionsRes, error) 
 func (c *Client) sendGetAPIVersions(ctx context.Context) (res GetAPIVersionsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAPIVersions"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/"),
 	}
 
 	// Run stopwatch.
@@ -8431,6 +11465,8 @@ func (c *Client) GetAdmissionregistrationAPIGroup(ctx context.Context) (GetAdmis
 func (c *Client) sendGetAdmissionregistrationAPIGroup(ctx context.Context) (res GetAdmissionregistrationAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAdmissionregistrationAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/"),
 	}
 
 	// Run stopwatch.
@@ -8535,6 +11571,8 @@ func (c *Client) GetAdmissionregistrationV1APIResources(ctx context.Context) (Ge
 func (c *Client) sendGetAdmissionregistrationV1APIResources(ctx context.Context) (res GetAdmissionregistrationV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAdmissionregistrationV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/"),
 	}
 
 	// Run stopwatch.
@@ -8639,6 +11677,8 @@ func (c *Client) GetApiextensionsAPIGroup(ctx context.Context) (GetApiextensions
 func (c *Client) sendGetApiextensionsAPIGroup(ctx context.Context) (res GetApiextensionsAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getApiextensionsAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/"),
 	}
 
 	// Run stopwatch.
@@ -8743,6 +11783,8 @@ func (c *Client) GetApiextensionsV1APIResources(ctx context.Context) (GetApiexte
 func (c *Client) sendGetApiextensionsV1APIResources(ctx context.Context) (res GetApiextensionsV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getApiextensionsV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/v1/"),
 	}
 
 	// Run stopwatch.
@@ -8847,6 +11889,8 @@ func (c *Client) GetApiregistrationAPIGroup(ctx context.Context) (GetApiregistra
 func (c *Client) sendGetApiregistrationAPIGroup(ctx context.Context) (res GetApiregistrationAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getApiregistrationAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/"),
 	}
 
 	// Run stopwatch.
@@ -8951,6 +11995,8 @@ func (c *Client) GetApiregistrationV1APIResources(ctx context.Context) (GetApire
 func (c *Client) sendGetApiregistrationV1APIResources(ctx context.Context) (res GetApiregistrationV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getApiregistrationV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/v1/"),
 	}
 
 	// Run stopwatch.
@@ -9055,6 +12101,8 @@ func (c *Client) GetAppsAPIGroup(ctx context.Context) (GetAppsAPIGroupRes, error
 func (c *Client) sendGetAppsAPIGroup(ctx context.Context) (res GetAppsAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAppsAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/"),
 	}
 
 	// Run stopwatch.
@@ -9159,6 +12207,8 @@ func (c *Client) GetAppsV1APIResources(ctx context.Context) (GetAppsV1APIResourc
 func (c *Client) sendGetAppsV1APIResources(ctx context.Context) (res GetAppsV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAppsV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/"),
 	}
 
 	// Run stopwatch.
@@ -9263,6 +12313,8 @@ func (c *Client) GetAuthenticationAPIGroup(ctx context.Context) (GetAuthenticati
 func (c *Client) sendGetAuthenticationAPIGroup(ctx context.Context) (res GetAuthenticationAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAuthenticationAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/authentication.k8s.io/"),
 	}
 
 	// Run stopwatch.
@@ -9367,6 +12419,8 @@ func (c *Client) GetAuthenticationV1APIResources(ctx context.Context) (GetAuthen
 func (c *Client) sendGetAuthenticationV1APIResources(ctx context.Context) (res GetAuthenticationV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAuthenticationV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/authentication.k8s.io/v1/"),
 	}
 
 	// Run stopwatch.
@@ -9471,6 +12525,8 @@ func (c *Client) GetAuthorizationAPIGroup(ctx context.Context) (GetAuthorization
 func (c *Client) sendGetAuthorizationAPIGroup(ctx context.Context) (res GetAuthorizationAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAuthorizationAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/authorization.k8s.io/"),
 	}
 
 	// Run stopwatch.
@@ -9575,6 +12631,8 @@ func (c *Client) GetAuthorizationV1APIResources(ctx context.Context) (GetAuthori
 func (c *Client) sendGetAuthorizationV1APIResources(ctx context.Context) (res GetAuthorizationV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAuthorizationV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/authorization.k8s.io/v1/"),
 	}
 
 	// Run stopwatch.
@@ -9679,6 +12737,8 @@ func (c *Client) GetAutoscalingAPIGroup(ctx context.Context) (GetAutoscalingAPIG
 func (c *Client) sendGetAutoscalingAPIGroup(ctx context.Context) (res GetAutoscalingAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAutoscalingAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/"),
 	}
 
 	// Run stopwatch.
@@ -9783,6 +12843,8 @@ func (c *Client) GetAutoscalingV1APIResources(ctx context.Context) (GetAutoscali
 func (c *Client) sendGetAutoscalingV1APIResources(ctx context.Context) (res GetAutoscalingV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAutoscalingV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/"),
 	}
 
 	// Run stopwatch.
@@ -9887,6 +12949,8 @@ func (c *Client) GetAutoscalingV2beta1APIResources(ctx context.Context) (GetAuto
 func (c *Client) sendGetAutoscalingV2beta1APIResources(ctx context.Context) (res GetAutoscalingV2beta1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAutoscalingV2beta1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/"),
 	}
 
 	// Run stopwatch.
@@ -9991,6 +13055,8 @@ func (c *Client) GetAutoscalingV2beta2APIResources(ctx context.Context) (GetAuto
 func (c *Client) sendGetAutoscalingV2beta2APIResources(ctx context.Context) (res GetAutoscalingV2beta2APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAutoscalingV2beta2APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/"),
 	}
 
 	// Run stopwatch.
@@ -10095,6 +13161,8 @@ func (c *Client) GetBatchAPIGroup(ctx context.Context) (GetBatchAPIGroupRes, err
 func (c *Client) sendGetBatchAPIGroup(ctx context.Context) (res GetBatchAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getBatchAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/"),
 	}
 
 	// Run stopwatch.
@@ -10199,6 +13267,8 @@ func (c *Client) GetBatchV1APIResources(ctx context.Context) (GetBatchV1APIResou
 func (c *Client) sendGetBatchV1APIResources(ctx context.Context) (res GetBatchV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getBatchV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1/"),
 	}
 
 	// Run stopwatch.
@@ -10303,6 +13373,8 @@ func (c *Client) GetBatchV1beta1APIResources(ctx context.Context) (GetBatchV1bet
 func (c *Client) sendGetBatchV1beta1APIResources(ctx context.Context) (res GetBatchV1beta1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getBatchV1beta1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/"),
 	}
 
 	// Run stopwatch.
@@ -10407,6 +13479,8 @@ func (c *Client) GetCertificatesAPIGroup(ctx context.Context) (GetCertificatesAP
 func (c *Client) sendGetCertificatesAPIGroup(ctx context.Context) (res GetCertificatesAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getCertificatesAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/"),
 	}
 
 	// Run stopwatch.
@@ -10511,6 +13585,8 @@ func (c *Client) GetCertificatesV1APIResources(ctx context.Context) (GetCertific
 func (c *Client) sendGetCertificatesV1APIResources(ctx context.Context) (res GetCertificatesV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getCertificatesV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/"),
 	}
 
 	// Run stopwatch.
@@ -10615,6 +13691,8 @@ func (c *Client) GetCodeVersion(ctx context.Context) (GetCodeVersionRes, error) 
 func (c *Client) sendGetCodeVersion(ctx context.Context) (res GetCodeVersionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getCodeVersion"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/version/"),
 	}
 
 	// Run stopwatch.
@@ -10719,6 +13797,8 @@ func (c *Client) GetCoordinationAPIGroup(ctx context.Context) (GetCoordinationAP
 func (c *Client) sendGetCoordinationAPIGroup(ctx context.Context) (res GetCoordinationAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getCoordinationAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/"),
 	}
 
 	// Run stopwatch.
@@ -10823,6 +13903,8 @@ func (c *Client) GetCoordinationV1APIResources(ctx context.Context) (GetCoordina
 func (c *Client) sendGetCoordinationV1APIResources(ctx context.Context) (res GetCoordinationV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getCoordinationV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/"),
 	}
 
 	// Run stopwatch.
@@ -10927,6 +14009,8 @@ func (c *Client) GetCoreAPIVersions(ctx context.Context) (GetCoreAPIVersionsRes,
 func (c *Client) sendGetCoreAPIVersions(ctx context.Context) (res GetCoreAPIVersionsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getCoreAPIVersions"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/"),
 	}
 
 	// Run stopwatch.
@@ -11031,6 +14115,8 @@ func (c *Client) GetCoreV1APIResources(ctx context.Context) (GetCoreV1APIResourc
 func (c *Client) sendGetCoreV1APIResources(ctx context.Context) (res GetCoreV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getCoreV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/"),
 	}
 
 	// Run stopwatch.
@@ -11135,6 +14221,8 @@ func (c *Client) GetDiscoveryAPIGroup(ctx context.Context) (GetDiscoveryAPIGroup
 func (c *Client) sendGetDiscoveryAPIGroup(ctx context.Context) (res GetDiscoveryAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getDiscoveryAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/"),
 	}
 
 	// Run stopwatch.
@@ -11239,6 +14327,8 @@ func (c *Client) GetDiscoveryV1APIResources(ctx context.Context) (GetDiscoveryV1
 func (c *Client) sendGetDiscoveryV1APIResources(ctx context.Context) (res GetDiscoveryV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getDiscoveryV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/"),
 	}
 
 	// Run stopwatch.
@@ -11343,6 +14433,8 @@ func (c *Client) GetDiscoveryV1beta1APIResources(ctx context.Context) (GetDiscov
 func (c *Client) sendGetDiscoveryV1beta1APIResources(ctx context.Context) (res GetDiscoveryV1beta1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getDiscoveryV1beta1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/"),
 	}
 
 	// Run stopwatch.
@@ -11447,6 +14539,8 @@ func (c *Client) GetEventsAPIGroup(ctx context.Context) (GetEventsAPIGroupRes, e
 func (c *Client) sendGetEventsAPIGroup(ctx context.Context) (res GetEventsAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getEventsAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/events.k8s.io/"),
 	}
 
 	// Run stopwatch.
@@ -11551,6 +14645,8 @@ func (c *Client) GetEventsV1APIResources(ctx context.Context) (GetEventsV1APIRes
 func (c *Client) sendGetEventsV1APIResources(ctx context.Context) (res GetEventsV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getEventsV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/"),
 	}
 
 	// Run stopwatch.
@@ -11655,6 +14751,8 @@ func (c *Client) GetEventsV1beta1APIResources(ctx context.Context) (GetEventsV1b
 func (c *Client) sendGetEventsV1beta1APIResources(ctx context.Context) (res GetEventsV1beta1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getEventsV1beta1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/"),
 	}
 
 	// Run stopwatch.
@@ -11759,6 +14857,8 @@ func (c *Client) GetFlowcontrolApiserverAPIGroup(ctx context.Context) (GetFlowco
 func (c *Client) sendGetFlowcontrolApiserverAPIGroup(ctx context.Context) (res GetFlowcontrolApiserverAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getFlowcontrolApiserverAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/"),
 	}
 
 	// Run stopwatch.
@@ -11863,6 +14963,8 @@ func (c *Client) GetFlowcontrolApiserverV1beta1APIResources(ctx context.Context)
 func (c *Client) sendGetFlowcontrolApiserverV1beta1APIResources(ctx context.Context) (res GetFlowcontrolApiserverV1beta1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getFlowcontrolApiserverV1beta1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/"),
 	}
 
 	// Run stopwatch.
@@ -11967,6 +15069,8 @@ func (c *Client) GetFlowcontrolApiserverV1beta2APIResources(ctx context.Context)
 func (c *Client) sendGetFlowcontrolApiserverV1beta2APIResources(ctx context.Context) (res GetFlowcontrolApiserverV1beta2APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getFlowcontrolApiserverV1beta2APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/"),
 	}
 
 	// Run stopwatch.
@@ -12071,6 +15175,8 @@ func (c *Client) GetInternalApiserverAPIGroup(ctx context.Context) (GetInternalA
 func (c *Client) sendGetInternalApiserverAPIGroup(ctx context.Context) (res GetInternalApiserverAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getInternalApiserverAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/"),
 	}
 
 	// Run stopwatch.
@@ -12175,6 +15281,8 @@ func (c *Client) GetInternalApiserverV1alpha1APIResources(ctx context.Context) (
 func (c *Client) sendGetInternalApiserverV1alpha1APIResources(ctx context.Context) (res GetInternalApiserverV1alpha1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getInternalApiserverV1alpha1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/"),
 	}
 
 	// Run stopwatch.
@@ -12279,6 +15387,8 @@ func (c *Client) GetNetworkingAPIGroup(ctx context.Context) (GetNetworkingAPIGro
 func (c *Client) sendGetNetworkingAPIGroup(ctx context.Context) (res GetNetworkingAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getNetworkingAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/"),
 	}
 
 	// Run stopwatch.
@@ -12383,6 +15493,8 @@ func (c *Client) GetNetworkingV1APIResources(ctx context.Context) (GetNetworking
 func (c *Client) sendGetNetworkingV1APIResources(ctx context.Context) (res GetNetworkingV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getNetworkingV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/"),
 	}
 
 	// Run stopwatch.
@@ -12487,6 +15599,8 @@ func (c *Client) GetNodeAPIGroup(ctx context.Context) (GetNodeAPIGroupRes, error
 func (c *Client) sendGetNodeAPIGroup(ctx context.Context) (res GetNodeAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getNodeAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/node.k8s.io/"),
 	}
 
 	// Run stopwatch.
@@ -12591,6 +15705,8 @@ func (c *Client) GetNodeV1APIResources(ctx context.Context) (GetNodeV1APIResourc
 func (c *Client) sendGetNodeV1APIResources(ctx context.Context) (res GetNodeV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getNodeV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1/"),
 	}
 
 	// Run stopwatch.
@@ -12695,6 +15811,8 @@ func (c *Client) GetNodeV1alpha1APIResources(ctx context.Context) (GetNodeV1alph
 func (c *Client) sendGetNodeV1alpha1APIResources(ctx context.Context) (res GetNodeV1alpha1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getNodeV1alpha1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1alpha1/"),
 	}
 
 	// Run stopwatch.
@@ -12799,6 +15917,8 @@ func (c *Client) GetNodeV1beta1APIResources(ctx context.Context) (GetNodeV1beta1
 func (c *Client) sendGetNodeV1beta1APIResources(ctx context.Context) (res GetNodeV1beta1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getNodeV1beta1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1beta1/"),
 	}
 
 	// Run stopwatch.
@@ -12903,6 +16023,8 @@ func (c *Client) GetPolicyAPIGroup(ctx context.Context) (GetPolicyAPIGroupRes, e
 func (c *Client) sendGetPolicyAPIGroup(ctx context.Context) (res GetPolicyAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getPolicyAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/"),
 	}
 
 	// Run stopwatch.
@@ -13007,6 +16129,8 @@ func (c *Client) GetPolicyV1APIResources(ctx context.Context) (GetPolicyV1APIRes
 func (c *Client) sendGetPolicyV1APIResources(ctx context.Context) (res GetPolicyV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getPolicyV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1/"),
 	}
 
 	// Run stopwatch.
@@ -13111,6 +16235,8 @@ func (c *Client) GetPolicyV1beta1APIResources(ctx context.Context) (GetPolicyV1b
 func (c *Client) sendGetPolicyV1beta1APIResources(ctx context.Context) (res GetPolicyV1beta1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getPolicyV1beta1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/"),
 	}
 
 	// Run stopwatch.
@@ -13215,6 +16341,8 @@ func (c *Client) GetRbacAuthorizationAPIGroup(ctx context.Context) (GetRbacAutho
 func (c *Client) sendGetRbacAuthorizationAPIGroup(ctx context.Context) (res GetRbacAuthorizationAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getRbacAuthorizationAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/"),
 	}
 
 	// Run stopwatch.
@@ -13319,6 +16447,8 @@ func (c *Client) GetRbacAuthorizationV1APIResources(ctx context.Context) (GetRba
 func (c *Client) sendGetRbacAuthorizationV1APIResources(ctx context.Context) (res GetRbacAuthorizationV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getRbacAuthorizationV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/"),
 	}
 
 	// Run stopwatch.
@@ -13423,6 +16553,8 @@ func (c *Client) GetSchedulingAPIGroup(ctx context.Context) (GetSchedulingAPIGro
 func (c *Client) sendGetSchedulingAPIGroup(ctx context.Context) (res GetSchedulingAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getSchedulingAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/scheduling.k8s.io/"),
 	}
 
 	// Run stopwatch.
@@ -13527,6 +16659,8 @@ func (c *Client) GetSchedulingV1APIResources(ctx context.Context) (GetScheduling
 func (c *Client) sendGetSchedulingV1APIResources(ctx context.Context) (res GetSchedulingV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getSchedulingV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/scheduling.k8s.io/v1/"),
 	}
 
 	// Run stopwatch.
@@ -13631,6 +16765,8 @@ func (c *Client) GetServiceAccountIssuerOpenIDConfiguration(ctx context.Context)
 func (c *Client) sendGetServiceAccountIssuerOpenIDConfiguration(ctx context.Context) (res GetServiceAccountIssuerOpenIDConfigurationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getServiceAccountIssuerOpenIDConfiguration"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/.well-known/openid-configuration/"),
 	}
 
 	// Run stopwatch.
@@ -13735,6 +16871,8 @@ func (c *Client) GetServiceAccountIssuerOpenIDKeyset(ctx context.Context) (GetSe
 func (c *Client) sendGetServiceAccountIssuerOpenIDKeyset(ctx context.Context) (res GetServiceAccountIssuerOpenIDKeysetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getServiceAccountIssuerOpenIDKeyset"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/openid/v1/jwks/"),
 	}
 
 	// Run stopwatch.
@@ -13839,6 +16977,8 @@ func (c *Client) GetStorageAPIGroup(ctx context.Context) (GetStorageAPIGroupRes,
 func (c *Client) sendGetStorageAPIGroup(ctx context.Context) (res GetStorageAPIGroupRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getStorageAPIGroup"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/"),
 	}
 
 	// Run stopwatch.
@@ -13943,6 +17083,8 @@ func (c *Client) GetStorageV1APIResources(ctx context.Context) (GetStorageV1APIR
 func (c *Client) sendGetStorageV1APIResources(ctx context.Context) (res GetStorageV1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getStorageV1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/"),
 	}
 
 	// Run stopwatch.
@@ -14047,6 +17189,8 @@ func (c *Client) GetStorageV1alpha1APIResources(ctx context.Context) (GetStorage
 func (c *Client) sendGetStorageV1alpha1APIResources(ctx context.Context) (res GetStorageV1alpha1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getStorageV1alpha1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/"),
 	}
 
 	// Run stopwatch.
@@ -14151,6 +17295,8 @@ func (c *Client) GetStorageV1beta1APIResources(ctx context.Context) (GetStorageV
 func (c *Client) sendGetStorageV1beta1APIResources(ctx context.Context) (res GetStorageV1beta1APIResourcesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getStorageV1beta1APIResources"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/"),
 	}
 
 	// Run stopwatch.
@@ -14255,6 +17401,8 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 func (c *Client) sendListAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, params ListAdmissionregistrationV1MutatingWebhookConfigurationParams) (res ListAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAdmissionregistrationV1MutatingWebhookConfiguration"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations"),
 	}
 
 	// Run stopwatch.
@@ -14533,6 +17681,8 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 func (c *Client) sendListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, params ListAdmissionregistrationV1ValidatingWebhookConfigurationParams) (res ListAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAdmissionregistrationV1ValidatingWebhookConfiguration"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations"),
 	}
 
 	// Run stopwatch.
@@ -14811,6 +17961,8 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 func (c *Client) sendListApiextensionsV1CustomResourceDefinition(ctx context.Context, params ListApiextensionsV1CustomResourceDefinitionParams) (res ListApiextensionsV1CustomResourceDefinitionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listApiextensionsV1CustomResourceDefinition"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/v1/customresourcedefinitions"),
 	}
 
 	// Run stopwatch.
@@ -15089,6 +18241,8 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 func (c *Client) sendListApiregistrationV1APIService(ctx context.Context, params ListApiregistrationV1APIServiceParams) (res ListApiregistrationV1APIServiceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listApiregistrationV1APIService"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/v1/apiservices"),
 	}
 
 	// Run stopwatch.
@@ -15367,6 +18521,8 @@ func (c *Client) ListAppsV1ControllerRevisionForAllNamespaces(ctx context.Contex
 func (c *Client) sendListAppsV1ControllerRevisionForAllNamespaces(ctx context.Context, params ListAppsV1ControllerRevisionForAllNamespacesParams) (res ListAppsV1ControllerRevisionForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1ControllerRevisionForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/controllerrevisions"),
 	}
 
 	// Run stopwatch.
@@ -15645,6 +18801,8 @@ func (c *Client) ListAppsV1DaemonSetForAllNamespaces(ctx context.Context, params
 func (c *Client) sendListAppsV1DaemonSetForAllNamespaces(ctx context.Context, params ListAppsV1DaemonSetForAllNamespacesParams) (res ListAppsV1DaemonSetForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1DaemonSetForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/daemonsets"),
 	}
 
 	// Run stopwatch.
@@ -15923,6 +19081,8 @@ func (c *Client) ListAppsV1DeploymentForAllNamespaces(ctx context.Context, param
 func (c *Client) sendListAppsV1DeploymentForAllNamespaces(ctx context.Context, params ListAppsV1DeploymentForAllNamespacesParams) (res ListAppsV1DeploymentForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1DeploymentForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/deployments"),
 	}
 
 	// Run stopwatch.
@@ -16201,6 +19361,8 @@ func (c *Client) ListAppsV1NamespacedControllerRevision(ctx context.Context, par
 func (c *Client) sendListAppsV1NamespacedControllerRevision(ctx context.Context, params ListAppsV1NamespacedControllerRevisionParams) (res ListAppsV1NamespacedControllerRevisionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1NamespacedControllerRevision"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/controllerrevisions"),
 	}
 
 	// Run stopwatch.
@@ -16498,6 +19660,8 @@ func (c *Client) ListAppsV1NamespacedDaemonSet(ctx context.Context, params ListA
 func (c *Client) sendListAppsV1NamespacedDaemonSet(ctx context.Context, params ListAppsV1NamespacedDaemonSetParams) (res ListAppsV1NamespacedDaemonSetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1NamespacedDaemonSet"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/daemonsets"),
 	}
 
 	// Run stopwatch.
@@ -16795,6 +19959,8 @@ func (c *Client) ListAppsV1NamespacedDeployment(ctx context.Context, params List
 func (c *Client) sendListAppsV1NamespacedDeployment(ctx context.Context, params ListAppsV1NamespacedDeploymentParams) (res ListAppsV1NamespacedDeploymentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1NamespacedDeployment"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/deployments"),
 	}
 
 	// Run stopwatch.
@@ -17092,6 +20258,8 @@ func (c *Client) ListAppsV1NamespacedReplicaSet(ctx context.Context, params List
 func (c *Client) sendListAppsV1NamespacedReplicaSet(ctx context.Context, params ListAppsV1NamespacedReplicaSetParams) (res ListAppsV1NamespacedReplicaSetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1NamespacedReplicaSet"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/replicasets"),
 	}
 
 	// Run stopwatch.
@@ -17389,6 +20557,8 @@ func (c *Client) ListAppsV1NamespacedStatefulSet(ctx context.Context, params Lis
 func (c *Client) sendListAppsV1NamespacedStatefulSet(ctx context.Context, params ListAppsV1NamespacedStatefulSetParams) (res ListAppsV1NamespacedStatefulSetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1NamespacedStatefulSet"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/statefulsets"),
 	}
 
 	// Run stopwatch.
@@ -17686,6 +20856,8 @@ func (c *Client) ListAppsV1ReplicaSetForAllNamespaces(ctx context.Context, param
 func (c *Client) sendListAppsV1ReplicaSetForAllNamespaces(ctx context.Context, params ListAppsV1ReplicaSetForAllNamespacesParams) (res ListAppsV1ReplicaSetForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1ReplicaSetForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/replicasets"),
 	}
 
 	// Run stopwatch.
@@ -17964,6 +21136,8 @@ func (c *Client) ListAppsV1StatefulSetForAllNamespaces(ctx context.Context, para
 func (c *Client) sendListAppsV1StatefulSetForAllNamespaces(ctx context.Context, params ListAppsV1StatefulSetForAllNamespacesParams) (res ListAppsV1StatefulSetForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1StatefulSetForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/statefulsets"),
 	}
 
 	// Run stopwatch.
@@ -18242,6 +21416,8 @@ func (c *Client) ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx co
 func (c *Client) sendListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx context.Context, params ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams) (res ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/horizontalpodautoscalers"),
 	}
 
 	// Run stopwatch.
@@ -18520,6 +21696,8 @@ func (c *Client) ListAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.
 func (c *Client) sendListAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.Context, params ListAutoscalingV1NamespacedHorizontalPodAutoscalerParams) (res ListAutoscalingV1NamespacedHorizontalPodAutoscalerRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAutoscalingV1NamespacedHorizontalPodAutoscaler"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers"),
 	}
 
 	// Run stopwatch.
@@ -18817,6 +21995,8 @@ func (c *Client) ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(c
 func (c *Client) sendListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(ctx context.Context, params ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams) (res ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/horizontalpodautoscalers"),
 	}
 
 	// Run stopwatch.
@@ -19095,6 +22275,8 @@ func (c *Client) ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx con
 func (c *Client) sendListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx context.Context, params ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) (res ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers"),
 	}
 
 	// Run stopwatch.
@@ -19392,6 +22574,8 @@ func (c *Client) ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(c
 func (c *Client) sendListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(ctx context.Context, params ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams) (res ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/horizontalpodautoscalers"),
 	}
 
 	// Run stopwatch.
@@ -19670,6 +22854,8 @@ func (c *Client) ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx con
 func (c *Client) sendListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx context.Context, params ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) (res ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers"),
 	}
 
 	// Run stopwatch.
@@ -19967,6 +23153,8 @@ func (c *Client) ListBatchV1CronJobForAllNamespaces(ctx context.Context, params 
 func (c *Client) sendListBatchV1CronJobForAllNamespaces(ctx context.Context, params ListBatchV1CronJobForAllNamespacesParams) (res ListBatchV1CronJobForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listBatchV1CronJobForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1/cronjobs"),
 	}
 
 	// Run stopwatch.
@@ -20245,6 +23433,8 @@ func (c *Client) ListBatchV1JobForAllNamespaces(ctx context.Context, params List
 func (c *Client) sendListBatchV1JobForAllNamespaces(ctx context.Context, params ListBatchV1JobForAllNamespacesParams) (res ListBatchV1JobForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listBatchV1JobForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1/jobs"),
 	}
 
 	// Run stopwatch.
@@ -20523,6 +23713,8 @@ func (c *Client) ListBatchV1NamespacedCronJob(ctx context.Context, params ListBa
 func (c *Client) sendListBatchV1NamespacedCronJob(ctx context.Context, params ListBatchV1NamespacedCronJobParams) (res ListBatchV1NamespacedCronJobRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listBatchV1NamespacedCronJob"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/cronjobs"),
 	}
 
 	// Run stopwatch.
@@ -20820,6 +24012,8 @@ func (c *Client) ListBatchV1NamespacedJob(ctx context.Context, params ListBatchV
 func (c *Client) sendListBatchV1NamespacedJob(ctx context.Context, params ListBatchV1NamespacedJobParams) (res ListBatchV1NamespacedJobRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listBatchV1NamespacedJob"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/jobs"),
 	}
 
 	// Run stopwatch.
@@ -21117,6 +24311,8 @@ func (c *Client) ListBatchV1beta1CronJobForAllNamespaces(ctx context.Context, pa
 func (c *Client) sendListBatchV1beta1CronJobForAllNamespaces(ctx context.Context, params ListBatchV1beta1CronJobForAllNamespacesParams) (res ListBatchV1beta1CronJobForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listBatchV1beta1CronJobForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/cronjobs"),
 	}
 
 	// Run stopwatch.
@@ -21395,6 +24591,8 @@ func (c *Client) ListBatchV1beta1NamespacedCronJob(ctx context.Context, params L
 func (c *Client) sendListBatchV1beta1NamespacedCronJob(ctx context.Context, params ListBatchV1beta1NamespacedCronJobParams) (res ListBatchV1beta1NamespacedCronJobRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listBatchV1beta1NamespacedCronJob"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/namespaces/{namespace}/cronjobs"),
 	}
 
 	// Run stopwatch.
@@ -21692,6 +24890,8 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 func (c *Client) sendListCertificatesV1CertificateSigningRequest(ctx context.Context, params ListCertificatesV1CertificateSigningRequestParams) (res ListCertificatesV1CertificateSigningRequestRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCertificatesV1CertificateSigningRequest"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/certificatesigningrequests"),
 	}
 
 	// Run stopwatch.
@@ -21970,6 +25170,8 @@ func (c *Client) ListCoordinationV1LeaseForAllNamespaces(ctx context.Context, pa
 func (c *Client) sendListCoordinationV1LeaseForAllNamespaces(ctx context.Context, params ListCoordinationV1LeaseForAllNamespacesParams) (res ListCoordinationV1LeaseForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoordinationV1LeaseForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/leases"),
 	}
 
 	// Run stopwatch.
@@ -22248,6 +25450,8 @@ func (c *Client) ListCoordinationV1NamespacedLease(ctx context.Context, params L
 func (c *Client) sendListCoordinationV1NamespacedLease(ctx context.Context, params ListCoordinationV1NamespacedLeaseParams) (res ListCoordinationV1NamespacedLeaseRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoordinationV1NamespacedLease"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases"),
 	}
 
 	// Run stopwatch.
@@ -22545,6 +25749,8 @@ func (c *Client) ListCoreV1ComponentStatus(ctx context.Context, params ListCoreV
 func (c *Client) sendListCoreV1ComponentStatus(ctx context.Context, params ListCoreV1ComponentStatusParams) (res ListCoreV1ComponentStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1ComponentStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/componentstatuses"),
 	}
 
 	// Run stopwatch.
@@ -22823,6 +26029,8 @@ func (c *Client) ListCoreV1ConfigMapForAllNamespaces(ctx context.Context, params
 func (c *Client) sendListCoreV1ConfigMapForAllNamespaces(ctx context.Context, params ListCoreV1ConfigMapForAllNamespacesParams) (res ListCoreV1ConfigMapForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1ConfigMapForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/configmaps"),
 	}
 
 	// Run stopwatch.
@@ -23101,6 +26309,8 @@ func (c *Client) ListCoreV1EndpointsForAllNamespaces(ctx context.Context, params
 func (c *Client) sendListCoreV1EndpointsForAllNamespaces(ctx context.Context, params ListCoreV1EndpointsForAllNamespacesParams) (res ListCoreV1EndpointsForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1EndpointsForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/endpoints"),
 	}
 
 	// Run stopwatch.
@@ -23379,6 +26589,8 @@ func (c *Client) ListCoreV1EventForAllNamespaces(ctx context.Context, params Lis
 func (c *Client) sendListCoreV1EventForAllNamespaces(ctx context.Context, params ListCoreV1EventForAllNamespacesParams) (res ListCoreV1EventForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1EventForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/events"),
 	}
 
 	// Run stopwatch.
@@ -23657,6 +26869,8 @@ func (c *Client) ListCoreV1LimitRangeForAllNamespaces(ctx context.Context, param
 func (c *Client) sendListCoreV1LimitRangeForAllNamespaces(ctx context.Context, params ListCoreV1LimitRangeForAllNamespacesParams) (res ListCoreV1LimitRangeForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1LimitRangeForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/limitranges"),
 	}
 
 	// Run stopwatch.
@@ -23935,6 +27149,8 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 func (c *Client) sendListCoreV1Namespace(ctx context.Context, params ListCoreV1NamespaceParams) (res ListCoreV1NamespaceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1Namespace"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces"),
 	}
 
 	// Run stopwatch.
@@ -24213,6 +27429,8 @@ func (c *Client) ListCoreV1NamespacedConfigMap(ctx context.Context, params ListC
 func (c *Client) sendListCoreV1NamespacedConfigMap(ctx context.Context, params ListCoreV1NamespacedConfigMapParams) (res ListCoreV1NamespacedConfigMapRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedConfigMap"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/configmaps"),
 	}
 
 	// Run stopwatch.
@@ -24510,6 +27728,8 @@ func (c *Client) ListCoreV1NamespacedEndpoints(ctx context.Context, params ListC
 func (c *Client) sendListCoreV1NamespacedEndpoints(ctx context.Context, params ListCoreV1NamespacedEndpointsParams) (res ListCoreV1NamespacedEndpointsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedEndpoints"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/endpoints"),
 	}
 
 	// Run stopwatch.
@@ -24807,6 +28027,8 @@ func (c *Client) ListCoreV1NamespacedEvent(ctx context.Context, params ListCoreV
 func (c *Client) sendListCoreV1NamespacedEvent(ctx context.Context, params ListCoreV1NamespacedEventParams) (res ListCoreV1NamespacedEventRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedEvent"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/events"),
 	}
 
 	// Run stopwatch.
@@ -25104,6 +28326,8 @@ func (c *Client) ListCoreV1NamespacedLimitRange(ctx context.Context, params List
 func (c *Client) sendListCoreV1NamespacedLimitRange(ctx context.Context, params ListCoreV1NamespacedLimitRangeParams) (res ListCoreV1NamespacedLimitRangeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedLimitRange"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/limitranges"),
 	}
 
 	// Run stopwatch.
@@ -25401,6 +28625,8 @@ func (c *Client) ListCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, 
 func (c *Client) sendListCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, params ListCoreV1NamespacedPersistentVolumeClaimParams) (res ListCoreV1NamespacedPersistentVolumeClaimRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedPersistentVolumeClaim"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/persistentvolumeclaims"),
 	}
 
 	// Run stopwatch.
@@ -25698,6 +28924,8 @@ func (c *Client) ListCoreV1NamespacedPod(ctx context.Context, params ListCoreV1N
 func (c *Client) sendListCoreV1NamespacedPod(ctx context.Context, params ListCoreV1NamespacedPodParams) (res ListCoreV1NamespacedPodRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedPod"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods"),
 	}
 
 	// Run stopwatch.
@@ -25995,6 +29223,8 @@ func (c *Client) ListCoreV1NamespacedPodTemplate(ctx context.Context, params Lis
 func (c *Client) sendListCoreV1NamespacedPodTemplate(ctx context.Context, params ListCoreV1NamespacedPodTemplateParams) (res ListCoreV1NamespacedPodTemplateRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedPodTemplate"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/podtemplates"),
 	}
 
 	// Run stopwatch.
@@ -26292,6 +29522,8 @@ func (c *Client) ListCoreV1NamespacedReplicationController(ctx context.Context, 
 func (c *Client) sendListCoreV1NamespacedReplicationController(ctx context.Context, params ListCoreV1NamespacedReplicationControllerParams) (res ListCoreV1NamespacedReplicationControllerRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedReplicationController"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/replicationcontrollers"),
 	}
 
 	// Run stopwatch.
@@ -26589,6 +29821,8 @@ func (c *Client) ListCoreV1NamespacedResourceQuota(ctx context.Context, params L
 func (c *Client) sendListCoreV1NamespacedResourceQuota(ctx context.Context, params ListCoreV1NamespacedResourceQuotaParams) (res ListCoreV1NamespacedResourceQuotaRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedResourceQuota"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/resourcequotas"),
 	}
 
 	// Run stopwatch.
@@ -26886,6 +30120,8 @@ func (c *Client) ListCoreV1NamespacedSecret(ctx context.Context, params ListCore
 func (c *Client) sendListCoreV1NamespacedSecret(ctx context.Context, params ListCoreV1NamespacedSecretParams) (res ListCoreV1NamespacedSecretRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedSecret"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/secrets"),
 	}
 
 	// Run stopwatch.
@@ -27183,6 +30419,8 @@ func (c *Client) ListCoreV1NamespacedService(ctx context.Context, params ListCor
 func (c *Client) sendListCoreV1NamespacedService(ctx context.Context, params ListCoreV1NamespacedServiceParams) (res ListCoreV1NamespacedServiceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedService"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services"),
 	}
 
 	// Run stopwatch.
@@ -27480,6 +30718,8 @@ func (c *Client) ListCoreV1NamespacedServiceAccount(ctx context.Context, params 
 func (c *Client) sendListCoreV1NamespacedServiceAccount(ctx context.Context, params ListCoreV1NamespacedServiceAccountParams) (res ListCoreV1NamespacedServiceAccountRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedServiceAccount"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/serviceaccounts"),
 	}
 
 	// Run stopwatch.
@@ -27777,6 +31017,8 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 func (c *Client) sendListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams) (res ListCoreV1NodeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1Node"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes"),
 	}
 
 	// Run stopwatch.
@@ -28055,6 +31297,8 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 func (c *Client) sendListCoreV1PersistentVolume(ctx context.Context, params ListCoreV1PersistentVolumeParams) (res ListCoreV1PersistentVolumeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1PersistentVolume"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/persistentvolumes"),
 	}
 
 	// Run stopwatch.
@@ -28333,6 +31577,8 @@ func (c *Client) ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context.Con
 func (c *Client) sendListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context.Context, params ListCoreV1PersistentVolumeClaimForAllNamespacesParams) (res ListCoreV1PersistentVolumeClaimForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1PersistentVolumeClaimForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/persistentvolumeclaims"),
 	}
 
 	// Run stopwatch.
@@ -28611,6 +31857,8 @@ func (c *Client) ListCoreV1PodForAllNamespaces(ctx context.Context, params ListC
 func (c *Client) sendListCoreV1PodForAllNamespaces(ctx context.Context, params ListCoreV1PodForAllNamespacesParams) (res ListCoreV1PodForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1PodForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/pods"),
 	}
 
 	// Run stopwatch.
@@ -28889,6 +32137,8 @@ func (c *Client) ListCoreV1PodTemplateForAllNamespaces(ctx context.Context, para
 func (c *Client) sendListCoreV1PodTemplateForAllNamespaces(ctx context.Context, params ListCoreV1PodTemplateForAllNamespacesParams) (res ListCoreV1PodTemplateForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1PodTemplateForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/podtemplates"),
 	}
 
 	// Run stopwatch.
@@ -29167,6 +32417,8 @@ func (c *Client) ListCoreV1ReplicationControllerForAllNamespaces(ctx context.Con
 func (c *Client) sendListCoreV1ReplicationControllerForAllNamespaces(ctx context.Context, params ListCoreV1ReplicationControllerForAllNamespacesParams) (res ListCoreV1ReplicationControllerForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1ReplicationControllerForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/replicationcontrollers"),
 	}
 
 	// Run stopwatch.
@@ -29445,6 +32697,8 @@ func (c *Client) ListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context, pa
 func (c *Client) sendListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context, params ListCoreV1ResourceQuotaForAllNamespacesParams) (res ListCoreV1ResourceQuotaForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1ResourceQuotaForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/resourcequotas"),
 	}
 
 	// Run stopwatch.
@@ -29723,6 +32977,8 @@ func (c *Client) ListCoreV1SecretForAllNamespaces(ctx context.Context, params Li
 func (c *Client) sendListCoreV1SecretForAllNamespaces(ctx context.Context, params ListCoreV1SecretForAllNamespacesParams) (res ListCoreV1SecretForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1SecretForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/secrets"),
 	}
 
 	// Run stopwatch.
@@ -30001,6 +33257,8 @@ func (c *Client) ListCoreV1ServiceAccountForAllNamespaces(ctx context.Context, p
 func (c *Client) sendListCoreV1ServiceAccountForAllNamespaces(ctx context.Context, params ListCoreV1ServiceAccountForAllNamespacesParams) (res ListCoreV1ServiceAccountForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1ServiceAccountForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/serviceaccounts"),
 	}
 
 	// Run stopwatch.
@@ -30279,6 +33537,8 @@ func (c *Client) ListCoreV1ServiceForAllNamespaces(ctx context.Context, params L
 func (c *Client) sendListCoreV1ServiceForAllNamespaces(ctx context.Context, params ListCoreV1ServiceForAllNamespacesParams) (res ListCoreV1ServiceForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1ServiceForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/services"),
 	}
 
 	// Run stopwatch.
@@ -30557,6 +33817,8 @@ func (c *Client) ListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Contex
 func (c *Client) sendListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Context, params ListDiscoveryV1EndpointSliceForAllNamespacesParams) (res ListDiscoveryV1EndpointSliceForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listDiscoveryV1EndpointSliceForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/endpointslices"),
 	}
 
 	// Run stopwatch.
@@ -30835,6 +34097,8 @@ func (c *Client) ListDiscoveryV1NamespacedEndpointSlice(ctx context.Context, par
 func (c *Client) sendListDiscoveryV1NamespacedEndpointSlice(ctx context.Context, params ListDiscoveryV1NamespacedEndpointSliceParams) (res ListDiscoveryV1NamespacedEndpointSliceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listDiscoveryV1NamespacedEndpointSlice"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices"),
 	}
 
 	// Run stopwatch.
@@ -31132,6 +34396,8 @@ func (c *Client) ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx context.C
 func (c *Client) sendListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx context.Context, params ListDiscoveryV1beta1EndpointSliceForAllNamespacesParams) (res ListDiscoveryV1beta1EndpointSliceForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listDiscoveryV1beta1EndpointSliceForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/endpointslices"),
 	}
 
 	// Run stopwatch.
@@ -31410,6 +34676,8 @@ func (c *Client) ListDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context
 func (c *Client) sendListDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context, params ListDiscoveryV1beta1NamespacedEndpointSliceParams) (res ListDiscoveryV1beta1NamespacedEndpointSliceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listDiscoveryV1beta1NamespacedEndpointSlice"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices"),
 	}
 
 	// Run stopwatch.
@@ -31707,6 +34975,8 @@ func (c *Client) ListEventsV1EventForAllNamespaces(ctx context.Context, params L
 func (c *Client) sendListEventsV1EventForAllNamespaces(ctx context.Context, params ListEventsV1EventForAllNamespacesParams) (res ListEventsV1EventForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listEventsV1EventForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/events"),
 	}
 
 	// Run stopwatch.
@@ -31985,6 +35255,8 @@ func (c *Client) ListEventsV1NamespacedEvent(ctx context.Context, params ListEve
 func (c *Client) sendListEventsV1NamespacedEvent(ctx context.Context, params ListEventsV1NamespacedEventParams) (res ListEventsV1NamespacedEventRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listEventsV1NamespacedEvent"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/namespaces/{namespace}/events"),
 	}
 
 	// Run stopwatch.
@@ -32282,6 +35554,8 @@ func (c *Client) ListEventsV1beta1EventForAllNamespaces(ctx context.Context, par
 func (c *Client) sendListEventsV1beta1EventForAllNamespaces(ctx context.Context, params ListEventsV1beta1EventForAllNamespacesParams) (res ListEventsV1beta1EventForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listEventsV1beta1EventForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/events"),
 	}
 
 	// Run stopwatch.
@@ -32560,6 +35834,8 @@ func (c *Client) ListEventsV1beta1NamespacedEvent(ctx context.Context, params Li
 func (c *Client) sendListEventsV1beta1NamespacedEvent(ctx context.Context, params ListEventsV1beta1NamespacedEventParams) (res ListEventsV1beta1NamespacedEventRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listEventsV1beta1NamespacedEvent"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events"),
 	}
 
 	// Run stopwatch.
@@ -32857,6 +36133,8 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 func (c *Client) sendListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, params ListFlowcontrolApiserverV1beta1FlowSchemaParams) (res ListFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listFlowcontrolApiserverV1beta1FlowSchema"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas"),
 	}
 
 	// Run stopwatch.
@@ -33135,6 +36413,8 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 func (c *Client) sendListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, params ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (res ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listFlowcontrolApiserverV1beta1PriorityLevelConfiguration"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations"),
 	}
 
 	// Run stopwatch.
@@ -33413,6 +36693,8 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 func (c *Client) sendListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, params ListFlowcontrolApiserverV1beta2FlowSchemaParams) (res ListFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listFlowcontrolApiserverV1beta2FlowSchema"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas"),
 	}
 
 	// Run stopwatch.
@@ -33691,6 +36973,8 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 func (c *Client) sendListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, params ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (res ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listFlowcontrolApiserverV1beta2PriorityLevelConfiguration"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations"),
 	}
 
 	// Run stopwatch.
@@ -33969,6 +37253,8 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 func (c *Client) sendListInternalApiserverV1alpha1StorageVersion(ctx context.Context, params ListInternalApiserverV1alpha1StorageVersionParams) (res ListInternalApiserverV1alpha1StorageVersionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listInternalApiserverV1alpha1StorageVersion"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/storageversions"),
 	}
 
 	// Run stopwatch.
@@ -34247,6 +37533,8 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 func (c *Client) sendListNetworkingV1IngressClass(ctx context.Context, params ListNetworkingV1IngressClassParams) (res ListNetworkingV1IngressClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listNetworkingV1IngressClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/ingressclasses"),
 	}
 
 	// Run stopwatch.
@@ -34525,6 +37813,8 @@ func (c *Client) ListNetworkingV1IngressForAllNamespaces(ctx context.Context, pa
 func (c *Client) sendListNetworkingV1IngressForAllNamespaces(ctx context.Context, params ListNetworkingV1IngressForAllNamespacesParams) (res ListNetworkingV1IngressForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listNetworkingV1IngressForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/ingresses"),
 	}
 
 	// Run stopwatch.
@@ -34803,6 +38093,8 @@ func (c *Client) ListNetworkingV1NamespacedIngress(ctx context.Context, params L
 func (c *Client) sendListNetworkingV1NamespacedIngress(ctx context.Context, params ListNetworkingV1NamespacedIngressParams) (res ListNetworkingV1NamespacedIngressRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listNetworkingV1NamespacedIngress"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses"),
 	}
 
 	// Run stopwatch.
@@ -35100,6 +38392,8 @@ func (c *Client) ListNetworkingV1NamespacedNetworkPolicy(ctx context.Context, pa
 func (c *Client) sendListNetworkingV1NamespacedNetworkPolicy(ctx context.Context, params ListNetworkingV1NamespacedNetworkPolicyParams) (res ListNetworkingV1NamespacedNetworkPolicyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listNetworkingV1NamespacedNetworkPolicy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies"),
 	}
 
 	// Run stopwatch.
@@ -35397,6 +38691,8 @@ func (c *Client) ListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.Conte
 func (c *Client) sendListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.Context, params ListNetworkingV1NetworkPolicyForAllNamespacesParams) (res ListNetworkingV1NetworkPolicyForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listNetworkingV1NetworkPolicyForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/networkpolicies"),
 	}
 
 	// Run stopwatch.
@@ -35675,6 +38971,8 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 func (c *Client) sendListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1RuntimeClassParams) (res ListNodeV1RuntimeClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listNodeV1RuntimeClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1/runtimeclasses"),
 	}
 
 	// Run stopwatch.
@@ -35953,6 +39251,8 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 func (c *Client) sendListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNodeV1alpha1RuntimeClassParams) (res ListNodeV1alpha1RuntimeClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listNodeV1alpha1RuntimeClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1alpha1/runtimeclasses"),
 	}
 
 	// Run stopwatch.
@@ -36231,6 +39531,8 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 func (c *Client) sendListNodeV1beta1RuntimeClass(ctx context.Context, params ListNodeV1beta1RuntimeClassParams) (res ListNodeV1beta1RuntimeClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listNodeV1beta1RuntimeClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1beta1/runtimeclasses"),
 	}
 
 	// Run stopwatch.
@@ -36509,6 +39811,8 @@ func (c *Client) ListPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, 
 func (c *Client) sendListPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, params ListPolicyV1NamespacedPodDisruptionBudgetParams) (res ListPolicyV1NamespacedPodDisruptionBudgetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPolicyV1NamespacedPodDisruptionBudget"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets"),
 	}
 
 	// Run stopwatch.
@@ -36806,6 +40110,8 @@ func (c *Client) ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context.Con
 func (c *Client) sendListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context.Context, params ListPolicyV1PodDisruptionBudgetForAllNamespacesParams) (res ListPolicyV1PodDisruptionBudgetForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPolicyV1PodDisruptionBudgetForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1/poddisruptionbudgets"),
 	}
 
 	// Run stopwatch.
@@ -37084,6 +40390,8 @@ func (c *Client) ListPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Cont
 func (c *Client) sendListPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Context, params ListPolicyV1beta1NamespacedPodDisruptionBudgetParams) (res ListPolicyV1beta1NamespacedPodDisruptionBudgetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPolicyV1beta1NamespacedPodDisruptionBudget"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets"),
 	}
 
 	// Run stopwatch.
@@ -37381,6 +40689,8 @@ func (c *Client) ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx contex
 func (c *Client) sendListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx context.Context, params ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams) (res ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPolicyV1beta1PodDisruptionBudgetForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/poddisruptionbudgets"),
 	}
 
 	// Run stopwatch.
@@ -37659,6 +40969,8 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 func (c *Client) sendListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params ListPolicyV1beta1PodSecurityPolicyParams) (res ListPolicyV1beta1PodSecurityPolicyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPolicyV1beta1PodSecurityPolicy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/podsecuritypolicies"),
 	}
 
 	// Run stopwatch.
@@ -37937,6 +41249,8 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 func (c *Client) sendListRbacAuthorizationV1ClusterRole(ctx context.Context, params ListRbacAuthorizationV1ClusterRoleParams) (res ListRbacAuthorizationV1ClusterRoleRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listRbacAuthorizationV1ClusterRole"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/clusterroles"),
 	}
 
 	// Run stopwatch.
@@ -38215,6 +41529,8 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 func (c *Client) sendListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, params ListRbacAuthorizationV1ClusterRoleBindingParams) (res ListRbacAuthorizationV1ClusterRoleBindingRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listRbacAuthorizationV1ClusterRoleBinding"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"),
 	}
 
 	// Run stopwatch.
@@ -38493,6 +41809,8 @@ func (c *Client) ListRbacAuthorizationV1NamespacedRole(ctx context.Context, para
 func (c *Client) sendListRbacAuthorizationV1NamespacedRole(ctx context.Context, params ListRbacAuthorizationV1NamespacedRoleParams) (res ListRbacAuthorizationV1NamespacedRoleRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listRbacAuthorizationV1NamespacedRole"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles"),
 	}
 
 	// Run stopwatch.
@@ -38790,6 +42108,8 @@ func (c *Client) ListRbacAuthorizationV1NamespacedRoleBinding(ctx context.Contex
 func (c *Client) sendListRbacAuthorizationV1NamespacedRoleBinding(ctx context.Context, params ListRbacAuthorizationV1NamespacedRoleBindingParams) (res ListRbacAuthorizationV1NamespacedRoleBindingRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listRbacAuthorizationV1NamespacedRoleBinding"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings"),
 	}
 
 	// Run stopwatch.
@@ -39087,6 +42407,8 @@ func (c *Client) ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx context.
 func (c *Client) sendListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx context.Context, params ListRbacAuthorizationV1RoleBindingForAllNamespacesParams) (res ListRbacAuthorizationV1RoleBindingForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listRbacAuthorizationV1RoleBindingForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/rolebindings"),
 	}
 
 	// Run stopwatch.
@@ -39365,6 +42687,8 @@ func (c *Client) ListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Context
 func (c *Client) sendListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Context, params ListRbacAuthorizationV1RoleForAllNamespacesParams) (res ListRbacAuthorizationV1RoleForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listRbacAuthorizationV1RoleForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/roles"),
 	}
 
 	// Run stopwatch.
@@ -39643,6 +42967,8 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 func (c *Client) sendListSchedulingV1PriorityClass(ctx context.Context, params ListSchedulingV1PriorityClassParams) (res ListSchedulingV1PriorityClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listSchedulingV1PriorityClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/scheduling.k8s.io/v1/priorityclasses"),
 	}
 
 	// Run stopwatch.
@@ -39921,6 +43247,8 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 func (c *Client) sendListStorageV1CSIDriver(ctx context.Context, params ListStorageV1CSIDriverParams) (res ListStorageV1CSIDriverRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listStorageV1CSIDriver"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/csidrivers"),
 	}
 
 	// Run stopwatch.
@@ -40199,6 +43527,8 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 func (c *Client) sendListStorageV1CSINode(ctx context.Context, params ListStorageV1CSINodeParams) (res ListStorageV1CSINodeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listStorageV1CSINode"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/csinodes"),
 	}
 
 	// Run stopwatch.
@@ -40477,6 +43807,8 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 func (c *Client) sendListStorageV1StorageClass(ctx context.Context, params ListStorageV1StorageClassParams) (res ListStorageV1StorageClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listStorageV1StorageClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/storageclasses"),
 	}
 
 	// Run stopwatch.
@@ -40755,6 +44087,8 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 func (c *Client) sendListStorageV1VolumeAttachment(ctx context.Context, params ListStorageV1VolumeAttachmentParams) (res ListStorageV1VolumeAttachmentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listStorageV1VolumeAttachment"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/volumeattachments"),
 	}
 
 	// Run stopwatch.
@@ -41033,6 +44367,8 @@ func (c *Client) ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx conte
 func (c *Client) sendListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx context.Context, params ListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams) (res ListStorageV1alpha1CSIStorageCapacityForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listStorageV1alpha1CSIStorageCapacityForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/csistoragecapacities"),
 	}
 
 	// Run stopwatch.
@@ -41311,6 +44647,8 @@ func (c *Client) ListStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Con
 func (c *Client) sendListStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Context, params ListStorageV1alpha1NamespacedCSIStorageCapacityParams) (res ListStorageV1alpha1NamespacedCSIStorageCapacityRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listStorageV1alpha1NamespacedCSIStorageCapacity"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities"),
 	}
 
 	// Run stopwatch.
@@ -41608,6 +44946,8 @@ func (c *Client) ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx contex
 func (c *Client) sendListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx context.Context, params ListStorageV1beta1CSIStorageCapacityForAllNamespacesParams) (res ListStorageV1beta1CSIStorageCapacityForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listStorageV1beta1CSIStorageCapacityForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/csistoragecapacities"),
 	}
 
 	// Run stopwatch.
@@ -41886,6 +45226,8 @@ func (c *Client) ListStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Cont
 func (c *Client) sendListStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Context, params ListStorageV1beta1NamespacedCSIStorageCapacityParams) (res ListStorageV1beta1NamespacedCSIStorageCapacityRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listStorageV1beta1NamespacedCSIStorageCapacity"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities"),
 	}
 
 	// Run stopwatch.
@@ -42181,6 +45523,8 @@ func (c *Client) LogFileHandler(ctx context.Context, params LogFileHandlerParams
 func (c *Client) sendLogFileHandler(ctx context.Context, params LogFileHandlerParams) (res *LogFileHandlerUnauthorized, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("logFileHandler"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/logs/{logpath}"),
 	}
 
 	// Run stopwatch.
@@ -42301,6 +45645,8 @@ func (c *Client) LogFileListHandler(ctx context.Context) error {
 func (c *Client) sendLogFileListHandler(ctx context.Context) (res *LogFileListHandlerUnauthorized, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("logFileListHandler"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/logs/"),
 	}
 
 	// Run stopwatch.
@@ -42405,6 +45751,8 @@ func (c *Client) ReadAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 func (c *Client) sendReadAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, params ReadAdmissionregistrationV1MutatingWebhookConfigurationParams) (res ReadAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAdmissionregistrationV1MutatingWebhookConfiguration"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}"),
 	}
 
 	// Run stopwatch.
@@ -42548,6 +45896,8 @@ func (c *Client) ReadAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 func (c *Client) sendReadAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, params ReadAdmissionregistrationV1ValidatingWebhookConfigurationParams) (res ReadAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAdmissionregistrationV1ValidatingWebhookConfiguration"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/{name}"),
 	}
 
 	// Run stopwatch.
@@ -42691,6 +46041,8 @@ func (c *Client) ReadApiextensionsV1CustomResourceDefinition(ctx context.Context
 func (c *Client) sendReadApiextensionsV1CustomResourceDefinition(ctx context.Context, params ReadApiextensionsV1CustomResourceDefinitionParams) (res ReadApiextensionsV1CustomResourceDefinitionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readApiextensionsV1CustomResourceDefinition"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}"),
 	}
 
 	// Run stopwatch.
@@ -42834,6 +46186,8 @@ func (c *Client) ReadApiextensionsV1CustomResourceDefinitionStatus(ctx context.C
 func (c *Client) sendReadApiextensionsV1CustomResourceDefinitionStatus(ctx context.Context, params ReadApiextensionsV1CustomResourceDefinitionStatusParams) (res ReadApiextensionsV1CustomResourceDefinitionStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readApiextensionsV1CustomResourceDefinitionStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -42978,6 +46332,8 @@ func (c *Client) ReadApiregistrationV1APIService(ctx context.Context, params Rea
 func (c *Client) sendReadApiregistrationV1APIService(ctx context.Context, params ReadApiregistrationV1APIServiceParams) (res ReadApiregistrationV1APIServiceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readApiregistrationV1APIService"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/v1/apiservices/{name}"),
 	}
 
 	// Run stopwatch.
@@ -43121,6 +46477,8 @@ func (c *Client) ReadApiregistrationV1APIServiceStatus(ctx context.Context, para
 func (c *Client) sendReadApiregistrationV1APIServiceStatus(ctx context.Context, params ReadApiregistrationV1APIServiceStatusParams) (res ReadApiregistrationV1APIServiceStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readApiregistrationV1APIServiceStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/v1/apiservices/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -43265,6 +46623,8 @@ func (c *Client) ReadAppsV1NamespacedControllerRevision(ctx context.Context, par
 func (c *Client) sendReadAppsV1NamespacedControllerRevision(ctx context.Context, params ReadAppsV1NamespacedControllerRevisionParams) (res ReadAppsV1NamespacedControllerRevisionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedControllerRevision"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/controllerrevisions/{name}"),
 	}
 
 	// Run stopwatch.
@@ -43427,6 +46787,8 @@ func (c *Client) ReadAppsV1NamespacedDaemonSet(ctx context.Context, params ReadA
 func (c *Client) sendReadAppsV1NamespacedDaemonSet(ctx context.Context, params ReadAppsV1NamespacedDaemonSetParams) (res ReadAppsV1NamespacedDaemonSetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedDaemonSet"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/daemonsets/{name}"),
 	}
 
 	// Run stopwatch.
@@ -43589,6 +46951,8 @@ func (c *Client) ReadAppsV1NamespacedDaemonSetStatus(ctx context.Context, params
 func (c *Client) sendReadAppsV1NamespacedDaemonSetStatus(ctx context.Context, params ReadAppsV1NamespacedDaemonSetStatusParams) (res ReadAppsV1NamespacedDaemonSetStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedDaemonSetStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/daemonsets/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -43752,6 +47116,8 @@ func (c *Client) ReadAppsV1NamespacedDeployment(ctx context.Context, params Read
 func (c *Client) sendReadAppsV1NamespacedDeployment(ctx context.Context, params ReadAppsV1NamespacedDeploymentParams) (res ReadAppsV1NamespacedDeploymentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedDeployment"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/deployments/{name}"),
 	}
 
 	// Run stopwatch.
@@ -43914,6 +47280,8 @@ func (c *Client) ReadAppsV1NamespacedDeploymentScale(ctx context.Context, params
 func (c *Client) sendReadAppsV1NamespacedDeploymentScale(ctx context.Context, params ReadAppsV1NamespacedDeploymentScaleParams) (res ReadAppsV1NamespacedDeploymentScaleRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedDeploymentScale"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/deployments/{name}/scale"),
 	}
 
 	// Run stopwatch.
@@ -44077,6 +47445,8 @@ func (c *Client) ReadAppsV1NamespacedDeploymentStatus(ctx context.Context, param
 func (c *Client) sendReadAppsV1NamespacedDeploymentStatus(ctx context.Context, params ReadAppsV1NamespacedDeploymentStatusParams) (res ReadAppsV1NamespacedDeploymentStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedDeploymentStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/deployments/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -44240,6 +47610,8 @@ func (c *Client) ReadAppsV1NamespacedReplicaSet(ctx context.Context, params Read
 func (c *Client) sendReadAppsV1NamespacedReplicaSet(ctx context.Context, params ReadAppsV1NamespacedReplicaSetParams) (res ReadAppsV1NamespacedReplicaSetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedReplicaSet"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/replicasets/{name}"),
 	}
 
 	// Run stopwatch.
@@ -44402,6 +47774,8 @@ func (c *Client) ReadAppsV1NamespacedReplicaSetScale(ctx context.Context, params
 func (c *Client) sendReadAppsV1NamespacedReplicaSetScale(ctx context.Context, params ReadAppsV1NamespacedReplicaSetScaleParams) (res ReadAppsV1NamespacedReplicaSetScaleRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedReplicaSetScale"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/replicasets/{name}/scale"),
 	}
 
 	// Run stopwatch.
@@ -44565,6 +47939,8 @@ func (c *Client) ReadAppsV1NamespacedReplicaSetStatus(ctx context.Context, param
 func (c *Client) sendReadAppsV1NamespacedReplicaSetStatus(ctx context.Context, params ReadAppsV1NamespacedReplicaSetStatusParams) (res ReadAppsV1NamespacedReplicaSetStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedReplicaSetStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/replicasets/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -44728,6 +48104,8 @@ func (c *Client) ReadAppsV1NamespacedStatefulSet(ctx context.Context, params Rea
 func (c *Client) sendReadAppsV1NamespacedStatefulSet(ctx context.Context, params ReadAppsV1NamespacedStatefulSetParams) (res ReadAppsV1NamespacedStatefulSetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedStatefulSet"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}"),
 	}
 
 	// Run stopwatch.
@@ -44890,6 +48268,8 @@ func (c *Client) ReadAppsV1NamespacedStatefulSetScale(ctx context.Context, param
 func (c *Client) sendReadAppsV1NamespacedStatefulSetScale(ctx context.Context, params ReadAppsV1NamespacedStatefulSetScaleParams) (res ReadAppsV1NamespacedStatefulSetScaleRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedStatefulSetScale"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/scale"),
 	}
 
 	// Run stopwatch.
@@ -45053,6 +48433,8 @@ func (c *Client) ReadAppsV1NamespacedStatefulSetStatus(ctx context.Context, para
 func (c *Client) sendReadAppsV1NamespacedStatefulSetStatus(ctx context.Context, params ReadAppsV1NamespacedStatefulSetStatusParams) (res ReadAppsV1NamespacedStatefulSetStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedStatefulSetStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -45216,6 +48598,8 @@ func (c *Client) ReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.
 func (c *Client) sendReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.Context, params ReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams) (res ReadAutoscalingV1NamespacedHorizontalPodAutoscalerRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAutoscalingV1NamespacedHorizontalPodAutoscaler"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
 	}
 
 	// Run stopwatch.
@@ -45378,6 +48762,8 @@ func (c *Client) ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ctx co
 func (c *Client) sendReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ctx context.Context, params ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams) (res ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -45541,6 +48927,8 @@ func (c *Client) ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx con
 func (c *Client) sendReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx context.Context, params ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) (res ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
 	}
 
 	// Run stopwatch.
@@ -45703,6 +49091,8 @@ func (c *Client) ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus(c
 func (c *Client) sendReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus(ctx context.Context, params ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams) (res ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -45866,6 +49256,8 @@ func (c *Client) ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx con
 func (c *Client) sendReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx context.Context, params ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) (res ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
 	}
 
 	// Run stopwatch.
@@ -46028,6 +49420,8 @@ func (c *Client) ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus(c
 func (c *Client) sendReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus(ctx context.Context, params ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams) (res ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -46191,6 +49585,8 @@ func (c *Client) ReadBatchV1NamespacedCronJob(ctx context.Context, params ReadBa
 func (c *Client) sendReadBatchV1NamespacedCronJob(ctx context.Context, params ReadBatchV1NamespacedCronJobParams) (res ReadBatchV1NamespacedCronJobRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readBatchV1NamespacedCronJob"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/cronjobs/{name}"),
 	}
 
 	// Run stopwatch.
@@ -46353,6 +49749,8 @@ func (c *Client) ReadBatchV1NamespacedCronJobStatus(ctx context.Context, params 
 func (c *Client) sendReadBatchV1NamespacedCronJobStatus(ctx context.Context, params ReadBatchV1NamespacedCronJobStatusParams) (res ReadBatchV1NamespacedCronJobStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readBatchV1NamespacedCronJobStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/cronjobs/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -46516,6 +49914,8 @@ func (c *Client) ReadBatchV1NamespacedJob(ctx context.Context, params ReadBatchV
 func (c *Client) sendReadBatchV1NamespacedJob(ctx context.Context, params ReadBatchV1NamespacedJobParams) (res ReadBatchV1NamespacedJobRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readBatchV1NamespacedJob"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/jobs/{name}"),
 	}
 
 	// Run stopwatch.
@@ -46678,6 +50078,8 @@ func (c *Client) ReadBatchV1NamespacedJobStatus(ctx context.Context, params Read
 func (c *Client) sendReadBatchV1NamespacedJobStatus(ctx context.Context, params ReadBatchV1NamespacedJobStatusParams) (res ReadBatchV1NamespacedJobStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readBatchV1NamespacedJobStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/jobs/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -46841,6 +50243,8 @@ func (c *Client) ReadBatchV1beta1NamespacedCronJob(ctx context.Context, params R
 func (c *Client) sendReadBatchV1beta1NamespacedCronJob(ctx context.Context, params ReadBatchV1beta1NamespacedCronJobParams) (res ReadBatchV1beta1NamespacedCronJobRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readBatchV1beta1NamespacedCronJob"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}"),
 	}
 
 	// Run stopwatch.
@@ -47003,6 +50407,8 @@ func (c *Client) ReadBatchV1beta1NamespacedCronJobStatus(ctx context.Context, pa
 func (c *Client) sendReadBatchV1beta1NamespacedCronJobStatus(ctx context.Context, params ReadBatchV1beta1NamespacedCronJobStatusParams) (res ReadBatchV1beta1NamespacedCronJobStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readBatchV1beta1NamespacedCronJobStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -47166,6 +50572,8 @@ func (c *Client) ReadCertificatesV1CertificateSigningRequest(ctx context.Context
 func (c *Client) sendReadCertificatesV1CertificateSigningRequest(ctx context.Context, params ReadCertificatesV1CertificateSigningRequestParams) (res ReadCertificatesV1CertificateSigningRequestRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCertificatesV1CertificateSigningRequest"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}"),
 	}
 
 	// Run stopwatch.
@@ -47309,6 +50717,8 @@ func (c *Client) ReadCertificatesV1CertificateSigningRequestApproval(ctx context
 func (c *Client) sendReadCertificatesV1CertificateSigningRequestApproval(ctx context.Context, params ReadCertificatesV1CertificateSigningRequestApprovalParams) (res ReadCertificatesV1CertificateSigningRequestApprovalRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCertificatesV1CertificateSigningRequestApproval"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/approval"),
 	}
 
 	// Run stopwatch.
@@ -47453,6 +50863,8 @@ func (c *Client) ReadCertificatesV1CertificateSigningRequestStatus(ctx context.C
 func (c *Client) sendReadCertificatesV1CertificateSigningRequestStatus(ctx context.Context, params ReadCertificatesV1CertificateSigningRequestStatusParams) (res ReadCertificatesV1CertificateSigningRequestStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCertificatesV1CertificateSigningRequestStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -47597,6 +51009,8 @@ func (c *Client) ReadCoordinationV1NamespacedLease(ctx context.Context, params R
 func (c *Client) sendReadCoordinationV1NamespacedLease(ctx context.Context, params ReadCoordinationV1NamespacedLeaseParams) (res ReadCoordinationV1NamespacedLeaseRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoordinationV1NamespacedLease"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}"),
 	}
 
 	// Run stopwatch.
@@ -47759,6 +51173,8 @@ func (c *Client) ReadCoreV1ComponentStatus(ctx context.Context, params ReadCoreV
 func (c *Client) sendReadCoreV1ComponentStatus(ctx context.Context, params ReadCoreV1ComponentStatusParams) (res ReadCoreV1ComponentStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1ComponentStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/componentstatuses/{name}"),
 	}
 
 	// Run stopwatch.
@@ -47902,6 +51318,8 @@ func (c *Client) ReadCoreV1Namespace(ctx context.Context, params ReadCoreV1Names
 func (c *Client) sendReadCoreV1Namespace(ctx context.Context, params ReadCoreV1NamespaceParams) (res ReadCoreV1NamespaceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1Namespace"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{name}"),
 	}
 
 	// Run stopwatch.
@@ -48045,6 +51463,8 @@ func (c *Client) ReadCoreV1NamespaceStatus(ctx context.Context, params ReadCoreV
 func (c *Client) sendReadCoreV1NamespaceStatus(ctx context.Context, params ReadCoreV1NamespaceStatusParams) (res ReadCoreV1NamespaceStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespaceStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -48189,6 +51609,8 @@ func (c *Client) ReadCoreV1NamespacedConfigMap(ctx context.Context, params ReadC
 func (c *Client) sendReadCoreV1NamespacedConfigMap(ctx context.Context, params ReadCoreV1NamespacedConfigMapParams) (res ReadCoreV1NamespacedConfigMapRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedConfigMap"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/configmaps/{name}"),
 	}
 
 	// Run stopwatch.
@@ -48351,6 +51773,8 @@ func (c *Client) ReadCoreV1NamespacedEndpoints(ctx context.Context, params ReadC
 func (c *Client) sendReadCoreV1NamespacedEndpoints(ctx context.Context, params ReadCoreV1NamespacedEndpointsParams) (res ReadCoreV1NamespacedEndpointsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedEndpoints"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/endpoints/{name}"),
 	}
 
 	// Run stopwatch.
@@ -48513,6 +51937,8 @@ func (c *Client) ReadCoreV1NamespacedEvent(ctx context.Context, params ReadCoreV
 func (c *Client) sendReadCoreV1NamespacedEvent(ctx context.Context, params ReadCoreV1NamespacedEventParams) (res ReadCoreV1NamespacedEventRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedEvent"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/events/{name}"),
 	}
 
 	// Run stopwatch.
@@ -48675,6 +52101,8 @@ func (c *Client) ReadCoreV1NamespacedLimitRange(ctx context.Context, params Read
 func (c *Client) sendReadCoreV1NamespacedLimitRange(ctx context.Context, params ReadCoreV1NamespacedLimitRangeParams) (res ReadCoreV1NamespacedLimitRangeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedLimitRange"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/limitranges/{name}"),
 	}
 
 	// Run stopwatch.
@@ -48837,6 +52265,8 @@ func (c *Client) ReadCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, 
 func (c *Client) sendReadCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, params ReadCoreV1NamespacedPersistentVolumeClaimParams) (res ReadCoreV1NamespacedPersistentVolumeClaimRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedPersistentVolumeClaim"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}"),
 	}
 
 	// Run stopwatch.
@@ -48999,6 +52429,8 @@ func (c *Client) ReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx context.Con
 func (c *Client) sendReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx context.Context, params ReadCoreV1NamespacedPersistentVolumeClaimStatusParams) (res ReadCoreV1NamespacedPersistentVolumeClaimStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedPersistentVolumeClaimStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -49162,6 +52594,8 @@ func (c *Client) ReadCoreV1NamespacedPod(ctx context.Context, params ReadCoreV1N
 func (c *Client) sendReadCoreV1NamespacedPod(ctx context.Context, params ReadCoreV1NamespacedPodParams) (res ReadCoreV1NamespacedPodRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedPod"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}"),
 	}
 
 	// Run stopwatch.
@@ -49324,6 +52758,8 @@ func (c *Client) ReadCoreV1NamespacedPodEphemeralcontainers(ctx context.Context,
 func (c *Client) sendReadCoreV1NamespacedPodEphemeralcontainers(ctx context.Context, params ReadCoreV1NamespacedPodEphemeralcontainersParams) (res ReadCoreV1NamespacedPodEphemeralcontainersRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedPodEphemeralcontainers"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers"),
 	}
 
 	// Run stopwatch.
@@ -49487,6 +52923,8 @@ func (c *Client) ReadCoreV1NamespacedPodLog(ctx context.Context, params ReadCore
 func (c *Client) sendReadCoreV1NamespacedPodLog(ctx context.Context, params ReadCoreV1NamespacedPodLogParams) (res ReadCoreV1NamespacedPodLogRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedPodLog"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/log"),
 	}
 
 	// Run stopwatch.
@@ -49786,6 +53224,8 @@ func (c *Client) ReadCoreV1NamespacedPodStatus(ctx context.Context, params ReadC
 func (c *Client) sendReadCoreV1NamespacedPodStatus(ctx context.Context, params ReadCoreV1NamespacedPodStatusParams) (res ReadCoreV1NamespacedPodStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedPodStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -49949,6 +53389,8 @@ func (c *Client) ReadCoreV1NamespacedPodTemplate(ctx context.Context, params Rea
 func (c *Client) sendReadCoreV1NamespacedPodTemplate(ctx context.Context, params ReadCoreV1NamespacedPodTemplateParams) (res ReadCoreV1NamespacedPodTemplateRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedPodTemplate"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/podtemplates/{name}"),
 	}
 
 	// Run stopwatch.
@@ -50111,6 +53553,8 @@ func (c *Client) ReadCoreV1NamespacedReplicationController(ctx context.Context, 
 func (c *Client) sendReadCoreV1NamespacedReplicationController(ctx context.Context, params ReadCoreV1NamespacedReplicationControllerParams) (res ReadCoreV1NamespacedReplicationControllerRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedReplicationController"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/replicationcontrollers/{name}"),
 	}
 
 	// Run stopwatch.
@@ -50273,6 +53717,8 @@ func (c *Client) ReadCoreV1NamespacedReplicationControllerScale(ctx context.Cont
 func (c *Client) sendReadCoreV1NamespacedReplicationControllerScale(ctx context.Context, params ReadCoreV1NamespacedReplicationControllerScaleParams) (res ReadCoreV1NamespacedReplicationControllerScaleRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedReplicationControllerScale"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale"),
 	}
 
 	// Run stopwatch.
@@ -50436,6 +53882,8 @@ func (c *Client) ReadCoreV1NamespacedReplicationControllerStatus(ctx context.Con
 func (c *Client) sendReadCoreV1NamespacedReplicationControllerStatus(ctx context.Context, params ReadCoreV1NamespacedReplicationControllerStatusParams) (res ReadCoreV1NamespacedReplicationControllerStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedReplicationControllerStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -50599,6 +54047,8 @@ func (c *Client) ReadCoreV1NamespacedResourceQuota(ctx context.Context, params R
 func (c *Client) sendReadCoreV1NamespacedResourceQuota(ctx context.Context, params ReadCoreV1NamespacedResourceQuotaParams) (res ReadCoreV1NamespacedResourceQuotaRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedResourceQuota"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/resourcequotas/{name}"),
 	}
 
 	// Run stopwatch.
@@ -50761,6 +54211,8 @@ func (c *Client) ReadCoreV1NamespacedResourceQuotaStatus(ctx context.Context, pa
 func (c *Client) sendReadCoreV1NamespacedResourceQuotaStatus(ctx context.Context, params ReadCoreV1NamespacedResourceQuotaStatusParams) (res ReadCoreV1NamespacedResourceQuotaStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedResourceQuotaStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/resourcequotas/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -50924,6 +54376,8 @@ func (c *Client) ReadCoreV1NamespacedSecret(ctx context.Context, params ReadCore
 func (c *Client) sendReadCoreV1NamespacedSecret(ctx context.Context, params ReadCoreV1NamespacedSecretParams) (res ReadCoreV1NamespacedSecretRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedSecret"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/secrets/{name}"),
 	}
 
 	// Run stopwatch.
@@ -51086,6 +54540,8 @@ func (c *Client) ReadCoreV1NamespacedService(ctx context.Context, params ReadCor
 func (c *Client) sendReadCoreV1NamespacedService(ctx context.Context, params ReadCoreV1NamespacedServiceParams) (res ReadCoreV1NamespacedServiceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedService"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}"),
 	}
 
 	// Run stopwatch.
@@ -51248,6 +54704,8 @@ func (c *Client) ReadCoreV1NamespacedServiceAccount(ctx context.Context, params 
 func (c *Client) sendReadCoreV1NamespacedServiceAccount(ctx context.Context, params ReadCoreV1NamespacedServiceAccountParams) (res ReadCoreV1NamespacedServiceAccountRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedServiceAccount"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/serviceaccounts/{name}"),
 	}
 
 	// Run stopwatch.
@@ -51410,6 +54868,8 @@ func (c *Client) ReadCoreV1NamespacedServiceStatus(ctx context.Context, params R
 func (c *Client) sendReadCoreV1NamespacedServiceStatus(ctx context.Context, params ReadCoreV1NamespacedServiceStatusParams) (res ReadCoreV1NamespacedServiceStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedServiceStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -51573,6 +55033,8 @@ func (c *Client) ReadCoreV1Node(ctx context.Context, params ReadCoreV1NodeParams
 func (c *Client) sendReadCoreV1Node(ctx context.Context, params ReadCoreV1NodeParams) (res ReadCoreV1NodeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1Node"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}"),
 	}
 
 	// Run stopwatch.
@@ -51716,6 +55178,8 @@ func (c *Client) ReadCoreV1NodeStatus(ctx context.Context, params ReadCoreV1Node
 func (c *Client) sendReadCoreV1NodeStatus(ctx context.Context, params ReadCoreV1NodeStatusParams) (res ReadCoreV1NodeStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NodeStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -51860,6 +55324,8 @@ func (c *Client) ReadCoreV1PersistentVolume(ctx context.Context, params ReadCore
 func (c *Client) sendReadCoreV1PersistentVolume(ctx context.Context, params ReadCoreV1PersistentVolumeParams) (res ReadCoreV1PersistentVolumeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1PersistentVolume"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/persistentvolumes/{name}"),
 	}
 
 	// Run stopwatch.
@@ -52003,6 +55469,8 @@ func (c *Client) ReadCoreV1PersistentVolumeStatus(ctx context.Context, params Re
 func (c *Client) sendReadCoreV1PersistentVolumeStatus(ctx context.Context, params ReadCoreV1PersistentVolumeStatusParams) (res ReadCoreV1PersistentVolumeStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1PersistentVolumeStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/persistentvolumes/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -52147,6 +55615,8 @@ func (c *Client) ReadDiscoveryV1NamespacedEndpointSlice(ctx context.Context, par
 func (c *Client) sendReadDiscoveryV1NamespacedEndpointSlice(ctx context.Context, params ReadDiscoveryV1NamespacedEndpointSliceParams) (res ReadDiscoveryV1NamespacedEndpointSliceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readDiscoveryV1NamespacedEndpointSlice"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}"),
 	}
 
 	// Run stopwatch.
@@ -52309,6 +55779,8 @@ func (c *Client) ReadDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context
 func (c *Client) sendReadDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context, params ReadDiscoveryV1beta1NamespacedEndpointSliceParams) (res ReadDiscoveryV1beta1NamespacedEndpointSliceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readDiscoveryV1beta1NamespacedEndpointSlice"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}"),
 	}
 
 	// Run stopwatch.
@@ -52471,6 +55943,8 @@ func (c *Client) ReadEventsV1NamespacedEvent(ctx context.Context, params ReadEve
 func (c *Client) sendReadEventsV1NamespacedEvent(ctx context.Context, params ReadEventsV1NamespacedEventParams) (res ReadEventsV1NamespacedEventRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readEventsV1NamespacedEvent"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}"),
 	}
 
 	// Run stopwatch.
@@ -52633,6 +56107,8 @@ func (c *Client) ReadEventsV1beta1NamespacedEvent(ctx context.Context, params Re
 func (c *Client) sendReadEventsV1beta1NamespacedEvent(ctx context.Context, params ReadEventsV1beta1NamespacedEventParams) (res ReadEventsV1beta1NamespacedEventRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readEventsV1beta1NamespacedEvent"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}"),
 	}
 
 	// Run stopwatch.
@@ -52795,6 +56271,8 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 func (c *Client) sendReadFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, params ReadFlowcontrolApiserverV1beta1FlowSchemaParams) (res ReadFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readFlowcontrolApiserverV1beta1FlowSchema"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}"),
 	}
 
 	// Run stopwatch.
@@ -52938,6 +56416,8 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx context.Con
 func (c *Client) sendReadFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx context.Context, params ReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams) (res ReadFlowcontrolApiserverV1beta1FlowSchemaStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readFlowcontrolApiserverV1beta1FlowSchemaStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -53082,6 +56562,8 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 func (c *Client) sendReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, params ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (res ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readFlowcontrolApiserverV1beta1PriorityLevelConfiguration"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}"),
 	}
 
 	// Run stopwatch.
@@ -53225,6 +56707,8 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus
 func (c *Client) sendReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus(ctx context.Context, params ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams) (res ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -53369,6 +56853,8 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 func (c *Client) sendReadFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, params ReadFlowcontrolApiserverV1beta2FlowSchemaParams) (res ReadFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readFlowcontrolApiserverV1beta2FlowSchema"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}"),
 	}
 
 	// Run stopwatch.
@@ -53512,6 +56998,8 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx context.Con
 func (c *Client) sendReadFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx context.Context, params ReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams) (res ReadFlowcontrolApiserverV1beta2FlowSchemaStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readFlowcontrolApiserverV1beta2FlowSchemaStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -53656,6 +57144,8 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 func (c *Client) sendReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, params ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (res ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readFlowcontrolApiserverV1beta2PriorityLevelConfiguration"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}"),
 	}
 
 	// Run stopwatch.
@@ -53799,6 +57289,8 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus
 func (c *Client) sendReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus(ctx context.Context, params ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams) (res ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -53943,6 +57435,8 @@ func (c *Client) ReadInternalApiserverV1alpha1StorageVersion(ctx context.Context
 func (c *Client) sendReadInternalApiserverV1alpha1StorageVersion(ctx context.Context, params ReadInternalApiserverV1alpha1StorageVersionParams) (res ReadInternalApiserverV1alpha1StorageVersionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readInternalApiserverV1alpha1StorageVersion"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}"),
 	}
 
 	// Run stopwatch.
@@ -54086,6 +57580,8 @@ func (c *Client) ReadInternalApiserverV1alpha1StorageVersionStatus(ctx context.C
 func (c *Client) sendReadInternalApiserverV1alpha1StorageVersionStatus(ctx context.Context, params ReadInternalApiserverV1alpha1StorageVersionStatusParams) (res ReadInternalApiserverV1alpha1StorageVersionStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readInternalApiserverV1alpha1StorageVersionStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -54230,6 +57726,8 @@ func (c *Client) ReadNetworkingV1IngressClass(ctx context.Context, params ReadNe
 func (c *Client) sendReadNetworkingV1IngressClass(ctx context.Context, params ReadNetworkingV1IngressClassParams) (res ReadNetworkingV1IngressClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readNetworkingV1IngressClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/ingressclasses/{name}"),
 	}
 
 	// Run stopwatch.
@@ -54373,6 +57871,8 @@ func (c *Client) ReadNetworkingV1NamespacedIngress(ctx context.Context, params R
 func (c *Client) sendReadNetworkingV1NamespacedIngress(ctx context.Context, params ReadNetworkingV1NamespacedIngressParams) (res ReadNetworkingV1NamespacedIngressRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readNetworkingV1NamespacedIngress"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}"),
 	}
 
 	// Run stopwatch.
@@ -54535,6 +58035,8 @@ func (c *Client) ReadNetworkingV1NamespacedIngressStatus(ctx context.Context, pa
 func (c *Client) sendReadNetworkingV1NamespacedIngressStatus(ctx context.Context, params ReadNetworkingV1NamespacedIngressStatusParams) (res ReadNetworkingV1NamespacedIngressStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readNetworkingV1NamespacedIngressStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -54698,6 +58200,8 @@ func (c *Client) ReadNetworkingV1NamespacedNetworkPolicy(ctx context.Context, pa
 func (c *Client) sendReadNetworkingV1NamespacedNetworkPolicy(ctx context.Context, params ReadNetworkingV1NamespacedNetworkPolicyParams) (res ReadNetworkingV1NamespacedNetworkPolicyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readNetworkingV1NamespacedNetworkPolicy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}"),
 	}
 
 	// Run stopwatch.
@@ -54860,6 +58364,8 @@ func (c *Client) ReadNodeV1RuntimeClass(ctx context.Context, params ReadNodeV1Ru
 func (c *Client) sendReadNodeV1RuntimeClass(ctx context.Context, params ReadNodeV1RuntimeClassParams) (res ReadNodeV1RuntimeClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readNodeV1RuntimeClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1/runtimeclasses/{name}"),
 	}
 
 	// Run stopwatch.
@@ -55003,6 +58509,8 @@ func (c *Client) ReadNodeV1alpha1RuntimeClass(ctx context.Context, params ReadNo
 func (c *Client) sendReadNodeV1alpha1RuntimeClass(ctx context.Context, params ReadNodeV1alpha1RuntimeClassParams) (res ReadNodeV1alpha1RuntimeClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readNodeV1alpha1RuntimeClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1alpha1/runtimeclasses/{name}"),
 	}
 
 	// Run stopwatch.
@@ -55146,6 +58654,8 @@ func (c *Client) ReadNodeV1beta1RuntimeClass(ctx context.Context, params ReadNod
 func (c *Client) sendReadNodeV1beta1RuntimeClass(ctx context.Context, params ReadNodeV1beta1RuntimeClassParams) (res ReadNodeV1beta1RuntimeClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readNodeV1beta1RuntimeClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1beta1/runtimeclasses/{name}"),
 	}
 
 	// Run stopwatch.
@@ -55289,6 +58799,8 @@ func (c *Client) ReadPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, 
 func (c *Client) sendReadPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, params ReadPolicyV1NamespacedPodDisruptionBudgetParams) (res ReadPolicyV1NamespacedPodDisruptionBudgetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readPolicyV1NamespacedPodDisruptionBudget"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}"),
 	}
 
 	// Run stopwatch.
@@ -55451,6 +58963,8 @@ func (c *Client) ReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx context.Con
 func (c *Client) sendReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx context.Context, params ReadPolicyV1NamespacedPodDisruptionBudgetStatusParams) (res ReadPolicyV1NamespacedPodDisruptionBudgetStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readPolicyV1NamespacedPodDisruptionBudgetStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -55614,6 +59128,8 @@ func (c *Client) ReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Cont
 func (c *Client) sendReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Context, params ReadPolicyV1beta1NamespacedPodDisruptionBudgetParams) (res ReadPolicyV1beta1NamespacedPodDisruptionBudgetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readPolicyV1beta1NamespacedPodDisruptionBudget"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}"),
 	}
 
 	// Run stopwatch.
@@ -55776,6 +59292,8 @@ func (c *Client) ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx contex
 func (c *Client) sendReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx context.Context, params ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams) (res ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readPolicyV1beta1NamespacedPodDisruptionBudgetStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -55939,6 +59457,8 @@ func (c *Client) ReadPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 func (c *Client) sendReadPolicyV1beta1PodSecurityPolicy(ctx context.Context, params ReadPolicyV1beta1PodSecurityPolicyParams) (res ReadPolicyV1beta1PodSecurityPolicyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readPolicyV1beta1PodSecurityPolicy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/podsecuritypolicies/{name}"),
 	}
 
 	// Run stopwatch.
@@ -56082,6 +59602,8 @@ func (c *Client) ReadRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 func (c *Client) sendReadRbacAuthorizationV1ClusterRole(ctx context.Context, params ReadRbacAuthorizationV1ClusterRoleParams) (res ReadRbacAuthorizationV1ClusterRoleRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readRbacAuthorizationV1ClusterRole"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/clusterroles/{name}"),
 	}
 
 	// Run stopwatch.
@@ -56225,6 +59747,8 @@ func (c *Client) ReadRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 func (c *Client) sendReadRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, params ReadRbacAuthorizationV1ClusterRoleBindingParams) (res ReadRbacAuthorizationV1ClusterRoleBindingRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readRbacAuthorizationV1ClusterRoleBinding"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}"),
 	}
 
 	// Run stopwatch.
@@ -56368,6 +59892,8 @@ func (c *Client) ReadRbacAuthorizationV1NamespacedRole(ctx context.Context, para
 func (c *Client) sendReadRbacAuthorizationV1NamespacedRole(ctx context.Context, params ReadRbacAuthorizationV1NamespacedRoleParams) (res ReadRbacAuthorizationV1NamespacedRoleRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readRbacAuthorizationV1NamespacedRole"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}"),
 	}
 
 	// Run stopwatch.
@@ -56530,6 +60056,8 @@ func (c *Client) ReadRbacAuthorizationV1NamespacedRoleBinding(ctx context.Contex
 func (c *Client) sendReadRbacAuthorizationV1NamespacedRoleBinding(ctx context.Context, params ReadRbacAuthorizationV1NamespacedRoleBindingParams) (res ReadRbacAuthorizationV1NamespacedRoleBindingRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readRbacAuthorizationV1NamespacedRoleBinding"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}"),
 	}
 
 	// Run stopwatch.
@@ -56692,6 +60220,8 @@ func (c *Client) ReadSchedulingV1PriorityClass(ctx context.Context, params ReadS
 func (c *Client) sendReadSchedulingV1PriorityClass(ctx context.Context, params ReadSchedulingV1PriorityClassParams) (res ReadSchedulingV1PriorityClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readSchedulingV1PriorityClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/scheduling.k8s.io/v1/priorityclasses/{name}"),
 	}
 
 	// Run stopwatch.
@@ -56835,6 +60365,8 @@ func (c *Client) ReadStorageV1CSIDriver(ctx context.Context, params ReadStorageV
 func (c *Client) sendReadStorageV1CSIDriver(ctx context.Context, params ReadStorageV1CSIDriverParams) (res ReadStorageV1CSIDriverRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readStorageV1CSIDriver"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/csidrivers/{name}"),
 	}
 
 	// Run stopwatch.
@@ -56978,6 +60510,8 @@ func (c *Client) ReadStorageV1CSINode(ctx context.Context, params ReadStorageV1C
 func (c *Client) sendReadStorageV1CSINode(ctx context.Context, params ReadStorageV1CSINodeParams) (res ReadStorageV1CSINodeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readStorageV1CSINode"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/csinodes/{name}"),
 	}
 
 	// Run stopwatch.
@@ -57121,6 +60655,8 @@ func (c *Client) ReadStorageV1StorageClass(ctx context.Context, params ReadStora
 func (c *Client) sendReadStorageV1StorageClass(ctx context.Context, params ReadStorageV1StorageClassParams) (res ReadStorageV1StorageClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readStorageV1StorageClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/storageclasses/{name}"),
 	}
 
 	// Run stopwatch.
@@ -57264,6 +60800,8 @@ func (c *Client) ReadStorageV1VolumeAttachment(ctx context.Context, params ReadS
 func (c *Client) sendReadStorageV1VolumeAttachment(ctx context.Context, params ReadStorageV1VolumeAttachmentParams) (res ReadStorageV1VolumeAttachmentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readStorageV1VolumeAttachment"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/volumeattachments/{name}"),
 	}
 
 	// Run stopwatch.
@@ -57407,6 +60945,8 @@ func (c *Client) ReadStorageV1VolumeAttachmentStatus(ctx context.Context, params
 func (c *Client) sendReadStorageV1VolumeAttachmentStatus(ctx context.Context, params ReadStorageV1VolumeAttachmentStatusParams) (res ReadStorageV1VolumeAttachmentStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readStorageV1VolumeAttachmentStatus"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/volumeattachments/{name}/status"),
 	}
 
 	// Run stopwatch.
@@ -57551,6 +61091,8 @@ func (c *Client) ReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Con
 func (c *Client) sendReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Context, params ReadStorageV1alpha1NamespacedCSIStorageCapacityParams) (res ReadStorageV1alpha1NamespacedCSIStorageCapacityRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readStorageV1alpha1NamespacedCSIStorageCapacity"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities/{name}"),
 	}
 
 	// Run stopwatch.
@@ -57713,6 +61255,8 @@ func (c *Client) ReadStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Cont
 func (c *Client) sendReadStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Context, params ReadStorageV1beta1NamespacedCSIStorageCapacityParams) (res ReadStorageV1beta1NamespacedCSIStorageCapacityRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readStorageV1beta1NamespacedCSIStorageCapacity"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities/{name}"),
 	}
 
 	// Run stopwatch.
@@ -57877,6 +61421,8 @@ func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfiguration(ctx co
 func (c *Client) sendWatchAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, params WatchAdmissionregistrationV1MutatingWebhookConfigurationParams) (res WatchAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAdmissionregistrationV1MutatingWebhookConfiguration"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations/{name}"),
 	}
 
 	// Run stopwatch.
@@ -58174,6 +61720,8 @@ func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ct
 func (c *Client) sendWatchAdmissionregistrationV1MutatingWebhookConfigurationList(ctx context.Context, params WatchAdmissionregistrationV1MutatingWebhookConfigurationListParams) (res WatchAdmissionregistrationV1MutatingWebhookConfigurationListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAdmissionregistrationV1MutatingWebhookConfigurationList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations"),
 	}
 
 	// Run stopwatch.
@@ -58454,6 +62002,8 @@ func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfiguration(ctx 
 func (c *Client) sendWatchAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, params WatchAdmissionregistrationV1ValidatingWebhookConfigurationParams) (res WatchAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAdmissionregistrationV1ValidatingWebhookConfiguration"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations/{name}"),
 	}
 
 	// Run stopwatch.
@@ -58751,6 +62301,8 @@ func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(
 func (c *Client) sendWatchAdmissionregistrationV1ValidatingWebhookConfigurationList(ctx context.Context, params WatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams) (res WatchAdmissionregistrationV1ValidatingWebhookConfigurationListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAdmissionregistrationV1ValidatingWebhookConfigurationList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations"),
 	}
 
 	// Run stopwatch.
@@ -59030,6 +62582,8 @@ func (c *Client) WatchApiextensionsV1CustomResourceDefinition(ctx context.Contex
 func (c *Client) sendWatchApiextensionsV1CustomResourceDefinition(ctx context.Context, params WatchApiextensionsV1CustomResourceDefinitionParams) (res WatchApiextensionsV1CustomResourceDefinitionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchApiextensionsV1CustomResourceDefinition"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions/{name}"),
 	}
 
 	// Run stopwatch.
@@ -59327,6 +62881,8 @@ func (c *Client) WatchApiextensionsV1CustomResourceDefinitionList(ctx context.Co
 func (c *Client) sendWatchApiextensionsV1CustomResourceDefinitionList(ctx context.Context, params WatchApiextensionsV1CustomResourceDefinitionListParams) (res WatchApiextensionsV1CustomResourceDefinitionListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchApiextensionsV1CustomResourceDefinitionList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions"),
 	}
 
 	// Run stopwatch.
@@ -59606,6 +63162,8 @@ func (c *Client) WatchApiregistrationV1APIService(ctx context.Context, params Wa
 func (c *Client) sendWatchApiregistrationV1APIService(ctx context.Context, params WatchApiregistrationV1APIServiceParams) (res WatchApiregistrationV1APIServiceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchApiregistrationV1APIService"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/v1/watch/apiservices/{name}"),
 	}
 
 	// Run stopwatch.
@@ -59903,6 +63461,8 @@ func (c *Client) WatchApiregistrationV1APIServiceList(ctx context.Context, param
 func (c *Client) sendWatchApiregistrationV1APIServiceList(ctx context.Context, params WatchApiregistrationV1APIServiceListParams) (res WatchApiregistrationV1APIServiceListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchApiregistrationV1APIServiceList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/v1/watch/apiservices"),
 	}
 
 	// Run stopwatch.
@@ -60182,6 +63742,8 @@ func (c *Client) WatchAppsV1ControllerRevisionListForAllNamespaces(ctx context.C
 func (c *Client) sendWatchAppsV1ControllerRevisionListForAllNamespaces(ctx context.Context, params WatchAppsV1ControllerRevisionListForAllNamespacesParams) (res WatchAppsV1ControllerRevisionListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1ControllerRevisionListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/controllerrevisions"),
 	}
 
 	// Run stopwatch.
@@ -60461,6 +64023,8 @@ func (c *Client) WatchAppsV1DaemonSetListForAllNamespaces(ctx context.Context, p
 func (c *Client) sendWatchAppsV1DaemonSetListForAllNamespaces(ctx context.Context, params WatchAppsV1DaemonSetListForAllNamespacesParams) (res WatchAppsV1DaemonSetListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1DaemonSetListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/daemonsets"),
 	}
 
 	// Run stopwatch.
@@ -60740,6 +64304,8 @@ func (c *Client) WatchAppsV1DeploymentListForAllNamespaces(ctx context.Context, 
 func (c *Client) sendWatchAppsV1DeploymentListForAllNamespaces(ctx context.Context, params WatchAppsV1DeploymentListForAllNamespacesParams) (res WatchAppsV1DeploymentListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1DeploymentListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/deployments"),
 	}
 
 	// Run stopwatch.
@@ -61019,6 +64585,8 @@ func (c *Client) WatchAppsV1NamespacedControllerRevision(ctx context.Context, pa
 func (c *Client) sendWatchAppsV1NamespacedControllerRevision(ctx context.Context, params WatchAppsV1NamespacedControllerRevisionParams) (res WatchAppsV1NamespacedControllerRevisionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedControllerRevision"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions/{name}"),
 	}
 
 	// Run stopwatch.
@@ -61335,6 +64903,8 @@ func (c *Client) WatchAppsV1NamespacedControllerRevisionList(ctx context.Context
 func (c *Client) sendWatchAppsV1NamespacedControllerRevisionList(ctx context.Context, params WatchAppsV1NamespacedControllerRevisionListParams) (res WatchAppsV1NamespacedControllerRevisionListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedControllerRevisionList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions"),
 	}
 
 	// Run stopwatch.
@@ -61633,6 +65203,8 @@ func (c *Client) WatchAppsV1NamespacedDaemonSet(ctx context.Context, params Watc
 func (c *Client) sendWatchAppsV1NamespacedDaemonSet(ctx context.Context, params WatchAppsV1NamespacedDaemonSetParams) (res WatchAppsV1NamespacedDaemonSetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedDaemonSet"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/daemonsets/{name}"),
 	}
 
 	// Run stopwatch.
@@ -61949,6 +65521,8 @@ func (c *Client) WatchAppsV1NamespacedDaemonSetList(ctx context.Context, params 
 func (c *Client) sendWatchAppsV1NamespacedDaemonSetList(ctx context.Context, params WatchAppsV1NamespacedDaemonSetListParams) (res WatchAppsV1NamespacedDaemonSetListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedDaemonSetList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/daemonsets"),
 	}
 
 	// Run stopwatch.
@@ -62247,6 +65821,8 @@ func (c *Client) WatchAppsV1NamespacedDeployment(ctx context.Context, params Wat
 func (c *Client) sendWatchAppsV1NamespacedDeployment(ctx context.Context, params WatchAppsV1NamespacedDeploymentParams) (res WatchAppsV1NamespacedDeploymentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedDeployment"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/deployments/{name}"),
 	}
 
 	// Run stopwatch.
@@ -62563,6 +66139,8 @@ func (c *Client) WatchAppsV1NamespacedDeploymentList(ctx context.Context, params
 func (c *Client) sendWatchAppsV1NamespacedDeploymentList(ctx context.Context, params WatchAppsV1NamespacedDeploymentListParams) (res WatchAppsV1NamespacedDeploymentListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedDeploymentList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/deployments"),
 	}
 
 	// Run stopwatch.
@@ -62861,6 +66439,8 @@ func (c *Client) WatchAppsV1NamespacedReplicaSet(ctx context.Context, params Wat
 func (c *Client) sendWatchAppsV1NamespacedReplicaSet(ctx context.Context, params WatchAppsV1NamespacedReplicaSetParams) (res WatchAppsV1NamespacedReplicaSetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedReplicaSet"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/replicasets/{name}"),
 	}
 
 	// Run stopwatch.
@@ -63177,6 +66757,8 @@ func (c *Client) WatchAppsV1NamespacedReplicaSetList(ctx context.Context, params
 func (c *Client) sendWatchAppsV1NamespacedReplicaSetList(ctx context.Context, params WatchAppsV1NamespacedReplicaSetListParams) (res WatchAppsV1NamespacedReplicaSetListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedReplicaSetList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/replicasets"),
 	}
 
 	// Run stopwatch.
@@ -63475,6 +67057,8 @@ func (c *Client) WatchAppsV1NamespacedStatefulSet(ctx context.Context, params Wa
 func (c *Client) sendWatchAppsV1NamespacedStatefulSet(ctx context.Context, params WatchAppsV1NamespacedStatefulSetParams) (res WatchAppsV1NamespacedStatefulSetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedStatefulSet"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/statefulsets/{name}"),
 	}
 
 	// Run stopwatch.
@@ -63791,6 +67375,8 @@ func (c *Client) WatchAppsV1NamespacedStatefulSetList(ctx context.Context, param
 func (c *Client) sendWatchAppsV1NamespacedStatefulSetList(ctx context.Context, params WatchAppsV1NamespacedStatefulSetListParams) (res WatchAppsV1NamespacedStatefulSetListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedStatefulSetList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/statefulsets"),
 	}
 
 	// Run stopwatch.
@@ -64089,6 +67675,8 @@ func (c *Client) WatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Context, 
 func (c *Client) sendWatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Context, params WatchAppsV1ReplicaSetListForAllNamespacesParams) (res WatchAppsV1ReplicaSetListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1ReplicaSetListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/replicasets"),
 	}
 
 	// Run stopwatch.
@@ -64368,6 +67956,8 @@ func (c *Client) WatchAppsV1StatefulSetListForAllNamespaces(ctx context.Context,
 func (c *Client) sendWatchAppsV1StatefulSetListForAllNamespaces(ctx context.Context, params WatchAppsV1StatefulSetListForAllNamespacesParams) (res WatchAppsV1StatefulSetListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1StatefulSetListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/statefulsets"),
 	}
 
 	// Run stopwatch.
@@ -64647,6 +68237,8 @@ func (c *Client) WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(c
 func (c *Client) sendWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context, params WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams) (res WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/watch/horizontalpodautoscalers"),
 	}
 
 	// Run stopwatch.
@@ -64926,6 +68518,8 @@ func (c *Client) WatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context
 func (c *Client) sendWatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.Context, params WatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams) (res WatchAutoscalingV1NamespacedHorizontalPodAutoscalerRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV1NamespacedHorizontalPodAutoscaler"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
 	}
 
 	// Run stopwatch.
@@ -65242,6 +68836,8 @@ func (c *Client) WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx con
 func (c *Client) sendWatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx context.Context, params WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams) (res WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV1NamespacedHorizontalPodAutoscalerList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers"),
 	}
 
 	// Run stopwatch.
@@ -65540,6 +69136,8 @@ func (c *Client) WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespa
 func (c *Client) sendWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context, params WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams) (res WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/watch/horizontalpodautoscalers"),
 	}
 
 	// Run stopwatch.
@@ -65819,6 +69417,8 @@ func (c *Client) WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx co
 func (c *Client) sendWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx context.Context, params WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) (res WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
 	}
 
 	// Run stopwatch.
@@ -66135,6 +69735,8 @@ func (c *Client) WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList(ct
 func (c *Client) sendWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList(ctx context.Context, params WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams) (res WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers"),
 	}
 
 	// Run stopwatch.
@@ -66433,6 +70035,8 @@ func (c *Client) WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespa
 func (c *Client) sendWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context, params WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams) (res WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/watch/horizontalpodautoscalers"),
 	}
 
 	// Run stopwatch.
@@ -66712,6 +70316,8 @@ func (c *Client) WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx co
 func (c *Client) sendWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx context.Context, params WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) (res WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
 	}
 
 	// Run stopwatch.
@@ -67028,6 +70634,8 @@ func (c *Client) WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList(ct
 func (c *Client) sendWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList(ctx context.Context, params WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams) (res WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers"),
 	}
 
 	// Run stopwatch.
@@ -67326,6 +70934,8 @@ func (c *Client) WatchBatchV1CronJobListForAllNamespaces(ctx context.Context, pa
 func (c *Client) sendWatchBatchV1CronJobListForAllNamespaces(ctx context.Context, params WatchBatchV1CronJobListForAllNamespacesParams) (res WatchBatchV1CronJobListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1CronJobListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1/watch/cronjobs"),
 	}
 
 	// Run stopwatch.
@@ -67605,6 +71215,8 @@ func (c *Client) WatchBatchV1JobListForAllNamespaces(ctx context.Context, params
 func (c *Client) sendWatchBatchV1JobListForAllNamespaces(ctx context.Context, params WatchBatchV1JobListForAllNamespacesParams) (res WatchBatchV1JobListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1JobListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1/watch/jobs"),
 	}
 
 	// Run stopwatch.
@@ -67884,6 +71496,8 @@ func (c *Client) WatchBatchV1NamespacedCronJob(ctx context.Context, params Watch
 func (c *Client) sendWatchBatchV1NamespacedCronJob(ctx context.Context, params WatchBatchV1NamespacedCronJobParams) (res WatchBatchV1NamespacedCronJobRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1NamespacedCronJob"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1/watch/namespaces/{namespace}/cronjobs/{name}"),
 	}
 
 	// Run stopwatch.
@@ -68200,6 +71814,8 @@ func (c *Client) WatchBatchV1NamespacedCronJobList(ctx context.Context, params W
 func (c *Client) sendWatchBatchV1NamespacedCronJobList(ctx context.Context, params WatchBatchV1NamespacedCronJobListParams) (res WatchBatchV1NamespacedCronJobListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1NamespacedCronJobList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1/watch/namespaces/{namespace}/cronjobs"),
 	}
 
 	// Run stopwatch.
@@ -68498,6 +72114,8 @@ func (c *Client) WatchBatchV1NamespacedJob(ctx context.Context, params WatchBatc
 func (c *Client) sendWatchBatchV1NamespacedJob(ctx context.Context, params WatchBatchV1NamespacedJobParams) (res WatchBatchV1NamespacedJobRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1NamespacedJob"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1/watch/namespaces/{namespace}/jobs/{name}"),
 	}
 
 	// Run stopwatch.
@@ -68814,6 +72432,8 @@ func (c *Client) WatchBatchV1NamespacedJobList(ctx context.Context, params Watch
 func (c *Client) sendWatchBatchV1NamespacedJobList(ctx context.Context, params WatchBatchV1NamespacedJobListParams) (res WatchBatchV1NamespacedJobListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1NamespacedJobList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1/watch/namespaces/{namespace}/jobs"),
 	}
 
 	// Run stopwatch.
@@ -69112,6 +72732,8 @@ func (c *Client) WatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Contex
 func (c *Client) sendWatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Context, params WatchBatchV1beta1CronJobListForAllNamespacesParams) (res WatchBatchV1beta1CronJobListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1beta1CronJobListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/watch/cronjobs"),
 	}
 
 	// Run stopwatch.
@@ -69391,6 +73013,8 @@ func (c *Client) WatchBatchV1beta1NamespacedCronJob(ctx context.Context, params 
 func (c *Client) sendWatchBatchV1beta1NamespacedCronJob(ctx context.Context, params WatchBatchV1beta1NamespacedCronJobParams) (res WatchBatchV1beta1NamespacedCronJobRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1beta1NamespacedCronJob"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs/{name}"),
 	}
 
 	// Run stopwatch.
@@ -69707,6 +73331,8 @@ func (c *Client) WatchBatchV1beta1NamespacedCronJobList(ctx context.Context, par
 func (c *Client) sendWatchBatchV1beta1NamespacedCronJobList(ctx context.Context, params WatchBatchV1beta1NamespacedCronJobListParams) (res WatchBatchV1beta1NamespacedCronJobListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1beta1NamespacedCronJobList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs"),
 	}
 
 	// Run stopwatch.
@@ -70006,6 +73632,8 @@ func (c *Client) WatchCertificatesV1CertificateSigningRequest(ctx context.Contex
 func (c *Client) sendWatchCertificatesV1CertificateSigningRequest(ctx context.Context, params WatchCertificatesV1CertificateSigningRequestParams) (res WatchCertificatesV1CertificateSigningRequestRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCertificatesV1CertificateSigningRequest"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/watch/certificatesigningrequests/{name}"),
 	}
 
 	// Run stopwatch.
@@ -70303,6 +73931,8 @@ func (c *Client) WatchCertificatesV1CertificateSigningRequestList(ctx context.Co
 func (c *Client) sendWatchCertificatesV1CertificateSigningRequestList(ctx context.Context, params WatchCertificatesV1CertificateSigningRequestListParams) (res WatchCertificatesV1CertificateSigningRequestListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCertificatesV1CertificateSigningRequestList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/watch/certificatesigningrequests"),
 	}
 
 	// Run stopwatch.
@@ -70582,6 +74212,8 @@ func (c *Client) WatchCoordinationV1LeaseListForAllNamespaces(ctx context.Contex
 func (c *Client) sendWatchCoordinationV1LeaseListForAllNamespaces(ctx context.Context, params WatchCoordinationV1LeaseListForAllNamespacesParams) (res WatchCoordinationV1LeaseListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoordinationV1LeaseListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/watch/leases"),
 	}
 
 	// Run stopwatch.
@@ -70861,6 +74493,8 @@ func (c *Client) WatchCoordinationV1NamespacedLease(ctx context.Context, params 
 func (c *Client) sendWatchCoordinationV1NamespacedLease(ctx context.Context, params WatchCoordinationV1NamespacedLeaseParams) (res WatchCoordinationV1NamespacedLeaseRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoordinationV1NamespacedLease"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases/{name}"),
 	}
 
 	// Run stopwatch.
@@ -71177,6 +74811,8 @@ func (c *Client) WatchCoordinationV1NamespacedLeaseList(ctx context.Context, par
 func (c *Client) sendWatchCoordinationV1NamespacedLeaseList(ctx context.Context, params WatchCoordinationV1NamespacedLeaseListParams) (res WatchCoordinationV1NamespacedLeaseListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoordinationV1NamespacedLeaseList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases"),
 	}
 
 	// Run stopwatch.
@@ -71475,6 +75111,8 @@ func (c *Client) WatchCoreV1ConfigMapListForAllNamespaces(ctx context.Context, p
 func (c *Client) sendWatchCoreV1ConfigMapListForAllNamespaces(ctx context.Context, params WatchCoreV1ConfigMapListForAllNamespacesParams) (res WatchCoreV1ConfigMapListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1ConfigMapListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/configmaps"),
 	}
 
 	// Run stopwatch.
@@ -71754,6 +75392,8 @@ func (c *Client) WatchCoreV1EndpointsListForAllNamespaces(ctx context.Context, p
 func (c *Client) sendWatchCoreV1EndpointsListForAllNamespaces(ctx context.Context, params WatchCoreV1EndpointsListForAllNamespacesParams) (res WatchCoreV1EndpointsListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1EndpointsListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/endpoints"),
 	}
 
 	// Run stopwatch.
@@ -72033,6 +75673,8 @@ func (c *Client) WatchCoreV1EventListForAllNamespaces(ctx context.Context, param
 func (c *Client) sendWatchCoreV1EventListForAllNamespaces(ctx context.Context, params WatchCoreV1EventListForAllNamespacesParams) (res WatchCoreV1EventListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1EventListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/events"),
 	}
 
 	// Run stopwatch.
@@ -72312,6 +75954,8 @@ func (c *Client) WatchCoreV1LimitRangeListForAllNamespaces(ctx context.Context, 
 func (c *Client) sendWatchCoreV1LimitRangeListForAllNamespaces(ctx context.Context, params WatchCoreV1LimitRangeListForAllNamespacesParams) (res WatchCoreV1LimitRangeListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1LimitRangeListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/limitranges"),
 	}
 
 	// Run stopwatch.
@@ -72591,6 +76235,8 @@ func (c *Client) WatchCoreV1Namespace(ctx context.Context, params WatchCoreV1Nam
 func (c *Client) sendWatchCoreV1Namespace(ctx context.Context, params WatchCoreV1NamespaceParams) (res WatchCoreV1NamespaceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1Namespace"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{name}"),
 	}
 
 	// Run stopwatch.
@@ -72888,6 +76534,8 @@ func (c *Client) WatchCoreV1NamespaceList(ctx context.Context, params WatchCoreV
 func (c *Client) sendWatchCoreV1NamespaceList(ctx context.Context, params WatchCoreV1NamespaceListParams) (res WatchCoreV1NamespaceListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespaceList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces"),
 	}
 
 	// Run stopwatch.
@@ -73167,6 +76815,8 @@ func (c *Client) WatchCoreV1NamespacedConfigMap(ctx context.Context, params Watc
 func (c *Client) sendWatchCoreV1NamespacedConfigMap(ctx context.Context, params WatchCoreV1NamespacedConfigMapParams) (res WatchCoreV1NamespacedConfigMapRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedConfigMap"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/configmaps/{name}"),
 	}
 
 	// Run stopwatch.
@@ -73483,6 +77133,8 @@ func (c *Client) WatchCoreV1NamespacedConfigMapList(ctx context.Context, params 
 func (c *Client) sendWatchCoreV1NamespacedConfigMapList(ctx context.Context, params WatchCoreV1NamespacedConfigMapListParams) (res WatchCoreV1NamespacedConfigMapListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedConfigMapList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/configmaps"),
 	}
 
 	// Run stopwatch.
@@ -73781,6 +77433,8 @@ func (c *Client) WatchCoreV1NamespacedEndpoints(ctx context.Context, params Watc
 func (c *Client) sendWatchCoreV1NamespacedEndpoints(ctx context.Context, params WatchCoreV1NamespacedEndpointsParams) (res WatchCoreV1NamespacedEndpointsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedEndpoints"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/endpoints/{name}"),
 	}
 
 	// Run stopwatch.
@@ -74097,6 +77751,8 @@ func (c *Client) WatchCoreV1NamespacedEndpointsList(ctx context.Context, params 
 func (c *Client) sendWatchCoreV1NamespacedEndpointsList(ctx context.Context, params WatchCoreV1NamespacedEndpointsListParams) (res WatchCoreV1NamespacedEndpointsListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedEndpointsList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/endpoints"),
 	}
 
 	// Run stopwatch.
@@ -74395,6 +78051,8 @@ func (c *Client) WatchCoreV1NamespacedEvent(ctx context.Context, params WatchCor
 func (c *Client) sendWatchCoreV1NamespacedEvent(ctx context.Context, params WatchCoreV1NamespacedEventParams) (res WatchCoreV1NamespacedEventRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedEvent"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/events/{name}"),
 	}
 
 	// Run stopwatch.
@@ -74711,6 +78369,8 @@ func (c *Client) WatchCoreV1NamespacedEventList(ctx context.Context, params Watc
 func (c *Client) sendWatchCoreV1NamespacedEventList(ctx context.Context, params WatchCoreV1NamespacedEventListParams) (res WatchCoreV1NamespacedEventListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedEventList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/events"),
 	}
 
 	// Run stopwatch.
@@ -75009,6 +78669,8 @@ func (c *Client) WatchCoreV1NamespacedLimitRange(ctx context.Context, params Wat
 func (c *Client) sendWatchCoreV1NamespacedLimitRange(ctx context.Context, params WatchCoreV1NamespacedLimitRangeParams) (res WatchCoreV1NamespacedLimitRangeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedLimitRange"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/limitranges/{name}"),
 	}
 
 	// Run stopwatch.
@@ -75325,6 +78987,8 @@ func (c *Client) WatchCoreV1NamespacedLimitRangeList(ctx context.Context, params
 func (c *Client) sendWatchCoreV1NamespacedLimitRangeList(ctx context.Context, params WatchCoreV1NamespacedLimitRangeListParams) (res WatchCoreV1NamespacedLimitRangeListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedLimitRangeList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/limitranges"),
 	}
 
 	// Run stopwatch.
@@ -75623,6 +79287,8 @@ func (c *Client) WatchCoreV1NamespacedPersistentVolumeClaim(ctx context.Context,
 func (c *Client) sendWatchCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, params WatchCoreV1NamespacedPersistentVolumeClaimParams) (res WatchCoreV1NamespacedPersistentVolumeClaimRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedPersistentVolumeClaim"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims/{name}"),
 	}
 
 	// Run stopwatch.
@@ -75939,6 +79605,8 @@ func (c *Client) WatchCoreV1NamespacedPersistentVolumeClaimList(ctx context.Cont
 func (c *Client) sendWatchCoreV1NamespacedPersistentVolumeClaimList(ctx context.Context, params WatchCoreV1NamespacedPersistentVolumeClaimListParams) (res WatchCoreV1NamespacedPersistentVolumeClaimListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedPersistentVolumeClaimList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims"),
 	}
 
 	// Run stopwatch.
@@ -76237,6 +79905,8 @@ func (c *Client) WatchCoreV1NamespacedPod(ctx context.Context, params WatchCoreV
 func (c *Client) sendWatchCoreV1NamespacedPod(ctx context.Context, params WatchCoreV1NamespacedPodParams) (res WatchCoreV1NamespacedPodRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedPod"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/pods/{name}"),
 	}
 
 	// Run stopwatch.
@@ -76553,6 +80223,8 @@ func (c *Client) WatchCoreV1NamespacedPodList(ctx context.Context, params WatchC
 func (c *Client) sendWatchCoreV1NamespacedPodList(ctx context.Context, params WatchCoreV1NamespacedPodListParams) (res WatchCoreV1NamespacedPodListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedPodList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/pods"),
 	}
 
 	// Run stopwatch.
@@ -76851,6 +80523,8 @@ func (c *Client) WatchCoreV1NamespacedPodTemplate(ctx context.Context, params Wa
 func (c *Client) sendWatchCoreV1NamespacedPodTemplate(ctx context.Context, params WatchCoreV1NamespacedPodTemplateParams) (res WatchCoreV1NamespacedPodTemplateRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedPodTemplate"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/podtemplates/{name}"),
 	}
 
 	// Run stopwatch.
@@ -77167,6 +80841,8 @@ func (c *Client) WatchCoreV1NamespacedPodTemplateList(ctx context.Context, param
 func (c *Client) sendWatchCoreV1NamespacedPodTemplateList(ctx context.Context, params WatchCoreV1NamespacedPodTemplateListParams) (res WatchCoreV1NamespacedPodTemplateListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedPodTemplateList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/podtemplates"),
 	}
 
 	// Run stopwatch.
@@ -77465,6 +81141,8 @@ func (c *Client) WatchCoreV1NamespacedReplicationController(ctx context.Context,
 func (c *Client) sendWatchCoreV1NamespacedReplicationController(ctx context.Context, params WatchCoreV1NamespacedReplicationControllerParams) (res WatchCoreV1NamespacedReplicationControllerRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedReplicationController"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/replicationcontrollers/{name}"),
 	}
 
 	// Run stopwatch.
@@ -77781,6 +81459,8 @@ func (c *Client) WatchCoreV1NamespacedReplicationControllerList(ctx context.Cont
 func (c *Client) sendWatchCoreV1NamespacedReplicationControllerList(ctx context.Context, params WatchCoreV1NamespacedReplicationControllerListParams) (res WatchCoreV1NamespacedReplicationControllerListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedReplicationControllerList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/replicationcontrollers"),
 	}
 
 	// Run stopwatch.
@@ -78079,6 +81759,8 @@ func (c *Client) WatchCoreV1NamespacedResourceQuota(ctx context.Context, params 
 func (c *Client) sendWatchCoreV1NamespacedResourceQuota(ctx context.Context, params WatchCoreV1NamespacedResourceQuotaParams) (res WatchCoreV1NamespacedResourceQuotaRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedResourceQuota"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/resourcequotas/{name}"),
 	}
 
 	// Run stopwatch.
@@ -78395,6 +82077,8 @@ func (c *Client) WatchCoreV1NamespacedResourceQuotaList(ctx context.Context, par
 func (c *Client) sendWatchCoreV1NamespacedResourceQuotaList(ctx context.Context, params WatchCoreV1NamespacedResourceQuotaListParams) (res WatchCoreV1NamespacedResourceQuotaListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedResourceQuotaList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/resourcequotas"),
 	}
 
 	// Run stopwatch.
@@ -78693,6 +82377,8 @@ func (c *Client) WatchCoreV1NamespacedSecret(ctx context.Context, params WatchCo
 func (c *Client) sendWatchCoreV1NamespacedSecret(ctx context.Context, params WatchCoreV1NamespacedSecretParams) (res WatchCoreV1NamespacedSecretRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedSecret"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/secrets/{name}"),
 	}
 
 	// Run stopwatch.
@@ -79009,6 +82695,8 @@ func (c *Client) WatchCoreV1NamespacedSecretList(ctx context.Context, params Wat
 func (c *Client) sendWatchCoreV1NamespacedSecretList(ctx context.Context, params WatchCoreV1NamespacedSecretListParams) (res WatchCoreV1NamespacedSecretListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedSecretList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/secrets"),
 	}
 
 	// Run stopwatch.
@@ -79307,6 +82995,8 @@ func (c *Client) WatchCoreV1NamespacedService(ctx context.Context, params WatchC
 func (c *Client) sendWatchCoreV1NamespacedService(ctx context.Context, params WatchCoreV1NamespacedServiceParams) (res WatchCoreV1NamespacedServiceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedService"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/services/{name}"),
 	}
 
 	// Run stopwatch.
@@ -79623,6 +83313,8 @@ func (c *Client) WatchCoreV1NamespacedServiceAccount(ctx context.Context, params
 func (c *Client) sendWatchCoreV1NamespacedServiceAccount(ctx context.Context, params WatchCoreV1NamespacedServiceAccountParams) (res WatchCoreV1NamespacedServiceAccountRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedServiceAccount"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/serviceaccounts/{name}"),
 	}
 
 	// Run stopwatch.
@@ -79939,6 +83631,8 @@ func (c *Client) WatchCoreV1NamespacedServiceAccountList(ctx context.Context, pa
 func (c *Client) sendWatchCoreV1NamespacedServiceAccountList(ctx context.Context, params WatchCoreV1NamespacedServiceAccountListParams) (res WatchCoreV1NamespacedServiceAccountListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedServiceAccountList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/serviceaccounts"),
 	}
 
 	// Run stopwatch.
@@ -80237,6 +83931,8 @@ func (c *Client) WatchCoreV1NamespacedServiceList(ctx context.Context, params Wa
 func (c *Client) sendWatchCoreV1NamespacedServiceList(ctx context.Context, params WatchCoreV1NamespacedServiceListParams) (res WatchCoreV1NamespacedServiceListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedServiceList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/services"),
 	}
 
 	// Run stopwatch.
@@ -80535,6 +84231,8 @@ func (c *Client) WatchCoreV1Node(ctx context.Context, params WatchCoreV1NodePara
 func (c *Client) sendWatchCoreV1Node(ctx context.Context, params WatchCoreV1NodeParams) (res WatchCoreV1NodeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1Node"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/nodes/{name}"),
 	}
 
 	// Run stopwatch.
@@ -80832,6 +84530,8 @@ func (c *Client) WatchCoreV1NodeList(ctx context.Context, params WatchCoreV1Node
 func (c *Client) sendWatchCoreV1NodeList(ctx context.Context, params WatchCoreV1NodeListParams) (res WatchCoreV1NodeListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NodeList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/nodes"),
 	}
 
 	// Run stopwatch.
@@ -81111,6 +84811,8 @@ func (c *Client) WatchCoreV1PersistentVolume(ctx context.Context, params WatchCo
 func (c *Client) sendWatchCoreV1PersistentVolume(ctx context.Context, params WatchCoreV1PersistentVolumeParams) (res WatchCoreV1PersistentVolumeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1PersistentVolume"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/persistentvolumes/{name}"),
 	}
 
 	// Run stopwatch.
@@ -81408,6 +85110,8 @@ func (c *Client) WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx contex
 func (c *Client) sendWatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx context.Context, params WatchCoreV1PersistentVolumeClaimListForAllNamespacesParams) (res WatchCoreV1PersistentVolumeClaimListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1PersistentVolumeClaimListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/persistentvolumeclaims"),
 	}
 
 	// Run stopwatch.
@@ -81687,6 +85391,8 @@ func (c *Client) WatchCoreV1PersistentVolumeList(ctx context.Context, params Wat
 func (c *Client) sendWatchCoreV1PersistentVolumeList(ctx context.Context, params WatchCoreV1PersistentVolumeListParams) (res WatchCoreV1PersistentVolumeListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1PersistentVolumeList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/persistentvolumes"),
 	}
 
 	// Run stopwatch.
@@ -81966,6 +85672,8 @@ func (c *Client) WatchCoreV1PodListForAllNamespaces(ctx context.Context, params 
 func (c *Client) sendWatchCoreV1PodListForAllNamespaces(ctx context.Context, params WatchCoreV1PodListForAllNamespacesParams) (res WatchCoreV1PodListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1PodListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/pods"),
 	}
 
 	// Run stopwatch.
@@ -82245,6 +85953,8 @@ func (c *Client) WatchCoreV1PodTemplateListForAllNamespaces(ctx context.Context,
 func (c *Client) sendWatchCoreV1PodTemplateListForAllNamespaces(ctx context.Context, params WatchCoreV1PodTemplateListForAllNamespacesParams) (res WatchCoreV1PodTemplateListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1PodTemplateListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/podtemplates"),
 	}
 
 	// Run stopwatch.
@@ -82524,6 +86234,8 @@ func (c *Client) WatchCoreV1ReplicationControllerListForAllNamespaces(ctx contex
 func (c *Client) sendWatchCoreV1ReplicationControllerListForAllNamespaces(ctx context.Context, params WatchCoreV1ReplicationControllerListForAllNamespacesParams) (res WatchCoreV1ReplicationControllerListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1ReplicationControllerListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/replicationcontrollers"),
 	}
 
 	// Run stopwatch.
@@ -82803,6 +86515,8 @@ func (c *Client) WatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Contex
 func (c *Client) sendWatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Context, params WatchCoreV1ResourceQuotaListForAllNamespacesParams) (res WatchCoreV1ResourceQuotaListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1ResourceQuotaListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/resourcequotas"),
 	}
 
 	// Run stopwatch.
@@ -83082,6 +86796,8 @@ func (c *Client) WatchCoreV1SecretListForAllNamespaces(ctx context.Context, para
 func (c *Client) sendWatchCoreV1SecretListForAllNamespaces(ctx context.Context, params WatchCoreV1SecretListForAllNamespacesParams) (res WatchCoreV1SecretListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1SecretListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/secrets"),
 	}
 
 	// Run stopwatch.
@@ -83361,6 +87077,8 @@ func (c *Client) WatchCoreV1ServiceAccountListForAllNamespaces(ctx context.Conte
 func (c *Client) sendWatchCoreV1ServiceAccountListForAllNamespaces(ctx context.Context, params WatchCoreV1ServiceAccountListForAllNamespacesParams) (res WatchCoreV1ServiceAccountListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1ServiceAccountListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/serviceaccounts"),
 	}
 
 	// Run stopwatch.
@@ -83640,6 +87358,8 @@ func (c *Client) WatchCoreV1ServiceListForAllNamespaces(ctx context.Context, par
 func (c *Client) sendWatchCoreV1ServiceListForAllNamespaces(ctx context.Context, params WatchCoreV1ServiceListForAllNamespacesParams) (res WatchCoreV1ServiceListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1ServiceListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/v1/watch/services"),
 	}
 
 	// Run stopwatch.
@@ -83919,6 +87639,8 @@ func (c *Client) WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx context.C
 func (c *Client) sendWatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx context.Context, params WatchDiscoveryV1EndpointSliceListForAllNamespacesParams) (res WatchDiscoveryV1EndpointSliceListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchDiscoveryV1EndpointSliceListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/watch/endpointslices"),
 	}
 
 	// Run stopwatch.
@@ -84198,6 +87920,8 @@ func (c *Client) WatchDiscoveryV1NamespacedEndpointSlice(ctx context.Context, pa
 func (c *Client) sendWatchDiscoveryV1NamespacedEndpointSlice(ctx context.Context, params WatchDiscoveryV1NamespacedEndpointSliceParams) (res WatchDiscoveryV1NamespacedEndpointSliceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchDiscoveryV1NamespacedEndpointSlice"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices/{name}"),
 	}
 
 	// Run stopwatch.
@@ -84514,6 +88238,8 @@ func (c *Client) WatchDiscoveryV1NamespacedEndpointSliceList(ctx context.Context
 func (c *Client) sendWatchDiscoveryV1NamespacedEndpointSliceList(ctx context.Context, params WatchDiscoveryV1NamespacedEndpointSliceListParams) (res WatchDiscoveryV1NamespacedEndpointSliceListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchDiscoveryV1NamespacedEndpointSliceList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices"),
 	}
 
 	// Run stopwatch.
@@ -84812,6 +88538,8 @@ func (c *Client) WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx cont
 func (c *Client) sendWatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx context.Context, params WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams) (res WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchDiscoveryV1beta1EndpointSliceListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/watch/endpointslices"),
 	}
 
 	// Run stopwatch.
@@ -85091,6 +88819,8 @@ func (c *Client) WatchDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Contex
 func (c *Client) sendWatchDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context, params WatchDiscoveryV1beta1NamespacedEndpointSliceParams) (res WatchDiscoveryV1beta1NamespacedEndpointSliceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchDiscoveryV1beta1NamespacedEndpointSlice"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices/{name}"),
 	}
 
 	// Run stopwatch.
@@ -85407,6 +89137,8 @@ func (c *Client) WatchDiscoveryV1beta1NamespacedEndpointSliceList(ctx context.Co
 func (c *Client) sendWatchDiscoveryV1beta1NamespacedEndpointSliceList(ctx context.Context, params WatchDiscoveryV1beta1NamespacedEndpointSliceListParams) (res WatchDiscoveryV1beta1NamespacedEndpointSliceListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchDiscoveryV1beta1NamespacedEndpointSliceList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices"),
 	}
 
 	// Run stopwatch.
@@ -85705,6 +89437,8 @@ func (c *Client) WatchEventsV1EventListForAllNamespaces(ctx context.Context, par
 func (c *Client) sendWatchEventsV1EventListForAllNamespaces(ctx context.Context, params WatchEventsV1EventListForAllNamespacesParams) (res WatchEventsV1EventListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchEventsV1EventListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/watch/events"),
 	}
 
 	// Run stopwatch.
@@ -85984,6 +89718,8 @@ func (c *Client) WatchEventsV1NamespacedEvent(ctx context.Context, params WatchE
 func (c *Client) sendWatchEventsV1NamespacedEvent(ctx context.Context, params WatchEventsV1NamespacedEventParams) (res WatchEventsV1NamespacedEventRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchEventsV1NamespacedEvent"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/watch/namespaces/{namespace}/events/{name}"),
 	}
 
 	// Run stopwatch.
@@ -86300,6 +90036,8 @@ func (c *Client) WatchEventsV1NamespacedEventList(ctx context.Context, params Wa
 func (c *Client) sendWatchEventsV1NamespacedEventList(ctx context.Context, params WatchEventsV1NamespacedEventListParams) (res WatchEventsV1NamespacedEventListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchEventsV1NamespacedEventList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/watch/namespaces/{namespace}/events"),
 	}
 
 	// Run stopwatch.
@@ -86598,6 +90336,8 @@ func (c *Client) WatchEventsV1beta1EventListForAllNamespaces(ctx context.Context
 func (c *Client) sendWatchEventsV1beta1EventListForAllNamespaces(ctx context.Context, params WatchEventsV1beta1EventListForAllNamespacesParams) (res WatchEventsV1beta1EventListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchEventsV1beta1EventListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/watch/events"),
 	}
 
 	// Run stopwatch.
@@ -86877,6 +90617,8 @@ func (c *Client) WatchEventsV1beta1NamespacedEvent(ctx context.Context, params W
 func (c *Client) sendWatchEventsV1beta1NamespacedEvent(ctx context.Context, params WatchEventsV1beta1NamespacedEventParams) (res WatchEventsV1beta1NamespacedEventRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchEventsV1beta1NamespacedEvent"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events/{name}"),
 	}
 
 	// Run stopwatch.
@@ -87193,6 +90935,8 @@ func (c *Client) WatchEventsV1beta1NamespacedEventList(ctx context.Context, para
 func (c *Client) sendWatchEventsV1beta1NamespacedEventList(ctx context.Context, params WatchEventsV1beta1NamespacedEventListParams) (res WatchEventsV1beta1NamespacedEventListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchEventsV1beta1NamespacedEventList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events"),
 	}
 
 	// Run stopwatch.
@@ -87491,6 +91235,8 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context,
 func (c *Client) sendWatchFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, params WatchFlowcontrolApiserverV1beta1FlowSchemaParams) (res WatchFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta1FlowSchema"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas/{name}"),
 	}
 
 	// Run stopwatch.
@@ -87788,6 +91534,8 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.Cont
 func (c *Client) sendWatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.Context, params WatchFlowcontrolApiserverV1beta1FlowSchemaListParams) (res WatchFlowcontrolApiserverV1beta1FlowSchemaListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta1FlowSchemaList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas"),
 	}
 
 	// Run stopwatch.
@@ -88068,6 +91816,8 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx 
 func (c *Client) sendWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, params WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (res WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations/{name}"),
 	}
 
 	// Run stopwatch.
@@ -88365,6 +92115,8 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(
 func (c *Client) sendWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(ctx context.Context, params WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams) (res WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations"),
 	}
 
 	// Run stopwatch.
@@ -88644,6 +92396,8 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context,
 func (c *Client) sendWatchFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, params WatchFlowcontrolApiserverV1beta2FlowSchemaParams) (res WatchFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta2FlowSchema"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas/{name}"),
 	}
 
 	// Run stopwatch.
@@ -88941,6 +92695,8 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.Cont
 func (c *Client) sendWatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.Context, params WatchFlowcontrolApiserverV1beta2FlowSchemaListParams) (res WatchFlowcontrolApiserverV1beta2FlowSchemaListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta2FlowSchemaList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas"),
 	}
 
 	// Run stopwatch.
@@ -89221,6 +92977,8 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx 
 func (c *Client) sendWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, params WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (res WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations/{name}"),
 	}
 
 	// Run stopwatch.
@@ -89518,6 +93276,8 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(
 func (c *Client) sendWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(ctx context.Context, params WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams) (res WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations"),
 	}
 
 	// Run stopwatch.
@@ -89797,6 +93557,8 @@ func (c *Client) WatchInternalApiserverV1alpha1StorageVersion(ctx context.Contex
 func (c *Client) sendWatchInternalApiserverV1alpha1StorageVersion(ctx context.Context, params WatchInternalApiserverV1alpha1StorageVersionParams) (res WatchInternalApiserverV1alpha1StorageVersionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchInternalApiserverV1alpha1StorageVersion"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions/{name}"),
 	}
 
 	// Run stopwatch.
@@ -90094,6 +93856,8 @@ func (c *Client) WatchInternalApiserverV1alpha1StorageVersionList(ctx context.Co
 func (c *Client) sendWatchInternalApiserverV1alpha1StorageVersionList(ctx context.Context, params WatchInternalApiserverV1alpha1StorageVersionListParams) (res WatchInternalApiserverV1alpha1StorageVersionListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchInternalApiserverV1alpha1StorageVersionList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions"),
 	}
 
 	// Run stopwatch.
@@ -90373,6 +94137,8 @@ func (c *Client) WatchNetworkingV1IngressClass(ctx context.Context, params Watch
 func (c *Client) sendWatchNetworkingV1IngressClass(ctx context.Context, params WatchNetworkingV1IngressClassParams) (res WatchNetworkingV1IngressClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNetworkingV1IngressClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/ingressclasses/{name}"),
 	}
 
 	// Run stopwatch.
@@ -90670,6 +94436,8 @@ func (c *Client) WatchNetworkingV1IngressClassList(ctx context.Context, params W
 func (c *Client) sendWatchNetworkingV1IngressClassList(ctx context.Context, params WatchNetworkingV1IngressClassListParams) (res WatchNetworkingV1IngressClassListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNetworkingV1IngressClassList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/ingressclasses"),
 	}
 
 	// Run stopwatch.
@@ -90949,6 +94717,8 @@ func (c *Client) WatchNetworkingV1IngressListForAllNamespaces(ctx context.Contex
 func (c *Client) sendWatchNetworkingV1IngressListForAllNamespaces(ctx context.Context, params WatchNetworkingV1IngressListForAllNamespacesParams) (res WatchNetworkingV1IngressListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNetworkingV1IngressListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/ingresses"),
 	}
 
 	// Run stopwatch.
@@ -91228,6 +94998,8 @@ func (c *Client) WatchNetworkingV1NamespacedIngress(ctx context.Context, params 
 func (c *Client) sendWatchNetworkingV1NamespacedIngress(ctx context.Context, params WatchNetworkingV1NamespacedIngressParams) (res WatchNetworkingV1NamespacedIngressRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNetworkingV1NamespacedIngress"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses/{name}"),
 	}
 
 	// Run stopwatch.
@@ -91544,6 +95316,8 @@ func (c *Client) WatchNetworkingV1NamespacedIngressList(ctx context.Context, par
 func (c *Client) sendWatchNetworkingV1NamespacedIngressList(ctx context.Context, params WatchNetworkingV1NamespacedIngressListParams) (res WatchNetworkingV1NamespacedIngressListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNetworkingV1NamespacedIngressList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses"),
 	}
 
 	// Run stopwatch.
@@ -91842,6 +95616,8 @@ func (c *Client) WatchNetworkingV1NamespacedNetworkPolicy(ctx context.Context, p
 func (c *Client) sendWatchNetworkingV1NamespacedNetworkPolicy(ctx context.Context, params WatchNetworkingV1NamespacedNetworkPolicyParams) (res WatchNetworkingV1NamespacedNetworkPolicyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNetworkingV1NamespacedNetworkPolicy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies/{name}"),
 	}
 
 	// Run stopwatch.
@@ -92158,6 +95934,8 @@ func (c *Client) WatchNetworkingV1NamespacedNetworkPolicyList(ctx context.Contex
 func (c *Client) sendWatchNetworkingV1NamespacedNetworkPolicyList(ctx context.Context, params WatchNetworkingV1NamespacedNetworkPolicyListParams) (res WatchNetworkingV1NamespacedNetworkPolicyListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNetworkingV1NamespacedNetworkPolicyList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies"),
 	}
 
 	// Run stopwatch.
@@ -92456,6 +96234,8 @@ func (c *Client) WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx context.
 func (c *Client) sendWatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx context.Context, params WatchNetworkingV1NetworkPolicyListForAllNamespacesParams) (res WatchNetworkingV1NetworkPolicyListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNetworkingV1NetworkPolicyListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/networkpolicies"),
 	}
 
 	// Run stopwatch.
@@ -92735,6 +96515,8 @@ func (c *Client) WatchNodeV1RuntimeClass(ctx context.Context, params WatchNodeV1
 func (c *Client) sendWatchNodeV1RuntimeClass(ctx context.Context, params WatchNodeV1RuntimeClassParams) (res WatchNodeV1RuntimeClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNodeV1RuntimeClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1/watch/runtimeclasses/{name}"),
 	}
 
 	// Run stopwatch.
@@ -93032,6 +96814,8 @@ func (c *Client) WatchNodeV1RuntimeClassList(ctx context.Context, params WatchNo
 func (c *Client) sendWatchNodeV1RuntimeClassList(ctx context.Context, params WatchNodeV1RuntimeClassListParams) (res WatchNodeV1RuntimeClassListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNodeV1RuntimeClassList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1/watch/runtimeclasses"),
 	}
 
 	// Run stopwatch.
@@ -93311,6 +97095,8 @@ func (c *Client) WatchNodeV1alpha1RuntimeClass(ctx context.Context, params Watch
 func (c *Client) sendWatchNodeV1alpha1RuntimeClass(ctx context.Context, params WatchNodeV1alpha1RuntimeClassParams) (res WatchNodeV1alpha1RuntimeClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNodeV1alpha1RuntimeClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1alpha1/watch/runtimeclasses/{name}"),
 	}
 
 	// Run stopwatch.
@@ -93608,6 +97394,8 @@ func (c *Client) WatchNodeV1alpha1RuntimeClassList(ctx context.Context, params W
 func (c *Client) sendWatchNodeV1alpha1RuntimeClassList(ctx context.Context, params WatchNodeV1alpha1RuntimeClassListParams) (res WatchNodeV1alpha1RuntimeClassListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNodeV1alpha1RuntimeClassList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1alpha1/watch/runtimeclasses"),
 	}
 
 	// Run stopwatch.
@@ -93887,6 +97675,8 @@ func (c *Client) WatchNodeV1beta1RuntimeClass(ctx context.Context, params WatchN
 func (c *Client) sendWatchNodeV1beta1RuntimeClass(ctx context.Context, params WatchNodeV1beta1RuntimeClassParams) (res WatchNodeV1beta1RuntimeClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNodeV1beta1RuntimeClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1beta1/watch/runtimeclasses/{name}"),
 	}
 
 	// Run stopwatch.
@@ -94184,6 +97974,8 @@ func (c *Client) WatchNodeV1beta1RuntimeClassList(ctx context.Context, params Wa
 func (c *Client) sendWatchNodeV1beta1RuntimeClassList(ctx context.Context, params WatchNodeV1beta1RuntimeClassListParams) (res WatchNodeV1beta1RuntimeClassListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNodeV1beta1RuntimeClassList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1beta1/watch/runtimeclasses"),
 	}
 
 	// Run stopwatch.
@@ -94463,6 +98255,8 @@ func (c *Client) WatchPolicyV1NamespacedPodDisruptionBudget(ctx context.Context,
 func (c *Client) sendWatchPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, params WatchPolicyV1NamespacedPodDisruptionBudgetParams) (res WatchPolicyV1NamespacedPodDisruptionBudgetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchPolicyV1NamespacedPodDisruptionBudget"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}"),
 	}
 
 	// Run stopwatch.
@@ -94779,6 +98573,8 @@ func (c *Client) WatchPolicyV1NamespacedPodDisruptionBudgetList(ctx context.Cont
 func (c *Client) sendWatchPolicyV1NamespacedPodDisruptionBudgetList(ctx context.Context, params WatchPolicyV1NamespacedPodDisruptionBudgetListParams) (res WatchPolicyV1NamespacedPodDisruptionBudgetListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchPolicyV1NamespacedPodDisruptionBudgetList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets"),
 	}
 
 	// Run stopwatch.
@@ -95077,6 +98873,8 @@ func (c *Client) WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx contex
 func (c *Client) sendWatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx context.Context, params WatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams) (res WatchPolicyV1PodDisruptionBudgetListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchPolicyV1PodDisruptionBudgetListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1/watch/poddisruptionbudgets"),
 	}
 
 	// Run stopwatch.
@@ -95356,6 +99154,8 @@ func (c *Client) WatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Con
 func (c *Client) sendWatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Context, params WatchPolicyV1beta1NamespacedPodDisruptionBudgetParams) (res WatchPolicyV1beta1NamespacedPodDisruptionBudgetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchPolicyV1beta1NamespacedPodDisruptionBudget"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}"),
 	}
 
 	// Run stopwatch.
@@ -95672,6 +99472,8 @@ func (c *Client) WatchPolicyV1beta1NamespacedPodDisruptionBudgetList(ctx context
 func (c *Client) sendWatchPolicyV1beta1NamespacedPodDisruptionBudgetList(ctx context.Context, params WatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams) (res WatchPolicyV1beta1NamespacedPodDisruptionBudgetListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchPolicyV1beta1NamespacedPodDisruptionBudgetList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets"),
 	}
 
 	// Run stopwatch.
@@ -95970,6 +99772,8 @@ func (c *Client) WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx c
 func (c *Client) sendWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx context.Context, params WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams) (res WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/watch/poddisruptionbudgets"),
 	}
 
 	// Run stopwatch.
@@ -96249,6 +100053,8 @@ func (c *Client) WatchPolicyV1beta1PodSecurityPolicy(ctx context.Context, params
 func (c *Client) sendWatchPolicyV1beta1PodSecurityPolicy(ctx context.Context, params WatchPolicyV1beta1PodSecurityPolicyParams) (res WatchPolicyV1beta1PodSecurityPolicyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchPolicyV1beta1PodSecurityPolicy"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/watch/podsecuritypolicies/{name}"),
 	}
 
 	// Run stopwatch.
@@ -96546,6 +100352,8 @@ func (c *Client) WatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context, pa
 func (c *Client) sendWatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context, params WatchPolicyV1beta1PodSecurityPolicyListParams) (res WatchPolicyV1beta1PodSecurityPolicyListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchPolicyV1beta1PodSecurityPolicyList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/watch/podsecuritypolicies"),
 	}
 
 	// Run stopwatch.
@@ -96825,6 +100633,8 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRole(ctx context.Context, params
 func (c *Client) sendWatchRbacAuthorizationV1ClusterRole(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleParams) (res WatchRbacAuthorizationV1ClusterRoleRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1ClusterRole"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/clusterroles/{name}"),
 	}
 
 	// Run stopwatch.
@@ -97122,6 +100932,8 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleBinding(ctx context.Context,
 func (c *Client) sendWatchRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleBindingParams) (res WatchRbacAuthorizationV1ClusterRoleBindingRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1ClusterRoleBinding"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings/{name}"),
 	}
 
 	// Run stopwatch.
@@ -97419,6 +101231,8 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.Cont
 func (c *Client) sendWatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleBindingListParams) (res WatchRbacAuthorizationV1ClusterRoleBindingListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1ClusterRoleBindingList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings"),
 	}
 
 	// Run stopwatch.
@@ -97698,6 +101512,8 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleList(ctx context.Context, pa
 func (c *Client) sendWatchRbacAuthorizationV1ClusterRoleList(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleListParams) (res WatchRbacAuthorizationV1ClusterRoleListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1ClusterRoleList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/clusterroles"),
 	}
 
 	// Run stopwatch.
@@ -97977,6 +101793,8 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRole(ctx context.Context, par
 func (c *Client) sendWatchRbacAuthorizationV1NamespacedRole(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleParams) (res WatchRbacAuthorizationV1NamespacedRoleRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1NamespacedRole"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles/{name}"),
 	}
 
 	// Run stopwatch.
@@ -98293,6 +102111,8 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRoleBinding(ctx context.Conte
 func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleBinding(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleBindingParams) (res WatchRbacAuthorizationV1NamespacedRoleBindingRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1NamespacedRoleBinding"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings/{name}"),
 	}
 
 	// Run stopwatch.
@@ -98609,6 +102429,8 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRoleBindingList(ctx context.C
 func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleBindingList(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleBindingListParams) (res WatchRbacAuthorizationV1NamespacedRoleBindingListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1NamespacedRoleBindingList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings"),
 	}
 
 	// Run stopwatch.
@@ -98907,6 +102729,8 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRoleList(ctx context.Context,
 func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleList(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleListParams) (res WatchRbacAuthorizationV1NamespacedRoleListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1NamespacedRoleList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles"),
 	}
 
 	// Run stopwatch.
@@ -99205,6 +103029,8 @@ func (c *Client) WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx con
 func (c *Client) sendWatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx context.Context, params WatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams) (res WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1RoleBindingListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/rolebindings"),
 	}
 
 	// Run stopwatch.
@@ -99484,6 +103310,8 @@ func (c *Client) WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx context.Co
 func (c *Client) sendWatchRbacAuthorizationV1RoleListForAllNamespaces(ctx context.Context, params WatchRbacAuthorizationV1RoleListForAllNamespacesParams) (res WatchRbacAuthorizationV1RoleListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1RoleListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/roles"),
 	}
 
 	// Run stopwatch.
@@ -99763,6 +103591,8 @@ func (c *Client) WatchSchedulingV1PriorityClass(ctx context.Context, params Watc
 func (c *Client) sendWatchSchedulingV1PriorityClass(ctx context.Context, params WatchSchedulingV1PriorityClassParams) (res WatchSchedulingV1PriorityClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchSchedulingV1PriorityClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/scheduling.k8s.io/v1/watch/priorityclasses/{name}"),
 	}
 
 	// Run stopwatch.
@@ -100060,6 +103890,8 @@ func (c *Client) WatchSchedulingV1PriorityClassList(ctx context.Context, params 
 func (c *Client) sendWatchSchedulingV1PriorityClassList(ctx context.Context, params WatchSchedulingV1PriorityClassListParams) (res WatchSchedulingV1PriorityClassListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchSchedulingV1PriorityClassList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/scheduling.k8s.io/v1/watch/priorityclasses"),
 	}
 
 	// Run stopwatch.
@@ -100339,6 +104171,8 @@ func (c *Client) WatchStorageV1CSIDriver(ctx context.Context, params WatchStorag
 func (c *Client) sendWatchStorageV1CSIDriver(ctx context.Context, params WatchStorageV1CSIDriverParams) (res WatchStorageV1CSIDriverRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1CSIDriver"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/csidrivers/{name}"),
 	}
 
 	// Run stopwatch.
@@ -100636,6 +104470,8 @@ func (c *Client) WatchStorageV1CSIDriverList(ctx context.Context, params WatchSt
 func (c *Client) sendWatchStorageV1CSIDriverList(ctx context.Context, params WatchStorageV1CSIDriverListParams) (res WatchStorageV1CSIDriverListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1CSIDriverList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/csidrivers"),
 	}
 
 	// Run stopwatch.
@@ -100915,6 +104751,8 @@ func (c *Client) WatchStorageV1CSINode(ctx context.Context, params WatchStorageV
 func (c *Client) sendWatchStorageV1CSINode(ctx context.Context, params WatchStorageV1CSINodeParams) (res WatchStorageV1CSINodeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1CSINode"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/csinodes/{name}"),
 	}
 
 	// Run stopwatch.
@@ -101212,6 +105050,8 @@ func (c *Client) WatchStorageV1CSINodeList(ctx context.Context, params WatchStor
 func (c *Client) sendWatchStorageV1CSINodeList(ctx context.Context, params WatchStorageV1CSINodeListParams) (res WatchStorageV1CSINodeListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1CSINodeList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/csinodes"),
 	}
 
 	// Run stopwatch.
@@ -101491,6 +105331,8 @@ func (c *Client) WatchStorageV1StorageClass(ctx context.Context, params WatchSto
 func (c *Client) sendWatchStorageV1StorageClass(ctx context.Context, params WatchStorageV1StorageClassParams) (res WatchStorageV1StorageClassRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1StorageClass"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/storageclasses/{name}"),
 	}
 
 	// Run stopwatch.
@@ -101788,6 +105630,8 @@ func (c *Client) WatchStorageV1StorageClassList(ctx context.Context, params Watc
 func (c *Client) sendWatchStorageV1StorageClassList(ctx context.Context, params WatchStorageV1StorageClassListParams) (res WatchStorageV1StorageClassListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1StorageClassList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/storageclasses"),
 	}
 
 	// Run stopwatch.
@@ -102067,6 +105911,8 @@ func (c *Client) WatchStorageV1VolumeAttachment(ctx context.Context, params Watc
 func (c *Client) sendWatchStorageV1VolumeAttachment(ctx context.Context, params WatchStorageV1VolumeAttachmentParams) (res WatchStorageV1VolumeAttachmentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1VolumeAttachment"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/volumeattachments/{name}"),
 	}
 
 	// Run stopwatch.
@@ -102364,6 +106210,8 @@ func (c *Client) WatchStorageV1VolumeAttachmentList(ctx context.Context, params 
 func (c *Client) sendWatchStorageV1VolumeAttachmentList(ctx context.Context, params WatchStorageV1VolumeAttachmentListParams) (res WatchStorageV1VolumeAttachmentListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1VolumeAttachmentList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/volumeattachments"),
 	}
 
 	// Run stopwatch.
@@ -102643,6 +106491,8 @@ func (c *Client) WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx 
 func (c *Client) sendWatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx context.Context, params WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams) (res WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities"),
 	}
 
 	// Run stopwatch.
@@ -102922,6 +106772,8 @@ func (c *Client) WatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Co
 func (c *Client) sendWatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Context, params WatchStorageV1alpha1NamespacedCSIStorageCapacityParams) (res WatchStorageV1alpha1NamespacedCSIStorageCapacityRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1alpha1NamespacedCSIStorageCapacity"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities/{name}"),
 	}
 
 	// Run stopwatch.
@@ -103238,6 +107090,8 @@ func (c *Client) WatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx contex
 func (c *Client) sendWatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx context.Context, params WatchStorageV1alpha1NamespacedCSIStorageCapacityListParams) (res WatchStorageV1alpha1NamespacedCSIStorageCapacityListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1alpha1NamespacedCSIStorageCapacityList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities"),
 	}
 
 	// Run stopwatch.
@@ -103536,6 +107390,8 @@ func (c *Client) WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx c
 func (c *Client) sendWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx context.Context, params WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams) (res WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1beta1CSIStorageCapacityListForAllNamespaces"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/watch/csistoragecapacities"),
 	}
 
 	// Run stopwatch.
@@ -103815,6 +107671,8 @@ func (c *Client) WatchStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Con
 func (c *Client) sendWatchStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Context, params WatchStorageV1beta1NamespacedCSIStorageCapacityParams) (res WatchStorageV1beta1NamespacedCSIStorageCapacityRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1beta1NamespacedCSIStorageCapacity"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities/{name}"),
 	}
 
 	// Run stopwatch.
@@ -104131,6 +107989,8 @@ func (c *Client) WatchStorageV1beta1NamespacedCSIStorageCapacityList(ctx context
 func (c *Client) sendWatchStorageV1beta1NamespacedCSIStorageCapacityList(ctx context.Context, params WatchStorageV1beta1NamespacedCSIStorageCapacityListParams) (res WatchStorageV1beta1NamespacedCSIStorageCapacityListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1beta1NamespacedCSIStorageCapacityList"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities"),
 	}
 
 	// Run stopwatch.

@@ -12,6 +12,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
+	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
 	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
@@ -19,6 +20,56 @@ import (
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 )
+
+// Invoker invokes operations described by OpenAPI v3 specification.
+type Invoker interface {
+	// NullableStrings invokes nullableStrings operation.
+	//
+	// Nullable strings.
+	//
+	// POST /nullableStrings
+	NullableStrings(ctx context.Context, request NilString) error
+	// ObjectsWithConflictingArrayProperty invokes objectsWithConflictingArrayProperty operation.
+	//
+	// Objects with conflicting array property.
+	//
+	// POST /objectsWithConflictingArrayProperty
+	ObjectsWithConflictingArrayProperty(ctx context.Context, request *ObjectsWithConflictingArrayPropertyReq) error
+	// ObjectsWithConflictingProperties invokes objectsWithConflictingProperties operation.
+	//
+	// Objects with conflicting properties.
+	//
+	// POST /objectsWithConflictingProperties
+	ObjectsWithConflictingProperties(ctx context.Context, request *ObjectsWithConflictingPropertiesReq) error
+	// ReferencedAllof invokes referencedAllof operation.
+	//
+	// Referenced allOf.
+	//
+	// POST /referencedAllof
+	ReferencedAllof(ctx context.Context, request ReferencedAllofReq) error
+	// ReferencedAllofOptional invokes referencedAllofOptional operation.
+	//
+	// Referenced allOf, but requestBody is not required.
+	//
+	// POST /referencedAllofOptional
+	ReferencedAllofOptional(ctx context.Context, request ReferencedAllofOptionalReq) error
+	// SimpleInteger invokes simpleInteger operation.
+	//
+	// Simple integers with validation.
+	//
+	// POST /simpleInteger
+	SimpleInteger(ctx context.Context, request int) error
+	// SimpleObjects invokes simpleObjects operation.
+	//
+	// Simple objects.
+	//
+	// POST /simpleObjects
+	SimpleObjects(ctx context.Context, request *SimpleObjectsReq) error
+	// StringsNotype invokes stringsNotype operation.
+	//
+	// POST /stringsNotype
+	StringsNotype(ctx context.Context, request NilString) error
+}
 
 // Client implements OAS client.
 type Client struct {
@@ -83,6 +134,8 @@ func (c *Client) NullableStrings(ctx context.Context, request NilString) error {
 func (c *Client) sendNullableStrings(ctx context.Context, request NilString) (res *NullableStringsOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("nullableStrings"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/nullableStrings"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -181,6 +234,8 @@ func (c *Client) ObjectsWithConflictingArrayProperty(ctx context.Context, reques
 func (c *Client) sendObjectsWithConflictingArrayProperty(ctx context.Context, request *ObjectsWithConflictingArrayPropertyReq) (res *ObjectsWithConflictingArrayPropertyOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("objectsWithConflictingArrayProperty"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/objectsWithConflictingArrayProperty"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -264,6 +319,8 @@ func (c *Client) ObjectsWithConflictingProperties(ctx context.Context, request *
 func (c *Client) sendObjectsWithConflictingProperties(ctx context.Context, request *ObjectsWithConflictingPropertiesReq) (res *ObjectsWithConflictingPropertiesOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("objectsWithConflictingProperties"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/objectsWithConflictingProperties"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -347,6 +404,8 @@ func (c *Client) ReferencedAllof(ctx context.Context, request ReferencedAllofReq
 func (c *Client) sendReferencedAllof(ctx context.Context, request ReferencedAllofReq) (res *ReferencedAllofOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("referencedAllof"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/referencedAllof"),
 	}
 	// Validate request before sending.
 	switch request := request.(type) {
@@ -444,6 +503,8 @@ func (c *Client) ReferencedAllofOptional(ctx context.Context, request Referenced
 func (c *Client) sendReferencedAllofOptional(ctx context.Context, request ReferencedAllofOptionalReq) (res *ReferencedAllofOptionalOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("referencedAllofOptional"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/referencedAllofOptional"),
 	}
 	// Validate request before sending.
 	switch request := request.(type) {
@@ -543,6 +604,8 @@ func (c *Client) SimpleInteger(ctx context.Context, request int) error {
 func (c *Client) sendSimpleInteger(ctx context.Context, request int) (res *SimpleIntegerOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("simpleInteger"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/simpleInteger"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -635,6 +698,8 @@ func (c *Client) SimpleObjects(ctx context.Context, request *SimpleObjectsReq) e
 func (c *Client) sendSimpleObjects(ctx context.Context, request *SimpleObjectsReq) (res *SimpleObjectsOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("simpleObjects"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/simpleObjects"),
 	}
 
 	// Run stopwatch.
@@ -707,6 +772,8 @@ func (c *Client) StringsNotype(ctx context.Context, request NilString) error {
 func (c *Client) sendStringsNotype(ctx context.Context, request NilString) (res *StringsNotypeOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("stringsNotype"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/stringsNotype"),
 	}
 	// Validate request before sending.
 	if err := func() error {

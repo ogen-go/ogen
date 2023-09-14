@@ -7,10 +7,14 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/go-faster/errors"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
+	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
+	"go.opentelemetry.io/otel/trace"
 
+	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 )
@@ -21,10 +25,14 @@ import (
 //
 // GET /market/bonds
 func (s *Server) handleMarketBondsGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/market/bonds"),
+	}
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarketBondsGet",
+		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
 	defer span.End()
@@ -137,7 +145,9 @@ func (s *Server) handleMarketBondsGetRequest(args [0]string, argsEscaped bool, w
 
 	if err := encodeMarketBondsGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -148,10 +158,14 @@ func (s *Server) handleMarketBondsGetRequest(args [0]string, argsEscaped bool, w
 //
 // GET /market/candles
 func (s *Server) handleMarketCandlesGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/market/candles"),
+	}
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarketCandlesGet",
+		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
 	defer span.End()
@@ -291,7 +305,9 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, argsEscaped bool,
 
 	if err := encodeMarketCandlesGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -302,10 +318,14 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, argsEscaped bool,
 //
 // GET /market/currencies
 func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/market/currencies"),
+	}
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarketCurrenciesGet",
+		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
 	defer span.End()
@@ -418,7 +438,9 @@ func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, argsEscaped bo
 
 	if err := encodeMarketCurrenciesGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -429,10 +451,14 @@ func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, argsEscaped bo
 //
 // GET /market/etfs
 func (s *Server) handleMarketEtfsGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/market/etfs"),
+	}
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarketEtfsGet",
+		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
 	defer span.End()
@@ -545,7 +571,9 @@ func (s *Server) handleMarketEtfsGetRequest(args [0]string, argsEscaped bool, w 
 
 	if err := encodeMarketEtfsGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -556,10 +584,14 @@ func (s *Server) handleMarketEtfsGetRequest(args [0]string, argsEscaped bool, w 
 //
 // GET /market/orderbook
 func (s *Server) handleMarketOrderbookGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/market/orderbook"),
+	}
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarketOrderbookGet",
+		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
 	defer span.End()
@@ -691,7 +723,9 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, argsEscaped boo
 
 	if err := encodeMarketOrderbookGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -702,10 +736,14 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, argsEscaped boo
 //
 // GET /market/search/by-figi
 func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/market/search/by-figi"),
+	}
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarketSearchByFigiGet",
+		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
 	defer span.End()
@@ -833,7 +871,9 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, argsEscaped 
 
 	if err := encodeMarketSearchByFigiGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -844,10 +884,14 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, argsEscaped 
 //
 // GET /market/search/by-ticker
 func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/market/search/by-ticker"),
+	}
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarketSearchByTickerGet",
+		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
 	defer span.End()
@@ -975,7 +1019,9 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, argsEscape
 
 	if err := encodeMarketSearchByTickerGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -986,10 +1032,14 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, argsEscape
 //
 // GET /market/stocks
 func (s *Server) handleMarketStocksGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/market/stocks"),
+	}
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarketStocksGet",
+		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
 	defer span.End()
@@ -1102,7 +1152,9 @@ func (s *Server) handleMarketStocksGetRequest(args [0]string, argsEscaped bool, 
 
 	if err := encodeMarketStocksGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1113,10 +1165,14 @@ func (s *Server) handleMarketStocksGetRequest(args [0]string, argsEscaped bool, 
 //
 // GET /operations
 func (s *Server) handleOperationsGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/operations"),
+	}
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "OperationsGet",
+		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
 	defer span.End()
@@ -1256,7 +1312,9 @@ func (s *Server) handleOperationsGetRequest(args [0]string, argsEscaped bool, w 
 
 	if err := encodeOperationsGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1267,10 +1325,14 @@ func (s *Server) handleOperationsGetRequest(args [0]string, argsEscaped bool, w 
 //
 // POST /orders/cancel
 func (s *Server) handleOrdersCancelPostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/orders/cancel"),
+	}
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrdersCancelPost",
+		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
 	defer span.End()
@@ -1402,7 +1464,9 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, argsEscaped bool,
 
 	if err := encodeOrdersCancelPostResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1413,10 +1477,14 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, argsEscaped bool,
 //
 // GET /orders
 func (s *Server) handleOrdersGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/orders"),
+	}
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrdersGet",
+		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
 	defer span.End()
@@ -1544,7 +1612,9 @@ func (s *Server) handleOrdersGetRequest(args [0]string, argsEscaped bool, w http
 
 	if err := encodeOrdersGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1555,10 +1625,14 @@ func (s *Server) handleOrdersGetRequest(args [0]string, argsEscaped bool, w http
 //
 // POST /orders/limit-order
 func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/orders/limit-order"),
+	}
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrdersLimitOrderPost",
+		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
 	defer span.End()
@@ -1705,7 +1779,9 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, argsEscaped b
 
 	if err := encodeOrdersLimitOrderPostResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1716,10 +1792,14 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, argsEscaped b
 //
 // POST /orders/market-order
 func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/orders/market-order"),
+	}
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrdersMarketOrderPost",
+		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
 	defer span.End()
@@ -1866,7 +1946,9 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, argsEscaped 
 
 	if err := encodeOrdersMarketOrderPostResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -1877,10 +1959,14 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, argsEscaped 
 //
 // GET /portfolio/currencies
 func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/portfolio/currencies"),
+	}
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "PortfolioCurrenciesGet",
+		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
 	defer span.End()
@@ -2008,7 +2094,9 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, argsEscaped
 
 	if err := encodePortfolioCurrenciesGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2019,10 +2107,14 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, argsEscaped
 //
 // GET /portfolio
 func (s *Server) handlePortfolioGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/portfolio"),
+	}
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "PortfolioGet",
+		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
 	defer span.End()
@@ -2150,7 +2242,9 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, argsEscaped bool, w h
 
 	if err := encodePortfolioGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2161,10 +2255,14 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, argsEscaped bool, w h
 //
 // POST /sandbox/clear
 func (s *Server) handleSandboxClearPostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/sandbox/clear"),
+	}
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SandboxClearPost",
+		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
 	defer span.End()
@@ -2292,7 +2390,9 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, argsEscaped bool,
 
 	if err := encodeSandboxClearPostResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2303,10 +2403,14 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, argsEscaped bool,
 //
 // POST /sandbox/currencies/balance
 func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/sandbox/currencies/balance"),
+	}
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SandboxCurrenciesBalancePost",
+		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
 	defer span.End()
@@ -2449,7 +2553,9 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, argsE
 
 	if err := encodeSandboxCurrenciesBalancePostResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2460,10 +2566,14 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, argsE
 //
 // POST /sandbox/positions/balance
 func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/sandbox/positions/balance"),
+	}
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SandboxPositionsBalancePost",
+		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
 	defer span.End()
@@ -2606,7 +2716,9 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, argsEs
 
 	if err := encodeSandboxPositionsBalancePostResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2617,10 +2729,14 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, argsEs
 //
 // POST /sandbox/register
 func (s *Server) handleSandboxRegisterPostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/sandbox/register"),
+	}
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SandboxRegisterPost",
+		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
 	defer span.End()
@@ -2748,7 +2864,9 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, argsEscaped bo
 
 	if err := encodeSandboxRegisterPostResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2759,10 +2877,14 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, argsEscaped bo
 //
 // POST /sandbox/remove
 func (s *Server) handleSandboxRemovePostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/sandbox/remove"),
+	}
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SandboxRemovePost",
+		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
 	defer span.End()
@@ -2890,7 +3012,9 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, argsEscaped bool
 
 	if err := encodeSandboxRemovePostResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }
@@ -2901,10 +3025,14 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, argsEscaped bool
 //
 // GET /user/accounts
 func (s *Server) handleUserAccountsGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/user/accounts"),
+	}
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "UserAccountsGet",
+		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
 	defer span.End()
@@ -3017,7 +3145,9 @@ func (s *Server) handleUserAccountsGetRequest(args [0]string, argsEscaped bool, 
 
 	if err := encodeUserAccountsGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
 		return
 	}
 }

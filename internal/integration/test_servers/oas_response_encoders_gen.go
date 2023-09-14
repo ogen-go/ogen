@@ -9,6 +9,8 @@ import (
 	"github.com/go-faster/jx"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
+
+	ht "github.com/ogen-go/ogen/http"
 )
 
 func encodeProbeLivenessResponse(response string, w http.ResponseWriter, span trace.Span) error {
@@ -21,6 +23,7 @@ func encodeProbeLivenessResponse(response string, w http.ResponseWriter, span tr
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -43,6 +46,10 @@ func encodeErrorResponse(response *ErrorStatusCode, w http.ResponseWriter, span 
 	response.Response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
+	}
+
+	if code >= http.StatusInternalServerError {
+		return errors.Wrapf(ht.ErrInternalServerErrorResponse, "code: %d, message: %s", code, http.StatusText(code))
 	}
 	return nil
 

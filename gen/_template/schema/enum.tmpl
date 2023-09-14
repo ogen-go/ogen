@@ -8,6 +8,15 @@ const (
 	{{- end }}
 )
 
+// AllValues returns all {{ $.Name }} values.
+func ({{ $.Name }}) AllValues() []{{ $.Name }} {
+	return []{{ $.Name }}{
+		{{- range $variant := $.EnumVariants }}
+		{{ $variant.Name }},
+		{{- end }}
+	}
+}
+
 {{ if $.Primitive.IsString -}}
 // MarshalText implements encoding.TextMarshaler.
 func (s {{ $.ReadOnlyReceiver }}) MarshalText() ([]byte, error) {

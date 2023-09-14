@@ -12,6 +12,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
+	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/conv"
@@ -19,6 +20,46 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 )
+
+// Invoker invokes operations described by OpenAPI v3 specification.
+type Invoker interface {
+	// GetBook invokes getBook operation.
+	//
+	// Gets metadata of book.
+	//
+	// GET /api/gallery/{book_id}
+	GetBook(ctx context.Context, params GetBookParams) (GetBookRes, error)
+	// GetPageCoverImage invokes getPageCoverImage operation.
+	//
+	// Gets page cover.
+	//
+	// GET /galleries/{media_id}/cover.{format}
+	GetPageCoverImage(ctx context.Context, params GetPageCoverImageParams) (GetPageCoverImageRes, error)
+	// GetPageImage invokes getPageImage operation.
+	//
+	// Gets page.
+	//
+	// GET /galleries/{media_id}/{page}.{format}
+	GetPageImage(ctx context.Context, params GetPageImageParams) (GetPageImageRes, error)
+	// GetPageThumbnailImage invokes getPageThumbnailImage operation.
+	//
+	// Gets page thumbnail.
+	//
+	// GET /galleries/{media_id}/{page}t.{format}
+	GetPageThumbnailImage(ctx context.Context, params GetPageThumbnailImageParams) (GetPageThumbnailImageRes, error)
+	// Search invokes search operation.
+	//
+	// Search for comics.
+	//
+	// GET /api/galleries/search
+	Search(ctx context.Context, params SearchParams) (SearchRes, error)
+	// SearchByTagID invokes searchByTagID operation.
+	//
+	// Search for comics by tag ID.
+	//
+	// GET /api/galleries/tagged
+	SearchByTagID(ctx context.Context, params SearchByTagIDParams) (SearchByTagIDRes, error)
+}
 
 // Client implements OAS client.
 type Client struct {
@@ -82,6 +123,8 @@ func (c *Client) GetBook(ctx context.Context, params GetBookParams) (GetBookRes,
 func (c *Client) sendGetBook(ctx context.Context, params GetBookParams) (res GetBookRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getBook"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/gallery/{book_id}"),
 	}
 
 	// Run stopwatch.
@@ -171,6 +214,8 @@ func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImage
 func (c *Client) sendGetPageCoverImage(ctx context.Context, params GetPageCoverImageParams) (res GetPageCoverImageRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getPageCoverImage"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/galleries/{media_id}/cover.{format}"),
 	}
 
 	// Run stopwatch.
@@ -279,6 +324,8 @@ func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (G
 func (c *Client) sendGetPageImage(ctx context.Context, params GetPageImageParams) (res GetPageImageRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getPageImage"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/galleries/{media_id}/{page}.{format}"),
 	}
 
 	// Run stopwatch.
@@ -406,6 +453,8 @@ func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbn
 func (c *Client) sendGetPageThumbnailImage(ctx context.Context, params GetPageThumbnailImageParams) (res GetPageThumbnailImageRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getPageThumbnailImage"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/galleries/{media_id}/{page}t.{format}"),
 	}
 
 	// Run stopwatch.
@@ -533,6 +582,8 @@ func (c *Client) Search(ctx context.Context, params SearchParams) (SearchRes, er
 func (c *Client) sendSearch(ctx context.Context, params SearchParams) (res SearchRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/galleries/search"),
 	}
 
 	// Run stopwatch.
@@ -639,6 +690,8 @@ func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) 
 func (c *Client) sendSearchByTagID(ctx context.Context, params SearchByTagIDParams) (res SearchByTagIDRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("searchByTagID"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/galleries/tagged"),
 	}
 
 	// Run stopwatch.

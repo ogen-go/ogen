@@ -12,6 +12,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
+	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/conv"
@@ -19,6 +20,14 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 )
+
+// Invoker invokes operations described by OpenAPI v3 specification.
+type Invoker interface {
+	// PublishEvent invokes publishEvent operation.
+	//
+	// POST /event
+	PublishEvent(ctx context.Context, request OptEvent) (*Event, error)
+}
 
 // Client implements OAS client.
 type Client struct {
@@ -87,6 +96,8 @@ func (c *Client) PublishEvent(ctx context.Context, request OptEvent) (*Event, er
 func (c *Client) sendPublishEvent(ctx context.Context, request OptEvent) (res *Event, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("publishEvent"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/event"),
 	}
 
 	// Run stopwatch.
