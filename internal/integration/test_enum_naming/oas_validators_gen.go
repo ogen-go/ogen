@@ -8,6 +8,32 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
+func (s CustomNamingInt) Validate() error {
+	switch s {
+	case 1:
+		return nil
+	case 2:
+		return nil
+	case 3:
+		return nil
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
+}
+
+func (s CustomNamingStr) Validate() error {
+	switch s {
+	case "a":
+		return nil
+	case "b":
+		return nil
+	case "e":
+		return nil
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
+}
+
 func (s PascalExceptionStrat) Validate() error {
 	switch s {
 	case "1":
@@ -84,6 +110,28 @@ func (s *ProbeLivenessOK) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "PascalExceptionStrat",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := s.CustomNamingStr.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "CustomNamingStr",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := s.CustomNamingInt.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "CustomNamingInt",
 			Error: err,
 		})
 	}

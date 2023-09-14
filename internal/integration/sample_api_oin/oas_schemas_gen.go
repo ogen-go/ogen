@@ -3,6 +3,7 @@
 package api
 
 import (
+	"fmt"
 	"io"
 	"net/netip"
 	"net/url"
@@ -448,6 +449,14 @@ const (
 	DefaultTestEnumBig  DefaultTestEnum = "big"
 	DefaultTestEnumSmol DefaultTestEnum = "smol"
 )
+
+// AllValues returns all DefaultTestEnum values.
+func (DefaultTestEnum) AllValues() []DefaultTestEnum {
+	return []DefaultTestEnum{
+		DefaultTestEnumBig,
+		DefaultTestEnumSmol,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s DefaultTestEnum) MarshalText() ([]byte, error) {
@@ -1967,6 +1976,14 @@ const (
 	NullableEnumsBothDesc NullableEnumsBoth = "desc"
 )
 
+// AllValues returns all NullableEnumsBoth values.
+func (NullableEnumsBoth) AllValues() []NullableEnumsBoth {
+	return []NullableEnumsBoth{
+		NullableEnumsBothAsc,
+		NullableEnumsBothDesc,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s NullableEnumsBoth) MarshalText() ([]byte, error) {
 	switch s {
@@ -2001,6 +2018,14 @@ const (
 	NullableEnumsOnlyNullValueDesc NullableEnumsOnlyNullValue = "desc"
 )
 
+// AllValues returns all NullableEnumsOnlyNullValue values.
+func (NullableEnumsOnlyNullValue) AllValues() []NullableEnumsOnlyNullValue {
+	return []NullableEnumsOnlyNullValue{
+		NullableEnumsOnlyNullValueAsc,
+		NullableEnumsOnlyNullValueDesc,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s NullableEnumsOnlyNullValue) MarshalText() ([]byte, error) {
 	switch s {
@@ -2034,6 +2059,14 @@ const (
 	NullableEnumsOnlyNullableAsc  NullableEnumsOnlyNullable = "asc"
 	NullableEnumsOnlyNullableDesc NullableEnumsOnlyNullable = "desc"
 )
+
+// AllValues returns all NullableEnumsOnlyNullable values.
+func (NullableEnumsOnlyNullable) AllValues() []NullableEnumsOnlyNullable {
+	return []NullableEnumsOnlyNullable{
+		NullableEnumsOnlyNullableAsc,
+		NullableEnumsOnlyNullableDesc,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s NullableEnumsOnlyNullable) MarshalText() ([]byte, error) {
@@ -2502,6 +2535,25 @@ const (
 	OneOfUUIDAndIntEnum10 OneOfUUIDAndIntEnum1 = 0
 	OneOfUUIDAndIntEnum11 OneOfUUIDAndIntEnum1 = 1
 )
+
+// AllValues returns all OneOfUUIDAndIntEnum1 values.
+func (OneOfUUIDAndIntEnum1) AllValues() []OneOfUUIDAndIntEnum1 {
+	return []OneOfUUIDAndIntEnum1{
+		OneOfUUIDAndIntEnum10,
+		OneOfUUIDAndIntEnum11,
+	}
+}
+
+func (s *OneOfUUIDAndIntEnum1) String() string {
+	switch *s {
+	case OneOfUUIDAndIntEnum10:
+		return "OneOfUUIDAndIntEnum10"
+	case OneOfUUIDAndIntEnum11:
+		return "OneOfUUIDAndIntEnum11"
+	default:
+		return fmt.Sprintf("UNKNOWN<%v>", *s)
+	}
+}
 
 // Ref: #/components/schemas/OneOfWithNullable
 // OneOfWithNullable represents sum type.
@@ -6187,6 +6239,14 @@ const (
 	PetKindSmol PetKind = "smol"
 )
 
+// AllValues returns all PetKind values.
+func (PetKind) AllValues() []PetKind {
+	return []PetKind{
+		PetKindBig,
+		PetKindSmol,
+	}
+}
+
 // MarshalText implements encoding.TextMarshaler.
 func (s PetKind) MarshalText() ([]byte, error) {
 	switch s {
@@ -6221,6 +6281,14 @@ const (
 	PetTypeFifa PetType = "fifa"
 	PetTypeFofa PetType = "fofa"
 )
+
+// AllValues returns all PetType values.
+func (PetType) AllValues() []PetType {
+	return []PetType{
+		PetTypeFifa,
+		PetTypeFofa,
+	}
+}
 
 // MarshalText implements encoding.TextMarshaler.
 func (s PetType) MarshalText() ([]byte, error) {

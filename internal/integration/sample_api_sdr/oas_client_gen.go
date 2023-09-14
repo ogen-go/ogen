@@ -12,6 +12,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
+	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/conv"
@@ -21,6 +22,154 @@ import (
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 )
+
+// Invoker invokes operations described by OpenAPI v3 specification.
+type Invoker interface {
+	// DataGetFormat invokes dataGetFormat operation.
+	//
+	// Retrieve data.
+	//
+	// GET /name/{id}/{foo}1234{bar}-{baz}!{kek}
+	DataGetFormat(ctx context.Context, params DataGetFormatParams) (string, error)
+	// DefaultTest invokes defaultTest operation.
+	//
+	// POST /defaultTest
+	DefaultTest(ctx context.Context, request *DefaultTest, params DefaultTestParams) (int32, error)
+	// ErrorGet invokes errorGet operation.
+	//
+	// Returns error.
+	//
+	// GET /error
+	ErrorGet(ctx context.Context) (ErrorGetRes, error)
+	// FoobarGet invokes foobarGet operation.
+	//
+	// Dumb endpoint for testing things.
+	//
+	// GET /foobar
+	FoobarGet(ctx context.Context, params FoobarGetParams) (FoobarGetRes, error)
+	// FoobarPost invokes foobarPost operation.
+	//
+	// Dumb endpoint for testing things.
+	//
+	// POST /foobar
+	FoobarPost(ctx context.Context, request OptPet) (FoobarPostRes, error)
+	// FoobarPut invokes PUT /foobar operation.
+	//
+	// PUT /foobar
+	FoobarPut(ctx context.Context) (FoobarPutRes, error)
+	// NoAdditionalPropertiesTest invokes noAdditionalPropertiesTest operation.
+	//
+	// GET /noAdditionalPropertiesTest
+	NoAdditionalPropertiesTest(ctx context.Context) (*NoAdditionalPropertiesTest, error)
+	// NullableDefaultResponse invokes nullableDefaultResponse operation.
+	//
+	// GET /nullableDefaultResponse
+	NullableDefaultResponse(ctx context.Context) (NullableDefaultResponseRes, error)
+	// OneofBug invokes oneofBug operation.
+	//
+	// POST /oneofBug
+	OneofBug(ctx context.Context, request *OneOfBugs) error
+	// PatternRecursiveMapGet invokes GET /patternRecursiveMap operation.
+	//
+	// GET /patternRecursiveMap
+	PatternRecursiveMapGet(ctx context.Context) (PatternRecursiveMap, error)
+	// PetCreate invokes petCreate operation.
+	//
+	// Creates pet.
+	//
+	// POST /pet
+	PetCreate(ctx context.Context, request OptPet) (*Pet, error)
+	// PetFriendsNamesByID invokes petFriendsNamesByID operation.
+	//
+	// Returns names of all friends of pet.
+	//
+	// GET /pet/friendNames/{id}
+	PetFriendsNamesByID(ctx context.Context, params PetFriendsNamesByIDParams) ([]string, error)
+	// PetGet invokes petGet operation.
+	//
+	// Returns pet from the system that the user has access to.
+	//
+	// GET /pet
+	PetGet(ctx context.Context, params PetGetParams) (*Pet, error)
+	// PetGetAvatarByID invokes petGetAvatarByID operation.
+	//
+	// Returns pet avatar by id.
+	//
+	// GET /pet/avatar
+	PetGetAvatarByID(ctx context.Context, params PetGetAvatarByIDParams) (PetGetAvatarByIDRes, error)
+	// PetGetAvatarByName invokes petGetAvatarByName operation.
+	//
+	// Returns pet's avatar by name.
+	//
+	// GET /pet/{name}/avatar
+	PetGetAvatarByName(ctx context.Context, params PetGetAvatarByNameParams) (PetGetAvatarByNameRes, error)
+	// PetGetByName invokes petGetByName operation.
+	//
+	// Returns pet by name from the system that the user has access to.
+	//
+	// GET /pet/{name}
+	PetGetByName(ctx context.Context, params PetGetByNameParams) (*Pet, error)
+	// PetNameByID invokes petNameByID operation.
+	//
+	// Returns pet name by pet id.
+	//
+	// GET /pet/name/{id}
+	PetNameByID(ctx context.Context, params PetNameByIDParams) (string, error)
+	// PetUpdateNameAliasPost invokes POST /pet/updateNameAlias operation.
+	//
+	// POST /pet/updateNameAlias
+	PetUpdateNameAliasPost(ctx context.Context, request OptPetName) (PetUpdateNameAliasPostRes, error)
+	// PetUpdateNamePost invokes POST /pet/updateName operation.
+	//
+	// POST /pet/updateName
+	PetUpdateNamePost(ctx context.Context, request OptString) (PetUpdateNamePostRes, error)
+	// PetUploadAvatarByID invokes petUploadAvatarByID operation.
+	//
+	// Uploads pet avatar by id.
+	//
+	// POST /pet/avatar
+	PetUploadAvatarByID(ctx context.Context, request PetUploadAvatarByIDReq, params PetUploadAvatarByIDParams) (PetUploadAvatarByIDRes, error)
+	// RecursiveArrayGet invokes GET /recursiveArray operation.
+	//
+	// GET /recursiveArray
+	RecursiveArrayGet(ctx context.Context) (RecursiveArray, error)
+	// RecursiveMapGet invokes GET /recursiveMap operation.
+	//
+	// GET /recursiveMap
+	RecursiveMapGet(ctx context.Context) (*RecursiveMap, error)
+	// SecurityTest invokes securityTest operation.
+	//
+	// GET /securityTest
+	SecurityTest(ctx context.Context) (string, error)
+	// StringIntMapGet invokes GET /stringIntMap operation.
+	//
+	// GET /stringIntMap
+	StringIntMapGet(ctx context.Context) (*StringIntMap, error)
+	// TestFloatValidation invokes testFloatValidation operation.
+	//
+	// POST /testFloatValidation
+	TestFloatValidation(ctx context.Context, request *TestFloatValidation) error
+	// TestInlineOneof invokes testInlineOneof operation.
+	//
+	// GET /testInlineOneof
+	TestInlineOneof(ctx context.Context) (*TestInlineOneOf, error)
+	// TestNullableOneofs invokes testNullableOneofs operation.
+	//
+	// GET /testNullableOneofs
+	TestNullableOneofs(ctx context.Context) (TestNullableOneofsRes, error)
+	// TestTuple invokes testTuple operation.
+	//
+	// GET /testTuple
+	TestTuple(ctx context.Context) (*TupleTest, error)
+	// TestTupleNamed invokes testTupleNamed operation.
+	//
+	// GET /testTupleNamed
+	TestTupleNamed(ctx context.Context) (*TupleNamedTest, error)
+	// TestUniqueItems invokes testUniqueItems operation.
+	//
+	// GET /testUniqueItems
+	TestUniqueItems(ctx context.Context) (*UniqueItemsTest, error)
+}
 
 // Client implements OAS client.
 type Client struct {
@@ -81,12 +230,17 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 func (c *Client) DataGetFormat(ctx context.Context, params DataGetFormatParams) (string, error) {
 	res, err := c.sendDataGetFormat(ctx, params)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
 func (c *Client) sendDataGetFormat(ctx context.Context, params DataGetFormatParams) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataGetFormat"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/name/{id}/{foo}1234{bar}-{baz}!{kek}"),
 	}
 
 	// Run stopwatch.
@@ -244,12 +398,17 @@ func (c *Client) sendDataGetFormat(ctx context.Context, params DataGetFormatPara
 func (c *Client) DefaultTest(ctx context.Context, request *DefaultTest, params DefaultTestParams) (int32, error) {
 	res, err := c.sendDefaultTest(ctx, request, params)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
 func (c *Client) sendDefaultTest(ctx context.Context, request *DefaultTest, params DefaultTestParams) (res int32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("defaultTest"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/defaultTest"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -348,12 +507,17 @@ func (c *Client) sendDefaultTest(ctx context.Context, request *DefaultTest, para
 func (c *Client) ErrorGet(ctx context.Context) (ErrorGetRes, error) {
 	res, err := c.sendErrorGet(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
 func (c *Client) sendErrorGet(ctx context.Context) (res ErrorGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("errorGet"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/error"),
 	}
 
 	// Run stopwatch.
@@ -419,12 +583,17 @@ func (c *Client) sendErrorGet(ctx context.Context) (res ErrorGetRes, err error) 
 func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (FoobarGetRes, error) {
 	res, err := c.sendFoobarGet(ctx, params)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
 func (c *Client) sendFoobarGet(ctx context.Context, params FoobarGetParams) (res FoobarGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("foobarGet"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/foobar"),
 	}
 
 	// Run stopwatch.
@@ -522,12 +691,17 @@ func (c *Client) sendFoobarGet(ctx context.Context, params FoobarGetParams) (res
 func (c *Client) FoobarPost(ctx context.Context, request OptPet) (FoobarPostRes, error) {
 	res, err := c.sendFoobarPost(ctx, request)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
 func (c *Client) sendFoobarPost(ctx context.Context, request OptPet) (res FoobarPostRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("foobarPost"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/foobar"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -610,11 +784,17 @@ func (c *Client) sendFoobarPost(ctx context.Context, request OptPet) (res Foobar
 func (c *Client) FoobarPut(ctx context.Context) (FoobarPutRes, error) {
 	res, err := c.sendFoobarPut(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
 func (c *Client) sendFoobarPut(ctx context.Context) (res FoobarPutRes, err error) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/foobar"),
+	}
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -629,6 +809,7 @@ func (c *Client) sendFoobarPut(ctx context.Context) (res FoobarPutRes, err error
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "FoobarPut",
+		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
 	// Track stage for error reporting.
@@ -676,12 +857,17 @@ func (c *Client) sendFoobarPut(ctx context.Context) (res FoobarPutRes, err error
 func (c *Client) NoAdditionalPropertiesTest(ctx context.Context) (*NoAdditionalPropertiesTest, error) {
 	res, err := c.sendNoAdditionalPropertiesTest(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
 func (c *Client) sendNoAdditionalPropertiesTest(ctx context.Context) (res *NoAdditionalPropertiesTest, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("noAdditionalPropertiesTest"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/noAdditionalPropertiesTest"),
 	}
 
 	// Run stopwatch.
@@ -745,12 +931,17 @@ func (c *Client) sendNoAdditionalPropertiesTest(ctx context.Context) (res *NoAdd
 func (c *Client) NullableDefaultResponse(ctx context.Context) (NullableDefaultResponseRes, error) {
 	res, err := c.sendNullableDefaultResponse(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
 func (c *Client) sendNullableDefaultResponse(ctx context.Context) (res NullableDefaultResponseRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("nullableDefaultResponse"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/nullableDefaultResponse"),
 	}
 
 	// Run stopwatch.
@@ -814,12 +1005,17 @@ func (c *Client) sendNullableDefaultResponse(ctx context.Context) (res NullableD
 func (c *Client) OneofBug(ctx context.Context, request *OneOfBugs) error {
 	res, err := c.sendOneofBug(ctx, request)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return err
 }
 
 func (c *Client) sendOneofBug(ctx context.Context, request *OneOfBugs) (res *OneofBugOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oneofBug"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/oneofBug"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -895,11 +1091,17 @@ func (c *Client) sendOneofBug(ctx context.Context, request *OneOfBugs) (res *One
 func (c *Client) PatternRecursiveMapGet(ctx context.Context) (PatternRecursiveMap, error) {
 	res, err := c.sendPatternRecursiveMapGet(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
 func (c *Client) sendPatternRecursiveMapGet(ctx context.Context) (res PatternRecursiveMap, err error) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/patternRecursiveMap"),
+	}
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -914,6 +1116,7 @@ func (c *Client) sendPatternRecursiveMapGet(ctx context.Context) (res PatternRec
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PatternRecursiveMapGet",
+		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
 	// Track stage for error reporting.
@@ -963,12 +1166,17 @@ func (c *Client) sendPatternRecursiveMapGet(ctx context.Context) (res PatternRec
 func (c *Client) PetCreate(ctx context.Context, request OptPet) (*Pet, error) {
 	res, err := c.sendPetCreate(ctx, request)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
 func (c *Client) sendPetCreate(ctx context.Context, request OptPet) (res *Pet, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petCreate"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/pet"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -1053,12 +1261,17 @@ func (c *Client) sendPetCreate(ctx context.Context, request OptPet) (res *Pet, e
 func (c *Client) PetFriendsNamesByID(ctx context.Context, params PetFriendsNamesByIDParams) ([]string, error) {
 	res, err := c.sendPetFriendsNamesByID(ctx, params)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
 func (c *Client) sendPetFriendsNamesByID(ctx context.Context, params PetFriendsNamesByIDParams) (res []string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petFriendsNamesByID"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/pet/friendNames/{id}"),
 	}
 
 	// Run stopwatch.
@@ -1142,12 +1355,17 @@ func (c *Client) sendPetFriendsNamesByID(ctx context.Context, params PetFriendsN
 func (c *Client) PetGet(ctx context.Context, params PetGetParams) (*Pet, error) {
 	res, err := c.sendPetGet(ctx, params)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
 func (c *Client) sendPetGet(ctx context.Context, params PetGetParams) (res *Pet, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petGet"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/pet"),
 	}
 
 	// Run stopwatch.
@@ -1288,12 +1506,17 @@ func (c *Client) sendPetGet(ctx context.Context, params PetGetParams) (res *Pet,
 func (c *Client) PetGetAvatarByID(ctx context.Context, params PetGetAvatarByIDParams) (PetGetAvatarByIDRes, error) {
 	res, err := c.sendPetGetAvatarByID(ctx, params)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
 func (c *Client) sendPetGetAvatarByID(ctx context.Context, params PetGetAvatarByIDParams) (res PetGetAvatarByIDRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petGetAvatarByID"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/pet/avatar"),
 	}
 
 	// Run stopwatch.
@@ -1377,12 +1600,17 @@ func (c *Client) sendPetGetAvatarByID(ctx context.Context, params PetGetAvatarBy
 func (c *Client) PetGetAvatarByName(ctx context.Context, params PetGetAvatarByNameParams) (PetGetAvatarByNameRes, error) {
 	res, err := c.sendPetGetAvatarByName(ctx, params)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
 func (c *Client) sendPetGetAvatarByName(ctx context.Context, params PetGetAvatarByNameParams) (res PetGetAvatarByNameRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petGetAvatarByName"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/pet/{name}/avatar"),
 	}
 
 	// Run stopwatch.
@@ -1467,12 +1695,17 @@ func (c *Client) sendPetGetAvatarByName(ctx context.Context, params PetGetAvatar
 func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (*Pet, error) {
 	res, err := c.sendPetGetByName(ctx, params)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
 func (c *Client) sendPetGetByName(ctx context.Context, params PetGetByNameParams) (res *Pet, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petGetByName"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/pet/{name}"),
 	}
 
 	// Run stopwatch.
@@ -1556,12 +1789,17 @@ func (c *Client) sendPetGetByName(ctx context.Context, params PetGetByNameParams
 func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (string, error) {
 	res, err := c.sendPetNameByID(ctx, params)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
 func (c *Client) sendPetNameByID(ctx context.Context, params PetNameByIDParams) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petNameByID"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/pet/name/{id}"),
 	}
 
 	// Run stopwatch.
@@ -1643,11 +1881,17 @@ func (c *Client) sendPetNameByID(ctx context.Context, params PetNameByIDParams) 
 func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request OptPetName) (PetUpdateNameAliasPostRes, error) {
 	res, err := c.sendPetUpdateNameAliasPost(ctx, request)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
 func (c *Client) sendPetUpdateNameAliasPost(ctx context.Context, request OptPetName) (res PetUpdateNameAliasPostRes, err error) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/pet/updateNameAlias"),
+	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -1678,6 +1922,7 @@ func (c *Client) sendPetUpdateNameAliasPost(ctx context.Context, request OptPetN
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PetUpdateNameAliasPost",
+		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
 	// Track stage for error reporting.
@@ -1728,11 +1973,17 @@ func (c *Client) sendPetUpdateNameAliasPost(ctx context.Context, request OptPetN
 func (c *Client) PetUpdateNamePost(ctx context.Context, request OptString) (PetUpdateNamePostRes, error) {
 	res, err := c.sendPetUpdateNamePost(ctx, request)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
 func (c *Client) sendPetUpdateNamePost(ctx context.Context, request OptString) (res PetUpdateNamePostRes, err error) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/pet/updateName"),
+	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -1771,6 +2022,7 @@ func (c *Client) sendPetUpdateNamePost(ctx context.Context, request OptString) (
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PetUpdateNamePost",
+		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
 	// Track stage for error reporting.
@@ -1823,12 +2075,17 @@ func (c *Client) sendPetUpdateNamePost(ctx context.Context, request OptString) (
 func (c *Client) PetUploadAvatarByID(ctx context.Context, request PetUploadAvatarByIDReq, params PetUploadAvatarByIDParams) (PetUploadAvatarByIDRes, error) {
 	res, err := c.sendPetUploadAvatarByID(ctx, request, params)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
 func (c *Client) sendPetUploadAvatarByID(ctx context.Context, request PetUploadAvatarByIDReq, params PetUploadAvatarByIDParams) (res PetUploadAvatarByIDRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petUploadAvatarByID"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/pet/avatar"),
 	}
 
 	// Run stopwatch.
@@ -1913,11 +2170,17 @@ func (c *Client) sendPetUploadAvatarByID(ctx context.Context, request PetUploadA
 func (c *Client) RecursiveArrayGet(ctx context.Context) (RecursiveArray, error) {
 	res, err := c.sendRecursiveArrayGet(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
 func (c *Client) sendRecursiveArrayGet(ctx context.Context) (res RecursiveArray, err error) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/recursiveArray"),
+	}
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1932,6 +2195,7 @@ func (c *Client) sendRecursiveArrayGet(ctx context.Context) (res RecursiveArray,
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "RecursiveArrayGet",
+		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
 	// Track stage for error reporting.
@@ -1979,11 +2243,17 @@ func (c *Client) sendRecursiveArrayGet(ctx context.Context) (res RecursiveArray,
 func (c *Client) RecursiveMapGet(ctx context.Context) (*RecursiveMap, error) {
 	res, err := c.sendRecursiveMapGet(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
 func (c *Client) sendRecursiveMapGet(ctx context.Context) (res *RecursiveMap, err error) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/recursiveMap"),
+	}
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1998,6 +2268,7 @@ func (c *Client) sendRecursiveMapGet(ctx context.Context) (res *RecursiveMap, er
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "RecursiveMapGet",
+		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
 	// Track stage for error reporting.
@@ -2045,12 +2316,17 @@ func (c *Client) sendRecursiveMapGet(ctx context.Context) (res *RecursiveMap, er
 func (c *Client) SecurityTest(ctx context.Context) (string, error) {
 	res, err := c.sendSecurityTest(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
 func (c *Client) sendSecurityTest(ctx context.Context) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("securityTest"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/securityTest"),
 	}
 
 	// Run stopwatch.
@@ -2147,11 +2423,17 @@ func (c *Client) sendSecurityTest(ctx context.Context) (res string, err error) {
 func (c *Client) StringIntMapGet(ctx context.Context) (*StringIntMap, error) {
 	res, err := c.sendStringIntMapGet(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
 func (c *Client) sendStringIntMapGet(ctx context.Context) (res *StringIntMap, err error) {
-	var otelAttrs []attribute.KeyValue
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/stringIntMap"),
+	}
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -2166,6 +2448,7 @@ func (c *Client) sendStringIntMapGet(ctx context.Context) (res *StringIntMap, er
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "StringIntMapGet",
+		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
 	// Track stage for error reporting.
@@ -2213,12 +2496,17 @@ func (c *Client) sendStringIntMapGet(ctx context.Context) (res *StringIntMap, er
 func (c *Client) TestFloatValidation(ctx context.Context, request *TestFloatValidation) error {
 	res, err := c.sendTestFloatValidation(ctx, request)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return err
 }
 
 func (c *Client) sendTestFloatValidation(ctx context.Context, request *TestFloatValidation) (res *TestFloatValidationOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testFloatValidation"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/testFloatValidation"),
 	}
 	// Validate request before sending.
 	if err := func() error {
@@ -2294,12 +2582,17 @@ func (c *Client) sendTestFloatValidation(ctx context.Context, request *TestFloat
 func (c *Client) TestInlineOneof(ctx context.Context) (*TestInlineOneOf, error) {
 	res, err := c.sendTestInlineOneof(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
 func (c *Client) sendTestInlineOneof(ctx context.Context) (res *TestInlineOneOf, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testInlineOneof"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/testInlineOneof"),
 	}
 
 	// Run stopwatch.
@@ -2363,12 +2656,17 @@ func (c *Client) sendTestInlineOneof(ctx context.Context) (res *TestInlineOneOf,
 func (c *Client) TestNullableOneofs(ctx context.Context) (TestNullableOneofsRes, error) {
 	res, err := c.sendTestNullableOneofs(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
 func (c *Client) sendTestNullableOneofs(ctx context.Context) (res TestNullableOneofsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testNullableOneofs"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/testNullableOneofs"),
 	}
 
 	// Run stopwatch.
@@ -2432,12 +2730,17 @@ func (c *Client) sendTestNullableOneofs(ctx context.Context) (res TestNullableOn
 func (c *Client) TestTuple(ctx context.Context) (*TupleTest, error) {
 	res, err := c.sendTestTuple(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
 func (c *Client) sendTestTuple(ctx context.Context) (res *TupleTest, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testTuple"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/testTuple"),
 	}
 
 	// Run stopwatch.
@@ -2501,12 +2804,17 @@ func (c *Client) sendTestTuple(ctx context.Context) (res *TupleTest, err error) 
 func (c *Client) TestTupleNamed(ctx context.Context) (*TupleNamedTest, error) {
 	res, err := c.sendTestTupleNamed(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
 func (c *Client) sendTestTupleNamed(ctx context.Context) (res *TupleNamedTest, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testTupleNamed"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/testTupleNamed"),
 	}
 
 	// Run stopwatch.
@@ -2570,12 +2878,17 @@ func (c *Client) sendTestTupleNamed(ctx context.Context) (res *TupleNamedTest, e
 func (c *Client) TestUniqueItems(ctx context.Context) (*UniqueItemsTest, error) {
 	res, err := c.sendTestUniqueItems(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
 func (c *Client) sendTestUniqueItems(ctx context.Context) (res *UniqueItemsTest, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testUniqueItems"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/testUniqueItems"),
 	}
 
 	// Run stopwatch.

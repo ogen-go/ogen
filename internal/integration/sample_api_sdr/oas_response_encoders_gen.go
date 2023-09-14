@@ -22,6 +22,7 @@ func encodeDataGetFormatResponse(response string, w http.ResponseWriter, span tr
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -35,6 +36,7 @@ func encodeDefaultTestResponse(response int32, w http.ResponseWriter, span trace
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -57,6 +59,7 @@ func encodeFoobarGetResponse(response FoobarGetRes, w http.ResponseWriter, span 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *NotFound:
@@ -82,6 +85,7 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter, spa
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *NotFound:
@@ -112,6 +116,7 @@ func encodeNoAdditionalPropertiesTestResponse(response *NoAdditionalPropertiesTe
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -139,6 +144,7 @@ func encodePatternRecursiveMapGetResponse(response PatternRecursiveMap, w http.R
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -152,6 +158,7 @@ func encodePetCreateResponse(response *Pet, w http.ResponseWriter, span trace.Sp
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -169,6 +176,7 @@ func encodePetFriendsNamesByIDResponse(response []string, w http.ResponseWriter,
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -182,6 +190,7 @@ func encodePetGetResponse(response *Pet, w http.ResponseWriter, span trace.Span)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -196,6 +205,7 @@ func encodePetGetAvatarByIDResponse(response PetGetAvatarByIDRes, w http.Respons
 		if _, err := io.Copy(writer, response); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *NotFound:
@@ -220,6 +230,7 @@ func encodePetGetAvatarByNameResponse(response PetGetAvatarByNameRes, w http.Res
 		if _, err := io.Copy(writer, response); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *NotFound:
@@ -243,6 +254,7 @@ func encodePetGetByNameResponse(response *Pet, w http.ResponseWriter, span trace
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -256,6 +268,7 @@ func encodePetNameByIDResponse(response string, w http.ResponseWriter, span trac
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -302,6 +315,7 @@ func encodeRecursiveArrayGetResponse(response RecursiveArray, w http.ResponseWri
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -315,6 +329,7 @@ func encodeRecursiveMapGetResponse(response *RecursiveMap, w http.ResponseWriter
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -328,6 +343,7 @@ func encodeSecurityTestResponse(response string, w http.ResponseWriter, span tra
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -341,6 +357,7 @@ func encodeStringIntMapGetResponse(response *StringIntMap, w http.ResponseWriter
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -361,6 +378,7 @@ func encodeTestInlineOneofResponse(response *TestInlineOneOf, w http.ResponseWri
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -376,6 +394,7 @@ func encodeTestNullableOneofsResponse(response TestNullableOneofsRes, w http.Res
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *TestNullableOneofsCreated:
@@ -388,6 +407,7 @@ func encodeTestNullableOneofsResponse(response TestNullableOneofsRes, w http.Res
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	case *OneOfBooleanSumNullables:
@@ -400,6 +420,7 @@ func encodeTestNullableOneofsResponse(response TestNullableOneofsRes, w http.Res
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+
 		return nil
 
 	default:
@@ -417,6 +438,7 @@ func encodeTestTupleResponse(response *TupleTest, w http.ResponseWriter, span tr
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -430,6 +452,7 @@ func encodeTestTupleNamedResponse(response *TupleNamedTest, w http.ResponseWrite
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
 
@@ -443,5 +466,6 @@ func encodeTestUniqueItemsResponse(response *UniqueItemsTest, w http.ResponseWri
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
 	return nil
 }
