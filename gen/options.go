@@ -88,6 +88,8 @@ type Options struct {
 	// OptionalIsNullable is whether optional fields are nullable.
 	OptionalIsNullable bool
 
+	SkipSecurities bool
+
 	// File is the file that is being parsed.
 	//
 	// Used for error messages.
