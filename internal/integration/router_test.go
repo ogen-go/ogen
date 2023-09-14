@@ -10,6 +10,7 @@ import (
 	"strconv"
 	"testing"
 
+	"github.com/go-faster/errors"
 	"github.com/stretchr/testify/require"
 
 	api "github.com/ogen-go/ogen/internal/integration/sample_api"
@@ -125,7 +126,7 @@ func routerTestCases() []routerTestCase {
 	}
 }
 
-func TestRouter(t *testing.T) {
+func TestFindPath(t *testing.T) {
 	handler := &sampleAPIServer{}
 	s, err := api.NewServer(handler, handler)
 	require.NoError(t, err)
@@ -160,6 +161,34 @@ func TestRouter(t *testing.T) {
 			}
 		})
 	}
+}
+
+func TestFindRoutePrefix(t *testing.T) {
+	handler := &sampleAPIServer{}
+	s, err := api.NewServer(handler, handler, api.WithPathPrefix("/api/v1"))
+	require.NoError(t, err)
+
+	// No prefix -> no match.
+	_, ok := s.FindRoute(http.MethodGet, "/pet/name/10")
+	require.False(t, ok)
+
+	route, ok := s.FindRoute(http.MethodGet, "/api/v1/pet/name/10")
+	require.True(t, ok)
+	require.Equal(t, "PetNameByID", route.Name())
+}
+
+func TestFindPathPrefix(t *testing.T) {
+	handler := &sampleAPIServer{}
+	s, err := api.NewServer(handler, handler, api.WithPathPrefix("/api/v1"))
+	require.NoError(t, err)
+
+	// No prefix -> no match.
+	_, ok := s.FindPath(http.MethodGet, errors.Must(url.Parse("/pet/name/10")))
+	require.False(t, ok)
+
+	route, ok := s.FindPath(http.MethodGet, errors.Must(url.Parse("/api/v1/pet/name/10")))
+	require.True(t, ok)
+	require.Equal(t, "PetNameByID", route.Name())
 }
 
 func TestComplicatedRoute(t *testing.T) {
