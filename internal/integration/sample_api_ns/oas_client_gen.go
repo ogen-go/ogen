@@ -225,6 +225,9 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 func (c *Client) DataGetFormat(ctx context.Context, params DataGetFormatParams) (string, error) {
 	res, err := c.sendDataGetFormat(ctx, params)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, "DataGetFormat", "GET", "/name/{id}/{foo}1234{bar}-{baz}!{kek}", err)
+	}
 	return res, err
 }
 
@@ -390,6 +393,9 @@ func (c *Client) sendDataGetFormat(ctx context.Context, params DataGetFormatPara
 func (c *Client) DefaultTest(ctx context.Context, request *DefaultTest, params DefaultTestParams) (int32, error) {
 	res, err := c.sendDefaultTest(ctx, request, params)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, "DefaultTest", "POST", "/defaultTest", err)
+	}
 	return res, err
 }
 
@@ -496,6 +502,9 @@ func (c *Client) sendDefaultTest(ctx context.Context, request *DefaultTest, para
 func (c *Client) ErrorGet(ctx context.Context) (*ErrorStatusCode, error) {
 	res, err := c.sendErrorGet(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, "ErrorGet", "GET", "/error", err)
+	}
 	return res, err
 }
 
@@ -569,6 +578,9 @@ func (c *Client) sendErrorGet(ctx context.Context) (res *ErrorStatusCode, err er
 func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (FoobarGetRes, error) {
 	res, err := c.sendFoobarGet(ctx, params)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, "FoobarGet", "GET", "/foobar", err)
+	}
 	return res, err
 }
 
@@ -674,6 +686,9 @@ func (c *Client) sendFoobarGet(ctx context.Context, params FoobarGetParams) (res
 func (c *Client) FoobarPost(ctx context.Context, request OptPet) (FoobarPostRes, error) {
 	res, err := c.sendFoobarPost(ctx, request)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, "FoobarPost", "POST", "/foobar", err)
+	}
 	return res, err
 }
 
@@ -764,6 +779,9 @@ func (c *Client) sendFoobarPost(ctx context.Context, request OptPet) (res Foobar
 func (c *Client) FoobarPut(ctx context.Context) (*FoobarPutDef, error) {
 	res, err := c.sendFoobarPut(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, "FoobarPut", "PUT", "/foobar", err)
+	}
 	return res, err
 }
 
@@ -834,6 +852,9 @@ func (c *Client) sendFoobarPut(ctx context.Context) (res *FoobarPutDef, err erro
 func (c *Client) NoAdditionalPropertiesTest(ctx context.Context) (*NoAdditionalPropertiesTest, error) {
 	res, err := c.sendNoAdditionalPropertiesTest(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, "NoAdditionalPropertiesTest", "GET", "/noAdditionalPropertiesTest", err)
+	}
 	return res, err
 }
 
@@ -905,6 +926,9 @@ func (c *Client) sendNoAdditionalPropertiesTest(ctx context.Context) (res *NoAdd
 func (c *Client) NullableDefaultResponse(ctx context.Context) (*NilIntStatusCode, error) {
 	res, err := c.sendNullableDefaultResponse(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, "NullableDefaultResponse", "GET", "/nullableDefaultResponse", err)
+	}
 	return res, err
 }
 
@@ -976,6 +1000,9 @@ func (c *Client) sendNullableDefaultResponse(ctx context.Context) (res *NilIntSt
 func (c *Client) OneofBug(ctx context.Context, request *OneOfBugs) error {
 	res, err := c.sendOneofBug(ctx, request)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, "OneofBug", "POST", "/oneofBug", err)
+	}
 	return err
 }
 
@@ -1059,6 +1086,9 @@ func (c *Client) sendOneofBug(ctx context.Context, request *OneOfBugs) (res *One
 func (c *Client) PatternRecursiveMapGet(ctx context.Context) (PatternRecursiveMap, error) {
 	res, err := c.sendPatternRecursiveMapGet(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, "PatternRecursiveMapGet", "GET", "/patternRecursiveMap", err)
+	}
 	return res, err
 }
 
@@ -1131,6 +1161,9 @@ func (c *Client) sendPatternRecursiveMapGet(ctx context.Context) (res PatternRec
 func (c *Client) PetCreate(ctx context.Context, request OptPet) (*Pet, error) {
 	res, err := c.sendPetCreate(ctx, request)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, "PetCreate", "POST", "/pet", err)
+	}
 	return res, err
 }
 
@@ -1223,6 +1256,9 @@ func (c *Client) sendPetCreate(ctx context.Context, request OptPet) (res *Pet, e
 func (c *Client) PetFriendsNamesByID(ctx context.Context, params PetFriendsNamesByIDParams) ([]string, error) {
 	res, err := c.sendPetFriendsNamesByID(ctx, params)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, "PetFriendsNamesByID", "GET", "/pet/friendNames/{id}", err)
+	}
 	return res, err
 }
 
@@ -1314,6 +1350,9 @@ func (c *Client) sendPetFriendsNamesByID(ctx context.Context, params PetFriendsN
 func (c *Client) PetGet(ctx context.Context, params PetGetParams) (PetGetRes, error) {
 	res, err := c.sendPetGet(ctx, params)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, "PetGet", "GET", "/pet", err)
+	}
 	return res, err
 }
 
@@ -1462,6 +1501,9 @@ func (c *Client) sendPetGet(ctx context.Context, params PetGetParams) (res PetGe
 func (c *Client) PetGetAvatarByID(ctx context.Context, params PetGetAvatarByIDParams) (PetGetAvatarByIDRes, error) {
 	res, err := c.sendPetGetAvatarByID(ctx, params)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, "PetGetAvatarByID", "GET", "/pet/avatar", err)
+	}
 	return res, err
 }
 
@@ -1553,6 +1595,9 @@ func (c *Client) sendPetGetAvatarByID(ctx context.Context, params PetGetAvatarBy
 func (c *Client) PetGetAvatarByName(ctx context.Context, params PetGetAvatarByNameParams) (PetGetAvatarByNameRes, error) {
 	res, err := c.sendPetGetAvatarByName(ctx, params)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, "PetGetAvatarByName", "GET", "/pet/{name}/avatar", err)
+	}
 	return res, err
 }
 
@@ -1645,6 +1690,9 @@ func (c *Client) sendPetGetAvatarByName(ctx context.Context, params PetGetAvatar
 func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (*Pet, error) {
 	res, err := c.sendPetGetByName(ctx, params)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, "PetGetByName", "GET", "/pet/{name}", err)
+	}
 	return res, err
 }
 
@@ -1736,6 +1784,9 @@ func (c *Client) sendPetGetByName(ctx context.Context, params PetGetByNameParams
 func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (string, error) {
 	res, err := c.sendPetNameByID(ctx, params)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, "PetNameByID", "GET", "/pet/name/{id}", err)
+	}
 	return res, err
 }
 
@@ -1825,6 +1876,9 @@ func (c *Client) sendPetNameByID(ctx context.Context, params PetNameByIDParams) 
 func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request OptPetName) (*PetUpdateNameAliasPostDef, error) {
 	res, err := c.sendPetUpdateNameAliasPost(ctx, request)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, "PetUpdateNameAliasPost", "POST", "/pet/updateNameAlias", err)
+	}
 	return res, err
 }
 
@@ -1914,6 +1968,9 @@ func (c *Client) sendPetUpdateNameAliasPost(ctx context.Context, request OptPetN
 func (c *Client) PetUpdateNamePost(ctx context.Context, request OptString) (*PetUpdateNamePostDef, error) {
 	res, err := c.sendPetUpdateNamePost(ctx, request)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, "PetUpdateNamePost", "POST", "/pet/updateName", err)
+	}
 	return res, err
 }
 
@@ -2013,6 +2070,9 @@ func (c *Client) sendPetUpdateNamePost(ctx context.Context, request OptString) (
 func (c *Client) PetUploadAvatarByID(ctx context.Context, request PetUploadAvatarByIDReq, params PetUploadAvatarByIDParams) (PetUploadAvatarByIDRes, error) {
 	res, err := c.sendPetUploadAvatarByID(ctx, request, params)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, "PetUploadAvatarByID", "POST", "/pet/avatar", err)
+	}
 	return res, err
 }
 
@@ -2105,6 +2165,9 @@ func (c *Client) sendPetUploadAvatarByID(ctx context.Context, request PetUploadA
 func (c *Client) RecursiveArrayGet(ctx context.Context) (RecursiveArray, error) {
 	res, err := c.sendRecursiveArrayGet(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, "RecursiveArrayGet", "GET", "/recursiveArray", err)
+	}
 	return res, err
 }
 
@@ -2175,6 +2238,9 @@ func (c *Client) sendRecursiveArrayGet(ctx context.Context) (res RecursiveArray,
 func (c *Client) RecursiveMapGet(ctx context.Context) (*RecursiveMap, error) {
 	res, err := c.sendRecursiveMapGet(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, "RecursiveMapGet", "GET", "/recursiveMap", err)
+	}
 	return res, err
 }
 
@@ -2245,6 +2311,9 @@ func (c *Client) sendRecursiveMapGet(ctx context.Context) (res *RecursiveMap, er
 func (c *Client) SecurityTest(ctx context.Context) (string, error) {
 	res, err := c.sendSecurityTest(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, "SecurityTest", "GET", "/securityTest", err)
+	}
 	return res, err
 }
 
@@ -2349,6 +2418,9 @@ func (c *Client) sendSecurityTest(ctx context.Context) (res string, err error) {
 func (c *Client) StringIntMapGet(ctx context.Context) (*StringIntMap, error) {
 	res, err := c.sendStringIntMapGet(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, "StringIntMapGet", "GET", "/stringIntMap", err)
+	}
 	return res, err
 }
 
@@ -2419,6 +2491,9 @@ func (c *Client) sendStringIntMapGet(ctx context.Context) (res *StringIntMap, er
 func (c *Client) TestFloatValidation(ctx context.Context, request *TestFloatValidation) error {
 	res, err := c.sendTestFloatValidation(ctx, request)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, "TestFloatValidation", "POST", "/testFloatValidation", err)
+	}
 	return err
 }
 
@@ -2502,6 +2577,9 @@ func (c *Client) sendTestFloatValidation(ctx context.Context, request *TestFloat
 func (c *Client) TestInlineOneof(ctx context.Context) (*TestInlineOneOf, error) {
 	res, err := c.sendTestInlineOneof(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, "TestInlineOneof", "GET", "/testInlineOneof", err)
+	}
 	return res, err
 }
 
@@ -2573,6 +2651,9 @@ func (c *Client) sendTestInlineOneof(ctx context.Context) (res *TestInlineOneOf,
 func (c *Client) TestNullableOneofs(ctx context.Context) (TestNullableOneofsRes, error) {
 	res, err := c.sendTestNullableOneofs(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, "TestNullableOneofs", "GET", "/testNullableOneofs", err)
+	}
 	return res, err
 }
 
@@ -2644,6 +2725,9 @@ func (c *Client) sendTestNullableOneofs(ctx context.Context) (res TestNullableOn
 func (c *Client) TestTuple(ctx context.Context) (*TupleTest, error) {
 	res, err := c.sendTestTuple(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, "TestTuple", "GET", "/testTuple", err)
+	}
 	return res, err
 }
 
@@ -2715,6 +2799,9 @@ func (c *Client) sendTestTuple(ctx context.Context) (res *TupleTest, err error) 
 func (c *Client) TestTupleNamed(ctx context.Context) (*TupleNamedTest, error) {
 	res, err := c.sendTestTupleNamed(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, "TestTupleNamed", "GET", "/testTupleNamed", err)
+	}
 	return res, err
 }
 
@@ -2786,6 +2873,9 @@ func (c *Client) sendTestTupleNamed(ctx context.Context) (res *TupleNamedTest, e
 func (c *Client) TestUniqueItems(ctx context.Context) (*UniqueItemsTest, error) {
 	res, err := c.sendTestUniqueItems(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, "TestUniqueItems", "GET", "/testUniqueItems", err)
+	}
 	return res, err
 }
 

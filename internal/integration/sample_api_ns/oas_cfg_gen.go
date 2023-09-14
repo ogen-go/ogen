@@ -3,6 +3,7 @@
 package api
 
 import (
+	"context"
 	"fmt"
 	"math/big"
 	"net/http"
@@ -68,9 +69,12 @@ func (cfg *otelConfig) initOTEL() {
 	cfg.Meter = cfg.MeterProvider.Meter(otelogen.Name)
 }
 
+type ClientErrorMiddleware func(ctx context.Context, opName, opMethod, opPath string, err error) error
+
 type clientConfig struct {
 	otelConfig
-	Client ht.Client
+	Client          ht.Client
+	errorMiddleware ClientErrorMiddleware
 }
 
 // ClientOption is client config option.
@@ -156,5 +160,11 @@ func WithClient(client ht.Client) ClientOption {
 		if client != nil {
 			cfg.Client = client
 		}
+	})
+}
+
+func WithErrorMiddleware(errorMiddleware ClientErrorMiddleware) ClientOption {
+	return optionFunc[clientConfig](func(cfg *clientConfig) {
+		cfg.errorMiddleware = errorMiddleware
 	})
 }
