@@ -7,14 +7,12 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/go-faster/errors"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
 	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
 	"go.opentelemetry.io/otel/trace"
 
-	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
@@ -123,9 +121,7 @@ func (s *Server) handleCachingRequest(args [0]string, argsEscaped bool, w http.R
 
 	if err := encodeCachingResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
-			s.cfg.ErrorHandler(ctx, w, r, err)
-		}
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 }
@@ -210,9 +206,7 @@ func (s *Server) handleDBRequest(args [0]string, argsEscaped bool, w http.Respon
 
 	if err := encodeDBResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
-			s.cfg.ErrorHandler(ctx, w, r, err)
-		}
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 }
@@ -298,9 +292,7 @@ func (s *Server) handleJSONRequest(args [0]string, argsEscaped bool, w http.Resp
 
 	if err := encodeJSONResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
-			s.cfg.ErrorHandler(ctx, w, r, err)
-		}
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 }
@@ -406,9 +398,7 @@ func (s *Server) handleQueriesRequest(args [0]string, argsEscaped bool, w http.R
 
 	if err := encodeQueriesResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
-			s.cfg.ErrorHandler(ctx, w, r, err)
-		}
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 }
@@ -513,9 +503,7 @@ func (s *Server) handleUpdatesRequest(args [0]string, argsEscaped bool, w http.R
 
 	if err := encodeUpdatesResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
-			s.cfg.ErrorHandler(ctx, w, r, err)
-		}
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 }

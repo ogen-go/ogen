@@ -236,9 +236,7 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 
 	if err := encode{{ $op.Name }}Response(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
-			s.cfg.ErrorHandler(ctx, w, r, err)
-		}
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 }

@@ -7,14 +7,12 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/go-faster/errors"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
 	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
 	"go.opentelemetry.io/otel/trace"
 
-	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 )
@@ -114,9 +112,7 @@ func (s *Server) handleEventPostRequest(args [0]string, argsEscaped bool, w http
 
 	if err := encodeEventPostResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
-			s.cfg.ErrorHandler(ctx, w, r, err)
-		}
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 }
@@ -239,9 +235,7 @@ func (s *Server) handlePhoneGetRequest(args [0]string, argsEscaped bool, w http.
 
 	if err := encodePhoneGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
-			s.cfg.ErrorHandler(ctx, w, r, err)
-		}
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 }

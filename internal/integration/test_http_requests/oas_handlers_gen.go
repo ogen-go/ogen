@@ -7,14 +7,12 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/go-faster/errors"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
 	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
 	"go.opentelemetry.io/otel/trace"
 
-	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
@@ -116,9 +114,7 @@ func (s *Server) handleAllRequestBodiesRequest(args [0]string, argsEscaped bool,
 
 	if err := encodeAllRequestBodiesResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
-			s.cfg.ErrorHandler(ctx, w, r, err)
-		}
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 }
@@ -219,9 +215,7 @@ func (s *Server) handleAllRequestBodiesOptionalRequest(args [0]string, argsEscap
 
 	if err := encodeAllRequestBodiesOptionalResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
-			s.cfg.ErrorHandler(ctx, w, r, err)
-		}
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 }
@@ -322,9 +316,7 @@ func (s *Server) handleBase64RequestRequest(args [0]string, argsEscaped bool, w 
 
 	if err := encodeBase64RequestResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
-			s.cfg.ErrorHandler(ctx, w, r, err)
-		}
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 }
@@ -425,9 +417,7 @@ func (s *Server) handleMaskContentTypeRequest(args [0]string, argsEscaped bool, 
 
 	if err := encodeMaskContentTypeResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
-			s.cfg.ErrorHandler(ctx, w, r, err)
-		}
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 }
@@ -528,9 +518,7 @@ func (s *Server) handleMaskContentTypeOptionalRequest(args [0]string, argsEscape
 
 	if err := encodeMaskContentTypeOptionalResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
-			s.cfg.ErrorHandler(ctx, w, r, err)
-		}
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 }
@@ -631,9 +619,7 @@ func (s *Server) handleStreamJSONRequest(args [0]string, argsEscaped bool, w htt
 
 	if err := encodeStreamJSONResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
-			s.cfg.ErrorHandler(ctx, w, r, err)
-		}
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 }

@@ -129,9 +129,7 @@ func (s *Server) handleDataCreateRequest(args [0]string, argsEscaped bool, w htt
 
 	if err := encodeDataCreateResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
-			s.cfg.ErrorHandler(ctx, w, r, err)
-		}
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 }
@@ -226,9 +224,7 @@ func (s *Server) handleDataGetRequest(args [0]string, argsEscaped bool, w http.R
 
 	if err := encodeDataGetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
-			s.cfg.ErrorHandler(ctx, w, r, err)
-		}
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 }
