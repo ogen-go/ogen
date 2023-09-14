@@ -15,7 +15,18 @@ tries to optimize something.
 If you are contributing to the project and make changes to the code generator, please commit the
 generated code as well. This is to make sure that the generated code is always up-to-date.
 
+To update generated code run:
+
+```console
+$ make generate examples
+```
+
 Generated code should be committed in a one separate commit `chore: commit generated files`.
+
+```console
+$ git add ./examples ./internal/integration/*/*_gen*.go
+$ git commit -m "chore: commit generated files"
+```
 
 ## Coding guidance
 
