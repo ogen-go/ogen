@@ -3,6 +3,7 @@
 package api
 
 import (
+	"context"
 	"net/http"
 
 	"go.opentelemetry.io/otel"
@@ -125,9 +126,12 @@ func (cfg serverConfig) baseServer() (s baseServer, err error) {
 	return s, nil
 }
 
+type ClientErrorMiddleware func(ctx context.Context, err error) error
+
 type clientConfig struct {
 	otelConfig
-	Client ht.Client
+	Client          ht.Client
+	errorMiddleware ClientErrorMiddleware
 }
 
 // ClientOption is client config option.
@@ -214,6 +218,12 @@ func WithClient(client ht.Client) ClientOption {
 		if client != nil {
 			cfg.Client = client
 		}
+	})
+}
+
+func WithErrorMiddleware(errorMiddleware ClientErrorMiddleware) ClientOption {
+	return optionFunc[clientConfig](func(cfg *clientConfig) {
+		cfg.errorMiddleware = errorMiddleware
 	})
 }
 

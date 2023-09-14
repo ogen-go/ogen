@@ -87,6 +87,9 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 func (c *Client) ProbeLiveness(ctx context.Context) (*ProbeLivenessOK, error) {
 	res, err := c.sendProbeLiveness(ctx)
 	_ = res
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, err)
+	}
 	return res, err
 }
 
