@@ -76,10 +76,11 @@ func (s *Server) handleGetBookRequest(args [1]string, argsEscaped bool, w http.R
 	var response GetBookRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GetBook",
-			OperationID:   "getBook",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "GetBook",
+			OperationSummary: "Gets metadata of book",
+			OperationID:      "getBook",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "book_id",
@@ -181,10 +182,11 @@ func (s *Server) handleGetPageCoverImageRequest(args [2]string, argsEscaped bool
 	var response GetPageCoverImageRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GetPageCoverImage",
-			OperationID:   "getPageCoverImage",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "GetPageCoverImage",
+			OperationSummary: "Gets page cover",
+			OperationID:      "getPageCoverImage",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "media_id",
@@ -290,10 +292,11 @@ func (s *Server) handleGetPageImageRequest(args [3]string, argsEscaped bool, w h
 	var response GetPageImageRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GetPageImage",
-			OperationID:   "getPageImage",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "GetPageImage",
+			OperationSummary: "Gets page",
+			OperationID:      "getPageImage",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "media_id",
@@ -403,10 +406,11 @@ func (s *Server) handleGetPageThumbnailImageRequest(args [3]string, argsEscaped 
 	var response GetPageThumbnailImageRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GetPageThumbnailImage",
-			OperationID:   "getPageThumbnailImage",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "GetPageThumbnailImage",
+			OperationSummary: "Gets page thumbnail",
+			OperationID:      "getPageThumbnailImage",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "media_id",
@@ -516,10 +520,11 @@ func (s *Server) handleSearchRequest(args [0]string, argsEscaped bool, w http.Re
 	var response SearchRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "Search",
-			OperationID:   "search",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "Search",
+			OperationSummary: "Search for comics",
+			OperationID:      "search",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "query",
@@ -625,10 +630,11 @@ func (s *Server) handleSearchByTagIDRequest(args [0]string, argsEscaped bool, w 
 	var response SearchByTagIDRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SearchByTagID",
-			OperationID:   "searchByTagID",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "SearchByTagID",
+			OperationSummary: "Search for comics by tag ID",
+			OperationID:      "searchByTagID",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "tag_id",

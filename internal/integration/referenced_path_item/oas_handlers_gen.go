@@ -57,12 +57,13 @@ func (s *Server) handleFooGetRequest(args [0]string, argsEscaped bool, w http.Re
 	var response string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "FooGet",
-			OperationID:   "",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "FooGet",
+			OperationSummary: "",
+			OperationID:      "",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (

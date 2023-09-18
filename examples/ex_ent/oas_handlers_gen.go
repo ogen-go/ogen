@@ -81,12 +81,13 @@ func (s *Server) handleCreatePetRequest(args [0]string, argsEscaped bool, w http
 	var response CreatePetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CreatePet",
-			OperationID:   "createPet",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "CreatePet",
+			OperationSummary: "Create a new Pet",
+			OperationID:      "createPet",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -196,10 +197,11 @@ func (s *Server) handleCreatePetCategoriesRequest(args [1]string, argsEscaped bo
 	var response CreatePetCategoriesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CreatePetCategories",
-			OperationID:   "createPetCategories",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "CreatePetCategories",
+			OperationSummary: "Create a new Category and attach it to the Pet",
+			OperationID:      "createPetCategories",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "id",
@@ -316,10 +318,11 @@ func (s *Server) handleCreatePetFriendsRequest(args [1]string, argsEscaped bool,
 	var response CreatePetFriendsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CreatePetFriends",
-			OperationID:   "createPetFriends",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "CreatePetFriends",
+			OperationSummary: "Create a new Pet and attach it to the Pet",
+			OperationID:      "createPetFriends",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "id",
@@ -436,10 +439,11 @@ func (s *Server) handleCreatePetOwnerRequest(args [1]string, argsEscaped bool, w
 	var response CreatePetOwnerRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CreatePetOwner",
-			OperationID:   "createPetOwner",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "CreatePetOwner",
+			OperationSummary: "Create a new User and attach it to the Pet",
+			OperationID:      "createPetOwner",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "id",
@@ -541,10 +545,11 @@ func (s *Server) handleDeletePetRequest(args [1]string, argsEscaped bool, w http
 	var response DeletePetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "DeletePet",
-			OperationID:   "deletePet",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "DeletePet",
+			OperationSummary: "Deletes a Pet by ID",
+			OperationID:      "deletePet",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "id",
@@ -646,10 +651,11 @@ func (s *Server) handleDeletePetOwnerRequest(args [1]string, argsEscaped bool, w
 	var response DeletePetOwnerRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "DeletePetOwner",
-			OperationID:   "deletePetOwner",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "DeletePetOwner",
+			OperationSummary: "Delete the attached Owner",
+			OperationID:      "deletePetOwner",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "id",
@@ -751,10 +757,11 @@ func (s *Server) handleListPetRequest(args [0]string, argsEscaped bool, w http.R
 	var response ListPetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ListPet",
-			OperationID:   "listPet",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ListPet",
+			OperationSummary: "List Pets",
+			OperationID:      "listPet",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "page",
@@ -860,10 +867,11 @@ func (s *Server) handleListPetCategoriesRequest(args [1]string, argsEscaped bool
 	var response ListPetCategoriesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ListPetCategories",
-			OperationID:   "listPetCategories",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ListPetCategories",
+			OperationSummary: "List attached Categories",
+			OperationID:      "listPetCategories",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "id",
@@ -973,10 +981,11 @@ func (s *Server) handleListPetFriendsRequest(args [1]string, argsEscaped bool, w
 	var response ListPetFriendsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ListPetFriends",
-			OperationID:   "listPetFriends",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ListPetFriends",
+			OperationSummary: "List attached Friends",
+			OperationID:      "listPetFriends",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "id",
@@ -1086,10 +1095,11 @@ func (s *Server) handleReadPetRequest(args [1]string, argsEscaped bool, w http.R
 	var response ReadPetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReadPet",
-			OperationID:   "readPet",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReadPet",
+			OperationSummary: "Find a Pet by ID",
+			OperationID:      "readPet",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "id",
@@ -1191,10 +1201,11 @@ func (s *Server) handleReadPetOwnerRequest(args [1]string, argsEscaped bool, w h
 	var response ReadPetOwnerRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReadPetOwner",
-			OperationID:   "readPetOwner",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReadPetOwner",
+			OperationSummary: "Find the attached User",
+			OperationID:      "readPetOwner",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "id",
@@ -1311,10 +1322,11 @@ func (s *Server) handleUpdatePetRequest(args [1]string, argsEscaped bool, w http
 	var response UpdatePetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UpdatePet",
-			OperationID:   "updatePet",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "UpdatePet",
+			OperationSummary: "Updates a Pet",
+			OperationID:      "updatePet",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "id",

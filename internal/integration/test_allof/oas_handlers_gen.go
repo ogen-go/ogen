@@ -81,12 +81,13 @@ func (s *Server) handleNullableStringsRequest(args [0]string, argsEscaped bool, 
 	var response *NullableStringsOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "NullableStrings",
-			OperationID:   "nullableStrings",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "NullableStrings",
+			OperationSummary: "",
+			OperationID:      "nullableStrings",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -186,12 +187,13 @@ func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string
 	var response *ObjectsWithConflictingArrayPropertyOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ObjectsWithConflictingArrayProperty",
-			OperationID:   "objectsWithConflictingArrayProperty",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "ObjectsWithConflictingArrayProperty",
+			OperationSummary: "",
+			OperationID:      "objectsWithConflictingArrayProperty",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -291,12 +293,13 @@ func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, a
 	var response *ObjectsWithConflictingPropertiesOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ObjectsWithConflictingProperties",
-			OperationID:   "objectsWithConflictingProperties",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "ObjectsWithConflictingProperties",
+			OperationSummary: "",
+			OperationID:      "objectsWithConflictingProperties",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -396,12 +399,13 @@ func (s *Server) handleReferencedAllofRequest(args [0]string, argsEscaped bool, 
 	var response *ReferencedAllofOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReferencedAllof",
-			OperationID:   "referencedAllof",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "ReferencedAllof",
+			OperationSummary: "",
+			OperationID:      "referencedAllof",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -501,12 +505,13 @@ func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, argsEscape
 	var response *ReferencedAllofOptionalOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReferencedAllofOptional",
-			OperationID:   "referencedAllofOptional",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "ReferencedAllofOptional",
+			OperationSummary: "",
+			OperationID:      "referencedAllofOptional",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -606,12 +611,13 @@ func (s *Server) handleSimpleIntegerRequest(args [0]string, argsEscaped bool, w 
 	var response *SimpleIntegerOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SimpleInteger",
-			OperationID:   "simpleInteger",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SimpleInteger",
+			OperationSummary: "",
+			OperationID:      "simpleInteger",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -711,12 +717,13 @@ func (s *Server) handleSimpleObjectsRequest(args [0]string, argsEscaped bool, w 
 	var response *SimpleObjectsOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SimpleObjects",
-			OperationID:   "simpleObjects",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SimpleObjects",
+			OperationSummary: "",
+			OperationID:      "simpleObjects",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -814,12 +821,13 @@ func (s *Server) handleStringsNotypeRequest(args [0]string, argsEscaped bool, w 
 	var response *StringsNotypeOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "StringsNotype",
-			OperationID:   "stringsNotype",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "StringsNotype",
+			OperationSummary: "",
+			OperationID:      "stringsNotype",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (

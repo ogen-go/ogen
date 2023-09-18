@@ -153,6 +153,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 // Route is route object.
 type Route struct {
 	name        string
+	summary     string
 	operationID string
 	pathPattern string
 	count       int
@@ -164,6 +165,11 @@ type Route struct {
 // It is guaranteed to be unique and not empty.
 func (r Route) Name() string {
 	return r.name
+}
+
+// Summary returns OpenAPI summary.
+func (r Route) Summary() string {
+	return r.summary
 }
 
 // OperationID returns OpenAPI operationId.
@@ -237,6 +243,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					case "GET":
 						// Leaf: Caching
 						r.name = "Caching"
+						r.summary = "Test #7. The Caching test exercises the preferred in-memory or separate-process caching technology for the platform or framework. For implementation simplicity, the requirements are very similar to the multiple database-query test Test #3, but use a separate database table. The requirements are quite generous, affording each framework fairly broad freedom to meet the requirements in the manner that best represents the canonical non-distributed caching approach for the framework. (Note: a distributed caching test type could be added later.)"
 						r.operationID = "Caching"
 						r.pathPattern = "/cached-worlds"
 						r.args = args
@@ -258,6 +265,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					case "GET":
 						// Leaf: DB
 						r.name = "DB"
+						r.summary = "Test #2. The Single Database Query test exercises the framework's object-relational mapper (ORM), random number generator, database driver, and database connection pool."
 						r.operationID = "DB"
 						r.pathPattern = "/db"
 						r.args = args
@@ -279,6 +287,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					case "GET":
 						// Leaf: JSON
 						r.name = "JSON"
+						r.summary = "Test #1. The JSON Serialization test exercises the framework fundamentals including keep-alive support, request routing, request header parsing, object instantiation, JSON serialization, response header generation, and request count throughput."
 						r.operationID = "json"
 						r.pathPattern = "/json"
 						r.args = args
@@ -300,6 +309,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					case "GET":
 						// Leaf: Queries
 						r.name = "Queries"
+						r.summary = "Test #3. The Multiple Database Queries test is a variation of Test #2 and also uses the World table. Multiple rows are fetched to more dramatically punish the database driver and connection pool. At the highest queries-per-request tested (20), this test demonstrates all frameworks' convergence toward zero requests-per-second as database activity increases."
 						r.operationID = "Queries"
 						r.pathPattern = "/queries"
 						r.args = args
@@ -321,6 +331,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					case "GET":
 						// Leaf: Updates
 						r.name = "Updates"
+						r.summary = "Test #5. The Database Updates test is a variation of Test #3 that exercises the ORM's persistence of objects and the database driver's performance at running UPDATE statements or similar. The spirit of this test is to exercise a variable number of read-then-write style database operations."
 						r.operationID = "Updates"
 						r.pathPattern = "/updates"
 						r.args = args

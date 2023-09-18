@@ -14572,6 +14572,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 // Route is route object.
 type Route struct {
 	name        string
+	summary     string
 	operationID string
 	pathPattern string
 	count       int
@@ -14583,6 +14584,11 @@ type Route struct {
 // It is guaranteed to be unique and not empty.
 func (r Route) Name() string {
 	return r.name
+}
+
+// Summary returns OpenAPI summary.
+func (r Route) Summary() string {
+	return r.summary
 }
 
 // OperationID returns OpenAPI operationId.
@@ -14644,6 +14650,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				switch method {
 				case "GET":
 					r.name = "MetaRoot"
+					r.summary = "GitHub API Root"
 					r.operationID = "meta/root"
 					r.pathPattern = "/"
 					r.args = args
@@ -14676,6 +14683,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						switch method {
 						case "GET":
 							r.name = "AppsGetAuthenticated"
+							r.summary = "Get the authenticated app"
 							r.operationID = "apps/get-authenticated"
 							r.pathPattern = "/app"
 							r.args = args
@@ -14718,6 +14726,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "POST":
 									// Leaf: AppsCreateFromManifest
 									r.name = "AppsCreateFromManifest"
+									r.summary = "Create a GitHub App from a manifest"
 									r.operationID = "apps/create-from-manifest"
 									r.pathPattern = "/app-manifests/{code}/conversions"
 									r.args = args
@@ -14762,6 +14771,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "GET":
 										// Leaf: AppsGetWebhookConfigForApp
 										r.name = "AppsGetWebhookConfigForApp"
+										r.summary = "Get a webhook configuration for an app"
 										r.operationID = "apps/get-webhook-config-for-app"
 										r.pathPattern = "/app/hook/config"
 										r.args = args
@@ -14770,6 +14780,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "PATCH":
 										// Leaf: AppsUpdateWebhookConfigForApp
 										r.name = "AppsUpdateWebhookConfigForApp"
+										r.summary = "Update a webhook configuration for an app"
 										r.operationID = "apps/update-webhook-config-for-app"
 										r.pathPattern = "/app/hook/config"
 										r.args = args
@@ -14790,6 +14801,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "AppsListWebhookDeliveries"
+										r.summary = "List deliveries for an app webhook"
 										r.operationID = "apps/list-webhook-deliveries"
 										r.pathPattern = "/app/hook/deliveries"
 										r.args = args
@@ -14820,6 +14832,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "AppsGetWebhookDelivery"
+											r.summary = "Get a delivery for an app webhook"
 											r.operationID = "apps/get-webhook-delivery"
 											r.pathPattern = "/app/hook/deliveries/{delivery_id}"
 											r.args = args
@@ -14842,6 +14855,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												// Leaf: AppsRedeliverWebhookDelivery
 												r.name = "AppsRedeliverWebhookDelivery"
+												r.summary = "Redeliver a delivery for an app webhook"
 												r.operationID = "apps/redeliver-webhook-delivery"
 												r.pathPattern = "/app/hook/deliveries/{delivery_id}/attempts"
 												r.args = args
@@ -14874,6 +14888,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								switch method {
 								case "DELETE":
 									r.name = "AppsDeleteInstallation"
+									r.summary = "Delete an installation for the authenticated app"
 									r.operationID = "apps/delete-installation"
 									r.pathPattern = "/app/installations/{installation_id}"
 									r.args = args
@@ -14907,6 +14922,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											// Leaf: AppsCreateInstallationAccessToken
 											r.name = "AppsCreateInstallationAccessToken"
+											r.summary = "Create an installation access token for an app"
 											r.operationID = "apps/create-installation-access-token"
 											r.pathPattern = "/app/installations/{installation_id}/access_tokens"
 											r.args = args
@@ -14928,6 +14944,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "DELETE":
 											// Leaf: AppsUnsuspendInstallation
 											r.name = "AppsUnsuspendInstallation"
+											r.summary = "Unsuspend an app installation"
 											r.operationID = "apps/unsuspend-installation"
 											r.pathPattern = "/app/installations/{installation_id}/suspended"
 											r.args = args
@@ -14936,6 +14953,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "PUT":
 											// Leaf: AppsSuspendInstallation
 											r.name = "AppsSuspendInstallation"
+											r.summary = "Suspend an app installation"
 											r.operationID = "apps/suspend-installation"
 											r.pathPattern = "/app/installations/{installation_id}/suspended"
 											r.args = args
@@ -14970,6 +14988,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								switch method {
 								case "GET":
 									r.name = "OAuthAuthorizationsListGrants"
+									r.summary = "List your grants"
 									r.operationID = "oauth-authorizations/list-grants"
 									r.pathPattern = "/applications/grants"
 									r.args = args
@@ -14997,6 +15016,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "DELETE":
 										// Leaf: OAuthAuthorizationsDeleteGrant
 										r.name = "OAuthAuthorizationsDeleteGrant"
+										r.summary = "Delete a grant"
 										r.operationID = "oauth-authorizations/delete-grant"
 										r.pathPattern = "/applications/grants/{grant_id}"
 										r.args = args
@@ -15005,6 +15025,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "GET":
 										// Leaf: OAuthAuthorizationsGetGrant
 										r.name = "OAuthAuthorizationsGetGrant"
+										r.summary = "Get a single grant"
 										r.operationID = "oauth-authorizations/get-grant"
 										r.pathPattern = "/applications/grants/{grant_id}"
 										r.args = args
@@ -15052,6 +15073,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "DELETE":
 										// Leaf: AppsDeleteAuthorization
 										r.name = "AppsDeleteAuthorization"
+										r.summary = "Delete an app authorization"
 										r.operationID = "apps/delete-authorization"
 										r.pathPattern = "/applications/{client_id}/grant"
 										r.args = args
@@ -15072,6 +15094,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									switch method {
 									case "DELETE":
 										r.name = "AppsDeleteToken"
+										r.summary = "Delete an app token"
 										r.operationID = "apps/delete-token"
 										r.pathPattern = "/applications/{client_id}/token"
 										r.args = args
@@ -15079,6 +15102,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										return r, true
 									case "PATCH":
 										r.name = "AppsResetToken"
+										r.summary = "Reset a token"
 										r.operationID = "apps/reset-token"
 										r.pathPattern = "/applications/{client_id}/token"
 										r.args = args
@@ -15086,6 +15110,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										return r, true
 									case "POST":
 										r.name = "AppsCheckToken"
+										r.summary = "Check a token"
 										r.operationID = "apps/check-token"
 										r.pathPattern = "/applications/{client_id}/token"
 										r.args = args
@@ -15108,6 +15133,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											// Leaf: AppsScopeToken
 											r.name = "AppsScopeToken"
+											r.summary = "Create a scoped access token"
 											r.operationID = "apps/scope-token"
 											r.pathPattern = "/applications/{client_id}/token/scoped"
 											r.args = args
@@ -15137,6 +15163,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "GET":
 								// Leaf: AppsGetBySlug
 								r.name = "AppsGetBySlug"
+								r.summary = "Get an app"
 								r.operationID = "apps/get-by-slug"
 								r.pathPattern = "/apps/{app_slug}"
 								r.args = args
@@ -15158,6 +15185,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						switch method {
 						case "GET":
 							r.name = "OAuthAuthorizationsListAuthorizations"
+							r.summary = "List your authorizations"
 							r.operationID = "oauth-authorizations/list-authorizations"
 							r.pathPattern = "/authorizations"
 							r.args = args
@@ -15165,6 +15193,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							return r, true
 						case "POST":
 							r.name = "OAuthAuthorizationsCreateAuthorization"
+							r.summary = "Create a new authorization"
 							r.operationID = "oauth-authorizations/create-authorization"
 							r.pathPattern = "/authorizations"
 							r.args = args
@@ -15206,6 +15235,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								switch method {
 								case "PUT":
 									r.name = "OAuthAuthorizationsGetOrCreateAuthorizationForApp"
+									r.summary = "Get-or-create an authorization for a specific app"
 									r.operationID = "oauth-authorizations/get-or-create-authorization-for-app"
 									r.pathPattern = "/authorizations/clients/{client_id}"
 									r.args = args
@@ -15233,6 +15263,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "PUT":
 										// Leaf: OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint
 										r.name = "OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint"
+										r.summary = "Get-or-create an authorization for a specific app and fingerprint"
 										r.operationID = "oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint"
 										r.pathPattern = "/authorizations/clients/{client_id}/{fingerprint}"
 										r.args = args
@@ -15254,6 +15285,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "DELETE":
 								// Leaf: OAuthAuthorizationsDeleteAuthorization
 								r.name = "OAuthAuthorizationsDeleteAuthorization"
+								r.summary = "Delete an authorization"
 								r.operationID = "oauth-authorizations/delete-authorization"
 								r.pathPattern = "/authorizations/{authorization_id}"
 								r.args = args
@@ -15262,6 +15294,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "GET":
 								// Leaf: OAuthAuthorizationsGetAuthorization
 								r.name = "OAuthAuthorizationsGetAuthorization"
+								r.summary = "Get a single authorization"
 								r.operationID = "oauth-authorizations/get-authorization"
 								r.pathPattern = "/authorizations/{authorization_id}"
 								r.args = args
@@ -15270,6 +15303,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "PATCH":
 								// Leaf: OAuthAuthorizationsUpdateAuthorization
 								r.name = "OAuthAuthorizationsUpdateAuthorization"
+								r.summary = "Update an existing authorization"
 								r.operationID = "oauth-authorizations/update-authorization"
 								r.pathPattern = "/authorizations/{authorization_id}"
 								r.args = args
@@ -15292,6 +15326,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					switch method {
 					case "GET":
 						r.name = "CodesOfConductGetAllCodesOfConduct"
+						r.summary = "Get all codes of conduct"
 						r.operationID = "codes-of-conduct/get-all-codes-of-conduct"
 						r.pathPattern = "/codes_of_conduct"
 						r.args = args
@@ -15319,6 +15354,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						case "GET":
 							// Leaf: CodesOfConductGetConductCode
 							r.name = "CodesOfConductGetConductCode"
+							r.summary = "Get a code of conduct"
 							r.operationID = "codes-of-conduct/get-conduct-code"
 							r.pathPattern = "/codes_of_conduct/{key}"
 							r.args = args
@@ -15352,6 +15388,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						case "GET":
 							// Leaf: EmojisGet
 							r.name = "EmojisGet"
+							r.summary = "Get emojis"
 							r.operationID = "emojis/get"
 							r.pathPattern = "/emojis"
 							r.args = args
@@ -15425,6 +15462,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "EnterpriseAdminGetGithubActionsPermissionsEnterprise"
+											r.summary = "Get GitHub Actions permissions for an enterprise"
 											r.operationID = "enterprise-admin/get-github-actions-permissions-enterprise"
 											r.pathPattern = "/enterprises/{enterprise}/actions/permissions"
 											r.args = args
@@ -15432,6 +15470,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											return r, true
 										case "PUT":
 											r.name = "EnterpriseAdminSetGithubActionsPermissionsEnterprise"
+											r.summary = "Set GitHub Actions permissions for an enterprise"
 											r.operationID = "enterprise-admin/set-github-actions-permissions-enterprise"
 											r.pathPattern = "/enterprises/{enterprise}/actions/permissions"
 											r.args = args
@@ -15464,6 +15503,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise"
+													r.summary = "List selected organizations enabled for GitHub Actions in an enterprise"
 													r.operationID = "enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise"
 													r.pathPattern = "/enterprises/{enterprise}/actions/permissions/organizations"
 													r.args = args
@@ -15471,6 +15511,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													return r, true
 												case "PUT":
 													r.name = "EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise"
+													r.summary = "Set selected organizations enabled for GitHub Actions in an enterprise"
 													r.operationID = "enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise"
 													r.pathPattern = "/enterprises/{enterprise}/actions/permissions/organizations"
 													r.args = args
@@ -15498,6 +15539,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "DELETE":
 														// Leaf: EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise
 														r.name = "EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise"
+														r.summary = "Disable a selected organization for GitHub Actions in an enterprise"
 														r.operationID = "enterprise-admin/disable-selected-organization-github-actions-enterprise"
 														r.pathPattern = "/enterprises/{enterprise}/actions/permissions/organizations/{org_id}"
 														r.args = args
@@ -15506,6 +15548,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "PUT":
 														// Leaf: EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise
 														r.name = "EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise"
+														r.summary = "Enable a selected organization for GitHub Actions in an enterprise"
 														r.operationID = "enterprise-admin/enable-selected-organization-github-actions-enterprise"
 														r.pathPattern = "/enterprises/{enterprise}/actions/permissions/organizations/{org_id}"
 														r.args = args
@@ -15528,6 +15571,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "GET":
 													// Leaf: EnterpriseAdminGetAllowedActionsEnterprise
 													r.name = "EnterpriseAdminGetAllowedActionsEnterprise"
+													r.summary = "Get allowed actions for an enterprise"
 													r.operationID = "enterprise-admin/get-allowed-actions-enterprise"
 													r.pathPattern = "/enterprises/{enterprise}/actions/permissions/selected-actions"
 													r.args = args
@@ -15536,6 +15580,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "PUT":
 													// Leaf: EnterpriseAdminSetAllowedActionsEnterprise
 													r.name = "EnterpriseAdminSetAllowedActionsEnterprise"
+													r.summary = "Set allowed actions for an enterprise"
 													r.operationID = "enterprise-admin/set-allowed-actions-enterprise"
 													r.pathPattern = "/enterprises/{enterprise}/actions/permissions/selected-actions"
 													r.args = args
@@ -15569,6 +15614,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise"
+												r.summary = "List self-hosted runner groups for an enterprise"
 												r.operationID = "enterprise-admin/list-self-hosted-runner-groups-for-enterprise"
 												r.pathPattern = "/enterprises/{enterprise}/actions/runner-groups"
 												r.args = args
@@ -15576,6 +15622,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												return r, true
 											case "POST":
 												r.name = "EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise"
+												r.summary = "Create a self-hosted runner group for an enterprise"
 												r.operationID = "enterprise-admin/create-self-hosted-runner-group-for-enterprise"
 												r.pathPattern = "/enterprises/{enterprise}/actions/runner-groups"
 												r.args = args
@@ -15606,6 +15653,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												switch method {
 												case "DELETE":
 													r.name = "EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise"
+													r.summary = "Delete a self-hosted runner group from an enterprise"
 													r.operationID = "enterprise-admin/delete-self-hosted-runner-group-from-enterprise"
 													r.pathPattern = "/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"
 													r.args = args
@@ -15613,6 +15661,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													return r, true
 												case "GET":
 													r.name = "EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise"
+													r.summary = "Get a self-hosted runner group for an enterprise"
 													r.operationID = "enterprise-admin/get-self-hosted-runner-group-for-enterprise"
 													r.pathPattern = "/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"
 													r.args = args
@@ -15620,6 +15669,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													return r, true
 												case "PATCH":
 													r.name = "EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise"
+													r.summary = "Update a self-hosted runner group for an enterprise"
 													r.operationID = "enterprise-admin/update-self-hosted-runner-group-for-enterprise"
 													r.pathPattern = "/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"
 													r.args = args
@@ -15652,6 +15702,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise"
+															r.summary = "List organization access to a self-hosted runner group in an enterprise"
 															r.operationID = "enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise"
 															r.pathPattern = "/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations"
 															r.args = args
@@ -15659,6 +15710,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															return r, true
 														case "PUT":
 															r.name = "EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise"
+															r.summary = "Set organization access for a self-hosted runner group in an enterprise"
 															r.operationID = "enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise"
 															r.pathPattern = "/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations"
 															r.args = args
@@ -15686,6 +15738,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "DELETE":
 																// Leaf: EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise
 																r.name = "EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise"
+																r.summary = "Remove organization access to a self-hosted runner group in an enterprise"
 																r.operationID = "enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise"
 																r.pathPattern = "/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}"
 																r.args = args
@@ -15694,6 +15747,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "PUT":
 																// Leaf: EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise
 																r.name = "EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise"
+																r.summary = "Add organization access to a self-hosted runner group in an enterprise"
 																r.operationID = "enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise"
 																r.pathPattern = "/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}"
 																r.args = args
@@ -15715,6 +15769,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise"
+															r.summary = "List self-hosted runners in a group for an enterprise"
 															r.operationID = "enterprise-admin/list-self-hosted-runners-in-group-for-enterprise"
 															r.pathPattern = "/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners"
 															r.args = args
@@ -15722,6 +15777,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															return r, true
 														case "PUT":
 															r.name = "EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise"
+															r.summary = "Set self-hosted runners in a group for an enterprise"
 															r.operationID = "enterprise-admin/set-self-hosted-runners-in-group-for-enterprise"
 															r.pathPattern = "/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners"
 															r.args = args
@@ -15749,6 +15805,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "DELETE":
 																// Leaf: EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise
 																r.name = "EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise"
+																r.summary = "Remove a self-hosted runner from a group for an enterprise"
 																r.operationID = "enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise"
 																r.pathPattern = "/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"
 																r.args = args
@@ -15757,6 +15814,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "PUT":
 																// Leaf: EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise
 																r.name = "EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise"
+																r.summary = "Add a self-hosted runner to a group for an enterprise"
 																r.operationID = "enterprise-admin/add-self-hosted-runner-to-group-for-enterprise"
 																r.pathPattern = "/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"
 																r.args = args
@@ -15781,6 +15839,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "EnterpriseAdminListSelfHostedRunnersForEnterprise"
+												r.summary = "List self-hosted runners for an enterprise"
 												r.operationID = "enterprise-admin/list-self-hosted-runners-for-enterprise"
 												r.pathPattern = "/enterprises/{enterprise}/actions/runners"
 												r.args = args
@@ -15814,6 +15873,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "GET":
 														// Leaf: EnterpriseAdminListRunnerApplicationsForEnterprise
 														r.name = "EnterpriseAdminListRunnerApplicationsForEnterprise"
+														r.summary = "List runner applications for an enterprise"
 														r.operationID = "enterprise-admin/list-runner-applications-for-enterprise"
 														r.pathPattern = "/enterprises/{enterprise}/actions/runners/downloads"
 														r.args = args
@@ -15846,6 +15906,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															// Leaf: EnterpriseAdminCreateRegistrationTokenForEnterprise
 															r.name = "EnterpriseAdminCreateRegistrationTokenForEnterprise"
+															r.summary = "Create a registration token for an enterprise"
 															r.operationID = "enterprise-admin/create-registration-token-for-enterprise"
 															r.pathPattern = "/enterprises/{enterprise}/actions/runners/registration-token"
 															r.args = args
@@ -15867,6 +15928,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															// Leaf: EnterpriseAdminCreateRemoveTokenForEnterprise
 															r.name = "EnterpriseAdminCreateRemoveTokenForEnterprise"
+															r.summary = "Create a remove token for an enterprise"
 															r.operationID = "enterprise-admin/create-remove-token-for-enterprise"
 															r.pathPattern = "/enterprises/{enterprise}/actions/runners/remove-token"
 															r.args = args
@@ -15888,6 +15950,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "DELETE":
 													// Leaf: EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise
 													r.name = "EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise"
+													r.summary = "Delete a self-hosted runner from an enterprise"
 													r.operationID = "enterprise-admin/delete-self-hosted-runner-from-enterprise"
 													r.pathPattern = "/enterprises/{enterprise}/actions/runners/{runner_id}"
 													r.args = args
@@ -15896,6 +15959,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "GET":
 													// Leaf: EnterpriseAdminGetSelfHostedRunnerForEnterprise
 													r.name = "EnterpriseAdminGetSelfHostedRunnerForEnterprise"
+													r.summary = "Get a self-hosted runner for an enterprise"
 													r.operationID = "enterprise-admin/get-self-hosted-runner-for-enterprise"
 													r.pathPattern = "/enterprises/{enterprise}/actions/runners/{runner_id}"
 													r.args = args
@@ -15920,6 +15984,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "GET":
 										// Leaf: EnterpriseAdminGetAuditLog
 										r.name = "EnterpriseAdminGetAuditLog"
+										r.summary = "Get the audit log for an enterprise"
 										r.operationID = "enterprise-admin/get-audit-log"
 										r.pathPattern = "/enterprises/{enterprise}/audit-log"
 										r.args = args
@@ -15953,6 +16018,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "GET":
 										// Leaf: BillingGetGithubActionsBillingGhe
 										r.name = "BillingGetGithubActionsBillingGhe"
+										r.summary = "Get GitHub Actions billing for an enterprise"
 										r.operationID = "billing/get-github-actions-billing-ghe"
 										r.pathPattern = "/enterprises/{enterprise}/settings/billing/actions"
 										r.args = args
@@ -15974,6 +16040,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "GET":
 										// Leaf: BillingGetGithubPackagesBillingGhe
 										r.name = "BillingGetGithubPackagesBillingGhe"
+										r.summary = "Get GitHub Packages billing for an enterprise"
 										r.operationID = "billing/get-github-packages-billing-ghe"
 										r.pathPattern = "/enterprises/{enterprise}/settings/billing/packages"
 										r.args = args
@@ -15995,6 +16062,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "GET":
 										// Leaf: BillingGetSharedStorageBillingGhe
 										r.name = "BillingGetSharedStorageBillingGhe"
+										r.summary = "Get shared storage billing for an enterprise"
 										r.operationID = "billing/get-shared-storage-billing-ghe"
 										r.pathPattern = "/enterprises/{enterprise}/settings/billing/shared-storage"
 										r.args = args
@@ -16019,6 +16087,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						case "GET":
 							// Leaf: ActivityListPublicEvents
 							r.name = "ActivityListPublicEvents"
+							r.summary = "List public events"
 							r.operationID = "activity/list-public-events"
 							r.pathPattern = "/events"
 							r.args = args
@@ -16041,6 +16110,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					case "GET":
 						// Leaf: ActivityGetFeeds
 						r.name = "ActivityGetFeeds"
+						r.summary = "Get feeds"
 						r.operationID = "activity/get-feeds"
 						r.pathPattern = "/feeds"
 						r.args = args
@@ -16072,6 +16142,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						switch method {
 						case "GET":
 							r.name = "GistsList"
+							r.summary = "List gists for the authenticated user"
 							r.operationID = "gists/list"
 							r.pathPattern = "/gists"
 							r.args = args
@@ -16079,6 +16150,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							return r, true
 						case "POST":
 							r.name = "GistsCreate"
+							r.summary = "Create a gist"
 							r.operationID = "gists/create"
 							r.pathPattern = "/gists"
 							r.args = args
@@ -16112,6 +16184,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "GET":
 									// Leaf: GistsListPublic
 									r.name = "GistsListPublic"
+									r.summary = "List public gists"
 									r.operationID = "gists/list-public"
 									r.pathPattern = "/gists/public"
 									r.args = args
@@ -16133,6 +16206,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "GET":
 									// Leaf: GistsListStarred
 									r.name = "GistsListStarred"
+									r.summary = "List starred gists"
 									r.operationID = "gists/list-starred"
 									r.pathPattern = "/gists/starred"
 									r.args = args
@@ -16156,6 +16230,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							switch method {
 							case "DELETE":
 								r.name = "GistsDelete"
+								r.summary = "Delete a gist"
 								r.operationID = "gists/delete"
 								r.pathPattern = "/gists/{gist_id}"
 								r.args = args
@@ -16163,6 +16238,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								return r, true
 							case "GET":
 								r.name = "GistsGet"
+								r.summary = "Get a gist"
 								r.operationID = "gists/get"
 								r.pathPattern = "/gists/{gist_id}"
 								r.args = args
@@ -16206,6 +16282,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "GistsListComments"
+											r.summary = "List gist comments"
 											r.operationID = "gists/list-comments"
 											r.pathPattern = "/gists/{gist_id}/comments"
 											r.args = args
@@ -16213,6 +16290,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											return r, true
 										case "POST":
 											r.name = "GistsCreateComment"
+											r.summary = "Create a gist comment"
 											r.operationID = "gists/create-comment"
 											r.pathPattern = "/gists/{gist_id}/comments"
 											r.args = args
@@ -16240,6 +16318,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "DELETE":
 												// Leaf: GistsDeleteComment
 												r.name = "GistsDeleteComment"
+												r.summary = "Delete a gist comment"
 												r.operationID = "gists/delete-comment"
 												r.pathPattern = "/gists/{gist_id}/comments/{comment_id}"
 												r.args = args
@@ -16248,6 +16327,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "GET":
 												// Leaf: GistsGetComment
 												r.name = "GistsGetComment"
+												r.summary = "Get a gist comment"
 												r.operationID = "gists/get-comment"
 												r.pathPattern = "/gists/{gist_id}/comments/{comment_id}"
 												r.args = args
@@ -16256,6 +16336,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "PATCH":
 												// Leaf: GistsUpdateComment
 												r.name = "GistsUpdateComment"
+												r.summary = "Update a gist comment"
 												r.operationID = "gists/update-comment"
 												r.pathPattern = "/gists/{gist_id}/comments/{comment_id}"
 												r.args = args
@@ -16278,6 +16359,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "GET":
 											// Leaf: GistsListCommits
 											r.name = "GistsListCommits"
+											r.summary = "List gist commits"
 											r.operationID = "gists/list-commits"
 											r.pathPattern = "/gists/{gist_id}/commits"
 											r.args = args
@@ -16300,6 +16382,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "GET":
 										// Leaf: GistsListForks
 										r.name = "GistsListForks"
+										r.summary = "List gist forks"
 										r.operationID = "gists/list-forks"
 										r.pathPattern = "/gists/{gist_id}/forks"
 										r.args = args
@@ -16308,6 +16391,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "POST":
 										// Leaf: GistsFork
 										r.name = "GistsFork"
+										r.summary = "Fork a gist"
 										r.operationID = "gists/fork"
 										r.pathPattern = "/gists/{gist_id}/forks"
 										r.args = args
@@ -16329,6 +16413,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "DELETE":
 										// Leaf: GistsUnstar
 										r.name = "GistsUnstar"
+										r.summary = "Unstar a gist"
 										r.operationID = "gists/unstar"
 										r.pathPattern = "/gists/{gist_id}/star"
 										r.args = args
@@ -16337,6 +16422,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "GET":
 										// Leaf: GistsCheckIsStarred
 										r.name = "GistsCheckIsStarred"
+										r.summary = "Check if a gist is starred"
 										r.operationID = "gists/check-is-starred"
 										r.pathPattern = "/gists/{gist_id}/star"
 										r.args = args
@@ -16345,6 +16431,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "PUT":
 										// Leaf: GistsStar
 										r.name = "GistsStar"
+										r.summary = "Star a gist"
 										r.operationID = "gists/star"
 										r.pathPattern = "/gists/{gist_id}/star"
 										r.args = args
@@ -16365,6 +16452,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "GET":
 									// Leaf: GistsGetRevision
 									r.name = "GistsGetRevision"
+									r.summary = "Get a gist revision"
 									r.operationID = "gists/get-revision"
 									r.pathPattern = "/gists/{gist_id}/{sha}"
 									r.args = args
@@ -16387,6 +16475,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						switch method {
 						case "GET":
 							r.name = "GitignoreGetAllTemplates"
+							r.summary = "Get all gitignore templates"
 							r.operationID = "gitignore/get-all-templates"
 							r.pathPattern = "/gitignore/templates"
 							r.args = args
@@ -16414,6 +16503,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "GET":
 								// Leaf: GitignoreGetTemplate
 								r.name = "GitignoreGetTemplate"
+								r.summary = "Get a gitignore template"
 								r.operationID = "gitignore/get-template"
 								r.pathPattern = "/gitignore/templates/{name}"
 								r.args = args
@@ -16459,6 +16549,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "GET":
 								// Leaf: AppsListReposAccessibleToInstallation
 								r.name = "AppsListReposAccessibleToInstallation"
+								r.summary = "List repositories accessible to the app installation"
 								r.operationID = "apps/list-repos-accessible-to-installation"
 								r.pathPattern = "/installation/repositories"
 								r.args = args
@@ -16480,6 +16571,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "DELETE":
 								// Leaf: AppsRevokeInstallationAccessToken
 								r.name = "AppsRevokeInstallationAccessToken"
+								r.summary = "Revoke an installation access token"
 								r.operationID = "apps/revoke-installation-access-token"
 								r.pathPattern = "/installation/token"
 								r.args = args
@@ -16502,6 +16594,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						case "GET":
 							// Leaf: IssuesList
 							r.name = "IssuesList"
+							r.summary = "List issues assigned to the authenticated user"
 							r.operationID = "issues/list"
 							r.pathPattern = "/issues"
 							r.args = args
@@ -16523,6 +16616,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					switch method {
 					case "GET":
 						r.name = "LicensesGetAllCommonlyUsed"
+						r.summary = "Get all commonly used licenses"
 						r.operationID = "licenses/get-all-commonly-used"
 						r.pathPattern = "/licenses"
 						r.args = args
@@ -16550,6 +16644,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						case "GET":
 							// Leaf: LicensesGet
 							r.name = "LicensesGet"
+							r.summary = "Get a license"
 							r.operationID = "licenses/get"
 							r.pathPattern = "/licenses/{license}"
 							r.args = args
@@ -16593,6 +16688,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							switch method {
 							case "POST":
 								r.name = "MarkdownRender"
+								r.summary = "Render a Markdown document"
 								r.operationID = "markdown/render"
 								r.pathPattern = "/markdown"
 								r.args = args
@@ -16615,6 +16711,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "POST":
 									// Leaf: MarkdownRenderRaw
 									r.name = "MarkdownRenderRaw"
+									r.summary = "Render a Markdown document in raw mode"
 									r.operationID = "markdown/render-raw"
 									r.pathPattern = "/markdown/raw"
 									r.args = args
@@ -16653,6 +16750,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "GET":
 									// Leaf: AppsGetSubscriptionPlanForAccount
 									r.name = "AppsGetSubscriptionPlanForAccount"
+									r.summary = "Get a subscription plan for an account"
 									r.operationID = "apps/get-subscription-plan-for-account"
 									r.pathPattern = "/marketplace_listing/accounts/{account_id}"
 									r.args = args
@@ -16673,6 +16771,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								switch method {
 								case "GET":
 									r.name = "AppsListPlans"
+									r.summary = "List plans"
 									r.operationID = "apps/list-plans"
 									r.pathPattern = "/marketplace_listing/plans"
 									r.args = args
@@ -16715,6 +16814,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "GET":
 											// Leaf: AppsListAccountsForPlan
 											r.name = "AppsListAccountsForPlan"
+											r.summary = "List accounts for a plan"
 											r.operationID = "apps/list-accounts-for-plan"
 											r.pathPattern = "/marketplace_listing/plans/{plan_id}/accounts"
 											r.args = args
@@ -16754,6 +16854,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "GET":
 										// Leaf: AppsGetSubscriptionPlanForAccountStubbed
 										r.name = "AppsGetSubscriptionPlanForAccountStubbed"
+										r.summary = "Get a subscription plan for an account (stubbed)"
 										r.operationID = "apps/get-subscription-plan-for-account-stubbed"
 										r.pathPattern = "/marketplace_listing/stubbed/accounts/{account_id}"
 										r.args = args
@@ -16774,6 +16875,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "AppsListPlansStubbed"
+										r.summary = "List plans (stubbed)"
 										r.operationID = "apps/list-plans-stubbed"
 										r.pathPattern = "/marketplace_listing/stubbed/plans"
 										r.args = args
@@ -16816,6 +16918,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "GET":
 												// Leaf: AppsListAccountsForPlanStubbed
 												r.name = "AppsListAccountsForPlanStubbed"
+												r.summary = "List accounts for a plan (stubbed)"
 												r.operationID = "apps/list-accounts-for-plan-stubbed"
 												r.pathPattern = "/marketplace_listing/stubbed/plans/{plan_id}/accounts"
 												r.args = args
@@ -16842,6 +16945,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						case "GET":
 							// Leaf: MetaGet
 							r.name = "MetaGet"
+							r.summary = "Get GitHub meta information"
 							r.operationID = "meta/get"
 							r.pathPattern = "/meta"
 							r.args = args
@@ -16915,6 +17019,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "GET":
 									// Leaf: ActivityListPublicEventsForRepoNetwork
 									r.name = "ActivityListPublicEventsForRepoNetwork"
+									r.summary = "List public events for a network of repositories"
 									r.operationID = "activity/list-public-events-for-repo-network"
 									r.pathPattern = "/networks/{owner}/{repo}/events"
 									r.args = args
@@ -16937,6 +17042,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						switch method {
 						case "GET":
 							r.name = "ActivityListNotificationsForAuthenticatedUser"
+							r.summary = "List notifications for the authenticated user"
 							r.operationID = "activity/list-notifications-for-authenticated-user"
 							r.pathPattern = "/notifications"
 							r.args = args
@@ -16944,6 +17050,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							return r, true
 						case "PUT":
 							r.name = "ActivityMarkNotificationsAsRead"
+							r.summary = "Mark notifications as read"
 							r.operationID = "activity/mark-notifications-as-read"
 							r.pathPattern = "/notifications"
 							r.args = args
@@ -16974,6 +17081,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							switch method {
 							case "GET":
 								r.name = "ActivityGetThread"
+								r.summary = "Get a thread"
 								r.operationID = "activity/get-thread"
 								r.pathPattern = "/notifications/threads/{thread_id}"
 								r.args = args
@@ -16981,6 +17089,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								return r, true
 							case "PATCH":
 								r.name = "ActivityMarkThreadAsRead"
+								r.summary = "Mark a thread as read"
 								r.operationID = "activity/mark-thread-as-read"
 								r.pathPattern = "/notifications/threads/{thread_id}"
 								r.args = args
@@ -17003,6 +17112,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "DELETE":
 									// Leaf: ActivityDeleteThreadSubscription
 									r.name = "ActivityDeleteThreadSubscription"
+									r.summary = "Delete a thread subscription"
 									r.operationID = "activity/delete-thread-subscription"
 									r.pathPattern = "/notifications/threads/{thread_id}/subscription"
 									r.args = args
@@ -17011,6 +17121,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "GET":
 									// Leaf: ActivityGetThreadSubscriptionForAuthenticatedUser
 									r.name = "ActivityGetThreadSubscriptionForAuthenticatedUser"
+									r.summary = "Get a thread subscription for the authenticated user"
 									r.operationID = "activity/get-thread-subscription-for-authenticated-user"
 									r.pathPattern = "/notifications/threads/{thread_id}/subscription"
 									r.args = args
@@ -17019,6 +17130,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "PUT":
 									// Leaf: ActivitySetThreadSubscription
 									r.name = "ActivitySetThreadSubscription"
+									r.summary = "Set a thread subscription"
 									r.operationID = "activity/set-thread-subscription"
 									r.pathPattern = "/notifications/threads/{thread_id}/subscription"
 									r.args = args
@@ -17054,6 +17166,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						case "GET":
 							// Leaf: MetaGetOctocat
 							r.name = "MetaGetOctocat"
+							r.summary = "Get Octocat"
 							r.operationID = "meta/get-octocat"
 							r.pathPattern = "/octocat"
 							r.args = args
@@ -17086,6 +17199,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "GET":
 								// Leaf: OrgsList
 								r.name = "OrgsList"
+								r.summary = "List organizations"
 								r.operationID = "orgs/list"
 								r.pathPattern = "/organizations"
 								r.args = args
@@ -17115,6 +17229,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							switch method {
 							case "GET":
 								r.name = "OrgsGet"
+								r.summary = "Get an organization"
 								r.operationID = "orgs/get"
 								r.pathPattern = "/orgs/{org}"
 								r.args = args
@@ -17169,6 +17284,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ActionsGetGithubActionsPermissionsOrganization"
+												r.summary = "Get GitHub Actions permissions for an organization"
 												r.operationID = "actions/get-github-actions-permissions-organization"
 												r.pathPattern = "/orgs/{org}/actions/permissions"
 												r.args = args
@@ -17176,6 +17292,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												return r, true
 											case "PUT":
 												r.name = "ActionsSetGithubActionsPermissionsOrganization"
+												r.summary = "Set GitHub Actions permissions for an organization"
 												r.operationID = "actions/set-github-actions-permissions-organization"
 												r.pathPattern = "/orgs/{org}/actions/permissions"
 												r.args = args
@@ -17208,6 +17325,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "ActionsListSelectedRepositoriesEnabledGithubActionsOrganization"
+														r.summary = "List selected repositories enabled for GitHub Actions in an organization"
 														r.operationID = "actions/list-selected-repositories-enabled-github-actions-organization"
 														r.pathPattern = "/orgs/{org}/actions/permissions/repositories"
 														r.args = args
@@ -17215,6 +17333,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														return r, true
 													case "PUT":
 														r.name = "ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization"
+														r.summary = "Set selected repositories enabled for GitHub Actions in an organization"
 														r.operationID = "actions/set-selected-repositories-enabled-github-actions-organization"
 														r.pathPattern = "/orgs/{org}/actions/permissions/repositories"
 														r.args = args
@@ -17242,6 +17361,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "DELETE":
 															// Leaf: ActionsDisableSelectedRepositoryGithubActionsOrganization
 															r.name = "ActionsDisableSelectedRepositoryGithubActionsOrganization"
+															r.summary = "Disable a selected repository for GitHub Actions in an organization"
 															r.operationID = "actions/disable-selected-repository-github-actions-organization"
 															r.pathPattern = "/orgs/{org}/actions/permissions/repositories/{repository_id}"
 															r.args = args
@@ -17250,6 +17370,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "PUT":
 															// Leaf: ActionsEnableSelectedRepositoryGithubActionsOrganization
 															r.name = "ActionsEnableSelectedRepositoryGithubActionsOrganization"
+															r.summary = "Enable a selected repository for GitHub Actions in an organization"
 															r.operationID = "actions/enable-selected-repository-github-actions-organization"
 															r.pathPattern = "/orgs/{org}/actions/permissions/repositories/{repository_id}"
 															r.args = args
@@ -17272,6 +17393,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ActionsGetAllowedActionsOrganization
 														r.name = "ActionsGetAllowedActionsOrganization"
+														r.summary = "Get allowed actions for an organization"
 														r.operationID = "actions/get-allowed-actions-organization"
 														r.pathPattern = "/orgs/{org}/actions/permissions/selected-actions"
 														r.args = args
@@ -17280,6 +17402,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "PUT":
 														// Leaf: ActionsSetAllowedActionsOrganization
 														r.name = "ActionsSetAllowedActionsOrganization"
+														r.summary = "Set allowed actions for an organization"
 														r.operationID = "actions/set-allowed-actions-organization"
 														r.pathPattern = "/orgs/{org}/actions/permissions/selected-actions"
 														r.args = args
@@ -17313,6 +17436,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "ActionsListSelfHostedRunnerGroupsForOrg"
+													r.summary = "List self-hosted runner groups for an organization"
 													r.operationID = "actions/list-self-hosted-runner-groups-for-org"
 													r.pathPattern = "/orgs/{org}/actions/runner-groups"
 													r.args = args
@@ -17320,6 +17444,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													return r, true
 												case "POST":
 													r.name = "ActionsCreateSelfHostedRunnerGroupForOrg"
+													r.summary = "Create a self-hosted runner group for an organization"
 													r.operationID = "actions/create-self-hosted-runner-group-for-org"
 													r.pathPattern = "/orgs/{org}/actions/runner-groups"
 													r.args = args
@@ -17350,6 +17475,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													switch method {
 													case "DELETE":
 														r.name = "ActionsDeleteSelfHostedRunnerGroupFromOrg"
+														r.summary = "Delete a self-hosted runner group from an organization"
 														r.operationID = "actions/delete-self-hosted-runner-group-from-org"
 														r.pathPattern = "/orgs/{org}/actions/runner-groups/{runner_group_id}"
 														r.args = args
@@ -17357,6 +17483,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														return r, true
 													case "GET":
 														r.name = "ActionsGetSelfHostedRunnerGroupForOrg"
+														r.summary = "Get a self-hosted runner group for an organization"
 														r.operationID = "actions/get-self-hosted-runner-group-for-org"
 														r.pathPattern = "/orgs/{org}/actions/runner-groups/{runner_group_id}"
 														r.args = args
@@ -17364,6 +17491,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														return r, true
 													case "PATCH":
 														r.name = "ActionsUpdateSelfHostedRunnerGroupForOrg"
+														r.summary = "Update a self-hosted runner group for an organization"
 														r.operationID = "actions/update-self-hosted-runner-group-for-org"
 														r.pathPattern = "/orgs/{org}/actions/runner-groups/{runner_group_id}"
 														r.args = args
@@ -17396,6 +17524,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															switch method {
 															case "GET":
 																r.name = "ActionsListRepoAccessToSelfHostedRunnerGroupInOrg"
+																r.summary = "List repository access to a self-hosted runner group in an organization"
 																r.operationID = "actions/list-repo-access-to-self-hosted-runner-group-in-org"
 																r.pathPattern = "/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories"
 																r.args = args
@@ -17403,6 +17532,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																return r, true
 															case "PUT":
 																r.name = "ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg"
+																r.summary = "Set repository access for a self-hosted runner group in an organization"
 																r.operationID = "actions/set-repo-access-to-self-hosted-runner-group-in-org"
 																r.pathPattern = "/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories"
 																r.args = args
@@ -17430,6 +17560,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "DELETE":
 																	// Leaf: ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg
 																	r.name = "ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg"
+																	r.summary = "Remove repository access to a self-hosted runner group in an organization"
 																	r.operationID = "actions/remove-repo-access-to-self-hosted-runner-group-in-org"
 																	r.pathPattern = "/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}"
 																	r.args = args
@@ -17438,6 +17569,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "PUT":
 																	// Leaf: ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg
 																	r.name = "ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg"
+																	r.summary = "Add repository access to a self-hosted runner group in an organization"
 																	r.operationID = "actions/add-repo-access-to-self-hosted-runner-group-in-org"
 																	r.pathPattern = "/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}"
 																	r.args = args
@@ -17459,6 +17591,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															switch method {
 															case "GET":
 																r.name = "ActionsListSelfHostedRunnersInGroupForOrg"
+																r.summary = "List self-hosted runners in a group for an organization"
 																r.operationID = "actions/list-self-hosted-runners-in-group-for-org"
 																r.pathPattern = "/orgs/{org}/actions/runner-groups/{runner_group_id}/runners"
 																r.args = args
@@ -17466,6 +17599,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																return r, true
 															case "PUT":
 																r.name = "ActionsSetSelfHostedRunnersInGroupForOrg"
+																r.summary = "Set self-hosted runners in a group for an organization"
 																r.operationID = "actions/set-self-hosted-runners-in-group-for-org"
 																r.pathPattern = "/orgs/{org}/actions/runner-groups/{runner_group_id}/runners"
 																r.args = args
@@ -17493,6 +17627,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "DELETE":
 																	// Leaf: ActionsRemoveSelfHostedRunnerFromGroupForOrg
 																	r.name = "ActionsRemoveSelfHostedRunnerFromGroupForOrg"
+																	r.summary = "Remove a self-hosted runner from a group for an organization"
 																	r.operationID = "actions/remove-self-hosted-runner-from-group-for-org"
 																	r.pathPattern = "/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"
 																	r.args = args
@@ -17501,6 +17636,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "PUT":
 																	// Leaf: ActionsAddSelfHostedRunnerToGroupForOrg
 																	r.name = "ActionsAddSelfHostedRunnerToGroupForOrg"
+																	r.summary = "Add a self-hosted runner to a group for an organization"
 																	r.operationID = "actions/add-self-hosted-runner-to-group-for-org"
 																	r.pathPattern = "/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"
 																	r.args = args
@@ -17525,6 +17661,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "ActionsListSelfHostedRunnersForOrg"
+													r.summary = "List self-hosted runners for an organization"
 													r.operationID = "actions/list-self-hosted-runners-for-org"
 													r.pathPattern = "/orgs/{org}/actions/runners"
 													r.args = args
@@ -17558,6 +17695,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ActionsListRunnerApplicationsForOrg
 															r.name = "ActionsListRunnerApplicationsForOrg"
+															r.summary = "List runner applications for an organization"
 															r.operationID = "actions/list-runner-applications-for-org"
 															r.pathPattern = "/orgs/{org}/actions/runners/downloads"
 															r.args = args
@@ -17590,6 +17728,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																// Leaf: ActionsCreateRegistrationTokenForOrg
 																r.name = "ActionsCreateRegistrationTokenForOrg"
+																r.summary = "Create a registration token for an organization"
 																r.operationID = "actions/create-registration-token-for-org"
 																r.pathPattern = "/orgs/{org}/actions/runners/registration-token"
 																r.args = args
@@ -17611,6 +17750,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																// Leaf: ActionsCreateRemoveTokenForOrg
 																r.name = "ActionsCreateRemoveTokenForOrg"
+																r.summary = "Create a remove token for an organization"
 																r.operationID = "actions/create-remove-token-for-org"
 																r.pathPattern = "/orgs/{org}/actions/runners/remove-token"
 																r.args = args
@@ -17632,6 +17772,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "DELETE":
 														// Leaf: ActionsDeleteSelfHostedRunnerFromOrg
 														r.name = "ActionsDeleteSelfHostedRunnerFromOrg"
+														r.summary = "Delete a self-hosted runner from an organization"
 														r.operationID = "actions/delete-self-hosted-runner-from-org"
 														r.pathPattern = "/orgs/{org}/actions/runners/{runner_id}"
 														r.args = args
@@ -17640,6 +17781,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ActionsGetSelfHostedRunnerForOrg
 														r.name = "ActionsGetSelfHostedRunnerForOrg"
+														r.summary = "Get a self-hosted runner for an organization"
 														r.operationID = "actions/get-self-hosted-runner-for-org"
 														r.pathPattern = "/orgs/{org}/actions/runners/{runner_id}"
 														r.args = args
@@ -17662,6 +17804,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ActionsListOrgSecrets"
+												r.summary = "List organization secrets"
 												r.operationID = "actions/list-org-secrets"
 												r.pathPattern = "/orgs/{org}/actions/secrets"
 												r.args = args
@@ -17695,6 +17838,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ActionsGetOrgPublicKey
 														r.name = "ActionsGetOrgPublicKey"
+														r.summary = "Get an organization public key"
 														r.operationID = "actions/get-org-public-key"
 														r.pathPattern = "/orgs/{org}/actions/secrets/public-key"
 														r.args = args
@@ -17718,6 +17862,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												switch method {
 												case "DELETE":
 													r.name = "ActionsDeleteOrgSecret"
+													r.summary = "Delete an organization secret"
 													r.operationID = "actions/delete-org-secret"
 													r.pathPattern = "/orgs/{org}/actions/secrets/{secret_name}"
 													r.args = args
@@ -17725,6 +17870,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													return r, true
 												case "GET":
 													r.name = "ActionsGetOrgSecret"
+													r.summary = "Get an organization secret"
 													r.operationID = "actions/get-org-secret"
 													r.pathPattern = "/orgs/{org}/actions/secrets/{secret_name}"
 													r.args = args
@@ -17732,6 +17878,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													return r, true
 												case "PUT":
 													r.name = "ActionsCreateOrUpdateOrgSecret"
+													r.summary = "Create or update an organization secret"
 													r.operationID = "actions/create-or-update-org-secret"
 													r.pathPattern = "/orgs/{org}/actions/secrets/{secret_name}"
 													r.args = args
@@ -17753,6 +17900,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "ActionsListSelectedReposForOrgSecret"
+														r.summary = "List selected repositories for an organization secret"
 														r.operationID = "actions/list-selected-repos-for-org-secret"
 														r.pathPattern = "/orgs/{org}/actions/secrets/{secret_name}/repositories"
 														r.args = args
@@ -17760,6 +17908,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														return r, true
 													case "PUT":
 														r.name = "ActionsSetSelectedReposForOrgSecret"
+														r.summary = "Set selected repositories for an organization secret"
 														r.operationID = "actions/set-selected-repos-for-org-secret"
 														r.pathPattern = "/orgs/{org}/actions/secrets/{secret_name}/repositories"
 														r.args = args
@@ -17787,6 +17936,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "DELETE":
 															// Leaf: ActionsRemoveSelectedRepoFromOrgSecret
 															r.name = "ActionsRemoveSelectedRepoFromOrgSecret"
+															r.summary = "Remove selected repository from an organization secret"
 															r.operationID = "actions/remove-selected-repo-from-org-secret"
 															r.pathPattern = "/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"
 															r.args = args
@@ -17795,6 +17945,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "PUT":
 															// Leaf: ActionsAddSelectedRepoToOrgSecret
 															r.name = "ActionsAddSelectedRepoToOrgSecret"
+															r.summary = "Add selected repository to an organization secret"
 															r.operationID = "actions/add-selected-repo-to-org-secret"
 															r.pathPattern = "/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"
 															r.args = args
@@ -17820,6 +17971,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "GET":
 											// Leaf: OrgsGetAuditLog
 											r.name = "OrgsGetAuditLog"
+											r.summary = "Get the audit log for an organization"
 											r.operationID = "orgs/get-audit-log"
 											r.pathPattern = "/orgs/{org}/audit-log"
 											r.args = args
@@ -17841,6 +17993,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "OrgsListBlockedUsers"
+										r.summary = "List users blocked by an organization"
 										r.operationID = "orgs/list-blocked-users"
 										r.pathPattern = "/orgs/{org}/blocks"
 										r.args = args
@@ -17868,6 +18021,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "DELETE":
 											// Leaf: OrgsUnblockUser
 											r.name = "OrgsUnblockUser"
+											r.summary = "Unblock a user from an organization"
 											r.operationID = "orgs/unblock-user"
 											r.pathPattern = "/orgs/{org}/blocks/{username}"
 											r.args = args
@@ -17876,6 +18030,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "GET":
 											// Leaf: OrgsCheckBlockedUser
 											r.name = "OrgsCheckBlockedUser"
+											r.summary = "Check if a user is blocked by an organization"
 											r.operationID = "orgs/check-blocked-user"
 											r.pathPattern = "/orgs/{org}/blocks/{username}"
 											r.args = args
@@ -17884,6 +18039,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "PUT":
 											// Leaf: OrgsBlockUser
 											r.name = "OrgsBlockUser"
+											r.summary = "Block a user from an organization"
 											r.operationID = "orgs/block-user"
 											r.pathPattern = "/orgs/{org}/blocks/{username}"
 											r.args = args
@@ -17905,6 +18061,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "OrgsListSamlSSOAuthorizations"
+										r.summary = "List SAML SSO authorizations for an organization"
 										r.operationID = "orgs/list-saml-sso-authorizations"
 										r.pathPattern = "/orgs/{org}/credential-authorizations"
 										r.args = args
@@ -17932,6 +18089,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "DELETE":
 											// Leaf: OrgsRemoveSamlSSOAuthorization
 											r.name = "OrgsRemoveSamlSSOAuthorization"
+											r.summary = "Remove a SAML SSO authorization for an organization"
 											r.operationID = "orgs/remove-saml-sso-authorization"
 											r.pathPattern = "/orgs/{org}/credential-authorizations/{credential_id}"
 											r.args = args
@@ -17954,6 +18112,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "GET":
 										// Leaf: ActivityListPublicOrgEvents
 										r.name = "ActivityListPublicOrgEvents"
+										r.summary = "List public organization events"
 										r.operationID = "activity/list-public-org-events"
 										r.pathPattern = "/orgs/{org}/events"
 										r.args = args
@@ -17975,6 +18134,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "GET":
 										// Leaf: OrgsListFailedInvitations
 										r.name = "OrgsListFailedInvitations"
+										r.summary = "List failed organization invitations"
 										r.operationID = "orgs/list-failed-invitations"
 										r.pathPattern = "/orgs/{org}/failed_invitations"
 										r.args = args
@@ -17995,6 +18155,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "OrgsListWebhooks"
+										r.summary = "List organization webhooks"
 										r.operationID = "orgs/list-webhooks"
 										r.pathPattern = "/orgs/{org}/hooks"
 										r.args = args
@@ -18002,6 +18163,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										return r, true
 									case "POST":
 										r.name = "OrgsCreateWebhook"
+										r.summary = "Create an organization webhook"
 										r.operationID = "orgs/create-webhook"
 										r.pathPattern = "/orgs/{org}/hooks"
 										r.args = args
@@ -18032,6 +18194,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										switch method {
 										case "DELETE":
 											r.name = "OrgsDeleteWebhook"
+											r.summary = "Delete an organization webhook"
 											r.operationID = "orgs/delete-webhook"
 											r.pathPattern = "/orgs/{org}/hooks/{hook_id}"
 											r.args = args
@@ -18039,6 +18202,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											return r, true
 										case "GET":
 											r.name = "OrgsGetWebhook"
+											r.summary = "Get an organization webhook"
 											r.operationID = "orgs/get-webhook"
 											r.pathPattern = "/orgs/{org}/hooks/{hook_id}"
 											r.args = args
@@ -18046,6 +18210,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											return r, true
 										case "PATCH":
 											r.name = "OrgsUpdateWebhook"
+											r.summary = "Update an organization webhook"
 											r.operationID = "orgs/update-webhook"
 											r.pathPattern = "/orgs/{org}/hooks/{hook_id}"
 											r.args = args
@@ -18079,6 +18244,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "GET":
 													// Leaf: OrgsGetWebhookConfigForOrg
 													r.name = "OrgsGetWebhookConfigForOrg"
+													r.summary = "Get a webhook configuration for an organization"
 													r.operationID = "orgs/get-webhook-config-for-org"
 													r.pathPattern = "/orgs/{org}/hooks/{hook_id}/config"
 													r.args = args
@@ -18087,6 +18253,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "PATCH":
 													// Leaf: OrgsUpdateWebhookConfigForOrg
 													r.name = "OrgsUpdateWebhookConfigForOrg"
+													r.summary = "Update a webhook configuration for an organization"
 													r.operationID = "orgs/update-webhook-config-for-org"
 													r.pathPattern = "/orgs/{org}/hooks/{hook_id}/config"
 													r.args = args
@@ -18107,6 +18274,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "OrgsListWebhookDeliveries"
+													r.summary = "List deliveries for an organization webhook"
 													r.operationID = "orgs/list-webhook-deliveries"
 													r.pathPattern = "/orgs/{org}/hooks/{hook_id}/deliveries"
 													r.args = args
@@ -18137,6 +18305,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "OrgsGetWebhookDelivery"
+														r.summary = "Get a webhook delivery for an organization webhook"
 														r.operationID = "orgs/get-webhook-delivery"
 														r.pathPattern = "/orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}"
 														r.args = args
@@ -18159,6 +18328,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															// Leaf: OrgsRedeliverWebhookDelivery
 															r.name = "OrgsRedeliverWebhookDelivery"
+															r.summary = "Redeliver a delivery for an organization webhook"
 															r.operationID = "orgs/redeliver-webhook-delivery"
 															r.pathPattern = "/orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}/attempts"
 															r.args = args
@@ -18182,6 +18352,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													// Leaf: OrgsPingWebhook
 													r.name = "OrgsPingWebhook"
+													r.summary = "Ping an organization webhook"
 													r.operationID = "orgs/ping-webhook"
 													r.pathPattern = "/orgs/{org}/hooks/{hook_id}/pings"
 													r.args = args
@@ -18228,6 +18399,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "DELETE":
 												// Leaf: InteractionsRemoveRestrictionsForOrg
 												r.name = "InteractionsRemoveRestrictionsForOrg"
+												r.summary = "Remove interaction restrictions for an organization"
 												r.operationID = "interactions/remove-restrictions-for-org"
 												r.pathPattern = "/orgs/{org}/interaction-limits"
 												r.args = args
@@ -18236,6 +18408,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "PUT":
 												// Leaf: InteractionsSetRestrictionsForOrg
 												r.name = "InteractionsSetRestrictionsForOrg"
+												r.summary = "Set interaction restrictions for an organization"
 												r.operationID = "interactions/set-restrictions-for-org"
 												r.pathPattern = "/orgs/{org}/interaction-limits"
 												r.args = args
@@ -18256,6 +18429,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "OrgsListPendingInvitations"
+												r.summary = "List pending organization invitations"
 												r.operationID = "orgs/list-pending-invitations"
 												r.pathPattern = "/orgs/{org}/invitations"
 												r.args = args
@@ -18263,6 +18437,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												return r, true
 											case "POST":
 												r.name = "OrgsCreateInvitation"
+												r.summary = "Create an organization invitation"
 												r.operationID = "orgs/create-invitation"
 												r.pathPattern = "/orgs/{org}/invitations"
 												r.args = args
@@ -18293,6 +18468,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												switch method {
 												case "DELETE":
 													r.name = "OrgsCancelInvitation"
+													r.summary = "Cancel an organization invitation"
 													r.operationID = "orgs/cancel-invitation"
 													r.pathPattern = "/orgs/{org}/invitations/{invitation_id}"
 													r.args = args
@@ -18315,6 +18491,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "GET":
 														// Leaf: OrgsListInvitationTeams
 														r.name = "OrgsListInvitationTeams"
+														r.summary = "List organization invitation teams"
 														r.operationID = "orgs/list-invitation-teams"
 														r.pathPattern = "/orgs/{org}/invitations/{invitation_id}/teams"
 														r.args = args
@@ -18339,6 +18516,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "GET":
 											// Leaf: IssuesListForOrg
 											r.name = "IssuesListForOrg"
+											r.summary = "List organization issues assigned to the authenticated user"
 											r.operationID = "issues/list-for-org"
 											r.pathPattern = "/orgs/{org}/issues"
 											r.args = args
@@ -18371,6 +18549,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "OrgsListMembers"
+											r.summary = "List organization members"
 											r.operationID = "orgs/list-members"
 											r.pathPattern = "/orgs/{org}/members"
 											r.args = args
@@ -18398,6 +18577,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "DELETE":
 												// Leaf: OrgsRemoveMember
 												r.name = "OrgsRemoveMember"
+												r.summary = "Remove an organization member"
 												r.operationID = "orgs/remove-member"
 												r.pathPattern = "/orgs/{org}/members/{username}"
 												r.args = args
@@ -18406,6 +18586,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "GET":
 												// Leaf: OrgsCheckMembershipForUser
 												r.name = "OrgsCheckMembershipForUser"
+												r.summary = "Check organization membership for a user"
 												r.operationID = "orgs/check-membership-for-user"
 												r.pathPattern = "/orgs/{org}/members/{username}"
 												r.args = args
@@ -18432,6 +18613,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "DELETE":
 												// Leaf: OrgsRemoveMembershipForUser
 												r.name = "OrgsRemoveMembershipForUser"
+												r.summary = "Remove organization membership for a user"
 												r.operationID = "orgs/remove-membership-for-user"
 												r.pathPattern = "/orgs/{org}/memberships/{username}"
 												r.args = args
@@ -18440,6 +18622,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "GET":
 												// Leaf: OrgsGetMembershipForUser
 												r.name = "OrgsGetMembershipForUser"
+												r.summary = "Get organization membership for a user"
 												r.operationID = "orgs/get-membership-for-user"
 												r.pathPattern = "/orgs/{org}/memberships/{username}"
 												r.args = args
@@ -18448,6 +18631,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "PUT":
 												// Leaf: OrgsSetMembershipForUser
 												r.name = "OrgsSetMembershipForUser"
+												r.summary = "Set organization membership for a user"
 												r.operationID = "orgs/set-membership-for-user"
 												r.pathPattern = "/orgs/{org}/memberships/{username}"
 												r.args = args
@@ -18469,6 +18653,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "MigrationsListForOrg"
+											r.summary = "List organization migrations"
 											r.operationID = "migrations/list-for-org"
 											r.pathPattern = "/orgs/{org}/migrations"
 											r.args = args
@@ -18476,6 +18661,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											return r, true
 										case "POST":
 											r.name = "MigrationsStartForOrg"
+											r.summary = "Start an organization migration"
 											r.operationID = "migrations/start-for-org"
 											r.pathPattern = "/orgs/{org}/migrations"
 											r.args = args
@@ -18506,6 +18692,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "MigrationsGetStatusForOrg"
+												r.summary = "Get an organization migration status"
 												r.operationID = "migrations/get-status-for-org"
 												r.pathPattern = "/orgs/{org}/migrations/{migration_id}"
 												r.args = args
@@ -18539,6 +18726,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "DELETE":
 														// Leaf: MigrationsDeleteArchiveForOrg
 														r.name = "MigrationsDeleteArchiveForOrg"
+														r.summary = "Delete an organization migration archive"
 														r.operationID = "migrations/delete-archive-for-org"
 														r.pathPattern = "/orgs/{org}/migrations/{migration_id}/archive"
 														r.args = args
@@ -18547,6 +18735,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "GET":
 														// Leaf: MigrationsDownloadArchiveForOrg
 														r.name = "MigrationsDownloadArchiveForOrg"
+														r.summary = "Download an organization migration archive"
 														r.operationID = "migrations/download-archive-for-org"
 														r.pathPattern = "/orgs/{org}/migrations/{migration_id}/archive"
 														r.args = args
@@ -18599,6 +18788,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "DELETE":
 																// Leaf: MigrationsUnlockRepoForOrg
 																r.name = "MigrationsUnlockRepoForOrg"
+																r.summary = "Unlock an organization repository"
 																r.operationID = "migrations/unlock-repo-for-org"
 																r.pathPattern = "/orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock"
 																r.args = args
@@ -18621,6 +18811,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "GET":
 															// Leaf: MigrationsListReposForOrg
 															r.name = "MigrationsListReposForOrg"
+															r.summary = "List repositories in an organization migration"
 															r.operationID = "migrations/list-repos-for-org"
 															r.pathPattern = "/orgs/{org}/migrations/{migration_id}/repositories"
 															r.args = args
@@ -18646,6 +18837,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "OrgsListOutsideCollaborators"
+										r.summary = "List outside collaborators for an organization"
 										r.operationID = "orgs/list-outside-collaborators"
 										r.pathPattern = "/orgs/{org}/outside_collaborators"
 										r.args = args
@@ -18673,6 +18865,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "DELETE":
 											// Leaf: OrgsRemoveOutsideCollaborator
 											r.name = "OrgsRemoveOutsideCollaborator"
+											r.summary = "Remove outside collaborator from an organization"
 											r.operationID = "orgs/remove-outside-collaborator"
 											r.pathPattern = "/orgs/{org}/outside_collaborators/{username}"
 											r.args = args
@@ -18681,6 +18874,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "PUT":
 											// Leaf: OrgsConvertMemberToOutsideCollaborator
 											r.name = "OrgsConvertMemberToOutsideCollaborator"
+											r.summary = "Convert an organization member to outside collaborator"
 											r.operationID = "orgs/convert-member-to-outside-collaborator"
 											r.pathPattern = "/orgs/{org}/outside_collaborators/{username}"
 											r.args = args
@@ -18713,6 +18907,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "PackagesListPackagesForOrganization"
+											r.summary = "List packages for an organization"
 											r.operationID = "packages/list-packages-for-organization"
 											r.pathPattern = "/orgs/{org}/packages"
 											r.args = args
@@ -18763,6 +18958,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												switch method {
 												case "DELETE":
 													r.name = "PackagesDeletePackageForOrg"
+													r.summary = "Delete a package for an organization"
 													r.operationID = "packages/delete-package-for-org"
 													r.pathPattern = "/orgs/{org}/packages/{package_type}/{package_name}"
 													r.args = args
@@ -18770,6 +18966,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													return r, true
 												case "GET":
 													r.name = "PackagesGetPackageForOrganization"
+													r.summary = "Get a package for an organization"
 													r.operationID = "packages/get-package-for-organization"
 													r.pathPattern = "/orgs/{org}/packages/{package_type}/{package_name}"
 													r.args = args
@@ -18803,6 +19000,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															// Leaf: PackagesRestorePackageForOrg
 															r.name = "PackagesRestorePackageForOrg"
+															r.summary = "Restore a package for an organization"
 															r.operationID = "packages/restore-package-for-org"
 															r.pathPattern = "/orgs/{org}/packages/{package_type}/{package_name}/restore"
 															r.args = args
@@ -18823,6 +19021,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "PackagesGetAllPackageVersionsForPackageOwnedByOrg"
+															r.summary = "Get all package versions for a package owned by an organization"
 															r.operationID = "packages/get-all-package-versions-for-package-owned-by-org"
 															r.pathPattern = "/orgs/{org}/packages/{package_type}/{package_name}/versions"
 															r.args = args
@@ -18853,6 +19052,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															switch method {
 															case "DELETE":
 																r.name = "PackagesDeletePackageVersionForOrg"
+																r.summary = "Delete package version for an organization"
 																r.operationID = "packages/delete-package-version-for-org"
 																r.pathPattern = "/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}"
 																r.args = args
@@ -18860,6 +19060,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																return r, true
 															case "GET":
 																r.name = "PackagesGetPackageVersionForOrganization"
+																r.summary = "Get a package version for an organization"
 																r.operationID = "packages/get-package-version-for-organization"
 																r.pathPattern = "/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}"
 																r.args = args
@@ -18882,6 +19083,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "POST":
 																	// Leaf: PackagesRestorePackageVersionForOrg
 																	r.name = "PackagesRestorePackageVersionForOrg"
+																	r.summary = "Restore package version for an organization"
 																	r.operationID = "packages/restore-package-version-for-org"
 																	r.pathPattern = "/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"
 																	r.args = args
@@ -18909,6 +19111,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "GET":
 											// Leaf: ProjectsListForOrg
 											r.name = "ProjectsListForOrg"
+											r.summary = "List organization projects"
 											r.operationID = "projects/list-for-org"
 											r.pathPattern = "/orgs/{org}/projects"
 											r.args = args
@@ -18917,6 +19120,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											// Leaf: ProjectsCreateForOrg
 											r.name = "ProjectsCreateForOrg"
+											r.summary = "Create an organization project"
 											r.operationID = "projects/create-for-org"
 											r.pathPattern = "/orgs/{org}/projects"
 											r.args = args
@@ -18937,6 +19141,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "OrgsListPublicMembers"
+											r.summary = "List public organization members"
 											r.operationID = "orgs/list-public-members"
 											r.pathPattern = "/orgs/{org}/public_members"
 											r.args = args
@@ -18964,6 +19169,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "DELETE":
 												// Leaf: OrgsRemovePublicMembershipForAuthenticatedUser
 												r.name = "OrgsRemovePublicMembershipForAuthenticatedUser"
+												r.summary = "Remove public organization membership for the authenticated user"
 												r.operationID = "orgs/remove-public-membership-for-authenticated-user"
 												r.pathPattern = "/orgs/{org}/public_members/{username}"
 												r.args = args
@@ -18972,6 +19178,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "GET":
 												// Leaf: OrgsCheckPublicMembershipForUser
 												r.name = "OrgsCheckPublicMembershipForUser"
+												r.summary = "Check public organization membership for a user"
 												r.operationID = "orgs/check-public-membership-for-user"
 												r.pathPattern = "/orgs/{org}/public_members/{username}"
 												r.args = args
@@ -18980,6 +19187,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "PUT":
 												// Leaf: OrgsSetPublicMembershipForAuthenticatedUser
 												r.name = "OrgsSetPublicMembershipForAuthenticatedUser"
+												r.summary = "Set public organization membership for the authenticated user"
 												r.operationID = "orgs/set-public-membership-for-authenticated-user"
 												r.pathPattern = "/orgs/{org}/public_members/{username}"
 												r.args = args
@@ -19003,6 +19211,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "GET":
 										// Leaf: ReposListForOrg
 										r.name = "ReposListForOrg"
+										r.summary = "List organization repositories"
 										r.operationID = "repos/list-for-org"
 										r.pathPattern = "/orgs/{org}/repos"
 										r.args = args
@@ -19011,6 +19220,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "POST":
 										// Leaf: ReposCreateInOrg
 										r.name = "ReposCreateInOrg"
+										r.summary = "Create an organization repository"
 										r.operationID = "repos/create-in-org"
 										r.pathPattern = "/orgs/{org}/repos"
 										r.args = args
@@ -19043,6 +19253,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "GET":
 											// Leaf: SecretScanningListAlertsForOrg
 											r.name = "SecretScanningListAlertsForOrg"
+											r.summary = "List secret scanning alerts by organization"
 											r.operationID = "secret-scanning/list-alerts-for-org"
 											r.pathPattern = "/orgs/{org}/secret-scanning/alerts"
 											r.args = args
@@ -19075,6 +19286,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "GET":
 												// Leaf: BillingGetGithubActionsBillingOrg
 												r.name = "BillingGetGithubActionsBillingOrg"
+												r.summary = "Get GitHub Actions billing for an organization"
 												r.operationID = "billing/get-github-actions-billing-org"
 												r.pathPattern = "/orgs/{org}/settings/billing/actions"
 												r.args = args
@@ -19096,6 +19308,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "GET":
 												// Leaf: BillingGetGithubPackagesBillingOrg
 												r.name = "BillingGetGithubPackagesBillingOrg"
+												r.summary = "Get GitHub Packages billing for an organization"
 												r.operationID = "billing/get-github-packages-billing-org"
 												r.pathPattern = "/orgs/{org}/settings/billing/packages"
 												r.args = args
@@ -19117,6 +19330,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "GET":
 												// Leaf: BillingGetSharedStorageBillingOrg
 												r.name = "BillingGetSharedStorageBillingOrg"
+												r.summary = "Get shared storage billing for an organization"
 												r.operationID = "billing/get-shared-storage-billing-org"
 												r.pathPattern = "/orgs/{org}/settings/billing/shared-storage"
 												r.args = args
@@ -19151,6 +19365,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "GET":
 											// Leaf: TeamsListIdpGroupsForOrg
 											r.name = "TeamsListIdpGroupsForOrg"
+											r.summary = "List IdP groups for an organization"
 											r.operationID = "teams/list-idp-groups-for-org"
 											r.pathPattern = "/orgs/{org}/team-sync/groups"
 											r.args = args
@@ -19171,6 +19386,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "TeamsList"
+											r.summary = "List teams"
 											r.operationID = "teams/list"
 											r.pathPattern = "/orgs/{org}/teams"
 											r.args = args
@@ -19178,6 +19394,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											return r, true
 										case "POST":
 											r.name = "TeamsCreate"
+											r.summary = "Create a team"
 											r.operationID = "teams/create"
 											r.pathPattern = "/orgs/{org}/teams"
 											r.args = args
@@ -19208,6 +19425,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											switch method {
 											case "DELETE":
 												r.name = "TeamsDeleteInOrg"
+												r.summary = "Delete a team"
 												r.operationID = "teams/delete-in-org"
 												r.pathPattern = "/orgs/{org}/teams/{team_slug}"
 												r.args = args
@@ -19215,6 +19433,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												return r, true
 											case "GET":
 												r.name = "TeamsGetByName"
+												r.summary = "Get a team by name"
 												r.operationID = "teams/get-by-name"
 												r.pathPattern = "/orgs/{org}/teams/{team_slug}"
 												r.args = args
@@ -19222,6 +19441,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												return r, true
 											case "PATCH":
 												r.name = "TeamsUpdateInOrg"
+												r.summary = "Update a team"
 												r.operationID = "teams/update-in-org"
 												r.pathPattern = "/orgs/{org}/teams/{team_slug}"
 												r.args = args
@@ -19254,6 +19474,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "TeamsListDiscussionsInOrg"
+														r.summary = "List discussions"
 														r.operationID = "teams/list-discussions-in-org"
 														r.pathPattern = "/orgs/{org}/teams/{team_slug}/discussions"
 														r.args = args
@@ -19261,6 +19482,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														return r, true
 													case "POST":
 														r.name = "TeamsCreateDiscussionInOrg"
+														r.summary = "Create a discussion"
 														r.operationID = "teams/create-discussion-in-org"
 														r.pathPattern = "/orgs/{org}/teams/{team_slug}/discussions"
 														r.args = args
@@ -19291,6 +19513,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														switch method {
 														case "DELETE":
 															r.name = "TeamsDeleteDiscussionInOrg"
+															r.summary = "Delete a discussion"
 															r.operationID = "teams/delete-discussion-in-org"
 															r.pathPattern = "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
 															r.args = args
@@ -19298,6 +19521,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															return r, true
 														case "GET":
 															r.name = "TeamsGetDiscussionInOrg"
+															r.summary = "Get a discussion"
 															r.operationID = "teams/get-discussion-in-org"
 															r.pathPattern = "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
 															r.args = args
@@ -19305,6 +19529,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															return r, true
 														case "PATCH":
 															r.name = "TeamsUpdateDiscussionInOrg"
+															r.summary = "Update a discussion"
 															r.operationID = "teams/update-discussion-in-org"
 															r.pathPattern = "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
 															r.args = args
@@ -19337,6 +19562,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																switch method {
 																case "GET":
 																	r.name = "TeamsListDiscussionCommentsInOrg"
+																	r.summary = "List discussion comments"
 																	r.operationID = "teams/list-discussion-comments-in-org"
 																	r.pathPattern = "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments"
 																	r.args = args
@@ -19344,6 +19570,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	return r, true
 																case "POST":
 																	r.name = "TeamsCreateDiscussionCommentInOrg"
+																	r.summary = "Create a discussion comment"
 																	r.operationID = "teams/create-discussion-comment-in-org"
 																	r.pathPattern = "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments"
 																	r.args = args
@@ -19374,6 +19601,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	switch method {
 																	case "DELETE":
 																		r.name = "TeamsDeleteDiscussionCommentInOrg"
+																		r.summary = "Delete a discussion comment"
 																		r.operationID = "teams/delete-discussion-comment-in-org"
 																		r.pathPattern = "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
 																		r.args = args
@@ -19381,6 +19609,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		return r, true
 																	case "GET":
 																		r.name = "TeamsGetDiscussionCommentInOrg"
+																		r.summary = "Get a discussion comment"
 																		r.operationID = "teams/get-discussion-comment-in-org"
 																		r.pathPattern = "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
 																		r.args = args
@@ -19388,6 +19617,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		return r, true
 																	case "PATCH":
 																		r.name = "TeamsUpdateDiscussionCommentInOrg"
+																		r.summary = "Update a discussion comment"
 																		r.operationID = "teams/update-discussion-comment-in-org"
 																		r.pathPattern = "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
 																		r.args = args
@@ -19409,6 +19639,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		switch method {
 																		case "GET":
 																			r.name = "ReactionsListForTeamDiscussionCommentInOrg"
+																			r.summary = "List reactions for a team discussion comment"
 																			r.operationID = "reactions/list-for-team-discussion-comment-in-org"
 																			r.pathPattern = "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions"
 																			r.args = args
@@ -19416,6 +19647,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			return r, true
 																		case "POST":
 																			r.name = "ReactionsCreateForTeamDiscussionCommentInOrg"
+																			r.summary = "Create reaction for a team discussion comment"
 																			r.operationID = "reactions/create-for-team-discussion-comment-in-org"
 																			r.pathPattern = "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions"
 																			r.args = args
@@ -19443,6 +19675,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			case "DELETE":
 																				// Leaf: ReactionsDeleteForTeamDiscussionComment
 																				r.name = "ReactionsDeleteForTeamDiscussionComment"
+																				r.summary = "Delete team discussion comment reaction"
 																				r.operationID = "reactions/delete-for-team-discussion-comment"
 																				r.pathPattern = "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}"
 																				r.args = args
@@ -19466,6 +19699,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																switch method {
 																case "GET":
 																	r.name = "ReactionsListForTeamDiscussionInOrg"
+																	r.summary = "List reactions for a team discussion"
 																	r.operationID = "reactions/list-for-team-discussion-in-org"
 																	r.pathPattern = "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions"
 																	r.args = args
@@ -19473,6 +19707,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	return r, true
 																case "POST":
 																	r.name = "ReactionsCreateForTeamDiscussionInOrg"
+																	r.summary = "Create reaction for a team discussion"
 																	r.operationID = "reactions/create-for-team-discussion-in-org"
 																	r.pathPattern = "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions"
 																	r.args = args
@@ -19500,6 +19735,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	case "DELETE":
 																		// Leaf: ReactionsDeleteForTeamDiscussion
 																		r.name = "ReactionsDeleteForTeamDiscussion"
+																		r.summary = "Delete team discussion reaction"
 																		r.operationID = "reactions/delete-for-team-discussion"
 																		r.pathPattern = "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}"
 																		r.args = args
@@ -19525,6 +19761,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "GET":
 														// Leaf: TeamsListPendingInvitationsInOrg
 														r.name = "TeamsListPendingInvitationsInOrg"
+														r.summary = "List pending team invitations"
 														r.operationID = "teams/list-pending-invitations-in-org"
 														r.pathPattern = "/orgs/{org}/teams/{team_slug}/invitations"
 														r.args = args
@@ -19545,6 +19782,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "TeamsListMembersInOrg"
+														r.summary = "List team members"
 														r.operationID = "teams/list-members-in-org"
 														r.pathPattern = "/orgs/{org}/teams/{team_slug}/members"
 														r.args = args
@@ -19572,6 +19810,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "DELETE":
 															// Leaf: TeamsRemoveMembershipForUserInOrg
 															r.name = "TeamsRemoveMembershipForUserInOrg"
+															r.summary = "Remove team membership for a user"
 															r.operationID = "teams/remove-membership-for-user-in-org"
 															r.pathPattern = "/orgs/{org}/teams/{team_slug}/memberships/{username}"
 															r.args = args
@@ -19580,6 +19819,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "GET":
 															// Leaf: TeamsGetMembershipForUserInOrg
 															r.name = "TeamsGetMembershipForUserInOrg"
+															r.summary = "Get team membership for a user"
 															r.operationID = "teams/get-membership-for-user-in-org"
 															r.pathPattern = "/orgs/{org}/teams/{team_slug}/memberships/{username}"
 															r.args = args
@@ -19588,6 +19828,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "PUT":
 															// Leaf: TeamsAddOrUpdateMembershipForUserInOrg
 															r.name = "TeamsAddOrUpdateMembershipForUserInOrg"
+															r.summary = "Add or update team membership for a user"
 															r.operationID = "teams/add-or-update-membership-for-user-in-org"
 															r.pathPattern = "/orgs/{org}/teams/{team_slug}/memberships/{username}"
 															r.args = args
@@ -19609,6 +19850,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "TeamsListProjectsInOrg"
+														r.summary = "List team projects"
 														r.operationID = "teams/list-projects-in-org"
 														r.pathPattern = "/orgs/{org}/teams/{team_slug}/projects"
 														r.args = args
@@ -19636,6 +19878,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "DELETE":
 															// Leaf: TeamsRemoveProjectInOrg
 															r.name = "TeamsRemoveProjectInOrg"
+															r.summary = "Remove a project from a team"
 															r.operationID = "teams/remove-project-in-org"
 															r.pathPattern = "/orgs/{org}/teams/{team_slug}/projects/{project_id}"
 															r.args = args
@@ -19644,6 +19887,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "GET":
 															// Leaf: TeamsCheckPermissionsForProjectInOrg
 															r.name = "TeamsCheckPermissionsForProjectInOrg"
+															r.summary = "Check team permissions for a project"
 															r.operationID = "teams/check-permissions-for-project-in-org"
 															r.pathPattern = "/orgs/{org}/teams/{team_slug}/projects/{project_id}"
 															r.args = args
@@ -19652,6 +19896,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "PUT":
 															// Leaf: TeamsAddOrUpdateProjectPermissionsInOrg
 															r.name = "TeamsAddOrUpdateProjectPermissionsInOrg"
+															r.summary = "Add or update team project permissions"
 															r.operationID = "teams/add-or-update-project-permissions-in-org"
 															r.pathPattern = "/orgs/{org}/teams/{team_slug}/projects/{project_id}"
 															r.args = args
@@ -19673,6 +19918,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "TeamsListReposInOrg"
+														r.summary = "List team repositories"
 														r.operationID = "teams/list-repos-in-org"
 														r.pathPattern = "/orgs/{org}/teams/{team_slug}/repos"
 														r.args = args
@@ -19720,6 +19966,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "DELETE":
 																// Leaf: TeamsRemoveRepoInOrg
 																r.name = "TeamsRemoveRepoInOrg"
+																r.summary = "Remove a repository from a team"
 																r.operationID = "teams/remove-repo-in-org"
 																r.pathPattern = "/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"
 																r.args = args
@@ -19728,6 +19975,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "GET":
 																// Leaf: TeamsCheckPermissionsForRepoInOrg
 																r.name = "TeamsCheckPermissionsForRepoInOrg"
+																r.summary = "Check team permissions for a repository"
 																r.operationID = "teams/check-permissions-for-repo-in-org"
 																r.pathPattern = "/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"
 																r.args = args
@@ -19736,6 +19984,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "PUT":
 																// Leaf: TeamsAddOrUpdateRepoPermissionsInOrg
 																r.name = "TeamsAddOrUpdateRepoPermissionsInOrg"
+																r.summary = "Add or update team repository permissions"
 																r.operationID = "teams/add-or-update-repo-permissions-in-org"
 																r.pathPattern = "/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"
 																r.args = args
@@ -19770,6 +20019,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "GET":
 															// Leaf: TeamsListIdpGroupsInOrg
 															r.name = "TeamsListIdpGroupsInOrg"
+															r.summary = "List IdP groups for a team"
 															r.operationID = "teams/list-idp-groups-in-org"
 															r.pathPattern = "/orgs/{org}/teams/{team_slug}/team-sync/group-mappings"
 															r.args = args
@@ -19778,6 +20028,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "PATCH":
 															// Leaf: TeamsCreateOrUpdateIdpGroupConnectionsInOrg
 															r.name = "TeamsCreateOrUpdateIdpGroupConnectionsInOrg"
+															r.summary = "Create or update IdP group connections"
 															r.operationID = "teams/create-or-update-idp-group-connections-in-org"
 															r.pathPattern = "/orgs/{org}/teams/{team_slug}/team-sync/group-mappings"
 															r.args = args
@@ -19799,6 +20050,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "GET":
 															// Leaf: TeamsListChildInOrg
 															r.name = "TeamsListChildInOrg"
+															r.summary = "List child teams"
 															r.operationID = "teams/list-child-in-org"
 															r.pathPattern = "/orgs/{org}/teams/{team_slug}/teams"
 															r.args = args
@@ -19859,6 +20111,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							switch method {
 							case "DELETE":
 								r.name = "ProjectsDeleteCard"
+								r.summary = "Delete a project card"
 								r.operationID = "projects/delete-card"
 								r.pathPattern = "/projects/columns/cards/{card_id}"
 								r.args = args
@@ -19866,6 +20119,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								return r, true
 							case "GET":
 								r.name = "ProjectsGetCard"
+								r.summary = "Get a project card"
 								r.operationID = "projects/get-card"
 								r.pathPattern = "/projects/columns/cards/{card_id}"
 								r.args = args
@@ -19873,6 +20127,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								return r, true
 							case "PATCH":
 								r.name = "ProjectsUpdateCard"
+								r.summary = "Update an existing project card"
 								r.operationID = "projects/update-card"
 								r.pathPattern = "/projects/columns/cards/{card_id}"
 								r.args = args
@@ -19895,6 +20150,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "POST":
 									// Leaf: ProjectsMoveCard
 									r.name = "ProjectsMoveCard"
+									r.summary = "Move a project card"
 									r.operationID = "projects/move-card"
 									r.pathPattern = "/projects/columns/cards/{card_id}/moves"
 									r.args = args
@@ -19919,6 +20175,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						switch method {
 						case "DELETE":
 							r.name = "ProjectsDeleteColumn"
+							r.summary = "Delete a project column"
 							r.operationID = "projects/delete-column"
 							r.pathPattern = "/projects/columns/{column_id}"
 							r.args = args
@@ -19926,6 +20183,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							return r, true
 						case "GET":
 							r.name = "ProjectsGetColumn"
+							r.summary = "Get a project column"
 							r.operationID = "projects/get-column"
 							r.pathPattern = "/projects/columns/{column_id}"
 							r.args = args
@@ -19933,6 +20191,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							return r, true
 						case "PATCH":
 							r.name = "ProjectsUpdateColumn"
+							r.summary = "Update an existing project column"
 							r.operationID = "projects/update-column"
 							r.pathPattern = "/projects/columns/{column_id}"
 							r.args = args
@@ -19966,6 +20225,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "GET":
 									// Leaf: ProjectsListCards
 									r.name = "ProjectsListCards"
+									r.summary = "List project cards"
 									r.operationID = "projects/list-cards"
 									r.pathPattern = "/projects/columns/{column_id}/cards"
 									r.args = args
@@ -19987,6 +20247,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "POST":
 									// Leaf: ProjectsMoveColumn
 									r.name = "ProjectsMoveColumn"
+									r.summary = "Move a project column"
 									r.operationID = "projects/move-column"
 									r.pathPattern = "/projects/columns/{column_id}/moves"
 									r.args = args
@@ -20012,6 +20273,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					switch method {
 					case "DELETE":
 						r.name = "ProjectsDelete"
+						r.summary = "Delete a project"
 						r.operationID = "projects/delete"
 						r.pathPattern = "/projects/{project_id}"
 						r.args = args
@@ -20019,6 +20281,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						return r, true
 					case "GET":
 						r.name = "ProjectsGet"
+						r.summary = "Get a project"
 						r.operationID = "projects/get"
 						r.pathPattern = "/projects/{project_id}"
 						r.args = args
@@ -20026,6 +20289,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						return r, true
 					case "PATCH":
 						r.name = "ProjectsUpdate"
+						r.summary = "Update a project"
 						r.operationID = "projects/update"
 						r.pathPattern = "/projects/{project_id}"
 						r.args = args
@@ -20058,6 +20322,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							switch method {
 							case "GET":
 								r.name = "ProjectsListCollaborators"
+								r.summary = "List project collaborators"
 								r.operationID = "projects/list-collaborators"
 								r.pathPattern = "/projects/{project_id}/collaborators"
 								r.args = args
@@ -20088,6 +20353,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								switch method {
 								case "DELETE":
 									r.name = "ProjectsRemoveCollaborator"
+									r.summary = "Remove user as a collaborator"
 									r.operationID = "projects/remove-collaborator"
 									r.pathPattern = "/projects/{project_id}/collaborators/{username}"
 									r.args = args
@@ -20095,6 +20361,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									return r, true
 								case "PUT":
 									r.name = "ProjectsAddCollaborator"
+									r.summary = "Add project collaborator"
 									r.operationID = "projects/add-collaborator"
 									r.pathPattern = "/projects/{project_id}/collaborators/{username}"
 									r.args = args
@@ -20117,6 +20384,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "GET":
 										// Leaf: ProjectsGetPermissionForUser
 										r.name = "ProjectsGetPermissionForUser"
+										r.summary = "Get project permission for a user"
 										r.operationID = "projects/get-permission-for-user"
 										r.pathPattern = "/projects/{project_id}/collaborators/{username}/permission"
 										r.args = args
@@ -20140,6 +20408,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "GET":
 								// Leaf: ProjectsListColumns
 								r.name = "ProjectsListColumns"
+								r.summary = "List project columns"
 								r.operationID = "projects/list-columns"
 								r.pathPattern = "/projects/{project_id}/columns"
 								r.args = args
@@ -20148,6 +20417,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "POST":
 								// Leaf: ProjectsCreateColumn
 								r.name = "ProjectsCreateColumn"
+								r.summary = "Create a project column"
 								r.operationID = "projects/create-column"
 								r.pathPattern = "/projects/{project_id}/columns"
 								r.args = args
@@ -20182,6 +20452,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						case "GET":
 							// Leaf: RateLimitGet
 							r.name = "RateLimitGet"
+							r.summary = "Get rate limit status for the authenticated user"
 							r.operationID = "rate-limit/get"
 							r.pathPattern = "/rate_limit"
 							r.args = args
@@ -20219,6 +20490,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "DELETE":
 								// Leaf: ReactionsDeleteLegacy
 								r.name = "ReactionsDeleteLegacy"
+								r.summary = "Delete a reaction (Legacy)"
 								r.operationID = "reactions/delete-legacy"
 								r.pathPattern = "/reactions/{reaction_id}"
 								r.args = args
@@ -20279,6 +20551,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									switch method {
 									case "DELETE":
 										r.name = "ReposDelete"
+										r.summary = "Delete a repository"
 										r.operationID = "repos/delete"
 										r.pathPattern = "/repos/{owner}/{repo}"
 										r.args = args
@@ -20286,6 +20559,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										return r, true
 									case "GET":
 										r.name = "ReposGet"
+										r.summary = "Get a repository"
 										r.operationID = "repos/get"
 										r.pathPattern = "/repos/{owner}/{repo}"
 										r.args = args
@@ -20293,6 +20567,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										return r, true
 									case "PATCH":
 										r.name = "ReposUpdate"
+										r.summary = "Update a repository"
 										r.operationID = "repos/update"
 										r.pathPattern = "/repos/{owner}/{repo}"
 										r.args = args
@@ -20347,6 +20622,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "ActionsListArtifactsForRepo"
+														r.summary = "List artifacts for a repository"
 														r.operationID = "actions/list-artifacts-for-repo"
 														r.pathPattern = "/repos/{owner}/{repo}/actions/artifacts"
 														r.args = args
@@ -20377,6 +20653,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														switch method {
 														case "DELETE":
 															r.name = "ActionsDeleteArtifact"
+															r.summary = "Delete an artifact"
 															r.operationID = "actions/delete-artifact"
 															r.pathPattern = "/repos/{owner}/{repo}/actions/artifacts/{artifact_id}"
 															r.args = args
@@ -20384,6 +20661,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															return r, true
 														case "GET":
 															r.name = "ActionsGetArtifact"
+															r.summary = "Get an artifact"
 															r.operationID = "actions/get-artifact"
 															r.pathPattern = "/repos/{owner}/{repo}/actions/artifacts/{artifact_id}"
 															r.args = args
@@ -20411,6 +20689,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ActionsDownloadArtifact
 																r.name = "ActionsDownloadArtifact"
+																r.summary = "Download an artifact"
 																r.operationID = "actions/download-artifact"
 																r.pathPattern = "/repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}"
 																r.args = args
@@ -20442,6 +20721,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "ActionsGetJobForWorkflowRun"
+														r.summary = "Get a job for a workflow run"
 														r.operationID = "actions/get-job-for-workflow-run"
 														r.pathPattern = "/repos/{owner}/{repo}/actions/jobs/{job_id}"
 														r.args = args
@@ -20464,6 +20744,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ActionsDownloadJobLogsForWorkflowRun
 															r.name = "ActionsDownloadJobLogsForWorkflowRun"
+															r.summary = "Download job logs for a workflow run"
 															r.operationID = "actions/download-job-logs-for-workflow-run"
 															r.pathPattern = "/repos/{owner}/{repo}/actions/jobs/{job_id}/logs"
 															r.args = args
@@ -20485,6 +20766,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "ActionsGetGithubActionsPermissionsRepository"
+														r.summary = "Get GitHub Actions permissions for a repository"
 														r.operationID = "actions/get-github-actions-permissions-repository"
 														r.pathPattern = "/repos/{owner}/{repo}/actions/permissions"
 														r.args = args
@@ -20492,6 +20774,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														return r, true
 													case "PUT":
 														r.name = "ActionsSetGithubActionsPermissionsRepository"
+														r.summary = "Set GitHub Actions permissions for a repository"
 														r.operationID = "actions/set-github-actions-permissions-repository"
 														r.pathPattern = "/repos/{owner}/{repo}/actions/permissions"
 														r.args = args
@@ -20514,6 +20797,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ActionsGetAllowedActionsRepository
 															r.name = "ActionsGetAllowedActionsRepository"
+															r.summary = "Get allowed actions for a repository"
 															r.operationID = "actions/get-allowed-actions-repository"
 															r.pathPattern = "/repos/{owner}/{repo}/actions/permissions/selected-actions"
 															r.args = args
@@ -20522,6 +20806,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "PUT":
 															// Leaf: ActionsSetAllowedActionsRepository
 															r.name = "ActionsSetAllowedActionsRepository"
+															r.summary = "Set allowed actions for a repository"
 															r.operationID = "actions/set-allowed-actions-repository"
 															r.pathPattern = "/repos/{owner}/{repo}/actions/permissions/selected-actions"
 															r.args = args
@@ -20554,6 +20839,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "ActionsListSelfHostedRunnersForRepo"
+															r.summary = "List self-hosted runners for a repository"
 															r.operationID = "actions/list-self-hosted-runners-for-repo"
 															r.pathPattern = "/repos/{owner}/{repo}/actions/runners"
 															r.args = args
@@ -20587,6 +20873,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "GET":
 																	// Leaf: ActionsListRunnerApplicationsForRepo
 																	r.name = "ActionsListRunnerApplicationsForRepo"
+																	r.summary = "List runner applications for a repository"
 																	r.operationID = "actions/list-runner-applications-for-repo"
 																	r.pathPattern = "/repos/{owner}/{repo}/actions/runners/downloads"
 																	r.args = args
@@ -20619,6 +20906,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	case "POST":
 																		// Leaf: ActionsCreateRegistrationTokenForRepo
 																		r.name = "ActionsCreateRegistrationTokenForRepo"
+																		r.summary = "Create a registration token for a repository"
 																		r.operationID = "actions/create-registration-token-for-repo"
 																		r.pathPattern = "/repos/{owner}/{repo}/actions/runners/registration-token"
 																		r.args = args
@@ -20640,6 +20928,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	case "POST":
 																		// Leaf: ActionsCreateRemoveTokenForRepo
 																		r.name = "ActionsCreateRemoveTokenForRepo"
+																		r.summary = "Create a remove token for a repository"
 																		r.operationID = "actions/create-remove-token-for-repo"
 																		r.pathPattern = "/repos/{owner}/{repo}/actions/runners/remove-token"
 																		r.args = args
@@ -20661,6 +20950,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "DELETE":
 																// Leaf: ActionsDeleteSelfHostedRunnerFromRepo
 																r.name = "ActionsDeleteSelfHostedRunnerFromRepo"
+																r.summary = "Delete a self-hosted runner from a repository"
 																r.operationID = "actions/delete-self-hosted-runner-from-repo"
 																r.pathPattern = "/repos/{owner}/{repo}/actions/runners/{runner_id}"
 																r.args = args
@@ -20669,6 +20959,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ActionsGetSelfHostedRunnerForRepo
 																r.name = "ActionsGetSelfHostedRunnerForRepo"
+																r.summary = "Get a self-hosted runner for a repository"
 																r.operationID = "actions/get-self-hosted-runner-for-repo"
 																r.pathPattern = "/repos/{owner}/{repo}/actions/runners/{runner_id}"
 																r.args = args
@@ -20690,6 +20981,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "ActionsListWorkflowRunsForRepo"
+															r.summary = "List workflow runs for a repository"
 															r.operationID = "actions/list-workflow-runs-for-repo"
 															r.pathPattern = "/repos/{owner}/{repo}/actions/runs"
 															r.args = args
@@ -20720,6 +21012,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															switch method {
 															case "DELETE":
 																r.name = "ActionsDeleteWorkflowRun"
+																r.summary = "Delete a workflow run"
 																r.operationID = "actions/delete-workflow-run"
 																r.pathPattern = "/repos/{owner}/{repo}/actions/runs/{run_id}"
 																r.args = args
@@ -20727,6 +21020,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																return r, true
 															case "GET":
 																r.name = "ActionsGetWorkflowRun"
+																r.summary = "Get a workflow run"
 																r.operationID = "actions/get-workflow-run"
 																r.pathPattern = "/repos/{owner}/{repo}/actions/runs/{run_id}"
 																r.args = args
@@ -20782,6 +21076,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			case "GET":
 																				// Leaf: ActionsGetReviewsForRun
 																				r.name = "ActionsGetReviewsForRun"
+																				r.summary = "Get the review history for a workflow run"
 																				r.operationID = "actions/get-reviews-for-run"
 																				r.pathPattern = "/repos/{owner}/{repo}/actions/runs/{run_id}/approvals"
 																				r.args = args
@@ -20803,6 +21098,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			case "POST":
 																				// Leaf: ActionsApproveWorkflowRun
 																				r.name = "ActionsApproveWorkflowRun"
+																				r.summary = "Approve a workflow run for a fork pull request"
 																				r.operationID = "actions/approve-workflow-run"
 																				r.pathPattern = "/repos/{owner}/{repo}/actions/runs/{run_id}/approve"
 																				r.args = args
@@ -20825,6 +21121,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		case "GET":
 																			// Leaf: ActionsListWorkflowRunArtifacts
 																			r.name = "ActionsListWorkflowRunArtifacts"
+																			r.summary = "List workflow run artifacts"
 																			r.operationID = "actions/list-workflow-run-artifacts"
 																			r.pathPattern = "/repos/{owner}/{repo}/actions/runs/{run_id}/artifacts"
 																			r.args = args
@@ -20847,6 +21144,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	case "POST":
 																		// Leaf: ActionsCancelWorkflowRun
 																		r.name = "ActionsCancelWorkflowRun"
+																		r.summary = "Cancel a workflow run"
 																		r.operationID = "actions/cancel-workflow-run"
 																		r.pathPattern = "/repos/{owner}/{repo}/actions/runs/{run_id}/cancel"
 																		r.args = args
@@ -20868,6 +21166,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	case "GET":
 																		// Leaf: ActionsListJobsForWorkflowRun
 																		r.name = "ActionsListJobsForWorkflowRun"
+																		r.summary = "List jobs for a workflow run"
 																		r.operationID = "actions/list-jobs-for-workflow-run"
 																		r.pathPattern = "/repos/{owner}/{repo}/actions/runs/{run_id}/jobs"
 																		r.args = args
@@ -20889,6 +21188,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	case "DELETE":
 																		// Leaf: ActionsDeleteWorkflowRunLogs
 																		r.name = "ActionsDeleteWorkflowRunLogs"
+																		r.summary = "Delete workflow run logs"
 																		r.operationID = "actions/delete-workflow-run-logs"
 																		r.pathPattern = "/repos/{owner}/{repo}/actions/runs/{run_id}/logs"
 																		r.args = args
@@ -20897,6 +21197,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	case "GET":
 																		// Leaf: ActionsDownloadWorkflowRunLogs
 																		r.name = "ActionsDownloadWorkflowRunLogs"
+																		r.summary = "Download workflow run logs"
 																		r.operationID = "actions/download-workflow-run-logs"
 																		r.pathPattern = "/repos/{owner}/{repo}/actions/runs/{run_id}/logs"
 																		r.args = args
@@ -20918,6 +21219,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	case "POST":
 																		// Leaf: ActionsReviewPendingDeploymentsForRun
 																		r.name = "ActionsReviewPendingDeploymentsForRun"
+																		r.summary = "Review pending deployments for a workflow run"
 																		r.operationID = "actions/review-pending-deployments-for-run"
 																		r.pathPattern = "/repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments"
 																		r.args = args
@@ -20950,6 +21252,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		case "POST":
 																			// Leaf: ActionsReRunWorkflow
 																			r.name = "ActionsReRunWorkflow"
+																			r.summary = "Re-run a workflow"
 																			r.operationID = "actions/re-run-workflow"
 																			r.pathPattern = "/repos/{owner}/{repo}/actions/runs/{run_id}/rerun"
 																			r.args = args
@@ -20971,6 +21274,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		case "POST":
 																			// Leaf: ActionsRetryWorkflow
 																			r.name = "ActionsRetryWorkflow"
+																			r.summary = "Retry a workflow"
 																			r.operationID = "actions/retry-workflow"
 																			r.pathPattern = "/repos/{owner}/{repo}/actions/runs/{run_id}/retry"
 																			r.args = args
@@ -20993,6 +21297,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	case "GET":
 																		// Leaf: ActionsGetWorkflowRunUsage
 																		r.name = "ActionsGetWorkflowRunUsage"
+																		r.summary = "Get workflow run usage"
 																		r.operationID = "actions/get-workflow-run-usage"
 																		r.pathPattern = "/repos/{owner}/{repo}/actions/runs/{run_id}/timing"
 																		r.args = args
@@ -21017,6 +21322,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "ActionsListRepoSecrets"
+														r.summary = "List repository secrets"
 														r.operationID = "actions/list-repo-secrets"
 														r.pathPattern = "/repos/{owner}/{repo}/actions/secrets"
 														r.args = args
@@ -21050,6 +21356,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ActionsGetRepoPublicKey
 																r.name = "ActionsGetRepoPublicKey"
+																r.summary = "Get a repository public key"
 																r.operationID = "actions/get-repo-public-key"
 																r.pathPattern = "/repos/{owner}/{repo}/actions/secrets/public-key"
 																r.args = args
@@ -21070,6 +21377,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "DELETE":
 															// Leaf: ActionsDeleteRepoSecret
 															r.name = "ActionsDeleteRepoSecret"
+															r.summary = "Delete a repository secret"
 															r.operationID = "actions/delete-repo-secret"
 															r.pathPattern = "/repos/{owner}/{repo}/actions/secrets/{secret_name}"
 															r.args = args
@@ -21078,6 +21386,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ActionsGetRepoSecret
 															r.name = "ActionsGetRepoSecret"
+															r.summary = "Get a repository secret"
 															r.operationID = "actions/get-repo-secret"
 															r.pathPattern = "/repos/{owner}/{repo}/actions/secrets/{secret_name}"
 															r.args = args
@@ -21086,6 +21395,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "PUT":
 															// Leaf: ActionsCreateOrUpdateRepoSecret
 															r.name = "ActionsCreateOrUpdateRepoSecret"
+															r.summary = "Create or update a repository secret"
 															r.operationID = "actions/create-or-update-repo-secret"
 															r.pathPattern = "/repos/{owner}/{repo}/actions/secrets/{secret_name}"
 															r.args = args
@@ -21108,6 +21418,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ActionsListRepoWorkflows
 														r.name = "ActionsListRepoWorkflows"
+														r.summary = "List repository workflows"
 														r.operationID = "actions/list-repo-workflows"
 														r.pathPattern = "/repos/{owner}/{repo}/actions/workflows"
 														r.args = args
@@ -21129,6 +21440,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "IssuesListAssignees"
+													r.summary = "List assignees"
 													r.operationID = "issues/list-assignees"
 													r.pathPattern = "/repos/{owner}/{repo}/assignees"
 													r.args = args
@@ -21156,6 +21468,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "GET":
 														// Leaf: IssuesCheckUserCanBeAssigned
 														r.name = "IssuesCheckUserCanBeAssigned"
+														r.summary = "Check if a user can be assigned"
 														r.operationID = "issues/check-user-can-be-assigned"
 														r.pathPattern = "/repos/{owner}/{repo}/assignees/{assignee}"
 														r.args = args
@@ -21188,6 +21501,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "ReposListAutolinks"
+														r.summary = "List all autolinks of a repository"
 														r.operationID = "repos/list-autolinks"
 														r.pathPattern = "/repos/{owner}/{repo}/autolinks"
 														r.args = args
@@ -21195,6 +21509,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														return r, true
 													case "POST":
 														r.name = "ReposCreateAutolink"
+														r.summary = "Create an autolink reference for a repository"
 														r.operationID = "repos/create-autolink"
 														r.pathPattern = "/repos/{owner}/{repo}/autolinks"
 														r.args = args
@@ -21222,6 +21537,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "DELETE":
 															// Leaf: ReposDeleteAutolink
 															r.name = "ReposDeleteAutolink"
+															r.summary = "Delete an autolink reference from a repository"
 															r.operationID = "repos/delete-autolink"
 															r.pathPattern = "/repos/{owner}/{repo}/autolinks/{autolink_id}"
 															r.args = args
@@ -21230,6 +21546,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ReposGetAutolink
 															r.name = "ReposGetAutolink"
+															r.summary = "Get an autolink reference of a repository"
 															r.operationID = "repos/get-autolink"
 															r.pathPattern = "/repos/{owner}/{repo}/autolinks/{autolink_id}"
 															r.args = args
@@ -21252,6 +21569,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "DELETE":
 														// Leaf: ReposDisableAutomatedSecurityFixes
 														r.name = "ReposDisableAutomatedSecurityFixes"
+														r.summary = "Disable automated security fixes"
 														r.operationID = "repos/disable-automated-security-fixes"
 														r.pathPattern = "/repos/{owner}/{repo}/automated-security-fixes"
 														r.args = args
@@ -21260,6 +21578,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "PUT":
 														// Leaf: ReposEnableAutomatedSecurityFixes
 														r.name = "ReposEnableAutomatedSecurityFixes"
+														r.summary = "Enable automated security fixes"
 														r.operationID = "repos/enable-automated-security-fixes"
 														r.pathPattern = "/repos/{owner}/{repo}/automated-security-fixes"
 														r.args = args
@@ -21282,6 +21601,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ReposListBranches"
+												r.summary = "List branches"
 												r.operationID = "repos/list-branches"
 												r.pathPattern = "/repos/{owner}/{repo}/branches"
 												r.args = args
@@ -21312,6 +21632,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "ReposGetBranch"
+													r.summary = "Get a branch"
 													r.operationID = "repos/get-branch"
 													r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}"
 													r.args = args
@@ -21344,6 +21665,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														switch method {
 														case "DELETE":
 															r.name = "ReposDeleteBranchProtection"
+															r.summary = "Delete branch protection"
 															r.operationID = "repos/delete-branch-protection"
 															r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/protection"
 															r.args = args
@@ -21351,6 +21673,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															return r, true
 														case "GET":
 															r.name = "ReposGetBranchProtection"
+															r.summary = "Get branch protection"
 															r.operationID = "repos/get-branch-protection"
 															r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/protection"
 															r.args = args
@@ -21358,6 +21681,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															return r, true
 														case "PUT":
 															r.name = "ReposUpdateBranchProtection"
+															r.summary = "Update branch protection"
 															r.operationID = "repos/update-branch-protection"
 															r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/protection"
 															r.args = args
@@ -21391,6 +21715,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "DELETE":
 																	// Leaf: ReposDeleteAdminBranchProtection
 																	r.name = "ReposDeleteAdminBranchProtection"
+																	r.summary = "Delete admin branch protection"
 																	r.operationID = "repos/delete-admin-branch-protection"
 																	r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins"
 																	r.args = args
@@ -21399,6 +21724,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "GET":
 																	// Leaf: ReposGetAdminBranchProtection
 																	r.name = "ReposGetAdminBranchProtection"
+																	r.summary = "Get admin branch protection"
 																	r.operationID = "repos/get-admin-branch-protection"
 																	r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins"
 																	r.args = args
@@ -21407,6 +21733,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "POST":
 																	// Leaf: ReposSetAdminBranchProtection
 																	r.name = "ReposSetAdminBranchProtection"
+																	r.summary = "Set admin branch protection"
 																	r.operationID = "repos/set-admin-branch-protection"
 																	r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins"
 																	r.args = args
@@ -21450,6 +21777,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		case "DELETE":
 																			// Leaf: ReposDeletePullRequestReviewProtection
 																			r.name = "ReposDeletePullRequestReviewProtection"
+																			r.summary = "Delete pull request review protection"
 																			r.operationID = "repos/delete-pull-request-review-protection"
 																			r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"
 																			r.args = args
@@ -21458,6 +21786,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		case "GET":
 																			// Leaf: ReposGetPullRequestReviewProtection
 																			r.name = "ReposGetPullRequestReviewProtection"
+																			r.summary = "Get pull request review protection"
 																			r.operationID = "repos/get-pull-request-review-protection"
 																			r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"
 																			r.args = args
@@ -21466,6 +21795,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		case "PATCH":
 																			// Leaf: ReposUpdatePullRequestReviewProtection
 																			r.name = "ReposUpdatePullRequestReviewProtection"
+																			r.summary = "Update pull request review protection"
 																			r.operationID = "repos/update-pull-request-review-protection"
 																			r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"
 																			r.args = args
@@ -21498,6 +21828,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			case "DELETE":
 																				// Leaf: ReposDeleteCommitSignatureProtection
 																				r.name = "ReposDeleteCommitSignatureProtection"
+																				r.summary = "Delete commit signature protection"
 																				r.operationID = "repos/delete-commit-signature-protection"
 																				r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures"
 																				r.args = args
@@ -21506,6 +21837,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			case "GET":
 																				// Leaf: ReposGetCommitSignatureProtection
 																				r.name = "ReposGetCommitSignatureProtection"
+																				r.summary = "Get commit signature protection"
 																				r.operationID = "repos/get-commit-signature-protection"
 																				r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures"
 																				r.args = args
@@ -21514,6 +21846,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			case "POST":
 																				// Leaf: ReposCreateCommitSignatureProtection
 																				r.name = "ReposCreateCommitSignatureProtection"
+																				r.summary = "Create commit signature protection"
 																				r.operationID = "repos/create-commit-signature-protection"
 																				r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures"
 																				r.args = args
@@ -21534,6 +21867,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			switch method {
 																			case "DELETE":
 																				r.name = "ReposRemoveStatusCheckProtection"
+																				r.summary = "Remove status check protection"
 																				r.operationID = "repos/remove-status-check-protection"
 																				r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"
 																				r.args = args
@@ -21541,6 +21875,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				return r, true
 																			case "GET":
 																				r.name = "ReposGetStatusChecksProtection"
+																				r.summary = "Get status checks protection"
 																				r.operationID = "repos/get-status-checks-protection"
 																				r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"
 																				r.args = args
@@ -21548,6 +21883,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				return r, true
 																			case "PATCH":
 																				r.name = "ReposUpdateStatusCheckProtection"
+																				r.summary = "Update status check protection"
 																				r.operationID = "repos/update-status-check-protection"
 																				r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"
 																				r.args = args
@@ -21570,6 +21906,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				case "DELETE":
 																					// Leaf: ReposRemoveStatusCheckContexts
 																					r.name = "ReposRemoveStatusCheckContexts"
+																					r.summary = "Remove status check contexts"
 																					r.operationID = "repos/remove-status-check-contexts"
 																					r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"
 																					r.args = args
@@ -21578,6 +21915,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				case "GET":
 																					// Leaf: ReposGetAllStatusCheckContexts
 																					r.name = "ReposGetAllStatusCheckContexts"
+																					r.summary = "Get all status check contexts"
 																					r.operationID = "repos/get-all-status-check-contexts"
 																					r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"
 																					r.args = args
@@ -21586,6 +21924,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				case "POST":
 																					// Leaf: ReposAddStatusCheckContexts
 																					r.name = "ReposAddStatusCheckContexts"
+																					r.summary = "Add status check contexts"
 																					r.operationID = "repos/add-status-check-contexts"
 																					r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"
 																					r.args = args
@@ -21594,6 +21933,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				case "PUT":
 																					// Leaf: ReposSetStatusCheckContexts
 																					r.name = "ReposSetStatusCheckContexts"
+																					r.summary = "Set status check contexts"
 																					r.operationID = "repos/set-status-check-contexts"
 																					r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"
 																					r.args = args
@@ -21617,6 +21957,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	switch method {
 																	case "DELETE":
 																		r.name = "ReposDeleteAccessRestrictions"
+																		r.summary = "Delete access restrictions"
 																		r.operationID = "repos/delete-access-restrictions"
 																		r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/protection/restrictions"
 																		r.args = args
@@ -21624,6 +21965,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		return r, true
 																	case "GET":
 																		r.name = "ReposGetAccessRestrictions"
+																		r.summary = "Get access restrictions"
 																		r.operationID = "repos/get-access-restrictions"
 																		r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/protection/restrictions"
 																		r.args = args
@@ -21657,6 +21999,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			case "DELETE":
 																				// Leaf: ReposRemoveAppAccessRestrictions
 																				r.name = "ReposRemoveAppAccessRestrictions"
+																				r.summary = "Remove app access restrictions"
 																				r.operationID = "repos/remove-app-access-restrictions"
 																				r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
 																				r.args = args
@@ -21665,6 +22008,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			case "GET":
 																				// Leaf: ReposGetAppsWithAccessToProtectedBranch
 																				r.name = "ReposGetAppsWithAccessToProtectedBranch"
+																				r.summary = "Get apps with access to the protected branch"
 																				r.operationID = "repos/get-apps-with-access-to-protected-branch"
 																				r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
 																				r.args = args
@@ -21673,6 +22017,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			case "POST":
 																				// Leaf: ReposAddAppAccessRestrictions
 																				r.name = "ReposAddAppAccessRestrictions"
+																				r.summary = "Add app access restrictions"
 																				r.operationID = "repos/add-app-access-restrictions"
 																				r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
 																				r.args = args
@@ -21681,6 +22026,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			case "PUT":
 																				// Leaf: ReposSetAppAccessRestrictions
 																				r.name = "ReposSetAppAccessRestrictions"
+																				r.summary = "Set app access restrictions"
 																				r.operationID = "repos/set-app-access-restrictions"
 																				r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
 																				r.args = args
@@ -21702,6 +22048,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			case "DELETE":
 																				// Leaf: ReposRemoveTeamAccessRestrictions
 																				r.name = "ReposRemoveTeamAccessRestrictions"
+																				r.summary = "Remove team access restrictions"
 																				r.operationID = "repos/remove-team-access-restrictions"
 																				r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
 																				r.args = args
@@ -21710,6 +22057,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			case "GET":
 																				// Leaf: ReposGetTeamsWithAccessToProtectedBranch
 																				r.name = "ReposGetTeamsWithAccessToProtectedBranch"
+																				r.summary = "Get teams with access to the protected branch"
 																				r.operationID = "repos/get-teams-with-access-to-protected-branch"
 																				r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
 																				r.args = args
@@ -21718,6 +22066,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			case "POST":
 																				// Leaf: ReposAddTeamAccessRestrictions
 																				r.name = "ReposAddTeamAccessRestrictions"
+																				r.summary = "Add team access restrictions"
 																				r.operationID = "repos/add-team-access-restrictions"
 																				r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
 																				r.args = args
@@ -21726,6 +22075,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			case "PUT":
 																				// Leaf: ReposSetTeamAccessRestrictions
 																				r.name = "ReposSetTeamAccessRestrictions"
+																				r.summary = "Set team access restrictions"
 																				r.operationID = "repos/set-team-access-restrictions"
 																				r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
 																				r.args = args
@@ -21747,6 +22097,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			case "DELETE":
 																				// Leaf: ReposRemoveUserAccessRestrictions
 																				r.name = "ReposRemoveUserAccessRestrictions"
+																				r.summary = "Remove user access restrictions"
 																				r.operationID = "repos/remove-user-access-restrictions"
 																				r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
 																				r.args = args
@@ -21755,6 +22106,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			case "GET":
 																				// Leaf: ReposGetUsersWithAccessToProtectedBranch
 																				r.name = "ReposGetUsersWithAccessToProtectedBranch"
+																				r.summary = "Get users with access to the protected branch"
 																				r.operationID = "repos/get-users-with-access-to-protected-branch"
 																				r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
 																				r.args = args
@@ -21763,6 +22115,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			case "POST":
 																				// Leaf: ReposAddUserAccessRestrictions
 																				r.name = "ReposAddUserAccessRestrictions"
+																				r.summary = "Add user access restrictions"
 																				r.operationID = "repos/add-user-access-restrictions"
 																				r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
 																				r.args = args
@@ -21771,6 +22124,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			case "PUT":
 																				// Leaf: ReposSetUserAccessRestrictions
 																				r.name = "ReposSetUserAccessRestrictions"
+																				r.summary = "Set user access restrictions"
 																				r.operationID = "repos/set-user-access-restrictions"
 																				r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
 																				r.args = args
@@ -21797,6 +22151,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															// Leaf: ReposRenameBranch
 															r.name = "ReposRenameBranch"
+															r.summary = "Rename a branch"
 															r.operationID = "repos/rename-branch"
 															r.pathPattern = "/repos/{owner}/{repo}/branches/{branch}/rename"
 															r.args = args
@@ -21851,6 +22206,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "ChecksGet"
+														r.summary = "Get a check run"
 														r.operationID = "checks/get"
 														r.pathPattern = "/repos/{owner}/{repo}/check-runs/{check_run_id}"
 														r.args = args
@@ -21873,6 +22229,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ChecksListAnnotations
 															r.name = "ChecksListAnnotations"
+															r.summary = "List check run annotations"
 															r.operationID = "checks/list-annotations"
 															r.pathPattern = "/repos/{owner}/{repo}/check-runs/{check_run_id}/annotations"
 															r.args = args
@@ -21894,6 +22251,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "ChecksCreateSuite"
+														r.summary = "Create a check suite"
 														r.operationID = "checks/create-suite"
 														r.pathPattern = "/repos/{owner}/{repo}/check-suites"
 														r.args = args
@@ -21927,6 +22285,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "PATCH":
 																// Leaf: ChecksSetSuitesPreferences
 																r.name = "ChecksSetSuitesPreferences"
+																r.summary = "Update repository preferences for check suites"
 																r.operationID = "checks/set-suites-preferences"
 																r.pathPattern = "/repos/{owner}/{repo}/check-suites/preferences"
 																r.args = args
@@ -21950,6 +22309,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "ChecksGetSuite"
+															r.summary = "Get a check suite"
 															r.operationID = "checks/get-suite"
 															r.pathPattern = "/repos/{owner}/{repo}/check-suites/{check_suite_id}"
 															r.args = args
@@ -21983,6 +22343,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "GET":
 																	// Leaf: ChecksListForSuite
 																	r.name = "ChecksListForSuite"
+																	r.summary = "List check runs in a check suite"
 																	r.operationID = "checks/list-for-suite"
 																	r.pathPattern = "/repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs"
 																	r.args = args
@@ -22004,6 +22365,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "POST":
 																	// Leaf: ChecksRerequestSuite
 																	r.name = "ChecksRerequestSuite"
+																	r.summary = "Rerequest a check suite"
 																	r.operationID = "checks/rerequest-suite"
 																	r.pathPattern = "/repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest"
 																	r.args = args
@@ -22061,6 +22423,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															switch method {
 															case "GET":
 																r.name = "CodeScanningListAlertsForRepo"
+																r.summary = "List code scanning alerts for a repository"
 																r.operationID = "code-scanning/list-alerts-for-repo"
 																r.pathPattern = "/repos/{owner}/{repo}/code-scanning/alerts"
 																r.args = args
@@ -22091,6 +22454,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																switch method {
 																case "GET":
 																	r.name = "CodeScanningGetAlert"
+																	r.summary = "Get a code scanning alert"
 																	r.operationID = "code-scanning/get-alert"
 																	r.pathPattern = "/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"
 																	r.args = args
@@ -22098,6 +22462,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	return r, true
 																case "PATCH":
 																	r.name = "CodeScanningUpdateAlert"
+																	r.summary = "Update a code scanning alert"
 																	r.operationID = "code-scanning/update-alert"
 																	r.pathPattern = "/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"
 																	r.args = args
@@ -22120,6 +22485,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	case "GET":
 																		// Leaf: CodeScanningListAlertInstances
 																		r.name = "CodeScanningListAlertInstances"
+																		r.summary = "List instances of a code scanning alert"
 																		r.operationID = "code-scanning/list-alert-instances"
 																		r.pathPattern = "/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances"
 																		r.args = args
@@ -22142,6 +22508,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															switch method {
 															case "GET":
 																r.name = "CodeScanningListRecentAnalyses"
+																r.summary = "List code scanning analyses for a repository"
 																r.operationID = "code-scanning/list-recent-analyses"
 																r.pathPattern = "/repos/{owner}/{repo}/code-scanning/analyses"
 																r.args = args
@@ -22169,6 +22536,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "DELETE":
 																	// Leaf: CodeScanningDeleteAnalysis
 																	r.name = "CodeScanningDeleteAnalysis"
+																	r.summary = "Delete a code scanning analysis from a repository"
 																	r.operationID = "code-scanning/delete-analysis"
 																	r.pathPattern = "/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}"
 																	r.args = args
@@ -22177,6 +22545,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "GET":
 																	// Leaf: CodeScanningGetAnalysis
 																	r.name = "CodeScanningGetAnalysis"
+																	r.summary = "Get a code scanning analysis for a repository"
 																	r.operationID = "code-scanning/get-analysis"
 																	r.pathPattern = "/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}"
 																	r.args = args
@@ -22199,6 +22568,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "CodeScanningUploadSarif"
+															r.summary = "Upload an analysis as SARIF data"
 															r.operationID = "code-scanning/upload-sarif"
 															r.pathPattern = "/repos/{owner}/{repo}/code-scanning/sarifs"
 															r.args = args
@@ -22226,6 +22596,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "GET":
 																// Leaf: CodeScanningGetSarif
 																r.name = "CodeScanningGetSarif"
+																r.summary = "Get information about a SARIF upload"
 																r.operationID = "code-scanning/get-sarif"
 																r.pathPattern = "/repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}"
 																r.args = args
@@ -22248,6 +22619,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "ReposListCollaborators"
+														r.summary = "List repository collaborators"
 														r.operationID = "repos/list-collaborators"
 														r.pathPattern = "/repos/{owner}/{repo}/collaborators"
 														r.args = args
@@ -22278,6 +22650,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														switch method {
 														case "DELETE":
 															r.name = "ReposRemoveCollaborator"
+															r.summary = "Remove a repository collaborator"
 															r.operationID = "repos/remove-collaborator"
 															r.pathPattern = "/repos/{owner}/{repo}/collaborators/{username}"
 															r.args = args
@@ -22285,6 +22658,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															return r, true
 														case "GET":
 															r.name = "ReposCheckCollaborator"
+															r.summary = "Check if a user is a repository collaborator"
 															r.operationID = "repos/check-collaborator"
 															r.pathPattern = "/repos/{owner}/{repo}/collaborators/{username}"
 															r.args = args
@@ -22292,6 +22666,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															return r, true
 														case "PUT":
 															r.name = "ReposAddCollaborator"
+															r.summary = "Add a repository collaborator"
 															r.operationID = "repos/add-collaborator"
 															r.pathPattern = "/repos/{owner}/{repo}/collaborators/{username}"
 															r.args = args
@@ -22314,6 +22689,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ReposGetCollaboratorPermissionLevel
 																r.name = "ReposGetCollaboratorPermissionLevel"
+																r.summary = "Get repository permissions for a user"
 																r.operationID = "repos/get-collaborator-permission-level"
 																r.pathPattern = "/repos/{owner}/{repo}/collaborators/{username}/permission"
 																r.args = args
@@ -22358,6 +22734,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															switch method {
 															case "GET":
 																r.name = "ReposListCommitCommentsForRepo"
+																r.summary = "List commit comments for a repository"
 																r.operationID = "repos/list-commit-comments-for-repo"
 																r.pathPattern = "/repos/{owner}/{repo}/comments"
 																r.args = args
@@ -22388,6 +22765,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																switch method {
 																case "DELETE":
 																	r.name = "ReposDeleteCommitComment"
+																	r.summary = "Delete a commit comment"
 																	r.operationID = "repos/delete-commit-comment"
 																	r.pathPattern = "/repos/{owner}/{repo}/comments/{comment_id}"
 																	r.args = args
@@ -22395,6 +22773,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	return r, true
 																case "GET":
 																	r.name = "ReposGetCommitComment"
+																	r.summary = "Get a commit comment"
 																	r.operationID = "repos/get-commit-comment"
 																	r.pathPattern = "/repos/{owner}/{repo}/comments/{comment_id}"
 																	r.args = args
@@ -22402,6 +22781,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	return r, true
 																case "PATCH":
 																	r.name = "ReposUpdateCommitComment"
+																	r.summary = "Update a commit comment"
 																	r.operationID = "repos/update-commit-comment"
 																	r.pathPattern = "/repos/{owner}/{repo}/comments/{comment_id}"
 																	r.args = args
@@ -22423,6 +22803,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	switch method {
 																	case "GET":
 																		r.name = "ReactionsListForCommitComment"
+																		r.summary = "List reactions for a commit comment"
 																		r.operationID = "reactions/list-for-commit-comment"
 																		r.pathPattern = "/repos/{owner}/{repo}/comments/{comment_id}/reactions"
 																		r.args = args
@@ -22430,6 +22811,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		return r, true
 																	case "POST":
 																		r.name = "ReactionsCreateForCommitComment"
+																		r.summary = "Create reaction for a commit comment"
 																		r.operationID = "reactions/create-for-commit-comment"
 																		r.pathPattern = "/repos/{owner}/{repo}/comments/{comment_id}/reactions"
 																		r.args = args
@@ -22457,6 +22839,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		case "DELETE":
 																			// Leaf: ReactionsDeleteForCommitComment
 																			r.name = "ReactionsDeleteForCommitComment"
+																			r.summary = "Delete a commit comment reaction"
 																			r.operationID = "reactions/delete-for-commit-comment"
 																			r.pathPattern = "/repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}"
 																			r.args = args
@@ -22480,6 +22863,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															switch method {
 															case "GET":
 																r.name = "ReposListCommits"
+																r.summary = "List commits"
 																r.operationID = "repos/list-commits"
 																r.pathPattern = "/repos/{owner}/{repo}/commits"
 																r.args = args
@@ -22510,6 +22894,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																switch method {
 																case "GET":
 																	r.name = "ReposGetCommit"
+																	r.summary = "Get a commit"
 																	r.operationID = "repos/get-commit"
 																	r.pathPattern = "/repos/{owner}/{repo}/commits/{ref}"
 																	r.args = args
@@ -22543,6 +22928,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		case "GET":
 																			// Leaf: ReposListBranchesForHeadCommit
 																			r.name = "ReposListBranchesForHeadCommit"
+																			r.summary = "List branches for HEAD commit"
 																			r.operationID = "repos/list-branches-for-head-commit"
 																			r.pathPattern = "/repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head"
 																			r.args = args
@@ -22586,6 +22972,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				case "GET":
 																					// Leaf: ChecksListForRef
 																					r.name = "ChecksListForRef"
+																					r.summary = "List check runs for a Git reference"
 																					r.operationID = "checks/list-for-ref"
 																					r.pathPattern = "/repos/{owner}/{repo}/commits/{ref}/check-runs"
 																					r.args = args
@@ -22607,6 +22994,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				case "GET":
 																					// Leaf: ChecksListSuitesForRef
 																					r.name = "ChecksListSuitesForRef"
+																					r.summary = "List check suites for a Git reference"
 																					r.operationID = "checks/list-suites-for-ref"
 																					r.pathPattern = "/repos/{owner}/{repo}/commits/{ref}/check-suites"
 																					r.args = args
@@ -22629,6 +23017,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			case "GET":
 																				// Leaf: ReposListCommentsForCommit
 																				r.name = "ReposListCommentsForCommit"
+																				r.summary = "List commit comments"
 																				r.operationID = "repos/list-comments-for-commit"
 																				r.pathPattern = "/repos/{owner}/{repo}/commits/{commit_sha}/comments"
 																				r.args = args
@@ -22637,6 +23026,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			case "POST":
 																				// Leaf: ReposCreateCommitComment
 																				r.name = "ReposCreateCommitComment"
+																				r.summary = "Create a commit comment"
 																				r.operationID = "repos/create-commit-comment"
 																				r.pathPattern = "/repos/{owner}/{repo}/commits/{commit_sha}/comments"
 																				r.args = args
@@ -22659,6 +23049,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		case "GET":
 																			// Leaf: ReposListPullRequestsAssociatedWithCommit
 																			r.name = "ReposListPullRequestsAssociatedWithCommit"
+																			r.summary = "List pull requests associated with a commit"
 																			r.operationID = "repos/list-pull-requests-associated-with-commit"
 																			r.pathPattern = "/repos/{owner}/{repo}/commits/{commit_sha}/pulls"
 																			r.args = args
@@ -22679,6 +23070,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		switch method {
 																		case "GET":
 																			r.name = "ReposGetCombinedStatusForRef"
+																			r.summary = "Get the combined status for a specific reference"
 																			r.operationID = "repos/get-combined-status-for-ref"
 																			r.pathPattern = "/repos/{owner}/{repo}/commits/{ref}/status"
 																			r.args = args
@@ -22701,6 +23093,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			case "GET":
 																				// Leaf: ReposListCommitStatusesForRef
 																				r.name = "ReposListCommitStatusesForRef"
+																				r.summary = "List commit statuses for a reference"
 																				r.operationID = "repos/list-commit-statuses-for-ref"
 																				r.pathPattern = "/repos/{owner}/{repo}/commits/{ref}/statuses"
 																				r.args = args
@@ -22726,6 +23119,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ReposGetCommunityProfileMetrics
 																r.name = "ReposGetCommunityProfileMetrics"
+																r.summary = "Get community profile metrics"
 																r.operationID = "repos/get-community-profile-metrics"
 																r.pathPattern = "/repos/{owner}/{repo}/community/profile"
 																r.args = args
@@ -22753,6 +23147,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ReposCompareCommits
 															r.name = "ReposCompareCommits"
+															r.summary = "Compare two commits"
 															r.operationID = "repos/compare-commits"
 															r.pathPattern = "/repos/{owner}/{repo}/compare/{basehead}"
 															r.args = args
@@ -22817,6 +23212,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "POST":
 																	// Leaf: AppsCreateContentAttachment
 																	r.name = "AppsCreateContentAttachment"
+																	r.summary = "Create a content attachment"
 																	r.operationID = "apps/create-content-attachment"
 																	r.pathPattern = "/repos/{owner}/{repo}/content_references/{content_reference_id}/attachments"
 																	r.args = args
@@ -22844,6 +23240,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "DELETE":
 																// Leaf: ReposDeleteFile
 																r.name = "ReposDeleteFile"
+																r.summary = "Delete a file"
 																r.operationID = "repos/delete-file"
 																r.pathPattern = "/repos/{owner}/{repo}/contents/{path}"
 																r.args = args
@@ -22852,6 +23249,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "PUT":
 																// Leaf: ReposCreateOrUpdateFileContents
 																r.name = "ReposCreateOrUpdateFileContents"
+																r.summary = "Create or update file contents"
 																r.operationID = "repos/create-or-update-file-contents"
 																r.pathPattern = "/repos/{owner}/{repo}/contents/{path}"
 																r.args = args
@@ -22874,6 +23272,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ReposListContributors
 															r.name = "ReposListContributors"
+															r.summary = "List repository contributors"
 															r.operationID = "repos/list-contributors"
 															r.pathPattern = "/repos/{owner}/{repo}/contributors"
 															r.args = args
@@ -22908,6 +23307,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "ReposListDeployments"
+													r.summary = "List deployments"
 													r.operationID = "repos/list-deployments"
 													r.pathPattern = "/repos/{owner}/{repo}/deployments"
 													r.args = args
@@ -22915,6 +23315,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													return r, true
 												case "POST":
 													r.name = "ReposCreateDeployment"
+													r.summary = "Create a deployment"
 													r.operationID = "repos/create-deployment"
 													r.pathPattern = "/repos/{owner}/{repo}/deployments"
 													r.args = args
@@ -22945,6 +23346,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													switch method {
 													case "DELETE":
 														r.name = "ReposDeleteDeployment"
+														r.summary = "Delete a deployment"
 														r.operationID = "repos/delete-deployment"
 														r.pathPattern = "/repos/{owner}/{repo}/deployments/{deployment_id}"
 														r.args = args
@@ -22952,6 +23354,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														return r, true
 													case "GET":
 														r.name = "ReposGetDeployment"
+														r.summary = "Get a deployment"
 														r.operationID = "repos/get-deployment"
 														r.pathPattern = "/repos/{owner}/{repo}/deployments/{deployment_id}"
 														r.args = args
@@ -22973,6 +23376,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "ReposListDeploymentStatuses"
+															r.summary = "List deployment statuses"
 															r.operationID = "repos/list-deployment-statuses"
 															r.pathPattern = "/repos/{owner}/{repo}/deployments/{deployment_id}/statuses"
 															r.args = args
@@ -22980,6 +23384,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															return r, true
 														case "POST":
 															r.name = "ReposCreateDeploymentStatus"
+															r.summary = "Create a deployment status"
 															r.operationID = "repos/create-deployment-status"
 															r.pathPattern = "/repos/{owner}/{repo}/deployments/{deployment_id}/statuses"
 															r.args = args
@@ -23007,6 +23412,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ReposGetDeploymentStatus
 																r.name = "ReposGetDeploymentStatus"
+																r.summary = "Get a deployment status"
 																r.operationID = "repos/get-deployment-status"
 																r.pathPattern = "/repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}"
 																r.args = args
@@ -23031,6 +23437,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													// Leaf: ReposCreateDispatchEvent
 													r.name = "ReposCreateDispatchEvent"
+													r.summary = "Create a repository dispatch event"
 													r.operationID = "repos/create-dispatch-event"
 													r.pathPattern = "/repos/{owner}/{repo}/dispatches"
 													r.args = args
@@ -23069,6 +23476,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "DELETE":
 													// Leaf: ReposDeleteAnEnvironment
 													r.name = "ReposDeleteAnEnvironment"
+													r.summary = "Delete an environment"
 													r.operationID = "repos/delete-an-environment"
 													r.pathPattern = "/repos/{owner}/{repo}/environments/{environment_name}"
 													r.args = args
@@ -23090,6 +23498,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ActivityListRepoEvents
 													r.name = "ActivityListRepoEvents"
+													r.summary = "List repository events"
 													r.operationID = "activity/list-repo-events"
 													r.pathPattern = "/repos/{owner}/{repo}/events"
 													r.args = args
@@ -23112,6 +23521,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "GET":
 												// Leaf: ReposListForks
 												r.name = "ReposListForks"
+												r.summary = "List forks"
 												r.operationID = "repos/list-forks"
 												r.pathPattern = "/repos/{owner}/{repo}/forks"
 												r.args = args
@@ -23120,6 +23530,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												// Leaf: ReposCreateFork
 												r.name = "ReposCreateFork"
+												r.summary = "Create a fork"
 												r.operationID = "repos/create-fork"
 												r.pathPattern = "/repos/{owner}/{repo}/forks"
 												r.args = args
@@ -23152,6 +23563,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													// Leaf: ReposCreateUsingTemplate
 													r.name = "ReposCreateUsingTemplate"
+													r.summary = "Create a repository using a template"
 													r.operationID = "repos/create-using-template"
 													r.pathPattern = "/repos/{template_owner}/{template_repo}/generate"
 													r.args = args
@@ -23183,6 +23595,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "GitCreateBlob"
+														r.summary = "Create a blob"
 														r.operationID = "git/create-blob"
 														r.pathPattern = "/repos/{owner}/{repo}/git/blobs"
 														r.args = args
@@ -23210,6 +23623,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "GET":
 															// Leaf: GitGetBlob
 															r.name = "GitGetBlob"
+															r.summary = "Get a blob"
 															r.operationID = "git/get-blob"
 															r.pathPattern = "/repos/{owner}/{repo}/git/blobs/{file_sha}"
 															r.args = args
@@ -23231,6 +23645,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "GitCreateCommit"
+														r.summary = "Create a commit"
 														r.operationID = "git/create-commit"
 														r.pathPattern = "/repos/{owner}/{repo}/git/commits"
 														r.args = args
@@ -23258,6 +23673,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "GET":
 															// Leaf: GitGetCommit
 															r.name = "GitGetCommit"
+															r.summary = "Get a commit"
 															r.operationID = "git/get-commit"
 															r.pathPattern = "/repos/{owner}/{repo}/git/commits/{commit_sha}"
 															r.args = args
@@ -23285,6 +23701,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "GET":
 														// Leaf: GitListMatchingRefs
 														r.name = "GitListMatchingRefs"
+														r.summary = "List matching references"
 														r.operationID = "git/list-matching-refs"
 														r.pathPattern = "/repos/{owner}/{repo}/git/matching-refs/{ref}"
 														r.args = args
@@ -23322,6 +23739,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "GET":
 															// Leaf: GitGetRef
 															r.name = "GitGetRef"
+															r.summary = "Get a reference"
 															r.operationID = "git/get-ref"
 															r.pathPattern = "/repos/{owner}/{repo}/git/ref/{ref}"
 															r.args = args
@@ -23342,6 +23760,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "GitCreateRef"
+															r.summary = "Create a reference"
 															r.operationID = "git/create-ref"
 															r.pathPattern = "/repos/{owner}/{repo}/git/refs"
 															r.args = args
@@ -23369,6 +23788,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "DELETE":
 																// Leaf: GitDeleteRef
 																r.name = "GitDeleteRef"
+																r.summary = "Delete a reference"
 																r.operationID = "git/delete-ref"
 																r.pathPattern = "/repos/{owner}/{repo}/git/refs/{ref}"
 																r.args = args
@@ -23377,6 +23797,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "PATCH":
 																// Leaf: GitUpdateRef
 																r.name = "GitUpdateRef"
+																r.summary = "Update a reference"
 																r.operationID = "git/update-ref"
 																r.pathPattern = "/repos/{owner}/{repo}/git/refs/{ref}"
 																r.args = args
@@ -23410,6 +23831,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "GitCreateTag"
+															r.summary = "Create a tag object"
 															r.operationID = "git/create-tag"
 															r.pathPattern = "/repos/{owner}/{repo}/git/tags"
 															r.args = args
@@ -23437,6 +23859,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "GET":
 																// Leaf: GitGetTag
 																r.name = "GitGetTag"
+																r.summary = "Get a tag"
 																r.operationID = "git/get-tag"
 																r.pathPattern = "/repos/{owner}/{repo}/git/tags/{tag_sha}"
 																r.args = args
@@ -23458,6 +23881,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "GitCreateTree"
+															r.summary = "Create a tree"
 															r.operationID = "git/create-tree"
 															r.pathPattern = "/repos/{owner}/{repo}/git/trees"
 															r.args = args
@@ -23485,6 +23909,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "GET":
 																// Leaf: GitGetTree
 																r.name = "GitGetTree"
+																r.summary = "Get a tree"
 																r.operationID = "git/get-tree"
 																r.pathPattern = "/repos/{owner}/{repo}/git/trees/{tree_sha}"
 																r.args = args
@@ -23509,6 +23934,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ReposListWebhooks"
+												r.summary = "List repository webhooks"
 												r.operationID = "repos/list-webhooks"
 												r.pathPattern = "/repos/{owner}/{repo}/hooks"
 												r.args = args
@@ -23516,6 +23942,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												return r, true
 											case "POST":
 												r.name = "ReposCreateWebhook"
+												r.summary = "Create a repository webhook"
 												r.operationID = "repos/create-webhook"
 												r.pathPattern = "/repos/{owner}/{repo}/hooks"
 												r.args = args
@@ -23546,6 +23973,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												switch method {
 												case "DELETE":
 													r.name = "ReposDeleteWebhook"
+													r.summary = "Delete a repository webhook"
 													r.operationID = "repos/delete-webhook"
 													r.pathPattern = "/repos/{owner}/{repo}/hooks/{hook_id}"
 													r.args = args
@@ -23553,6 +23981,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													return r, true
 												case "GET":
 													r.name = "ReposGetWebhook"
+													r.summary = "Get a repository webhook"
 													r.operationID = "repos/get-webhook"
 													r.pathPattern = "/repos/{owner}/{repo}/hooks/{hook_id}"
 													r.args = args
@@ -23560,6 +23989,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													return r, true
 												case "PATCH":
 													r.name = "ReposUpdateWebhook"
+													r.summary = "Update a repository webhook"
 													r.operationID = "repos/update-webhook"
 													r.pathPattern = "/repos/{owner}/{repo}/hooks/{hook_id}"
 													r.args = args
@@ -23593,6 +24023,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ReposGetWebhookConfigForRepo
 															r.name = "ReposGetWebhookConfigForRepo"
+															r.summary = "Get a webhook configuration for a repository"
 															r.operationID = "repos/get-webhook-config-for-repo"
 															r.pathPattern = "/repos/{owner}/{repo}/hooks/{hook_id}/config"
 															r.args = args
@@ -23601,6 +24032,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "PATCH":
 															// Leaf: ReposUpdateWebhookConfigForRepo
 															r.name = "ReposUpdateWebhookConfigForRepo"
+															r.summary = "Update a webhook configuration for a repository"
 															r.operationID = "repos/update-webhook-config-for-repo"
 															r.pathPattern = "/repos/{owner}/{repo}/hooks/{hook_id}/config"
 															r.args = args
@@ -23621,6 +24053,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "ReposListWebhookDeliveries"
+															r.summary = "List deliveries for a repository webhook"
 															r.operationID = "repos/list-webhook-deliveries"
 															r.pathPattern = "/repos/{owner}/{repo}/hooks/{hook_id}/deliveries"
 															r.args = args
@@ -23651,6 +24084,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															switch method {
 															case "GET":
 																r.name = "ReposGetWebhookDelivery"
+																r.summary = "Get a delivery for a repository webhook"
 																r.operationID = "repos/get-webhook-delivery"
 																r.pathPattern = "/repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}"
 																r.args = args
@@ -23673,6 +24107,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "POST":
 																	// Leaf: ReposRedeliverWebhookDelivery
 																	r.name = "ReposRedeliverWebhookDelivery"
+																	r.summary = "Redeliver a delivery for a repository webhook"
 																	r.operationID = "repos/redeliver-webhook-delivery"
 																	r.pathPattern = "/repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}/attempts"
 																	r.args = args
@@ -23696,6 +24131,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															// Leaf: ReposPingWebhook
 															r.name = "ReposPingWebhook"
+															r.summary = "Ping a repository webhook"
 															r.operationID = "repos/ping-webhook"
 															r.pathPattern = "/repos/{owner}/{repo}/hooks/{hook_id}/pings"
 															r.args = args
@@ -23717,6 +24153,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															// Leaf: ReposTestPushWebhook
 															r.name = "ReposTestPushWebhook"
+															r.summary = "Test the push repository webhook"
 															r.operationID = "repos/test-push-webhook"
 															r.pathPattern = "/repos/{owner}/{repo}/hooks/{hook_id}/tests"
 															r.args = args
@@ -23751,6 +24188,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												switch method {
 												case "DELETE":
 													r.name = "MigrationsCancelImport"
+													r.summary = "Cancel an import"
 													r.operationID = "migrations/cancel-import"
 													r.pathPattern = "/repos/{owner}/{repo}/import"
 													r.args = args
@@ -23758,6 +24196,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													return r, true
 												case "GET":
 													r.name = "MigrationsGetImportStatus"
+													r.summary = "Get an import status"
 													r.operationID = "migrations/get-import-status"
 													r.pathPattern = "/repos/{owner}/{repo}/import"
 													r.args = args
@@ -23765,6 +24204,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													return r, true
 												case "PATCH":
 													r.name = "MigrationsUpdateImport"
+													r.summary = "Update an import"
 													r.operationID = "migrations/update-import"
 													r.pathPattern = "/repos/{owner}/{repo}/import"
 													r.args = args
@@ -23772,6 +24212,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													return r, true
 												case "PUT":
 													r.name = "MigrationsStartImport"
+													r.summary = "Start an import"
 													r.operationID = "migrations/start-import"
 													r.pathPattern = "/repos/{owner}/{repo}/import"
 													r.args = args
@@ -23804,6 +24245,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "MigrationsGetCommitAuthors"
+															r.summary = "Get commit authors"
 															r.operationID = "migrations/get-commit-authors"
 															r.pathPattern = "/repos/{owner}/{repo}/import/authors"
 															r.args = args
@@ -23831,6 +24273,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "PATCH":
 																// Leaf: MigrationsMapCommitAuthor
 																r.name = "MigrationsMapCommitAuthor"
+																r.summary = "Map a commit author"
 																r.operationID = "migrations/map-commit-author"
 																r.pathPattern = "/repos/{owner}/{repo}/import/authors/{author_id}"
 																r.args = args
@@ -23864,6 +24307,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "GET":
 																// Leaf: MigrationsGetLargeFiles
 																r.name = "MigrationsGetLargeFiles"
+																r.summary = "Get large files"
 																r.operationID = "migrations/get-large-files"
 																r.pathPattern = "/repos/{owner}/{repo}/import/large_files"
 																r.args = args
@@ -23885,6 +24329,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "PATCH":
 																// Leaf: MigrationsSetLfsPreference
 																r.name = "MigrationsSetLfsPreference"
+																r.summary = "Update Git LFS preference"
 																r.operationID = "migrations/set-lfs-preference"
 																r.pathPattern = "/repos/{owner}/{repo}/import/lfs"
 																r.args = args
@@ -23920,6 +24365,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "DELETE":
 														// Leaf: InteractionsRemoveRestrictionsForRepo
 														r.name = "InteractionsRemoveRestrictionsForRepo"
+														r.summary = "Remove interaction restrictions for a repository"
 														r.operationID = "interactions/remove-restrictions-for-repo"
 														r.pathPattern = "/repos/{owner}/{repo}/interaction-limits"
 														r.args = args
@@ -23928,6 +24374,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "PUT":
 														// Leaf: InteractionsSetRestrictionsForRepo
 														r.name = "InteractionsSetRestrictionsForRepo"
+														r.summary = "Set interaction restrictions for a repository"
 														r.operationID = "interactions/set-restrictions-for-repo"
 														r.pathPattern = "/repos/{owner}/{repo}/interaction-limits"
 														r.args = args
@@ -23948,6 +24395,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "ReposListInvitations"
+														r.summary = "List repository invitations"
 														r.operationID = "repos/list-invitations"
 														r.pathPattern = "/repos/{owner}/{repo}/invitations"
 														r.args = args
@@ -23975,6 +24423,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "DELETE":
 															// Leaf: ReposDeleteInvitation
 															r.name = "ReposDeleteInvitation"
+															r.summary = "Delete a repository invitation"
 															r.operationID = "repos/delete-invitation"
 															r.pathPattern = "/repos/{owner}/{repo}/invitations/{invitation_id}"
 															r.args = args
@@ -23983,6 +24432,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "PATCH":
 															// Leaf: ReposUpdateInvitation
 															r.name = "ReposUpdateInvitation"
+															r.summary = "Update a repository invitation"
 															r.operationID = "repos/update-invitation"
 															r.pathPattern = "/repos/{owner}/{repo}/invitations/{invitation_id}"
 															r.args = args
@@ -24005,6 +24455,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "IssuesListForRepo"
+													r.summary = "List repository issues"
 													r.operationID = "issues/list-for-repo"
 													r.pathPattern = "/repos/{owner}/{repo}/issues"
 													r.args = args
@@ -24012,6 +24463,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													return r, true
 												case "POST":
 													r.name = "IssuesCreate"
+													r.summary = "Create an issue"
 													r.operationID = "issues/create"
 													r.pathPattern = "/repos/{owner}/{repo}/issues"
 													r.args = args
@@ -24044,6 +24496,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "IssuesListCommentsForRepo"
+															r.summary = "List issue comments for a repository"
 															r.operationID = "issues/list-comments-for-repo"
 															r.pathPattern = "/repos/{owner}/{repo}/issues/comments"
 															r.args = args
@@ -24074,6 +24527,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															switch method {
 															case "DELETE":
 																r.name = "IssuesDeleteComment"
+																r.summary = "Delete an issue comment"
 																r.operationID = "issues/delete-comment"
 																r.pathPattern = "/repos/{owner}/{repo}/issues/comments/{comment_id}"
 																r.args = args
@@ -24081,6 +24535,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																return r, true
 															case "GET":
 																r.name = "IssuesGetComment"
+																r.summary = "Get an issue comment"
 																r.operationID = "issues/get-comment"
 																r.pathPattern = "/repos/{owner}/{repo}/issues/comments/{comment_id}"
 																r.args = args
@@ -24088,6 +24543,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																return r, true
 															case "PATCH":
 																r.name = "IssuesUpdateComment"
+																r.summary = "Update an issue comment"
 																r.operationID = "issues/update-comment"
 																r.pathPattern = "/repos/{owner}/{repo}/issues/comments/{comment_id}"
 																r.args = args
@@ -24109,6 +24565,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																switch method {
 																case "GET":
 																	r.name = "ReactionsListForIssueComment"
+																	r.summary = "List reactions for an issue comment"
 																	r.operationID = "reactions/list-for-issue-comment"
 																	r.pathPattern = "/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions"
 																	r.args = args
@@ -24116,6 +24573,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	return r, true
 																case "POST":
 																	r.name = "ReactionsCreateForIssueComment"
+																	r.summary = "Create reaction for an issue comment"
 																	r.operationID = "reactions/create-for-issue-comment"
 																	r.pathPattern = "/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions"
 																	r.args = args
@@ -24143,6 +24601,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	case "DELETE":
 																		// Leaf: ReactionsDeleteForIssueComment
 																		r.name = "ReactionsDeleteForIssueComment"
+																		r.summary = "Delete an issue comment reaction"
 																		r.operationID = "reactions/delete-for-issue-comment"
 																		r.pathPattern = "/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}"
 																		r.args = args
@@ -24166,6 +24625,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "IssuesListEventsForRepo"
+															r.summary = "List issue events for a repository"
 															r.operationID = "issues/list-events-for-repo"
 															r.pathPattern = "/repos/{owner}/{repo}/issues/events"
 															r.args = args
@@ -24193,6 +24653,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "GET":
 																// Leaf: IssuesGetEvent
 																r.name = "IssuesGetEvent"
+																r.summary = "Get an issue event"
 																r.operationID = "issues/get-event"
 																r.pathPattern = "/repos/{owner}/{repo}/issues/events/{event_id}"
 																r.args = args
@@ -24217,6 +24678,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "IssuesGet"
+														r.summary = "Get an issue"
 														r.operationID = "issues/get"
 														r.pathPattern = "/repos/{owner}/{repo}/issues/{issue_number}"
 														r.args = args
@@ -24224,6 +24686,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														return r, true
 													case "PATCH":
 														r.name = "IssuesUpdate"
+														r.summary = "Update an issue"
 														r.operationID = "issues/update"
 														r.pathPattern = "/repos/{owner}/{repo}/issues/{issue_number}"
 														r.args = args
@@ -24257,6 +24720,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "DELETE":
 																// Leaf: IssuesRemoveAssignees
 																r.name = "IssuesRemoveAssignees"
+																r.summary = "Remove assignees from an issue"
 																r.operationID = "issues/remove-assignees"
 																r.pathPattern = "/repos/{owner}/{repo}/issues/{issue_number}/assignees"
 																r.args = args
@@ -24265,6 +24729,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																// Leaf: IssuesAddAssignees
 																r.name = "IssuesAddAssignees"
+																r.summary = "Add assignees to an issue"
 																r.operationID = "issues/add-assignees"
 																r.pathPattern = "/repos/{owner}/{repo}/issues/{issue_number}/assignees"
 																r.args = args
@@ -24286,6 +24751,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "GET":
 																// Leaf: IssuesListComments
 																r.name = "IssuesListComments"
+																r.summary = "List issue comments"
 																r.operationID = "issues/list-comments"
 																r.pathPattern = "/repos/{owner}/{repo}/issues/{issue_number}/comments"
 																r.args = args
@@ -24294,6 +24760,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																// Leaf: IssuesCreateComment
 																r.name = "IssuesCreateComment"
+																r.summary = "Create an issue comment"
 																r.operationID = "issues/create-comment"
 																r.pathPattern = "/repos/{owner}/{repo}/issues/{issue_number}/comments"
 																r.args = args
@@ -24325,6 +24792,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																switch method {
 																case "DELETE":
 																	r.name = "IssuesRemoveAllLabels"
+																	r.summary = "Remove all labels from an issue"
 																	r.operationID = "issues/remove-all-labels"
 																	r.pathPattern = "/repos/{owner}/{repo}/issues/{issue_number}/labels"
 																	r.args = args
@@ -24332,6 +24800,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	return r, true
 																case "GET":
 																	r.name = "IssuesListLabelsOnIssue"
+																	r.summary = "List labels for an issue"
 																	r.operationID = "issues/list-labels-on-issue"
 																	r.pathPattern = "/repos/{owner}/{repo}/issues/{issue_number}/labels"
 																	r.args = args
@@ -24359,6 +24828,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	case "DELETE":
 																		// Leaf: IssuesRemoveLabel
 																		r.name = "IssuesRemoveLabel"
+																		r.summary = "Remove a label from an issue"
 																		r.operationID = "issues/remove-label"
 																		r.pathPattern = "/repos/{owner}/{repo}/issues/{issue_number}/labels/{name}"
 																		r.args = args
@@ -24381,6 +24851,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "DELETE":
 																	// Leaf: IssuesUnlock
 																	r.name = "IssuesUnlock"
+																	r.summary = "Unlock an issue"
 																	r.operationID = "issues/unlock"
 																	r.pathPattern = "/repos/{owner}/{repo}/issues/{issue_number}/lock"
 																	r.args = args
@@ -24389,6 +24860,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "PUT":
 																	// Leaf: IssuesLock
 																	r.name = "IssuesLock"
+																	r.summary = "Lock an issue"
 																	r.operationID = "issues/lock"
 																	r.pathPattern = "/repos/{owner}/{repo}/issues/{issue_number}/lock"
 																	r.args = args
@@ -24410,6 +24882,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															switch method {
 															case "GET":
 																r.name = "ReactionsListForIssue"
+																r.summary = "List reactions for an issue"
 																r.operationID = "reactions/list-for-issue"
 																r.pathPattern = "/repos/{owner}/{repo}/issues/{issue_number}/reactions"
 																r.args = args
@@ -24417,6 +24890,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																return r, true
 															case "POST":
 																r.name = "ReactionsCreateForIssue"
+																r.summary = "Create reaction for an issue"
 																r.operationID = "reactions/create-for-issue"
 																r.pathPattern = "/repos/{owner}/{repo}/issues/{issue_number}/reactions"
 																r.args = args
@@ -24444,6 +24918,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "DELETE":
 																	// Leaf: ReactionsDeleteForIssue
 																	r.name = "ReactionsDeleteForIssue"
+																	r.summary = "Delete an issue reaction"
 																	r.operationID = "reactions/delete-for-issue"
 																	r.pathPattern = "/repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}"
 																	r.args = args
@@ -24469,6 +24944,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ReposListDeployKeys"
+												r.summary = "List deploy keys"
 												r.operationID = "repos/list-deploy-keys"
 												r.pathPattern = "/repos/{owner}/{repo}/keys"
 												r.args = args
@@ -24476,6 +24952,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												return r, true
 											case "POST":
 												r.name = "ReposCreateDeployKey"
+												r.summary = "Create a deploy key"
 												r.operationID = "repos/create-deploy-key"
 												r.pathPattern = "/repos/{owner}/{repo}/keys"
 												r.args = args
@@ -24503,6 +24980,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "DELETE":
 													// Leaf: ReposDeleteDeployKey
 													r.name = "ReposDeleteDeployKey"
+													r.summary = "Delete a deploy key"
 													r.operationID = "repos/delete-deploy-key"
 													r.pathPattern = "/repos/{owner}/{repo}/keys/{key_id}"
 													r.args = args
@@ -24511,6 +24989,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ReposGetDeployKey
 													r.name = "ReposGetDeployKey"
+													r.summary = "Get a deploy key"
 													r.operationID = "repos/get-deploy-key"
 													r.pathPattern = "/repos/{owner}/{repo}/keys/{key_id}"
 													r.args = args
@@ -24554,6 +25033,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "IssuesListLabelsForRepo"
+														r.summary = "List labels for a repository"
 														r.operationID = "issues/list-labels-for-repo"
 														r.pathPattern = "/repos/{owner}/{repo}/labels"
 														r.args = args
@@ -24561,6 +25041,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														return r, true
 													case "POST":
 														r.name = "IssuesCreateLabel"
+														r.summary = "Create a label"
 														r.operationID = "issues/create-label"
 														r.pathPattern = "/repos/{owner}/{repo}/labels"
 														r.args = args
@@ -24588,6 +25069,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "DELETE":
 															// Leaf: IssuesDeleteLabel
 															r.name = "IssuesDeleteLabel"
+															r.summary = "Delete a label"
 															r.operationID = "issues/delete-label"
 															r.pathPattern = "/repos/{owner}/{repo}/labels/{name}"
 															r.args = args
@@ -24596,6 +25078,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "GET":
 															// Leaf: IssuesGetLabel
 															r.name = "IssuesGetLabel"
+															r.summary = "Get a label"
 															r.operationID = "issues/get-label"
 															r.pathPattern = "/repos/{owner}/{repo}/labels/{name}"
 															r.args = args
@@ -24604,6 +25087,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "PATCH":
 															// Leaf: IssuesUpdateLabel
 															r.name = "IssuesUpdateLabel"
+															r.summary = "Update a label"
 															r.operationID = "issues/update-label"
 															r.pathPattern = "/repos/{owner}/{repo}/labels/{name}"
 															r.args = args
@@ -24626,6 +25110,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ReposListLanguages
 														r.name = "ReposListLanguages"
+														r.summary = "List repository languages"
 														r.operationID = "repos/list-languages"
 														r.pathPattern = "/repos/{owner}/{repo}/languages"
 														r.args = args
@@ -24648,6 +25133,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "DELETE":
 													// Leaf: ReposDisableLfsForRepo
 													r.name = "ReposDisableLfsForRepo"
+													r.summary = "Disable Git LFS for a repository"
 													r.operationID = "repos/disable-lfs-for-repo"
 													r.pathPattern = "/repos/{owner}/{repo}/lfs"
 													r.args = args
@@ -24656,6 +25142,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "PUT":
 													// Leaf: ReposEnableLfsForRepo
 													r.name = "ReposEnableLfsForRepo"
+													r.summary = "Enable Git LFS for a repository"
 													r.operationID = "repos/enable-lfs-for-repo"
 													r.pathPattern = "/repos/{owner}/{repo}/lfs"
 													r.args = args
@@ -24677,6 +25164,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "GET":
 													// Leaf: LicensesGetForRepo
 													r.name = "LicensesGetForRepo"
+													r.summary = "Get the license for a repository"
 													r.operationID = "licenses/get-for-repo"
 													r.pathPattern = "/repos/{owner}/{repo}/license"
 													r.args = args
@@ -24721,6 +25209,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														// Leaf: ReposMergeUpstream
 														r.name = "ReposMergeUpstream"
+														r.summary = "Sync a fork branch with the upstream repository"
 														r.operationID = "repos/merge-upstream"
 														r.pathPattern = "/repos/{owner}/{repo}/merge-upstream"
 														r.args = args
@@ -24742,6 +25231,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														// Leaf: ReposMerge
 														r.name = "ReposMerge"
+														r.summary = "Merge a branch"
 														r.operationID = "repos/merge"
 														r.pathPattern = "/repos/{owner}/{repo}/merges"
 														r.args = args
@@ -24763,6 +25253,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "IssuesListMilestones"
+													r.summary = "List milestones"
 													r.operationID = "issues/list-milestones"
 													r.pathPattern = "/repos/{owner}/{repo}/milestones"
 													r.args = args
@@ -24770,6 +25261,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													return r, true
 												case "POST":
 													r.name = "IssuesCreateMilestone"
+													r.summary = "Create a milestone"
 													r.operationID = "issues/create-milestone"
 													r.pathPattern = "/repos/{owner}/{repo}/milestones"
 													r.args = args
@@ -24800,6 +25292,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													switch method {
 													case "DELETE":
 														r.name = "IssuesDeleteMilestone"
+														r.summary = "Delete a milestone"
 														r.operationID = "issues/delete-milestone"
 														r.pathPattern = "/repos/{owner}/{repo}/milestones/{milestone_number}"
 														r.args = args
@@ -24807,6 +25300,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														return r, true
 													case "GET":
 														r.name = "IssuesGetMilestone"
+														r.summary = "Get a milestone"
 														r.operationID = "issues/get-milestone"
 														r.pathPattern = "/repos/{owner}/{repo}/milestones/{milestone_number}"
 														r.args = args
@@ -24814,6 +25308,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														return r, true
 													case "PATCH":
 														r.name = "IssuesUpdateMilestone"
+														r.summary = "Update a milestone"
 														r.operationID = "issues/update-milestone"
 														r.pathPattern = "/repos/{owner}/{repo}/milestones/{milestone_number}"
 														r.args = args
@@ -24836,6 +25331,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "GET":
 															// Leaf: IssuesListLabelsForMilestone
 															r.name = "IssuesListLabelsForMilestone"
+															r.summary = "List labels for issues in a milestone"
 															r.operationID = "issues/list-labels-for-milestone"
 															r.pathPattern = "/repos/{owner}/{repo}/milestones/{milestone_number}/labels"
 															r.args = args
@@ -24860,6 +25356,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "GET":
 												// Leaf: ActivityListRepoNotificationsForAuthenticatedUser
 												r.name = "ActivityListRepoNotificationsForAuthenticatedUser"
+												r.summary = "List repository notifications for the authenticated user"
 												r.operationID = "activity/list-repo-notifications-for-authenticated-user"
 												r.pathPattern = "/repos/{owner}/{repo}/notifications"
 												r.args = args
@@ -24868,6 +25365,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "PUT":
 												// Leaf: ActivityMarkRepoNotificationsAsRead
 												r.name = "ActivityMarkRepoNotificationsAsRead"
+												r.summary = "Mark repository notifications as read"
 												r.operationID = "activity/mark-repo-notifications-as-read"
 												r.pathPattern = "/repos/{owner}/{repo}/notifications"
 												r.args = args
@@ -24899,6 +25397,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												switch method {
 												case "DELETE":
 													r.name = "ReposDeletePagesSite"
+													r.summary = "Delete a GitHub Pages site"
 													r.operationID = "repos/delete-pages-site"
 													r.pathPattern = "/repos/{owner}/{repo}/pages"
 													r.args = args
@@ -24906,6 +25405,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													return r, true
 												case "GET":
 													r.name = "ReposGetPages"
+													r.summary = "Get a GitHub Pages site"
 													r.operationID = "repos/get-pages"
 													r.pathPattern = "/repos/{owner}/{repo}/pages"
 													r.args = args
@@ -24913,6 +25413,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													return r, true
 												case "POST":
 													r.name = "ReposCreatePagesSite"
+													r.summary = "Create a GitHub Pages site"
 													r.operationID = "repos/create-pages-site"
 													r.pathPattern = "/repos/{owner}/{repo}/pages"
 													r.args = args
@@ -24945,6 +25446,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "ReposListPagesBuilds"
+															r.summary = "List GitHub Pages builds"
 															r.operationID = "repos/list-pages-builds"
 															r.pathPattern = "/repos/{owner}/{repo}/pages/builds"
 															r.args = args
@@ -24952,6 +25454,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															return r, true
 														case "POST":
 															r.name = "ReposRequestPagesBuild"
+															r.summary = "Request a GitHub Pages build"
 															r.operationID = "repos/request-pages-build"
 															r.pathPattern = "/repos/{owner}/{repo}/pages/builds"
 															r.args = args
@@ -24985,6 +25488,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "GET":
 																	// Leaf: ReposGetLatestPagesBuild
 																	r.name = "ReposGetLatestPagesBuild"
+																	r.summary = "Get latest Pages build"
 																	r.operationID = "repos/get-latest-pages-build"
 																	r.pathPattern = "/repos/{owner}/{repo}/pages/builds/latest"
 																	r.args = args
@@ -25005,6 +25509,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ReposGetPagesBuild
 																r.name = "ReposGetPagesBuild"
+																r.summary = "Get GitHub Pages build"
 																r.operationID = "repos/get-pages-build"
 																r.pathPattern = "/repos/{owner}/{repo}/pages/builds/{build_id}"
 																r.args = args
@@ -25027,6 +25532,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ReposGetPagesHealthCheck
 															r.name = "ReposGetPagesHealthCheck"
+															r.summary = "Get a DNS health check for GitHub Pages"
 															r.operationID = "repos/get-pages-health-check"
 															r.pathPattern = "/repos/{owner}/{repo}/pages/health"
 															r.args = args
@@ -25050,6 +25556,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ProjectsListForRepo
 													r.name = "ProjectsListForRepo"
+													r.summary = "List repository projects"
 													r.operationID = "projects/list-for-repo"
 													r.pathPattern = "/repos/{owner}/{repo}/projects"
 													r.args = args
@@ -25058,6 +25565,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													// Leaf: ProjectsCreateForRepo
 													r.name = "ProjectsCreateForRepo"
+													r.summary = "Create a repository project"
 													r.operationID = "projects/create-for-repo"
 													r.pathPattern = "/repos/{owner}/{repo}/projects"
 													r.args = args
@@ -25078,6 +25586,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "PullsList"
+													r.summary = "List pull requests"
 													r.operationID = "pulls/list"
 													r.pathPattern = "/repos/{owner}/{repo}/pulls"
 													r.args = args
@@ -25085,6 +25594,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													return r, true
 												case "POST":
 													r.name = "PullsCreate"
+													r.summary = "Create a pull request"
 													r.operationID = "pulls/create"
 													r.pathPattern = "/repos/{owner}/{repo}/pulls"
 													r.args = args
@@ -25117,6 +25627,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "PullsListReviewCommentsForRepo"
+															r.summary = "List review comments in a repository"
 															r.operationID = "pulls/list-review-comments-for-repo"
 															r.pathPattern = "/repos/{owner}/{repo}/pulls/comments"
 															r.args = args
@@ -25147,6 +25658,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															switch method {
 															case "DELETE":
 																r.name = "PullsDeleteReviewComment"
+																r.summary = "Delete a review comment for a pull request"
 																r.operationID = "pulls/delete-review-comment"
 																r.pathPattern = "/repos/{owner}/{repo}/pulls/comments/{comment_id}"
 																r.args = args
@@ -25154,6 +25666,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																return r, true
 															case "GET":
 																r.name = "PullsGetReviewComment"
+																r.summary = "Get a review comment for a pull request"
 																r.operationID = "pulls/get-review-comment"
 																r.pathPattern = "/repos/{owner}/{repo}/pulls/comments/{comment_id}"
 																r.args = args
@@ -25161,6 +25674,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																return r, true
 															case "PATCH":
 																r.name = "PullsUpdateReviewComment"
+																r.summary = "Update a review comment for a pull request"
 																r.operationID = "pulls/update-review-comment"
 																r.pathPattern = "/repos/{owner}/{repo}/pulls/comments/{comment_id}"
 																r.args = args
@@ -25182,6 +25696,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																switch method {
 																case "GET":
 																	r.name = "ReactionsListForPullRequestReviewComment"
+																	r.summary = "List reactions for a pull request review comment"
 																	r.operationID = "reactions/list-for-pull-request-review-comment"
 																	r.pathPattern = "/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions"
 																	r.args = args
@@ -25189,6 +25704,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	return r, true
 																case "POST":
 																	r.name = "ReactionsCreateForPullRequestReviewComment"
+																	r.summary = "Create reaction for a pull request review comment"
 																	r.operationID = "reactions/create-for-pull-request-review-comment"
 																	r.pathPattern = "/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions"
 																	r.args = args
@@ -25216,6 +25732,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	case "DELETE":
 																		// Leaf: ReactionsDeleteForPullRequestComment
 																		r.name = "ReactionsDeleteForPullRequestComment"
+																		r.summary = "Delete a pull request comment reaction"
 																		r.operationID = "reactions/delete-for-pull-request-comment"
 																		r.pathPattern = "/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}"
 																		r.args = args
@@ -25242,6 +25759,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "PullsGet"
+														r.summary = "Get a pull request"
 														r.operationID = "pulls/get"
 														r.pathPattern = "/repos/{owner}/{repo}/pulls/{pull_number}"
 														r.args = args
@@ -25249,6 +25767,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														return r, true
 													case "PATCH":
 														r.name = "PullsUpdate"
+														r.summary = "Update a pull request"
 														r.operationID = "pulls/update"
 														r.pathPattern = "/repos/{owner}/{repo}/pulls/{pull_number}"
 														r.args = args
@@ -25292,6 +25811,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																switch method {
 																case "GET":
 																	r.name = "PullsListReviewComments"
+																	r.summary = "List review comments on a pull request"
 																	r.operationID = "pulls/list-review-comments"
 																	r.pathPattern = "/repos/{owner}/{repo}/pulls/{pull_number}/comments"
 																	r.args = args
@@ -25299,6 +25819,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	return r, true
 																case "POST":
 																	r.name = "PullsCreateReviewComment"
+																	r.summary = "Create a review comment for a pull request"
 																	r.operationID = "pulls/create-review-comment"
 																	r.pathPattern = "/repos/{owner}/{repo}/pulls/{pull_number}/comments"
 																	r.args = args
@@ -25341,6 +25862,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		case "POST":
 																			// Leaf: PullsCreateReplyForReviewComment
 																			r.name = "PullsCreateReplyForReviewComment"
+																			r.summary = "Create a reply for a review comment"
 																			r.operationID = "pulls/create-reply-for-review-comment"
 																			r.pathPattern = "/repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies"
 																			r.args = args
@@ -25364,6 +25886,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "GET":
 																	// Leaf: PullsListCommits
 																	r.name = "PullsListCommits"
+																	r.summary = "List commits on a pull request"
 																	r.operationID = "pulls/list-commits"
 																	r.pathPattern = "/repos/{owner}/{repo}/pulls/{pull_number}/commits"
 																	r.args = args
@@ -25386,6 +25909,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "GET":
 																// Leaf: PullsListFiles
 																r.name = "PullsListFiles"
+																r.summary = "List pull requests files"
 																r.operationID = "pulls/list-files"
 																r.pathPattern = "/repos/{owner}/{repo}/pulls/{pull_number}/files"
 																r.args = args
@@ -25407,6 +25931,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "GET":
 																// Leaf: PullsCheckIfMerged
 																r.name = "PullsCheckIfMerged"
+																r.summary = "Check if a pull request has been merged"
 																r.operationID = "pulls/check-if-merged"
 																r.pathPattern = "/repos/{owner}/{repo}/pulls/{pull_number}/merge"
 																r.args = args
@@ -25415,6 +25940,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "PUT":
 																// Leaf: PullsMerge
 																r.name = "PullsMerge"
+																r.summary = "Merge a pull request"
 																r.operationID = "pulls/merge"
 																r.pathPattern = "/repos/{owner}/{repo}/pulls/{pull_number}/merge"
 																r.args = args
@@ -25447,6 +25973,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "DELETE":
 																	// Leaf: PullsRemoveRequestedReviewers
 																	r.name = "PullsRemoveRequestedReviewers"
+																	r.summary = "Remove requested reviewers from a pull request"
 																	r.operationID = "pulls/remove-requested-reviewers"
 																	r.pathPattern = "/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"
 																	r.args = args
@@ -25455,6 +25982,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "GET":
 																	// Leaf: PullsListRequestedReviewers
 																	r.name = "PullsListRequestedReviewers"
+																	r.summary = "List requested reviewers for a pull request"
 																	r.operationID = "pulls/list-requested-reviewers"
 																	r.pathPattern = "/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"
 																	r.args = args
@@ -25475,6 +26003,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																switch method {
 																case "GET":
 																	r.name = "PullsListReviews"
+																	r.summary = "List reviews for a pull request"
 																	r.operationID = "pulls/list-reviews"
 																	r.pathPattern = "/repos/{owner}/{repo}/pulls/{pull_number}/reviews"
 																	r.args = args
@@ -25482,6 +26011,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	return r, true
 																case "POST":
 																	r.name = "PullsCreateReview"
+																	r.summary = "Create a review for a pull request"
 																	r.operationID = "pulls/create-review"
 																	r.pathPattern = "/repos/{owner}/{repo}/pulls/{pull_number}/reviews"
 																	r.args = args
@@ -25512,6 +26042,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	switch method {
 																	case "DELETE":
 																		r.name = "PullsDeletePendingReview"
+																		r.summary = "Delete a pending review for a pull request"
 																		r.operationID = "pulls/delete-pending-review"
 																		r.pathPattern = "/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"
 																		r.args = args
@@ -25519,6 +26050,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		return r, true
 																	case "GET":
 																		r.name = "PullsGetReview"
+																		r.summary = "Get a review for a pull request"
 																		r.operationID = "pulls/get-review"
 																		r.pathPattern = "/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"
 																		r.args = args
@@ -25526,6 +26058,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		return r, true
 																	case "PUT":
 																		r.name = "PullsUpdateReview"
+																		r.summary = "Update a review for a pull request"
 																		r.operationID = "pulls/update-review"
 																		r.pathPattern = "/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"
 																		r.args = args
@@ -25559,6 +26092,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			case "GET":
 																				// Leaf: PullsListCommentsForReview
 																				r.name = "PullsListCommentsForReview"
+																				r.summary = "List comments for a pull request review"
 																				r.operationID = "pulls/list-comments-for-review"
 																				r.pathPattern = "/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments"
 																				r.args = args
@@ -25580,6 +26114,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			case "PUT":
 																				// Leaf: PullsDismissReview
 																				r.name = "PullsDismissReview"
+																				r.summary = "Dismiss a review for a pull request"
 																				r.operationID = "pulls/dismiss-review"
 																				r.pathPattern = "/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals"
 																				r.args = args
@@ -25601,6 +26136,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			case "POST":
 																				// Leaf: PullsSubmitReview
 																				r.name = "PullsSubmitReview"
+																				r.summary = "Submit a review for a pull request"
 																				r.operationID = "pulls/submit-review"
 																				r.pathPattern = "/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events"
 																				r.args = args
@@ -25626,6 +26162,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "PUT":
 																// Leaf: PullsUpdateBranch
 																r.name = "PullsUpdateBranch"
+																r.summary = "Update a pull request branch"
 																r.operationID = "pulls/update-branch"
 																r.pathPattern = "/repos/{owner}/{repo}/pulls/{pull_number}/update-branch"
 																r.args = args
@@ -25661,6 +26198,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "ReposGetReadme"
+													r.summary = "Get a repository README"
 													r.operationID = "repos/get-readme"
 													r.pathPattern = "/repos/{owner}/{repo}/readme"
 													r.args = args
@@ -25688,6 +26226,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ReposGetReadmeInDirectory
 														r.name = "ReposGetReadmeInDirectory"
+														r.summary = "Get a repository README for a directory"
 														r.operationID = "repos/get-readme-in-directory"
 														r.pathPattern = "/repos/{owner}/{repo}/readme/{dir}"
 														r.args = args
@@ -25709,6 +26248,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "ReposListReleases"
+													r.summary = "List releases"
 													r.operationID = "repos/list-releases"
 													r.pathPattern = "/repos/{owner}/{repo}/releases"
 													r.args = args
@@ -25716,6 +26256,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													return r, true
 												case "POST":
 													r.name = "ReposCreateRelease"
+													r.summary = "Create a release"
 													r.operationID = "repos/create-release"
 													r.pathPattern = "/repos/{owner}/{repo}/releases"
 													r.args = args
@@ -25754,6 +26295,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "DELETE":
 															// Leaf: ReposDeleteReleaseAsset
 															r.name = "ReposDeleteReleaseAsset"
+															r.summary = "Delete a release asset"
 															r.operationID = "repos/delete-release-asset"
 															r.pathPattern = "/repos/{owner}/{repo}/releases/assets/{asset_id}"
 															r.args = args
@@ -25762,6 +26304,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ReposGetReleaseAsset
 															r.name = "ReposGetReleaseAsset"
+															r.summary = "Get a release asset"
 															r.operationID = "repos/get-release-asset"
 															r.pathPattern = "/repos/{owner}/{repo}/releases/assets/{asset_id}"
 															r.args = args
@@ -25770,6 +26313,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "PATCH":
 															// Leaf: ReposUpdateReleaseAsset
 															r.name = "ReposUpdateReleaseAsset"
+															r.summary = "Update a release asset"
 															r.operationID = "repos/update-release-asset"
 															r.pathPattern = "/repos/{owner}/{repo}/releases/assets/{asset_id}"
 															r.args = args
@@ -25791,6 +26335,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ReposGetLatestRelease
 															r.name = "ReposGetLatestRelease"
+															r.summary = "Get the latest release"
 															r.operationID = "repos/get-latest-release"
 															r.pathPattern = "/repos/{owner}/{repo}/releases/latest"
 															r.args = args
@@ -25817,6 +26362,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ReposGetReleaseByTag
 															r.name = "ReposGetReleaseByTag"
+															r.summary = "Get a release by tag name"
 															r.operationID = "repos/get-release-by-tag"
 															r.pathPattern = "/repos/{owner}/{repo}/releases/tags/{tag}"
 															r.args = args
@@ -25840,6 +26386,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													switch method {
 													case "DELETE":
 														r.name = "ReposDeleteRelease"
+														r.summary = "Delete a release"
 														r.operationID = "repos/delete-release"
 														r.pathPattern = "/repos/{owner}/{repo}/releases/{release_id}"
 														r.args = args
@@ -25847,6 +26394,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														return r, true
 													case "GET":
 														r.name = "ReposGetRelease"
+														r.summary = "Get a release"
 														r.operationID = "repos/get-release"
 														r.pathPattern = "/repos/{owner}/{repo}/releases/{release_id}"
 														r.args = args
@@ -25854,6 +26402,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														return r, true
 													case "PATCH":
 														r.name = "ReposUpdateRelease"
+														r.summary = "Update a release"
 														r.operationID = "repos/update-release"
 														r.pathPattern = "/repos/{owner}/{repo}/releases/{release_id}"
 														r.args = args
@@ -25887,6 +26436,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ReposListReleaseAssets
 																r.name = "ReposListReleaseAssets"
+																r.summary = "List release assets"
 																r.operationID = "repos/list-release-assets"
 																r.pathPattern = "/repos/{owner}/{repo}/releases/{release_id}/assets"
 																r.args = args
@@ -25895,6 +26445,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																// Leaf: ReposUploadReleaseAsset
 																r.name = "ReposUploadReleaseAsset"
+																r.summary = "Upload a release asset"
 																r.operationID = "repos/upload-release-asset"
 																r.pathPattern = "/repos/{owner}/{repo}/releases/{release_id}/assets"
 																r.args = args
@@ -25916,6 +26467,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																// Leaf: ReactionsCreateForRelease
 																r.name = "ReactionsCreateForRelease"
+																r.summary = "Create reaction for a release"
 																r.operationID = "reactions/create-for-release"
 																r.pathPattern = "/repos/{owner}/{repo}/releases/{release_id}/reactions"
 																r.args = args
@@ -25951,6 +26503,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "SecretScanningListAlertsForRepo"
+													r.summary = "List secret scanning alerts for a repository"
 													r.operationID = "secret-scanning/list-alerts-for-repo"
 													r.pathPattern = "/repos/{owner}/{repo}/secret-scanning/alerts"
 													r.args = args
@@ -25978,6 +26531,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "GET":
 														// Leaf: SecretScanningGetAlert
 														r.name = "SecretScanningGetAlert"
+														r.summary = "Get a secret scanning alert"
 														r.operationID = "secret-scanning/get-alert"
 														r.pathPattern = "/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"
 														r.args = args
@@ -25986,6 +26540,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "PATCH":
 														// Leaf: SecretScanningUpdateAlert
 														r.name = "SecretScanningUpdateAlert"
+														r.summary = "Update a secret scanning alert"
 														r.operationID = "secret-scanning/update-alert"
 														r.pathPattern = "/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"
 														r.args = args
@@ -26041,6 +26596,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ReposGetCodeFrequencyStats
 																r.name = "ReposGetCodeFrequencyStats"
+																r.summary = "Get the weekly commit activity"
 																r.operationID = "repos/get-code-frequency-stats"
 																r.pathPattern = "/repos/{owner}/{repo}/stats/code_frequency"
 																r.args = args
@@ -26062,6 +26618,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ReposGetCommitActivityStats
 																r.name = "ReposGetCommitActivityStats"
+																r.summary = "Get the last year of commit activity"
 																r.operationID = "repos/get-commit-activity-stats"
 																r.pathPattern = "/repos/{owner}/{repo}/stats/commit_activity"
 																r.args = args
@@ -26083,6 +26640,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ReposGetContributorsStats
 																r.name = "ReposGetContributorsStats"
+																r.summary = "Get all contributor commit activity"
 																r.operationID = "repos/get-contributors-stats"
 																r.pathPattern = "/repos/{owner}/{repo}/stats/contributors"
 																r.args = args
@@ -26116,6 +26674,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ReposGetParticipationStats
 																r.name = "ReposGetParticipationStats"
+																r.summary = "Get the weekly commit count"
 																r.operationID = "repos/get-participation-stats"
 																r.pathPattern = "/repos/{owner}/{repo}/stats/participation"
 																r.args = args
@@ -26137,6 +26696,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ReposGetPunchCardStats
 																r.name = "ReposGetPunchCardStats"
+																r.summary = "Get the hourly commit count for each day"
 																r.operationID = "repos/get-punch-card-stats"
 																r.pathPattern = "/repos/{owner}/{repo}/stats/punch_card"
 																r.args = args
@@ -26165,6 +26725,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														// Leaf: ReposCreateCommitStatus
 														r.name = "ReposCreateCommitStatus"
+														r.summary = "Create a commit status"
 														r.operationID = "repos/create-commit-status"
 														r.pathPattern = "/repos/{owner}/{repo}/statuses/{sha}"
 														r.args = args
@@ -26198,6 +26759,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ActivityListWatchersForRepo
 														r.name = "ActivityListWatchersForRepo"
+														r.summary = "List watchers"
 														r.operationID = "activity/list-watchers-for-repo"
 														r.pathPattern = "/repos/{owner}/{repo}/subscribers"
 														r.args = args
@@ -26219,6 +26781,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "DELETE":
 														// Leaf: ActivityDeleteRepoSubscription
 														r.name = "ActivityDeleteRepoSubscription"
+														r.summary = "Delete a repository subscription"
 														r.operationID = "activity/delete-repo-subscription"
 														r.pathPattern = "/repos/{owner}/{repo}/subscription"
 														r.args = args
@@ -26227,6 +26790,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ActivityGetRepoSubscription
 														r.name = "ActivityGetRepoSubscription"
+														r.summary = "Get a repository subscription"
 														r.operationID = "activity/get-repo-subscription"
 														r.pathPattern = "/repos/{owner}/{repo}/subscription"
 														r.args = args
@@ -26235,6 +26799,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "PUT":
 														// Leaf: ActivitySetRepoSubscription
 														r.name = "ActivitySetRepoSubscription"
+														r.summary = "Set a repository subscription"
 														r.operationID = "activity/set-repo-subscription"
 														r.pathPattern = "/repos/{owner}/{repo}/subscription"
 														r.args = args
@@ -26280,6 +26845,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ReposListTags
 														r.name = "ReposListTags"
+														r.summary = "List repository tags"
 														r.operationID = "repos/list-tags"
 														r.pathPattern = "/repos/{owner}/{repo}/tags"
 														r.args = args
@@ -26306,6 +26872,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ReposDownloadTarballArchive
 														r.name = "ReposDownloadTarballArchive"
+														r.summary = "Download a repository archive (tar)"
 														r.operationID = "repos/download-tarball-archive"
 														r.pathPattern = "/repos/{owner}/{repo}/tarball/{ref}"
 														r.args = args
@@ -26328,6 +26895,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ReposListTeams
 													r.name = "ReposListTeams"
+													r.summary = "List repository teams"
 													r.operationID = "repos/list-teams"
 													r.pathPattern = "/repos/{owner}/{repo}/teams"
 													r.args = args
@@ -26349,6 +26917,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ReposGetAllTopics
 													r.name = "ReposGetAllTopics"
+													r.summary = "Get all repository topics"
 													r.operationID = "repos/get-all-topics"
 													r.pathPattern = "/repos/{owner}/{repo}/topics"
 													r.args = args
@@ -26357,6 +26926,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "PUT":
 													// Leaf: ReposReplaceAllTopics
 													r.name = "ReposReplaceAllTopics"
+													r.summary = "Replace all repository topics"
 													r.operationID = "repos/replace-all-topics"
 													r.pathPattern = "/repos/{owner}/{repo}/topics"
 													r.args = args
@@ -26400,6 +26970,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ReposGetClones
 															r.name = "ReposGetClones"
+															r.summary = "Get repository clones"
 															r.operationID = "repos/get-clones"
 															r.pathPattern = "/repos/{owner}/{repo}/traffic/clones"
 															r.args = args
@@ -26432,6 +27003,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ReposGetTopPaths
 																r.name = "ReposGetTopPaths"
+																r.summary = "Get top referral paths"
 																r.operationID = "repos/get-top-paths"
 																r.pathPattern = "/repos/{owner}/{repo}/traffic/popular/paths"
 																r.args = args
@@ -26453,6 +27025,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ReposGetTopReferrers
 																r.name = "ReposGetTopReferrers"
+																r.summary = "Get top referral sources"
 																r.operationID = "repos/get-top-referrers"
 																r.pathPattern = "/repos/{owner}/{repo}/traffic/popular/referrers"
 																r.args = args
@@ -26475,6 +27048,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ReposGetViews
 															r.name = "ReposGetViews"
+															r.summary = "Get page views"
 															r.operationID = "repos/get-views"
 															r.pathPattern = "/repos/{owner}/{repo}/traffic/views"
 															r.args = args
@@ -26497,6 +27071,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														// Leaf: ReposTransfer
 														r.name = "ReposTransfer"
+														r.summary = "Transfer a repository"
 														r.operationID = "repos/transfer"
 														r.pathPattern = "/repos/{owner}/{repo}/transfer"
 														r.args = args
@@ -26520,6 +27095,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "DELETE":
 												// Leaf: ReposDisableVulnerabilityAlerts
 												r.name = "ReposDisableVulnerabilityAlerts"
+												r.summary = "Disable vulnerability alerts"
 												r.operationID = "repos/disable-vulnerability-alerts"
 												r.pathPattern = "/repos/{owner}/{repo}/vulnerability-alerts"
 												r.args = args
@@ -26528,6 +27104,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "GET":
 												// Leaf: ReposCheckVulnerabilityAlerts
 												r.name = "ReposCheckVulnerabilityAlerts"
+												r.summary = "Check if vulnerability alerts are enabled for a repository"
 												r.operationID = "repos/check-vulnerability-alerts"
 												r.pathPattern = "/repos/{owner}/{repo}/vulnerability-alerts"
 												r.args = args
@@ -26536,6 +27113,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "PUT":
 												// Leaf: ReposEnableVulnerabilityAlerts
 												r.name = "ReposEnableVulnerabilityAlerts"
+												r.summary = "Enable vulnerability alerts"
 												r.operationID = "repos/enable-vulnerability-alerts"
 												r.pathPattern = "/repos/{owner}/{repo}/vulnerability-alerts"
 												r.args = args
@@ -26562,6 +27140,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "GET":
 												// Leaf: ReposDownloadZipballArchive
 												r.name = "ReposDownloadZipballArchive"
+												r.summary = "Download a repository archive (zip)"
 												r.operationID = "repos/download-zipball-archive"
 												r.pathPattern = "/repos/{owner}/{repo}/zipball/{ref}"
 												r.args = args
@@ -26585,6 +27164,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								switch method {
 								case "GET":
 									r.name = "ReposListPublic"
+									r.summary = "List public repositories"
 									r.operationID = "repos/list-public"
 									r.pathPattern = "/repositories"
 									r.args = args
@@ -26646,6 +27226,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ActionsListEnvironmentSecrets"
+												r.summary = "List environment secrets"
 												r.operationID = "actions/list-environment-secrets"
 												r.pathPattern = "/repositories/{repository_id}/environments/{environment_name}/secrets"
 												r.args = args
@@ -26679,6 +27260,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ActionsGetEnvironmentPublicKey
 														r.name = "ActionsGetEnvironmentPublicKey"
+														r.summary = "Get an environment public key"
 														r.operationID = "actions/get-environment-public-key"
 														r.pathPattern = "/repositories/{repository_id}/environments/{environment_name}/secrets/public-key"
 														r.args = args
@@ -26699,6 +27281,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "DELETE":
 													// Leaf: ActionsDeleteEnvironmentSecret
 													r.name = "ActionsDeleteEnvironmentSecret"
+													r.summary = "Delete an environment secret"
 													r.operationID = "actions/delete-environment-secret"
 													r.pathPattern = "/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"
 													r.args = args
@@ -26707,6 +27290,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ActionsGetEnvironmentSecret
 													r.name = "ActionsGetEnvironmentSecret"
+													r.summary = "Get an environment secret"
 													r.operationID = "actions/get-environment-secret"
 													r.pathPattern = "/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"
 													r.args = args
@@ -26715,6 +27299,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "PUT":
 													// Leaf: ActionsCreateOrUpdateEnvironmentSecret
 													r.name = "ActionsCreateOrUpdateEnvironmentSecret"
+													r.summary = "Create or update an environment secret"
 													r.operationID = "actions/create-or-update-environment-secret"
 													r.pathPattern = "/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"
 													r.args = args
@@ -26795,6 +27380,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "EnterpriseAdminListProvisionedGroupsEnterprise"
+										r.summary = "List provisioned SCIM groups for an enterprise"
 										r.operationID = "enterprise-admin/list-provisioned-groups-enterprise"
 										r.pathPattern = "/scim/v2/enterprises/{enterprise}/Groups"
 										r.args = args
@@ -26802,6 +27388,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										return r, true
 									case "POST":
 										r.name = "EnterpriseAdminProvisionAndInviteEnterpriseGroup"
+										r.summary = "Provision a SCIM enterprise group and invite users"
 										r.operationID = "enterprise-admin/provision-and-invite-enterprise-group"
 										r.pathPattern = "/scim/v2/enterprises/{enterprise}/Groups"
 										r.args = args
@@ -26829,6 +27416,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "DELETE":
 											// Leaf: EnterpriseAdminDeleteScimGroupFromEnterprise
 											r.name = "EnterpriseAdminDeleteScimGroupFromEnterprise"
+											r.summary = "Delete a SCIM group from an enterprise"
 											r.operationID = "enterprise-admin/delete-scim-group-from-enterprise"
 											r.pathPattern = "/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
 											r.args = args
@@ -26837,6 +27425,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "GET":
 											// Leaf: EnterpriseAdminGetProvisioningInformationForEnterpriseGroup
 											r.name = "EnterpriseAdminGetProvisioningInformationForEnterpriseGroup"
+											r.summary = "Get SCIM provisioning information for an enterprise group"
 											r.operationID = "enterprise-admin/get-provisioning-information-for-enterprise-group"
 											r.pathPattern = "/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
 											r.args = args
@@ -26845,6 +27434,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "PATCH":
 											// Leaf: EnterpriseAdminUpdateAttributeForEnterpriseGroup
 											r.name = "EnterpriseAdminUpdateAttributeForEnterpriseGroup"
+											r.summary = "Update an attribute for a SCIM enterprise group"
 											r.operationID = "enterprise-admin/update-attribute-for-enterprise-group"
 											r.pathPattern = "/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
 											r.args = args
@@ -26853,6 +27443,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "PUT":
 											// Leaf: EnterpriseAdminSetInformationForProvisionedEnterpriseGroup
 											r.name = "EnterpriseAdminSetInformationForProvisionedEnterpriseGroup"
+											r.summary = "Set SCIM information for a provisioned enterprise group"
 											r.operationID = "enterprise-admin/set-information-for-provisioned-enterprise-group"
 											r.pathPattern = "/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
 											r.args = args
@@ -26874,6 +27465,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "EnterpriseAdminListProvisionedIdentitiesEnterprise"
+										r.summary = "List SCIM provisioned identities for an enterprise"
 										r.operationID = "enterprise-admin/list-provisioned-identities-enterprise"
 										r.pathPattern = "/scim/v2/enterprises/{enterprise}/Users"
 										r.args = args
@@ -26881,6 +27473,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										return r, true
 									case "POST":
 										r.name = "EnterpriseAdminProvisionAndInviteEnterpriseUser"
+										r.summary = "Provision and invite a SCIM enterprise user"
 										r.operationID = "enterprise-admin/provision-and-invite-enterprise-user"
 										r.pathPattern = "/scim/v2/enterprises/{enterprise}/Users"
 										r.args = args
@@ -26908,6 +27501,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "DELETE":
 											// Leaf: EnterpriseAdminDeleteUserFromEnterprise
 											r.name = "EnterpriseAdminDeleteUserFromEnterprise"
+											r.summary = "Delete a SCIM user from an enterprise"
 											r.operationID = "enterprise-admin/delete-user-from-enterprise"
 											r.pathPattern = "/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
 											r.args = args
@@ -26916,6 +27510,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "GET":
 											// Leaf: EnterpriseAdminGetProvisioningInformationForEnterpriseUser
 											r.name = "EnterpriseAdminGetProvisioningInformationForEnterpriseUser"
+											r.summary = "Get SCIM provisioning information for an enterprise user"
 											r.operationID = "enterprise-admin/get-provisioning-information-for-enterprise-user"
 											r.pathPattern = "/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
 											r.args = args
@@ -26924,6 +27519,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "PATCH":
 											// Leaf: EnterpriseAdminUpdateAttributeForEnterpriseUser
 											r.name = "EnterpriseAdminUpdateAttributeForEnterpriseUser"
+											r.summary = "Update an attribute for a SCIM enterprise user"
 											r.operationID = "enterprise-admin/update-attribute-for-enterprise-user"
 											r.pathPattern = "/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
 											r.args = args
@@ -26932,6 +27528,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "PUT":
 											// Leaf: EnterpriseAdminSetInformationForProvisionedEnterpriseUser
 											r.name = "EnterpriseAdminSetInformationForProvisionedEnterpriseUser"
+											r.summary = "Set SCIM information for a provisioned enterprise user"
 											r.operationID = "enterprise-admin/set-information-for-provisioned-enterprise-user"
 											r.pathPattern = "/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
 											r.args = args
@@ -26981,6 +27578,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "DELETE":
 									// Leaf: ScimDeleteUserFromOrg
 									r.name = "ScimDeleteUserFromOrg"
+									r.summary = "Delete a SCIM user from an organization"
 									r.operationID = "scim/delete-user-from-org"
 									r.pathPattern = "/scim/v2/organizations/{org}/Users/{scim_user_id}"
 									r.args = args
@@ -27026,6 +27624,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "GET":
 									// Leaf: SearchCode
 									r.name = "SearchCode"
+									r.summary = "Search code"
 									r.operationID = "search/code"
 									r.pathPattern = "/search/code"
 									r.args = args
@@ -27047,6 +27646,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "GET":
 									// Leaf: SearchCommits
 									r.name = "SearchCommits"
+									r.summary = "Search commits"
 									r.operationID = "search/commits"
 									r.pathPattern = "/search/commits"
 									r.args = args
@@ -27069,6 +27669,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "GET":
 								// Leaf: SearchIssuesAndPullRequests
 								r.name = "SearchIssuesAndPullRequests"
+								r.summary = "Search issues and pull requests"
 								r.operationID = "search/issues-and-pull-requests"
 								r.pathPattern = "/search/issues"
 								r.args = args
@@ -27090,6 +27691,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "GET":
 								// Leaf: SearchLabels
 								r.name = "SearchLabels"
+								r.summary = "Search labels"
 								r.operationID = "search/labels"
 								r.pathPattern = "/search/labels"
 								r.args = args
@@ -27111,6 +27713,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "GET":
 								// Leaf: SearchRepos
 								r.name = "SearchRepos"
+								r.summary = "Search repositories"
 								r.operationID = "search/repos"
 								r.pathPattern = "/search/repositories"
 								r.args = args
@@ -27132,6 +27735,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "GET":
 								// Leaf: SearchTopics
 								r.name = "SearchTopics"
+								r.summary = "Search topics"
 								r.operationID = "search/topics"
 								r.pathPattern = "/search/topics"
 								r.args = args
@@ -27153,6 +27757,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "GET":
 								// Leaf: SearchUsers
 								r.name = "SearchUsers"
+								r.summary = "Search users"
 								r.operationID = "search/users"
 								r.pathPattern = "/search/users"
 								r.args = args
@@ -27184,6 +27789,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					switch method {
 					case "DELETE":
 						r.name = "TeamsDeleteLegacy"
+						r.summary = "Delete a team (Legacy)"
 						r.operationID = "teams/delete-legacy"
 						r.pathPattern = "/teams/{team_id}"
 						r.args = args
@@ -27191,6 +27797,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						return r, true
 					case "GET":
 						r.name = "TeamsGetLegacy"
+						r.summary = "Get a team (Legacy)"
 						r.operationID = "teams/get-legacy"
 						r.pathPattern = "/teams/{team_id}"
 						r.args = args
@@ -27198,6 +27805,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						return r, true
 					case "PATCH":
 						r.name = "TeamsUpdateLegacy"
+						r.summary = "Update a team (Legacy)"
 						r.operationID = "teams/update-legacy"
 						r.pathPattern = "/teams/{team_id}"
 						r.args = args
@@ -27230,6 +27838,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							switch method {
 							case "GET":
 								r.name = "TeamsListDiscussionsLegacy"
+								r.summary = "List discussions (Legacy)"
 								r.operationID = "teams/list-discussions-legacy"
 								r.pathPattern = "/teams/{team_id}/discussions"
 								r.args = args
@@ -27237,6 +27846,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								return r, true
 							case "POST":
 								r.name = "TeamsCreateDiscussionLegacy"
+								r.summary = "Create a discussion (Legacy)"
 								r.operationID = "teams/create-discussion-legacy"
 								r.pathPattern = "/teams/{team_id}/discussions"
 								r.args = args
@@ -27267,6 +27877,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								switch method {
 								case "DELETE":
 									r.name = "TeamsDeleteDiscussionLegacy"
+									r.summary = "Delete a discussion (Legacy)"
 									r.operationID = "teams/delete-discussion-legacy"
 									r.pathPattern = "/teams/{team_id}/discussions/{discussion_number}"
 									r.args = args
@@ -27274,6 +27885,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									return r, true
 								case "GET":
 									r.name = "TeamsGetDiscussionLegacy"
+									r.summary = "Get a discussion (Legacy)"
 									r.operationID = "teams/get-discussion-legacy"
 									r.pathPattern = "/teams/{team_id}/discussions/{discussion_number}"
 									r.args = args
@@ -27281,6 +27893,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									return r, true
 								case "PATCH":
 									r.name = "TeamsUpdateDiscussionLegacy"
+									r.summary = "Update a discussion (Legacy)"
 									r.operationID = "teams/update-discussion-legacy"
 									r.pathPattern = "/teams/{team_id}/discussions/{discussion_number}"
 									r.args = args
@@ -27313,6 +27926,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "TeamsListDiscussionCommentsLegacy"
+											r.summary = "List discussion comments (Legacy)"
 											r.operationID = "teams/list-discussion-comments-legacy"
 											r.pathPattern = "/teams/{team_id}/discussions/{discussion_number}/comments"
 											r.args = args
@@ -27320,6 +27934,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											return r, true
 										case "POST":
 											r.name = "TeamsCreateDiscussionCommentLegacy"
+											r.summary = "Create a discussion comment (Legacy)"
 											r.operationID = "teams/create-discussion-comment-legacy"
 											r.pathPattern = "/teams/{team_id}/discussions/{discussion_number}/comments"
 											r.args = args
@@ -27350,6 +27965,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											switch method {
 											case "DELETE":
 												r.name = "TeamsDeleteDiscussionCommentLegacy"
+												r.summary = "Delete a discussion comment (Legacy)"
 												r.operationID = "teams/delete-discussion-comment-legacy"
 												r.pathPattern = "/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
 												r.args = args
@@ -27357,6 +27973,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												return r, true
 											case "GET":
 												r.name = "TeamsGetDiscussionCommentLegacy"
+												r.summary = "Get a discussion comment (Legacy)"
 												r.operationID = "teams/get-discussion-comment-legacy"
 												r.pathPattern = "/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
 												r.args = args
@@ -27364,6 +27981,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												return r, true
 											case "PATCH":
 												r.name = "TeamsUpdateDiscussionCommentLegacy"
+												r.summary = "Update a discussion comment (Legacy)"
 												r.operationID = "teams/update-discussion-comment-legacy"
 												r.pathPattern = "/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
 												r.args = args
@@ -27386,6 +28004,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ReactionsListForTeamDiscussionCommentLegacy
 													r.name = "ReactionsListForTeamDiscussionCommentLegacy"
+													r.summary = "List reactions for a team discussion comment (Legacy)"
 													r.operationID = "reactions/list-for-team-discussion-comment-legacy"
 													r.pathPattern = "/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"
 													r.args = args
@@ -27394,6 +28013,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													// Leaf: ReactionsCreateForTeamDiscussionCommentLegacy
 													r.name = "ReactionsCreateForTeamDiscussionCommentLegacy"
+													r.summary = "Create reaction for a team discussion comment (Legacy)"
 													r.operationID = "reactions/create-for-team-discussion-comment-legacy"
 													r.pathPattern = "/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"
 													r.args = args
@@ -27417,6 +28037,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "GET":
 											// Leaf: ReactionsListForTeamDiscussionLegacy
 											r.name = "ReactionsListForTeamDiscussionLegacy"
+											r.summary = "List reactions for a team discussion (Legacy)"
 											r.operationID = "reactions/list-for-team-discussion-legacy"
 											r.pathPattern = "/teams/{team_id}/discussions/{discussion_number}/reactions"
 											r.args = args
@@ -27425,6 +28046,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											// Leaf: ReactionsCreateForTeamDiscussionLegacy
 											r.name = "ReactionsCreateForTeamDiscussionLegacy"
+											r.summary = "Create reaction for a team discussion (Legacy)"
 											r.operationID = "reactions/create-for-team-discussion-legacy"
 											r.pathPattern = "/teams/{team_id}/discussions/{discussion_number}/reactions"
 											r.args = args
@@ -27449,6 +28071,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "GET":
 								// Leaf: TeamsListPendingInvitationsLegacy
 								r.name = "TeamsListPendingInvitationsLegacy"
+								r.summary = "List pending team invitations (Legacy)"
 								r.operationID = "teams/list-pending-invitations-legacy"
 								r.pathPattern = "/teams/{team_id}/invitations"
 								r.args = args
@@ -27469,6 +28092,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							switch method {
 							case "GET":
 								r.name = "TeamsListMembersLegacy"
+								r.summary = "List team members (Legacy)"
 								r.operationID = "teams/list-members-legacy"
 								r.pathPattern = "/teams/{team_id}/members"
 								r.args = args
@@ -27496,6 +28120,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "DELETE":
 									// Leaf: TeamsRemoveMemberLegacy
 									r.name = "TeamsRemoveMemberLegacy"
+									r.summary = "Remove team member (Legacy)"
 									r.operationID = "teams/remove-member-legacy"
 									r.pathPattern = "/teams/{team_id}/members/{username}"
 									r.args = args
@@ -27504,6 +28129,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "GET":
 									// Leaf: TeamsGetMemberLegacy
 									r.name = "TeamsGetMemberLegacy"
+									r.summary = "Get team member (Legacy)"
 									r.operationID = "teams/get-member-legacy"
 									r.pathPattern = "/teams/{team_id}/members/{username}"
 									r.args = args
@@ -27512,6 +28138,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "PUT":
 									// Leaf: TeamsAddMemberLegacy
 									r.name = "TeamsAddMemberLegacy"
+									r.summary = "Add team member (Legacy)"
 									r.operationID = "teams/add-member-legacy"
 									r.pathPattern = "/teams/{team_id}/members/{username}"
 									r.args = args
@@ -27538,6 +28165,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "DELETE":
 									// Leaf: TeamsRemoveMembershipForUserLegacy
 									r.name = "TeamsRemoveMembershipForUserLegacy"
+									r.summary = "Remove team membership for a user (Legacy)"
 									r.operationID = "teams/remove-membership-for-user-legacy"
 									r.pathPattern = "/teams/{team_id}/memberships/{username}"
 									r.args = args
@@ -27546,6 +28174,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "GET":
 									// Leaf: TeamsGetMembershipForUserLegacy
 									r.name = "TeamsGetMembershipForUserLegacy"
+									r.summary = "Get team membership for a user (Legacy)"
 									r.operationID = "teams/get-membership-for-user-legacy"
 									r.pathPattern = "/teams/{team_id}/memberships/{username}"
 									r.args = args
@@ -27554,6 +28183,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "PUT":
 									// Leaf: TeamsAddOrUpdateMembershipForUserLegacy
 									r.name = "TeamsAddOrUpdateMembershipForUserLegacy"
+									r.summary = "Add or update team membership for a user (Legacy)"
 									r.operationID = "teams/add-or-update-membership-for-user-legacy"
 									r.pathPattern = "/teams/{team_id}/memberships/{username}"
 									r.args = args
@@ -27575,6 +28205,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							switch method {
 							case "GET":
 								r.name = "TeamsListProjectsLegacy"
+								r.summary = "List team projects (Legacy)"
 								r.operationID = "teams/list-projects-legacy"
 								r.pathPattern = "/teams/{team_id}/projects"
 								r.args = args
@@ -27602,6 +28233,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "DELETE":
 									// Leaf: TeamsRemoveProjectLegacy
 									r.name = "TeamsRemoveProjectLegacy"
+									r.summary = "Remove a project from a team (Legacy)"
 									r.operationID = "teams/remove-project-legacy"
 									r.pathPattern = "/teams/{team_id}/projects/{project_id}"
 									r.args = args
@@ -27610,6 +28242,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "GET":
 									// Leaf: TeamsCheckPermissionsForProjectLegacy
 									r.name = "TeamsCheckPermissionsForProjectLegacy"
+									r.summary = "Check team permissions for a project (Legacy)"
 									r.operationID = "teams/check-permissions-for-project-legacy"
 									r.pathPattern = "/teams/{team_id}/projects/{project_id}"
 									r.args = args
@@ -27618,6 +28251,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "PUT":
 									// Leaf: TeamsAddOrUpdateProjectPermissionsLegacy
 									r.name = "TeamsAddOrUpdateProjectPermissionsLegacy"
+									r.summary = "Add or update team project permissions (Legacy)"
 									r.operationID = "teams/add-or-update-project-permissions-legacy"
 									r.pathPattern = "/teams/{team_id}/projects/{project_id}"
 									r.args = args
@@ -27639,6 +28273,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							switch method {
 							case "GET":
 								r.name = "TeamsListReposLegacy"
+								r.summary = "List team repositories (Legacy)"
 								r.operationID = "teams/list-repos-legacy"
 								r.pathPattern = "/teams/{team_id}/repos"
 								r.args = args
@@ -27686,6 +28321,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "DELETE":
 										// Leaf: TeamsRemoveRepoLegacy
 										r.name = "TeamsRemoveRepoLegacy"
+										r.summary = "Remove a repository from a team (Legacy)"
 										r.operationID = "teams/remove-repo-legacy"
 										r.pathPattern = "/teams/{team_id}/repos/{owner}/{repo}"
 										r.args = args
@@ -27694,6 +28330,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "GET":
 										// Leaf: TeamsCheckPermissionsForRepoLegacy
 										r.name = "TeamsCheckPermissionsForRepoLegacy"
+										r.summary = "Check team permissions for a repository (Legacy)"
 										r.operationID = "teams/check-permissions-for-repo-legacy"
 										r.pathPattern = "/teams/{team_id}/repos/{owner}/{repo}"
 										r.args = args
@@ -27702,6 +28339,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "PUT":
 										// Leaf: TeamsAddOrUpdateRepoPermissionsLegacy
 										r.name = "TeamsAddOrUpdateRepoPermissionsLegacy"
+										r.summary = "Add or update team repository permissions (Legacy)"
 										r.operationID = "teams/add-or-update-repo-permissions-legacy"
 										r.pathPattern = "/teams/{team_id}/repos/{owner}/{repo}"
 										r.args = args
@@ -27736,6 +28374,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "GET":
 									// Leaf: TeamsListIdpGroupsForLegacy
 									r.name = "TeamsListIdpGroupsForLegacy"
+									r.summary = "List IdP groups for a team (Legacy)"
 									r.operationID = "teams/list-idp-groups-for-legacy"
 									r.pathPattern = "/teams/{team_id}/team-sync/group-mappings"
 									r.args = args
@@ -27744,6 +28383,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "PATCH":
 									// Leaf: TeamsCreateOrUpdateIdpGroupConnectionsLegacy
 									r.name = "TeamsCreateOrUpdateIdpGroupConnectionsLegacy"
+									r.summary = "Create or update IdP group connections (Legacy)"
 									r.operationID = "teams/create-or-update-idp-group-connections-legacy"
 									r.pathPattern = "/teams/{team_id}/team-sync/group-mappings"
 									r.args = args
@@ -27765,6 +28405,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "GET":
 									// Leaf: TeamsListChildLegacy
 									r.name = "TeamsListChildLegacy"
+									r.summary = "List child teams (Legacy)"
 									r.operationID = "teams/list-child-legacy"
 									r.pathPattern = "/teams/{team_id}/teams"
 									r.args = args
@@ -27788,6 +28429,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					switch method {
 					case "GET":
 						r.name = "UsersGetAuthenticated"
+						r.summary = "Get the authenticated user"
 						r.operationID = "users/get-authenticated"
 						r.pathPattern = "/user"
 						r.args = args
@@ -27795,6 +28437,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						return r, true
 					case "PATCH":
 						r.name = "UsersUpdateAuthenticated"
+						r.summary = "Update the authenticated user"
 						r.operationID = "users/update-authenticated"
 						r.pathPattern = "/user"
 						r.args = args
@@ -27827,6 +28470,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							switch method {
 							case "GET":
 								r.name = "UsersListBlockedByAuthenticated"
+								r.summary = "List users blocked by the authenticated user"
 								r.operationID = "users/list-blocked-by-authenticated"
 								r.pathPattern = "/user/blocks"
 								r.args = args
@@ -27854,6 +28498,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "DELETE":
 									// Leaf: UsersUnblock
 									r.name = "UsersUnblock"
+									r.summary = "Unblock a user"
 									r.operationID = "users/unblock"
 									r.pathPattern = "/user/blocks/{username}"
 									r.args = args
@@ -27862,6 +28507,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "GET":
 									// Leaf: UsersCheckBlocked
 									r.name = "UsersCheckBlocked"
+									r.summary = "Check if a user is blocked by the authenticated user"
 									r.operationID = "users/check-blocked"
 									r.pathPattern = "/user/blocks/{username}"
 									r.args = args
@@ -27870,6 +28516,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "PUT":
 									// Leaf: UsersBlock
 									r.name = "UsersBlock"
+									r.summary = "Block a user"
 									r.operationID = "users/block"
 									r.pathPattern = "/user/blocks/{username}"
 									r.args = args
@@ -27903,6 +28550,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "PATCH":
 									// Leaf: UsersSetPrimaryEmailVisibilityForAuthenticated
 									r.name = "UsersSetPrimaryEmailVisibilityForAuthenticated"
+									r.summary = "Set primary email visibility for the authenticated user"
 									r.operationID = "users/set-primary-email-visibility-for-authenticated"
 									r.pathPattern = "/user/email/visibility"
 									r.args = args
@@ -27924,6 +28572,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "DELETE":
 									// Leaf: UsersDeleteEmailForAuthenticated
 									r.name = "UsersDeleteEmailForAuthenticated"
+									r.summary = "Delete an email address for the authenticated user"
 									r.operationID = "users/delete-email-for-authenticated"
 									r.pathPattern = "/user/emails"
 									r.args = args
@@ -27932,6 +28581,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "GET":
 									// Leaf: UsersListEmailsForAuthenticated
 									r.name = "UsersListEmailsForAuthenticated"
+									r.summary = "List email addresses for the authenticated user"
 									r.operationID = "users/list-emails-for-authenticated"
 									r.pathPattern = "/user/emails"
 									r.args = args
@@ -27940,6 +28590,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "POST":
 									// Leaf: UsersAddEmailForAuthenticated
 									r.name = "UsersAddEmailForAuthenticated"
+									r.summary = "Add an email address for the authenticated user"
 									r.operationID = "users/add-email-for-authenticated"
 									r.pathPattern = "/user/emails"
 									r.args = args
@@ -27973,6 +28624,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "GET":
 									// Leaf: UsersListFollowersForAuthenticatedUser
 									r.name = "UsersListFollowersForAuthenticatedUser"
+									r.summary = "List followers of the authenticated user"
 									r.operationID = "users/list-followers-for-authenticated-user"
 									r.pathPattern = "/user/followers"
 									r.args = args
@@ -27993,6 +28645,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								switch method {
 								case "GET":
 									r.name = "UsersListFollowedByAuthenticated"
+									r.summary = "List the people the authenticated user follows"
 									r.operationID = "users/list-followed-by-authenticated"
 									r.pathPattern = "/user/following"
 									r.args = args
@@ -28020,6 +28673,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "DELETE":
 										// Leaf: UsersUnfollow
 										r.name = "UsersUnfollow"
+										r.summary = "Unfollow a user"
 										r.operationID = "users/unfollow"
 										r.pathPattern = "/user/following/{username}"
 										r.args = args
@@ -28028,6 +28682,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "GET":
 										// Leaf: UsersCheckPersonIsFollowedByAuthenticated
 										r.name = "UsersCheckPersonIsFollowedByAuthenticated"
+										r.summary = "Check if a person is followed by the authenticated user"
 										r.operationID = "users/check-person-is-followed-by-authenticated"
 										r.pathPattern = "/user/following/{username}"
 										r.args = args
@@ -28036,6 +28691,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "PUT":
 										// Leaf: UsersFollow
 										r.name = "UsersFollow"
+										r.summary = "Follow a user"
 										r.operationID = "users/follow"
 										r.pathPattern = "/user/following/{username}"
 										r.args = args
@@ -28058,6 +28714,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							switch method {
 							case "GET":
 								r.name = "UsersListGpgKeysForAuthenticated"
+								r.summary = "List GPG keys for the authenticated user"
 								r.operationID = "users/list-gpg-keys-for-authenticated"
 								r.pathPattern = "/user/gpg_keys"
 								r.args = args
@@ -28065,6 +28722,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								return r, true
 							case "POST":
 								r.name = "UsersCreateGpgKeyForAuthenticated"
+								r.summary = "Create a GPG key for the authenticated user"
 								r.operationID = "users/create-gpg-key-for-authenticated"
 								r.pathPattern = "/user/gpg_keys"
 								r.args = args
@@ -28092,6 +28750,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "DELETE":
 									// Leaf: UsersDeleteGpgKeyForAuthenticated
 									r.name = "UsersDeleteGpgKeyForAuthenticated"
+									r.summary = "Delete a GPG key for the authenticated user"
 									r.operationID = "users/delete-gpg-key-for-authenticated"
 									r.pathPattern = "/user/gpg_keys/{gpg_key_id}"
 									r.args = args
@@ -28100,6 +28759,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "GET":
 									// Leaf: UsersGetGpgKeyForAuthenticated
 									r.name = "UsersGetGpgKeyForAuthenticated"
+									r.summary = "Get a GPG key for the authenticated user"
 									r.operationID = "users/get-gpg-key-for-authenticated"
 									r.pathPattern = "/user/gpg_keys/{gpg_key_id}"
 									r.args = args
@@ -28163,6 +28823,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "AppsListInstallationReposForAuthenticatedUser"
+											r.summary = "List repositories accessible to the user access token"
 											r.operationID = "apps/list-installation-repos-for-authenticated-user"
 											r.pathPattern = "/user/installations/{installation_id}/repositories"
 											r.args = args
@@ -28190,6 +28851,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "DELETE":
 												// Leaf: AppsRemoveRepoFromInstallation
 												r.name = "AppsRemoveRepoFromInstallation"
+												r.summary = "Remove a repository from an app installation"
 												r.operationID = "apps/remove-repo-from-installation"
 												r.pathPattern = "/user/installations/{installation_id}/repositories/{repository_id}"
 												r.args = args
@@ -28198,6 +28860,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "PUT":
 												// Leaf: AppsAddRepoToInstallation
 												r.name = "AppsAddRepoToInstallation"
+												r.summary = "Add a repository to an app installation"
 												r.operationID = "apps/add-repo-to-installation"
 												r.pathPattern = "/user/installations/{installation_id}/repositories/{repository_id}"
 												r.args = args
@@ -28221,6 +28884,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "DELETE":
 										// Leaf: InteractionsRemoveRestrictionsForAuthenticatedUser
 										r.name = "InteractionsRemoveRestrictionsForAuthenticatedUser"
+										r.summary = "Remove interaction restrictions from your public repositories"
 										r.operationID = "interactions/remove-restrictions-for-authenticated-user"
 										r.pathPattern = "/user/interaction-limits"
 										r.args = args
@@ -28229,6 +28893,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "PUT":
 										// Leaf: InteractionsSetRestrictionsForAuthenticatedUser
 										r.name = "InteractionsSetRestrictionsForAuthenticatedUser"
+										r.summary = "Set interaction restrictions for your public repositories"
 										r.operationID = "interactions/set-restrictions-for-authenticated-user"
 										r.pathPattern = "/user/interaction-limits"
 										r.args = args
@@ -28251,6 +28916,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "GET":
 									// Leaf: IssuesListForAuthenticatedUser
 									r.name = "IssuesListForAuthenticatedUser"
+									r.summary = "List user account issues assigned to the authenticated user"
 									r.operationID = "issues/list-for-authenticated-user"
 									r.pathPattern = "/user/issues"
 									r.args = args
@@ -28272,6 +28938,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							switch method {
 							case "GET":
 								r.name = "UsersListPublicSSHKeysForAuthenticated"
+								r.summary = "List public SSH keys for the authenticated user"
 								r.operationID = "users/list-public-ssh-keys-for-authenticated"
 								r.pathPattern = "/user/keys"
 								r.args = args
@@ -28279,6 +28946,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								return r, true
 							case "POST":
 								r.name = "UsersCreatePublicSSHKeyForAuthenticated"
+								r.summary = "Create a public SSH key for the authenticated user"
 								r.operationID = "users/create-public-ssh-key-for-authenticated"
 								r.pathPattern = "/user/keys"
 								r.args = args
@@ -28306,6 +28974,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "DELETE":
 									// Leaf: UsersDeletePublicSSHKeyForAuthenticated
 									r.name = "UsersDeletePublicSSHKeyForAuthenticated"
+									r.summary = "Delete a public SSH key for the authenticated user"
 									r.operationID = "users/delete-public-ssh-key-for-authenticated"
 									r.pathPattern = "/user/keys/{key_id}"
 									r.args = args
@@ -28314,6 +28983,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "GET":
 									// Leaf: UsersGetPublicSSHKeyForAuthenticated
 									r.name = "UsersGetPublicSSHKeyForAuthenticated"
+									r.summary = "Get a public SSH key for the authenticated user"
 									r.operationID = "users/get-public-ssh-key-for-authenticated"
 									r.pathPattern = "/user/keys/{key_id}"
 									r.args = args
@@ -28346,6 +29016,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								switch method {
 								case "GET":
 									r.name = "AppsListSubscriptionsForAuthenticatedUser"
+									r.summary = "List subscriptions for the authenticated user"
 									r.operationID = "apps/list-subscriptions-for-authenticated-user"
 									r.pathPattern = "/user/marketplace_purchases"
 									r.args = args
@@ -28368,6 +29039,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "GET":
 										// Leaf: AppsListSubscriptionsForAuthenticatedUserStubbed
 										r.name = "AppsListSubscriptionsForAuthenticatedUserStubbed"
+										r.summary = "List subscriptions for the authenticated user (stubbed)"
 										r.operationID = "apps/list-subscriptions-for-authenticated-user-stubbed"
 										r.pathPattern = "/user/marketplace_purchases/stubbed"
 										r.args = args
@@ -28389,6 +29061,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								switch method {
 								case "GET":
 									r.name = "OrgsListMembershipsForAuthenticatedUser"
+									r.summary = "List organization memberships for the authenticated user"
 									r.operationID = "orgs/list-memberships-for-authenticated-user"
 									r.pathPattern = "/user/memberships/orgs"
 									r.args = args
@@ -28416,6 +29089,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "GET":
 										// Leaf: OrgsGetMembershipForAuthenticatedUser
 										r.name = "OrgsGetMembershipForAuthenticatedUser"
+										r.summary = "Get an organization membership for the authenticated user"
 										r.operationID = "orgs/get-membership-for-authenticated-user"
 										r.pathPattern = "/user/memberships/orgs/{org}"
 										r.args = args
@@ -28424,6 +29098,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "PATCH":
 										// Leaf: OrgsUpdateMembershipForAuthenticatedUser
 										r.name = "OrgsUpdateMembershipForAuthenticatedUser"
+										r.summary = "Update an organization membership for the authenticated user"
 										r.operationID = "orgs/update-membership-for-authenticated-user"
 										r.pathPattern = "/user/memberships/orgs/{org}"
 										r.args = args
@@ -28445,6 +29120,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								switch method {
 								case "GET":
 									r.name = "MigrationsListForAuthenticatedUser"
+									r.summary = "List user migrations"
 									r.operationID = "migrations/list-for-authenticated-user"
 									r.pathPattern = "/user/migrations"
 									r.args = args
@@ -28452,6 +29128,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									return r, true
 								case "POST":
 									r.name = "MigrationsStartForAuthenticatedUser"
+									r.summary = "Start a user migration"
 									r.operationID = "migrations/start-for-authenticated-user"
 									r.pathPattern = "/user/migrations"
 									r.args = args
@@ -28482,6 +29159,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "MigrationsGetStatusForAuthenticatedUser"
+										r.summary = "Get a user migration status"
 										r.operationID = "migrations/get-status-for-authenticated-user"
 										r.pathPattern = "/user/migrations/{migration_id}"
 										r.args = args
@@ -28515,6 +29193,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "DELETE":
 												// Leaf: MigrationsDeleteArchiveForAuthenticatedUser
 												r.name = "MigrationsDeleteArchiveForAuthenticatedUser"
+												r.summary = "Delete a user migration archive"
 												r.operationID = "migrations/delete-archive-for-authenticated-user"
 												r.pathPattern = "/user/migrations/{migration_id}/archive"
 												r.args = args
@@ -28523,6 +29202,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "GET":
 												// Leaf: MigrationsGetArchiveForAuthenticatedUser
 												r.name = "MigrationsGetArchiveForAuthenticatedUser"
+												r.summary = "Download a user migration archive"
 												r.operationID = "migrations/get-archive-for-authenticated-user"
 												r.pathPattern = "/user/migrations/{migration_id}/archive"
 												r.args = args
@@ -28575,6 +29255,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "DELETE":
 														// Leaf: MigrationsUnlockRepoForAuthenticatedUser
 														r.name = "MigrationsUnlockRepoForAuthenticatedUser"
+														r.summary = "Unlock a user repository"
 														r.operationID = "migrations/unlock-repo-for-authenticated-user"
 														r.pathPattern = "/user/migrations/{migration_id}/repos/{repo_name}/lock"
 														r.args = args
@@ -28597,6 +29278,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "GET":
 													// Leaf: MigrationsListReposForUser
 													r.name = "MigrationsListReposForUser"
+													r.summary = "List repositories for a user migration"
 													r.operationID = "migrations/list-repos-for-user"
 													r.pathPattern = "/user/migrations/{migration_id}/repositories"
 													r.args = args
@@ -28623,6 +29305,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "GET":
 								// Leaf: OrgsListForAuthenticatedUser
 								r.name = "OrgsListForAuthenticatedUser"
+								r.summary = "List organizations for the authenticated user"
 								r.operationID = "orgs/list-for-authenticated-user"
 								r.pathPattern = "/user/orgs"
 								r.args = args
@@ -28654,6 +29337,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								switch method {
 								case "GET":
 									r.name = "PackagesListPackagesForAuthenticatedUser"
+									r.summary = "List packages for the authenticated user's namespace"
 									r.operationID = "packages/list-packages-for-authenticated-user"
 									r.pathPattern = "/user/packages"
 									r.args = args
@@ -28704,6 +29388,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										switch method {
 										case "DELETE":
 											r.name = "PackagesDeletePackageForAuthenticatedUser"
+											r.summary = "Delete a package for the authenticated user"
 											r.operationID = "packages/delete-package-for-authenticated-user"
 											r.pathPattern = "/user/packages/{package_type}/{package_name}"
 											r.args = args
@@ -28711,6 +29396,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											return r, true
 										case "GET":
 											r.name = "PackagesGetPackageForAuthenticatedUser"
+											r.summary = "Get a package for the authenticated user"
 											r.operationID = "packages/get-package-for-authenticated-user"
 											r.pathPattern = "/user/packages/{package_type}/{package_name}"
 											r.args = args
@@ -28744,6 +29430,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													// Leaf: PackagesRestorePackageForAuthenticatedUser
 													r.name = "PackagesRestorePackageForAuthenticatedUser"
+													r.summary = "Restore a package for the authenticated user"
 													r.operationID = "packages/restore-package-for-authenticated-user"
 													r.pathPattern = "/user/packages/{package_type}/{package_name}/restore"
 													r.args = args
@@ -28764,6 +29451,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser"
+													r.summary = "Get all package versions for a package owned by the authenticated user"
 													r.operationID = "packages/get-all-package-versions-for-package-owned-by-authenticated-user"
 													r.pathPattern = "/user/packages/{package_type}/{package_name}/versions"
 													r.args = args
@@ -28794,6 +29482,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													switch method {
 													case "DELETE":
 														r.name = "PackagesDeletePackageVersionForAuthenticatedUser"
+														r.summary = "Delete a package version for the authenticated user"
 														r.operationID = "packages/delete-package-version-for-authenticated-user"
 														r.pathPattern = "/user/packages/{package_type}/{package_name}/versions/{package_version_id}"
 														r.args = args
@@ -28801,6 +29490,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														return r, true
 													case "GET":
 														r.name = "PackagesGetPackageVersionForAuthenticatedUser"
+														r.summary = "Get a package version for the authenticated user"
 														r.operationID = "packages/get-package-version-for-authenticated-user"
 														r.pathPattern = "/user/packages/{package_type}/{package_name}/versions/{package_version_id}"
 														r.args = args
@@ -28823,6 +29513,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															// Leaf: PackagesRestorePackageVersionForAuthenticatedUser
 															r.name = "PackagesRestorePackageVersionForAuthenticatedUser"
+															r.summary = "Restore a package version for the authenticated user"
 															r.operationID = "packages/restore-package-version-for-authenticated-user"
 															r.pathPattern = "/user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"
 															r.args = args
@@ -28850,6 +29541,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "POST":
 									// Leaf: ProjectsCreateForAuthenticatedUser
 									r.name = "ProjectsCreateForAuthenticatedUser"
+									r.summary = "Create a user project"
 									r.operationID = "projects/create-for-authenticated-user"
 									r.pathPattern = "/user/projects"
 									r.args = args
@@ -28871,6 +29563,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "GET":
 									// Leaf: UsersListPublicEmailsForAuthenticated
 									r.name = "UsersListPublicEmailsForAuthenticated"
+									r.summary = "List public email addresses for the authenticated user"
 									r.operationID = "users/list-public-emails-for-authenticated"
 									r.pathPattern = "/user/public_emails"
 									r.args = args
@@ -28892,6 +29585,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							switch method {
 							case "GET":
 								r.name = "ReposListForAuthenticatedUser"
+								r.summary = "List repositories for the authenticated user"
 								r.operationID = "repos/list-for-authenticated-user"
 								r.pathPattern = "/user/repos"
 								r.args = args
@@ -28899,6 +29593,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								return r, true
 							case "POST":
 								r.name = "ReposCreateForAuthenticatedUser"
+								r.summary = "Create a repository for the authenticated user"
 								r.operationID = "repos/create-for-authenticated-user"
 								r.pathPattern = "/user/repos"
 								r.args = args
@@ -28920,6 +29615,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								switch method {
 								case "GET":
 									r.name = "ReposListInvitationsForAuthenticatedUser"
+									r.summary = "List repository invitations for the authenticated user"
 									r.operationID = "repos/list-invitations-for-authenticated-user"
 									r.pathPattern = "/user/repository_invitations"
 									r.args = args
@@ -28947,6 +29643,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "DELETE":
 										// Leaf: ReposDeclineInvitation
 										r.name = "ReposDeclineInvitation"
+										r.summary = "Decline a repository invitation"
 										r.operationID = "repos/decline-invitation"
 										r.pathPattern = "/user/repository_invitations/{invitation_id}"
 										r.args = args
@@ -28955,6 +29652,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "PATCH":
 										// Leaf: ReposAcceptInvitation
 										r.name = "ReposAcceptInvitation"
+										r.summary = "Accept a repository invitation"
 										r.operationID = "repos/accept-invitation"
 										r.pathPattern = "/user/repository_invitations/{invitation_id}"
 										r.args = args
@@ -28988,6 +29686,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								switch method {
 								case "GET":
 									r.name = "ActivityListReposStarredByAuthenticatedUser"
+									r.summary = "List repositories starred by the authenticated user"
 									r.operationID = "activity/list-repos-starred-by-authenticated-user"
 									r.pathPattern = "/user/starred"
 									r.args = args
@@ -29035,6 +29734,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "DELETE":
 											// Leaf: ActivityUnstarRepoForAuthenticatedUser
 											r.name = "ActivityUnstarRepoForAuthenticatedUser"
+											r.summary = "Unstar a repository for the authenticated user"
 											r.operationID = "activity/unstar-repo-for-authenticated-user"
 											r.pathPattern = "/user/starred/{owner}/{repo}"
 											r.args = args
@@ -29043,6 +29743,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "GET":
 											// Leaf: ActivityCheckRepoIsStarredByAuthenticatedUser
 											r.name = "ActivityCheckRepoIsStarredByAuthenticatedUser"
+											r.summary = "Check if a repository is starred by the authenticated user"
 											r.operationID = "activity/check-repo-is-starred-by-authenticated-user"
 											r.pathPattern = "/user/starred/{owner}/{repo}"
 											r.args = args
@@ -29051,6 +29752,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "PUT":
 											// Leaf: ActivityStarRepoForAuthenticatedUser
 											r.name = "ActivityStarRepoForAuthenticatedUser"
+											r.summary = "Star a repository for the authenticated user"
 											r.operationID = "activity/star-repo-for-authenticated-user"
 											r.pathPattern = "/user/starred/{owner}/{repo}"
 											r.args = args
@@ -29074,6 +29776,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "GET":
 									// Leaf: ActivityListWatchedReposForAuthenticatedUser
 									r.name = "ActivityListWatchedReposForAuthenticatedUser"
+									r.summary = "List repositories watched by the authenticated user"
 									r.operationID = "activity/list-watched-repos-for-authenticated-user"
 									r.pathPattern = "/user/subscriptions"
 									r.args = args
@@ -29096,6 +29799,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "GET":
 								// Leaf: TeamsListForAuthenticatedUser
 								r.name = "TeamsListForAuthenticatedUser"
+								r.summary = "List teams for the authenticated user"
 								r.operationID = "teams/list-for-authenticated-user"
 								r.pathPattern = "/user/teams"
 								r.args = args
@@ -29117,6 +29821,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						switch method {
 						case "GET":
 							r.name = "UsersList"
+							r.summary = "List users"
 							r.operationID = "users/list"
 							r.pathPattern = "/users"
 							r.args = args
@@ -29147,6 +29852,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							switch method {
 							case "GET":
 								r.name = "UsersGetByUsername"
+								r.summary = "Get a user"
 								r.operationID = "users/get-by-username"
 								r.pathPattern = "/users/{username}"
 								r.args = args
@@ -29179,6 +29885,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "ActivityListEventsForAuthenticatedUser"
+										r.summary = "List events for the authenticated user"
 										r.operationID = "activity/list-events-for-authenticated-user"
 										r.pathPattern = "/users/{username}/events"
 										r.args = args
@@ -29217,6 +29924,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "GET":
 												// Leaf: ActivityListOrgEventsForAuthenticatedUser
 												r.name = "ActivityListOrgEventsForAuthenticatedUser"
+												r.summary = "List organization events for the authenticated user"
 												r.operationID = "activity/list-org-events-for-authenticated-user"
 												r.pathPattern = "/users/{username}/events/orgs/{org}"
 												r.args = args
@@ -29238,6 +29946,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "GET":
 												// Leaf: ActivityListPublicEventsForUser
 												r.name = "ActivityListPublicEventsForUser"
+												r.summary = "List public events for a user"
 												r.operationID = "activity/list-public-events-for-user"
 												r.pathPattern = "/users/{username}/events/public"
 												r.args = args
@@ -29272,6 +29981,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "GET":
 											// Leaf: UsersListFollowersForUser
 											r.name = "UsersListFollowersForUser"
+											r.summary = "List followers of a user"
 											r.operationID = "users/list-followers-for-user"
 											r.pathPattern = "/users/{username}/followers"
 											r.args = args
@@ -29292,6 +30002,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "UsersListFollowingForUser"
+											r.summary = "List the people a user follows"
 											r.operationID = "users/list-following-for-user"
 											r.pathPattern = "/users/{username}/following"
 											r.args = args
@@ -29319,6 +30030,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "GET":
 												// Leaf: UsersCheckFollowingForUser
 												r.name = "UsersCheckFollowingForUser"
+												r.summary = "Check if a user follows another user"
 												r.operationID = "users/check-following-for-user"
 												r.pathPattern = "/users/{username}/following/{target_user}"
 												r.args = args
@@ -29353,6 +30065,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "GET":
 											// Leaf: GistsListForUser
 											r.name = "GistsListForUser"
+											r.summary = "List gists for a user"
 											r.operationID = "gists/list-for-user"
 											r.pathPattern = "/users/{username}/gists"
 											r.args = args
@@ -29374,6 +30087,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "GET":
 											// Leaf: UsersListGpgKeysForUser
 											r.name = "UsersListGpgKeysForUser"
+											r.summary = "List GPG keys for a user"
 											r.operationID = "users/list-gpg-keys-for-user"
 											r.pathPattern = "/users/{username}/gpg_keys"
 											r.args = args
@@ -29396,6 +30110,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "GET":
 										// Leaf: UsersGetContextForUser
 										r.name = "UsersGetContextForUser"
+										r.summary = "Get contextual information for a user"
 										r.operationID = "users/get-context-for-user"
 										r.pathPattern = "/users/{username}/hovercard"
 										r.args = args
@@ -29417,6 +30132,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "GET":
 										// Leaf: UsersListPublicKeysForUser
 										r.name = "UsersListPublicKeysForUser"
+										r.summary = "List public keys for a user"
 										r.operationID = "users/list-public-keys-for-user"
 										r.pathPattern = "/users/{username}/keys"
 										r.args = args
@@ -29438,6 +30154,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "GET":
 										// Leaf: OrgsListForUser
 										r.name = "OrgsListForUser"
+										r.summary = "List organizations for a user"
 										r.operationID = "orgs/list-for-user"
 										r.pathPattern = "/users/{username}/orgs"
 										r.args = args
@@ -29469,6 +30186,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "PackagesListPackagesForUser"
+											r.summary = "List packages for a user"
 											r.operationID = "packages/list-packages-for-user"
 											r.pathPattern = "/users/{username}/packages"
 											r.args = args
@@ -29519,6 +30237,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												switch method {
 												case "DELETE":
 													r.name = "PackagesDeletePackageForUser"
+													r.summary = "Delete a package for a user"
 													r.operationID = "packages/delete-package-for-user"
 													r.pathPattern = "/users/{username}/packages/{package_type}/{package_name}"
 													r.args = args
@@ -29526,6 +30245,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													return r, true
 												case "GET":
 													r.name = "PackagesGetPackageForUser"
+													r.summary = "Get a package for a user"
 													r.operationID = "packages/get-package-for-user"
 													r.pathPattern = "/users/{username}/packages/{package_type}/{package_name}"
 													r.args = args
@@ -29559,6 +30279,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															// Leaf: PackagesRestorePackageForUser
 															r.name = "PackagesRestorePackageForUser"
+															r.summary = "Restore a package for a user"
 															r.operationID = "packages/restore-package-for-user"
 															r.pathPattern = "/users/{username}/packages/{package_type}/{package_name}/restore"
 															r.args = args
@@ -29579,6 +30300,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "PackagesGetAllPackageVersionsForPackageOwnedByUser"
+															r.summary = "Get all package versions for a package owned by a user"
 															r.operationID = "packages/get-all-package-versions-for-package-owned-by-user"
 															r.pathPattern = "/users/{username}/packages/{package_type}/{package_name}/versions"
 															r.args = args
@@ -29609,6 +30331,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															switch method {
 															case "DELETE":
 																r.name = "PackagesDeletePackageVersionForUser"
+																r.summary = "Delete package version for a user"
 																r.operationID = "packages/delete-package-version-for-user"
 																r.pathPattern = "/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}"
 																r.args = args
@@ -29616,6 +30339,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																return r, true
 															case "GET":
 																r.name = "PackagesGetPackageVersionForUser"
+																r.summary = "Get a package version for a user"
 																r.operationID = "packages/get-package-version-for-user"
 																r.pathPattern = "/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}"
 																r.args = args
@@ -29638,6 +30362,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "POST":
 																	// Leaf: PackagesRestorePackageVersionForUser
 																	r.name = "PackagesRestorePackageVersionForUser"
+																	r.summary = "Restore package version for a user"
 																	r.operationID = "packages/restore-package-version-for-user"
 																	r.pathPattern = "/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"
 																	r.args = args
@@ -29665,6 +30390,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "GET":
 											// Leaf: ProjectsListForUser
 											r.name = "ProjectsListForUser"
+											r.summary = "List user projects"
 											r.operationID = "projects/list-for-user"
 											r.pathPattern = "/users/{username}/projects"
 											r.args = args
@@ -29697,6 +30423,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "ActivityListReceivedEventsForUser"
+											r.summary = "List events received by the authenticated user"
 											r.operationID = "activity/list-received-events-for-user"
 											r.pathPattern = "/users/{username}/received_events"
 											r.args = args
@@ -29719,6 +30446,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "GET":
 												// Leaf: ActivityListReceivedPublicEventsForUser
 												r.name = "ActivityListReceivedPublicEventsForUser"
+												r.summary = "List public events received by a user"
 												r.operationID = "activity/list-received-public-events-for-user"
 												r.pathPattern = "/users/{username}/received_events/public"
 												r.args = args
@@ -29741,6 +30469,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "GET":
 											// Leaf: ReposListForUser
 											r.name = "ReposListForUser"
+											r.summary = "List repositories for a user"
 											r.operationID = "repos/list-for-user"
 											r.pathPattern = "/users/{username}/repos"
 											r.args = args
@@ -29785,6 +30514,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "GET":
 												// Leaf: BillingGetGithubActionsBillingUser
 												r.name = "BillingGetGithubActionsBillingUser"
+												r.summary = "Get GitHub Actions billing for a user"
 												r.operationID = "billing/get-github-actions-billing-user"
 												r.pathPattern = "/users/{username}/settings/billing/actions"
 												r.args = args
@@ -29806,6 +30536,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "GET":
 												// Leaf: BillingGetGithubPackagesBillingUser
 												r.name = "BillingGetGithubPackagesBillingUser"
+												r.summary = "Get GitHub Packages billing for a user"
 												r.operationID = "billing/get-github-packages-billing-user"
 												r.pathPattern = "/users/{username}/settings/billing/packages"
 												r.args = args
@@ -29827,6 +30558,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "GET":
 												// Leaf: BillingGetSharedStorageBillingUser
 												r.name = "BillingGetSharedStorageBillingUser"
+												r.summary = "Get shared storage billing for a user"
 												r.operationID = "billing/get-shared-storage-billing-user"
 												r.pathPattern = "/users/{username}/settings/billing/shared-storage"
 												r.args = args
@@ -29849,6 +30581,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "GET":
 											// Leaf: ActivityListReposWatchedByUser
 											r.name = "ActivityListReposWatchedByUser"
+											r.summary = "List repositories watched by a user"
 											r.operationID = "activity/list-repos-watched-by-user"
 											r.pathPattern = "/users/{username}/subscriptions"
 											r.args = args
@@ -29875,6 +30608,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					case "GET":
 						// Leaf: MetaGetZen
 						r.name = "MetaGetZen"
+						r.summary = "Get the Zen of GitHub"
 						r.operationID = "meta/get-zen"
 						r.pathPattern = "/zen"
 						r.args = args

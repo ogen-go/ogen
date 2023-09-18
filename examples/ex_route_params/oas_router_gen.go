@@ -127,6 +127,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 // Route is route object.
 type Route struct {
 	name        string
+	summary     string
 	operationID string
 	pathPattern string
 	count       int
@@ -138,6 +139,11 @@ type Route struct {
 // It is guaranteed to be unique and not empty.
 func (r Route) Name() string {
 	return r.name
+}
+
+// Summary returns OpenAPI summary.
+func (r Route) Summary() string {
+	return r.summary
 }
 
 // OperationID returns OpenAPI operationId.
@@ -199,6 +205,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				switch method {
 				case "GET":
 					r.name = "DataGetAny"
+					r.summary = ""
 					r.operationID = "dataGetAny"
 					r.pathPattern = "/name"
 					r.args = args
@@ -229,6 +236,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					switch method {
 					case "GET":
 						r.name = "DataGetID"
+						r.summary = ""
 						r.operationID = "dataGetID"
 						r.pathPattern = "/name/{id}"
 						r.args = args
@@ -256,6 +264,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						case "GET":
 							// Leaf: DataGet
 							r.name = "DataGet"
+							r.summary = ""
 							r.operationID = "dataGet"
 							r.pathPattern = "/name/{id}/{key}"
 							r.args = args

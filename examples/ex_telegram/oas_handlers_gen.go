@@ -79,12 +79,13 @@ func (s *Server) handleAddStickerToSetRequest(args [0]string, argsEscaped bool, 
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AddStickerToSet",
-			OperationID:   "addStickerToSet",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "AddStickerToSet",
+			OperationSummary: "",
+			OperationID:      "addStickerToSet",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -193,12 +194,13 @@ func (s *Server) handleAnswerCallbackQueryRequest(args [0]string, argsEscaped bo
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AnswerCallbackQuery",
-			OperationID:   "answerCallbackQuery",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "AnswerCallbackQuery",
+			OperationSummary: "",
+			OperationID:      "answerCallbackQuery",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -307,12 +309,13 @@ func (s *Server) handleAnswerInlineQueryRequest(args [0]string, argsEscaped bool
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AnswerInlineQuery",
-			OperationID:   "answerInlineQuery",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "AnswerInlineQuery",
+			OperationSummary: "",
+			OperationID:      "answerInlineQuery",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -421,12 +424,13 @@ func (s *Server) handleAnswerPreCheckoutQueryRequest(args [0]string, argsEscaped
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AnswerPreCheckoutQuery",
-			OperationID:   "answerPreCheckoutQuery",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "AnswerPreCheckoutQuery",
+			OperationSummary: "",
+			OperationID:      "answerPreCheckoutQuery",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -535,12 +539,13 @@ func (s *Server) handleAnswerShippingQueryRequest(args [0]string, argsEscaped bo
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AnswerShippingQuery",
-			OperationID:   "answerShippingQuery",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "AnswerShippingQuery",
+			OperationSummary: "",
+			OperationID:      "answerShippingQuery",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -649,12 +654,13 @@ func (s *Server) handleApproveChatJoinRequestRequest(args [0]string, argsEscaped
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ApproveChatJoinRequest",
-			OperationID:   "approveChatJoinRequest",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "ApproveChatJoinRequest",
+			OperationSummary: "",
+			OperationID:      "approveChatJoinRequest",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -763,12 +769,13 @@ func (s *Server) handleBanChatMemberRequest(args [0]string, argsEscaped bool, w 
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "BanChatMember",
-			OperationID:   "banChatMember",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "BanChatMember",
+			OperationSummary: "",
+			OperationID:      "banChatMember",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -877,12 +884,13 @@ func (s *Server) handleBanChatSenderChatRequest(args [0]string, argsEscaped bool
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "BanChatSenderChat",
-			OperationID:   "banChatSenderChat",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "BanChatSenderChat",
+			OperationSummary: "",
+			OperationID:      "banChatSenderChat",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -972,12 +980,13 @@ func (s *Server) handleCloseRequest(args [0]string, argsEscaped bool, w http.Res
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "Close",
-			OperationID:   "close",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "Close",
+			OperationSummary: "",
+			OperationID:      "close",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1086,12 +1095,13 @@ func (s *Server) handleCopyMessageRequest(args [0]string, argsEscaped bool, w ht
 	var response *ResultMessageId
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CopyMessage",
-			OperationID:   "copyMessage",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "CopyMessage",
+			OperationSummary: "",
+			OperationID:      "copyMessage",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1200,12 +1210,13 @@ func (s *Server) handleCreateChatInviteLinkRequest(args [0]string, argsEscaped b
 	var response *ResultChatInviteLink
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CreateChatInviteLink",
-			OperationID:   "createChatInviteLink",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "CreateChatInviteLink",
+			OperationSummary: "",
+			OperationID:      "createChatInviteLink",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1314,12 +1325,13 @@ func (s *Server) handleCreateNewStickerSetRequest(args [0]string, argsEscaped bo
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CreateNewStickerSet",
-			OperationID:   "createNewStickerSet",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "CreateNewStickerSet",
+			OperationSummary: "",
+			OperationID:      "createNewStickerSet",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1428,12 +1440,13 @@ func (s *Server) handleDeclineChatJoinRequestRequest(args [0]string, argsEscaped
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "DeclineChatJoinRequest",
-			OperationID:   "declineChatJoinRequest",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "DeclineChatJoinRequest",
+			OperationSummary: "",
+			OperationID:      "declineChatJoinRequest",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1542,12 +1555,13 @@ func (s *Server) handleDeleteChatPhotoRequest(args [0]string, argsEscaped bool, 
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "DeleteChatPhoto",
-			OperationID:   "deleteChatPhoto",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "DeleteChatPhoto",
+			OperationSummary: "",
+			OperationID:      "deleteChatPhoto",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1656,12 +1670,13 @@ func (s *Server) handleDeleteChatStickerSetRequest(args [0]string, argsEscaped b
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "DeleteChatStickerSet",
-			OperationID:   "deleteChatStickerSet",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "DeleteChatStickerSet",
+			OperationSummary: "",
+			OperationID:      "deleteChatStickerSet",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1770,12 +1785,13 @@ func (s *Server) handleDeleteMessageRequest(args [0]string, argsEscaped bool, w 
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "DeleteMessage",
-			OperationID:   "deleteMessage",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "DeleteMessage",
+			OperationSummary: "",
+			OperationID:      "deleteMessage",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1884,12 +1900,13 @@ func (s *Server) handleDeleteMyCommandsRequest(args [0]string, argsEscaped bool,
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "DeleteMyCommands",
-			OperationID:   "deleteMyCommands",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "DeleteMyCommands",
+			OperationSummary: "",
+			OperationID:      "deleteMyCommands",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1998,12 +2015,13 @@ func (s *Server) handleDeleteStickerFromSetRequest(args [0]string, argsEscaped b
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "DeleteStickerFromSet",
-			OperationID:   "deleteStickerFromSet",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "DeleteStickerFromSet",
+			OperationSummary: "",
+			OperationID:      "deleteStickerFromSet",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2112,12 +2130,13 @@ func (s *Server) handleDeleteWebhookRequest(args [0]string, argsEscaped bool, w 
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "DeleteWebhook",
-			OperationID:   "deleteWebhook",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "DeleteWebhook",
+			OperationSummary: "",
+			OperationID:      "deleteWebhook",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2226,12 +2245,13 @@ func (s *Server) handleEditChatInviteLinkRequest(args [0]string, argsEscaped boo
 	var response *ResultChatInviteLink
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EditChatInviteLink",
-			OperationID:   "editChatInviteLink",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "EditChatInviteLink",
+			OperationSummary: "",
+			OperationID:      "editChatInviteLink",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2340,12 +2360,13 @@ func (s *Server) handleEditMessageCaptionRequest(args [0]string, argsEscaped boo
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EditMessageCaption",
-			OperationID:   "editMessageCaption",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "EditMessageCaption",
+			OperationSummary: "",
+			OperationID:      "editMessageCaption",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2454,12 +2475,13 @@ func (s *Server) handleEditMessageLiveLocationRequest(args [0]string, argsEscape
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EditMessageLiveLocation",
-			OperationID:   "editMessageLiveLocation",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "EditMessageLiveLocation",
+			OperationSummary: "",
+			OperationID:      "editMessageLiveLocation",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2568,12 +2590,13 @@ func (s *Server) handleEditMessageMediaRequest(args [0]string, argsEscaped bool,
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EditMessageMedia",
-			OperationID:   "editMessageMedia",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "EditMessageMedia",
+			OperationSummary: "",
+			OperationID:      "editMessageMedia",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2682,12 +2705,13 @@ func (s *Server) handleEditMessageReplyMarkupRequest(args [0]string, argsEscaped
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EditMessageReplyMarkup",
-			OperationID:   "editMessageReplyMarkup",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "EditMessageReplyMarkup",
+			OperationSummary: "",
+			OperationID:      "editMessageReplyMarkup",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2796,12 +2820,13 @@ func (s *Server) handleEditMessageTextRequest(args [0]string, argsEscaped bool, 
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EditMessageText",
-			OperationID:   "editMessageText",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "EditMessageText",
+			OperationSummary: "",
+			OperationID:      "editMessageText",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2910,12 +2935,13 @@ func (s *Server) handleExportChatInviteLinkRequest(args [0]string, argsEscaped b
 	var response *ResultString
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ExportChatInviteLink",
-			OperationID:   "exportChatInviteLink",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "ExportChatInviteLink",
+			OperationSummary: "",
+			OperationID:      "exportChatInviteLink",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -3024,12 +3050,13 @@ func (s *Server) handleForwardMessageRequest(args [0]string, argsEscaped bool, w
 	var response *ResultMessage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ForwardMessage",
-			OperationID:   "forwardMessage",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "ForwardMessage",
+			OperationSummary: "",
+			OperationID:      "forwardMessage",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -3138,12 +3165,13 @@ func (s *Server) handleGetChatRequest(args [0]string, argsEscaped bool, w http.R
 	var response *ResultChat
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GetChat",
-			OperationID:   "getChat",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "GetChat",
+			OperationSummary: "",
+			OperationID:      "getChat",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -3252,12 +3280,13 @@ func (s *Server) handleGetChatAdministratorsRequest(args [0]string, argsEscaped 
 	var response *ResultArrayOfChatMember
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GetChatAdministrators",
-			OperationID:   "getChatAdministrators",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "GetChatAdministrators",
+			OperationSummary: "",
+			OperationID:      "getChatAdministrators",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -3366,12 +3395,13 @@ func (s *Server) handleGetChatMemberRequest(args [0]string, argsEscaped bool, w 
 	var response *ResultChatMember
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GetChatMember",
-			OperationID:   "getChatMember",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "GetChatMember",
+			OperationSummary: "",
+			OperationID:      "getChatMember",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -3480,12 +3510,13 @@ func (s *Server) handleGetChatMemberCountRequest(args [0]string, argsEscaped boo
 	var response *ResultInt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GetChatMemberCount",
-			OperationID:   "getChatMemberCount",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "GetChatMemberCount",
+			OperationSummary: "",
+			OperationID:      "getChatMemberCount",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -3594,12 +3625,13 @@ func (s *Server) handleGetFileRequest(args [0]string, argsEscaped bool, w http.R
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GetFile",
-			OperationID:   "getFile",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "GetFile",
+			OperationSummary: "",
+			OperationID:      "getFile",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -3708,12 +3740,13 @@ func (s *Server) handleGetGameHighScoresRequest(args [0]string, argsEscaped bool
 	var response *ResultArrayOfGameHighScore
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GetGameHighScores",
-			OperationID:   "getGameHighScores",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "GetGameHighScores",
+			OperationSummary: "",
+			OperationID:      "getGameHighScores",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -3803,12 +3836,13 @@ func (s *Server) handleGetMeRequest(args [0]string, argsEscaped bool, w http.Res
 	var response *ResultUser
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GetMe",
-			OperationID:   "getMe",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "GetMe",
+			OperationSummary: "",
+			OperationID:      "getMe",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -3917,12 +3951,13 @@ func (s *Server) handleGetMyCommandsRequest(args [0]string, argsEscaped bool, w 
 	var response *ResultArrayOfBotCommand
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GetMyCommands",
-			OperationID:   "getMyCommands",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "GetMyCommands",
+			OperationSummary: "",
+			OperationID:      "getMyCommands",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -4031,12 +4066,13 @@ func (s *Server) handleGetStickerSetRequest(args [0]string, argsEscaped bool, w 
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GetStickerSet",
-			OperationID:   "getStickerSet",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "GetStickerSet",
+			OperationSummary: "",
+			OperationID:      "getStickerSet",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -4145,12 +4181,13 @@ func (s *Server) handleGetUpdatesRequest(args [0]string, argsEscaped bool, w htt
 	var response *ResultArrayOfUpdate
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GetUpdates",
-			OperationID:   "getUpdates",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "GetUpdates",
+			OperationSummary: "",
+			OperationID:      "getUpdates",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -4259,12 +4296,13 @@ func (s *Server) handleGetUserProfilePhotosRequest(args [0]string, argsEscaped b
 	var response *ResultUserProfilePhotos
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GetUserProfilePhotos",
-			OperationID:   "getUserProfilePhotos",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "GetUserProfilePhotos",
+			OperationSummary: "",
+			OperationID:      "getUserProfilePhotos",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -4354,12 +4392,13 @@ func (s *Server) handleGetWebhookInfoRequest(args [0]string, argsEscaped bool, w
 	var response *ResultWebhookInfo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GetWebhookInfo",
-			OperationID:   "getWebhookInfo",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "GetWebhookInfo",
+			OperationSummary: "",
+			OperationID:      "getWebhookInfo",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -4468,12 +4507,13 @@ func (s *Server) handleLeaveChatRequest(args [0]string, argsEscaped bool, w http
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "LeaveChat",
-			OperationID:   "leaveChat",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "LeaveChat",
+			OperationSummary: "",
+			OperationID:      "leaveChat",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -4563,12 +4603,13 @@ func (s *Server) handleLogOutRequest(args [0]string, argsEscaped bool, w http.Re
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "LogOut",
-			OperationID:   "logOut",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "LogOut",
+			OperationSummary: "",
+			OperationID:      "logOut",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -4677,12 +4718,13 @@ func (s *Server) handlePinChatMessageRequest(args [0]string, argsEscaped bool, w
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PinChatMessage",
-			OperationID:   "pinChatMessage",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "PinChatMessage",
+			OperationSummary: "",
+			OperationID:      "pinChatMessage",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -4791,12 +4833,13 @@ func (s *Server) handlePromoteChatMemberRequest(args [0]string, argsEscaped bool
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PromoteChatMember",
-			OperationID:   "promoteChatMember",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "PromoteChatMember",
+			OperationSummary: "",
+			OperationID:      "promoteChatMember",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -4905,12 +4948,13 @@ func (s *Server) handleRestrictChatMemberRequest(args [0]string, argsEscaped boo
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "RestrictChatMember",
-			OperationID:   "restrictChatMember",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "RestrictChatMember",
+			OperationSummary: "",
+			OperationID:      "restrictChatMember",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -5019,12 +5063,13 @@ func (s *Server) handleRevokeChatInviteLinkRequest(args [0]string, argsEscaped b
 	var response *ResultChatInviteLink
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "RevokeChatInviteLink",
-			OperationID:   "revokeChatInviteLink",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "RevokeChatInviteLink",
+			OperationSummary: "",
+			OperationID:      "revokeChatInviteLink",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -5133,12 +5178,13 @@ func (s *Server) handleSendAnimationRequest(args [0]string, argsEscaped bool, w 
 	var response *ResultMessage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SendAnimation",
-			OperationID:   "sendAnimation",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SendAnimation",
+			OperationSummary: "",
+			OperationID:      "sendAnimation",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -5247,12 +5293,13 @@ func (s *Server) handleSendAudioRequest(args [0]string, argsEscaped bool, w http
 	var response *ResultMessage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SendAudio",
-			OperationID:   "sendAudio",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SendAudio",
+			OperationSummary: "",
+			OperationID:      "sendAudio",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -5361,12 +5408,13 @@ func (s *Server) handleSendChatActionRequest(args [0]string, argsEscaped bool, w
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SendChatAction",
-			OperationID:   "sendChatAction",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SendChatAction",
+			OperationSummary: "",
+			OperationID:      "sendChatAction",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -5475,12 +5523,13 @@ func (s *Server) handleSendContactRequest(args [0]string, argsEscaped bool, w ht
 	var response *ResultMessage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SendContact",
-			OperationID:   "sendContact",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SendContact",
+			OperationSummary: "",
+			OperationID:      "sendContact",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -5589,12 +5638,13 @@ func (s *Server) handleSendDiceRequest(args [0]string, argsEscaped bool, w http.
 	var response *ResultMessage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SendDice",
-			OperationID:   "sendDice",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SendDice",
+			OperationSummary: "",
+			OperationID:      "sendDice",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -5703,12 +5753,13 @@ func (s *Server) handleSendDocumentRequest(args [0]string, argsEscaped bool, w h
 	var response *ResultMessage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SendDocument",
-			OperationID:   "sendDocument",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SendDocument",
+			OperationSummary: "",
+			OperationID:      "sendDocument",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -5817,12 +5868,13 @@ func (s *Server) handleSendGameRequest(args [0]string, argsEscaped bool, w http.
 	var response *ResultMessage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SendGame",
-			OperationID:   "sendGame",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SendGame",
+			OperationSummary: "",
+			OperationID:      "sendGame",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -5931,12 +5983,13 @@ func (s *Server) handleSendInvoiceRequest(args [0]string, argsEscaped bool, w ht
 	var response *ResultMessage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SendInvoice",
-			OperationID:   "sendInvoice",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SendInvoice",
+			OperationSummary: "",
+			OperationID:      "sendInvoice",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -6045,12 +6098,13 @@ func (s *Server) handleSendLocationRequest(args [0]string, argsEscaped bool, w h
 	var response *ResultMessage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SendLocation",
-			OperationID:   "sendLocation",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SendLocation",
+			OperationSummary: "",
+			OperationID:      "sendLocation",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -6159,12 +6213,13 @@ func (s *Server) handleSendMediaGroupRequest(args [0]string, argsEscaped bool, w
 	var response *ResultArrayOfMessage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SendMediaGroup",
-			OperationID:   "sendMediaGroup",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SendMediaGroup",
+			OperationSummary: "",
+			OperationID:      "sendMediaGroup",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -6273,12 +6328,13 @@ func (s *Server) handleSendMessageRequest(args [0]string, argsEscaped bool, w ht
 	var response *ResultMessage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SendMessage",
-			OperationID:   "sendMessage",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SendMessage",
+			OperationSummary: "",
+			OperationID:      "sendMessage",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -6387,12 +6443,13 @@ func (s *Server) handleSendPhotoRequest(args [0]string, argsEscaped bool, w http
 	var response *ResultMessage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SendPhoto",
-			OperationID:   "sendPhoto",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SendPhoto",
+			OperationSummary: "",
+			OperationID:      "sendPhoto",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -6501,12 +6558,13 @@ func (s *Server) handleSendPollRequest(args [0]string, argsEscaped bool, w http.
 	var response *ResultMessage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SendPoll",
-			OperationID:   "sendPoll",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SendPoll",
+			OperationSummary: "",
+			OperationID:      "sendPoll",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -6615,12 +6673,13 @@ func (s *Server) handleSendStickerRequest(args [0]string, argsEscaped bool, w ht
 	var response *ResultMessage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SendSticker",
-			OperationID:   "sendSticker",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SendSticker",
+			OperationSummary: "",
+			OperationID:      "sendSticker",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -6729,12 +6788,13 @@ func (s *Server) handleSendVenueRequest(args [0]string, argsEscaped bool, w http
 	var response *ResultMessage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SendVenue",
-			OperationID:   "sendVenue",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SendVenue",
+			OperationSummary: "",
+			OperationID:      "sendVenue",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -6843,12 +6903,13 @@ func (s *Server) handleSendVideoRequest(args [0]string, argsEscaped bool, w http
 	var response *ResultMessage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SendVideo",
-			OperationID:   "sendVideo",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SendVideo",
+			OperationSummary: "",
+			OperationID:      "sendVideo",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -6957,12 +7018,13 @@ func (s *Server) handleSendVideoNoteRequest(args [0]string, argsEscaped bool, w 
 	var response *ResultMessage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SendVideoNote",
-			OperationID:   "sendVideoNote",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SendVideoNote",
+			OperationSummary: "",
+			OperationID:      "sendVideoNote",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -7071,12 +7133,13 @@ func (s *Server) handleSendVoiceRequest(args [0]string, argsEscaped bool, w http
 	var response *ResultMessage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SendVoice",
-			OperationID:   "sendVoice",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SendVoice",
+			OperationSummary: "",
+			OperationID:      "sendVoice",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -7185,12 +7248,13 @@ func (s *Server) handleSetChatAdministratorCustomTitleRequest(args [0]string, ar
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SetChatAdministratorCustomTitle",
-			OperationID:   "setChatAdministratorCustomTitle",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SetChatAdministratorCustomTitle",
+			OperationSummary: "",
+			OperationID:      "setChatAdministratorCustomTitle",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -7299,12 +7363,13 @@ func (s *Server) handleSetChatDescriptionRequest(args [0]string, argsEscaped boo
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SetChatDescription",
-			OperationID:   "setChatDescription",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SetChatDescription",
+			OperationSummary: "",
+			OperationID:      "setChatDescription",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -7413,12 +7478,13 @@ func (s *Server) handleSetChatPermissionsRequest(args [0]string, argsEscaped boo
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SetChatPermissions",
-			OperationID:   "setChatPermissions",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SetChatPermissions",
+			OperationSummary: "",
+			OperationID:      "setChatPermissions",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -7527,12 +7593,13 @@ func (s *Server) handleSetChatPhotoRequest(args [0]string, argsEscaped bool, w h
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SetChatPhoto",
-			OperationID:   "setChatPhoto",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SetChatPhoto",
+			OperationSummary: "",
+			OperationID:      "setChatPhoto",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -7641,12 +7708,13 @@ func (s *Server) handleSetChatStickerSetRequest(args [0]string, argsEscaped bool
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SetChatStickerSet",
-			OperationID:   "setChatStickerSet",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SetChatStickerSet",
+			OperationSummary: "",
+			OperationID:      "setChatStickerSet",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -7755,12 +7823,13 @@ func (s *Server) handleSetChatTitleRequest(args [0]string, argsEscaped bool, w h
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SetChatTitle",
-			OperationID:   "setChatTitle",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SetChatTitle",
+			OperationSummary: "",
+			OperationID:      "setChatTitle",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -7869,12 +7938,13 @@ func (s *Server) handleSetGameScoreRequest(args [0]string, argsEscaped bool, w h
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SetGameScore",
-			OperationID:   "setGameScore",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SetGameScore",
+			OperationSummary: "",
+			OperationID:      "setGameScore",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -7983,12 +8053,13 @@ func (s *Server) handleSetMyCommandsRequest(args [0]string, argsEscaped bool, w 
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SetMyCommands",
-			OperationID:   "setMyCommands",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SetMyCommands",
+			OperationSummary: "",
+			OperationID:      "setMyCommands",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -8097,12 +8168,13 @@ func (s *Server) handleSetPassportDataErrorsRequest(args [0]string, argsEscaped 
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SetPassportDataErrors",
-			OperationID:   "setPassportDataErrors",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SetPassportDataErrors",
+			OperationSummary: "",
+			OperationID:      "setPassportDataErrors",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -8211,12 +8283,13 @@ func (s *Server) handleSetStickerPositionInSetRequest(args [0]string, argsEscape
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SetStickerPositionInSet",
-			OperationID:   "setStickerPositionInSet",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SetStickerPositionInSet",
+			OperationSummary: "",
+			OperationID:      "setStickerPositionInSet",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -8325,12 +8398,13 @@ func (s *Server) handleSetStickerSetThumbRequest(args [0]string, argsEscaped boo
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SetStickerSetThumb",
-			OperationID:   "setStickerSetThumb",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SetStickerSetThumb",
+			OperationSummary: "",
+			OperationID:      "setStickerSetThumb",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -8439,12 +8513,13 @@ func (s *Server) handleSetWebhookRequest(args [0]string, argsEscaped bool, w htt
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SetWebhook",
-			OperationID:   "setWebhook",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SetWebhook",
+			OperationSummary: "",
+			OperationID:      "setWebhook",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -8553,12 +8628,13 @@ func (s *Server) handleStopMessageLiveLocationRequest(args [0]string, argsEscape
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "StopMessageLiveLocation",
-			OperationID:   "stopMessageLiveLocation",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "StopMessageLiveLocation",
+			OperationSummary: "",
+			OperationID:      "stopMessageLiveLocation",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -8667,12 +8743,13 @@ func (s *Server) handleStopPollRequest(args [0]string, argsEscaped bool, w http.
 	var response *ResultPoll
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "StopPoll",
-			OperationID:   "stopPoll",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "StopPoll",
+			OperationSummary: "",
+			OperationID:      "stopPoll",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -8781,12 +8858,13 @@ func (s *Server) handleUnbanChatMemberRequest(args [0]string, argsEscaped bool, 
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UnbanChatMember",
-			OperationID:   "unbanChatMember",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "UnbanChatMember",
+			OperationSummary: "",
+			OperationID:      "unbanChatMember",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -8895,12 +8973,13 @@ func (s *Server) handleUnbanChatSenderChatRequest(args [0]string, argsEscaped bo
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UnbanChatSenderChat",
-			OperationID:   "unbanChatSenderChat",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "UnbanChatSenderChat",
+			OperationSummary: "",
+			OperationID:      "unbanChatSenderChat",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -9009,12 +9088,13 @@ func (s *Server) handleUnpinAllChatMessagesRequest(args [0]string, argsEscaped b
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UnpinAllChatMessages",
-			OperationID:   "unpinAllChatMessages",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "UnpinAllChatMessages",
+			OperationSummary: "",
+			OperationID:      "unpinAllChatMessages",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -9123,12 +9203,13 @@ func (s *Server) handleUnpinChatMessageRequest(args [0]string, argsEscaped bool,
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UnpinChatMessage",
-			OperationID:   "unpinChatMessage",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "UnpinChatMessage",
+			OperationSummary: "",
+			OperationID:      "unpinChatMessage",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -9237,12 +9318,13 @@ func (s *Server) handleUploadStickerFileRequest(args [0]string, argsEscaped bool
 	var response *ResultFile
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UploadStickerFile",
-			OperationID:   "uploadStickerFile",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "UploadStickerFile",
+			OperationSummary: "",
+			OperationID:      "uploadStickerFile",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (

@@ -76,10 +76,11 @@ func (s *Server) handleDataGetRequest(args [2]string, argsEscaped bool, w http.R
 	var response string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "DataGet",
-			OperationID:   "dataGet",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "DataGet",
+			OperationSummary: "",
+			OperationID:      "dataGet",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "id",
@@ -171,12 +172,13 @@ func (s *Server) handleDataGetAnyRequest(args [0]string, argsEscaped bool, w htt
 	var response string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "DataGetAny",
-			OperationID:   "dataGetAny",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "DataGetAny",
+			OperationSummary: "",
+			OperationID:      "dataGetAny",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -271,10 +273,11 @@ func (s *Server) handleDataGetIDRequest(args [1]string, argsEscaped bool, w http
 	var response string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "DataGetID",
-			OperationID:   "dataGetID",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "DataGetID",
+			OperationSummary: "",
+			OperationID:      "dataGetID",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "id",

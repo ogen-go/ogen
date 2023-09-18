@@ -76,10 +76,11 @@ func (s *Server) handleDataGetFormatRequest(args [5]string, argsEscaped bool, w 
 	var response string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "DataGetFormat",
-			OperationID:   "dataGetFormat",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "DataGetFormat",
+			OperationSummary: "",
+			OperationID:      "dataGetFormat",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "id",
@@ -210,10 +211,11 @@ func (s *Server) handleDefaultTestRequest(args [0]string, argsEscaped bool, w ht
 	var response int32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "DefaultTest",
-			OperationID:   "defaultTest",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "DefaultTest",
+			OperationSummary: "",
+			OperationID:      "defaultTest",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "default",
@@ -301,12 +303,13 @@ func (s *Server) handleErrorGetRequest(args [0]string, argsEscaped bool, w http.
 	var response *ErrorStatusCode
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ErrorGet",
-			OperationID:   "errorGet",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "ErrorGet",
+			OperationSummary: "",
+			OperationID:      "errorGet",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -401,10 +404,11 @@ func (s *Server) handleFoobarGetRequest(args [0]string, argsEscaped bool, w http
 	var response FoobarGetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "FoobarGet",
-			OperationID:   "foobarGet",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "FoobarGet",
+			OperationSummary: "",
+			OperationID:      "foobarGet",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "inlinedParam",
@@ -515,12 +519,13 @@ func (s *Server) handleFoobarPostRequest(args [0]string, argsEscaped bool, w htt
 	var response FoobarPostRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "FoobarPost",
-			OperationID:   "foobarPost",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "FoobarPost",
+			OperationSummary: "",
+			OperationID:      "foobarPost",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -598,12 +603,13 @@ func (s *Server) handleFoobarPutRequest(args [0]string, argsEscaped bool, w http
 	var response *FoobarPutDef
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "FoobarPut",
-			OperationID:   "",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "FoobarPut",
+			OperationSummary: "",
+			OperationID:      "",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -682,12 +688,13 @@ func (s *Server) handleNoAdditionalPropertiesTestRequest(args [0]string, argsEsc
 	var response *NoAdditionalPropertiesTest
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "NoAdditionalPropertiesTest",
-			OperationID:   "noAdditionalPropertiesTest",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "NoAdditionalPropertiesTest",
+			OperationSummary: "",
+			OperationID:      "noAdditionalPropertiesTest",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -766,12 +773,13 @@ func (s *Server) handleNullableDefaultResponseRequest(args [0]string, argsEscape
 	var response *NilIntStatusCode
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "NullableDefaultResponse",
-			OperationID:   "nullableDefaultResponse",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "NullableDefaultResponse",
+			OperationSummary: "",
+			OperationID:      "nullableDefaultResponse",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -869,12 +877,13 @@ func (s *Server) handleOneofBugRequest(args [0]string, argsEscaped bool, w http.
 	var response *OneofBugOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OneofBug",
-			OperationID:   "oneofBug",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "OneofBug",
+			OperationSummary: "",
+			OperationID:      "oneofBug",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -952,12 +961,13 @@ func (s *Server) handlePatternRecursiveMapGetRequest(args [0]string, argsEscaped
 	var response PatternRecursiveMap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PatternRecursiveMapGet",
-			OperationID:   "",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "PatternRecursiveMapGet",
+			OperationSummary: "",
+			OperationID:      "",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1057,12 +1067,13 @@ func (s *Server) handlePetCreateRequest(args [0]string, argsEscaped bool, w http
 	var response *Pet
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PetCreate",
-			OperationID:   "petCreate",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "PetCreate",
+			OperationSummary: "",
+			OperationID:      "petCreate",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1157,10 +1168,11 @@ func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, argsEscaped bo
 	var response []string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PetFriendsNamesByID",
-			OperationID:   "petFriendsNamesByID",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PetFriendsNamesByID",
+			OperationSummary: "",
+			OperationID:      "petFriendsNamesByID",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "id",
@@ -1262,10 +1274,11 @@ func (s *Server) handlePetGetRequest(args [0]string, argsEscaped bool, w http.Re
 	var response PetGetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PetGet",
-			OperationID:   "petGet",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PetGet",
+			OperationSummary: "",
+			OperationID:      "petGet",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "petID",
@@ -1379,10 +1392,11 @@ func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, argsEscaped bool,
 	var response PetGetAvatarByIDRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PetGetAvatarByID",
-			OperationID:   "petGetAvatarByID",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PetGetAvatarByID",
+			OperationSummary: "",
+			OperationID:      "petGetAvatarByID",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "petID",
@@ -1484,10 +1498,11 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, argsEscaped boo
 	var response PetGetAvatarByNameRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PetGetAvatarByName",
-			OperationID:   "petGetAvatarByName",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PetGetAvatarByName",
+			OperationSummary: "",
+			OperationID:      "petGetAvatarByName",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -1589,10 +1604,11 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, argsEscaped bool, w h
 	var response *Pet
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PetGetByName",
-			OperationID:   "petGetByName",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PetGetByName",
+			OperationSummary: "",
+			OperationID:      "petGetByName",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -1694,10 +1710,11 @@ func (s *Server) handlePetNameByIDRequest(args [1]string, argsEscaped bool, w ht
 	var response string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PetNameByID",
-			OperationID:   "petNameByID",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PetNameByID",
+			OperationSummary: "",
+			OperationID:      "petNameByID",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "id",
@@ -1801,12 +1818,13 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, argsEscaped
 	var response *PetUpdateNameAliasPostDef
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PetUpdateNameAliasPost",
-			OperationID:   "",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "PetUpdateNameAliasPost",
+			OperationSummary: "",
+			OperationID:      "",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1903,12 +1921,13 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, argsEscaped bool
 	var response *PetUpdateNamePostDef
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PetUpdateNamePost",
-			OperationID:   "",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "PetUpdateNamePost",
+			OperationSummary: "",
+			OperationID:      "",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2018,10 +2037,11 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, argsEscaped bo
 	var response PetUploadAvatarByIDRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PetUploadAvatarByID",
-			OperationID:   "petUploadAvatarByID",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "PetUploadAvatarByID",
+			OperationSummary: "",
+			OperationID:      "petUploadAvatarByID",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "petID",
@@ -2106,12 +2126,13 @@ func (s *Server) handleRecursiveArrayGetRequest(args [0]string, argsEscaped bool
 	var response RecursiveArray
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "RecursiveArrayGet",
-			OperationID:   "",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "RecursiveArrayGet",
+			OperationSummary: "",
+			OperationID:      "",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2189,12 +2210,13 @@ func (s *Server) handleRecursiveMapGetRequest(args [0]string, argsEscaped bool, 
 	var response *RecursiveMap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "RecursiveMapGet",
-			OperationID:   "",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "RecursiveMapGet",
+			OperationSummary: "",
+			OperationID:      "",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2321,12 +2343,13 @@ func (s *Server) handleSecurityTestRequest(args [0]string, argsEscaped bool, w h
 	var response string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SecurityTest",
-			OperationID:   "securityTest",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SecurityTest",
+			OperationSummary: "",
+			OperationID:      "securityTest",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2404,12 +2427,13 @@ func (s *Server) handleStringIntMapGetRequest(args [0]string, argsEscaped bool, 
 	var response *StringIntMap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "StringIntMapGet",
-			OperationID:   "",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "StringIntMapGet",
+			OperationSummary: "",
+			OperationID:      "",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2507,12 +2531,13 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, argsEscaped bo
 	var response *TestFloatValidationOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestFloatValidation",
-			OperationID:   "testFloatValidation",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestFloatValidation",
+			OperationSummary: "",
+			OperationID:      "testFloatValidation",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2591,12 +2616,13 @@ func (s *Server) handleTestInlineOneofRequest(args [0]string, argsEscaped bool, 
 	var response *TestInlineOneOf
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestInlineOneof",
-			OperationID:   "testInlineOneof",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestInlineOneof",
+			OperationSummary: "",
+			OperationID:      "testInlineOneof",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2675,12 +2701,13 @@ func (s *Server) handleTestNullableOneofsRequest(args [0]string, argsEscaped boo
 	var response TestNullableOneofsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestNullableOneofs",
-			OperationID:   "testNullableOneofs",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestNullableOneofs",
+			OperationSummary: "",
+			OperationID:      "testNullableOneofs",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2759,12 +2786,13 @@ func (s *Server) handleTestTupleRequest(args [0]string, argsEscaped bool, w http
 	var response *TupleTest
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestTuple",
-			OperationID:   "testTuple",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestTuple",
+			OperationSummary: "",
+			OperationID:      "testTuple",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2843,12 +2871,13 @@ func (s *Server) handleTestTupleNamedRequest(args [0]string, argsEscaped bool, w
 	var response *TupleNamedTest
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestTupleNamed",
-			OperationID:   "testTupleNamed",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestTupleNamed",
+			OperationSummary: "",
+			OperationID:      "testTupleNamed",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2927,12 +2956,13 @@ func (s *Server) handleTestUniqueItemsRequest(args [0]string, argsEscaped bool, 
 	var response *UniqueItemsTest
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestUniqueItems",
-			OperationID:   "testUniqueItems",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestUniqueItems",
+			OperationSummary: "",
+			OperationID:      "testUniqueItems",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (

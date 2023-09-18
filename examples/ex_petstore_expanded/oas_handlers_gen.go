@@ -81,12 +81,13 @@ func (s *Server) handleAddPetRequest(args [0]string, argsEscaped bool, w http.Re
 	var response *Pet
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AddPet",
-			OperationID:   "addPet",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "AddPet",
+			OperationSummary: "",
+			OperationID:      "addPet",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -192,10 +193,11 @@ func (s *Server) handleDeletePetRequest(args [1]string, argsEscaped bool, w http
 	var response *DeletePetNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "DeletePet",
-			OperationID:   "deletePet",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "DeletePet",
+			OperationSummary: "",
+			OperationID:      "deletePet",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "id",
@@ -308,10 +310,11 @@ func (s *Server) handleFindPetByIDRequest(args [1]string, argsEscaped bool, w ht
 	var response *Pet
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "FindPetByID",
-			OperationID:   "find pet by id",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "FindPetByID",
+			OperationSummary: "",
+			OperationID:      "find pet by id",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "id",
@@ -442,10 +445,11 @@ func (s *Server) handleFindPetsRequest(args [0]string, argsEscaped bool, w http.
 	var response []Pet
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "FindPets",
-			OperationID:   "findPets",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "FindPets",
+			OperationSummary: "",
+			OperationID:      "findPets",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "tags",

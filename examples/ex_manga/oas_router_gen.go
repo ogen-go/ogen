@@ -276,6 +276,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 // Route is route object.
 type Route struct {
 	name        string
+	summary     string
 	operationID string
 	pathPattern string
 	count       int
@@ -287,6 +288,11 @@ type Route struct {
 // It is guaranteed to be unique and not empty.
 func (r Route) Name() string {
 	return r.name
+}
+
+// Summary returns OpenAPI summary.
+func (r Route) Summary() string {
+	return r.summary
 }
 
 // OperationID returns OpenAPI operationId.
@@ -382,6 +388,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "GET":
 								// Leaf: Search
 								r.name = "Search"
+								r.summary = "Search for comics"
 								r.operationID = "search"
 								r.pathPattern = "/api/galleries/search"
 								r.args = args
@@ -403,6 +410,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "GET":
 								// Leaf: SearchByTagID
 								r.name = "SearchByTagID"
+								r.summary = "Search for comics by tag ID"
 								r.operationID = "searchByTagID"
 								r.pathPattern = "/api/galleries/tagged"
 								r.args = args
@@ -430,6 +438,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						case "GET":
 							// Leaf: GetBook
 							r.name = "GetBook"
+							r.summary = "Gets metadata of book"
 							r.operationID = "getBook"
 							r.pathPattern = "/api/gallery/{book_id}"
 							r.args = args
@@ -488,6 +497,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "GET":
 								// Leaf: GetPageCoverImage
 								r.name = "GetPageCoverImage"
+								r.summary = "Gets page cover"
 								r.operationID = "getPageCoverImage"
 								r.pathPattern = "/galleries/{media_id}/cover.{format}"
 								r.args = args
@@ -528,6 +538,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "GET":
 								// Leaf: GetPageImage
 								r.name = "GetPageImage"
+								r.summary = "Gets page"
 								r.operationID = "getPageImage"
 								r.pathPattern = "/galleries/{media_id}/{page}.{format}"
 								r.args = args
@@ -554,6 +565,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "GET":
 								// Leaf: GetPageThumbnailImage
 								r.name = "GetPageThumbnailImage"
+								r.summary = "Gets page thumbnail"
 								r.operationID = "getPageThumbnailImage"
 								r.pathPattern = "/galleries/{media_id}/{page}t.{format}"
 								r.args = args
