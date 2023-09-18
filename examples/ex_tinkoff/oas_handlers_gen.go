@@ -108,12 +108,13 @@ func (s *Server) handleMarketBondsGetRequest(args [0]string, argsEscaped bool, w
 	var response MarketBondsGetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MarketBondsGet",
-			OperationID:   "",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "MarketBondsGet",
+			OperationSummary: "Получение списка облигаций",
+			OperationID:      "",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -251,10 +252,11 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, argsEscaped bool,
 	var response MarketCandlesGetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MarketCandlesGet",
-			OperationID:   "",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "MarketCandlesGet",
+			OperationSummary: "Получение исторических свечей по FIGI",
+			OperationID:      "",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "figi",
@@ -401,12 +403,13 @@ func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, argsEscaped bo
 	var response MarketCurrenciesGetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MarketCurrenciesGet",
-			OperationID:   "",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "MarketCurrenciesGet",
+			OperationSummary: "Получение списка валютных пар",
+			OperationID:      "",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -534,12 +537,13 @@ func (s *Server) handleMarketEtfsGetRequest(args [0]string, argsEscaped bool, w 
 	var response MarketEtfsGetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MarketEtfsGet",
-			OperationID:   "",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "MarketEtfsGet",
+			OperationSummary: "Получение списка ETF",
+			OperationID:      "",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -677,10 +681,11 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, argsEscaped boo
 	var response MarketOrderbookGetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MarketOrderbookGet",
-			OperationID:   "",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "MarketOrderbookGet",
+			OperationSummary: "Получение стакана по FIGI",
+			OperationID:      "",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "figi",
@@ -829,10 +834,11 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, argsEscaped 
 	var response MarketSearchByFigiGetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MarketSearchByFigiGet",
-			OperationID:   "",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "MarketSearchByFigiGet",
+			OperationSummary: "Получение инструмента по FIGI",
+			OperationID:      "",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "figi",
@@ -977,10 +983,11 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, argsEscape
 	var response MarketSearchByTickerGetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MarketSearchByTickerGet",
-			OperationID:   "",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "MarketSearchByTickerGet",
+			OperationSummary: "Получение инструмента по тикеру",
+			OperationID:      "",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "ticker",
@@ -1115,12 +1122,13 @@ func (s *Server) handleMarketStocksGetRequest(args [0]string, argsEscaped bool, 
 	var response MarketStocksGetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MarketStocksGet",
-			OperationID:   "",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "MarketStocksGet",
+			OperationSummary: "Получение списка акций",
+			OperationID:      "",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1258,10 +1266,11 @@ func (s *Server) handleOperationsGetRequest(args [0]string, argsEscaped bool, w 
 	var response OperationsGetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OperationsGet",
-			OperationID:   "",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OperationsGet",
+			OperationSummary: "Получение списка операций",
+			OperationID:      "",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "from",
@@ -1418,10 +1427,11 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, argsEscaped bool,
 	var response OrdersCancelPostRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrdersCancelPost",
-			OperationID:   "",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrdersCancelPost",
+			OperationSummary: "Отмена заявки",
+			OperationID:      "",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "orderId",
@@ -1570,10 +1580,11 @@ func (s *Server) handleOrdersGetRequest(args [0]string, argsEscaped bool, w http
 	var response OrdersGetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrdersGet",
-			OperationID:   "",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrdersGet",
+			OperationSummary: "Получение списка активных заявок",
+			OperationID:      "",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "brokerAccountId",
@@ -1733,10 +1744,11 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, argsEscaped b
 	var response OrdersLimitOrderPostRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrdersLimitOrderPost",
-			OperationID:   "",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "OrdersLimitOrderPost",
+			OperationSummary: "Создание лимитной заявки",
+			OperationID:      "",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "figi",
@@ -1900,10 +1912,11 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, argsEscaped 
 	var response OrdersMarketOrderPostRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrdersMarketOrderPost",
-			OperationID:   "",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "OrdersMarketOrderPost",
+			OperationSummary: "Создание рыночной заявки",
+			OperationID:      "",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "figi",
@@ -2052,10 +2065,11 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, argsEscaped
 	var response PortfolioCurrenciesGetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PortfolioCurrenciesGet",
-			OperationID:   "",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PortfolioCurrenciesGet",
+			OperationSummary: "Получение валютных активов клиента",
+			OperationID:      "",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "brokerAccountId",
@@ -2200,10 +2214,11 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, argsEscaped bool, w h
 	var response PortfolioGetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PortfolioGet",
-			OperationID:   "",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PortfolioGet",
+			OperationSummary: "Получение портфеля клиента",
+			OperationID:      "",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "brokerAccountId",
@@ -2348,10 +2363,11 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, argsEscaped bool,
 	var response SandboxClearPostRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SandboxClearPost",
-			OperationID:   "",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "SandboxClearPost",
+			OperationSummary: "Удаление всех позиций",
+			OperationID:      "",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "brokerAccountId",
@@ -2511,10 +2527,11 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, argsE
 	var response SandboxCurrenciesBalancePostRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SandboxCurrenciesBalancePost",
-			OperationID:   "",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "SandboxCurrenciesBalancePost",
+			OperationSummary: "Выставление баланса по валютным позициям",
+			OperationID:      "",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "brokerAccountId",
@@ -2674,10 +2691,11 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, argsEs
 	var response SandboxPositionsBalancePostRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SandboxPositionsBalancePost",
-			OperationID:   "",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "SandboxPositionsBalancePost",
+			OperationSummary: "Выставление баланса по инструментным позициям",
+			OperationID:      "",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "brokerAccountId",
@@ -2827,12 +2845,13 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, argsEscaped bo
 	var response SandboxRegisterPostRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SandboxRegisterPost",
-			OperationID:   "",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "SandboxRegisterPost",
+			OperationSummary: "Регистрация клиента в sandbox",
+			OperationID:      "",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2970,10 +2989,11 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, argsEscaped bool
 	var response SandboxRemovePostRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SandboxRemovePost",
-			OperationID:   "",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "SandboxRemovePost",
+			OperationSummary: "Удаление счета",
+			OperationID:      "",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "brokerAccountId",
@@ -3108,12 +3128,13 @@ func (s *Server) handleUserAccountsGetRequest(args [0]string, argsEscaped bool, 
 	var response UserAccountsGetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UserAccountsGet",
-			OperationID:   "",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "UserAccountsGet",
+			OperationSummary: "Получение брокерских счетов клиента",
+			OperationID:      "",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (

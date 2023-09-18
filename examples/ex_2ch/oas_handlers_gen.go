@@ -74,10 +74,11 @@ func (s *Server) handleAPICaptcha2chcaptchaIDGetRequest(args [0]string, argsEsca
 	var response *Captcha
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "APICaptcha2chcaptchaIDGet",
-			OperationID:   "",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "APICaptcha2chcaptchaIDGet",
+			OperationSummary: "Получение ид для использования 2chcaptcha.",
+			OperationID:      "",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "board",
@@ -182,10 +183,11 @@ func (s *Server) handleAPICaptcha2chcaptchaShowGetRequest(args [0]string, argsEs
 	var response APICaptcha2chcaptchaShowGetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "APICaptcha2chcaptchaShowGet",
-			OperationID:   "",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "APICaptcha2chcaptchaShowGet",
+			OperationSummary: "Отображение 2chcaptcha по id.",
+			OperationID:      "",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "id",
@@ -290,10 +292,11 @@ func (s *Server) handleAPICaptchaAppIDPublicKeyGetRequest(args [1]string, argsEs
 	var response *Captcha
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "APICaptchaAppIDPublicKeyGet",
-			OperationID:   "",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "APICaptchaAppIDPublicKeyGet",
+			OperationSummary: "Получение app_response_id для отправки поста.",
+			OperationID:      "",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "public_key",
@@ -402,10 +405,11 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaIDGetRequest(args [0]string, 
 	var response *Captcha
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "APICaptchaInvisibleRecaptchaIDGet",
-			OperationID:   "",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "APICaptchaInvisibleRecaptchaIDGet",
+			OperationSummary: "Получение публичного ключа invisible recaptcha.",
+			OperationID:      "",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "board",
@@ -496,12 +500,13 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaMobileGetRequest(args [0]stri
 	var response *APICaptchaInvisibleRecaptchaMobileGetOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "APICaptchaInvisibleRecaptchaMobileGet",
-			OperationID:   "",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "APICaptchaInvisibleRecaptchaMobileGet",
+			OperationSummary: "Получение html страницы для решения капчи, CORS отключён.",
+			OperationID:      "",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -595,10 +600,11 @@ func (s *Server) handleAPICaptchaRecaptchaIDGetRequest(args [0]string, argsEscap
 	var response *Captcha
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "APICaptchaRecaptchaIDGet",
-			OperationID:   "",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "APICaptchaRecaptchaIDGet",
+			OperationSummary: "Получение публичного ключа recaptcha v2.",
+			OperationID:      "",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "board",
@@ -689,12 +695,13 @@ func (s *Server) handleAPICaptchaRecaptchaMobileGetRequest(args [0]string, argsE
 	var response *APICaptchaRecaptchaMobileGetOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "APICaptchaRecaptchaMobileGet",
-			OperationID:   "",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "APICaptchaRecaptchaMobileGet",
+			OperationSummary: "Получение html страницы для решения капчи, CORS отключён.",
+			OperationID:      "",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -788,10 +795,11 @@ func (s *Server) handleAPIDislikeGetRequest(args [0]string, argsEscaped bool, w 
 	var response *Like
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "APIDislikeGet",
-			OperationID:   "",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "APIDislikeGet",
+			OperationSummary: "Добавление дизлайка на пост.",
+			OperationID:      "",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "board",
@@ -896,10 +904,11 @@ func (s *Server) handleAPILikeGetRequest(args [0]string, argsEscaped bool, w htt
 	var response *Like
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "APILikeGet",
-			OperationID:   "",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "APILikeGet",
+			OperationSummary: "Добавление лайка на пост.",
+			OperationID:      "",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "board",
@@ -1006,10 +1015,11 @@ func (s *Server) handleAPIMobileV2AfterBoardThreadNumGetRequest(args [3]string, 
 	var response *MobileThreadPostsAfter
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "APIMobileV2AfterBoardThreadNumGet",
-			OperationID:   "",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "APIMobileV2AfterBoardThreadNumGet",
+			OperationSummary: "Получение постов в треде >= указанного. Не рекомендуется использовать для получения треда целиком, только для проверки новых постов.",
+			OperationID:      "",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "board",
@@ -1104,12 +1114,13 @@ func (s *Server) handleAPIMobileV2BoardsGetRequest(args [0]string, argsEscaped b
 	var response Boards
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "APIMobileV2BoardsGet",
-			OperationID:   "",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "APIMobileV2BoardsGet",
+			OperationSummary: "Получение списка досок и их настроек.",
+			OperationID:      "",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1203,10 +1214,11 @@ func (s *Server) handleAPIMobileV2InfoBoardThreadGetRequest(args [2]string, args
 	var response *MobileThreadLastInfo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "APIMobileV2InfoBoardThreadGet",
-			OperationID:   "",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "APIMobileV2InfoBoardThreadGet",
+			OperationSummary: "Получение информации о треде.",
+			OperationID:      "",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "board",
@@ -1311,10 +1323,11 @@ func (s *Server) handleAPIMobileV2PostBoardNumGetRequest(args [2]string, argsEsc
 	var response *MobilePost
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "APIMobileV2PostBoardNumGet",
-			OperationID:   "",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "APIMobileV2PostBoardNumGet",
+			OperationSummary: "Получение информации о посте.",
+			OperationID:      "",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "board",
@@ -1434,10 +1447,11 @@ func (s *Server) handleUserPassloginPostRequest(args [0]string, argsEscaped bool
 	var response *Passcode
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UserPassloginPost",
-			OperationID:   "",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "UserPassloginPost",
+			OperationSummary: "Авторизация пасскода.",
+			OperationID:      "",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "json",
@@ -1543,12 +1557,13 @@ func (s *Server) handleUserPostingPostRequest(args [0]string, argsEscaped bool, 
 	var response UserPostingPostOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UserPostingPost",
-			OperationID:   "",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "UserPostingPost",
+			OperationSummary: "Создание нового поста или треда.",
+			OperationID:      "",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1647,12 +1662,13 @@ func (s *Server) handleUserReportPostRequest(args [0]string, argsEscaped bool, w
 	var response *Report
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UserReportPost",
-			OperationID:   "",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "UserReportPost",
+			OperationSummary: "Отправка жалобы.",
+			OperationID:      "",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (

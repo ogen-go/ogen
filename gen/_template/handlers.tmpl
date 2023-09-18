@@ -177,6 +177,7 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 		mreq := middleware.Request{
 			Context: ctx,
 			OperationName: {{ quote $op.Name }},
+			OperationSummary: {{ quote $op.Summary }},
 			OperationID: {{ quote $op.Spec.OperationID }},
 			Body: {{- if $op.Request }}request{{- else }}nil{{- end }},
 			Params: middleware.Parameters{

@@ -60,12 +60,13 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaRequest(args [0]string, a
 	var response AnyContentTypeBinaryStringSchemaOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AnyContentTypeBinaryStringSchema",
-			OperationID:   "anyContentTypeBinaryStringSchema",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "AnyContentTypeBinaryStringSchema",
+			OperationSummary: "",
+			OperationID:      "anyContentTypeBinaryStringSchema",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -144,12 +145,13 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaDefaultRequest(args [0]st
 	var response *AnyContentTypeBinaryStringSchemaDefaultDefStatusCode
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AnyContentTypeBinaryStringSchemaDefault",
-			OperationID:   "anyContentTypeBinaryStringSchemaDefault",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "AnyContentTypeBinaryStringSchemaDefault",
+			OperationSummary: "",
+			OperationID:      "anyContentTypeBinaryStringSchemaDefault",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -242,10 +244,11 @@ func (s *Server) handleCombinedRequest(args [0]string, argsEscaped bool, w http.
 	var response CombinedRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "Combined",
-			OperationID:   "combined",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "Combined",
+			OperationSummary: "",
+			OperationID:      "combined",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "type",
@@ -331,12 +334,13 @@ func (s *Server) handleHeaders200Request(args [0]string, argsEscaped bool, w htt
 	var response *Headers200OK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "Headers200",
-			OperationID:   "headers200",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "Headers200",
+			OperationSummary: "",
+			OperationID:      "headers200",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -429,10 +433,11 @@ func (s *Server) handleHeadersCombinedRequest(args [0]string, argsEscaped bool, 
 	var response HeadersCombinedRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "HeadersCombined",
-			OperationID:   "headersCombined",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "HeadersCombined",
+			OperationSummary: "",
+			OperationID:      "headersCombined",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "type",
@@ -518,12 +523,13 @@ func (s *Server) handleHeadersDefaultRequest(args [0]string, argsEscaped bool, w
 	var response *HeadersDefaultDef
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "HeadersDefault",
-			OperationID:   "headersDefault",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "HeadersDefault",
+			OperationSummary: "",
+			OperationID:      "headersDefault",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -602,12 +608,13 @@ func (s *Server) handleHeadersJSONRequest(args [0]string, argsEscaped bool, w ht
 	var response *HeadersJSONOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "HeadersJSON",
-			OperationID:   "headersJSON",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "HeadersJSON",
+			OperationSummary: "",
+			OperationID:      "headersJSON",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -686,12 +693,13 @@ func (s *Server) handleHeadersPatternRequest(args [0]string, argsEscaped bool, w
 	var response *HeadersPattern4XX
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "HeadersPattern",
-			OperationID:   "headersPattern",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "HeadersPattern",
+			OperationSummary: "",
+			OperationID:      "headersPattern",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -787,10 +795,11 @@ func (s *Server) handleIntersectPatternCodeRequest(args [0]string, argsEscaped b
 	var response IntersectPatternCodeRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IntersectPatternCode",
-			OperationID:   "intersectPatternCode",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "IntersectPatternCode",
+			OperationSummary: "",
+			OperationID:      "intersectPatternCode",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "code",
@@ -876,12 +885,13 @@ func (s *Server) handleMultipleGenericResponsesRequest(args [0]string, argsEscap
 	var response MultipleGenericResponsesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MultipleGenericResponses",
-			OperationID:   "multipleGenericResponses",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "MultipleGenericResponses",
+			OperationSummary: "",
+			OperationID:      "multipleGenericResponses",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -960,12 +970,13 @@ func (s *Server) handleOctetStreamBinaryStringSchemaRequest(args [0]string, args
 	var response OctetStreamBinaryStringSchemaOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OctetStreamBinaryStringSchema",
-			OperationID:   "octetStreamBinaryStringSchema",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "OctetStreamBinaryStringSchema",
+			OperationSummary: "",
+			OperationID:      "octetStreamBinaryStringSchema",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1044,12 +1055,13 @@ func (s *Server) handleOctetStreamEmptySchemaRequest(args [0]string, argsEscaped
 	var response OctetStreamEmptySchemaOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OctetStreamEmptySchema",
-			OperationID:   "octetStreamEmptySchema",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "OctetStreamEmptySchema",
+			OperationSummary: "",
+			OperationID:      "octetStreamEmptySchema",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1130,12 +1142,13 @@ func (s *Server) handleOptionalHeadersRequest(args [0]string, argsEscaped bool, 
 	var response *OptionalHeadersOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OptionalHeaders",
-			OperationID:   "optionalHeaders",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "OptionalHeaders",
+			OperationSummary: "",
+			OperationID:      "optionalHeaders",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1228,10 +1241,11 @@ func (s *Server) handleStreamJSONRequest(args [0]string, argsEscaped bool, w htt
 	var response StreamJSONRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "StreamJSON",
-			OperationID:   "streamJSON",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "StreamJSON",
+			OperationSummary: "",
+			OperationID:      "streamJSON",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "count",
@@ -1317,12 +1331,13 @@ func (s *Server) handleTextPlainBinaryStringSchemaRequest(args [0]string, argsEs
 	var response TextPlainBinaryStringSchemaOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TextPlainBinaryStringSchema",
-			OperationID:   "textPlainBinaryStringSchema",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TextPlainBinaryStringSchema",
+			OperationSummary: "",
+			OperationID:      "textPlainBinaryStringSchema",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (

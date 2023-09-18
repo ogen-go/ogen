@@ -204,6 +204,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 // Route is route object.
 type Route struct {
 	name        string
+	summary     string
 	operationID string
 	pathPattern string
 	count       int
@@ -215,6 +216,11 @@ type Route struct {
 // It is guaranteed to be unique and not empty.
 func (r Route) Name() string {
 	return r.name
+}
+
+// Summary returns OpenAPI summary.
+func (r Route) Summary() string {
+	return r.summary
 }
 
 // OperationID returns OpenAPI operationId.
@@ -281,6 +287,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				switch method {
 				case "GET":
 					r.name = "ListPet"
+					r.summary = "List Pets"
 					r.operationID = "listPet"
 					r.pathPattern = "/pets"
 					r.args = args
@@ -288,6 +295,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					return r, true
 				case "POST":
 					r.name = "CreatePet"
+					r.summary = "Create a new Pet"
 					r.operationID = "createPet"
 					r.pathPattern = "/pets"
 					r.args = args
@@ -318,6 +326,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					switch method {
 					case "DELETE":
 						r.name = "DeletePet"
+						r.summary = "Deletes a Pet by ID"
 						r.operationID = "deletePet"
 						r.pathPattern = "/pets/{id}"
 						r.args = args
@@ -325,6 +334,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						return r, true
 					case "GET":
 						r.name = "ReadPet"
+						r.summary = "Find a Pet by ID"
 						r.operationID = "readPet"
 						r.pathPattern = "/pets/{id}"
 						r.args = args
@@ -332,6 +342,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						return r, true
 					case "PATCH":
 						r.name = "UpdatePet"
+						r.summary = "Updates a Pet"
 						r.operationID = "updatePet"
 						r.pathPattern = "/pets/{id}"
 						r.args = args
@@ -365,6 +376,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "GET":
 								// Leaf: ListPetCategories
 								r.name = "ListPetCategories"
+								r.summary = "List attached Categories"
 								r.operationID = "listPetCategories"
 								r.pathPattern = "/pets/{id}/categories"
 								r.args = args
@@ -373,6 +385,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "POST":
 								// Leaf: CreatePetCategories
 								r.name = "CreatePetCategories"
+								r.summary = "Create a new Category and attach it to the Pet"
 								r.operationID = "createPetCategories"
 								r.pathPattern = "/pets/{id}/categories"
 								r.args = args
@@ -394,6 +407,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "GET":
 								// Leaf: ListPetFriends
 								r.name = "ListPetFriends"
+								r.summary = "List attached Friends"
 								r.operationID = "listPetFriends"
 								r.pathPattern = "/pets/{id}/friends"
 								r.args = args
@@ -402,6 +416,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "POST":
 								// Leaf: CreatePetFriends
 								r.name = "CreatePetFriends"
+								r.summary = "Create a new Pet and attach it to the Pet"
 								r.operationID = "createPetFriends"
 								r.pathPattern = "/pets/{id}/friends"
 								r.args = args
@@ -423,6 +438,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "DELETE":
 								// Leaf: DeletePetOwner
 								r.name = "DeletePetOwner"
+								r.summary = "Delete the attached Owner"
 								r.operationID = "deletePetOwner"
 								r.pathPattern = "/pets/{id}/owner"
 								r.args = args
@@ -431,6 +447,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "GET":
 								// Leaf: ReadPetOwner
 								r.name = "ReadPetOwner"
+								r.summary = "Find the attached User"
 								r.operationID = "readPetOwner"
 								r.pathPattern = "/pets/{id}/owner"
 								r.args = args
@@ -439,6 +456,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "POST":
 								// Leaf: CreatePetOwner
 								r.name = "CreatePetOwner"
+								r.summary = "Create a new User and attach it to the Pet"
 								r.operationID = "createPetOwner"
 								r.pathPattern = "/pets/{id}/owner"
 								r.args = args

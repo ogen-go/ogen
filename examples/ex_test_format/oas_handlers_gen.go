@@ -93,10 +93,11 @@ func (s *Server) handleTestQueryParameterRequest(args [0]string, argsEscaped boo
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestQueryParameter",
-			OperationID:   "test_query_parameter",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "TestQueryParameter",
+			OperationSummary: "",
+			OperationID:      "test_query_parameter",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "boolean",
@@ -629,12 +630,13 @@ func (s *Server) handleTestRequestAnyRequest(args [0]string, argsEscaped bool, w
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestAny",
-			OperationID:   "test_request_Any",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestAny",
+			OperationSummary: "",
+			OperationID:      "test_request_Any",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -732,12 +734,13 @@ func (s *Server) handleTestRequestBooleanRequest(args [0]string, argsEscaped boo
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestBoolean",
-			OperationID:   "test_request_boolean",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestBoolean",
+			OperationSummary: "",
+			OperationID:      "test_request_boolean",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -835,12 +838,13 @@ func (s *Server) handleTestRequestBooleanArrayRequest(args [0]string, argsEscape
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestBooleanArray",
-			OperationID:   "test_request_boolean_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestBooleanArray",
+			OperationSummary: "",
+			OperationID:      "test_request_boolean_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -938,12 +942,13 @@ func (s *Server) handleTestRequestBooleanArrayArrayRequest(args [0]string, argsE
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestBooleanArrayArray",
-			OperationID:   "test_request_boolean_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestBooleanArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_boolean_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1041,12 +1046,13 @@ func (s *Server) handleTestRequestBooleanNullableRequest(args [0]string, argsEsc
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestBooleanNullable",
-			OperationID:   "test_request_boolean_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestBooleanNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_boolean_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1144,12 +1150,13 @@ func (s *Server) handleTestRequestBooleanNullableArrayRequest(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestBooleanNullableArray",
-			OperationID:   "test_request_boolean_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestBooleanNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_boolean_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1247,12 +1254,13 @@ func (s *Server) handleTestRequestBooleanNullableArrayArrayRequest(args [0]strin
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestBooleanNullableArrayArray",
-			OperationID:   "test_request_boolean_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestBooleanNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_boolean_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1350,12 +1358,13 @@ func (s *Server) handleTestRequestEmptyStructRequest(args [0]string, argsEscaped
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestEmptyStruct",
-			OperationID:   "test_request_EmptyStruct",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestEmptyStruct",
+			OperationSummary: "",
+			OperationID:      "test_request_EmptyStruct",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1453,12 +1462,13 @@ func (s *Server) handleTestRequestFormatTestRequest(args [0]string, argsEscaped 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestFormatTest",
-			OperationID:   "test_request_FormatTest",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestFormatTest",
+			OperationSummary: "",
+			OperationID:      "test_request_FormatTest",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1556,12 +1566,13 @@ func (s *Server) handleTestRequestIntegerRequest(args [0]string, argsEscaped boo
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestInteger",
-			OperationID:   "test_request_integer",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestInteger",
+			OperationSummary: "",
+			OperationID:      "test_request_integer",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1659,12 +1670,13 @@ func (s *Server) handleTestRequestIntegerArrayRequest(args [0]string, argsEscape
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerArray",
-			OperationID:   "test_request_integer_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1762,12 +1774,13 @@ func (s *Server) handleTestRequestIntegerArrayArrayRequest(args [0]string, argsE
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerArrayArray",
-			OperationID:   "test_request_integer_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1865,12 +1878,13 @@ func (s *Server) handleTestRequestIntegerInt16Request(args [0]string, argsEscape
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerInt16",
-			OperationID:   "test_request_integer_int16",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerInt16",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_int16",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1968,12 +1982,13 @@ func (s *Server) handleTestRequestIntegerInt16ArrayRequest(args [0]string, argsE
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerInt16Array",
-			OperationID:   "test_request_integer_int16_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerInt16Array",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_int16_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2071,12 +2086,13 @@ func (s *Server) handleTestRequestIntegerInt16ArrayArrayRequest(args [0]string, 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerInt16ArrayArray",
-			OperationID:   "test_request_integer_int16_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerInt16ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_int16_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2174,12 +2190,13 @@ func (s *Server) handleTestRequestIntegerInt16NullableRequest(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerInt16Nullable",
-			OperationID:   "test_request_integer_int16_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerInt16Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_int16_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2277,12 +2294,13 @@ func (s *Server) handleTestRequestIntegerInt16NullableArrayRequest(args [0]strin
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerInt16NullableArray",
-			OperationID:   "test_request_integer_int16_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerInt16NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_int16_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2380,12 +2398,13 @@ func (s *Server) handleTestRequestIntegerInt16NullableArrayArrayRequest(args [0]
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerInt16NullableArrayArray",
-			OperationID:   "test_request_integer_int16_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerInt16NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_int16_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2483,12 +2502,13 @@ func (s *Server) handleTestRequestIntegerInt32Request(args [0]string, argsEscape
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerInt32",
-			OperationID:   "test_request_integer_int32",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerInt32",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_int32",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2586,12 +2606,13 @@ func (s *Server) handleTestRequestIntegerInt32ArrayRequest(args [0]string, argsE
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerInt32Array",
-			OperationID:   "test_request_integer_int32_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerInt32Array",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_int32_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2689,12 +2710,13 @@ func (s *Server) handleTestRequestIntegerInt32ArrayArrayRequest(args [0]string, 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerInt32ArrayArray",
-			OperationID:   "test_request_integer_int32_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerInt32ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_int32_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2792,12 +2814,13 @@ func (s *Server) handleTestRequestIntegerInt32NullableRequest(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerInt32Nullable",
-			OperationID:   "test_request_integer_int32_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerInt32Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_int32_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2895,12 +2918,13 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayRequest(args [0]strin
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerInt32NullableArray",
-			OperationID:   "test_request_integer_int32_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerInt32NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_int32_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2998,12 +3022,13 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayArrayRequest(args [0]
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerInt32NullableArrayArray",
-			OperationID:   "test_request_integer_int32_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerInt32NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_int32_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -3101,12 +3126,13 @@ func (s *Server) handleTestRequestIntegerInt64Request(args [0]string, argsEscape
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerInt64",
-			OperationID:   "test_request_integer_int64",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerInt64",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_int64",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -3204,12 +3230,13 @@ func (s *Server) handleTestRequestIntegerInt64ArrayRequest(args [0]string, argsE
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerInt64Array",
-			OperationID:   "test_request_integer_int64_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerInt64Array",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_int64_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -3307,12 +3334,13 @@ func (s *Server) handleTestRequestIntegerInt64ArrayArrayRequest(args [0]string, 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerInt64ArrayArray",
-			OperationID:   "test_request_integer_int64_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerInt64ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_int64_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -3410,12 +3438,13 @@ func (s *Server) handleTestRequestIntegerInt64NullableRequest(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerInt64Nullable",
-			OperationID:   "test_request_integer_int64_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerInt64Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_int64_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -3513,12 +3542,13 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayRequest(args [0]strin
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerInt64NullableArray",
-			OperationID:   "test_request_integer_int64_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerInt64NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_int64_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -3616,12 +3646,13 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayArrayRequest(args [0]
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerInt64NullableArrayArray",
-			OperationID:   "test_request_integer_int64_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerInt64NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_int64_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -3719,12 +3750,13 @@ func (s *Server) handleTestRequestIntegerInt8Request(args [0]string, argsEscaped
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerInt8",
-			OperationID:   "test_request_integer_int8",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerInt8",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_int8",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -3822,12 +3854,13 @@ func (s *Server) handleTestRequestIntegerInt8ArrayRequest(args [0]string, argsEs
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerInt8Array",
-			OperationID:   "test_request_integer_int8_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerInt8Array",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_int8_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -3925,12 +3958,13 @@ func (s *Server) handleTestRequestIntegerInt8ArrayArrayRequest(args [0]string, a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerInt8ArrayArray",
-			OperationID:   "test_request_integer_int8_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerInt8ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_int8_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -4028,12 +4062,13 @@ func (s *Server) handleTestRequestIntegerInt8NullableRequest(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerInt8Nullable",
-			OperationID:   "test_request_integer_int8_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerInt8Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_int8_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -4131,12 +4166,13 @@ func (s *Server) handleTestRequestIntegerInt8NullableArrayRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerInt8NullableArray",
-			OperationID:   "test_request_integer_int8_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerInt8NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_int8_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -4234,12 +4270,13 @@ func (s *Server) handleTestRequestIntegerInt8NullableArrayArrayRequest(args [0]s
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerInt8NullableArrayArray",
-			OperationID:   "test_request_integer_int8_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerInt8NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_int8_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -4337,12 +4374,13 @@ func (s *Server) handleTestRequestIntegerNullableRequest(args [0]string, argsEsc
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerNullable",
-			OperationID:   "test_request_integer_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -4440,12 +4478,13 @@ func (s *Server) handleTestRequestIntegerNullableArrayRequest(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerNullableArray",
-			OperationID:   "test_request_integer_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -4543,12 +4582,13 @@ func (s *Server) handleTestRequestIntegerNullableArrayArrayRequest(args [0]strin
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerNullableArrayArray",
-			OperationID:   "test_request_integer_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -4646,12 +4686,13 @@ func (s *Server) handleTestRequestIntegerUintRequest(args [0]string, argsEscaped
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUint",
-			OperationID:   "test_request_integer_uint",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUint",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_uint",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -4749,12 +4790,13 @@ func (s *Server) handleTestRequestIntegerUint16Request(args [0]string, argsEscap
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUint16",
-			OperationID:   "test_request_integer_uint16",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUint16",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_uint16",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -4852,12 +4894,13 @@ func (s *Server) handleTestRequestIntegerUint16ArrayRequest(args [0]string, args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUint16Array",
-			OperationID:   "test_request_integer_uint16_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUint16Array",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_uint16_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -4955,12 +4998,13 @@ func (s *Server) handleTestRequestIntegerUint16ArrayArrayRequest(args [0]string,
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUint16ArrayArray",
-			OperationID:   "test_request_integer_uint16_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUint16ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_uint16_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -5058,12 +5102,13 @@ func (s *Server) handleTestRequestIntegerUint16NullableRequest(args [0]string, a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUint16Nullable",
-			OperationID:   "test_request_integer_uint16_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUint16Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_uint16_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -5161,12 +5206,13 @@ func (s *Server) handleTestRequestIntegerUint16NullableArrayRequest(args [0]stri
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUint16NullableArray",
-			OperationID:   "test_request_integer_uint16_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUint16NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_uint16_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -5264,12 +5310,13 @@ func (s *Server) handleTestRequestIntegerUint16NullableArrayArrayRequest(args [0
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUint16NullableArrayArray",
-			OperationID:   "test_request_integer_uint16_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUint16NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_uint16_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -5367,12 +5414,13 @@ func (s *Server) handleTestRequestIntegerUint32Request(args [0]string, argsEscap
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUint32",
-			OperationID:   "test_request_integer_uint32",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUint32",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_uint32",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -5470,12 +5518,13 @@ func (s *Server) handleTestRequestIntegerUint32ArrayRequest(args [0]string, args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUint32Array",
-			OperationID:   "test_request_integer_uint32_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUint32Array",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_uint32_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -5573,12 +5622,13 @@ func (s *Server) handleTestRequestIntegerUint32ArrayArrayRequest(args [0]string,
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUint32ArrayArray",
-			OperationID:   "test_request_integer_uint32_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUint32ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_uint32_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -5676,12 +5726,13 @@ func (s *Server) handleTestRequestIntegerUint32NullableRequest(args [0]string, a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUint32Nullable",
-			OperationID:   "test_request_integer_uint32_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUint32Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_uint32_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -5779,12 +5830,13 @@ func (s *Server) handleTestRequestIntegerUint32NullableArrayRequest(args [0]stri
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUint32NullableArray",
-			OperationID:   "test_request_integer_uint32_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUint32NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_uint32_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -5882,12 +5934,13 @@ func (s *Server) handleTestRequestIntegerUint32NullableArrayArrayRequest(args [0
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUint32NullableArrayArray",
-			OperationID:   "test_request_integer_uint32_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUint32NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_uint32_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -5985,12 +6038,13 @@ func (s *Server) handleTestRequestIntegerUint64Request(args [0]string, argsEscap
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUint64",
-			OperationID:   "test_request_integer_uint64",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUint64",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_uint64",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -6088,12 +6142,13 @@ func (s *Server) handleTestRequestIntegerUint64ArrayRequest(args [0]string, args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUint64Array",
-			OperationID:   "test_request_integer_uint64_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUint64Array",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_uint64_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -6191,12 +6246,13 @@ func (s *Server) handleTestRequestIntegerUint64ArrayArrayRequest(args [0]string,
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUint64ArrayArray",
-			OperationID:   "test_request_integer_uint64_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUint64ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_uint64_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -6294,12 +6350,13 @@ func (s *Server) handleTestRequestIntegerUint64NullableRequest(args [0]string, a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUint64Nullable",
-			OperationID:   "test_request_integer_uint64_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUint64Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_uint64_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -6397,12 +6454,13 @@ func (s *Server) handleTestRequestIntegerUint64NullableArrayRequest(args [0]stri
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUint64NullableArray",
-			OperationID:   "test_request_integer_uint64_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUint64NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_uint64_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -6500,12 +6558,13 @@ func (s *Server) handleTestRequestIntegerUint64NullableArrayArrayRequest(args [0
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUint64NullableArrayArray",
-			OperationID:   "test_request_integer_uint64_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUint64NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_uint64_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -6603,12 +6662,13 @@ func (s *Server) handleTestRequestIntegerUint8Request(args [0]string, argsEscape
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUint8",
-			OperationID:   "test_request_integer_uint8",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUint8",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_uint8",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -6706,12 +6766,13 @@ func (s *Server) handleTestRequestIntegerUint8ArrayRequest(args [0]string, argsE
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUint8Array",
-			OperationID:   "test_request_integer_uint8_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUint8Array",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_uint8_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -6809,12 +6870,13 @@ func (s *Server) handleTestRequestIntegerUint8ArrayArrayRequest(args [0]string, 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUint8ArrayArray",
-			OperationID:   "test_request_integer_uint8_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUint8ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_uint8_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -6912,12 +6974,13 @@ func (s *Server) handleTestRequestIntegerUint8NullableRequest(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUint8Nullable",
-			OperationID:   "test_request_integer_uint8_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUint8Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_uint8_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -7015,12 +7078,13 @@ func (s *Server) handleTestRequestIntegerUint8NullableArrayRequest(args [0]strin
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUint8NullableArray",
-			OperationID:   "test_request_integer_uint8_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUint8NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_uint8_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -7118,12 +7182,13 @@ func (s *Server) handleTestRequestIntegerUint8NullableArrayArrayRequest(args [0]
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUint8NullableArrayArray",
-			OperationID:   "test_request_integer_uint8_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUint8NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_uint8_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -7221,12 +7286,13 @@ func (s *Server) handleTestRequestIntegerUintArrayRequest(args [0]string, argsEs
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUintArray",
-			OperationID:   "test_request_integer_uint_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUintArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_uint_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -7324,12 +7390,13 @@ func (s *Server) handleTestRequestIntegerUintArrayArrayRequest(args [0]string, a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUintArrayArray",
-			OperationID:   "test_request_integer_uint_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUintArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_uint_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -7427,12 +7494,13 @@ func (s *Server) handleTestRequestIntegerUintNullableRequest(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUintNullable",
-			OperationID:   "test_request_integer_uint_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUintNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_uint_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -7530,12 +7598,13 @@ func (s *Server) handleTestRequestIntegerUintNullableArrayRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUintNullableArray",
-			OperationID:   "test_request_integer_uint_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUintNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_uint_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -7633,12 +7702,13 @@ func (s *Server) handleTestRequestIntegerUintNullableArrayArrayRequest(args [0]s
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUintNullableArrayArray",
-			OperationID:   "test_request_integer_uint_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUintNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_uint_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -7736,12 +7806,13 @@ func (s *Server) handleTestRequestIntegerUnixRequest(args [0]string, argsEscaped
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUnix",
-			OperationID:   "test_request_integer_unix",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUnix",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_unix",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -7839,12 +7910,13 @@ func (s *Server) handleTestRequestIntegerUnixArrayRequest(args [0]string, argsEs
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUnixArray",
-			OperationID:   "test_request_integer_unix_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUnixArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_unix_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -7942,12 +8014,13 @@ func (s *Server) handleTestRequestIntegerUnixArrayArrayRequest(args [0]string, a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUnixArrayArray",
-			OperationID:   "test_request_integer_unix_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUnixArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_unix_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -8045,12 +8118,13 @@ func (s *Server) handleTestRequestIntegerUnixMicroRequest(args [0]string, argsEs
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUnixMicro",
-			OperationID:   "test_request_integer_unix-micro",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUnixMicro",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_unix-micro",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -8148,12 +8222,13 @@ func (s *Server) handleTestRequestIntegerUnixMicroArrayRequest(args [0]string, a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUnixMicroArray",
-			OperationID:   "test_request_integer_unix-micro_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUnixMicroArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_unix-micro_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -8251,12 +8326,13 @@ func (s *Server) handleTestRequestIntegerUnixMicroArrayArrayRequest(args [0]stri
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUnixMicroArrayArray",
-			OperationID:   "test_request_integer_unix-micro_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUnixMicroArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_unix-micro_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -8354,12 +8430,13 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUnixMicroNullable",
-			OperationID:   "test_request_integer_unix-micro_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUnixMicroNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_unix-micro_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -8457,12 +8534,13 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableArrayRequest(args [0]s
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUnixMicroNullableArray",
-			OperationID:   "test_request_integer_unix-micro_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUnixMicroNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_unix-micro_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -8560,12 +8638,13 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableArrayArrayRequest(args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUnixMicroNullableArrayArray",
-			OperationID:   "test_request_integer_unix-micro_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUnixMicroNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_unix-micro_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -8663,12 +8742,13 @@ func (s *Server) handleTestRequestIntegerUnixMilliRequest(args [0]string, argsEs
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUnixMilli",
-			OperationID:   "test_request_integer_unix-milli",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUnixMilli",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_unix-milli",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -8766,12 +8846,13 @@ func (s *Server) handleTestRequestIntegerUnixMilliArrayRequest(args [0]string, a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUnixMilliArray",
-			OperationID:   "test_request_integer_unix-milli_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUnixMilliArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_unix-milli_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -8869,12 +8950,13 @@ func (s *Server) handleTestRequestIntegerUnixMilliArrayArrayRequest(args [0]stri
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUnixMilliArrayArray",
-			OperationID:   "test_request_integer_unix-milli_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUnixMilliArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_unix-milli_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -8972,12 +9054,13 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUnixMilliNullable",
-			OperationID:   "test_request_integer_unix-milli_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUnixMilliNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_unix-milli_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -9075,12 +9158,13 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableArrayRequest(args [0]s
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUnixMilliNullableArray",
-			OperationID:   "test_request_integer_unix-milli_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUnixMilliNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_unix-milli_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -9178,12 +9262,13 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableArrayArrayRequest(args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUnixMilliNullableArrayArray",
-			OperationID:   "test_request_integer_unix-milli_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUnixMilliNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_unix-milli_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -9281,12 +9366,13 @@ func (s *Server) handleTestRequestIntegerUnixNanoRequest(args [0]string, argsEsc
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUnixNano",
-			OperationID:   "test_request_integer_unix-nano",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUnixNano",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_unix-nano",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -9384,12 +9470,13 @@ func (s *Server) handleTestRequestIntegerUnixNanoArrayRequest(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUnixNanoArray",
-			OperationID:   "test_request_integer_unix-nano_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUnixNanoArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_unix-nano_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -9487,12 +9574,13 @@ func (s *Server) handleTestRequestIntegerUnixNanoArrayArrayRequest(args [0]strin
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUnixNanoArrayArray",
-			OperationID:   "test_request_integer_unix-nano_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUnixNanoArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_unix-nano_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -9590,12 +9678,13 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableRequest(args [0]string,
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUnixNanoNullable",
-			OperationID:   "test_request_integer_unix-nano_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUnixNanoNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_unix-nano_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -9693,12 +9782,13 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableArrayRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUnixNanoNullableArray",
-			OperationID:   "test_request_integer_unix-nano_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUnixNanoNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_unix-nano_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -9796,12 +9886,13 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableArrayArrayRequest(args 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUnixNanoNullableArrayArray",
-			OperationID:   "test_request_integer_unix-nano_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUnixNanoNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_unix-nano_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -9899,12 +9990,13 @@ func (s *Server) handleTestRequestIntegerUnixNullableRequest(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUnixNullable",
-			OperationID:   "test_request_integer_unix_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUnixNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_unix_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -10002,12 +10094,13 @@ func (s *Server) handleTestRequestIntegerUnixNullableArrayRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUnixNullableArray",
-			OperationID:   "test_request_integer_unix_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUnixNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_unix_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -10105,12 +10198,13 @@ func (s *Server) handleTestRequestIntegerUnixNullableArrayArrayRequest(args [0]s
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUnixNullableArrayArray",
-			OperationID:   "test_request_integer_unix_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUnixNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_unix_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -10208,12 +10302,13 @@ func (s *Server) handleTestRequestIntegerUnixSecondsRequest(args [0]string, args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUnixSeconds",
-			OperationID:   "test_request_integer_unix-seconds",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUnixSeconds",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_unix-seconds",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -10311,12 +10406,13 @@ func (s *Server) handleTestRequestIntegerUnixSecondsArrayRequest(args [0]string,
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUnixSecondsArray",
-			OperationID:   "test_request_integer_unix-seconds_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUnixSecondsArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_unix-seconds_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -10414,12 +10510,13 @@ func (s *Server) handleTestRequestIntegerUnixSecondsArrayArrayRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUnixSecondsArrayArray",
-			OperationID:   "test_request_integer_unix-seconds_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUnixSecondsArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_unix-seconds_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -10517,12 +10614,13 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableRequest(args [0]stri
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUnixSecondsNullable",
-			OperationID:   "test_request_integer_unix-seconds_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUnixSecondsNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_unix-seconds_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -10620,12 +10718,13 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableArrayRequest(args [0
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUnixSecondsNullableArray",
-			OperationID:   "test_request_integer_unix-seconds_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUnixSecondsNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_unix-seconds_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -10723,12 +10822,13 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableArrayArrayRequest(ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestIntegerUnixSecondsNullableArrayArray",
-			OperationID:   "test_request_integer_unix-seconds_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestIntegerUnixSecondsNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_integer_unix-seconds_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -10826,12 +10926,13 @@ func (s *Server) handleTestRequestNullRequest(args [0]string, argsEscaped bool, 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNull",
-			OperationID:   "test_request_null",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNull",
+			OperationSummary: "",
+			OperationID:      "test_request_null",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -10929,12 +11030,13 @@ func (s *Server) handleTestRequestNullArrayRequest(args [0]string, argsEscaped b
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNullArray",
-			OperationID:   "test_request_null_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNullArray",
+			OperationSummary: "",
+			OperationID:      "test_request_null_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -11032,12 +11134,13 @@ func (s *Server) handleTestRequestNullArrayArrayRequest(args [0]string, argsEsca
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNullArrayArray",
-			OperationID:   "test_request_null_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNullArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_null_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -11135,12 +11238,13 @@ func (s *Server) handleTestRequestNullNullableRequest(args [0]string, argsEscape
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNullNullable",
-			OperationID:   "test_request_null_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNullNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_null_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -11238,12 +11342,13 @@ func (s *Server) handleTestRequestNullNullableArrayRequest(args [0]string, argsE
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNullNullableArray",
-			OperationID:   "test_request_null_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNullNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_null_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -11341,12 +11446,13 @@ func (s *Server) handleTestRequestNullNullableArrayArrayRequest(args [0]string, 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNullNullableArrayArray",
-			OperationID:   "test_request_null_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNullNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_null_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -11444,12 +11550,13 @@ func (s *Server) handleTestRequestNumberRequest(args [0]string, argsEscaped bool
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNumber",
-			OperationID:   "test_request_number",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNumber",
+			OperationSummary: "",
+			OperationID:      "test_request_number",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -11547,12 +11654,13 @@ func (s *Server) handleTestRequestNumberArrayRequest(args [0]string, argsEscaped
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNumberArray",
-			OperationID:   "test_request_number_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNumberArray",
+			OperationSummary: "",
+			OperationID:      "test_request_number_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -11650,12 +11758,13 @@ func (s *Server) handleTestRequestNumberArrayArrayRequest(args [0]string, argsEs
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNumberArrayArray",
-			OperationID:   "test_request_number_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNumberArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_number_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -11753,12 +11862,13 @@ func (s *Server) handleTestRequestNumberDoubleRequest(args [0]string, argsEscape
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNumberDouble",
-			OperationID:   "test_request_number_double",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNumberDouble",
+			OperationSummary: "",
+			OperationID:      "test_request_number_double",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -11856,12 +11966,13 @@ func (s *Server) handleTestRequestNumberDoubleArrayRequest(args [0]string, argsE
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNumberDoubleArray",
-			OperationID:   "test_request_number_double_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNumberDoubleArray",
+			OperationSummary: "",
+			OperationID:      "test_request_number_double_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -11959,12 +12070,13 @@ func (s *Server) handleTestRequestNumberDoubleArrayArrayRequest(args [0]string, 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNumberDoubleArrayArray",
-			OperationID:   "test_request_number_double_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNumberDoubleArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_number_double_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -12062,12 +12174,13 @@ func (s *Server) handleTestRequestNumberDoubleNullableRequest(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNumberDoubleNullable",
-			OperationID:   "test_request_number_double_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNumberDoubleNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_number_double_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -12165,12 +12278,13 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayRequest(args [0]strin
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNumberDoubleNullableArray",
-			OperationID:   "test_request_number_double_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNumberDoubleNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_number_double_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -12268,12 +12382,13 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayArrayRequest(args [0]
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNumberDoubleNullableArrayArray",
-			OperationID:   "test_request_number_double_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNumberDoubleNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_number_double_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -12371,12 +12486,13 @@ func (s *Server) handleTestRequestNumberFloatRequest(args [0]string, argsEscaped
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNumberFloat",
-			OperationID:   "test_request_number_float",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNumberFloat",
+			OperationSummary: "",
+			OperationID:      "test_request_number_float",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -12474,12 +12590,13 @@ func (s *Server) handleTestRequestNumberFloatArrayRequest(args [0]string, argsEs
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNumberFloatArray",
-			OperationID:   "test_request_number_float_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNumberFloatArray",
+			OperationSummary: "",
+			OperationID:      "test_request_number_float_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -12577,12 +12694,13 @@ func (s *Server) handleTestRequestNumberFloatArrayArrayRequest(args [0]string, a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNumberFloatArrayArray",
-			OperationID:   "test_request_number_float_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNumberFloatArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_number_float_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -12680,12 +12798,13 @@ func (s *Server) handleTestRequestNumberFloatNullableRequest(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNumberFloatNullable",
-			OperationID:   "test_request_number_float_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNumberFloatNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_number_float_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -12783,12 +12902,13 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNumberFloatNullableArray",
-			OperationID:   "test_request_number_float_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNumberFloatNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_number_float_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -12886,12 +13006,13 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayArrayRequest(args [0]s
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNumberFloatNullableArrayArray",
-			OperationID:   "test_request_number_float_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNumberFloatNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_number_float_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -12989,12 +13110,13 @@ func (s *Server) handleTestRequestNumberInt32Request(args [0]string, argsEscaped
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNumberInt32",
-			OperationID:   "test_request_number_int32",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNumberInt32",
+			OperationSummary: "",
+			OperationID:      "test_request_number_int32",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -13092,12 +13214,13 @@ func (s *Server) handleTestRequestNumberInt32ArrayRequest(args [0]string, argsEs
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNumberInt32Array",
-			OperationID:   "test_request_number_int32_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNumberInt32Array",
+			OperationSummary: "",
+			OperationID:      "test_request_number_int32_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -13195,12 +13318,13 @@ func (s *Server) handleTestRequestNumberInt32ArrayArrayRequest(args [0]string, a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNumberInt32ArrayArray",
-			OperationID:   "test_request_number_int32_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNumberInt32ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_number_int32_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -13298,12 +13422,13 @@ func (s *Server) handleTestRequestNumberInt32NullableRequest(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNumberInt32Nullable",
-			OperationID:   "test_request_number_int32_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNumberInt32Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_number_int32_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -13401,12 +13526,13 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNumberInt32NullableArray",
-			OperationID:   "test_request_number_int32_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNumberInt32NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_number_int32_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -13504,12 +13630,13 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayArrayRequest(args [0]s
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNumberInt32NullableArrayArray",
-			OperationID:   "test_request_number_int32_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNumberInt32NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_number_int32_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -13607,12 +13734,13 @@ func (s *Server) handleTestRequestNumberInt64Request(args [0]string, argsEscaped
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNumberInt64",
-			OperationID:   "test_request_number_int64",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNumberInt64",
+			OperationSummary: "",
+			OperationID:      "test_request_number_int64",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -13710,12 +13838,13 @@ func (s *Server) handleTestRequestNumberInt64ArrayRequest(args [0]string, argsEs
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNumberInt64Array",
-			OperationID:   "test_request_number_int64_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNumberInt64Array",
+			OperationSummary: "",
+			OperationID:      "test_request_number_int64_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -13813,12 +13942,13 @@ func (s *Server) handleTestRequestNumberInt64ArrayArrayRequest(args [0]string, a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNumberInt64ArrayArray",
-			OperationID:   "test_request_number_int64_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNumberInt64ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_number_int64_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -13916,12 +14046,13 @@ func (s *Server) handleTestRequestNumberInt64NullableRequest(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNumberInt64Nullable",
-			OperationID:   "test_request_number_int64_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNumberInt64Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_number_int64_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -14019,12 +14150,13 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNumberInt64NullableArray",
-			OperationID:   "test_request_number_int64_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNumberInt64NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_number_int64_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -14122,12 +14254,13 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayArrayRequest(args [0]s
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNumberInt64NullableArrayArray",
-			OperationID:   "test_request_number_int64_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNumberInt64NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_number_int64_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -14225,12 +14358,13 @@ func (s *Server) handleTestRequestNumberNullableRequest(args [0]string, argsEsca
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNumberNullable",
-			OperationID:   "test_request_number_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNumberNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_number_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -14328,12 +14462,13 @@ func (s *Server) handleTestRequestNumberNullableArrayRequest(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNumberNullableArray",
-			OperationID:   "test_request_number_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNumberNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_number_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -14431,12 +14566,13 @@ func (s *Server) handleTestRequestNumberNullableArrayArrayRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestNumberNullableArrayArray",
-			OperationID:   "test_request_number_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestNumberNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_number_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -14534,12 +14670,13 @@ func (s *Server) handleTestRequestRequiredAnyRequest(args [0]string, argsEscaped
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredAny",
-			OperationID:   "test_request_required_Any",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredAny",
+			OperationSummary: "",
+			OperationID:      "test_request_required_Any",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -14637,12 +14774,13 @@ func (s *Server) handleTestRequestRequiredBooleanRequest(args [0]string, argsEsc
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredBoolean",
-			OperationID:   "test_request_required_boolean",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredBoolean",
+			OperationSummary: "",
+			OperationID:      "test_request_required_boolean",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -14740,12 +14878,13 @@ func (s *Server) handleTestRequestRequiredBooleanArrayRequest(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredBooleanArray",
-			OperationID:   "test_request_required_boolean_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredBooleanArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_boolean_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -14843,12 +14982,13 @@ func (s *Server) handleTestRequestRequiredBooleanArrayArrayRequest(args [0]strin
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredBooleanArrayArray",
-			OperationID:   "test_request_required_boolean_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredBooleanArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_boolean_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -14946,12 +15086,13 @@ func (s *Server) handleTestRequestRequiredBooleanNullableRequest(args [0]string,
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredBooleanNullable",
-			OperationID:   "test_request_required_boolean_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredBooleanNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_boolean_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -15049,12 +15190,13 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredBooleanNullableArray",
-			OperationID:   "test_request_required_boolean_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredBooleanNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_boolean_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -15152,12 +15294,13 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayArrayRequest(args 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredBooleanNullableArrayArray",
-			OperationID:   "test_request_required_boolean_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredBooleanNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_boolean_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -15255,12 +15398,13 @@ func (s *Server) handleTestRequestRequiredEmptyStructRequest(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredEmptyStruct",
-			OperationID:   "test_request_required_EmptyStruct",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredEmptyStruct",
+			OperationSummary: "",
+			OperationID:      "test_request_required_EmptyStruct",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -15358,12 +15502,13 @@ func (s *Server) handleTestRequestRequiredFormatTestRequest(args [0]string, args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredFormatTest",
-			OperationID:   "test_request_required_FormatTest",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredFormatTest",
+			OperationSummary: "",
+			OperationID:      "test_request_required_FormatTest",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -15461,12 +15606,13 @@ func (s *Server) handleTestRequestRequiredIntegerRequest(args [0]string, argsEsc
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredInteger",
-			OperationID:   "test_request_required_integer",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredInteger",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -15564,12 +15710,13 @@ func (s *Server) handleTestRequestRequiredIntegerArrayRequest(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerArray",
-			OperationID:   "test_request_required_integer_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -15667,12 +15814,13 @@ func (s *Server) handleTestRequestRequiredIntegerArrayArrayRequest(args [0]strin
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerArrayArray",
-			OperationID:   "test_request_required_integer_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -15770,12 +15918,13 @@ func (s *Server) handleTestRequestRequiredIntegerInt16Request(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerInt16",
-			OperationID:   "test_request_required_integer_int16",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerInt16",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_int16",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -15873,12 +16022,13 @@ func (s *Server) handleTestRequestRequiredIntegerInt16ArrayRequest(args [0]strin
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerInt16Array",
-			OperationID:   "test_request_required_integer_int16_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerInt16Array",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_int16_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -15976,12 +16126,13 @@ func (s *Server) handleTestRequestRequiredIntegerInt16ArrayArrayRequest(args [0]
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerInt16ArrayArray",
-			OperationID:   "test_request_required_integer_int16_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerInt16ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_int16_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -16079,12 +16230,13 @@ func (s *Server) handleTestRequestRequiredIntegerInt16NullableRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerInt16Nullable",
-			OperationID:   "test_request_required_integer_int16_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerInt16Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_int16_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -16182,12 +16334,13 @@ func (s *Server) handleTestRequestRequiredIntegerInt16NullableArrayRequest(args 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerInt16NullableArray",
-			OperationID:   "test_request_required_integer_int16_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerInt16NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_int16_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -16285,12 +16438,13 @@ func (s *Server) handleTestRequestRequiredIntegerInt16NullableArrayArrayRequest(
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerInt16NullableArrayArray",
-			OperationID:   "test_request_required_integer_int16_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerInt16NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_int16_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -16388,12 +16542,13 @@ func (s *Server) handleTestRequestRequiredIntegerInt32Request(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerInt32",
-			OperationID:   "test_request_required_integer_int32",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerInt32",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_int32",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -16491,12 +16646,13 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayRequest(args [0]strin
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerInt32Array",
-			OperationID:   "test_request_required_integer_int32_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerInt32Array",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_int32_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -16594,12 +16750,13 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayArrayRequest(args [0]
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerInt32ArrayArray",
-			OperationID:   "test_request_required_integer_int32_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerInt32ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_int32_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -16697,12 +16854,13 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerInt32Nullable",
-			OperationID:   "test_request_required_integer_int32_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerInt32Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_int32_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -16800,12 +16958,13 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayRequest(args 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerInt32NullableArray",
-			OperationID:   "test_request_required_integer_int32_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerInt32NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_int32_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -16903,12 +17062,13 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerInt32NullableArrayArray",
-			OperationID:   "test_request_required_integer_int32_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerInt32NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_int32_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -17006,12 +17166,13 @@ func (s *Server) handleTestRequestRequiredIntegerInt64Request(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerInt64",
-			OperationID:   "test_request_required_integer_int64",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerInt64",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_int64",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -17109,12 +17270,13 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayRequest(args [0]strin
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerInt64Array",
-			OperationID:   "test_request_required_integer_int64_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerInt64Array",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_int64_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -17212,12 +17374,13 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayArrayRequest(args [0]
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerInt64ArrayArray",
-			OperationID:   "test_request_required_integer_int64_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerInt64ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_int64_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -17315,12 +17478,13 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerInt64Nullable",
-			OperationID:   "test_request_required_integer_int64_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerInt64Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_int64_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -17418,12 +17582,13 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayRequest(args 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerInt64NullableArray",
-			OperationID:   "test_request_required_integer_int64_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerInt64NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_int64_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -17521,12 +17686,13 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerInt64NullableArrayArray",
-			OperationID:   "test_request_required_integer_int64_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerInt64NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_int64_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -17624,12 +17790,13 @@ func (s *Server) handleTestRequestRequiredIntegerInt8Request(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerInt8",
-			OperationID:   "test_request_required_integer_int8",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerInt8",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_int8",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -17727,12 +17894,13 @@ func (s *Server) handleTestRequestRequiredIntegerInt8ArrayRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerInt8Array",
-			OperationID:   "test_request_required_integer_int8_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerInt8Array",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_int8_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -17830,12 +17998,13 @@ func (s *Server) handleTestRequestRequiredIntegerInt8ArrayArrayRequest(args [0]s
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerInt8ArrayArray",
-			OperationID:   "test_request_required_integer_int8_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerInt8ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_int8_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -17933,12 +18102,13 @@ func (s *Server) handleTestRequestRequiredIntegerInt8NullableRequest(args [0]str
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerInt8Nullable",
-			OperationID:   "test_request_required_integer_int8_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerInt8Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_int8_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -18036,12 +18206,13 @@ func (s *Server) handleTestRequestRequiredIntegerInt8NullableArrayRequest(args [
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerInt8NullableArray",
-			OperationID:   "test_request_required_integer_int8_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerInt8NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_int8_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -18139,12 +18310,13 @@ func (s *Server) handleTestRequestRequiredIntegerInt8NullableArrayArrayRequest(a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerInt8NullableArrayArray",
-			OperationID:   "test_request_required_integer_int8_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerInt8NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_int8_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -18242,12 +18414,13 @@ func (s *Server) handleTestRequestRequiredIntegerNullableRequest(args [0]string,
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerNullable",
-			OperationID:   "test_request_required_integer_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -18345,12 +18518,13 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerNullableArray",
-			OperationID:   "test_request_required_integer_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -18448,12 +18622,13 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayArrayRequest(args 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerNullableArrayArray",
-			OperationID:   "test_request_required_integer_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -18551,12 +18726,13 @@ func (s *Server) handleTestRequestRequiredIntegerUintRequest(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUint",
-			OperationID:   "test_request_required_integer_uint",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUint",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_uint",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -18654,12 +18830,13 @@ func (s *Server) handleTestRequestRequiredIntegerUint16Request(args [0]string, a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUint16",
-			OperationID:   "test_request_required_integer_uint16",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUint16",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_uint16",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -18757,12 +18934,13 @@ func (s *Server) handleTestRequestRequiredIntegerUint16ArrayRequest(args [0]stri
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUint16Array",
-			OperationID:   "test_request_required_integer_uint16_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUint16Array",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_uint16_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -18860,12 +19038,13 @@ func (s *Server) handleTestRequestRequiredIntegerUint16ArrayArrayRequest(args [0
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUint16ArrayArray",
-			OperationID:   "test_request_required_integer_uint16_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUint16ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_uint16_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -18963,12 +19142,13 @@ func (s *Server) handleTestRequestRequiredIntegerUint16NullableRequest(args [0]s
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUint16Nullable",
-			OperationID:   "test_request_required_integer_uint16_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUint16Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_uint16_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -19066,12 +19246,13 @@ func (s *Server) handleTestRequestRequiredIntegerUint16NullableArrayRequest(args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUint16NullableArray",
-			OperationID:   "test_request_required_integer_uint16_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUint16NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_uint16_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -19169,12 +19350,13 @@ func (s *Server) handleTestRequestRequiredIntegerUint16NullableArrayArrayRequest
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUint16NullableArrayArray",
-			OperationID:   "test_request_required_integer_uint16_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUint16NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_uint16_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -19272,12 +19454,13 @@ func (s *Server) handleTestRequestRequiredIntegerUint32Request(args [0]string, a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUint32",
-			OperationID:   "test_request_required_integer_uint32",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUint32",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_uint32",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -19375,12 +19558,13 @@ func (s *Server) handleTestRequestRequiredIntegerUint32ArrayRequest(args [0]stri
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUint32Array",
-			OperationID:   "test_request_required_integer_uint32_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUint32Array",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_uint32_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -19478,12 +19662,13 @@ func (s *Server) handleTestRequestRequiredIntegerUint32ArrayArrayRequest(args [0
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUint32ArrayArray",
-			OperationID:   "test_request_required_integer_uint32_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUint32ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_uint32_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -19581,12 +19766,13 @@ func (s *Server) handleTestRequestRequiredIntegerUint32NullableRequest(args [0]s
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUint32Nullable",
-			OperationID:   "test_request_required_integer_uint32_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUint32Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_uint32_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -19684,12 +19870,13 @@ func (s *Server) handleTestRequestRequiredIntegerUint32NullableArrayRequest(args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUint32NullableArray",
-			OperationID:   "test_request_required_integer_uint32_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUint32NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_uint32_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -19787,12 +19974,13 @@ func (s *Server) handleTestRequestRequiredIntegerUint32NullableArrayArrayRequest
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUint32NullableArrayArray",
-			OperationID:   "test_request_required_integer_uint32_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUint32NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_uint32_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -19890,12 +20078,13 @@ func (s *Server) handleTestRequestRequiredIntegerUint64Request(args [0]string, a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUint64",
-			OperationID:   "test_request_required_integer_uint64",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUint64",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_uint64",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -19993,12 +20182,13 @@ func (s *Server) handleTestRequestRequiredIntegerUint64ArrayRequest(args [0]stri
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUint64Array",
-			OperationID:   "test_request_required_integer_uint64_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUint64Array",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_uint64_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -20096,12 +20286,13 @@ func (s *Server) handleTestRequestRequiredIntegerUint64ArrayArrayRequest(args [0
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUint64ArrayArray",
-			OperationID:   "test_request_required_integer_uint64_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUint64ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_uint64_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -20199,12 +20390,13 @@ func (s *Server) handleTestRequestRequiredIntegerUint64NullableRequest(args [0]s
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUint64Nullable",
-			OperationID:   "test_request_required_integer_uint64_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUint64Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_uint64_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -20302,12 +20494,13 @@ func (s *Server) handleTestRequestRequiredIntegerUint64NullableArrayRequest(args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUint64NullableArray",
-			OperationID:   "test_request_required_integer_uint64_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUint64NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_uint64_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -20405,12 +20598,13 @@ func (s *Server) handleTestRequestRequiredIntegerUint64NullableArrayArrayRequest
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUint64NullableArrayArray",
-			OperationID:   "test_request_required_integer_uint64_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUint64NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_uint64_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -20508,12 +20702,13 @@ func (s *Server) handleTestRequestRequiredIntegerUint8Request(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUint8",
-			OperationID:   "test_request_required_integer_uint8",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUint8",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_uint8",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -20611,12 +20806,13 @@ func (s *Server) handleTestRequestRequiredIntegerUint8ArrayRequest(args [0]strin
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUint8Array",
-			OperationID:   "test_request_required_integer_uint8_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUint8Array",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_uint8_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -20714,12 +20910,13 @@ func (s *Server) handleTestRequestRequiredIntegerUint8ArrayArrayRequest(args [0]
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUint8ArrayArray",
-			OperationID:   "test_request_required_integer_uint8_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUint8ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_uint8_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -20817,12 +21014,13 @@ func (s *Server) handleTestRequestRequiredIntegerUint8NullableRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUint8Nullable",
-			OperationID:   "test_request_required_integer_uint8_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUint8Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_uint8_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -20920,12 +21118,13 @@ func (s *Server) handleTestRequestRequiredIntegerUint8NullableArrayRequest(args 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUint8NullableArray",
-			OperationID:   "test_request_required_integer_uint8_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUint8NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_uint8_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -21023,12 +21222,13 @@ func (s *Server) handleTestRequestRequiredIntegerUint8NullableArrayArrayRequest(
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUint8NullableArrayArray",
-			OperationID:   "test_request_required_integer_uint8_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUint8NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_uint8_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -21126,12 +21326,13 @@ func (s *Server) handleTestRequestRequiredIntegerUintArrayRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUintArray",
-			OperationID:   "test_request_required_integer_uint_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUintArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_uint_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -21229,12 +21430,13 @@ func (s *Server) handleTestRequestRequiredIntegerUintArrayArrayRequest(args [0]s
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUintArrayArray",
-			OperationID:   "test_request_required_integer_uint_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUintArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_uint_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -21332,12 +21534,13 @@ func (s *Server) handleTestRequestRequiredIntegerUintNullableRequest(args [0]str
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUintNullable",
-			OperationID:   "test_request_required_integer_uint_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUintNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_uint_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -21435,12 +21638,13 @@ func (s *Server) handleTestRequestRequiredIntegerUintNullableArrayRequest(args [
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUintNullableArray",
-			OperationID:   "test_request_required_integer_uint_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUintNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_uint_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -21538,12 +21742,13 @@ func (s *Server) handleTestRequestRequiredIntegerUintNullableArrayArrayRequest(a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUintNullableArrayArray",
-			OperationID:   "test_request_required_integer_uint_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUintNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_uint_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -21641,12 +21846,13 @@ func (s *Server) handleTestRequestRequiredIntegerUnixRequest(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUnix",
-			OperationID:   "test_request_required_integer_unix",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUnix",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_unix",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -21744,12 +21950,13 @@ func (s *Server) handleTestRequestRequiredIntegerUnixArrayRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUnixArray",
-			OperationID:   "test_request_required_integer_unix_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUnixArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_unix_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -21847,12 +22054,13 @@ func (s *Server) handleTestRequestRequiredIntegerUnixArrayArrayRequest(args [0]s
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUnixArrayArray",
-			OperationID:   "test_request_required_integer_unix_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUnixArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_unix_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -21950,12 +22158,13 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUnixMicro",
-			OperationID:   "test_request_required_integer_unix-micro",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUnixMicro",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_unix-micro",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -22053,12 +22262,13 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroArrayRequest(args [0]s
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUnixMicroArray",
-			OperationID:   "test_request_required_integer_unix-micro_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUnixMicroArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_unix-micro_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -22156,12 +22366,13 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroArrayArrayRequest(args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUnixMicroArrayArray",
-			OperationID:   "test_request_required_integer_unix-micro_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUnixMicroArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_unix-micro_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -22259,12 +22470,13 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableRequest(args [
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUnixMicroNullable",
-			OperationID:   "test_request_required_integer_unix-micro_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUnixMicroNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_unix-micro_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -22362,12 +22574,13 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableArrayRequest(a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUnixMicroNullableArray",
-			OperationID:   "test_request_required_integer_unix-micro_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUnixMicroNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_unix-micro_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -22465,12 +22678,13 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequ
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUnixMicroNullableArrayArray",
-			OperationID:   "test_request_required_integer_unix-micro_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUnixMicroNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_unix-micro_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -22568,12 +22782,13 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUnixMilli",
-			OperationID:   "test_request_required_integer_unix-milli",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUnixMilli",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_unix-milli",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -22671,12 +22886,13 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliArrayRequest(args [0]s
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUnixMilliArray",
-			OperationID:   "test_request_required_integer_unix-milli_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUnixMilliArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_unix-milli_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -22774,12 +22990,13 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliArrayArrayRequest(args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUnixMilliArrayArray",
-			OperationID:   "test_request_required_integer_unix-milli_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUnixMilliArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_unix-milli_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -22877,12 +23094,13 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableRequest(args [
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUnixMilliNullable",
-			OperationID:   "test_request_required_integer_unix-milli_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUnixMilliNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_unix-milli_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -22980,12 +23198,13 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableArrayRequest(a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUnixMilliNullableArray",
-			OperationID:   "test_request_required_integer_unix-milli_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUnixMilliNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_unix-milli_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -23083,12 +23302,13 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequ
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUnixMilliNullableArrayArray",
-			OperationID:   "test_request_required_integer_unix-milli_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUnixMilliNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_unix-milli_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -23186,12 +23406,13 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoRequest(args [0]string,
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUnixNano",
-			OperationID:   "test_request_required_integer_unix-nano",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUnixNano",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_unix-nano",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -23289,12 +23510,13 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoArrayRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUnixNanoArray",
-			OperationID:   "test_request_required_integer_unix-nano_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUnixNanoArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_unix-nano_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -23392,12 +23614,13 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoArrayArrayRequest(args 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUnixNanoArrayArray",
-			OperationID:   "test_request_required_integer_unix-nano_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUnixNanoArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_unix-nano_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -23495,12 +23718,13 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableRequest(args [0
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUnixNanoNullable",
-			OperationID:   "test_request_required_integer_unix-nano_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUnixNanoNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_unix-nano_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -23598,12 +23822,13 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableArrayRequest(ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUnixNanoNullableArray",
-			OperationID:   "test_request_required_integer_unix-nano_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUnixNanoNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_unix-nano_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -23701,12 +23926,13 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableArrayArrayReque
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUnixNanoNullableArrayArray",
-			OperationID:   "test_request_required_integer_unix-nano_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUnixNanoNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_unix-nano_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -23804,12 +24030,13 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableRequest(args [0]str
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUnixNullable",
-			OperationID:   "test_request_required_integer_unix_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUnixNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_unix_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -23907,12 +24134,13 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableArrayRequest(args [
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUnixNullableArray",
-			OperationID:   "test_request_required_integer_unix_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUnixNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_unix_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -24010,12 +24238,13 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableArrayArrayRequest(a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUnixNullableArrayArray",
-			OperationID:   "test_request_required_integer_unix_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUnixNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_unix_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -24113,12 +24342,13 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsRequest(args [0]stri
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUnixSeconds",
-			OperationID:   "test_request_required_integer_unix-seconds",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUnixSeconds",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_unix-seconds",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -24216,12 +24446,13 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsArrayRequest(args [0
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUnixSecondsArray",
-			OperationID:   "test_request_required_integer_unix-seconds_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUnixSecondsArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_unix-seconds_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -24319,12 +24550,13 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsArrayArrayRequest(ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUnixSecondsArrayArray",
-			OperationID:   "test_request_required_integer_unix-seconds_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUnixSecondsArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_unix-seconds_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -24422,12 +24654,13 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableRequest(args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUnixSecondsNullable",
-			OperationID:   "test_request_required_integer_unix-seconds_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUnixSecondsNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_unix-seconds_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -24525,12 +24758,13 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableArrayRequest
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUnixSecondsNullableArray",
-			OperationID:   "test_request_required_integer_unix-seconds_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUnixSecondsNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_unix-seconds_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -24628,12 +24862,13 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRe
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredIntegerUnixSecondsNullableArrayArray",
-			OperationID:   "test_request_required_integer_unix-seconds_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredIntegerUnixSecondsNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_integer_unix-seconds_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -24731,12 +24966,13 @@ func (s *Server) handleTestRequestRequiredNullRequest(args [0]string, argsEscape
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNull",
-			OperationID:   "test_request_required_null",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNull",
+			OperationSummary: "",
+			OperationID:      "test_request_required_null",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -24834,12 +25070,13 @@ func (s *Server) handleTestRequestRequiredNullArrayRequest(args [0]string, argsE
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNullArray",
-			OperationID:   "test_request_required_null_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNullArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_null_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -24937,12 +25174,13 @@ func (s *Server) handleTestRequestRequiredNullArrayArrayRequest(args [0]string, 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNullArrayArray",
-			OperationID:   "test_request_required_null_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNullArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_null_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -25040,12 +25278,13 @@ func (s *Server) handleTestRequestRequiredNullNullableRequest(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNullNullable",
-			OperationID:   "test_request_required_null_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNullNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_null_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -25143,12 +25382,13 @@ func (s *Server) handleTestRequestRequiredNullNullableArrayRequest(args [0]strin
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNullNullableArray",
-			OperationID:   "test_request_required_null_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNullNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_null_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -25246,12 +25486,13 @@ func (s *Server) handleTestRequestRequiredNullNullableArrayArrayRequest(args [0]
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNullNullableArrayArray",
-			OperationID:   "test_request_required_null_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNullNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_null_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -25349,12 +25590,13 @@ func (s *Server) handleTestRequestRequiredNumberRequest(args [0]string, argsEsca
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNumber",
-			OperationID:   "test_request_required_number",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNumber",
+			OperationSummary: "",
+			OperationID:      "test_request_required_number",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -25452,12 +25694,13 @@ func (s *Server) handleTestRequestRequiredNumberArrayRequest(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNumberArray",
-			OperationID:   "test_request_required_number_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNumberArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_number_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -25555,12 +25798,13 @@ func (s *Server) handleTestRequestRequiredNumberArrayArrayRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNumberArrayArray",
-			OperationID:   "test_request_required_number_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNumberArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_number_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -25658,12 +25902,13 @@ func (s *Server) handleTestRequestRequiredNumberDoubleRequest(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNumberDouble",
-			OperationID:   "test_request_required_number_double",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNumberDouble",
+			OperationSummary: "",
+			OperationID:      "test_request_required_number_double",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -25761,12 +26006,13 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayRequest(args [0]strin
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNumberDoubleArray",
-			OperationID:   "test_request_required_number_double_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNumberDoubleArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_number_double_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -25864,12 +26110,13 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayArrayRequest(args [0]
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNumberDoubleArrayArray",
-			OperationID:   "test_request_required_number_double_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNumberDoubleArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_number_double_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -25967,12 +26214,13 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNumberDoubleNullable",
-			OperationID:   "test_request_required_number_double_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNumberDoubleNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_number_double_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -26070,12 +26318,13 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayRequest(args 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNumberDoubleNullableArray",
-			OperationID:   "test_request_required_number_double_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNumberDoubleNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_number_double_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -26173,12 +26422,13 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNumberDoubleNullableArrayArray",
-			OperationID:   "test_request_required_number_double_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNumberDoubleNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_number_double_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -26276,12 +26526,13 @@ func (s *Server) handleTestRequestRequiredNumberFloatRequest(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNumberFloat",
-			OperationID:   "test_request_required_number_float",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNumberFloat",
+			OperationSummary: "",
+			OperationID:      "test_request_required_number_float",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -26379,12 +26630,13 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNumberFloatArray",
-			OperationID:   "test_request_required_number_float_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNumberFloatArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_number_float_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -26482,12 +26734,13 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayArrayRequest(args [0]s
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNumberFloatArrayArray",
-			OperationID:   "test_request_required_number_float_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNumberFloatArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_number_float_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -26585,12 +26838,13 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableRequest(args [0]str
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNumberFloatNullable",
-			OperationID:   "test_request_required_number_float_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNumberFloatNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_number_float_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -26688,12 +26942,13 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayRequest(args [
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNumberFloatNullableArray",
-			OperationID:   "test_request_required_number_float_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNumberFloatNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_number_float_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -26791,12 +27046,13 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayArrayRequest(a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNumberFloatNullableArrayArray",
-			OperationID:   "test_request_required_number_float_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNumberFloatNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_number_float_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -26894,12 +27150,13 @@ func (s *Server) handleTestRequestRequiredNumberInt32Request(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNumberInt32",
-			OperationID:   "test_request_required_number_int32",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNumberInt32",
+			OperationSummary: "",
+			OperationID:      "test_request_required_number_int32",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -26997,12 +27254,13 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNumberInt32Array",
-			OperationID:   "test_request_required_number_int32_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNumberInt32Array",
+			OperationSummary: "",
+			OperationID:      "test_request_required_number_int32_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -27100,12 +27358,13 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayArrayRequest(args [0]s
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNumberInt32ArrayArray",
-			OperationID:   "test_request_required_number_int32_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNumberInt32ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_number_int32_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -27203,12 +27462,13 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableRequest(args [0]str
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNumberInt32Nullable",
-			OperationID:   "test_request_required_number_int32_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNumberInt32Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_number_int32_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -27306,12 +27566,13 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayRequest(args [
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNumberInt32NullableArray",
-			OperationID:   "test_request_required_number_int32_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNumberInt32NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_number_int32_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -27409,12 +27670,13 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayArrayRequest(a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNumberInt32NullableArrayArray",
-			OperationID:   "test_request_required_number_int32_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNumberInt32NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_number_int32_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -27512,12 +27774,13 @@ func (s *Server) handleTestRequestRequiredNumberInt64Request(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNumberInt64",
-			OperationID:   "test_request_required_number_int64",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNumberInt64",
+			OperationSummary: "",
+			OperationID:      "test_request_required_number_int64",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -27615,12 +27878,13 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNumberInt64Array",
-			OperationID:   "test_request_required_number_int64_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNumberInt64Array",
+			OperationSummary: "",
+			OperationID:      "test_request_required_number_int64_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -27718,12 +27982,13 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayArrayRequest(args [0]s
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNumberInt64ArrayArray",
-			OperationID:   "test_request_required_number_int64_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNumberInt64ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_number_int64_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -27821,12 +28086,13 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableRequest(args [0]str
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNumberInt64Nullable",
-			OperationID:   "test_request_required_number_int64_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNumberInt64Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_number_int64_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -27924,12 +28190,13 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayRequest(args [
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNumberInt64NullableArray",
-			OperationID:   "test_request_required_number_int64_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNumberInt64NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_number_int64_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -28027,12 +28294,13 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayArrayRequest(a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNumberInt64NullableArrayArray",
-			OperationID:   "test_request_required_number_int64_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNumberInt64NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_number_int64_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -28130,12 +28398,13 @@ func (s *Server) handleTestRequestRequiredNumberNullableRequest(args [0]string, 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNumberNullable",
-			OperationID:   "test_request_required_number_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNumberNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_number_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -28233,12 +28502,13 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayRequest(args [0]str
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNumberNullableArray",
-			OperationID:   "test_request_required_number_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNumberNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_number_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -28336,12 +28606,13 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayArrayRequest(args [
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredNumberNullableArrayArray",
-			OperationID:   "test_request_required_number_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredNumberNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_number_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -28439,12 +28710,13 @@ func (s *Server) handleTestRequestRequiredStringRequest(args [0]string, argsEsca
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredString",
-			OperationID:   "test_request_required_string",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredString",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -28542,12 +28814,13 @@ func (s *Server) handleTestRequestRequiredStringArrayRequest(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringArray",
-			OperationID:   "test_request_required_string_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -28645,12 +28918,13 @@ func (s *Server) handleTestRequestRequiredStringArrayArrayRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringArrayArray",
-			OperationID:   "test_request_required_string_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -28748,12 +29022,13 @@ func (s *Server) handleTestRequestRequiredStringBase64Request(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringBase64",
-			OperationID:   "test_request_required_string_base64",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringBase64",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_base64",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -28851,12 +29126,13 @@ func (s *Server) handleTestRequestRequiredStringBase64ArrayRequest(args [0]strin
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringBase64Array",
-			OperationID:   "test_request_required_string_base64_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringBase64Array",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_base64_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -28954,12 +29230,13 @@ func (s *Server) handleTestRequestRequiredStringBase64ArrayArrayRequest(args [0]
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringBase64ArrayArray",
-			OperationID:   "test_request_required_string_base64_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringBase64ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_base64_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -29057,12 +29334,13 @@ func (s *Server) handleTestRequestRequiredStringBase64NullableRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringBase64Nullable",
-			OperationID:   "test_request_required_string_base64_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringBase64Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_base64_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -29160,12 +29438,13 @@ func (s *Server) handleTestRequestRequiredStringBase64NullableArrayRequest(args 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringBase64NullableArray",
-			OperationID:   "test_request_required_string_base64_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringBase64NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_base64_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -29263,12 +29542,13 @@ func (s *Server) handleTestRequestRequiredStringBase64NullableArrayArrayRequest(
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringBase64NullableArrayArray",
-			OperationID:   "test_request_required_string_base64_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringBase64NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_base64_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -29366,12 +29646,13 @@ func (s *Server) handleTestRequestRequiredStringBinaryRequest(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringBinary",
-			OperationID:   "test_request_required_string_binary",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringBinary",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_binary",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -29469,12 +29750,13 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayRequest(args [0]strin
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringBinaryArray",
-			OperationID:   "test_request_required_string_binary_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringBinaryArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_binary_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -29572,12 +29854,13 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayArrayRequest(args [0]
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringBinaryArrayArray",
-			OperationID:   "test_request_required_string_binary_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringBinaryArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_binary_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -29675,12 +29958,13 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringBinaryNullable",
-			OperationID:   "test_request_required_string_binary_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringBinaryNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_binary_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -29778,12 +30062,13 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayRequest(args 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringBinaryNullableArray",
-			OperationID:   "test_request_required_string_binary_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringBinaryNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_binary_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -29881,12 +30166,13 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringBinaryNullableArrayArray",
-			OperationID:   "test_request_required_string_binary_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringBinaryNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_binary_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -29984,12 +30270,13 @@ func (s *Server) handleTestRequestRequiredStringByteRequest(args [0]string, args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringByte",
-			OperationID:   "test_request_required_string_byte",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringByte",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_byte",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -30087,12 +30374,13 @@ func (s *Server) handleTestRequestRequiredStringByteArrayRequest(args [0]string,
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringByteArray",
-			OperationID:   "test_request_required_string_byte_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringByteArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_byte_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -30190,12 +30478,13 @@ func (s *Server) handleTestRequestRequiredStringByteArrayArrayRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringByteArrayArray",
-			OperationID:   "test_request_required_string_byte_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringByteArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_byte_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -30293,12 +30582,13 @@ func (s *Server) handleTestRequestRequiredStringByteNullableRequest(args [0]stri
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringByteNullable",
-			OperationID:   "test_request_required_string_byte_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringByteNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_byte_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -30396,12 +30686,13 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayRequest(args [0
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringByteNullableArray",
-			OperationID:   "test_request_required_string_byte_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringByteNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_byte_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -30499,12 +30790,13 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayArrayRequest(ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringByteNullableArrayArray",
-			OperationID:   "test_request_required_string_byte_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringByteNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_byte_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -30602,12 +30894,13 @@ func (s *Server) handleTestRequestRequiredStringDateRequest(args [0]string, args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringDate",
-			OperationID:   "test_request_required_string_date",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringDate",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_date",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -30705,12 +30998,13 @@ func (s *Server) handleTestRequestRequiredStringDateArrayRequest(args [0]string,
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringDateArray",
-			OperationID:   "test_request_required_string_date_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringDateArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_date_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -30808,12 +31102,13 @@ func (s *Server) handleTestRequestRequiredStringDateArrayArrayRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringDateArrayArray",
-			OperationID:   "test_request_required_string_date_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringDateArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_date_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -30911,12 +31206,13 @@ func (s *Server) handleTestRequestRequiredStringDateNullableRequest(args [0]stri
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringDateNullable",
-			OperationID:   "test_request_required_string_date_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringDateNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_date_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -31014,12 +31310,13 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayRequest(args [0
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringDateNullableArray",
-			OperationID:   "test_request_required_string_date_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringDateNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_date_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -31117,12 +31414,13 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayArrayRequest(ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringDateNullableArrayArray",
-			OperationID:   "test_request_required_string_date_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringDateNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_date_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -31220,12 +31518,13 @@ func (s *Server) handleTestRequestRequiredStringDateTimeRequest(args [0]string, 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringDateTime",
-			OperationID:   "test_request_required_string_date-time",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringDateTime",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_date-time",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -31323,12 +31622,13 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayRequest(args [0]str
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringDateTimeArray",
-			OperationID:   "test_request_required_string_date-time_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringDateTimeArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_date-time_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -31426,12 +31726,13 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayArrayRequest(args [
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringDateTimeArrayArray",
-			OperationID:   "test_request_required_string_date-time_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringDateTimeArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_date-time_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -31529,12 +31830,13 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableRequest(args [0]
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringDateTimeNullable",
-			OperationID:   "test_request_required_string_date-time_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringDateTimeNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_date-time_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -31632,12 +31934,13 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayRequest(arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringDateTimeNullableArray",
-			OperationID:   "test_request_required_string_date-time_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringDateTimeNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_date-time_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -31735,12 +32038,13 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayArrayReques
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringDateTimeNullableArrayArray",
-			OperationID:   "test_request_required_string_date-time_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringDateTimeNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_date-time_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -31838,12 +32142,13 @@ func (s *Server) handleTestRequestRequiredStringDurationRequest(args [0]string, 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringDuration",
-			OperationID:   "test_request_required_string_duration",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringDuration",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_duration",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -31941,12 +32246,13 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayRequest(args [0]str
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringDurationArray",
-			OperationID:   "test_request_required_string_duration_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringDurationArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_duration_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -32044,12 +32350,13 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayArrayRequest(args [
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringDurationArrayArray",
-			OperationID:   "test_request_required_string_duration_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringDurationArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_duration_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -32147,12 +32454,13 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableRequest(args [0]
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringDurationNullable",
-			OperationID:   "test_request_required_string_duration_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringDurationNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_duration_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -32250,12 +32558,13 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayRequest(arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringDurationNullableArray",
-			OperationID:   "test_request_required_string_duration_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringDurationNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_duration_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -32353,12 +32662,13 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayArrayReques
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringDurationNullableArrayArray",
-			OperationID:   "test_request_required_string_duration_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringDurationNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_duration_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -32456,12 +32766,13 @@ func (s *Server) handleTestRequestRequiredStringEmailRequest(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringEmail",
-			OperationID:   "test_request_required_string_email",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringEmail",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_email",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -32559,12 +32870,13 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringEmailArray",
-			OperationID:   "test_request_required_string_email_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringEmailArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_email_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -32662,12 +32974,13 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayArrayRequest(args [0]s
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringEmailArrayArray",
-			OperationID:   "test_request_required_string_email_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringEmailArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_email_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -32765,12 +33078,13 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableRequest(args [0]str
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringEmailNullable",
-			OperationID:   "test_request_required_string_email_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringEmailNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_email_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -32868,12 +33182,13 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayRequest(args [
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringEmailNullableArray",
-			OperationID:   "test_request_required_string_email_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringEmailNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_email_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -32971,12 +33286,13 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayArrayRequest(a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringEmailNullableArrayArray",
-			OperationID:   "test_request_required_string_email_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringEmailNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_email_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -33074,12 +33390,13 @@ func (s *Server) handleTestRequestRequiredStringFloat32Request(args [0]string, a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringFloat32",
-			OperationID:   "test_request_required_string_float32",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringFloat32",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_float32",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -33177,12 +33494,13 @@ func (s *Server) handleTestRequestRequiredStringFloat32ArrayRequest(args [0]stri
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringFloat32Array",
-			OperationID:   "test_request_required_string_float32_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringFloat32Array",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_float32_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -33280,12 +33598,13 @@ func (s *Server) handleTestRequestRequiredStringFloat32ArrayArrayRequest(args [0
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringFloat32ArrayArray",
-			OperationID:   "test_request_required_string_float32_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringFloat32ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_float32_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -33383,12 +33702,13 @@ func (s *Server) handleTestRequestRequiredStringFloat32NullableRequest(args [0]s
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringFloat32Nullable",
-			OperationID:   "test_request_required_string_float32_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringFloat32Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_float32_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -33486,12 +33806,13 @@ func (s *Server) handleTestRequestRequiredStringFloat32NullableArrayRequest(args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringFloat32NullableArray",
-			OperationID:   "test_request_required_string_float32_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringFloat32NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_float32_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -33589,12 +33910,13 @@ func (s *Server) handleTestRequestRequiredStringFloat32NullableArrayArrayRequest
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringFloat32NullableArrayArray",
-			OperationID:   "test_request_required_string_float32_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringFloat32NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_float32_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -33692,12 +34014,13 @@ func (s *Server) handleTestRequestRequiredStringFloat64Request(args [0]string, a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringFloat64",
-			OperationID:   "test_request_required_string_float64",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringFloat64",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_float64",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -33795,12 +34118,13 @@ func (s *Server) handleTestRequestRequiredStringFloat64ArrayRequest(args [0]stri
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringFloat64Array",
-			OperationID:   "test_request_required_string_float64_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringFloat64Array",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_float64_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -33898,12 +34222,13 @@ func (s *Server) handleTestRequestRequiredStringFloat64ArrayArrayRequest(args [0
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringFloat64ArrayArray",
-			OperationID:   "test_request_required_string_float64_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringFloat64ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_float64_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -34001,12 +34326,13 @@ func (s *Server) handleTestRequestRequiredStringFloat64NullableRequest(args [0]s
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringFloat64Nullable",
-			OperationID:   "test_request_required_string_float64_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringFloat64Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_float64_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -34104,12 +34430,13 @@ func (s *Server) handleTestRequestRequiredStringFloat64NullableArrayRequest(args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringFloat64NullableArray",
-			OperationID:   "test_request_required_string_float64_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringFloat64NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_float64_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -34207,12 +34534,13 @@ func (s *Server) handleTestRequestRequiredStringFloat64NullableArrayArrayRequest
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringFloat64NullableArrayArray",
-			OperationID:   "test_request_required_string_float64_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringFloat64NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_float64_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -34310,12 +34638,13 @@ func (s *Server) handleTestRequestRequiredStringHostnameRequest(args [0]string, 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringHostname",
-			OperationID:   "test_request_required_string_hostname",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringHostname",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_hostname",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -34413,12 +34742,13 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayRequest(args [0]str
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringHostnameArray",
-			OperationID:   "test_request_required_string_hostname_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringHostnameArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_hostname_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -34516,12 +34846,13 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayArrayRequest(args [
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringHostnameArrayArray",
-			OperationID:   "test_request_required_string_hostname_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringHostnameArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_hostname_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -34619,12 +34950,13 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableRequest(args [0]
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringHostnameNullable",
-			OperationID:   "test_request_required_string_hostname_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringHostnameNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_hostname_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -34722,12 +35054,13 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayRequest(arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringHostnameNullableArray",
-			OperationID:   "test_request_required_string_hostname_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringHostnameNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_hostname_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -34825,12 +35158,13 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayArrayReques
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringHostnameNullableArrayArray",
-			OperationID:   "test_request_required_string_hostname_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringHostnameNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_hostname_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -34928,12 +35262,13 @@ func (s *Server) handleTestRequestRequiredStringIPRequest(args [0]string, argsEs
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringIP",
-			OperationID:   "test_request_required_string_ip",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringIP",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_ip",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -35031,12 +35366,13 @@ func (s *Server) handleTestRequestRequiredStringIPArrayRequest(args [0]string, a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringIPArray",
-			OperationID:   "test_request_required_string_ip_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringIPArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_ip_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -35134,12 +35470,13 @@ func (s *Server) handleTestRequestRequiredStringIPArrayArrayRequest(args [0]stri
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringIPArrayArray",
-			OperationID:   "test_request_required_string_ip_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringIPArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_ip_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -35237,12 +35574,13 @@ func (s *Server) handleTestRequestRequiredStringIPNullableRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringIPNullable",
-			OperationID:   "test_request_required_string_ip_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringIPNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_ip_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -35340,12 +35678,13 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayRequest(args [0]s
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringIPNullableArray",
-			OperationID:   "test_request_required_string_ip_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringIPNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_ip_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -35443,12 +35782,13 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayArrayRequest(args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringIPNullableArrayArray",
-			OperationID:   "test_request_required_string_ip_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringIPNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_ip_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -35546,12 +35886,13 @@ func (s *Server) handleTestRequestRequiredStringIntRequest(args [0]string, argsE
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringInt",
-			OperationID:   "test_request_required_string_int",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringInt",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_int",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -35649,12 +35990,13 @@ func (s *Server) handleTestRequestRequiredStringInt16Request(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringInt16",
-			OperationID:   "test_request_required_string_int16",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringInt16",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_int16",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -35752,12 +36094,13 @@ func (s *Server) handleTestRequestRequiredStringInt16ArrayRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringInt16Array",
-			OperationID:   "test_request_required_string_int16_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringInt16Array",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_int16_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -35855,12 +36198,13 @@ func (s *Server) handleTestRequestRequiredStringInt16ArrayArrayRequest(args [0]s
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringInt16ArrayArray",
-			OperationID:   "test_request_required_string_int16_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringInt16ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_int16_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -35958,12 +36302,13 @@ func (s *Server) handleTestRequestRequiredStringInt16NullableRequest(args [0]str
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringInt16Nullable",
-			OperationID:   "test_request_required_string_int16_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringInt16Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_int16_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -36061,12 +36406,13 @@ func (s *Server) handleTestRequestRequiredStringInt16NullableArrayRequest(args [
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringInt16NullableArray",
-			OperationID:   "test_request_required_string_int16_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringInt16NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_int16_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -36164,12 +36510,13 @@ func (s *Server) handleTestRequestRequiredStringInt16NullableArrayArrayRequest(a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringInt16NullableArrayArray",
-			OperationID:   "test_request_required_string_int16_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringInt16NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_int16_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -36267,12 +36614,13 @@ func (s *Server) handleTestRequestRequiredStringInt32Request(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringInt32",
-			OperationID:   "test_request_required_string_int32",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringInt32",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_int32",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -36370,12 +36718,13 @@ func (s *Server) handleTestRequestRequiredStringInt32ArrayRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringInt32Array",
-			OperationID:   "test_request_required_string_int32_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringInt32Array",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_int32_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -36473,12 +36822,13 @@ func (s *Server) handleTestRequestRequiredStringInt32ArrayArrayRequest(args [0]s
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringInt32ArrayArray",
-			OperationID:   "test_request_required_string_int32_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringInt32ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_int32_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -36576,12 +36926,13 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableRequest(args [0]str
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringInt32Nullable",
-			OperationID:   "test_request_required_string_int32_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringInt32Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_int32_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -36679,12 +37030,13 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableArrayRequest(args [
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringInt32NullableArray",
-			OperationID:   "test_request_required_string_int32_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringInt32NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_int32_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -36782,12 +37134,13 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableArrayArrayRequest(a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringInt32NullableArrayArray",
-			OperationID:   "test_request_required_string_int32_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringInt32NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_int32_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -36885,12 +37238,13 @@ func (s *Server) handleTestRequestRequiredStringInt64Request(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringInt64",
-			OperationID:   "test_request_required_string_int64",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringInt64",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_int64",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -36988,12 +37342,13 @@ func (s *Server) handleTestRequestRequiredStringInt64ArrayRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringInt64Array",
-			OperationID:   "test_request_required_string_int64_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringInt64Array",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_int64_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -37091,12 +37446,13 @@ func (s *Server) handleTestRequestRequiredStringInt64ArrayArrayRequest(args [0]s
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringInt64ArrayArray",
-			OperationID:   "test_request_required_string_int64_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringInt64ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_int64_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -37194,12 +37550,13 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableRequest(args [0]str
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringInt64Nullable",
-			OperationID:   "test_request_required_string_int64_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringInt64Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_int64_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -37297,12 +37654,13 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableArrayRequest(args [
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringInt64NullableArray",
-			OperationID:   "test_request_required_string_int64_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringInt64NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_int64_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -37400,12 +37758,13 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableArrayArrayRequest(a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringInt64NullableArrayArray",
-			OperationID:   "test_request_required_string_int64_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringInt64NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_int64_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -37503,12 +37862,13 @@ func (s *Server) handleTestRequestRequiredStringInt8Request(args [0]string, args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringInt8",
-			OperationID:   "test_request_required_string_int8",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringInt8",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_int8",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -37606,12 +37966,13 @@ func (s *Server) handleTestRequestRequiredStringInt8ArrayRequest(args [0]string,
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringInt8Array",
-			OperationID:   "test_request_required_string_int8_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringInt8Array",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_int8_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -37709,12 +38070,13 @@ func (s *Server) handleTestRequestRequiredStringInt8ArrayArrayRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringInt8ArrayArray",
-			OperationID:   "test_request_required_string_int8_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringInt8ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_int8_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -37812,12 +38174,13 @@ func (s *Server) handleTestRequestRequiredStringInt8NullableRequest(args [0]stri
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringInt8Nullable",
-			OperationID:   "test_request_required_string_int8_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringInt8Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_int8_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -37915,12 +38278,13 @@ func (s *Server) handleTestRequestRequiredStringInt8NullableArrayRequest(args [0
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringInt8NullableArray",
-			OperationID:   "test_request_required_string_int8_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringInt8NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_int8_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -38018,12 +38382,13 @@ func (s *Server) handleTestRequestRequiredStringInt8NullableArrayArrayRequest(ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringInt8NullableArrayArray",
-			OperationID:   "test_request_required_string_int8_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringInt8NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_int8_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -38121,12 +38486,13 @@ func (s *Server) handleTestRequestRequiredStringIntArrayRequest(args [0]string, 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringIntArray",
-			OperationID:   "test_request_required_string_int_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringIntArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_int_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -38224,12 +38590,13 @@ func (s *Server) handleTestRequestRequiredStringIntArrayArrayRequest(args [0]str
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringIntArrayArray",
-			OperationID:   "test_request_required_string_int_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringIntArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_int_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -38327,12 +38694,13 @@ func (s *Server) handleTestRequestRequiredStringIntNullableRequest(args [0]strin
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringIntNullable",
-			OperationID:   "test_request_required_string_int_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringIntNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_int_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -38430,12 +38798,13 @@ func (s *Server) handleTestRequestRequiredStringIntNullableArrayRequest(args [0]
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringIntNullableArray",
-			OperationID:   "test_request_required_string_int_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringIntNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_int_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -38533,12 +38902,13 @@ func (s *Server) handleTestRequestRequiredStringIntNullableArrayArrayRequest(arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringIntNullableArrayArray",
-			OperationID:   "test_request_required_string_int_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringIntNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_int_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -38636,12 +39006,13 @@ func (s *Server) handleTestRequestRequiredStringIpv4Request(args [0]string, args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringIpv4",
-			OperationID:   "test_request_required_string_ipv4",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringIpv4",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_ipv4",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -38739,12 +39110,13 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayRequest(args [0]string,
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringIpv4Array",
-			OperationID:   "test_request_required_string_ipv4_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringIpv4Array",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_ipv4_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -38842,12 +39214,13 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayArrayRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringIpv4ArrayArray",
-			OperationID:   "test_request_required_string_ipv4_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringIpv4ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_ipv4_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -38945,12 +39318,13 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableRequest(args [0]stri
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringIpv4Nullable",
-			OperationID:   "test_request_required_string_ipv4_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringIpv4Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_ipv4_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -39048,12 +39422,13 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayRequest(args [0
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringIpv4NullableArray",
-			OperationID:   "test_request_required_string_ipv4_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringIpv4NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_ipv4_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -39151,12 +39526,13 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayArrayRequest(ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringIpv4NullableArrayArray",
-			OperationID:   "test_request_required_string_ipv4_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringIpv4NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_ipv4_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -39254,12 +39630,13 @@ func (s *Server) handleTestRequestRequiredStringIpv6Request(args [0]string, args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringIpv6",
-			OperationID:   "test_request_required_string_ipv6",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringIpv6",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_ipv6",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -39357,12 +39734,13 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayRequest(args [0]string,
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringIpv6Array",
-			OperationID:   "test_request_required_string_ipv6_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringIpv6Array",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_ipv6_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -39460,12 +39838,13 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayArrayRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringIpv6ArrayArray",
-			OperationID:   "test_request_required_string_ipv6_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringIpv6ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_ipv6_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -39563,12 +39942,13 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableRequest(args [0]stri
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringIpv6Nullable",
-			OperationID:   "test_request_required_string_ipv6_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringIpv6Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_ipv6_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -39666,12 +40046,13 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayRequest(args [0
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringIpv6NullableArray",
-			OperationID:   "test_request_required_string_ipv6_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringIpv6NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_ipv6_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -39769,12 +40150,13 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayArrayRequest(ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringIpv6NullableArrayArray",
-			OperationID:   "test_request_required_string_ipv6_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringIpv6NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_ipv6_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -39872,12 +40254,13 @@ func (s *Server) handleTestRequestRequiredStringNullableRequest(args [0]string, 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringNullable",
-			OperationID:   "test_request_required_string_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -39975,12 +40358,13 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayRequest(args [0]str
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringNullableArray",
-			OperationID:   "test_request_required_string_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -40078,12 +40462,13 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayArrayRequest(args [
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringNullableArrayArray",
-			OperationID:   "test_request_required_string_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -40181,12 +40566,13 @@ func (s *Server) handleTestRequestRequiredStringPasswordRequest(args [0]string, 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringPassword",
-			OperationID:   "test_request_required_string_password",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringPassword",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_password",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -40284,12 +40670,13 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayRequest(args [0]str
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringPasswordArray",
-			OperationID:   "test_request_required_string_password_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringPasswordArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_password_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -40387,12 +40774,13 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayArrayRequest(args [
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringPasswordArrayArray",
-			OperationID:   "test_request_required_string_password_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringPasswordArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_password_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -40490,12 +40878,13 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableRequest(args [0]
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringPasswordNullable",
-			OperationID:   "test_request_required_string_password_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringPasswordNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_password_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -40593,12 +40982,13 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayRequest(arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringPasswordNullableArray",
-			OperationID:   "test_request_required_string_password_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringPasswordNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_password_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -40696,12 +41086,13 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayArrayReques
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringPasswordNullableArrayArray",
-			OperationID:   "test_request_required_string_password_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringPasswordNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_password_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -40799,12 +41190,13 @@ func (s *Server) handleTestRequestRequiredStringTimeRequest(args [0]string, args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringTime",
-			OperationID:   "test_request_required_string_time",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringTime",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_time",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -40902,12 +41294,13 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayRequest(args [0]string,
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringTimeArray",
-			OperationID:   "test_request_required_string_time_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringTimeArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_time_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -41005,12 +41398,13 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayArrayRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringTimeArrayArray",
-			OperationID:   "test_request_required_string_time_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringTimeArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_time_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -41108,12 +41502,13 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableRequest(args [0]stri
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringTimeNullable",
-			OperationID:   "test_request_required_string_time_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringTimeNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_time_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -41211,12 +41606,13 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayRequest(args [0
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringTimeNullableArray",
-			OperationID:   "test_request_required_string_time_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringTimeNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_time_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -41314,12 +41710,13 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayArrayRequest(ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringTimeNullableArrayArray",
-			OperationID:   "test_request_required_string_time_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringTimeNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_time_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -41417,12 +41814,13 @@ func (s *Server) handleTestRequestRequiredStringURIRequest(args [0]string, argsE
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringURI",
-			OperationID:   "test_request_required_string_uri",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringURI",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uri",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -41520,12 +41918,13 @@ func (s *Server) handleTestRequestRequiredStringURIArrayRequest(args [0]string, 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringURIArray",
-			OperationID:   "test_request_required_string_uri_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringURIArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uri_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -41623,12 +42022,13 @@ func (s *Server) handleTestRequestRequiredStringURIArrayArrayRequest(args [0]str
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringURIArrayArray",
-			OperationID:   "test_request_required_string_uri_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringURIArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uri_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -41726,12 +42126,13 @@ func (s *Server) handleTestRequestRequiredStringURINullableRequest(args [0]strin
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringURINullable",
-			OperationID:   "test_request_required_string_uri_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringURINullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uri_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -41829,12 +42230,13 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayRequest(args [0]
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringURINullableArray",
-			OperationID:   "test_request_required_string_uri_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringURINullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uri_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -41932,12 +42334,13 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayArrayRequest(arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringURINullableArrayArray",
-			OperationID:   "test_request_required_string_uri_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringURINullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uri_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -42035,12 +42438,13 @@ func (s *Server) handleTestRequestRequiredStringUUIDRequest(args [0]string, args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUUID",
-			OperationID:   "test_request_required_string_uuid",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUUID",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uuid",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -42138,12 +42542,13 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayRequest(args [0]string,
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUUIDArray",
-			OperationID:   "test_request_required_string_uuid_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUUIDArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uuid_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -42241,12 +42646,13 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayArrayRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUUIDArrayArray",
-			OperationID:   "test_request_required_string_uuid_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUUIDArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uuid_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -42344,12 +42750,13 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableRequest(args [0]stri
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUUIDNullable",
-			OperationID:   "test_request_required_string_uuid_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUUIDNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uuid_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -42447,12 +42854,13 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayRequest(args [0
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUUIDNullableArray",
-			OperationID:   "test_request_required_string_uuid_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUUIDNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uuid_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -42550,12 +42958,13 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayArrayRequest(ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUUIDNullableArrayArray",
-			OperationID:   "test_request_required_string_uuid_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUUIDNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uuid_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -42653,12 +43062,13 @@ func (s *Server) handleTestRequestRequiredStringUintRequest(args [0]string, args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUint",
-			OperationID:   "test_request_required_string_uint",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUint",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uint",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -42756,12 +43166,13 @@ func (s *Server) handleTestRequestRequiredStringUint16Request(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUint16",
-			OperationID:   "test_request_required_string_uint16",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUint16",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uint16",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -42859,12 +43270,13 @@ func (s *Server) handleTestRequestRequiredStringUint16ArrayRequest(args [0]strin
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUint16Array",
-			OperationID:   "test_request_required_string_uint16_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUint16Array",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uint16_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -42962,12 +43374,13 @@ func (s *Server) handleTestRequestRequiredStringUint16ArrayArrayRequest(args [0]
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUint16ArrayArray",
-			OperationID:   "test_request_required_string_uint16_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUint16ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uint16_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -43065,12 +43478,13 @@ func (s *Server) handleTestRequestRequiredStringUint16NullableRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUint16Nullable",
-			OperationID:   "test_request_required_string_uint16_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUint16Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uint16_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -43168,12 +43582,13 @@ func (s *Server) handleTestRequestRequiredStringUint16NullableArrayRequest(args 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUint16NullableArray",
-			OperationID:   "test_request_required_string_uint16_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUint16NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uint16_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -43271,12 +43686,13 @@ func (s *Server) handleTestRequestRequiredStringUint16NullableArrayArrayRequest(
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUint16NullableArrayArray",
-			OperationID:   "test_request_required_string_uint16_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUint16NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uint16_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -43374,12 +43790,13 @@ func (s *Server) handleTestRequestRequiredStringUint32Request(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUint32",
-			OperationID:   "test_request_required_string_uint32",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUint32",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uint32",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -43477,12 +43894,13 @@ func (s *Server) handleTestRequestRequiredStringUint32ArrayRequest(args [0]strin
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUint32Array",
-			OperationID:   "test_request_required_string_uint32_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUint32Array",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uint32_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -43580,12 +43998,13 @@ func (s *Server) handleTestRequestRequiredStringUint32ArrayArrayRequest(args [0]
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUint32ArrayArray",
-			OperationID:   "test_request_required_string_uint32_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUint32ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uint32_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -43683,12 +44102,13 @@ func (s *Server) handleTestRequestRequiredStringUint32NullableRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUint32Nullable",
-			OperationID:   "test_request_required_string_uint32_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUint32Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uint32_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -43786,12 +44206,13 @@ func (s *Server) handleTestRequestRequiredStringUint32NullableArrayRequest(args 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUint32NullableArray",
-			OperationID:   "test_request_required_string_uint32_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUint32NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uint32_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -43889,12 +44310,13 @@ func (s *Server) handleTestRequestRequiredStringUint32NullableArrayArrayRequest(
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUint32NullableArrayArray",
-			OperationID:   "test_request_required_string_uint32_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUint32NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uint32_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -43992,12 +44414,13 @@ func (s *Server) handleTestRequestRequiredStringUint64Request(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUint64",
-			OperationID:   "test_request_required_string_uint64",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUint64",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uint64",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -44095,12 +44518,13 @@ func (s *Server) handleTestRequestRequiredStringUint64ArrayRequest(args [0]strin
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUint64Array",
-			OperationID:   "test_request_required_string_uint64_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUint64Array",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uint64_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -44198,12 +44622,13 @@ func (s *Server) handleTestRequestRequiredStringUint64ArrayArrayRequest(args [0]
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUint64ArrayArray",
-			OperationID:   "test_request_required_string_uint64_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUint64ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uint64_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -44301,12 +44726,13 @@ func (s *Server) handleTestRequestRequiredStringUint64NullableRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUint64Nullable",
-			OperationID:   "test_request_required_string_uint64_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUint64Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uint64_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -44404,12 +44830,13 @@ func (s *Server) handleTestRequestRequiredStringUint64NullableArrayRequest(args 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUint64NullableArray",
-			OperationID:   "test_request_required_string_uint64_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUint64NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uint64_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -44507,12 +44934,13 @@ func (s *Server) handleTestRequestRequiredStringUint64NullableArrayArrayRequest(
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUint64NullableArrayArray",
-			OperationID:   "test_request_required_string_uint64_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUint64NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uint64_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -44610,12 +45038,13 @@ func (s *Server) handleTestRequestRequiredStringUint8Request(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUint8",
-			OperationID:   "test_request_required_string_uint8",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUint8",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uint8",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -44713,12 +45142,13 @@ func (s *Server) handleTestRequestRequiredStringUint8ArrayRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUint8Array",
-			OperationID:   "test_request_required_string_uint8_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUint8Array",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uint8_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -44816,12 +45246,13 @@ func (s *Server) handleTestRequestRequiredStringUint8ArrayArrayRequest(args [0]s
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUint8ArrayArray",
-			OperationID:   "test_request_required_string_uint8_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUint8ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uint8_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -44919,12 +45350,13 @@ func (s *Server) handleTestRequestRequiredStringUint8NullableRequest(args [0]str
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUint8Nullable",
-			OperationID:   "test_request_required_string_uint8_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUint8Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uint8_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -45022,12 +45454,13 @@ func (s *Server) handleTestRequestRequiredStringUint8NullableArrayRequest(args [
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUint8NullableArray",
-			OperationID:   "test_request_required_string_uint8_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUint8NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uint8_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -45125,12 +45558,13 @@ func (s *Server) handleTestRequestRequiredStringUint8NullableArrayArrayRequest(a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUint8NullableArrayArray",
-			OperationID:   "test_request_required_string_uint8_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUint8NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uint8_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -45228,12 +45662,13 @@ func (s *Server) handleTestRequestRequiredStringUintArrayRequest(args [0]string,
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUintArray",
-			OperationID:   "test_request_required_string_uint_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUintArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uint_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -45331,12 +45766,13 @@ func (s *Server) handleTestRequestRequiredStringUintArrayArrayRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUintArrayArray",
-			OperationID:   "test_request_required_string_uint_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUintArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uint_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -45434,12 +45870,13 @@ func (s *Server) handleTestRequestRequiredStringUintNullableRequest(args [0]stri
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUintNullable",
-			OperationID:   "test_request_required_string_uint_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUintNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uint_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -45537,12 +45974,13 @@ func (s *Server) handleTestRequestRequiredStringUintNullableArrayRequest(args [0
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUintNullableArray",
-			OperationID:   "test_request_required_string_uint_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUintNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uint_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -45640,12 +46078,13 @@ func (s *Server) handleTestRequestRequiredStringUintNullableArrayArrayRequest(ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUintNullableArrayArray",
-			OperationID:   "test_request_required_string_uint_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUintNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_uint_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -45743,12 +46182,13 @@ func (s *Server) handleTestRequestRequiredStringUnixRequest(args [0]string, args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUnix",
-			OperationID:   "test_request_required_string_unix",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUnix",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_unix",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -45846,12 +46286,13 @@ func (s *Server) handleTestRequestRequiredStringUnixArrayRequest(args [0]string,
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUnixArray",
-			OperationID:   "test_request_required_string_unix_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUnixArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_unix_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -45949,12 +46390,13 @@ func (s *Server) handleTestRequestRequiredStringUnixArrayArrayRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUnixArrayArray",
-			OperationID:   "test_request_required_string_unix_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUnixArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_unix_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -46052,12 +46494,13 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroRequest(args [0]string,
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUnixMicro",
-			OperationID:   "test_request_required_string_unix-micro",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUnixMicro",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_unix-micro",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -46155,12 +46598,13 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroArrayRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUnixMicroArray",
-			OperationID:   "test_request_required_string_unix-micro_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUnixMicroArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_unix-micro_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -46258,12 +46702,13 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroArrayArrayRequest(args 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUnixMicroArrayArray",
-			OperationID:   "test_request_required_string_unix-micro_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUnixMicroArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_unix-micro_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -46361,12 +46806,13 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableRequest(args [0
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUnixMicroNullable",
-			OperationID:   "test_request_required_string_unix-micro_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUnixMicroNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_unix-micro_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -46464,12 +46910,13 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayRequest(ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUnixMicroNullableArray",
-			OperationID:   "test_request_required_string_unix-micro_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUnixMicroNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_unix-micro_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -46567,12 +47014,13 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayArrayReque
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUnixMicroNullableArrayArray",
-			OperationID:   "test_request_required_string_unix-micro_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUnixMicroNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_unix-micro_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -46670,12 +47118,13 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliRequest(args [0]string,
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUnixMilli",
-			OperationID:   "test_request_required_string_unix-milli",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUnixMilli",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_unix-milli",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -46773,12 +47222,13 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliArrayRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUnixMilliArray",
-			OperationID:   "test_request_required_string_unix-milli_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUnixMilliArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_unix-milli_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -46876,12 +47326,13 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliArrayArrayRequest(args 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUnixMilliArrayArray",
-			OperationID:   "test_request_required_string_unix-milli_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUnixMilliArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_unix-milli_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -46979,12 +47430,13 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableRequest(args [0
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUnixMilliNullable",
-			OperationID:   "test_request_required_string_unix-milli_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUnixMilliNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_unix-milli_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -47082,12 +47534,13 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayRequest(ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUnixMilliNullableArray",
-			OperationID:   "test_request_required_string_unix-milli_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUnixMilliNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_unix-milli_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -47185,12 +47638,13 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayArrayReque
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUnixMilliNullableArrayArray",
-			OperationID:   "test_request_required_string_unix-milli_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUnixMilliNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_unix-milli_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -47288,12 +47742,13 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoRequest(args [0]string, 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUnixNano",
-			OperationID:   "test_request_required_string_unix-nano",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUnixNano",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_unix-nano",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -47391,12 +47846,13 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoArrayRequest(args [0]str
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUnixNanoArray",
-			OperationID:   "test_request_required_string_unix-nano_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUnixNanoArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_unix-nano_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -47494,12 +47950,13 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoArrayArrayRequest(args [
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUnixNanoArrayArray",
-			OperationID:   "test_request_required_string_unix-nano_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUnixNanoArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_unix-nano_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -47597,12 +48054,13 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableRequest(args [0]
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUnixNanoNullable",
-			OperationID:   "test_request_required_string_unix-nano_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUnixNanoNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_unix-nano_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -47700,12 +48158,13 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayRequest(arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUnixNanoNullableArray",
-			OperationID:   "test_request_required_string_unix-nano_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUnixNanoNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_unix-nano_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -47803,12 +48262,13 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayArrayReques
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUnixNanoNullableArrayArray",
-			OperationID:   "test_request_required_string_unix-nano_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUnixNanoNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_unix-nano_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -47906,12 +48366,13 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableRequest(args [0]stri
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUnixNullable",
-			OperationID:   "test_request_required_string_unix_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUnixNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_unix_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -48009,12 +48470,13 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableArrayRequest(args [0
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUnixNullableArray",
-			OperationID:   "test_request_required_string_unix_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUnixNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_unix_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -48112,12 +48574,13 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableArrayArrayRequest(ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUnixNullableArrayArray",
-			OperationID:   "test_request_required_string_unix_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUnixNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_unix_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -48215,12 +48678,13 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsRequest(args [0]strin
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUnixSeconds",
-			OperationID:   "test_request_required_string_unix-seconds",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUnixSeconds",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_unix-seconds",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -48318,12 +48782,13 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayRequest(args [0]
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUnixSecondsArray",
-			OperationID:   "test_request_required_string_unix-seconds_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUnixSecondsArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_unix-seconds_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -48421,12 +48886,13 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayArrayRequest(arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUnixSecondsArrayArray",
-			OperationID:   "test_request_required_string_unix-seconds_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUnixSecondsArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_unix-seconds_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -48524,12 +48990,13 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableRequest(args 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUnixSecondsNullable",
-			OperationID:   "test_request_required_string_unix-seconds_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUnixSecondsNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_unix-seconds_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -48627,12 +49094,13 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayRequest(
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUnixSecondsNullableArray",
-			OperationID:   "test_request_required_string_unix-seconds_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUnixSecondsNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_unix-seconds_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -48730,12 +49198,13 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayArrayReq
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestRequiredStringUnixSecondsNullableArrayArray",
-			OperationID:   "test_request_required_string_unix-seconds_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestRequiredStringUnixSecondsNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_required_string_unix-seconds_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -48833,12 +49302,13 @@ func (s *Server) handleTestRequestStringRequest(args [0]string, argsEscaped bool
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestString",
-			OperationID:   "test_request_string",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestString",
+			OperationSummary: "",
+			OperationID:      "test_request_string",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -48936,12 +49406,13 @@ func (s *Server) handleTestRequestStringArrayRequest(args [0]string, argsEscaped
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringArray",
-			OperationID:   "test_request_string_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -49039,12 +49510,13 @@ func (s *Server) handleTestRequestStringArrayArrayRequest(args [0]string, argsEs
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringArrayArray",
-			OperationID:   "test_request_string_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -49142,12 +49614,13 @@ func (s *Server) handleTestRequestStringBase64Request(args [0]string, argsEscape
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringBase64",
-			OperationID:   "test_request_string_base64",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringBase64",
+			OperationSummary: "",
+			OperationID:      "test_request_string_base64",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -49245,12 +49718,13 @@ func (s *Server) handleTestRequestStringBase64ArrayRequest(args [0]string, argsE
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringBase64Array",
-			OperationID:   "test_request_string_base64_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringBase64Array",
+			OperationSummary: "",
+			OperationID:      "test_request_string_base64_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -49348,12 +49822,13 @@ func (s *Server) handleTestRequestStringBase64ArrayArrayRequest(args [0]string, 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringBase64ArrayArray",
-			OperationID:   "test_request_string_base64_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringBase64ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_base64_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -49451,12 +49926,13 @@ func (s *Server) handleTestRequestStringBase64NullableRequest(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringBase64Nullable",
-			OperationID:   "test_request_string_base64_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringBase64Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_string_base64_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -49554,12 +50030,13 @@ func (s *Server) handleTestRequestStringBase64NullableArrayRequest(args [0]strin
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringBase64NullableArray",
-			OperationID:   "test_request_string_base64_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringBase64NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_base64_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -49657,12 +50134,13 @@ func (s *Server) handleTestRequestStringBase64NullableArrayArrayRequest(args [0]
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringBase64NullableArrayArray",
-			OperationID:   "test_request_string_base64_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringBase64NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_base64_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -49760,12 +50238,13 @@ func (s *Server) handleTestRequestStringBinaryRequest(args [0]string, argsEscape
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringBinary",
-			OperationID:   "test_request_string_binary",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringBinary",
+			OperationSummary: "",
+			OperationID:      "test_request_string_binary",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -49863,12 +50342,13 @@ func (s *Server) handleTestRequestStringBinaryArrayRequest(args [0]string, argsE
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringBinaryArray",
-			OperationID:   "test_request_string_binary_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringBinaryArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_binary_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -49966,12 +50446,13 @@ func (s *Server) handleTestRequestStringBinaryArrayArrayRequest(args [0]string, 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringBinaryArrayArray",
-			OperationID:   "test_request_string_binary_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringBinaryArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_binary_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -50069,12 +50550,13 @@ func (s *Server) handleTestRequestStringBinaryNullableRequest(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringBinaryNullable",
-			OperationID:   "test_request_string_binary_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringBinaryNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_string_binary_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -50172,12 +50654,13 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayRequest(args [0]strin
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringBinaryNullableArray",
-			OperationID:   "test_request_string_binary_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringBinaryNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_binary_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -50275,12 +50758,13 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayArrayRequest(args [0]
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringBinaryNullableArrayArray",
-			OperationID:   "test_request_string_binary_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringBinaryNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_binary_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -50378,12 +50862,13 @@ func (s *Server) handleTestRequestStringByteRequest(args [0]string, argsEscaped 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringByte",
-			OperationID:   "test_request_string_byte",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringByte",
+			OperationSummary: "",
+			OperationID:      "test_request_string_byte",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -50481,12 +50966,13 @@ func (s *Server) handleTestRequestStringByteArrayRequest(args [0]string, argsEsc
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringByteArray",
-			OperationID:   "test_request_string_byte_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringByteArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_byte_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -50584,12 +51070,13 @@ func (s *Server) handleTestRequestStringByteArrayArrayRequest(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringByteArrayArray",
-			OperationID:   "test_request_string_byte_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringByteArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_byte_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -50687,12 +51174,13 @@ func (s *Server) handleTestRequestStringByteNullableRequest(args [0]string, args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringByteNullable",
-			OperationID:   "test_request_string_byte_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringByteNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_string_byte_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -50790,12 +51278,13 @@ func (s *Server) handleTestRequestStringByteNullableArrayRequest(args [0]string,
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringByteNullableArray",
-			OperationID:   "test_request_string_byte_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringByteNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_byte_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -50893,12 +51382,13 @@ func (s *Server) handleTestRequestStringByteNullableArrayArrayRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringByteNullableArrayArray",
-			OperationID:   "test_request_string_byte_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringByteNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_byte_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -50996,12 +51486,13 @@ func (s *Server) handleTestRequestStringDateRequest(args [0]string, argsEscaped 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringDate",
-			OperationID:   "test_request_string_date",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringDate",
+			OperationSummary: "",
+			OperationID:      "test_request_string_date",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -51099,12 +51590,13 @@ func (s *Server) handleTestRequestStringDateArrayRequest(args [0]string, argsEsc
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringDateArray",
-			OperationID:   "test_request_string_date_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringDateArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_date_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -51202,12 +51694,13 @@ func (s *Server) handleTestRequestStringDateArrayArrayRequest(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringDateArrayArray",
-			OperationID:   "test_request_string_date_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringDateArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_date_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -51305,12 +51798,13 @@ func (s *Server) handleTestRequestStringDateNullableRequest(args [0]string, args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringDateNullable",
-			OperationID:   "test_request_string_date_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringDateNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_string_date_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -51408,12 +51902,13 @@ func (s *Server) handleTestRequestStringDateNullableArrayRequest(args [0]string,
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringDateNullableArray",
-			OperationID:   "test_request_string_date_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringDateNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_date_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -51511,12 +52006,13 @@ func (s *Server) handleTestRequestStringDateNullableArrayArrayRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringDateNullableArrayArray",
-			OperationID:   "test_request_string_date_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringDateNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_date_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -51614,12 +52110,13 @@ func (s *Server) handleTestRequestStringDateTimeRequest(args [0]string, argsEsca
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringDateTime",
-			OperationID:   "test_request_string_date-time",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringDateTime",
+			OperationSummary: "",
+			OperationID:      "test_request_string_date-time",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -51717,12 +52214,13 @@ func (s *Server) handleTestRequestStringDateTimeArrayRequest(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringDateTimeArray",
-			OperationID:   "test_request_string_date-time_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringDateTimeArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_date-time_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -51820,12 +52318,13 @@ func (s *Server) handleTestRequestStringDateTimeArrayArrayRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringDateTimeArrayArray",
-			OperationID:   "test_request_string_date-time_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringDateTimeArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_date-time_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -51923,12 +52422,13 @@ func (s *Server) handleTestRequestStringDateTimeNullableRequest(args [0]string, 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringDateTimeNullable",
-			OperationID:   "test_request_string_date-time_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringDateTimeNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_string_date-time_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -52026,12 +52526,13 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayRequest(args [0]str
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringDateTimeNullableArray",
-			OperationID:   "test_request_string_date-time_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringDateTimeNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_date-time_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -52129,12 +52630,13 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayArrayRequest(args [
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringDateTimeNullableArrayArray",
-			OperationID:   "test_request_string_date-time_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringDateTimeNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_date-time_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -52232,12 +52734,13 @@ func (s *Server) handleTestRequestStringDurationRequest(args [0]string, argsEsca
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringDuration",
-			OperationID:   "test_request_string_duration",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringDuration",
+			OperationSummary: "",
+			OperationID:      "test_request_string_duration",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -52335,12 +52838,13 @@ func (s *Server) handleTestRequestStringDurationArrayRequest(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringDurationArray",
-			OperationID:   "test_request_string_duration_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringDurationArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_duration_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -52438,12 +52942,13 @@ func (s *Server) handleTestRequestStringDurationArrayArrayRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringDurationArrayArray",
-			OperationID:   "test_request_string_duration_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringDurationArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_duration_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -52541,12 +53046,13 @@ func (s *Server) handleTestRequestStringDurationNullableRequest(args [0]string, 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringDurationNullable",
-			OperationID:   "test_request_string_duration_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringDurationNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_string_duration_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -52644,12 +53150,13 @@ func (s *Server) handleTestRequestStringDurationNullableArrayRequest(args [0]str
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringDurationNullableArray",
-			OperationID:   "test_request_string_duration_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringDurationNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_duration_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -52747,12 +53254,13 @@ func (s *Server) handleTestRequestStringDurationNullableArrayArrayRequest(args [
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringDurationNullableArrayArray",
-			OperationID:   "test_request_string_duration_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringDurationNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_duration_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -52850,12 +53358,13 @@ func (s *Server) handleTestRequestStringEmailRequest(args [0]string, argsEscaped
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringEmail",
-			OperationID:   "test_request_string_email",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringEmail",
+			OperationSummary: "",
+			OperationID:      "test_request_string_email",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -52953,12 +53462,13 @@ func (s *Server) handleTestRequestStringEmailArrayRequest(args [0]string, argsEs
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringEmailArray",
-			OperationID:   "test_request_string_email_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringEmailArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_email_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -53056,12 +53566,13 @@ func (s *Server) handleTestRequestStringEmailArrayArrayRequest(args [0]string, a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringEmailArrayArray",
-			OperationID:   "test_request_string_email_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringEmailArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_email_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -53159,12 +53670,13 @@ func (s *Server) handleTestRequestStringEmailNullableRequest(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringEmailNullable",
-			OperationID:   "test_request_string_email_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringEmailNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_string_email_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -53262,12 +53774,13 @@ func (s *Server) handleTestRequestStringEmailNullableArrayRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringEmailNullableArray",
-			OperationID:   "test_request_string_email_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringEmailNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_email_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -53365,12 +53878,13 @@ func (s *Server) handleTestRequestStringEmailNullableArrayArrayRequest(args [0]s
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringEmailNullableArrayArray",
-			OperationID:   "test_request_string_email_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringEmailNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_email_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -53468,12 +53982,13 @@ func (s *Server) handleTestRequestStringFloat32Request(args [0]string, argsEscap
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringFloat32",
-			OperationID:   "test_request_string_float32",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringFloat32",
+			OperationSummary: "",
+			OperationID:      "test_request_string_float32",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -53571,12 +54086,13 @@ func (s *Server) handleTestRequestStringFloat32ArrayRequest(args [0]string, args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringFloat32Array",
-			OperationID:   "test_request_string_float32_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringFloat32Array",
+			OperationSummary: "",
+			OperationID:      "test_request_string_float32_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -53674,12 +54190,13 @@ func (s *Server) handleTestRequestStringFloat32ArrayArrayRequest(args [0]string,
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringFloat32ArrayArray",
-			OperationID:   "test_request_string_float32_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringFloat32ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_float32_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -53777,12 +54294,13 @@ func (s *Server) handleTestRequestStringFloat32NullableRequest(args [0]string, a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringFloat32Nullable",
-			OperationID:   "test_request_string_float32_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringFloat32Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_string_float32_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -53880,12 +54398,13 @@ func (s *Server) handleTestRequestStringFloat32NullableArrayRequest(args [0]stri
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringFloat32NullableArray",
-			OperationID:   "test_request_string_float32_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringFloat32NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_float32_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -53983,12 +54502,13 @@ func (s *Server) handleTestRequestStringFloat32NullableArrayArrayRequest(args [0
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringFloat32NullableArrayArray",
-			OperationID:   "test_request_string_float32_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringFloat32NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_float32_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -54086,12 +54606,13 @@ func (s *Server) handleTestRequestStringFloat64Request(args [0]string, argsEscap
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringFloat64",
-			OperationID:   "test_request_string_float64",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringFloat64",
+			OperationSummary: "",
+			OperationID:      "test_request_string_float64",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -54189,12 +54710,13 @@ func (s *Server) handleTestRequestStringFloat64ArrayRequest(args [0]string, args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringFloat64Array",
-			OperationID:   "test_request_string_float64_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringFloat64Array",
+			OperationSummary: "",
+			OperationID:      "test_request_string_float64_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -54292,12 +54814,13 @@ func (s *Server) handleTestRequestStringFloat64ArrayArrayRequest(args [0]string,
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringFloat64ArrayArray",
-			OperationID:   "test_request_string_float64_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringFloat64ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_float64_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -54395,12 +54918,13 @@ func (s *Server) handleTestRequestStringFloat64NullableRequest(args [0]string, a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringFloat64Nullable",
-			OperationID:   "test_request_string_float64_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringFloat64Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_string_float64_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -54498,12 +55022,13 @@ func (s *Server) handleTestRequestStringFloat64NullableArrayRequest(args [0]stri
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringFloat64NullableArray",
-			OperationID:   "test_request_string_float64_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringFloat64NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_float64_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -54601,12 +55126,13 @@ func (s *Server) handleTestRequestStringFloat64NullableArrayArrayRequest(args [0
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringFloat64NullableArrayArray",
-			OperationID:   "test_request_string_float64_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringFloat64NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_float64_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -54704,12 +55230,13 @@ func (s *Server) handleTestRequestStringHostnameRequest(args [0]string, argsEsca
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringHostname",
-			OperationID:   "test_request_string_hostname",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringHostname",
+			OperationSummary: "",
+			OperationID:      "test_request_string_hostname",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -54807,12 +55334,13 @@ func (s *Server) handleTestRequestStringHostnameArrayRequest(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringHostnameArray",
-			OperationID:   "test_request_string_hostname_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringHostnameArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_hostname_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -54910,12 +55438,13 @@ func (s *Server) handleTestRequestStringHostnameArrayArrayRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringHostnameArrayArray",
-			OperationID:   "test_request_string_hostname_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringHostnameArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_hostname_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -55013,12 +55542,13 @@ func (s *Server) handleTestRequestStringHostnameNullableRequest(args [0]string, 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringHostnameNullable",
-			OperationID:   "test_request_string_hostname_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringHostnameNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_string_hostname_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -55116,12 +55646,13 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayRequest(args [0]str
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringHostnameNullableArray",
-			OperationID:   "test_request_string_hostname_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringHostnameNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_hostname_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -55219,12 +55750,13 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayArrayRequest(args [
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringHostnameNullableArrayArray",
-			OperationID:   "test_request_string_hostname_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringHostnameNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_hostname_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -55322,12 +55854,13 @@ func (s *Server) handleTestRequestStringIPRequest(args [0]string, argsEscaped bo
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringIP",
-			OperationID:   "test_request_string_ip",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringIP",
+			OperationSummary: "",
+			OperationID:      "test_request_string_ip",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -55425,12 +55958,13 @@ func (s *Server) handleTestRequestStringIPArrayRequest(args [0]string, argsEscap
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringIPArray",
-			OperationID:   "test_request_string_ip_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringIPArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_ip_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -55528,12 +56062,13 @@ func (s *Server) handleTestRequestStringIPArrayArrayRequest(args [0]string, args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringIPArrayArray",
-			OperationID:   "test_request_string_ip_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringIPArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_ip_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -55631,12 +56166,13 @@ func (s *Server) handleTestRequestStringIPNullableRequest(args [0]string, argsEs
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringIPNullable",
-			OperationID:   "test_request_string_ip_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringIPNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_string_ip_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -55734,12 +56270,13 @@ func (s *Server) handleTestRequestStringIPNullableArrayRequest(args [0]string, a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringIPNullableArray",
-			OperationID:   "test_request_string_ip_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringIPNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_ip_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -55837,12 +56374,13 @@ func (s *Server) handleTestRequestStringIPNullableArrayArrayRequest(args [0]stri
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringIPNullableArrayArray",
-			OperationID:   "test_request_string_ip_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringIPNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_ip_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -55940,12 +56478,13 @@ func (s *Server) handleTestRequestStringIntRequest(args [0]string, argsEscaped b
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringInt",
-			OperationID:   "test_request_string_int",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringInt",
+			OperationSummary: "",
+			OperationID:      "test_request_string_int",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -56043,12 +56582,13 @@ func (s *Server) handleTestRequestStringInt16Request(args [0]string, argsEscaped
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringInt16",
-			OperationID:   "test_request_string_int16",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringInt16",
+			OperationSummary: "",
+			OperationID:      "test_request_string_int16",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -56146,12 +56686,13 @@ func (s *Server) handleTestRequestStringInt16ArrayRequest(args [0]string, argsEs
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringInt16Array",
-			OperationID:   "test_request_string_int16_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringInt16Array",
+			OperationSummary: "",
+			OperationID:      "test_request_string_int16_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -56249,12 +56790,13 @@ func (s *Server) handleTestRequestStringInt16ArrayArrayRequest(args [0]string, a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringInt16ArrayArray",
-			OperationID:   "test_request_string_int16_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringInt16ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_int16_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -56352,12 +56894,13 @@ func (s *Server) handleTestRequestStringInt16NullableRequest(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringInt16Nullable",
-			OperationID:   "test_request_string_int16_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringInt16Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_string_int16_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -56455,12 +56998,13 @@ func (s *Server) handleTestRequestStringInt16NullableArrayRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringInt16NullableArray",
-			OperationID:   "test_request_string_int16_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringInt16NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_int16_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -56558,12 +57102,13 @@ func (s *Server) handleTestRequestStringInt16NullableArrayArrayRequest(args [0]s
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringInt16NullableArrayArray",
-			OperationID:   "test_request_string_int16_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringInt16NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_int16_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -56661,12 +57206,13 @@ func (s *Server) handleTestRequestStringInt32Request(args [0]string, argsEscaped
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringInt32",
-			OperationID:   "test_request_string_int32",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringInt32",
+			OperationSummary: "",
+			OperationID:      "test_request_string_int32",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -56764,12 +57310,13 @@ func (s *Server) handleTestRequestStringInt32ArrayRequest(args [0]string, argsEs
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringInt32Array",
-			OperationID:   "test_request_string_int32_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringInt32Array",
+			OperationSummary: "",
+			OperationID:      "test_request_string_int32_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -56867,12 +57414,13 @@ func (s *Server) handleTestRequestStringInt32ArrayArrayRequest(args [0]string, a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringInt32ArrayArray",
-			OperationID:   "test_request_string_int32_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringInt32ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_int32_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -56970,12 +57518,13 @@ func (s *Server) handleTestRequestStringInt32NullableRequest(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringInt32Nullable",
-			OperationID:   "test_request_string_int32_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringInt32Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_string_int32_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -57073,12 +57622,13 @@ func (s *Server) handleTestRequestStringInt32NullableArrayRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringInt32NullableArray",
-			OperationID:   "test_request_string_int32_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringInt32NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_int32_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -57176,12 +57726,13 @@ func (s *Server) handleTestRequestStringInt32NullableArrayArrayRequest(args [0]s
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringInt32NullableArrayArray",
-			OperationID:   "test_request_string_int32_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringInt32NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_int32_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -57279,12 +57830,13 @@ func (s *Server) handleTestRequestStringInt64Request(args [0]string, argsEscaped
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringInt64",
-			OperationID:   "test_request_string_int64",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringInt64",
+			OperationSummary: "",
+			OperationID:      "test_request_string_int64",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -57382,12 +57934,13 @@ func (s *Server) handleTestRequestStringInt64ArrayRequest(args [0]string, argsEs
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringInt64Array",
-			OperationID:   "test_request_string_int64_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringInt64Array",
+			OperationSummary: "",
+			OperationID:      "test_request_string_int64_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -57485,12 +58038,13 @@ func (s *Server) handleTestRequestStringInt64ArrayArrayRequest(args [0]string, a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringInt64ArrayArray",
-			OperationID:   "test_request_string_int64_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringInt64ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_int64_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -57588,12 +58142,13 @@ func (s *Server) handleTestRequestStringInt64NullableRequest(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringInt64Nullable",
-			OperationID:   "test_request_string_int64_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringInt64Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_string_int64_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -57691,12 +58246,13 @@ func (s *Server) handleTestRequestStringInt64NullableArrayRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringInt64NullableArray",
-			OperationID:   "test_request_string_int64_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringInt64NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_int64_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -57794,12 +58350,13 @@ func (s *Server) handleTestRequestStringInt64NullableArrayArrayRequest(args [0]s
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringInt64NullableArrayArray",
-			OperationID:   "test_request_string_int64_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringInt64NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_int64_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -57897,12 +58454,13 @@ func (s *Server) handleTestRequestStringInt8Request(args [0]string, argsEscaped 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringInt8",
-			OperationID:   "test_request_string_int8",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringInt8",
+			OperationSummary: "",
+			OperationID:      "test_request_string_int8",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -58000,12 +58558,13 @@ func (s *Server) handleTestRequestStringInt8ArrayRequest(args [0]string, argsEsc
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringInt8Array",
-			OperationID:   "test_request_string_int8_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringInt8Array",
+			OperationSummary: "",
+			OperationID:      "test_request_string_int8_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -58103,12 +58662,13 @@ func (s *Server) handleTestRequestStringInt8ArrayArrayRequest(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringInt8ArrayArray",
-			OperationID:   "test_request_string_int8_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringInt8ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_int8_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -58206,12 +58766,13 @@ func (s *Server) handleTestRequestStringInt8NullableRequest(args [0]string, args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringInt8Nullable",
-			OperationID:   "test_request_string_int8_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringInt8Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_string_int8_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -58309,12 +58870,13 @@ func (s *Server) handleTestRequestStringInt8NullableArrayRequest(args [0]string,
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringInt8NullableArray",
-			OperationID:   "test_request_string_int8_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringInt8NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_int8_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -58412,12 +58974,13 @@ func (s *Server) handleTestRequestStringInt8NullableArrayArrayRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringInt8NullableArrayArray",
-			OperationID:   "test_request_string_int8_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringInt8NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_int8_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -58515,12 +59078,13 @@ func (s *Server) handleTestRequestStringIntArrayRequest(args [0]string, argsEsca
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringIntArray",
-			OperationID:   "test_request_string_int_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringIntArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_int_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -58618,12 +59182,13 @@ func (s *Server) handleTestRequestStringIntArrayArrayRequest(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringIntArrayArray",
-			OperationID:   "test_request_string_int_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringIntArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_int_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -58721,12 +59286,13 @@ func (s *Server) handleTestRequestStringIntNullableRequest(args [0]string, argsE
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringIntNullable",
-			OperationID:   "test_request_string_int_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringIntNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_string_int_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -58824,12 +59390,13 @@ func (s *Server) handleTestRequestStringIntNullableArrayRequest(args [0]string, 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringIntNullableArray",
-			OperationID:   "test_request_string_int_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringIntNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_int_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -58927,12 +59494,13 @@ func (s *Server) handleTestRequestStringIntNullableArrayArrayRequest(args [0]str
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringIntNullableArrayArray",
-			OperationID:   "test_request_string_int_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringIntNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_int_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -59030,12 +59598,13 @@ func (s *Server) handleTestRequestStringIpv4Request(args [0]string, argsEscaped 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringIpv4",
-			OperationID:   "test_request_string_ipv4",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringIpv4",
+			OperationSummary: "",
+			OperationID:      "test_request_string_ipv4",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -59133,12 +59702,13 @@ func (s *Server) handleTestRequestStringIpv4ArrayRequest(args [0]string, argsEsc
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringIpv4Array",
-			OperationID:   "test_request_string_ipv4_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringIpv4Array",
+			OperationSummary: "",
+			OperationID:      "test_request_string_ipv4_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -59236,12 +59806,13 @@ func (s *Server) handleTestRequestStringIpv4ArrayArrayRequest(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringIpv4ArrayArray",
-			OperationID:   "test_request_string_ipv4_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringIpv4ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_ipv4_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -59339,12 +59910,13 @@ func (s *Server) handleTestRequestStringIpv4NullableRequest(args [0]string, args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringIpv4Nullable",
-			OperationID:   "test_request_string_ipv4_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringIpv4Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_string_ipv4_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -59442,12 +60014,13 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayRequest(args [0]string,
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringIpv4NullableArray",
-			OperationID:   "test_request_string_ipv4_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringIpv4NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_ipv4_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -59545,12 +60118,13 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayArrayRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringIpv4NullableArrayArray",
-			OperationID:   "test_request_string_ipv4_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringIpv4NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_ipv4_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -59648,12 +60222,13 @@ func (s *Server) handleTestRequestStringIpv6Request(args [0]string, argsEscaped 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringIpv6",
-			OperationID:   "test_request_string_ipv6",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringIpv6",
+			OperationSummary: "",
+			OperationID:      "test_request_string_ipv6",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -59751,12 +60326,13 @@ func (s *Server) handleTestRequestStringIpv6ArrayRequest(args [0]string, argsEsc
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringIpv6Array",
-			OperationID:   "test_request_string_ipv6_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringIpv6Array",
+			OperationSummary: "",
+			OperationID:      "test_request_string_ipv6_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -59854,12 +60430,13 @@ func (s *Server) handleTestRequestStringIpv6ArrayArrayRequest(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringIpv6ArrayArray",
-			OperationID:   "test_request_string_ipv6_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringIpv6ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_ipv6_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -59957,12 +60534,13 @@ func (s *Server) handleTestRequestStringIpv6NullableRequest(args [0]string, args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringIpv6Nullable",
-			OperationID:   "test_request_string_ipv6_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringIpv6Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_string_ipv6_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -60060,12 +60638,13 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayRequest(args [0]string,
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringIpv6NullableArray",
-			OperationID:   "test_request_string_ipv6_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringIpv6NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_ipv6_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -60163,12 +60742,13 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayArrayRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringIpv6NullableArrayArray",
-			OperationID:   "test_request_string_ipv6_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringIpv6NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_ipv6_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -60266,12 +60846,13 @@ func (s *Server) handleTestRequestStringNullableRequest(args [0]string, argsEsca
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringNullable",
-			OperationID:   "test_request_string_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_string_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -60369,12 +60950,13 @@ func (s *Server) handleTestRequestStringNullableArrayRequest(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringNullableArray",
-			OperationID:   "test_request_string_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -60472,12 +61054,13 @@ func (s *Server) handleTestRequestStringNullableArrayArrayRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringNullableArrayArray",
-			OperationID:   "test_request_string_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -60575,12 +61158,13 @@ func (s *Server) handleTestRequestStringPasswordRequest(args [0]string, argsEsca
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringPassword",
-			OperationID:   "test_request_string_password",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringPassword",
+			OperationSummary: "",
+			OperationID:      "test_request_string_password",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -60678,12 +61262,13 @@ func (s *Server) handleTestRequestStringPasswordArrayRequest(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringPasswordArray",
-			OperationID:   "test_request_string_password_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringPasswordArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_password_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -60781,12 +61366,13 @@ func (s *Server) handleTestRequestStringPasswordArrayArrayRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringPasswordArrayArray",
-			OperationID:   "test_request_string_password_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringPasswordArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_password_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -60884,12 +61470,13 @@ func (s *Server) handleTestRequestStringPasswordNullableRequest(args [0]string, 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringPasswordNullable",
-			OperationID:   "test_request_string_password_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringPasswordNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_string_password_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -60987,12 +61574,13 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayRequest(args [0]str
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringPasswordNullableArray",
-			OperationID:   "test_request_string_password_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringPasswordNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_password_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -61090,12 +61678,13 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayArrayRequest(args [
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringPasswordNullableArrayArray",
-			OperationID:   "test_request_string_password_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringPasswordNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_password_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -61193,12 +61782,13 @@ func (s *Server) handleTestRequestStringTimeRequest(args [0]string, argsEscaped 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringTime",
-			OperationID:   "test_request_string_time",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringTime",
+			OperationSummary: "",
+			OperationID:      "test_request_string_time",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -61296,12 +61886,13 @@ func (s *Server) handleTestRequestStringTimeArrayRequest(args [0]string, argsEsc
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringTimeArray",
-			OperationID:   "test_request_string_time_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringTimeArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_time_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -61399,12 +61990,13 @@ func (s *Server) handleTestRequestStringTimeArrayArrayRequest(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringTimeArrayArray",
-			OperationID:   "test_request_string_time_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringTimeArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_time_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -61502,12 +62094,13 @@ func (s *Server) handleTestRequestStringTimeNullableRequest(args [0]string, args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringTimeNullable",
-			OperationID:   "test_request_string_time_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringTimeNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_string_time_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -61605,12 +62198,13 @@ func (s *Server) handleTestRequestStringTimeNullableArrayRequest(args [0]string,
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringTimeNullableArray",
-			OperationID:   "test_request_string_time_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringTimeNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_time_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -61708,12 +62302,13 @@ func (s *Server) handleTestRequestStringTimeNullableArrayArrayRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringTimeNullableArrayArray",
-			OperationID:   "test_request_string_time_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringTimeNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_time_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -61811,12 +62406,13 @@ func (s *Server) handleTestRequestStringURIRequest(args [0]string, argsEscaped b
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringURI",
-			OperationID:   "test_request_string_uri",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringURI",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uri",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -61914,12 +62510,13 @@ func (s *Server) handleTestRequestStringURIArrayRequest(args [0]string, argsEsca
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringURIArray",
-			OperationID:   "test_request_string_uri_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringURIArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uri_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -62017,12 +62614,13 @@ func (s *Server) handleTestRequestStringURIArrayArrayRequest(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringURIArrayArray",
-			OperationID:   "test_request_string_uri_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringURIArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uri_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -62120,12 +62718,13 @@ func (s *Server) handleTestRequestStringURINullableRequest(args [0]string, argsE
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringURINullable",
-			OperationID:   "test_request_string_uri_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringURINullable",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uri_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -62223,12 +62822,13 @@ func (s *Server) handleTestRequestStringURINullableArrayRequest(args [0]string, 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringURINullableArray",
-			OperationID:   "test_request_string_uri_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringURINullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uri_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -62326,12 +62926,13 @@ func (s *Server) handleTestRequestStringURINullableArrayArrayRequest(args [0]str
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringURINullableArrayArray",
-			OperationID:   "test_request_string_uri_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringURINullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uri_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -62429,12 +63030,13 @@ func (s *Server) handleTestRequestStringUUIDRequest(args [0]string, argsEscaped 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUUID",
-			OperationID:   "test_request_string_uuid",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUUID",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uuid",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -62532,12 +63134,13 @@ func (s *Server) handleTestRequestStringUUIDArrayRequest(args [0]string, argsEsc
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUUIDArray",
-			OperationID:   "test_request_string_uuid_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUUIDArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uuid_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -62635,12 +63238,13 @@ func (s *Server) handleTestRequestStringUUIDArrayArrayRequest(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUUIDArrayArray",
-			OperationID:   "test_request_string_uuid_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUUIDArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uuid_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -62738,12 +63342,13 @@ func (s *Server) handleTestRequestStringUUIDNullableRequest(args [0]string, args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUUIDNullable",
-			OperationID:   "test_request_string_uuid_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUUIDNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uuid_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -62841,12 +63446,13 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayRequest(args [0]string,
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUUIDNullableArray",
-			OperationID:   "test_request_string_uuid_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUUIDNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uuid_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -62944,12 +63550,13 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayArrayRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUUIDNullableArrayArray",
-			OperationID:   "test_request_string_uuid_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUUIDNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uuid_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -63047,12 +63654,13 @@ func (s *Server) handleTestRequestStringUintRequest(args [0]string, argsEscaped 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUint",
-			OperationID:   "test_request_string_uint",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUint",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uint",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -63150,12 +63758,13 @@ func (s *Server) handleTestRequestStringUint16Request(args [0]string, argsEscape
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUint16",
-			OperationID:   "test_request_string_uint16",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUint16",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uint16",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -63253,12 +63862,13 @@ func (s *Server) handleTestRequestStringUint16ArrayRequest(args [0]string, argsE
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUint16Array",
-			OperationID:   "test_request_string_uint16_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUint16Array",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uint16_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -63356,12 +63966,13 @@ func (s *Server) handleTestRequestStringUint16ArrayArrayRequest(args [0]string, 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUint16ArrayArray",
-			OperationID:   "test_request_string_uint16_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUint16ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uint16_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -63459,12 +64070,13 @@ func (s *Server) handleTestRequestStringUint16NullableRequest(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUint16Nullable",
-			OperationID:   "test_request_string_uint16_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUint16Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uint16_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -63562,12 +64174,13 @@ func (s *Server) handleTestRequestStringUint16NullableArrayRequest(args [0]strin
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUint16NullableArray",
-			OperationID:   "test_request_string_uint16_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUint16NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uint16_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -63665,12 +64278,13 @@ func (s *Server) handleTestRequestStringUint16NullableArrayArrayRequest(args [0]
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUint16NullableArrayArray",
-			OperationID:   "test_request_string_uint16_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUint16NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uint16_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -63768,12 +64382,13 @@ func (s *Server) handleTestRequestStringUint32Request(args [0]string, argsEscape
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUint32",
-			OperationID:   "test_request_string_uint32",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUint32",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uint32",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -63871,12 +64486,13 @@ func (s *Server) handleTestRequestStringUint32ArrayRequest(args [0]string, argsE
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUint32Array",
-			OperationID:   "test_request_string_uint32_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUint32Array",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uint32_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -63974,12 +64590,13 @@ func (s *Server) handleTestRequestStringUint32ArrayArrayRequest(args [0]string, 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUint32ArrayArray",
-			OperationID:   "test_request_string_uint32_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUint32ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uint32_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -64077,12 +64694,13 @@ func (s *Server) handleTestRequestStringUint32NullableRequest(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUint32Nullable",
-			OperationID:   "test_request_string_uint32_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUint32Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uint32_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -64180,12 +64798,13 @@ func (s *Server) handleTestRequestStringUint32NullableArrayRequest(args [0]strin
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUint32NullableArray",
-			OperationID:   "test_request_string_uint32_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUint32NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uint32_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -64283,12 +64902,13 @@ func (s *Server) handleTestRequestStringUint32NullableArrayArrayRequest(args [0]
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUint32NullableArrayArray",
-			OperationID:   "test_request_string_uint32_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUint32NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uint32_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -64386,12 +65006,13 @@ func (s *Server) handleTestRequestStringUint64Request(args [0]string, argsEscape
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUint64",
-			OperationID:   "test_request_string_uint64",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUint64",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uint64",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -64489,12 +65110,13 @@ func (s *Server) handleTestRequestStringUint64ArrayRequest(args [0]string, argsE
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUint64Array",
-			OperationID:   "test_request_string_uint64_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUint64Array",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uint64_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -64592,12 +65214,13 @@ func (s *Server) handleTestRequestStringUint64ArrayArrayRequest(args [0]string, 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUint64ArrayArray",
-			OperationID:   "test_request_string_uint64_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUint64ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uint64_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -64695,12 +65318,13 @@ func (s *Server) handleTestRequestStringUint64NullableRequest(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUint64Nullable",
-			OperationID:   "test_request_string_uint64_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUint64Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uint64_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -64798,12 +65422,13 @@ func (s *Server) handleTestRequestStringUint64NullableArrayRequest(args [0]strin
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUint64NullableArray",
-			OperationID:   "test_request_string_uint64_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUint64NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uint64_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -64901,12 +65526,13 @@ func (s *Server) handleTestRequestStringUint64NullableArrayArrayRequest(args [0]
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUint64NullableArrayArray",
-			OperationID:   "test_request_string_uint64_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUint64NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uint64_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -65004,12 +65630,13 @@ func (s *Server) handleTestRequestStringUint8Request(args [0]string, argsEscaped
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUint8",
-			OperationID:   "test_request_string_uint8",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUint8",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uint8",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -65107,12 +65734,13 @@ func (s *Server) handleTestRequestStringUint8ArrayRequest(args [0]string, argsEs
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUint8Array",
-			OperationID:   "test_request_string_uint8_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUint8Array",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uint8_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -65210,12 +65838,13 @@ func (s *Server) handleTestRequestStringUint8ArrayArrayRequest(args [0]string, a
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUint8ArrayArray",
-			OperationID:   "test_request_string_uint8_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUint8ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uint8_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -65313,12 +65942,13 @@ func (s *Server) handleTestRequestStringUint8NullableRequest(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUint8Nullable",
-			OperationID:   "test_request_string_uint8_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUint8Nullable",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uint8_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -65416,12 +66046,13 @@ func (s *Server) handleTestRequestStringUint8NullableArrayRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUint8NullableArray",
-			OperationID:   "test_request_string_uint8_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUint8NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uint8_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -65519,12 +66150,13 @@ func (s *Server) handleTestRequestStringUint8NullableArrayArrayRequest(args [0]s
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUint8NullableArrayArray",
-			OperationID:   "test_request_string_uint8_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUint8NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uint8_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -65622,12 +66254,13 @@ func (s *Server) handleTestRequestStringUintArrayRequest(args [0]string, argsEsc
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUintArray",
-			OperationID:   "test_request_string_uint_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUintArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uint_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -65725,12 +66358,13 @@ func (s *Server) handleTestRequestStringUintArrayArrayRequest(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUintArrayArray",
-			OperationID:   "test_request_string_uint_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUintArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uint_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -65828,12 +66462,13 @@ func (s *Server) handleTestRequestStringUintNullableRequest(args [0]string, args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUintNullable",
-			OperationID:   "test_request_string_uint_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUintNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uint_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -65931,12 +66566,13 @@ func (s *Server) handleTestRequestStringUintNullableArrayRequest(args [0]string,
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUintNullableArray",
-			OperationID:   "test_request_string_uint_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUintNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uint_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -66034,12 +66670,13 @@ func (s *Server) handleTestRequestStringUintNullableArrayArrayRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUintNullableArrayArray",
-			OperationID:   "test_request_string_uint_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUintNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_uint_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -66137,12 +66774,13 @@ func (s *Server) handleTestRequestStringUnixRequest(args [0]string, argsEscaped 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUnix",
-			OperationID:   "test_request_string_unix",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUnix",
+			OperationSummary: "",
+			OperationID:      "test_request_string_unix",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -66240,12 +66878,13 @@ func (s *Server) handleTestRequestStringUnixArrayRequest(args [0]string, argsEsc
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUnixArray",
-			OperationID:   "test_request_string_unix_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUnixArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_unix_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -66343,12 +66982,13 @@ func (s *Server) handleTestRequestStringUnixArrayArrayRequest(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUnixArrayArray",
-			OperationID:   "test_request_string_unix_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUnixArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_unix_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -66446,12 +67086,13 @@ func (s *Server) handleTestRequestStringUnixMicroRequest(args [0]string, argsEsc
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUnixMicro",
-			OperationID:   "test_request_string_unix-micro",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUnixMicro",
+			OperationSummary: "",
+			OperationID:      "test_request_string_unix-micro",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -66549,12 +67190,13 @@ func (s *Server) handleTestRequestStringUnixMicroArrayRequest(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUnixMicroArray",
-			OperationID:   "test_request_string_unix-micro_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUnixMicroArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_unix-micro_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -66652,12 +67294,13 @@ func (s *Server) handleTestRequestStringUnixMicroArrayArrayRequest(args [0]strin
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUnixMicroArrayArray",
-			OperationID:   "test_request_string_unix-micro_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUnixMicroArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_unix-micro_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -66755,12 +67398,13 @@ func (s *Server) handleTestRequestStringUnixMicroNullableRequest(args [0]string,
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUnixMicroNullable",
-			OperationID:   "test_request_string_unix-micro_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUnixMicroNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_string_unix-micro_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -66858,12 +67502,13 @@ func (s *Server) handleTestRequestStringUnixMicroNullableArrayRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUnixMicroNullableArray",
-			OperationID:   "test_request_string_unix-micro_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUnixMicroNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_unix-micro_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -66961,12 +67606,13 @@ func (s *Server) handleTestRequestStringUnixMicroNullableArrayArrayRequest(args 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUnixMicroNullableArrayArray",
-			OperationID:   "test_request_string_unix-micro_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUnixMicroNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_unix-micro_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -67064,12 +67710,13 @@ func (s *Server) handleTestRequestStringUnixMilliRequest(args [0]string, argsEsc
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUnixMilli",
-			OperationID:   "test_request_string_unix-milli",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUnixMilli",
+			OperationSummary: "",
+			OperationID:      "test_request_string_unix-milli",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -67167,12 +67814,13 @@ func (s *Server) handleTestRequestStringUnixMilliArrayRequest(args [0]string, ar
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUnixMilliArray",
-			OperationID:   "test_request_string_unix-milli_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUnixMilliArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_unix-milli_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -67270,12 +67918,13 @@ func (s *Server) handleTestRequestStringUnixMilliArrayArrayRequest(args [0]strin
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUnixMilliArrayArray",
-			OperationID:   "test_request_string_unix-milli_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUnixMilliArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_unix-milli_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -67373,12 +68022,13 @@ func (s *Server) handleTestRequestStringUnixMilliNullableRequest(args [0]string,
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUnixMilliNullable",
-			OperationID:   "test_request_string_unix-milli_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUnixMilliNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_string_unix-milli_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -67476,12 +68126,13 @@ func (s *Server) handleTestRequestStringUnixMilliNullableArrayRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUnixMilliNullableArray",
-			OperationID:   "test_request_string_unix-milli_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUnixMilliNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_unix-milli_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -67579,12 +68230,13 @@ func (s *Server) handleTestRequestStringUnixMilliNullableArrayArrayRequest(args 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUnixMilliNullableArrayArray",
-			OperationID:   "test_request_string_unix-milli_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUnixMilliNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_unix-milli_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -67682,12 +68334,13 @@ func (s *Server) handleTestRequestStringUnixNanoRequest(args [0]string, argsEsca
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUnixNano",
-			OperationID:   "test_request_string_unix-nano",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUnixNano",
+			OperationSummary: "",
+			OperationID:      "test_request_string_unix-nano",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -67785,12 +68438,13 @@ func (s *Server) handleTestRequestStringUnixNanoArrayRequest(args [0]string, arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUnixNanoArray",
-			OperationID:   "test_request_string_unix-nano_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUnixNanoArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_unix-nano_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -67888,12 +68542,13 @@ func (s *Server) handleTestRequestStringUnixNanoArrayArrayRequest(args [0]string
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUnixNanoArrayArray",
-			OperationID:   "test_request_string_unix-nano_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUnixNanoArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_unix-nano_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -67991,12 +68646,13 @@ func (s *Server) handleTestRequestStringUnixNanoNullableRequest(args [0]string, 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUnixNanoNullable",
-			OperationID:   "test_request_string_unix-nano_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUnixNanoNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_string_unix-nano_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -68094,12 +68750,13 @@ func (s *Server) handleTestRequestStringUnixNanoNullableArrayRequest(args [0]str
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUnixNanoNullableArray",
-			OperationID:   "test_request_string_unix-nano_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUnixNanoNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_unix-nano_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -68197,12 +68854,13 @@ func (s *Server) handleTestRequestStringUnixNanoNullableArrayArrayRequest(args [
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUnixNanoNullableArrayArray",
-			OperationID:   "test_request_string_unix-nano_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUnixNanoNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_unix-nano_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -68300,12 +68958,13 @@ func (s *Server) handleTestRequestStringUnixNullableRequest(args [0]string, args
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUnixNullable",
-			OperationID:   "test_request_string_unix_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUnixNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_string_unix_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -68403,12 +69062,13 @@ func (s *Server) handleTestRequestStringUnixNullableArrayRequest(args [0]string,
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUnixNullableArray",
-			OperationID:   "test_request_string_unix_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUnixNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_unix_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -68506,12 +69166,13 @@ func (s *Server) handleTestRequestStringUnixNullableArrayArrayRequest(args [0]st
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUnixNullableArrayArray",
-			OperationID:   "test_request_string_unix_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUnixNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_unix_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -68609,12 +69270,13 @@ func (s *Server) handleTestRequestStringUnixSecondsRequest(args [0]string, argsE
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUnixSeconds",
-			OperationID:   "test_request_string_unix-seconds",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUnixSeconds",
+			OperationSummary: "",
+			OperationID:      "test_request_string_unix-seconds",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -68712,12 +69374,13 @@ func (s *Server) handleTestRequestStringUnixSecondsArrayRequest(args [0]string, 
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUnixSecondsArray",
-			OperationID:   "test_request_string_unix-seconds_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUnixSecondsArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_unix-seconds_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -68815,12 +69478,13 @@ func (s *Server) handleTestRequestStringUnixSecondsArrayArrayRequest(args [0]str
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUnixSecondsArrayArray",
-			OperationID:   "test_request_string_unix-seconds_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUnixSecondsArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_unix-seconds_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -68918,12 +69582,13 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableRequest(args [0]strin
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUnixSecondsNullable",
-			OperationID:   "test_request_string_unix-seconds_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUnixSecondsNullable",
+			OperationSummary: "",
+			OperationID:      "test_request_string_unix-seconds_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -69021,12 +69686,13 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableArrayRequest(args [0]
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUnixSecondsNullableArray",
-			OperationID:   "test_request_string_unix-seconds_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUnixSecondsNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_unix-seconds_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -69124,12 +69790,13 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableArrayArrayRequest(arg
 	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestRequestStringUnixSecondsNullableArrayArray",
-			OperationID:   "test_request_string_unix-seconds_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestRequestStringUnixSecondsNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_request_string_unix-seconds_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -69227,12 +69894,13 @@ func (s *Server) handleTestResponseAnyRequest(args [0]string, argsEscaped bool, 
 	var response jx.Raw
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseAny",
-			OperationID:   "test_response_Any",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseAny",
+			OperationSummary: "",
+			OperationID:      "test_response_Any",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -69330,12 +69998,13 @@ func (s *Server) handleTestResponseBooleanRequest(args [0]string, argsEscaped bo
 	var response bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseBoolean",
-			OperationID:   "test_response_boolean",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseBoolean",
+			OperationSummary: "",
+			OperationID:      "test_response_boolean",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -69433,12 +70102,13 @@ func (s *Server) handleTestResponseBooleanArrayRequest(args [0]string, argsEscap
 	var response []bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseBooleanArray",
-			OperationID:   "test_response_boolean_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseBooleanArray",
+			OperationSummary: "",
+			OperationID:      "test_response_boolean_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -69536,12 +70206,13 @@ func (s *Server) handleTestResponseBooleanArrayArrayRequest(args [0]string, args
 	var response [][]bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseBooleanArrayArray",
-			OperationID:   "test_response_boolean_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseBooleanArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_boolean_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -69639,12 +70310,13 @@ func (s *Server) handleTestResponseBooleanNullableRequest(args [0]string, argsEs
 	var response NilBool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseBooleanNullable",
-			OperationID:   "test_response_boolean_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseBooleanNullable",
+			OperationSummary: "",
+			OperationID:      "test_response_boolean_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -69742,12 +70414,13 @@ func (s *Server) handleTestResponseBooleanNullableArrayRequest(args [0]string, a
 	var response []NilBool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseBooleanNullableArray",
-			OperationID:   "test_response_boolean_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseBooleanNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_boolean_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -69845,12 +70518,13 @@ func (s *Server) handleTestResponseBooleanNullableArrayArrayRequest(args [0]stri
 	var response [][]NilBool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseBooleanNullableArrayArray",
-			OperationID:   "test_response_boolean_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseBooleanNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_boolean_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -69948,12 +70622,13 @@ func (s *Server) handleTestResponseEmptyStructRequest(args [0]string, argsEscape
 	var response *TestResponseEmptyStructOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseEmptyStruct",
-			OperationID:   "test_response_EmptyStruct",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseEmptyStruct",
+			OperationSummary: "",
+			OperationID:      "test_response_EmptyStruct",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -70051,12 +70726,13 @@ func (s *Server) handleTestResponseFormatTestRequest(args [0]string, argsEscaped
 	var response *TestResponseFormatTestOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseFormatTest",
-			OperationID:   "test_response_FormatTest",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseFormatTest",
+			OperationSummary: "",
+			OperationID:      "test_response_FormatTest",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -70154,12 +70830,13 @@ func (s *Server) handleTestResponseIntegerRequest(args [0]string, argsEscaped bo
 	var response int
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseInteger",
-			OperationID:   "test_response_integer",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseInteger",
+			OperationSummary: "",
+			OperationID:      "test_response_integer",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -70257,12 +70934,13 @@ func (s *Server) handleTestResponseIntegerArrayRequest(args [0]string, argsEscap
 	var response []int
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerArray",
-			OperationID:   "test_response_integer_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -70360,12 +71038,13 @@ func (s *Server) handleTestResponseIntegerArrayArrayRequest(args [0]string, args
 	var response [][]int
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerArrayArray",
-			OperationID:   "test_response_integer_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -70463,12 +71142,13 @@ func (s *Server) handleTestResponseIntegerInt16Request(args [0]string, argsEscap
 	var response int16
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerInt16",
-			OperationID:   "test_response_integer_int16",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerInt16",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_int16",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -70566,12 +71246,13 @@ func (s *Server) handleTestResponseIntegerInt16ArrayRequest(args [0]string, args
 	var response []int16
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerInt16Array",
-			OperationID:   "test_response_integer_int16_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerInt16Array",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_int16_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -70669,12 +71350,13 @@ func (s *Server) handleTestResponseIntegerInt16ArrayArrayRequest(args [0]string,
 	var response [][]int16
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerInt16ArrayArray",
-			OperationID:   "test_response_integer_int16_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerInt16ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_int16_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -70772,12 +71454,13 @@ func (s *Server) handleTestResponseIntegerInt16NullableRequest(args [0]string, a
 	var response NilInt16
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerInt16Nullable",
-			OperationID:   "test_response_integer_int16_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerInt16Nullable",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_int16_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -70875,12 +71558,13 @@ func (s *Server) handleTestResponseIntegerInt16NullableArrayRequest(args [0]stri
 	var response []NilInt16
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerInt16NullableArray",
-			OperationID:   "test_response_integer_int16_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerInt16NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_int16_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -70978,12 +71662,13 @@ func (s *Server) handleTestResponseIntegerInt16NullableArrayArrayRequest(args [0
 	var response [][]NilInt16
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerInt16NullableArrayArray",
-			OperationID:   "test_response_integer_int16_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerInt16NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_int16_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -71081,12 +71766,13 @@ func (s *Server) handleTestResponseIntegerInt32Request(args [0]string, argsEscap
 	var response int32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerInt32",
-			OperationID:   "test_response_integer_int32",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerInt32",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_int32",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -71184,12 +71870,13 @@ func (s *Server) handleTestResponseIntegerInt32ArrayRequest(args [0]string, args
 	var response []int32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerInt32Array",
-			OperationID:   "test_response_integer_int32_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerInt32Array",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_int32_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -71287,12 +71974,13 @@ func (s *Server) handleTestResponseIntegerInt32ArrayArrayRequest(args [0]string,
 	var response [][]int32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerInt32ArrayArray",
-			OperationID:   "test_response_integer_int32_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerInt32ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_int32_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -71390,12 +72078,13 @@ func (s *Server) handleTestResponseIntegerInt32NullableRequest(args [0]string, a
 	var response NilInt32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerInt32Nullable",
-			OperationID:   "test_response_integer_int32_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerInt32Nullable",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_int32_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -71493,12 +72182,13 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayRequest(args [0]stri
 	var response []NilInt32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerInt32NullableArray",
-			OperationID:   "test_response_integer_int32_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerInt32NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_int32_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -71596,12 +72286,13 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayArrayRequest(args [0
 	var response [][]NilInt32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerInt32NullableArrayArray",
-			OperationID:   "test_response_integer_int32_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerInt32NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_int32_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -71699,12 +72390,13 @@ func (s *Server) handleTestResponseIntegerInt64Request(args [0]string, argsEscap
 	var response int64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerInt64",
-			OperationID:   "test_response_integer_int64",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerInt64",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_int64",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -71802,12 +72494,13 @@ func (s *Server) handleTestResponseIntegerInt64ArrayRequest(args [0]string, args
 	var response []int64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerInt64Array",
-			OperationID:   "test_response_integer_int64_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerInt64Array",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_int64_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -71905,12 +72598,13 @@ func (s *Server) handleTestResponseIntegerInt64ArrayArrayRequest(args [0]string,
 	var response [][]int64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerInt64ArrayArray",
-			OperationID:   "test_response_integer_int64_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerInt64ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_int64_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -72008,12 +72702,13 @@ func (s *Server) handleTestResponseIntegerInt64NullableRequest(args [0]string, a
 	var response NilInt64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerInt64Nullable",
-			OperationID:   "test_response_integer_int64_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerInt64Nullable",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_int64_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -72111,12 +72806,13 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayRequest(args [0]stri
 	var response []NilInt64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerInt64NullableArray",
-			OperationID:   "test_response_integer_int64_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerInt64NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_int64_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -72214,12 +72910,13 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayArrayRequest(args [0
 	var response [][]NilInt64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerInt64NullableArrayArray",
-			OperationID:   "test_response_integer_int64_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerInt64NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_int64_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -72317,12 +73014,13 @@ func (s *Server) handleTestResponseIntegerInt8Request(args [0]string, argsEscape
 	var response int8
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerInt8",
-			OperationID:   "test_response_integer_int8",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerInt8",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_int8",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -72420,12 +73118,13 @@ func (s *Server) handleTestResponseIntegerInt8ArrayRequest(args [0]string, argsE
 	var response []int8
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerInt8Array",
-			OperationID:   "test_response_integer_int8_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerInt8Array",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_int8_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -72523,12 +73222,13 @@ func (s *Server) handleTestResponseIntegerInt8ArrayArrayRequest(args [0]string, 
 	var response [][]int8
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerInt8ArrayArray",
-			OperationID:   "test_response_integer_int8_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerInt8ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_int8_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -72626,12 +73326,13 @@ func (s *Server) handleTestResponseIntegerInt8NullableRequest(args [0]string, ar
 	var response NilInt8
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerInt8Nullable",
-			OperationID:   "test_response_integer_int8_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerInt8Nullable",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_int8_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -72729,12 +73430,13 @@ func (s *Server) handleTestResponseIntegerInt8NullableArrayRequest(args [0]strin
 	var response []NilInt8
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerInt8NullableArray",
-			OperationID:   "test_response_integer_int8_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerInt8NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_int8_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -72832,12 +73534,13 @@ func (s *Server) handleTestResponseIntegerInt8NullableArrayArrayRequest(args [0]
 	var response [][]NilInt8
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerInt8NullableArrayArray",
-			OperationID:   "test_response_integer_int8_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerInt8NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_int8_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -72935,12 +73638,13 @@ func (s *Server) handleTestResponseIntegerNullableRequest(args [0]string, argsEs
 	var response NilInt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerNullable",
-			OperationID:   "test_response_integer_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerNullable",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -73038,12 +73742,13 @@ func (s *Server) handleTestResponseIntegerNullableArrayRequest(args [0]string, a
 	var response []NilInt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerNullableArray",
-			OperationID:   "test_response_integer_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -73141,12 +73846,13 @@ func (s *Server) handleTestResponseIntegerNullableArrayArrayRequest(args [0]stri
 	var response [][]NilInt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerNullableArrayArray",
-			OperationID:   "test_response_integer_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -73244,12 +73950,13 @@ func (s *Server) handleTestResponseIntegerUintRequest(args [0]string, argsEscape
 	var response uint
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUint",
-			OperationID:   "test_response_integer_uint",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUint",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_uint",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -73347,12 +74054,13 @@ func (s *Server) handleTestResponseIntegerUint16Request(args [0]string, argsEsca
 	var response uint16
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUint16",
-			OperationID:   "test_response_integer_uint16",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUint16",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_uint16",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -73450,12 +74158,13 @@ func (s *Server) handleTestResponseIntegerUint16ArrayRequest(args [0]string, arg
 	var response []uint16
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUint16Array",
-			OperationID:   "test_response_integer_uint16_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUint16Array",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_uint16_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -73553,12 +74262,13 @@ func (s *Server) handleTestResponseIntegerUint16ArrayArrayRequest(args [0]string
 	var response [][]uint16
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUint16ArrayArray",
-			OperationID:   "test_response_integer_uint16_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUint16ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_uint16_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -73656,12 +74366,13 @@ func (s *Server) handleTestResponseIntegerUint16NullableRequest(args [0]string, 
 	var response NilUint16
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUint16Nullable",
-			OperationID:   "test_response_integer_uint16_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUint16Nullable",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_uint16_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -73759,12 +74470,13 @@ func (s *Server) handleTestResponseIntegerUint16NullableArrayRequest(args [0]str
 	var response []NilUint16
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUint16NullableArray",
-			OperationID:   "test_response_integer_uint16_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUint16NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_uint16_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -73862,12 +74574,13 @@ func (s *Server) handleTestResponseIntegerUint16NullableArrayArrayRequest(args [
 	var response [][]NilUint16
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUint16NullableArrayArray",
-			OperationID:   "test_response_integer_uint16_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUint16NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_uint16_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -73965,12 +74678,13 @@ func (s *Server) handleTestResponseIntegerUint32Request(args [0]string, argsEsca
 	var response uint32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUint32",
-			OperationID:   "test_response_integer_uint32",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUint32",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_uint32",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -74068,12 +74782,13 @@ func (s *Server) handleTestResponseIntegerUint32ArrayRequest(args [0]string, arg
 	var response []uint32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUint32Array",
-			OperationID:   "test_response_integer_uint32_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUint32Array",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_uint32_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -74171,12 +74886,13 @@ func (s *Server) handleTestResponseIntegerUint32ArrayArrayRequest(args [0]string
 	var response [][]uint32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUint32ArrayArray",
-			OperationID:   "test_response_integer_uint32_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUint32ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_uint32_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -74274,12 +74990,13 @@ func (s *Server) handleTestResponseIntegerUint32NullableRequest(args [0]string, 
 	var response NilUint32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUint32Nullable",
-			OperationID:   "test_response_integer_uint32_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUint32Nullable",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_uint32_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -74377,12 +75094,13 @@ func (s *Server) handleTestResponseIntegerUint32NullableArrayRequest(args [0]str
 	var response []NilUint32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUint32NullableArray",
-			OperationID:   "test_response_integer_uint32_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUint32NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_uint32_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -74480,12 +75198,13 @@ func (s *Server) handleTestResponseIntegerUint32NullableArrayArrayRequest(args [
 	var response [][]NilUint32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUint32NullableArrayArray",
-			OperationID:   "test_response_integer_uint32_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUint32NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_uint32_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -74583,12 +75302,13 @@ func (s *Server) handleTestResponseIntegerUint64Request(args [0]string, argsEsca
 	var response uint64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUint64",
-			OperationID:   "test_response_integer_uint64",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUint64",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_uint64",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -74686,12 +75406,13 @@ func (s *Server) handleTestResponseIntegerUint64ArrayRequest(args [0]string, arg
 	var response []uint64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUint64Array",
-			OperationID:   "test_response_integer_uint64_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUint64Array",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_uint64_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -74789,12 +75510,13 @@ func (s *Server) handleTestResponseIntegerUint64ArrayArrayRequest(args [0]string
 	var response [][]uint64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUint64ArrayArray",
-			OperationID:   "test_response_integer_uint64_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUint64ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_uint64_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -74892,12 +75614,13 @@ func (s *Server) handleTestResponseIntegerUint64NullableRequest(args [0]string, 
 	var response NilUint64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUint64Nullable",
-			OperationID:   "test_response_integer_uint64_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUint64Nullable",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_uint64_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -74995,12 +75718,13 @@ func (s *Server) handleTestResponseIntegerUint64NullableArrayRequest(args [0]str
 	var response []NilUint64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUint64NullableArray",
-			OperationID:   "test_response_integer_uint64_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUint64NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_uint64_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -75098,12 +75822,13 @@ func (s *Server) handleTestResponseIntegerUint64NullableArrayArrayRequest(args [
 	var response [][]NilUint64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUint64NullableArrayArray",
-			OperationID:   "test_response_integer_uint64_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUint64NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_uint64_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -75201,12 +75926,13 @@ func (s *Server) handleTestResponseIntegerUint8Request(args [0]string, argsEscap
 	var response uint8
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUint8",
-			OperationID:   "test_response_integer_uint8",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUint8",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_uint8",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -75304,12 +76030,13 @@ func (s *Server) handleTestResponseIntegerUint8ArrayRequest(args [0]string, args
 	var response []uint8
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUint8Array",
-			OperationID:   "test_response_integer_uint8_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUint8Array",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_uint8_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -75407,12 +76134,13 @@ func (s *Server) handleTestResponseIntegerUint8ArrayArrayRequest(args [0]string,
 	var response [][]uint8
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUint8ArrayArray",
-			OperationID:   "test_response_integer_uint8_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUint8ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_uint8_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -75510,12 +76238,13 @@ func (s *Server) handleTestResponseIntegerUint8NullableRequest(args [0]string, a
 	var response NilUint8
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUint8Nullable",
-			OperationID:   "test_response_integer_uint8_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUint8Nullable",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_uint8_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -75613,12 +76342,13 @@ func (s *Server) handleTestResponseIntegerUint8NullableArrayRequest(args [0]stri
 	var response []NilUint8
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUint8NullableArray",
-			OperationID:   "test_response_integer_uint8_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUint8NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_uint8_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -75716,12 +76446,13 @@ func (s *Server) handleTestResponseIntegerUint8NullableArrayArrayRequest(args [0
 	var response [][]NilUint8
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUint8NullableArrayArray",
-			OperationID:   "test_response_integer_uint8_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUint8NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_uint8_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -75819,12 +76550,13 @@ func (s *Server) handleTestResponseIntegerUintArrayRequest(args [0]string, argsE
 	var response []uint
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUintArray",
-			OperationID:   "test_response_integer_uint_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUintArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_uint_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -75922,12 +76654,13 @@ func (s *Server) handleTestResponseIntegerUintArrayArrayRequest(args [0]string, 
 	var response [][]uint
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUintArrayArray",
-			OperationID:   "test_response_integer_uint_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUintArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_uint_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -76025,12 +76758,13 @@ func (s *Server) handleTestResponseIntegerUintNullableRequest(args [0]string, ar
 	var response NilUint
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUintNullable",
-			OperationID:   "test_response_integer_uint_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUintNullable",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_uint_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -76128,12 +76862,13 @@ func (s *Server) handleTestResponseIntegerUintNullableArrayRequest(args [0]strin
 	var response []NilUint
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUintNullableArray",
-			OperationID:   "test_response_integer_uint_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUintNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_uint_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -76231,12 +76966,13 @@ func (s *Server) handleTestResponseIntegerUintNullableArrayArrayRequest(args [0]
 	var response [][]NilUint
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUintNullableArrayArray",
-			OperationID:   "test_response_integer_uint_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUintNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_uint_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -76334,12 +77070,13 @@ func (s *Server) handleTestResponseIntegerUnixRequest(args [0]string, argsEscape
 	var response time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUnix",
-			OperationID:   "test_response_integer_unix",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUnix",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_unix",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -76437,12 +77174,13 @@ func (s *Server) handleTestResponseIntegerUnixArrayRequest(args [0]string, argsE
 	var response []time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUnixArray",
-			OperationID:   "test_response_integer_unix_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUnixArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_unix_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -76540,12 +77278,13 @@ func (s *Server) handleTestResponseIntegerUnixArrayArrayRequest(args [0]string, 
 	var response [][]time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUnixArrayArray",
-			OperationID:   "test_response_integer_unix_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUnixArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_unix_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -76643,12 +77382,13 @@ func (s *Server) handleTestResponseIntegerUnixMicroRequest(args [0]string, argsE
 	var response time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUnixMicro",
-			OperationID:   "test_response_integer_unix-micro",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUnixMicro",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_unix-micro",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -76746,12 +77486,13 @@ func (s *Server) handleTestResponseIntegerUnixMicroArrayRequest(args [0]string, 
 	var response []time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUnixMicroArray",
-			OperationID:   "test_response_integer_unix-micro_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUnixMicroArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_unix-micro_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -76849,12 +77590,13 @@ func (s *Server) handleTestResponseIntegerUnixMicroArrayArrayRequest(args [0]str
 	var response [][]time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUnixMicroArrayArray",
-			OperationID:   "test_response_integer_unix-micro_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUnixMicroArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_unix-micro_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -76952,12 +77694,13 @@ func (s *Server) handleTestResponseIntegerUnixMicroNullableRequest(args [0]strin
 	var response NilUnixMicro
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUnixMicroNullable",
-			OperationID:   "test_response_integer_unix-micro_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUnixMicroNullable",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_unix-micro_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -77055,12 +77798,13 @@ func (s *Server) handleTestResponseIntegerUnixMicroNullableArrayRequest(args [0]
 	var response []NilUnixMicro
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUnixMicroNullableArray",
-			OperationID:   "test_response_integer_unix-micro_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUnixMicroNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_unix-micro_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -77158,12 +77902,13 @@ func (s *Server) handleTestResponseIntegerUnixMicroNullableArrayArrayRequest(arg
 	var response [][]NilUnixMicro
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUnixMicroNullableArrayArray",
-			OperationID:   "test_response_integer_unix-micro_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUnixMicroNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_unix-micro_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -77261,12 +78006,13 @@ func (s *Server) handleTestResponseIntegerUnixMilliRequest(args [0]string, argsE
 	var response time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUnixMilli",
-			OperationID:   "test_response_integer_unix-milli",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUnixMilli",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_unix-milli",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -77364,12 +78110,13 @@ func (s *Server) handleTestResponseIntegerUnixMilliArrayRequest(args [0]string, 
 	var response []time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUnixMilliArray",
-			OperationID:   "test_response_integer_unix-milli_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUnixMilliArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_unix-milli_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -77467,12 +78214,13 @@ func (s *Server) handleTestResponseIntegerUnixMilliArrayArrayRequest(args [0]str
 	var response [][]time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUnixMilliArrayArray",
-			OperationID:   "test_response_integer_unix-milli_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUnixMilliArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_unix-milli_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -77570,12 +78318,13 @@ func (s *Server) handleTestResponseIntegerUnixMilliNullableRequest(args [0]strin
 	var response NilUnixMilli
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUnixMilliNullable",
-			OperationID:   "test_response_integer_unix-milli_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUnixMilliNullable",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_unix-milli_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -77673,12 +78422,13 @@ func (s *Server) handleTestResponseIntegerUnixMilliNullableArrayRequest(args [0]
 	var response []NilUnixMilli
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUnixMilliNullableArray",
-			OperationID:   "test_response_integer_unix-milli_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUnixMilliNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_unix-milli_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -77776,12 +78526,13 @@ func (s *Server) handleTestResponseIntegerUnixMilliNullableArrayArrayRequest(arg
 	var response [][]NilUnixMilli
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUnixMilliNullableArrayArray",
-			OperationID:   "test_response_integer_unix-milli_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUnixMilliNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_unix-milli_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -77879,12 +78630,13 @@ func (s *Server) handleTestResponseIntegerUnixNanoRequest(args [0]string, argsEs
 	var response time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUnixNano",
-			OperationID:   "test_response_integer_unix-nano",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUnixNano",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_unix-nano",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -77982,12 +78734,13 @@ func (s *Server) handleTestResponseIntegerUnixNanoArrayRequest(args [0]string, a
 	var response []time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUnixNanoArray",
-			OperationID:   "test_response_integer_unix-nano_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUnixNanoArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_unix-nano_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -78085,12 +78838,13 @@ func (s *Server) handleTestResponseIntegerUnixNanoArrayArrayRequest(args [0]stri
 	var response [][]time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUnixNanoArrayArray",
-			OperationID:   "test_response_integer_unix-nano_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUnixNanoArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_unix-nano_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -78188,12 +78942,13 @@ func (s *Server) handleTestResponseIntegerUnixNanoNullableRequest(args [0]string
 	var response NilUnixNano
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUnixNanoNullable",
-			OperationID:   "test_response_integer_unix-nano_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUnixNanoNullable",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_unix-nano_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -78291,12 +79046,13 @@ func (s *Server) handleTestResponseIntegerUnixNanoNullableArrayRequest(args [0]s
 	var response []NilUnixNano
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUnixNanoNullableArray",
-			OperationID:   "test_response_integer_unix-nano_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUnixNanoNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_unix-nano_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -78394,12 +79150,13 @@ func (s *Server) handleTestResponseIntegerUnixNanoNullableArrayArrayRequest(args
 	var response [][]NilUnixNano
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUnixNanoNullableArrayArray",
-			OperationID:   "test_response_integer_unix-nano_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUnixNanoNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_unix-nano_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -78497,12 +79254,13 @@ func (s *Server) handleTestResponseIntegerUnixNullableRequest(args [0]string, ar
 	var response NilUnixSeconds
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUnixNullable",
-			OperationID:   "test_response_integer_unix_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUnixNullable",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_unix_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -78600,12 +79358,13 @@ func (s *Server) handleTestResponseIntegerUnixNullableArrayRequest(args [0]strin
 	var response []NilUnixSeconds
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUnixNullableArray",
-			OperationID:   "test_response_integer_unix_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUnixNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_unix_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -78703,12 +79462,13 @@ func (s *Server) handleTestResponseIntegerUnixNullableArrayArrayRequest(args [0]
 	var response [][]NilUnixSeconds
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUnixNullableArrayArray",
-			OperationID:   "test_response_integer_unix_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUnixNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_unix_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -78806,12 +79566,13 @@ func (s *Server) handleTestResponseIntegerUnixSecondsRequest(args [0]string, arg
 	var response time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUnixSeconds",
-			OperationID:   "test_response_integer_unix-seconds",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUnixSeconds",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_unix-seconds",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -78909,12 +79670,13 @@ func (s *Server) handleTestResponseIntegerUnixSecondsArrayRequest(args [0]string
 	var response []time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUnixSecondsArray",
-			OperationID:   "test_response_integer_unix-seconds_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUnixSecondsArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_unix-seconds_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -79012,12 +79774,13 @@ func (s *Server) handleTestResponseIntegerUnixSecondsArrayArrayRequest(args [0]s
 	var response [][]time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUnixSecondsArrayArray",
-			OperationID:   "test_response_integer_unix-seconds_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUnixSecondsArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_unix-seconds_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -79115,12 +79878,13 @@ func (s *Server) handleTestResponseIntegerUnixSecondsNullableRequest(args [0]str
 	var response NilUnixSeconds
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUnixSecondsNullable",
-			OperationID:   "test_response_integer_unix-seconds_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUnixSecondsNullable",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_unix-seconds_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -79218,12 +79982,13 @@ func (s *Server) handleTestResponseIntegerUnixSecondsNullableArrayRequest(args [
 	var response []NilUnixSeconds
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUnixSecondsNullableArray",
-			OperationID:   "test_response_integer_unix-seconds_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUnixSecondsNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_unix-seconds_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -79321,12 +80086,13 @@ func (s *Server) handleTestResponseIntegerUnixSecondsNullableArrayArrayRequest(a
 	var response [][]NilUnixSeconds
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseIntegerUnixSecondsNullableArrayArray",
-			OperationID:   "test_response_integer_unix-seconds_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseIntegerUnixSecondsNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_integer_unix-seconds_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -79424,12 +80190,13 @@ func (s *Server) handleTestResponseNullRequest(args [0]string, argsEscaped bool,
 	var response struct{}
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNull",
-			OperationID:   "test_response_null",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNull",
+			OperationSummary: "",
+			OperationID:      "test_response_null",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -79527,12 +80294,13 @@ func (s *Server) handleTestResponseNullArrayRequest(args [0]string, argsEscaped 
 	var response []struct{}
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNullArray",
-			OperationID:   "test_response_null_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNullArray",
+			OperationSummary: "",
+			OperationID:      "test_response_null_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -79630,12 +80398,13 @@ func (s *Server) handleTestResponseNullArrayArrayRequest(args [0]string, argsEsc
 	var response [][]struct{}
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNullArrayArray",
-			OperationID:   "test_response_null_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNullArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_null_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -79733,12 +80502,13 @@ func (s *Server) handleTestResponseNullNullableRequest(args [0]string, argsEscap
 	var response struct{}
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNullNullable",
-			OperationID:   "test_response_null_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNullNullable",
+			OperationSummary: "",
+			OperationID:      "test_response_null_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -79836,12 +80606,13 @@ func (s *Server) handleTestResponseNullNullableArrayRequest(args [0]string, args
 	var response []struct{}
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNullNullableArray",
-			OperationID:   "test_response_null_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNullNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_null_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -79939,12 +80710,13 @@ func (s *Server) handleTestResponseNullNullableArrayArrayRequest(args [0]string,
 	var response [][]struct{}
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNullNullableArrayArray",
-			OperationID:   "test_response_null_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNullNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_null_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -80042,12 +80814,13 @@ func (s *Server) handleTestResponseNumberRequest(args [0]string, argsEscaped boo
 	var response float64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNumber",
-			OperationID:   "test_response_number",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNumber",
+			OperationSummary: "",
+			OperationID:      "test_response_number",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -80145,12 +80918,13 @@ func (s *Server) handleTestResponseNumberArrayRequest(args [0]string, argsEscape
 	var response []float64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNumberArray",
-			OperationID:   "test_response_number_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNumberArray",
+			OperationSummary: "",
+			OperationID:      "test_response_number_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -80248,12 +81022,13 @@ func (s *Server) handleTestResponseNumberArrayArrayRequest(args [0]string, argsE
 	var response [][]float64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNumberArrayArray",
-			OperationID:   "test_response_number_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNumberArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_number_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -80351,12 +81126,13 @@ func (s *Server) handleTestResponseNumberDoubleRequest(args [0]string, argsEscap
 	var response float64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNumberDouble",
-			OperationID:   "test_response_number_double",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNumberDouble",
+			OperationSummary: "",
+			OperationID:      "test_response_number_double",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -80454,12 +81230,13 @@ func (s *Server) handleTestResponseNumberDoubleArrayRequest(args [0]string, args
 	var response []float64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNumberDoubleArray",
-			OperationID:   "test_response_number_double_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNumberDoubleArray",
+			OperationSummary: "",
+			OperationID:      "test_response_number_double_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -80557,12 +81334,13 @@ func (s *Server) handleTestResponseNumberDoubleArrayArrayRequest(args [0]string,
 	var response [][]float64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNumberDoubleArrayArray",
-			OperationID:   "test_response_number_double_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNumberDoubleArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_number_double_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -80660,12 +81438,13 @@ func (s *Server) handleTestResponseNumberDoubleNullableRequest(args [0]string, a
 	var response NilFloat64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNumberDoubleNullable",
-			OperationID:   "test_response_number_double_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNumberDoubleNullable",
+			OperationSummary: "",
+			OperationID:      "test_response_number_double_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -80763,12 +81542,13 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayRequest(args [0]stri
 	var response []NilFloat64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNumberDoubleNullableArray",
-			OperationID:   "test_response_number_double_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNumberDoubleNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_number_double_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -80866,12 +81646,13 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayArrayRequest(args [0
 	var response [][]NilFloat64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNumberDoubleNullableArrayArray",
-			OperationID:   "test_response_number_double_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNumberDoubleNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_number_double_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -80969,12 +81750,13 @@ func (s *Server) handleTestResponseNumberFloatRequest(args [0]string, argsEscape
 	var response float32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNumberFloat",
-			OperationID:   "test_response_number_float",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNumberFloat",
+			OperationSummary: "",
+			OperationID:      "test_response_number_float",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -81072,12 +81854,13 @@ func (s *Server) handleTestResponseNumberFloatArrayRequest(args [0]string, argsE
 	var response []float32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNumberFloatArray",
-			OperationID:   "test_response_number_float_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNumberFloatArray",
+			OperationSummary: "",
+			OperationID:      "test_response_number_float_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -81175,12 +81958,13 @@ func (s *Server) handleTestResponseNumberFloatArrayArrayRequest(args [0]string, 
 	var response [][]float32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNumberFloatArrayArray",
-			OperationID:   "test_response_number_float_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNumberFloatArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_number_float_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -81278,12 +82062,13 @@ func (s *Server) handleTestResponseNumberFloatNullableRequest(args [0]string, ar
 	var response NilFloat32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNumberFloatNullable",
-			OperationID:   "test_response_number_float_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNumberFloatNullable",
+			OperationSummary: "",
+			OperationID:      "test_response_number_float_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -81381,12 +82166,13 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayRequest(args [0]strin
 	var response []NilFloat32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNumberFloatNullableArray",
-			OperationID:   "test_response_number_float_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNumberFloatNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_number_float_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -81484,12 +82270,13 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayArrayRequest(args [0]
 	var response [][]NilFloat32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNumberFloatNullableArrayArray",
-			OperationID:   "test_response_number_float_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNumberFloatNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_number_float_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -81587,12 +82374,13 @@ func (s *Server) handleTestResponseNumberInt32Request(args [0]string, argsEscape
 	var response int32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNumberInt32",
-			OperationID:   "test_response_number_int32",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNumberInt32",
+			OperationSummary: "",
+			OperationID:      "test_response_number_int32",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -81690,12 +82478,13 @@ func (s *Server) handleTestResponseNumberInt32ArrayRequest(args [0]string, argsE
 	var response []int32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNumberInt32Array",
-			OperationID:   "test_response_number_int32_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNumberInt32Array",
+			OperationSummary: "",
+			OperationID:      "test_response_number_int32_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -81793,12 +82582,13 @@ func (s *Server) handleTestResponseNumberInt32ArrayArrayRequest(args [0]string, 
 	var response [][]int32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNumberInt32ArrayArray",
-			OperationID:   "test_response_number_int32_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNumberInt32ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_number_int32_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -81896,12 +82686,13 @@ func (s *Server) handleTestResponseNumberInt32NullableRequest(args [0]string, ar
 	var response NilInt32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNumberInt32Nullable",
-			OperationID:   "test_response_number_int32_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNumberInt32Nullable",
+			OperationSummary: "",
+			OperationID:      "test_response_number_int32_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -81999,12 +82790,13 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayRequest(args [0]strin
 	var response []NilInt32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNumberInt32NullableArray",
-			OperationID:   "test_response_number_int32_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNumberInt32NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_number_int32_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -82102,12 +82894,13 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayArrayRequest(args [0]
 	var response [][]NilInt32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNumberInt32NullableArrayArray",
-			OperationID:   "test_response_number_int32_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNumberInt32NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_number_int32_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -82205,12 +82998,13 @@ func (s *Server) handleTestResponseNumberInt64Request(args [0]string, argsEscape
 	var response int64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNumberInt64",
-			OperationID:   "test_response_number_int64",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNumberInt64",
+			OperationSummary: "",
+			OperationID:      "test_response_number_int64",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -82308,12 +83102,13 @@ func (s *Server) handleTestResponseNumberInt64ArrayRequest(args [0]string, argsE
 	var response []int64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNumberInt64Array",
-			OperationID:   "test_response_number_int64_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNumberInt64Array",
+			OperationSummary: "",
+			OperationID:      "test_response_number_int64_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -82411,12 +83206,13 @@ func (s *Server) handleTestResponseNumberInt64ArrayArrayRequest(args [0]string, 
 	var response [][]int64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNumberInt64ArrayArray",
-			OperationID:   "test_response_number_int64_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNumberInt64ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_number_int64_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -82514,12 +83310,13 @@ func (s *Server) handleTestResponseNumberInt64NullableRequest(args [0]string, ar
 	var response NilInt64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNumberInt64Nullable",
-			OperationID:   "test_response_number_int64_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNumberInt64Nullable",
+			OperationSummary: "",
+			OperationID:      "test_response_number_int64_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -82617,12 +83414,13 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayRequest(args [0]strin
 	var response []NilInt64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNumberInt64NullableArray",
-			OperationID:   "test_response_number_int64_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNumberInt64NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_number_int64_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -82720,12 +83518,13 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayArrayRequest(args [0]
 	var response [][]NilInt64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNumberInt64NullableArrayArray",
-			OperationID:   "test_response_number_int64_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNumberInt64NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_number_int64_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -82823,12 +83622,13 @@ func (s *Server) handleTestResponseNumberNullableRequest(args [0]string, argsEsc
 	var response NilFloat64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNumberNullable",
-			OperationID:   "test_response_number_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNumberNullable",
+			OperationSummary: "",
+			OperationID:      "test_response_number_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -82926,12 +83726,13 @@ func (s *Server) handleTestResponseNumberNullableArrayRequest(args [0]string, ar
 	var response []NilFloat64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNumberNullableArray",
-			OperationID:   "test_response_number_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNumberNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_number_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -83029,12 +83830,13 @@ func (s *Server) handleTestResponseNumberNullableArrayArrayRequest(args [0]strin
 	var response [][]NilFloat64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseNumberNullableArrayArray",
-			OperationID:   "test_response_number_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseNumberNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_number_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -83132,12 +83934,13 @@ func (s *Server) handleTestResponseStringRequest(args [0]string, argsEscaped boo
 	var response string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseString",
-			OperationID:   "test_response_string",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseString",
+			OperationSummary: "",
+			OperationID:      "test_response_string",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -83235,12 +84038,13 @@ func (s *Server) handleTestResponseStringArrayRequest(args [0]string, argsEscape
 	var response []string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringArray",
-			OperationID:   "test_response_string_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -83338,12 +84142,13 @@ func (s *Server) handleTestResponseStringArrayArrayRequest(args [0]string, argsE
 	var response [][]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringArrayArray",
-			OperationID:   "test_response_string_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -83441,12 +84246,13 @@ func (s *Server) handleTestResponseStringBase64Request(args [0]string, argsEscap
 	var response []byte
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringBase64",
-			OperationID:   "test_response_string_base64",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringBase64",
+			OperationSummary: "",
+			OperationID:      "test_response_string_base64",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -83544,12 +84350,13 @@ func (s *Server) handleTestResponseStringBase64ArrayRequest(args [0]string, args
 	var response [][]byte
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringBase64Array",
-			OperationID:   "test_response_string_base64_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringBase64Array",
+			OperationSummary: "",
+			OperationID:      "test_response_string_base64_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -83647,12 +84454,13 @@ func (s *Server) handleTestResponseStringBase64ArrayArrayRequest(args [0]string,
 	var response [][][]byte
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringBase64ArrayArray",
-			OperationID:   "test_response_string_base64_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringBase64ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_base64_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -83750,12 +84558,13 @@ func (s *Server) handleTestResponseStringBase64NullableRequest(args [0]string, a
 	var response []byte
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringBase64Nullable",
-			OperationID:   "test_response_string_base64_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringBase64Nullable",
+			OperationSummary: "",
+			OperationID:      "test_response_string_base64_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -83853,12 +84662,13 @@ func (s *Server) handleTestResponseStringBase64NullableArrayRequest(args [0]stri
 	var response [][]byte
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringBase64NullableArray",
-			OperationID:   "test_response_string_base64_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringBase64NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_base64_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -83956,12 +84766,13 @@ func (s *Server) handleTestResponseStringBase64NullableArrayArrayRequest(args [0
 	var response [][][]byte
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringBase64NullableArrayArray",
-			OperationID:   "test_response_string_base64_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringBase64NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_base64_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -84059,12 +84870,13 @@ func (s *Server) handleTestResponseStringBinaryRequest(args [0]string, argsEscap
 	var response string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringBinary",
-			OperationID:   "test_response_string_binary",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringBinary",
+			OperationSummary: "",
+			OperationID:      "test_response_string_binary",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -84162,12 +84974,13 @@ func (s *Server) handleTestResponseStringBinaryArrayRequest(args [0]string, args
 	var response []string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringBinaryArray",
-			OperationID:   "test_response_string_binary_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringBinaryArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_binary_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -84265,12 +85078,13 @@ func (s *Server) handleTestResponseStringBinaryArrayArrayRequest(args [0]string,
 	var response [][]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringBinaryArrayArray",
-			OperationID:   "test_response_string_binary_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringBinaryArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_binary_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -84368,12 +85182,13 @@ func (s *Server) handleTestResponseStringBinaryNullableRequest(args [0]string, a
 	var response NilString
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringBinaryNullable",
-			OperationID:   "test_response_string_binary_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringBinaryNullable",
+			OperationSummary: "",
+			OperationID:      "test_response_string_binary_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -84471,12 +85286,13 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayRequest(args [0]stri
 	var response []NilString
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringBinaryNullableArray",
-			OperationID:   "test_response_string_binary_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringBinaryNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_binary_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -84574,12 +85390,13 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayArrayRequest(args [0
 	var response [][]NilString
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringBinaryNullableArrayArray",
-			OperationID:   "test_response_string_binary_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringBinaryNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_binary_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -84677,12 +85494,13 @@ func (s *Server) handleTestResponseStringByteRequest(args [0]string, argsEscaped
 	var response []byte
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringByte",
-			OperationID:   "test_response_string_byte",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringByte",
+			OperationSummary: "",
+			OperationID:      "test_response_string_byte",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -84780,12 +85598,13 @@ func (s *Server) handleTestResponseStringByteArrayRequest(args [0]string, argsEs
 	var response [][]byte
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringByteArray",
-			OperationID:   "test_response_string_byte_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringByteArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_byte_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -84883,12 +85702,13 @@ func (s *Server) handleTestResponseStringByteArrayArrayRequest(args [0]string, a
 	var response [][][]byte
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringByteArrayArray",
-			OperationID:   "test_response_string_byte_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringByteArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_byte_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -84986,12 +85806,13 @@ func (s *Server) handleTestResponseStringByteNullableRequest(args [0]string, arg
 	var response []byte
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringByteNullable",
-			OperationID:   "test_response_string_byte_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringByteNullable",
+			OperationSummary: "",
+			OperationID:      "test_response_string_byte_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -85089,12 +85910,13 @@ func (s *Server) handleTestResponseStringByteNullableArrayRequest(args [0]string
 	var response [][]byte
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringByteNullableArray",
-			OperationID:   "test_response_string_byte_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringByteNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_byte_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -85192,12 +86014,13 @@ func (s *Server) handleTestResponseStringByteNullableArrayArrayRequest(args [0]s
 	var response [][][]byte
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringByteNullableArrayArray",
-			OperationID:   "test_response_string_byte_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringByteNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_byte_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -85295,12 +86118,13 @@ func (s *Server) handleTestResponseStringDateRequest(args [0]string, argsEscaped
 	var response time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringDate",
-			OperationID:   "test_response_string_date",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringDate",
+			OperationSummary: "",
+			OperationID:      "test_response_string_date",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -85398,12 +86222,13 @@ func (s *Server) handleTestResponseStringDateArrayRequest(args [0]string, argsEs
 	var response []time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringDateArray",
-			OperationID:   "test_response_string_date_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringDateArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_date_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -85501,12 +86326,13 @@ func (s *Server) handleTestResponseStringDateArrayArrayRequest(args [0]string, a
 	var response [][]time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringDateArrayArray",
-			OperationID:   "test_response_string_date_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringDateArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_date_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -85604,12 +86430,13 @@ func (s *Server) handleTestResponseStringDateNullableRequest(args [0]string, arg
 	var response NilDate
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringDateNullable",
-			OperationID:   "test_response_string_date_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringDateNullable",
+			OperationSummary: "",
+			OperationID:      "test_response_string_date_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -85707,12 +86534,13 @@ func (s *Server) handleTestResponseStringDateNullableArrayRequest(args [0]string
 	var response []NilDate
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringDateNullableArray",
-			OperationID:   "test_response_string_date_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringDateNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_date_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -85810,12 +86638,13 @@ func (s *Server) handleTestResponseStringDateNullableArrayArrayRequest(args [0]s
 	var response [][]NilDate
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringDateNullableArrayArray",
-			OperationID:   "test_response_string_date_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringDateNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_date_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -85913,12 +86742,13 @@ func (s *Server) handleTestResponseStringDateTimeRequest(args [0]string, argsEsc
 	var response time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringDateTime",
-			OperationID:   "test_response_string_date-time",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringDateTime",
+			OperationSummary: "",
+			OperationID:      "test_response_string_date-time",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -86016,12 +86846,13 @@ func (s *Server) handleTestResponseStringDateTimeArrayRequest(args [0]string, ar
 	var response []time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringDateTimeArray",
-			OperationID:   "test_response_string_date-time_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringDateTimeArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_date-time_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -86119,12 +86950,13 @@ func (s *Server) handleTestResponseStringDateTimeArrayArrayRequest(args [0]strin
 	var response [][]time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringDateTimeArrayArray",
-			OperationID:   "test_response_string_date-time_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringDateTimeArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_date-time_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -86222,12 +87054,13 @@ func (s *Server) handleTestResponseStringDateTimeNullableRequest(args [0]string,
 	var response NilDateTime
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringDateTimeNullable",
-			OperationID:   "test_response_string_date-time_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringDateTimeNullable",
+			OperationSummary: "",
+			OperationID:      "test_response_string_date-time_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -86325,12 +87158,13 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayRequest(args [0]st
 	var response []NilDateTime
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringDateTimeNullableArray",
-			OperationID:   "test_response_string_date-time_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringDateTimeNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_date-time_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -86428,12 +87262,13 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayArrayRequest(args 
 	var response [][]NilDateTime
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringDateTimeNullableArrayArray",
-			OperationID:   "test_response_string_date-time_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringDateTimeNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_date-time_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -86531,12 +87366,13 @@ func (s *Server) handleTestResponseStringDurationRequest(args [0]string, argsEsc
 	var response time.Duration
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringDuration",
-			OperationID:   "test_response_string_duration",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringDuration",
+			OperationSummary: "",
+			OperationID:      "test_response_string_duration",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -86634,12 +87470,13 @@ func (s *Server) handleTestResponseStringDurationArrayRequest(args [0]string, ar
 	var response []time.Duration
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringDurationArray",
-			OperationID:   "test_response_string_duration_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringDurationArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_duration_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -86737,12 +87574,13 @@ func (s *Server) handleTestResponseStringDurationArrayArrayRequest(args [0]strin
 	var response [][]time.Duration
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringDurationArrayArray",
-			OperationID:   "test_response_string_duration_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringDurationArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_duration_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -86840,12 +87678,13 @@ func (s *Server) handleTestResponseStringDurationNullableRequest(args [0]string,
 	var response NilDuration
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringDurationNullable",
-			OperationID:   "test_response_string_duration_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringDurationNullable",
+			OperationSummary: "",
+			OperationID:      "test_response_string_duration_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -86943,12 +87782,13 @@ func (s *Server) handleTestResponseStringDurationNullableArrayRequest(args [0]st
 	var response []NilDuration
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringDurationNullableArray",
-			OperationID:   "test_response_string_duration_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringDurationNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_duration_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -87046,12 +87886,13 @@ func (s *Server) handleTestResponseStringDurationNullableArrayArrayRequest(args 
 	var response [][]NilDuration
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringDurationNullableArrayArray",
-			OperationID:   "test_response_string_duration_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringDurationNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_duration_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -87149,12 +87990,13 @@ func (s *Server) handleTestResponseStringEmailRequest(args [0]string, argsEscape
 	var response string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringEmail",
-			OperationID:   "test_response_string_email",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringEmail",
+			OperationSummary: "",
+			OperationID:      "test_response_string_email",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -87252,12 +88094,13 @@ func (s *Server) handleTestResponseStringEmailArrayRequest(args [0]string, argsE
 	var response []string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringEmailArray",
-			OperationID:   "test_response_string_email_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringEmailArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_email_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -87355,12 +88198,13 @@ func (s *Server) handleTestResponseStringEmailArrayArrayRequest(args [0]string, 
 	var response [][]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringEmailArrayArray",
-			OperationID:   "test_response_string_email_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringEmailArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_email_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -87458,12 +88302,13 @@ func (s *Server) handleTestResponseStringEmailNullableRequest(args [0]string, ar
 	var response NilString
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringEmailNullable",
-			OperationID:   "test_response_string_email_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringEmailNullable",
+			OperationSummary: "",
+			OperationID:      "test_response_string_email_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -87561,12 +88406,13 @@ func (s *Server) handleTestResponseStringEmailNullableArrayRequest(args [0]strin
 	var response []NilString
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringEmailNullableArray",
-			OperationID:   "test_response_string_email_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringEmailNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_email_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -87664,12 +88510,13 @@ func (s *Server) handleTestResponseStringEmailNullableArrayArrayRequest(args [0]
 	var response [][]NilString
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringEmailNullableArrayArray",
-			OperationID:   "test_response_string_email_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringEmailNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_email_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -87767,12 +88614,13 @@ func (s *Server) handleTestResponseStringFloat32Request(args [0]string, argsEsca
 	var response float32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringFloat32",
-			OperationID:   "test_response_string_float32",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringFloat32",
+			OperationSummary: "",
+			OperationID:      "test_response_string_float32",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -87870,12 +88718,13 @@ func (s *Server) handleTestResponseStringFloat32ArrayRequest(args [0]string, arg
 	var response []float32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringFloat32Array",
-			OperationID:   "test_response_string_float32_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringFloat32Array",
+			OperationSummary: "",
+			OperationID:      "test_response_string_float32_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -87973,12 +88822,13 @@ func (s *Server) handleTestResponseStringFloat32ArrayArrayRequest(args [0]string
 	var response [][]float32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringFloat32ArrayArray",
-			OperationID:   "test_response_string_float32_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringFloat32ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_float32_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -88076,12 +88926,13 @@ func (s *Server) handleTestResponseStringFloat32NullableRequest(args [0]string, 
 	var response NilFloat32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringFloat32Nullable",
-			OperationID:   "test_response_string_float32_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringFloat32Nullable",
+			OperationSummary: "",
+			OperationID:      "test_response_string_float32_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -88179,12 +89030,13 @@ func (s *Server) handleTestResponseStringFloat32NullableArrayRequest(args [0]str
 	var response []NilFloat32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringFloat32NullableArray",
-			OperationID:   "test_response_string_float32_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringFloat32NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_float32_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -88282,12 +89134,13 @@ func (s *Server) handleTestResponseStringFloat32NullableArrayArrayRequest(args [
 	var response [][]NilFloat32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringFloat32NullableArrayArray",
-			OperationID:   "test_response_string_float32_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringFloat32NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_float32_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -88385,12 +89238,13 @@ func (s *Server) handleTestResponseStringFloat64Request(args [0]string, argsEsca
 	var response float64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringFloat64",
-			OperationID:   "test_response_string_float64",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringFloat64",
+			OperationSummary: "",
+			OperationID:      "test_response_string_float64",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -88488,12 +89342,13 @@ func (s *Server) handleTestResponseStringFloat64ArrayRequest(args [0]string, arg
 	var response []float64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringFloat64Array",
-			OperationID:   "test_response_string_float64_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringFloat64Array",
+			OperationSummary: "",
+			OperationID:      "test_response_string_float64_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -88591,12 +89446,13 @@ func (s *Server) handleTestResponseStringFloat64ArrayArrayRequest(args [0]string
 	var response [][]float64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringFloat64ArrayArray",
-			OperationID:   "test_response_string_float64_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringFloat64ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_float64_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -88694,12 +89550,13 @@ func (s *Server) handleTestResponseStringFloat64NullableRequest(args [0]string, 
 	var response NilFloat64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringFloat64Nullable",
-			OperationID:   "test_response_string_float64_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringFloat64Nullable",
+			OperationSummary: "",
+			OperationID:      "test_response_string_float64_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -88797,12 +89654,13 @@ func (s *Server) handleTestResponseStringFloat64NullableArrayRequest(args [0]str
 	var response []NilFloat64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringFloat64NullableArray",
-			OperationID:   "test_response_string_float64_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringFloat64NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_float64_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -88900,12 +89758,13 @@ func (s *Server) handleTestResponseStringFloat64NullableArrayArrayRequest(args [
 	var response [][]NilFloat64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringFloat64NullableArrayArray",
-			OperationID:   "test_response_string_float64_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringFloat64NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_float64_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -89003,12 +89862,13 @@ func (s *Server) handleTestResponseStringHostnameRequest(args [0]string, argsEsc
 	var response string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringHostname",
-			OperationID:   "test_response_string_hostname",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringHostname",
+			OperationSummary: "",
+			OperationID:      "test_response_string_hostname",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -89106,12 +89966,13 @@ func (s *Server) handleTestResponseStringHostnameArrayRequest(args [0]string, ar
 	var response []string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringHostnameArray",
-			OperationID:   "test_response_string_hostname_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringHostnameArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_hostname_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -89209,12 +90070,13 @@ func (s *Server) handleTestResponseStringHostnameArrayArrayRequest(args [0]strin
 	var response [][]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringHostnameArrayArray",
-			OperationID:   "test_response_string_hostname_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringHostnameArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_hostname_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -89312,12 +90174,13 @@ func (s *Server) handleTestResponseStringHostnameNullableRequest(args [0]string,
 	var response NilString
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringHostnameNullable",
-			OperationID:   "test_response_string_hostname_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringHostnameNullable",
+			OperationSummary: "",
+			OperationID:      "test_response_string_hostname_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -89415,12 +90278,13 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayRequest(args [0]st
 	var response []NilString
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringHostnameNullableArray",
-			OperationID:   "test_response_string_hostname_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringHostnameNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_hostname_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -89518,12 +90382,13 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayArrayRequest(args 
 	var response [][]NilString
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringHostnameNullableArrayArray",
-			OperationID:   "test_response_string_hostname_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringHostnameNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_hostname_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -89621,12 +90486,13 @@ func (s *Server) handleTestResponseStringIPRequest(args [0]string, argsEscaped b
 	var response netip.Addr
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringIP",
-			OperationID:   "test_response_string_ip",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringIP",
+			OperationSummary: "",
+			OperationID:      "test_response_string_ip",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -89724,12 +90590,13 @@ func (s *Server) handleTestResponseStringIPArrayRequest(args [0]string, argsEsca
 	var response []netip.Addr
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringIPArray",
-			OperationID:   "test_response_string_ip_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringIPArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_ip_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -89827,12 +90694,13 @@ func (s *Server) handleTestResponseStringIPArrayArrayRequest(args [0]string, arg
 	var response [][]netip.Addr
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringIPArrayArray",
-			OperationID:   "test_response_string_ip_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringIPArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_ip_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -89930,12 +90798,13 @@ func (s *Server) handleTestResponseStringIPNullableRequest(args [0]string, argsE
 	var response NilIP
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringIPNullable",
-			OperationID:   "test_response_string_ip_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringIPNullable",
+			OperationSummary: "",
+			OperationID:      "test_response_string_ip_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -90033,12 +90902,13 @@ func (s *Server) handleTestResponseStringIPNullableArrayRequest(args [0]string, 
 	var response []NilIP
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringIPNullableArray",
-			OperationID:   "test_response_string_ip_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringIPNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_ip_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -90136,12 +91006,13 @@ func (s *Server) handleTestResponseStringIPNullableArrayArrayRequest(args [0]str
 	var response [][]NilIP
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringIPNullableArrayArray",
-			OperationID:   "test_response_string_ip_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringIPNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_ip_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -90239,12 +91110,13 @@ func (s *Server) handleTestResponseStringIntRequest(args [0]string, argsEscaped 
 	var response int
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringInt",
-			OperationID:   "test_response_string_int",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringInt",
+			OperationSummary: "",
+			OperationID:      "test_response_string_int",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -90342,12 +91214,13 @@ func (s *Server) handleTestResponseStringInt16Request(args [0]string, argsEscape
 	var response int16
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringInt16",
-			OperationID:   "test_response_string_int16",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringInt16",
+			OperationSummary: "",
+			OperationID:      "test_response_string_int16",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -90445,12 +91318,13 @@ func (s *Server) handleTestResponseStringInt16ArrayRequest(args [0]string, argsE
 	var response []int16
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringInt16Array",
-			OperationID:   "test_response_string_int16_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringInt16Array",
+			OperationSummary: "",
+			OperationID:      "test_response_string_int16_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -90548,12 +91422,13 @@ func (s *Server) handleTestResponseStringInt16ArrayArrayRequest(args [0]string, 
 	var response [][]int16
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringInt16ArrayArray",
-			OperationID:   "test_response_string_int16_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringInt16ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_int16_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -90651,12 +91526,13 @@ func (s *Server) handleTestResponseStringInt16NullableRequest(args [0]string, ar
 	var response NilInt16
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringInt16Nullable",
-			OperationID:   "test_response_string_int16_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringInt16Nullable",
+			OperationSummary: "",
+			OperationID:      "test_response_string_int16_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -90754,12 +91630,13 @@ func (s *Server) handleTestResponseStringInt16NullableArrayRequest(args [0]strin
 	var response []NilInt16
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringInt16NullableArray",
-			OperationID:   "test_response_string_int16_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringInt16NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_int16_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -90857,12 +91734,13 @@ func (s *Server) handleTestResponseStringInt16NullableArrayArrayRequest(args [0]
 	var response [][]NilInt16
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringInt16NullableArrayArray",
-			OperationID:   "test_response_string_int16_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringInt16NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_int16_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -90960,12 +91838,13 @@ func (s *Server) handleTestResponseStringInt32Request(args [0]string, argsEscape
 	var response int32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringInt32",
-			OperationID:   "test_response_string_int32",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringInt32",
+			OperationSummary: "",
+			OperationID:      "test_response_string_int32",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -91063,12 +91942,13 @@ func (s *Server) handleTestResponseStringInt32ArrayRequest(args [0]string, argsE
 	var response []int32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringInt32Array",
-			OperationID:   "test_response_string_int32_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringInt32Array",
+			OperationSummary: "",
+			OperationID:      "test_response_string_int32_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -91166,12 +92046,13 @@ func (s *Server) handleTestResponseStringInt32ArrayArrayRequest(args [0]string, 
 	var response [][]int32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringInt32ArrayArray",
-			OperationID:   "test_response_string_int32_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringInt32ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_int32_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -91269,12 +92150,13 @@ func (s *Server) handleTestResponseStringInt32NullableRequest(args [0]string, ar
 	var response NilStringInt32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringInt32Nullable",
-			OperationID:   "test_response_string_int32_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringInt32Nullable",
+			OperationSummary: "",
+			OperationID:      "test_response_string_int32_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -91372,12 +92254,13 @@ func (s *Server) handleTestResponseStringInt32NullableArrayRequest(args [0]strin
 	var response []NilStringInt32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringInt32NullableArray",
-			OperationID:   "test_response_string_int32_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringInt32NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_int32_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -91475,12 +92358,13 @@ func (s *Server) handleTestResponseStringInt32NullableArrayArrayRequest(args [0]
 	var response [][]NilStringInt32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringInt32NullableArrayArray",
-			OperationID:   "test_response_string_int32_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringInt32NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_int32_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -91578,12 +92462,13 @@ func (s *Server) handleTestResponseStringInt64Request(args [0]string, argsEscape
 	var response int64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringInt64",
-			OperationID:   "test_response_string_int64",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringInt64",
+			OperationSummary: "",
+			OperationID:      "test_response_string_int64",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -91681,12 +92566,13 @@ func (s *Server) handleTestResponseStringInt64ArrayRequest(args [0]string, argsE
 	var response []int64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringInt64Array",
-			OperationID:   "test_response_string_int64_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringInt64Array",
+			OperationSummary: "",
+			OperationID:      "test_response_string_int64_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -91784,12 +92670,13 @@ func (s *Server) handleTestResponseStringInt64ArrayArrayRequest(args [0]string, 
 	var response [][]int64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringInt64ArrayArray",
-			OperationID:   "test_response_string_int64_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringInt64ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_int64_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -91887,12 +92774,13 @@ func (s *Server) handleTestResponseStringInt64NullableRequest(args [0]string, ar
 	var response NilStringInt64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringInt64Nullable",
-			OperationID:   "test_response_string_int64_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringInt64Nullable",
+			OperationSummary: "",
+			OperationID:      "test_response_string_int64_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -91990,12 +92878,13 @@ func (s *Server) handleTestResponseStringInt64NullableArrayRequest(args [0]strin
 	var response []NilStringInt64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringInt64NullableArray",
-			OperationID:   "test_response_string_int64_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringInt64NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_int64_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -92093,12 +92982,13 @@ func (s *Server) handleTestResponseStringInt64NullableArrayArrayRequest(args [0]
 	var response [][]NilStringInt64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringInt64NullableArrayArray",
-			OperationID:   "test_response_string_int64_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringInt64NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_int64_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -92196,12 +93086,13 @@ func (s *Server) handleTestResponseStringInt8Request(args [0]string, argsEscaped
 	var response int8
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringInt8",
-			OperationID:   "test_response_string_int8",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringInt8",
+			OperationSummary: "",
+			OperationID:      "test_response_string_int8",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -92299,12 +93190,13 @@ func (s *Server) handleTestResponseStringInt8ArrayRequest(args [0]string, argsEs
 	var response []int8
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringInt8Array",
-			OperationID:   "test_response_string_int8_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringInt8Array",
+			OperationSummary: "",
+			OperationID:      "test_response_string_int8_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -92402,12 +93294,13 @@ func (s *Server) handleTestResponseStringInt8ArrayArrayRequest(args [0]string, a
 	var response [][]int8
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringInt8ArrayArray",
-			OperationID:   "test_response_string_int8_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringInt8ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_int8_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -92505,12 +93398,13 @@ func (s *Server) handleTestResponseStringInt8NullableRequest(args [0]string, arg
 	var response NilInt8
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringInt8Nullable",
-			OperationID:   "test_response_string_int8_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringInt8Nullable",
+			OperationSummary: "",
+			OperationID:      "test_response_string_int8_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -92608,12 +93502,13 @@ func (s *Server) handleTestResponseStringInt8NullableArrayRequest(args [0]string
 	var response []NilInt8
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringInt8NullableArray",
-			OperationID:   "test_response_string_int8_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringInt8NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_int8_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -92711,12 +93606,13 @@ func (s *Server) handleTestResponseStringInt8NullableArrayArrayRequest(args [0]s
 	var response [][]NilInt8
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringInt8NullableArrayArray",
-			OperationID:   "test_response_string_int8_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringInt8NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_int8_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -92814,12 +93710,13 @@ func (s *Server) handleTestResponseStringIntArrayRequest(args [0]string, argsEsc
 	var response []int
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringIntArray",
-			OperationID:   "test_response_string_int_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringIntArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_int_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -92917,12 +93814,13 @@ func (s *Server) handleTestResponseStringIntArrayArrayRequest(args [0]string, ar
 	var response [][]int
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringIntArrayArray",
-			OperationID:   "test_response_string_int_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringIntArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_int_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -93020,12 +93918,13 @@ func (s *Server) handleTestResponseStringIntNullableRequest(args [0]string, args
 	var response NilInt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringIntNullable",
-			OperationID:   "test_response_string_int_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringIntNullable",
+			OperationSummary: "",
+			OperationID:      "test_response_string_int_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -93123,12 +94022,13 @@ func (s *Server) handleTestResponseStringIntNullableArrayRequest(args [0]string,
 	var response []NilInt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringIntNullableArray",
-			OperationID:   "test_response_string_int_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringIntNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_int_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -93226,12 +94126,13 @@ func (s *Server) handleTestResponseStringIntNullableArrayArrayRequest(args [0]st
 	var response [][]NilInt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringIntNullableArrayArray",
-			OperationID:   "test_response_string_int_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringIntNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_int_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -93329,12 +94230,13 @@ func (s *Server) handleTestResponseStringIpv4Request(args [0]string, argsEscaped
 	var response netip.Addr
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringIpv4",
-			OperationID:   "test_response_string_ipv4",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringIpv4",
+			OperationSummary: "",
+			OperationID:      "test_response_string_ipv4",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -93432,12 +94334,13 @@ func (s *Server) handleTestResponseStringIpv4ArrayRequest(args [0]string, argsEs
 	var response []netip.Addr
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringIpv4Array",
-			OperationID:   "test_response_string_ipv4_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringIpv4Array",
+			OperationSummary: "",
+			OperationID:      "test_response_string_ipv4_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -93535,12 +94438,13 @@ func (s *Server) handleTestResponseStringIpv4ArrayArrayRequest(args [0]string, a
 	var response [][]netip.Addr
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringIpv4ArrayArray",
-			OperationID:   "test_response_string_ipv4_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringIpv4ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_ipv4_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -93638,12 +94542,13 @@ func (s *Server) handleTestResponseStringIpv4NullableRequest(args [0]string, arg
 	var response NilIPv4
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringIpv4Nullable",
-			OperationID:   "test_response_string_ipv4_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringIpv4Nullable",
+			OperationSummary: "",
+			OperationID:      "test_response_string_ipv4_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -93741,12 +94646,13 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayRequest(args [0]string
 	var response []NilIPv4
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringIpv4NullableArray",
-			OperationID:   "test_response_string_ipv4_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringIpv4NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_ipv4_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -93844,12 +94750,13 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayArrayRequest(args [0]s
 	var response [][]NilIPv4
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringIpv4NullableArrayArray",
-			OperationID:   "test_response_string_ipv4_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringIpv4NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_ipv4_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -93947,12 +94854,13 @@ func (s *Server) handleTestResponseStringIpv6Request(args [0]string, argsEscaped
 	var response netip.Addr
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringIpv6",
-			OperationID:   "test_response_string_ipv6",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringIpv6",
+			OperationSummary: "",
+			OperationID:      "test_response_string_ipv6",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -94050,12 +94958,13 @@ func (s *Server) handleTestResponseStringIpv6ArrayRequest(args [0]string, argsEs
 	var response []netip.Addr
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringIpv6Array",
-			OperationID:   "test_response_string_ipv6_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringIpv6Array",
+			OperationSummary: "",
+			OperationID:      "test_response_string_ipv6_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -94153,12 +95062,13 @@ func (s *Server) handleTestResponseStringIpv6ArrayArrayRequest(args [0]string, a
 	var response [][]netip.Addr
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringIpv6ArrayArray",
-			OperationID:   "test_response_string_ipv6_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringIpv6ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_ipv6_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -94256,12 +95166,13 @@ func (s *Server) handleTestResponseStringIpv6NullableRequest(args [0]string, arg
 	var response NilIPv6
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringIpv6Nullable",
-			OperationID:   "test_response_string_ipv6_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringIpv6Nullable",
+			OperationSummary: "",
+			OperationID:      "test_response_string_ipv6_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -94359,12 +95270,13 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayRequest(args [0]string
 	var response []NilIPv6
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringIpv6NullableArray",
-			OperationID:   "test_response_string_ipv6_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringIpv6NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_ipv6_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -94462,12 +95374,13 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayArrayRequest(args [0]s
 	var response [][]NilIPv6
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringIpv6NullableArrayArray",
-			OperationID:   "test_response_string_ipv6_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringIpv6NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_ipv6_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -94565,12 +95478,13 @@ func (s *Server) handleTestResponseStringNullableRequest(args [0]string, argsEsc
 	var response NilString
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringNullable",
-			OperationID:   "test_response_string_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringNullable",
+			OperationSummary: "",
+			OperationID:      "test_response_string_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -94668,12 +95582,13 @@ func (s *Server) handleTestResponseStringNullableArrayRequest(args [0]string, ar
 	var response []NilString
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringNullableArray",
-			OperationID:   "test_response_string_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -94771,12 +95686,13 @@ func (s *Server) handleTestResponseStringNullableArrayArrayRequest(args [0]strin
 	var response [][]NilString
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringNullableArrayArray",
-			OperationID:   "test_response_string_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -94874,12 +95790,13 @@ func (s *Server) handleTestResponseStringPasswordRequest(args [0]string, argsEsc
 	var response string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringPassword",
-			OperationID:   "test_response_string_password",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringPassword",
+			OperationSummary: "",
+			OperationID:      "test_response_string_password",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -94977,12 +95894,13 @@ func (s *Server) handleTestResponseStringPasswordArrayRequest(args [0]string, ar
 	var response []string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringPasswordArray",
-			OperationID:   "test_response_string_password_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringPasswordArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_password_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -95080,12 +95998,13 @@ func (s *Server) handleTestResponseStringPasswordArrayArrayRequest(args [0]strin
 	var response [][]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringPasswordArrayArray",
-			OperationID:   "test_response_string_password_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringPasswordArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_password_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -95183,12 +96102,13 @@ func (s *Server) handleTestResponseStringPasswordNullableRequest(args [0]string,
 	var response NilString
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringPasswordNullable",
-			OperationID:   "test_response_string_password_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringPasswordNullable",
+			OperationSummary: "",
+			OperationID:      "test_response_string_password_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -95286,12 +96206,13 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayRequest(args [0]st
 	var response []NilString
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringPasswordNullableArray",
-			OperationID:   "test_response_string_password_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringPasswordNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_password_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -95389,12 +96310,13 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayArrayRequest(args 
 	var response [][]NilString
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringPasswordNullableArrayArray",
-			OperationID:   "test_response_string_password_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringPasswordNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_password_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -95492,12 +96414,13 @@ func (s *Server) handleTestResponseStringTimeRequest(args [0]string, argsEscaped
 	var response time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringTime",
-			OperationID:   "test_response_string_time",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringTime",
+			OperationSummary: "",
+			OperationID:      "test_response_string_time",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -95595,12 +96518,13 @@ func (s *Server) handleTestResponseStringTimeArrayRequest(args [0]string, argsEs
 	var response []time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringTimeArray",
-			OperationID:   "test_response_string_time_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringTimeArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_time_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -95698,12 +96622,13 @@ func (s *Server) handleTestResponseStringTimeArrayArrayRequest(args [0]string, a
 	var response [][]time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringTimeArrayArray",
-			OperationID:   "test_response_string_time_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringTimeArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_time_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -95801,12 +96726,13 @@ func (s *Server) handleTestResponseStringTimeNullableRequest(args [0]string, arg
 	var response NilTime
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringTimeNullable",
-			OperationID:   "test_response_string_time_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringTimeNullable",
+			OperationSummary: "",
+			OperationID:      "test_response_string_time_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -95904,12 +96830,13 @@ func (s *Server) handleTestResponseStringTimeNullableArrayRequest(args [0]string
 	var response []NilTime
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringTimeNullableArray",
-			OperationID:   "test_response_string_time_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringTimeNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_time_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -96007,12 +96934,13 @@ func (s *Server) handleTestResponseStringTimeNullableArrayArrayRequest(args [0]s
 	var response [][]NilTime
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringTimeNullableArrayArray",
-			OperationID:   "test_response_string_time_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringTimeNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_time_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -96110,12 +97038,13 @@ func (s *Server) handleTestResponseStringURIRequest(args [0]string, argsEscaped 
 	var response url.URL
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringURI",
-			OperationID:   "test_response_string_uri",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringURI",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uri",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -96213,12 +97142,13 @@ func (s *Server) handleTestResponseStringURIArrayRequest(args [0]string, argsEsc
 	var response []url.URL
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringURIArray",
-			OperationID:   "test_response_string_uri_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringURIArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uri_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -96316,12 +97246,13 @@ func (s *Server) handleTestResponseStringURIArrayArrayRequest(args [0]string, ar
 	var response [][]url.URL
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringURIArrayArray",
-			OperationID:   "test_response_string_uri_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringURIArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uri_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -96419,12 +97350,13 @@ func (s *Server) handleTestResponseStringURINullableRequest(args [0]string, args
 	var response NilURI
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringURINullable",
-			OperationID:   "test_response_string_uri_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringURINullable",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uri_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -96522,12 +97454,13 @@ func (s *Server) handleTestResponseStringURINullableArrayRequest(args [0]string,
 	var response []NilURI
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringURINullableArray",
-			OperationID:   "test_response_string_uri_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringURINullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uri_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -96625,12 +97558,13 @@ func (s *Server) handleTestResponseStringURINullableArrayArrayRequest(args [0]st
 	var response [][]NilURI
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringURINullableArrayArray",
-			OperationID:   "test_response_string_uri_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringURINullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uri_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -96728,12 +97662,13 @@ func (s *Server) handleTestResponseStringUUIDRequest(args [0]string, argsEscaped
 	var response uuid.UUID
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUUID",
-			OperationID:   "test_response_string_uuid",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUUID",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uuid",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -96831,12 +97766,13 @@ func (s *Server) handleTestResponseStringUUIDArrayRequest(args [0]string, argsEs
 	var response []uuid.UUID
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUUIDArray",
-			OperationID:   "test_response_string_uuid_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUUIDArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uuid_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -96934,12 +97870,13 @@ func (s *Server) handleTestResponseStringUUIDArrayArrayRequest(args [0]string, a
 	var response [][]uuid.UUID
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUUIDArrayArray",
-			OperationID:   "test_response_string_uuid_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUUIDArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uuid_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -97037,12 +97974,13 @@ func (s *Server) handleTestResponseStringUUIDNullableRequest(args [0]string, arg
 	var response NilUUID
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUUIDNullable",
-			OperationID:   "test_response_string_uuid_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUUIDNullable",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uuid_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -97140,12 +98078,13 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayRequest(args [0]string
 	var response []NilUUID
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUUIDNullableArray",
-			OperationID:   "test_response_string_uuid_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUUIDNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uuid_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -97243,12 +98182,13 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayArrayRequest(args [0]s
 	var response [][]NilUUID
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUUIDNullableArrayArray",
-			OperationID:   "test_response_string_uuid_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUUIDNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uuid_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -97346,12 +98286,13 @@ func (s *Server) handleTestResponseStringUintRequest(args [0]string, argsEscaped
 	var response uint
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUint",
-			OperationID:   "test_response_string_uint",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUint",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uint",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -97449,12 +98390,13 @@ func (s *Server) handleTestResponseStringUint16Request(args [0]string, argsEscap
 	var response uint16
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUint16",
-			OperationID:   "test_response_string_uint16",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUint16",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uint16",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -97552,12 +98494,13 @@ func (s *Server) handleTestResponseStringUint16ArrayRequest(args [0]string, args
 	var response []uint16
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUint16Array",
-			OperationID:   "test_response_string_uint16_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUint16Array",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uint16_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -97655,12 +98598,13 @@ func (s *Server) handleTestResponseStringUint16ArrayArrayRequest(args [0]string,
 	var response [][]uint16
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUint16ArrayArray",
-			OperationID:   "test_response_string_uint16_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUint16ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uint16_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -97758,12 +98702,13 @@ func (s *Server) handleTestResponseStringUint16NullableRequest(args [0]string, a
 	var response NilUint16
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUint16Nullable",
-			OperationID:   "test_response_string_uint16_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUint16Nullable",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uint16_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -97861,12 +98806,13 @@ func (s *Server) handleTestResponseStringUint16NullableArrayRequest(args [0]stri
 	var response []NilUint16
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUint16NullableArray",
-			OperationID:   "test_response_string_uint16_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUint16NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uint16_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -97964,12 +98910,13 @@ func (s *Server) handleTestResponseStringUint16NullableArrayArrayRequest(args [0
 	var response [][]NilUint16
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUint16NullableArrayArray",
-			OperationID:   "test_response_string_uint16_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUint16NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uint16_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -98067,12 +99014,13 @@ func (s *Server) handleTestResponseStringUint32Request(args [0]string, argsEscap
 	var response uint32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUint32",
-			OperationID:   "test_response_string_uint32",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUint32",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uint32",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -98170,12 +99118,13 @@ func (s *Server) handleTestResponseStringUint32ArrayRequest(args [0]string, args
 	var response []uint32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUint32Array",
-			OperationID:   "test_response_string_uint32_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUint32Array",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uint32_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -98273,12 +99222,13 @@ func (s *Server) handleTestResponseStringUint32ArrayArrayRequest(args [0]string,
 	var response [][]uint32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUint32ArrayArray",
-			OperationID:   "test_response_string_uint32_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUint32ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uint32_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -98376,12 +99326,13 @@ func (s *Server) handleTestResponseStringUint32NullableRequest(args [0]string, a
 	var response NilUint32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUint32Nullable",
-			OperationID:   "test_response_string_uint32_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUint32Nullable",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uint32_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -98479,12 +99430,13 @@ func (s *Server) handleTestResponseStringUint32NullableArrayRequest(args [0]stri
 	var response []NilUint32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUint32NullableArray",
-			OperationID:   "test_response_string_uint32_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUint32NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uint32_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -98582,12 +99534,13 @@ func (s *Server) handleTestResponseStringUint32NullableArrayArrayRequest(args [0
 	var response [][]NilUint32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUint32NullableArrayArray",
-			OperationID:   "test_response_string_uint32_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUint32NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uint32_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -98685,12 +99638,13 @@ func (s *Server) handleTestResponseStringUint64Request(args [0]string, argsEscap
 	var response uint64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUint64",
-			OperationID:   "test_response_string_uint64",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUint64",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uint64",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -98788,12 +99742,13 @@ func (s *Server) handleTestResponseStringUint64ArrayRequest(args [0]string, args
 	var response []uint64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUint64Array",
-			OperationID:   "test_response_string_uint64_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUint64Array",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uint64_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -98891,12 +99846,13 @@ func (s *Server) handleTestResponseStringUint64ArrayArrayRequest(args [0]string,
 	var response [][]uint64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUint64ArrayArray",
-			OperationID:   "test_response_string_uint64_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUint64ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uint64_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -98994,12 +99950,13 @@ func (s *Server) handleTestResponseStringUint64NullableRequest(args [0]string, a
 	var response NilUint64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUint64Nullable",
-			OperationID:   "test_response_string_uint64_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUint64Nullable",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uint64_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -99097,12 +100054,13 @@ func (s *Server) handleTestResponseStringUint64NullableArrayRequest(args [0]stri
 	var response []NilUint64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUint64NullableArray",
-			OperationID:   "test_response_string_uint64_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUint64NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uint64_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -99200,12 +100158,13 @@ func (s *Server) handleTestResponseStringUint64NullableArrayArrayRequest(args [0
 	var response [][]NilUint64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUint64NullableArrayArray",
-			OperationID:   "test_response_string_uint64_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUint64NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uint64_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -99303,12 +100262,13 @@ func (s *Server) handleTestResponseStringUint8Request(args [0]string, argsEscape
 	var response uint8
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUint8",
-			OperationID:   "test_response_string_uint8",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUint8",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uint8",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -99406,12 +100366,13 @@ func (s *Server) handleTestResponseStringUint8ArrayRequest(args [0]string, argsE
 	var response []uint8
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUint8Array",
-			OperationID:   "test_response_string_uint8_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUint8Array",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uint8_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -99509,12 +100470,13 @@ func (s *Server) handleTestResponseStringUint8ArrayArrayRequest(args [0]string, 
 	var response [][]uint8
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUint8ArrayArray",
-			OperationID:   "test_response_string_uint8_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUint8ArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uint8_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -99612,12 +100574,13 @@ func (s *Server) handleTestResponseStringUint8NullableRequest(args [0]string, ar
 	var response NilUint8
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUint8Nullable",
-			OperationID:   "test_response_string_uint8_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUint8Nullable",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uint8_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -99715,12 +100678,13 @@ func (s *Server) handleTestResponseStringUint8NullableArrayRequest(args [0]strin
 	var response []NilUint8
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUint8NullableArray",
-			OperationID:   "test_response_string_uint8_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUint8NullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uint8_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -99818,12 +100782,13 @@ func (s *Server) handleTestResponseStringUint8NullableArrayArrayRequest(args [0]
 	var response [][]NilUint8
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUint8NullableArrayArray",
-			OperationID:   "test_response_string_uint8_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUint8NullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uint8_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -99921,12 +100886,13 @@ func (s *Server) handleTestResponseStringUintArrayRequest(args [0]string, argsEs
 	var response []uint
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUintArray",
-			OperationID:   "test_response_string_uint_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUintArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uint_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -100024,12 +100990,13 @@ func (s *Server) handleTestResponseStringUintArrayArrayRequest(args [0]string, a
 	var response [][]uint
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUintArrayArray",
-			OperationID:   "test_response_string_uint_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUintArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uint_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -100127,12 +101094,13 @@ func (s *Server) handleTestResponseStringUintNullableRequest(args [0]string, arg
 	var response NilUint
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUintNullable",
-			OperationID:   "test_response_string_uint_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUintNullable",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uint_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -100230,12 +101198,13 @@ func (s *Server) handleTestResponseStringUintNullableArrayRequest(args [0]string
 	var response []NilUint
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUintNullableArray",
-			OperationID:   "test_response_string_uint_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUintNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uint_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -100333,12 +101302,13 @@ func (s *Server) handleTestResponseStringUintNullableArrayArrayRequest(args [0]s
 	var response [][]NilUint
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUintNullableArrayArray",
-			OperationID:   "test_response_string_uint_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUintNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_uint_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -100436,12 +101406,13 @@ func (s *Server) handleTestResponseStringUnixRequest(args [0]string, argsEscaped
 	var response time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUnix",
-			OperationID:   "test_response_string_unix",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUnix",
+			OperationSummary: "",
+			OperationID:      "test_response_string_unix",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -100539,12 +101510,13 @@ func (s *Server) handleTestResponseStringUnixArrayRequest(args [0]string, argsEs
 	var response []time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUnixArray",
-			OperationID:   "test_response_string_unix_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUnixArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_unix_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -100642,12 +101614,13 @@ func (s *Server) handleTestResponseStringUnixArrayArrayRequest(args [0]string, a
 	var response [][]time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUnixArrayArray",
-			OperationID:   "test_response_string_unix_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUnixArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_unix_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -100745,12 +101718,13 @@ func (s *Server) handleTestResponseStringUnixMicroRequest(args [0]string, argsEs
 	var response time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUnixMicro",
-			OperationID:   "test_response_string_unix-micro",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUnixMicro",
+			OperationSummary: "",
+			OperationID:      "test_response_string_unix-micro",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -100848,12 +101822,13 @@ func (s *Server) handleTestResponseStringUnixMicroArrayRequest(args [0]string, a
 	var response []time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUnixMicroArray",
-			OperationID:   "test_response_string_unix-micro_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUnixMicroArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_unix-micro_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -100951,12 +101926,13 @@ func (s *Server) handleTestResponseStringUnixMicroArrayArrayRequest(args [0]stri
 	var response [][]time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUnixMicroArrayArray",
-			OperationID:   "test_response_string_unix-micro_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUnixMicroArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_unix-micro_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -101054,12 +102030,13 @@ func (s *Server) handleTestResponseStringUnixMicroNullableRequest(args [0]string
 	var response NilStringUnixMicro
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUnixMicroNullable",
-			OperationID:   "test_response_string_unix-micro_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUnixMicroNullable",
+			OperationSummary: "",
+			OperationID:      "test_response_string_unix-micro_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -101157,12 +102134,13 @@ func (s *Server) handleTestResponseStringUnixMicroNullableArrayRequest(args [0]s
 	var response []NilStringUnixMicro
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUnixMicroNullableArray",
-			OperationID:   "test_response_string_unix-micro_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUnixMicroNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_unix-micro_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -101260,12 +102238,13 @@ func (s *Server) handleTestResponseStringUnixMicroNullableArrayArrayRequest(args
 	var response [][]NilStringUnixMicro
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUnixMicroNullableArrayArray",
-			OperationID:   "test_response_string_unix-micro_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUnixMicroNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_unix-micro_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -101363,12 +102342,13 @@ func (s *Server) handleTestResponseStringUnixMilliRequest(args [0]string, argsEs
 	var response time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUnixMilli",
-			OperationID:   "test_response_string_unix-milli",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUnixMilli",
+			OperationSummary: "",
+			OperationID:      "test_response_string_unix-milli",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -101466,12 +102446,13 @@ func (s *Server) handleTestResponseStringUnixMilliArrayRequest(args [0]string, a
 	var response []time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUnixMilliArray",
-			OperationID:   "test_response_string_unix-milli_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUnixMilliArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_unix-milli_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -101569,12 +102550,13 @@ func (s *Server) handleTestResponseStringUnixMilliArrayArrayRequest(args [0]stri
 	var response [][]time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUnixMilliArrayArray",
-			OperationID:   "test_response_string_unix-milli_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUnixMilliArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_unix-milli_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -101672,12 +102654,13 @@ func (s *Server) handleTestResponseStringUnixMilliNullableRequest(args [0]string
 	var response NilStringUnixMilli
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUnixMilliNullable",
-			OperationID:   "test_response_string_unix-milli_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUnixMilliNullable",
+			OperationSummary: "",
+			OperationID:      "test_response_string_unix-milli_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -101775,12 +102758,13 @@ func (s *Server) handleTestResponseStringUnixMilliNullableArrayRequest(args [0]s
 	var response []NilStringUnixMilli
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUnixMilliNullableArray",
-			OperationID:   "test_response_string_unix-milli_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUnixMilliNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_unix-milli_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -101878,12 +102862,13 @@ func (s *Server) handleTestResponseStringUnixMilliNullableArrayArrayRequest(args
 	var response [][]NilStringUnixMilli
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUnixMilliNullableArrayArray",
-			OperationID:   "test_response_string_unix-milli_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUnixMilliNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_unix-milli_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -101981,12 +102966,13 @@ func (s *Server) handleTestResponseStringUnixNanoRequest(args [0]string, argsEsc
 	var response time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUnixNano",
-			OperationID:   "test_response_string_unix-nano",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUnixNano",
+			OperationSummary: "",
+			OperationID:      "test_response_string_unix-nano",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -102084,12 +103070,13 @@ func (s *Server) handleTestResponseStringUnixNanoArrayRequest(args [0]string, ar
 	var response []time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUnixNanoArray",
-			OperationID:   "test_response_string_unix-nano_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUnixNanoArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_unix-nano_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -102187,12 +103174,13 @@ func (s *Server) handleTestResponseStringUnixNanoArrayArrayRequest(args [0]strin
 	var response [][]time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUnixNanoArrayArray",
-			OperationID:   "test_response_string_unix-nano_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUnixNanoArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_unix-nano_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -102290,12 +103278,13 @@ func (s *Server) handleTestResponseStringUnixNanoNullableRequest(args [0]string,
 	var response NilStringUnixNano
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUnixNanoNullable",
-			OperationID:   "test_response_string_unix-nano_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUnixNanoNullable",
+			OperationSummary: "",
+			OperationID:      "test_response_string_unix-nano_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -102393,12 +103382,13 @@ func (s *Server) handleTestResponseStringUnixNanoNullableArrayRequest(args [0]st
 	var response []NilStringUnixNano
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUnixNanoNullableArray",
-			OperationID:   "test_response_string_unix-nano_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUnixNanoNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_unix-nano_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -102496,12 +103486,13 @@ func (s *Server) handleTestResponseStringUnixNanoNullableArrayArrayRequest(args 
 	var response [][]NilStringUnixNano
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUnixNanoNullableArrayArray",
-			OperationID:   "test_response_string_unix-nano_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUnixNanoNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_unix-nano_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -102599,12 +103590,13 @@ func (s *Server) handleTestResponseStringUnixNullableRequest(args [0]string, arg
 	var response NilStringUnixSeconds
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUnixNullable",
-			OperationID:   "test_response_string_unix_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUnixNullable",
+			OperationSummary: "",
+			OperationID:      "test_response_string_unix_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -102702,12 +103694,13 @@ func (s *Server) handleTestResponseStringUnixNullableArrayRequest(args [0]string
 	var response []NilStringUnixSeconds
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUnixNullableArray",
-			OperationID:   "test_response_string_unix_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUnixNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_unix_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -102805,12 +103798,13 @@ func (s *Server) handleTestResponseStringUnixNullableArrayArrayRequest(args [0]s
 	var response [][]NilStringUnixSeconds
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUnixNullableArrayArray",
-			OperationID:   "test_response_string_unix_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUnixNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_unix_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -102908,12 +103902,13 @@ func (s *Server) handleTestResponseStringUnixSecondsRequest(args [0]string, args
 	var response time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUnixSeconds",
-			OperationID:   "test_response_string_unix-seconds",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUnixSeconds",
+			OperationSummary: "",
+			OperationID:      "test_response_string_unix-seconds",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -103011,12 +104006,13 @@ func (s *Server) handleTestResponseStringUnixSecondsArrayRequest(args [0]string,
 	var response []time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUnixSecondsArray",
-			OperationID:   "test_response_string_unix-seconds_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUnixSecondsArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_unix-seconds_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -103114,12 +104110,13 @@ func (s *Server) handleTestResponseStringUnixSecondsArrayArrayRequest(args [0]st
 	var response [][]time.Time
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUnixSecondsArrayArray",
-			OperationID:   "test_response_string_unix-seconds_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUnixSecondsArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_unix-seconds_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -103217,12 +104214,13 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableRequest(args [0]stri
 	var response NilStringUnixSeconds
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUnixSecondsNullable",
-			OperationID:   "test_response_string_unix-seconds_nullable",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUnixSecondsNullable",
+			OperationSummary: "",
+			OperationID:      "test_response_string_unix-seconds_nullable",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -103320,12 +104318,13 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableArrayRequest(args [0
 	var response []NilStringUnixSeconds
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUnixSecondsNullableArray",
-			OperationID:   "test_response_string_unix-seconds_nullable_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUnixSecondsNullableArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_unix-seconds_nullable_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -103423,12 +104422,13 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableArrayArrayRequest(ar
 	var response [][]NilStringUnixSeconds
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestResponseStringUnixSecondsNullableArrayArray",
-			OperationID:   "test_response_string_unix-seconds_nullable_array_array",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestResponseStringUnixSecondsNullableArrayArray",
+			OperationSummary: "",
+			OperationID:      "test_response_string_unix-seconds_nullable_array_array",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (

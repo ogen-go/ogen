@@ -288,6 +288,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 // Route is route object.
 type Route struct {
 	name        string
+	summary     string
 	operationID string
 	pathPattern string
 	count       int
@@ -299,6 +300,11 @@ type Route struct {
 // It is guaranteed to be unique and not empty.
 func (r Route) Name() string {
 	return r.name
+}
+
+// Summary returns OpenAPI summary.
+func (r Route) Summary() string {
+	return r.summary
 }
 
 // OperationID returns OpenAPI operationId.
@@ -388,6 +394,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						case "GET":
 							// Leaf: ComplicatedParameterNameGet
 							r.name = "ComplicatedParameterNameGet"
+							r.summary = ""
 							r.operationID = ""
 							r.pathPattern = "/complicatedParameterName"
 							r.args = args
@@ -414,6 +421,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						case "GET":
 							// Leaf: ContentParameters
 							r.name = "ContentParameters"
+							r.summary = ""
 							r.operationID = "contentParameters"
 							r.pathPattern = "/contentParameters/{path}"
 							r.args = args
@@ -435,6 +443,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						case "GET":
 							// Leaf: CookieParameter
 							r.name = "CookieParameter"
+							r.summary = ""
 							r.operationID = "cookieParameter"
 							r.pathPattern = "/cookieParameter"
 							r.args = args
@@ -457,6 +466,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					case "GET":
 						// Leaf: HeaderParameter
 						r.name = "HeaderParameter"
+						r.summary = ""
 						r.operationID = "headerParameter"
 						r.pathPattern = "/headerParameter"
 						r.args = args
@@ -489,6 +499,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						case "GET":
 							// Leaf: ObjectCookieParameter
 							r.name = "ObjectCookieParameter"
+							r.summary = ""
 							r.operationID = "objectCookieParameter"
 							r.pathPattern = "/objectCookieParameter"
 							r.args = args
@@ -510,6 +521,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						case "GET":
 							// Leaf: ObjectQueryParameter
 							r.name = "ObjectQueryParameter"
+							r.summary = ""
 							r.operationID = "objectQueryParameter"
 							r.pathPattern = "/objectQueryParameter"
 							r.args = args
@@ -537,6 +549,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					case "GET":
 						// Leaf: PathParameter
 						r.name = "PathParameter"
+						r.summary = ""
 						r.operationID = "pathParameter"
 						r.pathPattern = "/pathParameter/{value}"
 						r.args = args
@@ -574,6 +587,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						case "GET":
 							// Leaf: SameName
 							r.name = "SameName"
+							r.summary = "parameters with different location, but with the same name"
 							r.operationID = "sameName"
 							r.pathPattern = "/same_name/{param}"
 							r.args = args
@@ -595,6 +609,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						case "GET":
 							// Leaf: SimilarNames
 							r.name = "SimilarNames"
+							r.summary = "parameters with different location, but with similar names"
 							r.operationID = "similarNames"
 							r.pathPattern = "/similarNames"
 							r.args = args

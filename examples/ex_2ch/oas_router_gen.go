@@ -569,6 +569,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 // Route is route object.
 type Route struct {
 	name        string
+	summary     string
 	operationID string
 	pathPattern string
 	count       int
@@ -580,6 +581,11 @@ type Route struct {
 // It is guaranteed to be unique and not empty.
 func (r Route) Name() string {
 	return r.name
+}
+
+// Summary returns OpenAPI summary.
+func (r Route) Summary() string {
+	return r.summary
 }
 
 // OperationID returns OpenAPI operationId.
@@ -691,6 +697,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "GET":
 									// Leaf: APICaptcha2chcaptchaIDGet
 									r.name = "APICaptcha2chcaptchaIDGet"
+									r.summary = "Получение ид для использования 2chcaptcha."
 									r.operationID = ""
 									r.pathPattern = "/api/captcha/2chcaptcha/id"
 									r.args = args
@@ -712,6 +719,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "GET":
 									// Leaf: APICaptcha2chcaptchaShowGet
 									r.name = "APICaptcha2chcaptchaShowGet"
+									r.summary = "Отображение 2chcaptcha по id."
 									r.operationID = ""
 									r.pathPattern = "/api/captcha/2chcaptcha/show"
 									r.args = args
@@ -739,6 +747,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "GET":
 								// Leaf: APICaptchaAppIDPublicKeyGet
 								r.name = "APICaptchaAppIDPublicKeyGet"
+								r.summary = "Получение app_response_id для отправки поста."
 								r.operationID = ""
 								r.pathPattern = "/api/captcha/app/id/{public_key}"
 								r.args = args
@@ -771,6 +780,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "GET":
 									// Leaf: APICaptchaInvisibleRecaptchaIDGet
 									r.name = "APICaptchaInvisibleRecaptchaIDGet"
+									r.summary = "Получение публичного ключа invisible recaptcha."
 									r.operationID = ""
 									r.pathPattern = "/api/captcha/invisible_recaptcha/id"
 									r.args = args
@@ -792,6 +802,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "GET":
 									// Leaf: APICaptchaInvisibleRecaptchaMobileGet
 									r.name = "APICaptchaInvisibleRecaptchaMobileGet"
+									r.summary = "Получение html страницы для решения капчи, CORS отключён."
 									r.operationID = ""
 									r.pathPattern = "/api/captcha/invisible_recaptcha/mobile"
 									r.args = args
@@ -825,6 +836,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "GET":
 									// Leaf: APICaptchaRecaptchaIDGet
 									r.name = "APICaptchaRecaptchaIDGet"
+									r.summary = "Получение публичного ключа recaptcha v2."
 									r.operationID = ""
 									r.pathPattern = "/api/captcha/recaptcha/id"
 									r.args = args
@@ -846,6 +858,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "GET":
 									// Leaf: APICaptchaRecaptchaMobileGet
 									r.name = "APICaptchaRecaptchaMobileGet"
+									r.summary = "Получение html страницы для решения капчи, CORS отключён."
 									r.operationID = ""
 									r.pathPattern = "/api/captcha/recaptcha/mobile"
 									r.args = args
@@ -869,6 +882,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						case "GET":
 							// Leaf: APIDislikeGet
 							r.name = "APIDislikeGet"
+							r.summary = "Добавление дизлайка на пост."
 							r.operationID = ""
 							r.pathPattern = "/api/dislike"
 							r.args = args
@@ -890,6 +904,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						case "GET":
 							// Leaf: APILikeGet
 							r.name = "APILikeGet"
+							r.summary = "Добавление лайка на пост."
 							r.operationID = ""
 							r.pathPattern = "/api/like"
 							r.args = args
@@ -967,6 +982,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "GET":
 										// Leaf: APIMobileV2AfterBoardThreadNumGet
 										r.name = "APIMobileV2AfterBoardThreadNumGet"
+										r.summary = "Получение постов в треде >= указанного. Не рекомендуется использовать для получения треда целиком, только для проверки новых постов."
 										r.operationID = ""
 										r.pathPattern = "/api/mobile/v2/after/{board}/{thread}/{num}"
 										r.args = args
@@ -990,6 +1006,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "GET":
 								// Leaf: APIMobileV2BoardsGet
 								r.name = "APIMobileV2BoardsGet"
+								r.summary = "Получение списка досок и их настроек."
 								r.operationID = ""
 								r.pathPattern = "/api/mobile/v2/boards"
 								r.args = args
@@ -1036,6 +1053,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "GET":
 									// Leaf: APIMobileV2InfoBoardThreadGet
 									r.name = "APIMobileV2InfoBoardThreadGet"
+									r.summary = "Получение информации о треде."
 									r.operationID = ""
 									r.pathPattern = "/api/mobile/v2/info/{board}/{thread}"
 									r.args = args
@@ -1083,6 +1101,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "GET":
 									// Leaf: APIMobileV2PostBoardNumGet
 									r.name = "APIMobileV2PostBoardNumGet"
+									r.summary = "Получение информации о посте."
 									r.operationID = ""
 									r.pathPattern = "/api/mobile/v2/post/{board}/{num}"
 									r.args = args
@@ -1129,6 +1148,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "POST":
 								// Leaf: UserPassloginPost
 								r.name = "UserPassloginPost"
+								r.summary = "Авторизация пасскода."
 								r.operationID = ""
 								r.pathPattern = "/user/passlogin"
 								r.args = args
@@ -1150,6 +1170,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "POST":
 								// Leaf: UserPostingPost
 								r.name = "UserPostingPost"
+								r.summary = "Создание нового поста или треда."
 								r.operationID = ""
 								r.pathPattern = "/user/posting"
 								r.args = args
@@ -1172,6 +1193,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						case "POST":
 							// Leaf: UserReportPost
 							r.name = "UserReportPost"
+							r.summary = "Отправка жалобы."
 							r.operationID = ""
 							r.pathPattern = "/user/report"
 							r.args = args

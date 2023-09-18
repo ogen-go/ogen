@@ -61,12 +61,13 @@ func (s *Server) handleProbeLivenessRequest(args [0]string, argsEscaped bool, w 
 	var response *ProbeLivenessOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ProbeLiveness",
-			OperationID:   "probeLiveness",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "ProbeLiveness",
+			OperationSummary: "",
+			OperationID:      "probeLiveness",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (

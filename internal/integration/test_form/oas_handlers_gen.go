@@ -79,12 +79,13 @@ func (s *Server) handleOnlyFormRequest(args [0]string, argsEscaped bool, w http.
 	var response *OnlyFormOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OnlyForm",
-			OperationID:   "onlyForm",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "OnlyForm",
+			OperationSummary: "",
+			OperationID:      "onlyForm",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -182,12 +183,13 @@ func (s *Server) handleOnlyMultipartFileRequest(args [0]string, argsEscaped bool
 	var response *OnlyMultipartFileOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OnlyMultipartFile",
-			OperationID:   "onlyMultipartFile",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "OnlyMultipartFile",
+			OperationSummary: "",
+			OperationID:      "onlyMultipartFile",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -285,12 +287,13 @@ func (s *Server) handleOnlyMultipartFormRequest(args [0]string, argsEscaped bool
 	var response *OnlyMultipartFormOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OnlyMultipartForm",
-			OperationID:   "onlyMultipartForm",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "OnlyMultipartForm",
+			OperationSummary: "",
+			OperationID:      "onlyMultipartForm",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -388,12 +391,13 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, argsEscaped boo
 	var response *TestFormURLEncodedOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestFormURLEncoded",
-			OperationID:   "testFormURLEncoded",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestFormURLEncoded",
+			OperationSummary: "",
+			OperationID:      "testFormURLEncoded",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -491,12 +495,13 @@ func (s *Server) handleTestMultipartRequest(args [0]string, argsEscaped bool, w 
 	var response *TestMultipartOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestMultipart",
-			OperationID:   "testMultipart",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestMultipart",
+			OperationSummary: "",
+			OperationID:      "testMultipart",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -594,12 +599,13 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, argsEscaped bo
 	var response *TestMultipartUploadOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestMultipartUpload",
-			OperationID:   "testMultipartUpload",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestMultipartUpload",
+			OperationSummary: "",
+			OperationID:      "testMultipartUpload",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -697,12 +703,13 @@ func (s *Server) handleTestReuseFormOptionalSchemaRequest(args [0]string, argsEs
 	var response *TestReuseFormOptionalSchemaOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestReuseFormOptionalSchema",
-			OperationID:   "testReuseFormOptionalSchema",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestReuseFormOptionalSchema",
+			OperationSummary: "",
+			OperationID:      "testReuseFormOptionalSchema",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -800,12 +807,13 @@ func (s *Server) handleTestReuseFormSchemaRequest(args [0]string, argsEscaped bo
 	var response *TestReuseFormSchemaOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestReuseFormSchema",
-			OperationID:   "testReuseFormSchema",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestReuseFormSchema",
+			OperationSummary: "",
+			OperationID:      "testReuseFormSchema",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -903,12 +911,13 @@ func (s *Server) handleTestShareFormSchemaRequest(args [0]string, argsEscaped bo
 	var response *TestShareFormSchemaOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TestShareFormSchema",
-			OperationID:   "testShareFormSchema",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "TestShareFormSchema",
+			OperationSummary: "",
+			OperationID:      "testShareFormSchema",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (

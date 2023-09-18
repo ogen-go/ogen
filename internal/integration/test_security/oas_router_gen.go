@@ -122,6 +122,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 // Route is route object.
 type Route struct {
 	name        string
+	summary     string
 	operationID string
 	pathPattern string
 	count       int
@@ -133,6 +134,11 @@ type Route struct {
 // It is guaranteed to be unique and not empty.
 func (r Route) Name() string {
 	return r.name
+}
+
+// Summary returns OpenAPI summary.
+func (r Route) Summary() string {
+	return r.summary
 }
 
 // OperationID returns OpenAPI operationId.
@@ -211,6 +217,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					case "GET":
 						// Leaf: DisjointSecurity
 						r.name = "DisjointSecurity"
+						r.summary = ""
 						r.operationID = "disjointSecurity"
 						r.pathPattern = "/disjointSecurity"
 						r.args = args
@@ -232,6 +239,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					case "GET":
 						// Leaf: IntersectSecurity
 						r.name = "IntersectSecurity"
+						r.summary = ""
 						r.operationID = "intersectSecurity"
 						r.pathPattern = "/intersectSecurity"
 						r.args = args
@@ -253,6 +261,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					case "GET":
 						// Leaf: OptionalSecurity
 						r.name = "OptionalSecurity"
+						r.summary = ""
 						r.operationID = "optionalSecurity"
 						r.pathPattern = "/optionalSecurity"
 						r.args = args
