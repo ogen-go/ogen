@@ -9,7 +9,7 @@ type SecurityHandler interface {
 {{- range $name, $s := $.Securities }}
 	// Handle{{ $s.Type.Name }} handles {{ $name }} security.
 	{{- template "godoc" $s.GoDoc }}
-	Handle{{ $s.Type.Name }}(ctx context.Context, operationName string, t {{ $s.Type.Name }}) (context.Context, error)
+	Handle{{ $s.Type.Name }}(ctx context.Context, operationName string, req *http.Request, t {{ $s.Type.Name }}) (context.Context, error)
 {{- end }}
 }
 
@@ -96,7 +96,7 @@ func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationName s
 	{{- else }}
         {{ errorf "unexpected security %q:%q" $s.Kind $s.Format }}
 	{{- end }}
-	rctx, err := s.sec.Handle{{ $s.Type.Name }}(ctx, operationName, t)
+	rctx, err := s.sec.Handle{{ $s.Type.Name }}(ctx, operationName, req, t)
 	if err != nil {
 		return nil, false, err
 	}
