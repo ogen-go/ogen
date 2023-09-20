@@ -13,7 +13,7 @@ import (
 // SecurityHandler is handler for security parameters.
 type SecurityHandler interface {
 	// HandleSSOAuth handles sso_auth security.
-	HandleSSOAuth(ctx context.Context, operationName string, t SSOAuth) (context.Context, error)
+	HandleSSOAuth(ctx context.Context, operationName string, req *http.Request, t SSOAuth) (context.Context, error)
 }
 
 func findAuthorization(h http.Header, prefix string) (string, bool) {
@@ -38,7 +38,7 @@ func (s *Server) securitySSOAuth(ctx context.Context, operationName string, req 
 		return ctx, false, nil
 	}
 	t.Token = token
-	rctx, err := s.sec.HandleSSOAuth(ctx, operationName, t)
+	rctx, err := s.sec.HandleSSOAuth(ctx, operationName, req, t)
 	if err != nil {
 		return nil, false, err
 	}

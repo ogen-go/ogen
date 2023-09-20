@@ -14,7 +14,7 @@ import (
 type SecurityHandler interface {
 	// HandleBearerToken handles BearerToken security.
 	// Bearer Token authentication.
-	HandleBearerToken(ctx context.Context, operationName string, t BearerToken) (context.Context, error)
+	HandleBearerToken(ctx context.Context, operationName string, req *http.Request, t BearerToken) (context.Context, error)
 }
 
 func findAuthorization(h http.Header, prefix string) (string, bool) {
@@ -40,7 +40,7 @@ func (s *Server) securityBearerToken(ctx context.Context, operationName string, 
 		return ctx, false, nil
 	}
 	t.APIKey = value
-	rctx, err := s.sec.HandleBearerToken(ctx, operationName, t)
+	rctx, err := s.sec.HandleBearerToken(ctx, operationName, req, t)
 	if err != nil {
 		return nil, false, err
 	}

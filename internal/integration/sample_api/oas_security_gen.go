@@ -13,7 +13,7 @@ import (
 // SecurityHandler is handler for security parameters.
 type SecurityHandler interface {
 	// HandleAPIKey handles api_key security.
-	HandleAPIKey(ctx context.Context, operationName string, t APIKey) (context.Context, error)
+	HandleAPIKey(ctx context.Context, operationName string, req *http.Request, t APIKey) (context.Context, error)
 }
 
 func findAuthorization(h http.Header, prefix string) (string, bool) {
@@ -39,7 +39,7 @@ func (s *Server) securityAPIKey(ctx context.Context, operationName string, req *
 		return ctx, false, nil
 	}
 	t.APIKey = value
-	rctx, err := s.sec.HandleAPIKey(ctx, operationName, t)
+	rctx, err := s.sec.HandleAPIKey(ctx, operationName, req, t)
 	if err != nil {
 		return nil, false, err
 	}

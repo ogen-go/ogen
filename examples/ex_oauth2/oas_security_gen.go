@@ -13,7 +13,7 @@ import (
 // SecurityHandler is handler for security parameters.
 type SecurityHandler interface {
 	// HandleOAuth2 handles oauth2 security.
-	HandleOAuth2(ctx context.Context, operationName string, t OAuth2) (context.Context, error)
+	HandleOAuth2(ctx context.Context, operationName string, req *http.Request, t OAuth2) (context.Context, error)
 }
 
 func findAuthorization(h http.Header, prefix string) (string, bool) {
@@ -54,7 +54,7 @@ func (s *Server) securityOAuth2(ctx context.Context, operationName string, req *
 	}
 	t.Token = token
 	t.Scopes = oauth2Scopes[operationName]
-	rctx, err := s.sec.HandleOAuth2(ctx, operationName, t)
+	rctx, err := s.sec.HandleOAuth2(ctx, operationName, req, t)
 	if err != nil {
 		return nil, false, err
 	}

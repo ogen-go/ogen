@@ -187,7 +187,7 @@ var _ api.Handler = (*sampleAPIServer)(nil)
 
 type securityKey struct{}
 
-func (s sampleAPIServer) HandleAPIKey(ctx context.Context, operationID string, t api.APIKey) (context.Context, error) {
+func (s sampleAPIServer) HandleAPIKey(ctx context.Context, operationID string, req *http.Request, t api.APIKey) (context.Context, error) {
 	return context.WithValue(ctx, securityKey{}, t.APIKey), nil
 }
 

@@ -36,35 +36,35 @@ func (t *testSecurity) IntersectSecurity(ctx context.Context) error {
 
 type tokenKey string
 
-func (t *testSecurity) HandleBasicAuth(ctx context.Context, operationName string, v api.BasicAuth) (context.Context, error) {
+func (t *testSecurity) HandleBasicAuth(ctx context.Context, operationName string, req *http.Request, v api.BasicAuth) (context.Context, error) {
 	if v != t.basicAuth {
 		return nil, errors.Errorf("invalid basic auth: %q and %q", v.Username, v.Password)
 	}
 	return context.WithValue(ctx, tokenKey("BasicAuth"), v), nil
 }
 
-func (t *testSecurity) HandleBearerToken(ctx context.Context, operationName string, v api.BearerToken) (context.Context, error) {
+func (t *testSecurity) HandleBearerToken(ctx context.Context, operationName string, req *http.Request, v api.BearerToken) (context.Context, error) {
 	if v != t.bearerToken {
 		return nil, errors.Errorf("invalid token: %q", v.Token)
 	}
 	return context.WithValue(ctx, tokenKey("BearerToken"), v), nil
 }
 
-func (t *testSecurity) HandleHeaderKey(ctx context.Context, operationName string, v api.HeaderKey) (context.Context, error) {
+func (t *testSecurity) HandleHeaderKey(ctx context.Context, operationName string, req *http.Request, v api.HeaderKey) (context.Context, error) {
 	if v != t.headerKey {
 		return nil, errors.Errorf("invalid api key: %q", v.APIKey)
 	}
 	return context.WithValue(ctx, tokenKey("HeaderKey"), v), nil
 }
 
-func (t *testSecurity) HandleQueryKey(ctx context.Context, operationName string, v api.QueryKey) (context.Context, error) {
+func (t *testSecurity) HandleQueryKey(ctx context.Context, operationName string, req *http.Request, v api.QueryKey) (context.Context, error) {
 	if v != t.queryKey {
 		return nil, errors.Errorf("invalid api key: %q", v.APIKey)
 	}
 	return context.WithValue(ctx, tokenKey("QueryKey"), v), nil
 }
 
-func (t *testSecurity) HandleCookieKey(ctx context.Context, operationName string, v api.CookieKey) (context.Context, error) {
+func (t *testSecurity) HandleCookieKey(ctx context.Context, operationName string, req *http.Request, v api.CookieKey) (context.Context, error) {
 	if v != t.cookieKey {
 		return nil, errors.Errorf("invalid api key: %q", v.APIKey)
 	}

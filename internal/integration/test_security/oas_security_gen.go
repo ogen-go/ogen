@@ -13,15 +13,15 @@ import (
 // SecurityHandler is handler for security parameters.
 type SecurityHandler interface {
 	// HandleBasicAuth handles basicAuth security.
-	HandleBasicAuth(ctx context.Context, operationName string, t BasicAuth) (context.Context, error)
+	HandleBasicAuth(ctx context.Context, operationName string, req *http.Request, t BasicAuth) (context.Context, error)
 	// HandleBearerToken handles bearerToken security.
-	HandleBearerToken(ctx context.Context, operationName string, t BearerToken) (context.Context, error)
+	HandleBearerToken(ctx context.Context, operationName string, req *http.Request, t BearerToken) (context.Context, error)
 	// HandleCookieKey handles cookieKey security.
-	HandleCookieKey(ctx context.Context, operationName string, t CookieKey) (context.Context, error)
+	HandleCookieKey(ctx context.Context, operationName string, req *http.Request, t CookieKey) (context.Context, error)
 	// HandleHeaderKey handles headerKey security.
-	HandleHeaderKey(ctx context.Context, operationName string, t HeaderKey) (context.Context, error)
+	HandleHeaderKey(ctx context.Context, operationName string, req *http.Request, t HeaderKey) (context.Context, error)
 	// HandleQueryKey handles queryKey security.
-	HandleQueryKey(ctx context.Context, operationName string, t QueryKey) (context.Context, error)
+	HandleQueryKey(ctx context.Context, operationName string, req *http.Request, t QueryKey) (context.Context, error)
 }
 
 func findAuthorization(h http.Header, prefix string) (string, bool) {
@@ -50,7 +50,7 @@ func (s *Server) securityBasicAuth(ctx context.Context, operationName string, re
 	}
 	t.Username = username
 	t.Password = password
-	rctx, err := s.sec.HandleBasicAuth(ctx, operationName, t)
+	rctx, err := s.sec.HandleBasicAuth(ctx, operationName, req, t)
 	if err != nil {
 		return nil, false, err
 	}
@@ -63,7 +63,7 @@ func (s *Server) securityBearerToken(ctx context.Context, operationName string, 
 		return ctx, false, nil
 	}
 	t.Token = token
-	rctx, err := s.sec.HandleBearerToken(ctx, operationName, t)
+	rctx, err := s.sec.HandleBearerToken(ctx, operationName, req, t)
 	if err != nil {
 		return nil, false, err
 	}
@@ -82,7 +82,7 @@ func (s *Server) securityCookieKey(ctx context.Context, operationName string, re
 		return nil, false, err
 	}
 	t.APIKey = value
-	rctx, err := s.sec.HandleCookieKey(ctx, operationName, t)
+	rctx, err := s.sec.HandleCookieKey(ctx, operationName, req, t)
 	if err != nil {
 		return nil, false, err
 	}
@@ -96,7 +96,7 @@ func (s *Server) securityHeaderKey(ctx context.Context, operationName string, re
 		return ctx, false, nil
 	}
 	t.APIKey = value
-	rctx, err := s.sec.HandleHeaderKey(ctx, operationName, t)
+	rctx, err := s.sec.HandleHeaderKey(ctx, operationName, req, t)
 	if err != nil {
 		return nil, false, err
 	}
@@ -111,7 +111,7 @@ func (s *Server) securityQueryKey(ctx context.Context, operationName string, req
 	}
 	value := q.Get(parameterName)
 	t.APIKey = value
-	rctx, err := s.sec.HandleQueryKey(ctx, operationName, t)
+	rctx, err := s.sec.HandleQueryKey(ctx, operationName, req, t)
 	if err != nil {
 		return nil, false, err
 	}
