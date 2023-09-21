@@ -8,6 +8,8 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
+
+	"github.com/ogen-go/ogen/ogenerrors"
 )
 
 // SecurityHandler is handler for security parameters.
@@ -55,7 +57,9 @@ func (s *Server) securityOAuth2(ctx context.Context, operationName string, req *
 	t.Token = token
 	t.Scopes = oauth2Scopes[operationName]
 	rctx, err := s.sec.HandleOAuth2(ctx, operationName, t)
-	if err != nil {
+	if errors.Is(err, ogenerrors.ErrSkipServerSecurity) {
+		return nil, false, nil
+	} else if err != nil {
 		return nil, false, err
 	}
 	return rctx, true, err

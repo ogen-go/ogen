@@ -8,6 +8,8 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
+
+	"github.com/ogen-go/ogen/ogenerrors"
 )
 
 // SecurityHandler is handler for security parameters.
@@ -41,7 +43,9 @@ func (s *Server) securityBearerToken(ctx context.Context, operationName string, 
 	}
 	t.APIKey = value
 	rctx, err := s.sec.HandleBearerToken(ctx, operationName, t)
-	if err != nil {
+	if errors.Is(err, ogenerrors.ErrSkipServerSecurity) {
+		return nil, false, nil
+	} else if err != nil {
 		return nil, false, err
 	}
 	return rctx, true, err
