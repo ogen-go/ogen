@@ -409,7 +409,6 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // POST /addStickerToSet
 func (c *Client) AddStickerToSet(ctx context.Context, request *AddStickerToSet) (*Result, error) {
 	res, err := c.sendAddStickerToSet(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -492,7 +491,6 @@ func (c *Client) sendAddStickerToSet(ctx context.Context, request *AddStickerToS
 // POST /answerCallbackQuery
 func (c *Client) AnswerCallbackQuery(ctx context.Context, request *AnswerCallbackQuery) (*Result, error) {
 	res, err := c.sendAnswerCallbackQuery(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -575,7 +573,6 @@ func (c *Client) sendAnswerCallbackQuery(ctx context.Context, request *AnswerCal
 // POST /answerInlineQuery
 func (c *Client) AnswerInlineQuery(ctx context.Context, request *AnswerInlineQuery) (*Result, error) {
 	res, err := c.sendAnswerInlineQuery(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -658,7 +655,6 @@ func (c *Client) sendAnswerInlineQuery(ctx context.Context, request *AnswerInlin
 // POST /answerPreCheckoutQuery
 func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, request *AnswerPreCheckoutQuery) (*Result, error) {
 	res, err := c.sendAnswerPreCheckoutQuery(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -732,7 +728,6 @@ func (c *Client) sendAnswerPreCheckoutQuery(ctx context.Context, request *Answer
 // POST /answerShippingQuery
 func (c *Client) AnswerShippingQuery(ctx context.Context, request *AnswerShippingQuery) (*Result, error) {
 	res, err := c.sendAnswerShippingQuery(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -815,7 +810,6 @@ func (c *Client) sendAnswerShippingQuery(ctx context.Context, request *AnswerShi
 // POST /approveChatJoinRequest
 func (c *Client) ApproveChatJoinRequest(ctx context.Context, request *ApproveChatJoinRequest) (*Result, error) {
 	res, err := c.sendApproveChatJoinRequest(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -889,7 +883,6 @@ func (c *Client) sendApproveChatJoinRequest(ctx context.Context, request *Approv
 // POST /banChatMember
 func (c *Client) BanChatMember(ctx context.Context, request *BanChatMember) (*Result, error) {
 	res, err := c.sendBanChatMember(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -963,7 +956,6 @@ func (c *Client) sendBanChatMember(ctx context.Context, request *BanChatMember) 
 // POST /banChatSenderChat
 func (c *Client) BanChatSenderChat(ctx context.Context, request *BanChatSenderChat) (*Result, error) {
 	res, err := c.sendBanChatSenderChat(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -1037,7 +1029,6 @@ func (c *Client) sendBanChatSenderChat(ctx context.Context, request *BanChatSend
 // POST /close
 func (c *Client) Close(ctx context.Context) (*Result, error) {
 	res, err := c.sendClose(ctx)
-	_ = res
 	return res, err
 }
 
@@ -1108,7 +1099,6 @@ func (c *Client) sendClose(ctx context.Context) (res *Result, err error) {
 // POST /copyMessage
 func (c *Client) CopyMessage(ctx context.Context, request *CopyMessage) (*ResultMessageId, error) {
 	res, err := c.sendCopyMessage(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -1191,7 +1181,6 @@ func (c *Client) sendCopyMessage(ctx context.Context, request *CopyMessage) (res
 // POST /createChatInviteLink
 func (c *Client) CreateChatInviteLink(ctx context.Context, request *CreateChatInviteLink) (*ResultChatInviteLink, error) {
 	res, err := c.sendCreateChatInviteLink(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -1274,7 +1263,6 @@ func (c *Client) sendCreateChatInviteLink(ctx context.Context, request *CreateCh
 // POST /createNewStickerSet
 func (c *Client) CreateNewStickerSet(ctx context.Context, request *CreateNewStickerSet) (*Result, error) {
 	res, err := c.sendCreateNewStickerSet(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -1357,7 +1345,6 @@ func (c *Client) sendCreateNewStickerSet(ctx context.Context, request *CreateNew
 // POST /declineChatJoinRequest
 func (c *Client) DeclineChatJoinRequest(ctx context.Context, request *DeclineChatJoinRequest) (*Result, error) {
 	res, err := c.sendDeclineChatJoinRequest(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -1431,7 +1418,6 @@ func (c *Client) sendDeclineChatJoinRequest(ctx context.Context, request *Declin
 // POST /deleteChatPhoto
 func (c *Client) DeleteChatPhoto(ctx context.Context, request *DeleteChatPhoto) (*Result, error) {
 	res, err := c.sendDeleteChatPhoto(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -1505,7 +1491,6 @@ func (c *Client) sendDeleteChatPhoto(ctx context.Context, request *DeleteChatPho
 // POST /deleteChatStickerSet
 func (c *Client) DeleteChatStickerSet(ctx context.Context, request *DeleteChatStickerSet) (*Result, error) {
 	res, err := c.sendDeleteChatStickerSet(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -1579,7 +1564,6 @@ func (c *Client) sendDeleteChatStickerSet(ctx context.Context, request *DeleteCh
 // POST /deleteMessage
 func (c *Client) DeleteMessage(ctx context.Context, request *DeleteMessage) (*Result, error) {
 	res, err := c.sendDeleteMessage(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -1653,7 +1637,6 @@ func (c *Client) sendDeleteMessage(ctx context.Context, request *DeleteMessage) 
 // POST /deleteMyCommands
 func (c *Client) DeleteMyCommands(ctx context.Context, request OptDeleteMyCommands) (*Result, error) {
 	res, err := c.sendDeleteMyCommands(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -1727,7 +1710,6 @@ func (c *Client) sendDeleteMyCommands(ctx context.Context, request OptDeleteMyCo
 // POST /deleteStickerFromSet
 func (c *Client) DeleteStickerFromSet(ctx context.Context, request *DeleteStickerFromSet) (*Result, error) {
 	res, err := c.sendDeleteStickerFromSet(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -1801,7 +1783,6 @@ func (c *Client) sendDeleteStickerFromSet(ctx context.Context, request *DeleteSt
 // POST /deleteWebhook
 func (c *Client) DeleteWebhook(ctx context.Context, request OptDeleteWebhook) (*Result, error) {
 	res, err := c.sendDeleteWebhook(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -1875,7 +1856,6 @@ func (c *Client) sendDeleteWebhook(ctx context.Context, request OptDeleteWebhook
 // POST /editChatInviteLink
 func (c *Client) EditChatInviteLink(ctx context.Context, request *EditChatInviteLink) (*ResultChatInviteLink, error) {
 	res, err := c.sendEditChatInviteLink(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -1958,7 +1938,6 @@ func (c *Client) sendEditChatInviteLink(ctx context.Context, request *EditChatIn
 // POST /editMessageCaption
 func (c *Client) EditMessageCaption(ctx context.Context, request *EditMessageCaption) (*Result, error) {
 	res, err := c.sendEditMessageCaption(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -2041,7 +2020,6 @@ func (c *Client) sendEditMessageCaption(ctx context.Context, request *EditMessag
 // POST /editMessageLiveLocation
 func (c *Client) EditMessageLiveLocation(ctx context.Context, request *EditMessageLiveLocation) (*Result, error) {
 	res, err := c.sendEditMessageLiveLocation(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -2124,7 +2102,6 @@ func (c *Client) sendEditMessageLiveLocation(ctx context.Context, request *EditM
 // POST /editMessageMedia
 func (c *Client) EditMessageMedia(ctx context.Context, request *EditMessageMedia) (*Result, error) {
 	res, err := c.sendEditMessageMedia(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -2207,7 +2184,6 @@ func (c *Client) sendEditMessageMedia(ctx context.Context, request *EditMessageM
 // POST /editMessageReplyMarkup
 func (c *Client) EditMessageReplyMarkup(ctx context.Context, request *EditMessageReplyMarkup) (*Result, error) {
 	res, err := c.sendEditMessageReplyMarkup(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -2290,7 +2266,6 @@ func (c *Client) sendEditMessageReplyMarkup(ctx context.Context, request *EditMe
 // POST /editMessageText
 func (c *Client) EditMessageText(ctx context.Context, request *EditMessageText) (*Result, error) {
 	res, err := c.sendEditMessageText(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -2373,7 +2348,6 @@ func (c *Client) sendEditMessageText(ctx context.Context, request *EditMessageTe
 // POST /exportChatInviteLink
 func (c *Client) ExportChatInviteLink(ctx context.Context, request *ExportChatInviteLink) (*ResultString, error) {
 	res, err := c.sendExportChatInviteLink(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -2447,7 +2421,6 @@ func (c *Client) sendExportChatInviteLink(ctx context.Context, request *ExportCh
 // POST /forwardMessage
 func (c *Client) ForwardMessage(ctx context.Context, request *ForwardMessage) (*ResultMessage, error) {
 	res, err := c.sendForwardMessage(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -2521,7 +2494,6 @@ func (c *Client) sendForwardMessage(ctx context.Context, request *ForwardMessage
 // POST /getChat
 func (c *Client) GetChat(ctx context.Context, request *GetChat) (*ResultChat, error) {
 	res, err := c.sendGetChat(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -2595,7 +2567,6 @@ func (c *Client) sendGetChat(ctx context.Context, request *GetChat) (res *Result
 // POST /getChatAdministrators
 func (c *Client) GetChatAdministrators(ctx context.Context, request *GetChatAdministrators) (*ResultArrayOfChatMember, error) {
 	res, err := c.sendGetChatAdministrators(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -2669,7 +2640,6 @@ func (c *Client) sendGetChatAdministrators(ctx context.Context, request *GetChat
 // POST /getChatMember
 func (c *Client) GetChatMember(ctx context.Context, request *GetChatMember) (*ResultChatMember, error) {
 	res, err := c.sendGetChatMember(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -2743,7 +2713,6 @@ func (c *Client) sendGetChatMember(ctx context.Context, request *GetChatMember) 
 // POST /getChatMemberCount
 func (c *Client) GetChatMemberCount(ctx context.Context, request *GetChatMemberCount) (*ResultInt, error) {
 	res, err := c.sendGetChatMemberCount(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -2817,7 +2786,6 @@ func (c *Client) sendGetChatMemberCount(ctx context.Context, request *GetChatMem
 // POST /getFile
 func (c *Client) GetFile(ctx context.Context, request *GetFile) (*Result, error) {
 	res, err := c.sendGetFile(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -2891,7 +2859,6 @@ func (c *Client) sendGetFile(ctx context.Context, request *GetFile) (res *Result
 // POST /getGameHighScores
 func (c *Client) GetGameHighScores(ctx context.Context, request *GetGameHighScores) (*ResultArrayOfGameHighScore, error) {
 	res, err := c.sendGetGameHighScores(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -2965,7 +2932,6 @@ func (c *Client) sendGetGameHighScores(ctx context.Context, request *GetGameHigh
 // POST /getMe
 func (c *Client) GetMe(ctx context.Context) (*ResultUser, error) {
 	res, err := c.sendGetMe(ctx)
-	_ = res
 	return res, err
 }
 
@@ -3036,7 +3002,6 @@ func (c *Client) sendGetMe(ctx context.Context) (res *ResultUser, err error) {
 // POST /getMyCommands
 func (c *Client) GetMyCommands(ctx context.Context, request OptGetMyCommands) (*ResultArrayOfBotCommand, error) {
 	res, err := c.sendGetMyCommands(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -3110,7 +3075,6 @@ func (c *Client) sendGetMyCommands(ctx context.Context, request OptGetMyCommands
 // POST /getStickerSet
 func (c *Client) GetStickerSet(ctx context.Context, request *GetStickerSet) (*Result, error) {
 	res, err := c.sendGetStickerSet(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -3184,7 +3148,6 @@ func (c *Client) sendGetStickerSet(ctx context.Context, request *GetStickerSet) 
 // POST /getUpdates
 func (c *Client) GetUpdates(ctx context.Context, request OptGetUpdates) (*ResultArrayOfUpdate, error) {
 	res, err := c.sendGetUpdates(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -3274,7 +3237,6 @@ func (c *Client) sendGetUpdates(ctx context.Context, request OptGetUpdates) (res
 // POST /getUserProfilePhotos
 func (c *Client) GetUserProfilePhotos(ctx context.Context, request *GetUserProfilePhotos) (*ResultUserProfilePhotos, error) {
 	res, err := c.sendGetUserProfilePhotos(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -3357,7 +3319,6 @@ func (c *Client) sendGetUserProfilePhotos(ctx context.Context, request *GetUserP
 // POST /getWebhookInfo
 func (c *Client) GetWebhookInfo(ctx context.Context) (*ResultWebhookInfo, error) {
 	res, err := c.sendGetWebhookInfo(ctx)
-	_ = res
 	return res, err
 }
 
@@ -3428,7 +3389,6 @@ func (c *Client) sendGetWebhookInfo(ctx context.Context) (res *ResultWebhookInfo
 // POST /leaveChat
 func (c *Client) LeaveChat(ctx context.Context, request *LeaveChat) (*Result, error) {
 	res, err := c.sendLeaveChat(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -3502,7 +3462,6 @@ func (c *Client) sendLeaveChat(ctx context.Context, request *LeaveChat) (res *Re
 // POST /logOut
 func (c *Client) LogOut(ctx context.Context) (*Result, error) {
 	res, err := c.sendLogOut(ctx)
-	_ = res
 	return res, err
 }
 
@@ -3573,7 +3532,6 @@ func (c *Client) sendLogOut(ctx context.Context) (res *Result, err error) {
 // POST /pinChatMessage
 func (c *Client) PinChatMessage(ctx context.Context, request *PinChatMessage) (*Result, error) {
 	res, err := c.sendPinChatMessage(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -3647,7 +3605,6 @@ func (c *Client) sendPinChatMessage(ctx context.Context, request *PinChatMessage
 // POST /promoteChatMember
 func (c *Client) PromoteChatMember(ctx context.Context, request *PromoteChatMember) (*Result, error) {
 	res, err := c.sendPromoteChatMember(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -3721,7 +3678,6 @@ func (c *Client) sendPromoteChatMember(ctx context.Context, request *PromoteChat
 // POST /restrictChatMember
 func (c *Client) RestrictChatMember(ctx context.Context, request *RestrictChatMember) (*Result, error) {
 	res, err := c.sendRestrictChatMember(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -3795,7 +3751,6 @@ func (c *Client) sendRestrictChatMember(ctx context.Context, request *RestrictCh
 // POST /revokeChatInviteLink
 func (c *Client) RevokeChatInviteLink(ctx context.Context, request *RevokeChatInviteLink) (*ResultChatInviteLink, error) {
 	res, err := c.sendRevokeChatInviteLink(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -3869,7 +3824,6 @@ func (c *Client) sendRevokeChatInviteLink(ctx context.Context, request *RevokeCh
 // POST /sendAnimation
 func (c *Client) SendAnimation(ctx context.Context, request *SendAnimation) (*ResultMessage, error) {
 	res, err := c.sendSendAnimation(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -3952,7 +3906,6 @@ func (c *Client) sendSendAnimation(ctx context.Context, request *SendAnimation) 
 // POST /sendAudio
 func (c *Client) SendAudio(ctx context.Context, request *SendAudio) (*ResultMessage, error) {
 	res, err := c.sendSendAudio(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -4035,7 +3988,6 @@ func (c *Client) sendSendAudio(ctx context.Context, request *SendAudio) (res *Re
 // POST /sendChatAction
 func (c *Client) SendChatAction(ctx context.Context, request *SendChatAction) (*Result, error) {
 	res, err := c.sendSendChatAction(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -4109,7 +4061,6 @@ func (c *Client) sendSendChatAction(ctx context.Context, request *SendChatAction
 // POST /sendContact
 func (c *Client) SendContact(ctx context.Context, request *SendContact) (*ResultMessage, error) {
 	res, err := c.sendSendContact(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -4192,7 +4143,6 @@ func (c *Client) sendSendContact(ctx context.Context, request *SendContact) (res
 // POST /sendDice
 func (c *Client) SendDice(ctx context.Context, request *SendDice) (*ResultMessage, error) {
 	res, err := c.sendSendDice(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -4275,7 +4225,6 @@ func (c *Client) sendSendDice(ctx context.Context, request *SendDice) (res *Resu
 // POST /sendDocument
 func (c *Client) SendDocument(ctx context.Context, request *SendDocument) (*ResultMessage, error) {
 	res, err := c.sendSendDocument(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -4358,7 +4307,6 @@ func (c *Client) sendSendDocument(ctx context.Context, request *SendDocument) (r
 // POST /sendGame
 func (c *Client) SendGame(ctx context.Context, request *SendGame) (*ResultMessage, error) {
 	res, err := c.sendSendGame(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -4441,7 +4389,6 @@ func (c *Client) sendSendGame(ctx context.Context, request *SendGame) (res *Resu
 // POST /sendInvoice
 func (c *Client) SendInvoice(ctx context.Context, request *SendInvoice) (*ResultMessage, error) {
 	res, err := c.sendSendInvoice(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -4524,7 +4471,6 @@ func (c *Client) sendSendInvoice(ctx context.Context, request *SendInvoice) (res
 // POST /sendLocation
 func (c *Client) SendLocation(ctx context.Context, request *SendLocation) (*ResultMessage, error) {
 	res, err := c.sendSendLocation(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -4607,7 +4553,6 @@ func (c *Client) sendSendLocation(ctx context.Context, request *SendLocation) (r
 // POST /sendMediaGroup
 func (c *Client) SendMediaGroup(ctx context.Context, request *SendMediaGroup) (*ResultArrayOfMessage, error) {
 	res, err := c.sendSendMediaGroup(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -4690,7 +4635,6 @@ func (c *Client) sendSendMediaGroup(ctx context.Context, request *SendMediaGroup
 // POST /sendMessage
 func (c *Client) SendMessage(ctx context.Context, request *SendMessage) (*ResultMessage, error) {
 	res, err := c.sendSendMessage(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -4773,7 +4717,6 @@ func (c *Client) sendSendMessage(ctx context.Context, request *SendMessage) (res
 // POST /sendPhoto
 func (c *Client) SendPhoto(ctx context.Context, request *SendPhoto) (*ResultMessage, error) {
 	res, err := c.sendSendPhoto(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -4856,7 +4799,6 @@ func (c *Client) sendSendPhoto(ctx context.Context, request *SendPhoto) (res *Re
 // POST /sendPoll
 func (c *Client) SendPoll(ctx context.Context, request *SendPoll) (*ResultMessage, error) {
 	res, err := c.sendSendPoll(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -4939,7 +4881,6 @@ func (c *Client) sendSendPoll(ctx context.Context, request *SendPoll) (res *Resu
 // POST /sendSticker
 func (c *Client) SendSticker(ctx context.Context, request *SendSticker) (*ResultMessage, error) {
 	res, err := c.sendSendSticker(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -5022,7 +4963,6 @@ func (c *Client) sendSendSticker(ctx context.Context, request *SendSticker) (res
 // POST /sendVenue
 func (c *Client) SendVenue(ctx context.Context, request *SendVenue) (*ResultMessage, error) {
 	res, err := c.sendSendVenue(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -5105,7 +5045,6 @@ func (c *Client) sendSendVenue(ctx context.Context, request *SendVenue) (res *Re
 // POST /sendVideo
 func (c *Client) SendVideo(ctx context.Context, request *SendVideo) (*ResultMessage, error) {
 	res, err := c.sendSendVideo(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -5188,7 +5127,6 @@ func (c *Client) sendSendVideo(ctx context.Context, request *SendVideo) (res *Re
 // POST /sendVideoNote
 func (c *Client) SendVideoNote(ctx context.Context, request *SendVideoNote) (*ResultMessage, error) {
 	res, err := c.sendSendVideoNote(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -5271,7 +5209,6 @@ func (c *Client) sendSendVideoNote(ctx context.Context, request *SendVideoNote) 
 // POST /sendVoice
 func (c *Client) SendVoice(ctx context.Context, request *SendVoice) (*ResultMessage, error) {
 	res, err := c.sendSendVoice(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -5354,7 +5291,6 @@ func (c *Client) sendSendVoice(ctx context.Context, request *SendVoice) (res *Re
 // POST /setChatAdministratorCustomTitle
 func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, request *SetChatAdministratorCustomTitle) (*Result, error) {
 	res, err := c.sendSetChatAdministratorCustomTitle(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -5437,7 +5373,6 @@ func (c *Client) sendSetChatAdministratorCustomTitle(ctx context.Context, reques
 // POST /setChatDescription
 func (c *Client) SetChatDescription(ctx context.Context, request *SetChatDescription) (*Result, error) {
 	res, err := c.sendSetChatDescription(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -5520,7 +5455,6 @@ func (c *Client) sendSetChatDescription(ctx context.Context, request *SetChatDes
 // POST /setChatPermissions
 func (c *Client) SetChatPermissions(ctx context.Context, request *SetChatPermissions) (*Result, error) {
 	res, err := c.sendSetChatPermissions(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -5594,7 +5528,6 @@ func (c *Client) sendSetChatPermissions(ctx context.Context, request *SetChatPer
 // POST /setChatPhoto
 func (c *Client) SetChatPhoto(ctx context.Context, request *SetChatPhoto) (*Result, error) {
 	res, err := c.sendSetChatPhoto(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -5668,7 +5601,6 @@ func (c *Client) sendSetChatPhoto(ctx context.Context, request *SetChatPhoto) (r
 // POST /setChatStickerSet
 func (c *Client) SetChatStickerSet(ctx context.Context, request *SetChatStickerSet) (*Result, error) {
 	res, err := c.sendSetChatStickerSet(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -5742,7 +5674,6 @@ func (c *Client) sendSetChatStickerSet(ctx context.Context, request *SetChatStic
 // POST /setChatTitle
 func (c *Client) SetChatTitle(ctx context.Context, request *SetChatTitle) (*Result, error) {
 	res, err := c.sendSetChatTitle(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -5825,7 +5756,6 @@ func (c *Client) sendSetChatTitle(ctx context.Context, request *SetChatTitle) (r
 // POST /setGameScore
 func (c *Client) SetGameScore(ctx context.Context, request *SetGameScore) (*Result, error) {
 	res, err := c.sendSetGameScore(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -5899,7 +5829,6 @@ func (c *Client) sendSetGameScore(ctx context.Context, request *SetGameScore) (r
 // POST /setMyCommands
 func (c *Client) SetMyCommands(ctx context.Context, request *SetMyCommands) (*Result, error) {
 	res, err := c.sendSetMyCommands(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -5982,7 +5911,6 @@ func (c *Client) sendSetMyCommands(ctx context.Context, request *SetMyCommands) 
 // POST /setPassportDataErrors
 func (c *Client) SetPassportDataErrors(ctx context.Context, request *SetPassportDataErrors) (*Result, error) {
 	res, err := c.sendSetPassportDataErrors(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -6065,7 +5993,6 @@ func (c *Client) sendSetPassportDataErrors(ctx context.Context, request *SetPass
 // POST /setStickerPositionInSet
 func (c *Client) SetStickerPositionInSet(ctx context.Context, request *SetStickerPositionInSet) (*Result, error) {
 	res, err := c.sendSetStickerPositionInSet(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -6139,7 +6066,6 @@ func (c *Client) sendSetStickerPositionInSet(ctx context.Context, request *SetSt
 // POST /setStickerSetThumb
 func (c *Client) SetStickerSetThumb(ctx context.Context, request *SetStickerSetThumb) (*Result, error) {
 	res, err := c.sendSetStickerSetThumb(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -6213,7 +6139,6 @@ func (c *Client) sendSetStickerSetThumb(ctx context.Context, request *SetSticker
 // POST /setWebhook
 func (c *Client) SetWebhook(ctx context.Context, request *SetWebhook) (*Result, error) {
 	res, err := c.sendSetWebhook(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -6287,7 +6212,6 @@ func (c *Client) sendSetWebhook(ctx context.Context, request *SetWebhook) (res *
 // POST /stopMessageLiveLocation
 func (c *Client) StopMessageLiveLocation(ctx context.Context, request *StopMessageLiveLocation) (*Result, error) {
 	res, err := c.sendStopMessageLiveLocation(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -6370,7 +6294,6 @@ func (c *Client) sendStopMessageLiveLocation(ctx context.Context, request *StopM
 // POST /stopPoll
 func (c *Client) StopPoll(ctx context.Context, request *StopPoll) (*ResultPoll, error) {
 	res, err := c.sendStopPoll(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -6453,7 +6376,6 @@ func (c *Client) sendStopPoll(ctx context.Context, request *StopPoll) (res *Resu
 // POST /unbanChatMember
 func (c *Client) UnbanChatMember(ctx context.Context, request *UnbanChatMember) (*Result, error) {
 	res, err := c.sendUnbanChatMember(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -6527,7 +6449,6 @@ func (c *Client) sendUnbanChatMember(ctx context.Context, request *UnbanChatMemb
 // POST /unbanChatSenderChat
 func (c *Client) UnbanChatSenderChat(ctx context.Context, request *UnbanChatSenderChat) (*Result, error) {
 	res, err := c.sendUnbanChatSenderChat(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -6601,7 +6522,6 @@ func (c *Client) sendUnbanChatSenderChat(ctx context.Context, request *UnbanChat
 // POST /unpinAllChatMessages
 func (c *Client) UnpinAllChatMessages(ctx context.Context, request *UnpinAllChatMessages) (*Result, error) {
 	res, err := c.sendUnpinAllChatMessages(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -6675,7 +6595,6 @@ func (c *Client) sendUnpinAllChatMessages(ctx context.Context, request *UnpinAll
 // POST /unpinChatMessage
 func (c *Client) UnpinChatMessage(ctx context.Context, request *UnpinChatMessage) (*Result, error) {
 	res, err := c.sendUnpinChatMessage(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -6749,7 +6668,6 @@ func (c *Client) sendUnpinChatMessage(ctx context.Context, request *UnpinChatMes
 // POST /uploadStickerFile
 func (c *Client) UploadStickerFile(ctx context.Context, request *UploadStickerFile) (*ResultFile, error) {
 	res, err := c.sendUploadStickerFile(ctx, request)
-	_ = res
 	return res, err
 }
 

@@ -101,8 +101,7 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 //
 // POST /pets
 func (c *Client) CreatePets(ctx context.Context) error {
-	res, err := c.sendCreatePets(ctx)
-	_ = res
+	_, err := c.sendCreatePets(ctx)
 	return err
 }
 
@@ -175,7 +174,6 @@ func (c *Client) sendCreatePets(ctx context.Context) (res *CreatePetsCreated, er
 // GET /pets
 func (c *Client) ListPets(ctx context.Context, params ListPetsParams) (*PetsHeaders, error) {
 	res, err := c.sendListPets(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -269,7 +267,6 @@ func (c *Client) sendListPets(ctx context.Context, params ListPetsParams) (res *
 // GET /pets/{petId}
 func (c *Client) ShowPetById(ctx context.Context, params ShowPetByIdParams) (*Pet, error) {
 	res, err := c.sendShowPetById(ctx, params)
-	_ = res
 	return res, err
 }
 

@@ -112,8 +112,7 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 //
 // POST /onlyForm
 func (c *Client) OnlyForm(ctx context.Context, request *OnlyFormReq) error {
-	res, err := c.sendOnlyForm(ctx, request)
-	_ = res
+	_, err := c.sendOnlyForm(ctx, request)
 	return err
 }
 
@@ -186,8 +185,7 @@ func (c *Client) sendOnlyForm(ctx context.Context, request *OnlyFormReq) (res *O
 //
 // POST /onlyMultipartFile
 func (c *Client) OnlyMultipartFile(ctx context.Context, request *OnlyMultipartFileReq) error {
-	res, err := c.sendOnlyMultipartFile(ctx, request)
-	_ = res
+	_, err := c.sendOnlyMultipartFile(ctx, request)
 	return err
 }
 
@@ -260,8 +258,7 @@ func (c *Client) sendOnlyMultipartFile(ctx context.Context, request *OnlyMultipa
 //
 // POST /onlyMultipartForm
 func (c *Client) OnlyMultipartForm(ctx context.Context, request *OnlyMultipartFormReq) error {
-	res, err := c.sendOnlyMultipartForm(ctx, request)
-	_ = res
+	_, err := c.sendOnlyMultipartForm(ctx, request)
 	return err
 }
 
@@ -334,8 +331,7 @@ func (c *Client) sendOnlyMultipartForm(ctx context.Context, request *OnlyMultipa
 //
 // POST /testFormURLEncoded
 func (c *Client) TestFormURLEncoded(ctx context.Context, request *TestForm) error {
-	res, err := c.sendTestFormURLEncoded(ctx, request)
-	_ = res
+	_, err := c.sendTestFormURLEncoded(ctx, request)
 	return err
 }
 
@@ -408,8 +404,7 @@ func (c *Client) sendTestFormURLEncoded(ctx context.Context, request *TestForm) 
 //
 // POST /testMultipart
 func (c *Client) TestMultipart(ctx context.Context, request *TestFormMultipart) error {
-	res, err := c.sendTestMultipart(ctx, request)
-	_ = res
+	_, err := c.sendTestMultipart(ctx, request)
 	return err
 }
 
@@ -483,7 +478,6 @@ func (c *Client) sendTestMultipart(ctx context.Context, request *TestFormMultipa
 // POST /testMultipartUpload
 func (c *Client) TestMultipartUpload(ctx context.Context, request *TestMultipartUploadReq) (*TestMultipartUploadOK, error) {
 	res, err := c.sendTestMultipartUpload(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -565,8 +559,7 @@ func (c *Client) sendTestMultipartUpload(ctx context.Context, request *TestMulti
 //
 // POST /testReuseFormOptionalSchema
 func (c *Client) TestReuseFormOptionalSchema(ctx context.Context, request OptSharedRequestMultipart) error {
-	res, err := c.sendTestReuseFormOptionalSchema(ctx, request)
-	_ = res
+	_, err := c.sendTestReuseFormOptionalSchema(ctx, request)
 	return err
 }
 
@@ -639,8 +632,7 @@ func (c *Client) sendTestReuseFormOptionalSchema(ctx context.Context, request Op
 //
 // POST /testReuseFormSchema
 func (c *Client) TestReuseFormSchema(ctx context.Context, request *SharedRequestMultipart) error {
-	res, err := c.sendTestReuseFormSchema(ctx, request)
-	_ = res
+	_, err := c.sendTestReuseFormSchema(ctx, request)
 	return err
 }
 
@@ -713,8 +705,7 @@ func (c *Client) sendTestReuseFormSchema(ctx context.Context, request *SharedReq
 //
 // POST /testShareFormSchema
 func (c *Client) TestShareFormSchema(ctx context.Context, request TestShareFormSchemaReq) error {
-	res, err := c.sendTestShareFormSchema(ctx, request)
-	_ = res
+	_, err := c.sendTestShareFormSchema(ctx, request)
 	return err
 }
 

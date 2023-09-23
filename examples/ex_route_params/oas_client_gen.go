@@ -98,7 +98,6 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // GET /name/{id}/{key}
 func (c *Client) DataGet(ctx context.Context, params DataGetParams) (string, error) {
 	res, err := c.sendDataGet(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -208,7 +207,6 @@ func (c *Client) sendDataGet(ctx context.Context, params DataGetParams) (res str
 // GET /name
 func (c *Client) DataGetAny(ctx context.Context) (string, error) {
 	res, err := c.sendDataGetAny(ctx)
-	_ = res
 	return res, err
 }
 
@@ -281,7 +279,6 @@ func (c *Client) sendDataGetAny(ctx context.Context) (res string, err error) {
 // GET /name/{id}
 func (c *Client) DataGetID(ctx context.Context, params DataGetIDParams) (string, error) {
 	res, err := c.sendDataGetID(ctx, params)
-	_ = res
 	return res, err
 }
 

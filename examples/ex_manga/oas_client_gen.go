@@ -116,7 +116,6 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // GET /api/gallery/{book_id}
 func (c *Client) GetBook(ctx context.Context, params GetBookParams) (GetBookRes, error) {
 	res, err := c.sendGetBook(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -207,7 +206,6 @@ func (c *Client) sendGetBook(ctx context.Context, params GetBookParams) (res Get
 // GET /galleries/{media_id}/cover.{format}
 func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImageParams) (GetPageCoverImageRes, error) {
 	res, err := c.sendGetPageCoverImage(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -317,7 +315,6 @@ func (c *Client) sendGetPageCoverImage(ctx context.Context, params GetPageCoverI
 // GET /galleries/{media_id}/{page}.{format}
 func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (GetPageImageRes, error) {
 	res, err := c.sendGetPageImage(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -446,7 +443,6 @@ func (c *Client) sendGetPageImage(ctx context.Context, params GetPageImageParams
 // GET /galleries/{media_id}/{page}t.{format}
 func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbnailImageParams) (GetPageThumbnailImageRes, error) {
 	res, err := c.sendGetPageThumbnailImage(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -575,7 +571,6 @@ func (c *Client) sendGetPageThumbnailImage(ctx context.Context, params GetPageTh
 // GET /api/galleries/search
 func (c *Client) Search(ctx context.Context, params SearchParams) (SearchRes, error) {
 	res, err := c.sendSearch(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -683,7 +678,6 @@ func (c *Client) sendSearch(ctx context.Context, params SearchParams) (res Searc
 // GET /api/galleries/tagged
 func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) (SearchByTagIDRes, error) {
 	res, err := c.sendSearchByTagID(ctx, params)
-	_ = res
 	return res, err
 }
 

@@ -152,7 +152,6 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // POST /pets
 func (c *Client) CreatePet(ctx context.Context, request *CreatePetReq) (CreatePetRes, error) {
 	res, err := c.sendCreatePet(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -228,7 +227,6 @@ func (c *Client) sendCreatePet(ctx context.Context, request *CreatePetReq) (res 
 // POST /pets/{id}/categories
 func (c *Client) CreatePetCategories(ctx context.Context, request *CreatePetCategoriesReq, params CreatePetCategoriesParams) (CreatePetCategoriesRes, error) {
 	res, err := c.sendCreatePetCategories(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -323,7 +321,6 @@ func (c *Client) sendCreatePetCategories(ctx context.Context, request *CreatePet
 // POST /pets/{id}/friends
 func (c *Client) CreatePetFriends(ctx context.Context, request *CreatePetFriendsReq, params CreatePetFriendsParams) (CreatePetFriendsRes, error) {
 	res, err := c.sendCreatePetFriends(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -418,7 +415,6 @@ func (c *Client) sendCreatePetFriends(ctx context.Context, request *CreatePetFri
 // POST /pets/{id}/owner
 func (c *Client) CreatePetOwner(ctx context.Context, request *CreatePetOwnerReq, params CreatePetOwnerParams) (CreatePetOwnerRes, error) {
 	res, err := c.sendCreatePetOwner(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -513,7 +509,6 @@ func (c *Client) sendCreatePetOwner(ctx context.Context, request *CreatePetOwner
 // DELETE /pets/{id}
 func (c *Client) DeletePet(ctx context.Context, params DeletePetParams) (DeletePetRes, error) {
 	res, err := c.sendDeletePet(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -604,7 +599,6 @@ func (c *Client) sendDeletePet(ctx context.Context, params DeletePetParams) (res
 // DELETE /pets/{id}/owner
 func (c *Client) DeletePetOwner(ctx context.Context, params DeletePetOwnerParams) (DeletePetOwnerRes, error) {
 	res, err := c.sendDeletePetOwner(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -696,7 +690,6 @@ func (c *Client) sendDeletePetOwner(ctx context.Context, params DeletePetOwnerPa
 // GET /pets
 func (c *Client) ListPet(ctx context.Context, params ListPetParams) (ListPetRes, error) {
 	res, err := c.sendListPet(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -807,7 +800,6 @@ func (c *Client) sendListPet(ctx context.Context, params ListPetParams) (res Lis
 // GET /pets/{id}/categories
 func (c *Client) ListPetCategories(ctx context.Context, params ListPetCategoriesParams) (ListPetCategoriesRes, error) {
 	res, err := c.sendListPetCategories(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -937,7 +929,6 @@ func (c *Client) sendListPetCategories(ctx context.Context, params ListPetCatego
 // GET /pets/{id}/friends
 func (c *Client) ListPetFriends(ctx context.Context, params ListPetFriendsParams) (ListPetFriendsRes, error) {
 	res, err := c.sendListPetFriends(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -1067,7 +1058,6 @@ func (c *Client) sendListPetFriends(ctx context.Context, params ListPetFriendsPa
 // GET /pets/{id}
 func (c *Client) ReadPet(ctx context.Context, params ReadPetParams) (ReadPetRes, error) {
 	res, err := c.sendReadPet(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -1158,7 +1148,6 @@ func (c *Client) sendReadPet(ctx context.Context, params ReadPetParams) (res Rea
 // GET /pets/{id}/owner
 func (c *Client) ReadPetOwner(ctx context.Context, params ReadPetOwnerParams) (ReadPetOwnerRes, error) {
 	res, err := c.sendReadPetOwner(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -1250,7 +1239,6 @@ func (c *Client) sendReadPetOwner(ctx context.Context, params ReadPetOwnerParams
 // PATCH /pets/{id}
 func (c *Client) UpdatePet(ctx context.Context, request *UpdatePetReq, params UpdatePetParams) (UpdatePetRes, error) {
 	res, err := c.sendUpdatePet(ctx, request, params)
-	_ = res
 	return res, err
 }
 

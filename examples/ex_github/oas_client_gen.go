@@ -7831,8 +7831,7 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
 func (c *Client) ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams) error {
-	res, err := c.sendActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
-	_ = res
+	_, err := c.sendActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
 	return err
 }
 
@@ -7965,7 +7964,6 @@ func (c *Client) sendActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx contex
 // PUT /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}
 func (c *Client) ActionsAddSelectedRepoToOrgSecret(ctx context.Context, params ActionsAddSelectedRepoToOrgSecretParams) (ActionsAddSelectedRepoToOrgSecretRes, error) {
 	res, err := c.sendActionsAddSelectedRepoToOrgSecret(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -8098,8 +8096,7 @@ func (c *Client) sendActionsAddSelectedRepoToOrgSecret(ctx context.Context, para
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
 func (c *Client) ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, params ActionsAddSelfHostedRunnerToGroupForOrgParams) error {
-	res, err := c.sendActionsAddSelfHostedRunnerToGroupForOrg(ctx, params)
-	_ = res
+	_, err := c.sendActionsAddSelfHostedRunnerToGroupForOrg(ctx, params)
 	return err
 }
 
@@ -8232,7 +8229,6 @@ func (c *Client) sendActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/approve
 func (c *Client) ActionsApproveWorkflowRun(ctx context.Context, params ActionsApproveWorkflowRunParams) (ActionsApproveWorkflowRunRes, error) {
 	res, err := c.sendActionsApproveWorkflowRun(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -8363,8 +8359,7 @@ func (c *Client) sendActionsApproveWorkflowRun(ctx context.Context, params Actio
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/cancel
 func (c *Client) ActionsCancelWorkflowRun(ctx context.Context, params ActionsCancelWorkflowRunParams) error {
-	res, err := c.sendActionsCancelWorkflowRun(ctx, params)
-	_ = res
+	_, err := c.sendActionsCancelWorkflowRun(ctx, params)
 	return err
 }
 
@@ -8547,7 +8542,6 @@ func (c *Client) sendActionsCancelWorkflowRun(ctx context.Context, params Action
 // PUT /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
 func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, request *ActionsCreateOrUpdateEnvironmentSecretReq, params ActionsCreateOrUpdateEnvironmentSecretParams) (ActionsCreateOrUpdateEnvironmentSecretRes, error) {
 	res, err := c.sendActionsCreateOrUpdateEnvironmentSecret(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -8741,7 +8735,6 @@ func (c *Client) sendActionsCreateOrUpdateEnvironmentSecret(ctx context.Context,
 // PUT /orgs/{org}/actions/secrets/{secret_name}
 func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, request *ActionsCreateOrUpdateOrgSecretReq, params ActionsCreateOrUpdateOrgSecretParams) (ActionsCreateOrUpdateOrgSecretRes, error) {
 	res, err := c.sendActionsCreateOrUpdateOrgSecret(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -8916,7 +8909,6 @@ func (c *Client) sendActionsCreateOrUpdateOrgSecret(ctx context.Context, request
 // PUT /repos/{owner}/{repo}/actions/secrets/{secret_name}
 func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, request *ActionsCreateOrUpdateRepoSecretReq, params ActionsCreateOrUpdateRepoSecretParams) (ActionsCreateOrUpdateRepoSecretRes, error) {
 	res, err := c.sendActionsCreateOrUpdateRepoSecret(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -9064,7 +9056,6 @@ func (c *Client) sendActionsCreateOrUpdateRepoSecret(ctx context.Context, reques
 // POST /orgs/{org}/actions/runners/registration-token
 func (c *Client) ActionsCreateRegistrationTokenForOrg(ctx context.Context, params ActionsCreateRegistrationTokenForOrgParams) (*AuthenticationToken, error) {
 	res, err := c.sendActionsCreateRegistrationTokenForOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -9164,7 +9155,6 @@ func (c *Client) sendActionsCreateRegistrationTokenForOrg(ctx context.Context, p
 // POST /repos/{owner}/{repo}/actions/runners/registration-token
 func (c *Client) ActionsCreateRegistrationTokenForRepo(ctx context.Context, params ActionsCreateRegistrationTokenForRepoParams) (*AuthenticationToken, error) {
 	res, err := c.sendActionsCreateRegistrationTokenForRepo(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -9284,7 +9274,6 @@ func (c *Client) sendActionsCreateRegistrationTokenForRepo(ctx context.Context, 
 // POST /orgs/{org}/actions/runners/remove-token
 func (c *Client) ActionsCreateRemoveTokenForOrg(ctx context.Context, params ActionsCreateRemoveTokenForOrgParams) (*AuthenticationToken, error) {
 	res, err := c.sendActionsCreateRemoveTokenForOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -9384,7 +9373,6 @@ func (c *Client) sendActionsCreateRemoveTokenForOrg(ctx context.Context, params 
 // POST /repos/{owner}/{repo}/actions/runners/remove-token
 func (c *Client) ActionsCreateRemoveTokenForRepo(ctx context.Context, params ActionsCreateRemoveTokenForRepoParams) (*AuthenticationToken, error) {
 	res, err := c.sendActionsCreateRemoveTokenForRepo(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -9499,7 +9487,6 @@ func (c *Client) sendActionsCreateRemoveTokenForRepo(ctx context.Context, params
 // POST /orgs/{org}/actions/runner-groups
 func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, request *ActionsCreateSelfHostedRunnerGroupForOrgReq, params ActionsCreateSelfHostedRunnerGroupForOrgParams) (*RunnerGroupsOrg, error) {
 	res, err := c.sendActionsCreateSelfHostedRunnerGroupForOrg(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -9604,8 +9591,7 @@ func (c *Client) sendActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Contex
 //
 // DELETE /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
 func (c *Client) ActionsDeleteArtifact(ctx context.Context, params ActionsDeleteArtifactParams) error {
-	res, err := c.sendActionsDeleteArtifact(ctx, params)
-	_ = res
+	_, err := c.sendActionsDeleteArtifact(ctx, params)
 	return err
 }
 
@@ -9735,8 +9721,7 @@ func (c *Client) sendActionsDeleteArtifact(ctx context.Context, params ActionsDe
 //
 // DELETE /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
 func (c *Client) ActionsDeleteEnvironmentSecret(ctx context.Context, params ActionsDeleteEnvironmentSecretParams) error {
-	res, err := c.sendActionsDeleteEnvironmentSecret(ctx, params)
-	_ = res
+	_, err := c.sendActionsDeleteEnvironmentSecret(ctx, params)
 	return err
 }
 
@@ -9866,8 +9851,7 @@ func (c *Client) sendActionsDeleteEnvironmentSecret(ctx context.Context, params 
 //
 // DELETE /orgs/{org}/actions/secrets/{secret_name}
 func (c *Client) ActionsDeleteOrgSecret(ctx context.Context, params ActionsDeleteOrgSecretParams) error {
-	res, err := c.sendActionsDeleteOrgSecret(ctx, params)
-	_ = res
+	_, err := c.sendActionsDeleteOrgSecret(ctx, params)
 	return err
 }
 
@@ -9978,8 +9962,7 @@ func (c *Client) sendActionsDeleteOrgSecret(ctx context.Context, params ActionsD
 //
 // DELETE /repos/{owner}/{repo}/actions/secrets/{secret_name}
 func (c *Client) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDeleteRepoSecretParams) error {
-	res, err := c.sendActionsDeleteRepoSecret(ctx, params)
-	_ = res
+	_, err := c.sendActionsDeleteRepoSecret(ctx, params)
 	return err
 }
 
@@ -10109,8 +10092,7 @@ func (c *Client) sendActionsDeleteRepoSecret(ctx context.Context, params Actions
 //
 // DELETE /orgs/{org}/actions/runners/{runner_id}
 func (c *Client) ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromOrgParams) error {
-	res, err := c.sendActionsDeleteSelfHostedRunnerFromOrg(ctx, params)
-	_ = res
+	_, err := c.sendActionsDeleteSelfHostedRunnerFromOrg(ctx, params)
 	return err
 }
 
@@ -10222,8 +10204,7 @@ func (c *Client) sendActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, p
 //
 // DELETE /repos/{owner}/{repo}/actions/runners/{runner_id}
 func (c *Client) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromRepoParams) error {
-	res, err := c.sendActionsDeleteSelfHostedRunnerFromRepo(ctx, params)
-	_ = res
+	_, err := c.sendActionsDeleteSelfHostedRunnerFromRepo(ctx, params)
 	return err
 }
 
@@ -10355,8 +10336,7 @@ func (c *Client) sendActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, 
 //
 // DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}
 func (c *Client) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerGroupFromOrgParams) error {
-	res, err := c.sendActionsDeleteSelfHostedRunnerGroupFromOrg(ctx, params)
-	_ = res
+	_, err := c.sendActionsDeleteSelfHostedRunnerGroupFromOrg(ctx, params)
 	return err
 }
 
@@ -10469,8 +10449,7 @@ func (c *Client) sendActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Conte
 //
 // DELETE /repos/{owner}/{repo}/actions/runs/{run_id}
 func (c *Client) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDeleteWorkflowRunParams) error {
-	res, err := c.sendActionsDeleteWorkflowRun(ctx, params)
-	_ = res
+	_, err := c.sendActionsDeleteWorkflowRun(ctx, params)
 	return err
 }
 
@@ -10600,8 +10579,7 @@ func (c *Client) sendActionsDeleteWorkflowRun(ctx context.Context, params Action
 //
 // DELETE /repos/{owner}/{repo}/actions/runs/{run_id}/logs
 func (c *Client) ActionsDeleteWorkflowRunLogs(ctx context.Context, params ActionsDeleteWorkflowRunLogsParams) error {
-	res, err := c.sendActionsDeleteWorkflowRunLogs(ctx, params)
-	_ = res
+	_, err := c.sendActionsDeleteWorkflowRunLogs(ctx, params)
 	return err
 }
 
@@ -10735,8 +10713,7 @@ func (c *Client) sendActionsDeleteWorkflowRunLogs(ctx context.Context, params Ac
 //
 // DELETE /orgs/{org}/actions/permissions/repositories/{repository_id}
 func (c *Client) ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams) error {
-	res, err := c.sendActionsDisableSelectedRepositoryGithubActionsOrganization(ctx, params)
-	_ = res
+	_, err := c.sendActionsDisableSelectedRepositoryGithubActionsOrganization(ctx, params)
 	return err
 }
 
@@ -10852,7 +10829,6 @@ func (c *Client) sendActionsDisableSelectedRepositoryGithubActionsOrganization(c
 // GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}
 func (c *Client) ActionsDownloadArtifact(ctx context.Context, params ActionsDownloadArtifactParams) (*ActionsDownloadArtifactFound, error) {
 	res, err := c.sendActionsDownloadArtifact(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -11008,7 +10984,6 @@ func (c *Client) sendActionsDownloadArtifact(ctx context.Context, params Actions
 // GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs
 func (c *Client) ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, params ActionsDownloadJobLogsForWorkflowRunParams) (*ActionsDownloadJobLogsForWorkflowRunFound, error) {
 	res, err := c.sendActionsDownloadJobLogsForWorkflowRun(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -11144,7 +11119,6 @@ func (c *Client) sendActionsDownloadJobLogsForWorkflowRun(ctx context.Context, p
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/logs
 func (c *Client) ActionsDownloadWorkflowRunLogs(ctx context.Context, params ActionsDownloadWorkflowRunLogsParams) (*ActionsDownloadWorkflowRunLogsFound, error) {
 	res, err := c.sendActionsDownloadWorkflowRunLogs(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -11278,8 +11252,7 @@ func (c *Client) sendActionsDownloadWorkflowRunLogs(ctx context.Context, params 
 //
 // PUT /orgs/{org}/actions/permissions/repositories/{repository_id}
 func (c *Client) ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams) error {
-	res, err := c.sendActionsEnableSelectedRepositoryGithubActionsOrganization(ctx, params)
-	_ = res
+	_, err := c.sendActionsEnableSelectedRepositoryGithubActionsOrganization(ctx, params)
 	return err
 }
 
@@ -11394,7 +11367,6 @@ func (c *Client) sendActionsEnableSelectedRepositoryGithubActionsOrganization(ct
 // GET /orgs/{org}/actions/permissions/selected-actions
 func (c *Client) ActionsGetAllowedActionsOrganization(ctx context.Context, params ActionsGetAllowedActionsOrganizationParams) (*SelectedActions, error) {
 	res, err := c.sendActionsGetAllowedActionsOrganization(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -11491,7 +11463,6 @@ func (c *Client) sendActionsGetAllowedActionsOrganization(ctx context.Context, p
 // GET /repos/{owner}/{repo}/actions/permissions/selected-actions
 func (c *Client) ActionsGetAllowedActionsRepository(ctx context.Context, params ActionsGetAllowedActionsRepositoryParams) (*SelectedActions, error) {
 	res, err := c.sendActionsGetAllowedActionsRepository(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -11604,7 +11575,6 @@ func (c *Client) sendActionsGetAllowedActionsRepository(ctx context.Context, par
 // GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
 func (c *Client) ActionsGetArtifact(ctx context.Context, params ActionsGetArtifactParams) (*Artifact, error) {
 	res, err := c.sendActionsGetArtifact(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -11736,7 +11706,6 @@ func (c *Client) sendActionsGetArtifact(ctx context.Context, params ActionsGetAr
 // GET /repositories/{repository_id}/environments/{environment_name}/secrets/public-key
 func (c *Client) ActionsGetEnvironmentPublicKey(ctx context.Context, params ActionsGetEnvironmentPublicKeyParams) (*ActionsPublicKey, error) {
 	res, err := c.sendActionsGetEnvironmentPublicKey(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -11849,7 +11818,6 @@ func (c *Client) sendActionsGetEnvironmentPublicKey(ctx context.Context, params 
 // GET /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
 func (c *Client) ActionsGetEnvironmentSecret(ctx context.Context, params ActionsGetEnvironmentSecretParams) (*ActionsSecret, error) {
 	res, err := c.sendActionsGetEnvironmentSecret(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -11980,7 +11948,6 @@ func (c *Client) sendActionsGetEnvironmentSecret(ctx context.Context, params Act
 // GET /orgs/{org}/actions/permissions
 func (c *Client) ActionsGetGithubActionsPermissionsOrganization(ctx context.Context, params ActionsGetGithubActionsPermissionsOrganizationParams) (*ActionsOrganizationPermissions, error) {
 	res, err := c.sendActionsGetGithubActionsPermissionsOrganization(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -12075,7 +12042,6 @@ func (c *Client) sendActionsGetGithubActionsPermissionsOrganization(ctx context.
 // GET /repos/{owner}/{repo}/actions/permissions
 func (c *Client) ActionsGetGithubActionsPermissionsRepository(ctx context.Context, params ActionsGetGithubActionsPermissionsRepositoryParams) (*ActionsRepositoryPermissions, error) {
 	res, err := c.sendActionsGetGithubActionsPermissionsRepository(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -12188,7 +12154,6 @@ func (c *Client) sendActionsGetGithubActionsPermissionsRepository(ctx context.Co
 // GET /repos/{owner}/{repo}/actions/jobs/{job_id}
 func (c *Client) ActionsGetJobForWorkflowRun(ctx context.Context, params ActionsGetJobForWorkflowRunParams) (*Job, error) {
 	res, err := c.sendActionsGetJobForWorkflowRun(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -12320,7 +12285,6 @@ func (c *Client) sendActionsGetJobForWorkflowRun(ctx context.Context, params Act
 // GET /orgs/{org}/actions/secrets/public-key
 func (c *Client) ActionsGetOrgPublicKey(ctx context.Context, params ActionsGetOrgPublicKeyParams) (*ActionsPublicKey, error) {
 	res, err := c.sendActionsGetOrgPublicKey(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -12414,7 +12378,6 @@ func (c *Client) sendActionsGetOrgPublicKey(ctx context.Context, params ActionsG
 // GET /orgs/{org}/actions/secrets/{secret_name}
 func (c *Client) ActionsGetOrgSecret(ctx context.Context, params ActionsGetOrgSecretParams) (*OrganizationActionsSecret, error) {
 	res, err := c.sendActionsGetOrgSecret(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -12527,7 +12490,6 @@ func (c *Client) sendActionsGetOrgSecret(ctx context.Context, params ActionsGetO
 // GET /repos/{owner}/{repo}/actions/secrets/public-key
 func (c *Client) ActionsGetRepoPublicKey(ctx context.Context, params ActionsGetRepoPublicKeyParams) (*ActionsPublicKey, error) {
 	res, err := c.sendActionsGetRepoPublicKey(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -12640,7 +12602,6 @@ func (c *Client) sendActionsGetRepoPublicKey(ctx context.Context, params Actions
 // GET /repos/{owner}/{repo}/actions/secrets/{secret_name}
 func (c *Client) ActionsGetRepoSecret(ctx context.Context, params ActionsGetRepoSecretParams) (*ActionsSecret, error) {
 	res, err := c.sendActionsGetRepoSecret(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -12771,7 +12732,6 @@ func (c *Client) sendActionsGetRepoSecret(ctx context.Context, params ActionsGet
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/approvals
 func (c *Client) ActionsGetReviewsForRun(ctx context.Context, params ActionsGetReviewsForRunParams) ([]EnvironmentApprovals, error) {
 	res, err := c.sendActionsGetReviewsForRun(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -12902,7 +12862,6 @@ func (c *Client) sendActionsGetReviewsForRun(ctx context.Context, params Actions
 // GET /orgs/{org}/actions/runners/{runner_id}
 func (c *Client) ActionsGetSelfHostedRunnerForOrg(ctx context.Context, params ActionsGetSelfHostedRunnerForOrgParams) (*Runner, error) {
 	res, err := c.sendActionsGetSelfHostedRunnerForOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -13014,7 +12973,6 @@ func (c *Client) sendActionsGetSelfHostedRunnerForOrg(ctx context.Context, param
 // GET /repos/{owner}/{repo}/actions/runners/{runner_id}
 func (c *Client) ActionsGetSelfHostedRunnerForRepo(ctx context.Context, params ActionsGetSelfHostedRunnerForRepoParams) (*Runner, error) {
 	res, err := c.sendActionsGetSelfHostedRunnerForRepo(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -13147,7 +13105,6 @@ func (c *Client) sendActionsGetSelfHostedRunnerForRepo(ctx context.Context, para
 // GET /orgs/{org}/actions/runner-groups/{runner_group_id}
 func (c *Client) ActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, params ActionsGetSelfHostedRunnerGroupForOrgParams) (*RunnerGroupsOrg, error) {
 	res, err := c.sendActionsGetSelfHostedRunnerGroupForOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -13259,7 +13216,6 @@ func (c *Client) sendActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, 
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}
 func (c *Client) ActionsGetWorkflowRun(ctx context.Context, params ActionsGetWorkflowRunParams) (*WorkflowRun, error) {
 	res, err := c.sendActionsGetWorkflowRun(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -13397,7 +13353,6 @@ func (c *Client) sendActionsGetWorkflowRun(ctx context.Context, params ActionsGe
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/timing
 func (c *Client) ActionsGetWorkflowRunUsage(ctx context.Context, params ActionsGetWorkflowRunUsageParams) (*WorkflowRunUsage, error) {
 	res, err := c.sendActionsGetWorkflowRunUsage(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -13529,7 +13484,6 @@ func (c *Client) sendActionsGetWorkflowRunUsage(ctx context.Context, params Acti
 // GET /repos/{owner}/{repo}/actions/artifacts
 func (c *Client) ActionsListArtifactsForRepo(ctx context.Context, params ActionsListArtifactsForRepoParams) (*ActionsListArtifactsForRepoOKHeaders, error) {
 	res, err := c.sendActionsListArtifactsForRepo(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -13680,7 +13634,6 @@ func (c *Client) sendActionsListArtifactsForRepo(ctx context.Context, params Act
 // GET /repositories/{repository_id}/environments/{environment_name}/secrets
 func (c *Client) ActionsListEnvironmentSecrets(ctx context.Context, params ActionsListEnvironmentSecretsParams) (*ActionsListEnvironmentSecretsOKHeaders, error) {
 	res, err := c.sendActionsListEnvironmentSecrets(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -13833,7 +13786,6 @@ func (c *Client) sendActionsListEnvironmentSecrets(ctx context.Context, params A
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs
 func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params ActionsListJobsForWorkflowRunParams) (*ActionsListJobsForWorkflowRunOKHeaders, error) {
 	res, err := c.sendActionsListJobsForWorkflowRun(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -14020,7 +13972,6 @@ func (c *Client) sendActionsListJobsForWorkflowRun(ctx context.Context, params A
 // GET /orgs/{org}/actions/secrets
 func (c *Client) ActionsListOrgSecrets(ctx context.Context, params ActionsListOrgSecretsParams) (*ActionsListOrgSecretsOKHeaders, error) {
 	res, err := c.sendActionsListOrgSecrets(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -14154,7 +14105,6 @@ func (c *Client) sendActionsListOrgSecrets(ctx context.Context, params ActionsLi
 // GET /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
 func (c *Client) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams) (*ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK, error) {
 	res, err := c.sendActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -14305,7 +14255,6 @@ func (c *Client) sendActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx conte
 // GET /repos/{owner}/{repo}/actions/secrets
 func (c *Client) ActionsListRepoSecrets(ctx context.Context, params ActionsListRepoSecretsParams) (*ActionsListRepoSecretsOKHeaders, error) {
 	res, err := c.sendActionsListRepoSecrets(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -14456,7 +14405,6 @@ func (c *Client) sendActionsListRepoSecrets(ctx context.Context, params ActionsL
 // GET /repos/{owner}/{repo}/actions/workflows
 func (c *Client) ActionsListRepoWorkflows(ctx context.Context, params ActionsListRepoWorkflowsParams) (*ActionsListRepoWorkflowsOKHeaders, error) {
 	res, err := c.sendActionsListRepoWorkflows(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -14606,7 +14554,6 @@ func (c *Client) sendActionsListRepoWorkflows(ctx context.Context, params Action
 // GET /orgs/{org}/actions/runners/downloads
 func (c *Client) ActionsListRunnerApplicationsForOrg(ctx context.Context, params ActionsListRunnerApplicationsForOrgParams) ([]RunnerApplication, error) {
 	res, err := c.sendActionsListRunnerApplicationsForOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -14699,7 +14646,6 @@ func (c *Client) sendActionsListRunnerApplicationsForOrg(ctx context.Context, pa
 // GET /repos/{owner}/{repo}/actions/runners/downloads
 func (c *Client) ActionsListRunnerApplicationsForRepo(ctx context.Context, params ActionsListRunnerApplicationsForRepoParams) ([]RunnerApplication, error) {
 	res, err := c.sendActionsListRunnerApplicationsForRepo(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -14813,7 +14759,6 @@ func (c *Client) sendActionsListRunnerApplicationsForRepo(ctx context.Context, p
 // GET /orgs/{org}/actions/secrets/{secret_name}/repositories
 func (c *Client) ActionsListSelectedReposForOrgSecret(ctx context.Context, params ActionsListSelectedReposForOrgSecretParams) (*ActionsListSelectedReposForOrgSecretOK, error) {
 	res, err := c.sendActionsListSelectedReposForOrgSecret(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -14967,7 +14912,6 @@ func (c *Client) sendActionsListSelectedReposForOrgSecret(ctx context.Context, p
 // GET /orgs/{org}/actions/permissions/repositories
 func (c *Client) ActionsListSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, params ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams) (*ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK, error) {
 	res, err := c.sendActionsListSelectedRepositoriesEnabledGithubActionsOrganization(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -15101,7 +15045,6 @@ func (c *Client) sendActionsListSelectedRepositoriesEnabledGithubActionsOrganiza
 // GET /orgs/{org}/actions/runner-groups
 func (c *Client) ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, params ActionsListSelfHostedRunnerGroupsForOrgParams) (*ActionsListSelfHostedRunnerGroupsForOrgOK, error) {
 	res, err := c.sendActionsListSelfHostedRunnerGroupsForOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -15232,7 +15175,6 @@ func (c *Client) sendActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context
 // GET /orgs/{org}/actions/runners
 func (c *Client) ActionsListSelfHostedRunnersForOrg(ctx context.Context, params ActionsListSelfHostedRunnersForOrgParams) (*ActionsListSelfHostedRunnersForOrgOKHeaders, error) {
 	res, err := c.sendActionsListSelfHostedRunnersForOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -15363,7 +15305,6 @@ func (c *Client) sendActionsListSelfHostedRunnersForOrg(ctx context.Context, par
 // GET /repos/{owner}/{repo}/actions/runners
 func (c *Client) ActionsListSelfHostedRunnersForRepo(ctx context.Context, params ActionsListSelfHostedRunnersForRepoParams) (*ActionsListSelfHostedRunnersForRepoOKHeaders, error) {
 	res, err := c.sendActionsListSelfHostedRunnersForRepo(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -15516,7 +15457,6 @@ func (c *Client) sendActionsListSelfHostedRunnersForRepo(ctx context.Context, pa
 // GET /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
 func (c *Client) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, params ActionsListSelfHostedRunnersInGroupForOrgParams) (*ActionsListSelfHostedRunnersInGroupForOrgOKHeaders, error) {
 	res, err := c.sendActionsListSelfHostedRunnersInGroupForOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -15667,7 +15607,6 @@ func (c *Client) sendActionsListSelfHostedRunnersInGroupForOrg(ctx context.Conte
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/artifacts
 func (c *Client) ActionsListWorkflowRunArtifacts(ctx context.Context, params ActionsListWorkflowRunArtifactsParams) (*ActionsListWorkflowRunArtifactsOKHeaders, error) {
 	res, err := c.sendActionsListWorkflowRunArtifacts(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -15840,7 +15779,6 @@ func (c *Client) sendActionsListWorkflowRunArtifacts(ctx context.Context, params
 // GET /repos/{owner}/{repo}/actions/runs
 func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params ActionsListWorkflowRunsForRepoParams) (*ActionsListWorkflowRunsForRepoOKHeaders, error) {
 	res, err := c.sendActionsListWorkflowRunsForRepo(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -16080,8 +16018,7 @@ func (c *Client) sendActionsListWorkflowRunsForRepo(ctx context.Context, params 
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/rerun
 func (c *Client) ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWorkflowParams) error {
-	res, err := c.sendActionsReRunWorkflow(ctx, params)
-	_ = res
+	_, err := c.sendActionsReRunWorkflow(ctx, params)
 	return err
 }
 
@@ -16217,8 +16154,7 @@ func (c *Client) sendActionsReRunWorkflow(ctx context.Context, params ActionsReR
 //
 // DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
 func (c *Client) ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams) error {
-	res, err := c.sendActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
-	_ = res
+	_, err := c.sendActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
 	return err
 }
 
@@ -16351,7 +16287,6 @@ func (c *Client) sendActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx con
 // DELETE /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}
 func (c *Client) ActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context, params ActionsRemoveSelectedRepoFromOrgSecretParams) (ActionsRemoveSelectedRepoFromOrgSecretRes, error) {
 	res, err := c.sendActionsRemoveSelectedRepoFromOrgSecret(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -16484,8 +16419,7 @@ func (c *Client) sendActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context,
 //
 // DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
 func (c *Client) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Context, params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams) error {
-	res, err := c.sendActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx, params)
-	_ = res
+	_, err := c.sendActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx, params)
 	return err
 }
 
@@ -16615,8 +16549,7 @@ func (c *Client) sendActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Co
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/retry
 func (c *Client) ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWorkflowParams) error {
-	res, err := c.sendActionsRetryWorkflow(ctx, params)
-	_ = res
+	_, err := c.sendActionsRetryWorkflow(ctx, params)
 	return err
 }
 
@@ -16747,7 +16680,6 @@ func (c *Client) sendActionsRetryWorkflow(ctx context.Context, params ActionsRet
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments
 func (c *Client) ActionsReviewPendingDeploymentsForRun(ctx context.Context, request *ActionsReviewPendingDeploymentsForRunReq, params ActionsReviewPendingDeploymentsForRunParams) ([]Deployment, error) {
 	res, err := c.sendActionsReviewPendingDeploymentsForRun(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -16898,8 +16830,7 @@ func (c *Client) sendActionsReviewPendingDeploymentsForRun(ctx context.Context, 
 //
 // PUT /orgs/{org}/actions/permissions/selected-actions
 func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, request OptSelectedActions, params ActionsSetAllowedActionsOrganizationParams) error {
-	res, err := c.sendActionsSetAllowedActionsOrganization(ctx, request, params)
-	_ = res
+	_, err := c.sendActionsSetAllowedActionsOrganization(ctx, request, params)
 	return err
 }
 
@@ -17002,8 +16933,7 @@ func (c *Client) sendActionsSetAllowedActionsOrganization(ctx context.Context, r
 //
 // PUT /repos/{owner}/{repo}/actions/permissions/selected-actions
 func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request OptSelectedActions, params ActionsSetAllowedActionsRepositoryParams) error {
-	res, err := c.sendActionsSetAllowedActionsRepository(ctx, request, params)
-	_ = res
+	_, err := c.sendActionsSetAllowedActionsRepository(ctx, request, params)
 	return err
 }
 
@@ -17121,8 +17051,7 @@ func (c *Client) sendActionsSetAllowedActionsRepository(ctx context.Context, req
 //
 // PUT /orgs/{org}/actions/permissions
 func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Context, request *ActionsSetGithubActionsPermissionsOrganizationReq, params ActionsSetGithubActionsPermissionsOrganizationParams) error {
-	res, err := c.sendActionsSetGithubActionsPermissionsOrganization(ctx, request, params)
-	_ = res
+	_, err := c.sendActionsSetGithubActionsPermissionsOrganization(ctx, request, params)
 	return err
 }
 
@@ -17231,8 +17160,7 @@ func (c *Client) sendActionsSetGithubActionsPermissionsOrganization(ctx context.
 //
 // PUT /repos/{owner}/{repo}/actions/permissions
 func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Context, request *ActionsSetGithubActionsPermissionsRepositoryReq, params ActionsSetGithubActionsPermissionsRepositoryParams) error {
-	res, err := c.sendActionsSetGithubActionsPermissionsRepository(ctx, request, params)
-	_ = res
+	_, err := c.sendActionsSetGithubActionsPermissionsRepository(ctx, request, params)
 	return err
 }
 
@@ -17359,8 +17287,7 @@ func (c *Client) sendActionsSetGithubActionsPermissionsRepository(ctx context.Co
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
 func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, request *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq, params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams) error {
-	res, err := c.sendActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx, request, params)
-	_ = res
+	_, err := c.sendActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx, request, params)
 	return err
 }
 
@@ -17486,8 +17413,7 @@ func (c *Client) sendActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx contex
 //
 // PUT /orgs/{org}/actions/secrets/{secret_name}/repositories
 func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, request *ActionsSetSelectedReposForOrgSecretReq, params ActionsSetSelectedReposForOrgSecretParams) error {
-	res, err := c.sendActionsSetSelectedReposForOrgSecret(ctx, request, params)
-	_ = res
+	_, err := c.sendActionsSetSelectedReposForOrgSecret(ctx, request, params)
 	return err
 }
 
@@ -17614,8 +17540,7 @@ func (c *Client) sendActionsSetSelectedReposForOrgSecret(ctx context.Context, re
 //
 // PUT /orgs/{org}/actions/permissions/repositories
 func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, request *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq, params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams) error {
-	res, err := c.sendActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx, request, params)
-	_ = res
+	_, err := c.sendActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx, request, params)
 	return err
 }
 
@@ -17722,8 +17647,7 @@ func (c *Client) sendActionsSetSelectedRepositoriesEnabledGithubActionsOrganizat
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
 func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, request *ActionsSetSelfHostedRunnersInGroupForOrgReq, params ActionsSetSelfHostedRunnersInGroupForOrgParams) error {
-	res, err := c.sendActionsSetSelfHostedRunnersInGroupForOrg(ctx, request, params)
-	_ = res
+	_, err := c.sendActionsSetSelfHostedRunnersInGroupForOrg(ctx, request, params)
 	return err
 }
 
@@ -17850,7 +17774,6 @@ func (c *Client) sendActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Contex
 // PATCH /orgs/{org}/actions/runner-groups/{runner_group_id}
 func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, request *ActionsUpdateSelfHostedRunnerGroupForOrgReq, params ActionsUpdateSelfHostedRunnerGroupForOrgParams) (*RunnerGroupsOrg, error) {
 	res, err := c.sendActionsUpdateSelfHostedRunnerGroupForOrg(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -17972,7 +17895,6 @@ func (c *Client) sendActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Contex
 // GET /user/starred/{owner}/{repo}
 func (c *Client) ActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.Context, params ActivityCheckRepoIsStarredByAuthenticatedUserParams) (ActivityCheckRepoIsStarredByAuthenticatedUserRes, error) {
 	res, err := c.sendActivityCheckRepoIsStarredByAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -18083,8 +18005,7 @@ func (c *Client) sendActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.C
 //
 // DELETE /repos/{owner}/{repo}/subscription
 func (c *Client) ActivityDeleteRepoSubscription(ctx context.Context, params ActivityDeleteRepoSubscriptionParams) error {
-	res, err := c.sendActivityDeleteRepoSubscription(ctx, params)
-	_ = res
+	_, err := c.sendActivityDeleteRepoSubscription(ctx, params)
 	return err
 }
 
@@ -18199,7 +18120,6 @@ func (c *Client) sendActivityDeleteRepoSubscription(ctx context.Context, params 
 // DELETE /notifications/threads/{thread_id}/subscription
 func (c *Client) ActivityDeleteThreadSubscription(ctx context.Context, params ActivityDeleteThreadSubscriptionParams) (ActivityDeleteThreadSubscriptionRes, error) {
 	res, err := c.sendActivityDeleteThreadSubscription(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -18305,7 +18225,6 @@ func (c *Client) sendActivityDeleteThreadSubscription(ctx context.Context, param
 // GET /feeds
 func (c *Client) ActivityGetFeeds(ctx context.Context) (*Feed, error) {
 	res, err := c.sendActivityGetFeeds(ctx)
-	_ = res
 	return res, err
 }
 
@@ -18378,7 +18297,6 @@ func (c *Client) sendActivityGetFeeds(ctx context.Context) (res *Feed, err error
 // GET /repos/{owner}/{repo}/subscription
 func (c *Client) ActivityGetRepoSubscription(ctx context.Context, params ActivityGetRepoSubscriptionParams) (ActivityGetRepoSubscriptionRes, error) {
 	res, err := c.sendActivityGetRepoSubscription(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -18489,7 +18407,6 @@ func (c *Client) sendActivityGetRepoSubscription(ctx context.Context, params Act
 // GET /notifications/threads/{thread_id}
 func (c *Client) ActivityGetThread(ctx context.Context, params ActivityGetThreadParams) (ActivityGetThreadRes, error) {
 	res, err := c.sendActivityGetThread(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -18583,7 +18500,6 @@ func (c *Client) sendActivityGetThread(ctx context.Context, params ActivityGetTh
 // GET /notifications/threads/{thread_id}/subscription
 func (c *Client) ActivityGetThreadSubscriptionForAuthenticatedUser(ctx context.Context, params ActivityGetThreadSubscriptionForAuthenticatedUserParams) (ActivityGetThreadSubscriptionForAuthenticatedUserRes, error) {
 	res, err := c.sendActivityGetThreadSubscriptionForAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -18676,7 +18592,6 @@ func (c *Client) sendActivityGetThreadSubscriptionForAuthenticatedUser(ctx conte
 // GET /users/{username}/events
 func (c *Client) ActivityListEventsForAuthenticatedUser(ctx context.Context, params ActivityListEventsForAuthenticatedUserParams) ([]Event, error) {
 	res, err := c.sendActivityListEventsForAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -18806,7 +18721,6 @@ func (c *Client) sendActivityListEventsForAuthenticatedUser(ctx context.Context,
 // GET /notifications
 func (c *Client) ActivityListNotificationsForAuthenticatedUser(ctx context.Context, params ActivityListNotificationsForAuthenticatedUserParams) (ActivityListNotificationsForAuthenticatedUserRes, error) {
 	res, err := c.sendActivityListNotificationsForAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -18985,7 +18899,6 @@ func (c *Client) sendActivityListNotificationsForAuthenticatedUser(ctx context.C
 // GET /users/{username}/events/orgs/{org}
 func (c *Client) ActivityListOrgEventsForAuthenticatedUser(ctx context.Context, params ActivityListOrgEventsForAuthenticatedUserParams) ([]Event, error) {
 	res, err := c.sendActivityListOrgEventsForAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -19134,7 +19047,6 @@ func (c *Client) sendActivityListOrgEventsForAuthenticatedUser(ctx context.Conte
 // GET /events
 func (c *Client) ActivityListPublicEvents(ctx context.Context, params ActivityListPublicEventsParams) (ActivityListPublicEventsRes, error) {
 	res, err := c.sendActivityListPublicEvents(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -19245,7 +19157,6 @@ func (c *Client) sendActivityListPublicEvents(ctx context.Context, params Activi
 // GET /networks/{owner}/{repo}/events
 func (c *Client) ActivityListPublicEventsForRepoNetwork(ctx context.Context, params ActivityListPublicEventsForRepoNetworkParams) (ActivityListPublicEventsForRepoNetworkRes, error) {
 	res, err := c.sendActivityListPublicEventsForRepoNetwork(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -19394,7 +19305,6 @@ func (c *Client) sendActivityListPublicEventsForRepoNetwork(ctx context.Context,
 // GET /users/{username}/events/public
 func (c *Client) ActivityListPublicEventsForUser(ctx context.Context, params ActivityListPublicEventsForUserParams) ([]Event, error) {
 	res, err := c.sendActivityListPublicEventsForUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -19524,7 +19434,6 @@ func (c *Client) sendActivityListPublicEventsForUser(ctx context.Context, params
 // GET /orgs/{org}/events
 func (c *Client) ActivityListPublicOrgEvents(ctx context.Context, params ActivityListPublicOrgEventsParams) ([]Event, error) {
 	res, err := c.sendActivityListPublicOrgEvents(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -19656,7 +19565,6 @@ func (c *Client) sendActivityListPublicOrgEvents(ctx context.Context, params Act
 // GET /users/{username}/received_events
 func (c *Client) ActivityListReceivedEventsForUser(ctx context.Context, params ActivityListReceivedEventsForUserParams) ([]Event, error) {
 	res, err := c.sendActivityListReceivedEventsForUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -19786,7 +19694,6 @@ func (c *Client) sendActivityListReceivedEventsForUser(ctx context.Context, para
 // GET /users/{username}/received_events/public
 func (c *Client) ActivityListReceivedPublicEventsForUser(ctx context.Context, params ActivityListReceivedPublicEventsForUserParams) ([]Event, error) {
 	res, err := c.sendActivityListReceivedPublicEventsForUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -19916,7 +19823,6 @@ func (c *Client) sendActivityListReceivedPublicEventsForUser(ctx context.Context
 // GET /repos/{owner}/{repo}/events
 func (c *Client) ActivityListRepoEvents(ctx context.Context, params ActivityListRepoEventsParams) ([]Event, error) {
 	res, err := c.sendActivityListRepoEvents(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -20065,7 +19971,6 @@ func (c *Client) sendActivityListRepoEvents(ctx context.Context, params Activity
 // GET /repos/{owner}/{repo}/notifications
 func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.Context, params ActivityListRepoNotificationsForAuthenticatedUserParams) (*ActivityListRepoNotificationsForAuthenticatedUserOKHeaders, error) {
 	res, err := c.sendActivityListRepoNotificationsForAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -20284,7 +20189,6 @@ func (c *Client) sendActivityListRepoNotificationsForAuthenticatedUser(ctx conte
 // GET /user/starred
 func (c *Client) ActivityListReposStarredByAuthenticatedUser(ctx context.Context, params ActivityListReposStarredByAuthenticatedUserParams) (ActivityListReposStarredByAuthenticatedUserRes, error) {
 	res, err := c.sendActivityListReposStarredByAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -20429,7 +20333,6 @@ func (c *Client) sendActivityListReposStarredByAuthenticatedUser(ctx context.Con
 // GET /users/{username}/subscriptions
 func (c *Client) ActivityListReposWatchedByUser(ctx context.Context, params ActivityListReposWatchedByUserParams) (*ActivityListReposWatchedByUserOKHeaders, error) {
 	res, err := c.sendActivityListReposWatchedByUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -20559,7 +20462,6 @@ func (c *Client) sendActivityListReposWatchedByUser(ctx context.Context, params 
 // GET /user/subscriptions
 func (c *Client) ActivityListWatchedReposForAuthenticatedUser(ctx context.Context, params ActivityListWatchedReposForAuthenticatedUserParams) (ActivityListWatchedReposForAuthenticatedUserRes, error) {
 	res, err := c.sendActivityListWatchedReposForAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -20670,7 +20572,6 @@ func (c *Client) sendActivityListWatchedReposForAuthenticatedUser(ctx context.Co
 // GET /repos/{owner}/{repo}/subscribers
 func (c *Client) ActivityListWatchersForRepo(ctx context.Context, params ActivityListWatchersForRepoParams) (*ActivityListWatchersForRepoOKHeaders, error) {
 	res, err := c.sendActivityListWatchersForRepo(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -20825,7 +20726,6 @@ func (c *Client) sendActivityListWatchersForRepo(ctx context.Context, params Act
 // PUT /notifications
 func (c *Client) ActivityMarkNotificationsAsRead(ctx context.Context, request OptActivityMarkNotificationsAsReadReq) (ActivityMarkNotificationsAsReadRes, error) {
 	res, err := c.sendActivityMarkNotificationsAsRead(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -20907,7 +20807,6 @@ func (c *Client) sendActivityMarkNotificationsAsRead(ctx context.Context, reques
 // PUT /repos/{owner}/{repo}/notifications
 func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, request OptActivityMarkRepoNotificationsAsReadReq, params ActivityMarkRepoNotificationsAsReadParams) (ActivityMarkRepoNotificationsAsReadRes, error) {
 	res, err := c.sendActivityMarkRepoNotificationsAsRead(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -21021,7 +20920,6 @@ func (c *Client) sendActivityMarkRepoNotificationsAsRead(ctx context.Context, re
 // PATCH /notifications/threads/{thread_id}
 func (c *Client) ActivityMarkThreadAsRead(ctx context.Context, params ActivityMarkThreadAsReadParams) (ActivityMarkThreadAsReadRes, error) {
 	res, err := c.sendActivityMarkThreadAsRead(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -21115,7 +21013,6 @@ func (c *Client) sendActivityMarkThreadAsRead(ctx context.Context, params Activi
 // PUT /repos/{owner}/{repo}/subscription
 func (c *Client) ActivitySetRepoSubscription(ctx context.Context, request OptActivitySetRepoSubscriptionReq, params ActivitySetRepoSubscriptionParams) (*RepositorySubscription, error) {
 	res, err := c.sendActivitySetRepoSubscription(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -21236,7 +21133,6 @@ func (c *Client) sendActivitySetRepoSubscription(ctx context.Context, request Op
 // PUT /notifications/threads/{thread_id}/subscription
 func (c *Client) ActivitySetThreadSubscription(ctx context.Context, request OptActivitySetThreadSubscriptionReq, params ActivitySetThreadSubscriptionParams) (ActivitySetThreadSubscriptionRes, error) {
 	res, err := c.sendActivitySetThreadSubscription(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -21333,7 +21229,6 @@ func (c *Client) sendActivitySetThreadSubscription(ctx context.Context, request 
 // PUT /user/starred/{owner}/{repo}
 func (c *Client) ActivityStarRepoForAuthenticatedUser(ctx context.Context, params ActivityStarRepoForAuthenticatedUserParams) (ActivityStarRepoForAuthenticatedUserRes, error) {
 	res, err := c.sendActivityStarRepoForAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -21443,7 +21338,6 @@ func (c *Client) sendActivityStarRepoForAuthenticatedUser(ctx context.Context, p
 // DELETE /user/starred/{owner}/{repo}
 func (c *Client) ActivityUnstarRepoForAuthenticatedUser(ctx context.Context, params ActivityUnstarRepoForAuthenticatedUserParams) (ActivityUnstarRepoForAuthenticatedUserRes, error) {
 	res, err := c.sendActivityUnstarRepoForAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -21558,7 +21452,6 @@ func (c *Client) sendActivityUnstarRepoForAuthenticatedUser(ctx context.Context,
 // PUT /user/installations/{installation_id}/repositories/{repository_id}
 func (c *Client) AppsAddRepoToInstallation(ctx context.Context, params AppsAddRepoToInstallationParams) (AppsAddRepoToInstallationRes, error) {
 	res, err := c.sendAppsAddRepoToInstallation(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -21673,7 +21566,6 @@ func (c *Client) sendAppsAddRepoToInstallation(ctx context.Context, params AppsA
 // POST /applications/{client_id}/token
 func (c *Client) AppsCheckToken(ctx context.Context, request *AppsCheckTokenReq, params AppsCheckTokenParams) (AppsCheckTokenRes, error) {
 	res, err := c.sendAppsCheckToken(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -21777,7 +21669,6 @@ func (c *Client) sendAppsCheckToken(ctx context.Context, request *AppsCheckToken
 // POST /repos/{owner}/{repo}/content_references/{content_reference_id}/attachments
 func (c *Client) AppsCreateContentAttachment(ctx context.Context, request *AppsCreateContentAttachmentReq, params AppsCreateContentAttachmentParams) (AppsCreateContentAttachmentRes, error) {
 	res, err := c.sendAppsCreateContentAttachment(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -21922,7 +21813,6 @@ func (c *Client) sendAppsCreateContentAttachment(ctx context.Context, request *A
 // POST /app-manifests/{code}/conversions
 func (c *Client) AppsCreateFromManifest(ctx context.Context, request *AppsCreateFromManifestReq, params AppsCreateFromManifestParams) (AppsCreateFromManifestRes, error) {
 	res, err := c.sendAppsCreateFromManifest(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -22026,7 +21916,6 @@ func (c *Client) sendAppsCreateFromManifest(ctx context.Context, request *AppsCr
 // POST /app/installations/{installation_id}/access_tokens
 func (c *Client) AppsCreateInstallationAccessToken(ctx context.Context, request OptAppsCreateInstallationAccessTokenReq, params AppsCreateInstallationAccessTokenParams) (AppsCreateInstallationAccessTokenRes, error) {
 	res, err := c.sendAppsCreateInstallationAccessToken(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -22146,7 +22035,6 @@ func (c *Client) sendAppsCreateInstallationAccessToken(ctx context.Context, requ
 // DELETE /applications/{client_id}/grant
 func (c *Client) AppsDeleteAuthorization(ctx context.Context, request *AppsDeleteAuthorizationReq, params AppsDeleteAuthorizationParams) (AppsDeleteAuthorizationRes, error) {
 	res, err := c.sendAppsDeleteAuthorization(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -22246,7 +22134,6 @@ func (c *Client) sendAppsDeleteAuthorization(ctx context.Context, request *AppsD
 // DELETE /app/installations/{installation_id}
 func (c *Client) AppsDeleteInstallation(ctx context.Context, params AppsDeleteInstallationParams) (AppsDeleteInstallationRes, error) {
 	res, err := c.sendAppsDeleteInstallation(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -22340,7 +22227,6 @@ func (c *Client) sendAppsDeleteInstallation(ctx context.Context, params AppsDele
 // DELETE /applications/{client_id}/token
 func (c *Client) AppsDeleteToken(ctx context.Context, request *AppsDeleteTokenReq, params AppsDeleteTokenParams) (AppsDeleteTokenRes, error) {
 	res, err := c.sendAppsDeleteToken(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -22442,7 +22328,6 @@ func (c *Client) sendAppsDeleteToken(ctx context.Context, request *AppsDeleteTok
 // GET /app
 func (c *Client) AppsGetAuthenticated(ctx context.Context) (*Integration, error) {
 	res, err := c.sendAppsGetAuthenticated(ctx)
-	_ = res
 	return res, err
 }
 
@@ -22522,7 +22407,6 @@ func (c *Client) sendAppsGetAuthenticated(ctx context.Context) (res *Integration
 // GET /apps/{app_slug}
 func (c *Client) AppsGetBySlug(ctx context.Context, params AppsGetBySlugParams) (AppsGetBySlugRes, error) {
 	res, err := c.sendAppsGetBySlug(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -22620,7 +22504,6 @@ func (c *Client) sendAppsGetBySlug(ctx context.Context, params AppsGetBySlugPara
 // GET /marketplace_listing/accounts/{account_id}
 func (c *Client) AppsGetSubscriptionPlanForAccount(ctx context.Context, params AppsGetSubscriptionPlanForAccountParams) (AppsGetSubscriptionPlanForAccountRes, error) {
 	res, err := c.sendAppsGetSubscriptionPlanForAccount(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -22718,7 +22601,6 @@ func (c *Client) sendAppsGetSubscriptionPlanForAccount(ctx context.Context, para
 // GET /marketplace_listing/stubbed/accounts/{account_id}
 func (c *Client) AppsGetSubscriptionPlanForAccountStubbed(ctx context.Context, params AppsGetSubscriptionPlanForAccountStubbedParams) (AppsGetSubscriptionPlanForAccountStubbedRes, error) {
 	res, err := c.sendAppsGetSubscriptionPlanForAccountStubbed(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -22813,7 +22695,6 @@ func (c *Client) sendAppsGetSubscriptionPlanForAccountStubbed(ctx context.Contex
 // GET /app/hook/config
 func (c *Client) AppsGetWebhookConfigForApp(ctx context.Context) (*WebhookConfig, error) {
 	res, err := c.sendAppsGetWebhookConfigForApp(ctx)
-	_ = res
 	return res, err
 }
 
@@ -22889,7 +22770,6 @@ func (c *Client) sendAppsGetWebhookConfigForApp(ctx context.Context) (res *Webho
 // GET /app/hook/deliveries/{delivery_id}
 func (c *Client) AppsGetWebhookDelivery(ctx context.Context, params AppsGetWebhookDeliveryParams) (AppsGetWebhookDeliveryRes, error) {
 	res, err := c.sendAppsGetWebhookDelivery(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -22988,7 +22868,6 @@ func (c *Client) sendAppsGetWebhookDelivery(ctx context.Context, params AppsGetW
 // GET /marketplace_listing/plans/{plan_id}/accounts
 func (c *Client) AppsListAccountsForPlan(ctx context.Context, params AppsListAccountsForPlanParams) (AppsListAccountsForPlanRes, error) {
 	res, err := c.sendAppsListAccountsForPlan(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -23160,7 +23039,6 @@ func (c *Client) sendAppsListAccountsForPlan(ctx context.Context, params AppsLis
 // GET /marketplace_listing/stubbed/plans/{plan_id}/accounts
 func (c *Client) AppsListAccountsForPlanStubbed(ctx context.Context, params AppsListAccountsForPlanStubbedParams) (AppsListAccountsForPlanStubbedRes, error) {
 	res, err := c.sendAppsListAccountsForPlanStubbed(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -23330,7 +23208,6 @@ func (c *Client) sendAppsListAccountsForPlanStubbed(ctx context.Context, params 
 // GET /user/installations/{installation_id}/repositories
 func (c *Client) AppsListInstallationReposForAuthenticatedUser(ctx context.Context, params AppsListInstallationReposForAuthenticatedUserParams) (AppsListInstallationReposForAuthenticatedUserRes, error) {
 	res, err := c.sendAppsListInstallationReposForAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -23465,7 +23342,6 @@ func (c *Client) sendAppsListInstallationReposForAuthenticatedUser(ctx context.C
 // GET /marketplace_listing/plans
 func (c *Client) AppsListPlans(ctx context.Context, params AppsListPlansParams) (AppsListPlansRes, error) {
 	res, err := c.sendAppsListPlans(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -23581,7 +23457,6 @@ func (c *Client) sendAppsListPlans(ctx context.Context, params AppsListPlansPara
 // GET /marketplace_listing/stubbed/plans
 func (c *Client) AppsListPlansStubbed(ctx context.Context, params AppsListPlansStubbedParams) (AppsListPlansStubbedRes, error) {
 	res, err := c.sendAppsListPlansStubbed(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -23695,7 +23570,6 @@ func (c *Client) sendAppsListPlansStubbed(ctx context.Context, params AppsListPl
 // GET /installation/repositories
 func (c *Client) AppsListReposAccessibleToInstallation(ctx context.Context, params AppsListReposAccessibleToInstallationParams) (AppsListReposAccessibleToInstallationRes, error) {
 	res, err := c.sendAppsListReposAccessibleToInstallation(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -23808,7 +23682,6 @@ func (c *Client) sendAppsListReposAccessibleToInstallation(ctx context.Context, 
 // GET /user/marketplace_purchases
 func (c *Client) AppsListSubscriptionsForAuthenticatedUser(ctx context.Context, params AppsListSubscriptionsForAuthenticatedUserParams) (AppsListSubscriptionsForAuthenticatedUserRes, error) {
 	res, err := c.sendAppsListSubscriptionsForAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -23921,7 +23794,6 @@ func (c *Client) sendAppsListSubscriptionsForAuthenticatedUser(ctx context.Conte
 // GET /user/marketplace_purchases/stubbed
 func (c *Client) AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Context, params AppsListSubscriptionsForAuthenticatedUserStubbedParams) (AppsListSubscriptionsForAuthenticatedUserStubbedRes, error) {
 	res, err := c.sendAppsListSubscriptionsForAuthenticatedUserStubbed(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -24035,7 +23907,6 @@ func (c *Client) sendAppsListSubscriptionsForAuthenticatedUserStubbed(ctx contex
 // GET /app/hook/deliveries
 func (c *Client) AppsListWebhookDeliveries(ctx context.Context, params AppsListWebhookDeliveriesParams) (AppsListWebhookDeliveriesRes, error) {
 	res, err := c.sendAppsListWebhookDeliveries(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -24149,7 +24020,6 @@ func (c *Client) sendAppsListWebhookDeliveries(ctx context.Context, params AppsL
 // POST /app/hook/deliveries/{delivery_id}/attempts
 func (c *Client) AppsRedeliverWebhookDelivery(ctx context.Context, params AppsRedeliverWebhookDeliveryParams) (AppsRedeliverWebhookDeliveryRes, error) {
 	res, err := c.sendAppsRedeliverWebhookDelivery(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -24246,7 +24116,6 @@ func (c *Client) sendAppsRedeliverWebhookDelivery(ctx context.Context, params Ap
 // DELETE /user/installations/{installation_id}/repositories/{repository_id}
 func (c *Client) AppsRemoveRepoFromInstallation(ctx context.Context, params AppsRemoveRepoFromInstallationParams) (AppsRemoveRepoFromInstallationRes, error) {
 	res, err := c.sendAppsRemoveRepoFromInstallation(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -24361,7 +24230,6 @@ func (c *Client) sendAppsRemoveRepoFromInstallation(ctx context.Context, params 
 // PATCH /applications/{client_id}/token
 func (c *Client) AppsResetToken(ctx context.Context, request *AppsResetTokenReq, params AppsResetTokenParams) (AppsResetTokenRes, error) {
 	res, err := c.sendAppsResetToken(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -24464,8 +24332,7 @@ func (c *Client) sendAppsResetToken(ctx context.Context, request *AppsResetToken
 //
 // DELETE /installation/token
 func (c *Client) AppsRevokeInstallationAccessToken(ctx context.Context) error {
-	res, err := c.sendAppsRevokeInstallationAccessToken(ctx)
-	_ = res
+	_, err := c.sendAppsRevokeInstallationAccessToken(ctx)
 	return err
 }
 
@@ -24543,7 +24410,6 @@ func (c *Client) sendAppsRevokeInstallationAccessToken(ctx context.Context) (res
 // POST /applications/{client_id}/token/scoped
 func (c *Client) AppsScopeToken(ctx context.Context, request *AppsScopeTokenReq, params AppsScopeTokenParams) (AppsScopeTokenRes, error) {
 	res, err := c.sendAppsScopeToken(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -24652,7 +24518,6 @@ func (c *Client) sendAppsScopeToken(ctx context.Context, request *AppsScopeToken
 // PUT /app/installations/{installation_id}/suspended
 func (c *Client) AppsSuspendInstallation(ctx context.Context, params AppsSuspendInstallationParams) (AppsSuspendInstallationRes, error) {
 	res, err := c.sendAppsSuspendInstallation(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -24747,7 +24612,6 @@ func (c *Client) sendAppsSuspendInstallation(ctx context.Context, params AppsSus
 // DELETE /app/installations/{installation_id}/suspended
 func (c *Client) AppsUnsuspendInstallation(ctx context.Context, params AppsUnsuspendInstallationParams) (AppsUnsuspendInstallationRes, error) {
 	res, err := c.sendAppsUnsuspendInstallation(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -24843,7 +24707,6 @@ func (c *Client) sendAppsUnsuspendInstallation(ctx context.Context, params AppsU
 // PATCH /app/hook/config
 func (c *Client) AppsUpdateWebhookConfigForApp(ctx context.Context, request OptAppsUpdateWebhookConfigForAppReq) (*WebhookConfig, error) {
 	res, err := c.sendAppsUpdateWebhookConfigForApp(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -24942,7 +24805,6 @@ func (c *Client) sendAppsUpdateWebhookConfigForApp(ctx context.Context, request 
 // GET /enterprises/{enterprise}/settings/billing/actions
 func (c *Client) BillingGetGithubActionsBillingGhe(ctx context.Context, params BillingGetGithubActionsBillingGheParams) (*ActionsBillingUsage, error) {
 	res, err := c.sendBillingGetGithubActionsBillingGhe(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -25041,7 +24903,6 @@ func (c *Client) sendBillingGetGithubActionsBillingGhe(ctx context.Context, para
 // GET /orgs/{org}/settings/billing/actions
 func (c *Client) BillingGetGithubActionsBillingOrg(ctx context.Context, params BillingGetGithubActionsBillingOrgParams) (*ActionsBillingUsage, error) {
 	res, err := c.sendBillingGetGithubActionsBillingOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -25140,7 +25001,6 @@ func (c *Client) sendBillingGetGithubActionsBillingOrg(ctx context.Context, para
 // GET /users/{username}/settings/billing/actions
 func (c *Client) BillingGetGithubActionsBillingUser(ctx context.Context, params BillingGetGithubActionsBillingUserParams) (*ActionsBillingUsage, error) {
 	res, err := c.sendBillingGetGithubActionsBillingUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -25236,7 +25096,6 @@ func (c *Client) sendBillingGetGithubActionsBillingUser(ctx context.Context, par
 // GET /enterprises/{enterprise}/settings/billing/packages
 func (c *Client) BillingGetGithubPackagesBillingGhe(ctx context.Context, params BillingGetGithubPackagesBillingGheParams) (*PackagesBillingUsage, error) {
 	res, err := c.sendBillingGetGithubPackagesBillingGhe(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -25332,7 +25191,6 @@ func (c *Client) sendBillingGetGithubPackagesBillingGhe(ctx context.Context, par
 // GET /orgs/{org}/settings/billing/packages
 func (c *Client) BillingGetGithubPackagesBillingOrg(ctx context.Context, params BillingGetGithubPackagesBillingOrgParams) (*PackagesBillingUsage, error) {
 	res, err := c.sendBillingGetGithubPackagesBillingOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -25428,7 +25286,6 @@ func (c *Client) sendBillingGetGithubPackagesBillingOrg(ctx context.Context, par
 // GET /users/{username}/settings/billing/packages
 func (c *Client) BillingGetGithubPackagesBillingUser(ctx context.Context, params BillingGetGithubPackagesBillingUserParams) (*PackagesBillingUsage, error) {
 	res, err := c.sendBillingGetGithubPackagesBillingUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -25524,7 +25381,6 @@ func (c *Client) sendBillingGetGithubPackagesBillingUser(ctx context.Context, pa
 // GET /enterprises/{enterprise}/settings/billing/shared-storage
 func (c *Client) BillingGetSharedStorageBillingGhe(ctx context.Context, params BillingGetSharedStorageBillingGheParams) (*CombinedBillingUsage, error) {
 	res, err := c.sendBillingGetSharedStorageBillingGhe(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -25620,7 +25476,6 @@ func (c *Client) sendBillingGetSharedStorageBillingGhe(ctx context.Context, para
 // GET /orgs/{org}/settings/billing/shared-storage
 func (c *Client) BillingGetSharedStorageBillingOrg(ctx context.Context, params BillingGetSharedStorageBillingOrgParams) (*CombinedBillingUsage, error) {
 	res, err := c.sendBillingGetSharedStorageBillingOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -25716,7 +25571,6 @@ func (c *Client) sendBillingGetSharedStorageBillingOrg(ctx context.Context, para
 // GET /users/{username}/settings/billing/shared-storage
 func (c *Client) BillingGetSharedStorageBillingUser(ctx context.Context, params BillingGetSharedStorageBillingUserParams) (*CombinedBillingUsage, error) {
 	res, err := c.sendBillingGetSharedStorageBillingUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -25816,7 +25670,6 @@ func (c *Client) sendBillingGetSharedStorageBillingUser(ctx context.Context, par
 // POST /repos/{owner}/{repo}/check-suites
 func (c *Client) ChecksCreateSuite(ctx context.Context, request *ChecksCreateSuiteReq, params ChecksCreateSuiteParams) (ChecksCreateSuiteRes, error) {
 	res, err := c.sendChecksCreateSuite(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -25935,7 +25788,6 @@ func (c *Client) sendChecksCreateSuite(ctx context.Context, request *ChecksCreat
 // GET /repos/{owner}/{repo}/check-runs/{check_run_id}
 func (c *Client) ChecksGet(ctx context.Context, params ChecksGetParams) (*CheckRun, error) {
 	res, err := c.sendChecksGet(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -26069,7 +25921,6 @@ func (c *Client) sendChecksGet(ctx context.Context, params ChecksGetParams) (res
 // GET /repos/{owner}/{repo}/check-suites/{check_suite_id}
 func (c *Client) ChecksGetSuite(ctx context.Context, params ChecksGetSuiteParams) (*CheckSuite, error) {
 	res, err := c.sendChecksGetSuite(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -26201,7 +26052,6 @@ func (c *Client) sendChecksGetSuite(ctx context.Context, params ChecksGetSuitePa
 // GET /repos/{owner}/{repo}/check-runs/{check_run_id}/annotations
 func (c *Client) ChecksListAnnotations(ctx context.Context, params ChecksListAnnotationsParams) (*ChecksListAnnotationsOKHeaders, error) {
 	res, err := c.sendChecksListAnnotations(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -26375,7 +26225,6 @@ func (c *Client) sendChecksListAnnotations(ctx context.Context, params ChecksLis
 // GET /repos/{owner}/{repo}/commits/{ref}/check-runs
 func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefParams) (*ChecksListForRefOKHeaders, error) {
 	res, err := c.sendChecksListForRef(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -26616,7 +26465,6 @@ func (c *Client) sendChecksListForRef(ctx context.Context, params ChecksListForR
 // GET /repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs
 func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSuiteParams) (*ChecksListForSuiteOKHeaders, error) {
 	res, err := c.sendChecksListForSuite(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -26841,7 +26689,6 @@ func (c *Client) sendChecksListForSuite(ctx context.Context, params ChecksListFo
 // GET /repos/{owner}/{repo}/commits/{ref}/check-suites
 func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSuitesForRefParams) (*ChecksListSuitesForRefOKHeaders, error) {
 	res, err := c.sendChecksListSuitesForRef(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -27047,8 +26894,7 @@ func (c *Client) sendChecksListSuitesForRef(ctx context.Context, params ChecksLi
 //
 // POST /repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest
 func (c *Client) ChecksRerequestSuite(ctx context.Context, params ChecksRerequestSuiteParams) error {
-	res, err := c.sendChecksRerequestSuite(ctx, params)
-	_ = res
+	_, err := c.sendChecksRerequestSuite(ctx, params)
 	return err
 }
 
@@ -27182,7 +27028,6 @@ func (c *Client) sendChecksRerequestSuite(ctx context.Context, params ChecksRere
 // PATCH /repos/{owner}/{repo}/check-suites/preferences
 func (c *Client) ChecksSetSuitesPreferences(ctx context.Context, request *ChecksSetSuitesPreferencesReq, params ChecksSetSuitesPreferencesParams) (*CheckSuitePreference, error) {
 	res, err := c.sendChecksSetSuitesPreferences(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -27354,7 +27199,6 @@ func (c *Client) sendChecksSetSuitesPreferences(ctx context.Context, request *Ch
 // DELETE /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
 func (c *Client) CodeScanningDeleteAnalysis(ctx context.Context, params CodeScanningDeleteAnalysisParams) (CodeScanningDeleteAnalysisRes, error) {
 	res, err := c.sendCodeScanningDeleteAnalysis(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -27510,7 +27354,6 @@ func (c *Client) sendCodeScanningDeleteAnalysis(ctx context.Context, params Code
 // GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}
 func (c *Client) CodeScanningGetAlert(ctx context.Context, params CodeScanningGetAlertParams) (CodeScanningGetAlertRes, error) {
 	res, err := c.sendCodeScanningGetAlert(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -27660,7 +27503,6 @@ func (c *Client) sendCodeScanningGetAlert(ctx context.Context, params CodeScanni
 // GET /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
 func (c *Client) CodeScanningGetAnalysis(ctx context.Context, params CodeScanningGetAnalysisParams) (CodeScanningGetAnalysisRes, error) {
 	res, err := c.sendCodeScanningGetAnalysis(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -27794,7 +27636,6 @@ func (c *Client) sendCodeScanningGetAnalysis(ctx context.Context, params CodeSca
 // GET /repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}
 func (c *Client) CodeScanningGetSarif(ctx context.Context, params CodeScanningGetSarifParams) (CodeScanningGetSarifRes, error) {
 	res, err := c.sendCodeScanningGetSarif(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -27925,7 +27766,6 @@ func (c *Client) sendCodeScanningGetSarif(ctx context.Context, params CodeScanni
 // GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances
 func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params CodeScanningListAlertInstancesParams) (CodeScanningListAlertInstancesRes, error) {
 	res, err := c.sendCodeScanningListAlertInstances(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -28123,7 +27963,6 @@ func (c *Client) sendCodeScanningListAlertInstances(ctx context.Context, params 
 // GET /repos/{owner}/{repo}/code-scanning/alerts
 func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeScanningListAlertsForRepoParams) (CodeScanningListAlertsForRepoRes, error) {
 	res, err := c.sendCodeScanningListAlertsForRepo(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -28363,7 +28202,6 @@ func (c *Client) sendCodeScanningListAlertsForRepo(ctx context.Context, params C
 // GET /repos/{owner}/{repo}/code-scanning/analyses
 func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params CodeScanningListRecentAnalysesParams) (CodeScanningListRecentAnalysesRes, error) {
 	res, err := c.sendCodeScanningListRecentAnalyses(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -28594,7 +28432,6 @@ func (c *Client) sendCodeScanningListRecentAnalyses(ctx context.Context, params 
 // PATCH /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}
 func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request *CodeScanningUpdateAlertReq, params CodeScanningUpdateAlertParams) (CodeScanningUpdateAlertRes, error) {
 	res, err := c.sendCodeScanningUpdateAlert(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -28764,7 +28601,6 @@ func (c *Client) sendCodeScanningUpdateAlert(ctx context.Context, request *CodeS
 // POST /repos/{owner}/{repo}/code-scanning/sarifs
 func (c *Client) CodeScanningUploadSarif(ctx context.Context, request *CodeScanningUploadSarifReq, params CodeScanningUploadSarifParams) (CodeScanningUploadSarifRes, error) {
 	res, err := c.sendCodeScanningUploadSarif(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -28887,7 +28723,6 @@ func (c *Client) sendCodeScanningUploadSarif(ctx context.Context, request *CodeS
 // GET /codes_of_conduct
 func (c *Client) CodesOfConductGetAllCodesOfConduct(ctx context.Context) (CodesOfConductGetAllCodesOfConductRes, error) {
 	res, err := c.sendCodesOfConductGetAllCodesOfConduct(ctx)
-	_ = res
 	return res, err
 }
 
@@ -28960,7 +28795,6 @@ func (c *Client) sendCodesOfConductGetAllCodesOfConduct(ctx context.Context) (re
 // GET /codes_of_conduct/{key}
 func (c *Client) CodesOfConductGetConductCode(ctx context.Context, params CodesOfConductGetConductCodeParams) (CodesOfConductGetConductCodeRes, error) {
 	res, err := c.sendCodesOfConductGetConductCode(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -29051,7 +28885,6 @@ func (c *Client) sendCodesOfConductGetConductCode(ctx context.Context, params Co
 // GET /emojis
 func (c *Client) EmojisGet(ctx context.Context) (EmojisGetRes, error) {
 	res, err := c.sendEmojisGet(ctx)
-	_ = res
 	return res, err
 }
 
@@ -29127,8 +28960,7 @@ func (c *Client) sendEmojisGet(ctx context.Context) (res EmojisGetRes, err error
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
 func (c *Client) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) error {
-	res, err := c.sendEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
-	_ = res
+	_, err := c.sendEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
 	return err
 }
 
@@ -29258,8 +29090,7 @@ func (c *Client) sendEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpr
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
 func (c *Client) EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx context.Context, params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams) error {
-	res, err := c.sendEnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx, params)
-	_ = res
+	_, err := c.sendEnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx, params)
 	return err
 }
 
@@ -29395,7 +29226,6 @@ func (c *Client) sendEnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx 
 // POST /enterprises/{enterprise}/actions/runners/registration-token
 func (c *Client) EnterpriseAdminCreateRegistrationTokenForEnterprise(ctx context.Context, params EnterpriseAdminCreateRegistrationTokenForEnterpriseParams) (*AuthenticationToken, error) {
 	res, err := c.sendEnterpriseAdminCreateRegistrationTokenForEnterprise(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -29496,7 +29326,6 @@ func (c *Client) sendEnterpriseAdminCreateRegistrationTokenForEnterprise(ctx con
 // POST /enterprises/{enterprise}/actions/runners/remove-token
 func (c *Client) EnterpriseAdminCreateRemoveTokenForEnterprise(ctx context.Context, params EnterpriseAdminCreateRemoveTokenForEnterpriseParams) (*AuthenticationToken, error) {
 	res, err := c.sendEnterpriseAdminCreateRemoveTokenForEnterprise(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -29589,7 +29418,6 @@ func (c *Client) sendEnterpriseAdminCreateRemoveTokenForEnterprise(ctx context.C
 // POST /enterprises/{enterprise}/actions/runner-groups
 func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx context.Context, request *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams) (*RunnerGroupsEnterprise, error) {
 	res, err := c.sendEnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -29693,8 +29521,7 @@ func (c *Client) sendEnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx
 //
 // DELETE /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
 func (c *Client) EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteScimGroupFromEnterpriseParams) error {
-	res, err := c.sendEnterpriseAdminDeleteScimGroupFromEnterprise(ctx, params)
-	_ = res
+	_, err := c.sendEnterpriseAdminDeleteScimGroupFromEnterprise(ctx, params)
 	return err
 }
 
@@ -29805,8 +29632,7 @@ func (c *Client) sendEnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Co
 //
 // DELETE /enterprises/{enterprise}/actions/runners/{runner_id}
 func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams) error {
-	res, err := c.sendEnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx, params)
-	_ = res
+	_, err := c.sendEnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx, params)
 	return err
 }
 
@@ -29916,8 +29742,7 @@ func (c *Client) sendEnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx con
 //
 // DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
 func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams) error {
-	res, err := c.sendEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx, params)
-	_ = res
+	_, err := c.sendEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx, params)
 	return err
 }
 
@@ -30027,8 +29852,7 @@ func (c *Client) sendEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ct
 //
 // DELETE /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
 func (c *Client) EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteUserFromEnterpriseParams) error {
-	res, err := c.sendEnterpriseAdminDeleteUserFromEnterprise(ctx, params)
-	_ = res
+	_, err := c.sendEnterpriseAdminDeleteUserFromEnterprise(ctx, params)
 	return err
 }
 
@@ -30141,8 +29965,7 @@ func (c *Client) sendEnterpriseAdminDeleteUserFromEnterprise(ctx context.Context
 //
 // DELETE /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
 func (c *Client) EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams) error {
-	res, err := c.sendEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx, params)
-	_ = res
+	_, err := c.sendEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx, params)
 	return err
 }
 
@@ -30255,8 +30078,7 @@ func (c *Client) sendEnterpriseAdminDisableSelectedOrganizationGithubActionsEnte
 //
 // PUT /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
 func (c *Client) EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams) error {
-	res, err := c.sendEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx, params)
-	_ = res
+	_, err := c.sendEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx, params)
 	return err
 }
 
@@ -30370,7 +30192,6 @@ func (c *Client) sendEnterpriseAdminEnableSelectedOrganizationGithubActionsEnter
 // GET /enterprises/{enterprise}/actions/permissions/selected-actions
 func (c *Client) EnterpriseAdminGetAllowedActionsEnterprise(ctx context.Context, params EnterpriseAdminGetAllowedActionsEnterpriseParams) (*SelectedActions, error) {
 	res, err := c.sendEnterpriseAdminGetAllowedActionsEnterprise(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -30463,7 +30284,6 @@ func (c *Client) sendEnterpriseAdminGetAllowedActionsEnterprise(ctx context.Cont
 // GET /enterprises/{enterprise}/audit-log
 func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params EnterpriseAdminGetAuditLogParams) ([]AuditLogEvent, error) {
 	res, err := c.sendEnterpriseAdminGetAuditLog(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -30679,7 +30499,6 @@ func (c *Client) sendEnterpriseAdminGetAuditLog(ctx context.Context, params Ente
 // GET /enterprises/{enterprise}/actions/permissions
 func (c *Client) EnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx context.Context, params EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams) (*ActionsEnterprisePermissions, error) {
 	res, err := c.sendEnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -30772,7 +30591,6 @@ func (c *Client) sendEnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx co
 // GET /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
 func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx context.Context, params EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams) (*ScimEnterpriseGroup, error) {
 	res, err := c.sendEnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -30904,7 +30722,6 @@ func (c *Client) sendEnterpriseAdminGetProvisioningInformationForEnterpriseGroup
 // GET /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
 func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx context.Context, params EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams) (*ScimEnterpriseUser, error) {
 	res, err := c.sendEnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -31015,7 +30832,6 @@ func (c *Client) sendEnterpriseAdminGetProvisioningInformationForEnterpriseUser(
 // GET /enterprises/{enterprise}/actions/runners/{runner_id}
 func (c *Client) EnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx context.Context, params EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams) (*Runner, error) {
 	res, err := c.sendEnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -31126,7 +30942,6 @@ func (c *Client) sendEnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx context
 // GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
 func (c *Client) EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx context.Context, params EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams) (*RunnerGroupsEnterprise, error) {
 	res, err := c.sendEnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -31237,7 +31052,6 @@ func (c *Client) sendEnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx co
 // GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
 func (c *Client) EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (*EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK, error) {
 	res, err := c.sendEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -31387,7 +31201,6 @@ func (c *Client) sendEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterp
 // GET /scim/v2/enterprises/{enterprise}/Groups
 func (c *Client) EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Context, params EnterpriseAdminListProvisionedGroupsEnterpriseParams) (*ScimGroupListEnterprise, error) {
 	res, err := c.sendEnterpriseAdminListProvisionedGroupsEnterprise(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -31577,7 +31390,6 @@ func (c *Client) sendEnterpriseAdminListProvisionedGroupsEnterprise(ctx context.
 // GET /scim/v2/enterprises/{enterprise}/Users
 func (c *Client) EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.Context, params EnterpriseAdminListProvisionedIdentitiesEnterpriseParams) (*ScimUserListEnterprise, error) {
 	res, err := c.sendEnterpriseAdminListProvisionedIdentitiesEnterprise(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -31725,7 +31537,6 @@ func (c *Client) sendEnterpriseAdminListProvisionedIdentitiesEnterprise(ctx cont
 // GET /enterprises/{enterprise}/actions/runners/downloads
 func (c *Client) EnterpriseAdminListRunnerApplicationsForEnterprise(ctx context.Context, params EnterpriseAdminListRunnerApplicationsForEnterpriseParams) ([]RunnerApplication, error) {
 	res, err := c.sendEnterpriseAdminListRunnerApplicationsForEnterprise(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -31821,7 +31632,6 @@ func (c *Client) sendEnterpriseAdminListRunnerApplicationsForEnterprise(ctx cont
 // GET /enterprises/{enterprise}/actions/permissions/organizations
 func (c *Client) EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (*EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK, error) {
 	res, err := c.sendEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -31952,7 +31762,6 @@ func (c *Client) sendEnterpriseAdminListSelectedOrganizationsEnabledGithubAction
 // GET /enterprises/{enterprise}/actions/runner-groups
 func (c *Client) EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams) (*EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK, error) {
 	res, err := c.sendEnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -32083,7 +31892,6 @@ func (c *Client) sendEnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx 
 // GET /enterprises/{enterprise}/actions/runners
 func (c *Client) EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersForEnterpriseParams) (*EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders, error) {
 	res, err := c.sendEnterpriseAdminListSelfHostedRunnersForEnterprise(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -32214,7 +32022,6 @@ func (c *Client) sendEnterpriseAdminListSelfHostedRunnersForEnterprise(ctx conte
 // GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
 func (c *Client) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams) (*EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders, error) {
 	res, err := c.sendEnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -32367,7 +32174,6 @@ func (c *Client) sendEnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ct
 // POST /scim/v2/enterprises/{enterprise}/Groups
 func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Context, request *EnterpriseAdminProvisionAndInviteEnterpriseGroupReq, params EnterpriseAdminProvisionAndInviteEnterpriseGroupParams) (*ScimEnterpriseGroup, error) {
 	res, err := c.sendEnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -32477,7 +32283,6 @@ func (c *Client) sendEnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx contex
 // POST /scim/v2/enterprises/{enterprise}/Users
 func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Context, request *EnterpriseAdminProvisionAndInviteEnterpriseUserReq, params EnterpriseAdminProvisionAndInviteEnterpriseUserParams) (*ScimEnterpriseUser, error) {
 	res, err := c.sendEnterpriseAdminProvisionAndInviteEnterpriseUser(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -32584,8 +32389,7 @@ func (c *Client) sendEnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context
 //
 // DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
 func (c *Client) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) error {
-	res, err := c.sendEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
-	_ = res
+	_, err := c.sendEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
 	return err
 }
 
@@ -32715,8 +32519,7 @@ func (c *Client) sendEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnte
 //
 // DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
 func (c *Client) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx context.Context, params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams) error {
-	res, err := c.sendEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx, params)
-	_ = res
+	_, err := c.sendEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx, params)
 	return err
 }
 
@@ -32848,8 +32651,7 @@ func (c *Client) sendEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise
 //
 // PUT /enterprises/{enterprise}/actions/permissions/selected-actions
 func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context, request *SelectedActions, params EnterpriseAdminSetAllowedActionsEnterpriseParams) error {
-	res, err := c.sendEnterpriseAdminSetAllowedActionsEnterprise(ctx, request, params)
-	_ = res
+	_, err := c.sendEnterpriseAdminSetAllowedActionsEnterprise(ctx, request, params)
 	return err
 }
 
@@ -32944,8 +32746,7 @@ func (c *Client) sendEnterpriseAdminSetAllowedActionsEnterprise(ctx context.Cont
 //
 // PUT /enterprises/{enterprise}/actions/permissions
 func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx context.Context, request *EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq, params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams) error {
-	res, err := c.sendEnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx, request, params)
-	_ = res
+	_, err := c.sendEnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx, request, params)
 	return err
 }
 
@@ -33055,7 +32856,6 @@ func (c *Client) sendEnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx co
 // PUT /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
 func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx context.Context, request *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams) (*ScimEnterpriseGroup, error) {
 	res, err := c.sendEnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -33186,7 +32986,6 @@ func (c *Client) sendEnterpriseAdminSetInformationForProvisionedEnterpriseGroup(
 // PUT /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
 func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx context.Context, request *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams) (*ScimEnterpriseUser, error) {
 	res, err := c.sendEnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -33309,8 +33108,7 @@ func (c *Client) sendEnterpriseAdminSetInformationForProvisionedEnterpriseUser(c
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
 func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, request *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq, params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) error {
-	res, err := c.sendEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, request, params)
-	_ = res
+	_, err := c.sendEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, request, params)
 	return err
 }
 
@@ -33436,8 +33234,7 @@ func (c *Client) sendEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpr
 //
 // PUT /enterprises/{enterprise}/actions/permissions/organizations
 func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, request *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq, params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams) error {
-	res, err := c.sendEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx, request, params)
-	_ = res
+	_, err := c.sendEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx, request, params)
 	return err
 }
 
@@ -33541,8 +33338,7 @@ func (c *Client) sendEnterpriseAdminSetSelectedOrganizationsEnabledGithubActions
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
 func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx context.Context, request *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq, params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) error {
-	res, err := c.sendEnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx, request, params)
-	_ = res
+	_, err := c.sendEnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx, request, params)
 	return err
 }
 
@@ -33670,7 +33466,6 @@ func (c *Client) sendEnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx
 // PATCH /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
 func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx context.Context, request *EnterpriseAdminUpdateAttributeForEnterpriseGroupReq, params EnterpriseAdminUpdateAttributeForEnterpriseGroupParams) (*ScimEnterpriseGroup, error) {
 	res, err := c.sendEnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -33814,7 +33609,6 @@ func (c *Client) sendEnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx contex
 // PATCH /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
 func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Context, request *EnterpriseAdminUpdateAttributeForEnterpriseUserReq, params EnterpriseAdminUpdateAttributeForEnterpriseUserParams) (*ScimEnterpriseUser, error) {
 	res, err := c.sendEnterpriseAdminUpdateAttributeForEnterpriseUser(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -33937,7 +33731,6 @@ func (c *Client) sendEnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context
 // PATCH /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
 func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx context.Context, request OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams) (*RunnerGroupsEnterprise, error) {
 	res, err := c.sendEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -34066,7 +33859,6 @@ func (c *Client) sendEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx
 // GET /gists/{gist_id}/star
 func (c *Client) GistsCheckIsStarred(ctx context.Context, params GistsCheckIsStarredParams) (GistsCheckIsStarredRes, error) {
 	res, err := c.sendGistsCheckIsStarred(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -34160,7 +33952,6 @@ func (c *Client) sendGistsCheckIsStarred(ctx context.Context, params GistsCheckI
 // POST /gists
 func (c *Client) GistsCreate(ctx context.Context, request *GistsCreateReq) (GistsCreateRes, error) {
 	res, err := c.sendGistsCreate(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -34245,7 +34036,6 @@ func (c *Client) sendGistsCreate(ctx context.Context, request *GistsCreateReq) (
 // POST /gists/{gist_id}/comments
 func (c *Client) GistsCreateComment(ctx context.Context, request *GistsCreateCommentReq, params GistsCreateCommentParams) (GistsCreateCommentRes, error) {
 	res, err := c.sendGistsCreateComment(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -34349,7 +34139,6 @@ func (c *Client) sendGistsCreateComment(ctx context.Context, request *GistsCreat
 // DELETE /gists/{gist_id}
 func (c *Client) GistsDelete(ctx context.Context, params GistsDeleteParams) (GistsDeleteRes, error) {
 	res, err := c.sendGistsDelete(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -34440,7 +34229,6 @@ func (c *Client) sendGistsDelete(ctx context.Context, params GistsDeleteParams) 
 // DELETE /gists/{gist_id}/comments/{comment_id}
 func (c *Client) GistsDeleteComment(ctx context.Context, params GistsDeleteCommentParams) (GistsDeleteCommentRes, error) {
 	res, err := c.sendGistsDeleteComment(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -34550,7 +34338,6 @@ func (c *Client) sendGistsDeleteComment(ctx context.Context, params GistsDeleteC
 // POST /gists/{gist_id}/forks
 func (c *Client) GistsFork(ctx context.Context, params GistsForkParams) (GistsForkRes, error) {
 	res, err := c.sendGistsFork(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -34642,7 +34429,6 @@ func (c *Client) sendGistsFork(ctx context.Context, params GistsForkParams) (res
 // GET /gists/{gist_id}
 func (c *Client) GistsGet(ctx context.Context, params GistsGetParams) (GistsGetRes, error) {
 	res, err := c.sendGistsGet(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -34733,7 +34519,6 @@ func (c *Client) sendGistsGet(ctx context.Context, params GistsGetParams) (res G
 // GET /gists/{gist_id}/comments/{comment_id}
 func (c *Client) GistsGetComment(ctx context.Context, params GistsGetCommentParams) (GistsGetCommentRes, error) {
 	res, err := c.sendGistsGetComment(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -34843,7 +34628,6 @@ func (c *Client) sendGistsGetComment(ctx context.Context, params GistsGetComment
 // GET /gists/{gist_id}/{sha}
 func (c *Client) GistsGetRevision(ctx context.Context, params GistsGetRevisionParams) (GistsGetRevisionRes, error) {
 	res, err := c.sendGistsGetRevision(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -34954,7 +34738,6 @@ func (c *Client) sendGistsGetRevision(ctx context.Context, params GistsGetRevisi
 // GET /gists
 func (c *Client) GistsList(ctx context.Context, params GistsListParams) (GistsListRes, error) {
 	res, err := c.sendGistsList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -35082,7 +34865,6 @@ func (c *Client) sendGistsList(ctx context.Context, params GistsListParams) (res
 // GET /gists/{gist_id}/comments
 func (c *Client) GistsListComments(ctx context.Context, params GistsListCommentsParams) (GistsListCommentsRes, error) {
 	res, err := c.sendGistsListComments(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -35212,7 +34994,6 @@ func (c *Client) sendGistsListComments(ctx context.Context, params GistsListComm
 // GET /gists/{gist_id}/commits
 func (c *Client) GistsListCommits(ctx context.Context, params GistsListCommitsParams) (GistsListCommitsRes, error) {
 	res, err := c.sendGistsListCommits(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -35342,7 +35123,6 @@ func (c *Client) sendGistsListCommits(ctx context.Context, params GistsListCommi
 // GET /users/{username}/gists
 func (c *Client) GistsListForUser(ctx context.Context, params GistsListForUserParams) (GistsListForUserRes, error) {
 	res, err := c.sendGistsListForUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -35489,7 +35269,6 @@ func (c *Client) sendGistsListForUser(ctx context.Context, params GistsListForUs
 // GET /gists/{gist_id}/forks
 func (c *Client) GistsListForks(ctx context.Context, params GistsListForksParams) (GistsListForksRes, error) {
 	res, err := c.sendGistsListForks(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -35622,7 +35401,6 @@ func (c *Client) sendGistsListForks(ctx context.Context, params GistsListForksPa
 // GET /gists/public
 func (c *Client) GistsListPublic(ctx context.Context, params GistsListPublicParams) (GistsListPublicRes, error) {
 	res, err := c.sendGistsListPublic(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -35750,7 +35528,6 @@ func (c *Client) sendGistsListPublic(ctx context.Context, params GistsListPublic
 // GET /gists/starred
 func (c *Client) GistsListStarred(ctx context.Context, params GistsListStarredParams) (GistsListStarredRes, error) {
 	res, err := c.sendGistsListStarred(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -35880,7 +35657,6 @@ func (c *Client) sendGistsListStarred(ctx context.Context, params GistsListStarr
 // PUT /gists/{gist_id}/star
 func (c *Client) GistsStar(ctx context.Context, params GistsStarParams) (GistsStarRes, error) {
 	res, err := c.sendGistsStar(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -35972,7 +35748,6 @@ func (c *Client) sendGistsStar(ctx context.Context, params GistsStarParams) (res
 // DELETE /gists/{gist_id}/star
 func (c *Client) GistsUnstar(ctx context.Context, params GistsUnstarParams) (GistsUnstarRes, error) {
 	res, err := c.sendGistsUnstar(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -36064,7 +35839,6 @@ func (c *Client) sendGistsUnstar(ctx context.Context, params GistsUnstarParams) 
 // PATCH /gists/{gist_id}/comments/{comment_id}
 func (c *Client) GistsUpdateComment(ctx context.Context, request *GistsUpdateCommentReq, params GistsUpdateCommentParams) (GistsUpdateCommentRes, error) {
 	res, err := c.sendGistsUpdateComment(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -36186,7 +35960,6 @@ func (c *Client) sendGistsUpdateComment(ctx context.Context, request *GistsUpdat
 // POST /repos/{owner}/{repo}/git/blobs
 func (c *Client) GitCreateBlob(ctx context.Context, request *GitCreateBlobReq, params GitCreateBlobParams) (GitCreateBlobRes, error) {
 	res, err := c.sendGitCreateBlob(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -36333,7 +36106,6 @@ func (c *Client) sendGitCreateBlob(ctx context.Context, request *GitCreateBlobRe
 // POST /repos/{owner}/{repo}/git/commits
 func (c *Client) GitCreateCommit(ctx context.Context, request *GitCreateCommitReq, params GitCreateCommitParams) (GitCreateCommitRes, error) {
 	res, err := c.sendGitCreateCommit(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -36449,7 +36221,6 @@ func (c *Client) sendGitCreateCommit(ctx context.Context, request *GitCreateComm
 // POST /repos/{owner}/{repo}/git/refs
 func (c *Client) GitCreateRef(ctx context.Context, request *GitCreateRefReq, params GitCreateRefParams) (GitCreateRefRes, error) {
 	res, err := c.sendGitCreateRef(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -36599,7 +36370,6 @@ func (c *Client) sendGitCreateRef(ctx context.Context, request *GitCreateRefReq,
 // POST /repos/{owner}/{repo}/git/tags
 func (c *Client) GitCreateTag(ctx context.Context, request *GitCreateTagReq, params GitCreateTagParams) (GitCreateTagRes, error) {
 	res, err := c.sendGitCreateTag(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -36728,7 +36498,6 @@ func (c *Client) sendGitCreateTag(ctx context.Context, request *GitCreateTagReq,
 // POST /repos/{owner}/{repo}/git/trees
 func (c *Client) GitCreateTree(ctx context.Context, request *GitCreateTreeReq, params GitCreateTreeParams) (GitCreateTreeRes, error) {
 	res, err := c.sendGitCreateTree(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -36851,7 +36620,6 @@ func (c *Client) sendGitCreateTree(ctx context.Context, request *GitCreateTreeRe
 // DELETE /repos/{owner}/{repo}/git/refs/{ref}
 func (c *Client) GitDeleteRef(ctx context.Context, params GitDeleteRefParams) (GitDeleteRefRes, error) {
 	res, err := c.sendGitDeleteRef(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -36981,7 +36749,6 @@ func (c *Client) sendGitDeleteRef(ctx context.Context, params GitDeleteRefParams
 // GET /repos/{owner}/{repo}/git/blobs/{file_sha}
 func (c *Client) GitGetBlob(ctx context.Context, params GitGetBlobParams) (GitGetBlobRes, error) {
 	res, err := c.sendGitGetBlob(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -37143,7 +36910,6 @@ func (c *Client) sendGitGetBlob(ctx context.Context, params GitGetBlobParams) (r
 // GET /repos/{owner}/{repo}/git/commits/{commit_sha}
 func (c *Client) GitGetCommit(ctx context.Context, params GitGetCommitParams) (GitGetCommitRes, error) {
 	res, err := c.sendGitGetCommit(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -37279,7 +37045,6 @@ func (c *Client) sendGitGetCommit(ctx context.Context, params GitGetCommitParams
 // GET /repos/{owner}/{repo}/git/ref/{ref}
 func (c *Client) GitGetRef(ctx context.Context, params GitGetRefParams) (GitGetRefRes, error) {
 	res, err := c.sendGitGetRef(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -37439,7 +37204,6 @@ func (c *Client) sendGitGetRef(ctx context.Context, params GitGetRefParams) (res
 // GET /repos/{owner}/{repo}/git/tags/{tag_sha}
 func (c *Client) GitGetTag(ctx context.Context, params GitGetTagParams) (GitGetTagRes, error) {
 	res, err := c.sendGitGetTag(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -37571,7 +37335,6 @@ func (c *Client) sendGitGetTag(ctx context.Context, params GitGetTagParams) (res
 // GET /repos/{owner}/{repo}/git/trees/{tree_sha}
 func (c *Client) GitGetTree(ctx context.Context, params GitGetTreeParams) (GitGetTreeRes, error) {
 	res, err := c.sendGitGetTree(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -37735,7 +37498,6 @@ func (c *Client) sendGitGetTree(ctx context.Context, params GitGetTreeParams) (r
 // GET /repos/{owner}/{repo}/git/matching-refs/{ref}
 func (c *Client) GitListMatchingRefs(ctx context.Context, params GitListMatchingRefsParams) (*GitListMatchingRefsOKHeaders, error) {
 	res, err := c.sendGitListMatchingRefs(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -37902,7 +37664,6 @@ func (c *Client) sendGitListMatchingRefs(ctx context.Context, params GitListMatc
 // PATCH /repos/{owner}/{repo}/git/refs/{ref}
 func (c *Client) GitUpdateRef(ctx context.Context, request *GitUpdateRefReq, params GitUpdateRefParams) (GitUpdateRefRes, error) {
 	res, err := c.sendGitUpdateRef(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -38035,7 +37796,6 @@ func (c *Client) sendGitUpdateRef(ctx context.Context, request *GitUpdateRefReq,
 // GET /gitignore/templates
 func (c *Client) GitignoreGetAllTemplates(ctx context.Context) (GitignoreGetAllTemplatesRes, error) {
 	res, err := c.sendGitignoreGetAllTemplates(ctx)
-	_ = res
 	return res, err
 }
 
@@ -38110,7 +37870,6 @@ func (c *Client) sendGitignoreGetAllTemplates(ctx context.Context) (res Gitignor
 // GET /gitignore/templates/{name}
 func (c *Client) GitignoreGetTemplate(ctx context.Context, params GitignoreGetTemplateParams) (GitignoreGetTemplateRes, error) {
 	res, err := c.sendGitignoreGetTemplate(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -38200,8 +37959,7 @@ func (c *Client) sendGitignoreGetTemplate(ctx context.Context, params GitignoreG
 //
 // DELETE /user/interaction-limits
 func (c *Client) InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.Context) error {
-	res, err := c.sendInteractionsRemoveRestrictionsForAuthenticatedUser(ctx)
-	_ = res
+	_, err := c.sendInteractionsRemoveRestrictionsForAuthenticatedUser(ctx)
 	return err
 }
 
@@ -38274,8 +38032,7 @@ func (c *Client) sendInteractionsRemoveRestrictionsForAuthenticatedUser(ctx cont
 //
 // DELETE /orgs/{org}/interaction-limits
 func (c *Client) InteractionsRemoveRestrictionsForOrg(ctx context.Context, params InteractionsRemoveRestrictionsForOrgParams) error {
-	res, err := c.sendInteractionsRemoveRestrictionsForOrg(ctx, params)
-	_ = res
+	_, err := c.sendInteractionsRemoveRestrictionsForOrg(ctx, params)
 	return err
 }
 
@@ -38370,7 +38127,6 @@ func (c *Client) sendInteractionsRemoveRestrictionsForOrg(ctx context.Context, p
 // DELETE /repos/{owner}/{repo}/interaction-limits
 func (c *Client) InteractionsRemoveRestrictionsForRepo(ctx context.Context, params InteractionsRemoveRestrictionsForRepoParams) (InteractionsRemoveRestrictionsForRepoRes, error) {
 	res, err := c.sendInteractionsRemoveRestrictionsForRepo(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -38483,7 +38239,6 @@ func (c *Client) sendInteractionsRemoveRestrictionsForRepo(ctx context.Context, 
 // PUT /user/interaction-limits
 func (c *Client) InteractionsSetRestrictionsForAuthenticatedUser(ctx context.Context, request *InteractionLimit) (InteractionsSetRestrictionsForAuthenticatedUserRes, error) {
 	res, err := c.sendInteractionsSetRestrictionsForAuthenticatedUser(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -38571,7 +38326,6 @@ func (c *Client) sendInteractionsSetRestrictionsForAuthenticatedUser(ctx context
 // PUT /orgs/{org}/interaction-limits
 func (c *Client) InteractionsSetRestrictionsForOrg(ctx context.Context, request *InteractionLimit, params InteractionsSetRestrictionsForOrgParams) (InteractionsSetRestrictionsForOrgRes, error) {
 	res, err := c.sendInteractionsSetRestrictionsForOrg(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -38678,7 +38432,6 @@ func (c *Client) sendInteractionsSetRestrictionsForOrg(ctx context.Context, requ
 // PUT /repos/{owner}/{repo}/interaction-limits
 func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, request *InteractionLimit, params InteractionsSetRestrictionsForRepoParams) (InteractionsSetRestrictionsForRepoRes, error) {
 	res, err := c.sendInteractionsSetRestrictionsForRepo(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -38801,7 +38554,6 @@ func (c *Client) sendInteractionsSetRestrictionsForRepo(ctx context.Context, req
 // POST /repos/{owner}/{repo}/issues/{issue_number}/assignees
 func (c *Client) IssuesAddAssignees(ctx context.Context, request OptIssuesAddAssigneesReq, params IssuesAddAssigneesParams) (*IssueSimple, error) {
 	res, err := c.sendIssuesAddAssignees(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -38937,7 +38689,6 @@ func (c *Client) sendIssuesAddAssignees(ctx context.Context, request OptIssuesAd
 // GET /repos/{owner}/{repo}/assignees/{assignee}
 func (c *Client) IssuesCheckUserCanBeAssigned(ctx context.Context, params IssuesCheckUserCanBeAssignedParams) (IssuesCheckUserCanBeAssignedRes, error) {
 	res, err := c.sendIssuesCheckUserCanBeAssigned(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -39075,7 +38826,6 @@ func (c *Client) sendIssuesCheckUserCanBeAssigned(ctx context.Context, params Is
 // POST /repos/{owner}/{repo}/issues
 func (c *Client) IssuesCreate(ctx context.Context, request *IssuesCreateReq, params IssuesCreateParams) (IssuesCreateRes, error) {
 	res, err := c.sendIssuesCreate(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -39195,7 +38945,6 @@ func (c *Client) sendIssuesCreate(ctx context.Context, request *IssuesCreateReq,
 // POST /repos/{owner}/{repo}/issues/{issue_number}/comments
 func (c *Client) IssuesCreateComment(ctx context.Context, request *IssuesCreateCommentReq, params IssuesCreateCommentParams) (IssuesCreateCommentRes, error) {
 	res, err := c.sendIssuesCreateComment(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -39328,7 +39077,6 @@ func (c *Client) sendIssuesCreateComment(ctx context.Context, request *IssuesCre
 // POST /repos/{owner}/{repo}/labels
 func (c *Client) IssuesCreateLabel(ctx context.Context, request *IssuesCreateLabelReq, params IssuesCreateLabelParams) (IssuesCreateLabelRes, error) {
 	res, err := c.sendIssuesCreateLabel(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -39442,7 +39190,6 @@ func (c *Client) sendIssuesCreateLabel(ctx context.Context, request *IssuesCreat
 // POST /repos/{owner}/{repo}/milestones
 func (c *Client) IssuesCreateMilestone(ctx context.Context, request *IssuesCreateMilestoneReq, params IssuesCreateMilestoneParams) (IssuesCreateMilestoneRes, error) {
 	res, err := c.sendIssuesCreateMilestone(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -39564,8 +39311,7 @@ func (c *Client) sendIssuesCreateMilestone(ctx context.Context, request *IssuesC
 //
 // DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}
 func (c *Client) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCommentParams) error {
-	res, err := c.sendIssuesDeleteComment(ctx, params)
-	_ = res
+	_, err := c.sendIssuesDeleteComment(ctx, params)
 	return err
 }
 
@@ -39693,8 +39439,7 @@ func (c *Client) sendIssuesDeleteComment(ctx context.Context, params IssuesDelet
 //
 // DELETE /repos/{owner}/{repo}/labels/{name}
 func (c *Client) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabelParams) error {
-	res, err := c.sendIssuesDeleteLabel(ctx, params)
-	_ = res
+	_, err := c.sendIssuesDeleteLabel(ctx, params)
 	return err
 }
 
@@ -39823,7 +39568,6 @@ func (c *Client) sendIssuesDeleteLabel(ctx context.Context, params IssuesDeleteL
 // DELETE /repos/{owner}/{repo}/milestones/{milestone_number}
 func (c *Client) IssuesDeleteMilestone(ctx context.Context, params IssuesDeleteMilestoneParams) (IssuesDeleteMilestoneRes, error) {
 	res, err := c.sendIssuesDeleteMilestone(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -39970,7 +39714,6 @@ func (c *Client) sendIssuesDeleteMilestone(ctx context.Context, params IssuesDel
 // GET /repos/{owner}/{repo}/issues/{issue_number}
 func (c *Client) IssuesGet(ctx context.Context, params IssuesGetParams) (IssuesGetRes, error) {
 	res, err := c.sendIssuesGet(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -40099,7 +39842,6 @@ func (c *Client) sendIssuesGet(ctx context.Context, params IssuesGetParams) (res
 // GET /repos/{owner}/{repo}/issues/comments/{comment_id}
 func (c *Client) IssuesGetComment(ctx context.Context, params IssuesGetCommentParams) (IssuesGetCommentRes, error) {
 	res, err := c.sendIssuesGetComment(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -40228,7 +39970,6 @@ func (c *Client) sendIssuesGetComment(ctx context.Context, params IssuesGetComme
 // GET /repos/{owner}/{repo}/issues/events/{event_id}
 func (c *Client) IssuesGetEvent(ctx context.Context, params IssuesGetEventParams) (IssuesGetEventRes, error) {
 	res, err := c.sendIssuesGetEvent(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -40357,7 +40098,6 @@ func (c *Client) sendIssuesGetEvent(ctx context.Context, params IssuesGetEventPa
 // GET /repos/{owner}/{repo}/labels/{name}
 func (c *Client) IssuesGetLabel(ctx context.Context, params IssuesGetLabelParams) (IssuesGetLabelRes, error) {
 	res, err := c.sendIssuesGetLabel(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -40486,7 +40226,6 @@ func (c *Client) sendIssuesGetLabel(ctx context.Context, params IssuesGetLabelPa
 // GET /repos/{owner}/{repo}/milestones/{milestone_number}
 func (c *Client) IssuesGetMilestone(ctx context.Context, params IssuesGetMilestoneParams) (IssuesGetMilestoneRes, error) {
 	res, err := c.sendIssuesGetMilestone(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -40627,7 +40366,6 @@ func (c *Client) sendIssuesGetMilestone(ctx context.Context, params IssuesGetMil
 // GET /issues
 func (c *Client) IssuesList(ctx context.Context, params IssuesListParams) (IssuesListRes, error) {
 	res, err := c.sendIssuesList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -40909,7 +40647,6 @@ func (c *Client) sendIssuesList(ctx context.Context, params IssuesListParams) (r
 // GET /repos/{owner}/{repo}/assignees
 func (c *Client) IssuesListAssignees(ctx context.Context, params IssuesListAssigneesParams) (IssuesListAssigneesRes, error) {
 	res, err := c.sendIssuesListAssignees(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -41058,7 +40795,6 @@ func (c *Client) sendIssuesListAssignees(ctx context.Context, params IssuesListA
 // GET /repos/{owner}/{repo}/issues/{issue_number}/comments
 func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommentsParams) (IssuesListCommentsRes, error) {
 	res, err := c.sendIssuesListComments(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -41243,7 +40979,6 @@ func (c *Client) sendIssuesListComments(ctx context.Context, params IssuesListCo
 // GET /repos/{owner}/{repo}/issues/comments
 func (c *Client) IssuesListCommentsForRepo(ctx context.Context, params IssuesListCommentsForRepoParams) (IssuesListCommentsForRepoRes, error) {
 	res, err := c.sendIssuesListCommentsForRepo(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -41443,7 +41178,6 @@ func (c *Client) sendIssuesListCommentsForRepo(ctx context.Context, params Issue
 // GET /repos/{owner}/{repo}/issues/events
 func (c *Client) IssuesListEventsForRepo(ctx context.Context, params IssuesListEventsForRepoParams) (IssuesListEventsForRepoRes, error) {
 	res, err := c.sendIssuesListEventsForRepo(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -41600,7 +41334,6 @@ func (c *Client) sendIssuesListEventsForRepo(ctx context.Context, params IssuesL
 // GET /user/issues
 func (c *Client) IssuesListForAuthenticatedUser(ctx context.Context, params IssuesListForAuthenticatedUserParams) (IssuesListForAuthenticatedUserRes, error) {
 	res, err := c.sendIssuesListForAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -41821,7 +41554,6 @@ func (c *Client) sendIssuesListForAuthenticatedUser(ctx context.Context, params 
 // GET /orgs/{org}/issues
 func (c *Client) IssuesListForOrg(ctx context.Context, params IssuesListForOrgParams) (IssuesListForOrgRes, error) {
 	res, err := c.sendIssuesListForOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -42061,7 +41793,6 @@ func (c *Client) sendIssuesListForOrg(ctx context.Context, params IssuesListForO
 // GET /repos/{owner}/{repo}/issues
 func (c *Client) IssuesListForRepo(ctx context.Context, params IssuesListForRepoParams) (IssuesListForRepoRes, error) {
 	res, err := c.sendIssuesListForRepo(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -42363,7 +42094,6 @@ func (c *Client) sendIssuesListForRepo(ctx context.Context, params IssuesListFor
 // GET /repos/{owner}/{repo}/milestones/{milestone_number}/labels
 func (c *Client) IssuesListLabelsForMilestone(ctx context.Context, params IssuesListLabelsForMilestoneParams) (*IssuesListLabelsForMilestoneOKHeaders, error) {
 	res, err := c.sendIssuesListLabelsForMilestone(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -42531,7 +42261,6 @@ func (c *Client) sendIssuesListLabelsForMilestone(ctx context.Context, params Is
 // GET /repos/{owner}/{repo}/labels
 func (c *Client) IssuesListLabelsForRepo(ctx context.Context, params IssuesListLabelsForRepoParams) (IssuesListLabelsForRepoRes, error) {
 	res, err := c.sendIssuesListLabelsForRepo(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -42680,7 +42409,6 @@ func (c *Client) sendIssuesListLabelsForRepo(ctx context.Context, params IssuesL
 // GET /repos/{owner}/{repo}/issues/{issue_number}/labels
 func (c *Client) IssuesListLabelsOnIssue(ctx context.Context, params IssuesListLabelsOnIssueParams) (IssuesListLabelsOnIssueRes, error) {
 	res, err := c.sendIssuesListLabelsOnIssue(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -42848,7 +42576,6 @@ func (c *Client) sendIssuesListLabelsOnIssue(ctx context.Context, params IssuesL
 // GET /repos/{owner}/{repo}/milestones
 func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMilestonesParams) (IssuesListMilestonesRes, error) {
 	res, err := c.sendIssuesListMilestones(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -43051,7 +42778,6 @@ func (c *Client) sendIssuesListMilestones(ctx context.Context, params IssuesList
 // PUT /repos/{owner}/{repo}/issues/{issue_number}/lock
 func (c *Client) IssuesLock(ctx context.Context, request OptNilIssuesLockReq, params IssuesLockParams) (IssuesLockRes, error) {
 	res, err := c.sendIssuesLock(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -43200,7 +42926,6 @@ func (c *Client) sendIssuesLock(ctx context.Context, request OptNilIssuesLockReq
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels
 func (c *Client) IssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveAllLabelsParams) (IssuesRemoveAllLabelsRes, error) {
 	res, err := c.sendIssuesRemoveAllLabels(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -43330,7 +43055,6 @@ func (c *Client) sendIssuesRemoveAllLabels(ctx context.Context, params IssuesRem
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/assignees
 func (c *Client) IssuesRemoveAssignees(ctx context.Context, request OptIssuesRemoveAssigneesReq, params IssuesRemoveAssigneesParams) (*IssueSimple, error) {
 	res, err := c.sendIssuesRemoveAssignees(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -43464,7 +43188,6 @@ func (c *Client) sendIssuesRemoveAssignees(ctx context.Context, request OptIssue
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels/{name}
 func (c *Client) IssuesRemoveLabel(ctx context.Context, params IssuesRemoveLabelParams) (IssuesRemoveLabelRes, error) {
 	res, err := c.sendIssuesRemoveLabel(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -43612,7 +43335,6 @@ func (c *Client) sendIssuesRemoveLabel(ctx context.Context, params IssuesRemoveL
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/lock
 func (c *Client) IssuesUnlock(ctx context.Context, params IssuesUnlockParams) (IssuesUnlockRes, error) {
 	res, err := c.sendIssuesUnlock(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -43742,7 +43464,6 @@ func (c *Client) sendIssuesUnlock(ctx context.Context, params IssuesUnlockParams
 // PATCH /repos/{owner}/{repo}/issues/{issue_number}
 func (c *Client) IssuesUpdate(ctx context.Context, request OptIssuesUpdateReq, params IssuesUpdateParams) (IssuesUpdateRes, error) {
 	res, err := c.sendIssuesUpdate(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -43890,7 +43611,6 @@ func (c *Client) sendIssuesUpdate(ctx context.Context, request OptIssuesUpdateRe
 // PATCH /repos/{owner}/{repo}/issues/comments/{comment_id}
 func (c *Client) IssuesUpdateComment(ctx context.Context, request *IssuesUpdateCommentReq, params IssuesUpdateCommentParams) (IssuesUpdateCommentRes, error) {
 	res, err := c.sendIssuesUpdateComment(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -44022,7 +43742,6 @@ func (c *Client) sendIssuesUpdateComment(ctx context.Context, request *IssuesUpd
 // PATCH /repos/{owner}/{repo}/labels/{name}
 func (c *Client) IssuesUpdateLabel(ctx context.Context, request OptIssuesUpdateLabelReq, params IssuesUpdateLabelParams) (*Label, error) {
 	res, err := c.sendIssuesUpdateLabel(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -44154,7 +43873,6 @@ func (c *Client) sendIssuesUpdateLabel(ctx context.Context, request OptIssuesUpd
 // PATCH /repos/{owner}/{repo}/milestones/{milestone_number}
 func (c *Client) IssuesUpdateMilestone(ctx context.Context, request OptIssuesUpdateMilestoneReq, params IssuesUpdateMilestoneParams) (*Milestone, error) {
 	res, err := c.sendIssuesUpdateMilestone(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -44302,7 +44020,6 @@ func (c *Client) sendIssuesUpdateMilestone(ctx context.Context, request OptIssue
 // GET /licenses/{license}
 func (c *Client) LicensesGet(ctx context.Context, params LicensesGetParams) (LicensesGetRes, error) {
 	res, err := c.sendLicensesGet(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -44393,7 +44110,6 @@ func (c *Client) sendLicensesGet(ctx context.Context, params LicensesGetParams) 
 // GET /licenses
 func (c *Client) LicensesGetAllCommonlyUsed(ctx context.Context, params LicensesGetAllCommonlyUsedParams) (LicensesGetAllCommonlyUsedRes, error) {
 	res, err := c.sendLicensesGetAllCommonlyUsed(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -44525,7 +44241,6 @@ func (c *Client) sendLicensesGetAllCommonlyUsed(ctx context.Context, params Lice
 // GET /repos/{owner}/{repo}/license
 func (c *Client) LicensesGetForRepo(ctx context.Context, params LicensesGetForRepoParams) (*LicenseContent, error) {
 	res, err := c.sendLicensesGetForRepo(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -44636,7 +44351,6 @@ func (c *Client) sendLicensesGetForRepo(ctx context.Context, params LicensesGetF
 // POST /markdown
 func (c *Client) MarkdownRender(ctx context.Context, request *MarkdownRenderReq) (MarkdownRenderRes, error) {
 	res, err := c.sendMarkdownRender(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -44724,7 +44438,6 @@ func (c *Client) sendMarkdownRender(ctx context.Context, request *MarkdownRender
 // POST /markdown/raw
 func (c *Client) MarkdownRenderRaw(ctx context.Context, request MarkdownRenderRawReq) (MarkdownRenderRawRes, error) {
 	res, err := c.sendMarkdownRenderRaw(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -44815,7 +44528,6 @@ func (c *Client) sendMarkdownRenderRaw(ctx context.Context, request MarkdownRend
 // GET /meta
 func (c *Client) MetaGet(ctx context.Context) (MetaGetRes, error) {
 	res, err := c.sendMetaGet(ctx)
-	_ = res
 	return res, err
 }
 
@@ -44888,7 +44600,6 @@ func (c *Client) sendMetaGet(ctx context.Context) (res MetaGetRes, err error) {
 // GET /octocat
 func (c *Client) MetaGetOctocat(ctx context.Context, params MetaGetOctocatParams) (MetaGetOctocatOK, error) {
 	res, err := c.sendMetaGetOctocat(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -44982,7 +44693,6 @@ func (c *Client) sendMetaGetOctocat(ctx context.Context, params MetaGetOctocatPa
 // GET /zen
 func (c *Client) MetaGetZen(ctx context.Context) (MetaGetZenOK, error) {
 	res, err := c.sendMetaGetZen(ctx)
-	_ = res
 	return res, err
 }
 
@@ -45055,7 +44765,6 @@ func (c *Client) sendMetaGetZen(ctx context.Context) (res MetaGetZenOK, err erro
 // GET /
 func (c *Client) MetaRoot(ctx context.Context) (*MetaRootOK, error) {
 	res, err := c.sendMetaRoot(ctx)
-	_ = res
 	return res, err
 }
 
@@ -45127,8 +44836,7 @@ func (c *Client) sendMetaRoot(ctx context.Context) (res *MetaRootOK, err error) 
 //
 // DELETE /repos/{owner}/{repo}/import
 func (c *Client) MigrationsCancelImport(ctx context.Context, params MigrationsCancelImportParams) error {
-	res, err := c.sendMigrationsCancelImport(ctx, params)
-	_ = res
+	_, err := c.sendMigrationsCancelImport(ctx, params)
 	return err
 }
 
@@ -45243,7 +44951,6 @@ func (c *Client) sendMigrationsCancelImport(ctx context.Context, params Migratio
 // DELETE /user/migrations/{migration_id}/archive
 func (c *Client) MigrationsDeleteArchiveForAuthenticatedUser(ctx context.Context, params MigrationsDeleteArchiveForAuthenticatedUserParams) (MigrationsDeleteArchiveForAuthenticatedUserRes, error) {
 	res, err := c.sendMigrationsDeleteArchiveForAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -45336,7 +45043,6 @@ func (c *Client) sendMigrationsDeleteArchiveForAuthenticatedUser(ctx context.Con
 // DELETE /orgs/{org}/migrations/{migration_id}/archive
 func (c *Client) MigrationsDeleteArchiveForOrg(ctx context.Context, params MigrationsDeleteArchiveForOrgParams) (MigrationsDeleteArchiveForOrgRes, error) {
 	res, err := c.sendMigrationsDeleteArchiveForOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -45447,7 +45153,6 @@ func (c *Client) sendMigrationsDeleteArchiveForOrg(ctx context.Context, params M
 // GET /orgs/{org}/migrations/{migration_id}/archive
 func (c *Client) MigrationsDownloadArchiveForOrg(ctx context.Context, params MigrationsDownloadArchiveForOrgParams) (MigrationsDownloadArchiveForOrgRes, error) {
 	res, err := c.sendMigrationsDownloadArchiveForOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -45578,7 +45283,6 @@ func (c *Client) sendMigrationsDownloadArchiveForOrg(ctx context.Context, params
 // GET /user/migrations/{migration_id}/archive
 func (c *Client) MigrationsGetArchiveForAuthenticatedUser(ctx context.Context, params MigrationsGetArchiveForAuthenticatedUserParams) (MigrationsGetArchiveForAuthenticatedUserRes, error) {
 	res, err := c.sendMigrationsGetArchiveForAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -45677,7 +45381,6 @@ func (c *Client) sendMigrationsGetArchiveForAuthenticatedUser(ctx context.Contex
 // GET /repos/{owner}/{repo}/import/authors
 func (c *Client) MigrationsGetCommitAuthors(ctx context.Context, params MigrationsGetCommitAuthorsParams) (MigrationsGetCommitAuthorsRes, error) {
 	res, err := c.sendMigrationsGetCommitAuthors(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -45861,7 +45564,6 @@ func (c *Client) sendMigrationsGetCommitAuthors(ctx context.Context, params Migr
 // GET /repos/{owner}/{repo}/import
 func (c *Client) MigrationsGetImportStatus(ctx context.Context, params MigrationsGetImportStatusParams) (MigrationsGetImportStatusRes, error) {
 	res, err := c.sendMigrationsGetImportStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -45972,7 +45674,6 @@ func (c *Client) sendMigrationsGetImportStatus(ctx context.Context, params Migra
 // GET /repos/{owner}/{repo}/import/large_files
 func (c *Client) MigrationsGetLargeFiles(ctx context.Context, params MigrationsGetLargeFilesParams) ([]PorterLargeFile, error) {
 	res, err := c.sendMigrationsGetLargeFiles(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -46090,7 +45791,6 @@ func (c *Client) sendMigrationsGetLargeFiles(ctx context.Context, params Migrati
 // GET /user/migrations/{migration_id}
 func (c *Client) MigrationsGetStatusForAuthenticatedUser(ctx context.Context, params MigrationsGetStatusForAuthenticatedUserParams) (MigrationsGetStatusForAuthenticatedUserRes, error) {
 	res, err := c.sendMigrationsGetStatusForAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -46213,7 +45913,6 @@ func (c *Client) sendMigrationsGetStatusForAuthenticatedUser(ctx context.Context
 // GET /orgs/{org}/migrations/{migration_id}
 func (c *Client) MigrationsGetStatusForOrg(ctx context.Context, params MigrationsGetStatusForOrgParams) (MigrationsGetStatusForOrgRes, error) {
 	res, err := c.sendMigrationsGetStatusForOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -46350,7 +46049,6 @@ func (c *Client) sendMigrationsGetStatusForOrg(ctx context.Context, params Migra
 // GET /user/migrations
 func (c *Client) MigrationsListForAuthenticatedUser(ctx context.Context, params MigrationsListForAuthenticatedUserParams) (MigrationsListForAuthenticatedUserRes, error) {
 	res, err := c.sendMigrationsListForAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -46461,7 +46159,6 @@ func (c *Client) sendMigrationsListForAuthenticatedUser(ctx context.Context, par
 // GET /orgs/{org}/migrations
 func (c *Client) MigrationsListForOrg(ctx context.Context, params MigrationsListForOrgParams) (*MigrationsListForOrgOKHeaders, error) {
 	res, err := c.sendMigrationsListForOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -46614,7 +46311,6 @@ func (c *Client) sendMigrationsListForOrg(ctx context.Context, params Migrations
 // GET /orgs/{org}/migrations/{migration_id}/repositories
 func (c *Client) MigrationsListReposForOrg(ctx context.Context, params MigrationsListReposForOrgParams) (MigrationsListReposForOrgRes, error) {
 	res, err := c.sendMigrationsListReposForOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -46763,7 +46459,6 @@ func (c *Client) sendMigrationsListReposForOrg(ctx context.Context, params Migra
 // GET /user/migrations/{migration_id}/repositories
 func (c *Client) MigrationsListReposForUser(ctx context.Context, params MigrationsListReposForUserParams) (MigrationsListReposForUserRes, error) {
 	res, err := c.sendMigrationsListReposForUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -46894,7 +46589,6 @@ func (c *Client) sendMigrationsListReposForUser(ctx context.Context, params Migr
 // PATCH /repos/{owner}/{repo}/import/authors/{author_id}
 func (c *Client) MigrationsMapCommitAuthor(ctx context.Context, request OptMigrationsMapCommitAuthorReq, params MigrationsMapCommitAuthorParams) (MigrationsMapCommitAuthorRes, error) {
 	res, err := c.sendMigrationsMapCommitAuthor(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -47029,7 +46723,6 @@ func (c *Client) sendMigrationsMapCommitAuthor(ctx context.Context, request OptM
 // PATCH /repos/{owner}/{repo}/import/lfs
 func (c *Client) MigrationsSetLfsPreference(ctx context.Context, request *MigrationsSetLfsPreferenceReq, params MigrationsSetLfsPreferenceParams) (MigrationsSetLfsPreferenceRes, error) {
 	res, err := c.sendMigrationsSetLfsPreference(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -47152,7 +46845,6 @@ func (c *Client) sendMigrationsSetLfsPreference(ctx context.Context, request *Mi
 // POST /user/migrations
 func (c *Client) MigrationsStartForAuthenticatedUser(ctx context.Context, request *MigrationsStartForAuthenticatedUserReq) (MigrationsStartForAuthenticatedUserRes, error) {
 	res, err := c.sendMigrationsStartForAuthenticatedUser(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -47237,7 +46929,6 @@ func (c *Client) sendMigrationsStartForAuthenticatedUser(ctx context.Context, re
 // POST /orgs/{org}/migrations
 func (c *Client) MigrationsStartForOrg(ctx context.Context, request *MigrationsStartForOrgReq, params MigrationsStartForOrgParams) (MigrationsStartForOrgRes, error) {
 	res, err := c.sendMigrationsStartForOrg(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -47341,7 +47032,6 @@ func (c *Client) sendMigrationsStartForOrg(ctx context.Context, request *Migrati
 // PUT /repos/{owner}/{repo}/import
 func (c *Client) MigrationsStartImport(ctx context.Context, request *MigrationsStartImportReq, params MigrationsStartImportParams) (MigrationsStartImportRes, error) {
 	res, err := c.sendMigrationsStartImport(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -47468,7 +47158,6 @@ func (c *Client) sendMigrationsStartImport(ctx context.Context, request *Migrati
 // DELETE /user/migrations/{migration_id}/repos/{repo_name}/lock
 func (c *Client) MigrationsUnlockRepoForAuthenticatedUser(ctx context.Context, params MigrationsUnlockRepoForAuthenticatedUserParams) (MigrationsUnlockRepoForAuthenticatedUserRes, error) {
 	res, err := c.sendMigrationsUnlockRepoForAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -47581,7 +47270,6 @@ func (c *Client) sendMigrationsUnlockRepoForAuthenticatedUser(ctx context.Contex
 // DELETE /orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock
 func (c *Client) MigrationsUnlockRepoForOrg(ctx context.Context, params MigrationsUnlockRepoForOrgParams) (MigrationsUnlockRepoForOrgRes, error) {
 	res, err := c.sendMigrationsUnlockRepoForOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -47713,7 +47401,6 @@ func (c *Client) sendMigrationsUnlockRepoForOrg(ctx context.Context, params Migr
 // PATCH /repos/{owner}/{repo}/import
 func (c *Client) MigrationsUpdateImport(ctx context.Context, request OptNilMigrationsUpdateImportReq, params MigrationsUpdateImportParams) (*Import, error) {
 	res, err := c.sendMigrationsUpdateImport(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -47856,7 +47543,6 @@ func (c *Client) sendMigrationsUpdateImport(ctx context.Context, request OptNilM
 // POST /authorizations
 func (c *Client) OAuthAuthorizationsCreateAuthorization(ctx context.Context, request OptOAuthAuthorizationsCreateAuthorizationReq) (OAuthAuthorizationsCreateAuthorizationRes, error) {
 	res, err := c.sendOAuthAuthorizationsCreateAuthorization(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -47957,7 +47643,6 @@ func (c *Client) sendOAuthAuthorizationsCreateAuthorization(ctx context.Context,
 // DELETE /authorizations/{authorization_id}
 func (c *Client) OAuthAuthorizationsDeleteAuthorization(ctx context.Context, params OAuthAuthorizationsDeleteAuthorizationParams) (OAuthAuthorizationsDeleteAuthorizationRes, error) {
 	res, err := c.sendOAuthAuthorizationsDeleteAuthorization(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -48060,7 +47745,6 @@ func (c *Client) sendOAuthAuthorizationsDeleteAuthorization(ctx context.Context,
 // DELETE /applications/grants/{grant_id}
 func (c *Client) OAuthAuthorizationsDeleteGrant(ctx context.Context, params OAuthAuthorizationsDeleteGrantParams) (OAuthAuthorizationsDeleteGrantRes, error) {
 	res, err := c.sendOAuthAuthorizationsDeleteGrant(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -48160,7 +47844,6 @@ func (c *Client) sendOAuthAuthorizationsDeleteGrant(ctx context.Context, params 
 // GET /authorizations/{authorization_id}
 func (c *Client) OAuthAuthorizationsGetAuthorization(ctx context.Context, params OAuthAuthorizationsGetAuthorizationParams) (OAuthAuthorizationsGetAuthorizationRes, error) {
 	res, err := c.sendOAuthAuthorizationsGetAuthorization(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -48260,7 +47943,6 @@ func (c *Client) sendOAuthAuthorizationsGetAuthorization(ctx context.Context, pa
 // GET /applications/grants/{grant_id}
 func (c *Client) OAuthAuthorizationsGetGrant(ctx context.Context, params OAuthAuthorizationsGetGrantParams) (OAuthAuthorizationsGetGrantRes, error) {
 	res, err := c.sendOAuthAuthorizationsGetGrant(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -48379,7 +48061,6 @@ func (c *Client) sendOAuthAuthorizationsGetGrant(ctx context.Context, params OAu
 // PUT /authorizations/clients/{client_id}
 func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx context.Context, request *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq, params OAuthAuthorizationsGetOrCreateAuthorizationForAppParams) (OAuthAuthorizationsGetOrCreateAuthorizationForAppRes, error) {
 	res, err := c.sendOAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -48505,7 +48186,6 @@ func (c *Client) sendOAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx conte
 // PUT /authorizations/clients/{client_id}/{fingerprint}
 func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint(ctx context.Context, request *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq, params OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams) (OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes, error) {
 	res, err := c.sendOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -48636,7 +48316,6 @@ func (c *Client) sendOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerp
 // GET /authorizations
 func (c *Client) OAuthAuthorizationsListAuthorizations(ctx context.Context, params OAuthAuthorizationsListAuthorizationsParams) (OAuthAuthorizationsListAuthorizationsRes, error) {
 	res, err := c.sendOAuthAuthorizationsListAuthorizations(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -48784,7 +48463,6 @@ func (c *Client) sendOAuthAuthorizationsListAuthorizations(ctx context.Context, 
 // GET /applications/grants
 func (c *Client) OAuthAuthorizationsListGrants(ctx context.Context, params OAuthAuthorizationsListGrantsParams) (OAuthAuthorizationsListGrantsRes, error) {
 	res, err := c.sendOAuthAuthorizationsListGrants(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -48925,7 +48603,6 @@ func (c *Client) sendOAuthAuthorizationsListGrants(ctx context.Context, params O
 // PATCH /authorizations/{authorization_id}
 func (c *Client) OAuthAuthorizationsUpdateAuthorization(ctx context.Context, request OptOAuthAuthorizationsUpdateAuthorizationReq, params OAuthAuthorizationsUpdateAuthorizationParams) (OAuthAuthorizationsUpdateAuthorizationRes, error) {
 	res, err := c.sendOAuthAuthorizationsUpdateAuthorization(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -49035,7 +48712,6 @@ func (c *Client) sendOAuthAuthorizationsUpdateAuthorization(ctx context.Context,
 // PUT /orgs/{org}/blocks/{username}
 func (c *Client) OrgsBlockUser(ctx context.Context, params OrgsBlockUserParams) (OrgsBlockUserRes, error) {
 	res, err := c.sendOrgsBlockUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -49148,7 +48824,6 @@ func (c *Client) sendOrgsBlockUser(ctx context.Context, params OrgsBlockUserPara
 // DELETE /orgs/{org}/invitations/{invitation_id}
 func (c *Client) OrgsCancelInvitation(ctx context.Context, params OrgsCancelInvitationParams) (OrgsCancelInvitationRes, error) {
 	res, err := c.sendOrgsCancelInvitation(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -49258,7 +48933,6 @@ func (c *Client) sendOrgsCancelInvitation(ctx context.Context, params OrgsCancel
 // GET /orgs/{org}/blocks/{username}
 func (c *Client) OrgsCheckBlockedUser(ctx context.Context, params OrgsCheckBlockedUserParams) (OrgsCheckBlockedUserRes, error) {
 	res, err := c.sendOrgsCheckBlockedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -49368,7 +49042,6 @@ func (c *Client) sendOrgsCheckBlockedUser(ctx context.Context, params OrgsCheckB
 // GET /orgs/{org}/members/{username}
 func (c *Client) OrgsCheckMembershipForUser(ctx context.Context, params OrgsCheckMembershipForUserParams) (OrgsCheckMembershipForUserRes, error) {
 	res, err := c.sendOrgsCheckMembershipForUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -49478,7 +49151,6 @@ func (c *Client) sendOrgsCheckMembershipForUser(ctx context.Context, params Orgs
 // GET /orgs/{org}/public_members/{username}
 func (c *Client) OrgsCheckPublicMembershipForUser(ctx context.Context, params OrgsCheckPublicMembershipForUserParams) (OrgsCheckPublicMembershipForUserRes, error) {
 	res, err := c.sendOrgsCheckPublicMembershipForUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -49592,7 +49264,6 @@ func (c *Client) sendOrgsCheckPublicMembershipForUser(ctx context.Context, param
 // PUT /orgs/{org}/outside_collaborators/{username}
 func (c *Client) OrgsConvertMemberToOutsideCollaborator(ctx context.Context, params OrgsConvertMemberToOutsideCollaboratorParams) (OrgsConvertMemberToOutsideCollaboratorRes, error) {
 	res, err := c.sendOrgsConvertMemberToOutsideCollaborator(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -49710,7 +49381,6 @@ func (c *Client) sendOrgsConvertMemberToOutsideCollaborator(ctx context.Context,
 // POST /orgs/{org}/invitations
 func (c *Client) OrgsCreateInvitation(ctx context.Context, request OptOrgsCreateInvitationReq, params OrgsCreateInvitationParams) (OrgsCreateInvitationRes, error) {
 	res, err := c.sendOrgsCreateInvitation(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -49821,7 +49491,6 @@ func (c *Client) sendOrgsCreateInvitation(ctx context.Context, request OptOrgsCr
 // POST /orgs/{org}/hooks
 func (c *Client) OrgsCreateWebhook(ctx context.Context, request *OrgsCreateWebhookReq, params OrgsCreateWebhookParams) (OrgsCreateWebhookRes, error) {
 	res, err := c.sendOrgsCreateWebhook(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -49925,7 +49594,6 @@ func (c *Client) sendOrgsCreateWebhook(ctx context.Context, request *OrgsCreateW
 // DELETE /orgs/{org}/hooks/{hook_id}
 func (c *Client) OrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWebhookParams) (OrgsDeleteWebhookRes, error) {
 	res, err := c.sendOrgsDeleteWebhook(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -50043,7 +49711,6 @@ func (c *Client) sendOrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWeb
 // GET /orgs/{org}
 func (c *Client) OrgsGet(ctx context.Context, params OrgsGetParams) (OrgsGetRes, error) {
 	res, err := c.sendOrgsGet(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -50139,7 +49806,6 @@ func (c *Client) sendOrgsGet(ctx context.Context, params OrgsGetParams) (res Org
 // GET /orgs/{org}/audit-log
 func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogParams) ([]AuditLogEvent, error) {
 	res, err := c.sendOrgsGetAuditLog(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -50354,7 +50020,6 @@ func (c *Client) sendOrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLog
 // GET /user/memberships/orgs/{org}
 func (c *Client) OrgsGetMembershipForAuthenticatedUser(ctx context.Context, params OrgsGetMembershipForAuthenticatedUserParams) (OrgsGetMembershipForAuthenticatedUserRes, error) {
 	res, err := c.sendOrgsGetMembershipForAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -50447,7 +50112,6 @@ func (c *Client) sendOrgsGetMembershipForAuthenticatedUser(ctx context.Context, 
 // GET /orgs/{org}/memberships/{username}
 func (c *Client) OrgsGetMembershipForUser(ctx context.Context, params OrgsGetMembershipForUserParams) (OrgsGetMembershipForUserRes, error) {
 	res, err := c.sendOrgsGetMembershipForUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -50559,7 +50223,6 @@ func (c *Client) sendOrgsGetMembershipForUser(ctx context.Context, params OrgsGe
 // GET /orgs/{org}/hooks/{hook_id}
 func (c *Client) OrgsGetWebhook(ctx context.Context, params OrgsGetWebhookParams) (OrgsGetWebhookRes, error) {
 	res, err := c.sendOrgsGetWebhook(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -50673,7 +50336,6 @@ func (c *Client) sendOrgsGetWebhook(ctx context.Context, params OrgsGetWebhookPa
 // GET /orgs/{org}/hooks/{hook_id}/config
 func (c *Client) OrgsGetWebhookConfigForOrg(ctx context.Context, params OrgsGetWebhookConfigForOrgParams) (*WebhookConfig, error) {
 	res, err := c.sendOrgsGetWebhookConfigForOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -50784,7 +50446,6 @@ func (c *Client) sendOrgsGetWebhookConfigForOrg(ctx context.Context, params Orgs
 // GET /orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}
 func (c *Client) OrgsGetWebhookDelivery(ctx context.Context, params OrgsGetWebhookDeliveryParams) (OrgsGetWebhookDeliveryRes, error) {
 	res, err := c.sendOrgsGetWebhookDelivery(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -50916,7 +50577,6 @@ func (c *Client) sendOrgsGetWebhookDelivery(ctx context.Context, params OrgsGetW
 // GET /organizations
 func (c *Client) OrgsList(ctx context.Context, params OrgsListParams) (OrgsListRes, error) {
 	res, err := c.sendOrgsList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -51027,7 +50687,6 @@ func (c *Client) sendOrgsList(ctx context.Context, params OrgsListParams) (res O
 // GET /orgs/{org}/blocks
 func (c *Client) OrgsListBlockedUsers(ctx context.Context, params OrgsListBlockedUsersParams) (OrgsListBlockedUsersRes, error) {
 	res, err := c.sendOrgsListBlockedUsers(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -51120,7 +50779,6 @@ func (c *Client) sendOrgsListBlockedUsers(ctx context.Context, params OrgsListBl
 // GET /orgs/{org}/failed_invitations
 func (c *Client) OrgsListFailedInvitations(ctx context.Context, params OrgsListFailedInvitationsParams) (OrgsListFailedInvitationsRes, error) {
 	res, err := c.sendOrgsListFailedInvitations(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -51255,7 +50913,6 @@ func (c *Client) sendOrgsListFailedInvitations(ctx context.Context, params OrgsL
 // GET /user/orgs
 func (c *Client) OrgsListForAuthenticatedUser(ctx context.Context, params OrgsListForAuthenticatedUserParams) (OrgsListForAuthenticatedUserRes, error) {
 	res, err := c.sendOrgsListForAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -51371,7 +51028,6 @@ func (c *Client) sendOrgsListForAuthenticatedUser(ctx context.Context, params Or
 // GET /users/{username}/orgs
 func (c *Client) OrgsListForUser(ctx context.Context, params OrgsListForUserParams) (*OrgsListForUserOKHeaders, error) {
 	res, err := c.sendOrgsListForUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -51502,7 +51158,6 @@ func (c *Client) sendOrgsListForUser(ctx context.Context, params OrgsListForUser
 // GET /orgs/{org}/invitations/{invitation_id}/teams
 func (c *Client) OrgsListInvitationTeams(ctx context.Context, params OrgsListInvitationTeamsParams) (OrgsListInvitationTeamsRes, error) {
 	res, err := c.sendOrgsListInvitationTeams(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -51652,7 +51307,6 @@ func (c *Client) sendOrgsListInvitationTeams(ctx context.Context, params OrgsLis
 // GET /orgs/{org}/members
 func (c *Client) OrgsListMembers(ctx context.Context, params OrgsListMembersParams) (OrgsListMembersRes, error) {
 	res, err := c.sendOrgsListMembers(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -51816,7 +51470,6 @@ func (c *Client) sendOrgsListMembers(ctx context.Context, params OrgsListMembers
 // GET /user/memberships/orgs
 func (c *Client) OrgsListMembershipsForAuthenticatedUser(ctx context.Context, params OrgsListMembershipsForAuthenticatedUserParams) (OrgsListMembershipsForAuthenticatedUserRes, error) {
 	res, err := c.sendOrgsListMembershipsForAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -51944,7 +51597,6 @@ func (c *Client) sendOrgsListMembershipsForAuthenticatedUser(ctx context.Context
 // GET /orgs/{org}/outside_collaborators
 func (c *Client) OrgsListOutsideCollaborators(ctx context.Context, params OrgsListOutsideCollaboratorsParams) (*OrgsListOutsideCollaboratorsOKHeaders, error) {
 	res, err := c.sendOrgsListOutsideCollaborators(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -52094,7 +51746,6 @@ func (c *Client) sendOrgsListOutsideCollaborators(ctx context.Context, params Or
 // GET /orgs/{org}/invitations
 func (c *Client) OrgsListPendingInvitations(ctx context.Context, params OrgsListPendingInvitationsParams) (OrgsListPendingInvitationsRes, error) {
 	res, err := c.sendOrgsListPendingInvitations(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -52224,7 +51875,6 @@ func (c *Client) sendOrgsListPendingInvitations(ctx context.Context, params Orgs
 // GET /orgs/{org}/public_members
 func (c *Client) OrgsListPublicMembers(ctx context.Context, params OrgsListPublicMembersParams) (*OrgsListPublicMembersOKHeaders, error) {
 	res, err := c.sendOrgsListPublicMembers(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -52361,7 +52011,6 @@ func (c *Client) sendOrgsListPublicMembers(ctx context.Context, params OrgsListP
 // GET /orgs/{org}/credential-authorizations
 func (c *Client) OrgsListSamlSSOAuthorizations(ctx context.Context, params OrgsListSamlSSOAuthorizationsParams) ([]CredentialAuthorization, error) {
 	res, err := c.sendOrgsListSamlSSOAuthorizations(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -52453,7 +52102,6 @@ func (c *Client) sendOrgsListSamlSSOAuthorizations(ctx context.Context, params O
 // GET /orgs/{org}/hooks/{hook_id}/deliveries
 func (c *Client) OrgsListWebhookDeliveries(ctx context.Context, params OrgsListWebhookDeliveriesParams) (OrgsListWebhookDeliveriesRes, error) {
 	res, err := c.sendOrgsListWebhookDeliveries(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -52602,7 +52250,6 @@ func (c *Client) sendOrgsListWebhookDeliveries(ctx context.Context, params OrgsL
 // GET /orgs/{org}/hooks
 func (c *Client) OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksParams) (OrgsListWebhooksRes, error) {
 	res, err := c.sendOrgsListWebhooks(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -52733,7 +52380,6 @@ func (c *Client) sendOrgsListWebhooks(ctx context.Context, params OrgsListWebhoo
 // POST /orgs/{org}/hooks/{hook_id}/pings
 func (c *Client) OrgsPingWebhook(ctx context.Context, params OrgsPingWebhookParams) (OrgsPingWebhookRes, error) {
 	res, err := c.sendOrgsPingWebhook(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -52844,7 +52490,6 @@ func (c *Client) sendOrgsPingWebhook(ctx context.Context, params OrgsPingWebhook
 // POST /orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}/attempts
 func (c *Client) OrgsRedeliverWebhookDelivery(ctx context.Context, params OrgsRedeliverWebhookDeliveryParams) (OrgsRedeliverWebhookDeliveryRes, error) {
 	res, err := c.sendOrgsRedeliverWebhookDelivery(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -52975,7 +52620,6 @@ func (c *Client) sendOrgsRedeliverWebhookDelivery(ctx context.Context, params Or
 // DELETE /orgs/{org}/members/{username}
 func (c *Client) OrgsRemoveMember(ctx context.Context, params OrgsRemoveMemberParams) (OrgsRemoveMemberRes, error) {
 	res, err := c.sendOrgsRemoveMember(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -53089,7 +52733,6 @@ func (c *Client) sendOrgsRemoveMember(ctx context.Context, params OrgsRemoveMemb
 // DELETE /orgs/{org}/memberships/{username}
 func (c *Client) OrgsRemoveMembershipForUser(ctx context.Context, params OrgsRemoveMembershipForUserParams) (OrgsRemoveMembershipForUserRes, error) {
 	res, err := c.sendOrgsRemoveMembershipForUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -53199,7 +52842,6 @@ func (c *Client) sendOrgsRemoveMembershipForUser(ctx context.Context, params Org
 // DELETE /orgs/{org}/outside_collaborators/{username}
 func (c *Client) OrgsRemoveOutsideCollaborator(ctx context.Context, params OrgsRemoveOutsideCollaboratorParams) (OrgsRemoveOutsideCollaboratorRes, error) {
 	res, err := c.sendOrgsRemoveOutsideCollaborator(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -53308,8 +52950,7 @@ func (c *Client) sendOrgsRemoveOutsideCollaborator(ctx context.Context, params O
 //
 // DELETE /orgs/{org}/public_members/{username}
 func (c *Client) OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsRemovePublicMembershipForAuthenticatedUserParams) error {
-	res, err := c.sendOrgsRemovePublicMembershipForAuthenticatedUser(ctx, params)
-	_ = res
+	_, err := c.sendOrgsRemovePublicMembershipForAuthenticatedUser(ctx, params)
 	return err
 }
 
@@ -53425,7 +53066,6 @@ func (c *Client) sendOrgsRemovePublicMembershipForAuthenticatedUser(ctx context.
 // DELETE /orgs/{org}/credential-authorizations/{credential_id}
 func (c *Client) OrgsRemoveSamlSSOAuthorization(ctx context.Context, params OrgsRemoveSamlSSOAuthorizationParams) (OrgsRemoveSamlSSOAuthorizationRes, error) {
 	res, err := c.sendOrgsRemoveSamlSSOAuthorization(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -53548,7 +53188,6 @@ func (c *Client) sendOrgsRemoveSamlSSOAuthorization(ctx context.Context, params 
 // PUT /orgs/{org}/memberships/{username}
 func (c *Client) OrgsSetMembershipForUser(ctx context.Context, request OptOrgsSetMembershipForUserReq, params OrgsSetMembershipForUserParams) (OrgsSetMembershipForUserRes, error) {
 	res, err := c.sendOrgsSetMembershipForUser(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -53681,7 +53320,6 @@ func (c *Client) sendOrgsSetMembershipForUser(ctx context.Context, request OptOr
 // PUT /orgs/{org}/public_members/{username}
 func (c *Client) OrgsSetPublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsSetPublicMembershipForAuthenticatedUserParams) (OrgsSetPublicMembershipForAuthenticatedUserRes, error) {
 	res, err := c.sendOrgsSetPublicMembershipForAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -53790,8 +53428,7 @@ func (c *Client) sendOrgsSetPublicMembershipForAuthenticatedUser(ctx context.Con
 //
 // DELETE /orgs/{org}/blocks/{username}
 func (c *Client) OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserParams) error {
-	res, err := c.sendOrgsUnblockUser(ctx, params)
-	_ = res
+	_, err := c.sendOrgsUnblockUser(ctx, params)
 	return err
 }
 
@@ -53901,7 +53538,6 @@ func (c *Client) sendOrgsUnblockUser(ctx context.Context, params OrgsUnblockUser
 // PATCH /user/memberships/orgs/{org}
 func (c *Client) OrgsUpdateMembershipForAuthenticatedUser(ctx context.Context, request *OrgsUpdateMembershipForAuthenticatedUserReq, params OrgsUpdateMembershipForAuthenticatedUserParams) (OrgsUpdateMembershipForAuthenticatedUserRes, error) {
 	res, err := c.sendOrgsUpdateMembershipForAuthenticatedUser(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -54008,7 +53644,6 @@ func (c *Client) sendOrgsUpdateMembershipForAuthenticatedUser(ctx context.Contex
 // PATCH /orgs/{org}/hooks/{hook_id}
 func (c *Client) OrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdateWebhookReq, params OrgsUpdateWebhookParams) (OrgsUpdateWebhookRes, error) {
 	res, err := c.sendOrgsUpdateWebhook(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -54141,7 +53776,6 @@ func (c *Client) sendOrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdat
 // PATCH /orgs/{org}/hooks/{hook_id}/config
 func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request OptOrgsUpdateWebhookConfigForOrgReq, params OrgsUpdateWebhookConfigForOrgParams) (*WebhookConfig, error) {
 	res, err := c.sendOrgsUpdateWebhookConfigForOrg(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -54276,7 +53910,6 @@ func (c *Client) sendOrgsUpdateWebhookConfigForOrg(ctx context.Context, request 
 // DELETE /user/packages/{package_type}/{package_name}
 func (c *Client) PackagesDeletePackageForAuthenticatedUser(ctx context.Context, params PackagesDeletePackageForAuthenticatedUserParams) (PackagesDeletePackageForAuthenticatedUserRes, error) {
 	res, err := c.sendPackagesDeletePackageForAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -54393,7 +54026,6 @@ func (c *Client) sendPackagesDeletePackageForAuthenticatedUser(ctx context.Conte
 // DELETE /orgs/{org}/packages/{package_type}/{package_name}
 func (c *Client) PackagesDeletePackageForOrg(ctx context.Context, params PackagesDeletePackageForOrgParams) (PackagesDeletePackageForOrgRes, error) {
 	res, err := c.sendPackagesDeletePackageForOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -54529,7 +54161,6 @@ func (c *Client) sendPackagesDeletePackageForOrg(ctx context.Context, params Pac
 // DELETE /users/{username}/packages/{package_type}/{package_name}
 func (c *Client) PackagesDeletePackageForUser(ctx context.Context, params PackagesDeletePackageForUserParams) (PackagesDeletePackageForUserRes, error) {
 	res, err := c.sendPackagesDeletePackageForUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -54663,7 +54294,6 @@ func (c *Client) sendPackagesDeletePackageForUser(ctx context.Context, params Pa
 // DELETE /user/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (c *Client) PackagesDeletePackageVersionForAuthenticatedUser(ctx context.Context, params PackagesDeletePackageVersionForAuthenticatedUserParams) (PackagesDeletePackageVersionForAuthenticatedUserRes, error) {
 	res, err := c.sendPackagesDeletePackageVersionForAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -54799,7 +54429,6 @@ func (c *Client) sendPackagesDeletePackageVersionForAuthenticatedUser(ctx contex
 // DELETE /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (c *Client) PackagesDeletePackageVersionForOrg(ctx context.Context, params PackagesDeletePackageVersionForOrgParams) (PackagesDeletePackageVersionForOrgRes, error) {
 	res, err := c.sendPackagesDeletePackageVersionForOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -54954,7 +54583,6 @@ func (c *Client) sendPackagesDeletePackageVersionForOrg(ctx context.Context, par
 // DELETE /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (c *Client) PackagesDeletePackageVersionForUser(ctx context.Context, params PackagesDeletePackageVersionForUserParams) (PackagesDeletePackageVersionForUserRes, error) {
 	res, err := c.sendPackagesDeletePackageVersionForUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -55104,7 +54732,6 @@ func (c *Client) sendPackagesDeletePackageVersionForUser(ctx context.Context, pa
 // GET /user/packages/{package_type}/{package_name}/versions
 func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser(ctx context.Context, params PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams) (PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes, error) {
 	res, err := c.sendPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -55272,7 +54899,6 @@ func (c *Client) sendPackagesGetAllPackageVersionsForPackageOwnedByAuthenticated
 // GET /orgs/{org}/packages/{package_type}/{package_name}/versions
 func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.Context, params PackagesGetAllPackageVersionsForPackageOwnedByOrgParams) (PackagesGetAllPackageVersionsForPackageOwnedByOrgRes, error) {
 	res, err := c.sendPackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -55459,7 +55085,6 @@ func (c *Client) sendPackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx conte
 // GET /users/{username}/packages/{package_type}/{package_name}/versions
 func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByUser(ctx context.Context, params PackagesGetAllPackageVersionsForPackageOwnedByUserParams) (PackagesGetAllPackageVersionsForPackageOwnedByUserRes, error) {
 	res, err := c.sendPackagesGetAllPackageVersionsForPackageOwnedByUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -55591,7 +55216,6 @@ func (c *Client) sendPackagesGetAllPackageVersionsForPackageOwnedByUser(ctx cont
 // GET /user/packages/{package_type}/{package_name}
 func (c *Client) PackagesGetPackageForAuthenticatedUser(ctx context.Context, params PackagesGetPackageForAuthenticatedUserParams) (*Package, error) {
 	res, err := c.sendPackagesGetPackageForAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -55703,7 +55327,6 @@ func (c *Client) sendPackagesGetPackageForAuthenticatedUser(ctx context.Context,
 // GET /orgs/{org}/packages/{package_type}/{package_name}
 func (c *Client) PackagesGetPackageForOrganization(ctx context.Context, params PackagesGetPackageForOrganizationParams) (*Package, error) {
 	res, err := c.sendPackagesGetPackageForOrganization(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -55834,7 +55457,6 @@ func (c *Client) sendPackagesGetPackageForOrganization(ctx context.Context, para
 // GET /users/{username}/packages/{package_type}/{package_name}
 func (c *Client) PackagesGetPackageForUser(ctx context.Context, params PackagesGetPackageForUserParams) (*Package, error) {
 	res, err := c.sendPackagesGetPackageForUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -55965,7 +55587,6 @@ func (c *Client) sendPackagesGetPackageForUser(ctx context.Context, params Packa
 // GET /user/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (c *Client) PackagesGetPackageVersionForAuthenticatedUser(ctx context.Context, params PackagesGetPackageVersionForAuthenticatedUserParams) (*PackageVersion, error) {
 	res, err := c.sendPackagesGetPackageVersionForAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -56096,7 +55717,6 @@ func (c *Client) sendPackagesGetPackageVersionForAuthenticatedUser(ctx context.C
 // GET /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (c *Client) PackagesGetPackageVersionForOrganization(ctx context.Context, params PackagesGetPackageVersionForOrganizationParams) (*PackageVersion, error) {
 	res, err := c.sendPackagesGetPackageVersionForOrganization(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -56247,7 +55867,6 @@ func (c *Client) sendPackagesGetPackageVersionForOrganization(ctx context.Contex
 // GET /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (c *Client) PackagesGetPackageVersionForUser(ctx context.Context, params PackagesGetPackageVersionForUserParams) (*PackageVersion, error) {
 	res, err := c.sendPackagesGetPackageVersionForUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -56397,7 +56016,6 @@ func (c *Client) sendPackagesGetPackageVersionForUser(ctx context.Context, param
 // GET /user/packages
 func (c *Client) PackagesListPackagesForAuthenticatedUser(ctx context.Context, params PackagesListPackagesForAuthenticatedUserParams) ([]Package, error) {
 	res, err := c.sendPackagesListPackagesForAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -56507,7 +56125,6 @@ func (c *Client) sendPackagesListPackagesForAuthenticatedUser(ctx context.Contex
 // GET /orgs/{org}/packages
 func (c *Client) PackagesListPackagesForOrganization(ctx context.Context, params PackagesListPackagesForOrganizationParams) (PackagesListPackagesForOrganizationRes, error) {
 	res, err := c.sendPackagesListPackagesForOrganization(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -56636,7 +56253,6 @@ func (c *Client) sendPackagesListPackagesForOrganization(ctx context.Context, pa
 // GET /users/{username}/packages
 func (c *Client) PackagesListPackagesForUser(ctx context.Context, params PackagesListPackagesForUserParams) (PackagesListPackagesForUserRes, error) {
 	res, err := c.sendPackagesListPackagesForUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -56772,7 +56388,6 @@ func (c *Client) sendPackagesListPackagesForUser(ctx context.Context, params Pac
 // POST /user/packages/{package_type}/{package_name}/restore
 func (c *Client) PackagesRestorePackageForAuthenticatedUser(ctx context.Context, params PackagesRestorePackageForAuthenticatedUserParams) (PackagesRestorePackageForAuthenticatedUserRes, error) {
 	res, err := c.sendPackagesRestorePackageForAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -56915,7 +56530,6 @@ func (c *Client) sendPackagesRestorePackageForAuthenticatedUser(ctx context.Cont
 // POST /orgs/{org}/packages/{package_type}/{package_name}/restore
 func (c *Client) PackagesRestorePackageForOrg(ctx context.Context, params PackagesRestorePackageForOrgParams) (PackagesRestorePackageForOrgRes, error) {
 	res, err := c.sendPackagesRestorePackageForOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -57077,7 +56691,6 @@ func (c *Client) sendPackagesRestorePackageForOrg(ctx context.Context, params Pa
 // POST /users/{username}/packages/{package_type}/{package_name}/restore
 func (c *Client) PackagesRestorePackageForUser(ctx context.Context, params PackagesRestorePackageForUserParams) (PackagesRestorePackageForUserRes, error) {
 	res, err := c.sendPackagesRestorePackageForUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -57237,7 +56850,6 @@ func (c *Client) sendPackagesRestorePackageForUser(ctx context.Context, params P
 // POST /user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
 func (c *Client) PackagesRestorePackageVersionForAuthenticatedUser(ctx context.Context, params PackagesRestorePackageVersionForAuthenticatedUserParams) (PackagesRestorePackageVersionForAuthenticatedUserRes, error) {
 	res, err := c.sendPackagesRestorePackageVersionForAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -57378,7 +56990,6 @@ func (c *Client) sendPackagesRestorePackageVersionForAuthenticatedUser(ctx conte
 // POST /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
 func (c *Client) PackagesRestorePackageVersionForOrg(ctx context.Context, params PackagesRestorePackageVersionForOrgParams) (PackagesRestorePackageVersionForOrgRes, error) {
 	res, err := c.sendPackagesRestorePackageVersionForOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -57538,7 +57149,6 @@ func (c *Client) sendPackagesRestorePackageVersionForOrg(ctx context.Context, pa
 // POST /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
 func (c *Client) PackagesRestorePackageVersionForUser(ctx context.Context, params PackagesRestorePackageVersionForUserParams) (PackagesRestorePackageVersionForUserRes, error) {
 	res, err := c.sendPackagesRestorePackageVersionForUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -57688,7 +57298,6 @@ func (c *Client) sendPackagesRestorePackageVersionForUser(ctx context.Context, p
 // PUT /projects/{project_id}/collaborators/{username}
 func (c *Client) ProjectsAddCollaborator(ctx context.Context, request OptNilProjectsAddCollaboratorReq, params ProjectsAddCollaboratorParams) (ProjectsAddCollaboratorRes, error) {
 	res, err := c.sendProjectsAddCollaborator(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -57817,7 +57426,6 @@ func (c *Client) sendProjectsAddCollaborator(ctx context.Context, request OptNil
 // POST /projects/{project_id}/columns
 func (c *Client) ProjectsCreateColumn(ctx context.Context, request *ProjectsCreateColumnReq, params ProjectsCreateColumnParams) (ProjectsCreateColumnRes, error) {
 	res, err := c.sendProjectsCreateColumn(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -57912,7 +57520,6 @@ func (c *Client) sendProjectsCreateColumn(ctx context.Context, request *Projects
 // POST /user/projects
 func (c *Client) ProjectsCreateForAuthenticatedUser(ctx context.Context, request *ProjectsCreateForAuthenticatedUserReq) (ProjectsCreateForAuthenticatedUserRes, error) {
 	res, err := c.sendProjectsCreateForAuthenticatedUser(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -57990,7 +57597,6 @@ func (c *Client) sendProjectsCreateForAuthenticatedUser(ctx context.Context, req
 // POST /orgs/{org}/projects
 func (c *Client) ProjectsCreateForOrg(ctx context.Context, request *ProjectsCreateForOrgReq, params ProjectsCreateForOrgParams) (ProjectsCreateForOrgRes, error) {
 	res, err := c.sendProjectsCreateForOrg(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -58087,7 +57693,6 @@ func (c *Client) sendProjectsCreateForOrg(ctx context.Context, request *Projects
 // POST /repos/{owner}/{repo}/projects
 func (c *Client) ProjectsCreateForRepo(ctx context.Context, request *ProjectsCreateForRepoReq, params ProjectsCreateForRepoParams) (ProjectsCreateForRepoRes, error) {
 	res, err := c.sendProjectsCreateForRepo(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -58201,7 +57806,6 @@ func (c *Client) sendProjectsCreateForRepo(ctx context.Context, request *Project
 // DELETE /projects/{project_id}
 func (c *Client) ProjectsDelete(ctx context.Context, params ProjectsDeleteParams) (ProjectsDeleteRes, error) {
 	res, err := c.sendProjectsDelete(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -58292,7 +57896,6 @@ func (c *Client) sendProjectsDelete(ctx context.Context, params ProjectsDeletePa
 // DELETE /projects/columns/cards/{card_id}
 func (c *Client) ProjectsDeleteCard(ctx context.Context, params ProjectsDeleteCardParams) (ProjectsDeleteCardRes, error) {
 	res, err := c.sendProjectsDeleteCard(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -58383,7 +57986,6 @@ func (c *Client) sendProjectsDeleteCard(ctx context.Context, params ProjectsDele
 // DELETE /projects/columns/{column_id}
 func (c *Client) ProjectsDeleteColumn(ctx context.Context, params ProjectsDeleteColumnParams) (ProjectsDeleteColumnRes, error) {
 	res, err := c.sendProjectsDeleteColumn(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -58476,7 +58078,6 @@ func (c *Client) sendProjectsDeleteColumn(ctx context.Context, params ProjectsDe
 // GET /projects/{project_id}
 func (c *Client) ProjectsGet(ctx context.Context, params ProjectsGetParams) (ProjectsGetRes, error) {
 	res, err := c.sendProjectsGet(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -58567,7 +58168,6 @@ func (c *Client) sendProjectsGet(ctx context.Context, params ProjectsGetParams) 
 // GET /projects/columns/cards/{card_id}
 func (c *Client) ProjectsGetCard(ctx context.Context, params ProjectsGetCardParams) (ProjectsGetCardRes, error) {
 	res, err := c.sendProjectsGetCard(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -58658,7 +58258,6 @@ func (c *Client) sendProjectsGetCard(ctx context.Context, params ProjectsGetCard
 // GET /projects/columns/{column_id}
 func (c *Client) ProjectsGetColumn(ctx context.Context, params ProjectsGetColumnParams) (ProjectsGetColumnRes, error) {
 	res, err := c.sendProjectsGetColumn(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -58751,7 +58350,6 @@ func (c *Client) sendProjectsGetColumn(ctx context.Context, params ProjectsGetCo
 // GET /projects/{project_id}/collaborators/{username}/permission
 func (c *Client) ProjectsGetPermissionForUser(ctx context.Context, params ProjectsGetPermissionForUserParams) (ProjectsGetPermissionForUserRes, error) {
 	res, err := c.sendProjectsGetPermissionForUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -58862,7 +58460,6 @@ func (c *Client) sendProjectsGetPermissionForUser(ctx context.Context, params Pr
 // GET /projects/columns/{column_id}/cards
 func (c *Client) ProjectsListCards(ctx context.Context, params ProjectsListCardsParams) (ProjectsListCardsRes, error) {
 	res, err := c.sendProjectsListCards(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -59013,7 +58610,6 @@ func (c *Client) sendProjectsListCards(ctx context.Context, params ProjectsListC
 // GET /projects/{project_id}/collaborators
 func (c *Client) ProjectsListCollaborators(ctx context.Context, params ProjectsListCollaboratorsParams) (ProjectsListCollaboratorsRes, error) {
 	res, err := c.sendProjectsListCollaborators(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -59160,7 +58756,6 @@ func (c *Client) sendProjectsListCollaborators(ctx context.Context, params Proje
 // GET /projects/{project_id}/columns
 func (c *Client) ProjectsListColumns(ctx context.Context, params ProjectsListColumnsParams) (ProjectsListColumnsRes, error) {
 	res, err := c.sendProjectsListColumns(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -59292,7 +58887,6 @@ func (c *Client) sendProjectsListColumns(ctx context.Context, params ProjectsLis
 // GET /orgs/{org}/projects
 func (c *Client) ProjectsListForOrg(ctx context.Context, params ProjectsListForOrgParams) (ProjectsListForOrgRes, error) {
 	res, err := c.sendProjectsListForOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -59441,7 +59035,6 @@ func (c *Client) sendProjectsListForOrg(ctx context.Context, params ProjectsList
 // GET /repos/{owner}/{repo}/projects
 func (c *Client) ProjectsListForRepo(ctx context.Context, params ProjectsListForRepoParams) (ProjectsListForRepoRes, error) {
 	res, err := c.sendProjectsListForRepo(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -59607,7 +59200,6 @@ func (c *Client) sendProjectsListForRepo(ctx context.Context, params ProjectsLis
 // GET /users/{username}/projects
 func (c *Client) ProjectsListForUser(ctx context.Context, params ProjectsListForUserParams) (ProjectsListForUserRes, error) {
 	res, err := c.sendProjectsListForUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -59754,7 +59346,6 @@ func (c *Client) sendProjectsListForUser(ctx context.Context, params ProjectsLis
 // POST /projects/columns/cards/{card_id}/moves
 func (c *Client) ProjectsMoveCard(ctx context.Context, request *ProjectsMoveCardReq, params ProjectsMoveCardParams) (ProjectsMoveCardRes, error) {
 	res, err := c.sendProjectsMoveCard(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -59858,7 +59449,6 @@ func (c *Client) sendProjectsMoveCard(ctx context.Context, request *ProjectsMove
 // POST /projects/columns/{column_id}/moves
 func (c *Client) ProjectsMoveColumn(ctx context.Context, request *ProjectsMoveColumnReq, params ProjectsMoveColumnParams) (ProjectsMoveColumnRes, error) {
 	res, err := c.sendProjectsMoveColumn(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -59963,7 +59553,6 @@ func (c *Client) sendProjectsMoveColumn(ctx context.Context, request *ProjectsMo
 // DELETE /projects/{project_id}/collaborators/{username}
 func (c *Client) ProjectsRemoveCollaborator(ctx context.Context, params ProjectsRemoveCollaboratorParams) (ProjectsRemoveCollaboratorRes, error) {
 	res, err := c.sendProjectsRemoveCollaborator(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -60075,7 +59664,6 @@ func (c *Client) sendProjectsRemoveCollaborator(ctx context.Context, params Proj
 // PATCH /projects/{project_id}
 func (c *Client) ProjectsUpdate(ctx context.Context, request OptProjectsUpdateReq, params ProjectsUpdateParams) (ProjectsUpdateRes, error) {
 	res, err := c.sendProjectsUpdate(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -60185,7 +59773,6 @@ func (c *Client) sendProjectsUpdate(ctx context.Context, request OptProjectsUpda
 // PATCH /projects/columns/cards/{card_id}
 func (c *Client) ProjectsUpdateCard(ctx context.Context, request OptProjectsUpdateCardReq, params ProjectsUpdateCardParams) (ProjectsUpdateCardRes, error) {
 	res, err := c.sendProjectsUpdateCard(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -60279,7 +59866,6 @@ func (c *Client) sendProjectsUpdateCard(ctx context.Context, request OptProjects
 // PATCH /projects/columns/{column_id}
 func (c *Client) ProjectsUpdateColumn(ctx context.Context, request *ProjectsUpdateColumnReq, params ProjectsUpdateColumnParams) (ProjectsUpdateColumnRes, error) {
 	res, err := c.sendProjectsUpdateColumn(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -60373,7 +59959,6 @@ func (c *Client) sendProjectsUpdateColumn(ctx context.Context, request *Projects
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/merge
 func (c *Client) PullsCheckIfMerged(ctx context.Context, params PullsCheckIfMergedParams) (PullsCheckIfMergedRes, error) {
 	res, err := c.sendPullsCheckIfMerged(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -60518,7 +60103,6 @@ func (c *Client) sendPullsCheckIfMerged(ctx context.Context, params PullsCheckIf
 // POST /repos/{owner}/{repo}/pulls
 func (c *Client) PullsCreate(ctx context.Context, request *PullsCreateReq, params PullsCreateParams) (PullsCreateRes, error) {
 	res, err := c.sendPullsCreate(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -60641,7 +60225,6 @@ func (c *Client) sendPullsCreate(ctx context.Context, request *PullsCreateReq, p
 // POST /repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies
 func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request *PullsCreateReplyForReviewCommentReq, params PullsCreateReplyForReviewCommentParams) (PullsCreateReplyForReviewCommentRes, error) {
 	res, err := c.sendPullsCreateReplyForReviewComment(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -60811,7 +60394,6 @@ func (c *Client) sendPullsCreateReplyForReviewComment(ctx context.Context, reque
 // POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews
 func (c *Client) PullsCreateReview(ctx context.Context, request OptPullsCreateReviewReq, params PullsCreateReviewParams) (PullsCreateReviewRes, error) {
 	res, err := c.sendPullsCreateReview(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -60979,7 +60561,6 @@ func (c *Client) sendPullsCreateReview(ctx context.Context, request OptPullsCrea
 // POST /repos/{owner}/{repo}/pulls/{pull_number}/comments
 func (c *Client) PullsCreateReviewComment(ctx context.Context, request *PullsCreateReviewCommentReq, params PullsCreateReviewCommentParams) (PullsCreateReviewCommentRes, error) {
 	res, err := c.sendPullsCreateReviewComment(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -61121,7 +60702,6 @@ func (c *Client) sendPullsCreateReviewComment(ctx context.Context, request *Pull
 // DELETE /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
 func (c *Client) PullsDeletePendingReview(ctx context.Context, params PullsDeletePendingReviewParams) (PullsDeletePendingReviewRes, error) {
 	res, err := c.sendPullsDeletePendingReview(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -61269,7 +60849,6 @@ func (c *Client) sendPullsDeletePendingReview(ctx context.Context, params PullsD
 // DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}
 func (c *Client) PullsDeleteReviewComment(ctx context.Context, params PullsDeleteReviewCommentParams) (PullsDeleteReviewCommentRes, error) {
 	res, err := c.sendPullsDeleteReviewComment(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -61400,7 +60979,6 @@ func (c *Client) sendPullsDeleteReviewComment(ctx context.Context, params PullsD
 // PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals
 func (c *Client) PullsDismissReview(ctx context.Context, request *PullsDismissReviewReq, params PullsDismissReviewParams) (PullsDismissReviewRes, error) {
 	res, err := c.sendPullsDismissReview(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -61585,7 +61163,6 @@ func (c *Client) sendPullsDismissReview(ctx context.Context, request *PullsDismi
 // GET /repos/{owner}/{repo}/pulls/{pull_number}
 func (c *Client) PullsGet(ctx context.Context, params PullsGetParams) (PullsGetRes, error) {
 	res, err := c.sendPullsGet(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -61714,7 +61291,6 @@ func (c *Client) sendPullsGet(ctx context.Context, params PullsGetParams) (res P
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
 func (c *Client) PullsGetReview(ctx context.Context, params PullsGetReviewParams) (PullsGetReviewRes, error) {
 	res, err := c.sendPullsGetReview(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -61862,7 +61438,6 @@ func (c *Client) sendPullsGetReview(ctx context.Context, params PullsGetReviewPa
 // GET /repos/{owner}/{repo}/pulls/comments/{comment_id}
 func (c *Client) PullsGetReviewComment(ctx context.Context, params PullsGetReviewCommentParams) (PullsGetReviewCommentRes, error) {
 	res, err := c.sendPullsGetReviewComment(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -61995,7 +61570,6 @@ func (c *Client) sendPullsGetReviewComment(ctx context.Context, params PullsGetR
 // GET /repos/{owner}/{repo}/pulls
 func (c *Client) PullsList(ctx context.Context, params PullsListParams) (PullsListRes, error) {
 	res, err := c.sendPullsList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -62229,7 +61803,6 @@ func (c *Client) sendPullsList(ctx context.Context, params PullsListParams) (res
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments
 func (c *Client) PullsListCommentsForReview(ctx context.Context, params PullsListCommentsForReviewParams) (PullsListCommentsForReviewRes, error) {
 	res, err := c.sendPullsListCommentsForReview(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -62418,7 +61991,6 @@ func (c *Client) sendPullsListCommentsForReview(ctx context.Context, params Pull
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/commits
 func (c *Client) PullsListCommits(ctx context.Context, params PullsListCommitsParams) (*PullsListCommitsOKHeaders, error) {
 	res, err := c.sendPullsListCommits(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -62587,7 +62159,6 @@ func (c *Client) sendPullsListCommits(ctx context.Context, params PullsListCommi
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/files
 func (c *Client) PullsListFiles(ctx context.Context, params PullsListFilesParams) (PullsListFilesRes, error) {
 	res, err := c.sendPullsListFiles(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -62755,7 +62326,6 @@ func (c *Client) sendPullsListFiles(ctx context.Context, params PullsListFilesPa
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
 func (c *Client) PullsListRequestedReviewers(ctx context.Context, params PullsListRequestedReviewersParams) (*PullRequestReviewRequestHeaders, error) {
 	res, err := c.sendPullsListRequestedReviewers(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -62924,7 +62494,6 @@ func (c *Client) sendPullsListRequestedReviewers(ctx context.Context, params Pul
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/comments
 func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListReviewCommentsParams) (*PullsListReviewCommentsOKHeaders, error) {
 	res, err := c.sendPullsListReviewComments(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -63144,7 +62713,6 @@ func (c *Client) sendPullsListReviewComments(ctx context.Context, params PullsLi
 // GET /repos/{owner}/{repo}/pulls/comments
 func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params PullsListReviewCommentsForRepoParams) (*PullsListReviewCommentsForRepoOKHeaders, error) {
 	res, err := c.sendPullsListReviewCommentsForRepo(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -63344,7 +62912,6 @@ func (c *Client) sendPullsListReviewCommentsForRepo(ctx context.Context, params 
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews
 func (c *Client) PullsListReviews(ctx context.Context, params PullsListReviewsParams) (*PullsListReviewsOKHeaders, error) {
 	res, err := c.sendPullsListReviews(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -63518,7 +63085,6 @@ func (c *Client) sendPullsListReviews(ctx context.Context, params PullsListRevie
 // PUT /repos/{owner}/{repo}/pulls/{pull_number}/merge
 func (c *Client) PullsMerge(ctx context.Context, request OptNilPullsMergeReq, params PullsMergeParams) (PullsMergeRes, error) {
 	res, err := c.sendPullsMerge(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -63667,7 +63233,6 @@ func (c *Client) sendPullsMerge(ctx context.Context, request OptNilPullsMergeReq
 // DELETE /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
 func (c *Client) PullsRemoveRequestedReviewers(ctx context.Context, request *PullsRemoveRequestedReviewersReq, params PullsRemoveRequestedReviewersParams) (PullsRemoveRequestedReviewersRes, error) {
 	res, err := c.sendPullsRemoveRequestedReviewers(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -63809,7 +63374,6 @@ func (c *Client) sendPullsRemoveRequestedReviewers(ctx context.Context, request 
 // POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events
 func (c *Client) PullsSubmitReview(ctx context.Context, request *PullsSubmitReviewReq, params PullsSubmitReviewParams) (PullsSubmitReviewRes, error) {
 	res, err := c.sendPullsSubmitReview(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -63977,7 +63541,6 @@ func (c *Client) sendPullsSubmitReview(ctx context.Context, request *PullsSubmit
 // PATCH /repos/{owner}/{repo}/pulls/{pull_number}
 func (c *Client) PullsUpdate(ctx context.Context, request OptPullsUpdateReq, params PullsUpdateParams) (PullsUpdateRes, error) {
 	res, err := c.sendPullsUpdate(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -64126,7 +63689,6 @@ func (c *Client) sendPullsUpdate(ctx context.Context, request OptPullsUpdateReq,
 // PUT /repos/{owner}/{repo}/pulls/{pull_number}/update-branch
 func (c *Client) PullsUpdateBranch(ctx context.Context, request OptNilPullsUpdateBranchReq, params PullsUpdateBranchParams) (PullsUpdateBranchRes, error) {
 	res, err := c.sendPullsUpdateBranch(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -64259,7 +63821,6 @@ func (c *Client) sendPullsUpdateBranch(ctx context.Context, request OptNilPullsU
 // PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
 func (c *Client) PullsUpdateReview(ctx context.Context, request *PullsUpdateReviewReq, params PullsUpdateReviewParams) (PullsUpdateReviewRes, error) {
 	res, err := c.sendPullsUpdateReview(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -64410,7 +63971,6 @@ func (c *Client) sendPullsUpdateReview(ctx context.Context, request *PullsUpdate
 // PATCH /repos/{owner}/{repo}/pulls/comments/{comment_id}
 func (c *Client) PullsUpdateReviewComment(ctx context.Context, request *PullsUpdateReviewCommentReq, params PullsUpdateReviewCommentParams) (*PullRequestReviewComment, error) {
 	res, err := c.sendPullsUpdateReviewComment(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -64545,7 +64105,6 @@ func (c *Client) sendPullsUpdateReviewComment(ctx context.Context, request *Pull
 // GET /rate_limit
 func (c *Client) RateLimitGet(ctx context.Context) (RateLimitGetRes, error) {
 	res, err := c.sendRateLimitGet(ctx)
-	_ = res
 	return res, err
 }
 
@@ -64620,7 +64179,6 @@ func (c *Client) sendRateLimitGet(ctx context.Context) (res RateLimitGetRes, err
 // POST /repos/{owner}/{repo}/comments/{comment_id}/reactions
 func (c *Client) ReactionsCreateForCommitComment(ctx context.Context, request *ReactionsCreateForCommitCommentReq, params ReactionsCreateForCommitCommentParams) (ReactionsCreateForCommitCommentRes, error) {
 	res, err := c.sendReactionsCreateForCommitComment(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -64763,7 +64321,6 @@ func (c *Client) sendReactionsCreateForCommitComment(ctx context.Context, reques
 // POST /repos/{owner}/{repo}/issues/{issue_number}/reactions
 func (c *Client) ReactionsCreateForIssue(ctx context.Context, request *ReactionsCreateForIssueReq, params ReactionsCreateForIssueParams) (ReactionsCreateForIssueRes, error) {
 	res, err := c.sendReactionsCreateForIssue(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -64907,7 +64464,6 @@ func (c *Client) sendReactionsCreateForIssue(ctx context.Context, request *React
 // POST /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
 func (c *Client) ReactionsCreateForIssueComment(ctx context.Context, request *ReactionsCreateForIssueCommentReq, params ReactionsCreateForIssueCommentParams) (ReactionsCreateForIssueCommentRes, error) {
 	res, err := c.sendReactionsCreateForIssueComment(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -65051,7 +64607,6 @@ func (c *Client) sendReactionsCreateForIssueComment(ctx context.Context, request
 // POST /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
 func (c *Client) ReactionsCreateForPullRequestReviewComment(ctx context.Context, request *ReactionsCreateForPullRequestReviewCommentReq, params ReactionsCreateForPullRequestReviewCommentParams) (ReactionsCreateForPullRequestReviewCommentRes, error) {
 	res, err := c.sendReactionsCreateForPullRequestReviewComment(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -65194,7 +64749,6 @@ func (c *Client) sendReactionsCreateForPullRequestReviewComment(ctx context.Cont
 // POST /repos/{owner}/{repo}/releases/{release_id}/reactions
 func (c *Client) ReactionsCreateForRelease(ctx context.Context, request *ReactionsCreateForReleaseReq, params ReactionsCreateForReleaseParams) (ReactionsCreateForReleaseRes, error) {
 	res, err := c.sendReactionsCreateForRelease(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -65342,7 +64896,6 @@ func (c *Client) sendReactionsCreateForRelease(ctx context.Context, request *Rea
 // POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
 func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Context, request *ReactionsCreateForTeamDiscussionCommentInOrgReq, params ReactionsCreateForTeamDiscussionCommentInOrgParams) (ReactionsCreateForTeamDiscussionCommentInOrgRes, error) {
 	res, err := c.sendReactionsCreateForTeamDiscussionCommentInOrg(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -65513,7 +65066,6 @@ func (c *Client) sendReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Co
 // POST /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
 func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Context, request *ReactionsCreateForTeamDiscussionCommentLegacyReq, params ReactionsCreateForTeamDiscussionCommentLegacyParams) (*Reaction, error) {
 	res, err := c.sendReactionsCreateForTeamDiscussionCommentLegacy(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -65662,7 +65214,6 @@ func (c *Client) sendReactionsCreateForTeamDiscussionCommentLegacy(ctx context.C
 // POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
 func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, request *ReactionsCreateForTeamDiscussionInOrgReq, params ReactionsCreateForTeamDiscussionInOrgParams) (ReactionsCreateForTeamDiscussionInOrgRes, error) {
 	res, err := c.sendReactionsCreateForTeamDiscussionInOrg(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -65815,7 +65366,6 @@ func (c *Client) sendReactionsCreateForTeamDiscussionInOrg(ctx context.Context, 
 // POST /teams/{team_id}/discussions/{discussion_number}/reactions
 func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, request *ReactionsCreateForTeamDiscussionLegacyReq, params ReactionsCreateForTeamDiscussionLegacyParams) (*Reaction, error) {
 	res, err := c.sendReactionsCreateForTeamDiscussionLegacy(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -65939,8 +65489,7 @@ func (c *Client) sendReactionsCreateForTeamDiscussionLegacy(ctx context.Context,
 //
 // DELETE /repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}
 func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params ReactionsDeleteForCommitCommentParams) error {
-	res, err := c.sendReactionsDeleteForCommitComment(ctx, params)
-	_ = res
+	_, err := c.sendReactionsDeleteForCommitComment(ctx, params)
 	return err
 }
 
@@ -66089,8 +65638,7 @@ func (c *Client) sendReactionsDeleteForCommitComment(ctx context.Context, params
 //
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}
 func (c *Client) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDeleteForIssueParams) error {
-	res, err := c.sendReactionsDeleteForIssue(ctx, params)
-	_ = res
+	_, err := c.sendReactionsDeleteForIssue(ctx, params)
 	return err
 }
 
@@ -66239,8 +65787,7 @@ func (c *Client) sendReactionsDeleteForIssue(ctx context.Context, params Reactio
 //
 // DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}
 func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params ReactionsDeleteForIssueCommentParams) error {
-	res, err := c.sendReactionsDeleteForIssueComment(ctx, params)
-	_ = res
+	_, err := c.sendReactionsDeleteForIssueComment(ctx, params)
 	return err
 }
 
@@ -66390,8 +65937,7 @@ func (c *Client) sendReactionsDeleteForIssueComment(ctx context.Context, params 
 //
 // DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}
 func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, params ReactionsDeleteForPullRequestCommentParams) error {
-	res, err := c.sendReactionsDeleteForPullRequestComment(ctx, params)
-	_ = res
+	_, err := c.sendReactionsDeleteForPullRequestComment(ctx, params)
 	return err
 }
 
@@ -66545,8 +66091,7 @@ func (c *Client) sendReactionsDeleteForPullRequestComment(ctx context.Context, p
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}
 func (c *Client) ReactionsDeleteForTeamDiscussion(ctx context.Context, params ReactionsDeleteForTeamDiscussionParams) error {
-	res, err := c.sendReactionsDeleteForTeamDiscussion(ctx, params)
-	_ = res
+	_, err := c.sendReactionsDeleteForTeamDiscussion(ctx, params)
 	return err
 }
 
@@ -66698,8 +66243,7 @@ func (c *Client) sendReactionsDeleteForTeamDiscussion(ctx context.Context, param
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}
 func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, params ReactionsDeleteForTeamDiscussionCommentParams) error {
-	res, err := c.sendReactionsDeleteForTeamDiscussionComment(ctx, params)
-	_ = res
+	_, err := c.sendReactionsDeleteForTeamDiscussionComment(ctx, params)
 	return err
 }
 
@@ -66875,7 +66419,6 @@ func (c *Client) sendReactionsDeleteForTeamDiscussionComment(ctx context.Context
 // DELETE /reactions/{reaction_id}
 func (c *Client) ReactionsDeleteLegacy(ctx context.Context, params ReactionsDeleteLegacyParams) (ReactionsDeleteLegacyRes, error) {
 	res, err := c.sendReactionsDeleteLegacy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -66966,7 +66509,6 @@ func (c *Client) sendReactionsDeleteLegacy(ctx context.Context, params Reactions
 // GET /repos/{owner}/{repo}/comments/{comment_id}/reactions
 func (c *Client) ReactionsListForCommitComment(ctx context.Context, params ReactionsListForCommitCommentParams) (ReactionsListForCommitCommentRes, error) {
 	res, err := c.sendReactionsListForCommitComment(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -67151,7 +66693,6 @@ func (c *Client) sendReactionsListForCommitComment(ctx context.Context, params R
 // GET /repos/{owner}/{repo}/issues/{issue_number}/reactions
 func (c *Client) ReactionsListForIssue(ctx context.Context, params ReactionsListForIssueParams) (ReactionsListForIssueRes, error) {
 	res, err := c.sendReactionsListForIssue(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -67336,7 +66877,6 @@ func (c *Client) sendReactionsListForIssue(ctx context.Context, params Reactions
 // GET /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
 func (c *Client) ReactionsListForIssueComment(ctx context.Context, params ReactionsListForIssueCommentParams) (ReactionsListForIssueCommentRes, error) {
 	res, err := c.sendReactionsListForIssueComment(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -67522,7 +67062,6 @@ func (c *Client) sendReactionsListForIssueComment(ctx context.Context, params Re
 // GET /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
 func (c *Client) ReactionsListForPullRequestReviewComment(ctx context.Context, params ReactionsListForPullRequestReviewCommentParams) (ReactionsListForPullRequestReviewCommentRes, error) {
 	res, err := c.sendReactionsListForPullRequestReviewComment(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -67711,7 +67250,6 @@ func (c *Client) sendReactionsListForPullRequestReviewComment(ctx context.Contex
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
 func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context, params ReactionsListForTeamDiscussionCommentInOrgParams) (*ReactionsListForTeamDiscussionCommentInOrgOKHeaders, error) {
 	res, err := c.sendReactionsListForTeamDiscussionCommentInOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -67923,7 +67461,6 @@ func (c *Client) sendReactionsListForTeamDiscussionCommentInOrg(ctx context.Cont
 // GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
 func (c *Client) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context, params ReactionsListForTeamDiscussionCommentLegacyParams) (*ReactionsListForTeamDiscussionCommentLegacyOKHeaders, error) {
 	res, err := c.sendReactionsListForTeamDiscussionCommentLegacy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -68112,7 +67649,6 @@ func (c *Client) sendReactionsListForTeamDiscussionCommentLegacy(ctx context.Con
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
 func (c *Client) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params ReactionsListForTeamDiscussionInOrgParams) (*ReactionsListForTeamDiscussionInOrgOKHeaders, error) {
 	res, err := c.sendReactionsListForTeamDiscussionInOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -68305,7 +67841,6 @@ func (c *Client) sendReactionsListForTeamDiscussionInOrg(ctx context.Context, pa
 // GET /teams/{team_id}/discussions/{discussion_number}/reactions
 func (c *Client) ReactionsListForTeamDiscussionLegacy(ctx context.Context, params ReactionsListForTeamDiscussionLegacyParams) (*ReactionsListForTeamDiscussionLegacyOKHeaders, error) {
 	res, err := c.sendReactionsListForTeamDiscussionLegacy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -68471,7 +68006,6 @@ func (c *Client) sendReactionsListForTeamDiscussionLegacy(ctx context.Context, p
 // PATCH /user/repository_invitations/{invitation_id}
 func (c *Client) ReposAcceptInvitation(ctx context.Context, params ReposAcceptInvitationParams) (ReposAcceptInvitationRes, error) {
 	res, err := c.sendReposAcceptInvitation(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -68576,7 +68110,6 @@ func (c *Client) sendReposAcceptInvitation(ctx context.Context, params ReposAcce
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
 func (c *Client) ReposAddAppAccessRestrictions(ctx context.Context, request OptReposAddAppAccessRestrictionsReq, params ReposAddAppAccessRestrictionsParams) (ReposAddAppAccessRestrictionsRes, error) {
 	res, err := c.sendReposAddAppAccessRestrictions(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -68744,7 +68277,6 @@ func (c *Client) sendReposAddAppAccessRestrictions(ctx context.Context, request 
 // PUT /repos/{owner}/{repo}/collaborators/{username}
 func (c *Client) ReposAddCollaborator(ctx context.Context, request OptReposAddCollaboratorReq, params ReposAddCollaboratorParams) (ReposAddCollaboratorRes, error) {
 	res, err := c.sendReposAddCollaborator(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -68896,7 +68428,6 @@ func (c *Client) sendReposAddCollaborator(ctx context.Context, request OptReposA
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
 func (c *Client) ReposAddStatusCheckContexts(ctx context.Context, request OptReposAddStatusCheckContextsReq, params ReposAddStatusCheckContextsParams) (ReposAddStatusCheckContextsRes, error) {
 	res, err := c.sendReposAddStatusCheckContexts(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -69059,7 +68590,6 @@ func (c *Client) sendReposAddStatusCheckContexts(ctx context.Context, request Op
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
 func (c *Client) ReposAddTeamAccessRestrictions(ctx context.Context, request OptReposAddTeamAccessRestrictionsReq, params ReposAddTeamAccessRestrictionsParams) (ReposAddTeamAccessRestrictionsRes, error) {
 	res, err := c.sendReposAddTeamAccessRestrictions(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -69221,7 +68751,6 @@ func (c *Client) sendReposAddTeamAccessRestrictions(ctx context.Context, request
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
 func (c *Client) ReposAddUserAccessRestrictions(ctx context.Context, request OptReposAddUserAccessRestrictionsReq, params ReposAddUserAccessRestrictionsParams) (ReposAddUserAccessRestrictionsRes, error) {
 	res, err := c.sendReposAddUserAccessRestrictions(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -69374,7 +68903,6 @@ func (c *Client) sendReposAddUserAccessRestrictions(ctx context.Context, request
 // GET /repos/{owner}/{repo}/collaborators/{username}
 func (c *Client) ReposCheckCollaborator(ctx context.Context, params ReposCheckCollaboratorParams) (ReposCheckCollaboratorRes, error) {
 	res, err := c.sendReposCheckCollaborator(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -69506,7 +69034,6 @@ func (c *Client) sendReposCheckCollaborator(ctx context.Context, params ReposChe
 // GET /repos/{owner}/{repo}/vulnerability-alerts
 func (c *Client) ReposCheckVulnerabilityAlerts(ctx context.Context, params ReposCheckVulnerabilityAlertsParams) (ReposCheckVulnerabilityAlertsRes, error) {
 	res, err := c.sendReposCheckVulnerabilityAlerts(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -69671,7 +69198,6 @@ func (c *Client) sendReposCheckVulnerabilityAlerts(ctx context.Context, params R
 // GET /repos/{owner}/{repo}/compare/{basehead}
 func (c *Client) ReposCompareCommits(ctx context.Context, params ReposCompareCommitsParams) (ReposCompareCommitsRes, error) {
 	res, err := c.sendReposCompareCommits(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -69838,7 +69364,6 @@ func (c *Client) sendReposCompareCommits(ctx context.Context, params ReposCompar
 // POST /repos/{owner}/{repo}/autolinks
 func (c *Client) ReposCreateAutolink(ctx context.Context, request *ReposCreateAutolinkReq, params ReposCreateAutolinkParams) (ReposCreateAutolinkRes, error) {
 	res, err := c.sendReposCreateAutolink(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -69959,7 +69484,6 @@ func (c *Client) sendReposCreateAutolink(ctx context.Context, request *ReposCrea
 // POST /repos/{owner}/{repo}/commits/{commit_sha}/comments
 func (c *Client) ReposCreateCommitComment(ctx context.Context, request *ReposCreateCommitCommentReq, params ReposCreateCommitCommentParams) (ReposCreateCommitCommentRes, error) {
 	res, err := c.sendReposCreateCommitComment(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -70098,7 +69622,6 @@ func (c *Client) sendReposCreateCommitComment(ctx context.Context, request *Repo
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
 func (c *Client) ReposCreateCommitSignatureProtection(ctx context.Context, params ReposCreateCommitSignatureProtectionParams) (ReposCreateCommitSignatureProtectionRes, error) {
 	res, err := c.sendReposCreateCommitSignatureProtection(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -70230,7 +69753,6 @@ func (c *Client) sendReposCreateCommitSignatureProtection(ctx context.Context, p
 // POST /repos/{owner}/{repo}/statuses/{sha}
 func (c *Client) ReposCreateCommitStatus(ctx context.Context, request *ReposCreateCommitStatusReq, params ReposCreateCommitStatusParams) (*StatusHeaders, error) {
 	res, err := c.sendReposCreateCommitStatus(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -70371,7 +69893,6 @@ func (c *Client) sendReposCreateCommitStatus(ctx context.Context, request *Repos
 // POST /repos/{owner}/{repo}/keys
 func (c *Client) ReposCreateDeployKey(ctx context.Context, request *ReposCreateDeployKeyReq, params ReposCreateDeployKeyParams) (ReposCreateDeployKeyRes, error) {
 	res, err := c.sendReposCreateDeployKey(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -70540,7 +70061,6 @@ func (c *Client) sendReposCreateDeployKey(ctx context.Context, request *ReposCre
 // POST /repos/{owner}/{repo}/deployments
 func (c *Client) ReposCreateDeployment(ctx context.Context, request *ReposCreateDeploymentReq, params ReposCreateDeploymentParams) (ReposCreateDeploymentRes, error) {
 	res, err := c.sendReposCreateDeployment(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -70656,7 +70176,6 @@ func (c *Client) sendReposCreateDeployment(ctx context.Context, request *ReposCr
 // POST /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
 func (c *Client) ReposCreateDeploymentStatus(ctx context.Context, request *ReposCreateDeploymentStatusReq, params ReposCreateDeploymentStatusParams) (ReposCreateDeploymentStatusRes, error) {
 	res, err := c.sendReposCreateDeploymentStatus(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -70817,7 +70336,6 @@ func (c *Client) sendReposCreateDeploymentStatus(ctx context.Context, request *R
 // POST /repos/{owner}/{repo}/dispatches
 func (c *Client) ReposCreateDispatchEvent(ctx context.Context, request *ReposCreateDispatchEventReq, params ReposCreateDispatchEventParams) (ReposCreateDispatchEventRes, error) {
 	res, err := c.sendReposCreateDispatchEvent(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -70946,7 +70464,6 @@ func (c *Client) sendReposCreateDispatchEvent(ctx context.Context, request *Repo
 // POST /user/repos
 func (c *Client) ReposCreateForAuthenticatedUser(ctx context.Context, request *ReposCreateForAuthenticatedUserReq) (ReposCreateForAuthenticatedUserRes, error) {
 	res, err := c.sendReposCreateForAuthenticatedUser(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -71025,7 +70542,6 @@ func (c *Client) sendReposCreateForAuthenticatedUser(ctx context.Context, reques
 // POST /repos/{owner}/{repo}/forks
 func (c *Client) ReposCreateFork(ctx context.Context, request OptNilReposCreateForkReq, params ReposCreateForkParams) (ReposCreateForkRes, error) {
 	res, err := c.sendReposCreateFork(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -71146,7 +70662,6 @@ func (c *Client) sendReposCreateFork(ctx context.Context, request OptNilReposCre
 // POST /orgs/{org}/repos
 func (c *Client) ReposCreateInOrg(ctx context.Context, request *ReposCreateInOrgReq, params ReposCreateInOrgParams) (ReposCreateInOrgRes, error) {
 	res, err := c.sendReposCreateInOrg(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -71250,7 +70765,6 @@ func (c *Client) sendReposCreateInOrg(ctx context.Context, request *ReposCreateI
 // PUT /repos/{owner}/{repo}/contents/{path}
 func (c *Client) ReposCreateOrUpdateFileContents(ctx context.Context, request *ReposCreateOrUpdateFileContentsReq, params ReposCreateOrUpdateFileContentsParams) (ReposCreateOrUpdateFileContentsRes, error) {
 	res, err := c.sendReposCreateOrUpdateFileContents(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -71383,7 +70897,6 @@ func (c *Client) sendReposCreateOrUpdateFileContents(ctx context.Context, reques
 // POST /repos/{owner}/{repo}/pages
 func (c *Client) ReposCreatePagesSite(ctx context.Context, request NilReposCreatePagesSiteReq, params ReposCreatePagesSiteParams) (ReposCreatePagesSiteRes, error) {
 	res, err := c.sendReposCreatePagesSite(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -71520,7 +71033,6 @@ func (c *Client) sendReposCreatePagesSite(ctx context.Context, request NilReposC
 // POST /repos/{owner}/{repo}/releases
 func (c *Client) ReposCreateRelease(ctx context.Context, request *ReposCreateReleaseReq, params ReposCreateReleaseParams) (ReposCreateReleaseRes, error) {
 	res, err := c.sendReposCreateRelease(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -71645,7 +71157,6 @@ func (c *Client) sendReposCreateRelease(ctx context.Context, request *ReposCreat
 // POST /repos/{template_owner}/{template_repo}/generate
 func (c *Client) ReposCreateUsingTemplate(ctx context.Context, request *ReposCreateUsingTemplateReq, params ReposCreateUsingTemplateParams) (*RepositoryHeaders, error) {
 	res, err := c.sendReposCreateUsingTemplate(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -71761,7 +71272,6 @@ func (c *Client) sendReposCreateUsingTemplate(ctx context.Context, request *Repo
 // POST /repos/{owner}/{repo}/hooks
 func (c *Client) ReposCreateWebhook(ctx context.Context, request OptNilReposCreateWebhookReq, params ReposCreateWebhookParams) (ReposCreateWebhookRes, error) {
 	res, err := c.sendReposCreateWebhook(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -71891,7 +71401,6 @@ func (c *Client) sendReposCreateWebhook(ctx context.Context, request OptNilRepos
 // DELETE /user/repository_invitations/{invitation_id}
 func (c *Client) ReposDeclineInvitation(ctx context.Context, params ReposDeclineInvitationParams) (ReposDeclineInvitationRes, error) {
 	res, err := c.sendReposDeclineInvitation(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -71985,7 +71494,6 @@ func (c *Client) sendReposDeclineInvitation(ctx context.Context, params ReposDec
 // DELETE /repos/{owner}/{repo}
 func (c *Client) ReposDelete(ctx context.Context, params ReposDeleteParams) (ReposDeleteRes, error) {
 	res, err := c.sendReposDelete(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -72099,8 +71607,7 @@ func (c *Client) sendReposDelete(ctx context.Context, params ReposDeleteParams) 
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
 func (c *Client) ReposDeleteAccessRestrictions(ctx context.Context, params ReposDeleteAccessRestrictionsParams) error {
-	res, err := c.sendReposDeleteAccessRestrictions(ctx, params)
-	_ = res
+	_, err := c.sendReposDeleteAccessRestrictions(ctx, params)
 	return err
 }
 
@@ -72236,7 +71743,6 @@ func (c *Client) sendReposDeleteAccessRestrictions(ctx context.Context, params R
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
 func (c *Client) ReposDeleteAdminBranchProtection(ctx context.Context, params ReposDeleteAdminBranchProtectionParams) (ReposDeleteAdminBranchProtectionRes, error) {
 	res, err := c.sendReposDeleteAdminBranchProtection(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -72365,8 +71871,7 @@ func (c *Client) sendReposDeleteAdminBranchProtection(ctx context.Context, param
 //
 // DELETE /repos/{owner}/{repo}/environments/{environment_name}
 func (c *Client) ReposDeleteAnEnvironment(ctx context.Context, params ReposDeleteAnEnvironmentParams) error {
-	res, err := c.sendReposDeleteAnEnvironment(ctx, params)
-	_ = res
+	_, err := c.sendReposDeleteAnEnvironment(ctx, params)
 	return err
 }
 
@@ -72496,7 +72001,6 @@ func (c *Client) sendReposDeleteAnEnvironment(ctx context.Context, params ReposD
 // DELETE /repos/{owner}/{repo}/autolinks/{autolink_id}
 func (c *Client) ReposDeleteAutolink(ctx context.Context, params ReposDeleteAutolinkParams) (ReposDeleteAutolinkRes, error) {
 	res, err := c.sendReposDeleteAutolink(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -72629,7 +72133,6 @@ func (c *Client) sendReposDeleteAutolink(ctx context.Context, params ReposDelete
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection
 func (c *Client) ReposDeleteBranchProtection(ctx context.Context, params ReposDeleteBranchProtectionParams) (ReposDeleteBranchProtectionRes, error) {
 	res, err := c.sendReposDeleteBranchProtection(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -72759,7 +72262,6 @@ func (c *Client) sendReposDeleteBranchProtection(ctx context.Context, params Rep
 // DELETE /repos/{owner}/{repo}/comments/{comment_id}
 func (c *Client) ReposDeleteCommitComment(ctx context.Context, params ReposDeleteCommitCommentParams) (ReposDeleteCommitCommentRes, error) {
 	res, err := c.sendReposDeleteCommitComment(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -72895,7 +72397,6 @@ func (c *Client) sendReposDeleteCommitComment(ctx context.Context, params ReposD
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
 func (c *Client) ReposDeleteCommitSignatureProtection(ctx context.Context, params ReposDeleteCommitSignatureProtectionParams) (ReposDeleteCommitSignatureProtectionRes, error) {
 	res, err := c.sendReposDeleteCommitSignatureProtection(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -73025,8 +72526,7 @@ func (c *Client) sendReposDeleteCommitSignatureProtection(ctx context.Context, p
 //
 // DELETE /repos/{owner}/{repo}/keys/{key_id}
 func (c *Client) ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDeployKeyParams) error {
-	res, err := c.sendReposDeleteDeployKey(ctx, params)
-	_ = res
+	_, err := c.sendReposDeleteDeployKey(ctx, params)
 	return err
 }
 
@@ -73163,7 +72663,6 @@ func (c *Client) sendReposDeleteDeployKey(ctx context.Context, params ReposDelet
 // DELETE /repos/{owner}/{repo}/deployments/{deployment_id}
 func (c *Client) ReposDeleteDeployment(ctx context.Context, params ReposDeleteDeploymentParams) (ReposDeleteDeploymentRes, error) {
 	res, err := c.sendReposDeleteDeployment(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -73299,7 +72798,6 @@ func (c *Client) sendReposDeleteDeployment(ctx context.Context, params ReposDele
 // DELETE /repos/{owner}/{repo}/contents/{path}
 func (c *Client) ReposDeleteFile(ctx context.Context, request *ReposDeleteFileReq, params ReposDeleteFileParams) (ReposDeleteFileRes, error) {
 	res, err := c.sendReposDeleteFile(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -73430,8 +72928,7 @@ func (c *Client) sendReposDeleteFile(ctx context.Context, request *ReposDeleteFi
 //
 // DELETE /repos/{owner}/{repo}/invitations/{invitation_id}
 func (c *Client) ReposDeleteInvitation(ctx context.Context, params ReposDeleteInvitationParams) error {
-	res, err := c.sendReposDeleteInvitation(ctx, params)
-	_ = res
+	_, err := c.sendReposDeleteInvitation(ctx, params)
 	return err
 }
 
@@ -73560,7 +73057,6 @@ func (c *Client) sendReposDeleteInvitation(ctx context.Context, params ReposDele
 // DELETE /repos/{owner}/{repo}/pages
 func (c *Client) ReposDeletePagesSite(ctx context.Context, params ReposDeletePagesSiteParams) (ReposDeletePagesSiteRes, error) {
 	res, err := c.sendReposDeletePagesSite(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -73675,7 +73171,6 @@ func (c *Client) sendReposDeletePagesSite(ctx context.Context, params ReposDelet
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
 func (c *Client) ReposDeletePullRequestReviewProtection(ctx context.Context, params ReposDeletePullRequestReviewProtectionParams) (ReposDeletePullRequestReviewProtectionRes, error) {
 	res, err := c.sendReposDeletePullRequestReviewProtection(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -73804,8 +73299,7 @@ func (c *Client) sendReposDeletePullRequestReviewProtection(ctx context.Context,
 //
 // DELETE /repos/{owner}/{repo}/releases/{release_id}
 func (c *Client) ReposDeleteRelease(ctx context.Context, params ReposDeleteReleaseParams) error {
-	res, err := c.sendReposDeleteRelease(ctx, params)
-	_ = res
+	_, err := c.sendReposDeleteRelease(ctx, params)
 	return err
 }
 
@@ -73933,8 +73427,7 @@ func (c *Client) sendReposDeleteRelease(ctx context.Context, params ReposDeleteR
 //
 // DELETE /repos/{owner}/{repo}/releases/assets/{asset_id}
 func (c *Client) ReposDeleteReleaseAsset(ctx context.Context, params ReposDeleteReleaseAssetParams) error {
-	res, err := c.sendReposDeleteReleaseAsset(ctx, params)
-	_ = res
+	_, err := c.sendReposDeleteReleaseAsset(ctx, params)
 	return err
 }
 
@@ -74063,7 +73556,6 @@ func (c *Client) sendReposDeleteReleaseAsset(ctx context.Context, params ReposDe
 // DELETE /repos/{owner}/{repo}/hooks/{hook_id}
 func (c *Client) ReposDeleteWebhook(ctx context.Context, params ReposDeleteWebhookParams) (ReposDeleteWebhookRes, error) {
 	res, err := c.sendReposDeleteWebhook(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -74193,8 +73685,7 @@ func (c *Client) sendReposDeleteWebhook(ctx context.Context, params ReposDeleteW
 //
 // DELETE /repos/{owner}/{repo}/automated-security-fixes
 func (c *Client) ReposDisableAutomatedSecurityFixes(ctx context.Context, params ReposDisableAutomatedSecurityFixesParams) error {
-	res, err := c.sendReposDisableAutomatedSecurityFixes(ctx, params)
-	_ = res
+	_, err := c.sendReposDisableAutomatedSecurityFixes(ctx, params)
 	return err
 }
 
@@ -74304,8 +73795,7 @@ func (c *Client) sendReposDisableAutomatedSecurityFixes(ctx context.Context, par
 //
 // DELETE /repos/{owner}/{repo}/lfs
 func (c *Client) ReposDisableLfsForRepo(ctx context.Context, params ReposDisableLfsForRepoParams) error {
-	res, err := c.sendReposDisableLfsForRepo(ctx, params)
-	_ = res
+	_, err := c.sendReposDisableLfsForRepo(ctx, params)
 	return err
 }
 
@@ -74418,8 +73908,7 @@ func (c *Client) sendReposDisableLfsForRepo(ctx context.Context, params ReposDis
 //
 // DELETE /repos/{owner}/{repo}/vulnerability-alerts
 func (c *Client) ReposDisableVulnerabilityAlerts(ctx context.Context, params ReposDisableVulnerabilityAlertsParams) error {
-	res, err := c.sendReposDisableVulnerabilityAlerts(ctx, params)
-	_ = res
+	_, err := c.sendReposDisableVulnerabilityAlerts(ctx, params)
 	return err
 }
 
@@ -74535,7 +74024,6 @@ func (c *Client) sendReposDisableVulnerabilityAlerts(ctx context.Context, params
 // GET /repos/{owner}/{repo}/tarball/{ref}
 func (c *Client) ReposDownloadTarballArchive(ctx context.Context, params ReposDownloadTarballArchiveParams) (*ReposDownloadTarballArchiveFound, error) {
 	res, err := c.sendReposDownloadTarballArchive(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -74669,7 +74157,6 @@ func (c *Client) sendReposDownloadTarballArchive(ctx context.Context, params Rep
 // GET /repos/{owner}/{repo}/zipball/{ref}
 func (c *Client) ReposDownloadZipballArchive(ctx context.Context, params ReposDownloadZipballArchiveParams) (*ReposDownloadZipballArchiveFound, error) {
 	res, err := c.sendReposDownloadZipballArchive(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -74799,8 +74286,7 @@ func (c *Client) sendReposDownloadZipballArchive(ctx context.Context, params Rep
 //
 // PUT /repos/{owner}/{repo}/automated-security-fixes
 func (c *Client) ReposEnableAutomatedSecurityFixes(ctx context.Context, params ReposEnableAutomatedSecurityFixesParams) error {
-	res, err := c.sendReposEnableAutomatedSecurityFixes(ctx, params)
-	_ = res
+	_, err := c.sendReposEnableAutomatedSecurityFixes(ctx, params)
 	return err
 }
 
@@ -74911,7 +74397,6 @@ func (c *Client) sendReposEnableAutomatedSecurityFixes(ctx context.Context, para
 // PUT /repos/{owner}/{repo}/lfs
 func (c *Client) ReposEnableLfsForRepo(ctx context.Context, params ReposEnableLfsForRepoParams) (ReposEnableLfsForRepoRes, error) {
 	res, err := c.sendReposEnableLfsForRepo(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -75024,8 +74509,7 @@ func (c *Client) sendReposEnableLfsForRepo(ctx context.Context, params ReposEnab
 //
 // PUT /repos/{owner}/{repo}/vulnerability-alerts
 func (c *Client) ReposEnableVulnerabilityAlerts(ctx context.Context, params ReposEnableVulnerabilityAlertsParams) error {
-	res, err := c.sendReposEnableVulnerabilityAlerts(ctx, params)
-	_ = res
+	_, err := c.sendReposEnableVulnerabilityAlerts(ctx, params)
 	return err
 }
 
@@ -75137,7 +74621,6 @@ func (c *Client) sendReposEnableVulnerabilityAlerts(ctx context.Context, params 
 // GET /repos/{owner}/{repo}
 func (c *Client) ReposGet(ctx context.Context, params ReposGetParams) (ReposGetRes, error) {
 	res, err := c.sendReposGet(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -75254,7 +74737,6 @@ func (c *Client) sendReposGet(ctx context.Context, params ReposGetParams) (res R
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
 func (c *Client) ReposGetAccessRestrictions(ctx context.Context, params ReposGetAccessRestrictionsParams) (ReposGetAccessRestrictionsRes, error) {
 	res, err := c.sendReposGetAccessRestrictions(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -75388,7 +74870,6 @@ func (c *Client) sendReposGetAccessRestrictions(ctx context.Context, params Repo
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
 func (c *Client) ReposGetAdminBranchProtection(ctx context.Context, params ReposGetAdminBranchProtectionParams) (*ProtectedBranchAdminEnforced, error) {
 	res, err := c.sendReposGetAdminBranchProtection(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -75522,7 +75003,6 @@ func (c *Client) sendReposGetAdminBranchProtection(ctx context.Context, params R
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
 func (c *Client) ReposGetAllStatusCheckContexts(ctx context.Context, params ReposGetAllStatusCheckContextsParams) (ReposGetAllStatusCheckContextsRes, error) {
 	res, err := c.sendReposGetAllStatusCheckContexts(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -75652,7 +75132,6 @@ func (c *Client) sendReposGetAllStatusCheckContexts(ctx context.Context, params 
 // GET /repos/{owner}/{repo}/topics
 func (c *Client) ReposGetAllTopics(ctx context.Context, params ReposGetAllTopicsParams) (ReposGetAllTopicsRes, error) {
 	res, err := c.sendReposGetAllTopics(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -75808,7 +75287,6 @@ func (c *Client) sendReposGetAllTopics(ctx context.Context, params ReposGetAllTo
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
 func (c *Client) ReposGetAppsWithAccessToProtectedBranch(ctx context.Context, params ReposGetAppsWithAccessToProtectedBranchParams) (ReposGetAppsWithAccessToProtectedBranchRes, error) {
 	res, err := c.sendReposGetAppsWithAccessToProtectedBranch(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -75939,7 +75417,6 @@ func (c *Client) sendReposGetAppsWithAccessToProtectedBranch(ctx context.Context
 // GET /repos/{owner}/{repo}/autolinks/{autolink_id}
 func (c *Client) ReposGetAutolink(ctx context.Context, params ReposGetAutolinkParams) (ReposGetAutolinkRes, error) {
 	res, err := c.sendReposGetAutolink(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -76068,7 +75545,6 @@ func (c *Client) sendReposGetAutolink(ctx context.Context, params ReposGetAutoli
 // GET /repos/{owner}/{repo}/branches/{branch}
 func (c *Client) ReposGetBranch(ctx context.Context, params ReposGetBranchParams) (ReposGetBranchRes, error) {
 	res, err := c.sendReposGetBranch(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -76201,7 +75677,6 @@ func (c *Client) sendReposGetBranch(ctx context.Context, params ReposGetBranchPa
 // GET /repos/{owner}/{repo}/branches/{branch}/protection
 func (c *Client) ReposGetBranchProtection(ctx context.Context, params ReposGetBranchProtectionParams) (ReposGetBranchProtectionRes, error) {
 	res, err := c.sendReposGetBranchProtection(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -76332,7 +75807,6 @@ func (c *Client) sendReposGetBranchProtection(ctx context.Context, params ReposG
 // GET /repos/{owner}/{repo}/traffic/clones
 func (c *Client) ReposGetClones(ctx context.Context, params ReposGetClonesParams) (ReposGetClonesRes, error) {
 	res, err := c.sendReposGetClones(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -76464,7 +75938,6 @@ func (c *Client) sendReposGetClones(ctx context.Context, params ReposGetClonesPa
 // GET /repos/{owner}/{repo}/stats/code_frequency
 func (c *Client) ReposGetCodeFrequencyStats(ctx context.Context, params ReposGetCodeFrequencyStatsParams) (ReposGetCodeFrequencyStatsRes, error) {
 	res, err := c.sendReposGetCodeFrequencyStats(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -76576,7 +76049,6 @@ func (c *Client) sendReposGetCodeFrequencyStats(ctx context.Context, params Repo
 // GET /repos/{owner}/{repo}/collaborators/{username}/permission
 func (c *Client) ReposGetCollaboratorPermissionLevel(ctx context.Context, params ReposGetCollaboratorPermissionLevelParams) (ReposGetCollaboratorPermissionLevelRes, error) {
 	res, err := c.sendReposGetCollaboratorPermissionLevel(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -76714,7 +76186,6 @@ func (c *Client) sendReposGetCollaboratorPermissionLevel(ctx context.Context, pa
 // GET /repos/{owner}/{repo}/commits/{ref}/status
 func (c *Client) ReposGetCombinedStatusForRef(ctx context.Context, params ReposGetCombinedStatusForRefParams) (ReposGetCombinedStatusForRefRes, error) {
 	res, err := c.sendReposGetCombinedStatusForRef(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -76928,7 +76399,6 @@ func (c *Client) sendReposGetCombinedStatusForRef(ctx context.Context, params Re
 // GET /repos/{owner}/{repo}/commits/{ref}
 func (c *Client) ReposGetCommit(ctx context.Context, params ReposGetCommitParams) (ReposGetCommitRes, error) {
 	res, err := c.sendReposGetCommit(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -77096,7 +76566,6 @@ func (c *Client) sendReposGetCommit(ctx context.Context, params ReposGetCommitPa
 // GET /repos/{owner}/{repo}/stats/commit_activity
 func (c *Client) ReposGetCommitActivityStats(ctx context.Context, params ReposGetCommitActivityStatsParams) (ReposGetCommitActivityStatsRes, error) {
 	res, err := c.sendReposGetCommitActivityStats(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -77207,7 +76676,6 @@ func (c *Client) sendReposGetCommitActivityStats(ctx context.Context, params Rep
 // GET /repos/{owner}/{repo}/comments/{comment_id}
 func (c *Client) ReposGetCommitComment(ctx context.Context, params ReposGetCommitCommentParams) (ReposGetCommitCommentRes, error) {
 	res, err := c.sendReposGetCommitComment(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -77345,7 +76813,6 @@ func (c *Client) sendReposGetCommitComment(ctx context.Context, params ReposGetC
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
 func (c *Client) ReposGetCommitSignatureProtection(ctx context.Context, params ReposGetCommitSignatureProtectionParams) (ReposGetCommitSignatureProtectionRes, error) {
 	res, err := c.sendReposGetCommitSignatureProtection(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -77484,7 +76951,6 @@ func (c *Client) sendReposGetCommitSignatureProtection(ctx context.Context, para
 // GET /repos/{owner}/{repo}/community/profile
 func (c *Client) ReposGetCommunityProfileMetrics(ctx context.Context, params ReposGetCommunityProfileMetricsParams) (*CommunityProfile, error) {
 	res, err := c.sendReposGetCommunityProfileMetrics(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -77600,7 +77066,6 @@ func (c *Client) sendReposGetCommunityProfileMetrics(ctx context.Context, params
 // GET /repos/{owner}/{repo}/stats/contributors
 func (c *Client) ReposGetContributorsStats(ctx context.Context, params ReposGetContributorsStatsParams) (ReposGetContributorsStatsRes, error) {
 	res, err := c.sendReposGetContributorsStats(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -77711,7 +77176,6 @@ func (c *Client) sendReposGetContributorsStats(ctx context.Context, params Repos
 // GET /repos/{owner}/{repo}/keys/{key_id}
 func (c *Client) ReposGetDeployKey(ctx context.Context, params ReposGetDeployKeyParams) (ReposGetDeployKeyRes, error) {
 	res, err := c.sendReposGetDeployKey(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -77840,7 +77304,6 @@ func (c *Client) sendReposGetDeployKey(ctx context.Context, params ReposGetDeplo
 // GET /repos/{owner}/{repo}/deployments/{deployment_id}
 func (c *Client) ReposGetDeployment(ctx context.Context, params ReposGetDeploymentParams) (ReposGetDeploymentRes, error) {
 	res, err := c.sendReposGetDeployment(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -77969,7 +77432,6 @@ func (c *Client) sendReposGetDeployment(ctx context.Context, params ReposGetDepl
 // GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}
 func (c *Client) ReposGetDeploymentStatus(ctx context.Context, params ReposGetDeploymentStatusParams) (ReposGetDeploymentStatusRes, error) {
 	res, err := c.sendReposGetDeploymentStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -78117,7 +77579,6 @@ func (c *Client) sendReposGetDeploymentStatus(ctx context.Context, params ReposG
 // GET /repos/{owner}/{repo}/pages/builds/latest
 func (c *Client) ReposGetLatestPagesBuild(ctx context.Context, params ReposGetLatestPagesBuildParams) (*PageBuild, error) {
 	res, err := c.sendReposGetLatestPagesBuild(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -78231,7 +77692,6 @@ func (c *Client) sendReposGetLatestPagesBuild(ctx context.Context, params ReposG
 // GET /repos/{owner}/{repo}/releases/latest
 func (c *Client) ReposGetLatestRelease(ctx context.Context, params ReposGetLatestReleaseParams) (*Release, error) {
 	res, err := c.sendReposGetLatestRelease(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -78342,7 +77802,6 @@ func (c *Client) sendReposGetLatestRelease(ctx context.Context, params ReposGetL
 // GET /repos/{owner}/{repo}/pages
 func (c *Client) ReposGetPages(ctx context.Context, params ReposGetPagesParams) (ReposGetPagesRes, error) {
 	res, err := c.sendReposGetPages(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -78453,7 +77912,6 @@ func (c *Client) sendReposGetPages(ctx context.Context, params ReposGetPagesPara
 // GET /repos/{owner}/{repo}/pages/builds/{build_id}
 func (c *Client) ReposGetPagesBuild(ctx context.Context, params ReposGetPagesBuildParams) (*PageBuild, error) {
 	res, err := c.sendReposGetPagesBuild(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -78588,7 +78046,6 @@ func (c *Client) sendReposGetPagesBuild(ctx context.Context, params ReposGetPage
 // GET /repos/{owner}/{repo}/pages/health
 func (c *Client) ReposGetPagesHealthCheck(ctx context.Context, params ReposGetPagesHealthCheckParams) (ReposGetPagesHealthCheckRes, error) {
 	res, err := c.sendReposGetPagesHealthCheck(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -78702,7 +78159,6 @@ func (c *Client) sendReposGetPagesHealthCheck(ctx context.Context, params ReposG
 // GET /repos/{owner}/{repo}/stats/participation
 func (c *Client) ReposGetParticipationStats(ctx context.Context, params ReposGetParticipationStatsParams) (ReposGetParticipationStatsRes, error) {
 	res, err := c.sendReposGetParticipationStats(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -78817,7 +78273,6 @@ func (c *Client) sendReposGetParticipationStats(ctx context.Context, params Repo
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
 func (c *Client) ReposGetPullRequestReviewProtection(ctx context.Context, params ReposGetPullRequestReviewProtectionParams) (*ProtectedBranchPullRequestReview, error) {
 	res, err := c.sendReposGetPullRequestReviewProtection(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -78952,7 +78407,6 @@ func (c *Client) sendReposGetPullRequestReviewProtection(ctx context.Context, pa
 // GET /repos/{owner}/{repo}/stats/punch_card
 func (c *Client) ReposGetPunchCardStats(ctx context.Context, params ReposGetPunchCardStatsParams) (ReposGetPunchCardStatsRes, error) {
 	res, err := c.sendReposGetPunchCardStats(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -79065,7 +78519,6 @@ func (c *Client) sendReposGetPunchCardStats(ctx context.Context, params ReposGet
 // GET /repos/{owner}/{repo}/readme
 func (c *Client) ReposGetReadme(ctx context.Context, params ReposGetReadmeParams) (ReposGetReadmeRes, error) {
 	res, err := c.sendReposGetReadme(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -79199,7 +78652,6 @@ func (c *Client) sendReposGetReadme(ctx context.Context, params ReposGetReadmePa
 // GET /repos/{owner}/{repo}/readme/{dir}
 func (c *Client) ReposGetReadmeInDirectory(ctx context.Context, params ReposGetReadmeInDirectoryParams) (ReposGetReadmeInDirectoryRes, error) {
 	res, err := c.sendReposGetReadmeInDirectory(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -79351,7 +78803,6 @@ func (c *Client) sendReposGetReadmeInDirectory(ctx context.Context, params Repos
 // GET /repos/{owner}/{repo}/releases/{release_id}
 func (c *Client) ReposGetRelease(ctx context.Context, params ReposGetReleaseParams) (ReposGetReleaseRes, error) {
 	res, err := c.sendReposGetRelease(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -79483,7 +78934,6 @@ func (c *Client) sendReposGetRelease(ctx context.Context, params ReposGetRelease
 // GET /repos/{owner}/{repo}/releases/assets/{asset_id}
 func (c *Client) ReposGetReleaseAsset(ctx context.Context, params ReposGetReleaseAssetParams) (ReposGetReleaseAssetRes, error) {
 	res, err := c.sendReposGetReleaseAsset(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -79612,7 +79062,6 @@ func (c *Client) sendReposGetReleaseAsset(ctx context.Context, params ReposGetRe
 // GET /repos/{owner}/{repo}/releases/tags/{tag}
 func (c *Client) ReposGetReleaseByTag(ctx context.Context, params ReposGetReleaseByTagParams) (ReposGetReleaseByTagRes, error) {
 	res, err := c.sendReposGetReleaseByTag(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -79745,7 +79194,6 @@ func (c *Client) sendReposGetReleaseByTag(ctx context.Context, params ReposGetRe
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
 func (c *Client) ReposGetStatusChecksProtection(ctx context.Context, params ReposGetStatusChecksProtectionParams) (ReposGetStatusChecksProtectionRes, error) {
 	res, err := c.sendReposGetStatusChecksProtection(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -79880,7 +79328,6 @@ func (c *Client) sendReposGetStatusChecksProtection(ctx context.Context, params 
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
 func (c *Client) ReposGetTeamsWithAccessToProtectedBranch(ctx context.Context, params ReposGetTeamsWithAccessToProtectedBranchParams) (ReposGetTeamsWithAccessToProtectedBranchRes, error) {
 	res, err := c.sendReposGetTeamsWithAccessToProtectedBranch(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -80010,7 +79457,6 @@ func (c *Client) sendReposGetTeamsWithAccessToProtectedBranch(ctx context.Contex
 // GET /repos/{owner}/{repo}/traffic/popular/paths
 func (c *Client) ReposGetTopPaths(ctx context.Context, params ReposGetTopPathsParams) (ReposGetTopPathsRes, error) {
 	res, err := c.sendReposGetTopPaths(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -80121,7 +79567,6 @@ func (c *Client) sendReposGetTopPaths(ctx context.Context, params ReposGetTopPat
 // GET /repos/{owner}/{repo}/traffic/popular/referrers
 func (c *Client) ReposGetTopReferrers(ctx context.Context, params ReposGetTopReferrersParams) (ReposGetTopReferrersRes, error) {
 	res, err := c.sendReposGetTopReferrers(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -80237,7 +79682,6 @@ func (c *Client) sendReposGetTopReferrers(ctx context.Context, params ReposGetTo
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
 func (c *Client) ReposGetUsersWithAccessToProtectedBranch(ctx context.Context, params ReposGetUsersWithAccessToProtectedBranchParams) (ReposGetUsersWithAccessToProtectedBranchRes, error) {
 	res, err := c.sendReposGetUsersWithAccessToProtectedBranch(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -80368,7 +79812,6 @@ func (c *Client) sendReposGetUsersWithAccessToProtectedBranch(ctx context.Contex
 // GET /repos/{owner}/{repo}/traffic/views
 func (c *Client) ReposGetViews(ctx context.Context, params ReposGetViewsParams) (ReposGetViewsRes, error) {
 	res, err := c.sendReposGetViews(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -80502,7 +79945,6 @@ func (c *Client) sendReposGetViews(ctx context.Context, params ReposGetViewsPara
 // GET /repos/{owner}/{repo}/hooks/{hook_id}
 func (c *Client) ReposGetWebhook(ctx context.Context, params ReposGetWebhookParams) (ReposGetWebhookRes, error) {
 	res, err := c.sendReposGetWebhook(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -80635,7 +80077,6 @@ func (c *Client) sendReposGetWebhook(ctx context.Context, params ReposGetWebhook
 // GET /repos/{owner}/{repo}/hooks/{hook_id}/config
 func (c *Client) ReposGetWebhookConfigForRepo(ctx context.Context, params ReposGetWebhookConfigForRepoParams) (*WebhookConfig, error) {
 	res, err := c.sendReposGetWebhookConfigForRepo(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -80765,7 +80206,6 @@ func (c *Client) sendReposGetWebhookConfigForRepo(ctx context.Context, params Re
 // GET /repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}
 func (c *Client) ReposGetWebhookDelivery(ctx context.Context, params ReposGetWebhookDeliveryParams) (ReposGetWebhookDeliveryRes, error) {
 	res, err := c.sendReposGetWebhookDelivery(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -80914,7 +80354,6 @@ func (c *Client) sendReposGetWebhookDelivery(ctx context.Context, params ReposGe
 // GET /repos/{owner}/{repo}/autolinks
 func (c *Client) ReposListAutolinks(ctx context.Context, params ReposListAutolinksParams) ([]Autolink, error) {
 	res, err := c.sendReposListAutolinks(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -81046,7 +80485,6 @@ func (c *Client) sendReposListAutolinks(ctx context.Context, params ReposListAut
 // GET /repos/{owner}/{repo}/branches
 func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranchesParams) (ReposListBranchesRes, error) {
 	res, err := c.sendReposListBranches(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -81217,7 +80655,6 @@ func (c *Client) sendReposListBranches(ctx context.Context, params ReposListBran
 // GET /repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head
 func (c *Client) ReposListBranchesForHeadCommit(ctx context.Context, params ReposListBranchesForHeadCommitParams) (ReposListBranchesForHeadCommitRes, error) {
 	res, err := c.sendReposListBranchesForHeadCommit(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -81351,7 +80788,6 @@ func (c *Client) sendReposListBranchesForHeadCommit(ctx context.Context, params 
 // GET /repos/{owner}/{repo}/collaborators
 func (c *Client) ReposListCollaborators(ctx context.Context, params ReposListCollaboratorsParams) (ReposListCollaboratorsRes, error) {
 	res, err := c.sendReposListCollaborators(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -81517,7 +80953,6 @@ func (c *Client) sendReposListCollaborators(ctx context.Context, params ReposLis
 // GET /repos/{owner}/{repo}/commits/{commit_sha}/comments
 func (c *Client) ReposListCommentsForCommit(ctx context.Context, params ReposListCommentsForCommitParams) (*ReposListCommentsForCommitOKHeaders, error) {
 	res, err := c.sendReposListCommentsForCommit(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -81688,7 +81123,6 @@ func (c *Client) sendReposListCommentsForCommit(ctx context.Context, params Repo
 // GET /repos/{owner}/{repo}/comments
 func (c *Client) ReposListCommitCommentsForRepo(ctx context.Context, params ReposListCommitCommentsForRepoParams) (*ReposListCommitCommentsForRepoOKHeaders, error) {
 	res, err := c.sendReposListCommitCommentsForRepo(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -81840,7 +81274,6 @@ func (c *Client) sendReposListCommitCommentsForRepo(ctx context.Context, params 
 // GET /repos/{owner}/{repo}/commits/{ref}/statuses
 func (c *Client) ReposListCommitStatusesForRef(ctx context.Context, params ReposListCommitStatusesForRefParams) (ReposListCommitStatusesForRefRes, error) {
 	res, err := c.sendReposListCommitStatusesForRef(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -82039,7 +81472,6 @@ func (c *Client) sendReposListCommitStatusesForRef(ctx context.Context, params R
 // GET /repos/{owner}/{repo}/commits
 func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsParams) (ReposListCommitsRes, error) {
 	res, err := c.sendReposListCommits(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -82279,7 +81711,6 @@ func (c *Client) sendReposListCommits(ctx context.Context, params ReposListCommi
 // GET /repos/{owner}/{repo}/contributors
 func (c *Client) ReposListContributors(ctx context.Context, params ReposListContributorsParams) (ReposListContributorsRes, error) {
 	res, err := c.sendReposListContributors(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -82445,7 +81876,6 @@ func (c *Client) sendReposListContributors(ctx context.Context, params ReposList
 // GET /repos/{owner}/{repo}/keys
 func (c *Client) ReposListDeployKeys(ctx context.Context, params ReposListDeployKeysParams) (*ReposListDeployKeysOKHeaders, error) {
 	res, err := c.sendReposListDeployKeys(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -82594,7 +82024,6 @@ func (c *Client) sendReposListDeployKeys(ctx context.Context, params ReposListDe
 // GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
 func (c *Client) ReposListDeploymentStatuses(ctx context.Context, params ReposListDeploymentStatusesParams) (ReposListDeploymentStatusesRes, error) {
 	res, err := c.sendReposListDeploymentStatuses(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -82762,7 +82191,6 @@ func (c *Client) sendReposListDeploymentStatuses(ctx context.Context, params Rep
 // GET /repos/{owner}/{repo}/deployments
 func (c *Client) ReposListDeployments(ctx context.Context, params ReposListDeploymentsParams) (*ReposListDeploymentsOKHeaders, error) {
 	res, err := c.sendReposListDeployments(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -82982,7 +82410,6 @@ func (c *Client) sendReposListDeployments(ctx context.Context, params ReposListD
 // GET /user/repos
 func (c *Client) ReposListForAuthenticatedUser(ctx context.Context, params ReposListForAuthenticatedUserParams) (ReposListForAuthenticatedUserRes, error) {
 	res, err := c.sendReposListForAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -83212,7 +82639,6 @@ func (c *Client) sendReposListForAuthenticatedUser(ctx context.Context, params R
 // GET /orgs/{org}/repos
 func (c *Client) ReposListForOrg(ctx context.Context, params ReposListForOrgParams) (*ReposListForOrgOKHeaders, error) {
 	res, err := c.sendReposListForOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -83394,7 +82820,6 @@ func (c *Client) sendReposListForOrg(ctx context.Context, params ReposListForOrg
 // GET /users/{username}/repos
 func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserParams) (*ReposListForUserOKHeaders, error) {
 	res, err := c.sendReposListForUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -83575,7 +83000,6 @@ func (c *Client) sendReposListForUser(ctx context.Context, params ReposListForUs
 // GET /repos/{owner}/{repo}/forks
 func (c *Client) ReposListForks(ctx context.Context, params ReposListForksParams) (ReposListForksRes, error) {
 	res, err := c.sendReposListForks(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -83742,7 +83166,6 @@ func (c *Client) sendReposListForks(ctx context.Context, params ReposListForksPa
 // GET /repos/{owner}/{repo}/invitations
 func (c *Client) ReposListInvitations(ctx context.Context, params ReposListInvitationsParams) (*ReposListInvitationsOKHeaders, error) {
 	res, err := c.sendReposListInvitations(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -83892,7 +83315,6 @@ func (c *Client) sendReposListInvitations(ctx context.Context, params ReposListI
 // GET /user/repository_invitations
 func (c *Client) ReposListInvitationsForAuthenticatedUser(ctx context.Context, params ReposListInvitationsForAuthenticatedUserParams) (ReposListInvitationsForAuthenticatedUserRes, error) {
 	res, err := c.sendReposListInvitationsForAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -84004,7 +83426,6 @@ func (c *Client) sendReposListInvitationsForAuthenticatedUser(ctx context.Contex
 // GET /repos/{owner}/{repo}/languages
 func (c *Client) ReposListLanguages(ctx context.Context, params ReposListLanguagesParams) (Language, error) {
 	res, err := c.sendReposListLanguages(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -84115,7 +83536,6 @@ func (c *Client) sendReposListLanguages(ctx context.Context, params ReposListLan
 // GET /repos/{owner}/{repo}/pages/builds
 func (c *Client) ReposListPagesBuilds(ctx context.Context, params ReposListPagesBuildsParams) (*ReposListPagesBuildsOKHeaders, error) {
 	res, err := c.sendReposListPagesBuilds(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -84270,7 +83690,6 @@ func (c *Client) sendReposListPagesBuilds(ctx context.Context, params ReposListP
 // GET /repositories
 func (c *Client) ReposListPublic(ctx context.Context, params ReposListPublicParams) (ReposListPublicRes, error) {
 	res, err := c.sendReposListPublic(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -84369,7 +83788,6 @@ func (c *Client) sendReposListPublic(ctx context.Context, params ReposListPublic
 // GET /repos/{owner}/{repo}/commits/{commit_sha}/pulls
 func (c *Client) ReposListPullRequestsAssociatedWithCommit(ctx context.Context, params ReposListPullRequestsAssociatedWithCommitParams) (*ReposListPullRequestsAssociatedWithCommitOKHeaders, error) {
 	res, err := c.sendReposListPullRequestsAssociatedWithCommit(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -84537,7 +83955,6 @@ func (c *Client) sendReposListPullRequestsAssociatedWithCommit(ctx context.Conte
 // GET /repos/{owner}/{repo}/releases/{release_id}/assets
 func (c *Client) ReposListReleaseAssets(ctx context.Context, params ReposListReleaseAssetsParams) (*ReposListReleaseAssetsOKHeaders, error) {
 	res, err := c.sendReposListReleaseAssets(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -84709,7 +84126,6 @@ func (c *Client) sendReposListReleaseAssets(ctx context.Context, params ReposLis
 // GET /repos/{owner}/{repo}/releases
 func (c *Client) ReposListReleases(ctx context.Context, params ReposListReleasesParams) (ReposListReleasesRes, error) {
 	res, err := c.sendReposListReleases(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -84858,7 +84274,6 @@ func (c *Client) sendReposListReleases(ctx context.Context, params ReposListRele
 // GET /repos/{owner}/{repo}/tags
 func (c *Client) ReposListTags(ctx context.Context, params ReposListTagsParams) (*ReposListTagsOKHeaders, error) {
 	res, err := c.sendReposListTags(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -85007,7 +84422,6 @@ func (c *Client) sendReposListTags(ctx context.Context, params ReposListTagsPara
 // GET /repos/{owner}/{repo}/teams
 func (c *Client) ReposListTeams(ctx context.Context, params ReposListTeamsParams) (*ReposListTeamsOKHeaders, error) {
 	res, err := c.sendReposListTeams(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -85156,7 +84570,6 @@ func (c *Client) sendReposListTeams(ctx context.Context, params ReposListTeamsPa
 // GET /repos/{owner}/{repo}/hooks/{hook_id}/deliveries
 func (c *Client) ReposListWebhookDeliveries(ctx context.Context, params ReposListWebhookDeliveriesParams) (ReposListWebhookDeliveriesRes, error) {
 	res, err := c.sendReposListWebhookDeliveries(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -85324,7 +84737,6 @@ func (c *Client) sendReposListWebhookDeliveries(ctx context.Context, params Repo
 // GET /repos/{owner}/{repo}/hooks
 func (c *Client) ReposListWebhooks(ctx context.Context, params ReposListWebhooksParams) (ReposListWebhooksRes, error) {
 	res, err := c.sendReposListWebhooks(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -85473,7 +84885,6 @@ func (c *Client) sendReposListWebhooks(ctx context.Context, params ReposListWebh
 // POST /repos/{owner}/{repo}/merges
 func (c *Client) ReposMerge(ctx context.Context, request *ReposMergeReq, params ReposMergeParams) (ReposMergeRes, error) {
 	res, err := c.sendReposMerge(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -85588,7 +84999,6 @@ func (c *Client) sendReposMerge(ctx context.Context, request *ReposMergeReq, par
 // POST /repos/{owner}/{repo}/merge-upstream
 func (c *Client) ReposMergeUpstream(ctx context.Context, request *ReposMergeUpstreamReq, params ReposMergeUpstreamParams) (ReposMergeUpstreamRes, error) {
 	res, err := c.sendReposMergeUpstream(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -85703,7 +85113,6 @@ func (c *Client) sendReposMergeUpstream(ctx context.Context, request *ReposMerge
 // POST /repos/{owner}/{repo}/hooks/{hook_id}/pings
 func (c *Client) ReposPingWebhook(ctx context.Context, params ReposPingWebhookParams) (ReposPingWebhookRes, error) {
 	res, err := c.sendReposPingWebhook(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -85833,7 +85242,6 @@ func (c *Client) sendReposPingWebhook(ctx context.Context, params ReposPingWebho
 // POST /repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}/attempts
 func (c *Client) ReposRedeliverWebhookDelivery(ctx context.Context, params ReposRedeliverWebhookDeliveryParams) (ReposRedeliverWebhookDeliveryRes, error) {
 	res, err := c.sendReposRedeliverWebhookDelivery(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -85996,7 +85404,6 @@ func (c *Client) sendReposRedeliverWebhookDelivery(ctx context.Context, params R
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
 func (c *Client) ReposRemoveAppAccessRestrictions(ctx context.Context, request OptReposRemoveAppAccessRestrictionsReq, params ReposRemoveAppAccessRestrictionsParams) (ReposRemoveAppAccessRestrictionsRes, error) {
 	res, err := c.sendReposRemoveAppAccessRestrictions(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -86144,8 +85551,7 @@ func (c *Client) sendReposRemoveAppAccessRestrictions(ctx context.Context, reque
 //
 // DELETE /repos/{owner}/{repo}/collaborators/{username}
 func (c *Client) ReposRemoveCollaborator(ctx context.Context, params ReposRemoveCollaboratorParams) error {
-	res, err := c.sendReposRemoveCollaborator(ctx, params)
-	_ = res
+	_, err := c.sendReposRemoveCollaborator(ctx, params)
 	return err
 }
 
@@ -86278,7 +85684,6 @@ func (c *Client) sendReposRemoveCollaborator(ctx context.Context, params ReposRe
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
 func (c *Client) ReposRemoveStatusCheckContexts(ctx context.Context, request OptReposRemoveStatusCheckContextsReq, params ReposRemoveStatusCheckContextsParams) (ReposRemoveStatusCheckContextsRes, error) {
 	res, err := c.sendReposRemoveStatusCheckContexts(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -86430,8 +85835,7 @@ func (c *Client) sendReposRemoveStatusCheckContexts(ctx context.Context, request
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
 func (c *Client) ReposRemoveStatusCheckProtection(ctx context.Context, params ReposRemoveStatusCheckProtectionParams) error {
-	res, err := c.sendReposRemoveStatusCheckProtection(ctx, params)
-	_ = res
+	_, err := c.sendReposRemoveStatusCheckProtection(ctx, params)
 	return err
 }
 
@@ -86575,7 +85979,6 @@ func (c *Client) sendReposRemoveStatusCheckProtection(ctx context.Context, param
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
 func (c *Client) ReposRemoveTeamAccessRestrictions(ctx context.Context, request OptReposRemoveTeamAccessRestrictionsReq, params ReposRemoveTeamAccessRestrictionsParams) (ReposRemoveTeamAccessRestrictionsRes, error) {
 	res, err := c.sendReposRemoveTeamAccessRestrictions(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -86737,7 +86140,6 @@ func (c *Client) sendReposRemoveTeamAccessRestrictions(ctx context.Context, requ
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
 func (c *Client) ReposRemoveUserAccessRestrictions(ctx context.Context, request OptReposRemoveUserAccessRestrictionsReq, params ReposRemoveUserAccessRestrictionsParams) (ReposRemoveUserAccessRestrictionsRes, error) {
 	res, err := c.sendReposRemoveUserAccessRestrictions(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -86898,7 +86300,6 @@ func (c *Client) sendReposRemoveUserAccessRestrictions(ctx context.Context, requ
 // POST /repos/{owner}/{repo}/branches/{branch}/rename
 func (c *Client) ReposRenameBranch(ctx context.Context, request OptReposRenameBranchReq, params ReposRenameBranchParams) (ReposRenameBranchRes, error) {
 	res, err := c.sendReposRenameBranch(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -87031,7 +86432,6 @@ func (c *Client) sendReposRenameBranch(ctx context.Context, request OptReposRena
 // PUT /repos/{owner}/{repo}/topics
 func (c *Client) ReposReplaceAllTopics(ctx context.Context, request *ReposReplaceAllTopicsReq, params ReposReplaceAllTopicsParams) (ReposReplaceAllTopicsRes, error) {
 	res, err := c.sendReposReplaceAllTopics(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -87159,7 +86559,6 @@ func (c *Client) sendReposReplaceAllTopics(ctx context.Context, request *ReposRe
 // POST /repos/{owner}/{repo}/pages/builds
 func (c *Client) ReposRequestPagesBuild(ctx context.Context, params ReposRequestPagesBuildParams) (*PageBuildStatus, error) {
 	res, err := c.sendReposRequestPagesBuild(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -87276,7 +86675,6 @@ func (c *Client) sendReposRequestPagesBuild(ctx context.Context, params ReposReq
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
 func (c *Client) ReposSetAdminBranchProtection(ctx context.Context, params ReposSetAdminBranchProtectionParams) (*ProtectedBranchAdminEnforced, error) {
 	res, err := c.sendReposSetAdminBranchProtection(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -87422,7 +86820,6 @@ func (c *Client) sendReposSetAdminBranchProtection(ctx context.Context, params R
 // PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
 func (c *Client) ReposSetAppAccessRestrictions(ctx context.Context, request OptReposSetAppAccessRestrictionsReq, params ReposSetAppAccessRestrictionsParams) (ReposSetAppAccessRestrictionsRes, error) {
 	res, err := c.sendReposSetAppAccessRestrictions(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -87575,7 +86972,6 @@ func (c *Client) sendReposSetAppAccessRestrictions(ctx context.Context, request 
 // PUT /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
 func (c *Client) ReposSetStatusCheckContexts(ctx context.Context, request OptReposSetStatusCheckContextsReq, params ReposSetStatusCheckContextsParams) (ReposSetStatusCheckContextsRes, error) {
 	res, err := c.sendReposSetStatusCheckContexts(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -87739,7 +87135,6 @@ func (c *Client) sendReposSetStatusCheckContexts(ctx context.Context, request Op
 // PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
 func (c *Client) ReposSetTeamAccessRestrictions(ctx context.Context, request OptReposSetTeamAccessRestrictionsReq, params ReposSetTeamAccessRestrictionsParams) (ReposSetTeamAccessRestrictionsRes, error) {
 	res, err := c.sendReposSetTeamAccessRestrictions(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -87902,7 +87297,6 @@ func (c *Client) sendReposSetTeamAccessRestrictions(ctx context.Context, request
 // PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
 func (c *Client) ReposSetUserAccessRestrictions(ctx context.Context, request OptReposSetUserAccessRestrictionsReq, params ReposSetUserAccessRestrictionsParams) (ReposSetUserAccessRestrictionsRes, error) {
 	res, err := c.sendReposSetUserAccessRestrictions(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -88054,7 +87448,6 @@ func (c *Client) sendReposSetUserAccessRestrictions(ctx context.Context, request
 // POST /repos/{owner}/{repo}/hooks/{hook_id}/tests
 func (c *Client) ReposTestPushWebhook(ctx context.Context, params ReposTestPushWebhookParams) (ReposTestPushWebhookRes, error) {
 	res, err := c.sendReposTestPushWebhook(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -88188,7 +87581,6 @@ func (c *Client) sendReposTestPushWebhook(ctx context.Context, params ReposTestP
 // POST /repos/{owner}/{repo}/transfer
 func (c *Client) ReposTransfer(ctx context.Context, request *ReposTransferReq, params ReposTransferParams) (*MinimalRepository, error) {
 	res, err := c.sendReposTransfer(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -88303,7 +87695,6 @@ func (c *Client) sendReposTransfer(ctx context.Context, request *ReposTransferRe
 // PATCH /repos/{owner}/{repo}
 func (c *Client) ReposUpdate(ctx context.Context, request OptReposUpdateReq, params ReposUpdateParams) (ReposUpdateRes, error) {
 	res, err := c.sendReposUpdate(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -88439,7 +87830,6 @@ func (c *Client) sendReposUpdate(ctx context.Context, request OptReposUpdateReq,
 // PUT /repos/{owner}/{repo}/branches/{branch}/protection
 func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request *ReposUpdateBranchProtectionReq, params ReposUpdateBranchProtectionParams) (ReposUpdateBranchProtectionRes, error) {
 	res, err := c.sendReposUpdateBranchProtection(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -88581,7 +87971,6 @@ func (c *Client) sendReposUpdateBranchProtection(ctx context.Context, request *R
 // PATCH /repos/{owner}/{repo}/comments/{comment_id}
 func (c *Client) ReposUpdateCommitComment(ctx context.Context, request *ReposUpdateCommitCommentReq, params ReposUpdateCommitCommentParams) (ReposUpdateCommitCommentRes, error) {
 	res, err := c.sendReposUpdateCommitComment(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -88713,7 +88102,6 @@ func (c *Client) sendReposUpdateCommitComment(ctx context.Context, request *Repo
 // PATCH /repos/{owner}/{repo}/invitations/{invitation_id}
 func (c *Client) ReposUpdateInvitation(ctx context.Context, request OptReposUpdateInvitationReq, params ReposUpdateInvitationParams) (*RepositoryInvitation, error) {
 	res, err := c.sendReposUpdateInvitation(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -88868,7 +88256,6 @@ func (c *Client) sendReposUpdateInvitation(ctx context.Context, request OptRepos
 // PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
 func (c *Client) ReposUpdatePullRequestReviewProtection(ctx context.Context, request OptReposUpdatePullRequestReviewProtectionReq, params ReposUpdatePullRequestReviewProtectionParams) (ReposUpdatePullRequestReviewProtectionRes, error) {
 	res, err := c.sendReposUpdatePullRequestReviewProtection(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -89001,7 +88388,6 @@ func (c *Client) sendReposUpdatePullRequestReviewProtection(ctx context.Context,
 // PATCH /repos/{owner}/{repo}/releases/{release_id}
 func (c *Client) ReposUpdateRelease(ctx context.Context, request OptReposUpdateReleaseReq, params ReposUpdateReleaseParams) (ReposUpdateReleaseRes, error) {
 	res, err := c.sendReposUpdateRelease(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -89133,7 +88519,6 @@ func (c *Client) sendReposUpdateRelease(ctx context.Context, request OptReposUpd
 // PATCH /repos/{owner}/{repo}/releases/assets/{asset_id}
 func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request OptReposUpdateReleaseAssetReq, params ReposUpdateReleaseAssetParams) (*ReleaseAsset, error) {
 	res, err := c.sendReposUpdateReleaseAsset(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -89271,7 +88656,6 @@ func (c *Client) sendReposUpdateReleaseAsset(ctx context.Context, request OptRep
 // PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
 func (c *Client) ReposUpdateStatusCheckProtection(ctx context.Context, request OptReposUpdateStatusCheckProtectionReq, params ReposUpdateStatusCheckProtectionParams) (ReposUpdateStatusCheckProtectionRes, error) {
 	res, err := c.sendReposUpdateStatusCheckProtection(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -89407,7 +88791,6 @@ func (c *Client) sendReposUpdateStatusCheckProtection(ctx context.Context, reque
 // PATCH /repos/{owner}/{repo}/hooks/{hook_id}
 func (c *Client) ReposUpdateWebhook(ctx context.Context, request OptReposUpdateWebhookReq, params ReposUpdateWebhookParams) (ReposUpdateWebhookRes, error) {
 	res, err := c.sendReposUpdateWebhook(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -89559,7 +88942,6 @@ func (c *Client) sendReposUpdateWebhook(ctx context.Context, request OptReposUpd
 // PATCH /repos/{owner}/{repo}/hooks/{hook_id}/config
 func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request OptReposUpdateWebhookConfigForRepoReq, params ReposUpdateWebhookConfigForRepoParams) (*WebhookConfig, error) {
 	res, err := c.sendReposUpdateWebhookConfigForRepo(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -89733,7 +89115,6 @@ func (c *Client) sendReposUpdateWebhookConfigForRepo(ctx context.Context, reques
 // POST /repos/{owner}/{repo}/releases/{release_id}/assets
 func (c *Client) ReposUploadReleaseAsset(ctx context.Context, request *ReposUploadReleaseAssetReqWithContentType, params ReposUploadReleaseAssetParams) (*ReleaseAsset, error) {
 	res, err := c.sendReposUploadReleaseAsset(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -89901,7 +89282,6 @@ func (c *Client) sendReposUploadReleaseAsset(ctx context.Context, request *Repos
 // DELETE /scim/v2/organizations/{org}/Users/{scim_user_id}
 func (c *Client) ScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUserFromOrgParams) (ScimDeleteUserFromOrgRes, error) {
 	res, err := c.sendScimDeleteUserFromOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -90030,7 +89410,6 @@ func (c *Client) sendScimDeleteUserFromOrg(ctx context.Context, params ScimDelet
 // GET /search/code
 func (c *Client) SearchCode(ctx context.Context, params SearchCodeParams) (SearchCodeRes, error) {
 	res, err := c.sendSearchCode(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -90199,7 +89578,6 @@ func (c *Client) sendSearchCode(ctx context.Context, params SearchCodeParams) (r
 // GET /search/commits
 func (c *Client) SearchCommits(ctx context.Context, params SearchCommitsParams) (SearchCommitsRes, error) {
 	res, err := c.sendSearchCommits(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -90380,7 +89758,6 @@ func (c *Client) sendSearchCommits(ctx context.Context, params SearchCommitsPara
 // GET /search/issues
 func (c *Client) SearchIssuesAndPullRequests(ctx context.Context, params SearchIssuesAndPullRequestsParams) (SearchIssuesAndPullRequestsRes, error) {
 	res, err := c.sendSearchIssuesAndPullRequests(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -90548,7 +89925,6 @@ func (c *Client) sendSearchIssuesAndPullRequests(ctx context.Context, params Sea
 // GET /search/labels
 func (c *Client) SearchLabels(ctx context.Context, params SearchLabelsParams) (SearchLabelsRes, error) {
 	res, err := c.sendSearchLabels(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -90736,7 +90112,6 @@ func (c *Client) sendSearchLabels(ctx context.Context, params SearchLabelsParams
 // GET /search/repositories
 func (c *Client) SearchRepos(ctx context.Context, params SearchReposParams) (SearchReposRes, error) {
 	res, err := c.sendSearchRepos(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -90908,7 +90283,6 @@ func (c *Client) sendSearchRepos(ctx context.Context, params SearchReposParams) 
 // GET /search/topics
 func (c *Client) SearchTopics(ctx context.Context, params SearchTopicsParams) (SearchTopicsRes, error) {
 	res, err := c.sendSearchTopics(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -91044,7 +90418,6 @@ func (c *Client) sendSearchTopics(ctx context.Context, params SearchTopicsParams
 // GET /search/users
 func (c *Client) SearchUsers(ctx context.Context, params SearchUsersParams) (SearchUsersRes, error) {
 	res, err := c.sendSearchUsers(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -91206,7 +90579,6 @@ func (c *Client) sendSearchUsers(ctx context.Context, params SearchUsersParams) 
 // GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
 func (c *Client) SecretScanningGetAlert(ctx context.Context, params SecretScanningGetAlertParams) (SecretScanningGetAlertRes, error) {
 	res, err := c.sendSecretScanningGetAlert(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -91342,7 +90714,6 @@ func (c *Client) sendSecretScanningGetAlert(ctx context.Context, params SecretSc
 // GET /orgs/{org}/secret-scanning/alerts
 func (c *Client) SecretScanningListAlertsForOrg(ctx context.Context, params SecretScanningListAlertsForOrgParams) (SecretScanningListAlertsForOrgRes, error) {
 	res, err := c.sendSecretScanningListAlertsForOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -91509,7 +90880,6 @@ func (c *Client) sendSecretScanningListAlertsForOrg(ctx context.Context, params 
 // GET /repos/{owner}/{repo}/secret-scanning/alerts
 func (c *Client) SecretScanningListAlertsForRepo(ctx context.Context, params SecretScanningListAlertsForRepoParams) (SecretScanningListAlertsForRepoRes, error) {
 	res, err := c.sendSecretScanningListAlertsForRepo(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -91695,7 +91065,6 @@ func (c *Client) sendSecretScanningListAlertsForRepo(ctx context.Context, params
 // PATCH /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
 func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request *SecretScanningUpdateAlertReq, params SecretScanningUpdateAlertParams) (SecretScanningUpdateAlertRes, error) {
 	res, err := c.sendSecretScanningUpdateAlert(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -91860,7 +91229,6 @@ func (c *Client) sendSecretScanningUpdateAlert(ctx context.Context, request *Sec
 // PUT /teams/{team_id}/members/{username}
 func (c *Client) TeamsAddMemberLegacy(ctx context.Context, params TeamsAddMemberLegacyParams) (TeamsAddMemberLegacyRes, error) {
 	res, err := c.sendTeamsAddMemberLegacy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -91991,7 +91359,6 @@ func (c *Client) sendTeamsAddMemberLegacy(ctx context.Context, params TeamsAddMe
 // PUT /orgs/{org}/teams/{team_slug}/memberships/{username}
 func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, request OptTeamsAddOrUpdateMembershipForUserInOrgReq, params TeamsAddOrUpdateMembershipForUserInOrgParams) (TeamsAddOrUpdateMembershipForUserInOrgRes, error) {
 	res, err := c.sendTeamsAddOrUpdateMembershipForUserInOrg(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -92165,7 +91532,6 @@ func (c *Client) sendTeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context,
 // PUT /teams/{team_id}/memberships/{username}
 func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, request OptTeamsAddOrUpdateMembershipForUserLegacyReq, params TeamsAddOrUpdateMembershipForUserLegacyParams) (TeamsAddOrUpdateMembershipForUserLegacyRes, error) {
 	res, err := c.sendTeamsAddOrUpdateMembershipForUserLegacy(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -92298,7 +91664,6 @@ func (c *Client) sendTeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context
 // PUT /orgs/{org}/teams/{team_slug}/projects/{project_id}
 func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, request OptNilTeamsAddOrUpdateProjectPermissionsInOrgReq, params TeamsAddOrUpdateProjectPermissionsInOrgParams) (TeamsAddOrUpdateProjectPermissionsInOrgRes, error) {
 	res, err := c.sendTeamsAddOrUpdateProjectPermissionsInOrg(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -92454,7 +91819,6 @@ func (c *Client) sendTeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context
 // PUT /teams/{team_id}/projects/{project_id}
 func (c *Client) TeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Context, request OptTeamsAddOrUpdateProjectPermissionsLegacyReq, params TeamsAddOrUpdateProjectPermissionsLegacyParams) (TeamsAddOrUpdateProjectPermissionsLegacyRes, error) {
 	res, err := c.sendTeamsAddOrUpdateProjectPermissionsLegacy(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -92593,8 +91957,7 @@ func (c *Client) sendTeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Contex
 //
 // PUT /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
 func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, request OptTeamsAddOrUpdateRepoPermissionsInOrgReq, params TeamsAddOrUpdateRepoPermissionsInOrgParams) error {
-	res, err := c.sendTeamsAddOrUpdateRepoPermissionsInOrg(ctx, request, params)
-	_ = res
+	_, err := c.sendTeamsAddOrUpdateRepoPermissionsInOrg(ctx, request, params)
 	return err
 }
 
@@ -92774,7 +92137,6 @@ func (c *Client) sendTeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, r
 // PUT /teams/{team_id}/repos/{owner}/{repo}
 func (c *Client) TeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, request OptTeamsAddOrUpdateRepoPermissionsLegacyReq, params TeamsAddOrUpdateRepoPermissionsLegacyParams) (TeamsAddOrUpdateRepoPermissionsLegacyRes, error) {
 	res, err := c.sendTeamsAddOrUpdateRepoPermissionsLegacy(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -92925,7 +92287,6 @@ func (c *Client) sendTeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, 
 // GET /orgs/{org}/teams/{team_slug}/projects/{project_id}
 func (c *Client) TeamsCheckPermissionsForProjectInOrg(ctx context.Context, params TeamsCheckPermissionsForProjectInOrgParams) (TeamsCheckPermissionsForProjectInOrgRes, error) {
 	res, err := c.sendTeamsCheckPermissionsForProjectInOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -93061,7 +92422,6 @@ func (c *Client) sendTeamsCheckPermissionsForProjectInOrg(ctx context.Context, p
 // GET /teams/{team_id}/projects/{project_id}
 func (c *Client) TeamsCheckPermissionsForProjectLegacy(ctx context.Context, params TeamsCheckPermissionsForProjectLegacyParams) (TeamsCheckPermissionsForProjectLegacyRes, error) {
 	res, err := c.sendTeamsCheckPermissionsForProjectLegacy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -93179,7 +92539,6 @@ func (c *Client) sendTeamsCheckPermissionsForProjectLegacy(ctx context.Context, 
 // GET /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
 func (c *Client) TeamsCheckPermissionsForRepoInOrg(ctx context.Context, params TeamsCheckPermissionsForRepoInOrgParams) (TeamsCheckPermissionsForRepoInOrgRes, error) {
 	res, err := c.sendTeamsCheckPermissionsForRepoInOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -93336,7 +92695,6 @@ func (c *Client) sendTeamsCheckPermissionsForRepoInOrg(ctx context.Context, para
 // GET /teams/{team_id}/repos/{owner}/{repo}
 func (c *Client) TeamsCheckPermissionsForRepoLegacy(ctx context.Context, params TeamsCheckPermissionsForRepoLegacyParams) (TeamsCheckPermissionsForRepoLegacyRes, error) {
 	res, err := c.sendTeamsCheckPermissionsForRepoLegacy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -93472,7 +92830,6 @@ func (c *Client) sendTeamsCheckPermissionsForRepoLegacy(ctx context.Context, par
 // POST /orgs/{org}/teams
 func (c *Client) TeamsCreate(ctx context.Context, request *TeamsCreateReq, params TeamsCreateParams) (TeamsCreateRes, error) {
 	res, err := c.sendTeamsCreate(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -93586,7 +92943,6 @@ func (c *Client) sendTeamsCreate(ctx context.Context, request *TeamsCreateReq, p
 // POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
 func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, request *TeamsCreateDiscussionCommentInOrgReq, params TeamsCreateDiscussionCommentInOrgParams) (*TeamDiscussionComment, error) {
 	res, err := c.sendTeamsCreateDiscussionCommentInOrg(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -93732,7 +93088,6 @@ func (c *Client) sendTeamsCreateDiscussionCommentInOrg(ctx context.Context, requ
 // POST /teams/{team_id}/discussions/{discussion_number}/comments
 func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, request *TeamsCreateDiscussionCommentLegacyReq, params TeamsCreateDiscussionCommentLegacyParams) (*TeamDiscussionComment, error) {
 	res, err := c.sendTeamsCreateDiscussionCommentLegacy(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -93856,7 +93211,6 @@ func (c *Client) sendTeamsCreateDiscussionCommentLegacy(ctx context.Context, req
 // POST /orgs/{org}/teams/{team_slug}/discussions
 func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, request *TeamsCreateDiscussionInOrgReq, params TeamsCreateDiscussionInOrgParams) (*TeamDiscussion, error) {
 	res, err := c.sendTeamsCreateDiscussionInOrg(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -93983,7 +93337,6 @@ func (c *Client) sendTeamsCreateDiscussionInOrg(ctx context.Context, request *Te
 // POST /teams/{team_id}/discussions
 func (c *Client) TeamsCreateDiscussionLegacy(ctx context.Context, request *TeamsCreateDiscussionLegacyReq, params TeamsCreateDiscussionLegacyParams) (*TeamDiscussion, error) {
 	res, err := c.sendTeamsCreateDiscussionLegacy(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -94085,7 +93438,6 @@ func (c *Client) sendTeamsCreateDiscussionLegacy(ctx context.Context, request *T
 // PATCH /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
 func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context, request *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq, params TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams) (*GroupMapping, error) {
 	res, err := c.sendTeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -94210,7 +93562,6 @@ func (c *Client) sendTeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Con
 // PATCH /teams/{team_id}/team-sync/group-mappings
 func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Context, request *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq, params TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams) (TeamsCreateOrUpdateIdpGroupConnectionsLegacyRes, error) {
 	res, err := c.sendTeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -94316,8 +93667,7 @@ func (c *Client) sendTeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Co
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
 func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params TeamsDeleteDiscussionCommentInOrgParams) error {
-	res, err := c.sendTeamsDeleteDiscussionCommentInOrg(ctx, params)
-	_ = res
+	_, err := c.sendTeamsDeleteDiscussionCommentInOrg(ctx, params)
 	return err
 }
 
@@ -94470,8 +93820,7 @@ func (c *Client) sendTeamsDeleteDiscussionCommentInOrg(ctx context.Context, para
 //
 // DELETE /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
 func (c *Client) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params TeamsDeleteDiscussionCommentLegacyParams) error {
-	res, err := c.sendTeamsDeleteDiscussionCommentLegacy(ctx, params)
-	_ = res
+	_, err := c.sendTeamsDeleteDiscussionCommentLegacy(ctx, params)
 	return err
 }
 
@@ -94602,8 +93951,7 @@ func (c *Client) sendTeamsDeleteDiscussionCommentLegacy(ctx context.Context, par
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
 func (c *Client) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDeleteDiscussionInOrgParams) error {
-	res, err := c.sendTeamsDeleteDiscussionInOrg(ctx, params)
-	_ = res
+	_, err := c.sendTeamsDeleteDiscussionInOrg(ctx, params)
 	return err
 }
 
@@ -94737,8 +94085,7 @@ func (c *Client) sendTeamsDeleteDiscussionInOrg(ctx context.Context, params Team
 //
 // DELETE /teams/{team_id}/discussions/{discussion_number}
 func (c *Client) TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDeleteDiscussionLegacyParams) error {
-	res, err := c.sendTeamsDeleteDiscussionLegacy(ctx, params)
-	_ = res
+	_, err := c.sendTeamsDeleteDiscussionLegacy(ctx, params)
 	return err
 }
 
@@ -94851,8 +94198,7 @@ func (c *Client) sendTeamsDeleteDiscussionLegacy(ctx context.Context, params Tea
 //
 // DELETE /orgs/{org}/teams/{team_slug}
 func (c *Client) TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgParams) error {
-	res, err := c.sendTeamsDeleteInOrg(ctx, params)
-	_ = res
+	_, err := c.sendTeamsDeleteInOrg(ctx, params)
 	return err
 }
 
@@ -94969,7 +94315,6 @@ func (c *Client) sendTeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInO
 // DELETE /teams/{team_id}
 func (c *Client) TeamsDeleteLegacy(ctx context.Context, params TeamsDeleteLegacyParams) (TeamsDeleteLegacyRes, error) {
 	res, err := c.sendTeamsDeleteLegacy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -95062,7 +94407,6 @@ func (c *Client) sendTeamsDeleteLegacy(ctx context.Context, params TeamsDeleteLe
 // GET /orgs/{org}/teams/{team_slug}
 func (c *Client) TeamsGetByName(ctx context.Context, params TeamsGetByNameParams) (TeamsGetByNameRes, error) {
 	res, err := c.sendTeamsGetByName(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -95175,7 +94519,6 @@ func (c *Client) sendTeamsGetByName(ctx context.Context, params TeamsGetByNamePa
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
 func (c *Client) TeamsGetDiscussionCommentInOrg(ctx context.Context, params TeamsGetDiscussionCommentInOrgParams) (*TeamDiscussionComment, error) {
 	res, err := c.sendTeamsGetDiscussionCommentInOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -95329,7 +94672,6 @@ func (c *Client) sendTeamsGetDiscussionCommentInOrg(ctx context.Context, params 
 // GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
 func (c *Client) TeamsGetDiscussionCommentLegacy(ctx context.Context, params TeamsGetDiscussionCommentLegacyParams) (*TeamDiscussionComment, error) {
 	res, err := c.sendTeamsGetDiscussionCommentLegacy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -95461,7 +94803,6 @@ func (c *Client) sendTeamsGetDiscussionCommentLegacy(ctx context.Context, params
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
 func (c *Client) TeamsGetDiscussionInOrg(ctx context.Context, params TeamsGetDiscussionInOrgParams) (*TeamDiscussion, error) {
 	res, err := c.sendTeamsGetDiscussionInOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -95596,7 +94937,6 @@ func (c *Client) sendTeamsGetDiscussionInOrg(ctx context.Context, params TeamsGe
 // GET /teams/{team_id}/discussions/{discussion_number}
 func (c *Client) TeamsGetDiscussionLegacy(ctx context.Context, params TeamsGetDiscussionLegacyParams) (*TeamDiscussion, error) {
 	res, err := c.sendTeamsGetDiscussionLegacy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -95710,7 +95050,6 @@ func (c *Client) sendTeamsGetDiscussionLegacy(ctx context.Context, params TeamsG
 // GET /teams/{team_id}
 func (c *Client) TeamsGetLegacy(ctx context.Context, params TeamsGetLegacyParams) (TeamsGetLegacyRes, error) {
 	res, err := c.sendTeamsGetLegacy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -95807,7 +95146,6 @@ func (c *Client) sendTeamsGetLegacy(ctx context.Context, params TeamsGetLegacyPa
 // GET /teams/{team_id}/members/{username}
 func (c *Client) TeamsGetMemberLegacy(ctx context.Context, params TeamsGetMemberLegacyParams) (TeamsGetMemberLegacyRes, error) {
 	res, err := c.sendTeamsGetMemberLegacy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -95924,7 +95262,6 @@ func (c *Client) sendTeamsGetMemberLegacy(ctx context.Context, params TeamsGetMe
 // GET /orgs/{org}/teams/{team_slug}/memberships/{username}
 func (c *Client) TeamsGetMembershipForUserInOrg(ctx context.Context, params TeamsGetMembershipForUserInOrgParams) (TeamsGetMembershipForUserInOrgRes, error) {
 	res, err := c.sendTeamsGetMembershipForUserInOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -96063,7 +95400,6 @@ func (c *Client) sendTeamsGetMembershipForUserInOrg(ctx context.Context, params 
 // GET /teams/{team_id}/memberships/{username}
 func (c *Client) TeamsGetMembershipForUserLegacy(ctx context.Context, params TeamsGetMembershipForUserLegacyParams) (TeamsGetMembershipForUserLegacyRes, error) {
 	res, err := c.sendTeamsGetMembershipForUserLegacy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -96173,7 +95509,6 @@ func (c *Client) sendTeamsGetMembershipForUserLegacy(ctx context.Context, params
 // GET /orgs/{org}/teams
 func (c *Client) TeamsList(ctx context.Context, params TeamsListParams) (TeamsListRes, error) {
 	res, err := c.sendTeamsList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -96305,7 +95640,6 @@ func (c *Client) sendTeamsList(ctx context.Context, params TeamsListParams) (res
 // GET /orgs/{org}/teams/{team_slug}/teams
 func (c *Client) TeamsListChildInOrg(ctx context.Context, params TeamsListChildInOrgParams) (*TeamsListChildInOrgOKHeaders, error) {
 	res, err := c.sendTeamsListChildInOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -96458,7 +95792,6 @@ func (c *Client) sendTeamsListChildInOrg(ctx context.Context, params TeamsListCh
 // GET /teams/{team_id}/teams
 func (c *Client) TeamsListChildLegacy(ctx context.Context, params TeamsListChildLegacyParams) (TeamsListChildLegacyRes, error) {
 	res, err := c.sendTeamsListChildLegacy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -96591,7 +95924,6 @@ func (c *Client) sendTeamsListChildLegacy(ctx context.Context, params TeamsListC
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
 func (c *Client) TeamsListDiscussionCommentsInOrg(ctx context.Context, params TeamsListDiscussionCommentsInOrgParams) (*TeamsListDiscussionCommentsInOrgOKHeaders, error) {
 	res, err := c.sendTeamsListDiscussionCommentsInOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -96782,7 +96114,6 @@ func (c *Client) sendTeamsListDiscussionCommentsInOrg(ctx context.Context, param
 // GET /teams/{team_id}/discussions/{discussion_number}/comments
 func (c *Client) TeamsListDiscussionCommentsLegacy(ctx context.Context, params TeamsListDiscussionCommentsLegacyParams) (*TeamsListDiscussionCommentsLegacyOKHeaders, error) {
 	res, err := c.sendTeamsListDiscussionCommentsLegacy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -96951,7 +96282,6 @@ func (c *Client) sendTeamsListDiscussionCommentsLegacy(ctx context.Context, para
 // GET /orgs/{org}/teams/{team_slug}/discussions
 func (c *Client) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsListDiscussionsInOrgParams) (*TeamsListDiscussionsInOrgOKHeaders, error) {
 	res, err := c.sendTeamsListDiscussionsInOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -97140,7 +96470,6 @@ func (c *Client) sendTeamsListDiscussionsInOrg(ctx context.Context, params Teams
 // GET /teams/{team_id}/discussions
 func (c *Client) TeamsListDiscussionsLegacy(ctx context.Context, params TeamsListDiscussionsLegacyParams) (*TeamsListDiscussionsLegacyOKHeaders, error) {
 	res, err := c.sendTeamsListDiscussionsLegacy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -97290,7 +96619,6 @@ func (c *Client) sendTeamsListDiscussionsLegacy(ctx context.Context, params Team
 // GET /user/teams
 func (c *Client) TeamsListForAuthenticatedUser(ctx context.Context, params TeamsListForAuthenticatedUserParams) (TeamsListForAuthenticatedUserRes, error) {
 	res, err := c.sendTeamsListForAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -97409,7 +96737,6 @@ func (c *Client) sendTeamsListForAuthenticatedUser(ctx context.Context, params T
 // GET /teams/{team_id}/team-sync/group-mappings
 func (c *Client) TeamsListIdpGroupsForLegacy(ctx context.Context, params TeamsListIdpGroupsForLegacyParams) (TeamsListIdpGroupsForLegacyRes, error) {
 	res, err := c.sendTeamsListIdpGroupsForLegacy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -97507,7 +96834,6 @@ func (c *Client) sendTeamsListIdpGroupsForLegacy(ctx context.Context, params Tea
 // GET /orgs/{org}/team-sync/groups
 func (c *Client) TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListIdpGroupsForOrgParams) (*GroupMappingHeaders, error) {
 	res, err := c.sendTeamsListIdpGroupsForOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -97642,7 +96968,6 @@ func (c *Client) sendTeamsListIdpGroupsForOrg(ctx context.Context, params TeamsL
 // GET /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
 func (c *Client) TeamsListIdpGroupsInOrg(ctx context.Context, params TeamsListIdpGroupsInOrgParams) (*GroupMapping, error) {
 	res, err := c.sendTeamsListIdpGroupsInOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -97754,7 +97079,6 @@ func (c *Client) sendTeamsListIdpGroupsInOrg(ctx context.Context, params TeamsLi
 // GET /orgs/{org}/teams/{team_slug}/members
 func (c *Client) TeamsListMembersInOrg(ctx context.Context, params TeamsListMembersInOrgParams) (*TeamsListMembersInOrgOKHeaders, error) {
 	res, err := c.sendTeamsListMembersInOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -97925,7 +97249,6 @@ func (c *Client) sendTeamsListMembersInOrg(ctx context.Context, params TeamsList
 // GET /teams/{team_id}/members
 func (c *Client) TeamsListMembersLegacy(ctx context.Context, params TeamsListMembersLegacyParams) (TeamsListMembersLegacyRes, error) {
 	res, err := c.sendTeamsListMembersLegacy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -98077,7 +97400,6 @@ func (c *Client) sendTeamsListMembersLegacy(ctx context.Context, params TeamsLis
 // GET /orgs/{org}/teams/{team_slug}/invitations
 func (c *Client) TeamsListPendingInvitationsInOrg(ctx context.Context, params TeamsListPendingInvitationsInOrgParams) (*TeamsListPendingInvitationsInOrgOKHeaders, error) {
 	res, err := c.sendTeamsListPendingInvitationsInOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -98234,7 +97556,6 @@ func (c *Client) sendTeamsListPendingInvitationsInOrg(ctx context.Context, param
 // GET /teams/{team_id}/invitations
 func (c *Client) TeamsListPendingInvitationsLegacy(ctx context.Context, params TeamsListPendingInvitationsLegacyParams) (*TeamsListPendingInvitationsLegacyOKHeaders, error) {
 	res, err := c.sendTeamsListPendingInvitationsLegacy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -98366,7 +97687,6 @@ func (c *Client) sendTeamsListPendingInvitationsLegacy(ctx context.Context, para
 // GET /orgs/{org}/teams/{team_slug}/projects
 func (c *Client) TeamsListProjectsInOrg(ctx context.Context, params TeamsListProjectsInOrgParams) (*TeamsListProjectsInOrgOKHeaders, error) {
 	res, err := c.sendTeamsListProjectsInOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -98520,7 +97840,6 @@ func (c *Client) sendTeamsListProjectsInOrg(ctx context.Context, params TeamsLis
 // GET /teams/{team_id}/projects
 func (c *Client) TeamsListProjectsLegacy(ctx context.Context, params TeamsListProjectsLegacyParams) (TeamsListProjectsLegacyRes, error) {
 	res, err := c.sendTeamsListProjectsLegacy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -98652,7 +97971,6 @@ func (c *Client) sendTeamsListProjectsLegacy(ctx context.Context, params TeamsLi
 // GET /orgs/{org}/teams/{team_slug}/repos
 func (c *Client) TeamsListReposInOrg(ctx context.Context, params TeamsListReposInOrgParams) (*TeamsListReposInOrgOKHeaders, error) {
 	res, err := c.sendTeamsListReposInOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -98805,7 +98123,6 @@ func (c *Client) sendTeamsListReposInOrg(ctx context.Context, params TeamsListRe
 // GET /teams/{team_id}/repos
 func (c *Client) TeamsListReposLegacy(ctx context.Context, params TeamsListReposLegacyParams) (TeamsListReposLegacyRes, error) {
 	res, err := c.sendTeamsListReposLegacy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -98955,7 +98272,6 @@ func (c *Client) sendTeamsListReposLegacy(ctx context.Context, params TeamsListR
 // DELETE /teams/{team_id}/members/{username}
 func (c *Client) TeamsRemoveMemberLegacy(ctx context.Context, params TeamsRemoveMemberLegacyParams) (TeamsRemoveMemberLegacyRes, error) {
 	res, err := c.sendTeamsRemoveMemberLegacy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -99079,7 +98395,6 @@ func (c *Client) sendTeamsRemoveMemberLegacy(ctx context.Context, params TeamsRe
 // DELETE /orgs/{org}/teams/{team_slug}/memberships/{username}
 func (c *Client) TeamsRemoveMembershipForUserInOrg(ctx context.Context, params TeamsRemoveMembershipForUserInOrgParams) (TeamsRemoveMembershipForUserInOrgRes, error) {
 	res, err := c.sendTeamsRemoveMembershipForUserInOrg(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -99225,7 +98540,6 @@ func (c *Client) sendTeamsRemoveMembershipForUserInOrg(ctx context.Context, para
 // DELETE /teams/{team_id}/memberships/{username}
 func (c *Client) TeamsRemoveMembershipForUserLegacy(ctx context.Context, params TeamsRemoveMembershipForUserLegacyParams) (TeamsRemoveMembershipForUserLegacyRes, error) {
 	res, err := c.sendTeamsRemoveMembershipForUserLegacy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -99339,8 +98653,7 @@ func (c *Client) sendTeamsRemoveMembershipForUserLegacy(ctx context.Context, par
 //
 // DELETE /orgs/{org}/teams/{team_slug}/projects/{project_id}
 func (c *Client) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemoveProjectInOrgParams) error {
-	res, err := c.sendTeamsRemoveProjectInOrg(ctx, params)
-	_ = res
+	_, err := c.sendTeamsRemoveProjectInOrg(ctx, params)
 	return err
 }
 
@@ -99477,7 +98790,6 @@ func (c *Client) sendTeamsRemoveProjectInOrg(ctx context.Context, params TeamsRe
 // DELETE /teams/{team_id}/projects/{project_id}
 func (c *Client) TeamsRemoveProjectLegacy(ctx context.Context, params TeamsRemoveProjectLegacyParams) (TeamsRemoveProjectLegacyRes, error) {
 	res, err := c.sendTeamsRemoveProjectLegacy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -99591,8 +98903,7 @@ func (c *Client) sendTeamsRemoveProjectLegacy(ctx context.Context, params TeamsR
 //
 // DELETE /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
 func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRepoInOrgParams) error {
-	res, err := c.sendTeamsRemoveRepoInOrg(ctx, params)
-	_ = res
+	_, err := c.sendTeamsRemoveRepoInOrg(ctx, params)
 	return err
 }
 
@@ -99747,8 +99058,7 @@ func (c *Client) sendTeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemov
 //
 // DELETE /teams/{team_id}/repos/{owner}/{repo}
 func (c *Client) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRepoLegacyParams) error {
-	res, err := c.sendTeamsRemoveRepoLegacy(ctx, params)
-	_ = res
+	_, err := c.sendTeamsRemoveRepoLegacy(ctx, params)
 	return err
 }
 
@@ -99880,7 +99190,6 @@ func (c *Client) sendTeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemo
 // PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
 func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request *TeamsUpdateDiscussionCommentInOrgReq, params TeamsUpdateDiscussionCommentInOrgParams) (*TeamDiscussionComment, error) {
 	res, err := c.sendTeamsUpdateDiscussionCommentInOrg(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -100037,7 +99346,6 @@ func (c *Client) sendTeamsUpdateDiscussionCommentInOrg(ctx context.Context, requ
 // PATCH /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
 func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request *TeamsUpdateDiscussionCommentLegacyReq, params TeamsUpdateDiscussionCommentLegacyParams) (*TeamDiscussionComment, error) {
 	res, err := c.sendTeamsUpdateDiscussionCommentLegacy(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -100173,7 +99481,6 @@ func (c *Client) sendTeamsUpdateDiscussionCommentLegacy(ctx context.Context, req
 // PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
 func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request OptTeamsUpdateDiscussionInOrgReq, params TeamsUpdateDiscussionInOrgParams) (*TeamDiscussion, error) {
 	res, err := c.sendTeamsUpdateDiscussionInOrg(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -100312,7 +99619,6 @@ func (c *Client) sendTeamsUpdateDiscussionInOrg(ctx context.Context, request Opt
 // PATCH /teams/{team_id}/discussions/{discussion_number}
 func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, request OptTeamsUpdateDiscussionLegacyReq, params TeamsUpdateDiscussionLegacyParams) (*TeamDiscussion, error) {
 	res, err := c.sendTeamsUpdateDiscussionLegacy(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -100427,7 +99733,6 @@ func (c *Client) sendTeamsUpdateDiscussionLegacy(ctx context.Context, request Op
 // PATCH /orgs/{org}/teams/{team_slug}
 func (c *Client) TeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdateInOrgReq, params TeamsUpdateInOrgParams) (*TeamFull, error) {
 	res, err := c.sendTeamsUpdateInOrg(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -100562,7 +99867,6 @@ func (c *Client) sendTeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdat
 // PATCH /teams/{team_id}
 func (c *Client) TeamsUpdateLegacy(ctx context.Context, request *TeamsUpdateLegacyReq, params TeamsUpdateLegacyParams) (TeamsUpdateLegacyRes, error) {
 	res, err := c.sendTeamsUpdateLegacy(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -100665,7 +99969,6 @@ func (c *Client) sendTeamsUpdateLegacy(ctx context.Context, request *TeamsUpdate
 // POST /user/emails
 func (c *Client) UsersAddEmailForAuthenticated(ctx context.Context, request OptUsersAddEmailForAuthenticatedReq) (UsersAddEmailForAuthenticatedRes, error) {
 	res, err := c.sendUsersAddEmailForAuthenticated(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -100757,7 +100060,6 @@ func (c *Client) sendUsersAddEmailForAuthenticated(ctx context.Context, request 
 // PUT /user/blocks/{username}
 func (c *Client) UsersBlock(ctx context.Context, params UsersBlockParams) (UsersBlockRes, error) {
 	res, err := c.sendUsersBlock(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -100848,7 +100150,6 @@ func (c *Client) sendUsersBlock(ctx context.Context, params UsersBlockParams) (r
 // GET /user/blocks/{username}
 func (c *Client) UsersCheckBlocked(ctx context.Context, params UsersCheckBlockedParams) (UsersCheckBlockedRes, error) {
 	res, err := c.sendUsersCheckBlocked(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -100939,7 +100240,6 @@ func (c *Client) sendUsersCheckBlocked(ctx context.Context, params UsersCheckBlo
 // GET /users/{username}/following/{target_user}
 func (c *Client) UsersCheckFollowingForUser(ctx context.Context, params UsersCheckFollowingForUserParams) (UsersCheckFollowingForUserRes, error) {
 	res, err := c.sendUsersCheckFollowingForUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -101049,7 +100349,6 @@ func (c *Client) sendUsersCheckFollowingForUser(ctx context.Context, params User
 // GET /user/following/{username}
 func (c *Client) UsersCheckPersonIsFollowedByAuthenticated(ctx context.Context, params UsersCheckPersonIsFollowedByAuthenticatedParams) (UsersCheckPersonIsFollowedByAuthenticatedRes, error) {
 	res, err := c.sendUsersCheckPersonIsFollowedByAuthenticated(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -101142,7 +100441,6 @@ func (c *Client) sendUsersCheckPersonIsFollowedByAuthenticated(ctx context.Conte
 // POST /user/gpg_keys
 func (c *Client) UsersCreateGpgKeyForAuthenticated(ctx context.Context, request *UsersCreateGpgKeyForAuthenticatedReq) (UsersCreateGpgKeyForAuthenticatedRes, error) {
 	res, err := c.sendUsersCreateGpgKeyForAuthenticated(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -101220,7 +100518,6 @@ func (c *Client) sendUsersCreateGpgKeyForAuthenticated(ctx context.Context, requ
 // POST /user/keys
 func (c *Client) UsersCreatePublicSSHKeyForAuthenticated(ctx context.Context, request *UsersCreatePublicSSHKeyForAuthenticatedReq) (UsersCreatePublicSSHKeyForAuthenticatedRes, error) {
 	res, err := c.sendUsersCreatePublicSSHKeyForAuthenticated(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -101305,7 +100602,6 @@ func (c *Client) sendUsersCreatePublicSSHKeyForAuthenticated(ctx context.Context
 // DELETE /user/emails
 func (c *Client) UsersDeleteEmailForAuthenticated(ctx context.Context, request OptUsersDeleteEmailForAuthenticatedReq) (UsersDeleteEmailForAuthenticatedRes, error) {
 	res, err := c.sendUsersDeleteEmailForAuthenticated(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -101399,7 +100695,6 @@ func (c *Client) sendUsersDeleteEmailForAuthenticated(ctx context.Context, reque
 // DELETE /user/gpg_keys/{gpg_key_id}
 func (c *Client) UsersDeleteGpgKeyForAuthenticated(ctx context.Context, params UsersDeleteGpgKeyForAuthenticatedParams) (UsersDeleteGpgKeyForAuthenticatedRes, error) {
 	res, err := c.sendUsersDeleteGpgKeyForAuthenticated(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -101492,7 +100787,6 @@ func (c *Client) sendUsersDeleteGpgKeyForAuthenticated(ctx context.Context, para
 // DELETE /user/keys/{key_id}
 func (c *Client) UsersDeletePublicSSHKeyForAuthenticated(ctx context.Context, params UsersDeletePublicSSHKeyForAuthenticatedParams) (UsersDeletePublicSSHKeyForAuthenticatedRes, error) {
 	res, err := c.sendUsersDeletePublicSSHKeyForAuthenticated(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -101587,7 +100881,6 @@ func (c *Client) sendUsersDeletePublicSSHKeyForAuthenticated(ctx context.Context
 // PUT /user/following/{username}
 func (c *Client) UsersFollow(ctx context.Context, params UsersFollowParams) (UsersFollowRes, error) {
 	res, err := c.sendUsersFollow(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -101681,7 +100974,6 @@ func (c *Client) sendUsersFollow(ctx context.Context, params UsersFollowParams) 
 // GET /user
 func (c *Client) UsersGetAuthenticated(ctx context.Context) (UsersGetAuthenticatedRes, error) {
 	res, err := c.sendUsersGetAuthenticated(ctx)
-	_ = res
 	return res, err
 }
 
@@ -101768,7 +101060,6 @@ func (c *Client) sendUsersGetAuthenticated(ctx context.Context) (res UsersGetAut
 // GET /users/{username}
 func (c *Client) UsersGetByUsername(ctx context.Context, params UsersGetByUsernameParams) (UsersGetByUsernameRes, error) {
 	res, err := c.sendUsersGetByUsername(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -101868,7 +101159,6 @@ func (c *Client) sendUsersGetByUsername(ctx context.Context, params UsersGetByUs
 // GET /users/{username}/hovercard
 func (c *Client) UsersGetContextForUser(ctx context.Context, params UsersGetContextForUserParams) (UsersGetContextForUserRes, error) {
 	res, err := c.sendUsersGetContextForUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -102000,7 +101290,6 @@ func (c *Client) sendUsersGetContextForUser(ctx context.Context, params UsersGet
 // GET /user/gpg_keys/{gpg_key_id}
 func (c *Client) UsersGetGpgKeyForAuthenticated(ctx context.Context, params UsersGetGpgKeyForAuthenticatedParams) (UsersGetGpgKeyForAuthenticatedRes, error) {
 	res, err := c.sendUsersGetGpgKeyForAuthenticated(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -102093,7 +101382,6 @@ func (c *Client) sendUsersGetGpgKeyForAuthenticated(ctx context.Context, params 
 // GET /user/keys/{key_id}
 func (c *Client) UsersGetPublicSSHKeyForAuthenticated(ctx context.Context, params UsersGetPublicSSHKeyForAuthenticatedParams) (UsersGetPublicSSHKeyForAuthenticatedRes, error) {
 	res, err := c.sendUsersGetPublicSSHKeyForAuthenticated(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -102188,7 +101476,6 @@ func (c *Client) sendUsersGetPublicSSHKeyForAuthenticated(ctx context.Context, p
 // GET /users
 func (c *Client) UsersList(ctx context.Context, params UsersListParams) (UsersListRes, error) {
 	res, err := c.sendUsersList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -102299,7 +101586,6 @@ func (c *Client) sendUsersList(ctx context.Context, params UsersListParams) (res
 // GET /user/blocks
 func (c *Client) UsersListBlockedByAuthenticated(ctx context.Context) (UsersListBlockedByAuthenticatedRes, error) {
 	res, err := c.sendUsersListBlockedByAuthenticated(ctx)
-	_ = res
 	return res, err
 }
 
@@ -102373,7 +101659,6 @@ func (c *Client) sendUsersListBlockedByAuthenticated(ctx context.Context) (res U
 // GET /user/emails
 func (c *Client) UsersListEmailsForAuthenticated(ctx context.Context, params UsersListEmailsForAuthenticatedParams) (UsersListEmailsForAuthenticatedRes, error) {
 	res, err := c.sendUsersListEmailsForAuthenticated(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -102484,7 +101769,6 @@ func (c *Client) sendUsersListEmailsForAuthenticated(ctx context.Context, params
 // GET /user/following
 func (c *Client) UsersListFollowedByAuthenticated(ctx context.Context, params UsersListFollowedByAuthenticatedParams) (UsersListFollowedByAuthenticatedRes, error) {
 	res, err := c.sendUsersListFollowedByAuthenticated(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -102595,7 +101879,6 @@ func (c *Client) sendUsersListFollowedByAuthenticated(ctx context.Context, param
 // GET /user/followers
 func (c *Client) UsersListFollowersForAuthenticatedUser(ctx context.Context, params UsersListFollowersForAuthenticatedUserParams) (UsersListFollowersForAuthenticatedUserRes, error) {
 	res, err := c.sendUsersListFollowersForAuthenticatedUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -102706,7 +101989,6 @@ func (c *Client) sendUsersListFollowersForAuthenticatedUser(ctx context.Context,
 // GET /users/{username}/followers
 func (c *Client) UsersListFollowersForUser(ctx context.Context, params UsersListFollowersForUserParams) (*UsersListFollowersForUserOKHeaders, error) {
 	res, err := c.sendUsersListFollowersForUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -102836,7 +102118,6 @@ func (c *Client) sendUsersListFollowersForUser(ctx context.Context, params Users
 // GET /users/{username}/following
 func (c *Client) UsersListFollowingForUser(ctx context.Context, params UsersListFollowingForUserParams) (*UsersListFollowingForUserOKHeaders, error) {
 	res, err := c.sendUsersListFollowingForUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -102968,7 +102249,6 @@ func (c *Client) sendUsersListFollowingForUser(ctx context.Context, params Users
 // GET /user/gpg_keys
 func (c *Client) UsersListGpgKeysForAuthenticated(ctx context.Context, params UsersListGpgKeysForAuthenticatedParams) (UsersListGpgKeysForAuthenticatedRes, error) {
 	res, err := c.sendUsersListGpgKeysForAuthenticated(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -103079,7 +102359,6 @@ func (c *Client) sendUsersListGpgKeysForAuthenticated(ctx context.Context, param
 // GET /users/{username}/gpg_keys
 func (c *Client) UsersListGpgKeysForUser(ctx context.Context, params UsersListGpgKeysForUserParams) (*UsersListGpgKeysForUserOKHeaders, error) {
 	res, err := c.sendUsersListGpgKeysForUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -103212,7 +102491,6 @@ func (c *Client) sendUsersListGpgKeysForUser(ctx context.Context, params UsersLi
 // GET /user/public_emails
 func (c *Client) UsersListPublicEmailsForAuthenticated(ctx context.Context, params UsersListPublicEmailsForAuthenticatedParams) (UsersListPublicEmailsForAuthenticatedRes, error) {
 	res, err := c.sendUsersListPublicEmailsForAuthenticated(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -103323,7 +102601,6 @@ func (c *Client) sendUsersListPublicEmailsForAuthenticated(ctx context.Context, 
 // GET /users/{username}/keys
 func (c *Client) UsersListPublicKeysForUser(ctx context.Context, params UsersListPublicKeysForUserParams) (*UsersListPublicKeysForUserOKHeaders, error) {
 	res, err := c.sendUsersListPublicKeysForUser(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -103455,7 +102732,6 @@ func (c *Client) sendUsersListPublicKeysForUser(ctx context.Context, params User
 // GET /user/keys
 func (c *Client) UsersListPublicSSHKeysForAuthenticated(ctx context.Context, params UsersListPublicSSHKeysForAuthenticatedParams) (UsersListPublicSSHKeysForAuthenticatedRes, error) {
 	res, err := c.sendUsersListPublicSSHKeysForAuthenticated(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -103566,7 +102842,6 @@ func (c *Client) sendUsersListPublicSSHKeysForAuthenticated(ctx context.Context,
 // PATCH /user/email/visibility
 func (c *Client) UsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.Context, request *UsersSetPrimaryEmailVisibilityForAuthenticatedReq) (UsersSetPrimaryEmailVisibilityForAuthenticatedRes, error) {
 	res, err := c.sendUsersSetPrimaryEmailVisibilityForAuthenticated(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -103651,7 +102926,6 @@ func (c *Client) sendUsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.
 // DELETE /user/blocks/{username}
 func (c *Client) UsersUnblock(ctx context.Context, params UsersUnblockParams) (UsersUnblockRes, error) {
 	res, err := c.sendUsersUnblock(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -103743,7 +103017,6 @@ func (c *Client) sendUsersUnblock(ctx context.Context, params UsersUnblockParams
 // DELETE /user/following/{username}
 func (c *Client) UsersUnfollow(ctx context.Context, params UsersUnfollowParams) (UsersUnfollowRes, error) {
 	res, err := c.sendUsersUnfollow(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -103836,7 +103109,6 @@ func (c *Client) sendUsersUnfollow(ctx context.Context, params UsersUnfollowPara
 // PATCH /user
 func (c *Client) UsersUpdateAuthenticated(ctx context.Context, request OptUsersUpdateAuthenticatedReq) (UsersUpdateAuthenticatedRes, error) {
 	res, err := c.sendUsersUpdateAuthenticated(ctx, request)
-	_ = res
 	return res, err
 }
 
