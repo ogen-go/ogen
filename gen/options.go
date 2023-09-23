@@ -36,7 +36,8 @@ type Options struct {
 	NoWebhookClient bool
 	// NoWebhookServer disables webhook server generation.
 	NoWebhookServer bool
-
+	// InternalPrefix sets internal prefix for generated structures.
+	InternalPrefix string
 	// GenerateExampleTests whether to generate decoding tests using schema examples.
 	GenerateExampleTests bool
 	// SkipTestRegex is regex to skip generated tests.

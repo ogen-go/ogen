@@ -18,8 +18,8 @@ type Invoker interface {
 {{- end }}
 }
 
-// Client implements OAS client.
-type Client struct {
+// {{ $.InternalPrefix }}Client implements OAS client.
+type {{ $.InternalPrefix }}Client struct {
 	serverURL *url.URL
 	{{- if $.Securities }}
 	sec 	  SecuritySource
@@ -35,7 +35,7 @@ type errorHandler interface {
 {{- end }}
 var _ Handler = struct{
 	{{ if $.Error }}errorHandler{{- end }}
-	*Client
+	*{{ $.InternalPrefix }}Client
 }{}
 {{- end }}
 
@@ -44,8 +44,8 @@ func trimTrailingSlashes(u *url.URL) {
 	u.RawPath = strings.TrimRight(u.RawPath, "/")
 }
 
-// NewClient initializes new Client defined by OAS.
-func NewClient(serverURL string, {{- if $.Securities }}sec SecuritySource,{{- end }} opts ...ClientOption) (*Client, error) {
+// New{{ $.InternalPrefix }}Client initializes new Client defined by OAS.
+func New{{ $.InternalPrefix }}Client(serverURL string, {{- if $.Securities }}sec SecuritySource,{{- end }} opts ...ClientOption) (*{{ $.InternalPrefix }}Client, error) {
 	u, err := url.Parse(serverURL)
 	if err != nil {
 		return nil, err
@@ -56,7 +56,7 @@ func NewClient(serverURL string, {{- if $.Securities }}sec SecuritySource,{{- en
 	if err != nil {
 		return nil, err
 	}
-	return &Client{
+	return &{{ $.InternalPrefix }}Client{
 		serverURL: u,
 		{{- if $.Securities }}
 		sec: sec,
@@ -72,7 +72,7 @@ func WithServerURL(ctx context.Context, u *url.URL) context.Context {
 	return context.WithValue(ctx, serverURLKey{}, u)
 }
 
-func (c *Client) requestURL(ctx context.Context) *url.URL {
+func (c *{{ $.InternalPrefix }}Client) requestURL(ctx context.Context) *url.URL {
 	u, ok := ctx.Value(serverURLKey{}).(*url.URL)
 	if !ok {
 		return c.serverURL
@@ -89,18 +89,18 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 
 {{- if $.WebhookClientEnabled }}
 {{- with $ops := $.Webhooks }}
-// WebhookClient implements webhook client.
-type WebhookClient struct {
+// Webhook{{ $.InternalPrefix }}Client implements webhook client.
+type Webhook{{ $.InternalPrefix }}Client struct {
 	baseClient
 }
 
-// NewWebhookClient initializes new WebhookClient.
-func NewWebhookClient(opts ...ClientOption) (*WebhookClient, error) {
+// NewWebhook{{ $.InternalPrefix }}Client initializes new WebhookClient.
+func NewWebhook{{ $.InternalPrefix }}Client(opts ...ClientOption) (*Webhook{{ $.InternalPrefix }}Client, error) {
 	c, err := newClientConfig(opts...).baseClient()
 	if err != nil {
 		return nil, err
 	}
-	return &WebhookClient{
+	return &Webhook{{ $.InternalPrefix }}Client{
 		baseClient: c,
 	}, nil
 }
@@ -119,7 +119,7 @@ func NewWebhookClient(opts ...ClientOption) (*WebhookClient, error) {
 // {{ $op.Name }} invokes {{ $op.PrettyOperationID }} operation.
 //
 {{- template "godoc_op" $op }}
-func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) {{ $op.Name }}(ctx context.Context
+func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}{{ $op.InternalPrefix }}Client) {{ $op.Name }}(ctx context.Context
 	{{- if $op.WebhookInfo }}, targetURL string{{ end }}
 	{{- if $op.Request }}, request {{ $op.Request.GoType }}{{ end }}
 	{{- if $op.Params }}, params {{ $op.Name }}Params {{ end }}) {{ $op.Responses.ResultTuple "" "" }} {
@@ -132,7 +132,7 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) {{ $op.Name }}(ctx cont
 	return {{ if $op.Responses.DoPass }}res,{{ end }} err
 }
 
-func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx context.Context
+func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}{{ $op.InternalPrefix }}Client) send{{ $op.Name }}(ctx context.Context
 	{{- if $op.WebhookInfo }}, targetURL string{{ end }}
 	{{- if $op.Request }}, request {{ $op.Request.GoType }}{{ end }}
 	{{- if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (res {{ $op.Responses.GoType }}, err error) {

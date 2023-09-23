@@ -26,6 +26,9 @@ type Operation struct {
 	Responses   *Responses
 	Security    SecurityRequirements
 	Spec        *openapi.Operation
+
+	// options
+	InternalPrefix string
 }
 
 // OTELAttribute represents OpenTelemetry attribute defined by otelogen package.

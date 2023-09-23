@@ -1,0 +1,131 @@
+openapi: "3.1.0"
+info:
+  version: 1.0.0
+  title: Swagger
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+paths:
+  /client:
+    get:
+      summary: Get a client
+      operationId: showClient
+      security:
+        - basicAuth: []
+          queryKey: []
+        - cookieKey: []
+          headerKey: []
+      responses:
+        200:
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Client"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /route:
+    get:
+      summary: Get a route
+      operationId: showRoute
+      responses:
+        200:
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Route"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /server:
+    get:
+      summary: Get server
+      operationId: showServer
+      responses:
+        200:
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Server"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  schemas:
+    Client:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: integer
+    Server:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: integer
+    Route:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: integer
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+  securitySchemes:
+    queryKey:
+      type: apiKey
+      in: query
+      name: api_key
+    headerKey:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+    cookieKey:
+      type: apiKey
+      in: cookie
+      name: api_key
+    basicAuth:
+      type: http
+      scheme: basic
+    bearerToken:
+      type: http
+      scheme: bearer
+webhooks:
+  status:
+    get:
+      operationId: statusWebhook
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string

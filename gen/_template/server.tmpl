@@ -22,9 +22,9 @@ type Handler interface {
 {{- end }}
 }
 
-// Server implements http server based on OpenAPI v3 specification and
+// {{ $.InternalPrefix }}Server implements http server based on OpenAPI v3 specification and
 // calls Handler to handle requests.
-type Server struct {
+type {{ $.InternalPrefix }}Server struct {
 	h   Handler
 	{{- if $.Securities }}
 	sec SecurityHandler
@@ -32,13 +32,13 @@ type Server struct {
 	baseServer
 }
 
-// NewServer creates new Server.
-func NewServer(h Handler, {{- if $.Securities }}sec SecurityHandler,{{- end }}opts ...ServerOption) (*Server, error) {
+// New{{ $.InternalPrefix }}Server creates new Server.
+func New{{ $.InternalPrefix }}Server(h Handler, {{- if $.Securities }}sec SecurityHandler,{{- end }}opts ...ServerOption) (*{{ $.InternalPrefix }}Server, error) {
 	s, err := newServerConfig(opts...).baseServer()
 	if err != nil {
 		return nil, err
 	}
-	return &Server{
+	return &{{ $.InternalPrefix }}Server{
 		h: h,
 		{{- if $.Securities }}
 		sec: sec,
@@ -61,20 +61,20 @@ type WebhookHandler interface {
 {{- end }}
 }
 
-// WebhookServer implements http server based on OpenAPI v3 specification and
+// Webhook{{ $.InternalPrefix }}Server implements http server based on OpenAPI v3 specification and
 // calls WebhookHandler to handle requests.
-type WebhookServer struct {
+type Webhook{{ $.InternalPrefix }}Server struct {
 	h WebhookHandler
 	baseServer
 }
 
-// NewWebhookServer creates new WebhookServer.
-func NewWebhookServer(h WebhookHandler, opts ...ServerOption) (*WebhookServer, error) {
+// NewWebhook{{ $.InternalPrefix }}Server creates new WebhookServer.
+func NewWebhook{{ $.InternalPrefix }}Server(h WebhookHandler, opts ...ServerOption) (*Webhook{{ $.InternalPrefix }}Server, error) {
 	s, err := newServerConfig(opts...).baseServer()
 	if err != nil {
 		return nil, err
 	}
-	return &WebhookServer{
+	return &Webhook{{ $.InternalPrefix }}Server{
 		h: h,
 		baseServer: s,
 	}, nil

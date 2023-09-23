@@ -18,7 +18,7 @@
 
 {{ define "request_decoders/operation" }}
 {{- /*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/ -}}{{ $op := $ }}
-func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) decode{{ $op.Name }}Request(r *http.Request) (
+func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}{{ $op.InternalPrefix }}Server) decode{{ $op.Name }}Request(r *http.Request) (
 	req {{ $op.Request.GoType }},
 	close func() error,
 	rerr error,

@@ -16,6 +16,8 @@ import (
 	"github.com/go-faster/errors"
 	"go.uber.org/multierr"
 	"go.uber.org/zap"
+	"golang.org/x/text/cases"
+	"golang.org/x/text/language"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen"
@@ -143,6 +145,7 @@ func run() error {
 		// Generator options.
 		targetDir         = set.String("target", "api", "Path to target dir")
 		packageName       = set.String("package", "api", "Target package name")
+		internalPrefix    = set.String("internal-prefix", "", "Prefix for internal structures")
 		inferTypes        = set.Bool("infer-types", false, "Infer schema types, if type is not defined explicitly")
 		clean             = set.Bool("clean", false, "Clean generated files before generation")
 		generateTests     = set.Bool("generate-tests", false, "Generate tests encode-decode/based on schema examples")
@@ -260,6 +263,7 @@ func run() error {
 		NoServer:             *noServer,
 		NoWebhookClient:      *noWebhookClient,
 		NoWebhookServer:      *noWebhookServer,
+		InternalPrefix:       cases.Title(language.English, cases.Compact).String(*internalPrefix),
 		GenerateExampleTests: *generateTests,
 		SkipTestRegex:        nil, // Set below.
 		SkipUnimplemented:    *skipUnimplemented,

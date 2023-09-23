@@ -37,6 +37,8 @@ type TemplateConfig struct {
 	CustomImports []string
 	CustomFormats []ir.CustomFormat
 
+	InternalPrefix string
+
 	PathsClientEnabled   bool
 	PathsServerEnabled   bool
 	WebhookClientEnabled bool
@@ -262,6 +264,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		WebhookRouter:        g.webhookRouter,
 		CustomImports:        g.imports,
 		CustomFormats:        customFormats,
+		InternalPrefix:       g.opt.InternalPrefix,
 		PathsClientEnabled:   !g.opt.NoClient,
 		PathsServerEnabled:   !g.opt.NoServer,
 		WebhookClientEnabled: !g.opt.NoWebhookClient && len(g.webhooks) > 0,

@@ -9,6 +9,7 @@ package integration
 
 //go:generate go run ../../cmd/ogen -v --clean --convenient-errors --target sample_err ../../_testdata/positive/convenient_errors/errors.json
 //go:generate go run ../../cmd/ogen -v --clean --package techempower --generate-tests --target techempower ../../_testdata/examples/techempower.json
+//go:generate go run ../../cmd/ogen -v --clean --generate-tests --target internal_prefix --internal-prefix api ../../_testdata/positive/internal_prefix.yml
 
 // Tests
 //

@@ -21,7 +21,7 @@
 // handle{{ $op.Name }}Request handles {{ $op.PrettyOperationID }} operation.
 //
 {{- template "godoc_op" $op }}
-func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}{{ $op.InternalPrefix }}Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	{{- $hasOTELAttrs := false }}
 	{{- $ogenAttrs := $op.OTELAttributes }}
 	{{- if or $ogenAttrs (not $op.WebhookInfo) }}

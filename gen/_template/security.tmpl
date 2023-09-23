@@ -41,7 +41,7 @@ var oauth2Scopes = map[string][]string {
 }
 
 {{- end }}
-func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationName string, req *http.Request) (context.Context, bool, error) {
+func (s *{{ $.InternalPrefix }}Server) security{{ $s.Type.Name }}(ctx context.Context, operationName string, req *http.Request) (context.Context, bool, error) {
 	var t {{ $s.Type.Name }}
 	{{- if $s.Format.IsAPIKeySecurity }}
         const parameterName = {{ quote $s.ParameterName }}
@@ -118,7 +118,7 @@ type SecuritySource interface {
 }
 
 {{- range $s := $.Securities }}
-func (s *Client) security{{ $s.Type.Name }}(ctx context.Context, operationName string, req *http.Request) error {
+func (s *{{ $.InternalPrefix }}Client) security{{ $s.Type.Name }}(ctx context.Context, operationName string, req *http.Request) error {
 	t, err := s.sec.{{ $s.Type.Name }}(ctx, operationName)
 	if err != nil {
 		return errors.Wrap(err, {{ printf "security source %q" $s.Type.Name | quote }})

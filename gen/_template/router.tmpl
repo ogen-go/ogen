@@ -4,7 +4,7 @@
 {{- $router := $.Router }}
 
 {{- if and $.PathsServerEnabled $.Operations }}
-func (s *Server) cutPrefix(path string) (string, bool) {
+func (s *{{ $.InternalPrefix }}Server) cutPrefix(path string) (string, bool) {
 	prefix := s.cfg.Prefix
 	if prefix == "" {
 		return path, true
@@ -19,7 +19,7 @@ func (s *Server) cutPrefix(path string) (string, bool) {
 
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
-func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+func (s *{{ $.InternalPrefix }}Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	elem := r.URL.Path
 	elemIsEscaped := false
 	if rawPath := r.URL.RawPath; rawPath != "" {
@@ -49,8 +49,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	s.notFound(w, r)
 }
 
-// Route is route object.
-type Route struct {
+// {{ $.InternalPrefix }}Route is route object.
+type {{ $.InternalPrefix }}Route struct {
 	name string
 	summary string
 	operationID string
@@ -62,39 +62,39 @@ type Route struct {
 // Name returns ogen operation name.
 //
 // It is guaranteed to be unique and not empty.
-func (r Route) Name() string {
+func (r {{ $.InternalPrefix }}Route) Name() string {
 	return r.name
 }
 
 // Summary returns OpenAPI summary.
-func (r Route) Summary() string {
+func (r {{ $.InternalPrefix }}Route) Summary() string {
 	return r.summary
 }
 
 // OperationID returns OpenAPI operationId.
-func (r Route) OperationID() string {
+func (r {{ $.InternalPrefix }}Route) OperationID() string {
 	return r.operationID
 }
 
 // PathPattern returns OpenAPI path.
-func (r Route) PathPattern() string {
+func (r {{ $.InternalPrefix }}Route) PathPattern() string {
 	return r.pathPattern
 }
 
 // Args returns parsed arguments.
-func (r Route) Args() []string {
+func (r {{ $.InternalPrefix }}Route) Args() []string {
 	return r.args[:r.count]
 }
 
 // FindRoute finds Route for given method and path.
 //
 // Note: this method does not unescape path or handle reserved characters in path properly. Use FindPath instead.
-func (s *Server) FindRoute(method, path string) (Route, bool) {
+func (s *{{ $.InternalPrefix }}Server) FindRoute(method, path string) ({{ $.InternalPrefix }}Route, bool) {
 	return s.FindPath(method, &url.URL{Path: path})
 }
 
 // FindPath finds Route for given method and URL.
-func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
+func (s *{{ $.InternalPrefix }}Server) FindPath(method string, u *url.URL) (r {{ $.InternalPrefix }}Route, _ bool) {
 	var (
 		elem = u.Path
 		args = r.args
@@ -132,7 +132,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 // Handle handles webhook request.
 //
 // Returns true if there is a webhook handler for given name and requested method.
-func (s *WebhookServer) Handle(webhookName string, w http.ResponseWriter, r *http.Request) bool {
+func (s *Webhook{{ $.InternalPrefix }}Server) Handle(webhookName string, w http.ResponseWriter, r *http.Request) bool {
 	switch webhookName {
 	{{- range $name, $methods := $.WebhookRouter.Webhooks }}
 	case {{ quote $name }}:
@@ -156,7 +156,7 @@ func (s *WebhookServer) Handle(webhookName string, w http.ResponseWriter, r *htt
 // Returns NotFound handler if spec doesn't contain webhook with given name.
 //
 // Returned handler calls MethodNotAllowed handler if webhook doesn't define requested method.
-func (s *WebhookServer) Handler(webhookName string) http.Handler {
+func (s *Webhook{{ $.InternalPrefix }}Server) Handler(webhookName string) http.Handler {
 	switch webhookName {
 	{{- range $name, $methods := $.WebhookRouter.Webhooks }}
 	case {{ quote $name }}:
