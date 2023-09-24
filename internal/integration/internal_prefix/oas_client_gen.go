@@ -104,7 +104,6 @@ func (c *ApiClient) requestURL(ctx context.Context) *url.URL {
 // GET /client
 func (c *ApiClient) ShowClient(ctx context.Context) (*Client, error) {
 	res, err := c.sendShowClient(ctx)
-	_ = res
 	return res, err
 }
 
@@ -244,7 +243,6 @@ func (c *ApiClient) sendShowClient(ctx context.Context) (res *Client, err error)
 // GET /route
 func (c *ApiClient) ShowRoute(ctx context.Context) (*Route, error) {
 	res, err := c.sendShowRoute(ctx)
-	_ = res
 	return res, err
 }
 
@@ -317,7 +315,6 @@ func (c *ApiClient) sendShowRoute(ctx context.Context) (res *Route, err error) {
 // GET /server
 func (c *ApiClient) ShowServer(ctx context.Context) (*Server, error) {
 	res, err := c.sendShowServer(ctx)
-	_ = res
 	return res, err
 }
 
@@ -402,7 +399,6 @@ func NewWebhookApiClient(opts ...ClientOption) (*WebhookApiClient, error) {
 // StatusWebhook invokes statusWebhook operation.
 func (c *WebhookApiClient) StatusWebhook(ctx context.Context, targetURL string) (*StatusWebhookOK, error) {
 	res, err := c.sendStatusWebhook(ctx, targetURL)
-	_ = res
 	return res, err
 }
 
