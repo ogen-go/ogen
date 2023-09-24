@@ -80,7 +80,6 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // GET /foo
 func (c *Client) FooGet(ctx context.Context) (string, error) {
 	res, err := c.sendFooGet(ctx)
-	_ = res
 	return res, err
 }
 

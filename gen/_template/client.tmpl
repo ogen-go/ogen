@@ -123,12 +123,11 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}{{ $op.InternalPrefix }}Client)
 	{{- if $op.WebhookInfo }}, targetURL string{{ end }}
 	{{- if $op.Request }}, request {{ $op.Request.GoType }}{{ end }}
 	{{- if $op.Params }}, params {{ $op.Name }}Params {{ end }}) {{ $op.Responses.ResultTuple "" "" }} {
-	res, err := c.send{{ $op.Name }}(ctx
+	{{ if $op.Responses.DoPass }}res{{ else }}_{{ end }}, err := c.send{{ $op.Name }}(ctx
 		{{- if $op.WebhookInfo }},targetURL{{ end -}}
 		{{- if $op.Request }},request{{ end -}}
 		{{- if $op.Params }},params{{ end -}}
 	)
-	_ = res
 	return {{ if $op.Responses.DoPass }}res,{{ end }} err
 }
 

@@ -89,7 +89,6 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // GET /integerNumber
 func (c *Client) IntegerNumber(ctx context.Context) (*IntegerNumber, error) {
 	res, err := c.sendIntegerNumber(ctx)
-	_ = res
 	return res, err
 }
 
@@ -160,7 +159,6 @@ func (c *Client) sendIntegerNumber(ctx context.Context) (res *IntegerNumber, err
 // GET /jaegerAnyOf
 func (c *Client) JaegerAnyOf(ctx context.Context) (*JaegerAnyOf, error) {
 	res, err := c.sendJaegerAnyOf(ctx)
-	_ = res
 	return res, err
 }
 
@@ -231,7 +229,6 @@ func (c *Client) sendJaegerAnyOf(ctx context.Context) (res *JaegerAnyOf, err err
 // GET /oneUUID
 func (c *Client) OneUUID(ctx context.Context) (*OneUUID, error) {
 	res, err := c.sendOneUUID(ctx)
-	_ = res
 	return res, err
 }
 

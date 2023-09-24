@@ -89,7 +89,6 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // GET /healthz
 func (c *Client) ProbeLiveness(ctx context.Context) (string, error) {
 	res, err := c.sendProbeLiveness(ctx)
-	_ = res
 	return res, err
 }
 
