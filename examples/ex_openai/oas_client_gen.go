@@ -284,7 +284,6 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // POST /fine-tunes/{fine_tune_id}/cancel
 func (c *Client) CancelFineTune(ctx context.Context, params CancelFineTuneParams) (FineTune, error) {
 	res, err := c.sendCancelFineTune(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -381,7 +380,6 @@ func (c *Client) sendCancelFineTune(ctx context.Context, params CancelFineTunePa
 // POST /answers
 func (c *Client) CreateAnswer(ctx context.Context, request *CreateAnswerRequest) (*CreateAnswerResponse, error) {
 	res, err := c.sendCreateAnswer(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -466,7 +464,6 @@ func (c *Client) sendCreateAnswer(ctx context.Context, request *CreateAnswerRequ
 // POST /chat/completions
 func (c *Client) CreateChatCompletion(ctx context.Context, request *CreateChatCompletionRequest) (*CreateChatCompletionResponse, error) {
 	res, err := c.sendCreateChatCompletion(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -559,7 +556,6 @@ func (c *Client) sendCreateChatCompletion(ctx context.Context, request *CreateCh
 // POST /classifications
 func (c *Client) CreateClassification(ctx context.Context, request *CreateClassificationRequest) (*CreateClassificationResponse, error) {
 	res, err := c.sendCreateClassification(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -644,7 +640,6 @@ func (c *Client) sendCreateClassification(ctx context.Context, request *CreateCl
 // POST /completions
 func (c *Client) CreateCompletion(ctx context.Context, request *CreateCompletionRequest) (*CreateCompletionResponse, error) {
 	res, err := c.sendCreateCompletion(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -729,7 +724,6 @@ func (c *Client) sendCreateCompletion(ctx context.Context, request *CreateComple
 // POST /edits
 func (c *Client) CreateEdit(ctx context.Context, request *CreateEditRequest) (*CreateEditResponse, error) {
 	res, err := c.sendCreateEdit(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -814,7 +808,6 @@ func (c *Client) sendCreateEdit(ctx context.Context, request *CreateEditRequest)
 // POST /embeddings
 func (c *Client) CreateEmbedding(ctx context.Context, request *CreateEmbeddingRequest) (*CreateEmbeddingResponse, error) {
 	res, err := c.sendCreateEmbedding(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -901,7 +894,6 @@ func (c *Client) sendCreateEmbedding(ctx context.Context, request *CreateEmbeddi
 // POST /files
 func (c *Client) CreateFile(ctx context.Context, request *CreateFileRequestMultipart) (OpenAIFile, error) {
 	res, err := c.sendCreateFile(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -980,7 +972,6 @@ func (c *Client) sendCreateFile(ctx context.Context, request *CreateFileRequestM
 // POST /fine-tunes
 func (c *Client) CreateFineTune(ctx context.Context, request *CreateFineTuneRequest) (FineTune, error) {
 	res, err := c.sendCreateFineTune(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -1065,7 +1056,6 @@ func (c *Client) sendCreateFineTune(ctx context.Context, request *CreateFineTune
 // POST /images/generations
 func (c *Client) CreateImage(ctx context.Context, request *CreateImageRequest) (ImagesResponse, error) {
 	res, err := c.sendCreateImage(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -1150,7 +1140,6 @@ func (c *Client) sendCreateImage(ctx context.Context, request *CreateImageReques
 // POST /images/edits
 func (c *Client) CreateImageEdit(ctx context.Context, request *CreateImageEditRequestMultipart) (ImagesResponse, error) {
 	res, err := c.sendCreateImageEdit(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -1235,7 +1224,6 @@ func (c *Client) sendCreateImageEdit(ctx context.Context, request *CreateImageEd
 // POST /images/variations
 func (c *Client) CreateImageVariation(ctx context.Context, request *CreateImageVariationRequestMultipart) (ImagesResponse, error) {
 	res, err := c.sendCreateImageVariation(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -1320,7 +1308,6 @@ func (c *Client) sendCreateImageVariation(ctx context.Context, request *CreateIm
 // POST /moderations
 func (c *Client) CreateModeration(ctx context.Context, request *CreateModerationRequest) (*CreateModerationResponse, error) {
 	res, err := c.sendCreateModeration(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -1414,7 +1401,6 @@ func (c *Client) sendCreateModeration(ctx context.Context, request *CreateModera
 // POST /engines/{engine_id}/search
 func (c *Client) CreateSearch(ctx context.Context, request *CreateSearchRequest, params CreateSearchParams) (*CreateSearchResponse, error) {
 	res, err := c.sendCreateSearch(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -1518,7 +1504,6 @@ func (c *Client) sendCreateSearch(ctx context.Context, request *CreateSearchRequ
 // POST /audio/transcriptions
 func (c *Client) CreateTranscription(ctx context.Context, request *CreateTranscriptionRequestMultipart) (*CreateTranscriptionResponse, error) {
 	res, err := c.sendCreateTranscription(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -1603,7 +1588,6 @@ func (c *Client) sendCreateTranscription(ctx context.Context, request *CreateTra
 // POST /audio/translations
 func (c *Client) CreateTranslation(ctx context.Context, request *CreateTranslationRequestMultipart) (*CreateTranslationResponse, error) {
 	res, err := c.sendCreateTranslation(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -1688,7 +1672,6 @@ func (c *Client) sendCreateTranslation(ctx context.Context, request *CreateTrans
 // DELETE /files/{file_id}
 func (c *Client) DeleteFile(ctx context.Context, params DeleteFileParams) (*DeleteFileResponse, error) {
 	res, err := c.sendDeleteFile(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -1779,7 +1762,6 @@ func (c *Client) sendDeleteFile(ctx context.Context, params DeleteFileParams) (r
 // DELETE /models/{model}
 func (c *Client) DeleteModel(ctx context.Context, params DeleteModelParams) (*DeleteModelResponse, error) {
 	res, err := c.sendDeleteModel(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -1870,7 +1852,6 @@ func (c *Client) sendDeleteModel(ctx context.Context, params DeleteModelParams) 
 // GET /files/{file_id}/content
 func (c *Client) DownloadFile(ctx context.Context, params DownloadFileParams) (string, error) {
 	res, err := c.sendDownloadFile(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -1965,7 +1946,6 @@ func (c *Client) sendDownloadFile(ctx context.Context, params DownloadFileParams
 // GET /engines
 func (c *Client) ListEngines(ctx context.Context) (*ListEnginesResponse, error) {
 	res, err := c.sendListEngines(ctx)
-	_ = res
 	return res, err
 }
 
@@ -2038,7 +2018,6 @@ func (c *Client) sendListEngines(ctx context.Context) (res *ListEnginesResponse,
 // GET /files
 func (c *Client) ListFiles(ctx context.Context) (*ListFilesResponse, error) {
 	res, err := c.sendListFiles(ctx)
-	_ = res
 	return res, err
 }
 
@@ -2111,7 +2090,6 @@ func (c *Client) sendListFiles(ctx context.Context) (res *ListFilesResponse, err
 // GET /fine-tunes/{fine_tune_id}/events
 func (c *Client) ListFineTuneEvents(ctx context.Context, params ListFineTuneEventsParams) (*ListFineTuneEventsResponse, error) {
 	res, err := c.sendListFineTuneEvents(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -2224,7 +2202,6 @@ func (c *Client) sendListFineTuneEvents(ctx context.Context, params ListFineTune
 // GET /fine-tunes
 func (c *Client) ListFineTunes(ctx context.Context) (*ListFineTunesResponse, error) {
 	res, err := c.sendListFineTunes(ctx)
-	_ = res
 	return res, err
 }
 
@@ -2298,7 +2275,6 @@ func (c *Client) sendListFineTunes(ctx context.Context) (res *ListFineTunesRespo
 // GET /models
 func (c *Client) ListModels(ctx context.Context) (*ListModelsResponse, error) {
 	res, err := c.sendListModels(ctx)
-	_ = res
 	return res, err
 }
 
@@ -2374,7 +2350,6 @@ func (c *Client) sendListModels(ctx context.Context) (res *ListModelsResponse, e
 // GET /engines/{engine_id}
 func (c *Client) RetrieveEngine(ctx context.Context, params RetrieveEngineParams) (Engine, error) {
 	res, err := c.sendRetrieveEngine(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -2465,7 +2440,6 @@ func (c *Client) sendRetrieveEngine(ctx context.Context, params RetrieveEnginePa
 // GET /files/{file_id}
 func (c *Client) RetrieveFile(ctx context.Context, params RetrieveFileParams) (OpenAIFile, error) {
 	res, err := c.sendRetrieveFile(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -2557,7 +2531,6 @@ func (c *Client) sendRetrieveFile(ctx context.Context, params RetrieveFileParams
 // GET /fine-tunes/{fine_tune_id}
 func (c *Client) RetrieveFineTune(ctx context.Context, params RetrieveFineTuneParams) (FineTune, error) {
 	res, err := c.sendRetrieveFineTune(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -2649,7 +2622,6 @@ func (c *Client) sendRetrieveFineTune(ctx context.Context, params RetrieveFineTu
 // GET /models/{model}
 func (c *Client) RetrieveModel(ctx context.Context, params RetrieveModelParams) (Model, error) {
 	res, err := c.sendRetrieveModel(ctx, params)
-	_ = res
 	return res, err
 }
 

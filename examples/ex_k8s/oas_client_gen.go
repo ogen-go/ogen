@@ -3014,7 +3014,6 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // DELETE /api/v1/namespaces/{namespace}/pods/{name}/proxy
 func (c *Client) ConnectCoreV1DeleteNamespacedPodProxy(ctx context.Context, params ConnectCoreV1DeleteNamespacedPodProxyParams) (ConnectCoreV1DeleteNamespacedPodProxyRes, error) {
 	res, err := c.sendConnectCoreV1DeleteNamespacedPodProxy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -3179,7 +3178,6 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedPodProxy(ctx context.Context, 
 // DELETE /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
 func (c *Client) ConnectCoreV1DeleteNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1DeleteNamespacedPodProxyWithPathParams) (ConnectCoreV1DeleteNamespacedPodProxyWithPathRes, error) {
 	res, err := c.sendConnectCoreV1DeleteNamespacedPodProxyWithPath(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -3362,7 +3360,6 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedPodProxyWithPath(ctx context.C
 // DELETE /api/v1/namespaces/{namespace}/services/{name}/proxy
 func (c *Client) ConnectCoreV1DeleteNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1DeleteNamespacedServiceProxyParams) (ConnectCoreV1DeleteNamespacedServiceProxyRes, error) {
 	res, err := c.sendConnectCoreV1DeleteNamespacedServiceProxy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -3527,7 +3524,6 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedServiceProxy(ctx context.Conte
 // DELETE /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
 func (c *Client) ConnectCoreV1DeleteNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1DeleteNamespacedServiceProxyWithPathParams) (ConnectCoreV1DeleteNamespacedServiceProxyWithPathRes, error) {
 	res, err := c.sendConnectCoreV1DeleteNamespacedServiceProxyWithPath(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -3710,7 +3706,6 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedServiceProxyWithPath(ctx conte
 // DELETE /api/v1/nodes/{name}/proxy
 func (c *Client) ConnectCoreV1DeleteNodeProxy(ctx context.Context, params ConnectCoreV1DeleteNodeProxyParams) (ConnectCoreV1DeleteNodeProxyRes, error) {
 	res, err := c.sendConnectCoreV1DeleteNodeProxy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -3856,7 +3851,6 @@ func (c *Client) sendConnectCoreV1DeleteNodeProxy(ctx context.Context, params Co
 // DELETE /api/v1/nodes/{name}/proxy/{path}
 func (c *Client) ConnectCoreV1DeleteNodeProxyWithPath(ctx context.Context, params ConnectCoreV1DeleteNodeProxyWithPathParams) (ConnectCoreV1DeleteNodeProxyWithPathRes, error) {
 	res, err := c.sendConnectCoreV1DeleteNodeProxyWithPath(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -4020,7 +4014,6 @@ func (c *Client) sendConnectCoreV1DeleteNodeProxyWithPath(ctx context.Context, p
 // GET /api/v1/namespaces/{namespace}/pods/{name}/attach
 func (c *Client) ConnectCoreV1GetNamespacedPodAttach(ctx context.Context, params ConnectCoreV1GetNamespacedPodAttachParams) (ConnectCoreV1GetNamespacedPodAttachRes, error) {
 	res, err := c.sendConnectCoreV1GetNamespacedPodAttach(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -4253,7 +4246,6 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodAttach(ctx context.Context, pa
 // GET /api/v1/namespaces/{namespace}/pods/{name}/exec
 func (c *Client) ConnectCoreV1GetNamespacedPodExec(ctx context.Context, params ConnectCoreV1GetNamespacedPodExecParams) (ConnectCoreV1GetNamespacedPodExecRes, error) {
 	res, err := c.sendConnectCoreV1GetNamespacedPodExec(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -4503,7 +4495,6 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodExec(ctx context.Context, para
 // GET /api/v1/namespaces/{namespace}/pods/{name}/portforward
 func (c *Client) ConnectCoreV1GetNamespacedPodPortforward(ctx context.Context, params ConnectCoreV1GetNamespacedPodPortforwardParams) (ConnectCoreV1GetNamespacedPodPortforwardRes, error) {
 	res, err := c.sendConnectCoreV1GetNamespacedPodPortforward(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -4668,7 +4659,6 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodPortforward(ctx context.Contex
 // GET /api/v1/namespaces/{namespace}/pods/{name}/proxy
 func (c *Client) ConnectCoreV1GetNamespacedPodProxy(ctx context.Context, params ConnectCoreV1GetNamespacedPodProxyParams) (ConnectCoreV1GetNamespacedPodProxyRes, error) {
 	res, err := c.sendConnectCoreV1GetNamespacedPodProxy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -4833,7 +4823,6 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodProxy(ctx context.Context, par
 // GET /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
 func (c *Client) ConnectCoreV1GetNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1GetNamespacedPodProxyWithPathParams) (ConnectCoreV1GetNamespacedPodProxyWithPathRes, error) {
 	res, err := c.sendConnectCoreV1GetNamespacedPodProxyWithPath(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -5016,7 +5005,6 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodProxyWithPath(ctx context.Cont
 // GET /api/v1/namespaces/{namespace}/services/{name}/proxy
 func (c *Client) ConnectCoreV1GetNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1GetNamespacedServiceProxyParams) (ConnectCoreV1GetNamespacedServiceProxyRes, error) {
 	res, err := c.sendConnectCoreV1GetNamespacedServiceProxy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -5181,7 +5169,6 @@ func (c *Client) sendConnectCoreV1GetNamespacedServiceProxy(ctx context.Context,
 // GET /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
 func (c *Client) ConnectCoreV1GetNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1GetNamespacedServiceProxyWithPathParams) (ConnectCoreV1GetNamespacedServiceProxyWithPathRes, error) {
 	res, err := c.sendConnectCoreV1GetNamespacedServiceProxyWithPath(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -5364,7 +5351,6 @@ func (c *Client) sendConnectCoreV1GetNamespacedServiceProxyWithPath(ctx context.
 // GET /api/v1/nodes/{name}/proxy
 func (c *Client) ConnectCoreV1GetNodeProxy(ctx context.Context, params ConnectCoreV1GetNodeProxyParams) (ConnectCoreV1GetNodeProxyRes, error) {
 	res, err := c.sendConnectCoreV1GetNodeProxy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -5510,7 +5496,6 @@ func (c *Client) sendConnectCoreV1GetNodeProxy(ctx context.Context, params Conne
 // GET /api/v1/nodes/{name}/proxy/{path}
 func (c *Client) ConnectCoreV1GetNodeProxyWithPath(ctx context.Context, params ConnectCoreV1GetNodeProxyWithPathParams) (ConnectCoreV1GetNodeProxyWithPathRes, error) {
 	res, err := c.sendConnectCoreV1GetNodeProxyWithPath(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -5674,7 +5659,6 @@ func (c *Client) sendConnectCoreV1GetNodeProxyWithPath(ctx context.Context, para
 // HEAD /api/v1/namespaces/{namespace}/pods/{name}/proxy
 func (c *Client) ConnectCoreV1HeadNamespacedPodProxy(ctx context.Context, params ConnectCoreV1HeadNamespacedPodProxyParams) (ConnectCoreV1HeadNamespacedPodProxyRes, error) {
 	res, err := c.sendConnectCoreV1HeadNamespacedPodProxy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -5839,7 +5823,6 @@ func (c *Client) sendConnectCoreV1HeadNamespacedPodProxy(ctx context.Context, pa
 // HEAD /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
 func (c *Client) ConnectCoreV1HeadNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1HeadNamespacedPodProxyWithPathParams) (ConnectCoreV1HeadNamespacedPodProxyWithPathRes, error) {
 	res, err := c.sendConnectCoreV1HeadNamespacedPodProxyWithPath(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -6022,7 +6005,6 @@ func (c *Client) sendConnectCoreV1HeadNamespacedPodProxyWithPath(ctx context.Con
 // HEAD /api/v1/namespaces/{namespace}/services/{name}/proxy
 func (c *Client) ConnectCoreV1HeadNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1HeadNamespacedServiceProxyParams) (ConnectCoreV1HeadNamespacedServiceProxyRes, error) {
 	res, err := c.sendConnectCoreV1HeadNamespacedServiceProxy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -6187,7 +6169,6 @@ func (c *Client) sendConnectCoreV1HeadNamespacedServiceProxy(ctx context.Context
 // HEAD /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
 func (c *Client) ConnectCoreV1HeadNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1HeadNamespacedServiceProxyWithPathParams) (ConnectCoreV1HeadNamespacedServiceProxyWithPathRes, error) {
 	res, err := c.sendConnectCoreV1HeadNamespacedServiceProxyWithPath(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -6370,7 +6351,6 @@ func (c *Client) sendConnectCoreV1HeadNamespacedServiceProxyWithPath(ctx context
 // HEAD /api/v1/nodes/{name}/proxy
 func (c *Client) ConnectCoreV1HeadNodeProxy(ctx context.Context, params ConnectCoreV1HeadNodeProxyParams) (ConnectCoreV1HeadNodeProxyRes, error) {
 	res, err := c.sendConnectCoreV1HeadNodeProxy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -6516,7 +6496,6 @@ func (c *Client) sendConnectCoreV1HeadNodeProxy(ctx context.Context, params Conn
 // HEAD /api/v1/nodes/{name}/proxy/{path}
 func (c *Client) ConnectCoreV1HeadNodeProxyWithPath(ctx context.Context, params ConnectCoreV1HeadNodeProxyWithPathParams) (ConnectCoreV1HeadNodeProxyWithPathRes, error) {
 	res, err := c.sendConnectCoreV1HeadNodeProxyWithPath(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -6680,7 +6659,6 @@ func (c *Client) sendConnectCoreV1HeadNodeProxyWithPath(ctx context.Context, par
 // OPTIONS /api/v1/namespaces/{namespace}/pods/{name}/proxy
 func (c *Client) ConnectCoreV1OptionsNamespacedPodProxy(ctx context.Context, params ConnectCoreV1OptionsNamespacedPodProxyParams) (ConnectCoreV1OptionsNamespacedPodProxyRes, error) {
 	res, err := c.sendConnectCoreV1OptionsNamespacedPodProxy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -6845,7 +6823,6 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedPodProxy(ctx context.Context,
 // OPTIONS /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
 func (c *Client) ConnectCoreV1OptionsNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1OptionsNamespacedPodProxyWithPathParams) (ConnectCoreV1OptionsNamespacedPodProxyWithPathRes, error) {
 	res, err := c.sendConnectCoreV1OptionsNamespacedPodProxyWithPath(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -7028,7 +7005,6 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedPodProxyWithPath(ctx context.
 // OPTIONS /api/v1/namespaces/{namespace}/services/{name}/proxy
 func (c *Client) ConnectCoreV1OptionsNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1OptionsNamespacedServiceProxyParams) (ConnectCoreV1OptionsNamespacedServiceProxyRes, error) {
 	res, err := c.sendConnectCoreV1OptionsNamespacedServiceProxy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -7193,7 +7169,6 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedServiceProxy(ctx context.Cont
 // OPTIONS /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
 func (c *Client) ConnectCoreV1OptionsNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1OptionsNamespacedServiceProxyWithPathParams) (ConnectCoreV1OptionsNamespacedServiceProxyWithPathRes, error) {
 	res, err := c.sendConnectCoreV1OptionsNamespacedServiceProxyWithPath(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -7376,7 +7351,6 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedServiceProxyWithPath(ctx cont
 // OPTIONS /api/v1/nodes/{name}/proxy
 func (c *Client) ConnectCoreV1OptionsNodeProxy(ctx context.Context, params ConnectCoreV1OptionsNodeProxyParams) (ConnectCoreV1OptionsNodeProxyRes, error) {
 	res, err := c.sendConnectCoreV1OptionsNodeProxy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -7522,7 +7496,6 @@ func (c *Client) sendConnectCoreV1OptionsNodeProxy(ctx context.Context, params C
 // OPTIONS /api/v1/nodes/{name}/proxy/{path}
 func (c *Client) ConnectCoreV1OptionsNodeProxyWithPath(ctx context.Context, params ConnectCoreV1OptionsNodeProxyWithPathParams) (ConnectCoreV1OptionsNodeProxyWithPathRes, error) {
 	res, err := c.sendConnectCoreV1OptionsNodeProxyWithPath(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -7686,7 +7659,6 @@ func (c *Client) sendConnectCoreV1OptionsNodeProxyWithPath(ctx context.Context, 
 // PATCH /api/v1/namespaces/{namespace}/pods/{name}/proxy
 func (c *Client) ConnectCoreV1PatchNamespacedPodProxy(ctx context.Context, params ConnectCoreV1PatchNamespacedPodProxyParams) (ConnectCoreV1PatchNamespacedPodProxyRes, error) {
 	res, err := c.sendConnectCoreV1PatchNamespacedPodProxy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -7851,7 +7823,6 @@ func (c *Client) sendConnectCoreV1PatchNamespacedPodProxy(ctx context.Context, p
 // PATCH /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
 func (c *Client) ConnectCoreV1PatchNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1PatchNamespacedPodProxyWithPathParams) (ConnectCoreV1PatchNamespacedPodProxyWithPathRes, error) {
 	res, err := c.sendConnectCoreV1PatchNamespacedPodProxyWithPath(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -8034,7 +8005,6 @@ func (c *Client) sendConnectCoreV1PatchNamespacedPodProxyWithPath(ctx context.Co
 // PATCH /api/v1/namespaces/{namespace}/services/{name}/proxy
 func (c *Client) ConnectCoreV1PatchNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1PatchNamespacedServiceProxyParams) (ConnectCoreV1PatchNamespacedServiceProxyRes, error) {
 	res, err := c.sendConnectCoreV1PatchNamespacedServiceProxy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -8199,7 +8169,6 @@ func (c *Client) sendConnectCoreV1PatchNamespacedServiceProxy(ctx context.Contex
 // PATCH /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
 func (c *Client) ConnectCoreV1PatchNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1PatchNamespacedServiceProxyWithPathParams) (ConnectCoreV1PatchNamespacedServiceProxyWithPathRes, error) {
 	res, err := c.sendConnectCoreV1PatchNamespacedServiceProxyWithPath(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -8382,7 +8351,6 @@ func (c *Client) sendConnectCoreV1PatchNamespacedServiceProxyWithPath(ctx contex
 // PATCH /api/v1/nodes/{name}/proxy
 func (c *Client) ConnectCoreV1PatchNodeProxy(ctx context.Context, params ConnectCoreV1PatchNodeProxyParams) (ConnectCoreV1PatchNodeProxyRes, error) {
 	res, err := c.sendConnectCoreV1PatchNodeProxy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -8528,7 +8496,6 @@ func (c *Client) sendConnectCoreV1PatchNodeProxy(ctx context.Context, params Con
 // PATCH /api/v1/nodes/{name}/proxy/{path}
 func (c *Client) ConnectCoreV1PatchNodeProxyWithPath(ctx context.Context, params ConnectCoreV1PatchNodeProxyWithPathParams) (ConnectCoreV1PatchNodeProxyWithPathRes, error) {
 	res, err := c.sendConnectCoreV1PatchNodeProxyWithPath(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -8692,7 +8659,6 @@ func (c *Client) sendConnectCoreV1PatchNodeProxyWithPath(ctx context.Context, pa
 // POST /api/v1/namespaces/{namespace}/pods/{name}/attach
 func (c *Client) ConnectCoreV1PostNamespacedPodAttach(ctx context.Context, params ConnectCoreV1PostNamespacedPodAttachParams) (ConnectCoreV1PostNamespacedPodAttachRes, error) {
 	res, err := c.sendConnectCoreV1PostNamespacedPodAttach(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -8925,7 +8891,6 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodAttach(ctx context.Context, p
 // POST /api/v1/namespaces/{namespace}/pods/{name}/exec
 func (c *Client) ConnectCoreV1PostNamespacedPodExec(ctx context.Context, params ConnectCoreV1PostNamespacedPodExecParams) (ConnectCoreV1PostNamespacedPodExecRes, error) {
 	res, err := c.sendConnectCoreV1PostNamespacedPodExec(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -9175,7 +9140,6 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodExec(ctx context.Context, par
 // POST /api/v1/namespaces/{namespace}/pods/{name}/portforward
 func (c *Client) ConnectCoreV1PostNamespacedPodPortforward(ctx context.Context, params ConnectCoreV1PostNamespacedPodPortforwardParams) (ConnectCoreV1PostNamespacedPodPortforwardRes, error) {
 	res, err := c.sendConnectCoreV1PostNamespacedPodPortforward(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -9340,7 +9304,6 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodPortforward(ctx context.Conte
 // POST /api/v1/namespaces/{namespace}/pods/{name}/proxy
 func (c *Client) ConnectCoreV1PostNamespacedPodProxy(ctx context.Context, params ConnectCoreV1PostNamespacedPodProxyParams) (ConnectCoreV1PostNamespacedPodProxyRes, error) {
 	res, err := c.sendConnectCoreV1PostNamespacedPodProxy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -9505,7 +9468,6 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodProxy(ctx context.Context, pa
 // POST /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
 func (c *Client) ConnectCoreV1PostNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1PostNamespacedPodProxyWithPathParams) (ConnectCoreV1PostNamespacedPodProxyWithPathRes, error) {
 	res, err := c.sendConnectCoreV1PostNamespacedPodProxyWithPath(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -9688,7 +9650,6 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodProxyWithPath(ctx context.Con
 // POST /api/v1/namespaces/{namespace}/services/{name}/proxy
 func (c *Client) ConnectCoreV1PostNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1PostNamespacedServiceProxyParams) (ConnectCoreV1PostNamespacedServiceProxyRes, error) {
 	res, err := c.sendConnectCoreV1PostNamespacedServiceProxy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -9853,7 +9814,6 @@ func (c *Client) sendConnectCoreV1PostNamespacedServiceProxy(ctx context.Context
 // POST /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
 func (c *Client) ConnectCoreV1PostNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1PostNamespacedServiceProxyWithPathParams) (ConnectCoreV1PostNamespacedServiceProxyWithPathRes, error) {
 	res, err := c.sendConnectCoreV1PostNamespacedServiceProxyWithPath(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -10036,7 +9996,6 @@ func (c *Client) sendConnectCoreV1PostNamespacedServiceProxyWithPath(ctx context
 // POST /api/v1/nodes/{name}/proxy
 func (c *Client) ConnectCoreV1PostNodeProxy(ctx context.Context, params ConnectCoreV1PostNodeProxyParams) (ConnectCoreV1PostNodeProxyRes, error) {
 	res, err := c.sendConnectCoreV1PostNodeProxy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -10182,7 +10141,6 @@ func (c *Client) sendConnectCoreV1PostNodeProxy(ctx context.Context, params Conn
 // POST /api/v1/nodes/{name}/proxy/{path}
 func (c *Client) ConnectCoreV1PostNodeProxyWithPath(ctx context.Context, params ConnectCoreV1PostNodeProxyWithPathParams) (ConnectCoreV1PostNodeProxyWithPathRes, error) {
 	res, err := c.sendConnectCoreV1PostNodeProxyWithPath(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -10346,7 +10304,6 @@ func (c *Client) sendConnectCoreV1PostNodeProxyWithPath(ctx context.Context, par
 // PUT /api/v1/namespaces/{namespace}/pods/{name}/proxy
 func (c *Client) ConnectCoreV1PutNamespacedPodProxy(ctx context.Context, params ConnectCoreV1PutNamespacedPodProxyParams) (ConnectCoreV1PutNamespacedPodProxyRes, error) {
 	res, err := c.sendConnectCoreV1PutNamespacedPodProxy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -10511,7 +10468,6 @@ func (c *Client) sendConnectCoreV1PutNamespacedPodProxy(ctx context.Context, par
 // PUT /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
 func (c *Client) ConnectCoreV1PutNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1PutNamespacedPodProxyWithPathParams) (ConnectCoreV1PutNamespacedPodProxyWithPathRes, error) {
 	res, err := c.sendConnectCoreV1PutNamespacedPodProxyWithPath(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -10694,7 +10650,6 @@ func (c *Client) sendConnectCoreV1PutNamespacedPodProxyWithPath(ctx context.Cont
 // PUT /api/v1/namespaces/{namespace}/services/{name}/proxy
 func (c *Client) ConnectCoreV1PutNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1PutNamespacedServiceProxyParams) (ConnectCoreV1PutNamespacedServiceProxyRes, error) {
 	res, err := c.sendConnectCoreV1PutNamespacedServiceProxy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -10859,7 +10814,6 @@ func (c *Client) sendConnectCoreV1PutNamespacedServiceProxy(ctx context.Context,
 // PUT /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
 func (c *Client) ConnectCoreV1PutNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1PutNamespacedServiceProxyWithPathParams) (ConnectCoreV1PutNamespacedServiceProxyWithPathRes, error) {
 	res, err := c.sendConnectCoreV1PutNamespacedServiceProxyWithPath(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -11042,7 +10996,6 @@ func (c *Client) sendConnectCoreV1PutNamespacedServiceProxyWithPath(ctx context.
 // PUT /api/v1/nodes/{name}/proxy
 func (c *Client) ConnectCoreV1PutNodeProxy(ctx context.Context, params ConnectCoreV1PutNodeProxyParams) (ConnectCoreV1PutNodeProxyRes, error) {
 	res, err := c.sendConnectCoreV1PutNodeProxy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -11188,7 +11141,6 @@ func (c *Client) sendConnectCoreV1PutNodeProxy(ctx context.Context, params Conne
 // PUT /api/v1/nodes/{name}/proxy/{path}
 func (c *Client) ConnectCoreV1PutNodeProxyWithPath(ctx context.Context, params ConnectCoreV1PutNodeProxyWithPathParams) (ConnectCoreV1PutNodeProxyWithPathRes, error) {
 	res, err := c.sendConnectCoreV1PutNodeProxyWithPath(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -11352,7 +11304,6 @@ func (c *Client) sendConnectCoreV1PutNodeProxyWithPath(ctx context.Context, para
 // GET /apis/
 func (c *Client) GetAPIVersions(ctx context.Context) (GetAPIVersionsRes, error) {
 	res, err := c.sendGetAPIVersions(ctx)
-	_ = res
 	return res, err
 }
 
@@ -11458,7 +11409,6 @@ func (c *Client) sendGetAPIVersions(ctx context.Context) (res GetAPIVersionsRes,
 // GET /apis/admissionregistration.k8s.io/
 func (c *Client) GetAdmissionregistrationAPIGroup(ctx context.Context) (GetAdmissionregistrationAPIGroupRes, error) {
 	res, err := c.sendGetAdmissionregistrationAPIGroup(ctx)
-	_ = res
 	return res, err
 }
 
@@ -11564,7 +11514,6 @@ func (c *Client) sendGetAdmissionregistrationAPIGroup(ctx context.Context) (res 
 // GET /apis/admissionregistration.k8s.io/v1/
 func (c *Client) GetAdmissionregistrationV1APIResources(ctx context.Context) (GetAdmissionregistrationV1APIResourcesRes, error) {
 	res, err := c.sendGetAdmissionregistrationV1APIResources(ctx)
-	_ = res
 	return res, err
 }
 
@@ -11670,7 +11619,6 @@ func (c *Client) sendGetAdmissionregistrationV1APIResources(ctx context.Context)
 // GET /apis/apiextensions.k8s.io/
 func (c *Client) GetApiextensionsAPIGroup(ctx context.Context) (GetApiextensionsAPIGroupRes, error) {
 	res, err := c.sendGetApiextensionsAPIGroup(ctx)
-	_ = res
 	return res, err
 }
 
@@ -11776,7 +11724,6 @@ func (c *Client) sendGetApiextensionsAPIGroup(ctx context.Context) (res GetApiex
 // GET /apis/apiextensions.k8s.io/v1/
 func (c *Client) GetApiextensionsV1APIResources(ctx context.Context) (GetApiextensionsV1APIResourcesRes, error) {
 	res, err := c.sendGetApiextensionsV1APIResources(ctx)
-	_ = res
 	return res, err
 }
 
@@ -11882,7 +11829,6 @@ func (c *Client) sendGetApiextensionsV1APIResources(ctx context.Context) (res Ge
 // GET /apis/apiregistration.k8s.io/
 func (c *Client) GetApiregistrationAPIGroup(ctx context.Context) (GetApiregistrationAPIGroupRes, error) {
 	res, err := c.sendGetApiregistrationAPIGroup(ctx)
-	_ = res
 	return res, err
 }
 
@@ -11988,7 +11934,6 @@ func (c *Client) sendGetApiregistrationAPIGroup(ctx context.Context) (res GetApi
 // GET /apis/apiregistration.k8s.io/v1/
 func (c *Client) GetApiregistrationV1APIResources(ctx context.Context) (GetApiregistrationV1APIResourcesRes, error) {
 	res, err := c.sendGetApiregistrationV1APIResources(ctx)
-	_ = res
 	return res, err
 }
 
@@ -12094,7 +12039,6 @@ func (c *Client) sendGetApiregistrationV1APIResources(ctx context.Context) (res 
 // GET /apis/apps/
 func (c *Client) GetAppsAPIGroup(ctx context.Context) (GetAppsAPIGroupRes, error) {
 	res, err := c.sendGetAppsAPIGroup(ctx)
-	_ = res
 	return res, err
 }
 
@@ -12200,7 +12144,6 @@ func (c *Client) sendGetAppsAPIGroup(ctx context.Context) (res GetAppsAPIGroupRe
 // GET /apis/apps/v1/
 func (c *Client) GetAppsV1APIResources(ctx context.Context) (GetAppsV1APIResourcesRes, error) {
 	res, err := c.sendGetAppsV1APIResources(ctx)
-	_ = res
 	return res, err
 }
 
@@ -12306,7 +12249,6 @@ func (c *Client) sendGetAppsV1APIResources(ctx context.Context) (res GetAppsV1AP
 // GET /apis/authentication.k8s.io/
 func (c *Client) GetAuthenticationAPIGroup(ctx context.Context) (GetAuthenticationAPIGroupRes, error) {
 	res, err := c.sendGetAuthenticationAPIGroup(ctx)
-	_ = res
 	return res, err
 }
 
@@ -12412,7 +12354,6 @@ func (c *Client) sendGetAuthenticationAPIGroup(ctx context.Context) (res GetAuth
 // GET /apis/authentication.k8s.io/v1/
 func (c *Client) GetAuthenticationV1APIResources(ctx context.Context) (GetAuthenticationV1APIResourcesRes, error) {
 	res, err := c.sendGetAuthenticationV1APIResources(ctx)
-	_ = res
 	return res, err
 }
 
@@ -12518,7 +12459,6 @@ func (c *Client) sendGetAuthenticationV1APIResources(ctx context.Context) (res G
 // GET /apis/authorization.k8s.io/
 func (c *Client) GetAuthorizationAPIGroup(ctx context.Context) (GetAuthorizationAPIGroupRes, error) {
 	res, err := c.sendGetAuthorizationAPIGroup(ctx)
-	_ = res
 	return res, err
 }
 
@@ -12624,7 +12564,6 @@ func (c *Client) sendGetAuthorizationAPIGroup(ctx context.Context) (res GetAutho
 // GET /apis/authorization.k8s.io/v1/
 func (c *Client) GetAuthorizationV1APIResources(ctx context.Context) (GetAuthorizationV1APIResourcesRes, error) {
 	res, err := c.sendGetAuthorizationV1APIResources(ctx)
-	_ = res
 	return res, err
 }
 
@@ -12730,7 +12669,6 @@ func (c *Client) sendGetAuthorizationV1APIResources(ctx context.Context) (res Ge
 // GET /apis/autoscaling/
 func (c *Client) GetAutoscalingAPIGroup(ctx context.Context) (GetAutoscalingAPIGroupRes, error) {
 	res, err := c.sendGetAutoscalingAPIGroup(ctx)
-	_ = res
 	return res, err
 }
 
@@ -12836,7 +12774,6 @@ func (c *Client) sendGetAutoscalingAPIGroup(ctx context.Context) (res GetAutosca
 // GET /apis/autoscaling/v1/
 func (c *Client) GetAutoscalingV1APIResources(ctx context.Context) (GetAutoscalingV1APIResourcesRes, error) {
 	res, err := c.sendGetAutoscalingV1APIResources(ctx)
-	_ = res
 	return res, err
 }
 
@@ -12942,7 +12879,6 @@ func (c *Client) sendGetAutoscalingV1APIResources(ctx context.Context) (res GetA
 // GET /apis/autoscaling/v2beta1/
 func (c *Client) GetAutoscalingV2beta1APIResources(ctx context.Context) (GetAutoscalingV2beta1APIResourcesRes, error) {
 	res, err := c.sendGetAutoscalingV2beta1APIResources(ctx)
-	_ = res
 	return res, err
 }
 
@@ -13048,7 +12984,6 @@ func (c *Client) sendGetAutoscalingV2beta1APIResources(ctx context.Context) (res
 // GET /apis/autoscaling/v2beta2/
 func (c *Client) GetAutoscalingV2beta2APIResources(ctx context.Context) (GetAutoscalingV2beta2APIResourcesRes, error) {
 	res, err := c.sendGetAutoscalingV2beta2APIResources(ctx)
-	_ = res
 	return res, err
 }
 
@@ -13154,7 +13089,6 @@ func (c *Client) sendGetAutoscalingV2beta2APIResources(ctx context.Context) (res
 // GET /apis/batch/
 func (c *Client) GetBatchAPIGroup(ctx context.Context) (GetBatchAPIGroupRes, error) {
 	res, err := c.sendGetBatchAPIGroup(ctx)
-	_ = res
 	return res, err
 }
 
@@ -13260,7 +13194,6 @@ func (c *Client) sendGetBatchAPIGroup(ctx context.Context) (res GetBatchAPIGroup
 // GET /apis/batch/v1/
 func (c *Client) GetBatchV1APIResources(ctx context.Context) (GetBatchV1APIResourcesRes, error) {
 	res, err := c.sendGetBatchV1APIResources(ctx)
-	_ = res
 	return res, err
 }
 
@@ -13366,7 +13299,6 @@ func (c *Client) sendGetBatchV1APIResources(ctx context.Context) (res GetBatchV1
 // GET /apis/batch/v1beta1/
 func (c *Client) GetBatchV1beta1APIResources(ctx context.Context) (GetBatchV1beta1APIResourcesRes, error) {
 	res, err := c.sendGetBatchV1beta1APIResources(ctx)
-	_ = res
 	return res, err
 }
 
@@ -13472,7 +13404,6 @@ func (c *Client) sendGetBatchV1beta1APIResources(ctx context.Context) (res GetBa
 // GET /apis/certificates.k8s.io/
 func (c *Client) GetCertificatesAPIGroup(ctx context.Context) (GetCertificatesAPIGroupRes, error) {
 	res, err := c.sendGetCertificatesAPIGroup(ctx)
-	_ = res
 	return res, err
 }
 
@@ -13578,7 +13509,6 @@ func (c *Client) sendGetCertificatesAPIGroup(ctx context.Context) (res GetCertif
 // GET /apis/certificates.k8s.io/v1/
 func (c *Client) GetCertificatesV1APIResources(ctx context.Context) (GetCertificatesV1APIResourcesRes, error) {
 	res, err := c.sendGetCertificatesV1APIResources(ctx)
-	_ = res
 	return res, err
 }
 
@@ -13684,7 +13614,6 @@ func (c *Client) sendGetCertificatesV1APIResources(ctx context.Context) (res Get
 // GET /version/
 func (c *Client) GetCodeVersion(ctx context.Context) (GetCodeVersionRes, error) {
 	res, err := c.sendGetCodeVersion(ctx)
-	_ = res
 	return res, err
 }
 
@@ -13790,7 +13719,6 @@ func (c *Client) sendGetCodeVersion(ctx context.Context) (res GetCodeVersionRes,
 // GET /apis/coordination.k8s.io/
 func (c *Client) GetCoordinationAPIGroup(ctx context.Context) (GetCoordinationAPIGroupRes, error) {
 	res, err := c.sendGetCoordinationAPIGroup(ctx)
-	_ = res
 	return res, err
 }
 
@@ -13896,7 +13824,6 @@ func (c *Client) sendGetCoordinationAPIGroup(ctx context.Context) (res GetCoordi
 // GET /apis/coordination.k8s.io/v1/
 func (c *Client) GetCoordinationV1APIResources(ctx context.Context) (GetCoordinationV1APIResourcesRes, error) {
 	res, err := c.sendGetCoordinationV1APIResources(ctx)
-	_ = res
 	return res, err
 }
 
@@ -14002,7 +13929,6 @@ func (c *Client) sendGetCoordinationV1APIResources(ctx context.Context) (res Get
 // GET /api/
 func (c *Client) GetCoreAPIVersions(ctx context.Context) (GetCoreAPIVersionsRes, error) {
 	res, err := c.sendGetCoreAPIVersions(ctx)
-	_ = res
 	return res, err
 }
 
@@ -14108,7 +14034,6 @@ func (c *Client) sendGetCoreAPIVersions(ctx context.Context) (res GetCoreAPIVers
 // GET /api/v1/
 func (c *Client) GetCoreV1APIResources(ctx context.Context) (GetCoreV1APIResourcesRes, error) {
 	res, err := c.sendGetCoreV1APIResources(ctx)
-	_ = res
 	return res, err
 }
 
@@ -14214,7 +14139,6 @@ func (c *Client) sendGetCoreV1APIResources(ctx context.Context) (res GetCoreV1AP
 // GET /apis/discovery.k8s.io/
 func (c *Client) GetDiscoveryAPIGroup(ctx context.Context) (GetDiscoveryAPIGroupRes, error) {
 	res, err := c.sendGetDiscoveryAPIGroup(ctx)
-	_ = res
 	return res, err
 }
 
@@ -14320,7 +14244,6 @@ func (c *Client) sendGetDiscoveryAPIGroup(ctx context.Context) (res GetDiscovery
 // GET /apis/discovery.k8s.io/v1/
 func (c *Client) GetDiscoveryV1APIResources(ctx context.Context) (GetDiscoveryV1APIResourcesRes, error) {
 	res, err := c.sendGetDiscoveryV1APIResources(ctx)
-	_ = res
 	return res, err
 }
 
@@ -14426,7 +14349,6 @@ func (c *Client) sendGetDiscoveryV1APIResources(ctx context.Context) (res GetDis
 // GET /apis/discovery.k8s.io/v1beta1/
 func (c *Client) GetDiscoveryV1beta1APIResources(ctx context.Context) (GetDiscoveryV1beta1APIResourcesRes, error) {
 	res, err := c.sendGetDiscoveryV1beta1APIResources(ctx)
-	_ = res
 	return res, err
 }
 
@@ -14532,7 +14454,6 @@ func (c *Client) sendGetDiscoveryV1beta1APIResources(ctx context.Context) (res G
 // GET /apis/events.k8s.io/
 func (c *Client) GetEventsAPIGroup(ctx context.Context) (GetEventsAPIGroupRes, error) {
 	res, err := c.sendGetEventsAPIGroup(ctx)
-	_ = res
 	return res, err
 }
 
@@ -14638,7 +14559,6 @@ func (c *Client) sendGetEventsAPIGroup(ctx context.Context) (res GetEventsAPIGro
 // GET /apis/events.k8s.io/v1/
 func (c *Client) GetEventsV1APIResources(ctx context.Context) (GetEventsV1APIResourcesRes, error) {
 	res, err := c.sendGetEventsV1APIResources(ctx)
-	_ = res
 	return res, err
 }
 
@@ -14744,7 +14664,6 @@ func (c *Client) sendGetEventsV1APIResources(ctx context.Context) (res GetEvents
 // GET /apis/events.k8s.io/v1beta1/
 func (c *Client) GetEventsV1beta1APIResources(ctx context.Context) (GetEventsV1beta1APIResourcesRes, error) {
 	res, err := c.sendGetEventsV1beta1APIResources(ctx)
-	_ = res
 	return res, err
 }
 
@@ -14850,7 +14769,6 @@ func (c *Client) sendGetEventsV1beta1APIResources(ctx context.Context) (res GetE
 // GET /apis/flowcontrol.apiserver.k8s.io/
 func (c *Client) GetFlowcontrolApiserverAPIGroup(ctx context.Context) (GetFlowcontrolApiserverAPIGroupRes, error) {
 	res, err := c.sendGetFlowcontrolApiserverAPIGroup(ctx)
-	_ = res
 	return res, err
 }
 
@@ -14956,7 +14874,6 @@ func (c *Client) sendGetFlowcontrolApiserverAPIGroup(ctx context.Context) (res G
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/
 func (c *Client) GetFlowcontrolApiserverV1beta1APIResources(ctx context.Context) (GetFlowcontrolApiserverV1beta1APIResourcesRes, error) {
 	res, err := c.sendGetFlowcontrolApiserverV1beta1APIResources(ctx)
-	_ = res
 	return res, err
 }
 
@@ -15062,7 +14979,6 @@ func (c *Client) sendGetFlowcontrolApiserverV1beta1APIResources(ctx context.Cont
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/
 func (c *Client) GetFlowcontrolApiserverV1beta2APIResources(ctx context.Context) (GetFlowcontrolApiserverV1beta2APIResourcesRes, error) {
 	res, err := c.sendGetFlowcontrolApiserverV1beta2APIResources(ctx)
-	_ = res
 	return res, err
 }
 
@@ -15168,7 +15084,6 @@ func (c *Client) sendGetFlowcontrolApiserverV1beta2APIResources(ctx context.Cont
 // GET /apis/internal.apiserver.k8s.io/
 func (c *Client) GetInternalApiserverAPIGroup(ctx context.Context) (GetInternalApiserverAPIGroupRes, error) {
 	res, err := c.sendGetInternalApiserverAPIGroup(ctx)
-	_ = res
 	return res, err
 }
 
@@ -15274,7 +15189,6 @@ func (c *Client) sendGetInternalApiserverAPIGroup(ctx context.Context) (res GetI
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/
 func (c *Client) GetInternalApiserverV1alpha1APIResources(ctx context.Context) (GetInternalApiserverV1alpha1APIResourcesRes, error) {
 	res, err := c.sendGetInternalApiserverV1alpha1APIResources(ctx)
-	_ = res
 	return res, err
 }
 
@@ -15380,7 +15294,6 @@ func (c *Client) sendGetInternalApiserverV1alpha1APIResources(ctx context.Contex
 // GET /apis/networking.k8s.io/
 func (c *Client) GetNetworkingAPIGroup(ctx context.Context) (GetNetworkingAPIGroupRes, error) {
 	res, err := c.sendGetNetworkingAPIGroup(ctx)
-	_ = res
 	return res, err
 }
 
@@ -15486,7 +15399,6 @@ func (c *Client) sendGetNetworkingAPIGroup(ctx context.Context) (res GetNetworki
 // GET /apis/networking.k8s.io/v1/
 func (c *Client) GetNetworkingV1APIResources(ctx context.Context) (GetNetworkingV1APIResourcesRes, error) {
 	res, err := c.sendGetNetworkingV1APIResources(ctx)
-	_ = res
 	return res, err
 }
 
@@ -15592,7 +15504,6 @@ func (c *Client) sendGetNetworkingV1APIResources(ctx context.Context) (res GetNe
 // GET /apis/node.k8s.io/
 func (c *Client) GetNodeAPIGroup(ctx context.Context) (GetNodeAPIGroupRes, error) {
 	res, err := c.sendGetNodeAPIGroup(ctx)
-	_ = res
 	return res, err
 }
 
@@ -15698,7 +15609,6 @@ func (c *Client) sendGetNodeAPIGroup(ctx context.Context) (res GetNodeAPIGroupRe
 // GET /apis/node.k8s.io/v1/
 func (c *Client) GetNodeV1APIResources(ctx context.Context) (GetNodeV1APIResourcesRes, error) {
 	res, err := c.sendGetNodeV1APIResources(ctx)
-	_ = res
 	return res, err
 }
 
@@ -15804,7 +15714,6 @@ func (c *Client) sendGetNodeV1APIResources(ctx context.Context) (res GetNodeV1AP
 // GET /apis/node.k8s.io/v1alpha1/
 func (c *Client) GetNodeV1alpha1APIResources(ctx context.Context) (GetNodeV1alpha1APIResourcesRes, error) {
 	res, err := c.sendGetNodeV1alpha1APIResources(ctx)
-	_ = res
 	return res, err
 }
 
@@ -15910,7 +15819,6 @@ func (c *Client) sendGetNodeV1alpha1APIResources(ctx context.Context) (res GetNo
 // GET /apis/node.k8s.io/v1beta1/
 func (c *Client) GetNodeV1beta1APIResources(ctx context.Context) (GetNodeV1beta1APIResourcesRes, error) {
 	res, err := c.sendGetNodeV1beta1APIResources(ctx)
-	_ = res
 	return res, err
 }
 
@@ -16016,7 +15924,6 @@ func (c *Client) sendGetNodeV1beta1APIResources(ctx context.Context) (res GetNod
 // GET /apis/policy/
 func (c *Client) GetPolicyAPIGroup(ctx context.Context) (GetPolicyAPIGroupRes, error) {
 	res, err := c.sendGetPolicyAPIGroup(ctx)
-	_ = res
 	return res, err
 }
 
@@ -16122,7 +16029,6 @@ func (c *Client) sendGetPolicyAPIGroup(ctx context.Context) (res GetPolicyAPIGro
 // GET /apis/policy/v1/
 func (c *Client) GetPolicyV1APIResources(ctx context.Context) (GetPolicyV1APIResourcesRes, error) {
 	res, err := c.sendGetPolicyV1APIResources(ctx)
-	_ = res
 	return res, err
 }
 
@@ -16228,7 +16134,6 @@ func (c *Client) sendGetPolicyV1APIResources(ctx context.Context) (res GetPolicy
 // GET /apis/policy/v1beta1/
 func (c *Client) GetPolicyV1beta1APIResources(ctx context.Context) (GetPolicyV1beta1APIResourcesRes, error) {
 	res, err := c.sendGetPolicyV1beta1APIResources(ctx)
-	_ = res
 	return res, err
 }
 
@@ -16334,7 +16239,6 @@ func (c *Client) sendGetPolicyV1beta1APIResources(ctx context.Context) (res GetP
 // GET /apis/rbac.authorization.k8s.io/
 func (c *Client) GetRbacAuthorizationAPIGroup(ctx context.Context) (GetRbacAuthorizationAPIGroupRes, error) {
 	res, err := c.sendGetRbacAuthorizationAPIGroup(ctx)
-	_ = res
 	return res, err
 }
 
@@ -16440,7 +16344,6 @@ func (c *Client) sendGetRbacAuthorizationAPIGroup(ctx context.Context) (res GetR
 // GET /apis/rbac.authorization.k8s.io/v1/
 func (c *Client) GetRbacAuthorizationV1APIResources(ctx context.Context) (GetRbacAuthorizationV1APIResourcesRes, error) {
 	res, err := c.sendGetRbacAuthorizationV1APIResources(ctx)
-	_ = res
 	return res, err
 }
 
@@ -16546,7 +16449,6 @@ func (c *Client) sendGetRbacAuthorizationV1APIResources(ctx context.Context) (re
 // GET /apis/scheduling.k8s.io/
 func (c *Client) GetSchedulingAPIGroup(ctx context.Context) (GetSchedulingAPIGroupRes, error) {
 	res, err := c.sendGetSchedulingAPIGroup(ctx)
-	_ = res
 	return res, err
 }
 
@@ -16652,7 +16554,6 @@ func (c *Client) sendGetSchedulingAPIGroup(ctx context.Context) (res GetScheduli
 // GET /apis/scheduling.k8s.io/v1/
 func (c *Client) GetSchedulingV1APIResources(ctx context.Context) (GetSchedulingV1APIResourcesRes, error) {
 	res, err := c.sendGetSchedulingV1APIResources(ctx)
-	_ = res
 	return res, err
 }
 
@@ -16758,7 +16659,6 @@ func (c *Client) sendGetSchedulingV1APIResources(ctx context.Context) (res GetSc
 // GET /.well-known/openid-configuration/
 func (c *Client) GetServiceAccountIssuerOpenIDConfiguration(ctx context.Context) (GetServiceAccountIssuerOpenIDConfigurationRes, error) {
 	res, err := c.sendGetServiceAccountIssuerOpenIDConfiguration(ctx)
-	_ = res
 	return res, err
 }
 
@@ -16864,7 +16764,6 @@ func (c *Client) sendGetServiceAccountIssuerOpenIDConfiguration(ctx context.Cont
 // GET /openid/v1/jwks/
 func (c *Client) GetServiceAccountIssuerOpenIDKeyset(ctx context.Context) (GetServiceAccountIssuerOpenIDKeysetRes, error) {
 	res, err := c.sendGetServiceAccountIssuerOpenIDKeyset(ctx)
-	_ = res
 	return res, err
 }
 
@@ -16970,7 +16869,6 @@ func (c *Client) sendGetServiceAccountIssuerOpenIDKeyset(ctx context.Context) (r
 // GET /apis/storage.k8s.io/
 func (c *Client) GetStorageAPIGroup(ctx context.Context) (GetStorageAPIGroupRes, error) {
 	res, err := c.sendGetStorageAPIGroup(ctx)
-	_ = res
 	return res, err
 }
 
@@ -17076,7 +16974,6 @@ func (c *Client) sendGetStorageAPIGroup(ctx context.Context) (res GetStorageAPIG
 // GET /apis/storage.k8s.io/v1/
 func (c *Client) GetStorageV1APIResources(ctx context.Context) (GetStorageV1APIResourcesRes, error) {
 	res, err := c.sendGetStorageV1APIResources(ctx)
-	_ = res
 	return res, err
 }
 
@@ -17182,7 +17079,6 @@ func (c *Client) sendGetStorageV1APIResources(ctx context.Context) (res GetStora
 // GET /apis/storage.k8s.io/v1alpha1/
 func (c *Client) GetStorageV1alpha1APIResources(ctx context.Context) (GetStorageV1alpha1APIResourcesRes, error) {
 	res, err := c.sendGetStorageV1alpha1APIResources(ctx)
-	_ = res
 	return res, err
 }
 
@@ -17288,7 +17184,6 @@ func (c *Client) sendGetStorageV1alpha1APIResources(ctx context.Context) (res Ge
 // GET /apis/storage.k8s.io/v1beta1/
 func (c *Client) GetStorageV1beta1APIResources(ctx context.Context) (GetStorageV1beta1APIResourcesRes, error) {
 	res, err := c.sendGetStorageV1beta1APIResources(ctx)
-	_ = res
 	return res, err
 }
 
@@ -17394,7 +17289,6 @@ func (c *Client) sendGetStorageV1beta1APIResources(ctx context.Context) (res Get
 // GET /apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations
 func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, params ListAdmissionregistrationV1MutatingWebhookConfigurationParams) (ListAdmissionregistrationV1MutatingWebhookConfigurationRes, error) {
 	res, err := c.sendListAdmissionregistrationV1MutatingWebhookConfiguration(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -17674,7 +17568,6 @@ func (c *Client) sendListAdmissionregistrationV1MutatingWebhookConfiguration(ctx
 // GET /apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations
 func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, params ListAdmissionregistrationV1ValidatingWebhookConfigurationParams) (ListAdmissionregistrationV1ValidatingWebhookConfigurationRes, error) {
 	res, err := c.sendListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -17954,7 +17847,6 @@ func (c *Client) sendListAdmissionregistrationV1ValidatingWebhookConfiguration(c
 // GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions
 func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context, params ListApiextensionsV1CustomResourceDefinitionParams) (ListApiextensionsV1CustomResourceDefinitionRes, error) {
 	res, err := c.sendListApiextensionsV1CustomResourceDefinition(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -18234,7 +18126,6 @@ func (c *Client) sendListApiextensionsV1CustomResourceDefinition(ctx context.Con
 // GET /apis/apiregistration.k8s.io/v1/apiservices
 func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params ListApiregistrationV1APIServiceParams) (ListApiregistrationV1APIServiceRes, error) {
 	res, err := c.sendListApiregistrationV1APIService(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -18514,7 +18405,6 @@ func (c *Client) sendListApiregistrationV1APIService(ctx context.Context, params
 // GET /apis/apps/v1/controllerrevisions
 func (c *Client) ListAppsV1ControllerRevisionForAllNamespaces(ctx context.Context, params ListAppsV1ControllerRevisionForAllNamespacesParams) (ListAppsV1ControllerRevisionForAllNamespacesRes, error) {
 	res, err := c.sendListAppsV1ControllerRevisionForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -18794,7 +18684,6 @@ func (c *Client) sendListAppsV1ControllerRevisionForAllNamespaces(ctx context.Co
 // GET /apis/apps/v1/daemonsets
 func (c *Client) ListAppsV1DaemonSetForAllNamespaces(ctx context.Context, params ListAppsV1DaemonSetForAllNamespacesParams) (ListAppsV1DaemonSetForAllNamespacesRes, error) {
 	res, err := c.sendListAppsV1DaemonSetForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -19074,7 +18963,6 @@ func (c *Client) sendListAppsV1DaemonSetForAllNamespaces(ctx context.Context, pa
 // GET /apis/apps/v1/deployments
 func (c *Client) ListAppsV1DeploymentForAllNamespaces(ctx context.Context, params ListAppsV1DeploymentForAllNamespacesParams) (ListAppsV1DeploymentForAllNamespacesRes, error) {
 	res, err := c.sendListAppsV1DeploymentForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -19354,7 +19242,6 @@ func (c *Client) sendListAppsV1DeploymentForAllNamespaces(ctx context.Context, p
 // GET /apis/apps/v1/namespaces/{namespace}/controllerrevisions
 func (c *Client) ListAppsV1NamespacedControllerRevision(ctx context.Context, params ListAppsV1NamespacedControllerRevisionParams) (ListAppsV1NamespacedControllerRevisionRes, error) {
 	res, err := c.sendListAppsV1NamespacedControllerRevision(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -19653,7 +19540,6 @@ func (c *Client) sendListAppsV1NamespacedControllerRevision(ctx context.Context,
 // GET /apis/apps/v1/namespaces/{namespace}/daemonsets
 func (c *Client) ListAppsV1NamespacedDaemonSet(ctx context.Context, params ListAppsV1NamespacedDaemonSetParams) (ListAppsV1NamespacedDaemonSetRes, error) {
 	res, err := c.sendListAppsV1NamespacedDaemonSet(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -19952,7 +19838,6 @@ func (c *Client) sendListAppsV1NamespacedDaemonSet(ctx context.Context, params L
 // GET /apis/apps/v1/namespaces/{namespace}/deployments
 func (c *Client) ListAppsV1NamespacedDeployment(ctx context.Context, params ListAppsV1NamespacedDeploymentParams) (ListAppsV1NamespacedDeploymentRes, error) {
 	res, err := c.sendListAppsV1NamespacedDeployment(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -20251,7 +20136,6 @@ func (c *Client) sendListAppsV1NamespacedDeployment(ctx context.Context, params 
 // GET /apis/apps/v1/namespaces/{namespace}/replicasets
 func (c *Client) ListAppsV1NamespacedReplicaSet(ctx context.Context, params ListAppsV1NamespacedReplicaSetParams) (ListAppsV1NamespacedReplicaSetRes, error) {
 	res, err := c.sendListAppsV1NamespacedReplicaSet(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -20550,7 +20434,6 @@ func (c *Client) sendListAppsV1NamespacedReplicaSet(ctx context.Context, params 
 // GET /apis/apps/v1/namespaces/{namespace}/statefulsets
 func (c *Client) ListAppsV1NamespacedStatefulSet(ctx context.Context, params ListAppsV1NamespacedStatefulSetParams) (ListAppsV1NamespacedStatefulSetRes, error) {
 	res, err := c.sendListAppsV1NamespacedStatefulSet(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -20849,7 +20732,6 @@ func (c *Client) sendListAppsV1NamespacedStatefulSet(ctx context.Context, params
 // GET /apis/apps/v1/replicasets
 func (c *Client) ListAppsV1ReplicaSetForAllNamespaces(ctx context.Context, params ListAppsV1ReplicaSetForAllNamespacesParams) (ListAppsV1ReplicaSetForAllNamespacesRes, error) {
 	res, err := c.sendListAppsV1ReplicaSetForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -21129,7 +21011,6 @@ func (c *Client) sendListAppsV1ReplicaSetForAllNamespaces(ctx context.Context, p
 // GET /apis/apps/v1/statefulsets
 func (c *Client) ListAppsV1StatefulSetForAllNamespaces(ctx context.Context, params ListAppsV1StatefulSetForAllNamespacesParams) (ListAppsV1StatefulSetForAllNamespacesRes, error) {
 	res, err := c.sendListAppsV1StatefulSetForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -21409,7 +21290,6 @@ func (c *Client) sendListAppsV1StatefulSetForAllNamespaces(ctx context.Context, 
 // GET /apis/autoscaling/v1/horizontalpodautoscalers
 func (c *Client) ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx context.Context, params ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams) (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRes, error) {
 	res, err := c.sendListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -21689,7 +21569,6 @@ func (c *Client) sendListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ct
 // GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers
 func (c *Client) ListAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.Context, params ListAutoscalingV1NamespacedHorizontalPodAutoscalerParams) (ListAutoscalingV1NamespacedHorizontalPodAutoscalerRes, error) {
 	res, err := c.sendListAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -21988,7 +21867,6 @@ func (c *Client) sendListAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx cont
 // GET /apis/autoscaling/v2beta1/horizontalpodautoscalers
 func (c *Client) ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(ctx context.Context, params ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams) (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRes, error) {
 	res, err := c.sendListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -22268,7 +22146,6 @@ func (c *Client) sendListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespac
 // GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers
 func (c *Client) ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx context.Context, params ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) (ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, error) {
 	res, err := c.sendListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -22567,7 +22444,6 @@ func (c *Client) sendListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx
 // GET /apis/autoscaling/v2beta2/horizontalpodautoscalers
 func (c *Client) ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(ctx context.Context, params ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams) (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRes, error) {
 	res, err := c.sendListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -22847,7 +22723,6 @@ func (c *Client) sendListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespac
 // GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers
 func (c *Client) ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx context.Context, params ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) (ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, error) {
 	res, err := c.sendListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -23146,7 +23021,6 @@ func (c *Client) sendListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx
 // GET /apis/batch/v1/cronjobs
 func (c *Client) ListBatchV1CronJobForAllNamespaces(ctx context.Context, params ListBatchV1CronJobForAllNamespacesParams) (ListBatchV1CronJobForAllNamespacesRes, error) {
 	res, err := c.sendListBatchV1CronJobForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -23426,7 +23300,6 @@ func (c *Client) sendListBatchV1CronJobForAllNamespaces(ctx context.Context, par
 // GET /apis/batch/v1/jobs
 func (c *Client) ListBatchV1JobForAllNamespaces(ctx context.Context, params ListBatchV1JobForAllNamespacesParams) (ListBatchV1JobForAllNamespacesRes, error) {
 	res, err := c.sendListBatchV1JobForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -23706,7 +23579,6 @@ func (c *Client) sendListBatchV1JobForAllNamespaces(ctx context.Context, params 
 // GET /apis/batch/v1/namespaces/{namespace}/cronjobs
 func (c *Client) ListBatchV1NamespacedCronJob(ctx context.Context, params ListBatchV1NamespacedCronJobParams) (ListBatchV1NamespacedCronJobRes, error) {
 	res, err := c.sendListBatchV1NamespacedCronJob(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -24005,7 +23877,6 @@ func (c *Client) sendListBatchV1NamespacedCronJob(ctx context.Context, params Li
 // GET /apis/batch/v1/namespaces/{namespace}/jobs
 func (c *Client) ListBatchV1NamespacedJob(ctx context.Context, params ListBatchV1NamespacedJobParams) (ListBatchV1NamespacedJobRes, error) {
 	res, err := c.sendListBatchV1NamespacedJob(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -24304,7 +24175,6 @@ func (c *Client) sendListBatchV1NamespacedJob(ctx context.Context, params ListBa
 // GET /apis/batch/v1beta1/cronjobs
 func (c *Client) ListBatchV1beta1CronJobForAllNamespaces(ctx context.Context, params ListBatchV1beta1CronJobForAllNamespacesParams) (ListBatchV1beta1CronJobForAllNamespacesRes, error) {
 	res, err := c.sendListBatchV1beta1CronJobForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -24584,7 +24454,6 @@ func (c *Client) sendListBatchV1beta1CronJobForAllNamespaces(ctx context.Context
 // GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs
 func (c *Client) ListBatchV1beta1NamespacedCronJob(ctx context.Context, params ListBatchV1beta1NamespacedCronJobParams) (ListBatchV1beta1NamespacedCronJobRes, error) {
 	res, err := c.sendListBatchV1beta1NamespacedCronJob(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -24883,7 +24752,6 @@ func (c *Client) sendListBatchV1beta1NamespacedCronJob(ctx context.Context, para
 // GET /apis/certificates.k8s.io/v1/certificatesigningrequests
 func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context, params ListCertificatesV1CertificateSigningRequestParams) (ListCertificatesV1CertificateSigningRequestRes, error) {
 	res, err := c.sendListCertificatesV1CertificateSigningRequest(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -25163,7 +25031,6 @@ func (c *Client) sendListCertificatesV1CertificateSigningRequest(ctx context.Con
 // GET /apis/coordination.k8s.io/v1/leases
 func (c *Client) ListCoordinationV1LeaseForAllNamespaces(ctx context.Context, params ListCoordinationV1LeaseForAllNamespacesParams) (ListCoordinationV1LeaseForAllNamespacesRes, error) {
 	res, err := c.sendListCoordinationV1LeaseForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -25443,7 +25310,6 @@ func (c *Client) sendListCoordinationV1LeaseForAllNamespaces(ctx context.Context
 // GET /apis/coordination.k8s.io/v1/namespaces/{namespace}/leases
 func (c *Client) ListCoordinationV1NamespacedLease(ctx context.Context, params ListCoordinationV1NamespacedLeaseParams) (ListCoordinationV1NamespacedLeaseRes, error) {
 	res, err := c.sendListCoordinationV1NamespacedLease(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -25742,7 +25608,6 @@ func (c *Client) sendListCoordinationV1NamespacedLease(ctx context.Context, para
 // GET /api/v1/componentstatuses
 func (c *Client) ListCoreV1ComponentStatus(ctx context.Context, params ListCoreV1ComponentStatusParams) (ListCoreV1ComponentStatusRes, error) {
 	res, err := c.sendListCoreV1ComponentStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -26022,7 +25887,6 @@ func (c *Client) sendListCoreV1ComponentStatus(ctx context.Context, params ListC
 // GET /api/v1/configmaps
 func (c *Client) ListCoreV1ConfigMapForAllNamespaces(ctx context.Context, params ListCoreV1ConfigMapForAllNamespacesParams) (ListCoreV1ConfigMapForAllNamespacesRes, error) {
 	res, err := c.sendListCoreV1ConfigMapForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -26302,7 +26166,6 @@ func (c *Client) sendListCoreV1ConfigMapForAllNamespaces(ctx context.Context, pa
 // GET /api/v1/endpoints
 func (c *Client) ListCoreV1EndpointsForAllNamespaces(ctx context.Context, params ListCoreV1EndpointsForAllNamespacesParams) (ListCoreV1EndpointsForAllNamespacesRes, error) {
 	res, err := c.sendListCoreV1EndpointsForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -26582,7 +26445,6 @@ func (c *Client) sendListCoreV1EndpointsForAllNamespaces(ctx context.Context, pa
 // GET /api/v1/events
 func (c *Client) ListCoreV1EventForAllNamespaces(ctx context.Context, params ListCoreV1EventForAllNamespacesParams) (ListCoreV1EventForAllNamespacesRes, error) {
 	res, err := c.sendListCoreV1EventForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -26862,7 +26724,6 @@ func (c *Client) sendListCoreV1EventForAllNamespaces(ctx context.Context, params
 // GET /api/v1/limitranges
 func (c *Client) ListCoreV1LimitRangeForAllNamespaces(ctx context.Context, params ListCoreV1LimitRangeForAllNamespacesParams) (ListCoreV1LimitRangeForAllNamespacesRes, error) {
 	res, err := c.sendListCoreV1LimitRangeForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -27142,7 +27003,6 @@ func (c *Client) sendListCoreV1LimitRangeForAllNamespaces(ctx context.Context, p
 // GET /api/v1/namespaces
 func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1NamespaceParams) (ListCoreV1NamespaceRes, error) {
 	res, err := c.sendListCoreV1Namespace(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -27422,7 +27282,6 @@ func (c *Client) sendListCoreV1Namespace(ctx context.Context, params ListCoreV1N
 // GET /api/v1/namespaces/{namespace}/configmaps
 func (c *Client) ListCoreV1NamespacedConfigMap(ctx context.Context, params ListCoreV1NamespacedConfigMapParams) (ListCoreV1NamespacedConfigMapRes, error) {
 	res, err := c.sendListCoreV1NamespacedConfigMap(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -27721,7 +27580,6 @@ func (c *Client) sendListCoreV1NamespacedConfigMap(ctx context.Context, params L
 // GET /api/v1/namespaces/{namespace}/endpoints
 func (c *Client) ListCoreV1NamespacedEndpoints(ctx context.Context, params ListCoreV1NamespacedEndpointsParams) (ListCoreV1NamespacedEndpointsRes, error) {
 	res, err := c.sendListCoreV1NamespacedEndpoints(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -28020,7 +27878,6 @@ func (c *Client) sendListCoreV1NamespacedEndpoints(ctx context.Context, params L
 // GET /api/v1/namespaces/{namespace}/events
 func (c *Client) ListCoreV1NamespacedEvent(ctx context.Context, params ListCoreV1NamespacedEventParams) (ListCoreV1NamespacedEventRes, error) {
 	res, err := c.sendListCoreV1NamespacedEvent(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -28319,7 +28176,6 @@ func (c *Client) sendListCoreV1NamespacedEvent(ctx context.Context, params ListC
 // GET /api/v1/namespaces/{namespace}/limitranges
 func (c *Client) ListCoreV1NamespacedLimitRange(ctx context.Context, params ListCoreV1NamespacedLimitRangeParams) (ListCoreV1NamespacedLimitRangeRes, error) {
 	res, err := c.sendListCoreV1NamespacedLimitRange(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -28618,7 +28474,6 @@ func (c *Client) sendListCoreV1NamespacedLimitRange(ctx context.Context, params 
 // GET /api/v1/namespaces/{namespace}/persistentvolumeclaims
 func (c *Client) ListCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, params ListCoreV1NamespacedPersistentVolumeClaimParams) (ListCoreV1NamespacedPersistentVolumeClaimRes, error) {
 	res, err := c.sendListCoreV1NamespacedPersistentVolumeClaim(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -28917,7 +28772,6 @@ func (c *Client) sendListCoreV1NamespacedPersistentVolumeClaim(ctx context.Conte
 // GET /api/v1/namespaces/{namespace}/pods
 func (c *Client) ListCoreV1NamespacedPod(ctx context.Context, params ListCoreV1NamespacedPodParams) (ListCoreV1NamespacedPodRes, error) {
 	res, err := c.sendListCoreV1NamespacedPod(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -29216,7 +29070,6 @@ func (c *Client) sendListCoreV1NamespacedPod(ctx context.Context, params ListCor
 // GET /api/v1/namespaces/{namespace}/podtemplates
 func (c *Client) ListCoreV1NamespacedPodTemplate(ctx context.Context, params ListCoreV1NamespacedPodTemplateParams) (ListCoreV1NamespacedPodTemplateRes, error) {
 	res, err := c.sendListCoreV1NamespacedPodTemplate(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -29515,7 +29368,6 @@ func (c *Client) sendListCoreV1NamespacedPodTemplate(ctx context.Context, params
 // GET /api/v1/namespaces/{namespace}/replicationcontrollers
 func (c *Client) ListCoreV1NamespacedReplicationController(ctx context.Context, params ListCoreV1NamespacedReplicationControllerParams) (ListCoreV1NamespacedReplicationControllerRes, error) {
 	res, err := c.sendListCoreV1NamespacedReplicationController(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -29814,7 +29666,6 @@ func (c *Client) sendListCoreV1NamespacedReplicationController(ctx context.Conte
 // GET /api/v1/namespaces/{namespace}/resourcequotas
 func (c *Client) ListCoreV1NamespacedResourceQuota(ctx context.Context, params ListCoreV1NamespacedResourceQuotaParams) (ListCoreV1NamespacedResourceQuotaRes, error) {
 	res, err := c.sendListCoreV1NamespacedResourceQuota(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -30113,7 +29964,6 @@ func (c *Client) sendListCoreV1NamespacedResourceQuota(ctx context.Context, para
 // GET /api/v1/namespaces/{namespace}/secrets
 func (c *Client) ListCoreV1NamespacedSecret(ctx context.Context, params ListCoreV1NamespacedSecretParams) (ListCoreV1NamespacedSecretRes, error) {
 	res, err := c.sendListCoreV1NamespacedSecret(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -30412,7 +30262,6 @@ func (c *Client) sendListCoreV1NamespacedSecret(ctx context.Context, params List
 // GET /api/v1/namespaces/{namespace}/services
 func (c *Client) ListCoreV1NamespacedService(ctx context.Context, params ListCoreV1NamespacedServiceParams) (ListCoreV1NamespacedServiceRes, error) {
 	res, err := c.sendListCoreV1NamespacedService(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -30711,7 +30560,6 @@ func (c *Client) sendListCoreV1NamespacedService(ctx context.Context, params Lis
 // GET /api/v1/namespaces/{namespace}/serviceaccounts
 func (c *Client) ListCoreV1NamespacedServiceAccount(ctx context.Context, params ListCoreV1NamespacedServiceAccountParams) (ListCoreV1NamespacedServiceAccountRes, error) {
 	res, err := c.sendListCoreV1NamespacedServiceAccount(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -31010,7 +30858,6 @@ func (c *Client) sendListCoreV1NamespacedServiceAccount(ctx context.Context, par
 // GET /api/v1/nodes
 func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams) (ListCoreV1NodeRes, error) {
 	res, err := c.sendListCoreV1Node(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -31290,7 +31137,6 @@ func (c *Client) sendListCoreV1Node(ctx context.Context, params ListCoreV1NodePa
 // GET /api/v1/persistentvolumes
 func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCoreV1PersistentVolumeParams) (ListCoreV1PersistentVolumeRes, error) {
 	res, err := c.sendListCoreV1PersistentVolume(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -31570,7 +31416,6 @@ func (c *Client) sendListCoreV1PersistentVolume(ctx context.Context, params List
 // GET /api/v1/persistentvolumeclaims
 func (c *Client) ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context.Context, params ListCoreV1PersistentVolumeClaimForAllNamespacesParams) (ListCoreV1PersistentVolumeClaimForAllNamespacesRes, error) {
 	res, err := c.sendListCoreV1PersistentVolumeClaimForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -31850,7 +31695,6 @@ func (c *Client) sendListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context
 // GET /api/v1/pods
 func (c *Client) ListCoreV1PodForAllNamespaces(ctx context.Context, params ListCoreV1PodForAllNamespacesParams) (ListCoreV1PodForAllNamespacesRes, error) {
 	res, err := c.sendListCoreV1PodForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -32130,7 +31974,6 @@ func (c *Client) sendListCoreV1PodForAllNamespaces(ctx context.Context, params L
 // GET /api/v1/podtemplates
 func (c *Client) ListCoreV1PodTemplateForAllNamespaces(ctx context.Context, params ListCoreV1PodTemplateForAllNamespacesParams) (ListCoreV1PodTemplateForAllNamespacesRes, error) {
 	res, err := c.sendListCoreV1PodTemplateForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -32410,7 +32253,6 @@ func (c *Client) sendListCoreV1PodTemplateForAllNamespaces(ctx context.Context, 
 // GET /api/v1/replicationcontrollers
 func (c *Client) ListCoreV1ReplicationControllerForAllNamespaces(ctx context.Context, params ListCoreV1ReplicationControllerForAllNamespacesParams) (ListCoreV1ReplicationControllerForAllNamespacesRes, error) {
 	res, err := c.sendListCoreV1ReplicationControllerForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -32690,7 +32532,6 @@ func (c *Client) sendListCoreV1ReplicationControllerForAllNamespaces(ctx context
 // GET /api/v1/resourcequotas
 func (c *Client) ListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context, params ListCoreV1ResourceQuotaForAllNamespacesParams) (ListCoreV1ResourceQuotaForAllNamespacesRes, error) {
 	res, err := c.sendListCoreV1ResourceQuotaForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -32970,7 +32811,6 @@ func (c *Client) sendListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context
 // GET /api/v1/secrets
 func (c *Client) ListCoreV1SecretForAllNamespaces(ctx context.Context, params ListCoreV1SecretForAllNamespacesParams) (ListCoreV1SecretForAllNamespacesRes, error) {
 	res, err := c.sendListCoreV1SecretForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -33250,7 +33090,6 @@ func (c *Client) sendListCoreV1SecretForAllNamespaces(ctx context.Context, param
 // GET /api/v1/serviceaccounts
 func (c *Client) ListCoreV1ServiceAccountForAllNamespaces(ctx context.Context, params ListCoreV1ServiceAccountForAllNamespacesParams) (ListCoreV1ServiceAccountForAllNamespacesRes, error) {
 	res, err := c.sendListCoreV1ServiceAccountForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -33530,7 +33369,6 @@ func (c *Client) sendListCoreV1ServiceAccountForAllNamespaces(ctx context.Contex
 // GET /api/v1/services
 func (c *Client) ListCoreV1ServiceForAllNamespaces(ctx context.Context, params ListCoreV1ServiceForAllNamespacesParams) (ListCoreV1ServiceForAllNamespacesRes, error) {
 	res, err := c.sendListCoreV1ServiceForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -33810,7 +33648,6 @@ func (c *Client) sendListCoreV1ServiceForAllNamespaces(ctx context.Context, para
 // GET /apis/discovery.k8s.io/v1/endpointslices
 func (c *Client) ListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Context, params ListDiscoveryV1EndpointSliceForAllNamespacesParams) (ListDiscoveryV1EndpointSliceForAllNamespacesRes, error) {
 	res, err := c.sendListDiscoveryV1EndpointSliceForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -34090,7 +33927,6 @@ func (c *Client) sendListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Co
 // GET /apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices
 func (c *Client) ListDiscoveryV1NamespacedEndpointSlice(ctx context.Context, params ListDiscoveryV1NamespacedEndpointSliceParams) (ListDiscoveryV1NamespacedEndpointSliceRes, error) {
 	res, err := c.sendListDiscoveryV1NamespacedEndpointSlice(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -34389,7 +34225,6 @@ func (c *Client) sendListDiscoveryV1NamespacedEndpointSlice(ctx context.Context,
 // GET /apis/discovery.k8s.io/v1beta1/endpointslices
 func (c *Client) ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx context.Context, params ListDiscoveryV1beta1EndpointSliceForAllNamespacesParams) (ListDiscoveryV1beta1EndpointSliceForAllNamespacesRes, error) {
 	res, err := c.sendListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -34669,7 +34504,6 @@ func (c *Client) sendListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx conte
 // GET /apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices
 func (c *Client) ListDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context, params ListDiscoveryV1beta1NamespacedEndpointSliceParams) (ListDiscoveryV1beta1NamespacedEndpointSliceRes, error) {
 	res, err := c.sendListDiscoveryV1beta1NamespacedEndpointSlice(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -34968,7 +34802,6 @@ func (c *Client) sendListDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Con
 // GET /apis/events.k8s.io/v1/events
 func (c *Client) ListEventsV1EventForAllNamespaces(ctx context.Context, params ListEventsV1EventForAllNamespacesParams) (ListEventsV1EventForAllNamespacesRes, error) {
 	res, err := c.sendListEventsV1EventForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -35248,7 +35081,6 @@ func (c *Client) sendListEventsV1EventForAllNamespaces(ctx context.Context, para
 // GET /apis/events.k8s.io/v1/namespaces/{namespace}/events
 func (c *Client) ListEventsV1NamespacedEvent(ctx context.Context, params ListEventsV1NamespacedEventParams) (ListEventsV1NamespacedEventRes, error) {
 	res, err := c.sendListEventsV1NamespacedEvent(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -35547,7 +35379,6 @@ func (c *Client) sendListEventsV1NamespacedEvent(ctx context.Context, params Lis
 // GET /apis/events.k8s.io/v1beta1/events
 func (c *Client) ListEventsV1beta1EventForAllNamespaces(ctx context.Context, params ListEventsV1beta1EventForAllNamespacesParams) (ListEventsV1beta1EventForAllNamespacesRes, error) {
 	res, err := c.sendListEventsV1beta1EventForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -35827,7 +35658,6 @@ func (c *Client) sendListEventsV1beta1EventForAllNamespaces(ctx context.Context,
 // GET /apis/events.k8s.io/v1beta1/namespaces/{namespace}/events
 func (c *Client) ListEventsV1beta1NamespacedEvent(ctx context.Context, params ListEventsV1beta1NamespacedEventParams) (ListEventsV1beta1NamespacedEventRes, error) {
 	res, err := c.sendListEventsV1beta1NamespacedEvent(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -36126,7 +35956,6 @@ func (c *Client) sendListEventsV1beta1NamespacedEvent(ctx context.Context, param
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas
 func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, params ListFlowcontrolApiserverV1beta1FlowSchemaParams) (ListFlowcontrolApiserverV1beta1FlowSchemaRes, error) {
 	res, err := c.sendListFlowcontrolApiserverV1beta1FlowSchema(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -36406,7 +36235,6 @@ func (c *Client) sendListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Conte
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations
 func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, params ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, error) {
 	res, err := c.sendListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -36686,7 +36514,6 @@ func (c *Client) sendListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(c
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas
 func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, params ListFlowcontrolApiserverV1beta2FlowSchemaParams) (ListFlowcontrolApiserverV1beta2FlowSchemaRes, error) {
 	res, err := c.sendListFlowcontrolApiserverV1beta2FlowSchema(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -36966,7 +36793,6 @@ func (c *Client) sendListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Conte
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations
 func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, params ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, error) {
 	res, err := c.sendListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -37246,7 +37072,6 @@ func (c *Client) sendListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(c
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions
 func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context, params ListInternalApiserverV1alpha1StorageVersionParams) (ListInternalApiserverV1alpha1StorageVersionRes, error) {
 	res, err := c.sendListInternalApiserverV1alpha1StorageVersion(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -37526,7 +37351,6 @@ func (c *Client) sendListInternalApiserverV1alpha1StorageVersion(ctx context.Con
 // GET /apis/networking.k8s.io/v1/ingressclasses
 func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNetworkingV1IngressClassParams) (ListNetworkingV1IngressClassRes, error) {
 	res, err := c.sendListNetworkingV1IngressClass(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -37806,7 +37630,6 @@ func (c *Client) sendListNetworkingV1IngressClass(ctx context.Context, params Li
 // GET /apis/networking.k8s.io/v1/ingresses
 func (c *Client) ListNetworkingV1IngressForAllNamespaces(ctx context.Context, params ListNetworkingV1IngressForAllNamespacesParams) (ListNetworkingV1IngressForAllNamespacesRes, error) {
 	res, err := c.sendListNetworkingV1IngressForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -38086,7 +37909,6 @@ func (c *Client) sendListNetworkingV1IngressForAllNamespaces(ctx context.Context
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses
 func (c *Client) ListNetworkingV1NamespacedIngress(ctx context.Context, params ListNetworkingV1NamespacedIngressParams) (ListNetworkingV1NamespacedIngressRes, error) {
 	res, err := c.sendListNetworkingV1NamespacedIngress(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -38385,7 +38207,6 @@ func (c *Client) sendListNetworkingV1NamespacedIngress(ctx context.Context, para
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies
 func (c *Client) ListNetworkingV1NamespacedNetworkPolicy(ctx context.Context, params ListNetworkingV1NamespacedNetworkPolicyParams) (ListNetworkingV1NamespacedNetworkPolicyRes, error) {
 	res, err := c.sendListNetworkingV1NamespacedNetworkPolicy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -38684,7 +38505,6 @@ func (c *Client) sendListNetworkingV1NamespacedNetworkPolicy(ctx context.Context
 // GET /apis/networking.k8s.io/v1/networkpolicies
 func (c *Client) ListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.Context, params ListNetworkingV1NetworkPolicyForAllNamespacesParams) (ListNetworkingV1NetworkPolicyForAllNamespacesRes, error) {
 	res, err := c.sendListNetworkingV1NetworkPolicyForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -38964,7 +38784,6 @@ func (c *Client) sendListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.C
 // GET /apis/node.k8s.io/v1/runtimeclasses
 func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1RuntimeClassParams) (ListNodeV1RuntimeClassRes, error) {
 	res, err := c.sendListNodeV1RuntimeClass(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -39244,7 +39063,6 @@ func (c *Client) sendListNodeV1RuntimeClass(ctx context.Context, params ListNode
 // GET /apis/node.k8s.io/v1alpha1/runtimeclasses
 func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNodeV1alpha1RuntimeClassParams) (ListNodeV1alpha1RuntimeClassRes, error) {
 	res, err := c.sendListNodeV1alpha1RuntimeClass(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -39524,7 +39342,6 @@ func (c *Client) sendListNodeV1alpha1RuntimeClass(ctx context.Context, params Li
 // GET /apis/node.k8s.io/v1beta1/runtimeclasses
 func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNodeV1beta1RuntimeClassParams) (ListNodeV1beta1RuntimeClassRes, error) {
 	res, err := c.sendListNodeV1beta1RuntimeClass(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -39804,7 +39621,6 @@ func (c *Client) sendListNodeV1beta1RuntimeClass(ctx context.Context, params Lis
 // GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets
 func (c *Client) ListPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, params ListPolicyV1NamespacedPodDisruptionBudgetParams) (ListPolicyV1NamespacedPodDisruptionBudgetRes, error) {
 	res, err := c.sendListPolicyV1NamespacedPodDisruptionBudget(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -40103,7 +39919,6 @@ func (c *Client) sendListPolicyV1NamespacedPodDisruptionBudget(ctx context.Conte
 // GET /apis/policy/v1/poddisruptionbudgets
 func (c *Client) ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context.Context, params ListPolicyV1PodDisruptionBudgetForAllNamespacesParams) (ListPolicyV1PodDisruptionBudgetForAllNamespacesRes, error) {
 	res, err := c.sendListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -40383,7 +40198,6 @@ func (c *Client) sendListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context
 // GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets
 func (c *Client) ListPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Context, params ListPolicyV1beta1NamespacedPodDisruptionBudgetParams) (ListPolicyV1beta1NamespacedPodDisruptionBudgetRes, error) {
 	res, err := c.sendListPolicyV1beta1NamespacedPodDisruptionBudget(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -40682,7 +40496,6 @@ func (c *Client) sendListPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.
 // GET /apis/policy/v1beta1/poddisruptionbudgets
 func (c *Client) ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx context.Context, params ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams) (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRes, error) {
 	res, err := c.sendListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -40962,7 +40775,6 @@ func (c *Client) sendListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx co
 // GET /apis/policy/v1beta1/podsecuritypolicies
 func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params ListPolicyV1beta1PodSecurityPolicyParams) (ListPolicyV1beta1PodSecurityPolicyRes, error) {
 	res, err := c.sendListPolicyV1beta1PodSecurityPolicy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -41242,7 +41054,6 @@ func (c *Client) sendListPolicyV1beta1PodSecurityPolicy(ctx context.Context, par
 // GET /apis/rbac.authorization.k8s.io/v1/clusterroles
 func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params ListRbacAuthorizationV1ClusterRoleParams) (ListRbacAuthorizationV1ClusterRoleRes, error) {
 	res, err := c.sendListRbacAuthorizationV1ClusterRole(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -41522,7 +41333,6 @@ func (c *Client) sendListRbacAuthorizationV1ClusterRole(ctx context.Context, par
 // GET /apis/rbac.authorization.k8s.io/v1/clusterrolebindings
 func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, params ListRbacAuthorizationV1ClusterRoleBindingParams) (ListRbacAuthorizationV1ClusterRoleBindingRes, error) {
 	res, err := c.sendListRbacAuthorizationV1ClusterRoleBinding(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -41802,7 +41612,6 @@ func (c *Client) sendListRbacAuthorizationV1ClusterRoleBinding(ctx context.Conte
 // GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles
 func (c *Client) ListRbacAuthorizationV1NamespacedRole(ctx context.Context, params ListRbacAuthorizationV1NamespacedRoleParams) (ListRbacAuthorizationV1NamespacedRoleRes, error) {
 	res, err := c.sendListRbacAuthorizationV1NamespacedRole(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -42101,7 +41910,6 @@ func (c *Client) sendListRbacAuthorizationV1NamespacedRole(ctx context.Context, 
 // GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings
 func (c *Client) ListRbacAuthorizationV1NamespacedRoleBinding(ctx context.Context, params ListRbacAuthorizationV1NamespacedRoleBindingParams) (ListRbacAuthorizationV1NamespacedRoleBindingRes, error) {
 	res, err := c.sendListRbacAuthorizationV1NamespacedRoleBinding(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -42400,7 +42208,6 @@ func (c *Client) sendListRbacAuthorizationV1NamespacedRoleBinding(ctx context.Co
 // GET /apis/rbac.authorization.k8s.io/v1/rolebindings
 func (c *Client) ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx context.Context, params ListRbacAuthorizationV1RoleBindingForAllNamespacesParams) (ListRbacAuthorizationV1RoleBindingForAllNamespacesRes, error) {
 	res, err := c.sendListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -42680,7 +42487,6 @@ func (c *Client) sendListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx cont
 // GET /apis/rbac.authorization.k8s.io/v1/roles
 func (c *Client) ListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Context, params ListRbacAuthorizationV1RoleForAllNamespacesParams) (ListRbacAuthorizationV1RoleForAllNamespacesRes, error) {
 	res, err := c.sendListRbacAuthorizationV1RoleForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -42960,7 +42766,6 @@ func (c *Client) sendListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Con
 // GET /apis/scheduling.k8s.io/v1/priorityclasses
 func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListSchedulingV1PriorityClassParams) (ListSchedulingV1PriorityClassRes, error) {
 	res, err := c.sendListSchedulingV1PriorityClass(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -43240,7 +43045,6 @@ func (c *Client) sendListSchedulingV1PriorityClass(ctx context.Context, params L
 // GET /apis/storage.k8s.io/v1/csidrivers
 func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV1CSIDriverParams) (ListStorageV1CSIDriverRes, error) {
 	res, err := c.sendListStorageV1CSIDriver(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -43520,7 +43324,6 @@ func (c *Client) sendListStorageV1CSIDriver(ctx context.Context, params ListStor
 // GET /apis/storage.k8s.io/v1/csinodes
 func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1CSINodeParams) (ListStorageV1CSINodeRes, error) {
 	res, err := c.sendListStorageV1CSINode(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -43800,7 +43603,6 @@ func (c *Client) sendListStorageV1CSINode(ctx context.Context, params ListStorag
 // GET /apis/storage.k8s.io/v1/storageclasses
 func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStorageV1StorageClassParams) (ListStorageV1StorageClassRes, error) {
 	res, err := c.sendListStorageV1StorageClass(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -44080,7 +43882,6 @@ func (c *Client) sendListStorageV1StorageClass(ctx context.Context, params ListS
 // GET /apis/storage.k8s.io/v1/volumeattachments
 func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListStorageV1VolumeAttachmentParams) (ListStorageV1VolumeAttachmentRes, error) {
 	res, err := c.sendListStorageV1VolumeAttachment(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -44360,7 +44161,6 @@ func (c *Client) sendListStorageV1VolumeAttachment(ctx context.Context, params L
 // GET /apis/storage.k8s.io/v1alpha1/csistoragecapacities
 func (c *Client) ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx context.Context, params ListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams) (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesRes, error) {
 	res, err := c.sendListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -44640,7 +44440,6 @@ func (c *Client) sendListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx c
 // GET /apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities
 func (c *Client) ListStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Context, params ListStorageV1alpha1NamespacedCSIStorageCapacityParams) (ListStorageV1alpha1NamespacedCSIStorageCapacityRes, error) {
 	res, err := c.sendListStorageV1alpha1NamespacedCSIStorageCapacity(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -44939,7 +44738,6 @@ func (c *Client) sendListStorageV1alpha1NamespacedCSIStorageCapacity(ctx context
 // GET /apis/storage.k8s.io/v1beta1/csistoragecapacities
 func (c *Client) ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx context.Context, params ListStorageV1beta1CSIStorageCapacityForAllNamespacesParams) (ListStorageV1beta1CSIStorageCapacityForAllNamespacesRes, error) {
 	res, err := c.sendListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -45219,7 +45017,6 @@ func (c *Client) sendListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx co
 // GET /apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities
 func (c *Client) ListStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Context, params ListStorageV1beta1NamespacedCSIStorageCapacityParams) (ListStorageV1beta1NamespacedCSIStorageCapacityRes, error) {
 	res, err := c.sendListStorageV1beta1NamespacedCSIStorageCapacity(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -45515,8 +45312,7 @@ func (c *Client) sendListStorageV1beta1NamespacedCSIStorageCapacity(ctx context.
 //
 // GET /logs/{logpath}
 func (c *Client) LogFileHandler(ctx context.Context, params LogFileHandlerParams) error {
-	res, err := c.sendLogFileHandler(ctx, params)
-	_ = res
+	_, err := c.sendLogFileHandler(ctx, params)
 	return err
 }
 
@@ -45637,8 +45433,7 @@ func (c *Client) sendLogFileHandler(ctx context.Context, params LogFileHandlerPa
 //
 // GET /logs/
 func (c *Client) LogFileListHandler(ctx context.Context) error {
-	res, err := c.sendLogFileListHandler(ctx)
-	_ = res
+	_, err := c.sendLogFileListHandler(ctx)
 	return err
 }
 
@@ -45744,7 +45539,6 @@ func (c *Client) sendLogFileListHandler(ctx context.Context) (res *LogFileListHa
 // GET /apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}
 func (c *Client) ReadAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, params ReadAdmissionregistrationV1MutatingWebhookConfigurationParams) (ReadAdmissionregistrationV1MutatingWebhookConfigurationRes, error) {
 	res, err := c.sendReadAdmissionregistrationV1MutatingWebhookConfiguration(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -45889,7 +45683,6 @@ func (c *Client) sendReadAdmissionregistrationV1MutatingWebhookConfiguration(ctx
 // GET /apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/{name}
 func (c *Client) ReadAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, params ReadAdmissionregistrationV1ValidatingWebhookConfigurationParams) (ReadAdmissionregistrationV1ValidatingWebhookConfigurationRes, error) {
 	res, err := c.sendReadAdmissionregistrationV1ValidatingWebhookConfiguration(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -46034,7 +45827,6 @@ func (c *Client) sendReadAdmissionregistrationV1ValidatingWebhookConfiguration(c
 // GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}
 func (c *Client) ReadApiextensionsV1CustomResourceDefinition(ctx context.Context, params ReadApiextensionsV1CustomResourceDefinitionParams) (ReadApiextensionsV1CustomResourceDefinitionRes, error) {
 	res, err := c.sendReadApiextensionsV1CustomResourceDefinition(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -46179,7 +45971,6 @@ func (c *Client) sendReadApiextensionsV1CustomResourceDefinition(ctx context.Con
 // GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status
 func (c *Client) ReadApiextensionsV1CustomResourceDefinitionStatus(ctx context.Context, params ReadApiextensionsV1CustomResourceDefinitionStatusParams) (ReadApiextensionsV1CustomResourceDefinitionStatusRes, error) {
 	res, err := c.sendReadApiextensionsV1CustomResourceDefinitionStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -46325,7 +46116,6 @@ func (c *Client) sendReadApiextensionsV1CustomResourceDefinitionStatus(ctx conte
 // GET /apis/apiregistration.k8s.io/v1/apiservices/{name}
 func (c *Client) ReadApiregistrationV1APIService(ctx context.Context, params ReadApiregistrationV1APIServiceParams) (ReadApiregistrationV1APIServiceRes, error) {
 	res, err := c.sendReadApiregistrationV1APIService(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -46470,7 +46260,6 @@ func (c *Client) sendReadApiregistrationV1APIService(ctx context.Context, params
 // GET /apis/apiregistration.k8s.io/v1/apiservices/{name}/status
 func (c *Client) ReadApiregistrationV1APIServiceStatus(ctx context.Context, params ReadApiregistrationV1APIServiceStatusParams) (ReadApiregistrationV1APIServiceStatusRes, error) {
 	res, err := c.sendReadApiregistrationV1APIServiceStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -46616,7 +46405,6 @@ func (c *Client) sendReadApiregistrationV1APIServiceStatus(ctx context.Context, 
 // GET /apis/apps/v1/namespaces/{namespace}/controllerrevisions/{name}
 func (c *Client) ReadAppsV1NamespacedControllerRevision(ctx context.Context, params ReadAppsV1NamespacedControllerRevisionParams) (ReadAppsV1NamespacedControllerRevisionRes, error) {
 	res, err := c.sendReadAppsV1NamespacedControllerRevision(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -46780,7 +46568,6 @@ func (c *Client) sendReadAppsV1NamespacedControllerRevision(ctx context.Context,
 // GET /apis/apps/v1/namespaces/{namespace}/daemonsets/{name}
 func (c *Client) ReadAppsV1NamespacedDaemonSet(ctx context.Context, params ReadAppsV1NamespacedDaemonSetParams) (ReadAppsV1NamespacedDaemonSetRes, error) {
 	res, err := c.sendReadAppsV1NamespacedDaemonSet(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -46944,7 +46731,6 @@ func (c *Client) sendReadAppsV1NamespacedDaemonSet(ctx context.Context, params R
 // GET /apis/apps/v1/namespaces/{namespace}/daemonsets/{name}/status
 func (c *Client) ReadAppsV1NamespacedDaemonSetStatus(ctx context.Context, params ReadAppsV1NamespacedDaemonSetStatusParams) (ReadAppsV1NamespacedDaemonSetStatusRes, error) {
 	res, err := c.sendReadAppsV1NamespacedDaemonSetStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -47109,7 +46895,6 @@ func (c *Client) sendReadAppsV1NamespacedDaemonSetStatus(ctx context.Context, pa
 // GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}
 func (c *Client) ReadAppsV1NamespacedDeployment(ctx context.Context, params ReadAppsV1NamespacedDeploymentParams) (ReadAppsV1NamespacedDeploymentRes, error) {
 	res, err := c.sendReadAppsV1NamespacedDeployment(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -47273,7 +47058,6 @@ func (c *Client) sendReadAppsV1NamespacedDeployment(ctx context.Context, params 
 // GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}/scale
 func (c *Client) ReadAppsV1NamespacedDeploymentScale(ctx context.Context, params ReadAppsV1NamespacedDeploymentScaleParams) (ReadAppsV1NamespacedDeploymentScaleRes, error) {
 	res, err := c.sendReadAppsV1NamespacedDeploymentScale(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -47438,7 +47222,6 @@ func (c *Client) sendReadAppsV1NamespacedDeploymentScale(ctx context.Context, pa
 // GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}/status
 func (c *Client) ReadAppsV1NamespacedDeploymentStatus(ctx context.Context, params ReadAppsV1NamespacedDeploymentStatusParams) (ReadAppsV1NamespacedDeploymentStatusRes, error) {
 	res, err := c.sendReadAppsV1NamespacedDeploymentStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -47603,7 +47386,6 @@ func (c *Client) sendReadAppsV1NamespacedDeploymentStatus(ctx context.Context, p
 // GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}
 func (c *Client) ReadAppsV1NamespacedReplicaSet(ctx context.Context, params ReadAppsV1NamespacedReplicaSetParams) (ReadAppsV1NamespacedReplicaSetRes, error) {
 	res, err := c.sendReadAppsV1NamespacedReplicaSet(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -47767,7 +47549,6 @@ func (c *Client) sendReadAppsV1NamespacedReplicaSet(ctx context.Context, params 
 // GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}/scale
 func (c *Client) ReadAppsV1NamespacedReplicaSetScale(ctx context.Context, params ReadAppsV1NamespacedReplicaSetScaleParams) (ReadAppsV1NamespacedReplicaSetScaleRes, error) {
 	res, err := c.sendReadAppsV1NamespacedReplicaSetScale(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -47932,7 +47713,6 @@ func (c *Client) sendReadAppsV1NamespacedReplicaSetScale(ctx context.Context, pa
 // GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}/status
 func (c *Client) ReadAppsV1NamespacedReplicaSetStatus(ctx context.Context, params ReadAppsV1NamespacedReplicaSetStatusParams) (ReadAppsV1NamespacedReplicaSetStatusRes, error) {
 	res, err := c.sendReadAppsV1NamespacedReplicaSetStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -48097,7 +47877,6 @@ func (c *Client) sendReadAppsV1NamespacedReplicaSetStatus(ctx context.Context, p
 // GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}
 func (c *Client) ReadAppsV1NamespacedStatefulSet(ctx context.Context, params ReadAppsV1NamespacedStatefulSetParams) (ReadAppsV1NamespacedStatefulSetRes, error) {
 	res, err := c.sendReadAppsV1NamespacedStatefulSet(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -48261,7 +48040,6 @@ func (c *Client) sendReadAppsV1NamespacedStatefulSet(ctx context.Context, params
 // GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/scale
 func (c *Client) ReadAppsV1NamespacedStatefulSetScale(ctx context.Context, params ReadAppsV1NamespacedStatefulSetScaleParams) (ReadAppsV1NamespacedStatefulSetScaleRes, error) {
 	res, err := c.sendReadAppsV1NamespacedStatefulSetScale(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -48426,7 +48204,6 @@ func (c *Client) sendReadAppsV1NamespacedStatefulSetScale(ctx context.Context, p
 // GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/status
 func (c *Client) ReadAppsV1NamespacedStatefulSetStatus(ctx context.Context, params ReadAppsV1NamespacedStatefulSetStatusParams) (ReadAppsV1NamespacedStatefulSetStatusRes, error) {
 	res, err := c.sendReadAppsV1NamespacedStatefulSetStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -48591,7 +48368,6 @@ func (c *Client) sendReadAppsV1NamespacedStatefulSetStatus(ctx context.Context, 
 // GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (c *Client) ReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.Context, params ReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams) (ReadAutoscalingV1NamespacedHorizontalPodAutoscalerRes, error) {
 	res, err := c.sendReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -48755,7 +48531,6 @@ func (c *Client) sendReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx cont
 // GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
 func (c *Client) ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ctx context.Context, params ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams) (ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRes, error) {
 	res, err := c.sendReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -48920,7 +48695,6 @@ func (c *Client) sendReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ct
 // GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (c *Client) ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx context.Context, params ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) (ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, error) {
 	res, err := c.sendReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -49084,7 +48858,6 @@ func (c *Client) sendReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx
 // GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
 func (c *Client) ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus(ctx context.Context, params ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams) (ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRes, error) {
 	res, err := c.sendReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -49249,7 +49022,6 @@ func (c *Client) sendReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStat
 // GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (c *Client) ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx context.Context, params ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) (ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, error) {
 	res, err := c.sendReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -49413,7 +49185,6 @@ func (c *Client) sendReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx
 // GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
 func (c *Client) ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus(ctx context.Context, params ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams) (ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRes, error) {
 	res, err := c.sendReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -49578,7 +49349,6 @@ func (c *Client) sendReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStat
 // GET /apis/batch/v1/namespaces/{namespace}/cronjobs/{name}
 func (c *Client) ReadBatchV1NamespacedCronJob(ctx context.Context, params ReadBatchV1NamespacedCronJobParams) (ReadBatchV1NamespacedCronJobRes, error) {
 	res, err := c.sendReadBatchV1NamespacedCronJob(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -49742,7 +49512,6 @@ func (c *Client) sendReadBatchV1NamespacedCronJob(ctx context.Context, params Re
 // GET /apis/batch/v1/namespaces/{namespace}/cronjobs/{name}/status
 func (c *Client) ReadBatchV1NamespacedCronJobStatus(ctx context.Context, params ReadBatchV1NamespacedCronJobStatusParams) (ReadBatchV1NamespacedCronJobStatusRes, error) {
 	res, err := c.sendReadBatchV1NamespacedCronJobStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -49907,7 +49676,6 @@ func (c *Client) sendReadBatchV1NamespacedCronJobStatus(ctx context.Context, par
 // GET /apis/batch/v1/namespaces/{namespace}/jobs/{name}
 func (c *Client) ReadBatchV1NamespacedJob(ctx context.Context, params ReadBatchV1NamespacedJobParams) (ReadBatchV1NamespacedJobRes, error) {
 	res, err := c.sendReadBatchV1NamespacedJob(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -50071,7 +49839,6 @@ func (c *Client) sendReadBatchV1NamespacedJob(ctx context.Context, params ReadBa
 // GET /apis/batch/v1/namespaces/{namespace}/jobs/{name}/status
 func (c *Client) ReadBatchV1NamespacedJobStatus(ctx context.Context, params ReadBatchV1NamespacedJobStatusParams) (ReadBatchV1NamespacedJobStatusRes, error) {
 	res, err := c.sendReadBatchV1NamespacedJobStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -50236,7 +50003,6 @@ func (c *Client) sendReadBatchV1NamespacedJobStatus(ctx context.Context, params 
 // GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}
 func (c *Client) ReadBatchV1beta1NamespacedCronJob(ctx context.Context, params ReadBatchV1beta1NamespacedCronJobParams) (ReadBatchV1beta1NamespacedCronJobRes, error) {
 	res, err := c.sendReadBatchV1beta1NamespacedCronJob(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -50400,7 +50166,6 @@ func (c *Client) sendReadBatchV1beta1NamespacedCronJob(ctx context.Context, para
 // GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status
 func (c *Client) ReadBatchV1beta1NamespacedCronJobStatus(ctx context.Context, params ReadBatchV1beta1NamespacedCronJobStatusParams) (ReadBatchV1beta1NamespacedCronJobStatusRes, error) {
 	res, err := c.sendReadBatchV1beta1NamespacedCronJobStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -50565,7 +50330,6 @@ func (c *Client) sendReadBatchV1beta1NamespacedCronJobStatus(ctx context.Context
 // GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}
 func (c *Client) ReadCertificatesV1CertificateSigningRequest(ctx context.Context, params ReadCertificatesV1CertificateSigningRequestParams) (ReadCertificatesV1CertificateSigningRequestRes, error) {
 	res, err := c.sendReadCertificatesV1CertificateSigningRequest(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -50710,7 +50474,6 @@ func (c *Client) sendReadCertificatesV1CertificateSigningRequest(ctx context.Con
 // GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/approval
 func (c *Client) ReadCertificatesV1CertificateSigningRequestApproval(ctx context.Context, params ReadCertificatesV1CertificateSigningRequestApprovalParams) (ReadCertificatesV1CertificateSigningRequestApprovalRes, error) {
 	res, err := c.sendReadCertificatesV1CertificateSigningRequestApproval(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -50856,7 +50619,6 @@ func (c *Client) sendReadCertificatesV1CertificateSigningRequestApproval(ctx con
 // GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/status
 func (c *Client) ReadCertificatesV1CertificateSigningRequestStatus(ctx context.Context, params ReadCertificatesV1CertificateSigningRequestStatusParams) (ReadCertificatesV1CertificateSigningRequestStatusRes, error) {
 	res, err := c.sendReadCertificatesV1CertificateSigningRequestStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -51002,7 +50764,6 @@ func (c *Client) sendReadCertificatesV1CertificateSigningRequestStatus(ctx conte
 // GET /apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}
 func (c *Client) ReadCoordinationV1NamespacedLease(ctx context.Context, params ReadCoordinationV1NamespacedLeaseParams) (ReadCoordinationV1NamespacedLeaseRes, error) {
 	res, err := c.sendReadCoordinationV1NamespacedLease(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -51166,7 +50927,6 @@ func (c *Client) sendReadCoordinationV1NamespacedLease(ctx context.Context, para
 // GET /api/v1/componentstatuses/{name}
 func (c *Client) ReadCoreV1ComponentStatus(ctx context.Context, params ReadCoreV1ComponentStatusParams) (ReadCoreV1ComponentStatusRes, error) {
 	res, err := c.sendReadCoreV1ComponentStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -51311,7 +51071,6 @@ func (c *Client) sendReadCoreV1ComponentStatus(ctx context.Context, params ReadC
 // GET /api/v1/namespaces/{name}
 func (c *Client) ReadCoreV1Namespace(ctx context.Context, params ReadCoreV1NamespaceParams) (ReadCoreV1NamespaceRes, error) {
 	res, err := c.sendReadCoreV1Namespace(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -51456,7 +51215,6 @@ func (c *Client) sendReadCoreV1Namespace(ctx context.Context, params ReadCoreV1N
 // GET /api/v1/namespaces/{name}/status
 func (c *Client) ReadCoreV1NamespaceStatus(ctx context.Context, params ReadCoreV1NamespaceStatusParams) (ReadCoreV1NamespaceStatusRes, error) {
 	res, err := c.sendReadCoreV1NamespaceStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -51602,7 +51360,6 @@ func (c *Client) sendReadCoreV1NamespaceStatus(ctx context.Context, params ReadC
 // GET /api/v1/namespaces/{namespace}/configmaps/{name}
 func (c *Client) ReadCoreV1NamespacedConfigMap(ctx context.Context, params ReadCoreV1NamespacedConfigMapParams) (ReadCoreV1NamespacedConfigMapRes, error) {
 	res, err := c.sendReadCoreV1NamespacedConfigMap(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -51766,7 +51523,6 @@ func (c *Client) sendReadCoreV1NamespacedConfigMap(ctx context.Context, params R
 // GET /api/v1/namespaces/{namespace}/endpoints/{name}
 func (c *Client) ReadCoreV1NamespacedEndpoints(ctx context.Context, params ReadCoreV1NamespacedEndpointsParams) (ReadCoreV1NamespacedEndpointsRes, error) {
 	res, err := c.sendReadCoreV1NamespacedEndpoints(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -51930,7 +51686,6 @@ func (c *Client) sendReadCoreV1NamespacedEndpoints(ctx context.Context, params R
 // GET /api/v1/namespaces/{namespace}/events/{name}
 func (c *Client) ReadCoreV1NamespacedEvent(ctx context.Context, params ReadCoreV1NamespacedEventParams) (ReadCoreV1NamespacedEventRes, error) {
 	res, err := c.sendReadCoreV1NamespacedEvent(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -52094,7 +51849,6 @@ func (c *Client) sendReadCoreV1NamespacedEvent(ctx context.Context, params ReadC
 // GET /api/v1/namespaces/{namespace}/limitranges/{name}
 func (c *Client) ReadCoreV1NamespacedLimitRange(ctx context.Context, params ReadCoreV1NamespacedLimitRangeParams) (ReadCoreV1NamespacedLimitRangeRes, error) {
 	res, err := c.sendReadCoreV1NamespacedLimitRange(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -52258,7 +52012,6 @@ func (c *Client) sendReadCoreV1NamespacedLimitRange(ctx context.Context, params 
 // GET /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}
 func (c *Client) ReadCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, params ReadCoreV1NamespacedPersistentVolumeClaimParams) (ReadCoreV1NamespacedPersistentVolumeClaimRes, error) {
 	res, err := c.sendReadCoreV1NamespacedPersistentVolumeClaim(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -52422,7 +52175,6 @@ func (c *Client) sendReadCoreV1NamespacedPersistentVolumeClaim(ctx context.Conte
 // GET /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status
 func (c *Client) ReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx context.Context, params ReadCoreV1NamespacedPersistentVolumeClaimStatusParams) (ReadCoreV1NamespacedPersistentVolumeClaimStatusRes, error) {
 	res, err := c.sendReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -52587,7 +52339,6 @@ func (c *Client) sendReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx context
 // GET /api/v1/namespaces/{namespace}/pods/{name}
 func (c *Client) ReadCoreV1NamespacedPod(ctx context.Context, params ReadCoreV1NamespacedPodParams) (ReadCoreV1NamespacedPodRes, error) {
 	res, err := c.sendReadCoreV1NamespacedPod(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -52751,7 +52502,6 @@ func (c *Client) sendReadCoreV1NamespacedPod(ctx context.Context, params ReadCor
 // GET /api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers
 func (c *Client) ReadCoreV1NamespacedPodEphemeralcontainers(ctx context.Context, params ReadCoreV1NamespacedPodEphemeralcontainersParams) (ReadCoreV1NamespacedPodEphemeralcontainersRes, error) {
 	res, err := c.sendReadCoreV1NamespacedPodEphemeralcontainers(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -52916,7 +52666,6 @@ func (c *Client) sendReadCoreV1NamespacedPodEphemeralcontainers(ctx context.Cont
 // GET /api/v1/namespaces/{namespace}/pods/{name}/log
 func (c *Client) ReadCoreV1NamespacedPodLog(ctx context.Context, params ReadCoreV1NamespacedPodLogParams) (ReadCoreV1NamespacedPodLogRes, error) {
 	res, err := c.sendReadCoreV1NamespacedPodLog(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -53217,7 +52966,6 @@ func (c *Client) sendReadCoreV1NamespacedPodLog(ctx context.Context, params Read
 // GET /api/v1/namespaces/{namespace}/pods/{name}/status
 func (c *Client) ReadCoreV1NamespacedPodStatus(ctx context.Context, params ReadCoreV1NamespacedPodStatusParams) (ReadCoreV1NamespacedPodStatusRes, error) {
 	res, err := c.sendReadCoreV1NamespacedPodStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -53382,7 +53130,6 @@ func (c *Client) sendReadCoreV1NamespacedPodStatus(ctx context.Context, params R
 // GET /api/v1/namespaces/{namespace}/podtemplates/{name}
 func (c *Client) ReadCoreV1NamespacedPodTemplate(ctx context.Context, params ReadCoreV1NamespacedPodTemplateParams) (ReadCoreV1NamespacedPodTemplateRes, error) {
 	res, err := c.sendReadCoreV1NamespacedPodTemplate(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -53546,7 +53293,6 @@ func (c *Client) sendReadCoreV1NamespacedPodTemplate(ctx context.Context, params
 // GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}
 func (c *Client) ReadCoreV1NamespacedReplicationController(ctx context.Context, params ReadCoreV1NamespacedReplicationControllerParams) (ReadCoreV1NamespacedReplicationControllerRes, error) {
 	res, err := c.sendReadCoreV1NamespacedReplicationController(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -53710,7 +53456,6 @@ func (c *Client) sendReadCoreV1NamespacedReplicationController(ctx context.Conte
 // GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale
 func (c *Client) ReadCoreV1NamespacedReplicationControllerScale(ctx context.Context, params ReadCoreV1NamespacedReplicationControllerScaleParams) (ReadCoreV1NamespacedReplicationControllerScaleRes, error) {
 	res, err := c.sendReadCoreV1NamespacedReplicationControllerScale(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -53875,7 +53620,6 @@ func (c *Client) sendReadCoreV1NamespacedReplicationControllerScale(ctx context.
 // GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status
 func (c *Client) ReadCoreV1NamespacedReplicationControllerStatus(ctx context.Context, params ReadCoreV1NamespacedReplicationControllerStatusParams) (ReadCoreV1NamespacedReplicationControllerStatusRes, error) {
 	res, err := c.sendReadCoreV1NamespacedReplicationControllerStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -54040,7 +53784,6 @@ func (c *Client) sendReadCoreV1NamespacedReplicationControllerStatus(ctx context
 // GET /api/v1/namespaces/{namespace}/resourcequotas/{name}
 func (c *Client) ReadCoreV1NamespacedResourceQuota(ctx context.Context, params ReadCoreV1NamespacedResourceQuotaParams) (ReadCoreV1NamespacedResourceQuotaRes, error) {
 	res, err := c.sendReadCoreV1NamespacedResourceQuota(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -54204,7 +53947,6 @@ func (c *Client) sendReadCoreV1NamespacedResourceQuota(ctx context.Context, para
 // GET /api/v1/namespaces/{namespace}/resourcequotas/{name}/status
 func (c *Client) ReadCoreV1NamespacedResourceQuotaStatus(ctx context.Context, params ReadCoreV1NamespacedResourceQuotaStatusParams) (ReadCoreV1NamespacedResourceQuotaStatusRes, error) {
 	res, err := c.sendReadCoreV1NamespacedResourceQuotaStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -54369,7 +54111,6 @@ func (c *Client) sendReadCoreV1NamespacedResourceQuotaStatus(ctx context.Context
 // GET /api/v1/namespaces/{namespace}/secrets/{name}
 func (c *Client) ReadCoreV1NamespacedSecret(ctx context.Context, params ReadCoreV1NamespacedSecretParams) (ReadCoreV1NamespacedSecretRes, error) {
 	res, err := c.sendReadCoreV1NamespacedSecret(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -54533,7 +54274,6 @@ func (c *Client) sendReadCoreV1NamespacedSecret(ctx context.Context, params Read
 // GET /api/v1/namespaces/{namespace}/services/{name}
 func (c *Client) ReadCoreV1NamespacedService(ctx context.Context, params ReadCoreV1NamespacedServiceParams) (ReadCoreV1NamespacedServiceRes, error) {
 	res, err := c.sendReadCoreV1NamespacedService(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -54697,7 +54437,6 @@ func (c *Client) sendReadCoreV1NamespacedService(ctx context.Context, params Rea
 // GET /api/v1/namespaces/{namespace}/serviceaccounts/{name}
 func (c *Client) ReadCoreV1NamespacedServiceAccount(ctx context.Context, params ReadCoreV1NamespacedServiceAccountParams) (ReadCoreV1NamespacedServiceAccountRes, error) {
 	res, err := c.sendReadCoreV1NamespacedServiceAccount(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -54861,7 +54600,6 @@ func (c *Client) sendReadCoreV1NamespacedServiceAccount(ctx context.Context, par
 // GET /api/v1/namespaces/{namespace}/services/{name}/status
 func (c *Client) ReadCoreV1NamespacedServiceStatus(ctx context.Context, params ReadCoreV1NamespacedServiceStatusParams) (ReadCoreV1NamespacedServiceStatusRes, error) {
 	res, err := c.sendReadCoreV1NamespacedServiceStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -55026,7 +54764,6 @@ func (c *Client) sendReadCoreV1NamespacedServiceStatus(ctx context.Context, para
 // GET /api/v1/nodes/{name}
 func (c *Client) ReadCoreV1Node(ctx context.Context, params ReadCoreV1NodeParams) (ReadCoreV1NodeRes, error) {
 	res, err := c.sendReadCoreV1Node(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -55171,7 +54908,6 @@ func (c *Client) sendReadCoreV1Node(ctx context.Context, params ReadCoreV1NodePa
 // GET /api/v1/nodes/{name}/status
 func (c *Client) ReadCoreV1NodeStatus(ctx context.Context, params ReadCoreV1NodeStatusParams) (ReadCoreV1NodeStatusRes, error) {
 	res, err := c.sendReadCoreV1NodeStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -55317,7 +55053,6 @@ func (c *Client) sendReadCoreV1NodeStatus(ctx context.Context, params ReadCoreV1
 // GET /api/v1/persistentvolumes/{name}
 func (c *Client) ReadCoreV1PersistentVolume(ctx context.Context, params ReadCoreV1PersistentVolumeParams) (ReadCoreV1PersistentVolumeRes, error) {
 	res, err := c.sendReadCoreV1PersistentVolume(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -55462,7 +55197,6 @@ func (c *Client) sendReadCoreV1PersistentVolume(ctx context.Context, params Read
 // GET /api/v1/persistentvolumes/{name}/status
 func (c *Client) ReadCoreV1PersistentVolumeStatus(ctx context.Context, params ReadCoreV1PersistentVolumeStatusParams) (ReadCoreV1PersistentVolumeStatusRes, error) {
 	res, err := c.sendReadCoreV1PersistentVolumeStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -55608,7 +55342,6 @@ func (c *Client) sendReadCoreV1PersistentVolumeStatus(ctx context.Context, param
 // GET /apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}
 func (c *Client) ReadDiscoveryV1NamespacedEndpointSlice(ctx context.Context, params ReadDiscoveryV1NamespacedEndpointSliceParams) (ReadDiscoveryV1NamespacedEndpointSliceRes, error) {
 	res, err := c.sendReadDiscoveryV1NamespacedEndpointSlice(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -55772,7 +55505,6 @@ func (c *Client) sendReadDiscoveryV1NamespacedEndpointSlice(ctx context.Context,
 // GET /apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}
 func (c *Client) ReadDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context, params ReadDiscoveryV1beta1NamespacedEndpointSliceParams) (ReadDiscoveryV1beta1NamespacedEndpointSliceRes, error) {
 	res, err := c.sendReadDiscoveryV1beta1NamespacedEndpointSlice(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -55936,7 +55668,6 @@ func (c *Client) sendReadDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Con
 // GET /apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}
 func (c *Client) ReadEventsV1NamespacedEvent(ctx context.Context, params ReadEventsV1NamespacedEventParams) (ReadEventsV1NamespacedEventRes, error) {
 	res, err := c.sendReadEventsV1NamespacedEvent(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -56100,7 +55831,6 @@ func (c *Client) sendReadEventsV1NamespacedEvent(ctx context.Context, params Rea
 // GET /apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}
 func (c *Client) ReadEventsV1beta1NamespacedEvent(ctx context.Context, params ReadEventsV1beta1NamespacedEventParams) (ReadEventsV1beta1NamespacedEventRes, error) {
 	res, err := c.sendReadEventsV1beta1NamespacedEvent(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -56264,7 +55994,6 @@ func (c *Client) sendReadEventsV1beta1NamespacedEvent(ctx context.Context, param
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}
 func (c *Client) ReadFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, params ReadFlowcontrolApiserverV1beta1FlowSchemaParams) (ReadFlowcontrolApiserverV1beta1FlowSchemaRes, error) {
 	res, err := c.sendReadFlowcontrolApiserverV1beta1FlowSchema(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -56409,7 +56138,6 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1FlowSchema(ctx context.Conte
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}/status
 func (c *Client) ReadFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx context.Context, params ReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams) (ReadFlowcontrolApiserverV1beta1FlowSchemaStatusRes, error) {
 	res, err := c.sendReadFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -56555,7 +56283,6 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx context
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}
 func (c *Client) ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, params ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, error) {
 	res, err := c.sendReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -56700,7 +56427,6 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration(c
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}/status
 func (c *Client) ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus(ctx context.Context, params ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams) (ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRes, error) {
 	res, err := c.sendReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -56846,7 +56572,6 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationSt
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}
 func (c *Client) ReadFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, params ReadFlowcontrolApiserverV1beta2FlowSchemaParams) (ReadFlowcontrolApiserverV1beta2FlowSchemaRes, error) {
 	res, err := c.sendReadFlowcontrolApiserverV1beta2FlowSchema(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -56991,7 +56716,6 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2FlowSchema(ctx context.Conte
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}/status
 func (c *Client) ReadFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx context.Context, params ReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams) (ReadFlowcontrolApiserverV1beta2FlowSchemaStatusRes, error) {
 	res, err := c.sendReadFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -57137,7 +56861,6 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx context
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}
 func (c *Client) ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, params ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, error) {
 	res, err := c.sendReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -57282,7 +57005,6 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration(c
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}/status
 func (c *Client) ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus(ctx context.Context, params ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams) (ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRes, error) {
 	res, err := c.sendReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -57428,7 +57150,6 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationSt
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}
 func (c *Client) ReadInternalApiserverV1alpha1StorageVersion(ctx context.Context, params ReadInternalApiserverV1alpha1StorageVersionParams) (ReadInternalApiserverV1alpha1StorageVersionRes, error) {
 	res, err := c.sendReadInternalApiserverV1alpha1StorageVersion(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -57573,7 +57294,6 @@ func (c *Client) sendReadInternalApiserverV1alpha1StorageVersion(ctx context.Con
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}/status
 func (c *Client) ReadInternalApiserverV1alpha1StorageVersionStatus(ctx context.Context, params ReadInternalApiserverV1alpha1StorageVersionStatusParams) (ReadInternalApiserverV1alpha1StorageVersionStatusRes, error) {
 	res, err := c.sendReadInternalApiserverV1alpha1StorageVersionStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -57719,7 +57439,6 @@ func (c *Client) sendReadInternalApiserverV1alpha1StorageVersionStatus(ctx conte
 // GET /apis/networking.k8s.io/v1/ingressclasses/{name}
 func (c *Client) ReadNetworkingV1IngressClass(ctx context.Context, params ReadNetworkingV1IngressClassParams) (ReadNetworkingV1IngressClassRes, error) {
 	res, err := c.sendReadNetworkingV1IngressClass(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -57864,7 +57583,6 @@ func (c *Client) sendReadNetworkingV1IngressClass(ctx context.Context, params Re
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}
 func (c *Client) ReadNetworkingV1NamespacedIngress(ctx context.Context, params ReadNetworkingV1NamespacedIngressParams) (ReadNetworkingV1NamespacedIngressRes, error) {
 	res, err := c.sendReadNetworkingV1NamespacedIngress(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -58028,7 +57746,6 @@ func (c *Client) sendReadNetworkingV1NamespacedIngress(ctx context.Context, para
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status
 func (c *Client) ReadNetworkingV1NamespacedIngressStatus(ctx context.Context, params ReadNetworkingV1NamespacedIngressStatusParams) (ReadNetworkingV1NamespacedIngressStatusRes, error) {
 	res, err := c.sendReadNetworkingV1NamespacedIngressStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -58193,7 +57910,6 @@ func (c *Client) sendReadNetworkingV1NamespacedIngressStatus(ctx context.Context
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}
 func (c *Client) ReadNetworkingV1NamespacedNetworkPolicy(ctx context.Context, params ReadNetworkingV1NamespacedNetworkPolicyParams) (ReadNetworkingV1NamespacedNetworkPolicyRes, error) {
 	res, err := c.sendReadNetworkingV1NamespacedNetworkPolicy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -58357,7 +58073,6 @@ func (c *Client) sendReadNetworkingV1NamespacedNetworkPolicy(ctx context.Context
 // GET /apis/node.k8s.io/v1/runtimeclasses/{name}
 func (c *Client) ReadNodeV1RuntimeClass(ctx context.Context, params ReadNodeV1RuntimeClassParams) (ReadNodeV1RuntimeClassRes, error) {
 	res, err := c.sendReadNodeV1RuntimeClass(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -58502,7 +58217,6 @@ func (c *Client) sendReadNodeV1RuntimeClass(ctx context.Context, params ReadNode
 // GET /apis/node.k8s.io/v1alpha1/runtimeclasses/{name}
 func (c *Client) ReadNodeV1alpha1RuntimeClass(ctx context.Context, params ReadNodeV1alpha1RuntimeClassParams) (ReadNodeV1alpha1RuntimeClassRes, error) {
 	res, err := c.sendReadNodeV1alpha1RuntimeClass(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -58647,7 +58361,6 @@ func (c *Client) sendReadNodeV1alpha1RuntimeClass(ctx context.Context, params Re
 // GET /apis/node.k8s.io/v1beta1/runtimeclasses/{name}
 func (c *Client) ReadNodeV1beta1RuntimeClass(ctx context.Context, params ReadNodeV1beta1RuntimeClassParams) (ReadNodeV1beta1RuntimeClassRes, error) {
 	res, err := c.sendReadNodeV1beta1RuntimeClass(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -58792,7 +58505,6 @@ func (c *Client) sendReadNodeV1beta1RuntimeClass(ctx context.Context, params Rea
 // GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}
 func (c *Client) ReadPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, params ReadPolicyV1NamespacedPodDisruptionBudgetParams) (ReadPolicyV1NamespacedPodDisruptionBudgetRes, error) {
 	res, err := c.sendReadPolicyV1NamespacedPodDisruptionBudget(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -58956,7 +58668,6 @@ func (c *Client) sendReadPolicyV1NamespacedPodDisruptionBudget(ctx context.Conte
 // GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status
 func (c *Client) ReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx context.Context, params ReadPolicyV1NamespacedPodDisruptionBudgetStatusParams) (ReadPolicyV1NamespacedPodDisruptionBudgetStatusRes, error) {
 	res, err := c.sendReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -59121,7 +58832,6 @@ func (c *Client) sendReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx context
 // GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}
 func (c *Client) ReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Context, params ReadPolicyV1beta1NamespacedPodDisruptionBudgetParams) (ReadPolicyV1beta1NamespacedPodDisruptionBudgetRes, error) {
 	res, err := c.sendReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -59285,7 +58995,6 @@ func (c *Client) sendReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.
 // GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status
 func (c *Client) ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx context.Context, params ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams) (ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRes, error) {
 	res, err := c.sendReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -59450,7 +59159,6 @@ func (c *Client) sendReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx co
 // GET /apis/policy/v1beta1/podsecuritypolicies/{name}
 func (c *Client) ReadPolicyV1beta1PodSecurityPolicy(ctx context.Context, params ReadPolicyV1beta1PodSecurityPolicyParams) (ReadPolicyV1beta1PodSecurityPolicyRes, error) {
 	res, err := c.sendReadPolicyV1beta1PodSecurityPolicy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -59595,7 +59303,6 @@ func (c *Client) sendReadPolicyV1beta1PodSecurityPolicy(ctx context.Context, par
 // GET /apis/rbac.authorization.k8s.io/v1/clusterroles/{name}
 func (c *Client) ReadRbacAuthorizationV1ClusterRole(ctx context.Context, params ReadRbacAuthorizationV1ClusterRoleParams) (ReadRbacAuthorizationV1ClusterRoleRes, error) {
 	res, err := c.sendReadRbacAuthorizationV1ClusterRole(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -59740,7 +59447,6 @@ func (c *Client) sendReadRbacAuthorizationV1ClusterRole(ctx context.Context, par
 // GET /apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}
 func (c *Client) ReadRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, params ReadRbacAuthorizationV1ClusterRoleBindingParams) (ReadRbacAuthorizationV1ClusterRoleBindingRes, error) {
 	res, err := c.sendReadRbacAuthorizationV1ClusterRoleBinding(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -59885,7 +59591,6 @@ func (c *Client) sendReadRbacAuthorizationV1ClusterRoleBinding(ctx context.Conte
 // GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}
 func (c *Client) ReadRbacAuthorizationV1NamespacedRole(ctx context.Context, params ReadRbacAuthorizationV1NamespacedRoleParams) (ReadRbacAuthorizationV1NamespacedRoleRes, error) {
 	res, err := c.sendReadRbacAuthorizationV1NamespacedRole(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -60049,7 +59754,6 @@ func (c *Client) sendReadRbacAuthorizationV1NamespacedRole(ctx context.Context, 
 // GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}
 func (c *Client) ReadRbacAuthorizationV1NamespacedRoleBinding(ctx context.Context, params ReadRbacAuthorizationV1NamespacedRoleBindingParams) (ReadRbacAuthorizationV1NamespacedRoleBindingRes, error) {
 	res, err := c.sendReadRbacAuthorizationV1NamespacedRoleBinding(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -60213,7 +59917,6 @@ func (c *Client) sendReadRbacAuthorizationV1NamespacedRoleBinding(ctx context.Co
 // GET /apis/scheduling.k8s.io/v1/priorityclasses/{name}
 func (c *Client) ReadSchedulingV1PriorityClass(ctx context.Context, params ReadSchedulingV1PriorityClassParams) (ReadSchedulingV1PriorityClassRes, error) {
 	res, err := c.sendReadSchedulingV1PriorityClass(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -60358,7 +60061,6 @@ func (c *Client) sendReadSchedulingV1PriorityClass(ctx context.Context, params R
 // GET /apis/storage.k8s.io/v1/csidrivers/{name}
 func (c *Client) ReadStorageV1CSIDriver(ctx context.Context, params ReadStorageV1CSIDriverParams) (ReadStorageV1CSIDriverRes, error) {
 	res, err := c.sendReadStorageV1CSIDriver(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -60503,7 +60205,6 @@ func (c *Client) sendReadStorageV1CSIDriver(ctx context.Context, params ReadStor
 // GET /apis/storage.k8s.io/v1/csinodes/{name}
 func (c *Client) ReadStorageV1CSINode(ctx context.Context, params ReadStorageV1CSINodeParams) (ReadStorageV1CSINodeRes, error) {
 	res, err := c.sendReadStorageV1CSINode(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -60648,7 +60349,6 @@ func (c *Client) sendReadStorageV1CSINode(ctx context.Context, params ReadStorag
 // GET /apis/storage.k8s.io/v1/storageclasses/{name}
 func (c *Client) ReadStorageV1StorageClass(ctx context.Context, params ReadStorageV1StorageClassParams) (ReadStorageV1StorageClassRes, error) {
 	res, err := c.sendReadStorageV1StorageClass(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -60793,7 +60493,6 @@ func (c *Client) sendReadStorageV1StorageClass(ctx context.Context, params ReadS
 // GET /apis/storage.k8s.io/v1/volumeattachments/{name}
 func (c *Client) ReadStorageV1VolumeAttachment(ctx context.Context, params ReadStorageV1VolumeAttachmentParams) (ReadStorageV1VolumeAttachmentRes, error) {
 	res, err := c.sendReadStorageV1VolumeAttachment(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -60938,7 +60637,6 @@ func (c *Client) sendReadStorageV1VolumeAttachment(ctx context.Context, params R
 // GET /apis/storage.k8s.io/v1/volumeattachments/{name}/status
 func (c *Client) ReadStorageV1VolumeAttachmentStatus(ctx context.Context, params ReadStorageV1VolumeAttachmentStatusParams) (ReadStorageV1VolumeAttachmentStatusRes, error) {
 	res, err := c.sendReadStorageV1VolumeAttachmentStatus(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -61084,7 +60782,6 @@ func (c *Client) sendReadStorageV1VolumeAttachmentStatus(ctx context.Context, pa
 // GET /apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities/{name}
 func (c *Client) ReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Context, params ReadStorageV1alpha1NamespacedCSIStorageCapacityParams) (ReadStorageV1alpha1NamespacedCSIStorageCapacityRes, error) {
 	res, err := c.sendReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -61248,7 +60945,6 @@ func (c *Client) sendReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx context
 // GET /apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities/{name}
 func (c *Client) ReadStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Context, params ReadStorageV1beta1NamespacedCSIStorageCapacityParams) (ReadStorageV1beta1NamespacedCSIStorageCapacityRes, error) {
 	res, err := c.sendReadStorageV1beta1NamespacedCSIStorageCapacity(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -61414,7 +61110,6 @@ func (c *Client) sendReadStorageV1beta1NamespacedCSIStorageCapacity(ctx context.
 // GET /apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations/{name}
 func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, params WatchAdmissionregistrationV1MutatingWebhookConfigurationParams) (WatchAdmissionregistrationV1MutatingWebhookConfigurationRes, error) {
 	res, err := c.sendWatchAdmissionregistrationV1MutatingWebhookConfiguration(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -61713,7 +61408,6 @@ func (c *Client) sendWatchAdmissionregistrationV1MutatingWebhookConfiguration(ct
 // GET /apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations
 func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ctx context.Context, params WatchAdmissionregistrationV1MutatingWebhookConfigurationListParams) (WatchAdmissionregistrationV1MutatingWebhookConfigurationListRes, error) {
 	res, err := c.sendWatchAdmissionregistrationV1MutatingWebhookConfigurationList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -61995,7 +61689,6 @@ func (c *Client) sendWatchAdmissionregistrationV1MutatingWebhookConfigurationLis
 // GET /apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations/{name}
 func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, params WatchAdmissionregistrationV1ValidatingWebhookConfigurationParams) (WatchAdmissionregistrationV1ValidatingWebhookConfigurationRes, error) {
 	res, err := c.sendWatchAdmissionregistrationV1ValidatingWebhookConfiguration(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -62294,7 +61987,6 @@ func (c *Client) sendWatchAdmissionregistrationV1ValidatingWebhookConfiguration(
 // GET /apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations
 func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(ctx context.Context, params WatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams) (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListRes, error) {
 	res, err := c.sendWatchAdmissionregistrationV1ValidatingWebhookConfigurationList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -62575,7 +62267,6 @@ func (c *Client) sendWatchAdmissionregistrationV1ValidatingWebhookConfigurationL
 // GET /apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions/{name}
 func (c *Client) WatchApiextensionsV1CustomResourceDefinition(ctx context.Context, params WatchApiextensionsV1CustomResourceDefinitionParams) (WatchApiextensionsV1CustomResourceDefinitionRes, error) {
 	res, err := c.sendWatchApiextensionsV1CustomResourceDefinition(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -62874,7 +62565,6 @@ func (c *Client) sendWatchApiextensionsV1CustomResourceDefinition(ctx context.Co
 // GET /apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions
 func (c *Client) WatchApiextensionsV1CustomResourceDefinitionList(ctx context.Context, params WatchApiextensionsV1CustomResourceDefinitionListParams) (WatchApiextensionsV1CustomResourceDefinitionListRes, error) {
 	res, err := c.sendWatchApiextensionsV1CustomResourceDefinitionList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -63155,7 +62845,6 @@ func (c *Client) sendWatchApiextensionsV1CustomResourceDefinitionList(ctx contex
 // GET /apis/apiregistration.k8s.io/v1/watch/apiservices/{name}
 func (c *Client) WatchApiregistrationV1APIService(ctx context.Context, params WatchApiregistrationV1APIServiceParams) (WatchApiregistrationV1APIServiceRes, error) {
 	res, err := c.sendWatchApiregistrationV1APIService(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -63454,7 +63143,6 @@ func (c *Client) sendWatchApiregistrationV1APIService(ctx context.Context, param
 // GET /apis/apiregistration.k8s.io/v1/watch/apiservices
 func (c *Client) WatchApiregistrationV1APIServiceList(ctx context.Context, params WatchApiregistrationV1APIServiceListParams) (WatchApiregistrationV1APIServiceListRes, error) {
 	res, err := c.sendWatchApiregistrationV1APIServiceList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -63735,7 +63423,6 @@ func (c *Client) sendWatchApiregistrationV1APIServiceList(ctx context.Context, p
 // GET /apis/apps/v1/watch/controllerrevisions
 func (c *Client) WatchAppsV1ControllerRevisionListForAllNamespaces(ctx context.Context, params WatchAppsV1ControllerRevisionListForAllNamespacesParams) (WatchAppsV1ControllerRevisionListForAllNamespacesRes, error) {
 	res, err := c.sendWatchAppsV1ControllerRevisionListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -64016,7 +63703,6 @@ func (c *Client) sendWatchAppsV1ControllerRevisionListForAllNamespaces(ctx conte
 // GET /apis/apps/v1/watch/daemonsets
 func (c *Client) WatchAppsV1DaemonSetListForAllNamespaces(ctx context.Context, params WatchAppsV1DaemonSetListForAllNamespacesParams) (WatchAppsV1DaemonSetListForAllNamespacesRes, error) {
 	res, err := c.sendWatchAppsV1DaemonSetListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -64297,7 +63983,6 @@ func (c *Client) sendWatchAppsV1DaemonSetListForAllNamespaces(ctx context.Contex
 // GET /apis/apps/v1/watch/deployments
 func (c *Client) WatchAppsV1DeploymentListForAllNamespaces(ctx context.Context, params WatchAppsV1DeploymentListForAllNamespacesParams) (WatchAppsV1DeploymentListForAllNamespacesRes, error) {
 	res, err := c.sendWatchAppsV1DeploymentListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -64578,7 +64263,6 @@ func (c *Client) sendWatchAppsV1DeploymentListForAllNamespaces(ctx context.Conte
 // GET /apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions/{name}
 func (c *Client) WatchAppsV1NamespacedControllerRevision(ctx context.Context, params WatchAppsV1NamespacedControllerRevisionParams) (WatchAppsV1NamespacedControllerRevisionRes, error) {
 	res, err := c.sendWatchAppsV1NamespacedControllerRevision(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -64896,7 +64580,6 @@ func (c *Client) sendWatchAppsV1NamespacedControllerRevision(ctx context.Context
 // GET /apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions
 func (c *Client) WatchAppsV1NamespacedControllerRevisionList(ctx context.Context, params WatchAppsV1NamespacedControllerRevisionListParams) (WatchAppsV1NamespacedControllerRevisionListRes, error) {
 	res, err := c.sendWatchAppsV1NamespacedControllerRevisionList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -65196,7 +64879,6 @@ func (c *Client) sendWatchAppsV1NamespacedControllerRevisionList(ctx context.Con
 // GET /apis/apps/v1/watch/namespaces/{namespace}/daemonsets/{name}
 func (c *Client) WatchAppsV1NamespacedDaemonSet(ctx context.Context, params WatchAppsV1NamespacedDaemonSetParams) (WatchAppsV1NamespacedDaemonSetRes, error) {
 	res, err := c.sendWatchAppsV1NamespacedDaemonSet(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -65514,7 +65196,6 @@ func (c *Client) sendWatchAppsV1NamespacedDaemonSet(ctx context.Context, params 
 // GET /apis/apps/v1/watch/namespaces/{namespace}/daemonsets
 func (c *Client) WatchAppsV1NamespacedDaemonSetList(ctx context.Context, params WatchAppsV1NamespacedDaemonSetListParams) (WatchAppsV1NamespacedDaemonSetListRes, error) {
 	res, err := c.sendWatchAppsV1NamespacedDaemonSetList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -65814,7 +65495,6 @@ func (c *Client) sendWatchAppsV1NamespacedDaemonSetList(ctx context.Context, par
 // GET /apis/apps/v1/watch/namespaces/{namespace}/deployments/{name}
 func (c *Client) WatchAppsV1NamespacedDeployment(ctx context.Context, params WatchAppsV1NamespacedDeploymentParams) (WatchAppsV1NamespacedDeploymentRes, error) {
 	res, err := c.sendWatchAppsV1NamespacedDeployment(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -66132,7 +65812,6 @@ func (c *Client) sendWatchAppsV1NamespacedDeployment(ctx context.Context, params
 // GET /apis/apps/v1/watch/namespaces/{namespace}/deployments
 func (c *Client) WatchAppsV1NamespacedDeploymentList(ctx context.Context, params WatchAppsV1NamespacedDeploymentListParams) (WatchAppsV1NamespacedDeploymentListRes, error) {
 	res, err := c.sendWatchAppsV1NamespacedDeploymentList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -66432,7 +66111,6 @@ func (c *Client) sendWatchAppsV1NamespacedDeploymentList(ctx context.Context, pa
 // GET /apis/apps/v1/watch/namespaces/{namespace}/replicasets/{name}
 func (c *Client) WatchAppsV1NamespacedReplicaSet(ctx context.Context, params WatchAppsV1NamespacedReplicaSetParams) (WatchAppsV1NamespacedReplicaSetRes, error) {
 	res, err := c.sendWatchAppsV1NamespacedReplicaSet(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -66750,7 +66428,6 @@ func (c *Client) sendWatchAppsV1NamespacedReplicaSet(ctx context.Context, params
 // GET /apis/apps/v1/watch/namespaces/{namespace}/replicasets
 func (c *Client) WatchAppsV1NamespacedReplicaSetList(ctx context.Context, params WatchAppsV1NamespacedReplicaSetListParams) (WatchAppsV1NamespacedReplicaSetListRes, error) {
 	res, err := c.sendWatchAppsV1NamespacedReplicaSetList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -67050,7 +66727,6 @@ func (c *Client) sendWatchAppsV1NamespacedReplicaSetList(ctx context.Context, pa
 // GET /apis/apps/v1/watch/namespaces/{namespace}/statefulsets/{name}
 func (c *Client) WatchAppsV1NamespacedStatefulSet(ctx context.Context, params WatchAppsV1NamespacedStatefulSetParams) (WatchAppsV1NamespacedStatefulSetRes, error) {
 	res, err := c.sendWatchAppsV1NamespacedStatefulSet(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -67368,7 +67044,6 @@ func (c *Client) sendWatchAppsV1NamespacedStatefulSet(ctx context.Context, param
 // GET /apis/apps/v1/watch/namespaces/{namespace}/statefulsets
 func (c *Client) WatchAppsV1NamespacedStatefulSetList(ctx context.Context, params WatchAppsV1NamespacedStatefulSetListParams) (WatchAppsV1NamespacedStatefulSetListRes, error) {
 	res, err := c.sendWatchAppsV1NamespacedStatefulSetList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -67668,7 +67343,6 @@ func (c *Client) sendWatchAppsV1NamespacedStatefulSetList(ctx context.Context, p
 // GET /apis/apps/v1/watch/replicasets
 func (c *Client) WatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Context, params WatchAppsV1ReplicaSetListForAllNamespacesParams) (WatchAppsV1ReplicaSetListForAllNamespacesRes, error) {
 	res, err := c.sendWatchAppsV1ReplicaSetListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -67949,7 +67623,6 @@ func (c *Client) sendWatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Conte
 // GET /apis/apps/v1/watch/statefulsets
 func (c *Client) WatchAppsV1StatefulSetListForAllNamespaces(ctx context.Context, params WatchAppsV1StatefulSetListForAllNamespacesParams) (WatchAppsV1StatefulSetListForAllNamespacesRes, error) {
 	res, err := c.sendWatchAppsV1StatefulSetListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -68230,7 +67903,6 @@ func (c *Client) sendWatchAppsV1StatefulSetListForAllNamespaces(ctx context.Cont
 // GET /apis/autoscaling/v1/watch/horizontalpodautoscalers
 func (c *Client) WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context, params WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams) (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRes, error) {
 	res, err := c.sendWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -68511,7 +68183,6 @@ func (c *Client) sendWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespac
 // GET /apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (c *Client) WatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.Context, params WatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams) (WatchAutoscalingV1NamespacedHorizontalPodAutoscalerRes, error) {
 	res, err := c.sendWatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -68829,7 +68500,6 @@ func (c *Client) sendWatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx con
 // GET /apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers
 func (c *Client) WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx context.Context, params WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams) (WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRes, error) {
 	res, err := c.sendWatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -69129,7 +68799,6 @@ func (c *Client) sendWatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx
 // GET /apis/autoscaling/v2beta1/watch/horizontalpodautoscalers
 func (c *Client) WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context, params WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams) (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes, error) {
 	res, err := c.sendWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -69410,7 +69079,6 @@ func (c *Client) sendWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNam
 // GET /apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (c *Client) WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx context.Context, params WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) (WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, error) {
 	res, err := c.sendWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -69728,7 +69396,6 @@ func (c *Client) sendWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ct
 // GET /apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers
 func (c *Client) WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList(ctx context.Context, params WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams) (WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRes, error) {
 	res, err := c.sendWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -70028,7 +69695,6 @@ func (c *Client) sendWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerLis
 // GET /apis/autoscaling/v2beta2/watch/horizontalpodautoscalers
 func (c *Client) WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context, params WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams) (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes, error) {
 	res, err := c.sendWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -70309,7 +69975,6 @@ func (c *Client) sendWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNam
 // GET /apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (c *Client) WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx context.Context, params WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) (WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, error) {
 	res, err := c.sendWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -70627,7 +70292,6 @@ func (c *Client) sendWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ct
 // GET /apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers
 func (c *Client) WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList(ctx context.Context, params WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams) (WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRes, error) {
 	res, err := c.sendWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -70927,7 +70591,6 @@ func (c *Client) sendWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerLis
 // GET /apis/batch/v1/watch/cronjobs
 func (c *Client) WatchBatchV1CronJobListForAllNamespaces(ctx context.Context, params WatchBatchV1CronJobListForAllNamespacesParams) (WatchBatchV1CronJobListForAllNamespacesRes, error) {
 	res, err := c.sendWatchBatchV1CronJobListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -71208,7 +70871,6 @@ func (c *Client) sendWatchBatchV1CronJobListForAllNamespaces(ctx context.Context
 // GET /apis/batch/v1/watch/jobs
 func (c *Client) WatchBatchV1JobListForAllNamespaces(ctx context.Context, params WatchBatchV1JobListForAllNamespacesParams) (WatchBatchV1JobListForAllNamespacesRes, error) {
 	res, err := c.sendWatchBatchV1JobListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -71489,7 +71151,6 @@ func (c *Client) sendWatchBatchV1JobListForAllNamespaces(ctx context.Context, pa
 // GET /apis/batch/v1/watch/namespaces/{namespace}/cronjobs/{name}
 func (c *Client) WatchBatchV1NamespacedCronJob(ctx context.Context, params WatchBatchV1NamespacedCronJobParams) (WatchBatchV1NamespacedCronJobRes, error) {
 	res, err := c.sendWatchBatchV1NamespacedCronJob(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -71807,7 +71468,6 @@ func (c *Client) sendWatchBatchV1NamespacedCronJob(ctx context.Context, params W
 // GET /apis/batch/v1/watch/namespaces/{namespace}/cronjobs
 func (c *Client) WatchBatchV1NamespacedCronJobList(ctx context.Context, params WatchBatchV1NamespacedCronJobListParams) (WatchBatchV1NamespacedCronJobListRes, error) {
 	res, err := c.sendWatchBatchV1NamespacedCronJobList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -72107,7 +71767,6 @@ func (c *Client) sendWatchBatchV1NamespacedCronJobList(ctx context.Context, para
 // GET /apis/batch/v1/watch/namespaces/{namespace}/jobs/{name}
 func (c *Client) WatchBatchV1NamespacedJob(ctx context.Context, params WatchBatchV1NamespacedJobParams) (WatchBatchV1NamespacedJobRes, error) {
 	res, err := c.sendWatchBatchV1NamespacedJob(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -72425,7 +72084,6 @@ func (c *Client) sendWatchBatchV1NamespacedJob(ctx context.Context, params Watch
 // GET /apis/batch/v1/watch/namespaces/{namespace}/jobs
 func (c *Client) WatchBatchV1NamespacedJobList(ctx context.Context, params WatchBatchV1NamespacedJobListParams) (WatchBatchV1NamespacedJobListRes, error) {
 	res, err := c.sendWatchBatchV1NamespacedJobList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -72725,7 +72383,6 @@ func (c *Client) sendWatchBatchV1NamespacedJobList(ctx context.Context, params W
 // GET /apis/batch/v1beta1/watch/cronjobs
 func (c *Client) WatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Context, params WatchBatchV1beta1CronJobListForAllNamespacesParams) (WatchBatchV1beta1CronJobListForAllNamespacesRes, error) {
 	res, err := c.sendWatchBatchV1beta1CronJobListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -73006,7 +72663,6 @@ func (c *Client) sendWatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Co
 // GET /apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs/{name}
 func (c *Client) WatchBatchV1beta1NamespacedCronJob(ctx context.Context, params WatchBatchV1beta1NamespacedCronJobParams) (WatchBatchV1beta1NamespacedCronJobRes, error) {
 	res, err := c.sendWatchBatchV1beta1NamespacedCronJob(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -73324,7 +72980,6 @@ func (c *Client) sendWatchBatchV1beta1NamespacedCronJob(ctx context.Context, par
 // GET /apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs
 func (c *Client) WatchBatchV1beta1NamespacedCronJobList(ctx context.Context, params WatchBatchV1beta1NamespacedCronJobListParams) (WatchBatchV1beta1NamespacedCronJobListRes, error) {
 	res, err := c.sendWatchBatchV1beta1NamespacedCronJobList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -73625,7 +73280,6 @@ func (c *Client) sendWatchBatchV1beta1NamespacedCronJobList(ctx context.Context,
 // GET /apis/certificates.k8s.io/v1/watch/certificatesigningrequests/{name}
 func (c *Client) WatchCertificatesV1CertificateSigningRequest(ctx context.Context, params WatchCertificatesV1CertificateSigningRequestParams) (WatchCertificatesV1CertificateSigningRequestRes, error) {
 	res, err := c.sendWatchCertificatesV1CertificateSigningRequest(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -73924,7 +73578,6 @@ func (c *Client) sendWatchCertificatesV1CertificateSigningRequest(ctx context.Co
 // GET /apis/certificates.k8s.io/v1/watch/certificatesigningrequests
 func (c *Client) WatchCertificatesV1CertificateSigningRequestList(ctx context.Context, params WatchCertificatesV1CertificateSigningRequestListParams) (WatchCertificatesV1CertificateSigningRequestListRes, error) {
 	res, err := c.sendWatchCertificatesV1CertificateSigningRequestList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -74205,7 +73858,6 @@ func (c *Client) sendWatchCertificatesV1CertificateSigningRequestList(ctx contex
 // GET /apis/coordination.k8s.io/v1/watch/leases
 func (c *Client) WatchCoordinationV1LeaseListForAllNamespaces(ctx context.Context, params WatchCoordinationV1LeaseListForAllNamespacesParams) (WatchCoordinationV1LeaseListForAllNamespacesRes, error) {
 	res, err := c.sendWatchCoordinationV1LeaseListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -74486,7 +74138,6 @@ func (c *Client) sendWatchCoordinationV1LeaseListForAllNamespaces(ctx context.Co
 // GET /apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases/{name}
 func (c *Client) WatchCoordinationV1NamespacedLease(ctx context.Context, params WatchCoordinationV1NamespacedLeaseParams) (WatchCoordinationV1NamespacedLeaseRes, error) {
 	res, err := c.sendWatchCoordinationV1NamespacedLease(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -74804,7 +74455,6 @@ func (c *Client) sendWatchCoordinationV1NamespacedLease(ctx context.Context, par
 // GET /apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases
 func (c *Client) WatchCoordinationV1NamespacedLeaseList(ctx context.Context, params WatchCoordinationV1NamespacedLeaseListParams) (WatchCoordinationV1NamespacedLeaseListRes, error) {
 	res, err := c.sendWatchCoordinationV1NamespacedLeaseList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -75104,7 +74754,6 @@ func (c *Client) sendWatchCoordinationV1NamespacedLeaseList(ctx context.Context,
 // GET /api/v1/watch/configmaps
 func (c *Client) WatchCoreV1ConfigMapListForAllNamespaces(ctx context.Context, params WatchCoreV1ConfigMapListForAllNamespacesParams) (WatchCoreV1ConfigMapListForAllNamespacesRes, error) {
 	res, err := c.sendWatchCoreV1ConfigMapListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -75385,7 +75034,6 @@ func (c *Client) sendWatchCoreV1ConfigMapListForAllNamespaces(ctx context.Contex
 // GET /api/v1/watch/endpoints
 func (c *Client) WatchCoreV1EndpointsListForAllNamespaces(ctx context.Context, params WatchCoreV1EndpointsListForAllNamespacesParams) (WatchCoreV1EndpointsListForAllNamespacesRes, error) {
 	res, err := c.sendWatchCoreV1EndpointsListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -75666,7 +75314,6 @@ func (c *Client) sendWatchCoreV1EndpointsListForAllNamespaces(ctx context.Contex
 // GET /api/v1/watch/events
 func (c *Client) WatchCoreV1EventListForAllNamespaces(ctx context.Context, params WatchCoreV1EventListForAllNamespacesParams) (WatchCoreV1EventListForAllNamespacesRes, error) {
 	res, err := c.sendWatchCoreV1EventListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -75947,7 +75594,6 @@ func (c *Client) sendWatchCoreV1EventListForAllNamespaces(ctx context.Context, p
 // GET /api/v1/watch/limitranges
 func (c *Client) WatchCoreV1LimitRangeListForAllNamespaces(ctx context.Context, params WatchCoreV1LimitRangeListForAllNamespacesParams) (WatchCoreV1LimitRangeListForAllNamespacesRes, error) {
 	res, err := c.sendWatchCoreV1LimitRangeListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -76228,7 +75874,6 @@ func (c *Client) sendWatchCoreV1LimitRangeListForAllNamespaces(ctx context.Conte
 // GET /api/v1/watch/namespaces/{name}
 func (c *Client) WatchCoreV1Namespace(ctx context.Context, params WatchCoreV1NamespaceParams) (WatchCoreV1NamespaceRes, error) {
 	res, err := c.sendWatchCoreV1Namespace(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -76527,7 +76172,6 @@ func (c *Client) sendWatchCoreV1Namespace(ctx context.Context, params WatchCoreV
 // GET /api/v1/watch/namespaces
 func (c *Client) WatchCoreV1NamespaceList(ctx context.Context, params WatchCoreV1NamespaceListParams) (WatchCoreV1NamespaceListRes, error) {
 	res, err := c.sendWatchCoreV1NamespaceList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -76808,7 +76452,6 @@ func (c *Client) sendWatchCoreV1NamespaceList(ctx context.Context, params WatchC
 // GET /api/v1/watch/namespaces/{namespace}/configmaps/{name}
 func (c *Client) WatchCoreV1NamespacedConfigMap(ctx context.Context, params WatchCoreV1NamespacedConfigMapParams) (WatchCoreV1NamespacedConfigMapRes, error) {
 	res, err := c.sendWatchCoreV1NamespacedConfigMap(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -77126,7 +76769,6 @@ func (c *Client) sendWatchCoreV1NamespacedConfigMap(ctx context.Context, params 
 // GET /api/v1/watch/namespaces/{namespace}/configmaps
 func (c *Client) WatchCoreV1NamespacedConfigMapList(ctx context.Context, params WatchCoreV1NamespacedConfigMapListParams) (WatchCoreV1NamespacedConfigMapListRes, error) {
 	res, err := c.sendWatchCoreV1NamespacedConfigMapList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -77426,7 +77068,6 @@ func (c *Client) sendWatchCoreV1NamespacedConfigMapList(ctx context.Context, par
 // GET /api/v1/watch/namespaces/{namespace}/endpoints/{name}
 func (c *Client) WatchCoreV1NamespacedEndpoints(ctx context.Context, params WatchCoreV1NamespacedEndpointsParams) (WatchCoreV1NamespacedEndpointsRes, error) {
 	res, err := c.sendWatchCoreV1NamespacedEndpoints(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -77744,7 +77385,6 @@ func (c *Client) sendWatchCoreV1NamespacedEndpoints(ctx context.Context, params 
 // GET /api/v1/watch/namespaces/{namespace}/endpoints
 func (c *Client) WatchCoreV1NamespacedEndpointsList(ctx context.Context, params WatchCoreV1NamespacedEndpointsListParams) (WatchCoreV1NamespacedEndpointsListRes, error) {
 	res, err := c.sendWatchCoreV1NamespacedEndpointsList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -78044,7 +77684,6 @@ func (c *Client) sendWatchCoreV1NamespacedEndpointsList(ctx context.Context, par
 // GET /api/v1/watch/namespaces/{namespace}/events/{name}
 func (c *Client) WatchCoreV1NamespacedEvent(ctx context.Context, params WatchCoreV1NamespacedEventParams) (WatchCoreV1NamespacedEventRes, error) {
 	res, err := c.sendWatchCoreV1NamespacedEvent(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -78362,7 +78001,6 @@ func (c *Client) sendWatchCoreV1NamespacedEvent(ctx context.Context, params Watc
 // GET /api/v1/watch/namespaces/{namespace}/events
 func (c *Client) WatchCoreV1NamespacedEventList(ctx context.Context, params WatchCoreV1NamespacedEventListParams) (WatchCoreV1NamespacedEventListRes, error) {
 	res, err := c.sendWatchCoreV1NamespacedEventList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -78662,7 +78300,6 @@ func (c *Client) sendWatchCoreV1NamespacedEventList(ctx context.Context, params 
 // GET /api/v1/watch/namespaces/{namespace}/limitranges/{name}
 func (c *Client) WatchCoreV1NamespacedLimitRange(ctx context.Context, params WatchCoreV1NamespacedLimitRangeParams) (WatchCoreV1NamespacedLimitRangeRes, error) {
 	res, err := c.sendWatchCoreV1NamespacedLimitRange(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -78980,7 +78617,6 @@ func (c *Client) sendWatchCoreV1NamespacedLimitRange(ctx context.Context, params
 // GET /api/v1/watch/namespaces/{namespace}/limitranges
 func (c *Client) WatchCoreV1NamespacedLimitRangeList(ctx context.Context, params WatchCoreV1NamespacedLimitRangeListParams) (WatchCoreV1NamespacedLimitRangeListRes, error) {
 	res, err := c.sendWatchCoreV1NamespacedLimitRangeList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -79280,7 +78916,6 @@ func (c *Client) sendWatchCoreV1NamespacedLimitRangeList(ctx context.Context, pa
 // GET /api/v1/watch/namespaces/{namespace}/persistentvolumeclaims/{name}
 func (c *Client) WatchCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, params WatchCoreV1NamespacedPersistentVolumeClaimParams) (WatchCoreV1NamespacedPersistentVolumeClaimRes, error) {
 	res, err := c.sendWatchCoreV1NamespacedPersistentVolumeClaim(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -79598,7 +79233,6 @@ func (c *Client) sendWatchCoreV1NamespacedPersistentVolumeClaim(ctx context.Cont
 // GET /api/v1/watch/namespaces/{namespace}/persistentvolumeclaims
 func (c *Client) WatchCoreV1NamespacedPersistentVolumeClaimList(ctx context.Context, params WatchCoreV1NamespacedPersistentVolumeClaimListParams) (WatchCoreV1NamespacedPersistentVolumeClaimListRes, error) {
 	res, err := c.sendWatchCoreV1NamespacedPersistentVolumeClaimList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -79898,7 +79532,6 @@ func (c *Client) sendWatchCoreV1NamespacedPersistentVolumeClaimList(ctx context.
 // GET /api/v1/watch/namespaces/{namespace}/pods/{name}
 func (c *Client) WatchCoreV1NamespacedPod(ctx context.Context, params WatchCoreV1NamespacedPodParams) (WatchCoreV1NamespacedPodRes, error) {
 	res, err := c.sendWatchCoreV1NamespacedPod(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -80216,7 +79849,6 @@ func (c *Client) sendWatchCoreV1NamespacedPod(ctx context.Context, params WatchC
 // GET /api/v1/watch/namespaces/{namespace}/pods
 func (c *Client) WatchCoreV1NamespacedPodList(ctx context.Context, params WatchCoreV1NamespacedPodListParams) (WatchCoreV1NamespacedPodListRes, error) {
 	res, err := c.sendWatchCoreV1NamespacedPodList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -80516,7 +80148,6 @@ func (c *Client) sendWatchCoreV1NamespacedPodList(ctx context.Context, params Wa
 // GET /api/v1/watch/namespaces/{namespace}/podtemplates/{name}
 func (c *Client) WatchCoreV1NamespacedPodTemplate(ctx context.Context, params WatchCoreV1NamespacedPodTemplateParams) (WatchCoreV1NamespacedPodTemplateRes, error) {
 	res, err := c.sendWatchCoreV1NamespacedPodTemplate(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -80834,7 +80465,6 @@ func (c *Client) sendWatchCoreV1NamespacedPodTemplate(ctx context.Context, param
 // GET /api/v1/watch/namespaces/{namespace}/podtemplates
 func (c *Client) WatchCoreV1NamespacedPodTemplateList(ctx context.Context, params WatchCoreV1NamespacedPodTemplateListParams) (WatchCoreV1NamespacedPodTemplateListRes, error) {
 	res, err := c.sendWatchCoreV1NamespacedPodTemplateList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -81134,7 +80764,6 @@ func (c *Client) sendWatchCoreV1NamespacedPodTemplateList(ctx context.Context, p
 // GET /api/v1/watch/namespaces/{namespace}/replicationcontrollers/{name}
 func (c *Client) WatchCoreV1NamespacedReplicationController(ctx context.Context, params WatchCoreV1NamespacedReplicationControllerParams) (WatchCoreV1NamespacedReplicationControllerRes, error) {
 	res, err := c.sendWatchCoreV1NamespacedReplicationController(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -81452,7 +81081,6 @@ func (c *Client) sendWatchCoreV1NamespacedReplicationController(ctx context.Cont
 // GET /api/v1/watch/namespaces/{namespace}/replicationcontrollers
 func (c *Client) WatchCoreV1NamespacedReplicationControllerList(ctx context.Context, params WatchCoreV1NamespacedReplicationControllerListParams) (WatchCoreV1NamespacedReplicationControllerListRes, error) {
 	res, err := c.sendWatchCoreV1NamespacedReplicationControllerList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -81752,7 +81380,6 @@ func (c *Client) sendWatchCoreV1NamespacedReplicationControllerList(ctx context.
 // GET /api/v1/watch/namespaces/{namespace}/resourcequotas/{name}
 func (c *Client) WatchCoreV1NamespacedResourceQuota(ctx context.Context, params WatchCoreV1NamespacedResourceQuotaParams) (WatchCoreV1NamespacedResourceQuotaRes, error) {
 	res, err := c.sendWatchCoreV1NamespacedResourceQuota(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -82070,7 +81697,6 @@ func (c *Client) sendWatchCoreV1NamespacedResourceQuota(ctx context.Context, par
 // GET /api/v1/watch/namespaces/{namespace}/resourcequotas
 func (c *Client) WatchCoreV1NamespacedResourceQuotaList(ctx context.Context, params WatchCoreV1NamespacedResourceQuotaListParams) (WatchCoreV1NamespacedResourceQuotaListRes, error) {
 	res, err := c.sendWatchCoreV1NamespacedResourceQuotaList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -82370,7 +81996,6 @@ func (c *Client) sendWatchCoreV1NamespacedResourceQuotaList(ctx context.Context,
 // GET /api/v1/watch/namespaces/{namespace}/secrets/{name}
 func (c *Client) WatchCoreV1NamespacedSecret(ctx context.Context, params WatchCoreV1NamespacedSecretParams) (WatchCoreV1NamespacedSecretRes, error) {
 	res, err := c.sendWatchCoreV1NamespacedSecret(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -82688,7 +82313,6 @@ func (c *Client) sendWatchCoreV1NamespacedSecret(ctx context.Context, params Wat
 // GET /api/v1/watch/namespaces/{namespace}/secrets
 func (c *Client) WatchCoreV1NamespacedSecretList(ctx context.Context, params WatchCoreV1NamespacedSecretListParams) (WatchCoreV1NamespacedSecretListRes, error) {
 	res, err := c.sendWatchCoreV1NamespacedSecretList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -82988,7 +82612,6 @@ func (c *Client) sendWatchCoreV1NamespacedSecretList(ctx context.Context, params
 // GET /api/v1/watch/namespaces/{namespace}/services/{name}
 func (c *Client) WatchCoreV1NamespacedService(ctx context.Context, params WatchCoreV1NamespacedServiceParams) (WatchCoreV1NamespacedServiceRes, error) {
 	res, err := c.sendWatchCoreV1NamespacedService(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -83306,7 +82929,6 @@ func (c *Client) sendWatchCoreV1NamespacedService(ctx context.Context, params Wa
 // GET /api/v1/watch/namespaces/{namespace}/serviceaccounts/{name}
 func (c *Client) WatchCoreV1NamespacedServiceAccount(ctx context.Context, params WatchCoreV1NamespacedServiceAccountParams) (WatchCoreV1NamespacedServiceAccountRes, error) {
 	res, err := c.sendWatchCoreV1NamespacedServiceAccount(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -83624,7 +83246,6 @@ func (c *Client) sendWatchCoreV1NamespacedServiceAccount(ctx context.Context, pa
 // GET /api/v1/watch/namespaces/{namespace}/serviceaccounts
 func (c *Client) WatchCoreV1NamespacedServiceAccountList(ctx context.Context, params WatchCoreV1NamespacedServiceAccountListParams) (WatchCoreV1NamespacedServiceAccountListRes, error) {
 	res, err := c.sendWatchCoreV1NamespacedServiceAccountList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -83924,7 +83545,6 @@ func (c *Client) sendWatchCoreV1NamespacedServiceAccountList(ctx context.Context
 // GET /api/v1/watch/namespaces/{namespace}/services
 func (c *Client) WatchCoreV1NamespacedServiceList(ctx context.Context, params WatchCoreV1NamespacedServiceListParams) (WatchCoreV1NamespacedServiceListRes, error) {
 	res, err := c.sendWatchCoreV1NamespacedServiceList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -84224,7 +83844,6 @@ func (c *Client) sendWatchCoreV1NamespacedServiceList(ctx context.Context, param
 // GET /api/v1/watch/nodes/{name}
 func (c *Client) WatchCoreV1Node(ctx context.Context, params WatchCoreV1NodeParams) (WatchCoreV1NodeRes, error) {
 	res, err := c.sendWatchCoreV1Node(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -84523,7 +84142,6 @@ func (c *Client) sendWatchCoreV1Node(ctx context.Context, params WatchCoreV1Node
 // GET /api/v1/watch/nodes
 func (c *Client) WatchCoreV1NodeList(ctx context.Context, params WatchCoreV1NodeListParams) (WatchCoreV1NodeListRes, error) {
 	res, err := c.sendWatchCoreV1NodeList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -84804,7 +84422,6 @@ func (c *Client) sendWatchCoreV1NodeList(ctx context.Context, params WatchCoreV1
 // GET /api/v1/watch/persistentvolumes/{name}
 func (c *Client) WatchCoreV1PersistentVolume(ctx context.Context, params WatchCoreV1PersistentVolumeParams) (WatchCoreV1PersistentVolumeRes, error) {
 	res, err := c.sendWatchCoreV1PersistentVolume(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -85103,7 +84720,6 @@ func (c *Client) sendWatchCoreV1PersistentVolume(ctx context.Context, params Wat
 // GET /api/v1/watch/persistentvolumeclaims
 func (c *Client) WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx context.Context, params WatchCoreV1PersistentVolumeClaimListForAllNamespacesParams) (WatchCoreV1PersistentVolumeClaimListForAllNamespacesRes, error) {
 	res, err := c.sendWatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -85384,7 +85000,6 @@ func (c *Client) sendWatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx co
 // GET /api/v1/watch/persistentvolumes
 func (c *Client) WatchCoreV1PersistentVolumeList(ctx context.Context, params WatchCoreV1PersistentVolumeListParams) (WatchCoreV1PersistentVolumeListRes, error) {
 	res, err := c.sendWatchCoreV1PersistentVolumeList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -85665,7 +85280,6 @@ func (c *Client) sendWatchCoreV1PersistentVolumeList(ctx context.Context, params
 // GET /api/v1/watch/pods
 func (c *Client) WatchCoreV1PodListForAllNamespaces(ctx context.Context, params WatchCoreV1PodListForAllNamespacesParams) (WatchCoreV1PodListForAllNamespacesRes, error) {
 	res, err := c.sendWatchCoreV1PodListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -85946,7 +85560,6 @@ func (c *Client) sendWatchCoreV1PodListForAllNamespaces(ctx context.Context, par
 // GET /api/v1/watch/podtemplates
 func (c *Client) WatchCoreV1PodTemplateListForAllNamespaces(ctx context.Context, params WatchCoreV1PodTemplateListForAllNamespacesParams) (WatchCoreV1PodTemplateListForAllNamespacesRes, error) {
 	res, err := c.sendWatchCoreV1PodTemplateListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -86227,7 +85840,6 @@ func (c *Client) sendWatchCoreV1PodTemplateListForAllNamespaces(ctx context.Cont
 // GET /api/v1/watch/replicationcontrollers
 func (c *Client) WatchCoreV1ReplicationControllerListForAllNamespaces(ctx context.Context, params WatchCoreV1ReplicationControllerListForAllNamespacesParams) (WatchCoreV1ReplicationControllerListForAllNamespacesRes, error) {
 	res, err := c.sendWatchCoreV1ReplicationControllerListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -86508,7 +86120,6 @@ func (c *Client) sendWatchCoreV1ReplicationControllerListForAllNamespaces(ctx co
 // GET /api/v1/watch/resourcequotas
 func (c *Client) WatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Context, params WatchCoreV1ResourceQuotaListForAllNamespacesParams) (WatchCoreV1ResourceQuotaListForAllNamespacesRes, error) {
 	res, err := c.sendWatchCoreV1ResourceQuotaListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -86789,7 +86400,6 @@ func (c *Client) sendWatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Co
 // GET /api/v1/watch/secrets
 func (c *Client) WatchCoreV1SecretListForAllNamespaces(ctx context.Context, params WatchCoreV1SecretListForAllNamespacesParams) (WatchCoreV1SecretListForAllNamespacesRes, error) {
 	res, err := c.sendWatchCoreV1SecretListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -87070,7 +86680,6 @@ func (c *Client) sendWatchCoreV1SecretListForAllNamespaces(ctx context.Context, 
 // GET /api/v1/watch/serviceaccounts
 func (c *Client) WatchCoreV1ServiceAccountListForAllNamespaces(ctx context.Context, params WatchCoreV1ServiceAccountListForAllNamespacesParams) (WatchCoreV1ServiceAccountListForAllNamespacesRes, error) {
 	res, err := c.sendWatchCoreV1ServiceAccountListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -87351,7 +86960,6 @@ func (c *Client) sendWatchCoreV1ServiceAccountListForAllNamespaces(ctx context.C
 // GET /api/v1/watch/services
 func (c *Client) WatchCoreV1ServiceListForAllNamespaces(ctx context.Context, params WatchCoreV1ServiceListForAllNamespacesParams) (WatchCoreV1ServiceListForAllNamespacesRes, error) {
 	res, err := c.sendWatchCoreV1ServiceListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -87632,7 +87240,6 @@ func (c *Client) sendWatchCoreV1ServiceListForAllNamespaces(ctx context.Context,
 // GET /apis/discovery.k8s.io/v1/watch/endpointslices
 func (c *Client) WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx context.Context, params WatchDiscoveryV1EndpointSliceListForAllNamespacesParams) (WatchDiscoveryV1EndpointSliceListForAllNamespacesRes, error) {
 	res, err := c.sendWatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -87913,7 +87520,6 @@ func (c *Client) sendWatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx conte
 // GET /apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices/{name}
 func (c *Client) WatchDiscoveryV1NamespacedEndpointSlice(ctx context.Context, params WatchDiscoveryV1NamespacedEndpointSliceParams) (WatchDiscoveryV1NamespacedEndpointSliceRes, error) {
 	res, err := c.sendWatchDiscoveryV1NamespacedEndpointSlice(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -88231,7 +87837,6 @@ func (c *Client) sendWatchDiscoveryV1NamespacedEndpointSlice(ctx context.Context
 // GET /apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices
 func (c *Client) WatchDiscoveryV1NamespacedEndpointSliceList(ctx context.Context, params WatchDiscoveryV1NamespacedEndpointSliceListParams) (WatchDiscoveryV1NamespacedEndpointSliceListRes, error) {
 	res, err := c.sendWatchDiscoveryV1NamespacedEndpointSliceList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -88531,7 +88136,6 @@ func (c *Client) sendWatchDiscoveryV1NamespacedEndpointSliceList(ctx context.Con
 // GET /apis/discovery.k8s.io/v1beta1/watch/endpointslices
 func (c *Client) WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx context.Context, params WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams) (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRes, error) {
 	res, err := c.sendWatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -88812,7 +88416,6 @@ func (c *Client) sendWatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx 
 // GET /apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices/{name}
 func (c *Client) WatchDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context, params WatchDiscoveryV1beta1NamespacedEndpointSliceParams) (WatchDiscoveryV1beta1NamespacedEndpointSliceRes, error) {
 	res, err := c.sendWatchDiscoveryV1beta1NamespacedEndpointSlice(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -89130,7 +88733,6 @@ func (c *Client) sendWatchDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Co
 // GET /apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices
 func (c *Client) WatchDiscoveryV1beta1NamespacedEndpointSliceList(ctx context.Context, params WatchDiscoveryV1beta1NamespacedEndpointSliceListParams) (WatchDiscoveryV1beta1NamespacedEndpointSliceListRes, error) {
 	res, err := c.sendWatchDiscoveryV1beta1NamespacedEndpointSliceList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -89430,7 +89032,6 @@ func (c *Client) sendWatchDiscoveryV1beta1NamespacedEndpointSliceList(ctx contex
 // GET /apis/events.k8s.io/v1/watch/events
 func (c *Client) WatchEventsV1EventListForAllNamespaces(ctx context.Context, params WatchEventsV1EventListForAllNamespacesParams) (WatchEventsV1EventListForAllNamespacesRes, error) {
 	res, err := c.sendWatchEventsV1EventListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -89711,7 +89312,6 @@ func (c *Client) sendWatchEventsV1EventListForAllNamespaces(ctx context.Context,
 // GET /apis/events.k8s.io/v1/watch/namespaces/{namespace}/events/{name}
 func (c *Client) WatchEventsV1NamespacedEvent(ctx context.Context, params WatchEventsV1NamespacedEventParams) (WatchEventsV1NamespacedEventRes, error) {
 	res, err := c.sendWatchEventsV1NamespacedEvent(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -90029,7 +89629,6 @@ func (c *Client) sendWatchEventsV1NamespacedEvent(ctx context.Context, params Wa
 // GET /apis/events.k8s.io/v1/watch/namespaces/{namespace}/events
 func (c *Client) WatchEventsV1NamespacedEventList(ctx context.Context, params WatchEventsV1NamespacedEventListParams) (WatchEventsV1NamespacedEventListRes, error) {
 	res, err := c.sendWatchEventsV1NamespacedEventList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -90329,7 +89928,6 @@ func (c *Client) sendWatchEventsV1NamespacedEventList(ctx context.Context, param
 // GET /apis/events.k8s.io/v1beta1/watch/events
 func (c *Client) WatchEventsV1beta1EventListForAllNamespaces(ctx context.Context, params WatchEventsV1beta1EventListForAllNamespacesParams) (WatchEventsV1beta1EventListForAllNamespacesRes, error) {
 	res, err := c.sendWatchEventsV1beta1EventListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -90610,7 +90208,6 @@ func (c *Client) sendWatchEventsV1beta1EventListForAllNamespaces(ctx context.Con
 // GET /apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events/{name}
 func (c *Client) WatchEventsV1beta1NamespacedEvent(ctx context.Context, params WatchEventsV1beta1NamespacedEventParams) (WatchEventsV1beta1NamespacedEventRes, error) {
 	res, err := c.sendWatchEventsV1beta1NamespacedEvent(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -90928,7 +90525,6 @@ func (c *Client) sendWatchEventsV1beta1NamespacedEvent(ctx context.Context, para
 // GET /apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events
 func (c *Client) WatchEventsV1beta1NamespacedEventList(ctx context.Context, params WatchEventsV1beta1NamespacedEventListParams) (WatchEventsV1beta1NamespacedEventListRes, error) {
 	res, err := c.sendWatchEventsV1beta1NamespacedEventList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -91228,7 +90824,6 @@ func (c *Client) sendWatchEventsV1beta1NamespacedEventList(ctx context.Context, 
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas/{name}
 func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, params WatchFlowcontrolApiserverV1beta1FlowSchemaParams) (WatchFlowcontrolApiserverV1beta1FlowSchemaRes, error) {
 	res, err := c.sendWatchFlowcontrolApiserverV1beta1FlowSchema(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -91527,7 +91122,6 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta1FlowSchema(ctx context.Cont
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas
 func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.Context, params WatchFlowcontrolApiserverV1beta1FlowSchemaListParams) (WatchFlowcontrolApiserverV1beta1FlowSchemaListRes, error) {
 	res, err := c.sendWatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -91809,7 +91403,6 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations/{name}
 func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, params WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, error) {
 	res, err := c.sendWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -92108,7 +91701,6 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations
 func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(ctx context.Context, params WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams) (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRes, error) {
 	res, err := c.sendWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -92389,7 +91981,6 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationL
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas/{name}
 func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, params WatchFlowcontrolApiserverV1beta2FlowSchemaParams) (WatchFlowcontrolApiserverV1beta2FlowSchemaRes, error) {
 	res, err := c.sendWatchFlowcontrolApiserverV1beta2FlowSchema(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -92688,7 +92279,6 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta2FlowSchema(ctx context.Cont
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas
 func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.Context, params WatchFlowcontrolApiserverV1beta2FlowSchemaListParams) (WatchFlowcontrolApiserverV1beta2FlowSchemaListRes, error) {
 	res, err := c.sendWatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -92970,7 +92560,6 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations/{name}
 func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, params WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, error) {
 	res, err := c.sendWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -93269,7 +92858,6 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations
 func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(ctx context.Context, params WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams) (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRes, error) {
 	res, err := c.sendWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -93550,7 +93138,6 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationL
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions/{name}
 func (c *Client) WatchInternalApiserverV1alpha1StorageVersion(ctx context.Context, params WatchInternalApiserverV1alpha1StorageVersionParams) (WatchInternalApiserverV1alpha1StorageVersionRes, error) {
 	res, err := c.sendWatchInternalApiserverV1alpha1StorageVersion(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -93849,7 +93436,6 @@ func (c *Client) sendWatchInternalApiserverV1alpha1StorageVersion(ctx context.Co
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions
 func (c *Client) WatchInternalApiserverV1alpha1StorageVersionList(ctx context.Context, params WatchInternalApiserverV1alpha1StorageVersionListParams) (WatchInternalApiserverV1alpha1StorageVersionListRes, error) {
 	res, err := c.sendWatchInternalApiserverV1alpha1StorageVersionList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -94130,7 +93716,6 @@ func (c *Client) sendWatchInternalApiserverV1alpha1StorageVersionList(ctx contex
 // GET /apis/networking.k8s.io/v1/watch/ingressclasses/{name}
 func (c *Client) WatchNetworkingV1IngressClass(ctx context.Context, params WatchNetworkingV1IngressClassParams) (WatchNetworkingV1IngressClassRes, error) {
 	res, err := c.sendWatchNetworkingV1IngressClass(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -94429,7 +94014,6 @@ func (c *Client) sendWatchNetworkingV1IngressClass(ctx context.Context, params W
 // GET /apis/networking.k8s.io/v1/watch/ingressclasses
 func (c *Client) WatchNetworkingV1IngressClassList(ctx context.Context, params WatchNetworkingV1IngressClassListParams) (WatchNetworkingV1IngressClassListRes, error) {
 	res, err := c.sendWatchNetworkingV1IngressClassList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -94710,7 +94294,6 @@ func (c *Client) sendWatchNetworkingV1IngressClassList(ctx context.Context, para
 // GET /apis/networking.k8s.io/v1/watch/ingresses
 func (c *Client) WatchNetworkingV1IngressListForAllNamespaces(ctx context.Context, params WatchNetworkingV1IngressListForAllNamespacesParams) (WatchNetworkingV1IngressListForAllNamespacesRes, error) {
 	res, err := c.sendWatchNetworkingV1IngressListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -94991,7 +94574,6 @@ func (c *Client) sendWatchNetworkingV1IngressListForAllNamespaces(ctx context.Co
 // GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses/{name}
 func (c *Client) WatchNetworkingV1NamespacedIngress(ctx context.Context, params WatchNetworkingV1NamespacedIngressParams) (WatchNetworkingV1NamespacedIngressRes, error) {
 	res, err := c.sendWatchNetworkingV1NamespacedIngress(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -95309,7 +94891,6 @@ func (c *Client) sendWatchNetworkingV1NamespacedIngress(ctx context.Context, par
 // GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses
 func (c *Client) WatchNetworkingV1NamespacedIngressList(ctx context.Context, params WatchNetworkingV1NamespacedIngressListParams) (WatchNetworkingV1NamespacedIngressListRes, error) {
 	res, err := c.sendWatchNetworkingV1NamespacedIngressList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -95609,7 +95190,6 @@ func (c *Client) sendWatchNetworkingV1NamespacedIngressList(ctx context.Context,
 // GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies/{name}
 func (c *Client) WatchNetworkingV1NamespacedNetworkPolicy(ctx context.Context, params WatchNetworkingV1NamespacedNetworkPolicyParams) (WatchNetworkingV1NamespacedNetworkPolicyRes, error) {
 	res, err := c.sendWatchNetworkingV1NamespacedNetworkPolicy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -95927,7 +95507,6 @@ func (c *Client) sendWatchNetworkingV1NamespacedNetworkPolicy(ctx context.Contex
 // GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies
 func (c *Client) WatchNetworkingV1NamespacedNetworkPolicyList(ctx context.Context, params WatchNetworkingV1NamespacedNetworkPolicyListParams) (WatchNetworkingV1NamespacedNetworkPolicyListRes, error) {
 	res, err := c.sendWatchNetworkingV1NamespacedNetworkPolicyList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -96227,7 +95806,6 @@ func (c *Client) sendWatchNetworkingV1NamespacedNetworkPolicyList(ctx context.Co
 // GET /apis/networking.k8s.io/v1/watch/networkpolicies
 func (c *Client) WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx context.Context, params WatchNetworkingV1NetworkPolicyListForAllNamespacesParams) (WatchNetworkingV1NetworkPolicyListForAllNamespacesRes, error) {
 	res, err := c.sendWatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -96508,7 +96086,6 @@ func (c *Client) sendWatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx cont
 // GET /apis/node.k8s.io/v1/watch/runtimeclasses/{name}
 func (c *Client) WatchNodeV1RuntimeClass(ctx context.Context, params WatchNodeV1RuntimeClassParams) (WatchNodeV1RuntimeClassRes, error) {
 	res, err := c.sendWatchNodeV1RuntimeClass(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -96807,7 +96384,6 @@ func (c *Client) sendWatchNodeV1RuntimeClass(ctx context.Context, params WatchNo
 // GET /apis/node.k8s.io/v1/watch/runtimeclasses
 func (c *Client) WatchNodeV1RuntimeClassList(ctx context.Context, params WatchNodeV1RuntimeClassListParams) (WatchNodeV1RuntimeClassListRes, error) {
 	res, err := c.sendWatchNodeV1RuntimeClassList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -97088,7 +96664,6 @@ func (c *Client) sendWatchNodeV1RuntimeClassList(ctx context.Context, params Wat
 // GET /apis/node.k8s.io/v1alpha1/watch/runtimeclasses/{name}
 func (c *Client) WatchNodeV1alpha1RuntimeClass(ctx context.Context, params WatchNodeV1alpha1RuntimeClassParams) (WatchNodeV1alpha1RuntimeClassRes, error) {
 	res, err := c.sendWatchNodeV1alpha1RuntimeClass(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -97387,7 +96962,6 @@ func (c *Client) sendWatchNodeV1alpha1RuntimeClass(ctx context.Context, params W
 // GET /apis/node.k8s.io/v1alpha1/watch/runtimeclasses
 func (c *Client) WatchNodeV1alpha1RuntimeClassList(ctx context.Context, params WatchNodeV1alpha1RuntimeClassListParams) (WatchNodeV1alpha1RuntimeClassListRes, error) {
 	res, err := c.sendWatchNodeV1alpha1RuntimeClassList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -97668,7 +97242,6 @@ func (c *Client) sendWatchNodeV1alpha1RuntimeClassList(ctx context.Context, para
 // GET /apis/node.k8s.io/v1beta1/watch/runtimeclasses/{name}
 func (c *Client) WatchNodeV1beta1RuntimeClass(ctx context.Context, params WatchNodeV1beta1RuntimeClassParams) (WatchNodeV1beta1RuntimeClassRes, error) {
 	res, err := c.sendWatchNodeV1beta1RuntimeClass(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -97967,7 +97540,6 @@ func (c *Client) sendWatchNodeV1beta1RuntimeClass(ctx context.Context, params Wa
 // GET /apis/node.k8s.io/v1beta1/watch/runtimeclasses
 func (c *Client) WatchNodeV1beta1RuntimeClassList(ctx context.Context, params WatchNodeV1beta1RuntimeClassListParams) (WatchNodeV1beta1RuntimeClassListRes, error) {
 	res, err := c.sendWatchNodeV1beta1RuntimeClassList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -98248,7 +97820,6 @@ func (c *Client) sendWatchNodeV1beta1RuntimeClassList(ctx context.Context, param
 // GET /apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}
 func (c *Client) WatchPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, params WatchPolicyV1NamespacedPodDisruptionBudgetParams) (WatchPolicyV1NamespacedPodDisruptionBudgetRes, error) {
 	res, err := c.sendWatchPolicyV1NamespacedPodDisruptionBudget(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -98566,7 +98137,6 @@ func (c *Client) sendWatchPolicyV1NamespacedPodDisruptionBudget(ctx context.Cont
 // GET /apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets
 func (c *Client) WatchPolicyV1NamespacedPodDisruptionBudgetList(ctx context.Context, params WatchPolicyV1NamespacedPodDisruptionBudgetListParams) (WatchPolicyV1NamespacedPodDisruptionBudgetListRes, error) {
 	res, err := c.sendWatchPolicyV1NamespacedPodDisruptionBudgetList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -98866,7 +98436,6 @@ func (c *Client) sendWatchPolicyV1NamespacedPodDisruptionBudgetList(ctx context.
 // GET /apis/policy/v1/watch/poddisruptionbudgets
 func (c *Client) WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx context.Context, params WatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams) (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesRes, error) {
 	res, err := c.sendWatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -99147,7 +98716,6 @@ func (c *Client) sendWatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx co
 // GET /apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}
 func (c *Client) WatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Context, params WatchPolicyV1beta1NamespacedPodDisruptionBudgetParams) (WatchPolicyV1beta1NamespacedPodDisruptionBudgetRes, error) {
 	res, err := c.sendWatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -99465,7 +99033,6 @@ func (c *Client) sendWatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx context
 // GET /apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets
 func (c *Client) WatchPolicyV1beta1NamespacedPodDisruptionBudgetList(ctx context.Context, params WatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams) (WatchPolicyV1beta1NamespacedPodDisruptionBudgetListRes, error) {
 	res, err := c.sendWatchPolicyV1beta1NamespacedPodDisruptionBudgetList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -99765,7 +99332,6 @@ func (c *Client) sendWatchPolicyV1beta1NamespacedPodDisruptionBudgetList(ctx con
 // GET /apis/policy/v1beta1/watch/poddisruptionbudgets
 func (c *Client) WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx context.Context, params WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams) (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRes, error) {
 	res, err := c.sendWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -100046,7 +99612,6 @@ func (c *Client) sendWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(c
 // GET /apis/policy/v1beta1/watch/podsecuritypolicies/{name}
 func (c *Client) WatchPolicyV1beta1PodSecurityPolicy(ctx context.Context, params WatchPolicyV1beta1PodSecurityPolicyParams) (WatchPolicyV1beta1PodSecurityPolicyRes, error) {
 	res, err := c.sendWatchPolicyV1beta1PodSecurityPolicy(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -100345,7 +99910,6 @@ func (c *Client) sendWatchPolicyV1beta1PodSecurityPolicy(ctx context.Context, pa
 // GET /apis/policy/v1beta1/watch/podsecuritypolicies
 func (c *Client) WatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context, params WatchPolicyV1beta1PodSecurityPolicyListParams) (WatchPolicyV1beta1PodSecurityPolicyListRes, error) {
 	res, err := c.sendWatchPolicyV1beta1PodSecurityPolicyList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -100626,7 +100190,6 @@ func (c *Client) sendWatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context
 // GET /apis/rbac.authorization.k8s.io/v1/watch/clusterroles/{name}
 func (c *Client) WatchRbacAuthorizationV1ClusterRole(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleParams) (WatchRbacAuthorizationV1ClusterRoleRes, error) {
 	res, err := c.sendWatchRbacAuthorizationV1ClusterRole(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -100925,7 +100488,6 @@ func (c *Client) sendWatchRbacAuthorizationV1ClusterRole(ctx context.Context, pa
 // GET /apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings/{name}
 func (c *Client) WatchRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleBindingParams) (WatchRbacAuthorizationV1ClusterRoleBindingRes, error) {
 	res, err := c.sendWatchRbacAuthorizationV1ClusterRoleBinding(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -101224,7 +100786,6 @@ func (c *Client) sendWatchRbacAuthorizationV1ClusterRoleBinding(ctx context.Cont
 // GET /apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings
 func (c *Client) WatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleBindingListParams) (WatchRbacAuthorizationV1ClusterRoleBindingListRes, error) {
 	res, err := c.sendWatchRbacAuthorizationV1ClusterRoleBindingList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -101505,7 +101066,6 @@ func (c *Client) sendWatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.
 // GET /apis/rbac.authorization.k8s.io/v1/watch/clusterroles
 func (c *Client) WatchRbacAuthorizationV1ClusterRoleList(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleListParams) (WatchRbacAuthorizationV1ClusterRoleListRes, error) {
 	res, err := c.sendWatchRbacAuthorizationV1ClusterRoleList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -101786,7 +101346,6 @@ func (c *Client) sendWatchRbacAuthorizationV1ClusterRoleList(ctx context.Context
 // GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles/{name}
 func (c *Client) WatchRbacAuthorizationV1NamespacedRole(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleParams) (WatchRbacAuthorizationV1NamespacedRoleRes, error) {
 	res, err := c.sendWatchRbacAuthorizationV1NamespacedRole(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -102104,7 +101663,6 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRole(ctx context.Context,
 // GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings/{name}
 func (c *Client) WatchRbacAuthorizationV1NamespacedRoleBinding(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleBindingParams) (WatchRbacAuthorizationV1NamespacedRoleBindingRes, error) {
 	res, err := c.sendWatchRbacAuthorizationV1NamespacedRoleBinding(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -102422,7 +101980,6 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleBinding(ctx context.C
 // GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings
 func (c *Client) WatchRbacAuthorizationV1NamespacedRoleBindingList(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleBindingListParams) (WatchRbacAuthorizationV1NamespacedRoleBindingListRes, error) {
 	res, err := c.sendWatchRbacAuthorizationV1NamespacedRoleBindingList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -102722,7 +102279,6 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleBindingList(ctx conte
 // GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles
 func (c *Client) WatchRbacAuthorizationV1NamespacedRoleList(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleListParams) (WatchRbacAuthorizationV1NamespacedRoleListRes, error) {
 	res, err := c.sendWatchRbacAuthorizationV1NamespacedRoleList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -103022,7 +102578,6 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleList(ctx context.Cont
 // GET /apis/rbac.authorization.k8s.io/v1/watch/rolebindings
 func (c *Client) WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx context.Context, params WatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams) (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRes, error) {
 	res, err := c.sendWatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -103303,7 +102858,6 @@ func (c *Client) sendWatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx
 // GET /apis/rbac.authorization.k8s.io/v1/watch/roles
 func (c *Client) WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx context.Context, params WatchRbacAuthorizationV1RoleListForAllNamespacesParams) (WatchRbacAuthorizationV1RoleListForAllNamespacesRes, error) {
 	res, err := c.sendWatchRbacAuthorizationV1RoleListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -103584,7 +103138,6 @@ func (c *Client) sendWatchRbacAuthorizationV1RoleListForAllNamespaces(ctx contex
 // GET /apis/scheduling.k8s.io/v1/watch/priorityclasses/{name}
 func (c *Client) WatchSchedulingV1PriorityClass(ctx context.Context, params WatchSchedulingV1PriorityClassParams) (WatchSchedulingV1PriorityClassRes, error) {
 	res, err := c.sendWatchSchedulingV1PriorityClass(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -103883,7 +103436,6 @@ func (c *Client) sendWatchSchedulingV1PriorityClass(ctx context.Context, params 
 // GET /apis/scheduling.k8s.io/v1/watch/priorityclasses
 func (c *Client) WatchSchedulingV1PriorityClassList(ctx context.Context, params WatchSchedulingV1PriorityClassListParams) (WatchSchedulingV1PriorityClassListRes, error) {
 	res, err := c.sendWatchSchedulingV1PriorityClassList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -104164,7 +103716,6 @@ func (c *Client) sendWatchSchedulingV1PriorityClassList(ctx context.Context, par
 // GET /apis/storage.k8s.io/v1/watch/csidrivers/{name}
 func (c *Client) WatchStorageV1CSIDriver(ctx context.Context, params WatchStorageV1CSIDriverParams) (WatchStorageV1CSIDriverRes, error) {
 	res, err := c.sendWatchStorageV1CSIDriver(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -104463,7 +104014,6 @@ func (c *Client) sendWatchStorageV1CSIDriver(ctx context.Context, params WatchSt
 // GET /apis/storage.k8s.io/v1/watch/csidrivers
 func (c *Client) WatchStorageV1CSIDriverList(ctx context.Context, params WatchStorageV1CSIDriverListParams) (WatchStorageV1CSIDriverListRes, error) {
 	res, err := c.sendWatchStorageV1CSIDriverList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -104744,7 +104294,6 @@ func (c *Client) sendWatchStorageV1CSIDriverList(ctx context.Context, params Wat
 // GET /apis/storage.k8s.io/v1/watch/csinodes/{name}
 func (c *Client) WatchStorageV1CSINode(ctx context.Context, params WatchStorageV1CSINodeParams) (WatchStorageV1CSINodeRes, error) {
 	res, err := c.sendWatchStorageV1CSINode(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -105043,7 +104592,6 @@ func (c *Client) sendWatchStorageV1CSINode(ctx context.Context, params WatchStor
 // GET /apis/storage.k8s.io/v1/watch/csinodes
 func (c *Client) WatchStorageV1CSINodeList(ctx context.Context, params WatchStorageV1CSINodeListParams) (WatchStorageV1CSINodeListRes, error) {
 	res, err := c.sendWatchStorageV1CSINodeList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -105324,7 +104872,6 @@ func (c *Client) sendWatchStorageV1CSINodeList(ctx context.Context, params Watch
 // GET /apis/storage.k8s.io/v1/watch/storageclasses/{name}
 func (c *Client) WatchStorageV1StorageClass(ctx context.Context, params WatchStorageV1StorageClassParams) (WatchStorageV1StorageClassRes, error) {
 	res, err := c.sendWatchStorageV1StorageClass(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -105623,7 +105170,6 @@ func (c *Client) sendWatchStorageV1StorageClass(ctx context.Context, params Watc
 // GET /apis/storage.k8s.io/v1/watch/storageclasses
 func (c *Client) WatchStorageV1StorageClassList(ctx context.Context, params WatchStorageV1StorageClassListParams) (WatchStorageV1StorageClassListRes, error) {
 	res, err := c.sendWatchStorageV1StorageClassList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -105904,7 +105450,6 @@ func (c *Client) sendWatchStorageV1StorageClassList(ctx context.Context, params 
 // GET /apis/storage.k8s.io/v1/watch/volumeattachments/{name}
 func (c *Client) WatchStorageV1VolumeAttachment(ctx context.Context, params WatchStorageV1VolumeAttachmentParams) (WatchStorageV1VolumeAttachmentRes, error) {
 	res, err := c.sendWatchStorageV1VolumeAttachment(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -106203,7 +105748,6 @@ func (c *Client) sendWatchStorageV1VolumeAttachment(ctx context.Context, params 
 // GET /apis/storage.k8s.io/v1/watch/volumeattachments
 func (c *Client) WatchStorageV1VolumeAttachmentList(ctx context.Context, params WatchStorageV1VolumeAttachmentListParams) (WatchStorageV1VolumeAttachmentListRes, error) {
 	res, err := c.sendWatchStorageV1VolumeAttachmentList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -106484,7 +106028,6 @@ func (c *Client) sendWatchStorageV1VolumeAttachmentList(ctx context.Context, par
 // GET /apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities
 func (c *Client) WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx context.Context, params WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams) (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRes, error) {
 	res, err := c.sendWatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -106765,7 +106308,6 @@ func (c *Client) sendWatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(
 // GET /apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities/{name}
 func (c *Client) WatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Context, params WatchStorageV1alpha1NamespacedCSIStorageCapacityParams) (WatchStorageV1alpha1NamespacedCSIStorageCapacityRes, error) {
 	res, err := c.sendWatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -107083,7 +106625,6 @@ func (c *Client) sendWatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx contex
 // GET /apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities
 func (c *Client) WatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx context.Context, params WatchStorageV1alpha1NamespacedCSIStorageCapacityListParams) (WatchStorageV1alpha1NamespacedCSIStorageCapacityListRes, error) {
 	res, err := c.sendWatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -107383,7 +106924,6 @@ func (c *Client) sendWatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx co
 // GET /apis/storage.k8s.io/v1beta1/watch/csistoragecapacities
 func (c *Client) WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx context.Context, params WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams) (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes, error) {
 	res, err := c.sendWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -107664,7 +107204,6 @@ func (c *Client) sendWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(c
 // GET /apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities/{name}
 func (c *Client) WatchStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Context, params WatchStorageV1beta1NamespacedCSIStorageCapacityParams) (WatchStorageV1beta1NamespacedCSIStorageCapacityRes, error) {
 	res, err := c.sendWatchStorageV1beta1NamespacedCSIStorageCapacity(ctx, params)
-	_ = res
 	return res, err
 }
 
@@ -107982,7 +107521,6 @@ func (c *Client) sendWatchStorageV1beta1NamespacedCSIStorageCapacity(ctx context
 // GET /apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities
 func (c *Client) WatchStorageV1beta1NamespacedCSIStorageCapacityList(ctx context.Context, params WatchStorageV1beta1NamespacedCSIStorageCapacityListParams) (WatchStorageV1beta1NamespacedCSIStorageCapacityListRes, error) {
 	res, err := c.sendWatchStorageV1beta1NamespacedCSIStorageCapacityList(ctx, params)
-	_ = res
 	return res, err
 }
 

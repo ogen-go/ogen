@@ -254,7 +254,6 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // PUT /snapshot/create
 func (c *Client) CreateSnapshot(ctx context.Context, request *SnapshotCreateParams) (CreateSnapshotRes, error) {
 	res, err := c.sendCreateSnapshot(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -339,7 +338,6 @@ func (c *Client) sendCreateSnapshot(ctx context.Context, request *SnapshotCreate
 // PUT /actions
 func (c *Client) CreateSyncAction(ctx context.Context, request *InstanceActionInfo) (CreateSyncActionRes, error) {
 	res, err := c.sendCreateSyncAction(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -424,7 +422,6 @@ func (c *Client) sendCreateSyncAction(ctx context.Context, request *InstanceActi
 // GET /balloon
 func (c *Client) DescribeBalloonConfig(ctx context.Context) (DescribeBalloonConfigRes, error) {
 	res, err := c.sendDescribeBalloonConfig(ctx)
-	_ = res
 	return res, err
 }
 
@@ -497,7 +494,6 @@ func (c *Client) sendDescribeBalloonConfig(ctx context.Context) (res DescribeBal
 // GET /balloon/statistics
 func (c *Client) DescribeBalloonStats(ctx context.Context) (DescribeBalloonStatsRes, error) {
 	res, err := c.sendDescribeBalloonStats(ctx)
-	_ = res
 	return res, err
 }
 
@@ -570,7 +566,6 @@ func (c *Client) sendDescribeBalloonStats(ctx context.Context) (res DescribeBall
 // GET /
 func (c *Client) DescribeInstance(ctx context.Context) (*InstanceInfo, error) {
 	res, err := c.sendDescribeInstance(ctx)
-	_ = res
 	return res, err
 }
 
@@ -643,7 +638,6 @@ func (c *Client) sendDescribeInstance(ctx context.Context) (res *InstanceInfo, e
 // GET /vm/config
 func (c *Client) GetExportVmConfig(ctx context.Context) (*FullVmConfiguration, error) {
 	res, err := c.sendGetExportVmConfig(ctx)
-	_ = res
 	return res, err
 }
 
@@ -718,7 +712,6 @@ func (c *Client) sendGetExportVmConfig(ctx context.Context) (res *FullVmConfigur
 // GET /machine-config
 func (c *Client) GetMachineConfiguration(ctx context.Context) (*MachineConfiguration, error) {
 	res, err := c.sendGetMachineConfiguration(ctx)
-	_ = res
 	return res, err
 }
 
@@ -792,7 +785,6 @@ func (c *Client) sendGetMachineConfiguration(ctx context.Context) (res *MachineC
 // PUT /snapshot/load
 func (c *Client) LoadSnapshot(ctx context.Context, request *SnapshotLoadParams) (LoadSnapshotRes, error) {
 	res, err := c.sendLoadSnapshot(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -868,7 +860,6 @@ func (c *Client) sendLoadSnapshot(ctx context.Context, request *SnapshotLoadPara
 // PUT /mmds/config
 func (c *Client) MmdsConfigPut(ctx context.Context, request *MmdsConfig) (MmdsConfigPutRes, error) {
 	res, err := c.sendMmdsConfigPut(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -943,7 +934,6 @@ func (c *Client) sendMmdsConfigPut(ctx context.Context, request *MmdsConfig) (re
 // GET /mmds
 func (c *Client) MmdsGet(ctx context.Context) (MmdsGetRes, error) {
 	res, err := c.sendMmdsGet(ctx)
-	_ = res
 	return res, err
 }
 
@@ -1015,7 +1005,6 @@ func (c *Client) sendMmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
 // PATCH /mmds
 func (c *Client) MmdsPatch(ctx context.Context, request *MmdsPatchReq) (MmdsPatchRes, error) {
 	res, err := c.sendMmdsPatch(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -1090,7 +1079,6 @@ func (c *Client) sendMmdsPatch(ctx context.Context, request *MmdsPatchReq) (res 
 // PUT /mmds
 func (c *Client) MmdsPut(ctx context.Context, request *MmdsPutReq) (MmdsPutRes, error) {
 	res, err := c.sendMmdsPut(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -1166,7 +1154,6 @@ func (c *Client) sendMmdsPut(ctx context.Context, request *MmdsPutReq) (res Mmds
 // PATCH /balloon
 func (c *Client) PatchBalloon(ctx context.Context, request *BalloonUpdate) (PatchBalloonRes, error) {
 	res, err := c.sendPatchBalloon(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -1243,7 +1230,6 @@ func (c *Client) sendPatchBalloon(ctx context.Context, request *BalloonUpdate) (
 // PATCH /balloon/statistics
 func (c *Client) PatchBalloonStatsInterval(ctx context.Context, request *BalloonStatsUpdate) (PatchBalloonStatsIntervalRes, error) {
 	res, err := c.sendPatchBalloonStatsInterval(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -1320,7 +1306,6 @@ func (c *Client) sendPatchBalloonStatsInterval(ctx context.Context, request *Bal
 // PATCH /drives/{drive_id}
 func (c *Client) PatchGuestDriveByID(ctx context.Context, request *PartialDrive, params PatchGuestDriveByIDParams) (PatchGuestDriveByIDRes, error) {
 	res, err := c.sendPatchGuestDriveByID(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -1423,7 +1408,6 @@ func (c *Client) sendPatchGuestDriveByID(ctx context.Context, request *PartialDr
 // PATCH /network-interfaces/{iface_id}
 func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request *PartialNetworkInterface, params PatchGuestNetworkInterfaceByIDParams) (PatchGuestNetworkInterfaceByIDRes, error) {
 	res, err := c.sendPatchGuestNetworkInterfaceByID(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -1527,7 +1511,6 @@ func (c *Client) sendPatchGuestNetworkInterfaceByID(ctx context.Context, request
 // PATCH /machine-config
 func (c *Client) PatchMachineConfiguration(ctx context.Context, request OptMachineConfiguration) (PatchMachineConfigurationRes, error) {
 	res, err := c.sendPatchMachineConfiguration(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -1619,7 +1602,6 @@ func (c *Client) sendPatchMachineConfiguration(ctx context.Context, request OptM
 // PATCH /vm
 func (c *Client) PatchVm(ctx context.Context, request *VM) (PatchVmRes, error) {
 	res, err := c.sendPatchVm(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -1705,7 +1687,6 @@ func (c *Client) sendPatchVm(ctx context.Context, request *VM) (res PatchVmRes, 
 // PUT /balloon
 func (c *Client) PutBalloon(ctx context.Context, request *Balloon) (PutBalloonRes, error) {
 	res, err := c.sendPutBalloon(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -1782,7 +1763,6 @@ func (c *Client) sendPutBalloon(ctx context.Context, request *Balloon) (res PutB
 // PUT /boot-source
 func (c *Client) PutGuestBootSource(ctx context.Context, request *BootSource) (PutGuestBootSourceRes, error) {
 	res, err := c.sendPutGuestBootSource(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -1859,7 +1839,6 @@ func (c *Client) sendPutGuestBootSource(ctx context.Context, request *BootSource
 // PUT /drives/{drive_id}
 func (c *Client) PutGuestDriveByID(ctx context.Context, request *Drive, params PutGuestDriveByIDParams) (PutGuestDriveByIDRes, error) {
 	res, err := c.sendPutGuestDriveByID(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -1962,7 +1941,6 @@ func (c *Client) sendPutGuestDriveByID(ctx context.Context, request *Drive, para
 // PUT /network-interfaces/{iface_id}
 func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request *NetworkInterface, params PutGuestNetworkInterfaceByIDParams) (PutGuestNetworkInterfaceByIDRes, error) {
 	res, err := c.sendPutGuestNetworkInterfaceByID(ctx, request, params)
-	_ = res
 	return res, err
 }
 
@@ -2066,7 +2044,6 @@ func (c *Client) sendPutGuestNetworkInterfaceByID(ctx context.Context, request *
 // PUT /vsock
 func (c *Client) PutGuestVsock(ctx context.Context, request *Vsock) (PutGuestVsockRes, error) {
 	res, err := c.sendPutGuestVsock(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -2151,7 +2128,6 @@ func (c *Client) sendPutGuestVsock(ctx context.Context, request *Vsock) (res Put
 // PUT /logger
 func (c *Client) PutLogger(ctx context.Context, request *Logger) (PutLoggerRes, error) {
 	res, err := c.sendPutLogger(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -2239,7 +2215,6 @@ func (c *Client) sendPutLogger(ctx context.Context, request *Logger) (res PutLog
 // PUT /machine-config
 func (c *Client) PutMachineConfiguration(ctx context.Context, request OptMachineConfiguration) (PutMachineConfigurationRes, error) {
 	res, err := c.sendPutMachineConfiguration(ctx, request)
-	_ = res
 	return res, err
 }
 
@@ -2331,7 +2306,6 @@ func (c *Client) sendPutMachineConfiguration(ctx context.Context, request OptMac
 // PUT /metrics
 func (c *Client) PutMetrics(ctx context.Context, request *Metrics) (PutMetricsRes, error) {
 	res, err := c.sendPutMetrics(ctx, request)
-	_ = res
 	return res, err
 }
 
