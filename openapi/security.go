@@ -33,6 +33,8 @@ type Security struct {
 	Flows            OAuthFlows
 	OpenIDConnectURL string
 
+	XOgenCustomSecurity bool
+
 	location.Pointer `json:"-" yaml:"-"`
 }
 

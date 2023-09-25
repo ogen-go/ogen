@@ -198,18 +198,33 @@ func (p *parser) parseSecurityRequirementScheme(name string, scheme *ogen.Securi
 	if f := spec.Flows; f != nil {
 		flows = *f
 	}
-	security := openapi.Security{
-		Type:             spec.Type,
-		Description:      spec.Description,
-		Name:             spec.Name,
-		In:               spec.In,
-		Scheme:           spec.Scheme,
-		BearerFormat:     spec.BearerFormat,
-		Flows:            cloneOAuthFlows(flows, p.file(ctx)),
-		OpenIDConnectURL: spec.OpenIDConnectURL,
-		Pointer:          spec.Common.Locator.Pointer(p.file(ctx)),
+
+	var (
+		custom  bool
+		locator = spec.Common.Locator
+	)
+	{
+		const extensionName = "x-ogen-custom-security"
+		if ex, ok := scheme.Common.Extensions[extensionName]; ok {
+			if err := ex.Decode(&custom); err != nil {
+				err := errors.Wrap(err, "unmarshal value")
+				return openapi.Security{}, p.wrapField(extensionName, p.file(ctx), locator, err)
+			}
+		}
 	}
-	return security, nil
+
+	return openapi.Security{
+		Type:                spec.Type,
+		Description:         spec.Description,
+		Name:                spec.Name,
+		In:                  spec.In,
+		Scheme:              spec.Scheme,
+		BearerFormat:        spec.BearerFormat,
+		Flows:               cloneOAuthFlows(flows, p.file(ctx)),
+		OpenIDConnectURL:    spec.OpenIDConnectURL,
+		XOgenCustomSecurity: custom,
+		Pointer:             locator.Pointer(p.file(ctx)),
+	}, nil
 }
 
 func (p *parser) parseSecurityRequirements(
