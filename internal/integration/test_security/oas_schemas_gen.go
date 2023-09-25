@@ -55,6 +55,9 @@ func (s *CookieKey) SetAPIKey(val string) {
 	s.APIKey = val
 }
 
+// CustomSecurityOK is response for CustomSecurity operation.
+type CustomSecurityOK struct{}
+
 // DisjointSecurityOK is response for DisjointSecurity operation.
 type DisjointSecurityOK struct{}
 

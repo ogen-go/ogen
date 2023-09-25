@@ -8,6 +8,15 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
+func decodeCustomSecurityResponse(resp *http.Response) (res *CustomSecurityOK, _ error) {
+	switch resp.StatusCode {
+	case 200:
+		// Code 200.
+		return &CustomSecurityOK{}, nil
+	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+}
+
 func decodeDisjointSecurityResponse(resp *http.Response) (res *DisjointSecurityOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
