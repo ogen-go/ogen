@@ -9,7 +9,11 @@ type SecurityHandler interface {
 {{- range $name, $s := $.Securities }}
 	// Handle{{ $s.Type.Name }} handles {{ $name }} security.
 	{{- template "godoc" $s.GoDoc }}
+	{{- if $s.Format.IsCustomSecurity }}
+	Handle{{ $s.Type.Name }}(ctx context.Context, operationName string, req *http.Request) (context.Context, error)
+	{{- else }}
 	Handle{{ $s.Type.Name }}(ctx context.Context, operationName string, t {{ $s.Type.Name }}) (context.Context, error)
+	{{- end }}
 {{- end }}
 }
 
@@ -42,8 +46,8 @@ var oauth2Scopes = map[string][]string {
 
 {{- end }}
 func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationName string, req *http.Request) (context.Context, bool, error) {
-	var t {{ $s.Type.Name }}
 	{{- if $s.Format.IsAPIKeySecurity }}
+		var t {{ $s.Type.Name }}
         const parameterName = {{ quote $s.ParameterName }}
 		{{- if $s.Kind.IsHeader }}
 		value := req.Header.Get(parameterName)
@@ -71,6 +75,7 @@ func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationName s
 		{{- end }}
 		t.APIKey = value
     {{- else if $s.Format.IsBasicHTTPSecurity }}
+		var t {{ $s.Type.Name }}
 		if _, ok := findAuthorization(req.Header, "Basic"); !ok {
 			return ctx, false, nil
 		}
@@ -81,18 +86,22 @@ func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationName s
 		t.Username = username
 		t.Password = password
 	{{- else if $s.Format.IsBearerSecurity }}
+		var t {{ $s.Type.Name }}
 		token, ok := findAuthorization(req.Header, "Bearer")
 		if !ok {
 			return ctx, false, nil
 		}
 		t.Token = token
 	{{- else if $s.Format.IsOAuth2Security }}
+		var t {{ $s.Type.Name }}
 		token, ok := findAuthorization(req.Header, "Bearer")
 		if !ok {
 			return ctx, false, nil
 		}
 		t.Token = token
 		t.Scopes = oauth2Scopes[operationName]
+	{{- else if $s.Format.IsCustomSecurity }}
+		t := req
 	{{- else }}
         {{ errorf "unexpected security %q:%q" $s.Kind $s.Format }}
 	{{- end }}
@@ -113,39 +122,49 @@ type SecuritySource interface {
 {{- range $name, $s := $.Securities }}
 	// {{ $s.Type.Name }} provides {{ $name }} security value.
 	{{- template "godoc" $s.GoDoc }}
+	{{- if $s.Format.IsCustomSecurity }}
+    {{ $s.Type.Name }}(ctx context.Context, operationName string, req *http.Request) error
+	{{- else }}
     {{ $s.Type.Name }}(ctx context.Context, operationName string) ({{ $s.Type.Name }}, error)
+	{{- end }}
 {{- end }}
 }
 
 {{- range $s := $.Securities }}
 func (s *Client) security{{ $s.Type.Name }}(ctx context.Context, operationName string, req *http.Request) error {
-	t, err := s.sec.{{ $s.Type.Name }}(ctx, operationName)
-	if err != nil {
-		return errors.Wrap(err, {{ printf "security source %q" $s.Type.Name | quote }})
-	}
-	{{- if $s.Format.IsAPIKeySecurity }}
-		{{- if $s.Kind.IsHeader }}
-		req.Header.Set({{ quote $s.ParameterName }}, t.APIKey)
-		{{- else if $s.Kind.IsQuery }}
-		q := req.URL.Query()
-		q.Set({{ quote $s.ParameterName }}, t.APIKey)
-		req.URL.RawQuery = q.Encode()
-        {{- else if $s.Kind.IsCookie }}
-		req.AddCookie(&http.Cookie{
-			Name: {{ quote $s.ParameterName }},
-			Value: t.APIKey,
-		})
-		{{- else }}
-            {{ errorf "unexpected security %q:%q" $s.Kind $s.Format }}
-		{{- end }}
-    {{- else if $s.Format.IsBasicHTTPSecurity }}
-		req.SetBasicAuth(t.Username, t.Password)
-	{{- else if $s.Format.IsBearerSecurity }}
-		req.Header.Set("Authorization", "Bearer " + t.Token)
-	{{- else if $s.Format.IsOAuth2Security }}
-		req.Header.Set("Authorization", "Bearer " + t.Token)
+	{{- if $s.Format.IsCustomSecurity }}
+		if err := s.sec.{{ $s.Type.Name }}(ctx, operationName, req); err != nil {
+			return errors.Wrap(err, {{ printf "security source %q" $s.Type.Name | quote }})
+		}
 	{{- else }}
-        {{ errorf "unexpected security %q:%q" $s.Kind $s.Format }}
+		t, err := s.sec.{{ $s.Type.Name }}(ctx, operationName)
+		if err != nil {
+			return errors.Wrap(err, {{ printf "security source %q" $s.Type.Name | quote }})
+		}
+		{{- if $s.Format.IsAPIKeySecurity }}
+			{{- if $s.Kind.IsHeader }}
+			req.Header.Set({{ quote $s.ParameterName }}, t.APIKey)
+			{{- else if $s.Kind.IsQuery }}
+			q := req.URL.Query()
+			q.Set({{ quote $s.ParameterName }}, t.APIKey)
+			req.URL.RawQuery = q.Encode()
+			{{- else if $s.Kind.IsCookie }}
+			req.AddCookie(&http.Cookie{
+				Name: {{ quote $s.ParameterName }},
+				Value: t.APIKey,
+			})
+			{{- else }}
+				{{ errorf "unexpected security %q:%q" $s.Kind $s.Format }}
+			{{- end }}
+		{{- else if $s.Format.IsBasicHTTPSecurity }}
+			req.SetBasicAuth(t.Username, t.Password)
+		{{- else if $s.Format.IsBearerSecurity }}
+			req.Header.Set("Authorization", "Bearer " + t.Token)
+		{{- else if $s.Format.IsOAuth2Security }}
+			req.Header.Set("Authorization", "Bearer " + t.Token)
+		{{- else }}
+			{{ errorf "unexpected security %q:%q" $s.Kind $s.Format }}
+		{{- end }}
 	{{- end }}
 	return nil
 }

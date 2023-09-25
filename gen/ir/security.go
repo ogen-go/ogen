@@ -57,6 +57,9 @@ const (
 
 	// Oauth2SecurityFormat is Oauth2 security format.
 	Oauth2SecurityFormat SecurityFormat = "oauth2"
+
+	// CustomSecurityFormat is a user-defined security format.
+	CustomSecurityFormat = "x-ogen-custom-security"
 )
 
 // IsAPIKeySecurity whether s is APIKeySecurityFormat.
@@ -82,6 +85,11 @@ func (s SecurityFormat) IsDigestHTTPSecurity() bool {
 // IsOAuth2Security whether s is Oauth2SecurityFormat.
 func (s SecurityFormat) IsOAuth2Security() bool {
 	return s == Oauth2SecurityFormat
+}
+
+// IsCustomSecurity whether s is CustomSecurityFormat.
+func (s SecurityFormat) IsCustomSecurity() bool {
+	return s == CustomSecurityFormat
 }
 
 type Security struct {
