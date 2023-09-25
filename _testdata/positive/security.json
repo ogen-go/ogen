@@ -60,6 +60,21 @@
           }
         }
       }
+    },
+    "/customSecurity": {
+      "get": {
+        "operationId": "customSecurity",
+        "security": [
+          {
+            "custom": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -86,6 +101,11 @@
       "bearerToken": {
         "type": "http",
         "scheme": "bearer"
+      },
+      "custom": {
+        "type": "http",
+        "scheme": "digest",
+        "x-ogen-custom-security": true
       }
     }
   }
