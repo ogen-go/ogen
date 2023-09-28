@@ -45,7 +45,7 @@ func (s *{{ $.Name }}) UnmarshalText(data []byte) error {
 
 {{ else -}}
 
-func (s *{{ $.Name }}) String() string {
+func (s {{ $.Name }}) String() string {
 	switch *s {
 	{{- range $variant := $.EnumVariants }}
 	case {{ $variant.Name }}:
