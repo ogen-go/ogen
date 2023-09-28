@@ -8,6 +8,8 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
+
+	"github.com/ogen-go/ogen/ogenerrors"
 )
 
 // SecurityHandler is handler for security parameters.
@@ -51,7 +53,9 @@ func (s *Server) securityBasicAuth(ctx context.Context, operationName string, re
 	t.Username = username
 	t.Password = password
 	rctx, err := s.sec.HandleBasicAuth(ctx, operationName, t)
-	if err != nil {
+	if errors.Is(err, ogenerrors.ErrSkipServerSecurity) {
+		return nil, false, nil
+	} else if err != nil {
 		return nil, false, err
 	}
 	return rctx, true, err
@@ -64,7 +68,9 @@ func (s *Server) securityBearerToken(ctx context.Context, operationName string, 
 	}
 	t.Token = token
 	rctx, err := s.sec.HandleBearerToken(ctx, operationName, t)
-	if err != nil {
+	if errors.Is(err, ogenerrors.ErrSkipServerSecurity) {
+		return nil, false, nil
+	} else if err != nil {
 		return nil, false, err
 	}
 	return rctx, true, err
@@ -83,7 +89,9 @@ func (s *Server) securityCookieKey(ctx context.Context, operationName string, re
 	}
 	t.APIKey = value
 	rctx, err := s.sec.HandleCookieKey(ctx, operationName, t)
-	if err != nil {
+	if errors.Is(err, ogenerrors.ErrSkipServerSecurity) {
+		return nil, false, nil
+	} else if err != nil {
 		return nil, false, err
 	}
 	return rctx, true, err
@@ -97,7 +105,9 @@ func (s *Server) securityHeaderKey(ctx context.Context, operationName string, re
 	}
 	t.APIKey = value
 	rctx, err := s.sec.HandleHeaderKey(ctx, operationName, t)
-	if err != nil {
+	if errors.Is(err, ogenerrors.ErrSkipServerSecurity) {
+		return nil, false, nil
+	} else if err != nil {
 		return nil, false, err
 	}
 	return rctx, true, err
@@ -112,7 +122,9 @@ func (s *Server) securityQueryKey(ctx context.Context, operationName string, req
 	value := q.Get(parameterName)
 	t.APIKey = value
 	rctx, err := s.sec.HandleQueryKey(ctx, operationName, t)
-	if err != nil {
+	if errors.Is(err, ogenerrors.ErrSkipServerSecurity) {
+		return nil, false, nil
+	} else if err != nil {
 		return nil, false, err
 	}
 	return rctx, true, err

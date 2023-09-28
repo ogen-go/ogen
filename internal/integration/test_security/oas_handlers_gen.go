@@ -158,12 +158,13 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool,
 	var response *DisjointSecurityOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "DisjointSecurity",
-			OperationID:   "disjointSecurity",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "DisjointSecurity",
+			OperationSummary: "",
+			OperationID:      "disjointSecurity",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -323,12 +324,13 @@ func (s *Server) handleIntersectSecurityRequest(args [0]string, argsEscaped bool
 	var response *IntersectSecurityOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IntersectSecurity",
-			OperationID:   "intersectSecurity",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "IntersectSecurity",
+			OperationSummary: "",
+			OperationID:      "intersectSecurity",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -454,12 +456,13 @@ func (s *Server) handleOptionalSecurityRequest(args [0]string, argsEscaped bool,
 	var response *OptionalSecurityOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OptionalSecurity",
-			OperationID:   "optionalSecurity",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "OptionalSecurity",
+			OperationSummary: "",
+			OperationID:      "optionalSecurity",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (

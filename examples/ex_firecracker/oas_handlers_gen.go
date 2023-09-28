@@ -81,12 +81,13 @@ func (s *Server) handleCreateSnapshotRequest(args [0]string, argsEscaped bool, w
 	var response CreateSnapshotRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CreateSnapshot",
-			OperationID:   "createSnapshot",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "CreateSnapshot",
+			OperationSummary: "Creates a full or diff snapshot. Post-boot only.",
+			OperationID:      "createSnapshot",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -197,12 +198,13 @@ func (s *Server) handleCreateSyncActionRequest(args [0]string, argsEscaped bool,
 	var response CreateSyncActionRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CreateSyncAction",
-			OperationID:   "createSyncAction",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "CreateSyncAction",
+			OperationSummary: "Creates a synchronous action.",
+			OperationID:      "createSyncAction",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -294,12 +296,13 @@ func (s *Server) handleDescribeBalloonConfigRequest(args [0]string, argsEscaped 
 	var response DescribeBalloonConfigRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "DescribeBalloonConfig",
-			OperationID:   "describeBalloonConfig",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "DescribeBalloonConfig",
+			OperationSummary: "Returns the current balloon device configuration.",
+			OperationID:      "describeBalloonConfig",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -391,12 +394,13 @@ func (s *Server) handleDescribeBalloonStatsRequest(args [0]string, argsEscaped b
 	var response DescribeBalloonStatsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "DescribeBalloonStats",
-			OperationID:   "describeBalloonStats",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "DescribeBalloonStats",
+			OperationSummary: "Returns the latest balloon device statistics, only if enabled pre-boot.",
+			OperationID:      "describeBalloonStats",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -488,12 +492,13 @@ func (s *Server) handleDescribeInstanceRequest(args [0]string, argsEscaped bool,
 	var response *InstanceInfo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "DescribeInstance",
-			OperationID:   "describeInstance",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "DescribeInstance",
+			OperationSummary: "Returns general information about an instance.",
+			OperationID:      "describeInstance",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -585,12 +590,13 @@ func (s *Server) handleGetExportVmConfigRequest(args [0]string, argsEscaped bool
 	var response *FullVmConfiguration
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GetExportVmConfig",
-			OperationID:   "getExportVmConfig",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "GetExportVmConfig",
+			OperationSummary: "Gets the full VM configuration.",
+			OperationID:      "getExportVmConfig",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -684,12 +690,13 @@ func (s *Server) handleGetMachineConfigurationRequest(args [0]string, argsEscape
 	var response *MachineConfiguration
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GetMachineConfiguration",
-			OperationID:   "getMachineConfiguration",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "GetMachineConfiguration",
+			OperationSummary: "Gets the machine configuration of the VM.",
+			OperationID:      "getMachineConfiguration",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -801,12 +808,13 @@ func (s *Server) handleLoadSnapshotRequest(args [0]string, argsEscaped bool, w h
 	var response LoadSnapshotRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "LoadSnapshot",
-			OperationID:   "loadSnapshot",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "LoadSnapshot",
+			OperationSummary: "Loads a snapshot. Pre-boot only.",
+			OperationID:      "loadSnapshot",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -916,12 +924,13 @@ func (s *Server) handleMmdsConfigPutRequest(args [0]string, argsEscaped bool, w 
 	var response MmdsConfigPutRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MmdsConfigPut",
-			OperationID:   "",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "MmdsConfigPut",
+			OperationSummary: "Set MMDS configuration. Pre-boot only.",
+			OperationID:      "",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1012,12 +1021,13 @@ func (s *Server) handleMmdsGetRequest(args [0]string, argsEscaped bool, w http.R
 	var response MmdsGetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MmdsGet",
-			OperationID:   "",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "MmdsGet",
+			OperationSummary: "Get the MMDS data store.",
+			OperationID:      "",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1127,12 +1137,13 @@ func (s *Server) handleMmdsPatchRequest(args [0]string, argsEscaped bool, w http
 	var response MmdsPatchRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MmdsPatch",
-			OperationID:   "",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "MmdsPatch",
+			OperationSummary: "Updates the MMDS data store.",
+			OperationID:      "",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1242,12 +1253,13 @@ func (s *Server) handleMmdsPutRequest(args [0]string, argsEscaped bool, w http.R
 	var response MmdsPutRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MmdsPut",
-			OperationID:   "",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "MmdsPut",
+			OperationSummary: "Creates a MMDS (Microvm Metadata Service) data store.",
+			OperationID:      "",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1359,12 +1371,13 @@ func (s *Server) handlePatchBalloonRequest(args [0]string, argsEscaped bool, w h
 	var response PatchBalloonRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PatchBalloon",
-			OperationID:   "patchBalloon",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "PatchBalloon",
+			OperationSummary: "Updates a balloon device.",
+			OperationID:      "patchBalloon",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1476,12 +1489,13 @@ func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, argsEsca
 	var response PatchBalloonStatsIntervalRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PatchBalloonStatsInterval",
-			OperationID:   "patchBalloonStatsInterval",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "PatchBalloonStatsInterval",
+			OperationSummary: "Updates a balloon device statistics polling interval.",
+			OperationID:      "patchBalloonStatsInterval",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1603,10 +1617,11 @@ func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, argsEscaped bo
 	var response PatchGuestDriveByIDRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PatchGuestDriveByID",
-			OperationID:   "patchGuestDriveByID",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "PatchGuestDriveByID",
+			OperationSummary: "Updates the properties of a drive. Post-boot only.",
+			OperationID:      "patchGuestDriveByID",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "drive_id",
@@ -1734,10 +1749,11 @@ func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, arg
 	var response PatchGuestNetworkInterfaceByIDRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PatchGuestNetworkInterfaceByID",
-			OperationID:   "patchGuestNetworkInterfaceByID",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "PatchGuestNetworkInterfaceByID",
+			OperationSummary: "Updates the rate limiters applied to a network interface. Post-boot only.",
+			OperationID:      "patchGuestNetworkInterfaceByID",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "iface_id",
@@ -1856,12 +1872,13 @@ func (s *Server) handlePatchMachineConfigurationRequest(args [0]string, argsEsca
 	var response PatchMachineConfigurationRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PatchMachineConfiguration",
-			OperationID:   "patchMachineConfiguration",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "PatchMachineConfiguration",
+			OperationSummary: "Partially updates the Machine Configuration of the VM. Pre-boot only.",
+			OperationID:      "patchMachineConfiguration",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1972,12 +1989,13 @@ func (s *Server) handlePatchVmRequest(args [0]string, argsEscaped bool, w http.R
 	var response PatchVmRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PatchVm",
-			OperationID:   "patchVm",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "PatchVm",
+			OperationSummary: "Updates the microVM state.",
+			OperationID:      "patchVm",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2089,12 +2107,13 @@ func (s *Server) handlePutBalloonRequest(args [0]string, argsEscaped bool, w htt
 	var response PutBalloonRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PutBalloon",
-			OperationID:   "putBalloon",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "PutBalloon",
+			OperationSummary: "Creates or updates a balloon device.",
+			OperationID:      "putBalloon",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2206,12 +2225,13 @@ func (s *Server) handlePutGuestBootSourceRequest(args [0]string, argsEscaped boo
 	var response PutGuestBootSourceRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PutGuestBootSource",
-			OperationID:   "putGuestBootSource",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "PutGuestBootSource",
+			OperationSummary: "Creates or updates the boot source. Pre-boot only.",
+			OperationID:      "putGuestBootSource",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2333,10 +2353,11 @@ func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, argsEscaped bool
 	var response PutGuestDriveByIDRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PutGuestDriveByID",
-			OperationID:   "putGuestDriveByID",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "PutGuestDriveByID",
+			OperationSummary: "Creates or updates a drive. Pre-boot only.",
+			OperationID:      "putGuestDriveByID",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "drive_id",
@@ -2464,10 +2485,11 @@ func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, argsE
 	var response PutGuestNetworkInterfaceByIDRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PutGuestNetworkInterfaceByID",
-			OperationID:   "putGuestNetworkInterfaceByID",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "PutGuestNetworkInterfaceByID",
+			OperationSummary: "Creates a network interface. Pre-boot only.",
+			OperationID:      "putGuestNetworkInterfaceByID",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "iface_id",
@@ -2586,12 +2608,13 @@ func (s *Server) handlePutGuestVsockRequest(args [0]string, argsEscaped bool, w 
 	var response PutGuestVsockRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PutGuestVsock",
-			OperationID:   "putGuestVsock",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "PutGuestVsock",
+			OperationSummary: "Creates/updates a vsock device. Pre-boot only.",
+			OperationID:      "putGuestVsock",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2702,12 +2725,13 @@ func (s *Server) handlePutLoggerRequest(args [0]string, argsEscaped bool, w http
 	var response PutLoggerRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PutLogger",
-			OperationID:   "putLogger",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "PutLogger",
+			OperationSummary: "Initializes the logger by specifying a named pipe or a file for the logs output.",
+			OperationID:      "putLogger",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2821,12 +2845,13 @@ func (s *Server) handlePutMachineConfigurationRequest(args [0]string, argsEscape
 	var response PutMachineConfigurationRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PutMachineConfiguration",
-			OperationID:   "putMachineConfiguration",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "PutMachineConfiguration",
+			OperationSummary: "Updates the Machine Configuration of the VM. Pre-boot only.",
+			OperationID:      "putMachineConfiguration",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2937,12 +2962,13 @@ func (s *Server) handlePutMetricsRequest(args [0]string, argsEscaped bool, w htt
 	var response PutMetricsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PutMetrics",
-			OperationID:   "putMetrics",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "PutMetrics",
+			OperationSummary: "Initializes the metrics system by specifying a named pipe or a file for the metrics output.",
+			OperationID:      "putMetrics",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (

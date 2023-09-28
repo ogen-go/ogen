@@ -76,10 +76,11 @@ func (s *Server) handleCancelFineTuneRequest(args [1]string, argsEscaped bool, w
 	var response FineTune
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CancelFineTune",
-			OperationID:   "cancelFineTune",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "CancelFineTune",
+			OperationSummary: "Immediately cancel a fine-tune job.\n",
+			OperationID:      "cancelFineTune",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "fine_tune_id",
@@ -191,12 +192,13 @@ func (s *Server) handleCreateAnswerRequest(args [0]string, argsEscaped bool, w h
 	var response *CreateAnswerResponse
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CreateAnswer",
-			OperationID:   "createAnswer",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "CreateAnswer",
+			OperationSummary: "Answers the specified question using the provided documents and examples.\n\nThe endpoint first [searches](/docs/api-reference/searches) over provided documents or files to find relevant context. The relevant context is combined with the provided examples and question to create the prompt for [completion](/docs/api-reference/completions).\n",
+			OperationID:      "createAnswer",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -296,12 +298,13 @@ func (s *Server) handleCreateChatCompletionRequest(args [0]string, argsEscaped b
 	var response *CreateChatCompletionResponse
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CreateChatCompletion",
-			OperationID:   "createChatCompletion",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "CreateChatCompletion",
+			OperationSummary: "Creates a completion for the chat message",
+			OperationID:      "createChatCompletion",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -409,12 +412,13 @@ func (s *Server) handleCreateClassificationRequest(args [0]string, argsEscaped b
 	var response *CreateClassificationResponse
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CreateClassification",
-			OperationID:   "createClassification",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "CreateClassification",
+			OperationSummary: "Classifies the specified `query` using provided examples.\n\nThe endpoint first [searches](/docs/api-reference/searches) over the labeled examples\nto select the ones most relevant for the particular query. Then, the relevant examples\nare combined with the query to construct a prompt to produce the final label via the\n[completions](/docs/api-reference/completions) endpoint.\n\nLabeled examples can be provided via an uploaded `file`, or explicitly listed in the\nrequest using the `examples` parameter for quick tests and small scale use cases.\n",
+			OperationID:      "createClassification",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -514,12 +518,13 @@ func (s *Server) handleCreateCompletionRequest(args [0]string, argsEscaped bool,
 	var response *CreateCompletionResponse
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CreateCompletion",
-			OperationID:   "createCompletion",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "CreateCompletion",
+			OperationSummary: "Creates a completion for the provided prompt and parameters",
+			OperationID:      "createCompletion",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -619,12 +624,13 @@ func (s *Server) handleCreateEditRequest(args [0]string, argsEscaped bool, w htt
 	var response *CreateEditResponse
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CreateEdit",
-			OperationID:   "createEdit",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "CreateEdit",
+			OperationSummary: "Creates a new edit for the provided input, instruction, and parameters.",
+			OperationID:      "createEdit",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -724,12 +730,13 @@ func (s *Server) handleCreateEmbeddingRequest(args [0]string, argsEscaped bool, 
 	var response *CreateEmbeddingResponse
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CreateEmbedding",
-			OperationID:   "createEmbedding",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "CreateEmbedding",
+			OperationSummary: "Creates an embedding vector representing the input text.",
+			OperationID:      "createEmbedding",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -831,12 +838,13 @@ func (s *Server) handleCreateFileRequest(args [0]string, argsEscaped bool, w htt
 	var response OpenAIFile
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CreateFile",
-			OperationID:   "createFile",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "CreateFile",
+			OperationSummary: "Upload a file that contains document(s) to be used across various endpoints/features. Currently, the size of all the files uploaded by one organization can be up to 1 GB. Please contact us if you need to increase the storage limit.\n",
+			OperationID:      "createFile",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -939,12 +947,13 @@ func (s *Server) handleCreateFineTuneRequest(args [0]string, argsEscaped bool, w
 	var response FineTune
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CreateFineTune",
-			OperationID:   "createFineTune",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "CreateFineTune",
+			OperationSummary: "Creates a job that fine-tunes a specified model from a given dataset.\n\nResponse includes details of the enqueued job including job status and the name of the fine-tuned models once complete.\n\n[Learn more about Fine-tuning](/docs/guides/fine-tuning)\n",
+			OperationID:      "createFineTune",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1044,12 +1053,13 @@ func (s *Server) handleCreateImageRequest(args [0]string, argsEscaped bool, w ht
 	var response ImagesResponse
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CreateImage",
-			OperationID:   "createImage",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "CreateImage",
+			OperationSummary: "Creates an image given a prompt.",
+			OperationID:      "createImage",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1149,12 +1159,13 @@ func (s *Server) handleCreateImageEditRequest(args [0]string, argsEscaped bool, 
 	var response ImagesResponse
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CreateImageEdit",
-			OperationID:   "createImageEdit",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "CreateImageEdit",
+			OperationSummary: "Creates an edited or extended image given an original image and a prompt.",
+			OperationID:      "createImageEdit",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1254,12 +1265,13 @@ func (s *Server) handleCreateImageVariationRequest(args [0]string, argsEscaped b
 	var response ImagesResponse
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CreateImageVariation",
-			OperationID:   "createImageVariation",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "CreateImageVariation",
+			OperationSummary: "Creates a variation of a given image.",
+			OperationID:      "createImageVariation",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1359,12 +1371,13 @@ func (s *Server) handleCreateModerationRequest(args [0]string, argsEscaped bool,
 	var response *CreateModerationResponse
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CreateModeration",
-			OperationID:   "createModeration",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "CreateModeration",
+			OperationSummary: "Classifies if text violates OpenAI's Content Policy",
+			OperationID:      "createModeration",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1483,10 +1496,11 @@ func (s *Server) handleCreateSearchRequest(args [1]string, argsEscaped bool, w h
 	var response *CreateSearchResponse
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CreateSearch",
-			OperationID:   "createSearch",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "CreateSearch",
+			OperationSummary: "The search endpoint computes similarity scores between provided query and documents. Documents can be passed directly to the API if there are no more than 200 of them.\n\nTo go beyond the 200 document limit, documents can be processed offline and then used for efficient retrieval at query time. When `file` is set, the search endpoint searches over all the documents in the given file and returns up to the `max_rerank` number of documents. These documents will be returned along with their search scores.\n\nThe similarity score is a positive score that usually ranges from 0 to 300 (but can sometimes go higher), where a score above 200 usually means the document is semantically similar to the query.\n",
+			OperationID:      "createSearch",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "engine_id",
@@ -1593,12 +1607,13 @@ func (s *Server) handleCreateTranscriptionRequest(args [0]string, argsEscaped bo
 	var response *CreateTranscriptionResponse
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CreateTranscription",
-			OperationID:   "createTranscription",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "CreateTranscription",
+			OperationSummary: "Transcribes audio into the input language.",
+			OperationID:      "createTranscription",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1698,12 +1713,13 @@ func (s *Server) handleCreateTranslationRequest(args [0]string, argsEscaped bool
 	var response *CreateTranslationResponse
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CreateTranslation",
-			OperationID:   "createTranslation",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "CreateTranslation",
+			OperationSummary: "Translates audio into into English.",
+			OperationID:      "createTranslation",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -1798,10 +1814,11 @@ func (s *Server) handleDeleteFileRequest(args [1]string, argsEscaped bool, w htt
 	var response *DeleteFileResponse
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "DeleteFile",
-			OperationID:   "deleteFile",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "DeleteFile",
+			OperationSummary: "Delete a file.",
+			OperationID:      "deleteFile",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "file_id",
@@ -1903,10 +1920,11 @@ func (s *Server) handleDeleteModelRequest(args [1]string, argsEscaped bool, w ht
 	var response *DeleteModelResponse
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "DeleteModel",
-			OperationID:   "deleteModel",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "DeleteModel",
+			OperationSummary: "Delete a fine-tuned model. You must have the Owner role in your organization.",
+			OperationID:      "deleteModel",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "model",
@@ -2008,10 +2026,11 @@ func (s *Server) handleDownloadFileRequest(args [1]string, argsEscaped bool, w h
 	var response string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "DownloadFile",
-			OperationID:   "downloadFile",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "DownloadFile",
+			OperationSummary: "Returns the contents of the specified file",
+			OperationID:      "downloadFile",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "file_id",
@@ -2102,12 +2121,13 @@ func (s *Server) handleListEnginesRequest(args [0]string, argsEscaped bool, w ht
 	var response *ListEnginesResponse
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ListEngines",
-			OperationID:   "listEngines",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "ListEngines",
+			OperationSummary: "Lists the currently available (non-finetuned) models, and provides basic information about each one such as the owner and availability.",
+			OperationID:      "listEngines",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2188,12 +2208,13 @@ func (s *Server) handleListFilesRequest(args [0]string, argsEscaped bool, w http
 	var response *ListFilesResponse
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ListFiles",
-			OperationID:   "listFiles",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "ListFiles",
+			OperationSummary: "Returns a list of files that belong to the user's organization.",
+			OperationID:      "listFiles",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2288,10 +2309,11 @@ func (s *Server) handleListFineTuneEventsRequest(args [1]string, argsEscaped boo
 	var response *ListFineTuneEventsResponse
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ListFineTuneEvents",
-			OperationID:   "listFineTuneEvents",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ListFineTuneEvents",
+			OperationSummary: "Get fine-grained status updates for a fine-tune job.\n",
+			OperationID:      "listFineTuneEvents",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "fine_tune_id",
@@ -2383,12 +2405,13 @@ func (s *Server) handleListFineTunesRequest(args [0]string, argsEscaped bool, w 
 	var response *ListFineTunesResponse
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ListFineTunes",
-			OperationID:   "listFineTunes",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "ListFineTunes",
+			OperationSummary: "List your organization's fine-tuning jobs\n",
+			OperationID:      "listFineTunes",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2470,12 +2493,13 @@ func (s *Server) handleListModelsRequest(args [0]string, argsEscaped bool, w htt
 	var response *ListModelsResponse
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ListModels",
-			OperationID:   "listModels",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "ListModels",
+			OperationSummary: "Lists the currently available models, and provides basic information about each one such as the owner and availability.",
+			OperationID:      "listModels",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -2573,10 +2597,11 @@ func (s *Server) handleRetrieveEngineRequest(args [1]string, argsEscaped bool, w
 	var response Engine
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "RetrieveEngine",
-			OperationID:   "retrieveEngine",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "RetrieveEngine",
+			OperationSummary: "Retrieves a model instance, providing basic information about it such as the owner and availability.",
+			OperationID:      "retrieveEngine",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "engine_id",
@@ -2678,10 +2703,11 @@ func (s *Server) handleRetrieveFileRequest(args [1]string, argsEscaped bool, w h
 	var response OpenAIFile
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "RetrieveFile",
-			OperationID:   "retrieveFile",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "RetrieveFile",
+			OperationSummary: "Returns information about a specific file.",
+			OperationID:      "retrieveFile",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "file_id",
@@ -2784,10 +2810,11 @@ func (s *Server) handleRetrieveFineTuneRequest(args [1]string, argsEscaped bool,
 	var response FineTune
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "RetrieveFineTune",
-			OperationID:   "retrieveFineTune",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "RetrieveFineTune",
+			OperationSummary: "Gets info about the fine-tune job.\n\n[Learn more about Fine-tuning](/docs/guides/fine-tuning)\n",
+			OperationID:      "retrieveFineTune",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "fine_tune_id",
@@ -2890,10 +2917,11 @@ func (s *Server) handleRetrieveModelRequest(args [1]string, argsEscaped bool, w 
 	var response Model
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "RetrieveModel",
-			OperationID:   "retrieveModel",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "RetrieveModel",
+			OperationSummary: "Retrieves a model instance, providing basic information about the model such as the owner and permissioning.",
+			OperationID:      "retrieveModel",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "model",

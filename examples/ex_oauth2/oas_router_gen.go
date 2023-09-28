@@ -10,6 +10,19 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+func (s *Server) cutPrefix(path string) (string, bool) {
+	prefix := s.cfg.Prefix
+	if prefix == "" {
+		return path, true
+	}
+	if !strings.HasPrefix(path, prefix) {
+		// Prefix doesn't match.
+		return "", false
+	}
+	// Cut prefix from the path.
+	return strings.TrimPrefix(path, prefix), true
+}
+
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -21,17 +34,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			elemIsEscaped = strings.ContainsRune(elem, '%')
 		}
 	}
-	if prefix := s.cfg.Prefix; len(prefix) > 0 {
-		if strings.HasPrefix(elem, prefix) {
-			// Cut prefix from the path.
-			elem = strings.TrimPrefix(elem, prefix)
-		} else {
-			// Prefix doesn't match.
-			s.notFound(w, r)
-			return
-		}
-	}
-	if len(elem) == 0 {
+
+	elem, ok := s.cutPrefix(elem)
+	if !ok || len(elem) == 0 {
 		s.notFound(w, r)
 		return
 	}
@@ -102,6 +107,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 // Route is route object.
 type Route struct {
 	name        string
+	summary     string
 	operationID string
 	pathPattern string
 	count       int
@@ -113,6 +119,11 @@ type Route struct {
 // It is guaranteed to be unique and not empty.
 func (r Route) Name() string {
 	return r.name
+}
+
+// Summary returns OpenAPI summary.
+func (r Route) Summary() string {
+	return r.summary
 }
 
 // OperationID returns OpenAPI operationId.
@@ -156,6 +167,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 		}()
 	}
 
+	elem, ok := s.cutPrefix(elem)
+	if !ok {
+		return r, false
+	}
+
 	// Static code generated router with unwrapped path search.
 	switch {
 	default:
@@ -174,6 +190,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				switch method {
 				case "GET":
 					r.name = "FindPets"
+					r.summary = ""
 					r.operationID = "findPets"
 					r.pathPattern = "/pets"
 					r.args = args
@@ -181,6 +198,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					return r, true
 				case "POST":
 					r.name = "AddPet"
+					r.summary = ""
 					r.operationID = "addPet"
 					r.pathPattern = "/pets"
 					r.args = args
@@ -208,6 +226,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					case "DELETE":
 						// Leaf: DeletePet
 						r.name = "DeletePet"
+						r.summary = ""
 						r.operationID = "deletePet"
 						r.pathPattern = "/pets/{id}"
 						r.args = args
@@ -216,6 +235,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					case "GET":
 						// Leaf: FindPetByID
 						r.name = "FindPetByID"
+						r.summary = ""
 						r.operationID = "find pet by id"
 						r.pathPattern = "/pets/{id}"
 						r.args = args

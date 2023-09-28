@@ -79,10 +79,11 @@ func (s *Server) handleCachingRequest(args [0]string, argsEscaped bool, w http.R
 	var response WorldObjects
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "Caching",
-			OperationID:   "Caching",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "Caching",
+			OperationSummary: "Test #7. The Caching test exercises the preferred in-memory or separate-process caching technology for the platform or framework. For implementation simplicity, the requirements are very similar to the multiple database-query test Test #3, but use a separate database table. The requirements are quite generous, affording each framework fairly broad freedom to meet the requirements in the manner that best represents the canonical non-distributed caching approach for the framework. (Note: a distributed caching test type could be added later.)",
+			OperationID:      "Caching",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "count",
@@ -169,12 +170,13 @@ func (s *Server) handleDBRequest(args [0]string, argsEscaped bool, w http.Respon
 	var response *WorldObject
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "DB",
-			OperationID:   "DB",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "DB",
+			OperationSummary: "Test #2. The Single Database Query test exercises the framework's object-relational mapper (ORM), random number generator, database driver, and database connection pool.",
+			OperationID:      "DB",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -255,12 +257,13 @@ func (s *Server) handleJSONRequest(args [0]string, argsEscaped bool, w http.Resp
 	var response *HelloWorld
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "JSON",
-			OperationID:   "json",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "JSON",
+			OperationSummary: "Test #1. The JSON Serialization test exercises the framework fundamentals including keep-alive support, request routing, request header parsing, object instantiation, JSON serialization, response header generation, and request count throughput.",
+			OperationID:      "json",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -356,10 +359,11 @@ func (s *Server) handleQueriesRequest(args [0]string, argsEscaped bool, w http.R
 	var response WorldObjects
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "Queries",
-			OperationID:   "Queries",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "Queries",
+			OperationSummary: "Test #3. The Multiple Database Queries test is a variation of Test #2 and also uses the World table. Multiple rows are fetched to more dramatically punish the database driver and connection pool. At the highest queries-per-request tested (20), this test demonstrates all frameworks' convergence toward zero requests-per-second as database activity increases.",
+			OperationID:      "Queries",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "queries",
@@ -461,10 +465,11 @@ func (s *Server) handleUpdatesRequest(args [0]string, argsEscaped bool, w http.R
 	var response WorldObjects
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "Updates",
-			OperationID:   "Updates",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "Updates",
+			OperationSummary: "Test #5. The Database Updates test is a variation of Test #3 that exercises the ORM's persistence of objects and the database driver's performance at running UPDATE statements or similar. The spirit of this test is to exercise a variable number of read-then-write style database operations.",
+			OperationID:      "Updates",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "queries",

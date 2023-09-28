@@ -75,12 +75,13 @@ func (s *Server) handleEventPostRequest(args [0]string, argsEscaped bool, w http
 	var response any
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EventPost",
-			OperationID:   "",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "EventPost",
+			OperationSummary: "",
+			OperationID:      "",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -185,10 +186,11 @@ func (s *Server) handlePhoneGetRequest(args [0]string, argsEscaped bool, w http.
 	var response *User
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PhoneGet",
-			OperationID:   "",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "PhoneGet",
+			OperationSummary: "",
+			OperationID:      "",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "phone",

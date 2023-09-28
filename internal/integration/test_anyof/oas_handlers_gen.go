@@ -57,12 +57,13 @@ func (s *Server) handleIntegerNumberRequest(args [0]string, argsEscaped bool, w 
 	var response *IntegerNumber
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IntegerNumber",
-			OperationID:   "integerNumber",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "IntegerNumber",
+			OperationSummary: "",
+			OperationID:      "integerNumber",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -139,12 +140,13 @@ func (s *Server) handleJaegerAnyOfRequest(args [0]string, argsEscaped bool, w ht
 	var response *JaegerAnyOf
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "JaegerAnyOf",
-			OperationID:   "jaegerAnyOf",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "JaegerAnyOf",
+			OperationSummary: "",
+			OperationID:      "jaegerAnyOf",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -221,12 +223,13 @@ func (s *Server) handleOneUUIDRequest(args [0]string, argsEscaped bool, w http.R
 	var response *OneUUID
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OneUUID",
-			OperationID:   "oneUUID",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "OneUUID",
+			OperationSummary: "",
+			OperationID:      "oneUUID",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (

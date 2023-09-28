@@ -79,12 +79,13 @@ func (s *Server) handlePublishEventRequest(args [0]string, argsEscaped bool, w h
 	var response *Event
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PublishEvent",
-			OperationID:   "publishEvent",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "PublishEvent",
+			OperationSummary: "",
+			OperationID:      "publishEvent",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -169,12 +170,13 @@ func (s *WebhookServer) handleStatusWebhookRequest(args [0]string, argsEscaped b
 	var response *StatusWebhookOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "StatusWebhook",
-			OperationID:   "statusWebhook",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "StatusWebhook",
+			OperationSummary: "",
+			OperationID:      "statusWebhook",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -247,12 +249,13 @@ func (s *WebhookServer) handleUpdateDeleteRequest(args [0]string, argsEscaped bo
 	var response UpdateDeleteRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UpdateDelete",
-			OperationID:   "",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "UpdateDelete",
+			OperationSummary: "",
+			OperationID:      "",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -355,10 +358,11 @@ func (s *WebhookServer) handleUpdateWebhookRequest(args [0]string, argsEscaped b
 	var response UpdateWebhookRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UpdateWebhook",
-			OperationID:   "updateWebhook",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "UpdateWebhook",
+			OperationSummary: "",
+			OperationID:      "updateWebhook",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "event_type",

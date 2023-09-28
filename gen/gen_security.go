@@ -2,6 +2,7 @@ package gen
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/go-faster/errors"
 
@@ -63,7 +64,7 @@ func (g *Generator) generateSecurityOauth2(
 func (g *Generator) generateSecurityHTTP(s *ir.Security, spec openapi.SecurityScheme) (*ir.Security, error) {
 	security := spec.Security
 	s.Kind = ir.HeaderSecurity
-	switch scheme := security.Scheme; scheme {
+	switch scheme := strings.ToLower(security.Scheme); scheme {
 	case "basic":
 		s.Format = ir.BasicHTTPSecurityFormat
 		s.Type.Fields = append(s.Type.Fields,

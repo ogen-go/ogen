@@ -84,10 +84,11 @@ func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 	var response *ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg",
-			OperationID:   "actions/add-repo-access-to-self-hosted-runner-group-in-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg",
+			OperationSummary: "Add repository access to a self-hosted runner group in an organization",
+			OperationID:      "actions/add-repo-access-to-self-hosted-runner-group-in-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -201,10 +202,11 @@ func (s *Server) handleActionsAddSelectedRepoToOrgSecretRequest(args [3]string, 
 	var response ActionsAddSelectedRepoToOrgSecretRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsAddSelectedRepoToOrgSecret",
-			OperationID:   "actions/add-selected-repo-to-org-secret",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsAddSelectedRepoToOrgSecret",
+			OperationSummary: "Add selected repository to an organization secret",
+			OperationID:      "actions/add-selected-repo-to-org-secret",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -319,10 +321,11 @@ func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args [3]st
 	var response *ActionsAddSelfHostedRunnerToGroupForOrgNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsAddSelfHostedRunnerToGroupForOrg",
-			OperationID:   "actions/add-self-hosted-runner-to-group-for-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsAddSelfHostedRunnerToGroupForOrg",
+			OperationSummary: "Add a self-hosted runner to a group for an organization",
+			OperationID:      "actions/add-self-hosted-runner-to-group-for-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -436,10 +439,11 @@ func (s *Server) handleActionsApproveWorkflowRunRequest(args [3]string, argsEsca
 	var response ActionsApproveWorkflowRunRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsApproveWorkflowRun",
-			OperationID:   "actions/approve-workflow-run",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsApproveWorkflowRun",
+			OperationSummary: "Approve a workflow run for a fork pull request",
+			OperationID:      "actions/approve-workflow-run",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -551,10 +555,11 @@ func (s *Server) handleActionsCancelWorkflowRunRequest(args [3]string, argsEscap
 	var response *ActionsCancelWorkflowRunAccepted
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsCancelWorkflowRun",
-			OperationID:   "actions/cancel-workflow-run",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsCancelWorkflowRun",
+			OperationSummary: "Cancel a workflow run",
+			OperationID:      "actions/cancel-workflow-run",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -732,10 +737,11 @@ func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]str
 	var response ActionsCreateOrUpdateEnvironmentSecretRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsCreateOrUpdateEnvironmentSecret",
-			OperationID:   "actions/create-or-update-environment-secret",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ActionsCreateOrUpdateEnvironmentSecret",
+			OperationSummary: "Create or update an environment secret",
+			OperationID:      "actions/create-or-update-environment-secret",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "repository_id",
@@ -913,10 +919,11 @@ func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, arg
 	var response ActionsCreateOrUpdateOrgSecretRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsCreateOrUpdateOrgSecret",
-			OperationID:   "actions/create-or-update-org-secret",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ActionsCreateOrUpdateOrgSecret",
+			OperationSummary: "Create or update an organization secret",
+			OperationID:      "actions/create-or-update-org-secret",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -1090,10 +1097,11 @@ func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, ar
 	var response ActionsCreateOrUpdateRepoSecretRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsCreateOrUpdateRepoSecret",
-			OperationID:   "actions/create-or-update-repo-secret",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ActionsCreateOrUpdateRepoSecret",
+			OperationSummary: "Create or update a repository secret",
+			OperationID:      "actions/create-or-update-repo-secret",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -1210,10 +1218,11 @@ func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args [1]strin
 	var response *AuthenticationToken
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsCreateRegistrationTokenForOrg",
-			OperationID:   "actions/create-registration-token-for-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsCreateRegistrationTokenForOrg",
+			OperationSummary: "Create a registration token for an organization",
+			OperationID:      "actions/create-registration-token-for-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -1323,10 +1332,11 @@ func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args [2]stri
 	var response *AuthenticationToken
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsCreateRegistrationTokenForRepo",
-			OperationID:   "actions/create-registration-token-for-repo",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsCreateRegistrationTokenForRepo",
+			OperationSummary: "Create a registration token for a repository",
+			OperationID:      "actions/create-registration-token-for-repo",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -1441,10 +1451,11 @@ func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args [1]string, arg
 	var response *AuthenticationToken
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsCreateRemoveTokenForOrg",
-			OperationID:   "actions/create-remove-token-for-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsCreateRemoveTokenForOrg",
+			OperationSummary: "Create a remove token for an organization",
+			OperationID:      "actions/create-remove-token-for-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -1554,10 +1565,11 @@ func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args [2]string, ar
 	var response *AuthenticationToken
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsCreateRemoveTokenForRepo",
-			OperationID:   "actions/create-remove-token-for-repo",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsCreateRemoveTokenForRepo",
+			OperationSummary: "Create a remove token for a repository",
+			OperationID:      "actions/create-remove-token-for-repo",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -1682,10 +1694,11 @@ func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]s
 	var response *RunnerGroupsOrg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsCreateSelfHostedRunnerGroupForOrg",
-			OperationID:   "actions/create-self-hosted-runner-group-for-org",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ActionsCreateSelfHostedRunnerGroupForOrg",
+			OperationSummary: "Create a self-hosted runner group for an organization",
+			OperationID:      "actions/create-self-hosted-runner-group-for-org",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -1789,10 +1802,11 @@ func (s *Server) handleActionsDeleteArtifactRequest(args [3]string, argsEscaped 
 	var response *ActionsDeleteArtifactNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsDeleteArtifact",
-			OperationID:   "actions/delete-artifact",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsDeleteArtifact",
+			OperationSummary: "Delete an artifact",
+			OperationID:      "actions/delete-artifact",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -1904,10 +1918,11 @@ func (s *Server) handleActionsDeleteEnvironmentSecretRequest(args [3]string, arg
 	var response *ActionsDeleteEnvironmentSecretNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsDeleteEnvironmentSecret",
-			OperationID:   "actions/delete-environment-secret",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsDeleteEnvironmentSecret",
+			OperationSummary: "Delete an environment secret",
+			OperationID:      "actions/delete-environment-secret",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "repository_id",
@@ -2019,10 +2034,11 @@ func (s *Server) handleActionsDeleteOrgSecretRequest(args [2]string, argsEscaped
 	var response *ActionsDeleteOrgSecretNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsDeleteOrgSecret",
-			OperationID:   "actions/delete-org-secret",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsDeleteOrgSecret",
+			OperationSummary: "Delete an organization secret",
+			OperationID:      "actions/delete-org-secret",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -2130,10 +2146,11 @@ func (s *Server) handleActionsDeleteRepoSecretRequest(args [3]string, argsEscape
 	var response *ActionsDeleteRepoSecretNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsDeleteRepoSecret",
-			OperationID:   "actions/delete-repo-secret",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsDeleteRepoSecret",
+			OperationSummary: "Delete a repository secret",
+			OperationID:      "actions/delete-repo-secret",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -2245,10 +2262,11 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args [2]strin
 	var response *ActionsDeleteSelfHostedRunnerFromOrgNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsDeleteSelfHostedRunnerFromOrg",
-			OperationID:   "actions/delete-self-hosted-runner-from-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsDeleteSelfHostedRunnerFromOrg",
+			OperationSummary: "Delete a self-hosted runner from an organization",
+			OperationID:      "actions/delete-self-hosted-runner-from-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -2357,10 +2375,11 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args [3]stri
 	var response *ActionsDeleteSelfHostedRunnerFromRepoNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsDeleteSelfHostedRunnerFromRepo",
-			OperationID:   "actions/delete-self-hosted-runner-from-repo",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsDeleteSelfHostedRunnerFromRepo",
+			OperationSummary: "Delete a self-hosted runner from a repository",
+			OperationID:      "actions/delete-self-hosted-runner-from-repo",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -2474,10 +2493,11 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args [2]
 	var response *ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsDeleteSelfHostedRunnerGroupFromOrg",
-			OperationID:   "actions/delete-self-hosted-runner-group-from-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsDeleteSelfHostedRunnerGroupFromOrg",
+			OperationSummary: "Delete a self-hosted runner group from an organization",
+			OperationID:      "actions/delete-self-hosted-runner-group-from-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -2587,10 +2607,11 @@ func (s *Server) handleActionsDeleteWorkflowRunRequest(args [3]string, argsEscap
 	var response *ActionsDeleteWorkflowRunNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsDeleteWorkflowRun",
-			OperationID:   "actions/delete-workflow-run",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsDeleteWorkflowRun",
+			OperationSummary: "Delete a workflow run",
+			OperationID:      "actions/delete-workflow-run",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -2702,10 +2723,11 @@ func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args [3]string, argsE
 	var response *ActionsDeleteWorkflowRunLogsNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsDeleteWorkflowRunLogs",
-			OperationID:   "actions/delete-workflow-run-logs",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsDeleteWorkflowRunLogs",
+			OperationSummary: "Delete workflow run logs",
+			OperationID:      "actions/delete-workflow-run-logs",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -2820,10 +2842,11 @@ func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganization
 	var response *ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsDisableSelectedRepositoryGithubActionsOrganization",
-			OperationID:   "actions/disable-selected-repository-github-actions-organization",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsDisableSelectedRepositoryGithubActionsOrganization",
+			OperationSummary: "Disable a selected repository for GitHub Actions in an organization",
+			OperationID:      "actions/disable-selected-repository-github-actions-organization",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -2935,10 +2958,11 @@ func (s *Server) handleActionsDownloadArtifactRequest(args [4]string, argsEscape
 	var response *ActionsDownloadArtifactFound
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsDownloadArtifact",
-			OperationID:   "actions/download-artifact",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsDownloadArtifact",
+			OperationSummary: "Download an artifact",
+			OperationID:      "actions/download-artifact",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -3060,10 +3084,11 @@ func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args [3]strin
 	var response *ActionsDownloadJobLogsForWorkflowRunFound
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsDownloadJobLogsForWorkflowRun",
-			OperationID:   "actions/download-job-logs-for-workflow-run",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsDownloadJobLogsForWorkflowRun",
+			OperationSummary: "Download job logs for a workflow run",
+			OperationID:      "actions/download-job-logs-for-workflow-run",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -3179,10 +3204,11 @@ func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args [3]string, arg
 	var response *ActionsDownloadWorkflowRunLogsFound
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsDownloadWorkflowRunLogs",
-			OperationID:   "actions/download-workflow-run-logs",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsDownloadWorkflowRunLogs",
+			OperationSummary: "Download workflow run logs",
+			OperationID:      "actions/download-workflow-run-logs",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -3297,10 +3323,11 @@ func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationR
 	var response *ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsEnableSelectedRepositoryGithubActionsOrganization",
-			OperationID:   "actions/enable-selected-repository-github-actions-organization",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsEnableSelectedRepositoryGithubActionsOrganization",
+			OperationSummary: "Enable a selected repository for GitHub Actions in an organization",
+			OperationID:      "actions/enable-selected-repository-github-actions-organization",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -3411,10 +3438,11 @@ func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args [1]strin
 	var response *SelectedActions
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsGetAllowedActionsOrganization",
-			OperationID:   "actions/get-allowed-actions-organization",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsGetAllowedActionsOrganization",
+			OperationSummary: "Get allowed actions for an organization",
+			OperationID:      "actions/get-allowed-actions-organization",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -3521,10 +3549,11 @@ func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args [2]string,
 	var response *SelectedActions
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsGetAllowedActionsRepository",
-			OperationID:   "actions/get-allowed-actions-repository",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsGetAllowedActionsRepository",
+			OperationSummary: "Get allowed actions for a repository",
+			OperationID:      "actions/get-allowed-actions-repository",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -3632,10 +3661,11 @@ func (s *Server) handleActionsGetArtifactRequest(args [3]string, argsEscaped boo
 	var response *Artifact
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsGetArtifact",
-			OperationID:   "actions/get-artifact",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsGetArtifact",
+			OperationSummary: "Get an artifact",
+			OperationID:      "actions/get-artifact",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -3748,10 +3778,11 @@ func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args [2]string, arg
 	var response *ActionsPublicKey
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsGetEnvironmentPublicKey",
-			OperationID:   "actions/get-environment-public-key",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsGetEnvironmentPublicKey",
+			OperationSummary: "Get an environment public key",
+			OperationID:      "actions/get-environment-public-key",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "repository_id",
@@ -3859,10 +3890,11 @@ func (s *Server) handleActionsGetEnvironmentSecretRequest(args [3]string, argsEs
 	var response *ActionsSecret
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsGetEnvironmentSecret",
-			OperationID:   "actions/get-environment-secret",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsGetEnvironmentSecret",
+			OperationSummary: "Get an environment secret",
+			OperationID:      "actions/get-environment-secret",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "repository_id",
@@ -3974,10 +4006,11 @@ func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(arg
 	var response *ActionsOrganizationPermissions
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsGetGithubActionsPermissionsOrganization",
-			OperationID:   "actions/get-github-actions-permissions-organization",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsGetGithubActionsPermissionsOrganization",
+			OperationSummary: "Get GitHub Actions permissions for an organization",
+			OperationID:      "actions/get-github-actions-permissions-organization",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -4082,10 +4115,11 @@ func (s *Server) handleActionsGetGithubActionsPermissionsRepositoryRequest(args 
 	var response *ActionsRepositoryPermissions
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsGetGithubActionsPermissionsRepository",
-			OperationID:   "actions/get-github-actions-permissions-repository",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsGetGithubActionsPermissionsRepository",
+			OperationSummary: "Get GitHub Actions permissions for a repository",
+			OperationID:      "actions/get-github-actions-permissions-repository",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -4193,10 +4227,11 @@ func (s *Server) handleActionsGetJobForWorkflowRunRequest(args [3]string, argsEs
 	var response *Job
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsGetJobForWorkflowRun",
-			OperationID:   "actions/get-job-for-workflow-run",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsGetJobForWorkflowRun",
+			OperationSummary: "Get a job for a workflow run",
+			OperationID:      "actions/get-job-for-workflow-run",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -4309,10 +4344,11 @@ func (s *Server) handleActionsGetOrgPublicKeyRequest(args [1]string, argsEscaped
 	var response *ActionsPublicKey
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsGetOrgPublicKey",
-			OperationID:   "actions/get-org-public-key",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsGetOrgPublicKey",
+			OperationSummary: "Get an organization public key",
+			OperationID:      "actions/get-org-public-key",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -4416,10 +4452,11 @@ func (s *Server) handleActionsGetOrgSecretRequest(args [2]string, argsEscaped bo
 	var response *OrganizationActionsSecret
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsGetOrgSecret",
-			OperationID:   "actions/get-org-secret",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsGetOrgSecret",
+			OperationSummary: "Get an organization secret",
+			OperationID:      "actions/get-org-secret",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -4528,10 +4565,11 @@ func (s *Server) handleActionsGetRepoPublicKeyRequest(args [2]string, argsEscape
 	var response *ActionsPublicKey
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsGetRepoPublicKey",
-			OperationID:   "actions/get-repo-public-key",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsGetRepoPublicKey",
+			OperationSummary: "Get a repository public key",
+			OperationID:      "actions/get-repo-public-key",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -4639,10 +4677,11 @@ func (s *Server) handleActionsGetRepoSecretRequest(args [3]string, argsEscaped b
 	var response *ActionsSecret
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsGetRepoSecret",
-			OperationID:   "actions/get-repo-secret",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsGetRepoSecret",
+			OperationSummary: "Get a repository secret",
+			OperationID:      "actions/get-repo-secret",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -4754,10 +4793,11 @@ func (s *Server) handleActionsGetReviewsForRunRequest(args [3]string, argsEscape
 	var response []EnvironmentApprovals
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsGetReviewsForRun",
-			OperationID:   "actions/get-reviews-for-run",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsGetReviewsForRun",
+			OperationSummary: "Get the review history for a workflow run",
+			OperationID:      "actions/get-reviews-for-run",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -4868,10 +4908,11 @@ func (s *Server) handleActionsGetSelfHostedRunnerForOrgRequest(args [2]string, a
 	var response *Runner
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsGetSelfHostedRunnerForOrg",
-			OperationID:   "actions/get-self-hosted-runner-for-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsGetSelfHostedRunnerForOrg",
+			OperationSummary: "Get a self-hosted runner for an organization",
+			OperationID:      "actions/get-self-hosted-runner-for-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -4979,10 +5020,11 @@ func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args [3]string, 
 	var response *Runner
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsGetSelfHostedRunnerForRepo",
-			OperationID:   "actions/get-self-hosted-runner-for-repo",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsGetSelfHostedRunnerForRepo",
+			OperationSummary: "Get a self-hosted runner for a repository",
+			OperationID:      "actions/get-self-hosted-runner-for-repo",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -5096,10 +5138,11 @@ func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args [2]stri
 	var response *RunnerGroupsOrg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsGetSelfHostedRunnerGroupForOrg",
-			OperationID:   "actions/get-self-hosted-runner-group-for-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsGetSelfHostedRunnerGroupForOrg",
+			OperationSummary: "Get a self-hosted runner group for an organization",
+			OperationID:      "actions/get-self-hosted-runner-group-for-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -5207,10 +5250,11 @@ func (s *Server) handleActionsGetWorkflowRunRequest(args [3]string, argsEscaped 
 	var response *WorkflowRun
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsGetWorkflowRun",
-			OperationID:   "actions/get-workflow-run",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsGetWorkflowRun",
+			OperationSummary: "Get a workflow run",
+			OperationID:      "actions/get-workflow-run",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -5329,10 +5373,11 @@ func (s *Server) handleActionsGetWorkflowRunUsageRequest(args [3]string, argsEsc
 	var response *WorkflowRunUsage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsGetWorkflowRunUsage",
-			OperationID:   "actions/get-workflow-run-usage",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsGetWorkflowRunUsage",
+			OperationSummary: "Get workflow run usage",
+			OperationID:      "actions/get-workflow-run-usage",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -5444,10 +5489,11 @@ func (s *Server) handleActionsListArtifactsForRepoRequest(args [2]string, argsEs
 	var response *ActionsListArtifactsForRepoOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsListArtifactsForRepo",
-			OperationID:   "actions/list-artifacts-for-repo",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsListArtifactsForRepo",
+			OperationSummary: "List artifacts for a repository",
+			OperationID:      "actions/list-artifacts-for-repo",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -5563,10 +5609,11 @@ func (s *Server) handleActionsListEnvironmentSecretsRequest(args [2]string, args
 	var response *ActionsListEnvironmentSecretsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsListEnvironmentSecrets",
-			OperationID:   "actions/list-environment-secrets",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsListEnvironmentSecrets",
+			OperationSummary: "List environment secrets",
+			OperationID:      "actions/list-environment-secrets",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "repository_id",
@@ -5684,10 +5731,11 @@ func (s *Server) handleActionsListJobsForWorkflowRunRequest(args [3]string, args
 	var response *ActionsListJobsForWorkflowRunOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsListJobsForWorkflowRun",
-			OperationID:   "actions/list-jobs-for-workflow-run",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsListJobsForWorkflowRun",
+			OperationSummary: "List jobs for a workflow run",
+			OperationID:      "actions/list-jobs-for-workflow-run",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -5811,10 +5859,11 @@ func (s *Server) handleActionsListOrgSecretsRequest(args [1]string, argsEscaped 
 	var response *ActionsListOrgSecretsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsListOrgSecrets",
-			OperationID:   "actions/list-org-secrets",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsListOrgSecrets",
+			OperationSummary: "List organization secrets",
+			OperationID:      "actions/list-org-secrets",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -5928,10 +5977,11 @@ func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 	var response *ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsListRepoAccessToSelfHostedRunnerGroupInOrg",
-			OperationID:   "actions/list-repo-access-to-self-hosted-runner-group-in-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsListRepoAccessToSelfHostedRunnerGroupInOrg",
+			OperationSummary: "List repository access to a self-hosted runner group in an organization",
+			OperationID:      "actions/list-repo-access-to-self-hosted-runner-group-in-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -6047,10 +6097,11 @@ func (s *Server) handleActionsListRepoSecretsRequest(args [2]string, argsEscaped
 	var response *ActionsListRepoSecretsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsListRepoSecrets",
-			OperationID:   "actions/list-repo-secrets",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsListRepoSecrets",
+			OperationSummary: "List repository secrets",
+			OperationID:      "actions/list-repo-secrets",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -6166,10 +6217,11 @@ func (s *Server) handleActionsListRepoWorkflowsRequest(args [2]string, argsEscap
 	var response *ActionsListRepoWorkflowsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsListRepoWorkflows",
-			OperationID:   "actions/list-repo-workflows",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsListRepoWorkflows",
+			OperationSummary: "List repository workflows",
+			OperationID:      "actions/list-repo-workflows",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -6284,10 +6336,11 @@ func (s *Server) handleActionsListRunnerApplicationsForOrgRequest(args [1]string
 	var response []RunnerApplication
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsListRunnerApplicationsForOrg",
-			OperationID:   "actions/list-runner-applications-for-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsListRunnerApplicationsForOrg",
+			OperationSummary: "List runner applications for an organization",
+			OperationID:      "actions/list-runner-applications-for-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -6390,10 +6443,11 @@ func (s *Server) handleActionsListRunnerApplicationsForRepoRequest(args [2]strin
 	var response []RunnerApplication
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsListRunnerApplicationsForRepo",
-			OperationID:   "actions/list-runner-applications-for-repo",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsListRunnerApplicationsForRepo",
+			OperationSummary: "List runner applications for a repository",
+			OperationID:      "actions/list-runner-applications-for-repo",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -6502,10 +6556,11 @@ func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args [2]strin
 	var response *ActionsListSelectedReposForOrgSecretOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsListSelectedReposForOrgSecret",
-			OperationID:   "actions/list-selected-repos-for-org-secret",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsListSelectedReposForOrgSecret",
+			OperationSummary: "List selected repositories for an organization secret",
+			OperationID:      "actions/list-selected-repos-for-org-secret",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -6624,10 +6679,11 @@ func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrgani
 	var response *ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsListSelectedRepositoriesEnabledGithubActionsOrganization",
-			OperationID:   "actions/list-selected-repositories-enabled-github-actions-organization",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsListSelectedRepositoriesEnabledGithubActionsOrganization",
+			OperationSummary: "List selected repositories enabled for GitHub Actions in an organization",
+			OperationID:      "actions/list-selected-repositories-enabled-github-actions-organization",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -6741,10 +6797,11 @@ func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args [1]st
 	var response *ActionsListSelfHostedRunnerGroupsForOrgOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsListSelfHostedRunnerGroupsForOrg",
-			OperationID:   "actions/list-self-hosted-runner-groups-for-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsListSelfHostedRunnerGroupsForOrg",
+			OperationSummary: "List self-hosted runner groups for an organization",
+			OperationID:      "actions/list-self-hosted-runner-groups-for-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -6855,10 +6912,11 @@ func (s *Server) handleActionsListSelfHostedRunnersForOrgRequest(args [1]string,
 	var response *ActionsListSelfHostedRunnersForOrgOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsListSelfHostedRunnersForOrg",
-			OperationID:   "actions/list-self-hosted-runners-for-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsListSelfHostedRunnersForOrg",
+			OperationSummary: "List self-hosted runners for an organization",
+			OperationID:      "actions/list-self-hosted-runners-for-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -6969,10 +7027,11 @@ func (s *Server) handleActionsListSelfHostedRunnersForRepoRequest(args [2]string
 	var response *ActionsListSelfHostedRunnersForRepoOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsListSelfHostedRunnersForRepo",
-			OperationID:   "actions/list-self-hosted-runners-for-repo",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsListSelfHostedRunnersForRepo",
+			OperationSummary: "List self-hosted runners for a repository",
+			OperationID:      "actions/list-self-hosted-runners-for-repo",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -7090,10 +7149,11 @@ func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args [2]
 	var response *ActionsListSelfHostedRunnersInGroupForOrgOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsListSelfHostedRunnersInGroupForOrg",
-			OperationID:   "actions/list-self-hosted-runners-in-group-for-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsListSelfHostedRunnersInGroupForOrg",
+			OperationSummary: "List self-hosted runners in a group for an organization",
+			OperationID:      "actions/list-self-hosted-runners-in-group-for-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -7209,10 +7269,11 @@ func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args [3]string, ar
 	var response *ActionsListWorkflowRunArtifactsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsListWorkflowRunArtifacts",
-			OperationID:   "actions/list-workflow-run-artifacts",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsListWorkflowRunArtifacts",
+			OperationSummary: "List workflow run artifacts",
+			OperationID:      "actions/list-workflow-run-artifacts",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -7335,10 +7396,11 @@ func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args [2]string, arg
 	var response *ActionsListWorkflowRunsForRepoOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsListWorkflowRunsForRepo",
-			OperationID:   "actions/list-workflow-runs-for-repo",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsListWorkflowRunsForRepo",
+			OperationSummary: "List workflow runs for a repository",
+			OperationID:      "actions/list-workflow-runs-for-repo",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -7479,10 +7541,11 @@ func (s *Server) handleActionsReRunWorkflowRequest(args [3]string, argsEscaped b
 	var response *ActionsReRunWorkflowCreated
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsReRunWorkflow",
-			OperationID:   "actions/re-run-workflow",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsReRunWorkflow",
+			OperationSummary: "Re-run a workflow",
+			OperationID:      "actions/re-run-workflow",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -7599,10 +7662,11 @@ func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgReques
 	var response *ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg",
-			OperationID:   "actions/remove-repo-access-to-self-hosted-runner-group-in-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg",
+			OperationSummary: "Remove repository access to a self-hosted runner group in an organization",
+			OperationID:      "actions/remove-repo-access-to-self-hosted-runner-group-in-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -7716,10 +7780,11 @@ func (s *Server) handleActionsRemoveSelectedRepoFromOrgSecretRequest(args [3]str
 	var response ActionsRemoveSelectedRepoFromOrgSecretRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsRemoveSelectedRepoFromOrgSecret",
-			OperationID:   "actions/remove-selected-repo-from-org-secret",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsRemoveSelectedRepoFromOrgSecret",
+			OperationSummary: "Remove selected repository from an organization secret",
+			OperationID:      "actions/remove-selected-repo-from-org-secret",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -7834,10 +7899,11 @@ func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args 
 	var response *ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsRemoveSelfHostedRunnerFromGroupForOrg",
-			OperationID:   "actions/remove-self-hosted-runner-from-group-for-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsRemoveSelfHostedRunnerFromGroupForOrg",
+			OperationSummary: "Remove a self-hosted runner from a group for an organization",
+			OperationID:      "actions/remove-self-hosted-runner-from-group-for-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -7949,10 +8015,11 @@ func (s *Server) handleActionsRetryWorkflowRequest(args [3]string, argsEscaped b
 	var response *ActionsRetryWorkflowCreated
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsRetryWorkflow",
-			OperationID:   "actions/retry-workflow",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActionsRetryWorkflow",
+			OperationSummary: "Retry a workflow",
+			OperationID:      "actions/retry-workflow",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -8078,10 +8145,11 @@ func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]stri
 	var response []Deployment
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsReviewPendingDeploymentsForRun",
-			OperationID:   "actions/review-pending-deployments-for-run",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ActionsReviewPendingDeploymentsForRun",
+			OperationSummary: "Review pending deployments for a workflow run",
+			OperationID:      "actions/review-pending-deployments-for-run",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -8216,10 +8284,11 @@ func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]strin
 	var response *ActionsSetAllowedActionsOrganizationNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsSetAllowedActionsOrganization",
-			OperationID:   "actions/set-allowed-actions-organization",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ActionsSetAllowedActionsOrganization",
+			OperationSummary: "Set allowed actions for an organization",
+			OperationID:      "actions/set-allowed-actions-organization",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -8345,10 +8414,11 @@ func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string,
 	var response *ActionsSetAllowedActionsRepositoryNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsSetAllowedActionsRepository",
-			OperationID:   "actions/set-allowed-actions-repository",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ActionsSetAllowedActionsRepository",
+			OperationSummary: "Set allowed actions for a repository",
+			OperationID:      "actions/set-allowed-actions-repository",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -8474,10 +8544,11 @@ func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(arg
 	var response *ActionsSetGithubActionsPermissionsOrganizationNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsSetGithubActionsPermissionsOrganization",
-			OperationID:   "actions/set-github-actions-permissions-organization",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ActionsSetGithubActionsPermissionsOrganization",
+			OperationSummary: "Set GitHub Actions permissions for an organization",
+			OperationID:      "actions/set-github-actions-permissions-organization",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -8600,10 +8671,11 @@ func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args 
 	var response *ActionsSetGithubActionsPermissionsRepositoryNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsSetGithubActionsPermissionsRepository",
-			OperationID:   "actions/set-github-actions-permissions-repository",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ActionsSetGithubActionsPermissionsRepository",
+			OperationSummary: "Set GitHub Actions permissions for a repository",
+			OperationID:      "actions/set-github-actions-permissions-repository",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -8729,10 +8801,11 @@ func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 	var response *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg",
-			OperationID:   "actions/set-repo-access-to-self-hosted-runner-group-in-org",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg",
+			OperationSummary: "Set repository access for a self-hosted runner group in an organization",
+			OperationID:      "actions/set-repo-access-to-self-hosted-runner-group-in-org",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -8857,10 +8930,11 @@ func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string
 	var response *ActionsSetSelectedReposForOrgSecretNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsSetSelectedReposForOrgSecret",
-			OperationID:   "actions/set-selected-repos-for-org-secret",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ActionsSetSelectedReposForOrgSecret",
+			OperationSummary: "Set selected repositories for an organization secret",
+			OperationID:      "actions/set-selected-repos-for-org-secret",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -8986,10 +9060,11 @@ func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 	var response *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization",
-			OperationID:   "actions/set-selected-repositories-enabled-github-actions-organization",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization",
+			OperationSummary: "Set selected repositories enabled for GitHub Actions in an organization",
+			OperationID:      "actions/set-selected-repositories-enabled-github-actions-organization",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -9110,10 +9185,11 @@ func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]s
 	var response *ActionsSetSelfHostedRunnersInGroupForOrgNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsSetSelfHostedRunnersInGroupForOrg",
-			OperationID:   "actions/set-self-hosted-runners-in-group-for-org",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ActionsSetSelfHostedRunnersInGroupForOrg",
+			OperationSummary: "Set self-hosted runners in a group for an organization",
+			OperationID:      "actions/set-self-hosted-runners-in-group-for-org",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -9238,10 +9314,11 @@ func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]s
 	var response *RunnerGroupsOrg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActionsUpdateSelfHostedRunnerGroupForOrg",
-			OperationID:   "actions/update-self-hosted-runner-group-for-org",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ActionsUpdateSelfHostedRunnerGroupForOrg",
+			OperationSummary: "Update a self-hosted runner group for an organization",
+			OperationID:      "actions/update-self-hosted-runner-group-for-org",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -9347,10 +9424,11 @@ func (s *Server) handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args
 	var response ActivityCheckRepoIsStarredByAuthenticatedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActivityCheckRepoIsStarredByAuthenticatedUser",
-			OperationID:   "activity/check-repo-is-starred-by-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActivityCheckRepoIsStarredByAuthenticatedUser",
+			OperationSummary: "Check if a repository is starred by the authenticated user",
+			OperationID:      "activity/check-repo-is-starred-by-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -9458,10 +9536,11 @@ func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args [2]string, arg
 	var response *ActivityDeleteRepoSubscriptionNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActivityDeleteRepoSubscription",
-			OperationID:   "activity/delete-repo-subscription",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActivityDeleteRepoSubscription",
+			OperationSummary: "Delete a repository subscription",
+			OperationID:      "activity/delete-repo-subscription",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -9571,10 +9650,11 @@ func (s *Server) handleActivityDeleteThreadSubscriptionRequest(args [1]string, a
 	var response ActivityDeleteThreadSubscriptionRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActivityDeleteThreadSubscription",
-			OperationID:   "activity/delete-thread-subscription",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActivityDeleteThreadSubscription",
+			OperationSummary: "Delete a thread subscription",
+			OperationID:      "activity/delete-thread-subscription",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "thread_id",
@@ -9676,12 +9756,13 @@ func (s *Server) handleActivityGetFeedsRequest(args [0]string, argsEscaped bool,
 	var response *Feed
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActivityGetFeeds",
-			OperationID:   "activity/get-feeds",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "ActivityGetFeeds",
+			OperationSummary: "Get feeds",
+			OperationID:      "activity/get-feeds",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -9776,10 +9857,11 @@ func (s *Server) handleActivityGetRepoSubscriptionRequest(args [2]string, argsEs
 	var response ActivityGetRepoSubscriptionRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActivityGetRepoSubscription",
-			OperationID:   "activity/get-repo-subscription",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActivityGetRepoSubscription",
+			OperationSummary: "Get a repository subscription",
+			OperationID:      "activity/get-repo-subscription",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -9885,10 +9967,11 @@ func (s *Server) handleActivityGetThreadRequest(args [1]string, argsEscaped bool
 	var response ActivityGetThreadRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActivityGetThread",
-			OperationID:   "activity/get-thread",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActivityGetThread",
+			OperationSummary: "Get a thread",
+			OperationID:      "activity/get-thread",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "thread_id",
@@ -9993,10 +10076,11 @@ func (s *Server) handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(
 	var response ActivityGetThreadSubscriptionForAuthenticatedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActivityGetThreadSubscriptionForAuthenticatedUser",
-			OperationID:   "activity/get-thread-subscription-for-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActivityGetThreadSubscriptionForAuthenticatedUser",
+			OperationSummary: "Get a thread subscription for the authenticated user",
+			OperationID:      "activity/get-thread-subscription-for-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "thread_id",
@@ -10099,10 +10183,11 @@ func (s *Server) handleActivityListEventsForAuthenticatedUserRequest(args [1]str
 	var response []Event
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActivityListEventsForAuthenticatedUser",
-			OperationID:   "activity/list-events-for-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActivityListEventsForAuthenticatedUser",
+			OperationSummary: "List events for the authenticated user",
+			OperationID:      "activity/list-events-for-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "username",
@@ -10212,10 +10297,11 @@ func (s *Server) handleActivityListNotificationsForAuthenticatedUserRequest(args
 	var response ActivityListNotificationsForAuthenticatedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActivityListNotificationsForAuthenticatedUser",
-			OperationID:   "activity/list-notifications-for-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActivityListNotificationsForAuthenticatedUser",
+			OperationSummary: "List notifications for the authenticated user",
+			OperationID:      "activity/list-notifications-for-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "all",
@@ -10337,10 +10423,11 @@ func (s *Server) handleActivityListOrgEventsForAuthenticatedUserRequest(args [2]
 	var response []Event
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActivityListOrgEventsForAuthenticatedUser",
-			OperationID:   "activity/list-org-events-for-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActivityListOrgEventsForAuthenticatedUser",
+			OperationSummary: "List organization events for the authenticated user",
+			OperationID:      "activity/list-org-events-for-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "username",
@@ -10455,10 +10542,11 @@ func (s *Server) handleActivityListPublicEventsRequest(args [0]string, argsEscap
 	var response ActivityListPublicEventsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActivityListPublicEvents",
-			OperationID:   "activity/list-public-events",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActivityListPublicEvents",
+			OperationSummary: "List public events",
+			OperationID:      "activity/list-public-events",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "per_page",
@@ -10564,10 +10652,11 @@ func (s *Server) handleActivityListPublicEventsForRepoNetworkRequest(args [2]str
 	var response ActivityListPublicEventsForRepoNetworkRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActivityListPublicEventsForRepoNetwork",
-			OperationID:   "activity/list-public-events-for-repo-network",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActivityListPublicEventsForRepoNetwork",
+			OperationSummary: "List public events for a network of repositories",
+			OperationID:      "activity/list-public-events-for-repo-network",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -10681,10 +10770,11 @@ func (s *Server) handleActivityListPublicEventsForUserRequest(args [1]string, ar
 	var response []Event
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActivityListPublicEventsForUser",
-			OperationID:   "activity/list-public-events-for-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActivityListPublicEventsForUser",
+			OperationSummary: "List public events for a user",
+			OperationID:      "activity/list-public-events-for-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "username",
@@ -10794,10 +10884,11 @@ func (s *Server) handleActivityListPublicOrgEventsRequest(args [1]string, argsEs
 	var response []Event
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActivityListPublicOrgEvents",
-			OperationID:   "activity/list-public-org-events",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActivityListPublicOrgEvents",
+			OperationSummary: "List public organization events",
+			OperationID:      "activity/list-public-org-events",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -10909,10 +11000,11 @@ func (s *Server) handleActivityListReceivedEventsForUserRequest(args [1]string, 
 	var response []Event
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActivityListReceivedEventsForUser",
-			OperationID:   "activity/list-received-events-for-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActivityListReceivedEventsForUser",
+			OperationSummary: "List events received by the authenticated user",
+			OperationID:      "activity/list-received-events-for-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "username",
@@ -11022,10 +11114,11 @@ func (s *Server) handleActivityListReceivedPublicEventsForUserRequest(args [1]st
 	var response []Event
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActivityListReceivedPublicEventsForUser",
-			OperationID:   "activity/list-received-public-events-for-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActivityListReceivedPublicEventsForUser",
+			OperationSummary: "List public events received by a user",
+			OperationID:      "activity/list-received-public-events-for-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "username",
@@ -11135,10 +11228,11 @@ func (s *Server) handleActivityListRepoEventsRequest(args [2]string, argsEscaped
 	var response []Event
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActivityListRepoEvents",
-			OperationID:   "activity/list-repo-events",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActivityListRepoEvents",
+			OperationSummary: "List repository events",
+			OperationID:      "activity/list-repo-events",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -11252,10 +11346,11 @@ func (s *Server) handleActivityListRepoNotificationsForAuthenticatedUserRequest(
 	var response *ActivityListRepoNotificationsForAuthenticatedUserOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActivityListRepoNotificationsForAuthenticatedUser",
-			OperationID:   "activity/list-repo-notifications-for-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActivityListRepoNotificationsForAuthenticatedUser",
+			OperationSummary: "List repository notifications for the authenticated user",
+			OperationID:      "activity/list-repo-notifications-for-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -11387,10 +11482,11 @@ func (s *Server) handleActivityListReposStarredByAuthenticatedUserRequest(args [
 	var response ActivityListReposStarredByAuthenticatedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActivityListReposStarredByAuthenticatedUser",
-			OperationID:   "activity/list-repos-starred-by-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActivityListReposStarredByAuthenticatedUser",
+			OperationSummary: "List repositories starred by the authenticated user",
+			OperationID:      "activity/list-repos-starred-by-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "sort",
@@ -11504,10 +11600,11 @@ func (s *Server) handleActivityListReposWatchedByUserRequest(args [1]string, arg
 	var response *ActivityListReposWatchedByUserOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActivityListReposWatchedByUser",
-			OperationID:   "activity/list-repos-watched-by-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActivityListReposWatchedByUser",
+			OperationSummary: "List repositories watched by a user",
+			OperationID:      "activity/list-repos-watched-by-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "username",
@@ -11617,10 +11714,11 @@ func (s *Server) handleActivityListWatchedReposForAuthenticatedUserRequest(args 
 	var response ActivityListWatchedReposForAuthenticatedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActivityListWatchedReposForAuthenticatedUser",
-			OperationID:   "activity/list-watched-repos-for-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActivityListWatchedReposForAuthenticatedUser",
+			OperationSummary: "List repositories watched by the authenticated user",
+			OperationID:      "activity/list-watched-repos-for-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "per_page",
@@ -11726,10 +11824,11 @@ func (s *Server) handleActivityListWatchersForRepoRequest(args [2]string, argsEs
 	var response *ActivityListWatchersForRepoOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActivityListWatchersForRepo",
-			OperationID:   "activity/list-watchers-for-repo",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActivityListWatchersForRepo",
+			OperationSummary: "List watchers",
+			OperationID:      "activity/list-watchers-for-repo",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -11854,12 +11953,13 @@ func (s *Server) handleActivityMarkNotificationsAsReadRequest(args [0]string, ar
 	var response ActivityMarkNotificationsAsReadRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActivityMarkNotificationsAsRead",
-			OperationID:   "activity/mark-notifications-as-read",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "ActivityMarkNotificationsAsRead",
+			OperationSummary: "Mark notifications as read",
+			OperationID:      "activity/mark-notifications-as-read",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -11975,10 +12075,11 @@ func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args [2]string
 	var response ActivityMarkRepoNotificationsAsReadRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActivityMarkRepoNotificationsAsRead",
-			OperationID:   "activity/mark-repo-notifications-as-read",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ActivityMarkRepoNotificationsAsRead",
+			OperationSummary: "Mark repository notifications as read",
+			OperationID:      "activity/mark-repo-notifications-as-read",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -12084,10 +12185,11 @@ func (s *Server) handleActivityMarkThreadAsReadRequest(args [1]string, argsEscap
 	var response ActivityMarkThreadAsReadRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActivityMarkThreadAsRead",
-			OperationID:   "activity/mark-thread-as-read",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActivityMarkThreadAsRead",
+			OperationSummary: "Mark a thread as read",
+			OperationID:      "activity/mark-thread-as-read",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "thread_id",
@@ -12207,10 +12309,11 @@ func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, argsEs
 	var response *RepositorySubscription
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActivitySetRepoSubscription",
-			OperationID:   "activity/set-repo-subscription",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ActivitySetRepoSubscription",
+			OperationSummary: "Set a repository subscription",
+			OperationID:      "activity/set-repo-subscription",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -12338,10 +12441,11 @@ func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, args
 	var response ActivitySetThreadSubscriptionRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActivitySetThreadSubscription",
-			OperationID:   "activity/set-thread-subscription",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ActivitySetThreadSubscription",
+			OperationSummary: "Set a thread subscription",
+			OperationID:      "activity/set-thread-subscription",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "thread_id",
@@ -12445,10 +12549,11 @@ func (s *Server) handleActivityStarRepoForAuthenticatedUserRequest(args [2]strin
 	var response ActivityStarRepoForAuthenticatedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActivityStarRepoForAuthenticatedUser",
-			OperationID:   "activity/star-repo-for-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActivityStarRepoForAuthenticatedUser",
+			OperationSummary: "Star a repository for the authenticated user",
+			OperationID:      "activity/star-repo-for-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -12554,10 +12659,11 @@ func (s *Server) handleActivityUnstarRepoForAuthenticatedUserRequest(args [2]str
 	var response ActivityUnstarRepoForAuthenticatedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ActivityUnstarRepoForAuthenticatedUser",
-			OperationID:   "activity/unstar-repo-for-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ActivityUnstarRepoForAuthenticatedUser",
+			OperationSummary: "Unstar a repository for the authenticated user",
+			OperationID:      "activity/unstar-repo-for-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -12668,10 +12774,11 @@ func (s *Server) handleAppsAddRepoToInstallationRequest(args [2]string, argsEsca
 	var response AppsAddRepoToInstallationRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AppsAddRepoToInstallation",
-			OperationID:   "apps/add-repo-to-installation",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "AppsAddRepoToInstallation",
+			OperationSummary: "Add a repository to an app installation",
+			OperationID:      "apps/add-repo-to-installation",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "installation_id",
@@ -12797,10 +12904,11 @@ func (s *Server) handleAppsCheckTokenRequest(args [1]string, argsEscaped bool, w
 	var response AppsCheckTokenRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AppsCheckToken",
-			OperationID:   "apps/check-token",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "AppsCheckToken",
+			OperationSummary: "Check a token",
+			OperationID:      "apps/check-token",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "client_id",
@@ -12926,10 +13034,11 @@ func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, argsEs
 	var response AppsCreateContentAttachmentRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AppsCreateContentAttachment",
-			OperationID:   "apps/create-content-attachment",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "AppsCreateContentAttachment",
+			OperationSummary: "Create a content attachment",
+			OperationID:      "apps/create-content-attachment",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -13057,10 +13166,11 @@ func (s *Server) handleAppsCreateFromManifestRequest(args [1]string, argsEscaped
 	var response AppsCreateFromManifestRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AppsCreateFromManifest",
-			OperationID:   "apps/create-from-manifest",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "AppsCreateFromManifest",
+			OperationSummary: "Create a GitHub App from a manifest",
+			OperationID:      "apps/create-from-manifest",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "code",
@@ -13186,10 +13296,11 @@ func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, 
 	var response AppsCreateInstallationAccessTokenRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AppsCreateInstallationAccessToken",
-			OperationID:   "apps/create-installation-access-token",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "AppsCreateInstallationAccessToken",
+			OperationSummary: "Create an installation access token for an app",
+			OperationID:      "apps/create-installation-access-token",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "installation_id",
@@ -13315,10 +13426,11 @@ func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, argsEscape
 	var response AppsDeleteAuthorizationRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AppsDeleteAuthorization",
-			OperationID:   "apps/delete-authorization",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "AppsDeleteAuthorization",
+			OperationSummary: "Delete an app authorization",
+			OperationID:      "apps/delete-authorization",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "client_id",
@@ -13425,10 +13537,11 @@ func (s *Server) handleAppsDeleteInstallationRequest(args [1]string, argsEscaped
 	var response AppsDeleteInstallationRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AppsDeleteInstallation",
-			OperationID:   "apps/delete-installation",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "AppsDeleteInstallation",
+			OperationSummary: "Delete an installation for the authenticated app",
+			OperationID:      "apps/delete-installation",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "installation_id",
@@ -13548,10 +13661,11 @@ func (s *Server) handleAppsDeleteTokenRequest(args [1]string, argsEscaped bool, 
 	var response AppsDeleteTokenRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AppsDeleteToken",
-			OperationID:   "apps/delete-token",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "AppsDeleteToken",
+			OperationSummary: "Delete an app token",
+			OperationID:      "apps/delete-token",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "client_id",
@@ -13646,12 +13760,13 @@ func (s *Server) handleAppsGetAuthenticatedRequest(args [0]string, argsEscaped b
 	var response *Integration
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AppsGetAuthenticated",
-			OperationID:   "apps/get-authenticated",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "AppsGetAuthenticated",
+			OperationSummary: "Get the authenticated app",
+			OperationID:      "apps/get-authenticated",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -13753,10 +13868,11 @@ func (s *Server) handleAppsGetBySlugRequest(args [1]string, argsEscaped bool, w 
 	var response AppsGetBySlugRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AppsGetBySlug",
-			OperationID:   "apps/get-by-slug",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "AppsGetBySlug",
+			OperationSummary: "Get an app",
+			OperationID:      "apps/get-by-slug",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "app_slug",
@@ -13865,10 +13981,11 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountRequest(args [1]string, 
 	var response AppsGetSubscriptionPlanForAccountRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AppsGetSubscriptionPlanForAccount",
-			OperationID:   "apps/get-subscription-plan-for-account",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "AppsGetSubscriptionPlanForAccount",
+			OperationSummary: "Get a subscription plan for an account",
+			OperationID:      "apps/get-subscription-plan-for-account",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "account_id",
@@ -13977,10 +14094,11 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountStubbedRequest(args [1]s
 	var response AppsGetSubscriptionPlanForAccountStubbedRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AppsGetSubscriptionPlanForAccountStubbed",
-			OperationID:   "apps/get-subscription-plan-for-account-stubbed",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "AppsGetSubscriptionPlanForAccountStubbed",
+			OperationSummary: "Get a subscription plan for an account (stubbed)",
+			OperationID:      "apps/get-subscription-plan-for-account-stubbed",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "account_id",
@@ -14072,12 +14190,13 @@ func (s *Server) handleAppsGetWebhookConfigForAppRequest(args [0]string, argsEsc
 	var response *WebhookConfig
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AppsGetWebhookConfigForApp",
-			OperationID:   "apps/get-webhook-config-for-app",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "AppsGetWebhookConfigForApp",
+			OperationSummary: "Get a webhook configuration for an app",
+			OperationID:      "apps/get-webhook-config-for-app",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -14175,10 +14294,11 @@ func (s *Server) handleAppsGetWebhookDeliveryRequest(args [1]string, argsEscaped
 	var response AppsGetWebhookDeliveryRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AppsGetWebhookDelivery",
-			OperationID:   "apps/get-webhook-delivery",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "AppsGetWebhookDelivery",
+			OperationSummary: "Get a delivery for an app webhook",
+			OperationID:      "apps/get-webhook-delivery",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "delivery_id",
@@ -14288,10 +14408,11 @@ func (s *Server) handleAppsListAccountsForPlanRequest(args [1]string, argsEscape
 	var response AppsListAccountsForPlanRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AppsListAccountsForPlan",
-			OperationID:   "apps/list-accounts-for-plan",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "AppsListAccountsForPlan",
+			OperationSummary: "List accounts for a plan",
+			OperationID:      "apps/list-accounts-for-plan",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "plan_id",
@@ -14417,10 +14538,11 @@ func (s *Server) handleAppsListAccountsForPlanStubbedRequest(args [1]string, arg
 	var response AppsListAccountsForPlanStubbedRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AppsListAccountsForPlanStubbed",
-			OperationID:   "apps/list-accounts-for-plan-stubbed",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "AppsListAccountsForPlanStubbed",
+			OperationSummary: "List accounts for a plan (stubbed)",
+			OperationID:      "apps/list-accounts-for-plan-stubbed",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "plan_id",
@@ -14544,10 +14666,11 @@ func (s *Server) handleAppsListInstallationReposForAuthenticatedUserRequest(args
 	var response AppsListInstallationReposForAuthenticatedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AppsListInstallationReposForAuthenticatedUser",
-			OperationID:   "apps/list-installation-repos-for-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "AppsListInstallationReposForAuthenticatedUser",
+			OperationSummary: "List repositories accessible to the user access token",
+			OperationID:      "apps/list-installation-repos-for-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "installation_id",
@@ -14662,10 +14785,11 @@ func (s *Server) handleAppsListPlansRequest(args [0]string, argsEscaped bool, w 
 	var response AppsListPlansRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AppsListPlans",
-			OperationID:   "apps/list-plans",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "AppsListPlans",
+			OperationSummary: "List plans",
+			OperationID:      "apps/list-plans",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "per_page",
@@ -14776,10 +14900,11 @@ func (s *Server) handleAppsListPlansStubbedRequest(args [0]string, argsEscaped b
 	var response AppsListPlansStubbedRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AppsListPlansStubbed",
-			OperationID:   "apps/list-plans-stubbed",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "AppsListPlansStubbed",
+			OperationSummary: "List plans (stubbed)",
+			OperationID:      "apps/list-plans-stubbed",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "per_page",
@@ -14888,10 +15013,11 @@ func (s *Server) handleAppsListReposAccessibleToInstallationRequest(args [0]stri
 	var response AppsListReposAccessibleToInstallationRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AppsListReposAccessibleToInstallation",
-			OperationID:   "apps/list-repos-accessible-to-installation",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "AppsListReposAccessibleToInstallation",
+			OperationSummary: "List repositories accessible to the app installation",
+			OperationID:      "apps/list-repos-accessible-to-installation",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "per_page",
@@ -14999,10 +15125,11 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserRequest(args [0]
 	var response AppsListSubscriptionsForAuthenticatedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AppsListSubscriptionsForAuthenticatedUser",
-			OperationID:   "apps/list-subscriptions-for-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "AppsListSubscriptionsForAuthenticatedUser",
+			OperationSummary: "List subscriptions for the authenticated user",
+			OperationID:      "apps/list-subscriptions-for-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "per_page",
@@ -15110,10 +15237,11 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(a
 	var response AppsListSubscriptionsForAuthenticatedUserStubbedRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AppsListSubscriptionsForAuthenticatedUserStubbed",
-			OperationID:   "apps/list-subscriptions-for-authenticated-user-stubbed",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "AppsListSubscriptionsForAuthenticatedUserStubbed",
+			OperationSummary: "List subscriptions for the authenticated user (stubbed)",
+			OperationID:      "apps/list-subscriptions-for-authenticated-user-stubbed",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "per_page",
@@ -15222,10 +15350,11 @@ func (s *Server) handleAppsListWebhookDeliveriesRequest(args [0]string, argsEsca
 	var response AppsListWebhookDeliveriesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AppsListWebhookDeliveries",
-			OperationID:   "apps/list-webhook-deliveries",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "AppsListWebhookDeliveries",
+			OperationSummary: "List deliveries for an app webhook",
+			OperationID:      "apps/list-webhook-deliveries",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "per_page",
@@ -15334,10 +15463,11 @@ func (s *Server) handleAppsRedeliverWebhookDeliveryRequest(args [1]string, argsE
 	var response AppsRedeliverWebhookDeliveryRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AppsRedeliverWebhookDelivery",
-			OperationID:   "apps/redeliver-webhook-delivery",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "AppsRedeliverWebhookDelivery",
+			OperationSummary: "Redeliver a delivery for an app webhook",
+			OperationID:      "apps/redeliver-webhook-delivery",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "delivery_id",
@@ -15444,10 +15574,11 @@ func (s *Server) handleAppsRemoveRepoFromInstallationRequest(args [2]string, arg
 	var response AppsRemoveRepoFromInstallationRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AppsRemoveRepoFromInstallation",
-			OperationID:   "apps/remove-repo-from-installation",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "AppsRemoveRepoFromInstallation",
+			OperationSummary: "Remove a repository from an app installation",
+			OperationID:      "apps/remove-repo-from-installation",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "installation_id",
@@ -15573,10 +15704,11 @@ func (s *Server) handleAppsResetTokenRequest(args [1]string, argsEscaped bool, w
 	var response AppsResetTokenRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AppsResetToken",
-			OperationID:   "apps/reset-token",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "AppsResetToken",
+			OperationSummary: "Reset a token",
+			OperationID:      "apps/reset-token",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "client_id",
@@ -15673,12 +15805,13 @@ func (s *Server) handleAppsRevokeInstallationAccessTokenRequest(args [0]string, 
 	var response *AppsRevokeInstallationAccessTokenNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AppsRevokeInstallationAccessToken",
-			OperationID:   "apps/revoke-installation-access-token",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "AppsRevokeInstallationAccessToken",
+			OperationSummary: "Revoke an installation access token",
+			OperationID:      "apps/revoke-installation-access-token",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -15793,10 +15926,11 @@ func (s *Server) handleAppsScopeTokenRequest(args [1]string, argsEscaped bool, w
 	var response AppsScopeTokenRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AppsScopeToken",
-			OperationID:   "apps/scope-token",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "AppsScopeToken",
+			OperationSummary: "Create a scoped access token",
+			OperationID:      "apps/scope-token",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "client_id",
@@ -15903,10 +16037,11 @@ func (s *Server) handleAppsSuspendInstallationRequest(args [1]string, argsEscape
 	var response AppsSuspendInstallationRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AppsSuspendInstallation",
-			OperationID:   "apps/suspend-installation",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "AppsSuspendInstallation",
+			OperationSummary: "Suspend an app installation",
+			OperationID:      "apps/suspend-installation",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "installation_id",
@@ -16011,10 +16146,11 @@ func (s *Server) handleAppsUnsuspendInstallationRequest(args [1]string, argsEsca
 	var response AppsUnsuspendInstallationRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AppsUnsuspendInstallation",
-			OperationID:   "apps/unsuspend-installation",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "AppsUnsuspendInstallation",
+			OperationSummary: "Unsuspend an app installation",
+			OperationID:      "apps/unsuspend-installation",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "installation_id",
@@ -16125,12 +16261,13 @@ func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args [0]string, args
 	var response *WebhookConfig
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AppsUpdateWebhookConfigForApp",
-			OperationID:   "apps/update-webhook-config-for-app",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "AppsUpdateWebhookConfigForApp",
+			OperationSummary: "Update a webhook configuration for an app",
+			OperationID:      "apps/update-webhook-config-for-app",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -16232,10 +16369,11 @@ func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args [1]string, 
 	var response *ActionsBillingUsage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "BillingGetGithubActionsBillingGhe",
-			OperationID:   "billing/get-github-actions-billing-ghe",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "BillingGetGithubActionsBillingGhe",
+			OperationSummary: "Get GitHub Actions billing for an enterprise",
+			OperationID:      "billing/get-github-actions-billing-ghe",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -16344,10 +16482,11 @@ func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args [1]string, 
 	var response *ActionsBillingUsage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "BillingGetGithubActionsBillingOrg",
-			OperationID:   "billing/get-github-actions-billing-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "BillingGetGithubActionsBillingOrg",
+			OperationSummary: "Get GitHub Actions billing for an organization",
+			OperationID:      "billing/get-github-actions-billing-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -16456,10 +16595,11 @@ func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args [1]string,
 	var response *ActionsBillingUsage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "BillingGetGithubActionsBillingUser",
-			OperationID:   "billing/get-github-actions-billing-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "BillingGetGithubActionsBillingUser",
+			OperationSummary: "Get GitHub Actions billing for a user",
+			OperationID:      "billing/get-github-actions-billing-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "username",
@@ -16565,10 +16705,11 @@ func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args [1]string,
 	var response *PackagesBillingUsage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "BillingGetGithubPackagesBillingGhe",
-			OperationID:   "billing/get-github-packages-billing-ghe",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "BillingGetGithubPackagesBillingGhe",
+			OperationSummary: "Get GitHub Packages billing for an enterprise",
+			OperationID:      "billing/get-github-packages-billing-ghe",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -16674,10 +16815,11 @@ func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args [1]string,
 	var response *PackagesBillingUsage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "BillingGetGithubPackagesBillingOrg",
-			OperationID:   "billing/get-github-packages-billing-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "BillingGetGithubPackagesBillingOrg",
+			OperationSummary: "Get GitHub Packages billing for an organization",
+			OperationID:      "billing/get-github-packages-billing-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -16783,10 +16925,11 @@ func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args [1]string
 	var response *PackagesBillingUsage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "BillingGetGithubPackagesBillingUser",
-			OperationID:   "billing/get-github-packages-billing-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "BillingGetGithubPackagesBillingUser",
+			OperationSummary: "Get GitHub Packages billing for a user",
+			OperationID:      "billing/get-github-packages-billing-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "username",
@@ -16892,10 +17035,11 @@ func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args [1]string, 
 	var response *CombinedBillingUsage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "BillingGetSharedStorageBillingGhe",
-			OperationID:   "billing/get-shared-storage-billing-ghe",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "BillingGetSharedStorageBillingGhe",
+			OperationSummary: "Get shared storage billing for an enterprise",
+			OperationID:      "billing/get-shared-storage-billing-ghe",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -17001,10 +17145,11 @@ func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args [1]string, 
 	var response *CombinedBillingUsage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "BillingGetSharedStorageBillingOrg",
-			OperationID:   "billing/get-shared-storage-billing-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "BillingGetSharedStorageBillingOrg",
+			OperationSummary: "Get shared storage billing for an organization",
+			OperationID:      "billing/get-shared-storage-billing-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -17110,10 +17255,11 @@ func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args [1]string,
 	var response *CombinedBillingUsage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "BillingGetSharedStorageBillingUser",
-			OperationID:   "billing/get-shared-storage-billing-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "BillingGetSharedStorageBillingUser",
+			OperationSummary: "Get shared storage billing for a user",
+			OperationID:      "billing/get-shared-storage-billing-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "username",
@@ -17238,10 +17384,11 @@ func (s *Server) handleChecksCreateSuiteRequest(args [2]string, argsEscaped bool
 	var response ChecksCreateSuiteRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ChecksCreateSuite",
-			OperationID:   "checks/create-suite",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ChecksCreateSuite",
+			OperationSummary: "Create a check suite",
+			OperationID:      "checks/create-suite",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -17352,10 +17499,11 @@ func (s *Server) handleChecksGetRequest(args [3]string, argsEscaped bool, w http
 	var response *CheckRun
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ChecksGet",
-			OperationID:   "checks/get",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ChecksGet",
+			OperationSummary: "Get a check run",
+			OperationID:      "checks/get",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -17470,10 +17618,11 @@ func (s *Server) handleChecksGetSuiteRequest(args [3]string, argsEscaped bool, w
 	var response *CheckSuite
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ChecksGetSuite",
-			OperationID:   "checks/get-suite",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ChecksGetSuite",
+			OperationSummary: "Get a check suite",
+			OperationID:      "checks/get-suite",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -17586,10 +17735,11 @@ func (s *Server) handleChecksListAnnotationsRequest(args [3]string, argsEscaped 
 	var response *ChecksListAnnotationsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ChecksListAnnotations",
-			OperationID:   "checks/list-annotations",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ChecksListAnnotations",
+			OperationSummary: "List check run annotations",
+			OperationID:      "checks/list-annotations",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -17713,10 +17863,11 @@ func (s *Server) handleChecksListForRefRequest(args [3]string, argsEscaped bool,
 	var response *ChecksListForRefOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ChecksListForRef",
-			OperationID:   "checks/list-for-ref",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ChecksListForRef",
+			OperationSummary: "List check runs for a Git reference",
+			OperationID:      "checks/list-for-ref",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -17855,10 +18006,11 @@ func (s *Server) handleChecksListForSuiteRequest(args [3]string, argsEscaped boo
 	var response *ChecksListForSuiteOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ChecksListForSuite",
-			OperationID:   "checks/list-for-suite",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ChecksListForSuite",
+			OperationSummary: "List check runs in a check suite",
+			OperationID:      "checks/list-for-suite",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -17994,10 +18146,11 @@ func (s *Server) handleChecksListSuitesForRefRequest(args [3]string, argsEscaped
 	var response *ChecksListSuitesForRefOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ChecksListSuitesForRef",
-			OperationID:   "checks/list-suites-for-ref",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ChecksListSuitesForRef",
+			OperationSummary: "List check suites for a Git reference",
+			OperationID:      "checks/list-suites-for-ref",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -18128,10 +18281,11 @@ func (s *Server) handleChecksRerequestSuiteRequest(args [3]string, argsEscaped b
 	var response *ChecksRerequestSuiteCreated
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ChecksRerequestSuite",
-			OperationID:   "checks/rerequest-suite",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ChecksRerequestSuite",
+			OperationSummary: "Rerequest a check suite",
+			OperationID:      "checks/rerequest-suite",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -18260,10 +18414,11 @@ func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, argsEsc
 	var response *CheckSuitePreference
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ChecksSetSuitesPreferences",
-			OperationID:   "checks/set-suites-preferences",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ChecksSetSuitesPreferences",
+			OperationSummary: "Update repository preferences for check suites",
+			OperationID:      "checks/set-suites-preferences",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -18427,10 +18582,11 @@ func (s *Server) handleCodeScanningDeleteAnalysisRequest(args [3]string, argsEsc
 	var response CodeScanningDeleteAnalysisRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CodeScanningDeleteAnalysis",
-			OperationID:   "code-scanning/delete-analysis",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "CodeScanningDeleteAnalysis",
+			OperationSummary: "Delete a code scanning analysis from a repository",
+			OperationID:      "code-scanning/delete-analysis",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -18550,10 +18706,11 @@ func (s *Server) handleCodeScanningGetAlertRequest(args [3]string, argsEscaped b
 	var response CodeScanningGetAlertRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CodeScanningGetAlert",
-			OperationID:   "code-scanning/get-alert",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "CodeScanningGetAlert",
+			OperationSummary: "Get a code scanning alert",
+			OperationID:      "code-scanning/get-alert",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -18681,10 +18838,11 @@ func (s *Server) handleCodeScanningGetAnalysisRequest(args [3]string, argsEscape
 	var response CodeScanningGetAnalysisRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CodeScanningGetAnalysis",
-			OperationID:   "code-scanning/get-analysis",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "CodeScanningGetAnalysis",
+			OperationSummary: "Get a code scanning analysis for a repository",
+			OperationID:      "code-scanning/get-analysis",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -18799,10 +18957,11 @@ func (s *Server) handleCodeScanningGetSarifRequest(args [3]string, argsEscaped b
 	var response CodeScanningGetSarifRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CodeScanningGetSarif",
-			OperationID:   "code-scanning/get-sarif",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "CodeScanningGetSarif",
+			OperationSummary: "Get information about a SARIF upload",
+			OperationID:      "code-scanning/get-sarif",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -18914,10 +19073,11 @@ func (s *Server) handleCodeScanningListAlertInstancesRequest(args [3]string, arg
 	var response CodeScanningListAlertInstancesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CodeScanningListAlertInstances",
-			OperationID:   "code-scanning/list-alert-instances",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "CodeScanningListAlertInstances",
+			OperationSummary: "List instances of a code scanning alert",
+			OperationID:      "code-scanning/list-alert-instances",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -19046,10 +19206,11 @@ func (s *Server) handleCodeScanningListAlertsForRepoRequest(args [2]string, args
 	var response CodeScanningListAlertsForRepoRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CodeScanningListAlertsForRepo",
-			OperationID:   "code-scanning/list-alerts-for-repo",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "CodeScanningListAlertsForRepo",
+			OperationSummary: "List code scanning alerts for a repository",
+			OperationID:      "code-scanning/list-alerts-for-repo",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -19193,10 +19354,11 @@ func (s *Server) handleCodeScanningListRecentAnalysesRequest(args [2]string, arg
 	var response CodeScanningListRecentAnalysesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CodeScanningListRecentAnalyses",
-			OperationID:   "code-scanning/list-recent-analyses",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "CodeScanningListRecentAnalyses",
+			OperationSummary: "List code scanning analyses for a repository",
+			OperationID:      "code-scanning/list-recent-analyses",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -19343,10 +19505,11 @@ func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, argsEscape
 	var response CodeScanningUpdateAlertRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CodeScanningUpdateAlert",
-			OperationID:   "code-scanning/update-alert",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "CodeScanningUpdateAlert",
+			OperationSummary: "Update a code scanning alert",
+			OperationID:      "code-scanning/update-alert",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -19497,10 +19660,11 @@ func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, argsEscape
 	var response CodeScanningUploadSarifRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CodeScanningUploadSarif",
-			OperationID:   "code-scanning/upload-sarif",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "CodeScanningUploadSarif",
+			OperationSummary: "Upload an analysis as SARIF data",
+			OperationID:      "code-scanning/upload-sarif",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -19592,12 +19756,13 @@ func (s *Server) handleCodesOfConductGetAllCodesOfConductRequest(args [0]string,
 	var response CodesOfConductGetAllCodesOfConductRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CodesOfConductGetAllCodesOfConduct",
-			OperationID:   "codes-of-conduct/get-all-codes-of-conduct",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "CodesOfConductGetAllCodesOfConduct",
+			OperationSummary: "Get all codes of conduct",
+			OperationID:      "codes-of-conduct/get-all-codes-of-conduct",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -19692,10 +19857,11 @@ func (s *Server) handleCodesOfConductGetConductCodeRequest(args [1]string, argsE
 	var response CodesOfConductGetConductCodeRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CodesOfConductGetConductCode",
-			OperationID:   "codes-of-conduct/get-conduct-code",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "CodesOfConductGetConductCode",
+			OperationSummary: "Get a code of conduct",
+			OperationID:      "codes-of-conduct/get-conduct-code",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "key",
@@ -19783,12 +19949,13 @@ func (s *Server) handleEmojisGetRequest(args [0]string, argsEscaped bool, w http
 	var response EmojisGetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EmojisGet",
-			OperationID:   "emojis/get",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "EmojisGet",
+			OperationSummary: "Get emojis",
+			OperationID:      "emojis/get",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -19887,10 +20054,11 @@ func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnter
 	var response *EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise",
-			OperationID:   "enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise",
+			OperationSummary: "Add organization access to a self-hosted runner group in an enterprise",
+			OperationID:      "enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -20002,10 +20170,11 @@ func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseReq
 	var response *EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise",
-			OperationID:   "enterprise-admin/add-self-hosted-runner-to-group-for-enterprise",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise",
+			OperationSummary: "Add a self-hosted runner to a group for an enterprise",
+			OperationID:      "enterprise-admin/add-self-hosted-runner-to-group-for-enterprise",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -20122,10 +20291,11 @@ func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseReques
 	var response *AuthenticationToken
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminCreateRegistrationTokenForEnterprise",
-			OperationID:   "enterprise-admin/create-registration-token-for-enterprise",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminCreateRegistrationTokenForEnterprise",
+			OperationSummary: "Create a registration token for an enterprise",
+			OperationID:      "enterprise-admin/create-registration-token-for-enterprise",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -20236,10 +20406,11 @@ func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args
 	var response *AuthenticationToken
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminCreateRemoveTokenForEnterprise",
-			OperationID:   "enterprise-admin/create-remove-token-for-enterprise",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminCreateRemoveTokenForEnterprise",
+			OperationSummary: "Create a remove token for an enterprise",
+			OperationID:      "enterprise-admin/create-remove-token-for-enterprise",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -20357,10 +20528,11 @@ func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 	var response *RunnerGroupsEnterprise
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise",
-			OperationID:   "enterprise-admin/create-self-hosted-runner-group-for-enterprise",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise",
+			OperationSummary: "Create a self-hosted runner group for an enterprise",
+			OperationID:      "enterprise-admin/create-self-hosted-runner-group-for-enterprise",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -20463,10 +20635,11 @@ func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args 
 	var response *EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminDeleteScimGroupFromEnterprise",
-			OperationID:   "enterprise-admin/delete-scim-group-from-enterprise",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminDeleteScimGroupFromEnterprise",
+			OperationSummary: "Delete a SCIM group from an enterprise",
+			OperationID:      "enterprise-admin/delete-scim-group-from-enterprise",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -20574,10 +20747,11 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseReques
 	var response *EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise",
-			OperationID:   "enterprise-admin/delete-self-hosted-runner-from-enterprise",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise",
+			OperationSummary: "Delete a self-hosted runner from an enterprise",
+			OperationID:      "enterprise-admin/delete-self-hosted-runner-from-enterprise",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -20684,10 +20858,11 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseR
 	var response *EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise",
-			OperationID:   "enterprise-admin/delete-self-hosted-runner-group-from-enterprise",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise",
+			OperationSummary: "Delete a self-hosted runner group from an enterprise",
+			OperationID:      "enterprise-admin/delete-self-hosted-runner-group-from-enterprise",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -20794,10 +20969,11 @@ func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args [2]st
 	var response *EnterpriseAdminDeleteUserFromEnterpriseNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminDeleteUserFromEnterprise",
-			OperationID:   "enterprise-admin/delete-user-from-enterprise",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminDeleteUserFromEnterprise",
+			OperationSummary: "Delete a SCIM user from an enterprise",
+			OperationID:      "enterprise-admin/delete-user-from-enterprise",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -20907,10 +21083,11 @@ func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEn
 	var response *EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise",
-			OperationID:   "enterprise-admin/disable-selected-organization-github-actions-enterprise",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise",
+			OperationSummary: "Disable a selected organization for GitHub Actions in an enterprise",
+			OperationID:      "enterprise-admin/disable-selected-organization-github-actions-enterprise",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -21020,10 +21197,11 @@ func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnt
 	var response *EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise",
-			OperationID:   "enterprise-admin/enable-selected-organization-github-actions-enterprise",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise",
+			OperationSummary: "Enable a selected organization for GitHub Actions in an enterprise",
+			OperationID:      "enterprise-admin/enable-selected-organization-github-actions-enterprise",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -21133,10 +21311,11 @@ func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args [1
 	var response *SelectedActions
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminGetAllowedActionsEnterprise",
-			OperationID:   "enterprise-admin/get-allowed-actions-enterprise",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminGetAllowedActionsEnterprise",
+			OperationSummary: "Get allowed actions for an enterprise",
+			OperationID:      "enterprise-admin/get-allowed-actions-enterprise",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -21239,10 +21418,11 @@ func (s *Server) handleEnterpriseAdminGetAuditLogRequest(args [1]string, argsEsc
 	var response []AuditLogEvent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminGetAuditLog",
-			OperationID:   "enterprise-admin/get-audit-log",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminGetAuditLog",
+			OperationSummary: "Get the audit log for an enterprise",
+			OperationID:      "enterprise-admin/get-audit-log",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -21373,10 +21553,11 @@ func (s *Server) handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseReque
 	var response *ActionsEnterprisePermissions
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminGetGithubActionsPermissionsEnterprise",
-			OperationID:   "enterprise-admin/get-github-actions-permissions-enterprise",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminGetGithubActionsPermissionsEnterprise",
+			OperationSummary: "Get GitHub Actions permissions for an enterprise",
+			OperationID:      "enterprise-admin/get-github-actions-permissions-enterprise",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -21479,10 +21660,11 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseGro
 	var response *ScimEnterpriseGroup
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminGetProvisioningInformationForEnterpriseGroup",
-			OperationID:   "enterprise-admin/get-provisioning-information-for-enterprise-group",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminGetProvisioningInformationForEnterpriseGroup",
+			OperationSummary: "Get SCIM provisioning information for an enterprise group",
+			OperationID:      "enterprise-admin/get-provisioning-information-for-enterprise-group",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -21593,10 +21775,11 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseUse
 	var response *ScimEnterpriseUser
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminGetProvisioningInformationForEnterpriseUser",
-			OperationID:   "enterprise-admin/get-provisioning-information-for-enterprise-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminGetProvisioningInformationForEnterpriseUser",
+			OperationSummary: "Get SCIM provisioning information for an enterprise user",
+			OperationID:      "enterprise-admin/get-provisioning-information-for-enterprise-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -21703,10 +21886,11 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(ar
 	var response *Runner
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminGetSelfHostedRunnerForEnterprise",
-			OperationID:   "enterprise-admin/get-self-hosted-runner-for-enterprise",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminGetSelfHostedRunnerForEnterprise",
+			OperationSummary: "Get a self-hosted runner for an enterprise",
+			OperationID:      "enterprise-admin/get-self-hosted-runner-for-enterprise",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -21813,10 +21997,11 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseReque
 	var response *RunnerGroupsEnterprise
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise",
-			OperationID:   "enterprise-admin/get-self-hosted-runner-group-for-enterprise",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise",
+			OperationSummary: "Get a self-hosted runner group for an enterprise",
+			OperationID:      "enterprise-admin/get-self-hosted-runner-group-for-enterprise",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -21923,10 +22108,11 @@ func (s *Server) handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnte
 	var response *EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise",
-			OperationID:   "enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise",
+			OperationSummary: "List organization access to a self-hosted runner group in an enterprise",
+			OperationID:      "enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -22041,10 +22227,11 @@ func (s *Server) handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(arg
 	var response *ScimGroupListEnterprise
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminListProvisionedGroupsEnterprise",
-			OperationID:   "enterprise-admin/list-provisioned-groups-enterprise",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminListProvisionedGroupsEnterprise",
+			OperationSummary: "List provisioned SCIM groups for an enterprise",
+			OperationID:      "enterprise-admin/list-provisioned-groups-enterprise",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -22188,10 +22375,11 @@ func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest
 	var response *ScimUserListEnterprise
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminListProvisionedIdentitiesEnterprise",
-			OperationID:   "enterprise-admin/list-provisioned-identities-enterprise",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminListProvisionedIdentitiesEnterprise",
+			OperationSummary: "List SCIM provisioned identities for an enterprise",
+			OperationID:      "enterprise-admin/list-provisioned-identities-enterprise",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -22306,10 +22494,11 @@ func (s *Server) handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest
 	var response []RunnerApplication
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminListRunnerApplicationsForEnterprise",
-			OperationID:   "enterprise-admin/list-runner-applications-for-enterprise",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminListRunnerApplicationsForEnterprise",
+			OperationSummary: "List runner applications for an enterprise",
+			OperationID:      "enterprise-admin/list-runner-applications-for-enterprise",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -22415,10 +22604,11 @@ func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActi
 	var response *EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise",
-			OperationID:   "enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise",
+			OperationSummary: "List selected organizations enabled for GitHub Actions in an enterprise",
+			OperationID:      "enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -22529,10 +22719,11 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseReq
 	var response *EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise",
-			OperationID:   "enterprise-admin/list-self-hosted-runner-groups-for-enterprise",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise",
+			OperationSummary: "List self-hosted runner groups for an enterprise",
+			OperationID:      "enterprise-admin/list-self-hosted-runner-groups-for-enterprise",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -22643,10 +22834,11 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(
 	var response *EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminListSelfHostedRunnersForEnterprise",
-			OperationID:   "enterprise-admin/list-self-hosted-runners-for-enterprise",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminListSelfHostedRunnersForEnterprise",
+			OperationSummary: "List self-hosted runners for an enterprise",
+			OperationID:      "enterprise-admin/list-self-hosted-runners-for-enterprise",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -22757,10 +22949,11 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseR
 	var response *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise",
-			OperationID:   "enterprise-admin/list-self-hosted-runners-in-group-for-enterprise",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise",
+			OperationSummary: "List self-hosted runners in a group for an enterprise",
+			OperationID:      "enterprise-admin/list-self-hosted-runners-in-group-for-enterprise",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -22893,10 +23086,11 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(a
 	var response *ScimEnterpriseGroup
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminProvisionAndInviteEnterpriseGroup",
-			OperationID:   "enterprise-admin/provision-and-invite-enterprise-group",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminProvisionAndInviteEnterpriseGroup",
+			OperationSummary: "Provision a SCIM enterprise group and invite users",
+			OperationID:      "enterprise-admin/provision-and-invite-enterprise-group",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -23019,10 +23213,11 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(ar
 	var response *ScimEnterpriseUser
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminProvisionAndInviteEnterpriseUser",
-			OperationID:   "enterprise-admin/provision-and-invite-enterprise-user",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminProvisionAndInviteEnterpriseUser",
+			OperationSummary: "Provision and invite a SCIM enterprise user",
+			OperationID:      "enterprise-admin/provision-and-invite-enterprise-user",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -23128,10 +23323,11 @@ func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEn
 	var response *EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise",
-			OperationID:   "enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise",
+			OperationSummary: "Remove organization access to a self-hosted runner group in an enterprise",
+			OperationID:      "enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -23243,10 +23439,11 @@ func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpri
 	var response *EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise",
-			OperationID:   "enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise",
+			OperationSummary: "Remove a self-hosted runner from a group for an enterprise",
+			OperationID:      "enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -23375,10 +23572,11 @@ func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1
 	var response *EnterpriseAdminSetAllowedActionsEnterpriseNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminSetAllowedActionsEnterprise",
-			OperationID:   "enterprise-admin/set-allowed-actions-enterprise",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminSetAllowedActionsEnterprise",
+			OperationSummary: "Set allowed actions for an enterprise",
+			OperationID:      "enterprise-admin/set-allowed-actions-enterprise",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -23496,10 +23694,11 @@ func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 	var response *EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminSetGithubActionsPermissionsEnterprise",
-			OperationID:   "enterprise-admin/set-github-actions-permissions-enterprise",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminSetGithubActionsPermissionsEnterprise",
+			OperationSummary: "Set GitHub Actions permissions for an enterprise",
+			OperationID:      "enterprise-admin/set-github-actions-permissions-enterprise",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -23622,10 +23821,11 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 	var response *ScimEnterpriseGroup
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminSetInformationForProvisionedEnterpriseGroup",
-			OperationID:   "enterprise-admin/set-information-for-provisioned-enterprise-group",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminSetInformationForProvisionedEnterpriseGroup",
+			OperationSummary: "Set SCIM information for a provisioned enterprise group",
+			OperationID:      "enterprise-admin/set-information-for-provisioned-enterprise-group",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -23755,10 +23955,11 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 	var response *ScimEnterpriseUser
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminSetInformationForProvisionedEnterpriseUser",
-			OperationID:   "enterprise-admin/set-information-for-provisioned-enterprise-user",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminSetInformationForProvisionedEnterpriseUser",
+			OperationSummary: "Set SCIM information for a provisioned enterprise user",
+			OperationID:      "enterprise-admin/set-information-for-provisioned-enterprise-user",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -23881,10 +24082,11 @@ func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 	var response *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise",
-			OperationID:   "enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise",
+			OperationSummary: "Set organization access for a self-hosted runner group in an enterprise",
+			OperationID:      "enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -24009,10 +24211,11 @@ func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 	var response *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise",
-			OperationID:   "enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise",
+			OperationSummary: "Set selected organizations enabled for GitHub Actions in an enterprise",
+			OperationID:      "enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -24130,10 +24333,11 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 	var response *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise",
-			OperationID:   "enterprise-admin/set-self-hosted-runners-in-group-for-enterprise",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise",
+			OperationSummary: "Set self-hosted runners in a group for an enterprise",
+			OperationID:      "enterprise-admin/set-self-hosted-runners-in-group-for-enterprise",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -24259,10 +24463,11 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(a
 	var response *ScimEnterpriseGroup
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminUpdateAttributeForEnterpriseGroup",
-			OperationID:   "enterprise-admin/update-attribute-for-enterprise-group",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminUpdateAttributeForEnterpriseGroup",
+			OperationSummary: "Update an attribute for a SCIM enterprise group",
+			OperationID:      "enterprise-admin/update-attribute-for-enterprise-group",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -24405,10 +24610,11 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(ar
 	var response *ScimEnterpriseUser
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminUpdateAttributeForEnterpriseUser",
-			OperationID:   "enterprise-admin/update-attribute-for-enterprise-user",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminUpdateAttributeForEnterpriseUser",
+			OperationSummary: "Update an attribute for a SCIM enterprise user",
+			OperationID:      "enterprise-admin/update-attribute-for-enterprise-user",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -24530,10 +24736,11 @@ func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 	var response *RunnerGroupsEnterprise
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise",
-			OperationID:   "enterprise-admin/update-self-hosted-runner-group-for-enterprise",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise",
+			OperationSummary: "Update a self-hosted runner group for an enterprise",
+			OperationID:      "enterprise-admin/update-self-hosted-runner-group-for-enterprise",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "enterprise",
@@ -24639,10 +24846,11 @@ func (s *Server) handleGistsCheckIsStarredRequest(args [1]string, argsEscaped bo
 	var response GistsCheckIsStarredRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GistsCheckIsStarred",
-			OperationID:   "gists/check-is-starred",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "GistsCheckIsStarred",
+			OperationSummary: "Check if a gist is starred",
+			OperationID:      "gists/check-is-starred",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "gist_id",
@@ -24751,12 +24959,13 @@ func (s *Server) handleGistsCreateRequest(args [0]string, argsEscaped bool, w ht
 	var response GistsCreateRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GistsCreate",
-			OperationID:   "gists/create",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "GistsCreate",
+			OperationSummary: "Create a gist",
+			OperationID:      "gists/create",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -24866,10 +25075,11 @@ func (s *Server) handleGistsCreateCommentRequest(args [1]string, argsEscaped boo
 	var response GistsCreateCommentRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GistsCreateComment",
-			OperationID:   "gists/create-comment",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "GistsCreateComment",
+			OperationSummary: "Create a gist comment",
+			OperationID:      "gists/create-comment",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "gist_id",
@@ -24971,10 +25181,11 @@ func (s *Server) handleGistsDeleteRequest(args [1]string, argsEscaped bool, w ht
 	var response GistsDeleteRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GistsDelete",
-			OperationID:   "gists/delete",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "GistsDelete",
+			OperationSummary: "Delete a gist",
+			OperationID:      "gists/delete",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "gist_id",
@@ -25076,10 +25287,11 @@ func (s *Server) handleGistsDeleteCommentRequest(args [2]string, argsEscaped boo
 	var response GistsDeleteCommentRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GistsDeleteComment",
-			OperationID:   "gists/delete-comment",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "GistsDeleteComment",
+			OperationSummary: "Delete a gist comment",
+			OperationID:      "gists/delete-comment",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "gist_id",
@@ -25185,10 +25397,11 @@ func (s *Server) handleGistsForkRequest(args [1]string, argsEscaped bool, w http
 	var response GistsForkRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GistsFork",
-			OperationID:   "gists/fork",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "GistsFork",
+			OperationSummary: "Fork a gist",
+			OperationID:      "gists/fork",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "gist_id",
@@ -25290,10 +25503,11 @@ func (s *Server) handleGistsGetRequest(args [1]string, argsEscaped bool, w http.
 	var response GistsGetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GistsGet",
-			OperationID:   "gists/get",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "GistsGet",
+			OperationSummary: "Get a gist",
+			OperationID:      "gists/get",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "gist_id",
@@ -25395,10 +25609,11 @@ func (s *Server) handleGistsGetCommentRequest(args [2]string, argsEscaped bool, 
 	var response GistsGetCommentRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GistsGetComment",
-			OperationID:   "gists/get-comment",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "GistsGetComment",
+			OperationSummary: "Get a gist comment",
+			OperationID:      "gists/get-comment",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "gist_id",
@@ -25504,10 +25719,11 @@ func (s *Server) handleGistsGetRevisionRequest(args [2]string, argsEscaped bool,
 	var response GistsGetRevisionRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GistsGetRevision",
-			OperationID:   "gists/get-revision",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "GistsGetRevision",
+			OperationSummary: "Get a gist revision",
+			OperationID:      "gists/get-revision",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "gist_id",
@@ -25614,10 +25830,11 @@ func (s *Server) handleGistsListRequest(args [0]string, argsEscaped bool, w http
 	var response GistsListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GistsList",
-			OperationID:   "gists/list",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "GistsList",
+			OperationSummary: "List gists for the authenticated user",
+			OperationID:      "gists/list",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "since",
@@ -25727,10 +25944,11 @@ func (s *Server) handleGistsListCommentsRequest(args [1]string, argsEscaped bool
 	var response GistsListCommentsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GistsListComments",
-			OperationID:   "gists/list-comments",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "GistsListComments",
+			OperationSummary: "List gist comments",
+			OperationID:      "gists/list-comments",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "gist_id",
@@ -25840,10 +26058,11 @@ func (s *Server) handleGistsListCommitsRequest(args [1]string, argsEscaped bool,
 	var response GistsListCommitsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GistsListCommits",
-			OperationID:   "gists/list-commits",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "GistsListCommits",
+			OperationSummary: "List gist commits",
+			OperationID:      "gists/list-commits",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "gist_id",
@@ -25953,10 +26172,11 @@ func (s *Server) handleGistsListForUserRequest(args [1]string, argsEscaped bool,
 	var response GistsListForUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GistsListForUser",
-			OperationID:   "gists/list-for-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "GistsListForUser",
+			OperationSummary: "List gists for a user",
+			OperationID:      "gists/list-for-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "username",
@@ -26070,10 +26290,11 @@ func (s *Server) handleGistsListForksRequest(args [1]string, argsEscaped bool, w
 	var response GistsListForksRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GistsListForks",
-			OperationID:   "gists/list-forks",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "GistsListForks",
+			OperationSummary: "List gist forks",
+			OperationID:      "gists/list-forks",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "gist_id",
@@ -26186,10 +26407,11 @@ func (s *Server) handleGistsListPublicRequest(args [0]string, argsEscaped bool, 
 	var response GistsListPublicRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GistsListPublic",
-			OperationID:   "gists/list-public",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "GistsListPublic",
+			OperationSummary: "List public gists",
+			OperationID:      "gists/list-public",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "since",
@@ -26299,10 +26521,11 @@ func (s *Server) handleGistsListStarredRequest(args [0]string, argsEscaped bool,
 	var response GistsListStarredRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GistsListStarred",
-			OperationID:   "gists/list-starred",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "GistsListStarred",
+			OperationSummary: "List starred gists",
+			OperationID:      "gists/list-starred",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "since",
@@ -26414,10 +26637,11 @@ func (s *Server) handleGistsStarRequest(args [1]string, argsEscaped bool, w http
 	var response GistsStarRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GistsStar",
-			OperationID:   "gists/star",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "GistsStar",
+			OperationSummary: "Star a gist",
+			OperationID:      "gists/star",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "gist_id",
@@ -26519,10 +26743,11 @@ func (s *Server) handleGistsUnstarRequest(args [1]string, argsEscaped bool, w ht
 	var response GistsUnstarRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GistsUnstar",
-			OperationID:   "gists/unstar",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "GistsUnstar",
+			OperationSummary: "Unstar a gist",
+			OperationID:      "gists/unstar",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "gist_id",
@@ -26639,10 +26864,11 @@ func (s *Server) handleGistsUpdateCommentRequest(args [2]string, argsEscaped boo
 	var response GistsUpdateCommentRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GistsUpdateComment",
-			OperationID:   "gists/update-comment",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "GistsUpdateComment",
+			OperationSummary: "Update a gist comment",
+			OperationID:      "gists/update-comment",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "gist_id",
@@ -26763,10 +26989,11 @@ func (s *Server) handleGitCreateBlobRequest(args [2]string, argsEscaped bool, w 
 	var response GitCreateBlobRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GitCreateBlob",
-			OperationID:   "git/create-blob",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "GitCreateBlob",
+			OperationSummary: "Create a blob",
+			OperationID:      "git/create-blob",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -26920,10 +27147,11 @@ func (s *Server) handleGitCreateCommitRequest(args [2]string, argsEscaped bool, 
 	var response GitCreateCommitRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GitCreateCommit",
-			OperationID:   "git/create-commit",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "GitCreateCommit",
+			OperationSummary: "Create a commit",
+			OperationID:      "git/create-commit",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -27046,10 +27274,11 @@ func (s *Server) handleGitCreateRefRequest(args [2]string, argsEscaped bool, w h
 	var response GitCreateRefRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GitCreateRef",
-			OperationID:   "git/create-ref",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "GitCreateRef",
+			OperationSummary: "Create a reference",
+			OperationID:      "git/create-ref",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -27206,10 +27435,11 @@ func (s *Server) handleGitCreateTagRequest(args [2]string, argsEscaped bool, w h
 	var response GitCreateTagRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GitCreateTag",
-			OperationID:   "git/create-tag",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "GitCreateTag",
+			OperationSummary: "Create a tag object",
+			OperationID:      "git/create-tag",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -27336,10 +27566,11 @@ func (s *Server) handleGitCreateTreeRequest(args [2]string, argsEscaped bool, w 
 	var response GitCreateTreeRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GitCreateTree",
-			OperationID:   "git/create-tree",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "GitCreateTree",
+			OperationSummary: "Create a tree",
+			OperationID:      "git/create-tree",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -27445,10 +27676,11 @@ func (s *Server) handleGitDeleteRefRequest(args [3]string, argsEscaped bool, w h
 	var response GitDeleteRefRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GitDeleteRef",
-			OperationID:   "git/delete-ref",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "GitDeleteRef",
+			OperationSummary: "Delete a reference",
+			OperationID:      "git/delete-ref",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -27559,10 +27791,11 @@ func (s *Server) handleGitGetBlobRequest(args [3]string, argsEscaped bool, w htt
 	var response GitGetBlobRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GitGetBlob",
-			OperationID:   "git/get-blob",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "GitGetBlob",
+			OperationSummary: "Get a blob",
+			OperationID:      "git/get-blob",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -27705,10 +27938,11 @@ func (s *Server) handleGitGetCommitRequest(args [3]string, argsEscaped bool, w h
 	var response GitGetCommitRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GitGetCommit",
-			OperationID:   "git/get-commit",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "GitGetCommit",
+			OperationSummary: "Get a commit",
+			OperationID:      "git/get-commit",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -27825,10 +28059,11 @@ func (s *Server) handleGitGetRefRequest(args [3]string, argsEscaped bool, w http
 	var response GitGetRefRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GitGetRef",
-			OperationID:   "git/get-ref",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "GitGetRef",
+			OperationSummary: "Get a reference",
+			OperationID:      "git/get-ref",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -27969,10 +28204,11 @@ func (s *Server) handleGitGetTagRequest(args [3]string, argsEscaped bool, w http
 	var response GitGetTagRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GitGetTag",
-			OperationID:   "git/get-tag",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "GitGetTag",
+			OperationSummary: "Get a tag",
+			OperationID:      "git/get-tag",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -28085,10 +28321,11 @@ func (s *Server) handleGitGetTreeRequest(args [3]string, argsEscaped bool, w htt
 	var response GitGetTreeRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GitGetTree",
-			OperationID:   "git/get-tree",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "GitGetTree",
+			OperationSummary: "Get a tree",
+			OperationID:      "git/get-tree",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -28216,10 +28453,11 @@ func (s *Server) handleGitListMatchingRefsRequest(args [3]string, argsEscaped bo
 	var response *GitListMatchingRefsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GitListMatchingRefs",
-			OperationID:   "git/list-matching-refs",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "GitListMatchingRefs",
+			OperationSummary: "List matching references",
+			OperationID:      "git/list-matching-refs",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -28352,10 +28590,11 @@ func (s *Server) handleGitUpdateRefRequest(args [3]string, argsEscaped bool, w h
 	var response GitUpdateRefRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GitUpdateRef",
-			OperationID:   "git/update-ref",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "GitUpdateRef",
+			OperationSummary: "Update a reference",
+			OperationID:      "git/update-ref",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -28452,12 +28691,13 @@ func (s *Server) handleGitignoreGetAllTemplatesRequest(args [0]string, argsEscap
 	var response GitignoreGetAllTemplatesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GitignoreGetAllTemplates",
-			OperationID:   "gitignore/get-all-templates",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "GitignoreGetAllTemplates",
+			OperationSummary: "Get all gitignore templates",
+			OperationID:      "gitignore/get-all-templates",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -28554,10 +28794,11 @@ func (s *Server) handleGitignoreGetTemplateRequest(args [1]string, argsEscaped b
 	var response GitignoreGetTemplateRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "GitignoreGetTemplate",
-			OperationID:   "gitignore/get-template",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "GitignoreGetTemplate",
+			OperationSummary: "Get a gitignore template",
+			OperationID:      "gitignore/get-template",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -28645,12 +28886,13 @@ func (s *Server) handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest
 	var response *InteractionsRemoveRestrictionsForAuthenticatedUserNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "InteractionsRemoveRestrictionsForAuthenticatedUser",
-			OperationID:   "interactions/remove-restrictions-for-authenticated-user",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "InteractionsRemoveRestrictionsForAuthenticatedUser",
+			OperationSummary: "Remove interaction restrictions from your public repositories",
+			OperationID:      "interactions/remove-restrictions-for-authenticated-user",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -28746,10 +28988,11 @@ func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args [1]strin
 	var response *InteractionsRemoveRestrictionsForOrgNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "InteractionsRemoveRestrictionsForOrg",
-			OperationID:   "interactions/remove-restrictions-for-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "InteractionsRemoveRestrictionsForOrg",
+			OperationSummary: "Remove interaction restrictions for an organization",
+			OperationID:      "interactions/remove-restrictions-for-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -28854,10 +29097,11 @@ func (s *Server) handleInteractionsRemoveRestrictionsForRepoRequest(args [2]stri
 	var response InteractionsRemoveRestrictionsForRepoRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "InteractionsRemoveRestrictionsForRepo",
-			OperationID:   "interactions/remove-restrictions-for-repo",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "InteractionsRemoveRestrictionsForRepo",
+			OperationSummary: "Remove interaction restrictions for a repository",
+			OperationID:      "interactions/remove-restrictions-for-repo",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -28970,12 +29214,13 @@ func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(ar
 	var response InteractionsSetRestrictionsForAuthenticatedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "InteractionsSetRestrictionsForAuthenticatedUser",
-			OperationID:   "interactions/set-restrictions-for-authenticated-user",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "InteractionsSetRestrictionsForAuthenticatedUser",
+			OperationSummary: "Set interaction restrictions for your public repositories",
+			OperationID:      "interactions/set-restrictions-for-authenticated-user",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -29088,10 +29333,11 @@ func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, 
 	var response InteractionsSetRestrictionsForOrgRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "InteractionsSetRestrictionsForOrg",
-			OperationID:   "interactions/set-restrictions-for-org",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "InteractionsSetRestrictionsForOrg",
+			OperationSummary: "Set interaction restrictions for an organization",
+			OperationID:      "interactions/set-restrictions-for-org",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -29211,10 +29457,11 @@ func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string,
 	var response InteractionsSetRestrictionsForRepoRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "InteractionsSetRestrictionsForRepo",
-			OperationID:   "interactions/set-restrictions-for-repo",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "InteractionsSetRestrictionsForRepo",
+			OperationSummary: "Set interaction restrictions for a repository",
+			OperationID:      "interactions/set-restrictions-for-repo",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -29335,10 +29582,11 @@ func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, argsEscaped boo
 	var response *IssueSimple
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesAddAssignees",
-			OperationID:   "issues/add-assignees",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "IssuesAddAssignees",
+			OperationSummary: "Add assignees to an issue",
+			OperationID:      "issues/add-assignees",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -29451,10 +29699,11 @@ func (s *Server) handleIssuesCheckUserCanBeAssignedRequest(args [3]string, argsE
 	var response IssuesCheckUserCanBeAssignedRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesCheckUserCanBeAssigned",
-			OperationID:   "issues/check-user-can-be-assigned",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "IssuesCheckUserCanBeAssigned",
+			OperationSummary: "Check if a user can be assigned",
+			OperationID:      "issues/check-user-can-be-assigned",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -29588,10 +29837,11 @@ func (s *Server) handleIssuesCreateRequest(args [2]string, argsEscaped bool, w h
 	var response IssuesCreateRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesCreate",
-			OperationID:   "issues/create",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "IssuesCreate",
+			OperationSummary: "Create an issue",
+			OperationID:      "issues/create",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -29718,10 +29968,11 @@ func (s *Server) handleIssuesCreateCommentRequest(args [3]string, argsEscaped bo
 	var response IssuesCreateCommentRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesCreateComment",
-			OperationID:   "issues/create-comment",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "IssuesCreateComment",
+			OperationSummary: "Create an issue comment",
+			OperationID:      "issues/create-comment",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -29846,10 +30097,11 @@ func (s *Server) handleIssuesCreateLabelRequest(args [2]string, argsEscaped bool
 	var response IssuesCreateLabelRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesCreateLabel",
-			OperationID:   "issues/create-label",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "IssuesCreateLabel",
+			OperationSummary: "Create a label",
+			OperationID:      "issues/create-label",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -29970,10 +30222,11 @@ func (s *Server) handleIssuesCreateMilestoneRequest(args [2]string, argsEscaped 
 	var response IssuesCreateMilestoneRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesCreateMilestone",
-			OperationID:   "issues/create-milestone",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "IssuesCreateMilestone",
+			OperationSummary: "Create a milestone",
+			OperationID:      "issues/create-milestone",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -30079,10 +30332,11 @@ func (s *Server) handleIssuesDeleteCommentRequest(args [3]string, argsEscaped bo
 	var response *IssuesDeleteCommentNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesDeleteComment",
-			OperationID:   "issues/delete-comment",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "IssuesDeleteComment",
+			OperationSummary: "Delete an issue comment",
+			OperationID:      "issues/delete-comment",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -30192,10 +30446,11 @@ func (s *Server) handleIssuesDeleteLabelRequest(args [3]string, argsEscaped bool
 	var response *IssuesDeleteLabelNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesDeleteLabel",
-			OperationID:   "issues/delete-label",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "IssuesDeleteLabel",
+			OperationSummary: "Delete a label",
+			OperationID:      "issues/delete-label",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -30305,10 +30560,11 @@ func (s *Server) handleIssuesDeleteMilestoneRequest(args [3]string, argsEscaped 
 	var response IssuesDeleteMilestoneRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesDeleteMilestone",
-			OperationID:   "issues/delete-milestone",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "IssuesDeleteMilestone",
+			OperationSummary: "Delete a milestone",
+			OperationID:      "issues/delete-milestone",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -30436,10 +30692,11 @@ func (s *Server) handleIssuesGetRequest(args [3]string, argsEscaped bool, w http
 	var response IssuesGetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesGet",
-			OperationID:   "issues/get",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "IssuesGet",
+			OperationSummary: "Get an issue",
+			OperationID:      "issues/get",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -30549,10 +30806,11 @@ func (s *Server) handleIssuesGetCommentRequest(args [3]string, argsEscaped bool,
 	var response IssuesGetCommentRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesGetComment",
-			OperationID:   "issues/get-comment",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "IssuesGetComment",
+			OperationSummary: "Get an issue comment",
+			OperationID:      "issues/get-comment",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -30662,10 +30920,11 @@ func (s *Server) handleIssuesGetEventRequest(args [3]string, argsEscaped bool, w
 	var response IssuesGetEventRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesGetEvent",
-			OperationID:   "issues/get-event",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "IssuesGetEvent",
+			OperationSummary: "Get an issue event",
+			OperationID:      "issues/get-event",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -30775,10 +31034,11 @@ func (s *Server) handleIssuesGetLabelRequest(args [3]string, argsEscaped bool, w
 	var response IssuesGetLabelRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesGetLabel",
-			OperationID:   "issues/get-label",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "IssuesGetLabel",
+			OperationSummary: "Get a label",
+			OperationID:      "issues/get-label",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -30888,10 +31148,11 @@ func (s *Server) handleIssuesGetMilestoneRequest(args [3]string, argsEscaped boo
 	var response IssuesGetMilestoneRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesGetMilestone",
-			OperationID:   "issues/get-milestone",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "IssuesGetMilestone",
+			OperationSummary: "Get a milestone",
+			OperationID:      "issues/get-milestone",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -31013,10 +31274,11 @@ func (s *Server) handleIssuesListRequest(args [0]string, argsEscaped bool, w htt
 	var response IssuesListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesList",
-			OperationID:   "issues/list",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "IssuesList",
+			OperationSummary: "List issues assigned to the authenticated user",
+			OperationID:      "issues/list",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "filter",
@@ -31163,10 +31425,11 @@ func (s *Server) handleIssuesListAssigneesRequest(args [2]string, argsEscaped bo
 	var response IssuesListAssigneesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesListAssignees",
-			OperationID:   "issues/list-assignees",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "IssuesListAssignees",
+			OperationSummary: "List assignees",
+			OperationID:      "issues/list-assignees",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -31280,10 +31543,11 @@ func (s *Server) handleIssuesListCommentsRequest(args [3]string, argsEscaped boo
 	var response IssuesListCommentsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesListComments",
-			OperationID:   "issues/list-comments",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "IssuesListComments",
+			OperationSummary: "List issue comments",
+			OperationID:      "issues/list-comments",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -31405,10 +31669,11 @@ func (s *Server) handleIssuesListCommentsForRepoRequest(args [2]string, argsEsca
 	var response IssuesListCommentsForRepoRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesListCommentsForRepo",
-			OperationID:   "issues/list-comments-for-repo",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "IssuesListCommentsForRepo",
+			OperationSummary: "List issue comments for a repository",
+			OperationID:      "issues/list-comments-for-repo",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -31534,10 +31799,11 @@ func (s *Server) handleIssuesListEventsForRepoRequest(args [2]string, argsEscape
 	var response IssuesListEventsForRepoRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesListEventsForRepo",
-			OperationID:   "issues/list-events-for-repo",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "IssuesListEventsForRepo",
+			OperationSummary: "List issue events for a repository",
+			OperationID:      "issues/list-events-for-repo",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -31659,10 +31925,11 @@ func (s *Server) handleIssuesListForAuthenticatedUserRequest(args [0]string, arg
 	var response IssuesListForAuthenticatedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesListForAuthenticatedUser",
-			OperationID:   "issues/list-for-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "IssuesListForAuthenticatedUser",
+			OperationSummary: "List user account issues assigned to the authenticated user",
+			OperationID:      "issues/list-for-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "filter",
@@ -31800,10 +32067,11 @@ func (s *Server) handleIssuesListForOrgRequest(args [1]string, argsEscaped bool,
 	var response IssuesListForOrgRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesListForOrg",
-			OperationID:   "issues/list-for-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "IssuesListForOrg",
+			OperationSummary: "List organization issues assigned to the authenticated user",
+			OperationID:      "issues/list-for-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -31945,10 +32213,11 @@ func (s *Server) handleIssuesListForRepoRequest(args [2]string, argsEscaped bool
 	var response IssuesListForRepoRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesListForRepo",
-			OperationID:   "issues/list-for-repo",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "IssuesListForRepo",
+			OperationSummary: "List repository issues",
+			OperationID:      "issues/list-for-repo",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -32098,10 +32367,11 @@ func (s *Server) handleIssuesListLabelsForMilestoneRequest(args [3]string, argsE
 	var response *IssuesListLabelsForMilestoneOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesListLabelsForMilestone",
-			OperationID:   "issues/list-labels-for-milestone",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "IssuesListLabelsForMilestone",
+			OperationSummary: "List labels for issues in a milestone",
+			OperationID:      "issues/list-labels-for-milestone",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -32219,10 +32489,11 @@ func (s *Server) handleIssuesListLabelsForRepoRequest(args [2]string, argsEscape
 	var response IssuesListLabelsForRepoRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesListLabelsForRepo",
-			OperationID:   "issues/list-labels-for-repo",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "IssuesListLabelsForRepo",
+			OperationSummary: "List labels for a repository",
+			OperationID:      "issues/list-labels-for-repo",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -32336,10 +32607,11 @@ func (s *Server) handleIssuesListLabelsOnIssueRequest(args [3]string, argsEscape
 	var response IssuesListLabelsOnIssueRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesListLabelsOnIssue",
-			OperationID:   "issues/list-labels-on-issue",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "IssuesListLabelsOnIssue",
+			OperationSummary: "List labels for an issue",
+			OperationID:      "issues/list-labels-on-issue",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -32457,10 +32729,11 @@ func (s *Server) handleIssuesListMilestonesRequest(args [2]string, argsEscaped b
 	var response IssuesListMilestonesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesListMilestones",
-			OperationID:   "issues/list-milestones",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "IssuesListMilestones",
+			OperationSummary: "List milestones",
+			OperationID:      "issues/list-milestones",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -32604,10 +32877,11 @@ func (s *Server) handleIssuesLockRequest(args [3]string, argsEscaped bool, w htt
 	var response IssuesLockRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesLock",
-			OperationID:   "issues/lock",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "IssuesLock",
+			OperationSummary: "Lock an issue",
+			OperationID:      "issues/lock",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -32717,10 +32991,11 @@ func (s *Server) handleIssuesRemoveAllLabelsRequest(args [3]string, argsEscaped 
 	var response IssuesRemoveAllLabelsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesRemoveAllLabels",
-			OperationID:   "issues/remove-all-labels",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "IssuesRemoveAllLabels",
+			OperationSummary: "Remove all labels from an issue",
+			OperationID:      "issues/remove-all-labels",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -32845,10 +33120,11 @@ func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, argsEscaped 
 	var response *IssueSimple
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesRemoveAssignees",
-			OperationID:   "issues/remove-assignees",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "IssuesRemoveAssignees",
+			OperationSummary: "Remove assignees from an issue",
+			OperationID:      "issues/remove-assignees",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -32959,10 +33235,11 @@ func (s *Server) handleIssuesRemoveLabelRequest(args [4]string, argsEscaped bool
 	var response IssuesRemoveLabelRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesRemoveLabel",
-			OperationID:   "issues/remove-label",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "IssuesRemoveLabel",
+			OperationSummary: "Remove a label from an issue",
+			OperationID:      "issues/remove-label",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -33076,10 +33353,11 @@ func (s *Server) handleIssuesUnlockRequest(args [3]string, argsEscaped bool, w h
 	var response IssuesUnlockRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesUnlock",
-			OperationID:   "issues/unlock",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "IssuesUnlock",
+			OperationSummary: "Unlock an issue",
+			OperationID:      "issues/unlock",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -33204,10 +33482,11 @@ func (s *Server) handleIssuesUpdateRequest(args [3]string, argsEscaped bool, w h
 	var response IssuesUpdateRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesUpdate",
-			OperationID:   "issues/update",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "IssuesUpdate",
+			OperationSummary: "Update an issue",
+			OperationID:      "issues/update",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -33332,10 +33611,11 @@ func (s *Server) handleIssuesUpdateCommentRequest(args [3]string, argsEscaped bo
 	var response IssuesUpdateCommentRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesUpdateComment",
-			OperationID:   "issues/update-comment",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "IssuesUpdateComment",
+			OperationSummary: "Update an issue comment",
+			OperationID:      "issues/update-comment",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -33460,10 +33740,11 @@ func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, argsEscaped bool
 	var response *Label
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesUpdateLabel",
-			OperationID:   "issues/update-label",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "IssuesUpdateLabel",
+			OperationSummary: "Update a label",
+			OperationID:      "issues/update-label",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -33588,10 +33869,11 @@ func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, argsEscaped 
 	var response *Milestone
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "IssuesUpdateMilestone",
-			OperationID:   "issues/update-milestone",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "IssuesUpdateMilestone",
+			OperationSummary: "Update a milestone",
+			OperationID:      "issues/update-milestone",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -33701,10 +33983,11 @@ func (s *Server) handleLicensesGetRequest(args [1]string, argsEscaped bool, w ht
 	var response LicensesGetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "LicensesGet",
-			OperationID:   "licenses/get",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "LicensesGet",
+			OperationSummary: "Get a license",
+			OperationID:      "licenses/get",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "license",
@@ -33806,10 +34089,11 @@ func (s *Server) handleLicensesGetAllCommonlyUsedRequest(args [0]string, argsEsc
 	var response LicensesGetAllCommonlyUsedRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "LicensesGetAllCommonlyUsed",
-			OperationID:   "licenses/get-all-commonly-used",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "LicensesGetAllCommonlyUsed",
+			OperationSummary: "Get all commonly used licenses",
+			OperationID:      "licenses/get-all-commonly-used",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "featured",
@@ -33923,10 +34207,11 @@ func (s *Server) handleLicensesGetForRepoRequest(args [2]string, argsEscaped boo
 	var response *LicenseContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "LicensesGetForRepo",
-			OperationID:   "licenses/get-for-repo",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "LicensesGetForRepo",
+			OperationSummary: "Get the license for a repository",
+			OperationID:      "licenses/get-for-repo",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -34037,12 +34322,13 @@ func (s *Server) handleMarkdownRenderRequest(args [0]string, argsEscaped bool, w
 	var response MarkdownRenderRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MarkdownRender",
-			OperationID:   "markdown/render",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "MarkdownRender",
+			OperationSummary: "Render a Markdown document",
+			OperationID:      "markdown/render",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -34145,12 +34431,13 @@ func (s *Server) handleMarkdownRenderRawRequest(args [0]string, argsEscaped bool
 	var response MarkdownRenderRawRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MarkdownRenderRaw",
-			OperationID:   "markdown/render-raw",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "MarkdownRenderRaw",
+			OperationSummary: "Render a Markdown document in raw mode",
+			OperationID:      "markdown/render-raw",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -34235,12 +34522,13 @@ func (s *Server) handleMetaGetRequest(args [0]string, argsEscaped bool, w http.R
 	var response MetaGetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MetaGet",
-			OperationID:   "meta/get",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "MetaGet",
+			OperationSummary: "Get GitHub meta information",
+			OperationID:      "meta/get",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -34335,10 +34623,11 @@ func (s *Server) handleMetaGetOctocatRequest(args [0]string, argsEscaped bool, w
 	var response MetaGetOctocatOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MetaGetOctocat",
-			OperationID:   "meta/get-octocat",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "MetaGetOctocat",
+			OperationSummary: "Get Octocat",
+			OperationID:      "meta/get-octocat",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "s",
@@ -34426,12 +34715,13 @@ func (s *Server) handleMetaGetZenRequest(args [0]string, argsEscaped bool, w htt
 	var response MetaGetZenOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MetaGetZen",
-			OperationID:   "meta/get-zen",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "MetaGetZen",
+			OperationSummary: "Get the Zen of GitHub",
+			OperationID:      "meta/get-zen",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -34512,12 +34802,13 @@ func (s *Server) handleMetaRootRequest(args [0]string, argsEscaped bool, w http.
 	var response *MetaRootOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MetaRoot",
-			OperationID:   "meta/root",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "MetaRoot",
+			OperationSummary: "GitHub API Root",
+			OperationID:      "meta/root",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -34612,10 +34903,11 @@ func (s *Server) handleMigrationsCancelImportRequest(args [2]string, argsEscaped
 	var response *MigrationsCancelImportNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MigrationsCancelImport",
-			OperationID:   "migrations/cancel-import",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "MigrationsCancelImport",
+			OperationSummary: "Cancel an import",
+			OperationID:      "migrations/cancel-import",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -34725,10 +35017,11 @@ func (s *Server) handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args [
 	var response MigrationsDeleteArchiveForAuthenticatedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MigrationsDeleteArchiveForAuthenticatedUser",
-			OperationID:   "migrations/delete-archive-for-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "MigrationsDeleteArchiveForAuthenticatedUser",
+			OperationSummary: "Delete a user migration archive",
+			OperationID:      "migrations/delete-archive-for-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "migration_id",
@@ -34831,10 +35124,11 @@ func (s *Server) handleMigrationsDeleteArchiveForOrgRequest(args [2]string, args
 	var response MigrationsDeleteArchiveForOrgRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MigrationsDeleteArchiveForOrg",
-			OperationID:   "migrations/delete-archive-for-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "MigrationsDeleteArchiveForOrg",
+			OperationSummary: "Delete an organization migration archive",
+			OperationID:      "migrations/delete-archive-for-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -34940,10 +35234,11 @@ func (s *Server) handleMigrationsDownloadArchiveForOrgRequest(args [2]string, ar
 	var response MigrationsDownloadArchiveForOrgRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MigrationsDownloadArchiveForOrg",
-			OperationID:   "migrations/download-archive-for-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "MigrationsDownloadArchiveForOrg",
+			OperationSummary: "Download an organization migration archive",
+			OperationID:      "migrations/download-archive-for-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -35069,10 +35364,11 @@ func (s *Server) handleMigrationsGetArchiveForAuthenticatedUserRequest(args [1]s
 	var response MigrationsGetArchiveForAuthenticatedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MigrationsGetArchiveForAuthenticatedUser",
-			OperationID:   "migrations/get-archive-for-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "MigrationsGetArchiveForAuthenticatedUser",
+			OperationSummary: "Download a user migration archive",
+			OperationID:      "migrations/get-archive-for-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "migration_id",
@@ -35181,10 +35477,11 @@ func (s *Server) handleMigrationsGetCommitAuthorsRequest(args [2]string, argsEsc
 	var response MigrationsGetCommitAuthorsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MigrationsGetCommitAuthors",
-			OperationID:   "migrations/get-commit-authors",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "MigrationsGetCommitAuthors",
+			OperationSummary: "Get commit authors",
+			OperationID:      "migrations/get-commit-authors",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -35346,10 +35643,11 @@ func (s *Server) handleMigrationsGetImportStatusRequest(args [2]string, argsEsca
 	var response MigrationsGetImportStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MigrationsGetImportStatus",
-			OperationID:   "migrations/get-import-status",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "MigrationsGetImportStatus",
+			OperationSummary: "Get an import status",
+			OperationID:      "migrations/get-import-status",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -35455,10 +35753,11 @@ func (s *Server) handleMigrationsGetLargeFilesRequest(args [2]string, argsEscape
 	var response []PorterLargeFile
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MigrationsGetLargeFiles",
-			OperationID:   "migrations/get-large-files",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "MigrationsGetLargeFiles",
+			OperationSummary: "Get large files",
+			OperationID:      "migrations/get-large-files",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -35571,10 +35870,11 @@ func (s *Server) handleMigrationsGetStatusForAuthenticatedUserRequest(args [1]st
 	var response MigrationsGetStatusForAuthenticatedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MigrationsGetStatusForAuthenticatedUser",
-			OperationID:   "migrations/get-status-for-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "MigrationsGetStatusForAuthenticatedUser",
+			OperationSummary: "Get a user migration status",
+			OperationID:      "migrations/get-status-for-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "migration_id",
@@ -35685,10 +35985,11 @@ func (s *Server) handleMigrationsGetStatusForOrgRequest(args [2]string, argsEsca
 	var response MigrationsGetStatusForOrgRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MigrationsGetStatusForOrg",
-			OperationID:   "migrations/get-status-for-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "MigrationsGetStatusForOrg",
+			OperationSummary: "Get an organization migration status",
+			OperationID:      "migrations/get-status-for-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -35798,10 +36099,11 @@ func (s *Server) handleMigrationsListForAuthenticatedUserRequest(args [0]string,
 	var response MigrationsListForAuthenticatedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MigrationsListForAuthenticatedUser",
-			OperationID:   "migrations/list-for-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "MigrationsListForAuthenticatedUser",
+			OperationSummary: "List user migrations",
+			OperationID:      "migrations/list-for-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "per_page",
@@ -35907,10 +36209,11 @@ func (s *Server) handleMigrationsListForOrgRequest(args [1]string, argsEscaped b
 	var response *MigrationsListForOrgOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MigrationsListForOrg",
-			OperationID:   "migrations/list-for-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "MigrationsListForOrg",
+			OperationSummary: "List organization migrations",
+			OperationID:      "migrations/list-for-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -36024,10 +36327,11 @@ func (s *Server) handleMigrationsListReposForOrgRequest(args [2]string, argsEsca
 	var response MigrationsListReposForOrgRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MigrationsListReposForOrg",
-			OperationID:   "migrations/list-repos-for-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "MigrationsListReposForOrg",
+			OperationSummary: "List repositories in an organization migration",
+			OperationID:      "migrations/list-repos-for-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -36141,10 +36445,11 @@ func (s *Server) handleMigrationsListReposForUserRequest(args [1]string, argsEsc
 	var response MigrationsListReposForUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MigrationsListReposForUser",
-			OperationID:   "migrations/list-repos-for-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "MigrationsListReposForUser",
+			OperationSummary: "List repositories for a user migration",
+			OperationID:      "migrations/list-repos-for-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "migration_id",
@@ -36270,10 +36575,11 @@ func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, argsEsca
 	var response MigrationsMapCommitAuthorRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MigrationsMapCommitAuthor",
-			OperationID:   "migrations/map-commit-author",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "MigrationsMapCommitAuthor",
+			OperationSummary: "Map a commit author",
+			OperationID:      "migrations/map-commit-author",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -36401,10 +36707,11 @@ func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, argsEsc
 	var response MigrationsSetLfsPreferenceRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MigrationsSetLfsPreference",
-			OperationID:   "migrations/set-lfs-preference",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "MigrationsSetLfsPreference",
+			OperationSummary: "Update Git LFS preference",
+			OperationID:      "migrations/set-lfs-preference",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -36515,12 +36822,13 @@ func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args [0]string
 	var response MigrationsStartForAuthenticatedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MigrationsStartForAuthenticatedUser",
-			OperationID:   "migrations/start-for-authenticated-user",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "MigrationsStartForAuthenticatedUser",
+			OperationSummary: "Start a user migration",
+			OperationID:      "migrations/start-for-authenticated-user",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -36630,10 +36938,11 @@ func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, argsEscaped 
 	var response MigrationsStartForOrgRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MigrationsStartForOrg",
-			OperationID:   "migrations/start-for-org",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "MigrationsStartForOrg",
+			OperationSummary: "Start an organization migration",
+			OperationID:      "migrations/start-for-org",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -36750,10 +37059,11 @@ func (s *Server) handleMigrationsStartImportRequest(args [2]string, argsEscaped 
 	var response MigrationsStartImportRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MigrationsStartImport",
-			OperationID:   "migrations/start-import",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "MigrationsStartImport",
+			OperationSummary: "Start an import",
+			OperationID:      "migrations/start-import",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -36863,10 +37173,11 @@ func (s *Server) handleMigrationsUnlockRepoForAuthenticatedUserRequest(args [2]s
 	var response MigrationsUnlockRepoForAuthenticatedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MigrationsUnlockRepoForAuthenticatedUser",
-			OperationID:   "migrations/unlock-repo-for-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "MigrationsUnlockRepoForAuthenticatedUser",
+			OperationSummary: "Unlock a user repository",
+			OperationID:      "migrations/unlock-repo-for-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "migration_id",
@@ -36974,10 +37285,11 @@ func (s *Server) handleMigrationsUnlockRepoForOrgRequest(args [3]string, argsEsc
 	var response MigrationsUnlockRepoForOrgRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MigrationsUnlockRepoForOrg",
-			OperationID:   "migrations/unlock-repo-for-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "MigrationsUnlockRepoForOrg",
+			OperationSummary: "Unlock an organization repository",
+			OperationID:      "migrations/unlock-repo-for-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -37104,10 +37416,11 @@ func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, argsEscaped
 	var response *Import
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MigrationsUpdateImport",
-			OperationID:   "migrations/update-import",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "MigrationsUpdateImport",
+			OperationSummary: "Update an import",
+			OperationID:      "migrations/update-import",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -37247,12 +37560,13 @@ func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args [0]str
 	var response OAuthAuthorizationsCreateAuthorizationRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OAuthAuthorizationsCreateAuthorization",
-			OperationID:   "oauth-authorizations/create-authorization",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "OAuthAuthorizationsCreateAuthorization",
+			OperationSummary: "Create a new authorization",
+			OperationID:      "oauth-authorizations/create-authorization",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -37356,10 +37670,11 @@ func (s *Server) handleOAuthAuthorizationsDeleteAuthorizationRequest(args [1]str
 	var response OAuthAuthorizationsDeleteAuthorizationRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OAuthAuthorizationsDeleteAuthorization",
-			OperationID:   "oauth-authorizations/delete-authorization",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OAuthAuthorizationsDeleteAuthorization",
+			OperationSummary: "Delete an authorization",
+			OperationID:      "oauth-authorizations/delete-authorization",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "authorization_id",
@@ -37473,10 +37788,11 @@ func (s *Server) handleOAuthAuthorizationsDeleteGrantRequest(args [1]string, arg
 	var response OAuthAuthorizationsDeleteGrantRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OAuthAuthorizationsDeleteGrant",
-			OperationID:   "oauth-authorizations/delete-grant",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OAuthAuthorizationsDeleteGrant",
+			OperationSummary: "Delete a grant",
+			OperationID:      "oauth-authorizations/delete-grant",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "grant_id",
@@ -37587,10 +37903,11 @@ func (s *Server) handleOAuthAuthorizationsGetAuthorizationRequest(args [1]string
 	var response OAuthAuthorizationsGetAuthorizationRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OAuthAuthorizationsGetAuthorization",
-			OperationID:   "oauth-authorizations/get-authorization",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OAuthAuthorizationsGetAuthorization",
+			OperationSummary: "Get a single authorization",
+			OperationID:      "oauth-authorizations/get-authorization",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "authorization_id",
@@ -37701,10 +38018,11 @@ func (s *Server) handleOAuthAuthorizationsGetGrantRequest(args [1]string, argsEs
 	var response OAuthAuthorizationsGetGrantRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OAuthAuthorizationsGetGrant",
-			OperationID:   "oauth-authorizations/get-grant",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OAuthAuthorizationsGetGrant",
+			OperationSummary: "Get a single grant",
+			OperationID:      "oauth-authorizations/get-grant",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "grant_id",
@@ -37849,10 +38167,11 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 	var response OAuthAuthorizationsGetOrCreateAuthorizationForAppRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OAuthAuthorizationsGetOrCreateAuthorizationForApp",
-			OperationID:   "oauth-authorizations/get-or-create-authorization-for-app",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "OAuthAuthorizationsGetOrCreateAuthorizationForApp",
+			OperationSummary: "Get-or-create an authorization for a specific app",
+			OperationID:      "oauth-authorizations/get-or-create-authorization-for-app",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "client_id",
@@ -37992,10 +38311,11 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 	var response OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint",
-			OperationID:   "oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint",
+			OperationSummary: "Get-or-create an authorization for a specific app and fingerprint",
+			OperationID:      "oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "client_id",
@@ -38110,10 +38430,11 @@ func (s *Server) handleOAuthAuthorizationsListAuthorizationsRequest(args [0]stri
 	var response OAuthAuthorizationsListAuthorizationsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OAuthAuthorizationsListAuthorizations",
-			OperationID:   "oauth-authorizations/list-authorizations",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OAuthAuthorizationsListAuthorizations",
+			OperationSummary: "List your authorizations",
+			OperationID:      "oauth-authorizations/list-authorizations",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "per_page",
@@ -38243,10 +38564,11 @@ func (s *Server) handleOAuthAuthorizationsListGrantsRequest(args [0]string, args
 	var response OAuthAuthorizationsListGrantsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OAuthAuthorizationsListGrants",
-			OperationID:   "oauth-authorizations/list-grants",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OAuthAuthorizationsListGrants",
+			OperationSummary: "List your grants",
+			OperationID:      "oauth-authorizations/list-grants",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "per_page",
@@ -38384,10 +38706,11 @@ func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args [1]str
 	var response OAuthAuthorizationsUpdateAuthorizationRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OAuthAuthorizationsUpdateAuthorization",
-			OperationID:   "oauth-authorizations/update-authorization",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "OAuthAuthorizationsUpdateAuthorization",
+			OperationSummary: "Update an existing authorization",
+			OperationID:      "oauth-authorizations/update-authorization",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "authorization_id",
@@ -38489,10 +38812,11 @@ func (s *Server) handleOrgsBlockUserRequest(args [2]string, argsEscaped bool, w 
 	var response OrgsBlockUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsBlockUser",
-			OperationID:   "orgs/block-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsBlockUser",
+			OperationSummary: "Block a user from an organization",
+			OperationID:      "orgs/block-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -38601,10 +38925,11 @@ func (s *Server) handleOrgsCancelInvitationRequest(args [2]string, argsEscaped b
 	var response OrgsCancelInvitationRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsCancelInvitation",
-			OperationID:   "orgs/cancel-invitation",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsCancelInvitation",
+			OperationSummary: "Cancel an organization invitation",
+			OperationID:      "orgs/cancel-invitation",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -38710,10 +39035,11 @@ func (s *Server) handleOrgsCheckBlockedUserRequest(args [2]string, argsEscaped b
 	var response OrgsCheckBlockedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsCheckBlockedUser",
-			OperationID:   "orgs/check-blocked-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsCheckBlockedUser",
+			OperationSummary: "Check if a user is blocked by an organization",
+			OperationID:      "orgs/check-blocked-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -38819,10 +39145,11 @@ func (s *Server) handleOrgsCheckMembershipForUserRequest(args [2]string, argsEsc
 	var response OrgsCheckMembershipForUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsCheckMembershipForUser",
-			OperationID:   "orgs/check-membership-for-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsCheckMembershipForUser",
+			OperationSummary: "Check organization membership for a user",
+			OperationID:      "orgs/check-membership-for-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -38928,10 +39255,11 @@ func (s *Server) handleOrgsCheckPublicMembershipForUserRequest(args [2]string, a
 	var response OrgsCheckPublicMembershipForUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsCheckPublicMembershipForUser",
-			OperationID:   "orgs/check-public-membership-for-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsCheckPublicMembershipForUser",
+			OperationSummary: "Check public organization membership for a user",
+			OperationID:      "orgs/check-public-membership-for-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -39041,10 +39369,11 @@ func (s *Server) handleOrgsConvertMemberToOutsideCollaboratorRequest(args [2]str
 	var response OrgsConvertMemberToOutsideCollaboratorRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsConvertMemberToOutsideCollaborator",
-			OperationID:   "orgs/convert-member-to-outside-collaborator",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsConvertMemberToOutsideCollaborator",
+			OperationSummary: "Convert an organization member to outside collaborator",
+			OperationID:      "orgs/convert-member-to-outside-collaborator",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -39173,10 +39502,11 @@ func (s *Server) handleOrgsCreateInvitationRequest(args [1]string, argsEscaped b
 	var response OrgsCreateInvitationRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsCreateInvitation",
-			OperationID:   "orgs/create-invitation",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "OrgsCreateInvitation",
+			OperationSummary: "Create an organization invitation",
+			OperationID:      "orgs/create-invitation",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -39293,10 +39623,11 @@ func (s *Server) handleOrgsCreateWebhookRequest(args [1]string, argsEscaped bool
 	var response OrgsCreateWebhookRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsCreateWebhook",
-			OperationID:   "orgs/create-webhook",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "OrgsCreateWebhook",
+			OperationSummary: "Create an organization webhook",
+			OperationID:      "orgs/create-webhook",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -39398,10 +39729,11 @@ func (s *Server) handleOrgsDeleteWebhookRequest(args [2]string, argsEscaped bool
 	var response OrgsDeleteWebhookRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsDeleteWebhook",
-			OperationID:   "orgs/delete-webhook",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsDeleteWebhook",
+			OperationSummary: "Delete an organization webhook",
+			OperationID:      "orgs/delete-webhook",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -39515,10 +39847,11 @@ func (s *Server) handleOrgsGetRequest(args [1]string, argsEscaped bool, w http.R
 	var response OrgsGetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsGet",
-			OperationID:   "orgs/get",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsGet",
+			OperationSummary: "Get an organization",
+			OperationID:      "orgs/get",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -39625,10 +39958,11 @@ func (s *Server) handleOrgsGetAuditLogRequest(args [1]string, argsEscaped bool, 
 	var response []AuditLogEvent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsGetAuditLog",
-			OperationID:   "orgs/get-audit-log",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsGetAuditLog",
+			OperationSummary: "Get the audit log for an organization",
+			OperationID:      "orgs/get-audit-log",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -39758,10 +40092,11 @@ func (s *Server) handleOrgsGetMembershipForAuthenticatedUserRequest(args [1]stri
 	var response OrgsGetMembershipForAuthenticatedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsGetMembershipForAuthenticatedUser",
-			OperationID:   "orgs/get-membership-for-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsGetMembershipForAuthenticatedUser",
+			OperationSummary: "Get an organization membership for the authenticated user",
+			OperationID:      "orgs/get-membership-for-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -39865,10 +40200,11 @@ func (s *Server) handleOrgsGetMembershipForUserRequest(args [2]string, argsEscap
 	var response OrgsGetMembershipForUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsGetMembershipForUser",
-			OperationID:   "orgs/get-membership-for-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsGetMembershipForUser",
+			OperationSummary: "Get organization membership for a user",
+			OperationID:      "orgs/get-membership-for-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -39976,10 +40312,11 @@ func (s *Server) handleOrgsGetWebhookRequest(args [2]string, argsEscaped bool, w
 	var response OrgsGetWebhookRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsGetWebhook",
-			OperationID:   "orgs/get-webhook",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsGetWebhook",
+			OperationSummary: "Get an organization webhook",
+			OperationID:      "orgs/get-webhook",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -40089,10 +40426,11 @@ func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args [2]string, argsEsc
 	var response *WebhookConfig
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsGetWebhookConfigForOrg",
-			OperationID:   "orgs/get-webhook-config-for-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsGetWebhookConfigForOrg",
+			OperationSummary: "Get a webhook configuration for an organization",
+			OperationID:      "orgs/get-webhook-config-for-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -40198,10 +40536,11 @@ func (s *Server) handleOrgsGetWebhookDeliveryRequest(args [3]string, argsEscaped
 	var response OrgsGetWebhookDeliveryRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsGetWebhookDelivery",
-			OperationID:   "orgs/get-webhook-delivery",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsGetWebhookDelivery",
+			OperationSummary: "Get a webhook delivery for an organization webhook",
+			OperationID:      "orgs/get-webhook-delivery",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -40314,10 +40653,11 @@ func (s *Server) handleOrgsListRequest(args [0]string, argsEscaped bool, w http.
 	var response OrgsListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsList",
-			OperationID:   "orgs/list",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsList",
+			OperationSummary: "List organizations",
+			OperationID:      "orgs/list",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "since",
@@ -40423,10 +40763,11 @@ func (s *Server) handleOrgsListBlockedUsersRequest(args [1]string, argsEscaped b
 	var response OrgsListBlockedUsersRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsListBlockedUsers",
-			OperationID:   "orgs/list-blocked-users",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsListBlockedUsers",
+			OperationSummary: "List users blocked by an organization",
+			OperationID:      "orgs/list-blocked-users",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -40529,10 +40870,11 @@ func (s *Server) handleOrgsListFailedInvitationsRequest(args [1]string, argsEsca
 	var response OrgsListFailedInvitationsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsListFailedInvitations",
-			OperationID:   "orgs/list-failed-invitations",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsListFailedInvitations",
+			OperationSummary: "List failed organization invitations",
+			OperationID:      "orgs/list-failed-invitations",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -40647,10 +40989,11 @@ func (s *Server) handleOrgsListForAuthenticatedUserRequest(args [0]string, argsE
 	var response OrgsListForAuthenticatedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsListForAuthenticatedUser",
-			OperationID:   "orgs/list-for-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsListForAuthenticatedUser",
+			OperationSummary: "List organizations for the authenticated user",
+			OperationID:      "orgs/list-for-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "per_page",
@@ -40761,10 +41104,11 @@ func (s *Server) handleOrgsListForUserRequest(args [1]string, argsEscaped bool, 
 	var response *OrgsListForUserOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsListForUser",
-			OperationID:   "orgs/list-for-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsListForUser",
+			OperationSummary: "List organizations for a user",
+			OperationID:      "orgs/list-for-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "username",
@@ -40875,10 +41219,11 @@ func (s *Server) handleOrgsListInvitationTeamsRequest(args [2]string, argsEscape
 	var response OrgsListInvitationTeamsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsListInvitationTeams",
-			OperationID:   "orgs/list-invitation-teams",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsListInvitationTeams",
+			OperationSummary: "List organization invitation teams",
+			OperationID:      "orgs/list-invitation-teams",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -40993,10 +41338,11 @@ func (s *Server) handleOrgsListMembersRequest(args [1]string, argsEscaped bool, 
 	var response OrgsListMembersRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsListMembers",
-			OperationID:   "orgs/list-members",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsListMembers",
+			OperationSummary: "List organization members",
+			OperationID:      "orgs/list-members",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -41114,10 +41460,11 @@ func (s *Server) handleOrgsListMembershipsForAuthenticatedUserRequest(args [0]st
 	var response OrgsListMembershipsForAuthenticatedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsListMembershipsForAuthenticatedUser",
-			OperationID:   "orgs/list-memberships-for-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsListMembershipsForAuthenticatedUser",
+			OperationSummary: "List organization memberships for the authenticated user",
+			OperationID:      "orgs/list-memberships-for-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "state",
@@ -41227,10 +41574,11 @@ func (s *Server) handleOrgsListOutsideCollaboratorsRequest(args [1]string, argsE
 	var response *OrgsListOutsideCollaboratorsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsListOutsideCollaborators",
-			OperationID:   "orgs/list-outside-collaborators",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsListOutsideCollaborators",
+			OperationSummary: "List outside collaborators for an organization",
+			OperationID:      "orgs/list-outside-collaborators",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -41347,10 +41695,11 @@ func (s *Server) handleOrgsListPendingInvitationsRequest(args [1]string, argsEsc
 	var response OrgsListPendingInvitationsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsListPendingInvitations",
-			OperationID:   "orgs/list-pending-invitations",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsListPendingInvitations",
+			OperationSummary: "List pending organization invitations",
+			OperationID:      "orgs/list-pending-invitations",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -41460,10 +41809,11 @@ func (s *Server) handleOrgsListPublicMembersRequest(args [1]string, argsEscaped 
 	var response *OrgsListPublicMembersOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsListPublicMembers",
-			OperationID:   "orgs/list-public-members",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsListPublicMembers",
+			OperationSummary: "List public organization members",
+			OperationID:      "orgs/list-public-members",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -41580,10 +41930,11 @@ func (s *Server) handleOrgsListSamlSSOAuthorizationsRequest(args [1]string, args
 	var response []CredentialAuthorization
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsListSamlSSOAuthorizations",
-			OperationID:   "orgs/list-saml-sso-authorizations",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsListSamlSSOAuthorizations",
+			OperationSummary: "List SAML SSO authorizations for an organization",
+			OperationID:      "orgs/list-saml-sso-authorizations",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -41685,10 +42036,11 @@ func (s *Server) handleOrgsListWebhookDeliveriesRequest(args [2]string, argsEsca
 	var response OrgsListWebhookDeliveriesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsListWebhookDeliveries",
-			OperationID:   "orgs/list-webhook-deliveries",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsListWebhookDeliveries",
+			OperationSummary: "List deliveries for an organization webhook",
+			OperationID:      "orgs/list-webhook-deliveries",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -41802,10 +42154,11 @@ func (s *Server) handleOrgsListWebhooksRequest(args [1]string, argsEscaped bool,
 	var response OrgsListWebhooksRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsListWebhooks",
-			OperationID:   "orgs/list-webhooks",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsListWebhooks",
+			OperationSummary: "List organization webhooks",
+			OperationID:      "orgs/list-webhooks",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -41916,10 +42269,11 @@ func (s *Server) handleOrgsPingWebhookRequest(args [2]string, argsEscaped bool, 
 	var response OrgsPingWebhookRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsPingWebhook",
-			OperationID:   "orgs/ping-webhook",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsPingWebhook",
+			OperationSummary: "Ping an organization webhook",
+			OperationID:      "orgs/ping-webhook",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -42025,10 +42379,11 @@ func (s *Server) handleOrgsRedeliverWebhookDeliveryRequest(args [3]string, argsE
 	var response OrgsRedeliverWebhookDeliveryRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsRedeliverWebhookDelivery",
-			OperationID:   "orgs/redeliver-webhook-delivery",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsRedeliverWebhookDelivery",
+			OperationSummary: "Redeliver a delivery for an organization webhook",
+			OperationID:      "orgs/redeliver-webhook-delivery",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -42139,10 +42494,11 @@ func (s *Server) handleOrgsRemoveMemberRequest(args [2]string, argsEscaped bool,
 	var response OrgsRemoveMemberRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsRemoveMember",
-			OperationID:   "orgs/remove-member",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsRemoveMember",
+			OperationSummary: "Remove an organization member",
+			OperationID:      "orgs/remove-member",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -42252,10 +42608,11 @@ func (s *Server) handleOrgsRemoveMembershipForUserRequest(args [2]string, argsEs
 	var response OrgsRemoveMembershipForUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsRemoveMembershipForUser",
-			OperationID:   "orgs/remove-membership-for-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsRemoveMembershipForUser",
+			OperationSummary: "Remove organization membership for a user",
+			OperationID:      "orgs/remove-membership-for-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -42361,10 +42718,11 @@ func (s *Server) handleOrgsRemoveOutsideCollaboratorRequest(args [2]string, args
 	var response OrgsRemoveOutsideCollaboratorRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsRemoveOutsideCollaborator",
-			OperationID:   "orgs/remove-outside-collaborator",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsRemoveOutsideCollaborator",
+			OperationSummary: "Remove outside collaborator from an organization",
+			OperationID:      "orgs/remove-outside-collaborator",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -42470,10 +42828,11 @@ func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(arg
 	var response *OrgsRemovePublicMembershipForAuthenticatedUserNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsRemovePublicMembershipForAuthenticatedUser",
-			OperationID:   "orgs/remove-public-membership-for-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsRemovePublicMembershipForAuthenticatedUser",
+			OperationSummary: "Remove public organization membership for the authenticated user",
+			OperationID:      "orgs/remove-public-membership-for-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -42585,10 +42944,11 @@ func (s *Server) handleOrgsRemoveSamlSSOAuthorizationRequest(args [2]string, arg
 	var response OrgsRemoveSamlSSOAuthorizationRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsRemoveSamlSSOAuthorization",
-			OperationID:   "orgs/remove-saml-sso-authorization",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsRemoveSamlSSOAuthorization",
+			OperationSummary: "Remove a SAML SSO authorization for an organization",
+			OperationID:      "orgs/remove-saml-sso-authorization",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -42722,10 +43082,11 @@ func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, argsEscap
 	var response OrgsSetMembershipForUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsSetMembershipForUser",
-			OperationID:   "orgs/set-membership-for-user",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "OrgsSetMembershipForUser",
+			OperationSummary: "Set organization membership for a user",
+			OperationID:      "orgs/set-membership-for-user",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -42835,10 +43196,11 @@ func (s *Server) handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args [
 	var response OrgsSetPublicMembershipForAuthenticatedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsSetPublicMembershipForAuthenticatedUser",
-			OperationID:   "orgs/set-public-membership-for-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsSetPublicMembershipForAuthenticatedUser",
+			OperationSummary: "Set public organization membership for the authenticated user",
+			OperationID:      "orgs/set-public-membership-for-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -42944,10 +43306,11 @@ func (s *Server) handleOrgsUnblockUserRequest(args [2]string, argsEscaped bool, 
 	var response *OrgsUnblockUserNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsUnblockUser",
-			OperationID:   "orgs/unblock-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "OrgsUnblockUser",
+			OperationSummary: "Unblock a user from an organization",
+			OperationID:      "orgs/unblock-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -43068,10 +43431,11 @@ func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]s
 	var response OrgsUpdateMembershipForAuthenticatedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsUpdateMembershipForAuthenticatedUser",
-			OperationID:   "orgs/update-membership-for-authenticated-user",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "OrgsUpdateMembershipForAuthenticatedUser",
+			OperationSummary: "Update an organization membership for the authenticated user",
+			OperationID:      "orgs/update-membership-for-authenticated-user",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -43192,10 +43556,11 @@ func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, argsEscaped bool
 	var response OrgsUpdateWebhookRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsUpdateWebhook",
-			OperationID:   "orgs/update-webhook",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "OrgsUpdateWebhook",
+			OperationSummary: "Update an organization webhook",
+			OperationID:      "orgs/update-webhook",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -43320,10 +43685,11 @@ func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, args
 	var response *WebhookConfig
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "OrgsUpdateWebhookConfigForOrg",
-			OperationID:   "orgs/update-webhook-config-for-org",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "OrgsUpdateWebhookConfigForOrg",
+			OperationSummary: "Update a webhook configuration for an organization",
+			OperationID:      "orgs/update-webhook-config-for-org",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -43434,10 +43800,11 @@ func (s *Server) handlePackagesDeletePackageForAuthenticatedUserRequest(args [2]
 	var response PackagesDeletePackageForAuthenticatedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PackagesDeletePackageForAuthenticatedUser",
-			OperationID:   "packages/delete-package-for-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PackagesDeletePackageForAuthenticatedUser",
+			OperationSummary: "Delete a package for the authenticated user",
+			OperationID:      "packages/delete-package-for-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "package_type",
@@ -43550,10 +43917,11 @@ func (s *Server) handlePackagesDeletePackageForOrgRequest(args [3]string, argsEs
 	var response PackagesDeletePackageForOrgRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PackagesDeletePackageForOrg",
-			OperationID:   "packages/delete-package-for-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PackagesDeletePackageForOrg",
+			OperationSummary: "Delete a package for an organization",
+			OperationID:      "packages/delete-package-for-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "package_type",
@@ -43670,10 +44038,11 @@ func (s *Server) handlePackagesDeletePackageForUserRequest(args [3]string, argsE
 	var response PackagesDeletePackageForUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PackagesDeletePackageForUser",
-			OperationID:   "packages/delete-package-for-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PackagesDeletePackageForUser",
+			OperationSummary: "Delete a package for a user",
+			OperationID:      "packages/delete-package-for-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "package_type",
@@ -43788,10 +44157,11 @@ func (s *Server) handlePackagesDeletePackageVersionForAuthenticatedUserRequest(a
 	var response PackagesDeletePackageVersionForAuthenticatedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PackagesDeletePackageVersionForAuthenticatedUser",
-			OperationID:   "packages/delete-package-version-for-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PackagesDeletePackageVersionForAuthenticatedUser",
+			OperationSummary: "Delete a package version for the authenticated user",
+			OperationID:      "packages/delete-package-version-for-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "package_type",
@@ -43908,10 +44278,11 @@ func (s *Server) handlePackagesDeletePackageVersionForOrgRequest(args [4]string,
 	var response PackagesDeletePackageVersionForOrgRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PackagesDeletePackageVersionForOrg",
-			OperationID:   "packages/delete-package-version-for-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PackagesDeletePackageVersionForOrg",
+			OperationSummary: "Delete package version for an organization",
+			OperationID:      "packages/delete-package-version-for-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "package_type",
@@ -44032,10 +44403,11 @@ func (s *Server) handlePackagesDeletePackageVersionForUserRequest(args [4]string
 	var response PackagesDeletePackageVersionForUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PackagesDeletePackageVersionForUser",
-			OperationID:   "packages/delete-package-version-for-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PackagesDeletePackageVersionForUser",
+			OperationSummary: "Delete package version for a user",
+			OperationID:      "packages/delete-package-version-for-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "package_type",
@@ -44151,10 +44523,11 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticat
 	var response PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser",
-			OperationID:   "packages/get-all-package-versions-for-package-owned-by-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser",
+			OperationSummary: "Get all package versions for a package owned by the authenticated user",
+			OperationID:      "packages/get-all-package-versions-for-package-owned-by-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "package_type",
@@ -44274,10 +44647,11 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(
 	var response PackagesGetAllPackageVersionsForPackageOwnedByOrgRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PackagesGetAllPackageVersionsForPackageOwnedByOrg",
-			OperationID:   "packages/get-all-package-versions-for-package-owned-by-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PackagesGetAllPackageVersionsForPackageOwnedByOrg",
+			OperationSummary: "Get all package versions for a package owned by an organization",
+			OperationID:      "packages/get-all-package-versions-for-package-owned-by-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "package_type",
@@ -44401,10 +44775,11 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest
 	var response PackagesGetAllPackageVersionsForPackageOwnedByUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PackagesGetAllPackageVersionsForPackageOwnedByUser",
-			OperationID:   "packages/get-all-package-versions-for-package-owned-by-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PackagesGetAllPackageVersionsForPackageOwnedByUser",
+			OperationSummary: "Get all package versions for a package owned by a user",
+			OperationID:      "packages/get-all-package-versions-for-package-owned-by-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "package_type",
@@ -44516,10 +44891,11 @@ func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args [2]str
 	var response *Package
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PackagesGetPackageForAuthenticatedUser",
-			OperationID:   "packages/get-package-for-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PackagesGetPackageForAuthenticatedUser",
+			OperationSummary: "Get a package for the authenticated user",
+			OperationID:      "packages/get-package-for-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "package_type",
@@ -44627,10 +45003,11 @@ func (s *Server) handlePackagesGetPackageForOrganizationRequest(args [3]string, 
 	var response *Package
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PackagesGetPackageForOrganization",
-			OperationID:   "packages/get-package-for-organization",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PackagesGetPackageForOrganization",
+			OperationSummary: "Get a package for an organization",
+			OperationID:      "packages/get-package-for-organization",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "package_type",
@@ -44742,10 +45119,11 @@ func (s *Server) handlePackagesGetPackageForUserRequest(args [3]string, argsEsca
 	var response *Package
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PackagesGetPackageForUser",
-			OperationID:   "packages/get-package-for-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PackagesGetPackageForUser",
+			OperationSummary: "Get a package for a user",
+			OperationID:      "packages/get-package-for-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "package_type",
@@ -44857,10 +45235,11 @@ func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args
 	var response *PackageVersion
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PackagesGetPackageVersionForAuthenticatedUser",
-			OperationID:   "packages/get-package-version-for-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PackagesGetPackageVersionForAuthenticatedUser",
+			OperationSummary: "Get a package version for the authenticated user",
+			OperationID:      "packages/get-package-version-for-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "package_type",
@@ -44972,10 +45351,11 @@ func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args [4]s
 	var response *PackageVersion
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PackagesGetPackageVersionForOrganization",
-			OperationID:   "packages/get-package-version-for-organization",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PackagesGetPackageVersionForOrganization",
+			OperationSummary: "Get a package version for an organization",
+			OperationID:      "packages/get-package-version-for-organization",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "package_type",
@@ -45092,10 +45472,11 @@ func (s *Server) handlePackagesGetPackageVersionForUserRequest(args [4]string, a
 	var response *PackageVersion
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PackagesGetPackageVersionForUser",
-			OperationID:   "packages/get-package-version-for-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PackagesGetPackageVersionForUser",
+			OperationSummary: "Get a package version for a user",
+			OperationID:      "packages/get-package-version-for-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "package_type",
@@ -45211,10 +45592,11 @@ func (s *Server) handlePackagesListPackagesForAuthenticatedUserRequest(args [0]s
 	var response []Package
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PackagesListPackagesForAuthenticatedUser",
-			OperationID:   "packages/list-packages-for-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PackagesListPackagesForAuthenticatedUser",
+			OperationSummary: "List packages for the authenticated user's namespace",
+			OperationID:      "packages/list-packages-for-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "package_type",
@@ -45322,10 +45704,11 @@ func (s *Server) handlePackagesListPackagesForOrganizationRequest(args [1]string
 	var response PackagesListPackagesForOrganizationRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PackagesListPackagesForOrganization",
-			OperationID:   "packages/list-packages-for-organization",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PackagesListPackagesForOrganization",
+			OperationSummary: "List packages for an organization",
+			OperationID:      "packages/list-packages-for-organization",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "package_type",
@@ -45437,10 +45820,11 @@ func (s *Server) handlePackagesListPackagesForUserRequest(args [1]string, argsEs
 	var response PackagesListPackagesForUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PackagesListPackagesForUser",
-			OperationID:   "packages/list-packages-for-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PackagesListPackagesForUser",
+			OperationSummary: "List packages for a user",
+			OperationID:      "packages/list-packages-for-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "package_type",
@@ -45559,10 +45943,11 @@ func (s *Server) handlePackagesRestorePackageForAuthenticatedUserRequest(args [2
 	var response PackagesRestorePackageForAuthenticatedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PackagesRestorePackageForAuthenticatedUser",
-			OperationID:   "packages/restore-package-for-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PackagesRestorePackageForAuthenticatedUser",
+			OperationSummary: "Restore a package for the authenticated user",
+			OperationID:      "packages/restore-package-for-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "package_type",
@@ -45683,10 +46068,11 @@ func (s *Server) handlePackagesRestorePackageForOrgRequest(args [3]string, argsE
 	var response PackagesRestorePackageForOrgRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PackagesRestorePackageForOrg",
-			OperationID:   "packages/restore-package-for-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PackagesRestorePackageForOrg",
+			OperationSummary: "Restore a package for an organization",
+			OperationID:      "packages/restore-package-for-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "package_type",
@@ -45811,10 +46197,11 @@ func (s *Server) handlePackagesRestorePackageForUserRequest(args [3]string, args
 	var response PackagesRestorePackageForUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PackagesRestorePackageForUser",
-			OperationID:   "packages/restore-package-for-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PackagesRestorePackageForUser",
+			OperationSummary: "Restore a package for a user",
+			OperationID:      "packages/restore-package-for-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "package_type",
@@ -45937,10 +46324,11 @@ func (s *Server) handlePackagesRestorePackageVersionForAuthenticatedUserRequest(
 	var response PackagesRestorePackageVersionForAuthenticatedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PackagesRestorePackageVersionForAuthenticatedUser",
-			OperationID:   "packages/restore-package-version-for-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PackagesRestorePackageVersionForAuthenticatedUser",
+			OperationSummary: "Restore a package version for the authenticated user",
+			OperationID:      "packages/restore-package-version-for-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "package_type",
@@ -46061,10 +46449,11 @@ func (s *Server) handlePackagesRestorePackageVersionForOrgRequest(args [4]string
 	var response PackagesRestorePackageVersionForOrgRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PackagesRestorePackageVersionForOrg",
-			OperationID:   "packages/restore-package-version-for-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PackagesRestorePackageVersionForOrg",
+			OperationSummary: "Restore package version for an organization",
+			OperationID:      "packages/restore-package-version-for-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "package_type",
@@ -46189,10 +46578,11 @@ func (s *Server) handlePackagesRestorePackageVersionForUserRequest(args [4]strin
 	var response PackagesRestorePackageVersionForUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PackagesRestorePackageVersionForUser",
-			OperationID:   "packages/restore-package-version-for-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PackagesRestorePackageVersionForUser",
+			OperationSummary: "Restore package version for a user",
+			OperationID:      "packages/restore-package-version-for-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "package_type",
@@ -46322,10 +46712,11 @@ func (s *Server) handleProjectsAddCollaboratorRequest(args [2]string, argsEscape
 	var response ProjectsAddCollaboratorRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ProjectsAddCollaborator",
-			OperationID:   "projects/add-collaborator",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ProjectsAddCollaborator",
+			OperationSummary: "Add project collaborator",
+			OperationID:      "projects/add-collaborator",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "project_id",
@@ -46446,10 +46837,11 @@ func (s *Server) handleProjectsCreateColumnRequest(args [1]string, argsEscaped b
 	var response ProjectsCreateColumnRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ProjectsCreateColumn",
-			OperationID:   "projects/create-column",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ProjectsCreateColumn",
+			OperationSummary: "Create a project column",
+			OperationID:      "projects/create-column",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "project_id",
@@ -46556,12 +46948,13 @@ func (s *Server) handleProjectsCreateForAuthenticatedUserRequest(args [0]string,
 	var response ProjectsCreateForAuthenticatedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ProjectsCreateForAuthenticatedUser",
-			OperationID:   "projects/create-for-authenticated-user",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "ProjectsCreateForAuthenticatedUser",
+			OperationSummary: "Create a user project",
+			OperationID:      "projects/create-for-authenticated-user",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -46673,10 +47066,11 @@ func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, argsEscaped b
 	var response ProjectsCreateForOrgRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ProjectsCreateForOrg",
-			OperationID:   "projects/create-for-org",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ProjectsCreateForOrg",
+			OperationSummary: "Create an organization project",
+			OperationID:      "projects/create-for-org",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -46795,10 +47189,11 @@ func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, argsEscaped 
 	var response ProjectsCreateForRepoRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ProjectsCreateForRepo",
-			OperationID:   "projects/create-for-repo",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ProjectsCreateForRepo",
+			OperationSummary: "Create a repository project",
+			OperationID:      "projects/create-for-repo",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -46904,10 +47299,11 @@ func (s *Server) handleProjectsDeleteRequest(args [1]string, argsEscaped bool, w
 	var response ProjectsDeleteRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ProjectsDelete",
-			OperationID:   "projects/delete",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ProjectsDelete",
+			OperationSummary: "Delete a project",
+			OperationID:      "projects/delete",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "project_id",
@@ -47009,10 +47405,11 @@ func (s *Server) handleProjectsDeleteCardRequest(args [1]string, argsEscaped boo
 	var response ProjectsDeleteCardRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ProjectsDeleteCard",
-			OperationID:   "projects/delete-card",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ProjectsDeleteCard",
+			OperationSummary: "Delete a project card",
+			OperationID:      "projects/delete-card",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "card_id",
@@ -47114,10 +47511,11 @@ func (s *Server) handleProjectsDeleteColumnRequest(args [1]string, argsEscaped b
 	var response ProjectsDeleteColumnRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ProjectsDeleteColumn",
-			OperationID:   "projects/delete-column",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ProjectsDeleteColumn",
+			OperationSummary: "Delete a project column",
+			OperationID:      "projects/delete-column",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "column_id",
@@ -47221,10 +47619,11 @@ func (s *Server) handleProjectsGetRequest(args [1]string, argsEscaped bool, w ht
 	var response ProjectsGetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ProjectsGet",
-			OperationID:   "projects/get",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ProjectsGet",
+			OperationSummary: "Get a project",
+			OperationID:      "projects/get",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "project_id",
@@ -47326,10 +47725,11 @@ func (s *Server) handleProjectsGetCardRequest(args [1]string, argsEscaped bool, 
 	var response ProjectsGetCardRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ProjectsGetCard",
-			OperationID:   "projects/get-card",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ProjectsGetCard",
+			OperationSummary: "Get a project card",
+			OperationID:      "projects/get-card",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "card_id",
@@ -47431,10 +47831,11 @@ func (s *Server) handleProjectsGetColumnRequest(args [1]string, argsEscaped bool
 	var response ProjectsGetColumnRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ProjectsGetColumn",
-			OperationID:   "projects/get-column",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ProjectsGetColumn",
+			OperationSummary: "Get a project column",
+			OperationID:      "projects/get-column",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "column_id",
@@ -47538,10 +47939,11 @@ func (s *Server) handleProjectsGetPermissionForUserRequest(args [2]string, argsE
 	var response ProjectsGetPermissionForUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ProjectsGetPermissionForUser",
-			OperationID:   "projects/get-permission-for-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ProjectsGetPermissionForUser",
+			OperationSummary: "Get project permission for a user",
+			OperationID:      "projects/get-permission-for-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "project_id",
@@ -47647,10 +48049,11 @@ func (s *Server) handleProjectsListCardsRequest(args [1]string, argsEscaped bool
 	var response ProjectsListCardsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ProjectsListCards",
-			OperationID:   "projects/list-cards",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ProjectsListCards",
+			OperationSummary: "List project cards",
+			OperationID:      "projects/list-cards",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "column_id",
@@ -47768,10 +48171,11 @@ func (s *Server) handleProjectsListCollaboratorsRequest(args [1]string, argsEsca
 	var response ProjectsListCollaboratorsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ProjectsListCollaborators",
-			OperationID:   "projects/list-collaborators",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ProjectsListCollaborators",
+			OperationSummary: "List project collaborators",
+			OperationID:      "projects/list-collaborators",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "project_id",
@@ -47885,10 +48289,11 @@ func (s *Server) handleProjectsListColumnsRequest(args [1]string, argsEscaped bo
 	var response ProjectsListColumnsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ProjectsListColumns",
-			OperationID:   "projects/list-columns",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ProjectsListColumns",
+			OperationSummary: "List project columns",
+			OperationID:      "projects/list-columns",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "project_id",
@@ -48000,10 +48405,11 @@ func (s *Server) handleProjectsListForOrgRequest(args [1]string, argsEscaped boo
 	var response ProjectsListForOrgRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ProjectsListForOrg",
-			OperationID:   "projects/list-for-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ProjectsListForOrg",
+			OperationSummary: "List organization projects",
+			OperationID:      "projects/list-for-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -48119,10 +48525,11 @@ func (s *Server) handleProjectsListForRepoRequest(args [2]string, argsEscaped bo
 	var response ProjectsListForRepoRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ProjectsListForRepo",
-			OperationID:   "projects/list-for-repo",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ProjectsListForRepo",
+			OperationSummary: "List repository projects",
+			OperationID:      "projects/list-for-repo",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -48240,10 +48647,11 @@ func (s *Server) handleProjectsListForUserRequest(args [1]string, argsEscaped bo
 	var response ProjectsListForUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ProjectsListForUser",
-			OperationID:   "projects/list-for-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ProjectsListForUser",
+			OperationSummary: "List user projects",
+			OperationID:      "projects/list-for-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "username",
@@ -48372,10 +48780,11 @@ func (s *Server) handleProjectsMoveCardRequest(args [1]string, argsEscaped bool,
 	var response ProjectsMoveCardRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ProjectsMoveCard",
-			OperationID:   "projects/move-card",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ProjectsMoveCard",
+			OperationSummary: "Move a project card",
+			OperationID:      "projects/move-card",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "card_id",
@@ -48492,10 +48901,11 @@ func (s *Server) handleProjectsMoveColumnRequest(args [1]string, argsEscaped boo
 	var response ProjectsMoveColumnRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ProjectsMoveColumn",
-			OperationID:   "projects/move-column",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ProjectsMoveColumn",
+			OperationSummary: "Move a project column",
+			OperationID:      "projects/move-column",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "column_id",
@@ -48598,10 +49008,11 @@ func (s *Server) handleProjectsRemoveCollaboratorRequest(args [2]string, argsEsc
 	var response ProjectsRemoveCollaboratorRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ProjectsRemoveCollaborator",
-			OperationID:   "projects/remove-collaborator",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ProjectsRemoveCollaborator",
+			OperationSummary: "Remove user as a collaborator",
+			OperationID:      "projects/remove-collaborator",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "project_id",
@@ -48724,10 +49135,11 @@ func (s *Server) handleProjectsUpdateRequest(args [1]string, argsEscaped bool, w
 	var response ProjectsUpdateRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ProjectsUpdate",
-			OperationID:   "projects/update",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ProjectsUpdate",
+			OperationSummary: "Update a project",
+			OperationID:      "projects/update",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "project_id",
@@ -48844,10 +49256,11 @@ func (s *Server) handleProjectsUpdateCardRequest(args [1]string, argsEscaped boo
 	var response ProjectsUpdateCardRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ProjectsUpdateCard",
-			OperationID:   "projects/update-card",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ProjectsUpdateCard",
+			OperationSummary: "Update an existing project card",
+			OperationID:      "projects/update-card",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "card_id",
@@ -48964,10 +49377,11 @@ func (s *Server) handleProjectsUpdateColumnRequest(args [1]string, argsEscaped b
 	var response ProjectsUpdateColumnRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ProjectsUpdateColumn",
-			OperationID:   "projects/update-column",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ProjectsUpdateColumn",
+			OperationSummary: "Update an existing project column",
+			OperationID:      "projects/update-column",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "column_id",
@@ -49069,10 +49483,11 @@ func (s *Server) handlePullsCheckIfMergedRequest(args [3]string, argsEscaped boo
 	var response PullsCheckIfMergedRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PullsCheckIfMerged",
-			OperationID:   "pulls/check-if-merged",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PullsCheckIfMerged",
+			OperationSummary: "Check if a pull request has been merged",
+			OperationID:      "pulls/check-if-merged",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -49212,10 +49627,11 @@ func (s *Server) handlePullsCreateRequest(args [2]string, argsEscaped bool, w ht
 	var response PullsCreateRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PullsCreate",
-			OperationID:   "pulls/create",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "PullsCreate",
+			OperationSummary: "Create a pull request",
+			OperationID:      "pulls/create",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -49345,10 +49761,11 @@ func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, a
 	var response PullsCreateReplyForReviewCommentRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PullsCreateReplyForReviewComment",
-			OperationID:   "pulls/create-reply-for-review-comment",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "PullsCreateReplyForReviewComment",
+			OperationSummary: "Create a reply for a review comment",
+			OperationID:      "pulls/create-reply-for-review-comment",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -49495,10 +49912,11 @@ func (s *Server) handlePullsCreateReviewRequest(args [3]string, argsEscaped bool
 	var response PullsCreateReviewRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PullsCreateReview",
-			OperationID:   "pulls/create-review",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "PullsCreateReview",
+			OperationSummary: "Create a review for a pull request",
+			OperationID:      "pulls/create-review",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -49642,10 +50060,11 @@ func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, argsEscap
 	var response PullsCreateReviewCommentRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PullsCreateReviewComment",
-			OperationID:   "pulls/create-review-comment",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "PullsCreateReviewComment",
+			OperationSummary: "Create a review comment for a pull request",
+			OperationID:      "pulls/create-review-comment",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -49755,10 +50174,11 @@ func (s *Server) handlePullsDeletePendingReviewRequest(args [4]string, argsEscap
 	var response PullsDeletePendingReviewRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PullsDeletePendingReview",
-			OperationID:   "pulls/delete-pending-review",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PullsDeletePendingReview",
+			OperationSummary: "Delete a pending review for a pull request",
+			OperationID:      "pulls/delete-pending-review",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -49872,10 +50292,11 @@ func (s *Server) handlePullsDeleteReviewCommentRequest(args [3]string, argsEscap
 	var response PullsDeleteReviewCommentRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PullsDeleteReviewComment",
-			OperationID:   "pulls/delete-review-comment",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PullsDeleteReviewComment",
+			OperationSummary: "Delete a review comment for a pull request",
+			OperationID:      "pulls/delete-review-comment",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -50002,10 +50423,11 @@ func (s *Server) handlePullsDismissReviewRequest(args [4]string, argsEscaped boo
 	var response PullsDismissReviewRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PullsDismissReview",
-			OperationID:   "pulls/dismiss-review",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "PullsDismissReview",
+			OperationSummary: "Dismiss a review for a pull request",
+			OperationID:      "pulls/dismiss-review",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -50152,10 +50574,11 @@ func (s *Server) handlePullsGetRequest(args [3]string, argsEscaped bool, w http.
 	var response PullsGetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PullsGet",
-			OperationID:   "pulls/get",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PullsGet",
+			OperationSummary: "Get a pull request",
+			OperationID:      "pulls/get",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -50265,10 +50688,11 @@ func (s *Server) handlePullsGetReviewRequest(args [4]string, argsEscaped bool, w
 	var response PullsGetReviewRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PullsGetReview",
-			OperationID:   "pulls/get-review",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PullsGetReview",
+			OperationSummary: "Get a review for a pull request",
+			OperationID:      "pulls/get-review",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -50382,10 +50806,11 @@ func (s *Server) handlePullsGetReviewCommentRequest(args [3]string, argsEscaped 
 	var response PullsGetReviewCommentRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PullsGetReviewComment",
-			OperationID:   "pulls/get-review-comment",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PullsGetReviewComment",
+			OperationSummary: "Get a review comment for a pull request",
+			OperationID:      "pulls/get-review-comment",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -50499,10 +50924,11 @@ func (s *Server) handlePullsListRequest(args [2]string, argsEscaped bool, w http
 	var response PullsListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PullsList",
-			OperationID:   "pulls/list",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PullsList",
+			OperationSummary: "List pull requests",
+			OperationID:      "pulls/list",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -50636,10 +51062,11 @@ func (s *Server) handlePullsListCommentsForReviewRequest(args [4]string, argsEsc
 	var response PullsListCommentsForReviewRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PullsListCommentsForReview",
-			OperationID:   "pulls/list-comments-for-review",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PullsListCommentsForReview",
+			OperationSummary: "List comments for a pull request review",
+			OperationID:      "pulls/list-comments-for-review",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -50763,10 +51190,11 @@ func (s *Server) handlePullsListCommitsRequest(args [3]string, argsEscaped bool,
 	var response *PullsListCommitsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PullsListCommits",
-			OperationID:   "pulls/list-commits",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PullsListCommits",
+			OperationSummary: "List commits on a pull request",
+			OperationID:      "pulls/list-commits",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -50885,10 +51313,11 @@ func (s *Server) handlePullsListFilesRequest(args [3]string, argsEscaped bool, w
 	var response PullsListFilesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PullsListFiles",
-			OperationID:   "pulls/list-files",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PullsListFiles",
+			OperationSummary: "List pull requests files",
+			OperationID:      "pulls/list-files",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -51006,10 +51435,11 @@ func (s *Server) handlePullsListRequestedReviewersRequest(args [3]string, argsEs
 	var response *PullRequestReviewRequestHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PullsListRequestedReviewers",
-			OperationID:   "pulls/list-requested-reviewers",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PullsListRequestedReviewers",
+			OperationSummary: "List requested reviewers for a pull request",
+			OperationID:      "pulls/list-requested-reviewers",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -51128,10 +51558,11 @@ func (s *Server) handlePullsListReviewCommentsRequest(args [3]string, argsEscape
 	var response *PullsListReviewCommentsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PullsListReviewComments",
-			OperationID:   "pulls/list-review-comments",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PullsListReviewComments",
+			OperationSummary: "List review comments on a pull request",
+			OperationID:      "pulls/list-review-comments",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -51262,10 +51693,11 @@ func (s *Server) handlePullsListReviewCommentsForRepoRequest(args [2]string, arg
 	var response *PullsListReviewCommentsForRepoOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PullsListReviewCommentsForRepo",
-			OperationID:   "pulls/list-review-comments-for-repo",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PullsListReviewCommentsForRepo",
+			OperationSummary: "List review comments in a repository",
+			OperationID:      "pulls/list-review-comments-for-repo",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -51391,10 +51823,11 @@ func (s *Server) handlePullsListReviewsRequest(args [3]string, argsEscaped bool,
 	var response *PullsListReviewsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PullsListReviews",
-			OperationID:   "pulls/list-reviews",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PullsListReviews",
+			OperationSummary: "List reviews for a pull request",
+			OperationID:      "pulls/list-reviews",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -51533,10 +51966,11 @@ func (s *Server) handlePullsMergeRequest(args [3]string, argsEscaped bool, w htt
 	var response PullsMergeRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PullsMerge",
-			OperationID:   "pulls/merge",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "PullsMerge",
+			OperationSummary: "Merge a pull request",
+			OperationID:      "pulls/merge",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -51661,10 +52095,11 @@ func (s *Server) handlePullsRemoveRequestedReviewersRequest(args [3]string, args
 	var response PullsRemoveRequestedReviewersRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PullsRemoveRequestedReviewers",
-			OperationID:   "pulls/remove-requested-reviewers",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "PullsRemoveRequestedReviewers",
+			OperationSummary: "Remove requested reviewers from a pull request",
+			OperationID:      "pulls/remove-requested-reviewers",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -51789,10 +52224,11 @@ func (s *Server) handlePullsSubmitReviewRequest(args [4]string, argsEscaped bool
 	var response PullsSubmitReviewRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PullsSubmitReview",
-			OperationID:   "pulls/submit-review",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "PullsSubmitReview",
+			OperationSummary: "Submit a review for a pull request",
+			OperationID:      "pulls/submit-review",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -51928,10 +52364,11 @@ func (s *Server) handlePullsUpdateRequest(args [3]string, argsEscaped bool, w ht
 	var response PullsUpdateRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PullsUpdate",
-			OperationID:   "pulls/update",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "PullsUpdate",
+			OperationSummary: "Update a pull request",
+			OperationID:      "pulls/update",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -52057,10 +52494,11 @@ func (s *Server) handlePullsUpdateBranchRequest(args [3]string, argsEscaped bool
 	var response PullsUpdateBranchRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PullsUpdateBranch",
-			OperationID:   "pulls/update-branch",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "PullsUpdateBranch",
+			OperationSummary: "Update a pull request branch",
+			OperationID:      "pulls/update-branch",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -52185,10 +52623,11 @@ func (s *Server) handlePullsUpdateReviewRequest(args [4]string, argsEscaped bool
 	var response PullsUpdateReviewRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PullsUpdateReview",
-			OperationID:   "pulls/update-review",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "PullsUpdateReview",
+			OperationSummary: "Update a review for a pull request",
+			OperationID:      "pulls/update-review",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -52317,10 +52756,11 @@ func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, argsEscap
 	var response *PullRequestReviewComment
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PullsUpdateReviewComment",
-			OperationID:   "pulls/update-review-comment",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "PullsUpdateReviewComment",
+			OperationSummary: "Update a review comment for a pull request",
+			OperationID:      "pulls/update-review-comment",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -52419,12 +52859,13 @@ func (s *Server) handleRateLimitGetRequest(args [0]string, argsEscaped bool, w h
 	var response RateLimitGetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "RateLimitGet",
-			OperationID:   "rate-limit/get",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "RateLimitGet",
+			OperationSummary: "Get rate limit status for the authenticated user",
+			OperationID:      "rate-limit/get",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -52536,10 +52977,11 @@ func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, ar
 	var response ReactionsCreateForCommitCommentRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReactionsCreateForCommitComment",
-			OperationID:   "reactions/create-for-commit-comment",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReactionsCreateForCommitComment",
+			OperationSummary: "Create reaction for a commit comment",
+			OperationID:      "reactions/create-for-commit-comment",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -52665,10 +53107,11 @@ func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, argsEscape
 	var response ReactionsCreateForIssueRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReactionsCreateForIssue",
-			OperationID:   "reactions/create-for-issue",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReactionsCreateForIssue",
+			OperationSummary: "Create reaction for an issue",
+			OperationID:      "reactions/create-for-issue",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -52795,10 +53238,11 @@ func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, arg
 	var response ReactionsCreateForIssueCommentRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReactionsCreateForIssueComment",
-			OperationID:   "reactions/create-for-issue-comment",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReactionsCreateForIssueComment",
+			OperationSummary: "Create reaction for an issue comment",
+			OperationID:      "reactions/create-for-issue-comment",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -52925,10 +53369,11 @@ func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3
 	var response ReactionsCreateForPullRequestReviewCommentRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReactionsCreateForPullRequestReviewComment",
-			OperationID:   "reactions/create-for-pull-request-review-comment",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReactionsCreateForPullRequestReviewComment",
+			OperationSummary: "Create reaction for a pull request review comment",
+			OperationID:      "reactions/create-for-pull-request-review-comment",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -53054,10 +53499,11 @@ func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, argsEsca
 	var response ReactionsCreateForReleaseRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReactionsCreateForRelease",
-			OperationID:   "reactions/create-for-release",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReactionsCreateForRelease",
+			OperationSummary: "Create reaction for a release",
+			OperationID:      "reactions/create-for-release",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -53188,10 +53634,11 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args 
 	var response ReactionsCreateForTeamDiscussionCommentInOrgRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReactionsCreateForTeamDiscussionCommentInOrg",
-			OperationID:   "reactions/create-for-team-discussion-comment-in-org",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReactionsCreateForTeamDiscussionCommentInOrg",
+			OperationSummary: "Create reaction for a team discussion comment",
+			OperationID:      "reactions/create-for-team-discussion-comment-in-org",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -53330,10 +53777,11 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args
 	var response *Reaction
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReactionsCreateForTeamDiscussionCommentLegacy",
-			OperationID:   "reactions/create-for-team-discussion-comment-legacy",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReactionsCreateForTeamDiscussionCommentLegacy",
+			OperationSummary: "Create reaction for a team discussion comment (Legacy)",
+			OperationID:      "reactions/create-for-team-discussion-comment-legacy",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -53465,10 +53913,11 @@ func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]stri
 	var response ReactionsCreateForTeamDiscussionInOrgRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReactionsCreateForTeamDiscussionInOrg",
-			OperationID:   "reactions/create-for-team-discussion-in-org",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReactionsCreateForTeamDiscussionInOrg",
+			OperationSummary: "Create reaction for a team discussion",
+			OperationID:      "reactions/create-for-team-discussion-in-org",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -53604,10 +54053,11 @@ func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]str
 	var response *Reaction
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReactionsCreateForTeamDiscussionLegacy",
-			OperationID:   "reactions/create-for-team-discussion-legacy",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReactionsCreateForTeamDiscussionLegacy",
+			OperationSummary: "Create reaction for a team discussion (Legacy)",
+			OperationID:      "reactions/create-for-team-discussion-legacy",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -53715,10 +54165,11 @@ func (s *Server) handleReactionsDeleteForCommitCommentRequest(args [4]string, ar
 	var response *ReactionsDeleteForCommitCommentNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReactionsDeleteForCommitComment",
-			OperationID:   "reactions/delete-for-commit-comment",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReactionsDeleteForCommitComment",
+			OperationSummary: "Delete a commit comment reaction",
+			OperationID:      "reactions/delete-for-commit-comment",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -53834,10 +54285,11 @@ func (s *Server) handleReactionsDeleteForIssueRequest(args [4]string, argsEscape
 	var response *ReactionsDeleteForIssueNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReactionsDeleteForIssue",
-			OperationID:   "reactions/delete-for-issue",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReactionsDeleteForIssue",
+			OperationSummary: "Delete an issue reaction",
+			OperationID:      "reactions/delete-for-issue",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -53953,10 +54405,11 @@ func (s *Server) handleReactionsDeleteForIssueCommentRequest(args [4]string, arg
 	var response *ReactionsDeleteForIssueCommentNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReactionsDeleteForIssueComment",
-			OperationID:   "reactions/delete-for-issue-comment",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReactionsDeleteForIssueComment",
+			OperationSummary: "Delete an issue comment reaction",
+			OperationID:      "reactions/delete-for-issue-comment",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -54073,10 +54526,11 @@ func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args [4]strin
 	var response *ReactionsDeleteForPullRequestCommentNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReactionsDeleteForPullRequestComment",
-			OperationID:   "reactions/delete-for-pull-request-comment",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReactionsDeleteForPullRequestComment",
+			OperationSummary: "Delete a pull request comment reaction",
+			OperationID:      "reactions/delete-for-pull-request-comment",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -54197,10 +54651,11 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args [4]string, a
 	var response *ReactionsDeleteForTeamDiscussionNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReactionsDeleteForTeamDiscussion",
-			OperationID:   "reactions/delete-for-team-discussion",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReactionsDeleteForTeamDiscussion",
+			OperationSummary: "Delete team discussion reaction",
+			OperationID:      "reactions/delete-for-team-discussion",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -54319,10 +54774,11 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args [5]st
 	var response *ReactionsDeleteForTeamDiscussionCommentNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReactionsDeleteForTeamDiscussionComment",
-			OperationID:   "reactions/delete-for-team-discussion-comment",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReactionsDeleteForTeamDiscussionComment",
+			OperationSummary: "Delete team discussion comment reaction",
+			OperationID:      "reactions/delete-for-team-discussion-comment",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -54449,10 +54905,11 @@ func (s *Server) handleReactionsDeleteLegacyRequest(args [1]string, argsEscaped 
 	var response ReactionsDeleteLegacyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReactionsDeleteLegacy",
-			OperationID:   "reactions/delete-legacy",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReactionsDeleteLegacy",
+			OperationSummary: "Delete a reaction (Legacy)",
+			OperationID:      "reactions/delete-legacy",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "reaction_id",
@@ -54554,10 +55011,11 @@ func (s *Server) handleReactionsListForCommitCommentRequest(args [3]string, args
 	var response ReactionsListForCommitCommentRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReactionsListForCommitComment",
-			OperationID:   "reactions/list-for-commit-comment",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReactionsListForCommitComment",
+			OperationSummary: "List reactions for a commit comment",
+			OperationID:      "reactions/list-for-commit-comment",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -54679,10 +55137,11 @@ func (s *Server) handleReactionsListForIssueRequest(args [3]string, argsEscaped 
 	var response ReactionsListForIssueRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReactionsListForIssue",
-			OperationID:   "reactions/list-for-issue",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReactionsListForIssue",
+			OperationSummary: "List reactions for an issue",
+			OperationID:      "reactions/list-for-issue",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -54804,10 +55263,11 @@ func (s *Server) handleReactionsListForIssueCommentRequest(args [3]string, argsE
 	var response ReactionsListForIssueCommentRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReactionsListForIssueComment",
-			OperationID:   "reactions/list-for-issue-comment",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReactionsListForIssueComment",
+			OperationSummary: "List reactions for an issue comment",
+			OperationID:      "reactions/list-for-issue-comment",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -54930,10 +55390,11 @@ func (s *Server) handleReactionsListForPullRequestReviewCommentRequest(args [3]s
 	var response ReactionsListForPullRequestReviewCommentRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReactionsListForPullRequestReviewComment",
-			OperationID:   "reactions/list-for-pull-request-review-comment",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReactionsListForPullRequestReviewComment",
+			OperationSummary: "List reactions for a pull request review comment",
+			OperationID:      "reactions/list-for-pull-request-review-comment",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -55059,10 +55520,11 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args [4
 	var response *ReactionsListForTeamDiscussionCommentInOrgOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReactionsListForTeamDiscussionCommentInOrg",
-			OperationID:   "reactions/list-for-team-discussion-comment-in-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReactionsListForTeamDiscussionCommentInOrg",
+			OperationSummary: "List reactions for a team discussion comment",
+			OperationID:      "reactions/list-for-team-discussion-comment-in-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -55196,10 +55658,11 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args [
 	var response *ReactionsListForTeamDiscussionCommentLegacyOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReactionsListForTeamDiscussionCommentLegacy",
-			OperationID:   "reactions/list-for-team-discussion-comment-legacy",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReactionsListForTeamDiscussionCommentLegacy",
+			OperationSummary: "List reactions for a team discussion comment (Legacy)",
+			OperationID:      "reactions/list-for-team-discussion-comment-legacy",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -55325,10 +55788,11 @@ func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args [3]string
 	var response *ReactionsListForTeamDiscussionInOrgOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReactionsListForTeamDiscussionInOrg",
-			OperationID:   "reactions/list-for-team-discussion-in-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReactionsListForTeamDiscussionInOrg",
+			OperationSummary: "List reactions for a team discussion",
+			OperationID:      "reactions/list-for-team-discussion-in-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -55458,10 +55922,11 @@ func (s *Server) handleReactionsListForTeamDiscussionLegacyRequest(args [2]strin
 	var response *ReactionsListForTeamDiscussionLegacyOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReactionsListForTeamDiscussionLegacy",
-			OperationID:   "reactions/list-for-team-discussion-legacy",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReactionsListForTeamDiscussionLegacy",
+			OperationSummary: "List reactions for a team discussion (Legacy)",
+			OperationID:      "reactions/list-for-team-discussion-legacy",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -55579,10 +56044,11 @@ func (s *Server) handleReposAcceptInvitationRequest(args [1]string, argsEscaped 
 	var response ReposAcceptInvitationRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposAcceptInvitation",
-			OperationID:   "repos/accept-invitation",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposAcceptInvitation",
+			OperationSummary: "Accept a repository invitation",
+			OperationID:      "repos/accept-invitation",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "invitation_id",
@@ -55713,10 +56179,11 @@ func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, args
 	var response ReposAddAppAccessRestrictionsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposAddAppAccessRestrictions",
-			OperationID:   "repos/add-app-access-restrictions",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposAddAppAccessRestrictions",
+			OperationSummary: "Add app access restrictions",
+			OperationID:      "repos/add-app-access-restrictions",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -55860,10 +56327,11 @@ func (s *Server) handleReposAddCollaboratorRequest(args [3]string, argsEscaped b
 	var response ReposAddCollaboratorRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposAddCollaborator",
-			OperationID:   "repos/add-collaborator",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposAddCollaborator",
+			OperationSummary: "Add a repository collaborator",
+			OperationID:      "repos/add-collaborator",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -55992,10 +56460,11 @@ func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, argsEs
 	var response ReposAddStatusCheckContextsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposAddStatusCheckContexts",
-			OperationID:   "repos/add-status-check-contexts",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposAddStatusCheckContexts",
+			OperationSummary: "Add status check contexts",
+			OperationID:      "repos/add-status-check-contexts",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -56134,10 +56603,11 @@ func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, arg
 	var response ReposAddTeamAccessRestrictionsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposAddTeamAccessRestrictions",
-			OperationID:   "repos/add-team-access-restrictions",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposAddTeamAccessRestrictions",
+			OperationSummary: "Add team access restrictions",
+			OperationID:      "repos/add-team-access-restrictions",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -56275,10 +56745,11 @@ func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, arg
 	var response ReposAddUserAccessRestrictionsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposAddUserAccessRestrictions",
-			OperationID:   "repos/add-user-access-restrictions",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposAddUserAccessRestrictions",
+			OperationSummary: "Add user access restrictions",
+			OperationID:      "repos/add-user-access-restrictions",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -56392,10 +56863,11 @@ func (s *Server) handleReposCheckCollaboratorRequest(args [3]string, argsEscaped
 	var response ReposCheckCollaboratorRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposCheckCollaborator",
-			OperationID:   "repos/check-collaborator",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposCheckCollaborator",
+			OperationSummary: "Check if a user is a repository collaborator",
+			OperationID:      "repos/check-collaborator",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -56508,10 +56980,11 @@ func (s *Server) handleReposCheckVulnerabilityAlertsRequest(args [2]string, args
 	var response ReposCheckVulnerabilityAlertsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposCheckVulnerabilityAlerts",
-			OperationID:   "repos/check-vulnerability-alerts",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposCheckVulnerabilityAlerts",
+			OperationSummary: "Check if vulnerability alerts are enabled for a repository",
+			OperationID:      "repos/check-vulnerability-alerts",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -56671,10 +57144,11 @@ func (s *Server) handleReposCompareCommitsRequest(args [3]string, argsEscaped bo
 	var response ReposCompareCommitsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposCompareCommits",
-			OperationID:   "repos/compare-commits",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposCompareCommits",
+			OperationSummary: "Compare two commits",
+			OperationID:      "repos/compare-commits",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -56807,10 +57281,11 @@ func (s *Server) handleReposCreateAutolinkRequest(args [2]string, argsEscaped bo
 	var response ReposCreateAutolinkRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposCreateAutolink",
-			OperationID:   "repos/create-autolink",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposCreateAutolink",
+			OperationSummary: "Create an autolink reference for a repository",
+			OperationID:      "repos/create-autolink",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -56938,10 +57413,11 @@ func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, argsEscap
 	var response ReposCreateCommitCommentRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposCreateCommitComment",
-			OperationID:   "repos/create-commit-comment",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposCreateCommitComment",
+			OperationSummary: "Create a commit comment",
+			OperationID:      "repos/create-commit-comment",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -57057,10 +57533,11 @@ func (s *Server) handleReposCreateCommitSignatureProtectionRequest(args [3]strin
 	var response ReposCreateCommitSignatureProtectionRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposCreateCommitSignatureProtection",
-			OperationID:   "repos/create-commit-signature-protection",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposCreateCommitSignatureProtection",
+			OperationSummary: "Create commit signature protection",
+			OperationID:      "repos/create-commit-signature-protection",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -57187,10 +57664,11 @@ func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, argsEscape
 	var response *StatusHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposCreateCommitStatus",
-			OperationID:   "repos/create-commit-status",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposCreateCommitStatus",
+			OperationSummary: "Create a commit status",
+			OperationID:      "repos/create-commit-status",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -57315,10 +57793,11 @@ func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, argsEscaped b
 	var response ReposCreateDeployKeyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposCreateDeployKey",
-			OperationID:   "repos/create-deploy-key",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposCreateDeployKey",
+			OperationSummary: "Create a deploy key",
+			OperationID:      "repos/create-deploy-key",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -57494,10 +57973,11 @@ func (s *Server) handleReposCreateDeploymentRequest(args [2]string, argsEscaped 
 	var response ReposCreateDeploymentRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposCreateDeployment",
-			OperationID:   "repos/create-deployment",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposCreateDeployment",
+			OperationSummary: "Create a deployment",
+			OperationID:      "repos/create-deployment",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -57620,10 +58100,11 @@ func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, argsEs
 	var response ReposCreateDeploymentStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposCreateDeploymentStatus",
-			OperationID:   "repos/create-deployment-status",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposCreateDeploymentStatus",
+			OperationSummary: "Create a deployment status",
+			OperationID:      "repos/create-deployment-status",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -57767,10 +58248,11 @@ func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, argsEscap
 	var response ReposCreateDispatchEventRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposCreateDispatchEvent",
-			OperationID:   "repos/create-dispatch-event",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposCreateDispatchEvent",
+			OperationSummary: "Create a repository dispatch event",
+			OperationID:      "repos/create-dispatch-event",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -57887,12 +58369,13 @@ func (s *Server) handleReposCreateForAuthenticatedUserRequest(args [0]string, ar
 	var response ReposCreateForAuthenticatedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposCreateForAuthenticatedUser",
-			OperationID:   "repos/create-for-authenticated-user",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "ReposCreateForAuthenticatedUser",
+			OperationSummary: "Create a repository for the authenticated user",
+			OperationID:      "repos/create-for-authenticated-user",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -58005,10 +58488,11 @@ func (s *Server) handleReposCreateForkRequest(args [2]string, argsEscaped bool, 
 	var response ReposCreateForkRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposCreateFork",
-			OperationID:   "repos/create-fork",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposCreateFork",
+			OperationSummary: "Create a fork",
+			OperationID:      "repos/create-fork",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -58136,10 +58620,11 @@ func (s *Server) handleReposCreateInOrgRequest(args [1]string, argsEscaped bool,
 	var response ReposCreateInOrgRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposCreateInOrg",
-			OperationID:   "repos/create-in-org",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposCreateInOrg",
+			OperationSummary: "Create an organization repository",
+			OperationID:      "repos/create-in-org",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -58256,10 +58741,11 @@ func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, ar
 	var response ReposCreateOrUpdateFileContentsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposCreateOrUpdateFileContents",
-			OperationID:   "repos/create-or-update-file-contents",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposCreateOrUpdateFileContents",
+			OperationSummary: "Create or update file contents",
+			OperationID:      "repos/create-or-update-file-contents",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -58385,10 +58871,11 @@ func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, argsEscaped b
 	var response ReposCreatePagesSiteRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposCreatePagesSite",
-			OperationID:   "repos/create-pages-site",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposCreatePagesSite",
+			OperationSummary: "Create a GitHub Pages site",
+			OperationID:      "repos/create-pages-site",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -58516,10 +59003,11 @@ func (s *Server) handleReposCreateReleaseRequest(args [2]string, argsEscaped boo
 	var response ReposCreateReleaseRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposCreateRelease",
-			OperationID:   "repos/create-release",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposCreateRelease",
+			OperationSummary: "Create a release",
+			OperationID:      "repos/create-release",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -58651,10 +59139,11 @@ func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, argsEscap
 	var response *RepositoryHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposCreateUsingTemplate",
-			OperationID:   "repos/create-using-template",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposCreateUsingTemplate",
+			OperationSummary: "Create a repository using a template",
+			OperationID:      "repos/create-using-template",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "template_owner",
@@ -58777,10 +59266,11 @@ func (s *Server) handleReposCreateWebhookRequest(args [2]string, argsEscaped boo
 	var response ReposCreateWebhookRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposCreateWebhook",
-			OperationID:   "repos/create-webhook",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposCreateWebhook",
+			OperationSummary: "Create a repository webhook",
+			OperationID:      "repos/create-webhook",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -58886,10 +59376,11 @@ func (s *Server) handleReposDeclineInvitationRequest(args [1]string, argsEscaped
 	var response ReposDeclineInvitationRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposDeclineInvitation",
-			OperationID:   "repos/decline-invitation",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposDeclineInvitation",
+			OperationSummary: "Decline a repository invitation",
+			OperationID:      "repos/decline-invitation",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "invitation_id",
@@ -58994,10 +59485,11 @@ func (s *Server) handleReposDeleteRequest(args [2]string, argsEscaped bool, w ht
 	var response ReposDeleteRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposDelete",
-			OperationID:   "repos/delete",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposDelete",
+			OperationSummary: "Delete a repository",
+			OperationID:      "repos/delete",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -59108,10 +59600,11 @@ func (s *Server) handleReposDeleteAccessRestrictionsRequest(args [3]string, args
 	var response *ReposDeleteAccessRestrictionsNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposDeleteAccessRestrictions",
-			OperationID:   "repos/delete-access-restrictions",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposDeleteAccessRestrictions",
+			OperationSummary: "Delete access restrictions",
+			OperationID:      "repos/delete-access-restrictions",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -59227,10 +59720,11 @@ func (s *Server) handleReposDeleteAdminBranchProtectionRequest(args [3]string, a
 	var response ReposDeleteAdminBranchProtectionRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposDeleteAdminBranchProtection",
-			OperationID:   "repos/delete-admin-branch-protection",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposDeleteAdminBranchProtection",
+			OperationSummary: "Delete admin branch protection",
+			OperationID:      "repos/delete-admin-branch-protection",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -59340,10 +59834,11 @@ func (s *Server) handleReposDeleteAnEnvironmentRequest(args [3]string, argsEscap
 	var response *ReposDeleteAnEnvironmentNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposDeleteAnEnvironment",
-			OperationID:   "repos/delete-an-environment",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposDeleteAnEnvironment",
+			OperationSummary: "Delete an environment",
+			OperationID:      "repos/delete-an-environment",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -59454,10 +59949,11 @@ func (s *Server) handleReposDeleteAutolinkRequest(args [3]string, argsEscaped bo
 	var response ReposDeleteAutolinkRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposDeleteAutolink",
-			OperationID:   "repos/delete-autolink",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposDeleteAutolink",
+			OperationSummary: "Delete an autolink reference from a repository",
+			OperationID:      "repos/delete-autolink",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -59571,10 +60067,11 @@ func (s *Server) handleReposDeleteBranchProtectionRequest(args [3]string, argsEs
 	var response ReposDeleteBranchProtectionRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposDeleteBranchProtection",
-			OperationID:   "repos/delete-branch-protection",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposDeleteBranchProtection",
+			OperationSummary: "Delete branch protection",
+			OperationID:      "repos/delete-branch-protection",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -59684,10 +60181,11 @@ func (s *Server) handleReposDeleteCommitCommentRequest(args [3]string, argsEscap
 	var response ReposDeleteCommitCommentRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposDeleteCommitComment",
-			OperationID:   "repos/delete-commit-comment",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposDeleteCommitComment",
+			OperationSummary: "Delete a commit comment",
+			OperationID:      "repos/delete-commit-comment",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -59804,10 +60302,11 @@ func (s *Server) handleReposDeleteCommitSignatureProtectionRequest(args [3]strin
 	var response ReposDeleteCommitSignatureProtectionRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposDeleteCommitSignatureProtection",
-			OperationID:   "repos/delete-commit-signature-protection",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposDeleteCommitSignatureProtection",
+			OperationSummary: "Delete commit signature protection",
+			OperationID:      "repos/delete-commit-signature-protection",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -59918,10 +60417,11 @@ func (s *Server) handleReposDeleteDeployKeyRequest(args [3]string, argsEscaped b
 	var response *ReposDeleteDeployKeyNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposDeleteDeployKey",
-			OperationID:   "repos/delete-deploy-key",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposDeleteDeployKey",
+			OperationSummary: "Delete a deploy key",
+			OperationID:      "repos/delete-deploy-key",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -60039,10 +60539,11 @@ func (s *Server) handleReposDeleteDeploymentRequest(args [3]string, argsEscaped 
 	var response ReposDeleteDeploymentRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposDeleteDeployment",
-			OperationID:   "repos/delete-deployment",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposDeleteDeployment",
+			OperationSummary: "Delete a deployment",
+			OperationID:      "repos/delete-deployment",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -60174,10 +60675,11 @@ func (s *Server) handleReposDeleteFileRequest(args [3]string, argsEscaped bool, 
 	var response ReposDeleteFileRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposDeleteFile",
-			OperationID:   "repos/delete-file",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposDeleteFile",
+			OperationSummary: "Delete a file",
+			OperationID:      "repos/delete-file",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -60287,10 +60789,11 @@ func (s *Server) handleReposDeleteInvitationRequest(args [3]string, argsEscaped 
 	var response *ReposDeleteInvitationNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposDeleteInvitation",
-			OperationID:   "repos/delete-invitation",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposDeleteInvitation",
+			OperationSummary: "Delete a repository invitation",
+			OperationID:      "repos/delete-invitation",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -60400,10 +60903,11 @@ func (s *Server) handleReposDeletePagesSiteRequest(args [2]string, argsEscaped b
 	var response ReposDeletePagesSiteRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposDeletePagesSite",
-			OperationID:   "repos/delete-pages-site",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposDeletePagesSite",
+			OperationSummary: "Delete a GitHub Pages site",
+			OperationID:      "repos/delete-pages-site",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -60513,10 +61017,11 @@ func (s *Server) handleReposDeletePullRequestReviewProtectionRequest(args [3]str
 	var response ReposDeletePullRequestReviewProtectionRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposDeletePullRequestReviewProtection",
-			OperationID:   "repos/delete-pull-request-review-protection",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposDeletePullRequestReviewProtection",
+			OperationSummary: "Delete pull request review protection",
+			OperationID:      "repos/delete-pull-request-review-protection",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -60626,10 +61131,11 @@ func (s *Server) handleReposDeleteReleaseRequest(args [3]string, argsEscaped boo
 	var response *ReposDeleteReleaseNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposDeleteRelease",
-			OperationID:   "repos/delete-release",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposDeleteRelease",
+			OperationSummary: "Delete a release",
+			OperationID:      "repos/delete-release",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -60739,10 +61245,11 @@ func (s *Server) handleReposDeleteReleaseAssetRequest(args [3]string, argsEscape
 	var response *ReposDeleteReleaseAssetNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposDeleteReleaseAsset",
-			OperationID:   "repos/delete-release-asset",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposDeleteReleaseAsset",
+			OperationSummary: "Delete a release asset",
+			OperationID:      "repos/delete-release-asset",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -60852,10 +61359,11 @@ func (s *Server) handleReposDeleteWebhookRequest(args [3]string, argsEscaped boo
 	var response ReposDeleteWebhookRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposDeleteWebhook",
-			OperationID:   "repos/delete-webhook",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposDeleteWebhook",
+			OperationSummary: "Delete a repository webhook",
+			OperationID:      "repos/delete-webhook",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -60967,10 +61475,11 @@ func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args [2]string,
 	var response *ReposDisableAutomatedSecurityFixesNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposDisableAutomatedSecurityFixes",
-			OperationID:   "repos/disable-automated-security-fixes",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposDisableAutomatedSecurityFixes",
+			OperationSummary: "Disable automated security fixes",
+			OperationID:      "repos/disable-automated-security-fixes",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -61076,10 +61585,11 @@ func (s *Server) handleReposDisableLfsForRepoRequest(args [2]string, argsEscaped
 	var response *ReposDisableLfsForRepoNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposDisableLfsForRepo",
-			OperationID:   "repos/disable-lfs-for-repo",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposDisableLfsForRepo",
+			OperationSummary: "Disable Git LFS for a repository",
+			OperationID:      "repos/disable-lfs-for-repo",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -61188,10 +61698,11 @@ func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args [2]string, ar
 	var response *ReposDisableVulnerabilityAlertsNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposDisableVulnerabilityAlerts",
-			OperationID:   "repos/disable-vulnerability-alerts",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposDisableVulnerabilityAlerts",
+			OperationSummary: "Disable vulnerability alerts",
+			OperationID:      "repos/disable-vulnerability-alerts",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -61302,10 +61813,11 @@ func (s *Server) handleReposDownloadTarballArchiveRequest(args [3]string, argsEs
 	var response *ReposDownloadTarballArchiveFound
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposDownloadTarballArchive",
-			OperationID:   "repos/download-tarball-archive",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposDownloadTarballArchive",
+			OperationSummary: "Download a repository archive (tar)",
+			OperationID:      "repos/download-tarball-archive",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -61420,10 +61932,11 @@ func (s *Server) handleReposDownloadZipballArchiveRequest(args [3]string, argsEs
 	var response *ReposDownloadZipballArchiveFound
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposDownloadZipballArchive",
-			OperationID:   "repos/download-zipball-archive",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposDownloadZipballArchive",
+			OperationSummary: "Download a repository archive (zip)",
+			OperationID:      "repos/download-zipball-archive",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -61535,10 +62048,11 @@ func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args [2]string, 
 	var response *ReposEnableAutomatedSecurityFixesNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposEnableAutomatedSecurityFixes",
-			OperationID:   "repos/enable-automated-security-fixes",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposEnableAutomatedSecurityFixes",
+			OperationSummary: "Enable automated security fixes",
+			OperationID:      "repos/enable-automated-security-fixes",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -61644,10 +62158,11 @@ func (s *Server) handleReposEnableLfsForRepoRequest(args [2]string, argsEscaped 
 	var response ReposEnableLfsForRepoRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposEnableLfsForRepo",
-			OperationID:   "repos/enable-lfs-for-repo",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposEnableLfsForRepo",
+			OperationSummary: "Enable Git LFS for a repository",
+			OperationID:      "repos/enable-lfs-for-repo",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -61756,10 +62271,11 @@ func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args [2]string, arg
 	var response *ReposEnableVulnerabilityAlertsNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposEnableVulnerabilityAlerts",
-			OperationID:   "repos/enable-vulnerability-alerts",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposEnableVulnerabilityAlerts",
+			OperationSummary: "Enable vulnerability alerts",
+			OperationID:      "repos/enable-vulnerability-alerts",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -61866,10 +62382,11 @@ func (s *Server) handleReposGetRequest(args [2]string, argsEscaped bool, w http.
 	var response ReposGetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGet",
-			OperationID:   "repos/get",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGet",
+			OperationSummary: "Get a repository",
+			OperationID:      "repos/get",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -61982,10 +62499,11 @@ func (s *Server) handleReposGetAccessRestrictionsRequest(args [3]string, argsEsc
 	var response ReposGetAccessRestrictionsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetAccessRestrictions",
-			OperationID:   "repos/get-access-restrictions",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetAccessRestrictions",
+			OperationSummary: "Get access restrictions",
+			OperationID:      "repos/get-access-restrictions",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -62099,10 +62617,11 @@ func (s *Server) handleReposGetAdminBranchProtectionRequest(args [3]string, args
 	var response *ProtectedBranchAdminEnforced
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetAdminBranchProtection",
-			OperationID:   "repos/get-admin-branch-protection",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetAdminBranchProtection",
+			OperationSummary: "Get admin branch protection",
+			OperationID:      "repos/get-admin-branch-protection",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -62216,10 +62735,11 @@ func (s *Server) handleReposGetAllStatusCheckContextsRequest(args [3]string, arg
 	var response ReposGetAllStatusCheckContextsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetAllStatusCheckContexts",
-			OperationID:   "repos/get-all-status-check-contexts",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetAllStatusCheckContexts",
+			OperationSummary: "Get all status check contexts",
+			OperationID:      "repos/get-all-status-check-contexts",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -62329,10 +62849,11 @@ func (s *Server) handleReposGetAllTopicsRequest(args [2]string, argsEscaped bool
 	var response ReposGetAllTopicsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetAllTopics",
-			OperationID:   "repos/get-all-topics",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetAllTopics",
+			OperationSummary: "Get all repository topics",
+			OperationID:      "repos/get-all-topics",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -62453,10 +62974,11 @@ func (s *Server) handleReposGetAppsWithAccessToProtectedBranchRequest(args [3]st
 	var response ReposGetAppsWithAccessToProtectedBranchRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetAppsWithAccessToProtectedBranch",
-			OperationID:   "repos/get-apps-with-access-to-protected-branch",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetAppsWithAccessToProtectedBranch",
+			OperationSummary: "Get apps with access to the protected branch",
+			OperationID:      "repos/get-apps-with-access-to-protected-branch",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -62567,10 +63089,11 @@ func (s *Server) handleReposGetAutolinkRequest(args [3]string, argsEscaped bool,
 	var response ReposGetAutolinkRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetAutolink",
-			OperationID:   "repos/get-autolink",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetAutolink",
+			OperationSummary: "Get an autolink reference of a repository",
+			OperationID:      "repos/get-autolink",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -62680,10 +63203,11 @@ func (s *Server) handleReposGetBranchRequest(args [3]string, argsEscaped bool, w
 	var response ReposGetBranchRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetBranch",
-			OperationID:   "repos/get-branch",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetBranch",
+			OperationSummary: "Get a branch",
+			OperationID:      "repos/get-branch",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -62797,10 +63321,11 @@ func (s *Server) handleReposGetBranchProtectionRequest(args [3]string, argsEscap
 	var response ReposGetBranchProtectionRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetBranchProtection",
-			OperationID:   "repos/get-branch-protection",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetBranchProtection",
+			OperationSummary: "Get branch protection",
+			OperationID:      "repos/get-branch-protection",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -62911,10 +63436,11 @@ func (s *Server) handleReposGetClonesRequest(args [2]string, argsEscaped bool, w
 	var response ReposGetClonesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetClones",
-			OperationID:   "repos/get-clones",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetClones",
+			OperationSummary: "Get repository clones",
+			OperationID:      "repos/get-clones",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -63024,10 +63550,11 @@ func (s *Server) handleReposGetCodeFrequencyStatsRequest(args [2]string, argsEsc
 	var response ReposGetCodeFrequencyStatsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetCodeFrequencyStats",
-			OperationID:   "repos/get-code-frequency-stats",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetCodeFrequencyStats",
+			OperationSummary: "Get the weekly commit activity",
+			OperationID:      "repos/get-code-frequency-stats",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -63134,10 +63661,11 @@ func (s *Server) handleReposGetCollaboratorPermissionLevelRequest(args [3]string
 	var response ReposGetCollaboratorPermissionLevelRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetCollaboratorPermissionLevel",
-			OperationID:   "repos/get-collaborator-permission-level",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetCollaboratorPermissionLevel",
+			OperationSummary: "Get repository permissions for a user",
+			OperationID:      "repos/get-collaborator-permission-level",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -63255,10 +63783,11 @@ func (s *Server) handleReposGetCombinedStatusForRefRequest(args [3]string, argsE
 	var response ReposGetCombinedStatusForRefRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetCombinedStatusForRef",
-			OperationID:   "repos/get-combined-status-for-ref",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetCombinedStatusForRef",
+			OperationSummary: "Get the combined status for a specific reference",
+			OperationID:      "repos/get-combined-status-for-ref",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -63422,10 +63951,11 @@ func (s *Server) handleReposGetCommitRequest(args [3]string, argsEscaped bool, w
 	var response ReposGetCommitRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetCommit",
-			OperationID:   "repos/get-commit",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetCommit",
+			OperationSummary: "Get a commit",
+			OperationID:      "repos/get-commit",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -63544,10 +64074,11 @@ func (s *Server) handleReposGetCommitActivityStatsRequest(args [2]string, argsEs
 	var response ReposGetCommitActivityStatsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetCommitActivityStats",
-			OperationID:   "repos/get-commit-activity-stats",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetCommitActivityStats",
+			OperationSummary: "Get the last year of commit activity",
+			OperationID:      "repos/get-commit-activity-stats",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -63653,10 +64184,11 @@ func (s *Server) handleReposGetCommitCommentRequest(args [3]string, argsEscaped 
 	var response ReposGetCommitCommentRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetCommitComment",
-			OperationID:   "repos/get-commit-comment",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetCommitComment",
+			OperationSummary: "Get a commit comment",
+			OperationID:      "repos/get-commit-comment",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -63775,10 +64307,11 @@ func (s *Server) handleReposGetCommitSignatureProtectionRequest(args [3]string, 
 	var response ReposGetCommitSignatureProtectionRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetCommitSignatureProtection",
-			OperationID:   "repos/get-commit-signature-protection",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetCommitSignatureProtection",
+			OperationSummary: "Get commit signature protection",
+			OperationID:      "repos/get-commit-signature-protection",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -63897,10 +64430,11 @@ func (s *Server) handleReposGetCommunityProfileMetricsRequest(args [2]string, ar
 	var response *CommunityProfile
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetCommunityProfileMetrics",
-			OperationID:   "repos/get-community-profile-metrics",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetCommunityProfileMetrics",
+			OperationSummary: "Get community profile metrics",
+			OperationID:      "repos/get-community-profile-metrics",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -64011,10 +64545,11 @@ func (s *Server) handleReposGetContributorsStatsRequest(args [2]string, argsEsca
 	var response ReposGetContributorsStatsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetContributorsStats",
-			OperationID:   "repos/get-contributors-stats",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetContributorsStats",
+			OperationSummary: "Get all contributor commit activity",
+			OperationID:      "repos/get-contributors-stats",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -64120,10 +64655,11 @@ func (s *Server) handleReposGetDeployKeyRequest(args [3]string, argsEscaped bool
 	var response ReposGetDeployKeyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetDeployKey",
-			OperationID:   "repos/get-deploy-key",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetDeployKey",
+			OperationSummary: "Get a deploy key",
+			OperationID:      "repos/get-deploy-key",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -64233,10 +64769,11 @@ func (s *Server) handleReposGetDeploymentRequest(args [3]string, argsEscaped boo
 	var response ReposGetDeploymentRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetDeployment",
-			OperationID:   "repos/get-deployment",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetDeployment",
+			OperationSummary: "Get a deployment",
+			OperationID:      "repos/get-deployment",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -64346,10 +64883,11 @@ func (s *Server) handleReposGetDeploymentStatusRequest(args [4]string, argsEscap
 	var response ReposGetDeploymentStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetDeploymentStatus",
-			OperationID:   "repos/get-deployment-status",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetDeploymentStatus",
+			OperationSummary: "Get a deployment status",
+			OperationID:      "repos/get-deployment-status",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -64463,10 +65001,11 @@ func (s *Server) handleReposGetLatestPagesBuildRequest(args [2]string, argsEscap
 	var response *PageBuild
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetLatestPagesBuild",
-			OperationID:   "repos/get-latest-pages-build",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetLatestPagesBuild",
+			OperationSummary: "Get latest Pages build",
+			OperationID:      "repos/get-latest-pages-build",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -64575,10 +65114,11 @@ func (s *Server) handleReposGetLatestReleaseRequest(args [2]string, argsEscaped 
 	var response *Release
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetLatestRelease",
-			OperationID:   "repos/get-latest-release",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetLatestRelease",
+			OperationSummary: "Get the latest release",
+			OperationID:      "repos/get-latest-release",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -64684,10 +65224,11 @@ func (s *Server) handleReposGetPagesRequest(args [2]string, argsEscaped bool, w 
 	var response ReposGetPagesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetPages",
-			OperationID:   "repos/get-pages",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetPages",
+			OperationSummary: "Get a GitHub Pages site",
+			OperationID:      "repos/get-pages",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -64793,10 +65334,11 @@ func (s *Server) handleReposGetPagesBuildRequest(args [3]string, argsEscaped boo
 	var response *PageBuild
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetPagesBuild",
-			OperationID:   "repos/get-pages-build",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetPagesBuild",
+			OperationSummary: "Get GitHub Pages build",
+			OperationID:      "repos/get-pages-build",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -64912,10 +65454,11 @@ func (s *Server) handleReposGetPagesHealthCheckRequest(args [2]string, argsEscap
 	var response ReposGetPagesHealthCheckRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetPagesHealthCheck",
-			OperationID:   "repos/get-pages-health-check",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetPagesHealthCheck",
+			OperationSummary: "Get a DNS health check for GitHub Pages",
+			OperationID:      "repos/get-pages-health-check",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -65024,10 +65567,11 @@ func (s *Server) handleReposGetParticipationStatsRequest(args [2]string, argsEsc
 	var response ReposGetParticipationStatsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetParticipationStats",
-			OperationID:   "repos/get-participation-stats",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetParticipationStats",
+			OperationSummary: "Get the weekly commit count",
+			OperationID:      "repos/get-participation-stats",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -65137,10 +65681,11 @@ func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args [3]string
 	var response *ProtectedBranchPullRequestReview
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetPullRequestReviewProtection",
-			OperationID:   "repos/get-pull-request-review-protection",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetPullRequestReviewProtection",
+			OperationSummary: "Get pull request review protection",
+			OperationID:      "repos/get-pull-request-review-protection",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -65255,10 +65800,11 @@ func (s *Server) handleReposGetPunchCardStatsRequest(args [2]string, argsEscaped
 	var response ReposGetPunchCardStatsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetPunchCardStats",
-			OperationID:   "repos/get-punch-card-stats",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetPunchCardStats",
+			OperationSummary: "Get the hourly commit count for each day",
+			OperationID:      "repos/get-punch-card-stats",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -65366,10 +65912,11 @@ func (s *Server) handleReposGetReadmeRequest(args [2]string, argsEscaped bool, w
 	var response ReposGetReadmeRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetReadme",
-			OperationID:   "repos/get-readme",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetReadme",
+			OperationSummary: "Get a repository README",
+			OperationID:      "repos/get-readme",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -65481,10 +66028,11 @@ func (s *Server) handleReposGetReadmeInDirectoryRequest(args [3]string, argsEsca
 	var response ReposGetReadmeInDirectoryRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetReadmeInDirectory",
-			OperationID:   "repos/get-readme-in-directory",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetReadmeInDirectory",
+			OperationSummary: "Get a repository README for a directory",
+			OperationID:      "repos/get-readme-in-directory",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -65600,10 +66148,11 @@ func (s *Server) handleReposGetReleaseRequest(args [3]string, argsEscaped bool, 
 	var response ReposGetReleaseRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetRelease",
-			OperationID:   "repos/get-release",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetRelease",
+			OperationSummary: "Get a release",
+			OperationID:      "repos/get-release",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -65716,10 +66265,11 @@ func (s *Server) handleReposGetReleaseAssetRequest(args [3]string, argsEscaped b
 	var response ReposGetReleaseAssetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetReleaseAsset",
-			OperationID:   "repos/get-release-asset",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetReleaseAsset",
+			OperationSummary: "Get a release asset",
+			OperationID:      "repos/get-release-asset",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -65829,10 +66379,11 @@ func (s *Server) handleReposGetReleaseByTagRequest(args [3]string, argsEscaped b
 	var response ReposGetReleaseByTagRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetReleaseByTag",
-			OperationID:   "repos/get-release-by-tag",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetReleaseByTag",
+			OperationSummary: "Get a release by tag name",
+			OperationID:      "repos/get-release-by-tag",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -65946,10 +66497,11 @@ func (s *Server) handleReposGetStatusChecksProtectionRequest(args [3]string, arg
 	var response ReposGetStatusChecksProtectionRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetStatusChecksProtection",
-			OperationID:   "repos/get-status-checks-protection",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetStatusChecksProtection",
+			OperationSummary: "Get status checks protection",
+			OperationID:      "repos/get-status-checks-protection",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -66064,10 +66616,11 @@ func (s *Server) handleReposGetTeamsWithAccessToProtectedBranchRequest(args [3]s
 	var response ReposGetTeamsWithAccessToProtectedBranchRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetTeamsWithAccessToProtectedBranch",
-			OperationID:   "repos/get-teams-with-access-to-protected-branch",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetTeamsWithAccessToProtectedBranch",
+			OperationSummary: "Get teams with access to the protected branch",
+			OperationID:      "repos/get-teams-with-access-to-protected-branch",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -66177,10 +66730,11 @@ func (s *Server) handleReposGetTopPathsRequest(args [2]string, argsEscaped bool,
 	var response ReposGetTopPathsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetTopPaths",
-			OperationID:   "repos/get-top-paths",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetTopPaths",
+			OperationSummary: "Get top referral paths",
+			OperationID:      "repos/get-top-paths",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -66286,10 +66840,11 @@ func (s *Server) handleReposGetTopReferrersRequest(args [2]string, argsEscaped b
 	var response ReposGetTopReferrersRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetTopReferrers",
-			OperationID:   "repos/get-top-referrers",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetTopReferrers",
+			OperationSummary: "Get top referral sources",
+			OperationID:      "repos/get-top-referrers",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -66400,10 +66955,11 @@ func (s *Server) handleReposGetUsersWithAccessToProtectedBranchRequest(args [3]s
 	var response ReposGetUsersWithAccessToProtectedBranchRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetUsersWithAccessToProtectedBranch",
-			OperationID:   "repos/get-users-with-access-to-protected-branch",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetUsersWithAccessToProtectedBranch",
+			OperationSummary: "Get users with access to the protected branch",
+			OperationID:      "repos/get-users-with-access-to-protected-branch",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -66514,10 +67070,11 @@ func (s *Server) handleReposGetViewsRequest(args [2]string, argsEscaped bool, w 
 	var response ReposGetViewsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetViews",
-			OperationID:   "repos/get-views",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetViews",
+			OperationSummary: "Get page views",
+			OperationID:      "repos/get-views",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -66629,10 +67186,11 @@ func (s *Server) handleReposGetWebhookRequest(args [3]string, argsEscaped bool, 
 	var response ReposGetWebhookRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetWebhook",
-			OperationID:   "repos/get-webhook",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetWebhook",
+			OperationSummary: "Get a repository webhook",
+			OperationID:      "repos/get-webhook",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -66746,10 +67304,11 @@ func (s *Server) handleReposGetWebhookConfigForRepoRequest(args [3]string, argsE
 	var response *WebhookConfig
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetWebhookConfigForRepo",
-			OperationID:   "repos/get-webhook-config-for-repo",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetWebhookConfigForRepo",
+			OperationSummary: "Get a webhook configuration for a repository",
+			OperationID:      "repos/get-webhook-config-for-repo",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -66859,10 +67418,11 @@ func (s *Server) handleReposGetWebhookDeliveryRequest(args [4]string, argsEscape
 	var response ReposGetWebhookDeliveryRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposGetWebhookDelivery",
-			OperationID:   "repos/get-webhook-delivery",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposGetWebhookDelivery",
+			OperationSummary: "Get a delivery for a repository webhook",
+			OperationID:      "repos/get-webhook-delivery",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -66977,10 +67537,11 @@ func (s *Server) handleReposListAutolinksRequest(args [2]string, argsEscaped boo
 	var response []Autolink
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposListAutolinks",
-			OperationID:   "repos/list-autolinks",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposListAutolinks",
+			OperationSummary: "List all autolinks of a repository",
+			OperationID:      "repos/list-autolinks",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -67090,10 +67651,11 @@ func (s *Server) handleReposListBranchesRequest(args [2]string, argsEscaped bool
 	var response ReposListBranchesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposListBranches",
-			OperationID:   "repos/list-branches",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposListBranches",
+			OperationSummary: "List branches",
+			OperationID:      "repos/list-branches",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -67216,10 +67778,11 @@ func (s *Server) handleReposListBranchesForHeadCommitRequest(args [3]string, arg
 	var response ReposListBranchesForHeadCommitRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposListBranchesForHeadCommit",
-			OperationID:   "repos/list-branches-for-head-commit",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposListBranchesForHeadCommit",
+			OperationSummary: "List branches for HEAD commit",
+			OperationID:      "repos/list-branches-for-head-commit",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -67333,10 +67896,11 @@ func (s *Server) handleReposListCollaboratorsRequest(args [2]string, argsEscaped
 	var response ReposListCollaboratorsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposListCollaborators",
-			OperationID:   "repos/list-collaborators",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposListCollaborators",
+			OperationSummary: "List repository collaborators",
+			OperationID:      "repos/list-collaborators",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -67454,10 +68018,11 @@ func (s *Server) handleReposListCommentsForCommitRequest(args [3]string, argsEsc
 	var response *ReposListCommentsForCommitOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposListCommentsForCommit",
-			OperationID:   "repos/list-comments-for-commit",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposListCommentsForCommit",
+			OperationSummary: "List commit comments",
+			OperationID:      "repos/list-comments-for-commit",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -67578,10 +68143,11 @@ func (s *Server) handleReposListCommitCommentsForRepoRequest(args [2]string, arg
 	var response *ReposListCommitCommentsForRepoOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposListCommitCommentsForRepo",
-			OperationID:   "repos/list-commit-comments-for-repo",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposListCommitCommentsForRepo",
+			OperationSummary: "List commit comments for a repository",
+			OperationID:      "repos/list-commit-comments-for-repo",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -67698,10 +68264,11 @@ func (s *Server) handleReposListCommitStatusesForRefRequest(args [3]string, args
 	var response ReposListCommitStatusesForRefRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposListCommitStatusesForRef",
-			OperationID:   "repos/list-commit-statuses-for-ref",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposListCommitStatusesForRef",
+			OperationSummary: "List commit statuses for a reference",
+			OperationID:      "repos/list-commit-statuses-for-ref",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -67850,10 +68417,11 @@ func (s *Server) handleReposListCommitsRequest(args [2]string, argsEscaped bool,
 	var response ReposListCommitsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposListCommits",
-			OperationID:   "repos/list-commits",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposListCommits",
+			OperationSummary: "List commits",
+			OperationID:      "repos/list-commits",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -67993,10 +68561,11 @@ func (s *Server) handleReposListContributorsRequest(args [2]string, argsEscaped 
 	var response ReposListContributorsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposListContributors",
-			OperationID:   "repos/list-contributors",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposListContributors",
+			OperationSummary: "List repository contributors",
+			OperationID:      "repos/list-contributors",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -68114,10 +68683,11 @@ func (s *Server) handleReposListDeployKeysRequest(args [2]string, argsEscaped bo
 	var response *ReposListDeployKeysOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposListDeployKeys",
-			OperationID:   "repos/list-deploy-keys",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposListDeployKeys",
+			OperationSummary: "List deploy keys",
+			OperationID:      "repos/list-deploy-keys",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -68231,10 +68801,11 @@ func (s *Server) handleReposListDeploymentStatusesRequest(args [3]string, argsEs
 	var response ReposListDeploymentStatusesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposListDeploymentStatuses",
-			OperationID:   "repos/list-deployment-statuses",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposListDeploymentStatuses",
+			OperationSummary: "List deployment statuses",
+			OperationID:      "repos/list-deployment-statuses",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -68352,10 +68923,11 @@ func (s *Server) handleReposListDeploymentsRequest(args [2]string, argsEscaped b
 	var response *ReposListDeploymentsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposListDeployments",
-			OperationID:   "repos/list-deployments",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposListDeployments",
+			OperationSummary: "List deployments",
+			OperationID:      "repos/list-deployments",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -68488,10 +69060,11 @@ func (s *Server) handleReposListForAuthenticatedUserRequest(args [0]string, args
 	var response ReposListForAuthenticatedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposListForAuthenticatedUser",
-			OperationID:   "repos/list-for-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposListForAuthenticatedUser",
+			OperationSummary: "List repositories for the authenticated user",
+			OperationID:      "repos/list-for-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "visibility",
@@ -68625,10 +69198,11 @@ func (s *Server) handleReposListForOrgRequest(args [1]string, argsEscaped bool, 
 	var response *ReposListForOrgOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposListForOrg",
-			OperationID:   "repos/list-for-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposListForOrg",
+			OperationSummary: "List organization repositories",
+			OperationID:      "repos/list-for-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -68751,10 +69325,11 @@ func (s *Server) handleReposListForUserRequest(args [1]string, argsEscaped bool,
 	var response *ReposListForUserOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposListForUser",
-			OperationID:   "repos/list-for-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposListForUser",
+			OperationSummary: "List repositories for a user",
+			OperationID:      "repos/list-for-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "username",
@@ -68876,10 +69451,11 @@ func (s *Server) handleReposListForksRequest(args [2]string, argsEscaped bool, w
 	var response ReposListForksRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposListForks",
-			OperationID:   "repos/list-forks",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposListForks",
+			OperationSummary: "List forks",
+			OperationID:      "repos/list-forks",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -68998,10 +69574,11 @@ func (s *Server) handleReposListInvitationsRequest(args [2]string, argsEscaped b
 	var response *ReposListInvitationsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposListInvitations",
-			OperationID:   "repos/list-invitations",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposListInvitations",
+			OperationSummary: "List repository invitations",
+			OperationID:      "repos/list-invitations",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -69116,10 +69693,11 @@ func (s *Server) handleReposListInvitationsForAuthenticatedUserRequest(args [0]s
 	var response ReposListInvitationsForAuthenticatedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposListInvitationsForAuthenticatedUser",
-			OperationID:   "repos/list-invitations-for-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposListInvitationsForAuthenticatedUser",
+			OperationSummary: "List repository invitations for the authenticated user",
+			OperationID:      "repos/list-invitations-for-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "per_page",
@@ -69226,10 +69804,11 @@ func (s *Server) handleReposListLanguagesRequest(args [2]string, argsEscaped boo
 	var response Language
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposListLanguages",
-			OperationID:   "repos/list-languages",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposListLanguages",
+			OperationSummary: "List repository languages",
+			OperationID:      "repos/list-languages",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -69335,10 +69914,11 @@ func (s *Server) handleReposListPagesBuildsRequest(args [2]string, argsEscaped b
 	var response *ReposListPagesBuildsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposListPagesBuilds",
-			OperationID:   "repos/list-pages-builds",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposListPagesBuilds",
+			OperationSummary: "List GitHub Pages builds",
+			OperationID:      "repos/list-pages-builds",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -69458,10 +70038,11 @@ func (s *Server) handleReposListPublicRequest(args [0]string, argsEscaped bool, 
 	var response ReposListPublicRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposListPublic",
-			OperationID:   "repos/list-public",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposListPublic",
+			OperationSummary: "List public repositories",
+			OperationID:      "repos/list-public",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "since",
@@ -69568,10 +70149,11 @@ func (s *Server) handleReposListPullRequestsAssociatedWithCommitRequest(args [3]
 	var response *ReposListPullRequestsAssociatedWithCommitOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposListPullRequestsAssociatedWithCommit",
-			OperationID:   "repos/list-pull-requests-associated-with-commit",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposListPullRequestsAssociatedWithCommit",
+			OperationSummary: "List pull requests associated with a commit",
+			OperationID:      "repos/list-pull-requests-associated-with-commit",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -69689,10 +70271,11 @@ func (s *Server) handleReposListReleaseAssetsRequest(args [3]string, argsEscaped
 	var response *ReposListReleaseAssetsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposListReleaseAssets",
-			OperationID:   "repos/list-release-assets",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposListReleaseAssets",
+			OperationSummary: "List release assets",
+			OperationID:      "repos/list-release-assets",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -69814,10 +70397,11 @@ func (s *Server) handleReposListReleasesRequest(args [2]string, argsEscaped bool
 	var response ReposListReleasesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposListReleases",
-			OperationID:   "repos/list-releases",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposListReleases",
+			OperationSummary: "List releases",
+			OperationID:      "repos/list-releases",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -69931,10 +70515,11 @@ func (s *Server) handleReposListTagsRequest(args [2]string, argsEscaped bool, w 
 	var response *ReposListTagsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposListTags",
-			OperationID:   "repos/list-tags",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposListTags",
+			OperationSummary: "List repository tags",
+			OperationID:      "repos/list-tags",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -70048,10 +70633,11 @@ func (s *Server) handleReposListTeamsRequest(args [2]string, argsEscaped bool, w
 	var response *ReposListTeamsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposListTeams",
-			OperationID:   "repos/list-teams",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposListTeams",
+			OperationSummary: "List repository teams",
+			OperationID:      "repos/list-teams",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -70165,10 +70751,11 @@ func (s *Server) handleReposListWebhookDeliveriesRequest(args [3]string, argsEsc
 	var response ReposListWebhookDeliveriesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposListWebhookDeliveries",
-			OperationID:   "repos/list-webhook-deliveries",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposListWebhookDeliveries",
+			OperationSummary: "List deliveries for a repository webhook",
+			OperationID:      "repos/list-webhook-deliveries",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -70286,10 +70873,11 @@ func (s *Server) handleReposListWebhooksRequest(args [2]string, argsEscaped bool
 	var response ReposListWebhooksRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposListWebhooks",
-			OperationID:   "repos/list-webhooks",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposListWebhooks",
+			OperationSummary: "List repository webhooks",
+			OperationID:      "repos/list-webhooks",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -70418,10 +71006,11 @@ func (s *Server) handleReposMergeRequest(args [2]string, argsEscaped bool, w htt
 	var response ReposMergeRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposMerge",
-			OperationID:   "repos/merge",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposMerge",
+			OperationSummary: "Merge a branch",
+			OperationID:      "repos/merge",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -70543,10 +71132,11 @@ func (s *Server) handleReposMergeUpstreamRequest(args [2]string, argsEscaped boo
 	var response ReposMergeUpstreamRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposMergeUpstream",
-			OperationID:   "repos/merge-upstream",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposMergeUpstream",
+			OperationSummary: "Sync a fork branch with the upstream repository",
+			OperationID:      "repos/merge-upstream",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -70653,10 +71243,11 @@ func (s *Server) handleReposPingWebhookRequest(args [3]string, argsEscaped bool,
 	var response ReposPingWebhookRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposPingWebhook",
-			OperationID:   "repos/ping-webhook",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposPingWebhook",
+			OperationSummary: "Ping a repository webhook",
+			OperationID:      "repos/ping-webhook",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -70766,10 +71357,11 @@ func (s *Server) handleReposRedeliverWebhookDeliveryRequest(args [4]string, args
 	var response ReposRedeliverWebhookDeliveryRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposRedeliverWebhookDelivery",
-			OperationID:   "repos/redeliver-webhook-delivery",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposRedeliverWebhookDelivery",
+			OperationSummary: "Redeliver a delivery for a repository webhook",
+			OperationID:      "repos/redeliver-webhook-delivery",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -70912,10 +71504,11 @@ func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args [3]string, a
 	var response ReposRemoveAppAccessRestrictionsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposRemoveAppAccessRestrictions",
-			OperationID:   "repos/remove-app-access-restrictions",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposRemoveAppAccessRestrictions",
+			OperationSummary: "Remove app access restrictions",
+			OperationID:      "repos/remove-app-access-restrictions",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -71025,10 +71618,11 @@ func (s *Server) handleReposRemoveCollaboratorRequest(args [3]string, argsEscape
 	var response *ReposRemoveCollaboratorNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposRemoveCollaborator",
-			OperationID:   "repos/remove-collaborator",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposRemoveCollaborator",
+			OperationSummary: "Remove a repository collaborator",
+			OperationID:      "repos/remove-collaborator",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -71157,10 +71751,11 @@ func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, arg
 	var response ReposRemoveStatusCheckContextsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposRemoveStatusCheckContexts",
-			OperationID:   "repos/remove-status-check-contexts",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposRemoveStatusCheckContexts",
+			OperationSummary: "Remove status check contexts",
+			OperationID:      "repos/remove-status-check-contexts",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -71274,10 +71869,11 @@ func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args [3]string, a
 	var response *ReposRemoveStatusCheckProtectionNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposRemoveStatusCheckProtection",
-			OperationID:   "repos/remove-status-check-protection",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposRemoveStatusCheckProtection",
+			OperationSummary: "Remove status check protection",
+			OperationID:      "repos/remove-status-check-protection",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -71416,10 +72012,11 @@ func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, 
 	var response ReposRemoveTeamAccessRestrictionsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposRemoveTeamAccessRestrictions",
-			OperationID:   "repos/remove-team-access-restrictions",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposRemoveTeamAccessRestrictions",
+			OperationSummary: "Remove team access restrictions",
+			OperationID:      "repos/remove-team-access-restrictions",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -71557,10 +72154,11 @@ func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, 
 	var response ReposRemoveUserAccessRestrictionsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposRemoveUserAccessRestrictions",
-			OperationID:   "repos/remove-user-access-restrictions",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposRemoveUserAccessRestrictions",
+			OperationSummary: "Remove user access restrictions",
+			OperationID:      "repos/remove-user-access-restrictions",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -71697,10 +72295,11 @@ func (s *Server) handleReposRenameBranchRequest(args [3]string, argsEscaped bool
 	var response ReposRenameBranchRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposRenameBranch",
-			OperationID:   "repos/rename-branch",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposRenameBranch",
+			OperationSummary: "Rename a branch",
+			OperationID:      "repos/rename-branch",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -71825,10 +72424,11 @@ func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, argsEscaped 
 	var response ReposReplaceAllTopicsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposReplaceAllTopics",
-			OperationID:   "repos/replace-all-topics",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposReplaceAllTopics",
+			OperationSummary: "Replace all repository topics",
+			OperationID:      "repos/replace-all-topics",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -71939,10 +72539,11 @@ func (s *Server) handleReposRequestPagesBuildRequest(args [2]string, argsEscaped
 	var response *PageBuildStatus
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposRequestPagesBuild",
-			OperationID:   "repos/request-pages-build",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposRequestPagesBuild",
+			OperationSummary: "Request a GitHub Pages build",
+			OperationID:      "repos/request-pages-build",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -72054,10 +72655,11 @@ func (s *Server) handleReposSetAdminBranchProtectionRequest(args [3]string, args
 	var response *ProtectedBranchAdminEnforced
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposSetAdminBranchProtection",
-			OperationID:   "repos/set-admin-branch-protection",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposSetAdminBranchProtection",
+			OperationSummary: "Set admin branch protection",
+			OperationID:      "repos/set-admin-branch-protection",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -72198,10 +72800,11 @@ func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, args
 	var response ReposSetAppAccessRestrictionsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposSetAppAccessRestrictions",
-			OperationID:   "repos/set-app-access-restrictions",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposSetAppAccessRestrictions",
+			OperationSummary: "Set app access restrictions",
+			OperationID:      "repos/set-app-access-restrictions",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -72330,10 +72933,11 @@ func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, argsEs
 	var response ReposSetStatusCheckContextsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposSetStatusCheckContexts",
-			OperationID:   "repos/set-status-check-contexts",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposSetStatusCheckContexts",
+			OperationSummary: "Set status check contexts",
+			OperationID:      "repos/set-status-check-contexts",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -72473,10 +73077,11 @@ func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, arg
 	var response ReposSetTeamAccessRestrictionsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposSetTeamAccessRestrictions",
-			OperationID:   "repos/set-team-access-restrictions",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposSetTeamAccessRestrictions",
+			OperationSummary: "Set team access restrictions",
+			OperationID:      "repos/set-team-access-restrictions",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -72615,10 +73220,11 @@ func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, arg
 	var response ReposSetUserAccessRestrictionsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposSetUserAccessRestrictions",
-			OperationID:   "repos/set-user-access-restrictions",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposSetUserAccessRestrictions",
+			OperationSummary: "Set user access restrictions",
+			OperationID:      "repos/set-user-access-restrictions",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -72731,10 +73337,11 @@ func (s *Server) handleReposTestPushWebhookRequest(args [3]string, argsEscaped b
 	var response ReposTestPushWebhookRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposTestPushWebhook",
-			OperationID:   "repos/test-push-webhook",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ReposTestPushWebhook",
+			OperationSummary: "Test the push repository webhook",
+			OperationID:      "repos/test-push-webhook",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -72863,10 +73470,11 @@ func (s *Server) handleReposTransferRequest(args [2]string, argsEscaped bool, w 
 	var response *MinimalRepository
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposTransfer",
-			OperationID:   "repos/transfer",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposTransfer",
+			OperationSummary: "Transfer a repository",
+			OperationID:      "repos/transfer",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -72988,10 +73596,11 @@ func (s *Server) handleReposUpdateRequest(args [2]string, argsEscaped bool, w ht
 	var response ReposUpdateRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposUpdate",
-			OperationID:   "repos/update",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposUpdate",
+			OperationSummary: "Update a repository",
+			OperationID:      "repos/update",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -73119,10 +73728,11 @@ func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, argsEs
 	var response ReposUpdateBranchProtectionRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposUpdateBranchProtection",
-			OperationID:   "repos/update-branch-protection",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposUpdateBranchProtection",
+			OperationSummary: "Update branch protection",
+			OperationID:      "repos/update-branch-protection",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -73247,10 +73857,11 @@ func (s *Server) handleReposUpdateCommitCommentRequest(args [3]string, argsEscap
 	var response ReposUpdateCommitCommentRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposUpdateCommitComment",
-			OperationID:   "repos/update-commit-comment",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposUpdateCommitComment",
+			OperationSummary: "Update a commit comment",
+			OperationID:      "repos/update-commit-comment",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -73375,10 +73986,11 @@ func (s *Server) handleReposUpdateInvitationRequest(args [3]string, argsEscaped 
 	var response *RepositoryInvitation
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposUpdateInvitation",
-			OperationID:   "repos/update-invitation",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposUpdateInvitation",
+			OperationSummary: "Update a repository invitation",
+			OperationID:      "repos/update-invitation",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -73510,10 +74122,11 @@ func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args [3]str
 	var response ReposUpdatePullRequestReviewProtectionRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposUpdatePullRequestReviewProtection",
-			OperationID:   "repos/update-pull-request-review-protection",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposUpdatePullRequestReviewProtection",
+			OperationSummary: "Update pull request review protection",
+			OperationID:      "repos/update-pull-request-review-protection",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -73638,10 +74251,11 @@ func (s *Server) handleReposUpdateReleaseRequest(args [3]string, argsEscaped boo
 	var response ReposUpdateReleaseRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposUpdateRelease",
-			OperationID:   "repos/update-release",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposUpdateRelease",
+			OperationSummary: "Update a release",
+			OperationID:      "repos/update-release",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -73766,10 +74380,11 @@ func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, argsEscape
 	var response *ReleaseAsset
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposUpdateReleaseAsset",
-			OperationID:   "repos/update-release-asset",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposUpdateReleaseAsset",
+			OperationSummary: "Update a release asset",
+			OperationID:      "repos/update-release-asset",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -73900,10 +74515,11 @@ func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, a
 	var response ReposUpdateStatusCheckProtectionRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposUpdateStatusCheckProtection",
-			OperationID:   "repos/update-status-check-protection",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposUpdateStatusCheckProtection",
+			OperationSummary: "Update status check protection",
+			OperationID:      "repos/update-status-check-protection",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -74031,10 +74647,11 @@ func (s *Server) handleReposUpdateWebhookRequest(args [3]string, argsEscaped boo
 	var response ReposUpdateWebhookRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposUpdateWebhook",
-			OperationID:   "repos/update-webhook",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposUpdateWebhook",
+			OperationSummary: "Update a repository webhook",
+			OperationID:      "repos/update-webhook",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -74163,10 +74780,11 @@ func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, ar
 	var response *WebhookConfig
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposUpdateWebhookConfigForRepo",
-			OperationID:   "repos/update-webhook-config-for-repo",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposUpdateWebhookConfigForRepo",
+			OperationSummary: "Update a webhook configuration for a repository",
+			OperationID:      "repos/update-webhook-config-for-repo",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -74316,10 +74934,11 @@ func (s *Server) handleReposUploadReleaseAssetRequest(args [3]string, argsEscape
 	var response *ReleaseAsset
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ReposUploadReleaseAsset",
-			OperationID:   "repos/upload-release-asset",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "ReposUploadReleaseAsset",
+			OperationSummary: "Upload a release asset",
+			OperationID:      "repos/upload-release-asset",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -74437,10 +75056,11 @@ func (s *Server) handleScimDeleteUserFromOrgRequest(args [2]string, argsEscaped 
 	var response ScimDeleteUserFromOrgRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ScimDeleteUserFromOrg",
-			OperationID:   "scim/delete-user-from-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ScimDeleteUserFromOrg",
+			OperationSummary: "Delete a SCIM user from an organization",
+			OperationID:      "scim/delete-user-from-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -74565,10 +75185,11 @@ func (s *Server) handleSearchCodeRequest(args [0]string, argsEscaped bool, w htt
 	var response SearchCodeRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SearchCode",
-			OperationID:   "search/code",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "SearchCode",
+			OperationSummary: "Search code",
+			OperationID:      "search/code",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "q",
@@ -74696,10 +75317,11 @@ func (s *Server) handleSearchCommitsRequest(args [0]string, argsEscaped bool, w 
 	var response SearchCommitsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SearchCommits",
-			OperationID:   "search/commits",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "SearchCommits",
+			OperationSummary: "Search commits",
+			OperationID:      "search/commits",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "q",
@@ -74839,10 +75461,11 @@ func (s *Server) handleSearchIssuesAndPullRequestsRequest(args [0]string, argsEs
 	var response SearchIssuesAndPullRequestsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SearchIssuesAndPullRequests",
-			OperationID:   "search/issues-and-pull-requests",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "SearchIssuesAndPullRequests",
+			OperationSummary: "Search issues and pull requests",
+			OperationID:      "search/issues-and-pull-requests",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "q",
@@ -74969,10 +75592,11 @@ func (s *Server) handleSearchLabelsRequest(args [0]string, argsEscaped bool, w h
 	var response SearchLabelsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SearchLabels",
-			OperationID:   "search/labels",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "SearchLabels",
+			OperationSummary: "Search labels",
+			OperationID:      "search/labels",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "repository_id",
@@ -75109,10 +75733,11 @@ func (s *Server) handleSearchReposRequest(args [0]string, argsEscaped bool, w ht
 	var response SearchReposRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SearchRepos",
-			OperationID:   "search/repos",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "SearchRepos",
+			OperationSummary: "Search repositories",
+			OperationID:      "search/repos",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "q",
@@ -75243,10 +75868,11 @@ func (s *Server) handleSearchTopicsRequest(args [0]string, argsEscaped bool, w h
 	var response SearchTopicsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SearchTopics",
-			OperationID:   "search/topics",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "SearchTopics",
+			OperationSummary: "Search topics",
+			OperationID:      "search/topics",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "q",
@@ -75367,10 +75993,11 @@ func (s *Server) handleSearchUsersRequest(args [0]string, argsEscaped bool, w ht
 	var response SearchUsersRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SearchUsers",
-			OperationID:   "search/users",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "SearchUsers",
+			OperationSummary: "Search users",
+			OperationID:      "search/users",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "q",
@@ -75491,10 +76118,11 @@ func (s *Server) handleSecretScanningGetAlertRequest(args [3]string, argsEscaped
 	var response SecretScanningGetAlertRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SecretScanningGetAlert",
-			OperationID:   "secret-scanning/get-alert",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "SecretScanningGetAlert",
+			OperationSummary: "Get a secret scanning alert",
+			OperationID:      "secret-scanning/get-alert",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -75608,10 +76236,11 @@ func (s *Server) handleSecretScanningListAlertsForOrgRequest(args [1]string, arg
 	var response SecretScanningListAlertsForOrgRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SecretScanningListAlertsForOrg",
-			OperationID:   "secret-scanning/list-alerts-for-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "SecretScanningListAlertsForOrg",
+			OperationSummary: "List secret scanning alerts by organization",
+			OperationID:      "secret-scanning/list-alerts-for-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -75732,10 +76361,11 @@ func (s *Server) handleSecretScanningListAlertsForRepoRequest(args [2]string, ar
 	var response SecretScanningListAlertsForRepoRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SecretScanningListAlertsForRepo",
-			OperationID:   "secret-scanning/list-alerts-for-repo",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "SecretScanningListAlertsForRepo",
+			OperationSummary: "List secret scanning alerts for a repository",
+			OperationID:      "secret-scanning/list-alerts-for-repo",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -75875,10 +76505,11 @@ func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, argsEsca
 	var response SecretScanningUpdateAlertRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SecretScanningUpdateAlert",
-			OperationID:   "secret-scanning/update-alert",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "SecretScanningUpdateAlert",
+			OperationSummary: "Update a secret scanning alert",
+			OperationID:      "secret-scanning/update-alert",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "owner",
@@ -76009,10 +76640,11 @@ func (s *Server) handleTeamsAddMemberLegacyRequest(args [2]string, argsEscaped b
 	var response TeamsAddMemberLegacyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsAddMemberLegacy",
-			OperationID:   "teams/add-member-legacy",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsAddMemberLegacy",
+			OperationSummary: "Add team member (Legacy)",
+			OperationID:      "teams/add-member-legacy",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -76154,10 +76786,11 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]str
 	var response TeamsAddOrUpdateMembershipForUserInOrgRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsAddOrUpdateMembershipForUserInOrg",
-			OperationID:   "teams/add-or-update-membership-for-user-in-org",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "TeamsAddOrUpdateMembershipForUserInOrg",
+			OperationSummary: "Add or update team membership for a user",
+			OperationID:      "teams/add-or-update-membership-for-user-in-org",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -76308,10 +76941,11 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]st
 	var response TeamsAddOrUpdateMembershipForUserLegacyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsAddOrUpdateMembershipForUserLegacy",
-			OperationID:   "teams/add-or-update-membership-for-user-legacy",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "TeamsAddOrUpdateMembershipForUserLegacy",
+			OperationSummary: "Add or update team membership for a user (Legacy)",
+			OperationID:      "teams/add-or-update-membership-for-user-legacy",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -76436,10 +77070,11 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]st
 	var response TeamsAddOrUpdateProjectPermissionsInOrgRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsAddOrUpdateProjectPermissionsInOrg",
-			OperationID:   "teams/add-or-update-project-permissions-in-org",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "TeamsAddOrUpdateProjectPermissionsInOrg",
+			OperationSummary: "Add or update team project permissions",
+			OperationID:      "teams/add-or-update-project-permissions-in-org",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -76572,10 +77207,11 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]s
 	var response TeamsAddOrUpdateProjectPermissionsLegacyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsAddOrUpdateProjectPermissionsLegacy",
-			OperationID:   "teams/add-or-update-project-permissions-legacy",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "TeamsAddOrUpdateProjectPermissionsLegacy",
+			OperationSummary: "Add or update team project permissions (Legacy)",
+			OperationID:      "teams/add-or-update-project-permissions-legacy",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -76707,10 +77343,11 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]strin
 	var response *TeamsAddOrUpdateRepoPermissionsInOrgNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsAddOrUpdateRepoPermissionsInOrg",
-			OperationID:   "teams/add-or-update-repo-permissions-in-org",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "TeamsAddOrUpdateRepoPermissionsInOrg",
+			OperationSummary: "Add or update team repository permissions",
+			OperationID:      "teams/add-or-update-repo-permissions-in-org",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -76852,10 +77489,11 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]stri
 	var response TeamsAddOrUpdateRepoPermissionsLegacyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsAddOrUpdateRepoPermissionsLegacy",
-			OperationID:   "teams/add-or-update-repo-permissions-legacy",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "TeamsAddOrUpdateRepoPermissionsLegacy",
+			OperationSummary: "Add or update team repository permissions (Legacy)",
+			OperationID:      "teams/add-or-update-repo-permissions-legacy",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -76968,10 +77606,11 @@ func (s *Server) handleTeamsCheckPermissionsForProjectInOrgRequest(args [3]strin
 	var response TeamsCheckPermissionsForProjectInOrgRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsCheckPermissionsForProjectInOrg",
-			OperationID:   "teams/check-permissions-for-project-in-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsCheckPermissionsForProjectInOrg",
+			OperationSummary: "Check team permissions for a project",
+			OperationID:      "teams/check-permissions-for-project-in-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -77088,10 +77727,11 @@ func (s *Server) handleTeamsCheckPermissionsForProjectLegacyRequest(args [2]stri
 	var response TeamsCheckPermissionsForProjectLegacyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsCheckPermissionsForProjectLegacy",
-			OperationID:   "teams/check-permissions-for-project-legacy",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsCheckPermissionsForProjectLegacy",
+			OperationSummary: "Check team permissions for a project (Legacy)",
+			OperationID:      "teams/check-permissions-for-project-legacy",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -77205,10 +77845,11 @@ func (s *Server) handleTeamsCheckPermissionsForRepoInOrgRequest(args [4]string, 
 	var response TeamsCheckPermissionsForRepoInOrgRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsCheckPermissionsForRepoInOrg",
-			OperationID:   "teams/check-permissions-for-repo-in-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsCheckPermissionsForRepoInOrg",
+			OperationSummary: "Check team permissions for a repository",
+			OperationID:      "teams/check-permissions-for-repo-in-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -77331,10 +77972,11 @@ func (s *Server) handleTeamsCheckPermissionsForRepoLegacyRequest(args [3]string,
 	var response TeamsCheckPermissionsForRepoLegacyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsCheckPermissionsForRepoLegacy",
-			OperationID:   "teams/check-permissions-for-repo-legacy",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsCheckPermissionsForRepoLegacy",
+			OperationSummary: "Check team permissions for a repository (Legacy)",
+			OperationID:      "teams/check-permissions-for-repo-legacy",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -77466,10 +78108,11 @@ func (s *Server) handleTeamsCreateRequest(args [1]string, argsEscaped bool, w ht
 	var response TeamsCreateRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsCreate",
-			OperationID:   "teams/create",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "TeamsCreate",
+			OperationSummary: "Create a team",
+			OperationID:      "teams/create",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -77596,10 +78239,11 @@ func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, 
 	var response *TeamDiscussionComment
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsCreateDiscussionCommentInOrg",
-			OperationID:   "teams/create-discussion-comment-in-org",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "TeamsCreateDiscussionCommentInOrg",
+			OperationSummary: "Create a discussion comment",
+			OperationID:      "teams/create-discussion-comment-in-org",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -77737,10 +78381,11 @@ func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string,
 	var response *TeamDiscussionComment
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsCreateDiscussionCommentLegacy",
-			OperationID:   "teams/create-discussion-comment-legacy",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "TeamsCreateDiscussionCommentLegacy",
+			OperationSummary: "Create a discussion comment (Legacy)",
+			OperationID:      "teams/create-discussion-comment-legacy",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -77871,10 +78516,11 @@ func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, argsEsc
 	var response *TeamDiscussion
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsCreateDiscussionInOrg",
-			OperationID:   "teams/create-discussion-in-org",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "TeamsCreateDiscussionInOrg",
+			OperationSummary: "Create a discussion",
+			OperationID:      "teams/create-discussion-in-org",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -78008,10 +78654,11 @@ func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, argsEs
 	var response *TeamDiscussion
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsCreateDiscussionLegacy",
-			OperationID:   "teams/create-discussion-legacy",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "TeamsCreateDiscussionLegacy",
+			OperationSummary: "Create a discussion (Legacy)",
+			OperationID:      "teams/create-discussion-legacy",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -78135,10 +78782,11 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [
 	var response *GroupMapping
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsCreateOrUpdateIdpGroupConnectionsInOrg",
-			OperationID:   "teams/create-or-update-idp-group-connections-in-org",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "TeamsCreateOrUpdateIdpGroupConnectionsInOrg",
+			OperationSummary: "Create or update IdP group connections",
+			OperationID:      "teams/create-or-update-idp-group-connections-in-org",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -78270,10 +78918,11 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args 
 	var response TeamsCreateOrUpdateIdpGroupConnectionsLegacyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsCreateOrUpdateIdpGroupConnectionsLegacy",
-			OperationID:   "teams/create-or-update-idp-group-connections-legacy",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "TeamsCreateOrUpdateIdpGroupConnectionsLegacy",
+			OperationSummary: "Create or update IdP group connections (Legacy)",
+			OperationID:      "teams/create-or-update-idp-group-connections-legacy",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -78378,10 +79027,11 @@ func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args [4]string, 
 	var response *TeamsDeleteDiscussionCommentInOrgNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsDeleteDiscussionCommentInOrg",
-			OperationID:   "teams/delete-discussion-comment-in-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsDeleteDiscussionCommentInOrg",
+			OperationSummary: "Delete a discussion comment",
+			OperationID:      "teams/delete-discussion-comment-in-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -78501,10 +79151,11 @@ func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args [3]string,
 	var response *TeamsDeleteDiscussionCommentLegacyNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsDeleteDiscussionCommentLegacy",
-			OperationID:   "teams/delete-discussion-comment-legacy",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsDeleteDiscussionCommentLegacy",
+			OperationSummary: "Delete a discussion comment (Legacy)",
+			OperationID:      "teams/delete-discussion-comment-legacy",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -78617,10 +79268,11 @@ func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args [3]string, argsEsc
 	var response *TeamsDeleteDiscussionInOrgNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsDeleteDiscussionInOrg",
-			OperationID:   "teams/delete-discussion-in-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsDeleteDiscussionInOrg",
+			OperationSummary: "Delete a discussion",
+			OperationID:      "teams/delete-discussion-in-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -78736,10 +79388,11 @@ func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args [2]string, argsEs
 	var response *TeamsDeleteDiscussionLegacyNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsDeleteDiscussionLegacy",
-			OperationID:   "teams/delete-discussion-legacy",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsDeleteDiscussionLegacy",
+			OperationSummary: "Delete a discussion (Legacy)",
+			OperationID:      "teams/delete-discussion-legacy",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -78849,10 +79502,11 @@ func (s *Server) handleTeamsDeleteInOrgRequest(args [2]string, argsEscaped bool,
 	var response *TeamsDeleteInOrgNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsDeleteInOrg",
-			OperationID:   "teams/delete-in-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsDeleteInOrg",
+			OperationSummary: "Delete a team",
+			OperationID:      "teams/delete-in-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -78965,10 +79619,11 @@ func (s *Server) handleTeamsDeleteLegacyRequest(args [1]string, argsEscaped bool
 	var response TeamsDeleteLegacyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsDeleteLegacy",
-			OperationID:   "teams/delete-legacy",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsDeleteLegacy",
+			OperationSummary: "Delete a team (Legacy)",
+			OperationID:      "teams/delete-legacy",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -79072,10 +79727,11 @@ func (s *Server) handleTeamsGetByNameRequest(args [2]string, argsEscaped bool, w
 	var response TeamsGetByNameRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsGetByName",
-			OperationID:   "teams/get-by-name",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsGetByName",
+			OperationSummary: "Get a team by name",
+			OperationID:      "teams/get-by-name",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -79184,10 +79840,11 @@ func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args [4]string, arg
 	var response *TeamDiscussionComment
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsGetDiscussionCommentInOrg",
-			OperationID:   "teams/get-discussion-comment-in-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsGetDiscussionCommentInOrg",
+			OperationSummary: "Get a discussion comment",
+			OperationID:      "teams/get-discussion-comment-in-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -79307,10 +79964,11 @@ func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args [3]string, ar
 	var response *TeamDiscussionComment
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsGetDiscussionCommentLegacy",
-			OperationID:   "teams/get-discussion-comment-legacy",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsGetDiscussionCommentLegacy",
+			OperationSummary: "Get a discussion comment (Legacy)",
+			OperationID:      "teams/get-discussion-comment-legacy",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -79423,10 +80081,11 @@ func (s *Server) handleTeamsGetDiscussionInOrgRequest(args [3]string, argsEscape
 	var response *TeamDiscussion
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsGetDiscussionInOrg",
-			OperationID:   "teams/get-discussion-in-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsGetDiscussionInOrg",
+			OperationSummary: "Get a discussion",
+			OperationID:      "teams/get-discussion-in-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -79542,10 +80201,11 @@ func (s *Server) handleTeamsGetDiscussionLegacyRequest(args [2]string, argsEscap
 	var response *TeamDiscussion
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsGetDiscussionLegacy",
-			OperationID:   "teams/get-discussion-legacy",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsGetDiscussionLegacy",
+			OperationSummary: "Get a discussion (Legacy)",
+			OperationID:      "teams/get-discussion-legacy",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -79655,10 +80315,11 @@ func (s *Server) handleTeamsGetLegacyRequest(args [1]string, argsEscaped bool, w
 	var response TeamsGetLegacyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsGetLegacy",
-			OperationID:   "teams/get-legacy",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsGetLegacy",
+			OperationSummary: "Get a team (Legacy)",
+			OperationID:      "teams/get-legacy",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -79766,10 +80427,11 @@ func (s *Server) handleTeamsGetMemberLegacyRequest(args [2]string, argsEscaped b
 	var response TeamsGetMemberLegacyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsGetMemberLegacy",
-			OperationID:   "teams/get-member-legacy",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsGetMemberLegacy",
+			OperationSummary: "Get team member (Legacy)",
+			OperationID:      "teams/get-member-legacy",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -79882,10 +80544,11 @@ func (s *Server) handleTeamsGetMembershipForUserInOrgRequest(args [3]string, arg
 	var response TeamsGetMembershipForUserInOrgRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsGetMembershipForUserInOrg",
-			OperationID:   "teams/get-membership-for-user-in-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsGetMembershipForUserInOrg",
+			OperationSummary: "Get team membership for a user",
+			OperationID:      "teams/get-membership-for-user-in-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -80005,10 +80668,11 @@ func (s *Server) handleTeamsGetMembershipForUserLegacyRequest(args [2]string, ar
 	var response TeamsGetMembershipForUserLegacyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsGetMembershipForUserLegacy",
-			OperationID:   "teams/get-membership-for-user-legacy",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsGetMembershipForUserLegacy",
+			OperationSummary: "Get team membership for a user (Legacy)",
+			OperationID:      "teams/get-membership-for-user-legacy",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -80114,10 +80778,11 @@ func (s *Server) handleTeamsListRequest(args [1]string, argsEscaped bool, w http
 	var response TeamsListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsList",
-			OperationID:   "teams/list",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsList",
+			OperationSummary: "List teams",
+			OperationID:      "teams/list",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -80229,10 +80894,11 @@ func (s *Server) handleTeamsListChildInOrgRequest(args [2]string, argsEscaped bo
 	var response *TeamsListChildInOrgOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsListChildInOrg",
-			OperationID:   "teams/list-child-in-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsListChildInOrg",
+			OperationSummary: "List child teams",
+			OperationID:      "teams/list-child-in-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -80350,10 +81016,11 @@ func (s *Server) handleTeamsListChildLegacyRequest(args [1]string, argsEscaped b
 	var response TeamsListChildLegacyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsListChildLegacy",
-			OperationID:   "teams/list-child-legacy",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsListChildLegacy",
+			OperationSummary: "List child teams (Legacy)",
+			OperationID:      "teams/list-child-legacy",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -80466,10 +81133,11 @@ func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args [3]string, a
 	var response *TeamsListDiscussionCommentsInOrgOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsListDiscussionCommentsInOrg",
-			OperationID:   "teams/list-discussion-comments-in-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsListDiscussionCommentsInOrg",
+			OperationSummary: "List discussion comments",
+			OperationID:      "teams/list-discussion-comments-in-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -80597,10 +81265,11 @@ func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args [2]string, 
 	var response *TeamsListDiscussionCommentsLegacyOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsListDiscussionCommentsLegacy",
-			OperationID:   "teams/list-discussion-comments-legacy",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsListDiscussionCommentsLegacy",
+			OperationSummary: "List discussion comments (Legacy)",
+			OperationID:      "teams/list-discussion-comments-legacy",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -80721,10 +81390,11 @@ func (s *Server) handleTeamsListDiscussionsInOrgRequest(args [2]string, argsEsca
 	var response *TeamsListDiscussionsInOrgOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsListDiscussionsInOrg",
-			OperationID:   "teams/list-discussions-in-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsListDiscussionsInOrg",
+			OperationSummary: "List discussions",
+			OperationID:      "teams/list-discussions-in-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -80852,10 +81522,11 @@ func (s *Server) handleTeamsListDiscussionsLegacyRequest(args [1]string, argsEsc
 	var response *TeamsListDiscussionsLegacyOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsListDiscussionsLegacy",
-			OperationID:   "teams/list-discussions-legacy",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsListDiscussionsLegacy",
+			OperationSummary: "List discussions (Legacy)",
+			OperationID:      "teams/list-discussions-legacy",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -80972,10 +81643,11 @@ func (s *Server) handleTeamsListForAuthenticatedUserRequest(args [0]string, args
 	var response TeamsListForAuthenticatedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsListForAuthenticatedUser",
-			OperationID:   "teams/list-for-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsListForAuthenticatedUser",
+			OperationSummary: "List teams for the authenticated user",
+			OperationID:      "teams/list-for-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "per_page",
@@ -81089,10 +81761,11 @@ func (s *Server) handleTeamsListIdpGroupsForLegacyRequest(args [1]string, argsEs
 	var response TeamsListIdpGroupsForLegacyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsListIdpGroupsForLegacy",
-			OperationID:   "teams/list-idp-groups-for-legacy",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsListIdpGroupsForLegacy",
+			OperationSummary: "List IdP groups for a team (Legacy)",
+			OperationID:      "teams/list-idp-groups-for-legacy",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -81200,10 +81873,11 @@ func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args [1]string, argsEscap
 	var response *GroupMappingHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsListIdpGroupsForOrg",
-			OperationID:   "teams/list-idp-groups-for-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsListIdpGroupsForOrg",
+			OperationSummary: "List IdP groups for an organization",
+			OperationID:      "teams/list-idp-groups-for-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -81318,10 +81992,11 @@ func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args [2]string, argsEscape
 	var response *GroupMapping
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsListIdpGroupsInOrg",
-			OperationID:   "teams/list-idp-groups-in-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsListIdpGroupsInOrg",
+			OperationSummary: "List IdP groups for a team",
+			OperationID:      "teams/list-idp-groups-in-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -81428,10 +82103,11 @@ func (s *Server) handleTeamsListMembersInOrgRequest(args [2]string, argsEscaped 
 	var response *TeamsListMembersInOrgOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsListMembersInOrg",
-			OperationID:   "teams/list-members-in-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsListMembersInOrg",
+			OperationSummary: "List team members",
+			OperationID:      "teams/list-members-in-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -81554,10 +82230,11 @@ func (s *Server) handleTeamsListMembersLegacyRequest(args [1]string, argsEscaped
 	var response TeamsListMembersLegacyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsListMembersLegacy",
-			OperationID:   "teams/list-members-legacy",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsListMembersLegacy",
+			OperationSummary: "List team members (Legacy)",
+			OperationID:      "teams/list-members-legacy",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -81676,10 +82353,11 @@ func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args [2]string, a
 	var response *TeamsListPendingInvitationsInOrgOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsListPendingInvitationsInOrg",
-			OperationID:   "teams/list-pending-invitations-in-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsListPendingInvitationsInOrg",
+			OperationSummary: "List pending team invitations",
+			OperationID:      "teams/list-pending-invitations-in-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -81801,10 +82479,11 @@ func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args [1]string, 
 	var response *TeamsListPendingInvitationsLegacyOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsListPendingInvitationsLegacy",
-			OperationID:   "teams/list-pending-invitations-legacy",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsListPendingInvitationsLegacy",
+			OperationSummary: "List pending team invitations (Legacy)",
+			OperationID:      "teams/list-pending-invitations-legacy",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -81916,10 +82595,11 @@ func (s *Server) handleTeamsListProjectsInOrgRequest(args [2]string, argsEscaped
 	var response *TeamsListProjectsInOrgOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsListProjectsInOrg",
-			OperationID:   "teams/list-projects-in-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsListProjectsInOrg",
+			OperationSummary: "List team projects",
+			OperationID:      "teams/list-projects-in-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -82038,10 +82718,11 @@ func (s *Server) handleTeamsListProjectsLegacyRequest(args [1]string, argsEscape
 	var response TeamsListProjectsLegacyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsListProjectsLegacy",
-			OperationID:   "teams/list-projects-legacy",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsListProjectsLegacy",
+			OperationSummary: "List team projects (Legacy)",
+			OperationID:      "teams/list-projects-legacy",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -82153,10 +82834,11 @@ func (s *Server) handleTeamsListReposInOrgRequest(args [2]string, argsEscaped bo
 	var response *TeamsListReposInOrgOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsListReposInOrg",
-			OperationID:   "teams/list-repos-in-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsListReposInOrg",
+			OperationSummary: "List team repositories",
+			OperationID:      "teams/list-repos-in-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -82274,10 +82956,11 @@ func (s *Server) handleTeamsListReposLegacyRequest(args [1]string, argsEscaped b
 	var response TeamsListReposLegacyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsListReposLegacy",
-			OperationID:   "teams/list-repos-legacy",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsListReposLegacy",
+			OperationSummary: "List team repositories (Legacy)",
+			OperationID:      "teams/list-repos-legacy",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -82407,10 +83090,11 @@ func (s *Server) handleTeamsRemoveMemberLegacyRequest(args [2]string, argsEscape
 	var response TeamsRemoveMemberLegacyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsRemoveMemberLegacy",
-			OperationID:   "teams/remove-member-legacy",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsRemoveMemberLegacy",
+			OperationSummary: "Remove team member (Legacy)",
+			OperationID:      "teams/remove-member-legacy",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -82530,10 +83214,11 @@ func (s *Server) handleTeamsRemoveMembershipForUserInOrgRequest(args [3]string, 
 	var response TeamsRemoveMembershipForUserInOrgRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsRemoveMembershipForUserInOrg",
-			OperationID:   "teams/remove-membership-for-user-in-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsRemoveMembershipForUserInOrg",
+			OperationSummary: "Remove team membership for a user",
+			OperationID:      "teams/remove-membership-for-user-in-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -82660,10 +83345,11 @@ func (s *Server) handleTeamsRemoveMembershipForUserLegacyRequest(args [2]string,
 	var response TeamsRemoveMembershipForUserLegacyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsRemoveMembershipForUserLegacy",
-			OperationID:   "teams/remove-membership-for-user-legacy",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsRemoveMembershipForUserLegacy",
+			OperationSummary: "Remove team membership for a user (Legacy)",
+			OperationID:      "teams/remove-membership-for-user-legacy",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -82774,10 +83460,11 @@ func (s *Server) handleTeamsRemoveProjectInOrgRequest(args [3]string, argsEscape
 	var response *TeamsRemoveProjectInOrgNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsRemoveProjectInOrg",
-			OperationID:   "teams/remove-project-in-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsRemoveProjectInOrg",
+			OperationSummary: "Remove a project from a team",
+			OperationID:      "teams/remove-project-in-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -82895,10 +83582,11 @@ func (s *Server) handleTeamsRemoveProjectLegacyRequest(args [2]string, argsEscap
 	var response TeamsRemoveProjectLegacyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsRemoveProjectLegacy",
-			OperationID:   "teams/remove-project-legacy",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsRemoveProjectLegacy",
+			OperationSummary: "Remove a project from a team (Legacy)",
+			OperationID:      "teams/remove-project-legacy",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -83009,10 +83697,11 @@ func (s *Server) handleTeamsRemoveRepoInOrgRequest(args [4]string, argsEscaped b
 	var response *TeamsRemoveRepoInOrgNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsRemoveRepoInOrg",
-			OperationID:   "teams/remove-repo-in-org",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsRemoveRepoInOrg",
+			OperationSummary: "Remove a repository from a team",
+			OperationID:      "teams/remove-repo-in-org",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -83134,10 +83823,11 @@ func (s *Server) handleTeamsRemoveRepoLegacyRequest(args [3]string, argsEscaped 
 	var response *TeamsRemoveRepoLegacyNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsRemoveRepoLegacy",
-			OperationID:   "teams/remove-repo-legacy",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "TeamsRemoveRepoLegacy",
+			OperationSummary: "Remove a repository from a team (Legacy)",
+			OperationID:      "teams/remove-repo-legacy",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -83265,10 +83955,11 @@ func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, 
 	var response *TeamDiscussionComment
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsUpdateDiscussionCommentInOrg",
-			OperationID:   "teams/update-discussion-comment-in-org",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "TeamsUpdateDiscussionCommentInOrg",
+			OperationSummary: "Update a discussion comment",
+			OperationID:      "teams/update-discussion-comment-in-org",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -83403,10 +84094,11 @@ func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string,
 	var response *TeamDiscussionComment
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsUpdateDiscussionCommentLegacy",
-			OperationID:   "teams/update-discussion-comment-legacy",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "TeamsUpdateDiscussionCommentLegacy",
+			OperationSummary: "Update a discussion comment (Legacy)",
+			OperationID:      "teams/update-discussion-comment-legacy",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -83535,10 +84227,11 @@ func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, argsEsc
 	var response *TeamDiscussion
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsUpdateDiscussionInOrg",
-			OperationID:   "teams/update-discussion-in-org",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "TeamsUpdateDiscussionInOrg",
+			OperationSummary: "Update a discussion",
+			OperationID:      "teams/update-discussion-in-org",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -83670,10 +84363,11 @@ func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, argsEs
 	var response *TeamDiscussion
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsUpdateDiscussionLegacy",
-			OperationID:   "teams/update-discussion-legacy",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "TeamsUpdateDiscussionLegacy",
+			OperationSummary: "Update a discussion (Legacy)",
+			OperationID:      "teams/update-discussion-legacy",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -83796,10 +84490,11 @@ func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, argsEscaped bool,
 	var response *TeamFull
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsUpdateInOrg",
-			OperationID:   "teams/update-in-org",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "TeamsUpdateInOrg",
+			OperationSummary: "Update a team",
+			OperationID:      "teams/update-in-org",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "org",
@@ -83926,10 +84621,11 @@ func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, argsEscaped bool
 	var response TeamsUpdateLegacyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "TeamsUpdateLegacy",
-			OperationID:   "teams/update-legacy",
-			Body:          request,
+			Context:          ctx,
+			OperationName:    "TeamsUpdateLegacy",
+			OperationSummary: "Update a team (Legacy)",
+			OperationID:      "teams/update-legacy",
+			Body:             request,
 			Params: middleware.Parameters{
 				{
 					Name: "team_id",
@@ -84036,12 +84732,13 @@ func (s *Server) handleUsersAddEmailForAuthenticatedRequest(args [0]string, args
 	var response UsersAddEmailForAuthenticatedRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UsersAddEmailForAuthenticated",
-			OperationID:   "users/add-email-for-authenticated",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "UsersAddEmailForAuthenticated",
+			OperationSummary: "Add an email address for the authenticated user",
+			OperationID:      "users/add-email-for-authenticated",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -84136,10 +84833,11 @@ func (s *Server) handleUsersBlockRequest(args [1]string, argsEscaped bool, w htt
 	var response UsersBlockRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UsersBlock",
-			OperationID:   "users/block",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "UsersBlock",
+			OperationSummary: "Block a user",
+			OperationID:      "users/block",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "username",
@@ -84241,10 +84939,11 @@ func (s *Server) handleUsersCheckBlockedRequest(args [1]string, argsEscaped bool
 	var response UsersCheckBlockedRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UsersCheckBlocked",
-			OperationID:   "users/check-blocked",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "UsersCheckBlocked",
+			OperationSummary: "Check if a user is blocked by the authenticated user",
+			OperationID:      "users/check-blocked",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "username",
@@ -84346,10 +85045,11 @@ func (s *Server) handleUsersCheckFollowingForUserRequest(args [2]string, argsEsc
 	var response UsersCheckFollowingForUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UsersCheckFollowingForUser",
-			OperationID:   "users/check-following-for-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "UsersCheckFollowingForUser",
+			OperationSummary: "Check if a user follows another user",
+			OperationID:      "users/check-following-for-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "username",
@@ -84455,10 +85155,11 @@ func (s *Server) handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args [1]
 	var response UsersCheckPersonIsFollowedByAuthenticatedRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UsersCheckPersonIsFollowedByAuthenticated",
-			OperationID:   "users/check-person-is-followed-by-authenticated",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "UsersCheckPersonIsFollowedByAuthenticated",
+			OperationSummary: "Check if a person is followed by the authenticated user",
+			OperationID:      "users/check-person-is-followed-by-authenticated",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "username",
@@ -84567,12 +85268,13 @@ func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args [0]string, 
 	var response UsersCreateGpgKeyForAuthenticatedRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UsersCreateGpgKeyForAuthenticated",
-			OperationID:   "users/create-gpg-key-for-authenticated",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "UsersCreateGpgKeyForAuthenticated",
+			OperationSummary: "Create a GPG key for the authenticated user",
+			OperationID:      "users/create-gpg-key-for-authenticated",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -84674,12 +85376,13 @@ func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args [0]st
 	var response UsersCreatePublicSSHKeyForAuthenticatedRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UsersCreatePublicSSHKeyForAuthenticated",
-			OperationID:   "users/create-public-ssh-key-for-authenticated",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "UsersCreatePublicSSHKeyForAuthenticated",
+			OperationSummary: "Create a public SSH key for the authenticated user",
+			OperationID:      "users/create-public-ssh-key-for-authenticated",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -84779,12 +85482,13 @@ func (s *Server) handleUsersDeleteEmailForAuthenticatedRequest(args [0]string, a
 	var response UsersDeleteEmailForAuthenticatedRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UsersDeleteEmailForAuthenticated",
-			OperationID:   "users/delete-email-for-authenticated",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "UsersDeleteEmailForAuthenticated",
+			OperationSummary: "Delete an email address for the authenticated user",
+			OperationID:      "users/delete-email-for-authenticated",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -84881,10 +85585,11 @@ func (s *Server) handleUsersDeleteGpgKeyForAuthenticatedRequest(args [1]string, 
 	var response UsersDeleteGpgKeyForAuthenticatedRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UsersDeleteGpgKeyForAuthenticated",
-			OperationID:   "users/delete-gpg-key-for-authenticated",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "UsersDeleteGpgKeyForAuthenticated",
+			OperationSummary: "Delete a GPG key for the authenticated user",
+			OperationID:      "users/delete-gpg-key-for-authenticated",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "gpg_key_id",
@@ -84988,10 +85693,11 @@ func (s *Server) handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args [1]st
 	var response UsersDeletePublicSSHKeyForAuthenticatedRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UsersDeletePublicSSHKeyForAuthenticated",
-			OperationID:   "users/delete-public-ssh-key-for-authenticated",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "UsersDeletePublicSSHKeyForAuthenticated",
+			OperationSummary: "Delete a public SSH key for the authenticated user",
+			OperationID:      "users/delete-public-ssh-key-for-authenticated",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "key_id",
@@ -85097,10 +85803,11 @@ func (s *Server) handleUsersFollowRequest(args [1]string, argsEscaped bool, w ht
 	var response UsersFollowRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UsersFollow",
-			OperationID:   "users/follow",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "UsersFollow",
+			OperationSummary: "Follow a user",
+			OperationID:      "users/follow",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "username",
@@ -85191,12 +85898,13 @@ func (s *Server) handleUsersGetAuthenticatedRequest(args [0]string, argsEscaped 
 	var response UsersGetAuthenticatedRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UsersGetAuthenticated",
-			OperationID:   "users/get-authenticated",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "UsersGetAuthenticated",
+			OperationSummary: "Get the authenticated user",
+			OperationID:      "users/get-authenticated",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -85305,10 +86013,11 @@ func (s *Server) handleUsersGetByUsernameRequest(args [1]string, argsEscaped boo
 	var response UsersGetByUsernameRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UsersGetByUsername",
-			OperationID:   "users/get-by-username",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "UsersGetByUsername",
+			OperationSummary: "Get a user",
+			OperationID:      "users/get-by-username",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "username",
@@ -85419,10 +86128,11 @@ func (s *Server) handleUsersGetContextForUserRequest(args [1]string, argsEscaped
 	var response UsersGetContextForUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UsersGetContextForUser",
-			OperationID:   "users/get-context-for-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "UsersGetContextForUser",
+			OperationSummary: "Get contextual information for a user",
+			OperationID:      "users/get-context-for-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "username",
@@ -85534,10 +86244,11 @@ func (s *Server) handleUsersGetGpgKeyForAuthenticatedRequest(args [1]string, arg
 	var response UsersGetGpgKeyForAuthenticatedRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UsersGetGpgKeyForAuthenticated",
-			OperationID:   "users/get-gpg-key-for-authenticated",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "UsersGetGpgKeyForAuthenticated",
+			OperationSummary: "Get a GPG key for the authenticated user",
+			OperationID:      "users/get-gpg-key-for-authenticated",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "gpg_key_id",
@@ -85641,10 +86352,11 @@ func (s *Server) handleUsersGetPublicSSHKeyForAuthenticatedRequest(args [1]strin
 	var response UsersGetPublicSSHKeyForAuthenticatedRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UsersGetPublicSSHKeyForAuthenticated",
-			OperationID:   "users/get-public-ssh-key-for-authenticated",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "UsersGetPublicSSHKeyForAuthenticated",
+			OperationSummary: "Get a public SSH key for the authenticated user",
+			OperationID:      "users/get-public-ssh-key-for-authenticated",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "key_id",
@@ -85750,10 +86462,11 @@ func (s *Server) handleUsersListRequest(args [0]string, argsEscaped bool, w http
 	var response UsersListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UsersList",
-			OperationID:   "users/list",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "UsersList",
+			OperationSummary: "List users",
+			OperationID:      "users/list",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "since",
@@ -85845,12 +86558,13 @@ func (s *Server) handleUsersListBlockedByAuthenticatedRequest(args [0]string, ar
 	var response UsersListBlockedByAuthenticatedRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UsersListBlockedByAuthenticated",
-			OperationID:   "users/list-blocked-by-authenticated",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "UsersListBlockedByAuthenticated",
+			OperationSummary: "List users blocked by the authenticated user",
+			OperationID:      "users/list-blocked-by-authenticated",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -85946,10 +86660,11 @@ func (s *Server) handleUsersListEmailsForAuthenticatedRequest(args [0]string, ar
 	var response UsersListEmailsForAuthenticatedRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UsersListEmailsForAuthenticated",
-			OperationID:   "users/list-emails-for-authenticated",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "UsersListEmailsForAuthenticated",
+			OperationSummary: "List email addresses for the authenticated user",
+			OperationID:      "users/list-emails-for-authenticated",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "per_page",
@@ -86055,10 +86770,11 @@ func (s *Server) handleUsersListFollowedByAuthenticatedRequest(args [0]string, a
 	var response UsersListFollowedByAuthenticatedRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UsersListFollowedByAuthenticated",
-			OperationID:   "users/list-followed-by-authenticated",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "UsersListFollowedByAuthenticated",
+			OperationSummary: "List the people the authenticated user follows",
+			OperationID:      "users/list-followed-by-authenticated",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "per_page",
@@ -86164,10 +86880,11 @@ func (s *Server) handleUsersListFollowersForAuthenticatedUserRequest(args [0]str
 	var response UsersListFollowersForAuthenticatedUserRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UsersListFollowersForAuthenticatedUser",
-			OperationID:   "users/list-followers-for-authenticated-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "UsersListFollowersForAuthenticatedUser",
+			OperationSummary: "List followers of the authenticated user",
+			OperationID:      "users/list-followers-for-authenticated-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "per_page",
@@ -86273,10 +86990,11 @@ func (s *Server) handleUsersListFollowersForUserRequest(args [1]string, argsEsca
 	var response *UsersListFollowersForUserOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UsersListFollowersForUser",
-			OperationID:   "users/list-followers-for-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "UsersListFollowersForUser",
+			OperationSummary: "List followers of a user",
+			OperationID:      "users/list-followers-for-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "username",
@@ -86386,10 +87104,11 @@ func (s *Server) handleUsersListFollowingForUserRequest(args [1]string, argsEsca
 	var response *UsersListFollowingForUserOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UsersListFollowingForUser",
-			OperationID:   "users/list-following-for-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "UsersListFollowingForUser",
+			OperationSummary: "List the people a user follows",
+			OperationID:      "users/list-following-for-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "username",
@@ -86501,10 +87220,11 @@ func (s *Server) handleUsersListGpgKeysForAuthenticatedRequest(args [0]string, a
 	var response UsersListGpgKeysForAuthenticatedRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UsersListGpgKeysForAuthenticated",
-			OperationID:   "users/list-gpg-keys-for-authenticated",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "UsersListGpgKeysForAuthenticated",
+			OperationSummary: "List GPG keys for the authenticated user",
+			OperationID:      "users/list-gpg-keys-for-authenticated",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "per_page",
@@ -86610,10 +87330,11 @@ func (s *Server) handleUsersListGpgKeysForUserRequest(args [1]string, argsEscape
 	var response *UsersListGpgKeysForUserOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UsersListGpgKeysForUser",
-			OperationID:   "users/list-gpg-keys-for-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "UsersListGpgKeysForUser",
+			OperationSummary: "List GPG keys for a user",
+			OperationID:      "users/list-gpg-keys-for-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "username",
@@ -86726,10 +87447,11 @@ func (s *Server) handleUsersListPublicEmailsForAuthenticatedRequest(args [0]stri
 	var response UsersListPublicEmailsForAuthenticatedRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UsersListPublicEmailsForAuthenticated",
-			OperationID:   "users/list-public-emails-for-authenticated",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "UsersListPublicEmailsForAuthenticated",
+			OperationSummary: "List public email addresses for the authenticated user",
+			OperationID:      "users/list-public-emails-for-authenticated",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "per_page",
@@ -86835,10 +87557,11 @@ func (s *Server) handleUsersListPublicKeysForUserRequest(args [1]string, argsEsc
 	var response *UsersListPublicKeysForUserOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UsersListPublicKeysForUser",
-			OperationID:   "users/list-public-keys-for-user",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "UsersListPublicKeysForUser",
+			OperationSummary: "List public keys for a user",
+			OperationID:      "users/list-public-keys-for-user",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "username",
@@ -86950,10 +87673,11 @@ func (s *Server) handleUsersListPublicSSHKeysForAuthenticatedRequest(args [0]str
 	var response UsersListPublicSSHKeysForAuthenticatedRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UsersListPublicSSHKeysForAuthenticated",
-			OperationID:   "users/list-public-ssh-keys-for-authenticated",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "UsersListPublicSSHKeysForAuthenticated",
+			OperationSummary: "List public SSH keys for the authenticated user",
+			OperationID:      "users/list-public-ssh-keys-for-authenticated",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "per_page",
@@ -87064,12 +87788,13 @@ func (s *Server) handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(arg
 	var response UsersSetPrimaryEmailVisibilityForAuthenticatedRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UsersSetPrimaryEmailVisibilityForAuthenticated",
-			OperationID:   "users/set-primary-email-visibility-for-authenticated",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "UsersSetPrimaryEmailVisibilityForAuthenticated",
+			OperationSummary: "Set primary email visibility for the authenticated user",
+			OperationID:      "users/set-primary-email-visibility-for-authenticated",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -87164,10 +87889,11 @@ func (s *Server) handleUsersUnblockRequest(args [1]string, argsEscaped bool, w h
 	var response UsersUnblockRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UsersUnblock",
-			OperationID:   "users/unblock",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "UsersUnblock",
+			OperationSummary: "Unblock a user",
+			OperationID:      "users/unblock",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "username",
@@ -87270,10 +87996,11 @@ func (s *Server) handleUsersUnfollowRequest(args [1]string, argsEscaped bool, w 
 	var response UsersUnfollowRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UsersUnfollow",
-			OperationID:   "users/unfollow",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "UsersUnfollow",
+			OperationSummary: "Unfollow a user",
+			OperationID:      "users/unfollow",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "username",
@@ -87382,12 +88109,13 @@ func (s *Server) handleUsersUpdateAuthenticatedRequest(args [0]string, argsEscap
 	var response UsersUpdateAuthenticatedRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "UsersUpdateAuthenticated",
-			OperationID:   "users/update-authenticated",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "UsersUpdateAuthenticated",
+			OperationSummary: "Update the authenticated user",
+			OperationID:      "users/update-authenticated",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (

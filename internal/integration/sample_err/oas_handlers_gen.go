@@ -81,12 +81,13 @@ func (s *Server) handleDataCreateRequest(args [0]string, argsEscaped bool, w htt
 	var response *Data
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "DataCreate",
-			OperationID:   "dataCreate",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "DataCreate",
+			OperationSummary: "",
+			OperationID:      "dataCreate",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -176,12 +177,13 @@ func (s *Server) handleDataGetRequest(args [0]string, argsEscaped bool, w http.R
 	var response *Data
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "DataGet",
-			OperationID:   "dataGet",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "DataGet",
+			OperationSummary: "",
+			OperationID:      "dataGet",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (

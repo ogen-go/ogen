@@ -77,12 +77,13 @@ func (s *Server) handleAllRequestBodiesRequest(args [0]string, argsEscaped bool,
 	var response AllRequestBodiesOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AllRequestBodies",
-			OperationID:   "allRequestBodies",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "AllRequestBodies",
+			OperationSummary: "",
+			OperationID:      "allRequestBodies",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -178,12 +179,13 @@ func (s *Server) handleAllRequestBodiesOptionalRequest(args [0]string, argsEscap
 	var response AllRequestBodiesOptionalOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "AllRequestBodiesOptional",
-			OperationID:   "allRequestBodiesOptional",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "AllRequestBodiesOptional",
+			OperationSummary: "",
+			OperationID:      "allRequestBodiesOptional",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -279,12 +281,13 @@ func (s *Server) handleBase64RequestRequest(args [0]string, argsEscaped bool, w 
 	var response Base64RequestOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "Base64Request",
-			OperationID:   "base64Request",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "Base64Request",
+			OperationSummary: "",
+			OperationID:      "base64Request",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -380,12 +383,13 @@ func (s *Server) handleMaskContentTypeRequest(args [0]string, argsEscaped bool, 
 	var response *MaskResponse
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MaskContentType",
-			OperationID:   "maskContentType",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "MaskContentType",
+			OperationSummary: "",
+			OperationID:      "maskContentType",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -481,12 +485,13 @@ func (s *Server) handleMaskContentTypeOptionalRequest(args [0]string, argsEscape
 	var response *MaskResponse
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "MaskContentTypeOptional",
-			OperationID:   "maskContentTypeOptional",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "MaskContentTypeOptional",
+			OperationSummary: "",
+			OperationID:      "maskContentTypeOptional",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -582,12 +587,13 @@ func (s *Server) handleStreamJSONRequest(args [0]string, argsEscaped bool, w htt
 	var response float64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "StreamJSON",
-			OperationID:   "streamJSON",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "StreamJSON",
+			OperationSummary: "",
+			OperationID:      "streamJSON",
+			Body:             request,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (

@@ -62,12 +62,13 @@ func (s *Server) handleCreatePetsRequest(args [0]string, argsEscaped bool, w htt
 	var response *CreatePetsCreated
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CreatePets",
-			OperationID:   "createPets",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "CreatePets",
+			OperationSummary: "Create a pet",
+			OperationID:      "createPets",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (
@@ -173,10 +174,11 @@ func (s *Server) handleListPetsRequest(args [0]string, argsEscaped bool, w http.
 	var response *PetsHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ListPets",
-			OperationID:   "listPets",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ListPets",
+			OperationSummary: "List all pets",
+			OperationID:      "listPets",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "limit",
@@ -289,10 +291,11 @@ func (s *Server) handleShowPetByIdRequest(args [1]string, argsEscaped bool, w ht
 	var response *Pet
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ShowPetById",
-			OperationID:   "showPetById",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ShowPetById",
+			OperationSummary: "Info for a specific pet",
+			OperationID:      "showPetById",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "petId",

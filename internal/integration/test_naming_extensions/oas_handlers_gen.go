@@ -55,12 +55,13 @@ func (s *Server) handleHealthzGetRequest(args [0]string, argsEscaped bool, w htt
 	var response *Person
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "HealthzGet",
-			OperationID:   "",
-			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Context:          ctx,
+			OperationName:    "HealthzGet",
+			OperationSummary: "",
+			OperationID:      "",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
 		}
 
 		type (

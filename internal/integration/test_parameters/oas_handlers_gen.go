@@ -71,10 +71,11 @@ func (s *Server) handleComplicatedParameterNameGetRequest(args [0]string, argsEs
 	var response *ComplicatedParameterNameGetOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ComplicatedParameterNameGet",
-			OperationID:   "",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ComplicatedParameterNameGet",
+			OperationSummary: "",
+			OperationID:      "",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "=",
@@ -188,10 +189,11 @@ func (s *Server) handleContentParametersRequest(args [1]string, argsEscaped bool
 	var response *ContentParameters
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ContentParameters",
-			OperationID:   "contentParameters",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ContentParameters",
+			OperationSummary: "",
+			OperationID:      "contentParameters",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "query",
@@ -303,10 +305,11 @@ func (s *Server) handleCookieParameterRequest(args [0]string, argsEscaped bool, 
 	var response *Value
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "CookieParameter",
-			OperationID:   "cookieParameter",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "CookieParameter",
+			OperationSummary: "",
+			OperationID:      "cookieParameter",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "value",
@@ -406,10 +409,11 @@ func (s *Server) handleHeaderParameterRequest(args [0]string, argsEscaped bool, 
 	var response *Value
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "HeaderParameter",
-			OperationID:   "headerParameter",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "HeaderParameter",
+			OperationSummary: "",
+			OperationID:      "headerParameter",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "X-Value",
@@ -507,10 +511,11 @@ func (s *Server) handleObjectCookieParameterRequest(args [0]string, argsEscaped 
 	var response *OneLevelObject
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ObjectCookieParameter",
-			OperationID:   "objectCookieParameter",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ObjectCookieParameter",
+			OperationSummary: "",
+			OperationID:      "objectCookieParameter",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "value",
@@ -608,10 +613,11 @@ func (s *Server) handleObjectQueryParameterRequest(args [0]string, argsEscaped b
 	var response *ObjectQueryParameterOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "ObjectQueryParameter",
-			OperationID:   "objectQueryParameter",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "ObjectQueryParameter",
+			OperationSummary: "",
+			OperationID:      "objectQueryParameter",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "formObject",
@@ -715,10 +721,11 @@ func (s *Server) handlePathParameterRequest(args [1]string, argsEscaped bool, w 
 	var response *Value
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PathParameter",
-			OperationID:   "pathParameter",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "PathParameter",
+			OperationSummary: "",
+			OperationID:      "pathParameter",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "value",
@@ -818,10 +825,11 @@ func (s *Server) handleSameNameRequest(args [1]string, argsEscaped bool, w http.
 	var response *SameNameOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SameName",
-			OperationID:   "sameName",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "SameName",
+			OperationSummary: "parameters with different location, but with the same name",
+			OperationID:      "sameName",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "param",
@@ -925,10 +933,11 @@ func (s *Server) handleSimilarNamesRequest(args [0]string, argsEscaped bool, w h
 	var response *SimilarNamesOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "SimilarNames",
-			OperationID:   "similarNames",
-			Body:          nil,
+			Context:          ctx,
+			OperationName:    "SimilarNames",
+			OperationSummary: "parameters with different location, but with similar names",
+			OperationID:      "similarNames",
+			Body:             nil,
 			Params: middleware.Parameters{
 				{
 					Name: "x-param",
