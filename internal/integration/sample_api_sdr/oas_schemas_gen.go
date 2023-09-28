@@ -2403,13 +2403,13 @@ func (OneOfUUIDAndIntEnum1) AllValues() []OneOfUUIDAndIntEnum1 {
 }
 
 func (s OneOfUUIDAndIntEnum1) String() string {
-	switch *s {
+	switch s {
 	case OneOfUUIDAndIntEnum10:
 		return "OneOfUUIDAndIntEnum10"
 	case OneOfUUIDAndIntEnum11:
 		return "OneOfUUIDAndIntEnum11"
 	default:
-		return fmt.Sprintf("UNKNOWN<%v>", *s)
+		return fmt.Sprintf("UNKNOWN<%v>", s)
 	}
 }
 

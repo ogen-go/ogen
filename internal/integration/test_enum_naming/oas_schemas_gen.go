@@ -27,7 +27,7 @@ func (CustomNamingInt) AllValues() []CustomNamingInt {
 }
 
 func (s CustomNamingInt) String() string {
-	switch *s {
+	switch s {
 	case One:
 		return "One"
 	case Two:
@@ -35,7 +35,7 @@ func (s CustomNamingInt) String() string {
 	case Three:
 		return "Three"
 	default:
-		return fmt.Sprintf("UNKNOWN<%v>", *s)
+		return fmt.Sprintf("UNKNOWN<%v>", s)
 	}
 }
 
