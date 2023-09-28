@@ -126,8 +126,7 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 //
 // POST /nullableStrings
 func (c *Client) NullableStrings(ctx context.Context, request NilString) error {
-	res, err := c.sendNullableStrings(ctx, request)
-	_ = res
+	_, err := c.sendNullableStrings(ctx, request)
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "NullableStrings", "POST", "/nullableStrings", err)
 	}
@@ -229,8 +228,7 @@ func (c *Client) sendNullableStrings(ctx context.Context, request NilString) (re
 //
 // POST /objectsWithConflictingArrayProperty
 func (c *Client) ObjectsWithConflictingArrayProperty(ctx context.Context, request *ObjectsWithConflictingArrayPropertyReq) error {
-	res, err := c.sendObjectsWithConflictingArrayProperty(ctx, request)
-	_ = res
+	_, err := c.sendObjectsWithConflictingArrayProperty(ctx, request)
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "ObjectsWithConflictingArrayProperty", "POST", "/objectsWithConflictingArrayProperty", err)
 	}
@@ -317,8 +315,7 @@ func (c *Client) sendObjectsWithConflictingArrayProperty(ctx context.Context, re
 //
 // POST /objectsWithConflictingProperties
 func (c *Client) ObjectsWithConflictingProperties(ctx context.Context, request *ObjectsWithConflictingPropertiesReq) error {
-	res, err := c.sendObjectsWithConflictingProperties(ctx, request)
-	_ = res
+	_, err := c.sendObjectsWithConflictingProperties(ctx, request)
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "ObjectsWithConflictingProperties", "POST", "/objectsWithConflictingProperties", err)
 	}
@@ -405,8 +402,7 @@ func (c *Client) sendObjectsWithConflictingProperties(ctx context.Context, reque
 //
 // POST /referencedAllof
 func (c *Client) ReferencedAllof(ctx context.Context, request ReferencedAllofReq) error {
-	res, err := c.sendReferencedAllof(ctx, request)
-	_ = res
+	_, err := c.sendReferencedAllof(ctx, request)
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "ReferencedAllof", "POST", "/referencedAllof", err)
 	}
@@ -507,8 +503,7 @@ func (c *Client) sendReferencedAllof(ctx context.Context, request ReferencedAllo
 //
 // POST /referencedAllofOptional
 func (c *Client) ReferencedAllofOptional(ctx context.Context, request ReferencedAllofOptionalReq) error {
-	res, err := c.sendReferencedAllofOptional(ctx, request)
-	_ = res
+	_, err := c.sendReferencedAllofOptional(ctx, request)
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "ReferencedAllofOptional", "POST", "/referencedAllofOptional", err)
 	}
@@ -611,8 +606,7 @@ func (c *Client) sendReferencedAllofOptional(ctx context.Context, request Refere
 //
 // POST /simpleInteger
 func (c *Client) SimpleInteger(ctx context.Context, request int) error {
-	res, err := c.sendSimpleInteger(ctx, request)
-	_ = res
+	_, err := c.sendSimpleInteger(ctx, request)
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "SimpleInteger", "POST", "/simpleInteger", err)
 	}
@@ -708,8 +702,7 @@ func (c *Client) sendSimpleInteger(ctx context.Context, request int) (res *Simpl
 //
 // POST /simpleObjects
 func (c *Client) SimpleObjects(ctx context.Context, request *SimpleObjectsReq) error {
-	res, err := c.sendSimpleObjects(ctx, request)
-	_ = res
+	_, err := c.sendSimpleObjects(ctx, request)
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "SimpleObjects", "POST", "/simpleObjects", err)
 	}
@@ -785,8 +778,7 @@ func (c *Client) sendSimpleObjects(ctx context.Context, request *SimpleObjectsRe
 //
 // POST /stringsNotype
 func (c *Client) StringsNotype(ctx context.Context, request NilString) error {
-	res, err := c.sendStringsNotype(ctx, request)
-	_ = res
+	_, err := c.sendStringsNotype(ctx, request)
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "StringsNotype", "POST", "/stringsNotype", err)
 	}

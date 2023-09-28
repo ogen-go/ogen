@@ -85,7 +85,6 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // POST /event
 func (c *Client) EventPost(ctx context.Context, request any) (any, error) {
 	res, err := c.sendEventPost(ctx, request)
-	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "EventPost", "POST", "/event", err)
 	}
@@ -161,7 +160,6 @@ func (c *Client) sendEventPost(ctx context.Context, request any) (res any, err e
 // GET /phone
 func (c *Client) PhoneGet(ctx context.Context, request *User, params PhoneGetParams) (*User, error) {
 	res, err := c.sendPhoneGet(ctx, request, params)
-	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "PhoneGet", "GET", "/phone", err)
 	}

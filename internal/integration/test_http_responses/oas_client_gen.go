@@ -144,7 +144,6 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // GET /anyContentTypeBinaryStringSchema
 func (c *Client) AnyContentTypeBinaryStringSchema(ctx context.Context) (AnyContentTypeBinaryStringSchemaOK, error) {
 	res, err := c.sendAnyContentTypeBinaryStringSchema(ctx)
-	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "AnyContentTypeBinaryStringSchema", "GET", "/anyContentTypeBinaryStringSchema", err)
 	}
@@ -218,7 +217,6 @@ func (c *Client) sendAnyContentTypeBinaryStringSchema(ctx context.Context) (res 
 // GET /anyContentTypeBinaryStringSchemaDefault
 func (c *Client) AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (*AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, error) {
 	res, err := c.sendAnyContentTypeBinaryStringSchemaDefault(ctx)
-	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "AnyContentTypeBinaryStringSchemaDefault", "GET", "/anyContentTypeBinaryStringSchemaDefault", err)
 	}
@@ -292,7 +290,6 @@ func (c *Client) sendAnyContentTypeBinaryStringSchemaDefault(ctx context.Context
 // GET /combined
 func (c *Client) Combined(ctx context.Context, params CombinedParams) (CombinedRes, error) {
 	res, err := c.sendCombined(ctx, params)
-	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "Combined", "GET", "/combined", err)
 	}
@@ -384,7 +381,6 @@ func (c *Client) sendCombined(ctx context.Context, params CombinedParams) (res C
 // GET /headers200
 func (c *Client) Headers200(ctx context.Context) (*Headers200OK, error) {
 	res, err := c.sendHeaders200(ctx)
-	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "Headers200", "GET", "/headers200", err)
 	}
@@ -458,7 +454,6 @@ func (c *Client) sendHeaders200(ctx context.Context) (res *Headers200OK, err err
 // GET /headersCombined
 func (c *Client) HeadersCombined(ctx context.Context, params HeadersCombinedParams) (HeadersCombinedRes, error) {
 	res, err := c.sendHeadersCombined(ctx, params)
-	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "HeadersCombined", "GET", "/headersCombined", err)
 	}
@@ -550,7 +545,6 @@ func (c *Client) sendHeadersCombined(ctx context.Context, params HeadersCombined
 // GET /headersDefault
 func (c *Client) HeadersDefault(ctx context.Context) (*HeadersDefaultDef, error) {
 	res, err := c.sendHeadersDefault(ctx)
-	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "HeadersDefault", "GET", "/headersDefault", err)
 	}
@@ -624,7 +618,6 @@ func (c *Client) sendHeadersDefault(ctx context.Context) (res *HeadersDefaultDef
 // GET /headersJSON
 func (c *Client) HeadersJSON(ctx context.Context) (*HeadersJSONOK, error) {
 	res, err := c.sendHeadersJSON(ctx)
-	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "HeadersJSON", "GET", "/headersJSON", err)
 	}
@@ -698,7 +691,6 @@ func (c *Client) sendHeadersJSON(ctx context.Context) (res *HeadersJSONOK, err e
 // GET /headersPattern
 func (c *Client) HeadersPattern(ctx context.Context) (*HeadersPattern4XX, error) {
 	res, err := c.sendHeadersPattern(ctx)
-	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "HeadersPattern", "GET", "/headersPattern", err)
 	}
@@ -775,7 +767,6 @@ func (c *Client) sendHeadersPattern(ctx context.Context) (res *HeadersPattern4XX
 // GET /intersectPatternCode
 func (c *Client) IntersectPatternCode(ctx context.Context, params IntersectPatternCodeParams) (IntersectPatternCodeRes, error) {
 	res, err := c.sendIntersectPatternCode(ctx, params)
-	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "IntersectPatternCode", "GET", "/intersectPatternCode", err)
 	}
@@ -867,7 +858,6 @@ func (c *Client) sendIntersectPatternCode(ctx context.Context, params IntersectP
 // GET /multipleGenericResponses
 func (c *Client) MultipleGenericResponses(ctx context.Context) (MultipleGenericResponsesRes, error) {
 	res, err := c.sendMultipleGenericResponses(ctx)
-	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "MultipleGenericResponses", "GET", "/multipleGenericResponses", err)
 	}
@@ -941,7 +931,6 @@ func (c *Client) sendMultipleGenericResponses(ctx context.Context) (res Multiple
 // GET /octetStreamBinaryStringSchema
 func (c *Client) OctetStreamBinaryStringSchema(ctx context.Context) (OctetStreamBinaryStringSchemaOK, error) {
 	res, err := c.sendOctetStreamBinaryStringSchema(ctx)
-	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "OctetStreamBinaryStringSchema", "GET", "/octetStreamBinaryStringSchema", err)
 	}
@@ -1015,7 +1004,6 @@ func (c *Client) sendOctetStreamBinaryStringSchema(ctx context.Context) (res Oct
 // GET /octetStreamEmptySchema
 func (c *Client) OctetStreamEmptySchema(ctx context.Context) (OctetStreamEmptySchemaOK, error) {
 	res, err := c.sendOctetStreamEmptySchema(ctx)
-	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "OctetStreamEmptySchema", "GET", "/octetStreamEmptySchema", err)
 	}
@@ -1091,7 +1079,6 @@ func (c *Client) sendOctetStreamEmptySchema(ctx context.Context) (res OctetStrea
 // GET /optionalHeaders
 func (c *Client) OptionalHeaders(ctx context.Context) (*OptionalHeadersOK, error) {
 	res, err := c.sendOptionalHeaders(ctx)
-	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "OptionalHeaders", "GET", "/optionalHeaders", err)
 	}
@@ -1165,7 +1152,6 @@ func (c *Client) sendOptionalHeaders(ctx context.Context) (res *OptionalHeadersO
 // POST /streamJSON
 func (c *Client) StreamJSON(ctx context.Context, params StreamJSONParams) (StreamJSONRes, error) {
 	res, err := c.sendStreamJSON(ctx, params)
-	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "StreamJSON", "POST", "/streamJSON", err)
 	}
@@ -1257,7 +1243,6 @@ func (c *Client) sendStreamJSON(ctx context.Context, params StreamJSONParams) (r
 // GET /textPlainBinaryStringSchema
 func (c *Client) TextPlainBinaryStringSchema(ctx context.Context) (TextPlainBinaryStringSchemaOK, error) {
 	res, err := c.sendTextPlainBinaryStringSchema(ctx)
-	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "TextPlainBinaryStringSchema", "GET", "/textPlainBinaryStringSchema", err)
 	}

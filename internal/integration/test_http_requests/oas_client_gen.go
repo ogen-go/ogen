@@ -104,7 +104,6 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // POST /allRequestBodies
 func (c *Client) AllRequestBodies(ctx context.Context, request AllRequestBodiesReq) (AllRequestBodiesOK, error) {
 	res, err := c.sendAllRequestBodies(ctx, request)
-	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "AllRequestBodies", "POST", "/allRequestBodies", err)
 	}
@@ -196,7 +195,6 @@ func (c *Client) sendAllRequestBodies(ctx context.Context, request AllRequestBod
 // POST /allRequestBodiesOptional
 func (c *Client) AllRequestBodiesOptional(ctx context.Context, request AllRequestBodiesOptionalReq) (AllRequestBodiesOptionalOK, error) {
 	res, err := c.sendAllRequestBodiesOptional(ctx, request)
-	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "AllRequestBodiesOptional", "POST", "/allRequestBodiesOptional", err)
 	}
@@ -290,7 +288,6 @@ func (c *Client) sendAllRequestBodiesOptional(ctx context.Context, request AllRe
 // POST /base64Request
 func (c *Client) Base64Request(ctx context.Context, request Base64RequestReq) (Base64RequestOK, error) {
 	res, err := c.sendBase64Request(ctx, request)
-	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "Base64Request", "POST", "/base64Request", err)
 	}
@@ -367,7 +364,6 @@ func (c *Client) sendBase64Request(ctx context.Context, request Base64RequestReq
 // POST /maskContentType
 func (c *Client) MaskContentType(ctx context.Context, request *MaskContentTypeReqWithContentType) (*MaskResponse, error) {
 	res, err := c.sendMaskContentType(ctx, request)
-	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "MaskContentType", "POST", "/maskContentType", err)
 	}
@@ -444,7 +440,6 @@ func (c *Client) sendMaskContentType(ctx context.Context, request *MaskContentTy
 // POST /maskContentTypeOptional
 func (c *Client) MaskContentTypeOptional(ctx context.Context, request *MaskContentTypeOptionalReqWithContentType) (*MaskResponse, error) {
 	res, err := c.sendMaskContentTypeOptional(ctx, request)
-	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "MaskContentTypeOptional", "POST", "/maskContentTypeOptional", err)
 	}
@@ -521,7 +516,6 @@ func (c *Client) sendMaskContentTypeOptional(ctx context.Context, request *MaskC
 // POST /streamJSON
 func (c *Client) StreamJSON(ctx context.Context, request []float64) (float64, error) {
 	res, err := c.sendStreamJSON(ctx, request)
-	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "StreamJSON", "POST", "/streamJSON", err)
 	}

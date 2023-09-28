@@ -92,8 +92,7 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 //
 // GET /disjointSecurity
 func (c *Client) DisjointSecurity(ctx context.Context) error {
-	res, err := c.sendDisjointSecurity(ctx)
-	_ = res
+	_, err := c.sendDisjointSecurity(ctx)
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "DisjointSecurity", "GET", "/disjointSecurity", err)
 	}
@@ -233,8 +232,7 @@ func (c *Client) sendDisjointSecurity(ctx context.Context) (res *DisjointSecurit
 //
 // GET /intersectSecurity
 func (c *Client) IntersectSecurity(ctx context.Context) error {
-	res, err := c.sendIntersectSecurity(ctx)
-	_ = res
+	_, err := c.sendIntersectSecurity(ctx)
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "IntersectSecurity", "GET", "/intersectSecurity", err)
 	}
@@ -363,8 +361,7 @@ func (c *Client) sendIntersectSecurity(ctx context.Context) (res *IntersectSecur
 //
 // GET /optionalSecurity
 func (c *Client) OptionalSecurity(ctx context.Context) error {
-	res, err := c.sendOptionalSecurity(ctx)
-	_ = res
+	_, err := c.sendOptionalSecurity(ctx)
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "OptionalSecurity", "GET", "/optionalSecurity", err)
 	}

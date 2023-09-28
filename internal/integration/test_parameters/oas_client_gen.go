@@ -125,8 +125,7 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 //
 // GET /complicatedParameterName
 func (c *Client) ComplicatedParameterNameGet(ctx context.Context, params ComplicatedParameterNameGetParams) error {
-	res, err := c.sendComplicatedParameterNameGet(ctx, params)
-	_ = res
+	_, err := c.sendComplicatedParameterNameGet(ctx, params)
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "ComplicatedParameterNameGet", "GET", "/complicatedParameterName", err)
 	}
@@ -273,7 +272,6 @@ func (c *Client) sendComplicatedParameterNameGet(ctx context.Context, params Com
 // GET /contentParameters/{path}
 func (c *Client) ContentParameters(ctx context.Context, params ContentParametersParams) (*ContentParameters, error) {
 	res, err := c.sendContentParameters(ctx, params)
-	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "ContentParameters", "GET", "/contentParameters/{path}", err)
 	}
@@ -431,7 +429,6 @@ func (c *Client) sendContentParameters(ctx context.Context, params ContentParame
 // GET /cookieParameter
 func (c *Client) CookieParameter(ctx context.Context, params CookieParameterParams) (*Value, error) {
 	res, err := c.sendCookieParameter(ctx, params)
-	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "CookieParameter", "GET", "/cookieParameter", err)
 	}
@@ -523,7 +520,6 @@ func (c *Client) sendCookieParameter(ctx context.Context, params CookieParameter
 // GET /headerParameter
 func (c *Client) HeaderParameter(ctx context.Context, params HeaderParameterParams) (*Value, error) {
 	res, err := c.sendHeaderParameter(ctx, params)
-	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "HeaderParameter", "GET", "/headerParameter", err)
 	}
@@ -611,7 +607,6 @@ func (c *Client) sendHeaderParameter(ctx context.Context, params HeaderParameter
 // GET /objectCookieParameter
 func (c *Client) ObjectCookieParameter(ctx context.Context, params ObjectCookieParameterParams) (*OneLevelObject, error) {
 	res, err := c.sendObjectCookieParameter(ctx, params)
-	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "ObjectCookieParameter", "GET", "/objectCookieParameter", err)
 	}
@@ -701,7 +696,6 @@ func (c *Client) sendObjectCookieParameter(ctx context.Context, params ObjectCoo
 // GET /objectQueryParameter
 func (c *Client) ObjectQueryParameter(ctx context.Context, params ObjectQueryParameterParams) (*ObjectQueryParameterOK, error) {
 	res, err := c.sendObjectQueryParameter(ctx, params)
-	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "ObjectQueryParameter", "GET", "/objectQueryParameter", err)
 	}
@@ -815,7 +809,6 @@ func (c *Client) sendObjectQueryParameter(ctx context.Context, params ObjectQuer
 // GET /pathParameter/{value}
 func (c *Client) PathParameter(ctx context.Context, params PathParameterParams) (*Value, error) {
 	res, err := c.sendPathParameter(ctx, params)
-	_ = res
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "PathParameter", "GET", "/pathParameter/{value}", err)
 	}
@@ -908,8 +901,7 @@ func (c *Client) sendPathParameter(ctx context.Context, params PathParameterPara
 //
 // GET /same_name/{param}
 func (c *Client) SameName(ctx context.Context, params SameNameParams) error {
-	res, err := c.sendSameName(ctx, params)
-	_ = res
+	_, err := c.sendSameName(ctx, params)
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "SameName", "GET", "/same_name/{param}", err)
 	}
@@ -1020,8 +1012,7 @@ func (c *Client) sendSameName(ctx context.Context, params SameNameParams) (res *
 //
 // GET /similarNames
 func (c *Client) SimilarNames(ctx context.Context, params SimilarNamesParams) error {
-	res, err := c.sendSimilarNames(ctx, params)
-	_ = res
+	_, err := c.sendSimilarNames(ctx, params)
 	if err != nil && c.cfg.errorMiddleware != nil {
 		err = c.cfg.errorMiddleware(ctx, "SimilarNames", "GET", "/similarNames", err)
 	}
