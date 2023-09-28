@@ -2544,7 +2544,7 @@ func (OneOfUUIDAndIntEnum1) AllValues() []OneOfUUIDAndIntEnum1 {
 	}
 }
 
-func (s *OneOfUUIDAndIntEnum1) String() string {
+func (s OneOfUUIDAndIntEnum1) String() string {
 	switch *s {
 	case OneOfUUIDAndIntEnum10:
 		return "OneOfUUIDAndIntEnum10"

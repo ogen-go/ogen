@@ -26,7 +26,7 @@ func (CustomNamingInt) AllValues() []CustomNamingInt {
 	}
 }
 
-func (s *CustomNamingInt) String() string {
+func (s CustomNamingInt) String() string {
 	switch *s {
 	case One:
 		return "One"
