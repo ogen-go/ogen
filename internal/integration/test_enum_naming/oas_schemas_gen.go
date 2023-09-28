@@ -35,7 +35,7 @@ func (s CustomNamingInt) String() string {
 	case Three:
 		return "Three"
 	default:
-		return fmt.Sprintf("UNKNOWN<%v>", s)
+		return fmt.Sprintf("UNKNOWN<%v>", int(s))
 	}
 }
 

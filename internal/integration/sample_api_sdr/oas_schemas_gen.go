@@ -2409,7 +2409,7 @@ func (s OneOfUUIDAndIntEnum1) String() string {
 	case OneOfUUIDAndIntEnum11:
 		return "OneOfUUIDAndIntEnum11"
 	default:
-		return fmt.Sprintf("UNKNOWN<%v>", s)
+		return fmt.Sprintf("UNKNOWN<%v>", int(s))
 	}
 }
 
