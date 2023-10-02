@@ -13,6 +13,13 @@ type UnimplementedHandler struct{}
 
 var _ Handler = UnimplementedHandler{}
 
+// CustomSecurity implements customSecurity operation.
+//
+// GET /customSecurity
+func (UnimplementedHandler) CustomSecurity(ctx context.Context) error {
+	return ht.ErrNotImplemented
+}
+
 // DisjointSecurity implements disjointSecurity operation.
 //
 // GET /disjointSecurity

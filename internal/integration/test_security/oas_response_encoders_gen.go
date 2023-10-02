@@ -9,6 +9,13 @@ import (
 	"go.opentelemetry.io/otel/trace"
 )
 
+func encodeCustomSecurityResponse(response *CustomSecurityOK, w http.ResponseWriter, span trace.Span) error {
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+
+	return nil
+}
+
 func encodeDisjointSecurityResponse(response *DisjointSecurityOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))

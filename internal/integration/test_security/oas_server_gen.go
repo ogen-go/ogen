@@ -8,6 +8,10 @@ import (
 
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
+	// CustomSecurity implements customSecurity operation.
+	//
+	// GET /customSecurity
+	CustomSecurity(ctx context.Context) error
 	// DisjointSecurity implements disjointSecurity operation.
 	//
 	// GET /disjointSecurity

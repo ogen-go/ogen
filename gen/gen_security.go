@@ -113,6 +113,13 @@ func (g *Generator) generateSecurity(ctx *genctx, operationName string, spec ope
 		Type:        t,
 		Description: security.Description,
 	}
+
+	// Do not create a type for custom security.
+	if security.XOgenCustomSecurity {
+		s.Format = ir.CustomSecurityFormat
+		return s, nil
+	}
+
 	defer func() {
 		if rErr == nil {
 			if err := ctx.saveType(t); err != nil {
