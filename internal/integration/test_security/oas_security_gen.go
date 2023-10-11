@@ -20,6 +20,8 @@ type SecurityHandler interface {
 	HandleBearerToken(ctx context.Context, operationName string, t BearerToken) (context.Context, error)
 	// HandleCookieKey handles cookieKey security.
 	HandleCookieKey(ctx context.Context, operationName string, t CookieKey) (context.Context, error)
+	// HandleCustom handles custom security.
+	HandleCustom(ctx context.Context, operationName string, req *http.Request) (context.Context, error)
 	// HandleHeaderKey handles headerKey security.
 	HandleHeaderKey(ctx context.Context, operationName string, t HeaderKey) (context.Context, error)
 	// HandleQueryKey handles queryKey security.
@@ -96,6 +98,16 @@ func (s *Server) securityCookieKey(ctx context.Context, operationName string, re
 	}
 	return rctx, true, err
 }
+func (s *Server) securityCustom(ctx context.Context, operationName string, req *http.Request) (context.Context, bool, error) {
+	t := req
+	rctx, err := s.sec.HandleCustom(ctx, operationName, t)
+	if errors.Is(err, ogenerrors.ErrSkipServerSecurity) {
+		return nil, false, nil
+	} else if err != nil {
+		return nil, false, err
+	}
+	return rctx, true, err
+}
 func (s *Server) securityHeaderKey(ctx context.Context, operationName string, req *http.Request) (context.Context, bool, error) {
 	var t HeaderKey
 	const parameterName = "X-Api-Key"
@@ -138,6 +150,8 @@ type SecuritySource interface {
 	BearerToken(ctx context.Context, operationName string) (BearerToken, error)
 	// CookieKey provides cookieKey security value.
 	CookieKey(ctx context.Context, operationName string) (CookieKey, error)
+	// Custom provides custom security value.
+	Custom(ctx context.Context, operationName string, req *http.Request) error
 	// HeaderKey provides headerKey security value.
 	HeaderKey(ctx context.Context, operationName string) (HeaderKey, error)
 	// QueryKey provides queryKey security value.
@@ -169,6 +183,12 @@ func (s *Client) securityCookieKey(ctx context.Context, operationName string, re
 		Name:  "api_key",
 		Value: t.APIKey,
 	})
+	return nil
+}
+func (s *Client) securityCustom(ctx context.Context, operationName string, req *http.Request) error {
+	if err := s.sec.Custom(ctx, operationName, req); err != nil {
+		return errors.Wrap(err, "security source \"Custom\"")
+	}
 	return nil
 }
 func (s *Client) securityHeaderKey(ctx context.Context, operationName string, req *http.Request) error {

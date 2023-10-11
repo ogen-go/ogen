@@ -59,6 +59,24 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				break
 			}
 			switch elem[0] {
+			case 'c': // Prefix: "customSecurity"
+				if l := len("customSecurity"); len(elem) >= l && elem[0:l] == "customSecurity" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					// Leaf node.
+					switch r.Method {
+					case "GET":
+						s.handleCustomSecurityRequest([0]string{}, elemIsEscaped, w, r)
+					default:
+						s.notAllowed(w, r, "GET")
+					}
+
+					return
+				}
 			case 'd': // Prefix: "disjointSecurity"
 				if l := len("disjointSecurity"); len(elem) >= l && elem[0:l] == "disjointSecurity" {
 					elem = elem[l:]
@@ -205,6 +223,28 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				break
 			}
 			switch elem[0] {
+			case 'c': // Prefix: "customSecurity"
+				if l := len("customSecurity"); len(elem) >= l && elem[0:l] == "customSecurity" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					switch method {
+					case "GET":
+						// Leaf: CustomSecurity
+						r.name = "CustomSecurity"
+						r.summary = ""
+						r.operationID = "customSecurity"
+						r.pathPattern = "/customSecurity"
+						r.args = args
+						r.count = 0
+						return r, true
+					default:
+						return
+					}
+				}
 			case 'd': // Prefix: "disjointSecurity"
 				if l := len("disjointSecurity"); len(elem) >= l && elem[0:l] == "disjointSecurity" {
 					elem = elem[l:]
