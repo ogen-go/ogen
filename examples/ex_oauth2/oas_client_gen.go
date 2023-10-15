@@ -4,6 +4,7 @@ package api
 
 import (
 	"context"
+	"net/http"
 	"net/url"
 	"strings"
 	"time"
@@ -133,7 +134,7 @@ func (c *Client) AddPet(ctx context.Context, request *NewPet) (*Pet, error) {
 func (c *Client) sendAddPet(ctx context.Context, request *NewPet) (res *Pet, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("addPet"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/pets"),
 	}
 
@@ -171,7 +172,7 @@ func (c *Client) sendAddPet(ctx context.Context, request *NewPet) (res *Pet, err
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -241,7 +242,7 @@ func (c *Client) DeletePet(ctx context.Context, params DeletePetParams) error {
 func (c *Client) sendDeletePet(ctx context.Context, params DeletePetParams) (res *DeletePetNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deletePet"),
-		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPMethodKey.String(http.MethodDelete),
 		semconv.HTTPRouteKey.String("/pets/{id}"),
 	}
 
@@ -297,7 +298,7 @@ func (c *Client) sendDeletePet(ctx context.Context, params DeletePetParams) (res
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "DELETE", u)
+	r, err := ht.NewRequest(ctx, http.MethodDelete, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -364,7 +365,7 @@ func (c *Client) FindPetByID(ctx context.Context, params FindPetByIDParams) (*Pe
 func (c *Client) sendFindPetByID(ctx context.Context, params FindPetByIDParams) (res *Pet, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("find pet by id"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/pets/{id}"),
 	}
 
@@ -420,7 +421,7 @@ func (c *Client) sendFindPetByID(ctx context.Context, params FindPetByIDParams) 
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -505,7 +506,7 @@ func (c *Client) FindPets(ctx context.Context, params FindPetsParams) ([]Pet, er
 func (c *Client) sendFindPets(ctx context.Context, params FindPetsParams) (res []Pet, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("findPets"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/pets"),
 	}
 
@@ -587,7 +588,7 @@ func (c *Client) sendFindPets(ctx context.Context, params FindPetsParams) (res [
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}

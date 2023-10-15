@@ -4,6 +4,7 @@ package api
 
 import (
 	"context"
+	"net/http"
 	"net/url"
 	"strings"
 	"time"
@@ -149,7 +150,7 @@ func (c *Client) AnyContentTypeBinaryStringSchema(ctx context.Context) (AnyConte
 func (c *Client) sendAnyContentTypeBinaryStringSchema(ctx context.Context) (res AnyContentTypeBinaryStringSchemaOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("anyContentTypeBinaryStringSchema"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/anyContentTypeBinaryStringSchema"),
 	}
 
@@ -187,7 +188,7 @@ func (c *Client) sendAnyContentTypeBinaryStringSchema(ctx context.Context) (res 
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -219,7 +220,7 @@ func (c *Client) AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (*
 func (c *Client) sendAnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (res *AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("anyContentTypeBinaryStringSchemaDefault"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/anyContentTypeBinaryStringSchemaDefault"),
 	}
 
@@ -257,7 +258,7 @@ func (c *Client) sendAnyContentTypeBinaryStringSchemaDefault(ctx context.Context
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -289,7 +290,7 @@ func (c *Client) Combined(ctx context.Context, params CombinedParams) (CombinedR
 func (c *Client) sendCombined(ctx context.Context, params CombinedParams) (res CombinedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("combined"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/combined"),
 	}
 
@@ -345,7 +346,7 @@ func (c *Client) sendCombined(ctx context.Context, params CombinedParams) (res C
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -377,7 +378,7 @@ func (c *Client) Headers200(ctx context.Context) (*Headers200OK, error) {
 func (c *Client) sendHeaders200(ctx context.Context) (res *Headers200OK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headers200"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/headers200"),
 	}
 
@@ -415,7 +416,7 @@ func (c *Client) sendHeaders200(ctx context.Context) (res *Headers200OK, err err
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -447,7 +448,7 @@ func (c *Client) HeadersCombined(ctx context.Context, params HeadersCombinedPara
 func (c *Client) sendHeadersCombined(ctx context.Context, params HeadersCombinedParams) (res HeadersCombinedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersCombined"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/headersCombined"),
 	}
 
@@ -503,7 +504,7 @@ func (c *Client) sendHeadersCombined(ctx context.Context, params HeadersCombined
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -535,7 +536,7 @@ func (c *Client) HeadersDefault(ctx context.Context) (*HeadersDefaultDef, error)
 func (c *Client) sendHeadersDefault(ctx context.Context) (res *HeadersDefaultDef, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersDefault"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/headersDefault"),
 	}
 
@@ -573,7 +574,7 @@ func (c *Client) sendHeadersDefault(ctx context.Context) (res *HeadersDefaultDef
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -605,7 +606,7 @@ func (c *Client) HeadersJSON(ctx context.Context) (*HeadersJSONOK, error) {
 func (c *Client) sendHeadersJSON(ctx context.Context) (res *HeadersJSONOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersJSON"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/headersJSON"),
 	}
 
@@ -643,7 +644,7 @@ func (c *Client) sendHeadersJSON(ctx context.Context) (res *HeadersJSONOK, err e
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -675,7 +676,7 @@ func (c *Client) HeadersPattern(ctx context.Context) (*HeadersPattern4XX, error)
 func (c *Client) sendHeadersPattern(ctx context.Context) (res *HeadersPattern4XX, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersPattern"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/headersPattern"),
 	}
 
@@ -713,7 +714,7 @@ func (c *Client) sendHeadersPattern(ctx context.Context) (res *HeadersPattern4XX
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -748,7 +749,7 @@ func (c *Client) IntersectPatternCode(ctx context.Context, params IntersectPatte
 func (c *Client) sendIntersectPatternCode(ctx context.Context, params IntersectPatternCodeParams) (res IntersectPatternCodeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("intersectPatternCode"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/intersectPatternCode"),
 	}
 
@@ -804,7 +805,7 @@ func (c *Client) sendIntersectPatternCode(ctx context.Context, params IntersectP
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -836,7 +837,7 @@ func (c *Client) MultipleGenericResponses(ctx context.Context) (MultipleGenericR
 func (c *Client) sendMultipleGenericResponses(ctx context.Context) (res MultipleGenericResponsesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("multipleGenericResponses"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/multipleGenericResponses"),
 	}
 
@@ -874,7 +875,7 @@ func (c *Client) sendMultipleGenericResponses(ctx context.Context) (res Multiple
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -906,7 +907,7 @@ func (c *Client) OctetStreamBinaryStringSchema(ctx context.Context) (OctetStream
 func (c *Client) sendOctetStreamBinaryStringSchema(ctx context.Context) (res OctetStreamBinaryStringSchemaOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("octetStreamBinaryStringSchema"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/octetStreamBinaryStringSchema"),
 	}
 
@@ -944,7 +945,7 @@ func (c *Client) sendOctetStreamBinaryStringSchema(ctx context.Context) (res Oct
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -976,7 +977,7 @@ func (c *Client) OctetStreamEmptySchema(ctx context.Context) (OctetStreamEmptySc
 func (c *Client) sendOctetStreamEmptySchema(ctx context.Context) (res OctetStreamEmptySchemaOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("octetStreamEmptySchema"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/octetStreamEmptySchema"),
 	}
 
@@ -1014,7 +1015,7 @@ func (c *Client) sendOctetStreamEmptySchema(ctx context.Context) (res OctetStrea
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -1048,7 +1049,7 @@ func (c *Client) OptionalHeaders(ctx context.Context) (*OptionalHeadersOK, error
 func (c *Client) sendOptionalHeaders(ctx context.Context) (res *OptionalHeadersOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("optionalHeaders"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/optionalHeaders"),
 	}
 
@@ -1086,7 +1087,7 @@ func (c *Client) sendOptionalHeaders(ctx context.Context) (res *OptionalHeadersO
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -1118,7 +1119,7 @@ func (c *Client) StreamJSON(ctx context.Context, params StreamJSONParams) (Strea
 func (c *Client) sendStreamJSON(ctx context.Context, params StreamJSONParams) (res StreamJSONRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("streamJSON"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/streamJSON"),
 	}
 
@@ -1174,7 +1175,7 @@ func (c *Client) sendStreamJSON(ctx context.Context, params StreamJSONParams) (r
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -1206,7 +1207,7 @@ func (c *Client) TextPlainBinaryStringSchema(ctx context.Context) (TextPlainBina
 func (c *Client) sendTextPlainBinaryStringSchema(ctx context.Context) (res TextPlainBinaryStringSchemaOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("textPlainBinaryStringSchema"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/textPlainBinaryStringSchema"),
 	}
 
@@ -1244,7 +1245,7 @@ func (c *Client) sendTextPlainBinaryStringSchema(ctx context.Context) (res TextP
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}

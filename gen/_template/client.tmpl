@@ -145,7 +145,7 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 		{{ $attr.String }},
 		{{- end }}
 		{{- if not $op.WebhookInfo }}
-		semconv.HTTPMethodKey.String({{ upper $op.Spec.HTTPMethod | quote }}),
+		semconv.HTTPMethodKey.String({{ httpMethod $op.Spec.HTTPMethod }}),
 		semconv.HTTPRouteKey.String({{ quote $op.Spec.Path }}),
 		{{- end }}
 	}
@@ -233,7 +233,7 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 	{{- end }}
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, {{ $op.Spec.HTTPMethod | upper | quote }}, u)
+	r, err := ht.NewRequest(ctx, {{ httpMethod $op.Spec.HTTPMethod }}, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}

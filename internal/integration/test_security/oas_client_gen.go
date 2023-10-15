@@ -4,6 +4,7 @@ package api
 
 import (
 	"context"
+	"net/http"
 	"net/url"
 	"strings"
 	"time"
@@ -102,7 +103,7 @@ func (c *Client) CustomSecurity(ctx context.Context) error {
 func (c *Client) sendCustomSecurity(ctx context.Context) (res *CustomSecurityOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("customSecurity"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/customSecurity"),
 	}
 
@@ -140,7 +141,7 @@ func (c *Client) sendCustomSecurity(ctx context.Context) (res *CustomSecurityOK,
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -205,7 +206,7 @@ func (c *Client) DisjointSecurity(ctx context.Context) error {
 func (c *Client) sendDisjointSecurity(ctx context.Context) (res *DisjointSecurityOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("disjointSecurity"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/disjointSecurity"),
 	}
 
@@ -243,7 +244,7 @@ func (c *Client) sendDisjointSecurity(ctx context.Context) (res *DisjointSecurit
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -342,7 +343,7 @@ func (c *Client) IntersectSecurity(ctx context.Context) error {
 func (c *Client) sendIntersectSecurity(ctx context.Context) (res *IntersectSecurityOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("intersectSecurity"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/intersectSecurity"),
 	}
 
@@ -380,7 +381,7 @@ func (c *Client) sendIntersectSecurity(ctx context.Context) (res *IntersectSecur
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -468,7 +469,7 @@ func (c *Client) OptionalSecurity(ctx context.Context) error {
 func (c *Client) sendOptionalSecurity(ctx context.Context) (res *OptionalSecurityOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("optionalSecurity"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/optionalSecurity"),
 	}
 
@@ -506,7 +507,7 @@ func (c *Client) sendOptionalSecurity(ctx context.Context) (res *OptionalSecurit
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}

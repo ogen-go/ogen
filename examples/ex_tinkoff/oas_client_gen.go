@@ -4,6 +4,7 @@ package api
 
 import (
 	"context"
+	"net/http"
 	"net/url"
 	"strings"
 	"time"
@@ -213,7 +214,7 @@ func (c *Client) MarketBondsGet(ctx context.Context) (MarketBondsGetRes, error) 
 
 func (c *Client) sendMarketBondsGet(ctx context.Context) (res MarketBondsGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/market/bonds"),
 	}
 
@@ -251,7 +252,7 @@ func (c *Client) sendMarketBondsGet(ctx context.Context) (res MarketBondsGetRes,
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -317,7 +318,7 @@ func (c *Client) MarketCandlesGet(ctx context.Context, params MarketCandlesGetPa
 
 func (c *Client) sendMarketCandlesGet(ctx context.Context, params MarketCandlesGetParams) (res MarketCandlesGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/market/candles"),
 	}
 
@@ -415,7 +416,7 @@ func (c *Client) sendMarketCandlesGet(ctx context.Context, params MarketCandlesG
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -481,7 +482,7 @@ func (c *Client) MarketCurrenciesGet(ctx context.Context) (MarketCurrenciesGetRe
 
 func (c *Client) sendMarketCurrenciesGet(ctx context.Context) (res MarketCurrenciesGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/market/currencies"),
 	}
 
@@ -519,7 +520,7 @@ func (c *Client) sendMarketCurrenciesGet(ctx context.Context) (res MarketCurrenc
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -585,7 +586,7 @@ func (c *Client) MarketEtfsGet(ctx context.Context) (MarketEtfsGetRes, error) {
 
 func (c *Client) sendMarketEtfsGet(ctx context.Context) (res MarketEtfsGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/market/etfs"),
 	}
 
@@ -623,7 +624,7 @@ func (c *Client) sendMarketEtfsGet(ctx context.Context) (res MarketEtfsGetRes, e
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -689,7 +690,7 @@ func (c *Client) MarketOrderbookGet(ctx context.Context, params MarketOrderbookG
 
 func (c *Client) sendMarketOrderbookGet(ctx context.Context, params MarketOrderbookGetParams) (res MarketOrderbookGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/market/orderbook"),
 	}
 
@@ -759,7 +760,7 @@ func (c *Client) sendMarketOrderbookGet(ctx context.Context, params MarketOrderb
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -825,7 +826,7 @@ func (c *Client) MarketSearchByFigiGet(ctx context.Context, params MarketSearchB
 
 func (c *Client) sendMarketSearchByFigiGet(ctx context.Context, params MarketSearchByFigiGetParams) (res MarketSearchByFigiGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/market/search/by-figi"),
 	}
 
@@ -881,7 +882,7 @@ func (c *Client) sendMarketSearchByFigiGet(ctx context.Context, params MarketSea
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -947,7 +948,7 @@ func (c *Client) MarketSearchByTickerGet(ctx context.Context, params MarketSearc
 
 func (c *Client) sendMarketSearchByTickerGet(ctx context.Context, params MarketSearchByTickerGetParams) (res MarketSearchByTickerGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/market/search/by-ticker"),
 	}
 
@@ -1003,7 +1004,7 @@ func (c *Client) sendMarketSearchByTickerGet(ctx context.Context, params MarketS
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -1069,7 +1070,7 @@ func (c *Client) MarketStocksGet(ctx context.Context) (MarketStocksGetRes, error
 
 func (c *Client) sendMarketStocksGet(ctx context.Context) (res MarketStocksGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/market/stocks"),
 	}
 
@@ -1107,7 +1108,7 @@ func (c *Client) sendMarketStocksGet(ctx context.Context) (res MarketStocksGetRe
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -1173,7 +1174,7 @@ func (c *Client) OperationsGet(ctx context.Context, params OperationsGetParams) 
 
 func (c *Client) sendOperationsGet(ctx context.Context, params OperationsGetParams) (res OperationsGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/operations"),
 	}
 
@@ -1277,7 +1278,7 @@ func (c *Client) sendOperationsGet(ctx context.Context, params OperationsGetPara
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -1343,7 +1344,7 @@ func (c *Client) OrdersCancelPost(ctx context.Context, params OrdersCancelPostPa
 
 func (c *Client) sendOrdersCancelPost(ctx context.Context, params OrdersCancelPostParams) (res OrdersCancelPostRes, err error) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/orders/cancel"),
 	}
 
@@ -1416,7 +1417,7 @@ func (c *Client) sendOrdersCancelPost(ctx context.Context, params OrdersCancelPo
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -1482,7 +1483,7 @@ func (c *Client) OrdersGet(ctx context.Context, params OrdersGetParams) (OrdersG
 
 func (c *Client) sendOrdersGet(ctx context.Context, params OrdersGetParams) (res OrdersGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/orders"),
 	}
 
@@ -1541,7 +1542,7 @@ func (c *Client) sendOrdersGet(ctx context.Context, params OrdersGetParams) (res
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -1607,7 +1608,7 @@ func (c *Client) OrdersLimitOrderPost(ctx context.Context, request *LimitOrderRe
 
 func (c *Client) sendOrdersLimitOrderPost(ctx context.Context, request *LimitOrderRequest, params OrdersLimitOrderPostParams) (res OrdersLimitOrderPostRes, err error) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/orders/limit-order"),
 	}
 	// Validate request before sending.
@@ -1689,7 +1690,7 @@ func (c *Client) sendOrdersLimitOrderPost(ctx context.Context, request *LimitOrd
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -1758,7 +1759,7 @@ func (c *Client) OrdersMarketOrderPost(ctx context.Context, request *MarketOrder
 
 func (c *Client) sendOrdersMarketOrderPost(ctx context.Context, request *MarketOrderRequest, params OrdersMarketOrderPostParams) (res OrdersMarketOrderPostRes, err error) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/orders/market-order"),
 	}
 	// Validate request before sending.
@@ -1840,7 +1841,7 @@ func (c *Client) sendOrdersMarketOrderPost(ctx context.Context, request *MarketO
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -1909,7 +1910,7 @@ func (c *Client) PortfolioCurrenciesGet(ctx context.Context, params PortfolioCur
 
 func (c *Client) sendPortfolioCurrenciesGet(ctx context.Context, params PortfolioCurrenciesGetParams) (res PortfolioCurrenciesGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/portfolio/currencies"),
 	}
 
@@ -1968,7 +1969,7 @@ func (c *Client) sendPortfolioCurrenciesGet(ctx context.Context, params Portfoli
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -2034,7 +2035,7 @@ func (c *Client) PortfolioGet(ctx context.Context, params PortfolioGetParams) (P
 
 func (c *Client) sendPortfolioGet(ctx context.Context, params PortfolioGetParams) (res PortfolioGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/portfolio"),
 	}
 
@@ -2093,7 +2094,7 @@ func (c *Client) sendPortfolioGet(ctx context.Context, params PortfolioGetParams
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -2159,7 +2160,7 @@ func (c *Client) SandboxClearPost(ctx context.Context, params SandboxClearPostPa
 
 func (c *Client) sendSandboxClearPost(ctx context.Context, params SandboxClearPostParams) (res SandboxClearPostRes, err error) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/sandbox/clear"),
 	}
 
@@ -2218,7 +2219,7 @@ func (c *Client) sendSandboxClearPost(ctx context.Context, params SandboxClearPo
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -2284,7 +2285,7 @@ func (c *Client) SandboxCurrenciesBalancePost(ctx context.Context, request *Sand
 
 func (c *Client) sendSandboxCurrenciesBalancePost(ctx context.Context, request *SandboxSetCurrencyBalanceRequest, params SandboxCurrenciesBalancePostParams) (res SandboxCurrenciesBalancePostRes, err error) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/sandbox/currencies/balance"),
 	}
 	// Validate request before sending.
@@ -2352,7 +2353,7 @@ func (c *Client) sendSandboxCurrenciesBalancePost(ctx context.Context, request *
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -2421,7 +2422,7 @@ func (c *Client) SandboxPositionsBalancePost(ctx context.Context, request *Sandb
 
 func (c *Client) sendSandboxPositionsBalancePost(ctx context.Context, request *SandboxSetPositionBalanceRequest, params SandboxPositionsBalancePostParams) (res SandboxPositionsBalancePostRes, err error) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/sandbox/positions/balance"),
 	}
 	// Validate request before sending.
@@ -2489,7 +2490,7 @@ func (c *Client) sendSandboxPositionsBalancePost(ctx context.Context, request *S
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -2558,7 +2559,7 @@ func (c *Client) SandboxRegisterPost(ctx context.Context, request OptSandboxRegi
 
 func (c *Client) sendSandboxRegisterPost(ctx context.Context, request OptSandboxRegisterRequest) (res SandboxRegisterPostRes, err error) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/sandbox/register"),
 	}
 	// Validate request before sending.
@@ -2612,7 +2613,7 @@ func (c *Client) sendSandboxRegisterPost(ctx context.Context, request OptSandbox
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -2681,7 +2682,7 @@ func (c *Client) SandboxRemovePost(ctx context.Context, params SandboxRemovePost
 
 func (c *Client) sendSandboxRemovePost(ctx context.Context, params SandboxRemovePostParams) (res SandboxRemovePostRes, err error) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/sandbox/remove"),
 	}
 
@@ -2740,7 +2741,7 @@ func (c *Client) sendSandboxRemovePost(ctx context.Context, params SandboxRemove
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -2806,7 +2807,7 @@ func (c *Client) UserAccountsGet(ctx context.Context) (UserAccountsGetRes, error
 
 func (c *Client) sendUserAccountsGet(ctx context.Context) (res UserAccountsGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/user/accounts"),
 	}
 
@@ -2844,7 +2845,7 @@ func (c *Client) sendUserAccountsGet(ctx context.Context) (res UserAccountsGetRe
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}

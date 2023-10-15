@@ -4,6 +4,7 @@ package api
 
 import (
 	"context"
+	"net/http"
 	"net/url"
 	"strings"
 	"time"
@@ -132,7 +133,7 @@ func (c *Client) NullableStrings(ctx context.Context, request NilString) error {
 func (c *Client) sendNullableStrings(ctx context.Context, request NilString) (res *NullableStringsOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("nullableStrings"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/nullableStrings"),
 	}
 	// Validate request before sending.
@@ -194,7 +195,7 @@ func (c *Client) sendNullableStrings(ctx context.Context, request NilString) (re
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -231,7 +232,7 @@ func (c *Client) ObjectsWithConflictingArrayProperty(ctx context.Context, reques
 func (c *Client) sendObjectsWithConflictingArrayProperty(ctx context.Context, request *ObjectsWithConflictingArrayPropertyReq) (res *ObjectsWithConflictingArrayPropertyOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("objectsWithConflictingArrayProperty"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/objectsWithConflictingArrayProperty"),
 	}
 	// Validate request before sending.
@@ -278,7 +279,7 @@ func (c *Client) sendObjectsWithConflictingArrayProperty(ctx context.Context, re
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -315,7 +316,7 @@ func (c *Client) ObjectsWithConflictingProperties(ctx context.Context, request *
 func (c *Client) sendObjectsWithConflictingProperties(ctx context.Context, request *ObjectsWithConflictingPropertiesReq) (res *ObjectsWithConflictingPropertiesOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("objectsWithConflictingProperties"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/objectsWithConflictingProperties"),
 	}
 	// Validate request before sending.
@@ -362,7 +363,7 @@ func (c *Client) sendObjectsWithConflictingProperties(ctx context.Context, reque
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -399,7 +400,7 @@ func (c *Client) ReferencedAllof(ctx context.Context, request ReferencedAllofReq
 func (c *Client) sendReferencedAllof(ctx context.Context, request ReferencedAllofReq) (res *ReferencedAllofOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("referencedAllof"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/referencedAllof"),
 	}
 	// Validate request before sending.
@@ -460,7 +461,7 @@ func (c *Client) sendReferencedAllof(ctx context.Context, request ReferencedAllo
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -497,7 +498,7 @@ func (c *Client) ReferencedAllofOptional(ctx context.Context, request Referenced
 func (c *Client) sendReferencedAllofOptional(ctx context.Context, request ReferencedAllofOptionalReq) (res *ReferencedAllofOptionalOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("referencedAllofOptional"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/referencedAllofOptional"),
 	}
 	// Validate request before sending.
@@ -560,7 +561,7 @@ func (c *Client) sendReferencedAllofOptional(ctx context.Context, request Refere
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -597,7 +598,7 @@ func (c *Client) SimpleInteger(ctx context.Context, request int) error {
 func (c *Client) sendSimpleInteger(ctx context.Context, request int) (res *SimpleIntegerOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("simpleInteger"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/simpleInteger"),
 	}
 	// Validate request before sending.
@@ -653,7 +654,7 @@ func (c *Client) sendSimpleInteger(ctx context.Context, request int) (res *Simpl
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -690,7 +691,7 @@ func (c *Client) SimpleObjects(ctx context.Context, request *SimpleObjectsReq) e
 func (c *Client) sendSimpleObjects(ctx context.Context, request *SimpleObjectsReq) (res *SimpleObjectsOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("simpleObjects"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/simpleObjects"),
 	}
 
@@ -728,7 +729,7 @@ func (c *Client) sendSimpleObjects(ctx context.Context, request *SimpleObjectsRe
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -763,7 +764,7 @@ func (c *Client) StringsNotype(ctx context.Context, request NilString) error {
 func (c *Client) sendStringsNotype(ctx context.Context, request NilString) (res *StringsNotypeOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("stringsNotype"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/stringsNotype"),
 	}
 	// Validate request before sending.
@@ -825,7 +826,7 @@ func (c *Client) sendStringsNotype(ctx context.Context, request NilString) (res 
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}

@@ -4,6 +4,7 @@ package api
 
 import (
 	"context"
+	"net/http"
 	"net/url"
 	"strings"
 	"time"
@@ -260,7 +261,7 @@ func (c *Client) CreateSnapshot(ctx context.Context, request *SnapshotCreatePara
 func (c *Client) sendCreateSnapshot(ctx context.Context, request *SnapshotCreateParams) (res CreateSnapshotRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createSnapshot"),
-		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPMethodKey.String(http.MethodPut),
 		semconv.HTTPRouteKey.String("/snapshot/create"),
 	}
 	// Validate request before sending.
@@ -307,7 +308,7 @@ func (c *Client) sendCreateSnapshot(ctx context.Context, request *SnapshotCreate
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "PUT", u)
+	r, err := ht.NewRequest(ctx, http.MethodPut, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -344,7 +345,7 @@ func (c *Client) CreateSyncAction(ctx context.Context, request *InstanceActionIn
 func (c *Client) sendCreateSyncAction(ctx context.Context, request *InstanceActionInfo) (res CreateSyncActionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createSyncAction"),
-		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPMethodKey.String(http.MethodPut),
 		semconv.HTTPRouteKey.String("/actions"),
 	}
 	// Validate request before sending.
@@ -391,7 +392,7 @@ func (c *Client) sendCreateSyncAction(ctx context.Context, request *InstanceActi
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "PUT", u)
+	r, err := ht.NewRequest(ctx, http.MethodPut, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -428,7 +429,7 @@ func (c *Client) DescribeBalloonConfig(ctx context.Context) (DescribeBalloonConf
 func (c *Client) sendDescribeBalloonConfig(ctx context.Context) (res DescribeBalloonConfigRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("describeBalloonConfig"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/balloon"),
 	}
 
@@ -466,7 +467,7 @@ func (c *Client) sendDescribeBalloonConfig(ctx context.Context) (res DescribeBal
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -500,7 +501,7 @@ func (c *Client) DescribeBalloonStats(ctx context.Context) (DescribeBalloonStats
 func (c *Client) sendDescribeBalloonStats(ctx context.Context) (res DescribeBalloonStatsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("describeBalloonStats"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/balloon/statistics"),
 	}
 
@@ -538,7 +539,7 @@ func (c *Client) sendDescribeBalloonStats(ctx context.Context) (res DescribeBall
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -572,7 +573,7 @@ func (c *Client) DescribeInstance(ctx context.Context) (*InstanceInfo, error) {
 func (c *Client) sendDescribeInstance(ctx context.Context) (res *InstanceInfo, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("describeInstance"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/"),
 	}
 
@@ -610,7 +611,7 @@ func (c *Client) sendDescribeInstance(ctx context.Context) (res *InstanceInfo, e
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -644,7 +645,7 @@ func (c *Client) GetExportVmConfig(ctx context.Context) (*FullVmConfiguration, e
 func (c *Client) sendGetExportVmConfig(ctx context.Context) (res *FullVmConfiguration, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getExportVmConfig"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/vm/config"),
 	}
 
@@ -682,7 +683,7 @@ func (c *Client) sendGetExportVmConfig(ctx context.Context) (res *FullVmConfigur
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -718,7 +719,7 @@ func (c *Client) GetMachineConfiguration(ctx context.Context) (*MachineConfigura
 func (c *Client) sendGetMachineConfiguration(ctx context.Context) (res *MachineConfiguration, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getMachineConfiguration"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/machine-config"),
 	}
 
@@ -756,7 +757,7 @@ func (c *Client) sendGetMachineConfiguration(ctx context.Context) (res *MachineC
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -791,7 +792,7 @@ func (c *Client) LoadSnapshot(ctx context.Context, request *SnapshotLoadParams) 
 func (c *Client) sendLoadSnapshot(ctx context.Context, request *SnapshotLoadParams) (res LoadSnapshotRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("loadSnapshot"),
-		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPMethodKey.String(http.MethodPut),
 		semconv.HTTPRouteKey.String("/snapshot/load"),
 	}
 
@@ -829,7 +830,7 @@ func (c *Client) sendLoadSnapshot(ctx context.Context, request *SnapshotLoadPara
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "PUT", u)
+	r, err := ht.NewRequest(ctx, http.MethodPut, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -865,7 +866,7 @@ func (c *Client) MmdsConfigPut(ctx context.Context, request *MmdsConfig) (MmdsCo
 
 func (c *Client) sendMmdsConfigPut(ctx context.Context, request *MmdsConfig) (res MmdsConfigPutRes, err error) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPMethodKey.String(http.MethodPut),
 		semconv.HTTPRouteKey.String("/mmds/config"),
 	}
 
@@ -903,7 +904,7 @@ func (c *Client) sendMmdsConfigPut(ctx context.Context, request *MmdsConfig) (re
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "PUT", u)
+	r, err := ht.NewRequest(ctx, http.MethodPut, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -939,7 +940,7 @@ func (c *Client) MmdsGet(ctx context.Context) (MmdsGetRes, error) {
 
 func (c *Client) sendMmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/mmds"),
 	}
 
@@ -977,7 +978,7 @@ func (c *Client) sendMmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -1010,7 +1011,7 @@ func (c *Client) MmdsPatch(ctx context.Context, request *MmdsPatchReq) (MmdsPatc
 
 func (c *Client) sendMmdsPatch(ctx context.Context, request *MmdsPatchReq) (res MmdsPatchRes, err error) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPMethodKey.String(http.MethodPatch),
 		semconv.HTTPRouteKey.String("/mmds"),
 	}
 
@@ -1048,7 +1049,7 @@ func (c *Client) sendMmdsPatch(ctx context.Context, request *MmdsPatchReq) (res 
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "PATCH", u)
+	r, err := ht.NewRequest(ctx, http.MethodPatch, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -1084,7 +1085,7 @@ func (c *Client) MmdsPut(ctx context.Context, request *MmdsPutReq) (MmdsPutRes, 
 
 func (c *Client) sendMmdsPut(ctx context.Context, request *MmdsPutReq) (res MmdsPutRes, err error) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPMethodKey.String(http.MethodPut),
 		semconv.HTTPRouteKey.String("/mmds"),
 	}
 
@@ -1122,7 +1123,7 @@ func (c *Client) sendMmdsPut(ctx context.Context, request *MmdsPutReq) (res Mmds
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "PUT", u)
+	r, err := ht.NewRequest(ctx, http.MethodPut, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -1160,7 +1161,7 @@ func (c *Client) PatchBalloon(ctx context.Context, request *BalloonUpdate) (Patc
 func (c *Client) sendPatchBalloon(ctx context.Context, request *BalloonUpdate) (res PatchBalloonRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchBalloon"),
-		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPMethodKey.String(http.MethodPatch),
 		semconv.HTTPRouteKey.String("/balloon"),
 	}
 
@@ -1198,7 +1199,7 @@ func (c *Client) sendPatchBalloon(ctx context.Context, request *BalloonUpdate) (
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "PATCH", u)
+	r, err := ht.NewRequest(ctx, http.MethodPatch, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -1236,7 +1237,7 @@ func (c *Client) PatchBalloonStatsInterval(ctx context.Context, request *Balloon
 func (c *Client) sendPatchBalloonStatsInterval(ctx context.Context, request *BalloonStatsUpdate) (res PatchBalloonStatsIntervalRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchBalloonStatsInterval"),
-		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPMethodKey.String(http.MethodPatch),
 		semconv.HTTPRouteKey.String("/balloon/statistics"),
 	}
 
@@ -1274,7 +1275,7 @@ func (c *Client) sendPatchBalloonStatsInterval(ctx context.Context, request *Bal
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "PATCH", u)
+	r, err := ht.NewRequest(ctx, http.MethodPatch, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -1312,7 +1313,7 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, request *PartialDrive,
 func (c *Client) sendPatchGuestDriveByID(ctx context.Context, request *PartialDrive, params PatchGuestDriveByIDParams) (res PatchGuestDriveByIDRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchGuestDriveByID"),
-		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPMethodKey.String(http.MethodPatch),
 		semconv.HTTPRouteKey.String("/drives/{drive_id}"),
 	}
 	// Validate request before sending.
@@ -1377,7 +1378,7 @@ func (c *Client) sendPatchGuestDriveByID(ctx context.Context, request *PartialDr
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "PATCH", u)
+	r, err := ht.NewRequest(ctx, http.MethodPatch, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -1414,7 +1415,7 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request *Pa
 func (c *Client) sendPatchGuestNetworkInterfaceByID(ctx context.Context, request *PartialNetworkInterface, params PatchGuestNetworkInterfaceByIDParams) (res PatchGuestNetworkInterfaceByIDRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchGuestNetworkInterfaceByID"),
-		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPMethodKey.String(http.MethodPatch),
 		semconv.HTTPRouteKey.String("/network-interfaces/{iface_id}"),
 	}
 	// Validate request before sending.
@@ -1479,7 +1480,7 @@ func (c *Client) sendPatchGuestNetworkInterfaceByID(ctx context.Context, request
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "PATCH", u)
+	r, err := ht.NewRequest(ctx, http.MethodPatch, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -1517,7 +1518,7 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, request OptMachi
 func (c *Client) sendPatchMachineConfiguration(ctx context.Context, request OptMachineConfiguration) (res PatchMachineConfigurationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchMachineConfiguration"),
-		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPMethodKey.String(http.MethodPatch),
 		semconv.HTTPRouteKey.String("/machine-config"),
 	}
 	// Validate request before sending.
@@ -1571,7 +1572,7 @@ func (c *Client) sendPatchMachineConfiguration(ctx context.Context, request OptM
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "PATCH", u)
+	r, err := ht.NewRequest(ctx, http.MethodPatch, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -1608,7 +1609,7 @@ func (c *Client) PatchVm(ctx context.Context, request *VM) (PatchVmRes, error) {
 func (c *Client) sendPatchVm(ctx context.Context, request *VM) (res PatchVmRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchVm"),
-		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPMethodKey.String(http.MethodPatch),
 		semconv.HTTPRouteKey.String("/vm"),
 	}
 	// Validate request before sending.
@@ -1655,7 +1656,7 @@ func (c *Client) sendPatchVm(ctx context.Context, request *VM) (res PatchVmRes, 
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "PATCH", u)
+	r, err := ht.NewRequest(ctx, http.MethodPatch, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -1693,7 +1694,7 @@ func (c *Client) PutBalloon(ctx context.Context, request *Balloon) (PutBalloonRe
 func (c *Client) sendPutBalloon(ctx context.Context, request *Balloon) (res PutBalloonRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putBalloon"),
-		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPMethodKey.String(http.MethodPut),
 		semconv.HTTPRouteKey.String("/balloon"),
 	}
 
@@ -1731,7 +1732,7 @@ func (c *Client) sendPutBalloon(ctx context.Context, request *Balloon) (res PutB
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "PUT", u)
+	r, err := ht.NewRequest(ctx, http.MethodPut, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -1769,7 +1770,7 @@ func (c *Client) PutGuestBootSource(ctx context.Context, request *BootSource) (P
 func (c *Client) sendPutGuestBootSource(ctx context.Context, request *BootSource) (res PutGuestBootSourceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putGuestBootSource"),
-		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPMethodKey.String(http.MethodPut),
 		semconv.HTTPRouteKey.String("/boot-source"),
 	}
 
@@ -1807,7 +1808,7 @@ func (c *Client) sendPutGuestBootSource(ctx context.Context, request *BootSource
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "PUT", u)
+	r, err := ht.NewRequest(ctx, http.MethodPut, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -1845,7 +1846,7 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, request *Drive, params P
 func (c *Client) sendPutGuestDriveByID(ctx context.Context, request *Drive, params PutGuestDriveByIDParams) (res PutGuestDriveByIDRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putGuestDriveByID"),
-		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPMethodKey.String(http.MethodPut),
 		semconv.HTTPRouteKey.String("/drives/{drive_id}"),
 	}
 	// Validate request before sending.
@@ -1910,7 +1911,7 @@ func (c *Client) sendPutGuestDriveByID(ctx context.Context, request *Drive, para
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "PUT", u)
+	r, err := ht.NewRequest(ctx, http.MethodPut, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -1947,7 +1948,7 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request *Netw
 func (c *Client) sendPutGuestNetworkInterfaceByID(ctx context.Context, request *NetworkInterface, params PutGuestNetworkInterfaceByIDParams) (res PutGuestNetworkInterfaceByIDRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putGuestNetworkInterfaceByID"),
-		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPMethodKey.String(http.MethodPut),
 		semconv.HTTPRouteKey.String("/network-interfaces/{iface_id}"),
 	}
 	// Validate request before sending.
@@ -2012,7 +2013,7 @@ func (c *Client) sendPutGuestNetworkInterfaceByID(ctx context.Context, request *
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "PUT", u)
+	r, err := ht.NewRequest(ctx, http.MethodPut, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -2050,7 +2051,7 @@ func (c *Client) PutGuestVsock(ctx context.Context, request *Vsock) (PutGuestVso
 func (c *Client) sendPutGuestVsock(ctx context.Context, request *Vsock) (res PutGuestVsockRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putGuestVsock"),
-		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPMethodKey.String(http.MethodPut),
 		semconv.HTTPRouteKey.String("/vsock"),
 	}
 	// Validate request before sending.
@@ -2097,7 +2098,7 @@ func (c *Client) sendPutGuestVsock(ctx context.Context, request *Vsock) (res Put
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "PUT", u)
+	r, err := ht.NewRequest(ctx, http.MethodPut, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -2134,7 +2135,7 @@ func (c *Client) PutLogger(ctx context.Context, request *Logger) (PutLoggerRes, 
 func (c *Client) sendPutLogger(ctx context.Context, request *Logger) (res PutLoggerRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putLogger"),
-		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPMethodKey.String(http.MethodPut),
 		semconv.HTTPRouteKey.String("/logger"),
 	}
 	// Validate request before sending.
@@ -2181,7 +2182,7 @@ func (c *Client) sendPutLogger(ctx context.Context, request *Logger) (res PutLog
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "PUT", u)
+	r, err := ht.NewRequest(ctx, http.MethodPut, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -2221,7 +2222,7 @@ func (c *Client) PutMachineConfiguration(ctx context.Context, request OptMachine
 func (c *Client) sendPutMachineConfiguration(ctx context.Context, request OptMachineConfiguration) (res PutMachineConfigurationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putMachineConfiguration"),
-		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPMethodKey.String(http.MethodPut),
 		semconv.HTTPRouteKey.String("/machine-config"),
 	}
 	// Validate request before sending.
@@ -2275,7 +2276,7 @@ func (c *Client) sendPutMachineConfiguration(ctx context.Context, request OptMac
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "PUT", u)
+	r, err := ht.NewRequest(ctx, http.MethodPut, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -2312,7 +2313,7 @@ func (c *Client) PutMetrics(ctx context.Context, request *Metrics) (PutMetricsRe
 func (c *Client) sendPutMetrics(ctx context.Context, request *Metrics) (res PutMetricsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putMetrics"),
-		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPMethodKey.String(http.MethodPut),
 		semconv.HTTPRouteKey.String("/metrics"),
 	}
 
@@ -2350,7 +2351,7 @@ func (c *Client) sendPutMetrics(ctx context.Context, request *Metrics) (res PutM
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "PUT", u)
+	r, err := ht.NewRequest(ctx, http.MethodPut, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}

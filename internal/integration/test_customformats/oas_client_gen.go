@@ -4,6 +4,7 @@ package api
 
 import (
 	"context"
+	"net/http"
 	"net/url"
 	"strings"
 	"time"
@@ -89,7 +90,7 @@ func (c *Client) EventPost(ctx context.Context, request any) (any, error) {
 
 func (c *Client) sendEventPost(ctx context.Context, request any) (res any, err error) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/event"),
 	}
 
@@ -127,7 +128,7 @@ func (c *Client) sendEventPost(ctx context.Context, request any) (res any, err e
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -161,7 +162,7 @@ func (c *Client) PhoneGet(ctx context.Context, request *User, params PhoneGetPar
 
 func (c *Client) sendPhoneGet(ctx context.Context, request *User, params PhoneGetParams) (res *User, err error) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/phone"),
 	}
 
@@ -251,7 +252,7 @@ func (c *Client) sendPhoneGet(ctx context.Context, request *User, params PhoneGe
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}

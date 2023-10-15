@@ -4,6 +4,7 @@ package api
 
 import (
 	"context"
+	"net/http"
 	"net/url"
 	"strings"
 	"time"
@@ -95,7 +96,7 @@ func (c *Client) IntegerNumber(ctx context.Context) (*IntegerNumber, error) {
 func (c *Client) sendIntegerNumber(ctx context.Context) (res *IntegerNumber, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("integerNumber"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/integerNumber"),
 	}
 
@@ -133,7 +134,7 @@ func (c *Client) sendIntegerNumber(ctx context.Context) (res *IntegerNumber, err
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -165,7 +166,7 @@ func (c *Client) JaegerAnyOf(ctx context.Context) (*JaegerAnyOf, error) {
 func (c *Client) sendJaegerAnyOf(ctx context.Context) (res *JaegerAnyOf, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("jaegerAnyOf"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/jaegerAnyOf"),
 	}
 
@@ -203,7 +204,7 @@ func (c *Client) sendJaegerAnyOf(ctx context.Context) (res *JaegerAnyOf, err err
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -235,7 +236,7 @@ func (c *Client) OneUUID(ctx context.Context) (*OneUUID, error) {
 func (c *Client) sendOneUUID(ctx context.Context) (res *OneUUID, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oneUUID"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/oneUUID"),
 	}
 
@@ -273,7 +274,7 @@ func (c *Client) sendOneUUID(ctx context.Context) (res *OneUUID, err error) {
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}

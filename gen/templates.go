@@ -3,6 +3,7 @@ package gen
 import (
 	"embed"
 	"fmt"
+	"net/http"
 	"strconv"
 	"strings"
 	"sync"
@@ -67,6 +68,18 @@ func (e Elem) NextVar() string {
 type ResponseElem struct {
 	Response *ir.Response
 	Ptr      bool
+}
+
+var httpMethod = map[string]string{
+	http.MethodGet:     "http.MethodGet",
+	http.MethodHead:    "http.MethodHead",
+	http.MethodPost:    "http.MethodPost",
+	http.MethodPut:     "http.MethodPut",
+	http.MethodPatch:   "http.MethodPatch",
+	http.MethodDelete:  "http.MethodDelete",
+	http.MethodConnect: "http.MethodConnect",
+	http.MethodOptions: "http.MethodOptions",
+	http.MethodTrace:   "http.MethodTrace",
 }
 
 // templateFunctions returns functions which used in templates.
@@ -208,6 +221,9 @@ func templateFunctions() template.FuncMap {
 		},
 		"isObjectParam":     isObjectParam,
 		"paramObjectFields": paramObjectFields,
+		"httpMethod": func(k string) string {
+			return httpMethod[strings.ToUpper(k)]
+		},
 	}
 }
 

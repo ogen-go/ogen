@@ -4,6 +4,7 @@ package api
 
 import (
 	"context"
+	"net/http"
 	"net/url"
 	"strings"
 	"time"
@@ -85,7 +86,7 @@ func (c *Client) HealthzGet(ctx context.Context) (*Person, error) {
 
 func (c *Client) sendHealthzGet(ctx context.Context) (res *Person, err error) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/healthz"),
 	}
 
@@ -123,7 +124,7 @@ func (c *Client) sendHealthzGet(ctx context.Context) (res *Person, err error) {
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}

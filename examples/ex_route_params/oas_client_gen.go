@@ -4,6 +4,7 @@ package api
 
 import (
 	"context"
+	"net/http"
 	"net/url"
 	"strings"
 	"time"
@@ -104,7 +105,7 @@ func (c *Client) DataGet(ctx context.Context, params DataGetParams) (string, err
 func (c *Client) sendDataGet(ctx context.Context, params DataGetParams) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataGet"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/name/{id}/{key}"),
 	}
 
@@ -179,7 +180,7 @@ func (c *Client) sendDataGet(ctx context.Context, params DataGetParams) (res str
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -213,7 +214,7 @@ func (c *Client) DataGetAny(ctx context.Context) (string, error) {
 func (c *Client) sendDataGetAny(ctx context.Context) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataGetAny"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/name"),
 	}
 
@@ -251,7 +252,7 @@ func (c *Client) sendDataGetAny(ctx context.Context) (res string, err error) {
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -285,7 +286,7 @@ func (c *Client) DataGetID(ctx context.Context, params DataGetIDParams) (string,
 func (c *Client) sendDataGetID(ctx context.Context, params DataGetIDParams) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataGetID"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/name/{id}"),
 	}
 
@@ -341,7 +342,7 @@ func (c *Client) sendDataGetID(ctx context.Context, params DataGetIDParams) (res
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}

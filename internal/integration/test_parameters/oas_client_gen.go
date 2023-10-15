@@ -4,6 +4,7 @@ package api
 
 import (
 	"context"
+	"net/http"
 	"net/url"
 	"strings"
 	"time"
@@ -130,7 +131,7 @@ func (c *Client) ComplicatedParameterNameGet(ctx context.Context, params Complic
 
 func (c *Client) sendComplicatedParameterNameGet(ctx context.Context, params ComplicatedParameterNameGetParams) (res *ComplicatedParameterNameGetOK, err error) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/complicatedParameterName"),
 	}
 
@@ -242,7 +243,7 @@ func (c *Client) sendComplicatedParameterNameGet(ctx context.Context, params Com
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -274,7 +275,7 @@ func (c *Client) ContentParameters(ctx context.Context, params ContentParameters
 func (c *Client) sendContentParameters(ctx context.Context, params ContentParametersParams) (res *ContentParameters, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("contentParameters"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/contentParameters/{path}"),
 	}
 
@@ -356,7 +357,7 @@ func (c *Client) sendContentParameters(ctx context.Context, params ContentParame
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -428,7 +429,7 @@ func (c *Client) CookieParameter(ctx context.Context, params CookieParameterPara
 func (c *Client) sendCookieParameter(ctx context.Context, params CookieParameterParams) (res *Value, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("cookieParameter"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/cookieParameter"),
 	}
 
@@ -466,7 +467,7 @@ func (c *Client) sendCookieParameter(ctx context.Context, params CookieParameter
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -516,7 +517,7 @@ func (c *Client) HeaderParameter(ctx context.Context, params HeaderParameterPara
 func (c *Client) sendHeaderParameter(ctx context.Context, params HeaderParameterParams) (res *Value, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headerParameter"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/headerParameter"),
 	}
 
@@ -554,7 +555,7 @@ func (c *Client) sendHeaderParameter(ctx context.Context, params HeaderParameter
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -600,7 +601,7 @@ func (c *Client) ObjectCookieParameter(ctx context.Context, params ObjectCookieP
 func (c *Client) sendObjectCookieParameter(ctx context.Context, params ObjectCookieParameterParams) (res *OneLevelObject, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("objectCookieParameter"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/objectCookieParameter"),
 	}
 
@@ -638,7 +639,7 @@ func (c *Client) sendObjectCookieParameter(ctx context.Context, params ObjectCoo
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -686,7 +687,7 @@ func (c *Client) ObjectQueryParameter(ctx context.Context, params ObjectQueryPar
 func (c *Client) sendObjectQueryParameter(ctx context.Context, params ObjectQueryParameterParams) (res *ObjectQueryParameterOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("objectQueryParameter"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/objectQueryParameter"),
 	}
 
@@ -762,7 +763,7 @@ func (c *Client) sendObjectQueryParameter(ctx context.Context, params ObjectQuer
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -796,7 +797,7 @@ func (c *Client) PathParameter(ctx context.Context, params PathParameterParams) 
 func (c *Client) sendPathParameter(ctx context.Context, params PathParameterParams) (res *Value, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pathParameter"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/pathParameter/{value}"),
 	}
 
@@ -852,7 +853,7 @@ func (c *Client) sendPathParameter(ctx context.Context, params PathParameterPara
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -886,7 +887,7 @@ func (c *Client) SameName(ctx context.Context, params SameNameParams) error {
 func (c *Client) sendSameName(ctx context.Context, params SameNameParams) (res *SameNameOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sameName"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/same_name/{param}"),
 	}
 
@@ -960,7 +961,7 @@ func (c *Client) sendSameName(ctx context.Context, params SameNameParams) (res *
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -994,7 +995,7 @@ func (c *Client) SimilarNames(ctx context.Context, params SimilarNamesParams) er
 func (c *Client) sendSimilarNames(ctx context.Context, params SimilarNamesParams) (res *SimilarNamesOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("similarNames"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/similarNames"),
 	}
 
@@ -1050,7 +1051,7 @@ func (c *Client) sendSimilarNames(ctx context.Context, params SimilarNamesParams
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}

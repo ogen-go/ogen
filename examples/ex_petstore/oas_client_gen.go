@@ -4,6 +4,7 @@ package api
 
 import (
 	"context"
+	"net/http"
 	"net/url"
 	"strings"
 	"time"
@@ -108,7 +109,7 @@ func (c *Client) CreatePets(ctx context.Context) error {
 func (c *Client) sendCreatePets(ctx context.Context) (res *CreatePetsCreated, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createPets"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/pets"),
 	}
 
@@ -146,7 +147,7 @@ func (c *Client) sendCreatePets(ctx context.Context) (res *CreatePetsCreated, er
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -180,7 +181,7 @@ func (c *Client) ListPets(ctx context.Context, params ListPetsParams) (*PetsHead
 func (c *Client) sendListPets(ctx context.Context, params ListPetsParams) (res *PetsHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPets"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/pets"),
 	}
 
@@ -239,7 +240,7 @@ func (c *Client) sendListPets(ctx context.Context, params ListPetsParams) (res *
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -273,7 +274,7 @@ func (c *Client) ShowPetById(ctx context.Context, params ShowPetByIdParams) (*Pe
 func (c *Client) sendShowPetById(ctx context.Context, params ShowPetByIdParams) (res *Pet, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("showPetById"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/pets/{petId}"),
 	}
 
@@ -329,7 +330,7 @@ func (c *Client) sendShowPetById(ctx context.Context, params ShowPetByIdParams) 
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}

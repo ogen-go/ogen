@@ -4,6 +4,7 @@ package techempower
 
 import (
 	"context"
+	"net/http"
 	"net/url"
 	"strings"
 	"time"
@@ -134,7 +135,7 @@ func (c *Client) Caching(ctx context.Context, params CachingParams) (WorldObject
 func (c *Client) sendCaching(ctx context.Context, params CachingParams) (res WorldObjects, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("Caching"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/cached-worlds"),
 	}
 
@@ -190,7 +191,7 @@ func (c *Client) sendCaching(ctx context.Context, params CachingParams) (res Wor
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -225,7 +226,7 @@ func (c *Client) DB(ctx context.Context) (*WorldObject, error) {
 func (c *Client) sendDB(ctx context.Context) (res *WorldObject, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("DB"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/db"),
 	}
 
@@ -263,7 +264,7 @@ func (c *Client) sendDB(ctx context.Context) (res *WorldObject, err error) {
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -299,7 +300,7 @@ func (c *Client) JSON(ctx context.Context) (*HelloWorld, error) {
 func (c *Client) sendJSON(ctx context.Context) (res *HelloWorld, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("json"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/json"),
 	}
 
@@ -337,7 +338,7 @@ func (c *Client) sendJSON(ctx context.Context) (res *HelloWorld, err error) {
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -374,7 +375,7 @@ func (c *Client) Queries(ctx context.Context, params QueriesParams) (WorldObject
 func (c *Client) sendQueries(ctx context.Context, params QueriesParams) (res WorldObjects, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("Queries"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/queries"),
 	}
 
@@ -430,7 +431,7 @@ func (c *Client) sendQueries(ctx context.Context, params QueriesParams) (res Wor
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -466,7 +467,7 @@ func (c *Client) Updates(ctx context.Context, params UpdatesParams) (WorldObject
 func (c *Client) sendUpdates(ctx context.Context, params UpdatesParams) (res WorldObjects, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("Updates"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/updates"),
 	}
 
@@ -522,7 +523,7 @@ func (c *Client) sendUpdates(ctx context.Context, params UpdatesParams) (res Wor
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}

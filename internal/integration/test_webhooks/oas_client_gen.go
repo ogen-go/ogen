@@ -4,6 +4,7 @@ package api
 
 import (
 	"context"
+	"net/http"
 	"net/url"
 	"strings"
 	"time"
@@ -92,7 +93,7 @@ func (c *Client) PublishEvent(ctx context.Context, request OptEvent) (*Event, er
 func (c *Client) sendPublishEvent(ctx context.Context, request OptEvent) (res *Event, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("publishEvent"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/event"),
 	}
 
@@ -130,7 +131,7 @@ func (c *Client) sendPublishEvent(ctx context.Context, request OptEvent) (res *E
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -217,7 +218,7 @@ func (c *WebhookClient) sendStatusWebhook(ctx context.Context, targetURL string)
 	trimTrailingSlashes(u)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -284,7 +285,7 @@ func (c *WebhookClient) sendUpdateDelete(ctx context.Context, targetURL string) 
 	trimTrailingSlashes(u)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "DELETE", u)
+	r, err := ht.NewRequest(ctx, http.MethodDelete, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -370,7 +371,7 @@ func (c *WebhookClient) sendUpdateWebhook(ctx context.Context, targetURL string,
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}

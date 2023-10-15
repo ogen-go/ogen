@@ -4,6 +4,7 @@ package api
 
 import (
 	"context"
+	"net/http"
 	"net/url"
 	"strings"
 	"time"
@@ -122,7 +123,7 @@ func (c *Client) GetBook(ctx context.Context, params GetBookParams) (GetBookRes,
 func (c *Client) sendGetBook(ctx context.Context, params GetBookParams) (res GetBookRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getBook"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/api/gallery/{book_id}"),
 	}
 
@@ -178,7 +179,7 @@ func (c *Client) sendGetBook(ctx context.Context, params GetBookParams) (res Get
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -212,7 +213,7 @@ func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImage
 func (c *Client) sendGetPageCoverImage(ctx context.Context, params GetPageCoverImageParams) (res GetPageCoverImageRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getPageCoverImage"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/galleries/{media_id}/cover.{format}"),
 	}
 
@@ -287,7 +288,7 @@ func (c *Client) sendGetPageCoverImage(ctx context.Context, params GetPageCoverI
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -321,7 +322,7 @@ func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (G
 func (c *Client) sendGetPageImage(ctx context.Context, params GetPageImageParams) (res GetPageImageRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getPageImage"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/galleries/{media_id}/{page}.{format}"),
 	}
 
@@ -415,7 +416,7 @@ func (c *Client) sendGetPageImage(ctx context.Context, params GetPageImageParams
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -449,7 +450,7 @@ func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbn
 func (c *Client) sendGetPageThumbnailImage(ctx context.Context, params GetPageThumbnailImageParams) (res GetPageThumbnailImageRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getPageThumbnailImage"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/galleries/{media_id}/{page}t.{format}"),
 	}
 
@@ -543,7 +544,7 @@ func (c *Client) sendGetPageThumbnailImage(ctx context.Context, params GetPageTh
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -577,7 +578,7 @@ func (c *Client) Search(ctx context.Context, params SearchParams) (SearchRes, er
 func (c *Client) sendSearch(ctx context.Context, params SearchParams) (res SearchRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/api/galleries/search"),
 	}
 
@@ -650,7 +651,7 @@ func (c *Client) sendSearch(ctx context.Context, params SearchParams) (res Searc
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -684,7 +685,7 @@ func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) 
 func (c *Client) sendSearchByTagID(ctx context.Context, params SearchByTagIDParams) (res SearchByTagIDRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("searchByTagID"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPMethodKey.String(http.MethodGet),
 		semconv.HTTPRouteKey.String("/api/galleries/tagged"),
 	}
 
@@ -757,7 +758,7 @@ func (c *Client) sendSearchByTagID(ctx context.Context, params SearchByTagIDPara
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, http.MethodGet, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}

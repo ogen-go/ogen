@@ -4,6 +4,7 @@ package api
 
 import (
 	"context"
+	"net/http"
 	"net/url"
 	"strings"
 	"time"
@@ -119,7 +120,7 @@ func (c *Client) OnlyForm(ctx context.Context, request *OnlyFormReq) error {
 func (c *Client) sendOnlyForm(ctx context.Context, request *OnlyFormReq) (res *OnlyFormOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("onlyForm"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/onlyForm"),
 	}
 
@@ -157,7 +158,7 @@ func (c *Client) sendOnlyForm(ctx context.Context, request *OnlyFormReq) (res *O
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -192,7 +193,7 @@ func (c *Client) OnlyMultipartFile(ctx context.Context, request *OnlyMultipartFi
 func (c *Client) sendOnlyMultipartFile(ctx context.Context, request *OnlyMultipartFileReq) (res *OnlyMultipartFileOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("onlyMultipartFile"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/onlyMultipartFile"),
 	}
 
@@ -230,7 +231,7 @@ func (c *Client) sendOnlyMultipartFile(ctx context.Context, request *OnlyMultipa
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -265,7 +266,7 @@ func (c *Client) OnlyMultipartForm(ctx context.Context, request *OnlyMultipartFo
 func (c *Client) sendOnlyMultipartForm(ctx context.Context, request *OnlyMultipartFormReq) (res *OnlyMultipartFormOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("onlyMultipartForm"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/onlyMultipartForm"),
 	}
 
@@ -303,7 +304,7 @@ func (c *Client) sendOnlyMultipartForm(ctx context.Context, request *OnlyMultipa
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -338,7 +339,7 @@ func (c *Client) TestFormURLEncoded(ctx context.Context, request *TestForm) erro
 func (c *Client) sendTestFormURLEncoded(ctx context.Context, request *TestForm) (res *TestFormURLEncodedOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testFormURLEncoded"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/testFormURLEncoded"),
 	}
 
@@ -376,7 +377,7 @@ func (c *Client) sendTestFormURLEncoded(ctx context.Context, request *TestForm) 
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -411,7 +412,7 @@ func (c *Client) TestMultipart(ctx context.Context, request *TestFormMultipart) 
 func (c *Client) sendTestMultipart(ctx context.Context, request *TestFormMultipart) (res *TestMultipartOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testMultipart"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/testMultipart"),
 	}
 
@@ -449,7 +450,7 @@ func (c *Client) sendTestMultipart(ctx context.Context, request *TestFormMultipa
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -484,7 +485,7 @@ func (c *Client) TestMultipartUpload(ctx context.Context, request *TestMultipart
 func (c *Client) sendTestMultipartUpload(ctx context.Context, request *TestMultipartUploadReq) (res *TestMultipartUploadOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testMultipartUpload"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/testMultipartUpload"),
 	}
 	// Validate request before sending.
@@ -531,7 +532,7 @@ func (c *Client) sendTestMultipartUpload(ctx context.Context, request *TestMulti
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -566,7 +567,7 @@ func (c *Client) TestReuseFormOptionalSchema(ctx context.Context, request OptSha
 func (c *Client) sendTestReuseFormOptionalSchema(ctx context.Context, request OptSharedRequestMultipart) (res *TestReuseFormOptionalSchemaOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testReuseFormOptionalSchema"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/testReuseFormOptionalSchema"),
 	}
 
@@ -604,7 +605,7 @@ func (c *Client) sendTestReuseFormOptionalSchema(ctx context.Context, request Op
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -639,7 +640,7 @@ func (c *Client) TestReuseFormSchema(ctx context.Context, request *SharedRequest
 func (c *Client) sendTestReuseFormSchema(ctx context.Context, request *SharedRequestMultipart) (res *TestReuseFormSchemaOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testReuseFormSchema"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/testReuseFormSchema"),
 	}
 
@@ -677,7 +678,7 @@ func (c *Client) sendTestReuseFormSchema(ctx context.Context, request *SharedReq
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -712,7 +713,7 @@ func (c *Client) TestShareFormSchema(ctx context.Context, request TestShareFormS
 func (c *Client) sendTestShareFormSchema(ctx context.Context, request TestShareFormSchemaReq) (res *TestShareFormSchemaOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testShareFormSchema"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/testShareFormSchema"),
 	}
 	// Validate request before sending.
@@ -759,7 +760,7 @@ func (c *Client) sendTestShareFormSchema(ctx context.Context, request TestShareF
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}

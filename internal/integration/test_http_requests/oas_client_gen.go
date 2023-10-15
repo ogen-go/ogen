@@ -5,6 +5,7 @@ package api
 import (
 	"context"
 	"fmt"
+	"net/http"
 	"net/url"
 	"strings"
 	"time"
@@ -109,7 +110,7 @@ func (c *Client) AllRequestBodies(ctx context.Context, request AllRequestBodiesR
 func (c *Client) sendAllRequestBodies(ctx context.Context, request AllRequestBodiesReq) (res AllRequestBodiesOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("allRequestBodies"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/allRequestBodies"),
 	}
 	// Validate request before sending.
@@ -162,7 +163,7 @@ func (c *Client) sendAllRequestBodies(ctx context.Context, request AllRequestBod
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -197,7 +198,7 @@ func (c *Client) AllRequestBodiesOptional(ctx context.Context, request AllReques
 func (c *Client) sendAllRequestBodiesOptional(ctx context.Context, request AllRequestBodiesOptionalReq) (res AllRequestBodiesOptionalOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("allRequestBodiesOptional"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/allRequestBodiesOptional"),
 	}
 	// Validate request before sending.
@@ -252,7 +253,7 @@ func (c *Client) sendAllRequestBodiesOptional(ctx context.Context, request AllRe
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -287,7 +288,7 @@ func (c *Client) Base64Request(ctx context.Context, request Base64RequestReq) (B
 func (c *Client) sendBase64Request(ctx context.Context, request Base64RequestReq) (res Base64RequestOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("base64Request"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/base64Request"),
 	}
 
@@ -325,7 +326,7 @@ func (c *Client) sendBase64Request(ctx context.Context, request Base64RequestReq
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -360,7 +361,7 @@ func (c *Client) MaskContentType(ctx context.Context, request *MaskContentTypeRe
 func (c *Client) sendMaskContentType(ctx context.Context, request *MaskContentTypeReqWithContentType) (res *MaskResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("maskContentType"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/maskContentType"),
 	}
 
@@ -398,7 +399,7 @@ func (c *Client) sendMaskContentType(ctx context.Context, request *MaskContentTy
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -433,7 +434,7 @@ func (c *Client) MaskContentTypeOptional(ctx context.Context, request *MaskConte
 func (c *Client) sendMaskContentTypeOptional(ctx context.Context, request *MaskContentTypeOptionalReqWithContentType) (res *MaskResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("maskContentTypeOptional"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/maskContentTypeOptional"),
 	}
 
@@ -471,7 +472,7 @@ func (c *Client) sendMaskContentTypeOptional(ctx context.Context, request *MaskC
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
@@ -506,7 +507,7 @@ func (c *Client) StreamJSON(ctx context.Context, request []float64) (float64, er
 func (c *Client) sendStreamJSON(ctx context.Context, request []float64) (res float64, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("streamJSON"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPMethodKey.String(http.MethodPost),
 		semconv.HTTPRouteKey.String("/streamJSON"),
 	}
 	// Validate request before sending.
@@ -570,7 +571,7 @@ func (c *Client) sendStreamJSON(ctx context.Context, request []float64) (res flo
 	uri.AddPathParts(u, pathParts[:]...)
 
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "POST", u)
+	r, err := ht.NewRequest(ctx, http.MethodPost, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
