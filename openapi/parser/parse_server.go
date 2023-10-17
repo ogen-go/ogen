@@ -88,6 +88,7 @@ func (p *parser) parseServer(
 	}
 
 	server := openapi.Server{
+		URL:         s.URL,
 		Template:    u,
 		Description: s.Description,
 	}

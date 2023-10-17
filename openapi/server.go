@@ -3,6 +3,7 @@ package openapi
 // Server represents parsed OpenAPI Server Object.
 type Server struct {
 	Name        string // optional,extension
+	URL         string // optional,extension
 	Description string // optional
 	Template    ServerURL
 }
