@@ -21,7 +21,7 @@ func encodeNullableStringsRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -35,7 +35,7 @@ func encodeObjectsWithConflictingArrayPropertyRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -49,7 +49,7 @@ func encodeObjectsWithConflictingPropertiesRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -65,7 +65,7 @@ func encodeReferencedAllofRequest(
 	switch req := req.(type) {
 	case *Robot:
 		const contentType = "application/json"
-		e := jx.GetEncoder()
+		e := new(jx.Encoder)
 		{
 			req.Encode(e)
 		}
@@ -139,7 +139,7 @@ func encodeReferencedAllofOptionalRequest(
 		return nil
 	case *Robot:
 		const contentType = "application/json"
-		e := jx.GetEncoder()
+		e := new(jx.Encoder)
 		{
 			req.Encode(e)
 		}
@@ -208,7 +208,7 @@ func encodeSimpleIntegerRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		e.Int(req)
 	}
@@ -222,7 +222,7 @@ func encodeSimpleObjectsRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -236,7 +236,7 @@ func encodeStringsNotypeRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
