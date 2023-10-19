@@ -26,7 +26,7 @@ func encodeAllRequestBodiesRequest(
 	switch req := req.(type) {
 	case *AllRequestBodiesApplicationJSON:
 		const contentType = "application/json"
-		e := jx.GetEncoder()
+		e := new(jx.Encoder)
 		{
 			req.Encode(e)
 		}
@@ -137,7 +137,7 @@ func encodeAllRequestBodiesOptionalRequest(
 		return nil
 	case *AllRequestBodiesOptionalApplicationJSON:
 		const contentType = "application/json"
-		e := jx.GetEncoder()
+		e := new(jx.Encoder)
 		{
 			req.Encode(e)
 		}

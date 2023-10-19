@@ -317,10 +317,10 @@ func (c *Client) sendContentParameters(ctx context.Context, params ContentParame
 			Explode: false,
 		})
 		if err := func() error {
-			enc := jx.GetEncoder()
+			var enc jx.Encoder
 			func(e *jx.Encoder) {
 				params.Path.Encode(e)
-			}(enc)
+			}(&enc)
 			return e.EncodeValue(string(enc.Bytes()))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
@@ -344,10 +344,10 @@ func (c *Client) sendContentParameters(ctx context.Context, params ContentParame
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			enc := jx.GetEncoder()
+			var enc jx.Encoder
 			func(e *jx.Encoder) {
 				params.Query.Encode(e)
-			}(enc)
+			}(&enc)
 			return e.EncodeValue(string(enc.Bytes()))
 		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
@@ -369,10 +369,10 @@ func (c *Client) sendContentParameters(ctx context.Context, params ContentParame
 			Explode: false,
 		}
 		if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
-			enc := jx.GetEncoder()
+			var enc jx.Encoder
 			func(e *jx.Encoder) {
 				params.XHeader.Encode(e)
-			}(enc)
+			}(&enc)
 			return e.EncodeValue(string(enc.Bytes()))
 		}); err != nil {
 			return res, errors.Wrap(err, "encode header")
@@ -389,10 +389,10 @@ func (c *Client) sendContentParameters(ctx context.Context, params ContentParame
 		}
 
 		if err := cookie.EncodeParam(cfg, func(e uri.Encoder) error {
-			enc := jx.GetEncoder()
+			var enc jx.Encoder
 			func(e *jx.Encoder) {
 				params.Cookie.Encode(e)
-			}(enc)
+			}(&enc)
 			return e.EncodeValue(string(enc.Bytes()))
 		}); err != nil {
 			return res, errors.Wrap(err, "encode cookie")
