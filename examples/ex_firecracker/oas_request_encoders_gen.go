@@ -16,7 +16,7 @@ func encodeCreateSnapshotRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -30,7 +30,7 @@ func encodeCreateSyncActionRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -44,7 +44,7 @@ func encodeLoadSnapshotRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -58,7 +58,7 @@ func encodeMmdsConfigPutRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -72,7 +72,7 @@ func encodeMmdsPatchRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req != nil {
 			req.Encode(e)
@@ -88,7 +88,7 @@ func encodeMmdsPutRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req != nil {
 			req.Encode(e)
@@ -104,7 +104,7 @@ func encodePatchBalloonRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -118,7 +118,7 @@ func encodePatchBalloonStatsIntervalRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -132,7 +132,7 @@ func encodePatchGuestDriveByIDRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -146,7 +146,7 @@ func encodePatchGuestNetworkInterfaceByIDRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -164,7 +164,7 @@ func encodePatchMachineConfigurationRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -180,7 +180,7 @@ func encodePatchVmRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -194,7 +194,7 @@ func encodePutBalloonRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -208,7 +208,7 @@ func encodePutGuestBootSourceRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -222,7 +222,7 @@ func encodePutGuestDriveByIDRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -236,7 +236,7 @@ func encodePutGuestNetworkInterfaceByIDRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -250,7 +250,7 @@ func encodePutGuestVsockRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -264,7 +264,7 @@ func encodePutLoggerRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -282,7 +282,7 @@ func encodePutMachineConfigurationRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -298,7 +298,7 @@ func encodePutMetricsRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
