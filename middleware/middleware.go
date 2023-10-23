@@ -62,6 +62,7 @@ type Request struct {
 	Raw *http.Request
 }
 
+// SetContext sets Context in Request.
 func (r *Request) SetContext(ctx context.Context) {
 	r.Context = ctx
 }
