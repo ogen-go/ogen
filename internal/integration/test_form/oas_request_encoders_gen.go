@@ -481,7 +481,7 @@ func encodeTestShareFormSchemaRequest(
 	switch req := req.(type) {
 	case *SharedRequest:
 		const contentType = "application/json"
-		e := jx.GetEncoder()
+		e := new(jx.Encoder)
 		{
 			req.Encode(e)
 		}
