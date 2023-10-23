@@ -18,7 +18,7 @@ func encodePublishEventResponse(response *Event, w http.ResponseWriter, span tra
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -42,7 +42,7 @@ func encodeErrorResponse(response *ErrorStatusCode, w http.ResponseWriter, span 
 		span.SetStatus(codes.Ok, st)
 	}
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -59,7 +59,7 @@ func encodeStatusWebhookResponse(response *StatusWebhookOK, w http.ResponseWrite
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -91,7 +91,7 @@ func encodeUpdateDeleteResponse(response UpdateDeleteRes, w http.ResponseWriter,
 			span.SetStatus(codes.Ok, st)
 		}
 
-		e := jx.GetEncoder()
+		e := new(jx.Encoder)
 		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -114,7 +114,7 @@ func encodeUpdateWebhookResponse(response UpdateWebhookRes, w http.ResponseWrite
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
-		e := jx.GetEncoder()
+		e := new(jx.Encoder)
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -137,7 +137,7 @@ func encodeUpdateWebhookResponse(response UpdateWebhookRes, w http.ResponseWrite
 			span.SetStatus(codes.Ok, st)
 		}
 
-		e := jx.GetEncoder()
+		e := new(jx.Encoder)
 		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")

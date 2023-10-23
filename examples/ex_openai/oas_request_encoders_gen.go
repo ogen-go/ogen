@@ -21,7 +21,7 @@ func encodeCreateAnswerRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -35,7 +35,7 @@ func encodeCreateChatCompletionRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -49,7 +49,7 @@ func encodeCreateClassificationRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -63,7 +63,7 @@ func encodeCreateCompletionRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -77,7 +77,7 @@ func encodeCreateEditRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -91,7 +91,7 @@ func encodeCreateEmbeddingRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -139,7 +139,7 @@ func encodeCreateFineTuneRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -153,7 +153,7 @@ func encodeCreateImageRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -355,7 +355,7 @@ func encodeCreateModerationRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -369,7 +369,7 @@ func encodeCreateSearchRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}

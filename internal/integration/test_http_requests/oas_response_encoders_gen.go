@@ -58,7 +58,7 @@ func encodeMaskContentTypeResponse(response *MaskResponse, w http.ResponseWriter
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -72,7 +72,7 @@ func encodeMaskContentTypeOptionalResponse(response *MaskResponse, w http.Respon
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -86,7 +86,7 @@ func encodeStreamJSONResponse(response float64, w http.ResponseWriter, span trac
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	e.Float64(response)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")

@@ -121,7 +121,7 @@ func encode{{ $op.Name }}Request(
 		})
 		ht.SetCloserBody(r, body, contentType)
 	{{- else }}
-		e := jx.GetEncoder()
+	    e := new(jx.Encoder)
 		{
 		   {{- template "json/enc" elem $type "req" }}
 		}
