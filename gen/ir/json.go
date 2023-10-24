@@ -199,7 +199,7 @@ func (j JSON) SumTypes() string {
 	return strings.Join(sortedTypes, ",")
 }
 
-const _array = "Array"
+const arraySuffix = "Array"
 
 func jsonType(t *Type) string {
 	if t.IsNumeric() {
