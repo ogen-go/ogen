@@ -12,7 +12,7 @@ import (
 
 func (t *Type) EncodeFn() string {
 	if t.Is(KindArray) && t.Item.EncodeFn() != "" {
-		return t.Item.EncodeFn() + "Array"
+		return t.Item.EncodeFn() + _array
 	}
 	switch t.Primitive {
 	case ByteSlice:

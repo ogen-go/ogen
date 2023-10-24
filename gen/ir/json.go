@@ -199,6 +199,8 @@ func (j JSON) SumTypes() string {
 	return strings.Join(sortedTypes, ",")
 }
 
+const _array = "Array"
+
 func jsonType(t *Type) string {
 	if t.IsNumeric() {
 		if s := t.Schema; s != nil && s.Type == "string" {
@@ -207,7 +209,7 @@ func jsonType(t *Type) string {
 		return "Number"
 	}
 	if t.Is(KindArray) {
-		return "Array"
+		return _array
 	}
 	if t.Is(KindStruct, KindMap) {
 		return "Object"
