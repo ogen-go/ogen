@@ -60,7 +60,7 @@ func encodeCombinedResponse(response CombinedRes, w http.ResponseWriter, span tr
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
-		e := jx.GetEncoder()
+		e := new(jx.Encoder)
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -83,7 +83,7 @@ func encodeCombinedResponse(response CombinedRes, w http.ResponseWriter, span tr
 			span.SetStatus(codes.Ok, st)
 		}
 
-		e := jx.GetEncoder()
+		e := new(jx.Encoder)
 		e.Int(response.Response)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -109,7 +109,7 @@ func encodeCombinedResponse(response CombinedRes, w http.ResponseWriter, span tr
 			span.SetStatus(codes.Ok, st)
 		}
 
-		e := jx.GetEncoder()
+		e := new(jx.Encoder)
 		e.Bool(response.Response)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -135,7 +135,7 @@ func encodeCombinedResponse(response CombinedRes, w http.ResponseWriter, span tr
 			span.SetStatus(codes.Ok, st)
 		}
 
-		e := jx.GetEncoder()
+		e := new(jx.Encoder)
 		e.ArrStart()
 		for _, elem := range response.Response {
 			e.Str(elem)
@@ -324,13 +324,13 @@ func encodeHeadersJSONResponse(response *HeadersJSONOK, w http.ResponseWriter, s
 				Explode: false,
 			}
 			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
-				enc := jx.GetEncoder()
+				var enc jx.Encoder
 				func(e *jx.Encoder) {
 
 					if len(response.XJSONCustomHeader) != 0 {
 						e.Raw(response.XJSONCustomHeader)
 					}
-				}(enc)
+				}(&enc)
 				return e.EncodeValue(string(enc.Bytes()))
 			}); err != nil {
 				return errors.Wrap(err, "encode X-Json-Custom-Header header")
@@ -343,11 +343,11 @@ func encodeHeadersJSONResponse(response *HeadersJSONOK, w http.ResponseWriter, s
 				Explode: false,
 			}
 			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
-				enc := jx.GetEncoder()
+				var enc jx.Encoder
 				func(e *jx.Encoder) {
 
 					response.XJSONHeader.Encode(e)
-				}(enc)
+				}(&enc)
 				return e.EncodeValue(string(enc.Bytes()))
 			}); err != nil {
 				return errors.Wrap(err, "encode X-Json-Header header")
@@ -403,7 +403,7 @@ func encodeIntersectPatternCodeResponse(response IntersectPatternCodeRes, w http
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
-		e := jx.GetEncoder()
+		e := new(jx.Encoder)
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -426,7 +426,7 @@ func encodeIntersectPatternCodeResponse(response IntersectPatternCodeRes, w http
 			span.SetStatus(codes.Ok, st)
 		}
 
-		e := jx.GetEncoder()
+		e := new(jx.Encoder)
 		e.Int(response.Response)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -449,7 +449,7 @@ func encodeMultipleGenericResponsesResponse(response MultipleGenericResponsesRes
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
-		e := jx.GetEncoder()
+		e := new(jx.Encoder)
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -462,7 +462,7 @@ func encodeMultipleGenericResponsesResponse(response MultipleGenericResponsesRes
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
-		e := jx.GetEncoder()
+		e := new(jx.Encoder)
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -559,7 +559,7 @@ func encodeStreamJSONResponse(response StreamJSONRes, w http.ResponseWriter, spa
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
 
-		e := jx.GetEncoder()
+		e := new(jx.Encoder)
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")

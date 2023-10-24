@@ -16,7 +16,7 @@ func encodeEventPostRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		formatXMyEvent().EncodeJSON(e, req)
 	}
@@ -30,7 +30,7 @@ func encodePhoneGetRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}

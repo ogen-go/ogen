@@ -76,10 +76,10 @@ func encode{{ $op.Name }}Response(response {{ $op.Responses.GoType }}, w http.Re
 		if err := h.EncodeParam(cfg, func(e uri.Encoder) error{
 			{{- $el := elem $header.Type (printf "response.%s" $header.Name) }}
 			{{- if $header.Spec.Content }}
-				enc := jx.GetEncoder()
+				var enc jx.Encoder
 				func(e *jx.Encoder) {
 					{{ template "json/enc" $el }}
-				}(enc)
+				}(&enc)
 				return e.EncodeValue(string(enc.Bytes()))
 			{{- else }}
 				{{- template "uri/encode" $el }}
@@ -132,7 +132,7 @@ func encode{{ $op.Name }}Response(response {{ $op.Responses.GoType }}, w http.Re
 			return errors.Wrap(err, "flush streaming")
 		}
 		{{- else }}
-		e := jx.GetEncoder()
+		e := new(jx.Encoder)
 		{{- template "json/enc" elem $type $var }}
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
