@@ -209,7 +209,7 @@ func jsonType(t *Type) string {
 		return "Number"
 	}
 	if t.Is(KindArray) {
-		return _array
+		return arraySuffix
 	}
 	if t.Is(KindStruct, KindMap) {
 		return "Object"

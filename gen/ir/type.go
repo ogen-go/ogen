@@ -242,7 +242,7 @@ func (t *Type) NamePostfix() string {
 			return t.Primitive.String()
 		}
 	case KindArray:
-		return t.Item.NamePostfix() + _array
+		return t.Item.NamePostfix() + arraySuffix
 	case KindAny:
 		return "Any"
 	case KindPointer:
