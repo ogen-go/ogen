@@ -137,7 +137,6 @@ func (e *expander) Spec(api *openapi.API) (spec *ogen.Spec, err error) {
 
 func (e *expander) Server(s openapi.Server) (expanded ogen.Server, err error) {
 	expanded.Description = s.Description
-	expanded.URL = s.URL
 
 	var (
 		template strings.Builder
@@ -160,6 +159,7 @@ func (e *expander) Server(s openapi.Server) (expanded ogen.Server, err error) {
 			Description: param.Description,
 		}
 	}
+	expanded.URL = template.String()
 	if len(vars) > 0 {
 		expanded.Variables = vars
 	}
