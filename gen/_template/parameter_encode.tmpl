@@ -90,10 +90,10 @@ cookie := uri.NewCookieEncoder(r)
 {{- $param := $ }}
 {{- $el := elem $param.Type (printf "params.%s" $param.Name) }}
 {{- if $param.Spec.Content }}
-	enc := jx.GetEncoder()
+	var enc jx.Encoder
 	func(e *jx.Encoder) {
     	{{- template "json/enc" $el }}
-	}(enc)
+	}(&enc)
 	return e.EncodeValue(string(enc.Bytes()))
 {{- else }}
     {{- template "uri/encode" $el }}

@@ -17,7 +17,7 @@ func encodeActionsCreateOrUpdateEnvironmentSecretRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -31,7 +31,7 @@ func encodeActionsCreateOrUpdateOrgSecretRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -45,7 +45,7 @@ func encodeActionsCreateOrUpdateRepoSecretRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -59,7 +59,7 @@ func encodeActionsCreateSelfHostedRunnerGroupForOrgRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -73,7 +73,7 @@ func encodeActionsReviewPendingDeploymentsForRunRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -91,7 +91,7 @@ func encodeActionsSetAllowedActionsOrganizationRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -111,7 +111,7 @@ func encodeActionsSetAllowedActionsRepositoryRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -127,7 +127,7 @@ func encodeActionsSetGithubActionsPermissionsOrganizationRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -141,7 +141,7 @@ func encodeActionsSetGithubActionsPermissionsRepositoryRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -155,7 +155,7 @@ func encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -169,7 +169,7 @@ func encodeActionsSetSelectedReposForOrgSecretRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -183,7 +183,7 @@ func encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -197,7 +197,7 @@ func encodeActionsSetSelfHostedRunnersInGroupForOrgRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -211,7 +211,7 @@ func encodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -229,7 +229,7 @@ func encodeActivityMarkNotificationsAsReadRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -249,7 +249,7 @@ func encodeActivityMarkRepoNotificationsAsReadRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -269,7 +269,7 @@ func encodeActivitySetRepoSubscriptionRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -289,7 +289,7 @@ func encodeActivitySetThreadSubscriptionRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -305,7 +305,7 @@ func encodeAppsCheckTokenRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -319,7 +319,7 @@ func encodeAppsCreateContentAttachmentRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -333,7 +333,7 @@ func encodeAppsCreateFromManifestRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req != nil {
 			req.Encode(e)
@@ -353,7 +353,7 @@ func encodeAppsCreateInstallationAccessTokenRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -369,7 +369,7 @@ func encodeAppsDeleteAuthorizationRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -383,7 +383,7 @@ func encodeAppsDeleteTokenRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -397,7 +397,7 @@ func encodeAppsResetTokenRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -411,7 +411,7 @@ func encodeAppsScopeTokenRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -429,7 +429,7 @@ func encodeAppsUpdateWebhookConfigForAppRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -445,7 +445,7 @@ func encodeChecksCreateSuiteRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -459,7 +459,7 @@ func encodeChecksSetSuitesPreferencesRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -473,7 +473,7 @@ func encodeCodeScanningUpdateAlertRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -487,7 +487,7 @@ func encodeCodeScanningUploadSarifRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -501,7 +501,7 @@ func encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -515,7 +515,7 @@ func encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -529,7 +529,7 @@ func encodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -543,7 +543,7 @@ func encodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -557,7 +557,7 @@ func encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -571,7 +571,7 @@ func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -585,7 +585,7 @@ func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -599,7 +599,7 @@ func encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -613,7 +613,7 @@ func encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -627,7 +627,7 @@ func encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -641,7 +641,7 @@ func encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -655,7 +655,7 @@ func encodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -673,7 +673,7 @@ func encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -689,7 +689,7 @@ func encodeGistsCreateRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -703,7 +703,7 @@ func encodeGistsCreateCommentRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -717,7 +717,7 @@ func encodeGistsUpdateCommentRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -731,7 +731,7 @@ func encodeGitCreateBlobRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -745,7 +745,7 @@ func encodeGitCreateCommitRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -759,7 +759,7 @@ func encodeGitCreateRefRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -773,7 +773,7 @@ func encodeGitCreateTagRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -787,7 +787,7 @@ func encodeGitCreateTreeRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -801,7 +801,7 @@ func encodeGitUpdateRefRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -815,7 +815,7 @@ func encodeInteractionsSetRestrictionsForAuthenticatedUserRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -829,7 +829,7 @@ func encodeInteractionsSetRestrictionsForOrgRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -843,7 +843,7 @@ func encodeInteractionsSetRestrictionsForRepoRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -861,7 +861,7 @@ func encodeIssuesAddAssigneesRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -877,7 +877,7 @@ func encodeIssuesCreateRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -891,7 +891,7 @@ func encodeIssuesCreateCommentRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -905,7 +905,7 @@ func encodeIssuesCreateLabelRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -919,7 +919,7 @@ func encodeIssuesCreateMilestoneRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -937,7 +937,7 @@ func encodeIssuesLockRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -957,7 +957,7 @@ func encodeIssuesRemoveAssigneesRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -977,7 +977,7 @@ func encodeIssuesUpdateRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -993,7 +993,7 @@ func encodeIssuesUpdateCommentRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1011,7 +1011,7 @@ func encodeIssuesUpdateLabelRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -1031,7 +1031,7 @@ func encodeIssuesUpdateMilestoneRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -1047,7 +1047,7 @@ func encodeMarkdownRenderRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1088,7 +1088,7 @@ func encodeMigrationsMapCommitAuthorRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -1104,7 +1104,7 @@ func encodeMigrationsSetLfsPreferenceRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1118,7 +1118,7 @@ func encodeMigrationsStartForAuthenticatedUserRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1132,7 +1132,7 @@ func encodeMigrationsStartForOrgRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1146,7 +1146,7 @@ func encodeMigrationsStartImportRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1164,7 +1164,7 @@ func encodeMigrationsUpdateImportRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -1184,7 +1184,7 @@ func encodeOAuthAuthorizationsCreateAuthorizationRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -1200,7 +1200,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1214,7 +1214,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReques
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1232,7 +1232,7 @@ func encodeOAuthAuthorizationsUpdateAuthorizationRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -1252,7 +1252,7 @@ func encodeOrgsCreateInvitationRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -1268,7 +1268,7 @@ func encodeOrgsCreateWebhookRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1286,7 +1286,7 @@ func encodeOrgsSetMembershipForUserRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -1302,7 +1302,7 @@ func encodeOrgsUpdateMembershipForAuthenticatedUserRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1320,7 +1320,7 @@ func encodeOrgsUpdateWebhookRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -1340,7 +1340,7 @@ func encodeOrgsUpdateWebhookConfigForOrgRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -1360,7 +1360,7 @@ func encodeProjectsAddCollaboratorRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -1376,7 +1376,7 @@ func encodeProjectsCreateColumnRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1390,7 +1390,7 @@ func encodeProjectsCreateForAuthenticatedUserRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1404,7 +1404,7 @@ func encodeProjectsCreateForOrgRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1418,7 +1418,7 @@ func encodeProjectsCreateForRepoRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1432,7 +1432,7 @@ func encodeProjectsMoveCardRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1446,7 +1446,7 @@ func encodeProjectsMoveColumnRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1464,7 +1464,7 @@ func encodeProjectsUpdateRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -1484,7 +1484,7 @@ func encodeProjectsUpdateCardRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -1500,7 +1500,7 @@ func encodeProjectsUpdateColumnRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1514,7 +1514,7 @@ func encodePullsCreateRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1528,7 +1528,7 @@ func encodePullsCreateReplyForReviewCommentRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1546,7 +1546,7 @@ func encodePullsCreateReviewRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -1562,7 +1562,7 @@ func encodePullsCreateReviewCommentRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1576,7 +1576,7 @@ func encodePullsDismissReviewRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1594,7 +1594,7 @@ func encodePullsMergeRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -1610,7 +1610,7 @@ func encodePullsRemoveRequestedReviewersRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1624,7 +1624,7 @@ func encodePullsSubmitReviewRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1642,7 +1642,7 @@ func encodePullsUpdateRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -1662,7 +1662,7 @@ func encodePullsUpdateBranchRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -1678,7 +1678,7 @@ func encodePullsUpdateReviewRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1692,7 +1692,7 @@ func encodePullsUpdateReviewCommentRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1706,7 +1706,7 @@ func encodeReactionsCreateForCommitCommentRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1720,7 +1720,7 @@ func encodeReactionsCreateForIssueRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1734,7 +1734,7 @@ func encodeReactionsCreateForIssueCommentRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1748,7 +1748,7 @@ func encodeReactionsCreateForPullRequestReviewCommentRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1762,7 +1762,7 @@ func encodeReactionsCreateForReleaseRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1776,7 +1776,7 @@ func encodeReactionsCreateForTeamDiscussionCommentInOrgRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1790,7 +1790,7 @@ func encodeReactionsCreateForTeamDiscussionCommentLegacyRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1804,7 +1804,7 @@ func encodeReactionsCreateForTeamDiscussionInOrgRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1818,7 +1818,7 @@ func encodeReactionsCreateForTeamDiscussionLegacyRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1836,7 +1836,7 @@ func encodeReposAddAppAccessRestrictionsRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -1856,7 +1856,7 @@ func encodeReposAddCollaboratorRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -1876,7 +1876,7 @@ func encodeReposAddStatusCheckContextsRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -1896,7 +1896,7 @@ func encodeReposAddTeamAccessRestrictionsRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -1916,7 +1916,7 @@ func encodeReposAddUserAccessRestrictionsRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -1932,7 +1932,7 @@ func encodeReposCreateAutolinkRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1946,7 +1946,7 @@ func encodeReposCreateCommitCommentRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1960,7 +1960,7 @@ func encodeReposCreateCommitStatusRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1974,7 +1974,7 @@ func encodeReposCreateDeployKeyRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -1988,7 +1988,7 @@ func encodeReposCreateDeploymentRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -2002,7 +2002,7 @@ func encodeReposCreateDeploymentStatusRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -2016,7 +2016,7 @@ func encodeReposCreateDispatchEventRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -2030,7 +2030,7 @@ func encodeReposCreateForAuthenticatedUserRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -2048,7 +2048,7 @@ func encodeReposCreateForkRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -2064,7 +2064,7 @@ func encodeReposCreateInOrgRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -2078,7 +2078,7 @@ func encodeReposCreateOrUpdateFileContentsRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -2092,7 +2092,7 @@ func encodeReposCreatePagesSiteRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -2106,7 +2106,7 @@ func encodeReposCreateReleaseRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -2120,7 +2120,7 @@ func encodeReposCreateUsingTemplateRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -2138,7 +2138,7 @@ func encodeReposCreateWebhookRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -2154,7 +2154,7 @@ func encodeReposDeleteFileRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -2168,7 +2168,7 @@ func encodeReposMergeRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -2182,7 +2182,7 @@ func encodeReposMergeUpstreamRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -2200,7 +2200,7 @@ func encodeReposRemoveAppAccessRestrictionsRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -2220,7 +2220,7 @@ func encodeReposRemoveStatusCheckContextsRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -2240,7 +2240,7 @@ func encodeReposRemoveTeamAccessRestrictionsRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -2260,7 +2260,7 @@ func encodeReposRemoveUserAccessRestrictionsRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -2280,7 +2280,7 @@ func encodeReposRenameBranchRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -2296,7 +2296,7 @@ func encodeReposReplaceAllTopicsRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -2314,7 +2314,7 @@ func encodeReposSetAppAccessRestrictionsRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -2334,7 +2334,7 @@ func encodeReposSetStatusCheckContextsRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -2354,7 +2354,7 @@ func encodeReposSetTeamAccessRestrictionsRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -2374,7 +2374,7 @@ func encodeReposSetUserAccessRestrictionsRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -2390,7 +2390,7 @@ func encodeReposTransferRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -2408,7 +2408,7 @@ func encodeReposUpdateRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -2424,7 +2424,7 @@ func encodeReposUpdateBranchProtectionRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -2438,7 +2438,7 @@ func encodeReposUpdateCommitCommentRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -2456,7 +2456,7 @@ func encodeReposUpdateInvitationRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -2476,7 +2476,7 @@ func encodeReposUpdatePullRequestReviewProtectionRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -2496,7 +2496,7 @@ func encodeReposUpdateReleaseRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -2516,7 +2516,7 @@ func encodeReposUpdateReleaseAssetRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -2536,7 +2536,7 @@ func encodeReposUpdateStatusCheckProtectionRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -2556,7 +2556,7 @@ func encodeReposUpdateWebhookRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -2576,7 +2576,7 @@ func encodeReposUpdateWebhookConfigForRepoRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -2608,7 +2608,7 @@ func encodeSecretScanningUpdateAlertRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -2626,7 +2626,7 @@ func encodeTeamsAddOrUpdateMembershipForUserInOrgRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -2646,7 +2646,7 @@ func encodeTeamsAddOrUpdateMembershipForUserLegacyRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -2666,7 +2666,7 @@ func encodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -2686,7 +2686,7 @@ func encodeTeamsAddOrUpdateProjectPermissionsLegacyRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -2706,7 +2706,7 @@ func encodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -2726,7 +2726,7 @@ func encodeTeamsAddOrUpdateRepoPermissionsLegacyRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -2742,7 +2742,7 @@ func encodeTeamsCreateRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -2756,7 +2756,7 @@ func encodeTeamsCreateDiscussionCommentInOrgRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -2770,7 +2770,7 @@ func encodeTeamsCreateDiscussionCommentLegacyRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -2784,7 +2784,7 @@ func encodeTeamsCreateDiscussionInOrgRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -2798,7 +2798,7 @@ func encodeTeamsCreateDiscussionLegacyRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -2812,7 +2812,7 @@ func encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -2826,7 +2826,7 @@ func encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -2840,7 +2840,7 @@ func encodeTeamsUpdateDiscussionCommentInOrgRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -2854,7 +2854,7 @@ func encodeTeamsUpdateDiscussionCommentLegacyRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -2872,7 +2872,7 @@ func encodeTeamsUpdateDiscussionInOrgRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -2892,7 +2892,7 @@ func encodeTeamsUpdateDiscussionLegacyRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -2912,7 +2912,7 @@ func encodeTeamsUpdateInOrgRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -2928,7 +2928,7 @@ func encodeTeamsUpdateLegacyRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -2946,7 +2946,7 @@ func encodeUsersAddEmailForAuthenticatedRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -2962,7 +2962,7 @@ func encodeUsersCreateGpgKeyForAuthenticatedRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -2976,7 +2976,7 @@ func encodeUsersCreatePublicSSHKeyForAuthenticatedRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -2994,7 +2994,7 @@ func encodeUsersDeleteEmailForAuthenticatedRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -3010,7 +3010,7 @@ func encodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -3028,7 +3028,7 @@ func encodeUsersUpdateAuthenticatedRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)

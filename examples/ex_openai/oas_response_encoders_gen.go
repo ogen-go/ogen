@@ -16,7 +16,7 @@ func encodeCancelFineTuneResponse(response FineTune, w http.ResponseWriter, span
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -30,7 +30,7 @@ func encodeCreateAnswerResponse(response *CreateAnswerResponse, w http.ResponseW
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -44,7 +44,7 @@ func encodeCreateChatCompletionResponse(response *CreateChatCompletionResponse, 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -58,7 +58,7 @@ func encodeCreateClassificationResponse(response *CreateClassificationResponse, 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -72,7 +72,7 @@ func encodeCreateCompletionResponse(response *CreateCompletionResponse, w http.R
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -86,7 +86,7 @@ func encodeCreateEditResponse(response *CreateEditResponse, w http.ResponseWrite
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -100,7 +100,7 @@ func encodeCreateEmbeddingResponse(response *CreateEmbeddingResponse, w http.Res
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -114,7 +114,7 @@ func encodeCreateFileResponse(response OpenAIFile, w http.ResponseWriter, span t
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -128,7 +128,7 @@ func encodeCreateFineTuneResponse(response FineTune, w http.ResponseWriter, span
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -142,7 +142,7 @@ func encodeCreateImageResponse(response ImagesResponse, w http.ResponseWriter, s
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -156,7 +156,7 @@ func encodeCreateImageEditResponse(response ImagesResponse, w http.ResponseWrite
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -170,7 +170,7 @@ func encodeCreateImageVariationResponse(response ImagesResponse, w http.Response
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -184,7 +184,7 @@ func encodeCreateModerationResponse(response *CreateModerationResponse, w http.R
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -198,7 +198,7 @@ func encodeCreateSearchResponse(response *CreateSearchResponse, w http.ResponseW
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -212,7 +212,7 @@ func encodeCreateTranscriptionResponse(response *CreateTranscriptionResponse, w 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -226,7 +226,7 @@ func encodeCreateTranslationResponse(response *CreateTranslationResponse, w http
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -240,7 +240,7 @@ func encodeDeleteFileResponse(response *DeleteFileResponse, w http.ResponseWrite
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -254,7 +254,7 @@ func encodeDeleteModelResponse(response *DeleteModelResponse, w http.ResponseWri
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -268,7 +268,7 @@ func encodeDownloadFileResponse(response string, w http.ResponseWriter, span tra
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	e.Str(response)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -282,7 +282,7 @@ func encodeListEnginesResponse(response *ListEnginesResponse, w http.ResponseWri
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -296,7 +296,7 @@ func encodeListFilesResponse(response *ListFilesResponse, w http.ResponseWriter,
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -310,7 +310,7 @@ func encodeListFineTuneEventsResponse(response *ListFineTuneEventsResponse, w ht
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -324,7 +324,7 @@ func encodeListFineTunesResponse(response *ListFineTunesResponse, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -338,7 +338,7 @@ func encodeListModelsResponse(response *ListModelsResponse, w http.ResponseWrite
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -352,7 +352,7 @@ func encodeRetrieveEngineResponse(response Engine, w http.ResponseWriter, span t
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -366,7 +366,7 @@ func encodeRetrieveFileResponse(response OpenAIFile, w http.ResponseWriter, span
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -380,7 +380,7 @@ func encodeRetrieveFineTuneResponse(response FineTune, w http.ResponseWriter, sp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -394,7 +394,7 @@ func encodeRetrieveModelResponse(response Model, w http.ResponseWriter, span tra
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")

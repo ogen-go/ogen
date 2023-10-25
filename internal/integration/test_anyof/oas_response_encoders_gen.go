@@ -16,7 +16,7 @@ func encodeIntegerNumberResponse(response *IntegerNumber, w http.ResponseWriter,
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -30,7 +30,7 @@ func encodeJaegerAnyOfResponse(response *JaegerAnyOf, w http.ResponseWriter, spa
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -44,7 +44,7 @@ func encodeOneUUIDResponse(response *OneUUID, w http.ResponseWriter, span trace.
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
