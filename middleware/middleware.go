@@ -62,6 +62,11 @@ type Request struct {
 	Raw *http.Request
 }
 
+// SetContext sets Context in Request.
+func (r *Request) SetContext(ctx context.Context) {
+	r.Context = ctx
+}
+
 // Response is response type for middleware.
 type Response struct {
 	// Type is the operation response type.
