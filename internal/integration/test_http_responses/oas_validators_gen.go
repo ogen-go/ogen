@@ -11,6 +11,10 @@ import (
 )
 
 func (s *CombinedDefStatusCode) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -58,6 +62,10 @@ func (s HeadersCombinedType) Validate() error {
 }
 
 func (s *HeadersJSONOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.XJSONHeader.Validate(); err != nil {
@@ -102,6 +110,10 @@ func (s QueryData) Validate() error {
 }
 
 func (s *User) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Role.Validate(); err != nil {

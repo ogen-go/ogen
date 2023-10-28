@@ -11,6 +11,10 @@ import (
 )
 
 func (s *ArrayTest) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Required == nil {
@@ -48,6 +52,10 @@ func (s *ArrayTest) Validate() error {
 }
 
 func (s *Data) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -131,6 +139,10 @@ func (s *Data) Validate() error {
 }
 
 func (s *DefaultTest) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Enum.Get(); ok {
@@ -246,6 +258,10 @@ func (s DefaultTestEnum) Validate() error {
 }
 
 func (s *MapWithProperties) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.SubMap.Get(); ok {
@@ -290,6 +306,10 @@ func (s *MapWithProperties) Validate() error {
 }
 
 func (s *NullableEnums) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.OnlyNullable.Get(); ok {
@@ -399,6 +419,10 @@ func (s OneOfBooleanSumNullables) Validate() error {
 }
 
 func (s *OneOfBugs) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.OneOfMinusUUIDMinusIntMinusEnum.Get(); ok {
@@ -486,6 +510,10 @@ func (s OneOfWithNullable) Validate() error {
 }
 
 func (s *Pet) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Primary == nil {
@@ -913,6 +941,10 @@ func (s StringStringMap) Validate() error {
 }
 
 func (s *TestFloatValidation) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{
@@ -977,6 +1009,10 @@ func (s TestNullableOneofsOK) Validate() error {
 }
 
 func (s *TupleNamedTest) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.V3 == nil {
@@ -1013,6 +1049,10 @@ func (s *TupleNamedTest) Validate() error {
 }
 
 func (s *TupleTest) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.V3 == nil {
@@ -1049,6 +1089,10 @@ func (s *TupleTest) Validate() error {
 }
 
 func (s *UniqueItemsTest) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.RequiredUnique == nil {

@@ -11,6 +11,10 @@ import (
 )
 
 func (s *ActionsCreateOrUpdateEnvironmentSecretReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -38,6 +42,10 @@ func (s *ActionsCreateOrUpdateEnvironmentSecretReq) Validate() error {
 }
 
 func (s *ActionsCreateOrUpdateOrgSecretReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.EncryptedValue.Get(); ok {
@@ -96,6 +104,10 @@ func (s ActionsCreateOrUpdateOrgSecretReqVisibility) Validate() error {
 }
 
 func (s *ActionsCreateOrUpdateRepoSecretReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.EncryptedValue.Get(); ok {
@@ -130,6 +142,10 @@ func (s *ActionsCreateOrUpdateRepoSecretReq) Validate() error {
 }
 
 func (s *ActionsCreateSelfHostedRunnerGroupForOrgReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Visibility.Get(); ok {
@@ -169,6 +185,10 @@ func (s ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility) Validate() error 
 }
 
 func (s *ActionsEnterprisePermissions) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.EnabledOrganizations.Validate(); err != nil {
@@ -206,6 +226,10 @@ func (s *ActionsEnterprisePermissions) Validate() error {
 }
 
 func (s *ActionsListArtifactsForRepoOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Artifacts == nil {
@@ -225,6 +249,10 @@ func (s *ActionsListArtifactsForRepoOK) Validate() error {
 }
 
 func (s *ActionsListArtifactsForRepoOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -244,6 +272,10 @@ func (s *ActionsListArtifactsForRepoOKHeaders) Validate() error {
 }
 
 func (s *ActionsListEnvironmentSecretsOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Secrets == nil {
@@ -263,6 +295,10 @@ func (s *ActionsListEnvironmentSecretsOK) Validate() error {
 }
 
 func (s *ActionsListEnvironmentSecretsOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -293,6 +329,10 @@ func (s ActionsListJobsForWorkflowRunFilter) Validate() error {
 }
 
 func (s *ActionsListJobsForWorkflowRunOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Jobs == nil {
@@ -329,6 +369,10 @@ func (s *ActionsListJobsForWorkflowRunOK) Validate() error {
 }
 
 func (s *ActionsListJobsForWorkflowRunOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -348,6 +392,10 @@ func (s *ActionsListJobsForWorkflowRunOKHeaders) Validate() error {
 }
 
 func (s *ActionsListOrgSecretsOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Secrets == nil {
@@ -384,6 +432,10 @@ func (s *ActionsListOrgSecretsOK) Validate() error {
 }
 
 func (s *ActionsListOrgSecretsOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -403,6 +455,10 @@ func (s *ActionsListOrgSecretsOKHeaders) Validate() error {
 }
 
 func (s *ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.TotalCount)); err != nil {
@@ -433,6 +489,10 @@ func (s *ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK) Validate() error {
 }
 
 func (s *ActionsListRepoSecretsOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Secrets == nil {
@@ -452,6 +512,10 @@ func (s *ActionsListRepoSecretsOK) Validate() error {
 }
 
 func (s *ActionsListRepoSecretsOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -471,6 +535,10 @@ func (s *ActionsListRepoSecretsOKHeaders) Validate() error {
 }
 
 func (s *ActionsListRepoWorkflowsOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Workflows == nil {
@@ -507,6 +575,10 @@ func (s *ActionsListRepoWorkflowsOK) Validate() error {
 }
 
 func (s *ActionsListRepoWorkflowsOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -526,6 +598,10 @@ func (s *ActionsListRepoWorkflowsOKHeaders) Validate() error {
 }
 
 func (s *ActionsListSelectedReposForOrgSecretOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Repositories == nil {
@@ -545,6 +621,10 @@ func (s *ActionsListSelectedReposForOrgSecretOK) Validate() error {
 }
 
 func (s *ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.TotalCount)); err != nil {
@@ -575,6 +655,10 @@ func (s *ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK) Vali
 }
 
 func (s *ActionsListSelfHostedRunnerGroupsForOrgOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.TotalCount)); err != nil {
@@ -622,6 +706,10 @@ func (s *ActionsListSelfHostedRunnerGroupsForOrgOK) Validate() error {
 }
 
 func (s *ActionsListSelfHostedRunnersForOrgOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Runners == nil {
@@ -658,6 +746,10 @@ func (s *ActionsListSelfHostedRunnersForOrgOK) Validate() error {
 }
 
 func (s *ActionsListSelfHostedRunnersForOrgOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -677,6 +769,10 @@ func (s *ActionsListSelfHostedRunnersForOrgOKHeaders) Validate() error {
 }
 
 func (s *ActionsListSelfHostedRunnersForRepoOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Runners == nil {
@@ -713,6 +809,10 @@ func (s *ActionsListSelfHostedRunnersForRepoOK) Validate() error {
 }
 
 func (s *ActionsListSelfHostedRunnersForRepoOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -732,6 +832,10 @@ func (s *ActionsListSelfHostedRunnersForRepoOKHeaders) Validate() error {
 }
 
 func (s *ActionsListSelfHostedRunnersInGroupForOrgOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.TotalCount)); err != nil {
@@ -779,6 +883,10 @@ func (s *ActionsListSelfHostedRunnersInGroupForOrgOK) Validate() error {
 }
 
 func (s *ActionsListSelfHostedRunnersInGroupForOrgOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -798,6 +906,10 @@ func (s *ActionsListSelfHostedRunnersInGroupForOrgOKHeaders) Validate() error {
 }
 
 func (s *ActionsListWorkflowRunArtifactsOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Artifacts == nil {
@@ -817,6 +929,10 @@ func (s *ActionsListWorkflowRunArtifactsOK) Validate() error {
 }
 
 func (s *ActionsListWorkflowRunArtifactsOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -836,6 +952,10 @@ func (s *ActionsListWorkflowRunArtifactsOKHeaders) Validate() error {
 }
 
 func (s *ActionsListWorkflowRunsForRepoOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.WorkflowRuns == nil {
@@ -855,6 +975,10 @@ func (s *ActionsListWorkflowRunsForRepoOK) Validate() error {
 }
 
 func (s *ActionsListWorkflowRunsForRepoOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -907,6 +1031,10 @@ func (s ActionsListWorkflowRunsForRepoStatus) Validate() error {
 }
 
 func (s *ActionsOrganizationPermissions) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.EnabledRepositories.Validate(); err != nil {
@@ -944,6 +1072,10 @@ func (s *ActionsOrganizationPermissions) Validate() error {
 }
 
 func (s *ActionsRepositoryPermissions) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.AllowedActions.Get(); ok {
@@ -970,6 +1102,10 @@ func (s *ActionsRepositoryPermissions) Validate() error {
 }
 
 func (s *ActionsReviewPendingDeploymentsForRunReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.EnvironmentIds == nil {
@@ -1011,6 +1147,10 @@ func (s ActionsReviewPendingDeploymentsForRunReqState) Validate() error {
 }
 
 func (s *ActionsSetGithubActionsPermissionsOrganizationReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.EnabledRepositories.Validate(); err != nil {
@@ -1048,6 +1188,10 @@ func (s *ActionsSetGithubActionsPermissionsOrganizationReq) Validate() error {
 }
 
 func (s *ActionsSetGithubActionsPermissionsRepositoryReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.AllowedActions.Get(); ok {
@@ -1074,6 +1218,10 @@ func (s *ActionsSetGithubActionsPermissionsRepositoryReq) Validate() error {
 }
 
 func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.SelectedRepositoryIds == nil {
@@ -1093,6 +1241,10 @@ func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq) Validate() error {
 }
 
 func (s *ActionsSetSelectedReposForOrgSecretReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.SelectedRepositoryIds == nil {
@@ -1112,6 +1264,10 @@ func (s *ActionsSetSelectedReposForOrgSecretReq) Validate() error {
 }
 
 func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.SelectedRepositoryIds == nil {
@@ -1131,6 +1287,10 @@ func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq) Vali
 }
 
 func (s *ActionsSetSelfHostedRunnersInGroupForOrgReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Runners == nil {
@@ -1150,6 +1310,10 @@ func (s *ActionsSetSelfHostedRunnersInGroupForOrgReq) Validate() error {
 }
 
 func (s *ActionsUpdateSelfHostedRunnerGroupForOrgReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Visibility.Get(); ok {
@@ -1189,6 +1353,10 @@ func (s ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) Validate() error 
 }
 
 func (s *ActivityListNotificationsForAuthenticatedUserOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -1258,6 +1426,10 @@ func (s ActivityListPublicEventsOKApplicationJSON) Validate() error {
 }
 
 func (s *ActivityListRepoNotificationsForAuthenticatedUserOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -1288,6 +1460,10 @@ func (s ActivityListReposStarredByAuthenticatedUserDirection) Validate() error {
 }
 
 func (s *ActivityListReposStarredByAuthenticatedUserOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -1318,6 +1494,10 @@ func (s ActivityListReposStarredByAuthenticatedUserSort) Validate() error {
 }
 
 func (s *ActivityListReposWatchedByUserOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -1337,6 +1517,10 @@ func (s *ActivityListReposWatchedByUserOKHeaders) Validate() error {
 }
 
 func (s *ActivityListWatchedReposForAuthenticatedUserOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -1356,6 +1540,10 @@ func (s *ActivityListWatchedReposForAuthenticatedUserOKHeaders) Validate() error
 }
 
 func (s *ActivityListWatchersForRepoOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -1388,6 +1576,10 @@ func (s AllowedActions) Validate() error {
 }
 
 func (s *AppPermissions) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Actions.Get(); ok {
@@ -2293,6 +2485,10 @@ func (s AppPermissionsWorkflows) Validate() error {
 }
 
 func (s *ApplicationGrant) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Scopes == nil {
@@ -2312,6 +2508,10 @@ func (s *ApplicationGrant) Validate() error {
 }
 
 func (s *AppsCreateContentAttachmentReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -2358,6 +2558,10 @@ func (s *AppsCreateContentAttachmentReq) Validate() error {
 }
 
 func (s *AppsCreateFromManifestCreated) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Events == nil {
@@ -2377,6 +2581,10 @@ func (s *AppsCreateFromManifestCreated) Validate() error {
 }
 
 func (s *AppsCreateInstallationAccessTokenReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Permissions.Get(); ok {
@@ -2414,6 +2622,10 @@ func (s AppsListAccountsForPlanDirection) Validate() error {
 }
 
 func (s *AppsListAccountsForPlanOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -2472,6 +2684,10 @@ func (s AppsListAccountsForPlanStubbedDirection) Validate() error {
 }
 
 func (s *AppsListAccountsForPlanStubbedOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -2519,6 +2735,10 @@ func (s AppsListAccountsForPlanStubbedSort) Validate() error {
 }
 
 func (s *AppsListInstallationReposForAuthenticatedUserOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Repositories == nil {
@@ -2538,6 +2758,10 @@ func (s *AppsListInstallationReposForAuthenticatedUserOK) Validate() error {
 }
 
 func (s *AppsListInstallationReposForAuthenticatedUserOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -2557,6 +2781,10 @@ func (s *AppsListInstallationReposForAuthenticatedUserOKHeaders) Validate() erro
 }
 
 func (s *AppsListPlansOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -2593,6 +2821,10 @@ func (s *AppsListPlansOKHeaders) Validate() error {
 }
 
 func (s *AppsListPlansStubbedOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -2629,6 +2861,10 @@ func (s *AppsListPlansStubbedOKHeaders) Validate() error {
 }
 
 func (s *AppsListReposAccessibleToInstallationOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Repositories == nil {
@@ -2648,6 +2884,10 @@ func (s *AppsListReposAccessibleToInstallationOK) Validate() error {
 }
 
 func (s *AppsListReposAccessibleToInstallationOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -2667,6 +2907,10 @@ func (s *AppsListReposAccessibleToInstallationOKHeaders) Validate() error {
 }
 
 func (s *AppsListSubscriptionsForAuthenticatedUserOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -2703,6 +2947,10 @@ func (s *AppsListSubscriptionsForAuthenticatedUserOKHeaders) Validate() error {
 }
 
 func (s *AppsListSubscriptionsForAuthenticatedUserStubbedOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -2764,6 +3012,10 @@ func (s AppsListWebhookDeliveriesOKApplicationJSON) Validate() error {
 }
 
 func (s *AppsScopeTokenReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Permissions.Get(); ok {
@@ -2790,6 +3042,10 @@ func (s *AppsScopeTokenReq) Validate() error {
 }
 
 func (s *AppsUpdateWebhookConfigForAppReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.InsecureSsl.Get(); ok {
@@ -2816,6 +3072,10 @@ func (s *AppsUpdateWebhookConfigForAppReq) Validate() error {
 }
 
 func (s *AuthenticationToken) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.RepositorySelection.Get(); ok {
@@ -2876,6 +3136,10 @@ func (s AuthorAssociation) Validate() error {
 }
 
 func (s *Authorization) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Installation.Get(); ok {
@@ -2902,6 +3166,10 @@ func (s *Authorization) Validate() error {
 }
 
 func (s *AuthorizationHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -2921,6 +3189,10 @@ func (s *AuthorizationHeaders) Validate() error {
 }
 
 func (s *AutoMerge) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.MergeMethod.Validate(); err != nil {
@@ -2953,6 +3225,10 @@ func (s AutoMergeMergeMethod) Validate() error {
 }
 
 func (s *BranchProtection) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.RequiredStatusChecks.Get(); ok {
@@ -3015,6 +3291,10 @@ func (s *BranchProtection) Validate() error {
 }
 
 func (s *BranchProtectionRequiredStatusChecks) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Contexts == nil {
@@ -3034,6 +3314,10 @@ func (s *BranchProtectionRequiredStatusChecks) Validate() error {
 }
 
 func (s *BranchRestrictionPolicy) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Users == nil {
@@ -3075,6 +3359,10 @@ func (s *BranchRestrictionPolicy) Validate() error {
 }
 
 func (s *BranchWithProtection) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Commit.Validate(); err != nil {
@@ -3105,6 +3393,10 @@ func (s *BranchWithProtection) Validate() error {
 }
 
 func (s *CheckRun) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Status.Validate(); err != nil {
@@ -3223,6 +3515,10 @@ func (s CheckRunStatus) Validate() error {
 }
 
 func (s *CheckSuite) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Status.Get(); ok {
@@ -3335,6 +3631,10 @@ func (s *ChecksCreateSuiteOK) Validate() error {
 }
 
 func (s *ChecksListAnnotationsOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -3365,6 +3665,10 @@ func (s ChecksListForRefFilter) Validate() error {
 }
 
 func (s *ChecksListForRefOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.CheckRuns == nil {
@@ -3401,6 +3705,10 @@ func (s *ChecksListForRefOK) Validate() error {
 }
 
 func (s *ChecksListForRefOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -3444,6 +3752,10 @@ func (s ChecksListForSuiteFilter) Validate() error {
 }
 
 func (s *ChecksListForSuiteOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.CheckRuns == nil {
@@ -3480,6 +3792,10 @@ func (s *ChecksListForSuiteOK) Validate() error {
 }
 
 func (s *ChecksListForSuiteOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -3512,6 +3828,10 @@ func (s ChecksListForSuiteStatus) Validate() error {
 }
 
 func (s *ChecksListSuitesForRefOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.CheckSuites == nil {
@@ -3548,6 +3868,10 @@ func (s *ChecksListSuitesForRefOK) Validate() error {
 }
 
 func (s *ChecksListSuitesForRefOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -3567,6 +3891,10 @@ func (s *ChecksListSuitesForRefOKHeaders) Validate() error {
 }
 
 func (s *CloneTraffic) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Clones == nil {
@@ -3594,6 +3922,10 @@ func (s CodeFrequencyStat) Validate() error {
 }
 
 func (s *CodeScanningAlert) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {
@@ -3681,6 +4013,10 @@ func (s CodeScanningAlertDismissedReason) Validate() error {
 }
 
 func (s *CodeScanningAlertInstance) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.State.Get(); ok {
@@ -3739,6 +4075,10 @@ func (s *CodeScanningAlertInstance) Validate() error {
 }
 
 func (s *CodeScanningAlertItems) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {
@@ -3798,6 +4138,10 @@ func (s *CodeScanningAlertItems) Validate() error {
 }
 
 func (s *CodeScanningAlertRule) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Severity.Get(); ok {
@@ -3890,6 +4234,10 @@ func (s CodeScanningAlertRuleSeverity) Validate() error {
 }
 
 func (s *CodeScanningAlertRuleSummary) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Severity.Get(); ok {
@@ -3957,6 +4305,10 @@ func (s CodeScanningAlertState) Validate() error {
 }
 
 func (s *CodeScanningAnalysis) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.CommitSha.Validate(); err != nil {
@@ -4067,6 +4419,10 @@ func (s CodeScanningListRecentAnalysesOKApplicationJSON) Validate() error {
 }
 
 func (s *CodeScanningSarifsStatus) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.ProcessingStatus.Get(); ok {
@@ -4104,6 +4460,10 @@ func (s CodeScanningSarifsStatusProcessingStatus) Validate() error {
 }
 
 func (s *CodeScanningUpdateAlertReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {
@@ -4141,6 +4501,10 @@ func (s *CodeScanningUpdateAlertReq) Validate() error {
 }
 
 func (s *CodeScanningUploadSarifReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.CommitSha.Validate(); err != nil {
@@ -4160,6 +4524,10 @@ func (s *CodeScanningUploadSarifReq) Validate() error {
 }
 
 func (s *CodeSearchResultItem) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.Score)); err != nil {
@@ -4198,6 +4566,10 @@ func (s CodesOfConductGetAllCodesOfConductOKApplicationJSON) Validate() error {
 }
 
 func (s *CombinedCommitStatus) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Statuses == nil {
@@ -4217,6 +4589,10 @@ func (s *CombinedCommitStatus) Validate() error {
 }
 
 func (s *Commit) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Parents == nil {
@@ -4236,6 +4612,10 @@ func (s *Commit) Validate() error {
 }
 
 func (s *CommitActivity) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Days == nil {
@@ -4255,6 +4635,10 @@ func (s *CommitActivity) Validate() error {
 }
 
 func (s *CommitComment) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.AuthorAssociation.Validate(); err != nil {
@@ -4274,6 +4658,10 @@ func (s *CommitComment) Validate() error {
 }
 
 func (s *CommitCommentHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -4293,6 +4681,10 @@ func (s *CommitCommentHeaders) Validate() error {
 }
 
 func (s *CommitComparison) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.BaseCommit.Validate(); err != nil {
@@ -4402,6 +4794,10 @@ func (s CommitComparisonStatus) Validate() error {
 }
 
 func (s *CommitSearchResultItem) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Parents == nil {
@@ -4443,6 +4839,10 @@ func (s *CommitSearchResultItem) Validate() error {
 }
 
 func (s *ContentReferenceAttachment) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -4489,6 +4889,10 @@ func (s *ContentReferenceAttachment) Validate() error {
 }
 
 func (s *ContributorActivity) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Weeks == nil {
@@ -4508,6 +4912,10 @@ func (s *ContributorActivity) Validate() error {
 }
 
 func (s *Deployment) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.PerformedViaGithubApp.Get(); ok {
@@ -4534,6 +4942,10 @@ func (s *Deployment) Validate() error {
 }
 
 func (s *DeploymentSimple) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.PerformedViaGithubApp.Get(); ok {
@@ -4560,6 +4972,10 @@ func (s *DeploymentSimple) Validate() error {
 }
 
 func (s *DeploymentStatus) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {
@@ -4616,6 +5032,10 @@ func (s *DeploymentStatus) Validate() error {
 }
 
 func (s *DeploymentStatusHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -4656,6 +5076,10 @@ func (s DeploymentStatusState) Validate() error {
 }
 
 func (s *DiffEntry) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Status.Validate(); err != nil {
@@ -4696,6 +5120,10 @@ func (s DiffEntryStatus) Validate() error {
 }
 
 func (s *Email) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -4749,6 +5177,10 @@ func (s EnabledRepositories) Validate() error {
 }
 
 func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Visibility.Get(); ok {
@@ -4810,6 +5242,10 @@ func (s EnterpriseAdminGetAuditLogOrder) Validate() error {
 }
 
 func (s *EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.TotalCount)); err != nil {
@@ -4840,6 +5276,10 @@ func (s *EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK) Vali
 }
 
 func (s *EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.TotalCount)); err != nil {
@@ -4870,6 +5310,10 @@ func (s *EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseO
 }
 
 func (s *EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.TotalCount)); err != nil {
@@ -4917,6 +5361,10 @@ func (s *EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK) Validate() er
 }
 
 func (s *EnterpriseAdminListSelfHostedRunnersForEnterpriseOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.TotalCount.Get(); ok {
@@ -4968,6 +5416,10 @@ func (s *EnterpriseAdminListSelfHostedRunnersForEnterpriseOK) Validate() error {
 }
 
 func (s *EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -4987,6 +5439,10 @@ func (s *EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders) Validate() 
 }
 
 func (s *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.TotalCount)); err != nil {
@@ -5034,6 +5490,10 @@ func (s *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK) Validate() 
 }
 
 func (s *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -5053,6 +5513,10 @@ func (s *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders) Vali
 }
 
 func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas == nil {
@@ -5072,6 +5536,10 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReq) Validate() error {
 }
 
 func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas == nil {
@@ -5102,6 +5570,10 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReq) Validate() error {
 }
 
 func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.EnabledOrganizations.Validate(); err != nil {
@@ -5139,6 +5611,10 @@ func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq) Validate() err
 }
 
 func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas == nil {
@@ -5158,6 +5634,10 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq) Validate
 }
 
 func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas == nil {
@@ -5188,6 +5668,10 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) Validate(
 }
 
 func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.SelectedOrganizationIds == nil {
@@ -5207,6 +5691,10 @@ func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq) Vali
 }
 
 func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.SelectedOrganizationIds == nil {
@@ -5226,6 +5714,10 @@ func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRe
 }
 
 func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Runners == nil {
@@ -5245,6 +5737,10 @@ func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq) Validate() 
 }
 
 func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas == nil {
@@ -5300,6 +5796,10 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReq) Validate() error {
 }
 
 func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Op.Validate(); err != nil {
@@ -5372,6 +5872,10 @@ func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) 
 }
 
 func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas == nil {
@@ -5402,6 +5906,10 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReq) Validate() error {
 }
 
 func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Visibility.Get(); ok {
@@ -5439,6 +5947,10 @@ func (s EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility) Va
 }
 
 func (s *EnvironmentApprovals) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Environments == nil {
@@ -5480,6 +5992,10 @@ func (s EnvironmentApprovalsState) Validate() error {
 }
 
 func (s *Event) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Payload.Validate(); err != nil {
@@ -5499,6 +6015,10 @@ func (s *Event) Validate() error {
 }
 
 func (s *EventPayload) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Issue.Get(); ok {
@@ -5543,6 +6063,10 @@ func (s *EventPayload) Validate() error {
 }
 
 func (s *FullRepository) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.SecurityAndAnalysis.Get(); ok {
@@ -5569,6 +6093,10 @@ func (s *FullRepository) Validate() error {
 }
 
 func (s *FullRepositorySecurityAndAnalysis) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.AdvancedSecurity.Get(); ok {
@@ -5613,6 +6141,10 @@ func (s *FullRepositorySecurityAndAnalysis) Validate() error {
 }
 
 func (s *FullRepositorySecurityAndAnalysisAdvancedSecurity) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Status.Get(); ok {
@@ -5650,6 +6182,10 @@ func (s FullRepositorySecurityAndAnalysisAdvancedSecurityStatus) Validate() erro
 }
 
 func (s *FullRepositorySecurityAndAnalysisSecretScanning) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Status.Get(); ok {
@@ -5687,6 +6223,10 @@ func (s FullRepositorySecurityAndAnalysisSecretScanningStatus) Validate() error 
 }
 
 func (s *GistComment) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -5725,6 +6265,10 @@ func (s *GistComment) Validate() error {
 }
 
 func (s *GistCommentHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -5744,6 +6288,10 @@ func (s *GistCommentHeaders) Validate() error {
 }
 
 func (s *GistSimple) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Forks.Get(); ok {
@@ -5805,6 +6353,10 @@ func (s *GistSimple) Validate() error {
 }
 
 func (s *GistSimpleForksItem) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.User.Get(); ok {
@@ -5831,6 +6383,10 @@ func (s *GistSimpleForksItem) Validate() error {
 }
 
 func (s *GistSimpleHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -5850,6 +6406,10 @@ func (s *GistSimpleHeaders) Validate() error {
 }
 
 func (s *GistsCreateCommentReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -5877,6 +6437,10 @@ func (s *GistsCreateCommentReq) Validate() error {
 }
 
 func (s *GistsCreateReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Public.Get(); ok {
@@ -5928,6 +6492,10 @@ func (s GistsCreateReqPublic1) Validate() error {
 }
 
 func (s *GistsListCommentsOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -5964,6 +6532,10 @@ func (s *GistsListCommentsOKHeaders) Validate() error {
 }
 
 func (s *GistsListCommitsOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -5983,6 +6555,10 @@ func (s *GistsListCommitsOKHeaders) Validate() error {
 }
 
 func (s *GistsListForUserOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -6002,6 +6578,10 @@ func (s *GistsListForUserOKHeaders) Validate() error {
 }
 
 func (s *GistsListForksOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -6038,6 +6618,10 @@ func (s *GistsListForksOKHeaders) Validate() error {
 }
 
 func (s *GistsListOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -6057,6 +6641,10 @@ func (s *GistsListOKHeaders) Validate() error {
 }
 
 func (s *GistsListPublicOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -6076,6 +6664,10 @@ func (s *GistsListPublicOKHeaders) Validate() error {
 }
 
 func (s *GistsListStarredOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -6095,6 +6687,10 @@ func (s *GistsListStarredOKHeaders) Validate() error {
 }
 
 func (s *GistsUpdateCommentReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -6122,6 +6718,10 @@ func (s *GistsUpdateCommentReq) Validate() error {
 }
 
 func (s *GitCommit) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Parents == nil {
@@ -6141,6 +6741,10 @@ func (s *GitCommit) Validate() error {
 }
 
 func (s *GitCommitHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -6160,6 +6764,10 @@ func (s *GitCommitHeaders) Validate() error {
 }
 
 func (s *GitCreateTagReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Type.Validate(); err != nil {
@@ -6192,6 +6800,10 @@ func (s GitCreateTagReqType) Validate() error {
 }
 
 func (s *GitCreateTreeReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Tree == nil {
@@ -6228,6 +6840,10 @@ func (s *GitCreateTreeReq) Validate() error {
 }
 
 func (s *GitCreateTreeReqTreeItem) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Mode.Get(); ok {
@@ -6302,6 +6918,10 @@ func (s GitCreateTreeReqTreeItemType) Validate() error {
 }
 
 func (s *GitListMatchingRefsOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -6338,6 +6958,10 @@ func (s *GitListMatchingRefsOKHeaders) Validate() error {
 }
 
 func (s *GitRef) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Object.Validate(); err != nil {
@@ -6357,6 +6981,10 @@ func (s *GitRef) Validate() error {
 }
 
 func (s *GitRefHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -6376,6 +7004,10 @@ func (s *GitRefHeaders) Validate() error {
 }
 
 func (s *GitRefObject) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -6403,6 +7035,10 @@ func (s *GitRefObject) Validate() error {
 }
 
 func (s *GitTree) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Tree == nil {
@@ -6422,6 +7058,10 @@ func (s *GitTree) Validate() error {
 }
 
 func (s *GitTreeHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -6449,6 +7089,10 @@ func (s GitignoreGetAllTemplatesOKApplicationJSON) Validate() error {
 }
 
 func (s *GpgKey) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Emails == nil {
@@ -6479,6 +7123,10 @@ func (s *GpgKey) Validate() error {
 }
 
 func (s *Hook) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Events == nil {
@@ -6509,6 +7157,10 @@ func (s *Hook) Validate() error {
 }
 
 func (s *HookConfig) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.InsecureSsl.Get(); ok {
@@ -6535,6 +7187,10 @@ func (s *HookConfig) Validate() error {
 }
 
 func (s *HookDelivery) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.Duration)); err != nil {
@@ -6554,6 +7210,10 @@ func (s *HookDelivery) Validate() error {
 }
 
 func (s *HookDeliveryItem) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.Duration)); err != nil {
@@ -6573,6 +7233,10 @@ func (s *HookDeliveryItem) Validate() error {
 }
 
 func (s *HookHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -6592,6 +7256,10 @@ func (s *HookHeaders) Validate() error {
 }
 
 func (s *Hovercard) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Contexts == nil {
@@ -6611,6 +7279,10 @@ func (s *Hovercard) Validate() error {
 }
 
 func (s *Import) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Status.Validate(); err != nil {
@@ -6630,6 +7302,10 @@ func (s *Import) Validate() error {
 }
 
 func (s *ImportHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -6688,6 +7364,10 @@ func (s ImportStatus) Validate() error {
 }
 
 func (s *InstallationToken) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Permissions.Get(); ok {
@@ -6743,6 +7423,10 @@ func (s InstallationTokenRepositorySelection) Validate() error {
 }
 
 func (s *Integration) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Events == nil {
@@ -6792,6 +7476,10 @@ func (s InteractionGroup) Validate() error {
 }
 
 func (s *InteractionLimit) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Limit.Validate(); err != nil {
@@ -6829,6 +7517,10 @@ func (s *InteractionLimit) Validate() error {
 }
 
 func (s *InteractionLimitResponse) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Limit.Validate(); err != nil {
@@ -6848,6 +7540,10 @@ func (s *InteractionLimitResponse) Validate() error {
 }
 
 func (s *Issue) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Labels == nil {
@@ -6932,6 +7628,10 @@ func (s *Issue) Validate() error {
 }
 
 func (s *IssueComment) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.AuthorAssociation.Validate(); err != nil {
@@ -6969,6 +7669,10 @@ func (s *IssueComment) Validate() error {
 }
 
 func (s *IssueCommentHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -6988,6 +7692,10 @@ func (s *IssueCommentHeaders) Validate() error {
 }
 
 func (s *IssueEvent) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Issue.Get(); ok {
@@ -7050,6 +7758,10 @@ func (s *IssueEvent) Validate() error {
 }
 
 func (s *IssueHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -7069,6 +7781,10 @@ func (s *IssueHeaders) Validate() error {
 }
 
 func (s *IssueSearchResultItem) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Assignees.Get(); ok {
@@ -7175,6 +7891,10 @@ func (s *IssueSearchResultItem) Validate() error {
 }
 
 func (s *IssueSimple) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Labels == nil {
@@ -7259,6 +7979,10 @@ func (s *IssueSimple) Validate() error {
 }
 
 func (s *IssuesCreateMilestoneReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.State.Get(); ok {
@@ -7296,6 +8020,10 @@ func (s IssuesCreateMilestoneReqState) Validate() error {
 }
 
 func (s *IssuesListAssigneesOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -7326,6 +8054,10 @@ func (s IssuesListCommentsForRepoDirection) Validate() error {
 }
 
 func (s *IssuesListCommentsForRepoOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -7373,6 +8105,10 @@ func (s IssuesListCommentsForRepoSort) Validate() error {
 }
 
 func (s *IssuesListCommentsOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -7420,6 +8156,10 @@ func (s IssuesListDirection) Validate() error {
 }
 
 func (s *IssuesListEventsForRepoOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -7505,6 +8245,10 @@ func (s IssuesListForAuthenticatedUserFilter) Validate() error {
 }
 
 func (s *IssuesListForAuthenticatedUserOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -7597,6 +8341,10 @@ func (s IssuesListForOrgFilter) Validate() error {
 }
 
 func (s *IssuesListForOrgOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -7670,6 +8418,10 @@ func (s IssuesListForRepoDirection) Validate() error {
 }
 
 func (s *IssuesListForRepoOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -7732,6 +8484,10 @@ func (s IssuesListForRepoState) Validate() error {
 }
 
 func (s *IssuesListLabelsForMilestoneOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -7751,6 +8507,10 @@ func (s *IssuesListLabelsForMilestoneOKHeaders) Validate() error {
 }
 
 func (s *IssuesListLabelsForRepoOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -7770,6 +8530,10 @@ func (s *IssuesListLabelsForRepoOKHeaders) Validate() error {
 }
 
 func (s *IssuesListLabelsOnIssueOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -7800,6 +8564,10 @@ func (s IssuesListMilestonesDirection) Validate() error {
 }
 
 func (s *IssuesListMilestonesOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -7860,6 +8628,10 @@ func (s IssuesListMilestonesState) Validate() error {
 }
 
 func (s *IssuesListOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -7922,6 +8694,10 @@ func (s IssuesListState) Validate() error {
 }
 
 func (s *IssuesLockReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.LockReason.Get(); ok {
@@ -7971,6 +8747,10 @@ func (s IssuesRemoveLabelOKApplicationJSON) Validate() error {
 }
 
 func (s *IssuesUpdateMilestoneReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.State.Get(); ok {
@@ -8008,6 +8788,10 @@ func (s IssuesUpdateMilestoneReqState) Validate() error {
 }
 
 func (s *IssuesUpdateReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.State.Get(); ok {
@@ -8045,6 +8829,10 @@ func (s IssuesUpdateReqState) Validate() error {
 }
 
 func (s *Job) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Status.Validate(); err != nil {
@@ -8102,6 +8890,10 @@ func (s JobStatus) Validate() error {
 }
 
 func (s *JobStepsItem) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Status.Validate(); err != nil {
@@ -8134,6 +8926,10 @@ func (s JobStepsItemStatus) Validate() error {
 }
 
 func (s *LabelSearchResultItem) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.Score)); err != nil {
@@ -8164,6 +8960,10 @@ func (s *LabelSearchResultItem) Validate() error {
 }
 
 func (s *License) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Permissions == nil {
@@ -8213,6 +9013,10 @@ func (s LicensesGetAllCommonlyUsedOKApplicationJSON) Validate() error {
 }
 
 func (s *MarkdownRenderReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Mode.Get(); ok {
@@ -8250,6 +9054,10 @@ func (s MarkdownRenderReqMode) Validate() error {
 }
 
 func (s *MarketplaceAccount) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Email.Get(); ok {
@@ -8310,6 +9118,10 @@ func (s *MarketplaceAccount) Validate() error {
 }
 
 func (s *MarketplaceListingPlan) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Bullets == nil {
@@ -8329,6 +9141,10 @@ func (s *MarketplaceListingPlan) Validate() error {
 }
 
 func (s *MarketplacePurchase) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.MarketplacePendingChange.Get(); ok {
@@ -8366,6 +9182,10 @@ func (s *MarketplacePurchase) Validate() error {
 }
 
 func (s *MarketplacePurchaseMarketplacePendingChange) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Plan.Get(); ok {
@@ -8392,6 +9212,10 @@ func (s *MarketplacePurchaseMarketplacePendingChange) Validate() error {
 }
 
 func (s *MarketplacePurchaseMarketplacePurchase) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Plan.Get(); ok {
@@ -8418,6 +9242,10 @@ func (s *MarketplacePurchaseMarketplacePurchase) Validate() error {
 }
 
 func (s *MergedUpstream) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.MergeType.Get(); ok {
@@ -8457,6 +9285,10 @@ func (s MergedUpstreamMergeType) Validate() error {
 }
 
 func (s *Migration) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Repositories == nil {
@@ -8493,6 +9325,10 @@ func (s MigrationsGetStatusForOrgExcludeItem) Validate() error {
 }
 
 func (s *MigrationsListForAuthenticatedUserOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -8538,6 +9374,10 @@ func (s MigrationsListForOrgExcludeItem) Validate() error {
 }
 
 func (s *MigrationsListForOrgOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -8574,6 +9414,10 @@ func (s *MigrationsListForOrgOKHeaders) Validate() error {
 }
 
 func (s *MigrationsListReposForOrgOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -8593,6 +9437,10 @@ func (s *MigrationsListReposForOrgOKHeaders) Validate() error {
 }
 
 func (s *MigrationsListReposForUserOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -8612,6 +9460,10 @@ func (s *MigrationsListReposForUserOKHeaders) Validate() error {
 }
 
 func (s *MigrationsSetLfsPreferenceReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.UseLfs.Validate(); err != nil {
@@ -8642,6 +9494,10 @@ func (s MigrationsSetLfsPreferenceReqUseLfs) Validate() error {
 }
 
 func (s *MigrationsStartForAuthenticatedUserReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
@@ -8695,6 +9551,10 @@ func (s MigrationsStartForAuthenticatedUserReqExcludeItem) Validate() error {
 }
 
 func (s *MigrationsStartForOrgReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Repositories == nil {
@@ -8748,6 +9608,10 @@ func (s MigrationsStartForOrgReqExcludeItem) Validate() error {
 }
 
 func (s *MigrationsStartImportReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Vcs.Get(); ok {
@@ -8789,6 +9653,10 @@ func (s MigrationsStartImportReqVcs) Validate() error {
 }
 
 func (s *Milestone) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {
@@ -8808,6 +9676,10 @@ func (s *Milestone) Validate() error {
 }
 
 func (s *MilestoneHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -8838,6 +9710,10 @@ func (s MilestoneState) Validate() error {
 }
 
 func (s *NullableIntegration) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Events == nil {
@@ -8857,6 +9733,10 @@ func (s *NullableIntegration) Validate() error {
 }
 
 func (s *NullableMilestone) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {
@@ -8887,6 +9767,10 @@ func (s NullableMilestoneState) Validate() error {
 }
 
 func (s *NullableScopedInstallation) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Permissions.Validate(); err != nil {
@@ -8928,6 +9812,10 @@ func (s NullableScopedInstallationRepositorySelection) Validate() error {
 }
 
 func (s *OAuthAuthorizationsCreateAuthorizationReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Scopes.Get(); ok {
@@ -9022,6 +9910,10 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintOK) Vali
 }
 
 func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -9083,6 +9975,10 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppOK) Validate() error {
 }
 
 func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -9128,6 +10024,10 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq) Validate() error 
 }
 
 func (s *OAuthAuthorizationsListAuthorizationsOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -9164,6 +10064,10 @@ func (s *OAuthAuthorizationsListAuthorizationsOKHeaders) Validate() error {
 }
 
 func (s *OAuthAuthorizationsListGrantsOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -9200,6 +10104,10 @@ func (s *OAuthAuthorizationsListGrantsOKHeaders) Validate() error {
 }
 
 func (s *OAuthAuthorizationsUpdateAuthorizationReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Scopes.Get(); ok {
@@ -9226,6 +10134,10 @@ func (s *OAuthAuthorizationsUpdateAuthorizationReq) Validate() error {
 }
 
 func (s *OrgHook) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Events == nil {
@@ -9245,6 +10157,10 @@ func (s *OrgHook) Validate() error {
 }
 
 func (s *OrgHookHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -9264,6 +10180,10 @@ func (s *OrgHookHeaders) Validate() error {
 }
 
 func (s *OrgMembership) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {
@@ -9318,6 +10238,10 @@ func (s OrgMembershipState) Validate() error {
 }
 
 func (s *OrganizationActionsSecret) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Visibility.Validate(); err != nil {
@@ -9350,6 +10274,10 @@ func (s OrganizationActionsSecretVisibility) Validate() error {
 }
 
 func (s *OrganizationFull) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Email.Get(); ok {
@@ -9410,6 +10338,10 @@ func (s *OrganizationFull) Validate() error {
 }
 
 func (s *OrganizationSecretScanningAlert) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.State.Get(); ok {
@@ -9454,6 +10386,10 @@ func (s *OrganizationSecretScanningAlert) Validate() error {
 }
 
 func (s *OrgsCreateInvitationReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Role.Get(); ok {
@@ -9493,6 +10429,10 @@ func (s OrgsCreateInvitationReqRole) Validate() error {
 }
 
 func (s *OrgsCreateWebhookReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Config.Validate(); err != nil {
@@ -9512,6 +10452,10 @@ func (s *OrgsCreateWebhookReq) Validate() error {
 }
 
 func (s *OrgsCreateWebhookReqConfig) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.InsecureSsl.Get(); ok {
@@ -9570,6 +10514,10 @@ func (s OrgsListBlockedUsersOKApplicationJSON) Validate() error {
 }
 
 func (s *OrgsListFailedInvitationsOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -9589,6 +10537,10 @@ func (s *OrgsListFailedInvitationsOKHeaders) Validate() error {
 }
 
 func (s *OrgsListForAuthenticatedUserOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -9608,6 +10560,10 @@ func (s *OrgsListForAuthenticatedUserOKHeaders) Validate() error {
 }
 
 func (s *OrgsListForUserOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -9627,6 +10583,10 @@ func (s *OrgsListForUserOKHeaders) Validate() error {
 }
 
 func (s *OrgsListInvitationTeamsOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -9657,6 +10617,10 @@ func (s OrgsListMembersFilter) Validate() error {
 }
 
 func (s *OrgsListMembersOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -9689,6 +10653,10 @@ func (s OrgsListMembersRole) Validate() error {
 }
 
 func (s *OrgsListMembershipsForAuthenticatedUserOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -9736,6 +10704,10 @@ func (s OrgsListMembershipsForAuthenticatedUserState) Validate() error {
 }
 
 func (s *OrgsListOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -9766,6 +10738,10 @@ func (s OrgsListOutsideCollaboratorsFilter) Validate() error {
 }
 
 func (s *OrgsListOutsideCollaboratorsOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -9785,6 +10761,10 @@ func (s *OrgsListOutsideCollaboratorsOKHeaders) Validate() error {
 }
 
 func (s *OrgsListPendingInvitationsOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -9804,6 +10784,10 @@ func (s *OrgsListPendingInvitationsOKHeaders) Validate() error {
 }
 
 func (s *OrgsListPublicMembersOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -9848,6 +10832,10 @@ func (s OrgsListWebhookDeliveriesOKApplicationJSON) Validate() error {
 }
 
 func (s *OrgsListWebhooksOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -9884,6 +10872,10 @@ func (s *OrgsListWebhooksOKHeaders) Validate() error {
 }
 
 func (s *OrgsSetMembershipForUserReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Role.Get(); ok {
@@ -9921,6 +10913,10 @@ func (s OrgsSetMembershipForUserReqRole) Validate() error {
 }
 
 func (s *OrgsUpdateMembershipForAuthenticatedUserReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {
@@ -9949,6 +10945,10 @@ func (s OrgsUpdateMembershipForAuthenticatedUserReqState) Validate() error {
 }
 
 func (s *OrgsUpdateWebhookConfigForOrgReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.InsecureSsl.Get(); ok {
@@ -9975,6 +10975,10 @@ func (s *OrgsUpdateWebhookConfigForOrgReq) Validate() error {
 }
 
 func (s *OrgsUpdateWebhookReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Config.Get(); ok {
@@ -10001,6 +11005,10 @@ func (s *OrgsUpdateWebhookReq) Validate() error {
 }
 
 func (s *OrgsUpdateWebhookReqConfig) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.InsecureSsl.Get(); ok {
@@ -10027,6 +11035,10 @@ func (s *OrgsUpdateWebhookReqConfig) Validate() error {
 }
 
 func (s *Package) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.PackageType.Validate(); err != nil {
@@ -10076,6 +11088,10 @@ func (s PackagePackageType) Validate() error {
 }
 
 func (s *PackageVersion) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Metadata.Get(); ok {
@@ -10102,6 +11118,10 @@ func (s *PackageVersion) Validate() error {
 }
 
 func (s *PackageVersionMetadata) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.PackageType.Validate(); err != nil {
@@ -10139,6 +11159,10 @@ func (s *PackageVersionMetadata) Validate() error {
 }
 
 func (s *PackageVersionMetadataContainer) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Tags == nil {
@@ -10830,6 +11854,10 @@ func (s PackagesRestorePackageVersionForUserPackageType) Validate() error {
 }
 
 func (s *Page) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Status.Get(); ok {
@@ -10918,6 +11946,10 @@ func (s PageStatus) Validate() error {
 }
 
 func (s *PagesHTTPSCertificate) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {
@@ -10979,6 +12011,10 @@ func (s PagesHTTPSCertificateState) Validate() error {
 }
 
 func (s *ParticipationStats) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.All == nil {
@@ -11009,6 +12045,10 @@ func (s *ParticipationStats) Validate() error {
 }
 
 func (s *PrivateUser) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Email.Get(); ok {
@@ -11043,6 +12083,10 @@ func (s *PrivateUser) Validate() error {
 }
 
 func (s *Project) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.OrganizationPermission.Get(); ok {
@@ -11084,6 +12128,10 @@ func (s ProjectOrganizationPermission) Validate() error {
 }
 
 func (s *ProjectsAddCollaboratorReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Permission.Get(); ok {
@@ -11136,6 +12184,10 @@ func (s ProjectsListCardsArchivedState) Validate() error {
 }
 
 func (s *ProjectsListCardsOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -11168,6 +12220,10 @@ func (s ProjectsListCollaboratorsAffiliation) Validate() error {
 }
 
 func (s *ProjectsListCollaboratorsOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -11187,6 +12243,10 @@ func (s *ProjectsListCollaboratorsOKHeaders) Validate() error {
 }
 
 func (s *ProjectsListColumnsOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -11206,6 +12266,10 @@ func (s *ProjectsListColumnsOKHeaders) Validate() error {
 }
 
 func (s *ProjectsListForOrgOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -11255,6 +12319,10 @@ func (s ProjectsListForOrgState) Validate() error {
 }
 
 func (s *ProjectsListForRepoOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -11304,6 +12372,10 @@ func (s ProjectsListForRepoState) Validate() error {
 }
 
 func (s *ProjectsListForUserOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -11353,6 +12425,10 @@ func (s ProjectsListForUserState) Validate() error {
 }
 
 func (s *ProjectsMoveCardReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -11380,6 +12456,10 @@ func (s *ProjectsMoveCardReq) Validate() error {
 }
 
 func (s *ProjectsMoveColumnReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -11407,6 +12487,10 @@ func (s *ProjectsMoveColumnReq) Validate() error {
 }
 
 func (s *ProjectsUpdateReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.OrganizationPermission.Get(); ok {
@@ -11448,6 +12532,10 @@ func (s ProjectsUpdateReqOrganizationPermission) Validate() error {
 }
 
 func (s *ProtectedBranch) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.RequiredStatusChecks.Get(); ok {
@@ -11510,6 +12598,10 @@ func (s *ProtectedBranch) Validate() error {
 }
 
 func (s *ProtectedBranchPullRequestReview) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.RequiredApprovingReviewCount.Get(); ok {
@@ -11545,6 +12637,10 @@ func (s *ProtectedBranchPullRequestReview) Validate() error {
 }
 
 func (s *ProtectedBranchRequiredPullRequestReviews) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.DismissalRestrictions.Get(); ok {
@@ -11571,6 +12667,10 @@ func (s *ProtectedBranchRequiredPullRequestReviews) Validate() error {
 }
 
 func (s *ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Users == nil {
@@ -11601,6 +12701,10 @@ func (s *ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Validat
 }
 
 func (s *PublicUser) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Email.Get(); ok {
@@ -11635,6 +12739,10 @@ func (s *PublicUser) Validate() error {
 }
 
 func (s *PullRequest) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {
@@ -11766,6 +12874,10 @@ func (s *PullRequest) Validate() error {
 }
 
 func (s *PullRequestHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -11785,6 +12897,10 @@ func (s *PullRequestHeaders) Validate() error {
 }
 
 func (s *PullRequestReview) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.AuthorAssociation.Validate(); err != nil {
@@ -11804,6 +12920,10 @@ func (s *PullRequestReview) Validate() error {
 }
 
 func (s *PullRequestReviewComment) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.AuthorAssociation.Validate(); err != nil {
@@ -11859,6 +12979,10 @@ func (s *PullRequestReviewComment) Validate() error {
 }
 
 func (s *PullRequestReviewCommentHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -11900,6 +13024,10 @@ func (s PullRequestReviewCommentStartSide) Validate() error {
 }
 
 func (s *PullRequestReviewRequest) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Users == nil {
@@ -11930,6 +13058,10 @@ func (s *PullRequestReviewRequest) Validate() error {
 }
 
 func (s *PullRequestReviewRequestHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -11949,6 +13081,10 @@ func (s *PullRequestReviewRequestHeaders) Validate() error {
 }
 
 func (s *PullRequestSimple) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Labels == nil {
@@ -12080,6 +13216,10 @@ func (s PullRequestState) Validate() error {
 }
 
 func (s *PullsCreateReviewCommentReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Side.Get(); ok {
@@ -12148,6 +13288,10 @@ func (s PullsCreateReviewCommentReqStartSide) Validate() error {
 }
 
 func (s *PullsCreateReviewReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Event.Get(); ok {
@@ -12187,6 +13331,10 @@ func (s PullsCreateReviewReqEvent) Validate() error {
 }
 
 func (s *PullsListCommentsForReviewOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -12223,6 +13371,10 @@ func (s *PullsListCommentsForReviewOKHeaders) Validate() error {
 }
 
 func (s *PullsListCommitsOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -12270,6 +13422,10 @@ func (s PullsListDirection) Validate() error {
 }
 
 func (s *PullsListFilesOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -12306,6 +13462,10 @@ func (s *PullsListFilesOKHeaders) Validate() error {
 }
 
 func (s *PullsListOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -12364,6 +13524,10 @@ func (s PullsListReviewCommentsForRepoDirection) Validate() error {
 }
 
 func (s *PullsListReviewCommentsForRepoOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -12413,6 +13577,10 @@ func (s PullsListReviewCommentsForRepoSort) Validate() error {
 }
 
 func (s *PullsListReviewCommentsOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -12460,6 +13628,10 @@ func (s PullsListReviewCommentsSort) Validate() error {
 }
 
 func (s *PullsListReviewsOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -12524,6 +13696,10 @@ func (s PullsListState) Validate() error {
 }
 
 func (s *PullsMergeReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.MergeMethod.Get(); ok {
@@ -12563,6 +13739,10 @@ func (s PullsMergeReqMergeMethod) Validate() error {
 }
 
 func (s *PullsRemoveRequestedReviewersReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Reviewers == nil {
@@ -12582,6 +13762,10 @@ func (s *PullsRemoveRequestedReviewersReq) Validate() error {
 }
 
 func (s *PullsSubmitReviewReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Event.Validate(); err != nil {
@@ -12614,6 +13798,10 @@ func (s PullsSubmitReviewReqEvent) Validate() error {
 }
 
 func (s *PullsUpdateReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.State.Get(); ok {
@@ -12651,6 +13839,10 @@ func (s PullsUpdateReqState) Validate() error {
 }
 
 func (s *Reaction) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Content.Validate(); err != nil {
@@ -12709,6 +13901,10 @@ func (s *ReactionsCreateForCommitCommentOK) Validate() error {
 }
 
 func (s *ReactionsCreateForCommitCommentReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Content.Validate(); err != nil {
@@ -12767,6 +13963,10 @@ func (s *ReactionsCreateForIssueCommentOK) Validate() error {
 }
 
 func (s *ReactionsCreateForIssueCommentReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Content.Validate(); err != nil {
@@ -12825,6 +14025,10 @@ func (s *ReactionsCreateForIssueOK) Validate() error {
 }
 
 func (s *ReactionsCreateForIssueReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Content.Validate(); err != nil {
@@ -12883,6 +14087,10 @@ func (s *ReactionsCreateForPullRequestReviewCommentOK) Validate() error {
 }
 
 func (s *ReactionsCreateForPullRequestReviewCommentReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Content.Validate(); err != nil {
@@ -12941,6 +14149,10 @@ func (s *ReactionsCreateForReleaseOK) Validate() error {
 }
 
 func (s *ReactionsCreateForReleaseReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Content.Validate(); err != nil {
@@ -12995,6 +14207,10 @@ func (s *ReactionsCreateForTeamDiscussionCommentInOrgOK) Validate() error {
 }
 
 func (s *ReactionsCreateForTeamDiscussionCommentInOrgReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Content.Validate(); err != nil {
@@ -13037,6 +14253,10 @@ func (s ReactionsCreateForTeamDiscussionCommentInOrgReqContent) Validate() error
 }
 
 func (s *ReactionsCreateForTeamDiscussionCommentLegacyReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Content.Validate(); err != nil {
@@ -13095,6 +14315,10 @@ func (s *ReactionsCreateForTeamDiscussionInOrgOK) Validate() error {
 }
 
 func (s *ReactionsCreateForTeamDiscussionInOrgReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Content.Validate(); err != nil {
@@ -13137,6 +14361,10 @@ func (s ReactionsCreateForTeamDiscussionInOrgReqContent) Validate() error {
 }
 
 func (s *ReactionsCreateForTeamDiscussionLegacyReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Content.Validate(); err != nil {
@@ -13202,6 +14430,10 @@ func (s ReactionsListForCommitCommentContent) Validate() error {
 }
 
 func (s *ReactionsListForCommitCommentOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -13261,6 +14493,10 @@ func (s ReactionsListForIssueCommentContent) Validate() error {
 }
 
 func (s *ReactionsListForIssueCommentOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -13320,6 +14556,10 @@ func (s ReactionsListForIssueContent) Validate() error {
 }
 
 func (s *ReactionsListForIssueOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -13379,6 +14619,10 @@ func (s ReactionsListForPullRequestReviewCommentContent) Validate() error {
 }
 
 func (s *ReactionsListForPullRequestReviewCommentOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -13438,6 +14682,10 @@ func (s ReactionsListForTeamDiscussionCommentInOrgContent) Validate() error {
 }
 
 func (s *ReactionsListForTeamDiscussionCommentInOrgOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -13497,6 +14745,10 @@ func (s ReactionsListForTeamDiscussionCommentLegacyContent) Validate() error {
 }
 
 func (s *ReactionsListForTeamDiscussionCommentLegacyOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -13556,6 +14808,10 @@ func (s ReactionsListForTeamDiscussionInOrgContent) Validate() error {
 }
 
 func (s *ReactionsListForTeamDiscussionInOrgOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -13615,6 +14871,10 @@ func (s ReactionsListForTeamDiscussionLegacyContent) Validate() error {
 }
 
 func (s *ReactionsListForTeamDiscussionLegacyOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -13651,6 +14911,10 @@ func (s *ReactionsListForTeamDiscussionLegacyOKHeaders) Validate() error {
 }
 
 func (s *Release) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Assets == nil {
@@ -13687,6 +14951,10 @@ func (s *Release) Validate() error {
 }
 
 func (s *ReleaseAsset) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {
@@ -13717,6 +14985,10 @@ func (s ReleaseAssetState) Validate() error {
 }
 
 func (s *ReleaseHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -13736,6 +15008,10 @@ func (s *ReleaseHeaders) Validate() error {
 }
 
 func (s *RepoSearchResultItem) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.Score)); err != nil {
@@ -13808,6 +15084,10 @@ func (s ReposAddAppAccessRestrictionsReq) Validate() error {
 }
 
 func (s *ReposAddAppAccessRestrictionsReq0) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Apps == nil {
@@ -13827,6 +15107,10 @@ func (s *ReposAddAppAccessRestrictionsReq0) Validate() error {
 }
 
 func (s *ReposAddCollaboratorReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Permission.Get(); ok {
@@ -13895,6 +15179,10 @@ func (s ReposAddStatusCheckContextsReq) Validate() error {
 }
 
 func (s *ReposAddStatusCheckContextsReq0) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Contexts == nil {
@@ -13939,6 +15227,10 @@ func (s ReposAddTeamAccessRestrictionsReq) Validate() error {
 }
 
 func (s *ReposAddTeamAccessRestrictionsReq0) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Teams == nil {
@@ -13983,6 +15275,10 @@ func (s ReposAddUserAccessRestrictionsReq) Validate() error {
 }
 
 func (s *ReposAddUserAccessRestrictionsReq0) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Users == nil {
@@ -14002,6 +15298,10 @@ func (s *ReposAddUserAccessRestrictionsReq0) Validate() error {
 }
 
 func (s *ReposCreateCommitStatusReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {
@@ -14036,6 +15336,10 @@ func (s ReposCreateCommitStatusReqState) Validate() error {
 }
 
 func (s *ReposCreateDeploymentStatusReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {
@@ -14107,6 +15411,10 @@ func (s ReposCreateDeploymentStatusReqState) Validate() error {
 }
 
 func (s *ReposCreateDispatchEventReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -14161,6 +15469,10 @@ func (s ReposCreateDispatchEventReqClientPayload) Validate() error {
 }
 
 func (s *ReposCreateInOrgReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Visibility.Get(); ok {
@@ -14202,6 +15514,10 @@ func (s ReposCreateInOrgReqVisibility) Validate() error {
 }
 
 func (s *ReposCreatePagesSiteReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Source.Validate(); err != nil {
@@ -14221,6 +15537,10 @@ func (s *ReposCreatePagesSiteReq) Validate() error {
 }
 
 func (s *ReposCreatePagesSiteReqSource) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Path.Get(); ok {
@@ -14258,6 +15578,10 @@ func (s ReposCreatePagesSiteReqSourcePath) Validate() error {
 }
 
 func (s *ReposCreateWebhookReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Config.Get(); ok {
@@ -14284,6 +15608,10 @@ func (s *ReposCreateWebhookReq) Validate() error {
 }
 
 func (s *ReposCreateWebhookReqConfig) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.InsecureSsl.Get(); ok {
@@ -14509,6 +15837,10 @@ func (s ReposListBranchesForHeadCommitOKApplicationJSON) Validate() error {
 }
 
 func (s *ReposListBranchesOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -14558,6 +15890,10 @@ func (s ReposListCollaboratorsAffiliation) Validate() error {
 }
 
 func (s *ReposListCollaboratorsOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -14577,6 +15913,10 @@ func (s *ReposListCollaboratorsOKHeaders) Validate() error {
 }
 
 func (s *ReposListCommentsForCommitOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -14613,6 +15953,10 @@ func (s *ReposListCommentsForCommitOKHeaders) Validate() error {
 }
 
 func (s *ReposListCommitCommentsForRepoOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -14649,6 +15993,10 @@ func (s *ReposListCommitCommentsForRepoOKHeaders) Validate() error {
 }
 
 func (s *ReposListCommitStatusesForRefOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -14668,6 +16016,10 @@ func (s *ReposListCommitStatusesForRefOKHeaders) Validate() error {
 }
 
 func (s *ReposListCommitsOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -14704,6 +16056,10 @@ func (s *ReposListCommitsOKHeaders) Validate() error {
 }
 
 func (s *ReposListContributorsOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -14723,6 +16079,10 @@ func (s *ReposListContributorsOKHeaders) Validate() error {
 }
 
 func (s *ReposListDeployKeysOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -14742,6 +16102,10 @@ func (s *ReposListDeployKeysOKHeaders) Validate() error {
 }
 
 func (s *ReposListDeploymentStatusesOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -14778,6 +16142,10 @@ func (s *ReposListDeploymentStatusesOKHeaders) Validate() error {
 }
 
 func (s *ReposListDeploymentsOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -14889,6 +16257,10 @@ func (s ReposListForOrgDirection) Validate() error {
 }
 
 func (s *ReposListForOrgOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -14955,6 +16327,10 @@ func (s ReposListForUserDirection) Validate() error {
 }
 
 func (s *ReposListForUserOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -15002,6 +16378,10 @@ func (s ReposListForUserType) Validate() error {
 }
 
 func (s *ReposListForksOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -15036,6 +16416,10 @@ func (s ReposListForksSort) Validate() error {
 }
 
 func (s *ReposListInvitationsForAuthenticatedUserOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -15072,6 +16456,10 @@ func (s *ReposListInvitationsForAuthenticatedUserOKHeaders) Validate() error {
 }
 
 func (s *ReposListInvitationsOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -15108,6 +16496,10 @@ func (s *ReposListInvitationsOKHeaders) Validate() error {
 }
 
 func (s *ReposListPagesBuildsOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -15127,6 +16519,10 @@ func (s *ReposListPagesBuildsOKHeaders) Validate() error {
 }
 
 func (s *ReposListPublicOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -15146,6 +16542,10 @@ func (s *ReposListPublicOKHeaders) Validate() error {
 }
 
 func (s *ReposListPullRequestsAssociatedWithCommitOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -15182,6 +16582,10 @@ func (s *ReposListPullRequestsAssociatedWithCommitOKHeaders) Validate() error {
 }
 
 func (s *ReposListReleaseAssetsOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -15218,6 +16622,10 @@ func (s *ReposListReleaseAssetsOKHeaders) Validate() error {
 }
 
 func (s *ReposListReleasesOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -15254,6 +16662,10 @@ func (s *ReposListReleasesOKHeaders) Validate() error {
 }
 
 func (s *ReposListTagsOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -15273,6 +16685,10 @@ func (s *ReposListTagsOKHeaders) Validate() error {
 }
 
 func (s *ReposListTeamsOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -15317,6 +16733,10 @@ func (s ReposListWebhookDeliveriesOKApplicationJSON) Validate() error {
 }
 
 func (s *ReposListWebhooksOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -15395,6 +16815,10 @@ func (s ReposRemoveAppAccessRestrictionsReq) Validate() error {
 }
 
 func (s *ReposRemoveAppAccessRestrictionsReq0) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Apps == nil {
@@ -15439,6 +16863,10 @@ func (s ReposRemoveStatusCheckContextsReq) Validate() error {
 }
 
 func (s *ReposRemoveStatusCheckContextsReq0) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Contexts == nil {
@@ -15483,6 +16911,10 @@ func (s ReposRemoveTeamAccessRestrictionsReq) Validate() error {
 }
 
 func (s *ReposRemoveTeamAccessRestrictionsReq0) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Teams == nil {
@@ -15527,6 +16959,10 @@ func (s ReposRemoveUserAccessRestrictionsReq) Validate() error {
 }
 
 func (s *ReposRemoveUserAccessRestrictionsReq0) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Users == nil {
@@ -15546,6 +16982,10 @@ func (s *ReposRemoveUserAccessRestrictionsReq0) Validate() error {
 }
 
 func (s *ReposReplaceAllTopicsReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Names == nil {
@@ -15607,6 +17047,10 @@ func (s ReposSetAppAccessRestrictionsReq) Validate() error {
 }
 
 func (s *ReposSetAppAccessRestrictionsReq0) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Apps == nil {
@@ -15651,6 +17095,10 @@ func (s ReposSetStatusCheckContextsReq) Validate() error {
 }
 
 func (s *ReposSetStatusCheckContextsReq0) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Contexts == nil {
@@ -15695,6 +17143,10 @@ func (s ReposSetTeamAccessRestrictionsReq) Validate() error {
 }
 
 func (s *ReposSetTeamAccessRestrictionsReq0) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Teams == nil {
@@ -15739,6 +17191,10 @@ func (s ReposSetUserAccessRestrictionsReq) Validate() error {
 }
 
 func (s *ReposSetUserAccessRestrictionsReq0) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Users == nil {
@@ -15758,6 +17214,10 @@ func (s *ReposSetUserAccessRestrictionsReq0) Validate() error {
 }
 
 func (s *ReposUpdateBranchProtectionReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.RequiredStatusChecks.Get(); ok {
@@ -15802,6 +17262,10 @@ func (s *ReposUpdateBranchProtectionReq) Validate() error {
 }
 
 func (s *ReposUpdateBranchProtectionReqRequiredStatusChecks) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Contexts == nil {
@@ -15821,6 +17285,10 @@ func (s *ReposUpdateBranchProtectionReqRequiredStatusChecks) Validate() error {
 }
 
 func (s *ReposUpdateBranchProtectionReqRestrictions) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Users == nil {
@@ -15851,6 +17319,10 @@ func (s *ReposUpdateBranchProtectionReqRestrictions) Validate() error {
 }
 
 func (s *ReposUpdateInvitationReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Permissions.Get(); ok {
@@ -15894,6 +17366,10 @@ func (s ReposUpdateInvitationReqPermissions) Validate() error {
 }
 
 func (s *ReposUpdateReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Visibility.Get(); ok {
@@ -15935,6 +17411,10 @@ func (s ReposUpdateReqVisibility) Validate() error {
 }
 
 func (s *ReposUpdateWebhookConfigForRepoReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.InsecureSsl.Get(); ok {
@@ -15961,6 +17441,10 @@ func (s *ReposUpdateWebhookConfigForRepoReq) Validate() error {
 }
 
 func (s *ReposUpdateWebhookReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Config.Get(); ok {
@@ -15987,6 +17471,10 @@ func (s *ReposUpdateWebhookReq) Validate() error {
 }
 
 func (s *ReposUpdateWebhookReqConfig) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.InsecureSsl.Get(); ok {
@@ -16013,6 +17501,10 @@ func (s *ReposUpdateWebhookReqConfig) Validate() error {
 }
 
 func (s *RepositoryInvitation) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Permissions.Validate(); err != nil {
@@ -16049,6 +17541,10 @@ func (s RepositoryInvitationPermissions) Validate() error {
 }
 
 func (s *ReviewComment) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.AuthorAssociation.Validate(); err != nil {
@@ -16126,6 +17622,10 @@ func (s ReviewCommentStartSide) Validate() error {
 }
 
 func (s *Runner) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Labels == nil {
@@ -16162,6 +17662,10 @@ func (s *Runner) Validate() error {
 }
 
 func (s *RunnerGroupsEnterprise) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.ID)); err != nil {
@@ -16181,6 +17685,10 @@ func (s *RunnerGroupsEnterprise) Validate() error {
 }
 
 func (s *RunnerGroupsOrg) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.ID)); err != nil {
@@ -16200,6 +17708,10 @@ func (s *RunnerGroupsOrg) Validate() error {
 }
 
 func (s *RunnerLabelsItem) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Type.Get(); ok {
@@ -16237,6 +17749,10 @@ func (s RunnerLabelsItemType) Validate() error {
 }
 
 func (s *ScimEnterpriseGroup) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas == nil {
@@ -16256,6 +17772,10 @@ func (s *ScimEnterpriseGroup) Validate() error {
 }
 
 func (s *ScimEnterpriseUser) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas == nil {
@@ -16275,6 +17795,10 @@ func (s *ScimEnterpriseUser) Validate() error {
 }
 
 func (s *ScimGroupListEnterprise) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas == nil {
@@ -16355,6 +17879,10 @@ func (s *ScimGroupListEnterprise) Validate() error {
 }
 
 func (s *ScimGroupListEnterpriseResourcesItem) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas == nil {
@@ -16374,6 +17902,10 @@ func (s *ScimGroupListEnterpriseResourcesItem) Validate() error {
 }
 
 func (s *ScimUserListEnterprise) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas == nil {
@@ -16454,6 +17986,10 @@ func (s *ScimUserListEnterprise) Validate() error {
 }
 
 func (s *ScimUserListEnterpriseResourcesItem) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas == nil {
@@ -16473,6 +18009,10 @@ func (s *ScimUserListEnterpriseResourcesItem) Validate() error {
 }
 
 func (s *SearchCodeOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -16529,6 +18069,10 @@ func (s SearchCodeSort) Validate() error {
 }
 
 func (s *SearchCommitsOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -16587,6 +18131,10 @@ func (s SearchCommitsSort) Validate() error {
 }
 
 func (s *SearchIssuesAndPullRequestsOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -16663,6 +18211,10 @@ func (s SearchIssuesAndPullRequestsSort) Validate() error {
 }
 
 func (s *SearchLabelsOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -16721,6 +18273,10 @@ func (s SearchLabelsSort) Validate() error {
 }
 
 func (s *SearchReposOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -16791,6 +18347,10 @@ func (s SearchResultTextMatches) Validate() error {
 }
 
 func (s *SearchTopicsOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -16827,6 +18387,10 @@ func (s *SearchTopicsOK) Validate() error {
 }
 
 func (s *SearchUsersOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -16887,6 +18451,10 @@ func (s SearchUsersSort) Validate() error {
 }
 
 func (s *SecretScanningAlert) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.State.Get(); ok {
@@ -16957,6 +18525,10 @@ func (s SecretScanningAlertState) Validate() error {
 }
 
 func (s *SecretScanningListAlertsForOrgOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -17040,6 +18612,10 @@ func (s SecretScanningListAlertsForRepoState) Validate() error {
 }
 
 func (s *SecretScanningUpdateAlertReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {
@@ -17077,6 +18653,10 @@ func (s *SecretScanningUpdateAlertReq) Validate() error {
 }
 
 func (s *ShortBranch) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Protection.Get(); ok {
@@ -17103,6 +18683,10 @@ func (s *ShortBranch) Validate() error {
 }
 
 func (s *StatusCheckPolicy) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Contexts == nil {
@@ -17122,6 +18706,10 @@ func (s *StatusCheckPolicy) Validate() error {
 }
 
 func (s *TeamFull) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Privacy.Get(); ok {
@@ -17170,6 +18758,10 @@ func (s TeamFullPrivacy) Validate() error {
 }
 
 func (s *TeamMembership) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Role.Validate(); err != nil {
@@ -17222,6 +18814,10 @@ func (s TeamMembershipState) Validate() error {
 }
 
 func (s *TeamsAddOrUpdateMembershipForUserInOrgReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Role.Get(); ok {
@@ -17259,6 +18855,10 @@ func (s TeamsAddOrUpdateMembershipForUserInOrgReqRole) Validate() error {
 }
 
 func (s *TeamsAddOrUpdateMembershipForUserLegacyReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Role.Get(); ok {
@@ -17296,6 +18896,10 @@ func (s TeamsAddOrUpdateMembershipForUserLegacyReqRole) Validate() error {
 }
 
 func (s *TeamsAddOrUpdateProjectPermissionsInOrgReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Permission.Get(); ok {
@@ -17335,6 +18939,10 @@ func (s TeamsAddOrUpdateProjectPermissionsInOrgReqPermission) Validate() error {
 }
 
 func (s *TeamsAddOrUpdateProjectPermissionsLegacyReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Permission.Get(); ok {
@@ -17374,6 +18982,10 @@ func (s TeamsAddOrUpdateProjectPermissionsLegacyReqPermission) Validate() error 
 }
 
 func (s *TeamsAddOrUpdateRepoPermissionsInOrgReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Permission.Get(); ok {
@@ -17417,6 +19029,10 @@ func (s TeamsAddOrUpdateRepoPermissionsInOrgReqPermission) Validate() error {
 }
 
 func (s *TeamsAddOrUpdateRepoPermissionsLegacyReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Permission.Get(); ok {
@@ -17456,6 +19072,10 @@ func (s TeamsAddOrUpdateRepoPermissionsLegacyReqPermission) Validate() error {
 }
 
 func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Groups == nil {
@@ -17475,6 +19095,10 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq) Validate() error {
 }
 
 func (s *TeamsCreateReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Privacy.Get(); ok {
@@ -17543,6 +19167,10 @@ func (s TeamsCreateReqPrivacy) Validate() error {
 }
 
 func (s *TeamsListChildInOrgOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -17562,6 +19190,10 @@ func (s *TeamsListChildInOrgOKHeaders) Validate() error {
 }
 
 func (s *TeamsListChildLegacyOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -17592,6 +19224,10 @@ func (s TeamsListDiscussionCommentsInOrgDirection) Validate() error {
 }
 
 func (s *TeamsListDiscussionCommentsInOrgOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -17622,6 +19258,10 @@ func (s TeamsListDiscussionCommentsLegacyDirection) Validate() error {
 }
 
 func (s *TeamsListDiscussionCommentsLegacyOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -17652,6 +19292,10 @@ func (s TeamsListDiscussionsInOrgDirection) Validate() error {
 }
 
 func (s *TeamsListDiscussionsInOrgOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -17682,6 +19326,10 @@ func (s TeamsListDiscussionsLegacyDirection) Validate() error {
 }
 
 func (s *TeamsListDiscussionsLegacyOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -17701,6 +19349,10 @@ func (s *TeamsListDiscussionsLegacyOKHeaders) Validate() error {
 }
 
 func (s *TeamsListForAuthenticatedUserOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -17737,6 +19389,10 @@ func (s *TeamsListForAuthenticatedUserOKHeaders) Validate() error {
 }
 
 func (s *TeamsListMembersInOrgOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -17769,6 +19425,10 @@ func (s TeamsListMembersInOrgRole) Validate() error {
 }
 
 func (s *TeamsListMembersLegacyOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -17801,6 +19461,10 @@ func (s TeamsListMembersLegacyRole) Validate() error {
 }
 
 func (s *TeamsListOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -17820,6 +19484,10 @@ func (s *TeamsListOKHeaders) Validate() error {
 }
 
 func (s *TeamsListPendingInvitationsInOrgOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -17839,6 +19507,10 @@ func (s *TeamsListPendingInvitationsInOrgOKHeaders) Validate() error {
 }
 
 func (s *TeamsListPendingInvitationsLegacyOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -17858,6 +19530,10 @@ func (s *TeamsListPendingInvitationsLegacyOKHeaders) Validate() error {
 }
 
 func (s *TeamsListProjectsInOrgOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -17877,6 +19553,10 @@ func (s *TeamsListProjectsInOrgOKHeaders) Validate() error {
 }
 
 func (s *TeamsListProjectsLegacyOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -17896,6 +19576,10 @@ func (s *TeamsListProjectsLegacyOKHeaders) Validate() error {
 }
 
 func (s *TeamsListReposInOrgOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -17915,6 +19599,10 @@ func (s *TeamsListReposInOrgOKHeaders) Validate() error {
 }
 
 func (s *TeamsListReposLegacyOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -17934,6 +19622,10 @@ func (s *TeamsListReposLegacyOKHeaders) Validate() error {
 }
 
 func (s *TeamsUpdateInOrgReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Privacy.Get(); ok {
@@ -18018,6 +19710,10 @@ func (s *TeamsUpdateLegacyOK) Validate() error {
 }
 
 func (s *TeamsUpdateLegacyReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Privacy.Get(); ok {
@@ -18086,6 +19782,10 @@ func (s TeamsUpdateLegacyReqPrivacy) Validate() error {
 }
 
 func (s *Topic) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Names == nil {
@@ -18105,6 +19805,10 @@ func (s *Topic) Validate() error {
 }
 
 func (s *TopicSearchResultItem) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.Score)); err != nil {
@@ -18171,6 +19875,10 @@ func (s *TopicSearchResultItem) Validate() error {
 }
 
 func (s *UserMarketplacePurchase) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Account.Validate(); err != nil {
@@ -18201,6 +19909,10 @@ func (s *UserMarketplacePurchase) Validate() error {
 }
 
 func (s *UserSearchResultItem) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.Score)); err != nil {
@@ -18326,6 +20038,10 @@ func (s UsersAddEmailForAuthenticatedReq) Validate() error {
 }
 
 func (s *UsersAddEmailForAuthenticatedReq0) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Emails == nil {
@@ -18370,6 +20086,10 @@ func (s *UsersAddEmailForAuthenticatedReq0) Validate() error {
 }
 
 func (s *UsersCreatePublicSSHKeyForAuthenticatedReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -18441,6 +20161,10 @@ func (s UsersDeleteEmailForAuthenticatedReq) Validate() error {
 }
 
 func (s *UsersDeleteEmailForAuthenticatedReq0) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Emails == nil {
@@ -18542,6 +20266,10 @@ func (s UsersListBlockedByAuthenticatedOKApplicationJSON) Validate() error {
 }
 
 func (s *UsersListEmailsForAuthenticatedOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -18578,6 +20306,10 @@ func (s *UsersListEmailsForAuthenticatedOKHeaders) Validate() error {
 }
 
 func (s *UsersListFollowedByAuthenticatedOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -18597,6 +20329,10 @@ func (s *UsersListFollowedByAuthenticatedOKHeaders) Validate() error {
 }
 
 func (s *UsersListFollowersForAuthenticatedUserOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -18616,6 +20352,10 @@ func (s *UsersListFollowersForAuthenticatedUserOKHeaders) Validate() error {
 }
 
 func (s *UsersListFollowersForUserOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -18635,6 +20375,10 @@ func (s *UsersListFollowersForUserOKHeaders) Validate() error {
 }
 
 func (s *UsersListFollowingForUserOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -18654,6 +20398,10 @@ func (s *UsersListFollowingForUserOKHeaders) Validate() error {
 }
 
 func (s *UsersListGpgKeysForAuthenticatedOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -18690,6 +20438,10 @@ func (s *UsersListGpgKeysForAuthenticatedOKHeaders) Validate() error {
 }
 
 func (s *UsersListGpgKeysForUserOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -18726,6 +20478,10 @@ func (s *UsersListGpgKeysForUserOKHeaders) Validate() error {
 }
 
 func (s *UsersListOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -18745,6 +20501,10 @@ func (s *UsersListOKHeaders) Validate() error {
 }
 
 func (s *UsersListPublicEmailsForAuthenticatedOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -18781,6 +20541,10 @@ func (s *UsersListPublicEmailsForAuthenticatedOKHeaders) Validate() error {
 }
 
 func (s *UsersListPublicKeysForUserOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -18800,6 +20564,10 @@ func (s *UsersListPublicKeysForUserOKHeaders) Validate() error {
 }
 
 func (s *UsersListPublicSSHKeysForAuthenticatedOKHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -18844,6 +20612,10 @@ func (s UsersSetPrimaryEmailVisibilityForAuthenticatedOKApplicationJSON) Validat
 }
 
 func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Visibility.Validate(); err != nil {
@@ -18874,6 +20646,10 @@ func (s UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility) Validate() 
 }
 
 func (s *ValidationError) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
@@ -18907,6 +20683,10 @@ func (s *ValidationError) Validate() error {
 }
 
 func (s *ValidationErrorErrorsItem) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Value.Get(); ok {
@@ -18951,6 +20731,10 @@ func (s ValidationErrorErrorsItemValue) Validate() error {
 }
 
 func (s *ViewTraffic) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Views == nil {
@@ -18970,6 +20754,10 @@ func (s *ViewTraffic) Validate() error {
 }
 
 func (s *WebhookConfig) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.InsecureSsl.Get(); ok {
@@ -19010,6 +20798,10 @@ func (s WebhookConfigInsecureSsl) Validate() error {
 }
 
 func (s *Workflow) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {

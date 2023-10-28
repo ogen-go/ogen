@@ -9,6 +9,10 @@ import (
 )
 
 func (s *TestMultipartUploadOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Files == nil {
@@ -36,6 +40,10 @@ func (s *TestMultipartUploadOK) Validate() error {
 }
 
 func (s *TestMultipartUploadReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Array{

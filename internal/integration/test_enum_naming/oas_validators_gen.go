@@ -42,6 +42,10 @@ func (s PascalStrat) Validate() error {
 }
 
 func (s *ProbeLivenessOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.VeryBadEnum.Validate(); err != nil {

@@ -11,6 +11,10 @@ import (
 )
 
 func (s *AddStickerToSet) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.MaskPosition.Get(); ok {
@@ -37,6 +41,10 @@ func (s *AddStickerToSet) Validate() error {
 }
 
 func (s *Animation) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Int{
@@ -123,6 +131,10 @@ func (s *Animation) Validate() error {
 }
 
 func (s *AnswerCallbackQuery) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Text.Get(); ok {
@@ -157,6 +169,10 @@ func (s *AnswerCallbackQuery) Validate() error {
 }
 
 func (s *AnswerInlineQuery) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Results == nil {
@@ -219,6 +235,10 @@ func (s *AnswerInlineQuery) Validate() error {
 }
 
 func (s *AnswerShippingQuery) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
@@ -252,6 +272,10 @@ func (s *AnswerShippingQuery) Validate() error {
 }
 
 func (s *Audio) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Int{
@@ -298,6 +322,10 @@ func (s *Audio) Validate() error {
 }
 
 func (s *BotCommand) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -344,6 +372,10 @@ func (s *BotCommand) Validate() error {
 }
 
 func (s *CallbackQuery) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Message.Get(); ok {
@@ -370,6 +402,10 @@ func (s *CallbackQuery) Validate() error {
 }
 
 func (s *Chat) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Type.Validate(); err != nil {
@@ -426,6 +462,10 @@ func (s *Chat) Validate() error {
 }
 
 func (s *ChatInviteLink) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.MemberLimit.Get(); ok {
@@ -461,6 +501,10 @@ func (s *ChatInviteLink) Validate() error {
 }
 
 func (s *ChatJoinRequest) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Chat.Validate(); err != nil {
@@ -498,6 +542,10 @@ func (s *ChatJoinRequest) Validate() error {
 }
 
 func (s *ChatLocation) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Location.Validate(); err != nil {
@@ -536,6 +584,10 @@ func (s *ChatLocation) Validate() error {
 }
 
 func (s *ChatMemberUpdated) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Chat.Validate(); err != nil {
@@ -588,6 +640,10 @@ func (s ChatType) Validate() error {
 }
 
 func (s *ChosenInlineResult) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Location.Get(); ok {
@@ -614,6 +670,10 @@ func (s *ChosenInlineResult) Validate() error {
 }
 
 func (s *CopyMessage) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Caption.Get(); ok {
@@ -715,6 +775,10 @@ func (s CopyMessageReplyMarkup) Validate() error {
 }
 
 func (s *CreateChatInviteLink) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Name.Get(); ok {
@@ -776,6 +840,10 @@ func (s *CreateChatInviteLink) Validate() error {
 }
 
 func (s *CreateNewStickerSet) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -840,6 +908,10 @@ func (s *CreateNewStickerSet) Validate() error {
 }
 
 func (s *Document) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Thumb.Get(); ok {
@@ -866,6 +938,10 @@ func (s *Document) Validate() error {
 }
 
 func (s *EditChatInviteLink) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Name.Get(); ok {
@@ -927,6 +1003,10 @@ func (s *EditChatInviteLink) Validate() error {
 }
 
 func (s *EditMessageCaption) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Caption.Get(); ok {
@@ -1004,6 +1084,10 @@ func (s *EditMessageCaption) Validate() error {
 }
 
 func (s *EditMessageLiveLocation) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.Latitude)); err != nil {
@@ -1124,6 +1208,10 @@ func (s *EditMessageLiveLocation) Validate() error {
 }
 
 func (s *EditMessageMedia) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Media.Validate(); err != nil {
@@ -1161,6 +1249,10 @@ func (s *EditMessageMedia) Validate() error {
 }
 
 func (s *EditMessageReplyMarkup) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.ReplyMarkup.Get(); ok {
@@ -1187,6 +1279,10 @@ func (s *EditMessageReplyMarkup) Validate() error {
 }
 
 func (s *EditMessageText) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -1257,6 +1353,10 @@ func (s *EditMessageText) Validate() error {
 }
 
 func (s *EncryptedPassportElement) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Type.Validate(); err != nil {
@@ -1309,6 +1409,10 @@ func (s EncryptedPassportElementType) Validate() error {
 }
 
 func (s *ForceReply) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.InputFieldPlaceholder.Get(); ok {
@@ -1343,6 +1447,10 @@ func (s *ForceReply) Validate() error {
 }
 
 func (s *Game) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Photo == nil {
@@ -1448,6 +1556,10 @@ func (s *Game) Validate() error {
 }
 
 func (s *GetUpdates) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Limit.Get(); ok {
@@ -1483,6 +1595,10 @@ func (s *GetUpdates) Validate() error {
 }
 
 func (s *GetUserProfilePhotos) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Limit.Get(); ok {
@@ -1518,6 +1634,10 @@ func (s *GetUserProfilePhotos) Validate() error {
 }
 
 func (s *InlineKeyboardButton) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.CallbackData.Get(); ok {
@@ -1552,6 +1672,10 @@ func (s *InlineKeyboardButton) Validate() error {
 }
 
 func (s *InlineKeyboardMarkup) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.InlineKeyboard == nil {
@@ -1605,6 +1729,10 @@ func (s *InlineKeyboardMarkup) Validate() error {
 }
 
 func (s *InlineQuery) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.ChatType.Get(); ok {
@@ -1773,6 +1901,10 @@ func (s InlineQueryResult) Validate() error {
 }
 
 func (s *InlineQueryResultArticle) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.InputMessageContent.Validate(); err != nil {
@@ -1864,6 +1996,10 @@ func (s *InlineQueryResultArticle) Validate() error {
 }
 
 func (s *InlineQueryResultAudio) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -2005,6 +2141,10 @@ func (s *InlineQueryResultAudio) Validate() error {
 }
 
 func (s *InlineQueryResultCachedAudio) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -2119,6 +2259,10 @@ func (s *InlineQueryResultCachedAudio) Validate() error {
 }
 
 func (s *InlineQueryResultCachedDocument) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -2233,6 +2377,10 @@ func (s *InlineQueryResultCachedDocument) Validate() error {
 }
 
 func (s *InlineQueryResultCachedGif) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -2347,6 +2495,10 @@ func (s *InlineQueryResultCachedGif) Validate() error {
 }
 
 func (s *InlineQueryResultCachedMpeg4Gif) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -2461,6 +2613,10 @@ func (s *InlineQueryResultCachedMpeg4Gif) Validate() error {
 }
 
 func (s *InlineQueryResultCachedPhoto) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -2575,6 +2731,10 @@ func (s *InlineQueryResultCachedPhoto) Validate() error {
 }
 
 func (s *InlineQueryResultCachedSticker) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -2638,6 +2798,10 @@ func (s *InlineQueryResultCachedSticker) Validate() error {
 }
 
 func (s *InlineQueryResultCachedVideo) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -2752,6 +2916,10 @@ func (s *InlineQueryResultCachedVideo) Validate() error {
 }
 
 func (s *InlineQueryResultCachedVoice) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -2866,6 +3034,10 @@ func (s *InlineQueryResultCachedVoice) Validate() error {
 }
 
 func (s *InlineQueryResultContact) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Vcard.Get(); ok {
@@ -2990,6 +3162,10 @@ func (s *InlineQueryResultContact) Validate() error {
 }
 
 func (s *InlineQueryResultDocument) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -3158,6 +3334,10 @@ func (s *InlineQueryResultDocument) Validate() error {
 }
 
 func (s *InlineQueryResultGame) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -3203,6 +3383,10 @@ func (s *InlineQueryResultGame) Validate() error {
 }
 
 func (s *InlineQueryResultGif) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -3398,6 +3582,10 @@ func (s *InlineQueryResultGif) Validate() error {
 }
 
 func (s *InlineQueryResultLocation) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.Latitude)); err != nil {
@@ -3617,6 +3805,10 @@ func (s *InlineQueryResultLocation) Validate() error {
 }
 
 func (s *InlineQueryResultMpeg4Gif) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -3812,6 +4004,10 @@ func (s *InlineQueryResultMpeg4Gif) Validate() error {
 }
 
 func (s *InlineQueryResultPhoto) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -3980,6 +4176,10 @@ func (s *InlineQueryResultPhoto) Validate() error {
 }
 
 func (s *InlineQueryResultVenue) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.Latitude)); err != nil {
@@ -4100,6 +4300,10 @@ func (s *InlineQueryResultVenue) Validate() error {
 }
 
 func (s *InlineQueryResultVideo) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -4295,6 +4499,10 @@ func (s *InlineQueryResultVideo) Validate() error {
 }
 
 func (s *InlineQueryResultVoice) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -4436,6 +4644,10 @@ func (s *InlineQueryResultVoice) Validate() error {
 }
 
 func (s *InputContactMessageContent) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Vcard.Get(); ok {
@@ -4470,6 +4682,10 @@ func (s *InputContactMessageContent) Validate() error {
 }
 
 func (s *InputInvoiceMessageContent) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -4600,6 +4816,10 @@ func (s *InputInvoiceMessageContent) Validate() error {
 }
 
 func (s *InputLocationMessageContent) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.Latitude)); err != nil {
@@ -4761,6 +4981,10 @@ func (s InputMedia) Validate() error {
 }
 
 func (s *InputMediaAnimation) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Caption.Get(); ok {
@@ -4901,6 +5125,10 @@ func (s *InputMediaAnimation) Validate() error {
 }
 
 func (s *InputMediaAudio) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Caption.Get(); ok {
@@ -4987,6 +5215,10 @@ func (s *InputMediaAudio) Validate() error {
 }
 
 func (s *InputMediaDocument) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Caption.Get(); ok {
@@ -5046,6 +5278,10 @@ func (s *InputMediaDocument) Validate() error {
 }
 
 func (s *InputMediaPhoto) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Caption.Get(); ok {
@@ -5105,6 +5341,10 @@ func (s *InputMediaPhoto) Validate() error {
 }
 
 func (s *InputMediaVideo) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Caption.Get(); ok {
@@ -5277,6 +5517,10 @@ func (s InputMessageContent) Validate() error {
 }
 
 func (s *InputTextMessageContent) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -5329,6 +5573,10 @@ func (s *InputTextMessageContent) Validate() error {
 }
 
 func (s *InputVenueMessageContent) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.Latitude)); err != nil {
@@ -5359,6 +5607,10 @@ func (s *InputVenueMessageContent) Validate() error {
 }
 
 func (s *Location) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.Longitude)); err != nil {
@@ -5434,6 +5686,10 @@ func (s *Location) Validate() error {
 }
 
 func (s *MaskPosition) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.XShift)); err != nil {
@@ -5475,6 +5731,10 @@ func (s *MaskPosition) Validate() error {
 }
 
 func (s *Message) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.SenderChat.Get(); ok {
@@ -5972,6 +6232,10 @@ func (s *Message) Validate() error {
 }
 
 func (s *MessageEntity) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Type.Validate(); err != nil {
@@ -6028,6 +6292,10 @@ func (s MessageEntityType) Validate() error {
 }
 
 func (s *PassportData) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Data == nil {
@@ -6131,6 +6399,10 @@ func (s PassportElementErrorFileType) Validate() error {
 }
 
 func (s *PassportElementErrorFiles) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.FileHashes == nil {
@@ -6233,6 +6505,10 @@ func (s PassportElementErrorTranslationFileType) Validate() error {
 }
 
 func (s *PassportElementErrorTranslationFiles) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.FileHashes == nil {
@@ -6277,6 +6553,10 @@ func (s PassportElementErrorTranslationFilesType) Validate() error {
 }
 
 func (s *PhotoSize) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Int{
@@ -6325,6 +6605,10 @@ func (s *PhotoSize) Validate() error {
 }
 
 func (s *Poll) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -6442,6 +6726,10 @@ func (s *Poll) Validate() error {
 }
 
 func (s *PollAnswer) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.OptionIds == nil {
@@ -6461,6 +6749,10 @@ func (s *PollAnswer) Validate() error {
 }
 
 func (s *PollOption) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -6499,6 +6791,10 @@ func (s PollType) Validate() error {
 }
 
 func (s *ReplyKeyboardMarkup) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Keyboard == nil {
@@ -6561,6 +6857,10 @@ func (s *ReplyKeyboardMarkup) Validate() error {
 }
 
 func (s *ResultArrayOfBotCommand) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
@@ -6594,6 +6894,10 @@ func (s *ResultArrayOfBotCommand) Validate() error {
 }
 
 func (s *ResultArrayOfMessage) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
@@ -6627,6 +6931,10 @@ func (s *ResultArrayOfMessage) Validate() error {
 }
 
 func (s *ResultArrayOfUpdate) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
@@ -6660,6 +6968,10 @@ func (s *ResultArrayOfUpdate) Validate() error {
 }
 
 func (s *ResultChat) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Result.Get(); ok {
@@ -6686,6 +6998,10 @@ func (s *ResultChat) Validate() error {
 }
 
 func (s *ResultChatInviteLink) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Result.Get(); ok {
@@ -6712,6 +7028,10 @@ func (s *ResultChatInviteLink) Validate() error {
 }
 
 func (s *ResultMessage) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Result.Get(); ok {
@@ -6738,6 +7058,10 @@ func (s *ResultMessage) Validate() error {
 }
 
 func (s *ResultPoll) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Result.Get(); ok {
@@ -6764,6 +7088,10 @@ func (s *ResultPoll) Validate() error {
 }
 
 func (s *ResultUserProfilePhotos) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Result.Get(); ok {
@@ -6790,6 +7118,10 @@ func (s *ResultUserProfilePhotos) Validate() error {
 }
 
 func (s *SendAnimation) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Duration.Get(); ok {
@@ -6972,6 +7304,10 @@ func (s SendAnimationReplyMarkup) Validate() error {
 }
 
 func (s *SendAudio) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Caption.Get(); ok {
@@ -7100,6 +7436,10 @@ func (s SendAudioReplyMarkup) Validate() error {
 }
 
 func (s *SendContact) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Vcard.Get(); ok {
@@ -7176,6 +7516,10 @@ func (s SendContactReplyMarkup) Validate() error {
 }
 
 func (s *SendDice) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.ReplyMarkup.Get(); ok {
@@ -7226,6 +7570,10 @@ func (s SendDiceReplyMarkup) Validate() error {
 }
 
 func (s *SendDocument) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Caption.Get(); ok {
@@ -7327,6 +7675,10 @@ func (s SendDocumentReplyMarkup) Validate() error {
 }
 
 func (s *SendGame) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.ReplyMarkup.Get(); ok {
@@ -7353,6 +7705,10 @@ func (s *SendGame) Validate() error {
 }
 
 func (s *SendInvoice) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -7501,6 +7857,10 @@ func (s *SendInvoice) Validate() error {
 }
 
 func (s *SendLocation) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.Latitude)); err != nil {
@@ -7672,6 +8032,10 @@ func (s SendLocationReplyMarkup) Validate() error {
 }
 
 func (s *SendMediaGroup) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Media == nil {
@@ -7735,6 +8099,10 @@ func (s SendMediaGroupMediaItem) Validate() error {
 }
 
 func (s *SendMessage) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -7829,6 +8197,10 @@ func (s SendMessageReplyMarkup) Validate() error {
 }
 
 func (s *SendPhoto) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Caption.Get(); ok {
@@ -7930,6 +8302,10 @@ func (s SendPhotoReplyMarkup) Validate() error {
 }
 
 func (s *SendPoll) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -8061,6 +8437,10 @@ func (s SendPollReplyMarkup) Validate() error {
 }
 
 func (s *SendSticker) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.ReplyMarkup.Get(); ok {
@@ -8111,6 +8491,10 @@ func (s SendStickerReplyMarkup) Validate() error {
 }
 
 func (s *SendVenue) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.Latitude)); err != nil {
@@ -8183,6 +8567,10 @@ func (s SendVenueReplyMarkup) Validate() error {
 }
 
 func (s *SendVideo) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Duration.Get(); ok {
@@ -8341,6 +8729,10 @@ func (s *SendVideo) Validate() error {
 }
 
 func (s *SendVideoNote) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Duration.Get(); ok {
@@ -8442,6 +8834,10 @@ func (s SendVideoReplyMarkup) Validate() error {
 }
 
 func (s *SendVoice) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Caption.Get(); ok {
@@ -8570,6 +8966,10 @@ func (s SendVoiceReplyMarkup) Validate() error {
 }
 
 func (s *SetChatAdministratorCustomTitle) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -8597,6 +8997,10 @@ func (s *SetChatAdministratorCustomTitle) Validate() error {
 }
 
 func (s *SetChatDescription) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Description.Get(); ok {
@@ -8631,6 +9035,10 @@ func (s *SetChatDescription) Validate() error {
 }
 
 func (s *SetChatTitle) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -8658,6 +9066,10 @@ func (s *SetChatTitle) Validate() error {
 }
 
 func (s *SetMyCommands) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Commands == nil {
@@ -8694,6 +9106,10 @@ func (s *SetMyCommands) Validate() error {
 }
 
 func (s *SetPassportDataErrors) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Errors == nil {
@@ -8730,6 +9146,10 @@ func (s *SetPassportDataErrors) Validate() error {
 }
 
 func (s *ShippingOption) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Prices == nil {
@@ -8749,6 +9169,10 @@ func (s *ShippingOption) Validate() error {
 }
 
 func (s *Sticker) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Int{
@@ -8833,6 +9257,10 @@ func (s *Sticker) Validate() error {
 }
 
 func (s *StopMessageLiveLocation) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.ReplyMarkup.Get(); ok {
@@ -8859,6 +9287,10 @@ func (s *StopMessageLiveLocation) Validate() error {
 }
 
 func (s *StopPoll) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.ReplyMarkup.Get(); ok {
@@ -8885,6 +9317,10 @@ func (s *StopPoll) Validate() error {
 }
 
 func (s *Update) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Message.Get(); ok {
@@ -9109,6 +9545,10 @@ func (s *Update) Validate() error {
 }
 
 func (s *UserProfilePhotos) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Photos == nil {
@@ -9162,6 +9602,10 @@ func (s *UserProfilePhotos) Validate() error {
 }
 
 func (s *Venue) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Location.Validate(); err != nil {
@@ -9181,6 +9625,10 @@ func (s *Venue) Validate() error {
 }
 
 func (s *Video) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Int{
@@ -9267,6 +9715,10 @@ func (s *Video) Validate() error {
 }
 
 func (s *VideoNote) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Int{
@@ -9313,6 +9765,10 @@ func (s *VideoNote) Validate() error {
 }
 
 func (s *Voice) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Int{
@@ -9341,6 +9797,10 @@ func (s *Voice) Validate() error {
 }
 
 func (s *VoiceChatEnded) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Int{

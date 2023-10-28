@@ -11,6 +11,10 @@ import (
 )
 
 func (s *ContentParameters) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Query.Validate(); err != nil {
@@ -63,6 +67,10 @@ func (s *ContentParameters) Validate() error {
 }
 
 func (s *User) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Role.Validate(); err != nil {

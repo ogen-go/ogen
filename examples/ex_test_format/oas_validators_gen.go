@@ -11,6 +11,10 @@ import (
 )
 
 func (s *TestRequestFormatTestReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.RequiredArrayAny == nil {
@@ -4434,6 +4438,10 @@ func (s *TestRequestFormatTestReq) Validate() error {
 }
 
 func (s *TestRequestRequiredFormatTestReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.RequiredArrayAny == nil {
@@ -8857,6 +8865,10 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 }
 
 func (s *TestResponseFormatTestOK) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.RequiredArrayAny == nil {

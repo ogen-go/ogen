@@ -9,6 +9,10 @@ import (
 )
 
 func (s *Location) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.Lat)); err != nil {
@@ -39,6 +43,10 @@ func (s *Location) Validate() error {
 }
 
 func (s *ObjectsWithConflictingArrayPropertyReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Foo == nil {
@@ -86,6 +94,10 @@ func (s *ObjectsWithConflictingArrayPropertyReq) Validate() error {
 }
 
 func (s *ObjectsWithConflictingPropertiesReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -140,6 +152,10 @@ func (s *ObjectsWithConflictingPropertiesReq) Validate() error {
 }
 
 func (s *Robot) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {
@@ -170,6 +186,10 @@ func (s *Robot) Validate() error {
 }
 
 func (s *RobotMultipart) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {

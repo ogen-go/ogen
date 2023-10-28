@@ -11,6 +11,10 @@ import (
 )
 
 func (s *ChatCompletionRequestMessage) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Role.Validate(); err != nil {
@@ -43,6 +47,10 @@ func (s ChatCompletionRequestMessageRole) Validate() error {
 }
 
 func (s *ChatCompletionResponseMessage) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Role.Validate(); err != nil {
@@ -75,6 +83,10 @@ func (s ChatCompletionResponseMessageRole) Validate() error {
 }
 
 func (s *CreateAnswerRequest) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -327,6 +339,10 @@ func (s CreateAnswerRequestStop) Validate() error {
 }
 
 func (s *CreateChatCompletionRequest) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Messages == nil {
@@ -546,6 +562,10 @@ func (s CreateChatCompletionRequestStop) Validate() error {
 }
 
 func (s *CreateChatCompletionResponse) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Choices == nil {
@@ -582,6 +602,10 @@ func (s *CreateChatCompletionResponse) Validate() error {
 }
 
 func (s *CreateChatCompletionResponseChoicesItem) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Message.Get(); ok {
@@ -608,6 +632,10 @@ func (s *CreateChatCompletionResponseChoicesItem) Validate() error {
 }
 
 func (s *CreateClassificationRequest) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -809,6 +837,10 @@ func (s *CreateClassificationRequest) Validate() error {
 }
 
 func (s *CreateCompletionRequest) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Prompt.Get(); ok {
@@ -1107,6 +1139,10 @@ func (s CreateCompletionRequestStop) Validate() error {
 }
 
 func (s *CreateCompletionResponse) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Choices == nil {
@@ -1143,6 +1179,10 @@ func (s *CreateCompletionResponse) Validate() error {
 }
 
 func (s *CreateCompletionResponseChoicesItem) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Logprobs.Get(); ok {
@@ -1169,6 +1209,10 @@ func (s *CreateCompletionResponseChoicesItem) Validate() error {
 }
 
 func (s *CreateCompletionResponseChoicesItemLogprobs) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
@@ -1202,6 +1246,10 @@ func (s *CreateCompletionResponseChoicesItemLogprobs) Validate() error {
 }
 
 func (s *CreateEditRequest) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.N.Get(); ok {
@@ -1291,6 +1339,10 @@ func (s *CreateEditRequest) Validate() error {
 }
 
 func (s *CreateEditResponse) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Choices == nil {
@@ -1327,6 +1379,10 @@ func (s *CreateEditResponse) Validate() error {
 }
 
 func (s *CreateEditResponseChoicesItem) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Logprobs.Get(); ok {
@@ -1353,6 +1409,10 @@ func (s *CreateEditResponseChoicesItem) Validate() error {
 }
 
 func (s *CreateEditResponseChoicesItemLogprobs) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
@@ -1386,6 +1446,10 @@ func (s *CreateEditResponseChoicesItemLogprobs) Validate() error {
 }
 
 func (s *CreateEmbeddingRequest) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Input.Validate(); err != nil {
@@ -1419,6 +1483,10 @@ func (s CreateEmbeddingRequestInput) Validate() error {
 }
 
 func (s *CreateEmbeddingResponse) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Data == nil {
@@ -1455,6 +1523,10 @@ func (s *CreateEmbeddingResponse) Validate() error {
 }
 
 func (s *CreateEmbeddingResponseDataItem) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Embedding == nil {
@@ -1491,6 +1563,10 @@ func (s *CreateEmbeddingResponseDataItem) Validate() error {
 }
 
 func (s *CreateFineTuneRequest) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.LearningRateMultiplier.Get(); ok {
@@ -1596,6 +1672,10 @@ func (s *CreateFineTuneRequest) Validate() error {
 }
 
 func (s *CreateImageEditRequestMultipart) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.N.Get(); ok {
@@ -1691,6 +1771,10 @@ func (s CreateImageEditRequestMultipartSize) Validate() error {
 }
 
 func (s *CreateImageRequest) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.N.Get(); ok {
@@ -1786,6 +1870,10 @@ func (s CreateImageRequestSize) Validate() error {
 }
 
 func (s *CreateImageVariationRequestMultipart) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.N.Get(); ok {
@@ -1881,6 +1969,10 @@ func (s CreateImageVariationRequestMultipartSize) Validate() error {
 }
 
 func (s *CreateModerationRequest) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Input.Validate(); err != nil {
@@ -1914,6 +2006,10 @@ func (s CreateModerationRequestInput) Validate() error {
 }
 
 func (s *CreateModerationResponse) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Results == nil {
@@ -1950,6 +2046,10 @@ func (s *CreateModerationResponse) Validate() error {
 }
 
 func (s *CreateModerationResponseResultsItem) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.CategoryScores.Validate(); err != nil {
@@ -1969,6 +2069,10 @@ func (s *CreateModerationResponseResultsItem) Validate() error {
 }
 
 func (s *CreateModerationResponseResultsItemCategoryScores) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.Hate)); err != nil {
@@ -2054,6 +2158,10 @@ func (s *CreateModerationResponseResultsItemCategoryScores) Validate() error {
 }
 
 func (s *CreateSearchRequest) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -2134,6 +2242,10 @@ func (s *CreateSearchRequest) Validate() error {
 }
 
 func (s *CreateSearchResponse) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
@@ -2167,6 +2279,10 @@ func (s *CreateSearchResponse) Validate() error {
 }
 
 func (s *CreateSearchResponseDataItem) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Score.Get(); ok {
@@ -2193,6 +2309,10 @@ func (s *CreateSearchResponseDataItem) Validate() error {
 }
 
 func (s *CreateTranscriptionRequestMultipart) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Temperature.Get(); ok {
@@ -2219,6 +2339,10 @@ func (s *CreateTranscriptionRequestMultipart) Validate() error {
 }
 
 func (s *CreateTranslationRequestMultipart) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Temperature.Get(); ok {
@@ -2245,6 +2369,10 @@ func (s *CreateTranslationRequestMultipart) Validate() error {
 }
 
 func (s *ListEnginesResponse) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Data == nil {
@@ -2264,6 +2392,10 @@ func (s *ListEnginesResponse) Validate() error {
 }
 
 func (s *ListFilesResponse) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Data == nil {
@@ -2283,6 +2415,10 @@ func (s *ListFilesResponse) Validate() error {
 }
 
 func (s *ListFineTuneEventsResponse) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Data == nil {
@@ -2302,6 +2438,10 @@ func (s *ListFineTuneEventsResponse) Validate() error {
 }
 
 func (s *ListFineTunesResponse) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Data == nil {
@@ -2321,6 +2461,10 @@ func (s *ListFineTunesResponse) Validate() error {
 }
 
 func (s *ListModelsResponse) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Data == nil {

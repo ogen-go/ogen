@@ -17861,6 +17861,10 @@ func (s *XMLPattern0) UnmarshalJSON(data []byte) error {
 }
 
 func (s *Callback) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Pattern0Props.Validate(); err != nil {
@@ -17938,6 +17942,10 @@ func (s CallbacksOrReferences) Validate() error {
 }
 
 func (s *Components) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Schemas.Get(); ok {
@@ -18054,6 +18062,10 @@ func (s *Components) Validate() error {
 }
 
 func (s *Encoding) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Headers.Get(); ok {
@@ -18118,6 +18130,10 @@ func (s Enum) Validate() error {
 }
 
 func (s *Header) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Schema.Get(); ok {
@@ -18206,6 +18222,10 @@ func (s Maximum) Validate() error {
 }
 
 func (s *MediaType) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Schema.Get(); ok {
@@ -18297,6 +18317,10 @@ func (s MultipleOf) Validate() error {
 }
 
 func (s *Operation) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
@@ -18402,6 +18426,10 @@ func (s *Operation) Validate() error {
 }
 
 func (s *Parameter) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.In.Validate(); err != nil {
@@ -18547,6 +18575,10 @@ func (s ParametersOrReferences) Validate() error {
 }
 
 func (s *PathItem) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Get.Get(); ok {
@@ -18724,6 +18756,10 @@ func (s *PathItem) Validate() error {
 }
 
 func (s *Paths) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Pattern0Props.Validate(); err != nil {
@@ -18804,6 +18840,10 @@ func (s RequestBodiesOrReferences) Validate() error {
 }
 
 func (s *RequestBody) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Content.Validate(); err != nil {
@@ -18837,6 +18877,10 @@ func (s RequestBodyOrReference) Validate() error {
 }
 
 func (s *Response) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Headers.Get(); ok {
@@ -18895,6 +18939,10 @@ func (s ResponseOrReference) Validate() error {
 }
 
 func (s *Responses) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Default.Get(); ok {
@@ -18976,6 +19024,10 @@ func (s ResponsesPattern0) Validate() error {
 }
 
 func (s *Schema) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.MultipleOf.Get(); ok {
@@ -19475,6 +19527,10 @@ func (s SecurityRequirement) Validate() error {
 }
 
 func (s *Spec) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Paths.Validate(); err != nil {
