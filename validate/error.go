@@ -75,3 +75,6 @@ func UnexpectedStatusCode(statusCode int) error {
 func (i *UnexpectedStatusCodeError) Error() string {
 	return fmt.Sprintf("unexpected status code: %d", i.StatusCode)
 }
+
+// ErrNilPointer reports that use Validate, but receiver pointer is nil.
+var ErrNilPointer = errors.New("nil pointer")
