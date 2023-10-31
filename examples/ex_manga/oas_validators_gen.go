@@ -11,6 +11,10 @@ import (
 )
 
 func (s *Book) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.ID.Get(); ok {
@@ -170,6 +174,10 @@ func (s *Book) Validate() error {
 }
 
 func (s *Image) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.W.Get(); ok {
@@ -232,6 +240,10 @@ func (s *Image) Validate() error {
 }
 
 func (s *Images) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
@@ -351,6 +363,10 @@ func (s SearchOKApplicationJSON) Validate() error {
 }
 
 func (s *SearchResponse) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
@@ -384,6 +400,10 @@ func (s *SearchResponse) Validate() error {
 }
 
 func (s *Tag) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.ID.Get(); ok {

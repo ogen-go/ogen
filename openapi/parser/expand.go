@@ -159,6 +159,7 @@ func (e *expander) Server(s openapi.Server) (expanded ogen.Server, err error) {
 			Description: param.Description,
 		}
 	}
+	expanded.URL = template.String()
 	if len(vars) > 0 {
 		expanded.Variables = vars
 	}

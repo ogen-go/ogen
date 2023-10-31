@@ -10,7 +10,7 @@ require (
 	github.com/go-faster/errors v0.6.1
 	github.com/go-faster/jx v1.1.0
 	github.com/go-faster/yaml v0.4.6
-	github.com/google/uuid v1.3.1
+	github.com/google/uuid v1.4.0
 	github.com/mattn/go-isatty v0.0.20
 	github.com/stretchr/testify v1.8.4
 	github.com/valyala/fasthttp v1.50.0

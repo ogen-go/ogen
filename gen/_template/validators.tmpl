@@ -153,6 +153,10 @@
 {{- if $t.NeedValidation }}{{/*Need validation*/}}
 {{ if $t.IsStruct }}{{/*If struct*/}}
 func (s {{ $t.ReadOnlyReceiver }}) Validate() error {
+    if s == nil {
+        return validate.ErrNilPointer
+    }
+
 	var failures []validate.FieldError
 	{{- range $f := $t.Fields }}{{/*Range fields*/}}
 	{{- if $f.Type.NeedValidation }}

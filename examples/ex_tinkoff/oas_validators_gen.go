@@ -22,6 +22,10 @@ func (s BrokerAccountType) Validate() error {
 }
 
 func (s *Candle) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Interval.Validate(); err != nil {
@@ -114,6 +118,10 @@ func (s CandleResolution) Validate() error {
 }
 
 func (s *Candles) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Interval.Validate(); err != nil {
@@ -161,6 +169,10 @@ func (s *Candles) Validate() error {
 }
 
 func (s *CandlesResponse) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Payload.Validate(); err != nil {
@@ -180,6 +192,10 @@ func (s *CandlesResponse) Validate() error {
 }
 
 func (s *Currencies) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Currencies == nil {
@@ -241,6 +257,10 @@ func (s Currency) Validate() error {
 }
 
 func (s *CurrencyPosition) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Currency.Validate(); err != nil {
@@ -304,6 +324,10 @@ func (s InstrumentType) Validate() error {
 }
 
 func (s *LimitOrderRequest) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Operation.Validate(); err != nil {
@@ -334,6 +358,10 @@ func (s *LimitOrderRequest) Validate() error {
 }
 
 func (s *LimitOrderResponse) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Payload.Validate(); err != nil {
@@ -353,6 +381,10 @@ func (s *LimitOrderResponse) Validate() error {
 }
 
 func (s *MarketInstrument) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.MinPriceIncrement.Get(); ok {
@@ -408,6 +440,10 @@ func (s *MarketInstrument) Validate() error {
 }
 
 func (s *MarketInstrumentList) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Instruments == nil {
@@ -444,6 +480,10 @@ func (s *MarketInstrumentList) Validate() error {
 }
 
 func (s *MarketInstrumentListResponse) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Payload.Validate(); err != nil {
@@ -463,6 +503,10 @@ func (s *MarketInstrumentListResponse) Validate() error {
 }
 
 func (s *MarketOrderRequest) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Operation.Validate(); err != nil {
@@ -482,6 +526,10 @@ func (s *MarketOrderRequest) Validate() error {
 }
 
 func (s *MarketOrderResponse) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Payload.Validate(); err != nil {
@@ -501,6 +549,10 @@ func (s *MarketOrderResponse) Validate() error {
 }
 
 func (s *MoneyAmount) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Currency.Validate(); err != nil {
@@ -531,6 +583,10 @@ func (s *MoneyAmount) Validate() error {
 }
 
 func (s *Operation) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Status.Validate(); err != nil {
@@ -682,6 +738,10 @@ func (s OperationStatus) Validate() error {
 }
 
 func (s *OperationTrade) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.Price)); err != nil {
@@ -761,6 +821,10 @@ func (s OperationTypeWithCommission) Validate() error {
 }
 
 func (s *Operations) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Operations == nil {
@@ -797,6 +861,10 @@ func (s *Operations) Validate() error {
 }
 
 func (s *OperationsResponse) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Payload.Validate(); err != nil {
@@ -816,6 +884,10 @@ func (s *OperationsResponse) Validate() error {
 }
 
 func (s *Order) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Operation.Validate(); err != nil {
@@ -868,6 +940,10 @@ func (s *Order) Validate() error {
 }
 
 func (s *OrderResponse) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.Price)); err != nil {
@@ -923,6 +999,10 @@ func (s OrderType) Validate() error {
 }
 
 func (s *Orderbook) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Bids == nil {
@@ -1099,6 +1179,10 @@ func (s *Orderbook) Validate() error {
 }
 
 func (s *OrderbookResponse) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Payload.Validate(); err != nil {
@@ -1118,6 +1202,10 @@ func (s *OrderbookResponse) Validate() error {
 }
 
 func (s *OrdersResponse) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Payload == nil {
@@ -1154,6 +1242,10 @@ func (s *OrdersResponse) Validate() error {
 }
 
 func (s *PlacedLimitOrder) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Operation.Validate(); err != nil {
@@ -1202,6 +1294,10 @@ func (s *PlacedLimitOrder) Validate() error {
 }
 
 func (s *PlacedMarketOrder) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Operation.Validate(); err != nil {
@@ -1250,6 +1346,10 @@ func (s *PlacedMarketOrder) Validate() error {
 }
 
 func (s *Portfolio) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Positions == nil {
@@ -1286,6 +1386,10 @@ func (s *Portfolio) Validate() error {
 }
 
 func (s *PortfolioCurrenciesResponse) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Payload.Validate(); err != nil {
@@ -1305,6 +1409,10 @@ func (s *PortfolioCurrenciesResponse) Validate() error {
 }
 
 func (s *PortfolioPosition) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.InstrumentType.Validate(); err != nil {
@@ -1407,6 +1515,10 @@ func (s *PortfolioPosition) Validate() error {
 }
 
 func (s *PortfolioResponse) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Payload.Validate(); err != nil {
@@ -1426,6 +1538,10 @@ func (s *PortfolioResponse) Validate() error {
 }
 
 func (s *SandboxAccount) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.BrokerAccountType.Validate(); err != nil {
@@ -1470,6 +1586,10 @@ func (s SandboxCurrency) Validate() error {
 }
 
 func (s *SandboxRegisterRequest) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.BrokerAccountType.Get(); ok {
@@ -1496,6 +1616,10 @@ func (s *SandboxRegisterRequest) Validate() error {
 }
 
 func (s *SandboxRegisterResponse) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Payload.Validate(); err != nil {
@@ -1515,6 +1639,10 @@ func (s *SandboxRegisterResponse) Validate() error {
 }
 
 func (s *SandboxSetCurrencyBalanceRequest) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Currency.Validate(); err != nil {
@@ -1545,6 +1673,10 @@ func (s *SandboxSetCurrencyBalanceRequest) Validate() error {
 }
 
 func (s *SandboxSetPositionBalanceRequest) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.Balance)); err != nil {
@@ -1564,6 +1696,10 @@ func (s *SandboxSetPositionBalanceRequest) Validate() error {
 }
 
 func (s *SearchMarketInstrument) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.MinPriceIncrement.Get(); ok {
@@ -1619,6 +1755,10 @@ func (s *SearchMarketInstrument) Validate() error {
 }
 
 func (s *SearchMarketInstrumentResponse) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Payload.Validate(); err != nil {
@@ -1649,6 +1789,10 @@ func (s TradeStatus) Validate() error {
 }
 
 func (s *UserAccount) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.BrokerAccountType.Validate(); err != nil {
@@ -1668,6 +1812,10 @@ func (s *UserAccount) Validate() error {
 }
 
 func (s *UserAccounts) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Accounts == nil {
@@ -1704,6 +1852,10 @@ func (s *UserAccounts) Validate() error {
 }
 
 func (s *UserAccountsResponse) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Payload.Validate(); err != nil {

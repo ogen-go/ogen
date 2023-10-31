@@ -17,6 +17,10 @@ func (s Pets) Validate() error {
 }
 
 func (s *PetsHeaders) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {

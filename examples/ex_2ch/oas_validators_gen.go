@@ -11,6 +11,10 @@ import (
 )
 
 func (s *Board) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.FileTypes == nil {
@@ -55,6 +59,10 @@ func (s Boards) Validate() error {
 }
 
 func (s *Captcha) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Error.Get(); ok {
@@ -113,6 +121,10 @@ func (s CaptchaType) Validate() error {
 }
 
 func (s *Error) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Code.Get(); ok {
@@ -214,6 +226,10 @@ func (s ErrorCode) Validate() error {
 }
 
 func (s *File) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Type.Validate(); err != nil {
@@ -262,6 +278,10 @@ func (s FileType) Validate() error {
 }
 
 func (s *Like) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Error.Get(); ok {
@@ -288,6 +308,10 @@ func (s *Like) Validate() error {
 }
 
 func (s *MobilePost) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Error.Get(); ok {
@@ -332,6 +356,10 @@ func (s *MobilePost) Validate() error {
 }
 
 func (s *MobileThreadLastInfo) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Error.Get(); ok {
@@ -358,6 +386,10 @@ func (s *MobileThreadLastInfo) Validate() error {
 }
 
 func (s *MobileThreadPostsAfter) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Error.Get(); ok {
@@ -409,6 +441,10 @@ func (s *MobileThreadPostsAfter) Validate() error {
 }
 
 func (s *Passcode) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Error.Get(); ok {
@@ -435,6 +471,10 @@ func (s *Passcode) Validate() error {
 }
 
 func (s *Post) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
@@ -468,6 +508,10 @@ func (s *Post) Validate() error {
 }
 
 func (s *PostingNewPost) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Error.Get(); ok {
@@ -494,6 +538,10 @@ func (s *PostingNewPost) Validate() error {
 }
 
 func (s *PostingNewThread) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Error.Get(); ok {
@@ -520,6 +568,10 @@ func (s *PostingNewThread) Validate() error {
 }
 
 func (s *Report) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if value, ok := s.Error.Get(); ok {
@@ -563,6 +615,10 @@ func (s UserPostingPostOK) Validate() error {
 }
 
 func (s *UserPostingPostReq) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.CaptchaType.Validate(); err != nil {
