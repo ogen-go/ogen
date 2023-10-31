@@ -188,14 +188,21 @@ func (s *APIOverviewSSHKeyFingerprints) SetSHA256ED25519(val OptString) {
 
 type Accepted struct{}
 
-func (*Accepted) appsRedeliverWebhookDeliveryRes()  {}
-func (*Accepted) orgsRedeliverWebhookDeliveryRes()  {}
-func (*Accepted) reposEnableLfsForRepoRes()         {}
-func (*Accepted) reposGetCodeFrequencyStatsRes()    {}
-func (*Accepted) reposGetCommitActivityStatsRes()   {}
-func (*Accepted) reposGetContributorsStatsRes()     {}
+func (*Accepted) appsRedeliverWebhookDeliveryRes() {}
+
+func (*Accepted) orgsRedeliverWebhookDeliveryRes() {}
+
+func (*Accepted) reposEnableLfsForRepoRes() {}
+
+func (*Accepted) reposGetCodeFrequencyStatsRes() {}
+
+func (*Accepted) reposGetCommitActivityStatsRes() {}
+
+func (*Accepted) reposGetContributorsStatsRes() {}
+
 func (*Accepted) reposRedeliverWebhookDeliveryRes() {}
-func (*Accepted) usersGetByUsernameRes()            {}
+
+func (*Accepted) usersGetByUsernameRes() {}
 
 // ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent is response for ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg operation.
 type ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent struct{}
@@ -6777,10 +6784,14 @@ func (s *Authorization) SetExpiresAt(val NilDateTime) {
 	s.ExpiresAt = val
 }
 
-func (*Authorization) appsCheckTokenRes()                         {}
-func (*Authorization) appsResetTokenRes()                         {}
-func (*Authorization) appsScopeTokenRes()                         {}
-func (*Authorization) oAuthAuthorizationsGetAuthorizationRes()    {}
+func (*Authorization) appsCheckTokenRes() {}
+
+func (*Authorization) appsResetTokenRes() {}
+
+func (*Authorization) appsScopeTokenRes() {}
+
+func (*Authorization) oAuthAuthorizationsGetAuthorizationRes() {}
+
 func (*Authorization) oAuthAuthorizationsUpdateAuthorizationRes() {}
 
 type AuthorizationApp struct {
@@ -7389,184 +7400,361 @@ func (s *BasicError) SetStatus(val OptString) {
 	s.Status = val
 }
 
-func (*BasicError) activityGetRepoSubscriptionRes()                      {}
-func (*BasicError) activityListPublicEventsRes()                         {}
-func (*BasicError) activityMarkThreadAsReadRes()                         {}
-func (*BasicError) appsCheckTokenRes()                                   {}
-func (*BasicError) appsCreateFromManifestRes()                           {}
-func (*BasicError) appsDeleteInstallationRes()                           {}
-func (*BasicError) appsGetSubscriptionPlanForAccountStubbedRes()         {}
-func (*BasicError) appsGetWebhookDeliveryRes()                           {}
-func (*BasicError) appsListAccountsForPlanStubbedRes()                   {}
-func (*BasicError) appsListPlansStubbedRes()                             {}
+func (*BasicError) activityGetRepoSubscriptionRes() {}
+
+func (*BasicError) activityListPublicEventsRes() {}
+
+func (*BasicError) activityMarkThreadAsReadRes() {}
+
+func (*BasicError) appsCheckTokenRes() {}
+
+func (*BasicError) appsCreateFromManifestRes() {}
+
+func (*BasicError) appsDeleteInstallationRes() {}
+
+func (*BasicError) appsGetSubscriptionPlanForAccountStubbedRes() {}
+
+func (*BasicError) appsGetWebhookDeliveryRes() {}
+
+func (*BasicError) appsListAccountsForPlanStubbedRes() {}
+
+func (*BasicError) appsListPlansStubbedRes() {}
+
 func (*BasicError) appsListSubscriptionsForAuthenticatedUserStubbedRes() {}
-func (*BasicError) appsListWebhookDeliveriesRes()                        {}
-func (*BasicError) appsRedeliverWebhookDeliveryRes()                     {}
-func (*BasicError) appsSuspendInstallationRes()                          {}
-func (*BasicError) appsUnsuspendInstallationRes()                        {}
-func (*BasicError) codeScanningGetSarifRes()                             {}
-func (*BasicError) codesOfConductGetConductCodeRes()                     {}
-func (*BasicError) gistsCheckIsStarredRes()                              {}
-func (*BasicError) gistsGetCommentRes()                                  {}
-func (*BasicError) gistsGetRes()                                         {}
-func (*BasicError) gistsListPublicRes()                                  {}
-func (*BasicError) gistsListRes()                                        {}
-func (*BasicError) gistsUpdateCommentRes()                               {}
-func (*BasicError) gitCreateCommitRes()                                  {}
-func (*BasicError) gitGetCommitRes()                                     {}
-func (*BasicError) gitGetRefRes()                                        {}
-func (*BasicError) gitGetTagRes()                                        {}
-func (*BasicError) gitGetTreeRes()                                       {}
-func (*BasicError) issuesCheckUserCanBeAssignedRes()                     {}
-func (*BasicError) issuesCreateLabelRes()                                {}
-func (*BasicError) issuesCreateMilestoneRes()                            {}
-func (*BasicError) issuesDeleteMilestoneRes()                            {}
-func (*BasicError) issuesGetCommentRes()                                 {}
-func (*BasicError) issuesGetLabelRes()                                   {}
-func (*BasicError) issuesGetMilestoneRes()                               {}
-func (*BasicError) issuesListAssigneesRes()                              {}
-func (*BasicError) issuesListCommentsForRepoRes()                        {}
-func (*BasicError) issuesListForAuthenticatedUserRes()                   {}
-func (*BasicError) issuesListForOrgRes()                                 {}
-func (*BasicError) issuesListLabelsForRepoRes()                          {}
-func (*BasicError) issuesListLabelsOnIssueRes()                          {}
-func (*BasicError) issuesListMilestonesRes()                             {}
-func (*BasicError) issuesListRes()                                       {}
-func (*BasicError) issuesRemoveAllLabelsRes()                            {}
-func (*BasicError) migrationsDeleteArchiveForOrgRes()                    {}
-func (*BasicError) migrationsDownloadArchiveForOrgRes()                  {}
-func (*BasicError) migrationsGetCommitAuthorsRes()                       {}
-func (*BasicError) migrationsGetImportStatusRes()                        {}
-func (*BasicError) migrationsGetStatusForOrgRes()                        {}
-func (*BasicError) migrationsListReposForOrgRes()                        {}
-func (*BasicError) migrationsListReposForUserRes()                       {}
-func (*BasicError) migrationsMapCommitAuthorRes()                        {}
-func (*BasicError) migrationsStartForOrgRes()                            {}
-func (*BasicError) migrationsStartImportRes()                            {}
-func (*BasicError) migrationsUnlockRepoForOrgRes()                       {}
-func (*BasicError) orgsCancelInvitationRes()                             {}
-func (*BasicError) orgsCheckBlockedUserRes()                             {}
-func (*BasicError) orgsConvertMemberToOutsideCollaboratorRes()           {}
-func (*BasicError) orgsCreateInvitationRes()                             {}
-func (*BasicError) orgsCreateWebhookRes()                                {}
-func (*BasicError) orgsDeleteWebhookRes()                                {}
-func (*BasicError) orgsGetRes()                                          {}
-func (*BasicError) orgsGetWebhookDeliveryRes()                           {}
-func (*BasicError) orgsGetWebhookRes()                                   {}
-func (*BasicError) orgsListFailedInvitationsRes()                        {}
-func (*BasicError) orgsListInvitationTeamsRes()                          {}
-func (*BasicError) orgsListPendingInvitationsRes()                       {}
-func (*BasicError) orgsListWebhookDeliveriesRes()                        {}
-func (*BasicError) orgsListWebhooksRes()                                 {}
-func (*BasicError) orgsPingWebhookRes()                                  {}
-func (*BasicError) orgsRedeliverWebhookDeliveryRes()                     {}
-func (*BasicError) orgsRemoveMemberRes()                                 {}
-func (*BasicError) orgsRemoveSamlSSOAuthorizationRes()                   {}
-func (*BasicError) orgsSetMembershipForUserRes()                         {}
-func (*BasicError) orgsSetPublicMembershipForAuthenticatedUserRes()      {}
-func (*BasicError) orgsUpdateWebhookRes()                                {}
-func (*BasicError) projectsMoveCardRes()                                 {}
-func (*BasicError) pullsCreateReplyForReviewCommentRes()                 {}
-func (*BasicError) pullsCreateRes()                                      {}
-func (*BasicError) pullsCreateReviewCommentRes()                         {}
-func (*BasicError) pullsCreateReviewRes()                                {}
-func (*BasicError) pullsDeletePendingReviewRes()                         {}
-func (*BasicError) pullsDeleteReviewCommentRes()                         {}
-func (*BasicError) pullsDismissReviewRes()                               {}
-func (*BasicError) pullsGetReviewCommentRes()                            {}
-func (*BasicError) pullsGetReviewRes()                                   {}
-func (*BasicError) pullsListCommentsForReviewRes()                       {}
-func (*BasicError) pullsListFilesRes()                                   {}
-func (*BasicError) pullsUpdateBranchRes()                                {}
-func (*BasicError) pullsUpdateRes()                                      {}
-func (*BasicError) rateLimitGetRes()                                     {}
-func (*BasicError) reactionsListForCommitCommentRes()                    {}
-func (*BasicError) reactionsListForIssueCommentRes()                     {}
-func (*BasicError) reactionsListForPullRequestReviewCommentRes()         {}
-func (*BasicError) reposAddCollaboratorRes()                             {}
-func (*BasicError) reposCreateCommitCommentRes()                         {}
-func (*BasicError) reposCreateCommitSignatureProtectionRes()             {}
-func (*BasicError) reposCreateInOrgRes()                                 {}
-func (*BasicError) reposCreatePagesSiteRes()                             {}
-func (*BasicError) reposCreateReleaseRes()                               {}
-func (*BasicError) reposDeleteAdminBranchProtectionRes()                 {}
-func (*BasicError) reposDeleteAutolinkRes()                              {}
-func (*BasicError) reposDeleteBranchProtectionRes()                      {}
-func (*BasicError) reposDeleteCommitCommentRes()                         {}
-func (*BasicError) reposDeleteCommitSignatureProtectionRes()             {}
-func (*BasicError) reposDeleteDeploymentRes()                            {}
-func (*BasicError) reposDeletePagesSiteRes()                             {}
-func (*BasicError) reposDeletePullRequestReviewProtectionRes()           {}
-func (*BasicError) reposDeleteWebhookRes()                               {}
-func (*BasicError) reposGetAccessRestrictionsRes()                       {}
-func (*BasicError) reposGetAllStatusCheckContextsRes()                   {}
-func (*BasicError) reposGetAllTopicsRes()                                {}
-func (*BasicError) reposGetAppsWithAccessToProtectedBranchRes()          {}
-func (*BasicError) reposGetAutolinkRes()                                 {}
-func (*BasicError) reposGetBranchProtectionRes()                         {}
-func (*BasicError) reposGetClonesRes()                                   {}
-func (*BasicError) reposGetCollaboratorPermissionLevelRes()              {}
-func (*BasicError) reposGetCombinedStatusForRefRes()                     {}
-func (*BasicError) reposGetCommitCommentRes()                            {}
-func (*BasicError) reposGetCommitSignatureProtectionRes()                {}
-func (*BasicError) reposGetDeployKeyRes()                                {}
-func (*BasicError) reposGetDeploymentRes()                               {}
-func (*BasicError) reposGetDeploymentStatusRes()                         {}
-func (*BasicError) reposGetPagesHealthCheckRes()                         {}
-func (*BasicError) reposGetPagesRes()                                    {}
-func (*BasicError) reposGetParticipationStatsRes()                       {}
-func (*BasicError) reposGetReadmeInDirectoryRes()                        {}
-func (*BasicError) reposGetReadmeRes()                                   {}
-func (*BasicError) reposGetReleaseAssetRes()                             {}
-func (*BasicError) reposGetReleaseByTagRes()                             {}
-func (*BasicError) reposGetReleaseRes()                                  {}
-func (*BasicError) reposGetStatusChecksProtectionRes()                   {}
-func (*BasicError) reposGetTeamsWithAccessToProtectedBranchRes()         {}
-func (*BasicError) reposGetTopPathsRes()                                 {}
-func (*BasicError) reposGetTopReferrersRes()                             {}
-func (*BasicError) reposGetUsersWithAccessToProtectedBranchRes()         {}
-func (*BasicError) reposGetViewsRes()                                    {}
-func (*BasicError) reposGetWebhookDeliveryRes()                          {}
-func (*BasicError) reposGetWebhookRes()                                  {}
-func (*BasicError) reposListBranchesRes()                                {}
-func (*BasicError) reposListCollaboratorsRes()                           {}
-func (*BasicError) reposListCommitStatusesForRefRes()                    {}
-func (*BasicError) reposListDeploymentStatusesRes()                      {}
-func (*BasicError) reposListForksRes()                                   {}
-func (*BasicError) reposListReleasesRes()                                {}
-func (*BasicError) reposListWebhookDeliveriesRes()                       {}
-func (*BasicError) reposListWebhooksRes()                                {}
-func (*BasicError) reposMergeRes()                                       {}
-func (*BasicError) reposPingWebhookRes()                                 {}
-func (*BasicError) reposRedeliverWebhookDeliveryRes()                    {}
-func (*BasicError) reposRemoveStatusCheckContextsRes()                   {}
-func (*BasicError) reposReplaceAllTopicsRes()                            {}
-func (*BasicError) reposSetStatusCheckContextsRes()                      {}
-func (*BasicError) reposTestPushWebhookRes()                             {}
-func (*BasicError) reposUpdateCommitCommentRes()                         {}
-func (*BasicError) reposUpdateReleaseRes()                               {}
-func (*BasicError) reposUpdateStatusCheckProtectionRes()                 {}
-func (*BasicError) reposUpdateWebhookRes()                               {}
-func (*BasicError) searchCodeRes()                                       {}
-func (*BasicError) searchIssuesAndPullRequestsRes()                      {}
-func (*BasicError) secretScanningListAlertsForOrgRes()                   {}
-func (*BasicError) teamsAddMemberLegacyRes()                             {}
-func (*BasicError) teamsAddOrUpdateMembershipForUserLegacyRes()          {}
-func (*BasicError) teamsAddOrUpdateProjectPermissionsLegacyRes()         {}
-func (*BasicError) teamsAddOrUpdateRepoPermissionsLegacyRes()            {}
-func (*BasicError) teamsCreateOrUpdateIdpGroupConnectionsLegacyRes()     {}
-func (*BasicError) teamsCreateRes()                                      {}
-func (*BasicError) teamsDeleteLegacyRes()                                {}
-func (*BasicError) teamsGetByNameRes()                                   {}
-func (*BasicError) teamsGetLegacyRes()                                   {}
-func (*BasicError) teamsGetMembershipForUserLegacyRes()                  {}
-func (*BasicError) teamsListMembersLegacyRes()                           {}
-func (*BasicError) teamsListProjectsLegacyRes()                          {}
-func (*BasicError) teamsListReposLegacyRes()                             {}
-func (*BasicError) teamsListRes()                                        {}
-func (*BasicError) teamsRemoveProjectLegacyRes()                         {}
-func (*BasicError) usersGetByUsernameRes()                               {}
-func (*BasicError) usersGetContextForUserRes()                           {}
+
+func (*BasicError) appsListWebhookDeliveriesRes() {}
+
+func (*BasicError) appsRedeliverWebhookDeliveryRes() {}
+
+func (*BasicError) appsSuspendInstallationRes() {}
+
+func (*BasicError) appsUnsuspendInstallationRes() {}
+
+func (*BasicError) codeScanningGetSarifRes() {}
+
+func (*BasicError) codesOfConductGetConductCodeRes() {}
+
+func (*BasicError) gistsCheckIsStarredRes() {}
+
+func (*BasicError) gistsGetCommentRes() {}
+
+func (*BasicError) gistsGetRes() {}
+
+func (*BasicError) gistsListPublicRes() {}
+
+func (*BasicError) gistsListRes() {}
+
+func (*BasicError) gistsUpdateCommentRes() {}
+
+func (*BasicError) gitCreateCommitRes() {}
+
+func (*BasicError) gitGetCommitRes() {}
+
+func (*BasicError) gitGetRefRes() {}
+
+func (*BasicError) gitGetTagRes() {}
+
+func (*BasicError) gitGetTreeRes() {}
+
+func (*BasicError) issuesCheckUserCanBeAssignedRes() {}
+
+func (*BasicError) issuesCreateLabelRes() {}
+
+func (*BasicError) issuesCreateMilestoneRes() {}
+
+func (*BasicError) issuesDeleteMilestoneRes() {}
+
+func (*BasicError) issuesGetCommentRes() {}
+
+func (*BasicError) issuesGetLabelRes() {}
+
+func (*BasicError) issuesGetMilestoneRes() {}
+
+func (*BasicError) issuesListAssigneesRes() {}
+
+func (*BasicError) issuesListCommentsForRepoRes() {}
+
+func (*BasicError) issuesListForAuthenticatedUserRes() {}
+
+func (*BasicError) issuesListForOrgRes() {}
+
+func (*BasicError) issuesListLabelsForRepoRes() {}
+
+func (*BasicError) issuesListLabelsOnIssueRes() {}
+
+func (*BasicError) issuesListMilestonesRes() {}
+
+func (*BasicError) issuesListRes() {}
+
+func (*BasicError) issuesRemoveAllLabelsRes() {}
+
+func (*BasicError) migrationsDeleteArchiveForOrgRes() {}
+
+func (*BasicError) migrationsDownloadArchiveForOrgRes() {}
+
+func (*BasicError) migrationsGetCommitAuthorsRes() {}
+
+func (*BasicError) migrationsGetImportStatusRes() {}
+
+func (*BasicError) migrationsGetStatusForOrgRes() {}
+
+func (*BasicError) migrationsListReposForOrgRes() {}
+
+func (*BasicError) migrationsListReposForUserRes() {}
+
+func (*BasicError) migrationsMapCommitAuthorRes() {}
+
+func (*BasicError) migrationsStartForOrgRes() {}
+
+func (*BasicError) migrationsStartImportRes() {}
+
+func (*BasicError) migrationsUnlockRepoForOrgRes() {}
+
+func (*BasicError) orgsCancelInvitationRes() {}
+
+func (*BasicError) orgsCheckBlockedUserRes() {}
+
+func (*BasicError) orgsConvertMemberToOutsideCollaboratorRes() {}
+
+func (*BasicError) orgsCreateInvitationRes() {}
+
+func (*BasicError) orgsCreateWebhookRes() {}
+
+func (*BasicError) orgsDeleteWebhookRes() {}
+
+func (*BasicError) orgsGetRes() {}
+
+func (*BasicError) orgsGetWebhookDeliveryRes() {}
+
+func (*BasicError) orgsGetWebhookRes() {}
+
+func (*BasicError) orgsListFailedInvitationsRes() {}
+
+func (*BasicError) orgsListInvitationTeamsRes() {}
+
+func (*BasicError) orgsListPendingInvitationsRes() {}
+
+func (*BasicError) orgsListWebhookDeliveriesRes() {}
+
+func (*BasicError) orgsListWebhooksRes() {}
+
+func (*BasicError) orgsPingWebhookRes() {}
+
+func (*BasicError) orgsRedeliverWebhookDeliveryRes() {}
+
+func (*BasicError) orgsRemoveMemberRes() {}
+
+func (*BasicError) orgsRemoveSamlSSOAuthorizationRes() {}
+
+func (*BasicError) orgsSetMembershipForUserRes() {}
+
+func (*BasicError) orgsSetPublicMembershipForAuthenticatedUserRes() {}
+
+func (*BasicError) orgsUpdateWebhookRes() {}
+
+func (*BasicError) projectsMoveCardRes() {}
+
+func (*BasicError) pullsCreateReplyForReviewCommentRes() {}
+
+func (*BasicError) pullsCreateRes() {}
+
+func (*BasicError) pullsCreateReviewCommentRes() {}
+
+func (*BasicError) pullsCreateReviewRes() {}
+
+func (*BasicError) pullsDeletePendingReviewRes() {}
+
+func (*BasicError) pullsDeleteReviewCommentRes() {}
+
+func (*BasicError) pullsDismissReviewRes() {}
+
+func (*BasicError) pullsGetReviewCommentRes() {}
+
+func (*BasicError) pullsGetReviewRes() {}
+
+func (*BasicError) pullsListCommentsForReviewRes() {}
+
+func (*BasicError) pullsListFilesRes() {}
+
+func (*BasicError) pullsUpdateBranchRes() {}
+
+func (*BasicError) pullsUpdateRes() {}
+
+func (*BasicError) rateLimitGetRes() {}
+
+func (*BasicError) reactionsListForCommitCommentRes() {}
+
+func (*BasicError) reactionsListForIssueCommentRes() {}
+
+func (*BasicError) reactionsListForPullRequestReviewCommentRes() {}
+
+func (*BasicError) reposAddCollaboratorRes() {}
+
+func (*BasicError) reposCreateCommitCommentRes() {}
+
+func (*BasicError) reposCreateCommitSignatureProtectionRes() {}
+
+func (*BasicError) reposCreateInOrgRes() {}
+
+func (*BasicError) reposCreatePagesSiteRes() {}
+
+func (*BasicError) reposCreateReleaseRes() {}
+
+func (*BasicError) reposDeleteAdminBranchProtectionRes() {}
+
+func (*BasicError) reposDeleteAutolinkRes() {}
+
+func (*BasicError) reposDeleteBranchProtectionRes() {}
+
+func (*BasicError) reposDeleteCommitCommentRes() {}
+
+func (*BasicError) reposDeleteCommitSignatureProtectionRes() {}
+
+func (*BasicError) reposDeleteDeploymentRes() {}
+
+func (*BasicError) reposDeletePagesSiteRes() {}
+
+func (*BasicError) reposDeletePullRequestReviewProtectionRes() {}
+
+func (*BasicError) reposDeleteWebhookRes() {}
+
+func (*BasicError) reposGetAccessRestrictionsRes() {}
+
+func (*BasicError) reposGetAllStatusCheckContextsRes() {}
+
+func (*BasicError) reposGetAllTopicsRes() {}
+
+func (*BasicError) reposGetAppsWithAccessToProtectedBranchRes() {}
+
+func (*BasicError) reposGetAutolinkRes() {}
+
+func (*BasicError) reposGetBranchProtectionRes() {}
+
+func (*BasicError) reposGetClonesRes() {}
+
+func (*BasicError) reposGetCollaboratorPermissionLevelRes() {}
+
+func (*BasicError) reposGetCombinedStatusForRefRes() {}
+
+func (*BasicError) reposGetCommitCommentRes() {}
+
+func (*BasicError) reposGetCommitSignatureProtectionRes() {}
+
+func (*BasicError) reposGetDeployKeyRes() {}
+
+func (*BasicError) reposGetDeploymentRes() {}
+
+func (*BasicError) reposGetDeploymentStatusRes() {}
+
+func (*BasicError) reposGetPagesHealthCheckRes() {}
+
+func (*BasicError) reposGetPagesRes() {}
+
+func (*BasicError) reposGetParticipationStatsRes() {}
+
+func (*BasicError) reposGetReadmeInDirectoryRes() {}
+
+func (*BasicError) reposGetReadmeRes() {}
+
+func (*BasicError) reposGetReleaseAssetRes() {}
+
+func (*BasicError) reposGetReleaseByTagRes() {}
+
+func (*BasicError) reposGetReleaseRes() {}
+
+func (*BasicError) reposGetStatusChecksProtectionRes() {}
+
+func (*BasicError) reposGetTeamsWithAccessToProtectedBranchRes() {}
+
+func (*BasicError) reposGetTopPathsRes() {}
+
+func (*BasicError) reposGetTopReferrersRes() {}
+
+func (*BasicError) reposGetUsersWithAccessToProtectedBranchRes() {}
+
+func (*BasicError) reposGetViewsRes() {}
+
+func (*BasicError) reposGetWebhookDeliveryRes() {}
+
+func (*BasicError) reposGetWebhookRes() {}
+
+func (*BasicError) reposListBranchesRes() {}
+
+func (*BasicError) reposListCollaboratorsRes() {}
+
+func (*BasicError) reposListCommitStatusesForRefRes() {}
+
+func (*BasicError) reposListDeploymentStatusesRes() {}
+
+func (*BasicError) reposListForksRes() {}
+
+func (*BasicError) reposListReleasesRes() {}
+
+func (*BasicError) reposListWebhookDeliveriesRes() {}
+
+func (*BasicError) reposListWebhooksRes() {}
+
+func (*BasicError) reposMergeRes() {}
+
+func (*BasicError) reposPingWebhookRes() {}
+
+func (*BasicError) reposRedeliverWebhookDeliveryRes() {}
+
+func (*BasicError) reposRemoveStatusCheckContextsRes() {}
+
+func (*BasicError) reposReplaceAllTopicsRes() {}
+
+func (*BasicError) reposSetStatusCheckContextsRes() {}
+
+func (*BasicError) reposTestPushWebhookRes() {}
+
+func (*BasicError) reposUpdateCommitCommentRes() {}
+
+func (*BasicError) reposUpdateReleaseRes() {}
+
+func (*BasicError) reposUpdateStatusCheckProtectionRes() {}
+
+func (*BasicError) reposUpdateWebhookRes() {}
+
+func (*BasicError) searchCodeRes() {}
+
+func (*BasicError) searchIssuesAndPullRequestsRes() {}
+
+func (*BasicError) secretScanningListAlertsForOrgRes() {}
+
+func (*BasicError) teamsAddMemberLegacyRes() {}
+
+func (*BasicError) teamsAddOrUpdateMembershipForUserLegacyRes() {}
+
+func (*BasicError) teamsAddOrUpdateProjectPermissionsLegacyRes() {}
+
+func (*BasicError) teamsAddOrUpdateRepoPermissionsLegacyRes() {}
+
+func (*BasicError) teamsCreateOrUpdateIdpGroupConnectionsLegacyRes() {}
+
+func (*BasicError) teamsCreateRes() {}
+
+func (*BasicError) teamsDeleteLegacyRes() {}
+
+func (*BasicError) teamsGetByNameRes() {}
+
+func (*BasicError) teamsGetLegacyRes() {}
+
+func (*BasicError) teamsGetMembershipForUserLegacyRes() {}
+
+func (*BasicError) teamsListMembersLegacyRes() {}
+
+func (*BasicError) teamsListProjectsLegacyRes() {}
+
+func (*BasicError) teamsListReposLegacyRes() {}
+
+func (*BasicError) teamsListRes() {}
+
+func (*BasicError) teamsRemoveProjectLegacyRes() {}
+
+func (*BasicError) usersGetByUsernameRes() {}
+
+func (*BasicError) usersGetContextForUserRes() {}
 
 // Blob.
 // Ref: #/components/schemas/blob
@@ -8955,7 +9143,8 @@ func (s *BranchWithProtection) SetRequiredApprovingReviewCount(val OptInt) {
 	s.RequiredApprovingReviewCount = val
 }
 
-func (*BranchWithProtection) reposGetBranchRes()    {}
+func (*BranchWithProtection) reposGetBranchRes() {}
+
 func (*BranchWithProtection) reposRenameBranchRes() {}
 
 type BranchWithProtectionLinks struct {
@@ -10602,7 +10791,8 @@ func (s *CodeScanningAlert) SetMostRecentInstance(val CodeScanningAlertInstance)
 	s.MostRecentInstance = val
 }
 
-func (*CodeScanningAlert) codeScanningGetAlertRes()    {}
+func (*CodeScanningAlert) codeScanningGetAlertRes() {}
+
 func (*CodeScanningAlert) codeScanningUpdateAlertRes() {}
 
 // A classification of the file. For example to identify it as generated.
@@ -12756,7 +12946,8 @@ func (s *Commit) SetFiles(val []CommitFilesItem) {
 }
 
 func (*Commit) reposGetCommitRes() {}
-func (*Commit) reposMergeRes()     {}
+
+func (*Commit) reposMergeRes() {}
 
 // Commit Activity.
 // Ref: #/components/schemas/commit-activity
@@ -12955,7 +13146,8 @@ func (s *CommitComment) SetReactions(val OptReactionRollup) {
 	s.Reactions = val
 }
 
-func (*CommitComment) reposGetCommitCommentRes()    {}
+func (*CommitComment) reposGetCommitCommentRes() {}
+
 func (*CommitComment) reposUpdateCommitCommentRes() {}
 
 // CommitCommentHeaders wraps CommitComment with response headers.
@@ -14117,7 +14309,8 @@ func (s *ContentFile) SetSubmoduleGitURL(val OptString) {
 }
 
 func (*ContentFile) reposGetReadmeInDirectoryRes() {}
-func (*ContentFile) reposGetReadmeRes()            {}
+
+func (*ContentFile) reposGetReadmeRes() {}
 
 type ContentFileLinks struct {
 	Git  NilURI  `json:"git"`
@@ -15041,7 +15234,8 @@ func (s *Deployment) SetPerformedViaGithubApp(val OptNilNullableIntegration) {
 }
 
 func (*Deployment) reposCreateDeploymentRes() {}
-func (*Deployment) reposGetDeploymentRes()    {}
+
+func (*Deployment) reposGetDeploymentRes() {}
 
 // DeploymentPayload represents sum type.
 type DeploymentPayload struct {
@@ -15837,10 +16031,13 @@ func (*EmojisGetOK) emojisGetRes() {}
 // Ref: #/components/schemas/empty-object
 type EmptyObject struct{}
 
-func (*EmptyObject) actionsApproveWorkflowRunRes()              {}
+func (*EmptyObject) actionsApproveWorkflowRunRes() {}
+
 func (*EmptyObject) actionsCreateOrUpdateEnvironmentSecretRes() {}
-func (*EmptyObject) actionsCreateOrUpdateOrgSecretRes()         {}
-func (*EmptyObject) reposGetPagesHealthCheckRes()               {}
+
+func (*EmptyObject) actionsCreateOrUpdateOrgSecretRes() {}
+
+func (*EmptyObject) reposGetPagesHealthCheckRes() {}
 
 // The policy that controls the organizations in the enterprise that are allowed to run GitHub
 // Actions. Can be one of: `all`, `none`, or `selected`.
@@ -18266,7 +18463,8 @@ func (s *ForbiddenGist) SetDocumentationURL(val OptString) {
 }
 
 func (*ForbiddenGist) gistsGetCommentRes() {}
-func (*ForbiddenGist) gistsGetRes()        {}
+
+func (*ForbiddenGist) gistsGetRes() {}
 
 type ForbiddenGistBlock struct {
 	Reason    OptString    `json:"reason"`
@@ -19352,8 +19550,10 @@ func (s *FullRepository) SetSecurityAndAnalysis(val OptNilFullRepositorySecurity
 }
 
 func (*FullRepository) reposCreateForkRes() {}
-func (*FullRepository) reposGetRes()        {}
-func (*FullRepository) reposUpdateRes()     {}
+
+func (*FullRepository) reposGetRes() {}
+
+func (*FullRepository) reposUpdateRes() {}
 
 type FullRepositoryPermissions struct {
 	Admin    bool    `json:"admin"`
@@ -19642,7 +19842,8 @@ func (s *GistComment) SetAuthorAssociation(val AuthorAssociation) {
 	s.AuthorAssociation = val
 }
 
-func (*GistComment) gistsGetCommentRes()    {}
+func (*GistComment) gistsGetCommentRes() {}
+
 func (*GistComment) gistsUpdateCommentRes() {}
 
 // GistCommentHeaders wraps GistComment with response headers.
@@ -20104,7 +20305,8 @@ func (s *GistSimple) SetTruncated(val OptBool) {
 	s.Truncated = val
 }
 
-func (*GistSimple) gistsGetRes()         {}
+func (*GistSimple) gistsGetRes() {}
+
 func (*GistSimple) gistsGetRevisionRes() {}
 
 type GistSimpleFiles map[string]NilGistSimpleFilesItem
@@ -22158,7 +22360,8 @@ func (s *GitRef) SetObject(val GitRefObject) {
 	s.Object = val
 }
 
-func (*GitRef) gitGetRefRes()    {}
+func (*GitRef) gitGetRefRes() {}
+
 func (*GitRef) gitUpdateRefRes() {}
 
 // GitRefHeaders wraps GitRef with response headers.
@@ -22783,7 +22986,8 @@ func (s *GpgKey) SetRawKey(val NilString) {
 }
 
 func (*GpgKey) usersCreateGpgKeyForAuthenticatedRes() {}
-func (*GpgKey) usersGetGpgKeyForAuthenticatedRes()    {}
+
+func (*GpgKey) usersGetGpgKeyForAuthenticatedRes() {}
 
 type GpgKeyEmailsItem struct {
 	Email    OptString `json:"email"`
@@ -22974,7 +23178,8 @@ func (s *GroupMapping) SetGroups(val []GroupMappingGroupsItem) {
 }
 
 func (*GroupMapping) teamsCreateOrUpdateIdpGroupConnectionsLegacyRes() {}
-func (*GroupMapping) teamsListIdpGroupsForLegacyRes()                  {}
+
+func (*GroupMapping) teamsListIdpGroupsForLegacyRes() {}
 
 type GroupMappingGroupsItem struct {
 	// The ID of the group.
@@ -23217,7 +23422,8 @@ func (s *Hook) SetLastResponse(val HookResponse) {
 	s.LastResponse = val
 }
 
-func (*Hook) reposGetWebhookRes()    {}
+func (*Hook) reposGetWebhookRes() {}
+
 func (*Hook) reposUpdateWebhookRes() {}
 
 type HookConfig struct {
@@ -23505,8 +23711,10 @@ func (s *HookDelivery) SetResponse(val HookDeliveryResponse) {
 	s.Response = val
 }
 
-func (*HookDelivery) appsGetWebhookDeliveryRes()  {}
-func (*HookDelivery) orgsGetWebhookDeliveryRes()  {}
+func (*HookDelivery) appsGetWebhookDeliveryRes() {}
+
+func (*HookDelivery) orgsGetWebhookDeliveryRes() {}
+
 func (*HookDelivery) reposGetWebhookDeliveryRes() {}
 
 // Delivery made by a webhook, without request and response information.
@@ -24104,7 +24312,8 @@ func (s *Import) SetSvnRoot(val OptString) {
 	s.SvnRoot = val
 }
 
-func (*Import) migrationsGetImportStatusRes()  {}
+func (*Import) migrationsGetImportStatusRes() {}
+
 func (*Import) migrationsSetLfsPreferenceRes() {}
 
 // ImportHeaders wraps Import with response headers.
@@ -24912,8 +25121,10 @@ func (s *InteractionLimitResponse) SetExpiresAt(val time.Time) {
 }
 
 func (*InteractionLimitResponse) interactionsSetRestrictionsForAuthenticatedUserRes() {}
-func (*InteractionLimitResponse) interactionsSetRestrictionsForOrgRes()               {}
-func (*InteractionLimitResponse) interactionsSetRestrictionsForRepoRes()              {}
+
+func (*InteractionLimitResponse) interactionsSetRestrictionsForOrgRes() {}
+
+func (*InteractionLimitResponse) interactionsSetRestrictionsForRepoRes() {}
 
 // InteractionsRemoveRestrictionsForAuthenticatedUserNoContent is response for InteractionsRemoveRestrictionsForAuthenticatedUser operation.
 type InteractionsRemoveRestrictionsForAuthenticatedUserNoContent struct{}
@@ -25301,7 +25512,8 @@ func (s *Issue) SetReactions(val OptReactionRollup) {
 	s.Reactions = val
 }
 
-func (*Issue) issuesGetRes()    {}
+func (*Issue) issuesGetRes() {}
+
 func (*Issue) issuesUpdateRes() {}
 
 // Comments provide a way for people to collaborate on an issue.
@@ -25466,7 +25678,8 @@ func (s *IssueComment) SetReactions(val OptReactionRollup) {
 	s.Reactions = val
 }
 
-func (*IssueComment) issuesGetCommentRes()    {}
+func (*IssueComment) issuesGetCommentRes() {}
+
 func (*IssueComment) issuesUpdateCommentRes() {}
 
 // IssueCommentHeaders wraps IssueComment with response headers.
@@ -30043,7 +30256,8 @@ func (s *Key) SetReadOnly(val bool) {
 }
 
 func (*Key) usersCreatePublicSSHKeyForAuthenticatedRes() {}
-func (*Key) usersGetPublicSSHKeyForAuthenticatedRes()    {}
+
+func (*Key) usersGetPublicSSHKeyForAuthenticatedRes() {}
 
 // Key Simple.
 // Ref: #/components/schemas/key-simple
@@ -31298,7 +31512,8 @@ func (s *MarketplacePurchase) SetMarketplacePurchase(val MarketplacePurchaseMark
 	s.MarketplacePurchase = val
 }
 
-func (*MarketplacePurchase) appsGetSubscriptionPlanForAccountRes()        {}
+func (*MarketplacePurchase) appsGetSubscriptionPlanForAccountRes() {}
+
 func (*MarketplacePurchase) appsGetSubscriptionPlanForAccountStubbedRes() {}
 
 type MarketplacePurchaseMarketplacePendingChange struct {
@@ -32125,9 +32340,12 @@ func (s *Migration) SetExclude(val []jx.Raw) {
 }
 
 func (*Migration) migrationsGetStatusForAuthenticatedUserRes() {}
-func (*Migration) migrationsGetStatusForOrgRes()               {}
-func (*Migration) migrationsStartForAuthenticatedUserRes()     {}
-func (*Migration) migrationsStartForOrgRes()                   {}
+
+func (*Migration) migrationsGetStatusForOrgRes() {}
+
+func (*Migration) migrationsStartForAuthenticatedUserRes() {}
+
+func (*Migration) migrationsStartForOrgRes() {}
 
 // MigrationsCancelImportNoContent is response for MigrationsCancelImport operation.
 type MigrationsCancelImportNoContent struct{}
@@ -35911,144 +36129,276 @@ func (o NilURI) Or(d url.URL) url.URL {
 // Ref: #/components/responses/no_content
 type NoContent struct{}
 
-func (*NoContent) reposGetCodeFrequencyStatsRes()  {}
+func (*NoContent) reposGetCodeFrequencyStatsRes() {}
+
 func (*NoContent) reposGetCommitActivityStatsRes() {}
-func (*NoContent) reposGetContributorsStatsRes()   {}
-func (*NoContent) reposGetPunchCardStatsRes()      {}
+
+func (*NoContent) reposGetContributorsStatsRes() {}
+
+func (*NoContent) reposGetPunchCardStatsRes() {}
 
 // Ref: #/components/responses/not_modified
 type NotModified struct{}
 
-func (*NotModified) activityCheckRepoIsStarredByAuthenticatedUserRes()     {}
-func (*NotModified) activityDeleteThreadSubscriptionRes()                  {}
-func (*NotModified) activityGetThreadRes()                                 {}
+func (*NotModified) activityCheckRepoIsStarredByAuthenticatedUserRes() {}
+
+func (*NotModified) activityDeleteThreadSubscriptionRes() {}
+
+func (*NotModified) activityGetThreadRes() {}
+
 func (*NotModified) activityGetThreadSubscriptionForAuthenticatedUserRes() {}
-func (*NotModified) activityListNotificationsForAuthenticatedUserRes()     {}
-func (*NotModified) activityListPublicEventsForRepoNetworkRes()            {}
-func (*NotModified) activityListPublicEventsRes()                          {}
-func (*NotModified) activityListReposStarredByAuthenticatedUserRes()       {}
-func (*NotModified) activityListWatchedReposForAuthenticatedUserRes()      {}
-func (*NotModified) activityMarkNotificationsAsReadRes()                   {}
-func (*NotModified) activityMarkThreadAsReadRes()                          {}
-func (*NotModified) activitySetThreadSubscriptionRes()                     {}
-func (*NotModified) activityStarRepoForAuthenticatedUserRes()              {}
-func (*NotModified) activityUnstarRepoForAuthenticatedUserRes()            {}
-func (*NotModified) appsAddRepoToInstallationRes()                         {}
-func (*NotModified) appsCreateContentAttachmentRes()                       {}
-func (*NotModified) appsListInstallationReposForAuthenticatedUserRes()     {}
-func (*NotModified) appsListReposAccessibleToInstallationRes()             {}
-func (*NotModified) appsListSubscriptionsForAuthenticatedUserRes()         {}
-func (*NotModified) appsListSubscriptionsForAuthenticatedUserStubbedRes()  {}
-func (*NotModified) appsRemoveRepoFromInstallationRes()                    {}
-func (*NotModified) codesOfConductGetAllCodesOfConductRes()                {}
-func (*NotModified) codesOfConductGetConductCodeRes()                      {}
-func (*NotModified) emojisGetRes()                                         {}
-func (*NotModified) gistsCheckIsStarredRes()                               {}
-func (*NotModified) gistsCreateCommentRes()                                {}
-func (*NotModified) gistsCreateRes()                                       {}
-func (*NotModified) gistsDeleteCommentRes()                                {}
-func (*NotModified) gistsDeleteRes()                                       {}
-func (*NotModified) gistsForkRes()                                         {}
-func (*NotModified) gistsGetCommentRes()                                   {}
-func (*NotModified) gistsGetRes()                                          {}
-func (*NotModified) gistsListCommentsRes()                                 {}
-func (*NotModified) gistsListCommitsRes()                                  {}
-func (*NotModified) gistsListForksRes()                                    {}
-func (*NotModified) gistsListPublicRes()                                   {}
-func (*NotModified) gistsListRes()                                         {}
-func (*NotModified) gistsListStarredRes()                                  {}
-func (*NotModified) gistsStarRes()                                         {}
-func (*NotModified) gistsUnstarRes()                                       {}
-func (*NotModified) gitignoreGetAllTemplatesRes()                          {}
-func (*NotModified) gitignoreGetTemplateRes()                              {}
-func (*NotModified) issuesGetRes()                                         {}
-func (*NotModified) issuesListForAuthenticatedUserRes()                    {}
-func (*NotModified) issuesListRes()                                        {}
-func (*NotModified) licensesGetAllCommonlyUsedRes()                        {}
-func (*NotModified) licensesGetRes()                                       {}
-func (*NotModified) markdownRenderRawRes()                                 {}
-func (*NotModified) markdownRenderRes()                                    {}
-func (*NotModified) metaGetRes()                                           {}
-func (*NotModified) migrationsDeleteArchiveForAuthenticatedUserRes()       {}
-func (*NotModified) migrationsGetArchiveForAuthenticatedUserRes()          {}
-func (*NotModified) migrationsGetStatusForAuthenticatedUserRes()           {}
-func (*NotModified) migrationsListForAuthenticatedUserRes()                {}
-func (*NotModified) migrationsStartForAuthenticatedUserRes()               {}
-func (*NotModified) migrationsUnlockRepoForAuthenticatedUserRes()          {}
-func (*NotModified) oAuthAuthorizationsCreateAuthorizationRes()            {}
-func (*NotModified) oAuthAuthorizationsDeleteAuthorizationRes()            {}
-func (*NotModified) oAuthAuthorizationsDeleteGrantRes()                    {}
-func (*NotModified) oAuthAuthorizationsGetAuthorizationRes()               {}
-func (*NotModified) oAuthAuthorizationsGetGrantRes()                       {}
+
+func (*NotModified) activityListNotificationsForAuthenticatedUserRes() {}
+
+func (*NotModified) activityListPublicEventsForRepoNetworkRes() {}
+
+func (*NotModified) activityListPublicEventsRes() {}
+
+func (*NotModified) activityListReposStarredByAuthenticatedUserRes() {}
+
+func (*NotModified) activityListWatchedReposForAuthenticatedUserRes() {}
+
+func (*NotModified) activityMarkNotificationsAsReadRes() {}
+
+func (*NotModified) activityMarkThreadAsReadRes() {}
+
+func (*NotModified) activitySetThreadSubscriptionRes() {}
+
+func (*NotModified) activityStarRepoForAuthenticatedUserRes() {}
+
+func (*NotModified) activityUnstarRepoForAuthenticatedUserRes() {}
+
+func (*NotModified) appsAddRepoToInstallationRes() {}
+
+func (*NotModified) appsCreateContentAttachmentRes() {}
+
+func (*NotModified) appsListInstallationReposForAuthenticatedUserRes() {}
+
+func (*NotModified) appsListReposAccessibleToInstallationRes() {}
+
+func (*NotModified) appsListSubscriptionsForAuthenticatedUserRes() {}
+
+func (*NotModified) appsListSubscriptionsForAuthenticatedUserStubbedRes() {}
+
+func (*NotModified) appsRemoveRepoFromInstallationRes() {}
+
+func (*NotModified) codesOfConductGetAllCodesOfConductRes() {}
+
+func (*NotModified) codesOfConductGetConductCodeRes() {}
+
+func (*NotModified) emojisGetRes() {}
+
+func (*NotModified) gistsCheckIsStarredRes() {}
+
+func (*NotModified) gistsCreateCommentRes() {}
+
+func (*NotModified) gistsCreateRes() {}
+
+func (*NotModified) gistsDeleteCommentRes() {}
+
+func (*NotModified) gistsDeleteRes() {}
+
+func (*NotModified) gistsForkRes() {}
+
+func (*NotModified) gistsGetCommentRes() {}
+
+func (*NotModified) gistsGetRes() {}
+
+func (*NotModified) gistsListCommentsRes() {}
+
+func (*NotModified) gistsListCommitsRes() {}
+
+func (*NotModified) gistsListForksRes() {}
+
+func (*NotModified) gistsListPublicRes() {}
+
+func (*NotModified) gistsListRes() {}
+
+func (*NotModified) gistsListStarredRes() {}
+
+func (*NotModified) gistsStarRes() {}
+
+func (*NotModified) gistsUnstarRes() {}
+
+func (*NotModified) gitignoreGetAllTemplatesRes() {}
+
+func (*NotModified) gitignoreGetTemplateRes() {}
+
+func (*NotModified) issuesGetRes() {}
+
+func (*NotModified) issuesListForAuthenticatedUserRes() {}
+
+func (*NotModified) issuesListRes() {}
+
+func (*NotModified) licensesGetAllCommonlyUsedRes() {}
+
+func (*NotModified) licensesGetRes() {}
+
+func (*NotModified) markdownRenderRawRes() {}
+
+func (*NotModified) markdownRenderRes() {}
+
+func (*NotModified) metaGetRes() {}
+
+func (*NotModified) migrationsDeleteArchiveForAuthenticatedUserRes() {}
+
+func (*NotModified) migrationsGetArchiveForAuthenticatedUserRes() {}
+
+func (*NotModified) migrationsGetStatusForAuthenticatedUserRes() {}
+
+func (*NotModified) migrationsListForAuthenticatedUserRes() {}
+
+func (*NotModified) migrationsStartForAuthenticatedUserRes() {}
+
+func (*NotModified) migrationsUnlockRepoForAuthenticatedUserRes() {}
+
+func (*NotModified) oAuthAuthorizationsCreateAuthorizationRes() {}
+
+func (*NotModified) oAuthAuthorizationsDeleteAuthorizationRes() {}
+
+func (*NotModified) oAuthAuthorizationsDeleteGrantRes() {}
+
+func (*NotModified) oAuthAuthorizationsGetAuthorizationRes() {}
+
+func (*NotModified) oAuthAuthorizationsGetGrantRes() {}
+
 func (*NotModified) oAuthAuthorizationsGetOrCreateAuthorizationForAppRes() {}
-func (*NotModified) oAuthAuthorizationsListAuthorizationsRes()             {}
-func (*NotModified) oAuthAuthorizationsListGrantsRes()                     {}
-func (*NotModified) orgsListForAuthenticatedUserRes()                      {}
-func (*NotModified) orgsListMembershipsForAuthenticatedUserRes()           {}
-func (*NotModified) orgsListRes()                                          {}
-func (*NotModified) projectsAddCollaboratorRes()                           {}
-func (*NotModified) projectsCreateColumnRes()                              {}
-func (*NotModified) projectsCreateForAuthenticatedUserRes()                {}
-func (*NotModified) projectsDeleteCardRes()                                {}
-func (*NotModified) projectsDeleteColumnRes()                              {}
-func (*NotModified) projectsDeleteRes()                                    {}
-func (*NotModified) projectsGetCardRes()                                   {}
-func (*NotModified) projectsGetColumnRes()                                 {}
-func (*NotModified) projectsGetPermissionForUserRes()                      {}
-func (*NotModified) projectsGetRes()                                       {}
-func (*NotModified) projectsListCardsRes()                                 {}
-func (*NotModified) projectsListCollaboratorsRes()                         {}
-func (*NotModified) projectsListColumnsRes()                               {}
-func (*NotModified) projectsMoveCardRes()                                  {}
-func (*NotModified) projectsMoveColumnRes()                                {}
-func (*NotModified) projectsRemoveCollaboratorRes()                        {}
-func (*NotModified) projectsUpdateCardRes()                                {}
-func (*NotModified) projectsUpdateColumnRes()                              {}
-func (*NotModified) projectsUpdateRes()                                    {}
-func (*NotModified) pullsGetRes()                                          {}
-func (*NotModified) pullsListRes()                                         {}
-func (*NotModified) rateLimitGetRes()                                      {}
-func (*NotModified) reactionsDeleteLegacyRes()                             {}
-func (*NotModified) reposAcceptInvitationRes()                             {}
-func (*NotModified) reposCreateForAuthenticatedUserRes()                   {}
-func (*NotModified) reposDeclineInvitationRes()                            {}
-func (*NotModified) reposListForAuthenticatedUserRes()                     {}
-func (*NotModified) reposListInvitationsForAuthenticatedUserRes()          {}
-func (*NotModified) reposListPublicRes()                                   {}
-func (*NotModified) scimDeleteUserFromOrgRes()                             {}
-func (*NotModified) searchCodeRes()                                        {}
-func (*NotModified) searchCommitsRes()                                     {}
-func (*NotModified) searchIssuesAndPullRequestsRes()                       {}
-func (*NotModified) searchLabelsRes()                                      {}
-func (*NotModified) searchReposRes()                                       {}
-func (*NotModified) searchTopicsRes()                                      {}
-func (*NotModified) searchUsersRes()                                       {}
-func (*NotModified) teamsListForAuthenticatedUserRes()                     {}
-func (*NotModified) usersAddEmailForAuthenticatedRes()                     {}
-func (*NotModified) usersBlockRes()                                        {}
-func (*NotModified) usersCheckBlockedRes()                                 {}
-func (*NotModified) usersCheckPersonIsFollowedByAuthenticatedRes()         {}
-func (*NotModified) usersCreateGpgKeyForAuthenticatedRes()                 {}
-func (*NotModified) usersCreatePublicSSHKeyForAuthenticatedRes()           {}
-func (*NotModified) usersDeleteEmailForAuthenticatedRes()                  {}
-func (*NotModified) usersDeleteGpgKeyForAuthenticatedRes()                 {}
-func (*NotModified) usersDeletePublicSSHKeyForAuthenticatedRes()           {}
-func (*NotModified) usersFollowRes()                                       {}
-func (*NotModified) usersGetAuthenticatedRes()                             {}
-func (*NotModified) usersGetGpgKeyForAuthenticatedRes()                    {}
-func (*NotModified) usersGetPublicSSHKeyForAuthenticatedRes()              {}
-func (*NotModified) usersListBlockedByAuthenticatedRes()                   {}
-func (*NotModified) usersListEmailsForAuthenticatedRes()                   {}
-func (*NotModified) usersListFollowedByAuthenticatedRes()                  {}
-func (*NotModified) usersListFollowersForAuthenticatedUserRes()            {}
-func (*NotModified) usersListGpgKeysForAuthenticatedRes()                  {}
-func (*NotModified) usersListPublicEmailsForAuthenticatedRes()             {}
-func (*NotModified) usersListPublicSSHKeysForAuthenticatedRes()            {}
-func (*NotModified) usersListRes()                                         {}
-func (*NotModified) usersSetPrimaryEmailVisibilityForAuthenticatedRes()    {}
-func (*NotModified) usersUnblockRes()                                      {}
-func (*NotModified) usersUnfollowRes()                                     {}
-func (*NotModified) usersUpdateAuthenticatedRes()                          {}
+
+func (*NotModified) oAuthAuthorizationsListAuthorizationsRes() {}
+
+func (*NotModified) oAuthAuthorizationsListGrantsRes() {}
+
+func (*NotModified) orgsListForAuthenticatedUserRes() {}
+
+func (*NotModified) orgsListMembershipsForAuthenticatedUserRes() {}
+
+func (*NotModified) orgsListRes() {}
+
+func (*NotModified) projectsAddCollaboratorRes() {}
+
+func (*NotModified) projectsCreateColumnRes() {}
+
+func (*NotModified) projectsCreateForAuthenticatedUserRes() {}
+
+func (*NotModified) projectsDeleteCardRes() {}
+
+func (*NotModified) projectsDeleteColumnRes() {}
+
+func (*NotModified) projectsDeleteRes() {}
+
+func (*NotModified) projectsGetCardRes() {}
+
+func (*NotModified) projectsGetColumnRes() {}
+
+func (*NotModified) projectsGetPermissionForUserRes() {}
+
+func (*NotModified) projectsGetRes() {}
+
+func (*NotModified) projectsListCardsRes() {}
+
+func (*NotModified) projectsListCollaboratorsRes() {}
+
+func (*NotModified) projectsListColumnsRes() {}
+
+func (*NotModified) projectsMoveCardRes() {}
+
+func (*NotModified) projectsMoveColumnRes() {}
+
+func (*NotModified) projectsRemoveCollaboratorRes() {}
+
+func (*NotModified) projectsUpdateCardRes() {}
+
+func (*NotModified) projectsUpdateColumnRes() {}
+
+func (*NotModified) projectsUpdateRes() {}
+
+func (*NotModified) pullsGetRes() {}
+
+func (*NotModified) pullsListRes() {}
+
+func (*NotModified) rateLimitGetRes() {}
+
+func (*NotModified) reactionsDeleteLegacyRes() {}
+
+func (*NotModified) reposAcceptInvitationRes() {}
+
+func (*NotModified) reposCreateForAuthenticatedUserRes() {}
+
+func (*NotModified) reposDeclineInvitationRes() {}
+
+func (*NotModified) reposListForAuthenticatedUserRes() {}
+
+func (*NotModified) reposListInvitationsForAuthenticatedUserRes() {}
+
+func (*NotModified) reposListPublicRes() {}
+
+func (*NotModified) scimDeleteUserFromOrgRes() {}
+
+func (*NotModified) searchCodeRes() {}
+
+func (*NotModified) searchCommitsRes() {}
+
+func (*NotModified) searchIssuesAndPullRequestsRes() {}
+
+func (*NotModified) searchLabelsRes() {}
+
+func (*NotModified) searchReposRes() {}
+
+func (*NotModified) searchTopicsRes() {}
+
+func (*NotModified) searchUsersRes() {}
+
+func (*NotModified) teamsListForAuthenticatedUserRes() {}
+
+func (*NotModified) usersAddEmailForAuthenticatedRes() {}
+
+func (*NotModified) usersBlockRes() {}
+
+func (*NotModified) usersCheckBlockedRes() {}
+
+func (*NotModified) usersCheckPersonIsFollowedByAuthenticatedRes() {}
+
+func (*NotModified) usersCreateGpgKeyForAuthenticatedRes() {}
+
+func (*NotModified) usersCreatePublicSSHKeyForAuthenticatedRes() {}
+
+func (*NotModified) usersDeleteEmailForAuthenticatedRes() {}
+
+func (*NotModified) usersDeleteGpgKeyForAuthenticatedRes() {}
+
+func (*NotModified) usersDeletePublicSSHKeyForAuthenticatedRes() {}
+
+func (*NotModified) usersFollowRes() {}
+
+func (*NotModified) usersGetAuthenticatedRes() {}
+
+func (*NotModified) usersGetGpgKeyForAuthenticatedRes() {}
+
+func (*NotModified) usersGetPublicSSHKeyForAuthenticatedRes() {}
+
+func (*NotModified) usersListBlockedByAuthenticatedRes() {}
+
+func (*NotModified) usersListEmailsForAuthenticatedRes() {}
+
+func (*NotModified) usersListFollowedByAuthenticatedRes() {}
+
+func (*NotModified) usersListFollowersForAuthenticatedUserRes() {}
+
+func (*NotModified) usersListGpgKeysForAuthenticatedRes() {}
+
+func (*NotModified) usersListPublicEmailsForAuthenticatedRes() {}
+
+func (*NotModified) usersListPublicSSHKeysForAuthenticatedRes() {}
+
+func (*NotModified) usersListRes() {}
+
+func (*NotModified) usersSetPrimaryEmailVisibilityForAuthenticatedRes() {}
+
+func (*NotModified) usersUnblockRes() {}
+
+func (*NotModified) usersUnfollowRes() {}
+
+func (*NotModified) usersUpdateAuthenticatedRes() {}
 
 // Code of Conduct Simple.
 // Ref: #/components/schemas/nullable-code-of-conduct-simple
@@ -61956,7 +62306,8 @@ func (s *OrgHook) SetType(val string) {
 	s.Type = val
 }
 
-func (*OrgHook) orgsGetWebhookRes()    {}
+func (*OrgHook) orgsGetWebhookRes() {}
+
 func (*OrgHook) orgsUpdateWebhookRes() {}
 
 type OrgHookConfig struct {
@@ -62119,9 +62470,12 @@ func (s *OrgMembership) SetPermissions(val OptOrgMembershipPermissions) {
 	s.Permissions = val
 }
 
-func (*OrgMembership) orgsGetMembershipForAuthenticatedUserRes()    {}
-func (*OrgMembership) orgsGetMembershipForUserRes()                 {}
-func (*OrgMembership) orgsSetMembershipForUserRes()                 {}
+func (*OrgMembership) orgsGetMembershipForAuthenticatedUserRes() {}
+
+func (*OrgMembership) orgsGetMembershipForUserRes() {}
+
+func (*OrgMembership) orgsSetMembershipForUserRes() {}
+
 func (*OrgMembership) orgsUpdateMembershipForAuthenticatedUserRes() {}
 
 type OrgMembershipPermissions struct {
@@ -67455,7 +67809,8 @@ func (s *Page) SetHTTPSEnforced(val OptBool) {
 }
 
 func (*Page) reposCreatePagesSiteRes() {}
-func (*Page) reposGetPagesRes()        {}
+
+func (*Page) reposGetPagesRes() {}
 
 // Page Build.
 // Ref: #/components/schemas/page-build
@@ -68712,32 +69067,57 @@ func (s *PreviewHeaderMissing) SetDocumentationURL(val string) {
 	s.DocumentationURL = val
 }
 
-func (*PreviewHeaderMissing) appsCreateContentAttachmentRes()                {}
-func (*PreviewHeaderMissing) appsCreateInstallationAccessTokenRes()          {}
-func (*PreviewHeaderMissing) appsGetBySlugRes()                              {}
-func (*PreviewHeaderMissing) orgsListBlockedUsersRes()                       {}
-func (*PreviewHeaderMissing) projectsCreateForAuthenticatedUserRes()         {}
-func (*PreviewHeaderMissing) reactionsCreateForCommitCommentRes()            {}
-func (*PreviewHeaderMissing) reactionsCreateForIssueCommentRes()             {}
-func (*PreviewHeaderMissing) reactionsCreateForIssueRes()                    {}
+func (*PreviewHeaderMissing) appsCreateContentAttachmentRes() {}
+
+func (*PreviewHeaderMissing) appsCreateInstallationAccessTokenRes() {}
+
+func (*PreviewHeaderMissing) appsGetBySlugRes() {}
+
+func (*PreviewHeaderMissing) orgsListBlockedUsersRes() {}
+
+func (*PreviewHeaderMissing) projectsCreateForAuthenticatedUserRes() {}
+
+func (*PreviewHeaderMissing) reactionsCreateForCommitCommentRes() {}
+
+func (*PreviewHeaderMissing) reactionsCreateForIssueCommentRes() {}
+
+func (*PreviewHeaderMissing) reactionsCreateForIssueRes() {}
+
 func (*PreviewHeaderMissing) reactionsCreateForPullRequestReviewCommentRes() {}
-func (*PreviewHeaderMissing) reactionsCreateForReleaseRes()                  {}
-func (*PreviewHeaderMissing) reactionsDeleteLegacyRes()                      {}
-func (*PreviewHeaderMissing) reactionsListForCommitCommentRes()              {}
-func (*PreviewHeaderMissing) reactionsListForIssueCommentRes()               {}
-func (*PreviewHeaderMissing) reactionsListForIssueRes()                      {}
-func (*PreviewHeaderMissing) reactionsListForPullRequestReviewCommentRes()   {}
-func (*PreviewHeaderMissing) reposCreatePagesSiteRes()                       {}
-func (*PreviewHeaderMissing) reposDeletePagesSiteRes()                       {}
-func (*PreviewHeaderMissing) reposGetAllTopicsRes()                          {}
-func (*PreviewHeaderMissing) reposGetBranchRes()                             {}
-func (*PreviewHeaderMissing) reposGetDeploymentStatusRes()                   {}
-func (*PreviewHeaderMissing) reposGetReleaseAssetRes()                       {}
-func (*PreviewHeaderMissing) reposReplaceAllTopicsRes()                      {}
-func (*PreviewHeaderMissing) searchCommitsRes()                              {}
-func (*PreviewHeaderMissing) searchTopicsRes()                               {}
-func (*PreviewHeaderMissing) teamsRemoveProjectLegacyRes()                   {}
-func (*PreviewHeaderMissing) usersListBlockedByAuthenticatedRes()            {}
+
+func (*PreviewHeaderMissing) reactionsCreateForReleaseRes() {}
+
+func (*PreviewHeaderMissing) reactionsDeleteLegacyRes() {}
+
+func (*PreviewHeaderMissing) reactionsListForCommitCommentRes() {}
+
+func (*PreviewHeaderMissing) reactionsListForIssueCommentRes() {}
+
+func (*PreviewHeaderMissing) reactionsListForIssueRes() {}
+
+func (*PreviewHeaderMissing) reactionsListForPullRequestReviewCommentRes() {}
+
+func (*PreviewHeaderMissing) reposCreatePagesSiteRes() {}
+
+func (*PreviewHeaderMissing) reposDeletePagesSiteRes() {}
+
+func (*PreviewHeaderMissing) reposGetAllTopicsRes() {}
+
+func (*PreviewHeaderMissing) reposGetBranchRes() {}
+
+func (*PreviewHeaderMissing) reposGetDeploymentStatusRes() {}
+
+func (*PreviewHeaderMissing) reposGetReleaseAssetRes() {}
+
+func (*PreviewHeaderMissing) reposReplaceAllTopicsRes() {}
+
+func (*PreviewHeaderMissing) searchCommitsRes() {}
+
+func (*PreviewHeaderMissing) searchTopicsRes() {}
+
+func (*PreviewHeaderMissing) teamsRemoveProjectLegacyRes() {}
+
+func (*PreviewHeaderMissing) usersListBlockedByAuthenticatedRes() {}
 
 // Private User.
 // Ref: #/components/schemas/private-user
@@ -69432,10 +69812,14 @@ func (s *Project) SetPrivate(val OptBool) {
 }
 
 func (*Project) projectsCreateForAuthenticatedUserRes() {}
-func (*Project) projectsCreateForOrgRes()               {}
-func (*Project) projectsCreateForRepoRes()              {}
-func (*Project) projectsGetRes()                        {}
-func (*Project) projectsUpdateRes()                     {}
+
+func (*Project) projectsCreateForOrgRes() {}
+
+func (*Project) projectsCreateForRepoRes() {}
+
+func (*Project) projectsGetRes() {}
+
+func (*Project) projectsUpdateRes() {}
 
 // Project cards represent a scope of work.
 // Ref: #/components/schemas/project-card
@@ -69587,7 +69971,8 @@ func (s *ProjectCard) SetProjectURL(val url.URL) {
 	s.ProjectURL = val
 }
 
-func (*ProjectCard) projectsGetCardRes()    {}
+func (*ProjectCard) projectsGetCardRes() {}
+
 func (*ProjectCard) projectsUpdateCardRes() {}
 
 // Project columns contain cards of work.
@@ -69686,7 +70071,9 @@ func (s *ProjectColumn) SetUpdatedAt(val time.Time) {
 }
 
 func (*ProjectColumn) projectsCreateColumnRes() {}
-func (*ProjectColumn) projectsGetColumnRes()    {}
+
+func (*ProjectColumn) projectsGetColumnRes() {}
+
 func (*ProjectColumn) projectsUpdateColumnRes() {}
 
 // The baseline permission that all organization members have on this project. Only present if owner
@@ -71199,7 +71586,8 @@ func (s *ProtectedBranchAdminEnforced) SetEnabled(val bool) {
 }
 
 func (*ProtectedBranchAdminEnforced) reposCreateCommitSignatureProtectionRes() {}
-func (*ProtectedBranchAdminEnforced) reposGetCommitSignatureProtectionRes()    {}
+
+func (*ProtectedBranchAdminEnforced) reposGetCommitSignatureProtectionRes() {}
 
 type ProtectedBranchAllowDeletions struct {
 	Enabled bool `json:"enabled"`
@@ -72566,7 +72954,8 @@ func (s *PullRequest) SetChangedFiles(val int) {
 	s.ChangedFiles = val
 }
 
-func (*PullRequest) pullsGetRes()    {}
+func (*PullRequest) pullsGetRes() {}
+
 func (*PullRequest) pullsUpdateRes() {}
 
 type PullRequestBase struct {
@@ -76044,12 +76433,17 @@ func (s *PullRequestReview) SetAuthorAssociation(val AuthorAssociation) {
 	s.AuthorAssociation = val
 }
 
-func (*PullRequestReview) pullsCreateReviewRes()        {}
+func (*PullRequestReview) pullsCreateReviewRes() {}
+
 func (*PullRequestReview) pullsDeletePendingReviewRes() {}
-func (*PullRequestReview) pullsDismissReviewRes()       {}
-func (*PullRequestReview) pullsGetReviewRes()           {}
-func (*PullRequestReview) pullsSubmitReviewRes()        {}
-func (*PullRequestReview) pullsUpdateReviewRes()        {}
+
+func (*PullRequestReview) pullsDismissReviewRes() {}
+
+func (*PullRequestReview) pullsGetReviewRes() {}
+
+func (*PullRequestReview) pullsSubmitReviewRes() {}
+
+func (*PullRequestReview) pullsUpdateReviewRes() {}
 
 // Pull Request Review Comments are comments on a portion of the Pull Request's diff.
 // Ref: #/components/schemas/pull-request-review-comment
@@ -76416,7 +76810,8 @@ func (s *PullRequestReviewCommentHeaders) SetResponse(val PullRequestReviewComme
 }
 
 func (*PullRequestReviewCommentHeaders) pullsCreateReplyForReviewCommentRes() {}
-func (*PullRequestReviewCommentHeaders) pullsCreateReviewCommentRes()         {}
+
+func (*PullRequestReviewCommentHeaders) pullsCreateReviewCommentRes() {}
 
 type PullRequestReviewCommentLinks struct {
 	Self        PullRequestReviewCommentLinksSelf        `json:"self"`
@@ -81617,8 +82012,10 @@ func (s *Release) SetReactions(val OptReactionRollup) {
 }
 
 func (*Release) reposGetReleaseByTagRes() {}
-func (*Release) reposGetReleaseRes()      {}
-func (*Release) reposUpdateReleaseRes()   {}
+
+func (*Release) reposGetReleaseRes() {}
+
+func (*Release) reposUpdateReleaseRes() {}
 
 // Data related to a release.
 // Ref: #/components/schemas/release-asset
@@ -90121,7 +90518,8 @@ func (s *RepositoryCollaboratorPermission) SetUser(val NilNullableSimpleUser) {
 	s.User = val
 }
 
-func (*RepositoryCollaboratorPermission) projectsGetPermissionForUserRes()        {}
+func (*RepositoryCollaboratorPermission) projectsGetPermissionForUserRes() {}
+
 func (*RepositoryCollaboratorPermission) reposGetCollaboratorPermissionLevelRes() {}
 
 // RepositoryHeaders wraps Repository with response headers.
@@ -90151,7 +90549,8 @@ func (s *RepositoryHeaders) SetResponse(val Repository) {
 }
 
 func (*RepositoryHeaders) reposCreateForAuthenticatedUserRes() {}
-func (*RepositoryHeaders) reposCreateInOrgRes()                {}
+
+func (*RepositoryHeaders) reposCreateInOrgRes() {}
 
 // Repository invitations let you manage who you collaborate with.
 // Ref: #/components/schemas/repository-invitation
@@ -94491,7 +94890,8 @@ func (s *SecretScanningAlert) SetSecret(val OptString) {
 	s.Secret = val
 }
 
-func (*SecretScanningAlert) secretScanningGetAlertRes()    {}
+func (*SecretScanningAlert) secretScanningGetAlertRes() {}
+
 func (*SecretScanningAlert) secretScanningUpdateAlertRes() {}
 
 // **Required when the `state` is `resolved`.** The reason for resolving the alert. Can be one of
@@ -94836,27 +95236,47 @@ func (s *ServiceUnavailable) SetDocumentationURL(val OptString) {
 	s.DocumentationURL = val
 }
 
-func (*ServiceUnavailable) activityListPublicEventsRes()        {}
-func (*ServiceUnavailable) codeScanningDeleteAnalysisRes()      {}
-func (*ServiceUnavailable) codeScanningGetAlertRes()            {}
-func (*ServiceUnavailable) codeScanningGetAnalysisRes()         {}
-func (*ServiceUnavailable) codeScanningGetSarifRes()            {}
-func (*ServiceUnavailable) codeScanningListAlertInstancesRes()  {}
-func (*ServiceUnavailable) codeScanningListAlertsForRepoRes()   {}
-func (*ServiceUnavailable) codeScanningListRecentAnalysesRes()  {}
-func (*ServiceUnavailable) codeScanningUpdateAlertRes()         {}
-func (*ServiceUnavailable) codeScanningUploadSarifRes()         {}
-func (*ServiceUnavailable) issuesCreateRes()                    {}
-func (*ServiceUnavailable) issuesUpdateRes()                    {}
-func (*ServiceUnavailable) reposDeleteFileRes()                 {}
-func (*ServiceUnavailable) searchCodeRes()                      {}
-func (*ServiceUnavailable) searchIssuesAndPullRequestsRes()     {}
-func (*ServiceUnavailable) searchReposRes()                     {}
-func (*ServiceUnavailable) searchUsersRes()                     {}
-func (*ServiceUnavailable) secretScanningGetAlertRes()          {}
-func (*ServiceUnavailable) secretScanningListAlertsForOrgRes()  {}
+func (*ServiceUnavailable) activityListPublicEventsRes() {}
+
+func (*ServiceUnavailable) codeScanningDeleteAnalysisRes() {}
+
+func (*ServiceUnavailable) codeScanningGetAlertRes() {}
+
+func (*ServiceUnavailable) codeScanningGetAnalysisRes() {}
+
+func (*ServiceUnavailable) codeScanningGetSarifRes() {}
+
+func (*ServiceUnavailable) codeScanningListAlertInstancesRes() {}
+
+func (*ServiceUnavailable) codeScanningListAlertsForRepoRes() {}
+
+func (*ServiceUnavailable) codeScanningListRecentAnalysesRes() {}
+
+func (*ServiceUnavailable) codeScanningUpdateAlertRes() {}
+
+func (*ServiceUnavailable) codeScanningUploadSarifRes() {}
+
+func (*ServiceUnavailable) issuesCreateRes() {}
+
+func (*ServiceUnavailable) issuesUpdateRes() {}
+
+func (*ServiceUnavailable) reposDeleteFileRes() {}
+
+func (*ServiceUnavailable) searchCodeRes() {}
+
+func (*ServiceUnavailable) searchIssuesAndPullRequestsRes() {}
+
+func (*ServiceUnavailable) searchReposRes() {}
+
+func (*ServiceUnavailable) searchUsersRes() {}
+
+func (*ServiceUnavailable) secretScanningGetAlertRes() {}
+
+func (*ServiceUnavailable) secretScanningListAlertsForOrgRes() {}
+
 func (*ServiceUnavailable) secretScanningListAlertsForRepoRes() {}
-func (*ServiceUnavailable) secretScanningUpdateAlertRes()       {}
+
+func (*ServiceUnavailable) secretScanningUpdateAlertRes() {}
 
 // Short Blob.
 // Ref: #/components/schemas/short-blob
@@ -95655,7 +96075,8 @@ func (s *StatusCheckPolicy) SetContextsURL(val url.URL) {
 	s.ContextsURL = val
 }
 
-func (*StatusCheckPolicy) reposGetStatusChecksProtectionRes()   {}
+func (*StatusCheckPolicy) reposGetStatusChecksProtectionRes() {}
+
 func (*StatusCheckPolicy) reposUpdateStatusCheckProtectionRes() {}
 
 // StatusHeaders wraps Status with response headers.
@@ -96489,8 +96910,10 @@ func (s *TeamFull) SetLdapDn(val OptString) {
 	s.LdapDn = val
 }
 
-func (*TeamFull) teamsCreateRes()    {}
+func (*TeamFull) teamsCreateRes() {}
+
 func (*TeamFull) teamsGetByNameRes() {}
+
 func (*TeamFull) teamsGetLegacyRes() {}
 
 // The level of privacy this team should have.
@@ -96575,10 +96998,13 @@ func (s *TeamMembership) SetState(val TeamMembershipState) {
 	s.State = val
 }
 
-func (*TeamMembership) teamsAddOrUpdateMembershipForUserInOrgRes()  {}
+func (*TeamMembership) teamsAddOrUpdateMembershipForUserInOrgRes() {}
+
 func (*TeamMembership) teamsAddOrUpdateMembershipForUserLegacyRes() {}
-func (*TeamMembership) teamsGetMembershipForUserInOrgRes()          {}
-func (*TeamMembership) teamsGetMembershipForUserLegacyRes()         {}
+
+func (*TeamMembership) teamsGetMembershipForUserInOrgRes() {}
+
+func (*TeamMembership) teamsGetMembershipForUserLegacyRes() {}
 
 // The role of the user in the team.
 type TeamMembershipRole string
@@ -96905,7 +97331,8 @@ func (s *TeamProject) SetPermissions(val TeamProjectPermissions) {
 	s.Permissions = val
 }
 
-func (*TeamProject) teamsCheckPermissionsForProjectInOrgRes()  {}
+func (*TeamProject) teamsCheckPermissionsForProjectInOrgRes() {}
+
 func (*TeamProject) teamsCheckPermissionsForProjectLegacyRes() {}
 
 type TeamProjectPermissions struct {
@@ -97935,7 +98362,8 @@ func (s *TeamRepository) SetMasterBranch(val OptString) {
 	s.MasterBranch = val
 }
 
-func (*TeamRepository) teamsCheckPermissionsForRepoInOrgRes()  {}
+func (*TeamRepository) teamsCheckPermissionsForRepoInOrgRes() {}
+
 func (*TeamRepository) teamsCheckPermissionsForRepoLegacyRes() {}
 
 type TeamRepositoryPermissions struct {
@@ -100679,7 +101107,8 @@ func (s *ThreadSubscription) SetRepositoryURL(val OptURI) {
 }
 
 func (*ThreadSubscription) activityGetThreadSubscriptionForAuthenticatedUserRes() {}
-func (*ThreadSubscription) activitySetThreadSubscriptionRes()                     {}
+
+func (*ThreadSubscription) activitySetThreadSubscriptionRes() {}
 
 // A topic aggregates entities that are related to a subject.
 // Ref: #/components/schemas/topic
@@ -100697,7 +101126,8 @@ func (s *Topic) SetNames(val []string) {
 	s.Names = val
 }
 
-func (*Topic) reposGetAllTopicsRes()     {}
+func (*Topic) reposGetAllTopicsRes() {}
+
 func (*Topic) reposReplaceAllTopicsRes() {}
 
 // Topic Search Result Item.
@@ -102827,150 +103257,293 @@ func (s *ValidationError) SetErrors(val []ValidationErrorErrorsItem) {
 	s.Errors = val
 }
 
-func (*ValidationError) activityListNotificationsForAuthenticatedUserRes()                   {}
-func (*ValidationError) appsCheckTokenRes()                                                  {}
-func (*ValidationError) appsCreateContentAttachmentRes()                                     {}
-func (*ValidationError) appsCreateInstallationAccessTokenRes()                               {}
-func (*ValidationError) appsDeleteAuthorizationRes()                                         {}
-func (*ValidationError) appsDeleteTokenRes()                                                 {}
-func (*ValidationError) appsGetWebhookDeliveryRes()                                          {}
-func (*ValidationError) appsListAccountsForPlanRes()                                         {}
-func (*ValidationError) appsListWebhookDeliveriesRes()                                       {}
-func (*ValidationError) appsRedeliverWebhookDeliveryRes()                                    {}
-func (*ValidationError) appsResetTokenRes()                                                  {}
-func (*ValidationError) appsScopeTokenRes()                                                  {}
-func (*ValidationError) gistsCreateRes()                                                     {}
-func (*ValidationError) gistsForkRes()                                                       {}
-func (*ValidationError) gistsGetRevisionRes()                                                {}
-func (*ValidationError) gistsListForUserRes()                                                {}
-func (*ValidationError) gistsListPublicRes()                                                 {}
-func (*ValidationError) gitCreateBlobRes()                                                   {}
-func (*ValidationError) gitCreateCommitRes()                                                 {}
-func (*ValidationError) gitCreateRefRes()                                                    {}
-func (*ValidationError) gitCreateTagRes()                                                    {}
-func (*ValidationError) gitCreateTreeRes()                                                   {}
-func (*ValidationError) gitDeleteRefRes()                                                    {}
-func (*ValidationError) gitGetBlobRes()                                                      {}
-func (*ValidationError) gitGetTreeRes()                                                      {}
-func (*ValidationError) gitUpdateRefRes()                                                    {}
-func (*ValidationError) interactionsSetRestrictionsForAuthenticatedUserRes()                 {}
-func (*ValidationError) interactionsSetRestrictionsForOrgRes()                               {}
-func (*ValidationError) issuesCreateCommentRes()                                             {}
-func (*ValidationError) issuesCreateLabelRes()                                               {}
-func (*ValidationError) issuesCreateMilestoneRes()                                           {}
-func (*ValidationError) issuesCreateRes()                                                    {}
-func (*ValidationError) issuesListCommentsForRepoRes()                                       {}
-func (*ValidationError) issuesListEventsForRepoRes()                                         {}
-func (*ValidationError) issuesListForRepoRes()                                               {}
-func (*ValidationError) issuesListRes()                                                      {}
-func (*ValidationError) issuesLockRes()                                                      {}
-func (*ValidationError) issuesUpdateCommentRes()                                             {}
-func (*ValidationError) issuesUpdateRes()                                                    {}
-func (*ValidationError) migrationsMapCommitAuthorRes()                                       {}
-func (*ValidationError) migrationsSetLfsPreferenceRes()                                      {}
-func (*ValidationError) migrationsStartForAuthenticatedUserRes()                             {}
-func (*ValidationError) migrationsStartForOrgRes()                                           {}
-func (*ValidationError) migrationsStartImportRes()                                           {}
-func (*ValidationError) oAuthAuthorizationsCreateAuthorizationRes()                          {}
+func (*ValidationError) activityListNotificationsForAuthenticatedUserRes() {}
+
+func (*ValidationError) appsCheckTokenRes() {}
+
+func (*ValidationError) appsCreateContentAttachmentRes() {}
+
+func (*ValidationError) appsCreateInstallationAccessTokenRes() {}
+
+func (*ValidationError) appsDeleteAuthorizationRes() {}
+
+func (*ValidationError) appsDeleteTokenRes() {}
+
+func (*ValidationError) appsGetWebhookDeliveryRes() {}
+
+func (*ValidationError) appsListAccountsForPlanRes() {}
+
+func (*ValidationError) appsListWebhookDeliveriesRes() {}
+
+func (*ValidationError) appsRedeliverWebhookDeliveryRes() {}
+
+func (*ValidationError) appsResetTokenRes() {}
+
+func (*ValidationError) appsScopeTokenRes() {}
+
+func (*ValidationError) gistsCreateRes() {}
+
+func (*ValidationError) gistsForkRes() {}
+
+func (*ValidationError) gistsGetRevisionRes() {}
+
+func (*ValidationError) gistsListForUserRes() {}
+
+func (*ValidationError) gistsListPublicRes() {}
+
+func (*ValidationError) gitCreateBlobRes() {}
+
+func (*ValidationError) gitCreateCommitRes() {}
+
+func (*ValidationError) gitCreateRefRes() {}
+
+func (*ValidationError) gitCreateTagRes() {}
+
+func (*ValidationError) gitCreateTreeRes() {}
+
+func (*ValidationError) gitDeleteRefRes() {}
+
+func (*ValidationError) gitGetBlobRes() {}
+
+func (*ValidationError) gitGetTreeRes() {}
+
+func (*ValidationError) gitUpdateRefRes() {}
+
+func (*ValidationError) interactionsSetRestrictionsForAuthenticatedUserRes() {}
+
+func (*ValidationError) interactionsSetRestrictionsForOrgRes() {}
+
+func (*ValidationError) issuesCreateCommentRes() {}
+
+func (*ValidationError) issuesCreateLabelRes() {}
+
+func (*ValidationError) issuesCreateMilestoneRes() {}
+
+func (*ValidationError) issuesCreateRes() {}
+
+func (*ValidationError) issuesListCommentsForRepoRes() {}
+
+func (*ValidationError) issuesListEventsForRepoRes() {}
+
+func (*ValidationError) issuesListForRepoRes() {}
+
+func (*ValidationError) issuesListRes() {}
+
+func (*ValidationError) issuesLockRes() {}
+
+func (*ValidationError) issuesUpdateCommentRes() {}
+
+func (*ValidationError) issuesUpdateRes() {}
+
+func (*ValidationError) migrationsMapCommitAuthorRes() {}
+
+func (*ValidationError) migrationsSetLfsPreferenceRes() {}
+
+func (*ValidationError) migrationsStartForAuthenticatedUserRes() {}
+
+func (*ValidationError) migrationsStartForOrgRes() {}
+
+func (*ValidationError) migrationsStartImportRes() {}
+
+func (*ValidationError) oAuthAuthorizationsCreateAuthorizationRes() {}
+
 func (*ValidationError) oAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes() {}
-func (*ValidationError) oAuthAuthorizationsGetOrCreateAuthorizationForAppRes()               {}
-func (*ValidationError) oAuthAuthorizationsUpdateAuthorizationRes()                          {}
-func (*ValidationError) orgsBlockUserRes()                                                   {}
-func (*ValidationError) orgsCancelInvitationRes()                                            {}
-func (*ValidationError) orgsCreateInvitationRes()                                            {}
-func (*ValidationError) orgsCreateWebhookRes()                                               {}
-func (*ValidationError) orgsGetWebhookDeliveryRes()                                          {}
-func (*ValidationError) orgsListMembersRes()                                                 {}
-func (*ValidationError) orgsListMembershipsForAuthenticatedUserRes()                         {}
-func (*ValidationError) orgsListWebhookDeliveriesRes()                                       {}
-func (*ValidationError) orgsRedeliverWebhookDeliveryRes()                                    {}
-func (*ValidationError) orgsSetMembershipForUserRes()                                        {}
-func (*ValidationError) orgsUpdateMembershipForAuthenticatedUserRes()                        {}
-func (*ValidationError) orgsUpdateWebhookRes()                                               {}
-func (*ValidationError) projectsAddCollaboratorRes()                                         {}
-func (*ValidationError) projectsGetPermissionForUserRes()                                    {}
-func (*ValidationError) projectsListCollaboratorsRes()                                       {}
-func (*ValidationError) projectsListForUserRes()                                             {}
-func (*ValidationError) projectsMoveCardRes()                                                {}
-func (*ValidationError) projectsRemoveCollaboratorRes()                                      {}
-func (*ValidationError) pullsCreateRes()                                                     {}
-func (*ValidationError) pullsCreateReviewCommentRes()                                        {}
-func (*ValidationError) pullsListFilesRes()                                                  {}
-func (*ValidationError) pullsListRes()                                                       {}
-func (*ValidationError) pullsMergeRes()                                                      {}
-func (*ValidationError) pullsRemoveRequestedReviewersRes()                                   {}
-func (*ValidationError) pullsUpdateBranchRes()                                               {}
-func (*ValidationError) pullsUpdateRes()                                                     {}
-func (*ValidationError) reactionsCreateForCommitCommentRes()                                 {}
-func (*ValidationError) reactionsCreateForIssueCommentRes()                                  {}
-func (*ValidationError) reactionsCreateForIssueRes()                                         {}
-func (*ValidationError) reactionsCreateForPullRequestReviewCommentRes()                      {}
-func (*ValidationError) reactionsCreateForReleaseRes()                                       {}
-func (*ValidationError) reposAddAppAccessRestrictionsRes()                                   {}
-func (*ValidationError) reposAddCollaboratorRes()                                            {}
-func (*ValidationError) reposAddStatusCheckContextsRes()                                     {}
-func (*ValidationError) reposAddTeamAccessRestrictionsRes()                                  {}
-func (*ValidationError) reposAddUserAccessRestrictionsRes()                                  {}
-func (*ValidationError) reposCreateAutolinkRes()                                             {}
-func (*ValidationError) reposCreateCommitCommentRes()                                        {}
-func (*ValidationError) reposCreateDeployKeyRes()                                            {}
-func (*ValidationError) reposCreateDeploymentRes()                                           {}
-func (*ValidationError) reposCreateDeploymentStatusRes()                                     {}
-func (*ValidationError) reposCreateDispatchEventRes()                                        {}
-func (*ValidationError) reposCreateForAuthenticatedUserRes()                                 {}
-func (*ValidationError) reposCreateForkRes()                                                 {}
-func (*ValidationError) reposCreateInOrgRes()                                                {}
-func (*ValidationError) reposCreateOrUpdateFileContentsRes()                                 {}
-func (*ValidationError) reposCreatePagesSiteRes()                                            {}
-func (*ValidationError) reposCreateReleaseRes()                                              {}
-func (*ValidationError) reposCreateWebhookRes()                                              {}
-func (*ValidationError) reposDeleteFileRes()                                                 {}
-func (*ValidationError) reposDeletePagesSiteRes()                                            {}
-func (*ValidationError) reposGetCommitRes()                                                  {}
-func (*ValidationError) reposGetReadmeInDirectoryRes()                                       {}
-func (*ValidationError) reposGetReadmeRes()                                                  {}
-func (*ValidationError) reposGetWebhookDeliveryRes()                                         {}
-func (*ValidationError) reposListBranchesForHeadCommitRes()                                  {}
-func (*ValidationError) reposListForAuthenticatedUserRes()                                   {}
-func (*ValidationError) reposListPublicRes()                                                 {}
-func (*ValidationError) reposListWebhookDeliveriesRes()                                      {}
-func (*ValidationError) reposMergeRes()                                                      {}
-func (*ValidationError) reposRedeliverWebhookDeliveryRes()                                   {}
-func (*ValidationError) reposRemoveAppAccessRestrictionsRes()                                {}
-func (*ValidationError) reposRemoveStatusCheckContextsRes()                                  {}
-func (*ValidationError) reposRemoveTeamAccessRestrictionsRes()                               {}
-func (*ValidationError) reposRemoveUserAccessRestrictionsRes()                               {}
-func (*ValidationError) reposRenameBranchRes()                                               {}
-func (*ValidationError) reposSetAppAccessRestrictionsRes()                                   {}
-func (*ValidationError) reposSetStatusCheckContextsRes()                                     {}
-func (*ValidationError) reposSetTeamAccessRestrictionsRes()                                  {}
-func (*ValidationError) reposSetUserAccessRestrictionsRes()                                  {}
-func (*ValidationError) reposUpdatePullRequestReviewProtectionRes()                          {}
-func (*ValidationError) reposUpdateRes()                                                     {}
-func (*ValidationError) reposUpdateStatusCheckProtectionRes()                                {}
-func (*ValidationError) reposUpdateWebhookRes()                                              {}
-func (*ValidationError) searchCodeRes()                                                      {}
-func (*ValidationError) searchIssuesAndPullRequestsRes()                                     {}
-func (*ValidationError) searchLabelsRes()                                                    {}
-func (*ValidationError) searchReposRes()                                                     {}
-func (*ValidationError) searchUsersRes()                                                     {}
-func (*ValidationError) teamsAddOrUpdateProjectPermissionsLegacyRes()                        {}
-func (*ValidationError) teamsAddOrUpdateRepoPermissionsLegacyRes()                           {}
-func (*ValidationError) teamsCreateOrUpdateIdpGroupConnectionsLegacyRes()                    {}
-func (*ValidationError) teamsCreateRes()                                                     {}
-func (*ValidationError) teamsDeleteLegacyRes()                                               {}
-func (*ValidationError) teamsListChildLegacyRes()                                            {}
-func (*ValidationError) teamsRemoveProjectLegacyRes()                                        {}
-func (*ValidationError) teamsUpdateLegacyRes()                                               {}
-func (*ValidationError) usersAddEmailForAuthenticatedRes()                                   {}
-func (*ValidationError) usersBlockRes()                                                      {}
-func (*ValidationError) usersCreateGpgKeyForAuthenticatedRes()                               {}
-func (*ValidationError) usersCreatePublicSSHKeyForAuthenticatedRes()                         {}
-func (*ValidationError) usersDeleteEmailForAuthenticatedRes()                                {}
-func (*ValidationError) usersDeleteGpgKeyForAuthenticatedRes()                               {}
-func (*ValidationError) usersGetContextForUserRes()                                          {}
-func (*ValidationError) usersSetPrimaryEmailVisibilityForAuthenticatedRes()                  {}
-func (*ValidationError) usersUpdateAuthenticatedRes()                                        {}
+
+func (*ValidationError) oAuthAuthorizationsGetOrCreateAuthorizationForAppRes() {}
+
+func (*ValidationError) oAuthAuthorizationsUpdateAuthorizationRes() {}
+
+func (*ValidationError) orgsBlockUserRes() {}
+
+func (*ValidationError) orgsCancelInvitationRes() {}
+
+func (*ValidationError) orgsCreateInvitationRes() {}
+
+func (*ValidationError) orgsCreateWebhookRes() {}
+
+func (*ValidationError) orgsGetWebhookDeliveryRes() {}
+
+func (*ValidationError) orgsListMembersRes() {}
+
+func (*ValidationError) orgsListMembershipsForAuthenticatedUserRes() {}
+
+func (*ValidationError) orgsListWebhookDeliveriesRes() {}
+
+func (*ValidationError) orgsRedeliverWebhookDeliveryRes() {}
+
+func (*ValidationError) orgsSetMembershipForUserRes() {}
+
+func (*ValidationError) orgsUpdateMembershipForAuthenticatedUserRes() {}
+
+func (*ValidationError) orgsUpdateWebhookRes() {}
+
+func (*ValidationError) projectsAddCollaboratorRes() {}
+
+func (*ValidationError) projectsGetPermissionForUserRes() {}
+
+func (*ValidationError) projectsListCollaboratorsRes() {}
+
+func (*ValidationError) projectsListForUserRes() {}
+
+func (*ValidationError) projectsMoveCardRes() {}
+
+func (*ValidationError) projectsRemoveCollaboratorRes() {}
+
+func (*ValidationError) pullsCreateRes() {}
+
+func (*ValidationError) pullsCreateReviewCommentRes() {}
+
+func (*ValidationError) pullsListFilesRes() {}
+
+func (*ValidationError) pullsListRes() {}
+
+func (*ValidationError) pullsMergeRes() {}
+
+func (*ValidationError) pullsRemoveRequestedReviewersRes() {}
+
+func (*ValidationError) pullsUpdateBranchRes() {}
+
+func (*ValidationError) pullsUpdateRes() {}
+
+func (*ValidationError) reactionsCreateForCommitCommentRes() {}
+
+func (*ValidationError) reactionsCreateForIssueCommentRes() {}
+
+func (*ValidationError) reactionsCreateForIssueRes() {}
+
+func (*ValidationError) reactionsCreateForPullRequestReviewCommentRes() {}
+
+func (*ValidationError) reactionsCreateForReleaseRes() {}
+
+func (*ValidationError) reposAddAppAccessRestrictionsRes() {}
+
+func (*ValidationError) reposAddCollaboratorRes() {}
+
+func (*ValidationError) reposAddStatusCheckContextsRes() {}
+
+func (*ValidationError) reposAddTeamAccessRestrictionsRes() {}
+
+func (*ValidationError) reposAddUserAccessRestrictionsRes() {}
+
+func (*ValidationError) reposCreateAutolinkRes() {}
+
+func (*ValidationError) reposCreateCommitCommentRes() {}
+
+func (*ValidationError) reposCreateDeployKeyRes() {}
+
+func (*ValidationError) reposCreateDeploymentRes() {}
+
+func (*ValidationError) reposCreateDeploymentStatusRes() {}
+
+func (*ValidationError) reposCreateDispatchEventRes() {}
+
+func (*ValidationError) reposCreateForAuthenticatedUserRes() {}
+
+func (*ValidationError) reposCreateForkRes() {}
+
+func (*ValidationError) reposCreateInOrgRes() {}
+
+func (*ValidationError) reposCreateOrUpdateFileContentsRes() {}
+
+func (*ValidationError) reposCreatePagesSiteRes() {}
+
+func (*ValidationError) reposCreateReleaseRes() {}
+
+func (*ValidationError) reposCreateWebhookRes() {}
+
+func (*ValidationError) reposDeleteFileRes() {}
+
+func (*ValidationError) reposDeletePagesSiteRes() {}
+
+func (*ValidationError) reposGetCommitRes() {}
+
+func (*ValidationError) reposGetReadmeInDirectoryRes() {}
+
+func (*ValidationError) reposGetReadmeRes() {}
+
+func (*ValidationError) reposGetWebhookDeliveryRes() {}
+
+func (*ValidationError) reposListBranchesForHeadCommitRes() {}
+
+func (*ValidationError) reposListForAuthenticatedUserRes() {}
+
+func (*ValidationError) reposListPublicRes() {}
+
+func (*ValidationError) reposListWebhookDeliveriesRes() {}
+
+func (*ValidationError) reposMergeRes() {}
+
+func (*ValidationError) reposRedeliverWebhookDeliveryRes() {}
+
+func (*ValidationError) reposRemoveAppAccessRestrictionsRes() {}
+
+func (*ValidationError) reposRemoveStatusCheckContextsRes() {}
+
+func (*ValidationError) reposRemoveTeamAccessRestrictionsRes() {}
+
+func (*ValidationError) reposRemoveUserAccessRestrictionsRes() {}
+
+func (*ValidationError) reposRenameBranchRes() {}
+
+func (*ValidationError) reposSetAppAccessRestrictionsRes() {}
+
+func (*ValidationError) reposSetStatusCheckContextsRes() {}
+
+func (*ValidationError) reposSetTeamAccessRestrictionsRes() {}
+
+func (*ValidationError) reposSetUserAccessRestrictionsRes() {}
+
+func (*ValidationError) reposUpdatePullRequestReviewProtectionRes() {}
+
+func (*ValidationError) reposUpdateRes() {}
+
+func (*ValidationError) reposUpdateStatusCheckProtectionRes() {}
+
+func (*ValidationError) reposUpdateWebhookRes() {}
+
+func (*ValidationError) searchCodeRes() {}
+
+func (*ValidationError) searchIssuesAndPullRequestsRes() {}
+
+func (*ValidationError) searchLabelsRes() {}
+
+func (*ValidationError) searchReposRes() {}
+
+func (*ValidationError) searchUsersRes() {}
+
+func (*ValidationError) teamsAddOrUpdateProjectPermissionsLegacyRes() {}
+
+func (*ValidationError) teamsAddOrUpdateRepoPermissionsLegacyRes() {}
+
+func (*ValidationError) teamsCreateOrUpdateIdpGroupConnectionsLegacyRes() {}
+
+func (*ValidationError) teamsCreateRes() {}
+
+func (*ValidationError) teamsDeleteLegacyRes() {}
+
+func (*ValidationError) teamsListChildLegacyRes() {}
+
+func (*ValidationError) teamsRemoveProjectLegacyRes() {}
+
+func (*ValidationError) teamsUpdateLegacyRes() {}
+
+func (*ValidationError) usersAddEmailForAuthenticatedRes() {}
+
+func (*ValidationError) usersBlockRes() {}
+
+func (*ValidationError) usersCreateGpgKeyForAuthenticatedRes() {}
+
+func (*ValidationError) usersCreatePublicSSHKeyForAuthenticatedRes() {}
+
+func (*ValidationError) usersDeleteEmailForAuthenticatedRes() {}
+
+func (*ValidationError) usersDeleteGpgKeyForAuthenticatedRes() {}
+
+func (*ValidationError) usersGetContextForUserRes() {}
+
+func (*ValidationError) usersSetPrimaryEmailVisibilityForAuthenticatedRes() {}
+
+func (*ValidationError) usersUpdateAuthenticatedRes() {}
 
 type ValidationErrorErrorsItem struct {
 	Resource OptString                         `json:"resource"`
@@ -103203,24 +103776,41 @@ func (s *ValidationErrorSimple) SetErrors(val []string) {
 	s.Errors = val
 }
 
-func (*ValidationErrorSimple) appsCreateFromManifestRes()             {}
-func (*ValidationErrorSimple) projectsCreateColumnRes()               {}
+func (*ValidationErrorSimple) appsCreateFromManifestRes() {}
+
+func (*ValidationErrorSimple) projectsCreateColumnRes() {}
+
 func (*ValidationErrorSimple) projectsCreateForAuthenticatedUserRes() {}
-func (*ValidationErrorSimple) projectsCreateForOrgRes()               {}
-func (*ValidationErrorSimple) projectsCreateForRepoRes()              {}
-func (*ValidationErrorSimple) projectsListForOrgRes()                 {}
-func (*ValidationErrorSimple) projectsListForRepoRes()                {}
-func (*ValidationErrorSimple) projectsMoveColumnRes()                 {}
-func (*ValidationErrorSimple) projectsUpdateCardRes()                 {}
-func (*ValidationErrorSimple) projectsUpdateRes()                     {}
-func (*ValidationErrorSimple) pullsCreateReviewRes()                  {}
-func (*ValidationErrorSimple) pullsDeletePendingReviewRes()           {}
-func (*ValidationErrorSimple) pullsDismissReviewRes()                 {}
-func (*ValidationErrorSimple) pullsSubmitReviewRes()                  {}
-func (*ValidationErrorSimple) pullsUpdateReviewRes()                  {}
-func (*ValidationErrorSimple) reposDeleteDeploymentRes()              {}
-func (*ValidationErrorSimple) reposReplaceAllTopicsRes()              {}
-func (*ValidationErrorSimple) reposUpdateBranchProtectionRes()        {}
+
+func (*ValidationErrorSimple) projectsCreateForOrgRes() {}
+
+func (*ValidationErrorSimple) projectsCreateForRepoRes() {}
+
+func (*ValidationErrorSimple) projectsListForOrgRes() {}
+
+func (*ValidationErrorSimple) projectsListForRepoRes() {}
+
+func (*ValidationErrorSimple) projectsMoveColumnRes() {}
+
+func (*ValidationErrorSimple) projectsUpdateCardRes() {}
+
+func (*ValidationErrorSimple) projectsUpdateRes() {}
+
+func (*ValidationErrorSimple) pullsCreateReviewRes() {}
+
+func (*ValidationErrorSimple) pullsDeletePendingReviewRes() {}
+
+func (*ValidationErrorSimple) pullsDismissReviewRes() {}
+
+func (*ValidationErrorSimple) pullsSubmitReviewRes() {}
+
+func (*ValidationErrorSimple) pullsUpdateReviewRes() {}
+
+func (*ValidationErrorSimple) reposDeleteDeploymentRes() {}
+
+func (*ValidationErrorSimple) reposReplaceAllTopicsRes() {}
+
+func (*ValidationErrorSimple) reposUpdateBranchProtectionRes() {}
 
 // Ref: #/components/schemas/verification
 type Verification struct {

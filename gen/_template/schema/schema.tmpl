@@ -32,6 +32,6 @@
 {{/* Define methods */}}
 {{- range $method := $.Methods }}
 func (*{{ $.Go }}) {{ $method }}() {}
-{{- end }}
+{{ end }}
 
 {{ end }}

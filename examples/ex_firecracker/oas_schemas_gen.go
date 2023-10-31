@@ -464,29 +464,51 @@ func (s *Error) SetFaultMessage(val OptString) {
 	s.FaultMessage = val
 }
 
-func (*Error) createSnapshotRes()                 {}
-func (*Error) createSyncActionRes()               {}
-func (*Error) describeBalloonConfigRes()          {}
-func (*Error) describeBalloonStatsRes()           {}
-func (*Error) loadSnapshotRes()                   {}
-func (*Error) mmdsConfigPutRes()                  {}
-func (*Error) mmdsGetRes()                        {}
-func (*Error) mmdsPatchRes()                      {}
-func (*Error) mmdsPutRes()                        {}
-func (*Error) patchBalloonRes()                   {}
-func (*Error) patchBalloonStatsIntervalRes()      {}
-func (*Error) patchGuestDriveByIDRes()            {}
+func (*Error) createSnapshotRes() {}
+
+func (*Error) createSyncActionRes() {}
+
+func (*Error) describeBalloonConfigRes() {}
+
+func (*Error) describeBalloonStatsRes() {}
+
+func (*Error) loadSnapshotRes() {}
+
+func (*Error) mmdsConfigPutRes() {}
+
+func (*Error) mmdsGetRes() {}
+
+func (*Error) mmdsPatchRes() {}
+
+func (*Error) mmdsPutRes() {}
+
+func (*Error) patchBalloonRes() {}
+
+func (*Error) patchBalloonStatsIntervalRes() {}
+
+func (*Error) patchGuestDriveByIDRes() {}
+
 func (*Error) patchGuestNetworkInterfaceByIDRes() {}
-func (*Error) patchMachineConfigurationRes()      {}
-func (*Error) patchVmRes()                        {}
-func (*Error) putBalloonRes()                     {}
-func (*Error) putGuestBootSourceRes()             {}
-func (*Error) putGuestDriveByIDRes()              {}
-func (*Error) putGuestNetworkInterfaceByIDRes()   {}
-func (*Error) putGuestVsockRes()                  {}
-func (*Error) putLoggerRes()                      {}
-func (*Error) putMachineConfigurationRes()        {}
-func (*Error) putMetricsRes()                     {}
+
+func (*Error) patchMachineConfigurationRes() {}
+
+func (*Error) patchVmRes() {}
+
+func (*Error) putBalloonRes() {}
+
+func (*Error) putGuestBootSourceRes() {}
+
+func (*Error) putGuestDriveByIDRes() {}
+
+func (*Error) putGuestNetworkInterfaceByIDRes() {}
+
+func (*Error) putGuestVsockRes() {}
+
+func (*Error) putLoggerRes() {}
+
+func (*Error) putMachineConfigurationRes() {}
+
+func (*Error) putMetricsRes() {}
 
 // ErrorStatusCode wraps Error with StatusCode.
 type ErrorStatusCode struct {

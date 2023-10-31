@@ -351,4 +351,5 @@ func (s *SimpleObjectMultipart) SetAge(val OptInt) {
 }
 
 func (*SimpleObjectMultipart) allRequestBodiesOptionalReq() {}
-func (*SimpleObjectMultipart) allRequestBodiesReq()         {}
+
+func (*SimpleObjectMultipart) allRequestBodiesReq() {}

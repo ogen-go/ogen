@@ -904,17 +904,28 @@ func (s *R400) SetStatus(val string) {
 }
 
 func (*R400) createPetCategoriesRes() {}
-func (*R400) createPetFriendsRes()    {}
-func (*R400) createPetOwnerRes()      {}
-func (*R400) createPetRes()           {}
-func (*R400) deletePetOwnerRes()      {}
-func (*R400) deletePetRes()           {}
-func (*R400) listPetCategoriesRes()   {}
-func (*R400) listPetFriendsRes()      {}
-func (*R400) listPetRes()             {}
-func (*R400) readPetOwnerRes()        {}
-func (*R400) readPetRes()             {}
-func (*R400) updatePetRes()           {}
+
+func (*R400) createPetFriendsRes() {}
+
+func (*R400) createPetOwnerRes() {}
+
+func (*R400) createPetRes() {}
+
+func (*R400) deletePetOwnerRes() {}
+
+func (*R400) deletePetRes() {}
+
+func (*R400) listPetCategoriesRes() {}
+
+func (*R400) listPetFriendsRes() {}
+
+func (*R400) listPetRes() {}
+
+func (*R400) readPetOwnerRes() {}
+
+func (*R400) readPetRes() {}
+
+func (*R400) updatePetRes() {}
 
 type R404 struct {
 	Code   int    `json:"code"`
@@ -941,14 +952,21 @@ func (s *R404) SetStatus(val string) {
 	s.Status = val
 }
 
-func (*R404) deletePetOwnerRes()    {}
-func (*R404) deletePetRes()         {}
+func (*R404) deletePetOwnerRes() {}
+
+func (*R404) deletePetRes() {}
+
 func (*R404) listPetCategoriesRes() {}
-func (*R404) listPetFriendsRes()    {}
-func (*R404) listPetRes()           {}
-func (*R404) readPetOwnerRes()      {}
-func (*R404) readPetRes()           {}
-func (*R404) updatePetRes()         {}
+
+func (*R404) listPetFriendsRes() {}
+
+func (*R404) listPetRes() {}
+
+func (*R404) readPetOwnerRes() {}
+
+func (*R404) readPetRes() {}
+
+func (*R404) updatePetRes() {}
 
 type R409 struct {
 	Code   int    `json:"code"`
@@ -976,9 +994,12 @@ func (s *R409) SetStatus(val string) {
 }
 
 func (*R409) createPetCategoriesRes() {}
-func (*R409) createPetFriendsRes()    {}
-func (*R409) createPetOwnerRes()      {}
-func (*R409) createPetRes()           {}
+
+func (*R409) createPetFriendsRes() {}
+
+func (*R409) createPetOwnerRes() {}
+
+func (*R409) createPetRes() {}
 
 type R500 struct {
 	Code   int    `json:"code"`
@@ -1006,17 +1027,28 @@ func (s *R500) SetStatus(val string) {
 }
 
 func (*R500) createPetCategoriesRes() {}
-func (*R500) createPetFriendsRes()    {}
-func (*R500) createPetOwnerRes()      {}
-func (*R500) createPetRes()           {}
-func (*R500) deletePetOwnerRes()      {}
-func (*R500) deletePetRes()           {}
-func (*R500) listPetCategoriesRes()   {}
-func (*R500) listPetFriendsRes()      {}
-func (*R500) listPetRes()             {}
-func (*R500) readPetOwnerRes()        {}
-func (*R500) readPetRes()             {}
-func (*R500) updatePetRes()           {}
+
+func (*R500) createPetFriendsRes() {}
+
+func (*R500) createPetOwnerRes() {}
+
+func (*R500) createPetRes() {}
+
+func (*R500) deletePetOwnerRes() {}
+
+func (*R500) deletePetRes() {}
+
+func (*R500) listPetCategoriesRes() {}
+
+func (*R500) listPetFriendsRes() {}
+
+func (*R500) listPetRes() {}
+
+func (*R500) readPetOwnerRes() {}
+
+func (*R500) readPetRes() {}
+
+func (*R500) updatePetRes() {}
 
 type UpdatePetReq struct {
 	Name       string      `json:"name"`

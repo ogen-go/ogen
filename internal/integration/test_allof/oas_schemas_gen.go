@@ -328,7 +328,8 @@ func (s *Robot) SetLocation(val Location) {
 }
 
 func (*Robot) referencedAllofOptionalReq() {}
-func (*Robot) referencedAllofReq()         {}
+
+func (*Robot) referencedAllofReq() {}
 
 // Merged schema.
 // Ref: #/components/schemas/Robot
@@ -369,7 +370,8 @@ func (s *RobotMultipart) SetLocation(val Location) {
 }
 
 func (*RobotMultipart) referencedAllofOptionalReq() {}
-func (*RobotMultipart) referencedAllofReq()         {}
+
+func (*RobotMultipart) referencedAllofReq() {}
 
 type RobotMultipartState string
 

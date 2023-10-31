@@ -586,9 +586,12 @@ func (s *ErrorStatusCode) SetResponse(val Error) {
 	s.Response = val
 }
 
-func (*ErrorStatusCode) foobarPostRes()          {}
-func (*ErrorStatusCode) petGetAvatarByIDRes()    {}
-func (*ErrorStatusCode) petGetAvatarByNameRes()  {}
+func (*ErrorStatusCode) foobarPostRes() {}
+
+func (*ErrorStatusCode) petGetAvatarByIDRes() {}
+
+func (*ErrorStatusCode) petGetAvatarByNameRes() {}
+
 func (*ErrorStatusCode) petUploadAvatarByIDRes() {}
 
 // FoobarPutDef is default response for FoobarPut operation.
@@ -1919,10 +1922,14 @@ func (s *NoAdditionalPropertiesTest) SetOnlyPatterned(val OptOnlyPatternedPropsO
 // Ref: #/components/responses/NotFound
 type NotFound struct{}
 
-func (*NotFound) foobarGetRes()           {}
-func (*NotFound) foobarPostRes()          {}
-func (*NotFound) petGetAvatarByIDRes()    {}
-func (*NotFound) petGetAvatarByNameRes()  {}
+func (*NotFound) foobarGetRes() {}
+
+func (*NotFound) foobarPostRes() {}
+
+func (*NotFound) petGetAvatarByIDRes() {}
+
+func (*NotFound) petGetAvatarByNameRes() {}
+
 func (*NotFound) petUploadAvatarByIDRes() {}
 
 type NullValue struct{}
@@ -5123,9 +5130,11 @@ func (s *Pet) SetExtraTags(val OptString) {
 	s.ExtraTags = val
 }
 
-func (*Pet) foobarGetRes()  {}
+func (*Pet) foobarGetRes() {}
+
 func (*Pet) foobarPostRes() {}
-func (*Pet) petGetRes()     {}
+
+func (*Pet) petGetRes() {}
 
 type PetGetAvatarByIDOK struct {
 	Data io.Reader

@@ -516,11 +516,15 @@ func (s *Empty) SetStatus(val string) {
 	s.Status = val
 }
 
-func (*Empty) ordersCancelPostRes()             {}
-func (*Empty) sandboxClearPostRes()             {}
+func (*Empty) ordersCancelPostRes() {}
+
+func (*Empty) sandboxClearPostRes() {}
+
 func (*Empty) sandboxCurrenciesBalancePostRes() {}
-func (*Empty) sandboxPositionsBalancePostRes()  {}
-func (*Empty) sandboxRemovePostRes()            {}
+
+func (*Empty) sandboxPositionsBalancePostRes() {}
+
+func (*Empty) sandboxRemovePostRes() {}
 
 type EmptyPayload struct{}
 
@@ -561,27 +565,47 @@ func (s *Error) SetPayload(val ErrorPayload) {
 	s.Payload = val
 }
 
-func (*Error) marketBondsGetRes()               {}
-func (*Error) marketCandlesGetRes()             {}
-func (*Error) marketCurrenciesGetRes()          {}
-func (*Error) marketEtfsGetRes()                {}
-func (*Error) marketOrderbookGetRes()           {}
-func (*Error) marketSearchByFigiGetRes()        {}
-func (*Error) marketSearchByTickerGetRes()      {}
-func (*Error) marketStocksGetRes()              {}
-func (*Error) operationsGetRes()                {}
-func (*Error) ordersCancelPostRes()             {}
-func (*Error) ordersGetRes()                    {}
-func (*Error) ordersLimitOrderPostRes()         {}
-func (*Error) ordersMarketOrderPostRes()        {}
-func (*Error) portfolioCurrenciesGetRes()       {}
-func (*Error) portfolioGetRes()                 {}
-func (*Error) sandboxClearPostRes()             {}
+func (*Error) marketBondsGetRes() {}
+
+func (*Error) marketCandlesGetRes() {}
+
+func (*Error) marketCurrenciesGetRes() {}
+
+func (*Error) marketEtfsGetRes() {}
+
+func (*Error) marketOrderbookGetRes() {}
+
+func (*Error) marketSearchByFigiGetRes() {}
+
+func (*Error) marketSearchByTickerGetRes() {}
+
+func (*Error) marketStocksGetRes() {}
+
+func (*Error) operationsGetRes() {}
+
+func (*Error) ordersCancelPostRes() {}
+
+func (*Error) ordersGetRes() {}
+
+func (*Error) ordersLimitOrderPostRes() {}
+
+func (*Error) ordersMarketOrderPostRes() {}
+
+func (*Error) portfolioCurrenciesGetRes() {}
+
+func (*Error) portfolioGetRes() {}
+
+func (*Error) sandboxClearPostRes() {}
+
 func (*Error) sandboxCurrenciesBalancePostRes() {}
-func (*Error) sandboxPositionsBalancePostRes()  {}
-func (*Error) sandboxRegisterPostRes()          {}
-func (*Error) sandboxRemovePostRes()            {}
-func (*Error) userAccountsGetRes()              {}
+
+func (*Error) sandboxPositionsBalancePostRes() {}
+
+func (*Error) sandboxRegisterPostRes() {}
+
+func (*Error) sandboxRemovePostRes() {}
+
+func (*Error) userAccountsGetRes() {}
 
 type ErrorPayload struct {
 	Message OptString `json:"message"`
@@ -909,11 +933,15 @@ func (s *MarketInstrumentListResponse) SetPayload(val MarketInstrumentList) {
 	s.Payload = val
 }
 
-func (*MarketInstrumentListResponse) marketBondsGetRes()          {}
-func (*MarketInstrumentListResponse) marketCurrenciesGetRes()     {}
-func (*MarketInstrumentListResponse) marketEtfsGetRes()           {}
+func (*MarketInstrumentListResponse) marketBondsGetRes() {}
+
+func (*MarketInstrumentListResponse) marketCurrenciesGetRes() {}
+
+func (*MarketInstrumentListResponse) marketEtfsGetRes() {}
+
 func (*MarketInstrumentListResponse) marketSearchByTickerGetRes() {}
-func (*MarketInstrumentListResponse) marketStocksGetRes()         {}
+
+func (*MarketInstrumentListResponse) marketStocksGetRes() {}
 
 // Ref: #/components/schemas/MarketOrderRequest
 type MarketOrderRequest struct {

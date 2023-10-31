@@ -53,7 +53,8 @@ func (s *ErrorStatusCode) SetResponse(val Error) {
 	s.Response = val
 }
 
-func (*ErrorStatusCode) updateDeleteRes()  {}
+func (*ErrorStatusCode) updateDeleteRes() {}
+
 func (*ErrorStatusCode) updateWebhookRes() {}
 
 // Ref: #/components/schemas/Event

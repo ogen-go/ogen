@@ -2241,6 +2241,7 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersion) SetStatus(val IoK8sAPI
 
 func (*IoK8sAPIApiserverinternalV1alpha1StorageVersion) readInternalApiserverV1alpha1StorageVersionRes() {
 }
+
 func (*IoK8sAPIApiserverinternalV1alpha1StorageVersion) readInternalApiserverV1alpha1StorageVersionStatusRes() {
 }
 
@@ -2563,7 +2564,8 @@ func (s *IoK8sAPIAppsV1ControllerRevisionList) SetMetadata(val OptIoK8sApimachin
 }
 
 func (*IoK8sAPIAppsV1ControllerRevisionList) listAppsV1ControllerRevisionForAllNamespacesRes() {}
-func (*IoK8sAPIAppsV1ControllerRevisionList) listAppsV1NamespacedControllerRevisionRes()       {}
+
+func (*IoK8sAPIAppsV1ControllerRevisionList) listAppsV1NamespacedControllerRevisionRes() {}
 
 // DaemonSet represents the configuration of a daemon set.
 // Ref: #/components/schemas/io.k8s.api.apps.v1.DaemonSet
@@ -2631,7 +2633,8 @@ func (s *IoK8sAPIAppsV1DaemonSet) SetStatus(val OptIoK8sAPIAppsV1DaemonSetStatus
 	s.Status = val
 }
 
-func (*IoK8sAPIAppsV1DaemonSet) readAppsV1NamespacedDaemonSetRes()       {}
+func (*IoK8sAPIAppsV1DaemonSet) readAppsV1NamespacedDaemonSetRes() {}
+
 func (*IoK8sAPIAppsV1DaemonSet) readAppsV1NamespacedDaemonSetStatusRes() {}
 
 // DaemonSetCondition describes the state of a DaemonSet at a certain point.
@@ -2755,7 +2758,8 @@ func (s *IoK8sAPIAppsV1DaemonSetList) SetMetadata(val OptIoK8sApimachineryPkgApi
 }
 
 func (*IoK8sAPIAppsV1DaemonSetList) listAppsV1DaemonSetForAllNamespacesRes() {}
-func (*IoK8sAPIAppsV1DaemonSetList) listAppsV1NamespacedDaemonSetRes()       {}
+
+func (*IoK8sAPIAppsV1DaemonSetList) listAppsV1NamespacedDaemonSetRes() {}
 
 // DaemonSetSpec is the specification of a daemon set.
 // Ref: #/components/schemas/io.k8s.api.apps.v1.DaemonSetSpec
@@ -3048,7 +3052,8 @@ func (s *IoK8sAPIAppsV1Deployment) SetStatus(val OptIoK8sAPIAppsV1DeploymentStat
 	s.Status = val
 }
 
-func (*IoK8sAPIAppsV1Deployment) readAppsV1NamespacedDeploymentRes()       {}
+func (*IoK8sAPIAppsV1Deployment) readAppsV1NamespacedDeploymentRes() {}
+
 func (*IoK8sAPIAppsV1Deployment) readAppsV1NamespacedDeploymentStatusRes() {}
 
 // DeploymentCondition describes the state of a deployment at a certain point.
@@ -3183,7 +3188,8 @@ func (s *IoK8sAPIAppsV1DeploymentList) SetMetadata(val OptIoK8sApimachineryPkgAp
 }
 
 func (*IoK8sAPIAppsV1DeploymentList) listAppsV1DeploymentForAllNamespacesRes() {}
-func (*IoK8sAPIAppsV1DeploymentList) listAppsV1NamespacedDeploymentRes()       {}
+
+func (*IoK8sAPIAppsV1DeploymentList) listAppsV1NamespacedDeploymentRes() {}
 
 // DeploymentSpec is the specification of the desired behavior of the Deployment.
 // Ref: #/components/schemas/io.k8s.api.apps.v1.DeploymentSpec
@@ -3489,7 +3495,8 @@ func (s *IoK8sAPIAppsV1ReplicaSet) SetStatus(val OptIoK8sAPIAppsV1ReplicaSetStat
 	s.Status = val
 }
 
-func (*IoK8sAPIAppsV1ReplicaSet) readAppsV1NamespacedReplicaSetRes()       {}
+func (*IoK8sAPIAppsV1ReplicaSet) readAppsV1NamespacedReplicaSetRes() {}
+
 func (*IoK8sAPIAppsV1ReplicaSet) readAppsV1NamespacedReplicaSetStatusRes() {}
 
 // ReplicaSetCondition describes the state of a replica set at a certain point.
@@ -3613,7 +3620,8 @@ func (s *IoK8sAPIAppsV1ReplicaSetList) SetMetadata(val OptIoK8sApimachineryPkgAp
 	s.Metadata = val
 }
 
-func (*IoK8sAPIAppsV1ReplicaSetList) listAppsV1NamespacedReplicaSetRes()       {}
+func (*IoK8sAPIAppsV1ReplicaSetList) listAppsV1NamespacedReplicaSetRes() {}
+
 func (*IoK8sAPIAppsV1ReplicaSetList) listAppsV1ReplicaSetForAllNamespacesRes() {}
 
 // ReplicaSetSpec is the specification of a ReplicaSet.
@@ -3891,7 +3899,8 @@ func (s *IoK8sAPIAppsV1StatefulSet) SetStatus(val OptIoK8sAPIAppsV1StatefulSetSt
 	s.Status = val
 }
 
-func (*IoK8sAPIAppsV1StatefulSet) readAppsV1NamespacedStatefulSetRes()       {}
+func (*IoK8sAPIAppsV1StatefulSet) readAppsV1NamespacedStatefulSetRes() {}
+
 func (*IoK8sAPIAppsV1StatefulSet) readAppsV1NamespacedStatefulSetStatusRes() {}
 
 // StatefulSetCondition describes the state of a statefulset at a certain point.
@@ -4014,7 +4023,8 @@ func (s *IoK8sAPIAppsV1StatefulSetList) SetMetadata(val OptIoK8sApimachineryPkgA
 	s.Metadata = val
 }
 
-func (*IoK8sAPIAppsV1StatefulSetList) listAppsV1NamespacedStatefulSetRes()       {}
+func (*IoK8sAPIAppsV1StatefulSetList) listAppsV1NamespacedStatefulSetRes() {}
+
 func (*IoK8sAPIAppsV1StatefulSetList) listAppsV1StatefulSetForAllNamespacesRes() {}
 
 // A StatefulSetSpec is the specification of a StatefulSet.
@@ -4419,6 +4429,7 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) SetStatus(val OptIoK8sAPI
 
 func (*IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) readAutoscalingV1NamespacedHorizontalPodAutoscalerRes() {
 }
+
 func (*IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) readAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRes() {
 }
 
@@ -4480,6 +4491,7 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) SetMetadata(val OptIo
 
 func (*IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) listAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRes() {
 }
+
 func (*IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) listAutoscalingV1NamespacedHorizontalPodAutoscalerRes() {
 }
 
@@ -4671,9 +4683,12 @@ func (s *IoK8sAPIAutoscalingV1Scale) SetStatus(val OptIoK8sAPIAutoscalingV1Scale
 	s.Status = val
 }
 
-func (*IoK8sAPIAutoscalingV1Scale) readAppsV1NamespacedDeploymentScaleRes()            {}
-func (*IoK8sAPIAutoscalingV1Scale) readAppsV1NamespacedReplicaSetScaleRes()            {}
-func (*IoK8sAPIAutoscalingV1Scale) readAppsV1NamespacedStatefulSetScaleRes()           {}
+func (*IoK8sAPIAutoscalingV1Scale) readAppsV1NamespacedDeploymentScaleRes() {}
+
+func (*IoK8sAPIAutoscalingV1Scale) readAppsV1NamespacedReplicaSetScaleRes() {}
+
+func (*IoK8sAPIAutoscalingV1Scale) readAppsV1NamespacedStatefulSetScaleRes() {}
+
 func (*IoK8sAPIAutoscalingV1Scale) readCoreV1NamespacedReplicationControllerScaleRes() {}
 
 // ScaleSpec describes the attributes of a scale subresource.
@@ -5056,6 +5071,7 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) SetStatus(val OptIoK
 
 func (*IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes() {
 }
+
 func (*IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRes() {
 }
 
@@ -5182,6 +5198,7 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) SetMetadata(val 
 
 func (*IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRes() {
 }
+
 func (*IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) listAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes() {
 }
 
@@ -6119,6 +6136,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) SetStatus(val OptIoK
 
 func (*IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes() {
 }
+
 func (*IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRes() {
 }
 
@@ -6273,6 +6291,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) SetMetadata(val 
 
 func (*IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRes() {
 }
+
 func (*IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) listAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes() {
 }
 
@@ -6961,7 +6980,8 @@ func (s *IoK8sAPIBatchV1CronJob) SetStatus(val OptIoK8sAPIBatchV1CronJobStatus) 
 	s.Status = val
 }
 
-func (*IoK8sAPIBatchV1CronJob) readBatchV1NamespacedCronJobRes()       {}
+func (*IoK8sAPIBatchV1CronJob) readBatchV1NamespacedCronJobRes() {}
+
 func (*IoK8sAPIBatchV1CronJob) readBatchV1NamespacedCronJobStatusRes() {}
 
 // CronJobList is a collection of cron jobs.
@@ -7021,7 +7041,8 @@ func (s *IoK8sAPIBatchV1CronJobList) SetMetadata(val OptIoK8sApimachineryPkgApis
 }
 
 func (*IoK8sAPIBatchV1CronJobList) listBatchV1CronJobForAllNamespacesRes() {}
-func (*IoK8sAPIBatchV1CronJobList) listBatchV1NamespacedCronJobRes()       {}
+
+func (*IoK8sAPIBatchV1CronJobList) listBatchV1NamespacedCronJobRes() {}
 
 // CronJobSpec describes how the job execution will look like and when it will actually run.
 // Ref: #/components/schemas/io.k8s.api.batch.v1.CronJobSpec
@@ -7222,7 +7243,8 @@ func (s *IoK8sAPIBatchV1Job) SetStatus(val OptIoK8sAPIBatchV1JobStatus) {
 	s.Status = val
 }
 
-func (*IoK8sAPIBatchV1Job) readBatchV1NamespacedJobRes()       {}
+func (*IoK8sAPIBatchV1Job) readBatchV1NamespacedJobRes() {}
+
 func (*IoK8sAPIBatchV1Job) readBatchV1NamespacedJobStatusRes() {}
 
 // JobCondition describes current state of a job.
@@ -7357,7 +7379,8 @@ func (s *IoK8sAPIBatchV1JobList) SetMetadata(val OptIoK8sApimachineryPkgApisMeta
 }
 
 func (*IoK8sAPIBatchV1JobList) listBatchV1JobForAllNamespacesRes() {}
-func (*IoK8sAPIBatchV1JobList) listBatchV1NamespacedJobRes()       {}
+
+func (*IoK8sAPIBatchV1JobList) listBatchV1NamespacedJobRes() {}
 
 // JobSpec describes how the job execution will look like.
 // Ref: #/components/schemas/io.k8s.api.batch.v1.JobSpec
@@ -7751,7 +7774,8 @@ func (s *IoK8sAPIBatchV1beta1CronJob) SetStatus(val OptIoK8sAPIBatchV1beta1CronJ
 	s.Status = val
 }
 
-func (*IoK8sAPIBatchV1beta1CronJob) readBatchV1beta1NamespacedCronJobRes()       {}
+func (*IoK8sAPIBatchV1beta1CronJob) readBatchV1beta1NamespacedCronJobRes() {}
+
 func (*IoK8sAPIBatchV1beta1CronJob) readBatchV1beta1NamespacedCronJobStatusRes() {}
 
 // CronJobList is a collection of cron jobs.
@@ -7811,7 +7835,8 @@ func (s *IoK8sAPIBatchV1beta1CronJobList) SetMetadata(val OptIoK8sApimachineryPk
 }
 
 func (*IoK8sAPIBatchV1beta1CronJobList) listBatchV1beta1CronJobForAllNamespacesRes() {}
-func (*IoK8sAPIBatchV1beta1CronJobList) listBatchV1beta1NamespacedCronJobRes()       {}
+
+func (*IoK8sAPIBatchV1beta1CronJobList) listBatchV1beta1NamespacedCronJobRes() {}
 
 // CronJobSpec describes how the job execution will look like and when it will actually run.
 // Ref: #/components/schemas/io.k8s.api.batch.v1beta1.CronJobSpec
@@ -8051,8 +8076,10 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequest) SetStatus(val OptIoK8s
 
 func (*IoK8sAPICertificatesV1CertificateSigningRequest) readCertificatesV1CertificateSigningRequestApprovalRes() {
 }
+
 func (*IoK8sAPICertificatesV1CertificateSigningRequest) readCertificatesV1CertificateSigningRequestRes() {
 }
+
 func (*IoK8sAPICertificatesV1CertificateSigningRequest) readCertificatesV1CertificateSigningRequestStatusRes() {
 }
 
@@ -8535,7 +8562,8 @@ func (s *IoK8sAPICoordinationV1LeaseList) SetMetadata(val OptIoK8sApimachineryPk
 }
 
 func (*IoK8sAPICoordinationV1LeaseList) listCoordinationV1LeaseForAllNamespacesRes() {}
-func (*IoK8sAPICoordinationV1LeaseList) listCoordinationV1NamespacedLeaseRes()       {}
+
+func (*IoK8sAPICoordinationV1LeaseList) listCoordinationV1NamespacedLeaseRes() {}
 
 // LeaseSpec is a specification of a Lease.
 // Ref: #/components/schemas/io.k8s.api.coordination.v1.LeaseSpec
@@ -9857,7 +9885,8 @@ func (s *IoK8sAPICoreV1ConfigMapList) SetMetadata(val OptIoK8sApimachineryPkgApi
 }
 
 func (*IoK8sAPICoreV1ConfigMapList) listCoreV1ConfigMapForAllNamespacesRes() {}
-func (*IoK8sAPICoreV1ConfigMapList) listCoreV1NamespacedConfigMapRes()       {}
+
+func (*IoK8sAPICoreV1ConfigMapList) listCoreV1NamespacedConfigMapRes() {}
 
 // ConfigMapNodeConfigSource contains the information to reference a ConfigMap as a config source for
 // the Node. This API is deprecated since 1.22: https://git.k8s.
@@ -11183,7 +11212,8 @@ func (s *IoK8sAPICoreV1EndpointsList) SetMetadata(val OptIoK8sApimachineryPkgApi
 }
 
 func (*IoK8sAPICoreV1EndpointsList) listCoreV1EndpointsForAllNamespacesRes() {}
-func (*IoK8sAPICoreV1EndpointsList) listCoreV1NamespacedEndpointsRes()       {}
+
+func (*IoK8sAPICoreV1EndpointsList) listCoreV1NamespacedEndpointsRes() {}
 
 // EnvFromSource represents the source of a set of ConfigMaps.
 // Ref: #/components/schemas/io.k8s.api.core.v1.EnvFromSource
@@ -11922,7 +11952,8 @@ func (s *IoK8sAPICoreV1EventList) SetMetadata(val OptIoK8sApimachineryPkgApisMet
 }
 
 func (*IoK8sAPICoreV1EventList) listCoreV1EventForAllNamespacesRes() {}
-func (*IoK8sAPICoreV1EventList) listCoreV1NamespacedEventRes()       {}
+
+func (*IoK8sAPICoreV1EventList) listCoreV1NamespacedEventRes() {}
 
 // EventSeries contain information on series of events, i.e. thing that was/is happening continuously
 // for some time.
@@ -13289,7 +13320,8 @@ func (s *IoK8sAPICoreV1LimitRangeList) SetMetadata(val OptIoK8sApimachineryPkgAp
 }
 
 func (*IoK8sAPICoreV1LimitRangeList) listCoreV1LimitRangeForAllNamespacesRes() {}
-func (*IoK8sAPICoreV1LimitRangeList) listCoreV1NamespacedLimitRangeRes()       {}
+
+func (*IoK8sAPICoreV1LimitRangeList) listCoreV1NamespacedLimitRangeRes() {}
 
 // LimitRangeSpec defines a min/max usage limit for resources that match on kind.
 // Ref: #/components/schemas/io.k8s.api.core.v1.LimitRangeSpec
@@ -13532,7 +13564,8 @@ func (s *IoK8sAPICoreV1Namespace) SetStatus(val OptIoK8sAPICoreV1NamespaceStatus
 	s.Status = val
 }
 
-func (*IoK8sAPICoreV1Namespace) readCoreV1NamespaceRes()       {}
+func (*IoK8sAPICoreV1Namespace) readCoreV1NamespaceRes() {}
+
 func (*IoK8sAPICoreV1Namespace) readCoreV1NamespaceStatusRes() {}
 
 // NamespaceCondition contains details about state of namespace.
@@ -13771,7 +13804,8 @@ func (s *IoK8sAPICoreV1Node) SetStatus(val OptIoK8sAPICoreV1NodeStatus) {
 	s.Status = val
 }
 
-func (*IoK8sAPICoreV1Node) readCoreV1NodeRes()       {}
+func (*IoK8sAPICoreV1Node) readCoreV1NodeRes() {}
+
 func (*IoK8sAPICoreV1Node) readCoreV1NodeStatusRes() {}
 
 // NodeAddress contains information for the node's address.
@@ -14743,7 +14777,8 @@ func (s *IoK8sAPICoreV1PersistentVolume) SetStatus(val OptIoK8sAPICoreV1Persiste
 	s.Status = val
 }
 
-func (*IoK8sAPICoreV1PersistentVolume) readCoreV1PersistentVolumeRes()       {}
+func (*IoK8sAPICoreV1PersistentVolume) readCoreV1PersistentVolumeRes() {}
+
 func (*IoK8sAPICoreV1PersistentVolume) readCoreV1PersistentVolumeStatusRes() {}
 
 // PersistentVolumeClaim is a user's request for and claim to a persistent volume.
@@ -14812,7 +14847,8 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaim) SetStatus(val OptIoK8sAPICoreV1Per
 	s.Status = val
 }
 
-func (*IoK8sAPICoreV1PersistentVolumeClaim) readCoreV1NamespacedPersistentVolumeClaimRes()       {}
+func (*IoK8sAPICoreV1PersistentVolumeClaim) readCoreV1NamespacedPersistentVolumeClaimRes() {}
+
 func (*IoK8sAPICoreV1PersistentVolumeClaim) readCoreV1NamespacedPersistentVolumeClaimStatusRes() {}
 
 // PersistentVolumeClaimCondition contails details about state of pvc.
@@ -14948,6 +14984,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimList) SetMetadata(val OptIoK8sApimac
 }
 
 func (*IoK8sAPICoreV1PersistentVolumeClaimList) listCoreV1NamespacedPersistentVolumeClaimRes() {}
+
 func (*IoK8sAPICoreV1PersistentVolumeClaimList) listCoreV1PersistentVolumeClaimForAllNamespacesRes() {
 }
 
@@ -15743,8 +15780,10 @@ func (s *IoK8sAPICoreV1Pod) SetStatus(val OptIoK8sAPICoreV1PodStatus) {
 }
 
 func (*IoK8sAPICoreV1Pod) readCoreV1NamespacedPodEphemeralcontainersRes() {}
-func (*IoK8sAPICoreV1Pod) readCoreV1NamespacedPodRes()                    {}
-func (*IoK8sAPICoreV1Pod) readCoreV1NamespacedPodStatusRes()              {}
+
+func (*IoK8sAPICoreV1Pod) readCoreV1NamespacedPodRes() {}
+
+func (*IoK8sAPICoreV1Pod) readCoreV1NamespacedPodStatusRes() {}
 
 // Pod affinity is a group of inter pod affinity scheduling rules.
 // Ref: #/components/schemas/io.k8s.api.core.v1.PodAffinity
@@ -16110,7 +16149,8 @@ func (s *IoK8sAPICoreV1PodList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV
 	s.Metadata = val
 }
 
-func (*IoK8sAPICoreV1PodList) listCoreV1NamespacedPodRes()       {}
+func (*IoK8sAPICoreV1PodList) listCoreV1NamespacedPodRes() {}
+
 func (*IoK8sAPICoreV1PodList) listCoreV1PodForAllNamespacesRes() {}
 
 // PodReadinessGate contains the reference to a pod condition.
@@ -17105,7 +17145,8 @@ func (s *IoK8sAPICoreV1PodTemplateList) SetMetadata(val OptIoK8sApimachineryPkgA
 	s.Metadata = val
 }
 
-func (*IoK8sAPICoreV1PodTemplateList) listCoreV1NamespacedPodTemplateRes()       {}
+func (*IoK8sAPICoreV1PodTemplateList) listCoreV1NamespacedPodTemplateRes() {}
+
 func (*IoK8sAPICoreV1PodTemplateList) listCoreV1PodTemplateForAllNamespacesRes() {}
 
 // PodTemplateSpec describes the data a pod should have when created from a template.
@@ -17771,7 +17812,8 @@ func (s *IoK8sAPICoreV1ReplicationController) SetStatus(val OptIoK8sAPICoreV1Rep
 	s.Status = val
 }
 
-func (*IoK8sAPICoreV1ReplicationController) readCoreV1NamespacedReplicationControllerRes()       {}
+func (*IoK8sAPICoreV1ReplicationController) readCoreV1NamespacedReplicationControllerRes() {}
+
 func (*IoK8sAPICoreV1ReplicationController) readCoreV1NamespacedReplicationControllerStatusRes() {}
 
 // ReplicationControllerCondition describes the state of a replication controller at a certain point.
@@ -17896,6 +17938,7 @@ func (s *IoK8sAPICoreV1ReplicationControllerList) SetMetadata(val OptIoK8sApimac
 }
 
 func (*IoK8sAPICoreV1ReplicationControllerList) listCoreV1NamespacedReplicationControllerRes() {}
+
 func (*IoK8sAPICoreV1ReplicationControllerList) listCoreV1ReplicationControllerForAllNamespacesRes() {
 }
 
@@ -18161,7 +18204,8 @@ func (s *IoK8sAPICoreV1ResourceQuota) SetStatus(val OptIoK8sAPICoreV1ResourceQuo
 	s.Status = val
 }
 
-func (*IoK8sAPICoreV1ResourceQuota) readCoreV1NamespacedResourceQuotaRes()       {}
+func (*IoK8sAPICoreV1ResourceQuota) readCoreV1NamespacedResourceQuotaRes() {}
+
 func (*IoK8sAPICoreV1ResourceQuota) readCoreV1NamespacedResourceQuotaStatusRes() {}
 
 // ResourceQuotaList is a list of ResourceQuota items.
@@ -18221,7 +18265,8 @@ func (s *IoK8sAPICoreV1ResourceQuotaList) SetMetadata(val OptIoK8sApimachineryPk
 	s.Metadata = val
 }
 
-func (*IoK8sAPICoreV1ResourceQuotaList) listCoreV1NamespacedResourceQuotaRes()       {}
+func (*IoK8sAPICoreV1ResourceQuotaList) listCoreV1NamespacedResourceQuotaRes() {}
+
 func (*IoK8sAPICoreV1ResourceQuotaList) listCoreV1ResourceQuotaForAllNamespacesRes() {}
 
 // ResourceQuotaSpec defines the desired hard limits to enforce for Quota.
@@ -19045,7 +19090,8 @@ func (s *IoK8sAPICoreV1SecretList) SetMetadata(val OptIoK8sApimachineryPkgApisMe
 	s.Metadata = val
 }
 
-func (*IoK8sAPICoreV1SecretList) listCoreV1NamespacedSecretRes()       {}
+func (*IoK8sAPICoreV1SecretList) listCoreV1NamespacedSecretRes() {}
+
 func (*IoK8sAPICoreV1SecretList) listCoreV1SecretForAllNamespacesRes() {}
 
 // Adapts a secret into a projected volume.
@@ -19423,7 +19469,8 @@ func (s *IoK8sAPICoreV1Service) SetStatus(val OptIoK8sAPICoreV1ServiceStatus) {
 	s.Status = val
 }
 
-func (*IoK8sAPICoreV1Service) readCoreV1NamespacedServiceRes()       {}
+func (*IoK8sAPICoreV1Service) readCoreV1NamespacedServiceRes() {}
+
 func (*IoK8sAPICoreV1Service) readCoreV1NamespacedServiceStatusRes() {}
 
 // ServiceAccount binds together: * a name, understood by users, and perhaps by peripheral systems,
@@ -19572,7 +19619,8 @@ func (s *IoK8sAPICoreV1ServiceAccountList) SetMetadata(val OptIoK8sApimachineryP
 	s.Metadata = val
 }
 
-func (*IoK8sAPICoreV1ServiceAccountList) listCoreV1NamespacedServiceAccountRes()       {}
+func (*IoK8sAPICoreV1ServiceAccountList) listCoreV1NamespacedServiceAccountRes() {}
+
 func (*IoK8sAPICoreV1ServiceAccountList) listCoreV1ServiceAccountForAllNamespacesRes() {}
 
 // ServiceAccountTokenProjection represents a projected service account token volume. This projection
@@ -19680,7 +19728,8 @@ func (s *IoK8sAPICoreV1ServiceList) SetMetadata(val OptIoK8sApimachineryPkgApisM
 	s.Metadata = val
 }
 
-func (*IoK8sAPICoreV1ServiceList) listCoreV1NamespacedServiceRes()       {}
+func (*IoK8sAPICoreV1ServiceList) listCoreV1NamespacedServiceRes() {}
+
 func (*IoK8sAPICoreV1ServiceList) listCoreV1ServiceForAllNamespacesRes() {}
 
 // ServicePort contains information on service's port.
@@ -21718,7 +21767,8 @@ func (s *IoK8sAPIDiscoveryV1EndpointSliceList) SetMetadata(val OptIoK8sApimachin
 }
 
 func (*IoK8sAPIDiscoveryV1EndpointSliceList) listDiscoveryV1EndpointSliceForAllNamespacesRes() {}
-func (*IoK8sAPIDiscoveryV1EndpointSliceList) listDiscoveryV1NamespacedEndpointSliceRes()       {}
+
+func (*IoK8sAPIDiscoveryV1EndpointSliceList) listDiscoveryV1NamespacedEndpointSliceRes() {}
 
 // ForZone provides information about which zones should consume this endpoint.
 // Ref: #/components/schemas/io.k8s.api.discovery.v1.ForZone
@@ -22118,6 +22168,7 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) SetMetadata(val OptIoK8sApim
 
 func (*IoK8sAPIDiscoveryV1beta1EndpointSliceList) listDiscoveryV1beta1EndpointSliceForAllNamespacesRes() {
 }
+
 func (*IoK8sAPIDiscoveryV1beta1EndpointSliceList) listDiscoveryV1beta1NamespacedEndpointSliceRes() {}
 
 // Topology contains arbitrary topology information associated with the endpoint. These key/value
@@ -22434,7 +22485,8 @@ func (s *IoK8sAPIEventsV1EventList) SetMetadata(val OptIoK8sApimachineryPkgApisM
 }
 
 func (*IoK8sAPIEventsV1EventList) listEventsV1EventForAllNamespacesRes() {}
-func (*IoK8sAPIEventsV1EventList) listEventsV1NamespacedEventRes()       {}
+
+func (*IoK8sAPIEventsV1EventList) listEventsV1NamespacedEventRes() {}
 
 // EventSeries contain information on series of events, i.e. thing that was/is happening continuously
 // for some time. How often to update the EventSeries is up to the event reporters. The default event
@@ -22741,7 +22793,8 @@ func (s *IoK8sAPIEventsV1beta1EventList) SetMetadata(val OptIoK8sApimachineryPkg
 }
 
 func (*IoK8sAPIEventsV1beta1EventList) listEventsV1beta1EventForAllNamespacesRes() {}
-func (*IoK8sAPIEventsV1beta1EventList) listEventsV1beta1NamespacedEventRes()       {}
+
+func (*IoK8sAPIEventsV1beta1EventList) listEventsV1beta1NamespacedEventRes() {}
 
 // EventSeries contain information on series of events, i.e. thing that was/is happening continuously
 // for some time.
@@ -22858,7 +22911,8 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchema) SetStatus(val OptIoK8sAPIFlowcont
 	s.Status = val
 }
 
-func (*IoK8sAPIFlowcontrolV1beta1FlowSchema) readFlowcontrolApiserverV1beta1FlowSchemaRes()       {}
+func (*IoK8sAPIFlowcontrolV1beta1FlowSchema) readFlowcontrolApiserverV1beta1FlowSchemaRes() {}
+
 func (*IoK8sAPIFlowcontrolV1beta1FlowSchema) readFlowcontrolApiserverV1beta1FlowSchemaStatusRes() {}
 
 // FlowSchemaCondition describes conditions for a FlowSchema.
@@ -23302,6 +23356,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) SetStatus(val Opt
 
 func (*IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) readFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes() {
 }
+
 func (*IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRes() {
 }
 
@@ -23811,7 +23866,8 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchema) SetStatus(val OptIoK8sAPIFlowcont
 	s.Status = val
 }
 
-func (*IoK8sAPIFlowcontrolV1beta2FlowSchema) readFlowcontrolApiserverV1beta2FlowSchemaRes()       {}
+func (*IoK8sAPIFlowcontrolV1beta2FlowSchema) readFlowcontrolApiserverV1beta2FlowSchemaRes() {}
+
 func (*IoK8sAPIFlowcontrolV1beta2FlowSchema) readFlowcontrolApiserverV1beta2FlowSchemaStatusRes() {}
 
 // FlowSchemaCondition describes conditions for a FlowSchema.
@@ -24255,6 +24311,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) SetStatus(val Opt
 
 func (*IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) readFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes() {
 }
+
 func (*IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRes() {
 }
 
@@ -24853,7 +24910,8 @@ func (s *IoK8sAPINetworkingV1Ingress) SetStatus(val OptIoK8sAPINetworkingV1Ingre
 	s.Status = val
 }
 
-func (*IoK8sAPINetworkingV1Ingress) readNetworkingV1NamespacedIngressRes()       {}
+func (*IoK8sAPINetworkingV1Ingress) readNetworkingV1NamespacedIngressRes() {}
+
 func (*IoK8sAPINetworkingV1Ingress) readNetworkingV1NamespacedIngressStatusRes() {}
 
 // IngressBackend describes all endpoints for a given service and port.
@@ -25161,7 +25219,8 @@ func (s *IoK8sAPINetworkingV1IngressList) SetMetadata(val OptIoK8sApimachineryPk
 }
 
 func (*IoK8sAPINetworkingV1IngressList) listNetworkingV1IngressForAllNamespacesRes() {}
-func (*IoK8sAPINetworkingV1IngressList) listNetworkingV1NamespacedIngressRes()       {}
+
+func (*IoK8sAPINetworkingV1IngressList) listNetworkingV1NamespacedIngressRes() {}
 
 // IngressRule represents the rules mapping the paths under a specified host to the related backend
 // services. Incoming requests are first evaluated for a host match, then routed to the backend
@@ -25537,7 +25596,8 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyList) SetMetadata(val OptIoK8sApimachi
 	s.Metadata = val
 }
 
-func (*IoK8sAPINetworkingV1NetworkPolicyList) listNetworkingV1NamespacedNetworkPolicyRes()       {}
+func (*IoK8sAPINetworkingV1NetworkPolicyList) listNetworkingV1NamespacedNetworkPolicyRes() {}
+
 func (*IoK8sAPINetworkingV1NetworkPolicyList) listNetworkingV1NetworkPolicyForAllNamespacesRes() {}
 
 // NetworkPolicyPeer describes a peer to allow traffic to/from. Only certain combinations of fields
@@ -26482,7 +26542,8 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudget) SetStatus(val OptIoK8sAPIPolicyV1P
 	s.Status = val
 }
 
-func (*IoK8sAPIPolicyV1PodDisruptionBudget) readPolicyV1NamespacedPodDisruptionBudgetRes()       {}
+func (*IoK8sAPIPolicyV1PodDisruptionBudget) readPolicyV1NamespacedPodDisruptionBudgetRes() {}
+
 func (*IoK8sAPIPolicyV1PodDisruptionBudget) readPolicyV1NamespacedPodDisruptionBudgetStatusRes() {}
 
 // PodDisruptionBudgetList is a collection of PodDisruptionBudgets.
@@ -26542,6 +26603,7 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) SetMetadata(val OptIoK8sApimac
 }
 
 func (*IoK8sAPIPolicyV1PodDisruptionBudgetList) listPolicyV1NamespacedPodDisruptionBudgetRes() {}
+
 func (*IoK8sAPIPolicyV1PodDisruptionBudgetList) listPolicyV1PodDisruptionBudgetForAllNamespacesRes() {
 }
 
@@ -26938,6 +27000,7 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudget) SetStatus(val OptIoK8sAPIPoli
 
 func (*IoK8sAPIPolicyV1beta1PodDisruptionBudget) readPolicyV1beta1NamespacedPodDisruptionBudgetRes() {
 }
+
 func (*IoK8sAPIPolicyV1beta1PodDisruptionBudget) readPolicyV1beta1NamespacedPodDisruptionBudgetStatusRes() {
 }
 
@@ -26999,6 +27062,7 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) SetMetadata(val OptIoK8sA
 
 func (*IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) listPolicyV1beta1NamespacedPodDisruptionBudgetRes() {
 }
+
 func (*IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) listPolicyV1beta1PodDisruptionBudgetForAllNamespacesRes() {
 }
 
@@ -28286,7 +28350,8 @@ func (s *IoK8sAPIRbacV1RoleBindingList) SetMetadata(val OptIoK8sApimachineryPkgA
 	s.Metadata = val
 }
 
-func (*IoK8sAPIRbacV1RoleBindingList) listRbacAuthorizationV1NamespacedRoleBindingRes()       {}
+func (*IoK8sAPIRbacV1RoleBindingList) listRbacAuthorizationV1NamespacedRoleBindingRes() {}
+
 func (*IoK8sAPIRbacV1RoleBindingList) listRbacAuthorizationV1RoleBindingForAllNamespacesRes() {}
 
 // RoleList is a collection of Roles.
@@ -28345,7 +28410,8 @@ func (s *IoK8sAPIRbacV1RoleList) SetMetadata(val OptIoK8sApimachineryPkgApisMeta
 	s.Metadata = val
 }
 
-func (*IoK8sAPIRbacV1RoleList) listRbacAuthorizationV1NamespacedRoleRes()       {}
+func (*IoK8sAPIRbacV1RoleList) listRbacAuthorizationV1NamespacedRoleRes() {}
+
 func (*IoK8sAPIRbacV1RoleList) listRbacAuthorizationV1RoleForAllNamespacesRes() {}
 
 // RoleRef contains information that points to the role being used.
@@ -29393,7 +29459,8 @@ func (s *IoK8sAPIStorageV1VolumeAttachment) SetStatus(val OptIoK8sAPIStorageV1Vo
 	s.Status = val
 }
 
-func (*IoK8sAPIStorageV1VolumeAttachment) readStorageV1VolumeAttachmentRes()       {}
+func (*IoK8sAPIStorageV1VolumeAttachment) readStorageV1VolumeAttachmentRes() {}
+
 func (*IoK8sAPIStorageV1VolumeAttachment) readStorageV1VolumeAttachmentStatusRes() {}
 
 // VolumeAttachmentList is a collection of VolumeAttachment objects.
@@ -29806,6 +29873,7 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) SetMetadata(val OptIoK8s
 
 func (*IoK8sAPIStorageV1alpha1CSIStorageCapacityList) listStorageV1alpha1CSIStorageCapacityForAllNamespacesRes() {
 }
+
 func (*IoK8sAPIStorageV1alpha1CSIStorageCapacityList) listStorageV1alpha1NamespacedCSIStorageCapacityRes() {
 }
 
@@ -29973,6 +30041,7 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) SetMetadata(val OptIoK8sA
 
 func (*IoK8sAPIStorageV1beta1CSIStorageCapacityList) listStorageV1beta1CSIStorageCapacityForAllNamespacesRes() {
 }
+
 func (*IoK8sAPIStorageV1beta1CSIStorageCapacityList) listStorageV1beta1NamespacedCSIStorageCapacityRes() {
 }
 
@@ -30161,6 +30230,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 
 func (*IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) readApiextensionsV1CustomResourceDefinitionRes() {
 }
+
 func (*IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) readApiextensionsV1CustomResourceDefinitionStatusRes() {
 }
 
@@ -31581,25 +31651,44 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) SetVersions(val []IoK8sApimachi
 }
 
 func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getAdmissionregistrationAPIGroupRes() {}
-func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getApiextensionsAPIGroupRes()         {}
-func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getApiregistrationAPIGroupRes()       {}
-func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getAppsAPIGroupRes()                  {}
-func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getAuthenticationAPIGroupRes()        {}
-func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getAuthorizationAPIGroupRes()         {}
-func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getAutoscalingAPIGroupRes()           {}
-func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getBatchAPIGroupRes()                 {}
-func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getCertificatesAPIGroupRes()          {}
-func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getCoordinationAPIGroupRes()          {}
-func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getDiscoveryAPIGroupRes()             {}
-func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getEventsAPIGroupRes()                {}
-func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getFlowcontrolApiserverAPIGroupRes()  {}
-func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getInternalApiserverAPIGroupRes()     {}
-func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getNetworkingAPIGroupRes()            {}
-func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getNodeAPIGroupRes()                  {}
-func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getPolicyAPIGroupRes()                {}
-func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getRbacAuthorizationAPIGroupRes()     {}
-func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getSchedulingAPIGroupRes()            {}
-func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getStorageAPIGroupRes()               {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getApiextensionsAPIGroupRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getApiregistrationAPIGroupRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getAppsAPIGroupRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getAuthenticationAPIGroupRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getAuthorizationAPIGroupRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getAutoscalingAPIGroupRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getBatchAPIGroupRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getCertificatesAPIGroupRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getCoordinationAPIGroupRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getDiscoveryAPIGroupRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getEventsAPIGroupRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getFlowcontrolApiserverAPIGroupRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getInternalApiserverAPIGroupRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getNetworkingAPIGroupRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getNodeAPIGroupRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getPolicyAPIGroupRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getRbacAuthorizationAPIGroupRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getSchedulingAPIGroupRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getStorageAPIGroupRes() {}
 
 // APIGroupList is a list of APIGroup, to allow clients to discover the API at /apis.
 // Ref: #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.APIGroupList
@@ -31842,39 +31931,70 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) SetResources(val []IoK8s
 }
 
 func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getAdmissionregistrationV1APIResourcesRes() {}
-func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getApiextensionsV1APIResourcesRes()         {}
-func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getApiregistrationV1APIResourcesRes()       {}
-func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getAppsV1APIResourcesRes()                  {}
-func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getAuthenticationV1APIResourcesRes()        {}
-func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getAuthorizationV1APIResourcesRes()         {}
-func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getAutoscalingV1APIResourcesRes()           {}
-func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getAutoscalingV2beta1APIResourcesRes()      {}
-func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getAutoscalingV2beta2APIResourcesRes()      {}
-func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getBatchV1APIResourcesRes()                 {}
-func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getBatchV1beta1APIResourcesRes()            {}
-func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getCertificatesV1APIResourcesRes()          {}
-func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getCoordinationV1APIResourcesRes()          {}
-func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getCoreV1APIResourcesRes()                  {}
-func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getDiscoveryV1APIResourcesRes()             {}
-func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getDiscoveryV1beta1APIResourcesRes()        {}
-func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getEventsV1APIResourcesRes()                {}
-func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getEventsV1beta1APIResourcesRes()           {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getApiextensionsV1APIResourcesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getApiregistrationV1APIResourcesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getAppsV1APIResourcesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getAuthenticationV1APIResourcesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getAuthorizationV1APIResourcesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getAutoscalingV1APIResourcesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getAutoscalingV2beta1APIResourcesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getAutoscalingV2beta2APIResourcesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getBatchV1APIResourcesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getBatchV1beta1APIResourcesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getCertificatesV1APIResourcesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getCoordinationV1APIResourcesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getCoreV1APIResourcesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getDiscoveryV1APIResourcesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getDiscoveryV1beta1APIResourcesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getEventsV1APIResourcesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getEventsV1beta1APIResourcesRes() {}
+
 func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getFlowcontrolApiserverV1beta1APIResourcesRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getFlowcontrolApiserverV1beta2APIResourcesRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getInternalApiserverV1alpha1APIResourcesRes() {}
-func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getNetworkingV1APIResourcesRes()              {}
-func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getNodeV1APIResourcesRes()                    {}
-func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getNodeV1alpha1APIResourcesRes()              {}
-func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getNodeV1beta1APIResourcesRes()               {}
-func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getPolicyV1APIResourcesRes()                  {}
-func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getPolicyV1beta1APIResourcesRes()             {}
-func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getRbacAuthorizationV1APIResourcesRes()       {}
-func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getSchedulingV1APIResourcesRes()              {}
-func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getStorageV1APIResourcesRes()                 {}
-func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getStorageV1alpha1APIResourcesRes()           {}
-func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getStorageV1beta1APIResourcesRes()            {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getNetworkingV1APIResourcesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getNodeV1APIResourcesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getNodeV1alpha1APIResourcesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getNodeV1beta1APIResourcesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getPolicyV1APIResourcesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getPolicyV1beta1APIResourcesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getRbacAuthorizationV1APIResourcesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getSchedulingV1APIResourcesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getStorageV1APIResourcesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getStorageV1alpha1APIResourcesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getStorageV1beta1APIResourcesRes() {}
 
 // APIVersions lists the versions that are available, to allow clients to discover the API at /api,
 // which is the root path of the legacy v1 API.
@@ -32752,206 +32872,363 @@ func (s *IoK8sApimachineryPkgApisMetaV1WatchEvent) SetType(val string) {
 
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAdmissionregistrationV1MutatingWebhookConfigurationListRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAdmissionregistrationV1MutatingWebhookConfigurationRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAdmissionregistrationV1ValidatingWebhookConfigurationListRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAdmissionregistrationV1ValidatingWebhookConfigurationRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchApiextensionsV1CustomResourceDefinitionListRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchApiextensionsV1CustomResourceDefinitionRes() {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchApiregistrationV1APIServiceListRes()         {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchApiregistrationV1APIServiceRes()             {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchApiregistrationV1APIServiceListRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchApiregistrationV1APIServiceRes() {}
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAppsV1ControllerRevisionListForAllNamespacesRes() {
 }
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAppsV1DaemonSetListForAllNamespacesRes()    {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAppsV1DeploymentListForAllNamespacesRes()   {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAppsV1DaemonSetListForAllNamespacesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAppsV1DeploymentListForAllNamespacesRes() {}
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAppsV1NamespacedControllerRevisionListRes() {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAppsV1NamespacedControllerRevisionRes()     {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAppsV1NamespacedDaemonSetListRes()          {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAppsV1NamespacedDaemonSetRes()              {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAppsV1NamespacedDeploymentListRes()         {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAppsV1NamespacedDeploymentRes()             {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAppsV1NamespacedReplicaSetListRes()         {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAppsV1NamespacedReplicaSetRes()             {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAppsV1NamespacedStatefulSetListRes()        {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAppsV1NamespacedStatefulSetRes()            {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAppsV1ReplicaSetListForAllNamespacesRes()   {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAppsV1StatefulSetListForAllNamespacesRes()  {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAppsV1NamespacedControllerRevisionRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAppsV1NamespacedDaemonSetListRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAppsV1NamespacedDaemonSetRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAppsV1NamespacedDeploymentListRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAppsV1NamespacedDeploymentRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAppsV1NamespacedReplicaSetListRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAppsV1NamespacedReplicaSetRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAppsV1NamespacedStatefulSetListRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAppsV1NamespacedStatefulSetRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAppsV1ReplicaSetListForAllNamespacesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAppsV1StatefulSetListForAllNamespacesRes() {}
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAutoscalingV1NamespacedHorizontalPodAutoscalerListRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAutoscalingV1NamespacedHorizontalPodAutoscalerRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes() {
 }
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchBatchV1CronJobListForAllNamespacesRes()      {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchBatchV1JobListForAllNamespacesRes()          {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchBatchV1NamespacedCronJobListRes()            {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchBatchV1NamespacedCronJobRes()                {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchBatchV1NamespacedJobListRes()                {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchBatchV1NamespacedJobRes()                    {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchBatchV1CronJobListForAllNamespacesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchBatchV1JobListForAllNamespacesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchBatchV1NamespacedCronJobListRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchBatchV1NamespacedCronJobRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchBatchV1NamespacedJobListRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchBatchV1NamespacedJobRes() {}
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchBatchV1beta1CronJobListForAllNamespacesRes() {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchBatchV1beta1NamespacedCronJobListRes()       {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchBatchV1beta1NamespacedCronJobRes()           {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchBatchV1beta1NamespacedCronJobListRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchBatchV1beta1NamespacedCronJobRes() {}
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCertificatesV1CertificateSigningRequestListRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCertificatesV1CertificateSigningRequestRes() {}
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoordinationV1LeaseListForAllNamespacesRes() {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoordinationV1NamespacedLeaseListRes()       {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoordinationV1NamespacedLeaseRes()           {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1ConfigMapListForAllNamespacesRes()     {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1EndpointsListForAllNamespacesRes()     {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1EventListForAllNamespacesRes()         {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1LimitRangeListForAllNamespacesRes()    {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespaceListRes()                     {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespaceRes()                         {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedConfigMapListRes()           {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedConfigMapRes()               {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedEndpointsListRes()           {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedEndpointsRes()               {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedEventListRes()               {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedEventRes()                   {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedLimitRangeListRes()          {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedLimitRangeRes()              {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoordinationV1NamespacedLeaseListRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoordinationV1NamespacedLeaseRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1ConfigMapListForAllNamespacesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1EndpointsListForAllNamespacesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1EventListForAllNamespacesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1LimitRangeListForAllNamespacesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespaceListRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespaceRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedConfigMapListRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedConfigMapRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedEndpointsListRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedEndpointsRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedEventListRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedEventRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedLimitRangeListRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedLimitRangeRes() {}
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedPersistentVolumeClaimListRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedPersistentVolumeClaimRes() {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedPodListRes()               {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedPodRes()                   {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedPodTemplateListRes()       {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedPodTemplateRes()           {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedPodListRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedPodRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedPodTemplateListRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedPodTemplateRes() {}
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedReplicationControllerListRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedReplicationControllerRes() {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedResourceQuotaListRes()     {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedResourceQuotaRes()         {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedSecretListRes()            {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedSecretRes()                {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedServiceAccountListRes()    {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedServiceAccountRes()        {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedServiceListRes()           {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedServiceRes()               {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NodeListRes()                        {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NodeRes()                            {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedResourceQuotaListRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedResourceQuotaRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedSecretListRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedSecretRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedServiceAccountListRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedServiceAccountRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedServiceListRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NamespacedServiceRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NodeListRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1NodeRes() {}
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1PersistentVolumeClaimListForAllNamespacesRes() {
 }
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1PersistentVolumeListRes()            {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1PersistentVolumeRes()                {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1PodListForAllNamespacesRes()         {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1PersistentVolumeListRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1PersistentVolumeRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1PodListForAllNamespacesRes() {}
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1PodTemplateListForAllNamespacesRes() {}
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1ReplicationControllerListForAllNamespacesRes() {
 }
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1ResourceQuotaListForAllNamespacesRes()  {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1SecretListForAllNamespacesRes()         {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1ResourceQuotaListForAllNamespacesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1SecretListForAllNamespacesRes() {}
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1ServiceAccountListForAllNamespacesRes() {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1ServiceListForAllNamespacesRes()        {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchCoreV1ServiceListForAllNamespacesRes() {}
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchDiscoveryV1EndpointSliceListForAllNamespacesRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchDiscoveryV1NamespacedEndpointSliceListRes() {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchDiscoveryV1NamespacedEndpointSliceRes()     {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchDiscoveryV1NamespacedEndpointSliceRes() {}
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchDiscoveryV1beta1EndpointSliceListForAllNamespacesRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchDiscoveryV1beta1NamespacedEndpointSliceListRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchDiscoveryV1beta1NamespacedEndpointSliceRes() {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchEventsV1EventListForAllNamespacesRes()       {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchEventsV1NamespacedEventListRes()             {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchEventsV1NamespacedEventRes()                 {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchEventsV1beta1EventListForAllNamespacesRes()  {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchEventsV1beta1NamespacedEventListRes()        {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchEventsV1beta1NamespacedEventRes()            {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchEventsV1EventListForAllNamespacesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchEventsV1NamespacedEventListRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchEventsV1NamespacedEventRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchEventsV1beta1EventListForAllNamespacesRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchEventsV1beta1NamespacedEventListRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchEventsV1beta1NamespacedEventRes() {}
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchFlowcontrolApiserverV1beta1FlowSchemaListRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchFlowcontrolApiserverV1beta1FlowSchemaRes() {}
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchFlowcontrolApiserverV1beta2FlowSchemaListRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchFlowcontrolApiserverV1beta2FlowSchemaRes() {}
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchInternalApiserverV1alpha1StorageVersionListRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchInternalApiserverV1alpha1StorageVersionRes() {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchNetworkingV1IngressClassListRes()            {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchNetworkingV1IngressClassRes()                {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchNetworkingV1IngressClassListRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchNetworkingV1IngressClassRes() {}
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchNetworkingV1IngressListForAllNamespacesRes() {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchNetworkingV1NamespacedIngressListRes()       {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchNetworkingV1NamespacedIngressRes()           {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchNetworkingV1NamespacedIngressListRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchNetworkingV1NamespacedIngressRes() {}
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchNetworkingV1NamespacedNetworkPolicyListRes() {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchNetworkingV1NamespacedNetworkPolicyRes()     {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchNetworkingV1NamespacedNetworkPolicyRes() {}
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchNetworkingV1NetworkPolicyListForAllNamespacesRes() {
 }
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchNodeV1RuntimeClassListRes()       {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchNodeV1RuntimeClassRes()           {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchNodeV1RuntimeClassListRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchNodeV1RuntimeClassRes() {}
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchNodeV1alpha1RuntimeClassListRes() {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchNodeV1alpha1RuntimeClassRes()     {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchNodeV1beta1RuntimeClassListRes()  {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchNodeV1beta1RuntimeClassRes()      {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchNodeV1alpha1RuntimeClassRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchNodeV1beta1RuntimeClassListRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchNodeV1beta1RuntimeClassRes() {}
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchPolicyV1NamespacedPodDisruptionBudgetListRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchPolicyV1NamespacedPodDisruptionBudgetRes() {}
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchPolicyV1PodDisruptionBudgetListForAllNamespacesRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchPolicyV1beta1NamespacedPodDisruptionBudgetListRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchPolicyV1beta1NamespacedPodDisruptionBudgetRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchPolicyV1beta1PodSecurityPolicyListRes() {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchPolicyV1beta1PodSecurityPolicyRes()     {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchPolicyV1beta1PodSecurityPolicyRes() {}
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchRbacAuthorizationV1ClusterRoleBindingListRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchRbacAuthorizationV1ClusterRoleBindingRes() {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchRbacAuthorizationV1ClusterRoleListRes()    {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchRbacAuthorizationV1ClusterRoleRes()        {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchRbacAuthorizationV1ClusterRoleListRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchRbacAuthorizationV1ClusterRoleRes() {}
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchRbacAuthorizationV1NamespacedRoleBindingListRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchRbacAuthorizationV1NamespacedRoleBindingRes() {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchRbacAuthorizationV1NamespacedRoleListRes()    {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchRbacAuthorizationV1NamespacedRoleRes()        {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchRbacAuthorizationV1NamespacedRoleListRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchRbacAuthorizationV1NamespacedRoleRes() {}
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchRbacAuthorizationV1RoleBindingListForAllNamespacesRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchRbacAuthorizationV1RoleListForAllNamespacesRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchSchedulingV1PriorityClassListRes() {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchSchedulingV1PriorityClassRes()     {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchStorageV1CSIDriverListRes()        {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchStorageV1CSIDriverRes()            {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchStorageV1CSINodeListRes()          {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchStorageV1CSINodeRes()              {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchStorageV1StorageClassListRes()     {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchStorageV1StorageClassRes()         {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchSchedulingV1PriorityClassRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchStorageV1CSIDriverListRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchStorageV1CSIDriverRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchStorageV1CSINodeListRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchStorageV1CSINodeRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchStorageV1StorageClassListRes() {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchStorageV1StorageClassRes() {}
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchStorageV1VolumeAttachmentListRes() {}
-func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchStorageV1VolumeAttachmentRes()     {}
+
+func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchStorageV1VolumeAttachmentRes() {}
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchStorageV1alpha1NamespacedCSIStorageCapacityListRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchStorageV1alpha1NamespacedCSIStorageCapacityRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchStorageV1beta1NamespacedCSIStorageCapacityListRes() {
 }
+
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchStorageV1beta1NamespacedCSIStorageCapacityRes() {
 }
 
@@ -33162,6 +33439,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) SetStatus(val Op
 }
 
 func (*IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) readApiregistrationV1APIServiceRes() {}
+
 func (*IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) readApiregistrationV1APIServiceStatusRes() {
 }
 
