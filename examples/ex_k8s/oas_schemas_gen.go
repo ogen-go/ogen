@@ -22,17 +22,27 @@ func (s *BearerToken) SetAPIKey(val string) {
 }
 
 type ConnectCoreV1DeleteNamespacedPodProxyOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1DeleteNamespacedPodProxyOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1DeleteNamespacedPodProxyOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1DeleteNamespacedPodProxyOK) connectCoreV1DeleteNamespacedPodProxyRes() {}
@@ -44,17 +54,27 @@ func (*ConnectCoreV1DeleteNamespacedPodProxyUnauthorized) connectCoreV1DeleteNam
 }
 
 type ConnectCoreV1DeleteNamespacedPodProxyWithPathOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1DeleteNamespacedPodProxyWithPathOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1DeleteNamespacedPodProxyWithPathOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1DeleteNamespacedPodProxyWithPathOK) connectCoreV1DeleteNamespacedPodProxyWithPathRes() {
@@ -67,17 +87,27 @@ func (*ConnectCoreV1DeleteNamespacedPodProxyWithPathUnauthorized) connectCoreV1D
 }
 
 type ConnectCoreV1DeleteNamespacedServiceProxyOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1DeleteNamespacedServiceProxyOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1DeleteNamespacedServiceProxyOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1DeleteNamespacedServiceProxyOK) connectCoreV1DeleteNamespacedServiceProxyRes() {}
@@ -89,17 +119,27 @@ func (*ConnectCoreV1DeleteNamespacedServiceProxyUnauthorized) connectCoreV1Delet
 }
 
 type ConnectCoreV1DeleteNamespacedServiceProxyWithPathOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1DeleteNamespacedServiceProxyWithPathOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1DeleteNamespacedServiceProxyWithPathOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1DeleteNamespacedServiceProxyWithPathOK) connectCoreV1DeleteNamespacedServiceProxyWithPathRes() {
@@ -112,17 +152,27 @@ func (*ConnectCoreV1DeleteNamespacedServiceProxyWithPathUnauthorized) connectCor
 }
 
 type ConnectCoreV1DeleteNodeProxyOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1DeleteNodeProxyOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1DeleteNodeProxyOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1DeleteNodeProxyOK) connectCoreV1DeleteNodeProxyRes() {}
@@ -133,17 +183,27 @@ type ConnectCoreV1DeleteNodeProxyUnauthorized struct{}
 func (*ConnectCoreV1DeleteNodeProxyUnauthorized) connectCoreV1DeleteNodeProxyRes() {}
 
 type ConnectCoreV1DeleteNodeProxyWithPathOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1DeleteNodeProxyWithPathOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1DeleteNodeProxyWithPathOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1DeleteNodeProxyWithPathOK) connectCoreV1DeleteNodeProxyWithPathRes() {}
@@ -154,17 +214,27 @@ type ConnectCoreV1DeleteNodeProxyWithPathUnauthorized struct{}
 func (*ConnectCoreV1DeleteNodeProxyWithPathUnauthorized) connectCoreV1DeleteNodeProxyWithPathRes() {}
 
 type ConnectCoreV1GetNamespacedPodAttachOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1GetNamespacedPodAttachOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1GetNamespacedPodAttachOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1GetNamespacedPodAttachOK) connectCoreV1GetNamespacedPodAttachRes() {}
@@ -175,17 +245,27 @@ type ConnectCoreV1GetNamespacedPodAttachUnauthorized struct{}
 func (*ConnectCoreV1GetNamespacedPodAttachUnauthorized) connectCoreV1GetNamespacedPodAttachRes() {}
 
 type ConnectCoreV1GetNamespacedPodExecOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1GetNamespacedPodExecOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1GetNamespacedPodExecOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1GetNamespacedPodExecOK) connectCoreV1GetNamespacedPodExecRes() {}
@@ -196,17 +276,27 @@ type ConnectCoreV1GetNamespacedPodExecUnauthorized struct{}
 func (*ConnectCoreV1GetNamespacedPodExecUnauthorized) connectCoreV1GetNamespacedPodExecRes() {}
 
 type ConnectCoreV1GetNamespacedPodPortforwardOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1GetNamespacedPodPortforwardOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1GetNamespacedPodPortforwardOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1GetNamespacedPodPortforwardOK) connectCoreV1GetNamespacedPodPortforwardRes() {}
@@ -218,17 +308,27 @@ func (*ConnectCoreV1GetNamespacedPodPortforwardUnauthorized) connectCoreV1GetNam
 }
 
 type ConnectCoreV1GetNamespacedPodProxyOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1GetNamespacedPodProxyOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1GetNamespacedPodProxyOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1GetNamespacedPodProxyOK) connectCoreV1GetNamespacedPodProxyRes() {}
@@ -239,17 +339,27 @@ type ConnectCoreV1GetNamespacedPodProxyUnauthorized struct{}
 func (*ConnectCoreV1GetNamespacedPodProxyUnauthorized) connectCoreV1GetNamespacedPodProxyRes() {}
 
 type ConnectCoreV1GetNamespacedPodProxyWithPathOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1GetNamespacedPodProxyWithPathOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1GetNamespacedPodProxyWithPathOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1GetNamespacedPodProxyWithPathOK) connectCoreV1GetNamespacedPodProxyWithPathRes() {
@@ -262,17 +372,27 @@ func (*ConnectCoreV1GetNamespacedPodProxyWithPathUnauthorized) connectCoreV1GetN
 }
 
 type ConnectCoreV1GetNamespacedServiceProxyOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1GetNamespacedServiceProxyOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1GetNamespacedServiceProxyOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1GetNamespacedServiceProxyOK) connectCoreV1GetNamespacedServiceProxyRes() {}
@@ -284,17 +404,27 @@ func (*ConnectCoreV1GetNamespacedServiceProxyUnauthorized) connectCoreV1GetNames
 }
 
 type ConnectCoreV1GetNamespacedServiceProxyWithPathOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1GetNamespacedServiceProxyWithPathOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1GetNamespacedServiceProxyWithPathOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1GetNamespacedServiceProxyWithPathOK) connectCoreV1GetNamespacedServiceProxyWithPathRes() {
@@ -307,17 +437,27 @@ func (*ConnectCoreV1GetNamespacedServiceProxyWithPathUnauthorized) connectCoreV1
 }
 
 type ConnectCoreV1GetNodeProxyOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1GetNodeProxyOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1GetNodeProxyOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1GetNodeProxyOK) connectCoreV1GetNodeProxyRes() {}
@@ -328,17 +468,27 @@ type ConnectCoreV1GetNodeProxyUnauthorized struct{}
 func (*ConnectCoreV1GetNodeProxyUnauthorized) connectCoreV1GetNodeProxyRes() {}
 
 type ConnectCoreV1GetNodeProxyWithPathOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1GetNodeProxyWithPathOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1GetNodeProxyWithPathOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1GetNodeProxyWithPathOK) connectCoreV1GetNodeProxyWithPathRes() {}
@@ -349,17 +499,27 @@ type ConnectCoreV1GetNodeProxyWithPathUnauthorized struct{}
 func (*ConnectCoreV1GetNodeProxyWithPathUnauthorized) connectCoreV1GetNodeProxyWithPathRes() {}
 
 type ConnectCoreV1HeadNamespacedPodProxyOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1HeadNamespacedPodProxyOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1HeadNamespacedPodProxyOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1HeadNamespacedPodProxyOK) connectCoreV1HeadNamespacedPodProxyRes() {}
@@ -370,17 +530,27 @@ type ConnectCoreV1HeadNamespacedPodProxyUnauthorized struct{}
 func (*ConnectCoreV1HeadNamespacedPodProxyUnauthorized) connectCoreV1HeadNamespacedPodProxyRes() {}
 
 type ConnectCoreV1HeadNamespacedPodProxyWithPathOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1HeadNamespacedPodProxyWithPathOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1HeadNamespacedPodProxyWithPathOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1HeadNamespacedPodProxyWithPathOK) connectCoreV1HeadNamespacedPodProxyWithPathRes() {
@@ -393,17 +563,27 @@ func (*ConnectCoreV1HeadNamespacedPodProxyWithPathUnauthorized) connectCoreV1Hea
 }
 
 type ConnectCoreV1HeadNamespacedServiceProxyOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1HeadNamespacedServiceProxyOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1HeadNamespacedServiceProxyOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1HeadNamespacedServiceProxyOK) connectCoreV1HeadNamespacedServiceProxyRes() {}
@@ -415,17 +595,27 @@ func (*ConnectCoreV1HeadNamespacedServiceProxyUnauthorized) connectCoreV1HeadNam
 }
 
 type ConnectCoreV1HeadNamespacedServiceProxyWithPathOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1HeadNamespacedServiceProxyWithPathOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1HeadNamespacedServiceProxyWithPathOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1HeadNamespacedServiceProxyWithPathOK) connectCoreV1HeadNamespacedServiceProxyWithPathRes() {
@@ -438,17 +628,27 @@ func (*ConnectCoreV1HeadNamespacedServiceProxyWithPathUnauthorized) connectCoreV
 }
 
 type ConnectCoreV1HeadNodeProxyOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1HeadNodeProxyOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1HeadNodeProxyOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1HeadNodeProxyOK) connectCoreV1HeadNodeProxyRes() {}
@@ -459,17 +659,27 @@ type ConnectCoreV1HeadNodeProxyUnauthorized struct{}
 func (*ConnectCoreV1HeadNodeProxyUnauthorized) connectCoreV1HeadNodeProxyRes() {}
 
 type ConnectCoreV1HeadNodeProxyWithPathOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1HeadNodeProxyWithPathOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1HeadNodeProxyWithPathOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1HeadNodeProxyWithPathOK) connectCoreV1HeadNodeProxyWithPathRes() {}
@@ -480,17 +690,27 @@ type ConnectCoreV1HeadNodeProxyWithPathUnauthorized struct{}
 func (*ConnectCoreV1HeadNodeProxyWithPathUnauthorized) connectCoreV1HeadNodeProxyWithPathRes() {}
 
 type ConnectCoreV1OptionsNamespacedPodProxyOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1OptionsNamespacedPodProxyOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1OptionsNamespacedPodProxyOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1OptionsNamespacedPodProxyOK) connectCoreV1OptionsNamespacedPodProxyRes() {}
@@ -502,17 +722,27 @@ func (*ConnectCoreV1OptionsNamespacedPodProxyUnauthorized) connectCoreV1OptionsN
 }
 
 type ConnectCoreV1OptionsNamespacedPodProxyWithPathOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1OptionsNamespacedPodProxyWithPathOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1OptionsNamespacedPodProxyWithPathOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1OptionsNamespacedPodProxyWithPathOK) connectCoreV1OptionsNamespacedPodProxyWithPathRes() {
@@ -525,17 +755,27 @@ func (*ConnectCoreV1OptionsNamespacedPodProxyWithPathUnauthorized) connectCoreV1
 }
 
 type ConnectCoreV1OptionsNamespacedServiceProxyOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1OptionsNamespacedServiceProxyOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1OptionsNamespacedServiceProxyOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1OptionsNamespacedServiceProxyOK) connectCoreV1OptionsNamespacedServiceProxyRes() {
@@ -548,17 +788,27 @@ func (*ConnectCoreV1OptionsNamespacedServiceProxyUnauthorized) connectCoreV1Opti
 }
 
 type ConnectCoreV1OptionsNamespacedServiceProxyWithPathOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1OptionsNamespacedServiceProxyWithPathOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1OptionsNamespacedServiceProxyWithPathOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1OptionsNamespacedServiceProxyWithPathOK) connectCoreV1OptionsNamespacedServiceProxyWithPathRes() {
@@ -571,17 +821,27 @@ func (*ConnectCoreV1OptionsNamespacedServiceProxyWithPathUnauthorized) connectCo
 }
 
 type ConnectCoreV1OptionsNodeProxyOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1OptionsNodeProxyOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1OptionsNodeProxyOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1OptionsNodeProxyOK) connectCoreV1OptionsNodeProxyRes() {}
@@ -592,17 +852,27 @@ type ConnectCoreV1OptionsNodeProxyUnauthorized struct{}
 func (*ConnectCoreV1OptionsNodeProxyUnauthorized) connectCoreV1OptionsNodeProxyRes() {}
 
 type ConnectCoreV1OptionsNodeProxyWithPathOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1OptionsNodeProxyWithPathOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1OptionsNodeProxyWithPathOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1OptionsNodeProxyWithPathOK) connectCoreV1OptionsNodeProxyWithPathRes() {}
@@ -614,17 +884,27 @@ func (*ConnectCoreV1OptionsNodeProxyWithPathUnauthorized) connectCoreV1OptionsNo
 }
 
 type ConnectCoreV1PatchNamespacedPodProxyOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1PatchNamespacedPodProxyOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1PatchNamespacedPodProxyOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1PatchNamespacedPodProxyOK) connectCoreV1PatchNamespacedPodProxyRes() {}
@@ -635,17 +915,27 @@ type ConnectCoreV1PatchNamespacedPodProxyUnauthorized struct{}
 func (*ConnectCoreV1PatchNamespacedPodProxyUnauthorized) connectCoreV1PatchNamespacedPodProxyRes() {}
 
 type ConnectCoreV1PatchNamespacedPodProxyWithPathOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1PatchNamespacedPodProxyWithPathOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1PatchNamespacedPodProxyWithPathOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1PatchNamespacedPodProxyWithPathOK) connectCoreV1PatchNamespacedPodProxyWithPathRes() {
@@ -658,17 +948,27 @@ func (*ConnectCoreV1PatchNamespacedPodProxyWithPathUnauthorized) connectCoreV1Pa
 }
 
 type ConnectCoreV1PatchNamespacedServiceProxyOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1PatchNamespacedServiceProxyOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1PatchNamespacedServiceProxyOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1PatchNamespacedServiceProxyOK) connectCoreV1PatchNamespacedServiceProxyRes() {}
@@ -680,17 +980,27 @@ func (*ConnectCoreV1PatchNamespacedServiceProxyUnauthorized) connectCoreV1PatchN
 }
 
 type ConnectCoreV1PatchNamespacedServiceProxyWithPathOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1PatchNamespacedServiceProxyWithPathOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1PatchNamespacedServiceProxyWithPathOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1PatchNamespacedServiceProxyWithPathOK) connectCoreV1PatchNamespacedServiceProxyWithPathRes() {
@@ -703,17 +1013,27 @@ func (*ConnectCoreV1PatchNamespacedServiceProxyWithPathUnauthorized) connectCore
 }
 
 type ConnectCoreV1PatchNodeProxyOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1PatchNodeProxyOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1PatchNodeProxyOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1PatchNodeProxyOK) connectCoreV1PatchNodeProxyRes() {}
@@ -724,17 +1044,27 @@ type ConnectCoreV1PatchNodeProxyUnauthorized struct{}
 func (*ConnectCoreV1PatchNodeProxyUnauthorized) connectCoreV1PatchNodeProxyRes() {}
 
 type ConnectCoreV1PatchNodeProxyWithPathOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1PatchNodeProxyWithPathOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1PatchNodeProxyWithPathOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1PatchNodeProxyWithPathOK) connectCoreV1PatchNodeProxyWithPathRes() {}
@@ -745,17 +1075,27 @@ type ConnectCoreV1PatchNodeProxyWithPathUnauthorized struct{}
 func (*ConnectCoreV1PatchNodeProxyWithPathUnauthorized) connectCoreV1PatchNodeProxyWithPathRes() {}
 
 type ConnectCoreV1PostNamespacedPodAttachOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1PostNamespacedPodAttachOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1PostNamespacedPodAttachOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1PostNamespacedPodAttachOK) connectCoreV1PostNamespacedPodAttachRes() {}
@@ -766,17 +1106,27 @@ type ConnectCoreV1PostNamespacedPodAttachUnauthorized struct{}
 func (*ConnectCoreV1PostNamespacedPodAttachUnauthorized) connectCoreV1PostNamespacedPodAttachRes() {}
 
 type ConnectCoreV1PostNamespacedPodExecOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1PostNamespacedPodExecOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1PostNamespacedPodExecOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1PostNamespacedPodExecOK) connectCoreV1PostNamespacedPodExecRes() {}
@@ -787,17 +1137,27 @@ type ConnectCoreV1PostNamespacedPodExecUnauthorized struct{}
 func (*ConnectCoreV1PostNamespacedPodExecUnauthorized) connectCoreV1PostNamespacedPodExecRes() {}
 
 type ConnectCoreV1PostNamespacedPodPortforwardOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1PostNamespacedPodPortforwardOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1PostNamespacedPodPortforwardOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1PostNamespacedPodPortforwardOK) connectCoreV1PostNamespacedPodPortforwardRes() {}
@@ -809,17 +1169,27 @@ func (*ConnectCoreV1PostNamespacedPodPortforwardUnauthorized) connectCoreV1PostN
 }
 
 type ConnectCoreV1PostNamespacedPodProxyOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1PostNamespacedPodProxyOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1PostNamespacedPodProxyOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1PostNamespacedPodProxyOK) connectCoreV1PostNamespacedPodProxyRes() {}
@@ -830,17 +1200,27 @@ type ConnectCoreV1PostNamespacedPodProxyUnauthorized struct{}
 func (*ConnectCoreV1PostNamespacedPodProxyUnauthorized) connectCoreV1PostNamespacedPodProxyRes() {}
 
 type ConnectCoreV1PostNamespacedPodProxyWithPathOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1PostNamespacedPodProxyWithPathOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1PostNamespacedPodProxyWithPathOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1PostNamespacedPodProxyWithPathOK) connectCoreV1PostNamespacedPodProxyWithPathRes() {
@@ -853,17 +1233,27 @@ func (*ConnectCoreV1PostNamespacedPodProxyWithPathUnauthorized) connectCoreV1Pos
 }
 
 type ConnectCoreV1PostNamespacedServiceProxyOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1PostNamespacedServiceProxyOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1PostNamespacedServiceProxyOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1PostNamespacedServiceProxyOK) connectCoreV1PostNamespacedServiceProxyRes() {}
@@ -875,17 +1265,27 @@ func (*ConnectCoreV1PostNamespacedServiceProxyUnauthorized) connectCoreV1PostNam
 }
 
 type ConnectCoreV1PostNamespacedServiceProxyWithPathOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1PostNamespacedServiceProxyWithPathOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1PostNamespacedServiceProxyWithPathOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1PostNamespacedServiceProxyWithPathOK) connectCoreV1PostNamespacedServiceProxyWithPathRes() {
@@ -898,17 +1298,27 @@ func (*ConnectCoreV1PostNamespacedServiceProxyWithPathUnauthorized) connectCoreV
 }
 
 type ConnectCoreV1PostNodeProxyOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1PostNodeProxyOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1PostNodeProxyOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1PostNodeProxyOK) connectCoreV1PostNodeProxyRes() {}
@@ -919,17 +1329,27 @@ type ConnectCoreV1PostNodeProxyUnauthorized struct{}
 func (*ConnectCoreV1PostNodeProxyUnauthorized) connectCoreV1PostNodeProxyRes() {}
 
 type ConnectCoreV1PostNodeProxyWithPathOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1PostNodeProxyWithPathOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1PostNodeProxyWithPathOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1PostNodeProxyWithPathOK) connectCoreV1PostNodeProxyWithPathRes() {}
@@ -940,17 +1360,27 @@ type ConnectCoreV1PostNodeProxyWithPathUnauthorized struct{}
 func (*ConnectCoreV1PostNodeProxyWithPathUnauthorized) connectCoreV1PostNodeProxyWithPathRes() {}
 
 type ConnectCoreV1PutNamespacedPodProxyOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1PutNamespacedPodProxyOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1PutNamespacedPodProxyOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1PutNamespacedPodProxyOK) connectCoreV1PutNamespacedPodProxyRes() {}
@@ -961,17 +1391,27 @@ type ConnectCoreV1PutNamespacedPodProxyUnauthorized struct{}
 func (*ConnectCoreV1PutNamespacedPodProxyUnauthorized) connectCoreV1PutNamespacedPodProxyRes() {}
 
 type ConnectCoreV1PutNamespacedPodProxyWithPathOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1PutNamespacedPodProxyWithPathOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1PutNamespacedPodProxyWithPathOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1PutNamespacedPodProxyWithPathOK) connectCoreV1PutNamespacedPodProxyWithPathRes() {
@@ -984,17 +1424,27 @@ func (*ConnectCoreV1PutNamespacedPodProxyWithPathUnauthorized) connectCoreV1PutN
 }
 
 type ConnectCoreV1PutNamespacedServiceProxyOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1PutNamespacedServiceProxyOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1PutNamespacedServiceProxyOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1PutNamespacedServiceProxyOK) connectCoreV1PutNamespacedServiceProxyRes() {}
@@ -1006,17 +1456,27 @@ func (*ConnectCoreV1PutNamespacedServiceProxyUnauthorized) connectCoreV1PutNames
 }
 
 type ConnectCoreV1PutNamespacedServiceProxyWithPathOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1PutNamespacedServiceProxyWithPathOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1PutNamespacedServiceProxyWithPathOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1PutNamespacedServiceProxyWithPathOK) connectCoreV1PutNamespacedServiceProxyWithPathRes() {
@@ -1029,17 +1489,27 @@ func (*ConnectCoreV1PutNamespacedServiceProxyWithPathUnauthorized) connectCoreV1
 }
 
 type ConnectCoreV1PutNodeProxyOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1PutNodeProxyOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1PutNodeProxyOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1PutNodeProxyOK) connectCoreV1PutNodeProxyRes() {}
@@ -1050,17 +1520,27 @@ type ConnectCoreV1PutNodeProxyUnauthorized struct{}
 func (*ConnectCoreV1PutNodeProxyUnauthorized) connectCoreV1PutNodeProxyRes() {}
 
 type ConnectCoreV1PutNodeProxyWithPathOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ConnectCoreV1PutNodeProxyWithPathOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ConnectCoreV1PutNodeProxyWithPathOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ConnectCoreV1PutNodeProxyWithPathOK) connectCoreV1PutNodeProxyWithPathRes() {}
@@ -1341,17 +1821,27 @@ func (*GetServiceAccountIssuerOpenIDConfigurationUnauthorized) getServiceAccount
 }
 
 type GetServiceAccountIssuerOpenIDKeysetOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s GetServiceAccountIssuerOpenIDKeysetOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s GetServiceAccountIssuerOpenIDKeysetOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*GetServiceAccountIssuerOpenIDKeysetOK) getServiceAccountIssuerOpenIDKeysetRes() {}
@@ -47750,12 +48240,12 @@ type ReadCoreV1NamespacedPodLogOKApplicationJSON string
 func (*ReadCoreV1NamespacedPodLogOKApplicationJSON) readCoreV1NamespacedPodLogRes() {}
 
 type ReadCoreV1NamespacedPodLogOKApplicationVndKubernetesProtobuf struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ReadCoreV1NamespacedPodLogOKApplicationVndKubernetesProtobuf) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
@@ -47763,16 +48253,26 @@ func (s ReadCoreV1NamespacedPodLogOKApplicationVndKubernetesProtobuf) Read(p []b
 	return s.Data.Read(p)
 }
 
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ReadCoreV1NamespacedPodLogOKApplicationVndKubernetesProtobuf) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
+}
+
 func (*ReadCoreV1NamespacedPodLogOKApplicationVndKubernetesProtobuf) readCoreV1NamespacedPodLogRes() {
 }
 
 type ReadCoreV1NamespacedPodLogOKApplicationYaml struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ReadCoreV1NamespacedPodLogOKApplicationYaml) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
@@ -47780,20 +48280,40 @@ func (s ReadCoreV1NamespacedPodLogOKApplicationYaml) Read(p []byte) (n int, err 
 	return s.Data.Read(p)
 }
 
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ReadCoreV1NamespacedPodLogOKApplicationYaml) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
+}
+
 func (*ReadCoreV1NamespacedPodLogOKApplicationYaml) readCoreV1NamespacedPodLogRes() {}
 
 type ReadCoreV1NamespacedPodLogOKTextPlain struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ReadCoreV1NamespacedPodLogOKTextPlain) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ReadCoreV1NamespacedPodLogOKTextPlain) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*ReadCoreV1NamespacedPodLogOKTextPlain) readCoreV1NamespacedPodLogRes() {}

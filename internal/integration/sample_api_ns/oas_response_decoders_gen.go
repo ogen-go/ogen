@@ -618,7 +618,7 @@ func decodePetGetAvatarByIDResponse(resp *http.Response) (res PetGetAvatarByIDRe
 				return res, err
 			}
 
-			response := PetGetAvatarByIDOK{Data: bytes.NewReader(b)}
+			response := PetGetAvatarByIDOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -688,7 +688,7 @@ func decodePetGetAvatarByNameResponse(resp *http.Response) (res PetGetAvatarByNa
 				return res, err
 			}
 
-			response := PetGetAvatarByNameOK{Data: bytes.NewReader(b)}
+			response := PetGetAvatarByNameOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)

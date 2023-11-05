@@ -32,7 +32,7 @@ func decodeConnectCoreV1DeleteNamespacedPodProxyResponse(resp *http.Response) (r
 				return res, err
 			}
 
-			response := ConnectCoreV1DeleteNamespacedPodProxyOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1DeleteNamespacedPodProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -60,7 +60,7 @@ func decodeConnectCoreV1DeleteNamespacedPodProxyWithPathResponse(resp *http.Resp
 				return res, err
 			}
 
-			response := ConnectCoreV1DeleteNamespacedPodProxyWithPathOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1DeleteNamespacedPodProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -88,7 +88,7 @@ func decodeConnectCoreV1DeleteNamespacedServiceProxyResponse(resp *http.Response
 				return res, err
 			}
 
-			response := ConnectCoreV1DeleteNamespacedServiceProxyOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1DeleteNamespacedServiceProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -116,7 +116,7 @@ func decodeConnectCoreV1DeleteNamespacedServiceProxyWithPathResponse(resp *http.
 				return res, err
 			}
 
-			response := ConnectCoreV1DeleteNamespacedServiceProxyWithPathOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1DeleteNamespacedServiceProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -144,7 +144,7 @@ func decodeConnectCoreV1DeleteNodeProxyResponse(resp *http.Response) (res Connec
 				return res, err
 			}
 
-			response := ConnectCoreV1DeleteNodeProxyOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1DeleteNodeProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -172,7 +172,7 @@ func decodeConnectCoreV1DeleteNodeProxyWithPathResponse(resp *http.Response) (re
 				return res, err
 			}
 
-			response := ConnectCoreV1DeleteNodeProxyWithPathOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1DeleteNodeProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -200,7 +200,7 @@ func decodeConnectCoreV1GetNamespacedPodAttachResponse(resp *http.Response) (res
 				return res, err
 			}
 
-			response := ConnectCoreV1GetNamespacedPodAttachOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1GetNamespacedPodAttachOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -228,7 +228,7 @@ func decodeConnectCoreV1GetNamespacedPodExecResponse(resp *http.Response) (res C
 				return res, err
 			}
 
-			response := ConnectCoreV1GetNamespacedPodExecOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1GetNamespacedPodExecOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -256,7 +256,7 @@ func decodeConnectCoreV1GetNamespacedPodPortforwardResponse(resp *http.Response)
 				return res, err
 			}
 
-			response := ConnectCoreV1GetNamespacedPodPortforwardOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1GetNamespacedPodPortforwardOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -284,7 +284,7 @@ func decodeConnectCoreV1GetNamespacedPodProxyResponse(resp *http.Response) (res 
 				return res, err
 			}
 
-			response := ConnectCoreV1GetNamespacedPodProxyOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1GetNamespacedPodProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -312,7 +312,7 @@ func decodeConnectCoreV1GetNamespacedPodProxyWithPathResponse(resp *http.Respons
 				return res, err
 			}
 
-			response := ConnectCoreV1GetNamespacedPodProxyWithPathOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1GetNamespacedPodProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -340,7 +340,7 @@ func decodeConnectCoreV1GetNamespacedServiceProxyResponse(resp *http.Response) (
 				return res, err
 			}
 
-			response := ConnectCoreV1GetNamespacedServiceProxyOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1GetNamespacedServiceProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -368,7 +368,7 @@ func decodeConnectCoreV1GetNamespacedServiceProxyWithPathResponse(resp *http.Res
 				return res, err
 			}
 
-			response := ConnectCoreV1GetNamespacedServiceProxyWithPathOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1GetNamespacedServiceProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -396,7 +396,7 @@ func decodeConnectCoreV1GetNodeProxyResponse(resp *http.Response) (res ConnectCo
 				return res, err
 			}
 
-			response := ConnectCoreV1GetNodeProxyOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1GetNodeProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -424,7 +424,7 @@ func decodeConnectCoreV1GetNodeProxyWithPathResponse(resp *http.Response) (res C
 				return res, err
 			}
 
-			response := ConnectCoreV1GetNodeProxyWithPathOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1GetNodeProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -452,7 +452,7 @@ func decodeConnectCoreV1HeadNamespacedPodProxyResponse(resp *http.Response) (res
 				return res, err
 			}
 
-			response := ConnectCoreV1HeadNamespacedPodProxyOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1HeadNamespacedPodProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -480,7 +480,7 @@ func decodeConnectCoreV1HeadNamespacedPodProxyWithPathResponse(resp *http.Respon
 				return res, err
 			}
 
-			response := ConnectCoreV1HeadNamespacedPodProxyWithPathOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1HeadNamespacedPodProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -508,7 +508,7 @@ func decodeConnectCoreV1HeadNamespacedServiceProxyResponse(resp *http.Response) 
 				return res, err
 			}
 
-			response := ConnectCoreV1HeadNamespacedServiceProxyOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1HeadNamespacedServiceProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -536,7 +536,7 @@ func decodeConnectCoreV1HeadNamespacedServiceProxyWithPathResponse(resp *http.Re
 				return res, err
 			}
 
-			response := ConnectCoreV1HeadNamespacedServiceProxyWithPathOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1HeadNamespacedServiceProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -564,7 +564,7 @@ func decodeConnectCoreV1HeadNodeProxyResponse(resp *http.Response) (res ConnectC
 				return res, err
 			}
 
-			response := ConnectCoreV1HeadNodeProxyOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1HeadNodeProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -592,7 +592,7 @@ func decodeConnectCoreV1HeadNodeProxyWithPathResponse(resp *http.Response) (res 
 				return res, err
 			}
 
-			response := ConnectCoreV1HeadNodeProxyWithPathOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1HeadNodeProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -620,7 +620,7 @@ func decodeConnectCoreV1OptionsNamespacedPodProxyResponse(resp *http.Response) (
 				return res, err
 			}
 
-			response := ConnectCoreV1OptionsNamespacedPodProxyOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1OptionsNamespacedPodProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -648,7 +648,7 @@ func decodeConnectCoreV1OptionsNamespacedPodProxyWithPathResponse(resp *http.Res
 				return res, err
 			}
 
-			response := ConnectCoreV1OptionsNamespacedPodProxyWithPathOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1OptionsNamespacedPodProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -676,7 +676,7 @@ func decodeConnectCoreV1OptionsNamespacedServiceProxyResponse(resp *http.Respons
 				return res, err
 			}
 
-			response := ConnectCoreV1OptionsNamespacedServiceProxyOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1OptionsNamespacedServiceProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -704,7 +704,7 @@ func decodeConnectCoreV1OptionsNamespacedServiceProxyWithPathResponse(resp *http
 				return res, err
 			}
 
-			response := ConnectCoreV1OptionsNamespacedServiceProxyWithPathOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1OptionsNamespacedServiceProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -732,7 +732,7 @@ func decodeConnectCoreV1OptionsNodeProxyResponse(resp *http.Response) (res Conne
 				return res, err
 			}
 
-			response := ConnectCoreV1OptionsNodeProxyOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1OptionsNodeProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -760,7 +760,7 @@ func decodeConnectCoreV1OptionsNodeProxyWithPathResponse(resp *http.Response) (r
 				return res, err
 			}
 
-			response := ConnectCoreV1OptionsNodeProxyWithPathOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1OptionsNodeProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -788,7 +788,7 @@ func decodeConnectCoreV1PatchNamespacedPodProxyResponse(resp *http.Response) (re
 				return res, err
 			}
 
-			response := ConnectCoreV1PatchNamespacedPodProxyOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1PatchNamespacedPodProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -816,7 +816,7 @@ func decodeConnectCoreV1PatchNamespacedPodProxyWithPathResponse(resp *http.Respo
 				return res, err
 			}
 
-			response := ConnectCoreV1PatchNamespacedPodProxyWithPathOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1PatchNamespacedPodProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -844,7 +844,7 @@ func decodeConnectCoreV1PatchNamespacedServiceProxyResponse(resp *http.Response)
 				return res, err
 			}
 
-			response := ConnectCoreV1PatchNamespacedServiceProxyOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1PatchNamespacedServiceProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -872,7 +872,7 @@ func decodeConnectCoreV1PatchNamespacedServiceProxyWithPathResponse(resp *http.R
 				return res, err
 			}
 
-			response := ConnectCoreV1PatchNamespacedServiceProxyWithPathOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1PatchNamespacedServiceProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -900,7 +900,7 @@ func decodeConnectCoreV1PatchNodeProxyResponse(resp *http.Response) (res Connect
 				return res, err
 			}
 
-			response := ConnectCoreV1PatchNodeProxyOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1PatchNodeProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -928,7 +928,7 @@ func decodeConnectCoreV1PatchNodeProxyWithPathResponse(resp *http.Response) (res
 				return res, err
 			}
 
-			response := ConnectCoreV1PatchNodeProxyWithPathOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1PatchNodeProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -956,7 +956,7 @@ func decodeConnectCoreV1PostNamespacedPodAttachResponse(resp *http.Response) (re
 				return res, err
 			}
 
-			response := ConnectCoreV1PostNamespacedPodAttachOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1PostNamespacedPodAttachOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -984,7 +984,7 @@ func decodeConnectCoreV1PostNamespacedPodExecResponse(resp *http.Response) (res 
 				return res, err
 			}
 
-			response := ConnectCoreV1PostNamespacedPodExecOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1PostNamespacedPodExecOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1012,7 +1012,7 @@ func decodeConnectCoreV1PostNamespacedPodPortforwardResponse(resp *http.Response
 				return res, err
 			}
 
-			response := ConnectCoreV1PostNamespacedPodPortforwardOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1PostNamespacedPodPortforwardOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1040,7 +1040,7 @@ func decodeConnectCoreV1PostNamespacedPodProxyResponse(resp *http.Response) (res
 				return res, err
 			}
 
-			response := ConnectCoreV1PostNamespacedPodProxyOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1PostNamespacedPodProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1068,7 +1068,7 @@ func decodeConnectCoreV1PostNamespacedPodProxyWithPathResponse(resp *http.Respon
 				return res, err
 			}
 
-			response := ConnectCoreV1PostNamespacedPodProxyWithPathOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1PostNamespacedPodProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1096,7 +1096,7 @@ func decodeConnectCoreV1PostNamespacedServiceProxyResponse(resp *http.Response) 
 				return res, err
 			}
 
-			response := ConnectCoreV1PostNamespacedServiceProxyOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1PostNamespacedServiceProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1124,7 +1124,7 @@ func decodeConnectCoreV1PostNamespacedServiceProxyWithPathResponse(resp *http.Re
 				return res, err
 			}
 
-			response := ConnectCoreV1PostNamespacedServiceProxyWithPathOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1PostNamespacedServiceProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1152,7 +1152,7 @@ func decodeConnectCoreV1PostNodeProxyResponse(resp *http.Response) (res ConnectC
 				return res, err
 			}
 
-			response := ConnectCoreV1PostNodeProxyOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1PostNodeProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1180,7 +1180,7 @@ func decodeConnectCoreV1PostNodeProxyWithPathResponse(resp *http.Response) (res 
 				return res, err
 			}
 
-			response := ConnectCoreV1PostNodeProxyWithPathOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1PostNodeProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1208,7 +1208,7 @@ func decodeConnectCoreV1PutNamespacedPodProxyResponse(resp *http.Response) (res 
 				return res, err
 			}
 
-			response := ConnectCoreV1PutNamespacedPodProxyOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1PutNamespacedPodProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1236,7 +1236,7 @@ func decodeConnectCoreV1PutNamespacedPodProxyWithPathResponse(resp *http.Respons
 				return res, err
 			}
 
-			response := ConnectCoreV1PutNamespacedPodProxyWithPathOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1PutNamespacedPodProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1264,7 +1264,7 @@ func decodeConnectCoreV1PutNamespacedServiceProxyResponse(resp *http.Response) (
 				return res, err
 			}
 
-			response := ConnectCoreV1PutNamespacedServiceProxyOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1PutNamespacedServiceProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1292,7 +1292,7 @@ func decodeConnectCoreV1PutNamespacedServiceProxyWithPathResponse(resp *http.Res
 				return res, err
 			}
 
-			response := ConnectCoreV1PutNamespacedServiceProxyWithPathOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1PutNamespacedServiceProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1320,7 +1320,7 @@ func decodeConnectCoreV1PutNodeProxyResponse(resp *http.Response) (res ConnectCo
 				return res, err
 			}
 
-			response := ConnectCoreV1PutNodeProxyOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1PutNodeProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1348,7 +1348,7 @@ func decodeConnectCoreV1PutNodeProxyWithPathResponse(resp *http.Response) (res C
 				return res, err
 			}
 
-			response := ConnectCoreV1PutNodeProxyWithPathOK{Data: bytes.NewReader(b)}
+			response := ConnectCoreV1PutNodeProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3664,7 +3664,7 @@ func decodeGetServiceAccountIssuerOpenIDKeysetResponse(resp *http.Response) (res
 				return res, err
 			}
 
-			response := GetServiceAccountIssuerOpenIDKeysetOK{Data: bytes.NewReader(b)}
+			response := GetServiceAccountIssuerOpenIDKeysetOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10203,7 +10203,7 @@ func decodeReadCoreV1NamespacedPodLogResponse(resp *http.Response) (res ReadCore
 				return res, err
 			}
 
-			response := ReadCoreV1NamespacedPodLogOKApplicationVndKubernetesProtobuf{Data: bytes.NewReader(b)}
+			response := ReadCoreV1NamespacedPodLogOKApplicationVndKubernetesProtobuf{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		case ct == "application/yaml":
 			reader := resp.Body
@@ -10212,7 +10212,7 @@ func decodeReadCoreV1NamespacedPodLogResponse(resp *http.Response) (res ReadCore
 				return res, err
 			}
 
-			response := ReadCoreV1NamespacedPodLogOKApplicationYaml{Data: bytes.NewReader(b)}
+			response := ReadCoreV1NamespacedPodLogOKApplicationYaml{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		case ct == "text/plain":
 			reader := resp.Body
@@ -10221,7 +10221,7 @@ func decodeReadCoreV1NamespacedPodLogResponse(resp *http.Response) (res ReadCore
 				return res, err
 			}
 
-			response := ReadCoreV1NamespacedPodLogOKTextPlain{Data: bytes.NewReader(b)}
+			response := ReadCoreV1NamespacedPodLogOKTextPlain{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)

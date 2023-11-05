@@ -36,7 +36,7 @@ func encodeAllRequestBodiesRequest(
 	case *AllRequestBodiesReqApplicationOctetStream:
 		const contentType = "application/octet-stream"
 		body := req
-		ht.SetBody(r, body, contentType)
+		ht.SetCloserBody(r, body, contentType)
 		return nil
 	case *AllRequestBodiesApplicationXWwwFormUrlencoded:
 		const contentType = "application/x-www-form-urlencoded"
@@ -120,7 +120,7 @@ func encodeAllRequestBodiesRequest(
 	case *AllRequestBodiesReqTextPlain:
 		const contentType = "text/plain"
 		body := req
-		ht.SetBody(r, body, contentType)
+		ht.SetCloserBody(r, body, contentType)
 		return nil
 	default:
 		return errors.Errorf("unexpected request type: %T", req)
@@ -147,7 +147,7 @@ func encodeAllRequestBodiesOptionalRequest(
 	case *AllRequestBodiesOptionalReqApplicationOctetStream:
 		const contentType = "application/octet-stream"
 		body := req
-		ht.SetBody(r, body, contentType)
+		ht.SetCloserBody(r, body, contentType)
 		return nil
 	case *AllRequestBodiesOptionalApplicationXWwwFormUrlencoded:
 		const contentType = "application/x-www-form-urlencoded"
@@ -231,7 +231,7 @@ func encodeAllRequestBodiesOptionalRequest(
 	case *AllRequestBodiesOptionalReqTextPlain:
 		const contentType = "text/plain"
 		body := req
-		ht.SetBody(r, body, contentType)
+		ht.SetCloserBody(r, body, contentType)
 		return nil
 	default:
 		return errors.Errorf("unexpected request type: %T", req)
@@ -251,6 +251,7 @@ func encodeBase64RequestRequest(
 			}
 		}()
 
+		defer req.Close()
 		_, err := io.Copy(writer, req)
 		return err
 	})
@@ -269,7 +270,7 @@ func encodeMaskContentTypeRequest(
 	{
 		req := req.Content
 		body := req
-		ht.SetBody(r, body, contentType)
+		ht.SetCloserBody(r, body, contentType)
 		return nil
 	}
 }
@@ -285,7 +286,7 @@ func encodeMaskContentTypeOptionalRequest(
 	{
 		req := req.Content
 		body := req
-		ht.SetBody(r, body, contentType)
+		ht.SetCloserBody(r, body, contentType)
 		return nil
 	}
 }

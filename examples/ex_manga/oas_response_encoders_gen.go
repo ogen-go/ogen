@@ -45,6 +45,7 @@ func encodeGetPageCoverImageResponse(response GetPageCoverImageRes, w http.Respo
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		defer response.Close()
 		if _, err := io.Copy(writer, response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -69,6 +70,7 @@ func encodeGetPageImageResponse(response GetPageImageRes, w http.ResponseWriter,
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		defer response.Close()
 		if _, err := io.Copy(writer, response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -93,6 +95,7 @@ func encodeGetPageThumbnailImageResponse(response GetPageThumbnailImageRes, w ht
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		defer response.Close()
 		if _, err := io.Copy(writer, response); err != nil {
 			return errors.Wrap(err, "write")
 		}

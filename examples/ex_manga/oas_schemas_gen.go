@@ -124,17 +124,27 @@ type GetPageCoverImageForbidden struct{}
 func (*GetPageCoverImageForbidden) getPageCoverImageRes() {}
 
 type GetPageCoverImageOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s GetPageCoverImageOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s GetPageCoverImageOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*GetPageCoverImageOK) getPageCoverImageRes() {}
@@ -145,17 +155,27 @@ type GetPageImageForbidden struct{}
 func (*GetPageImageForbidden) getPageImageRes() {}
 
 type GetPageImageOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s GetPageImageOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s GetPageImageOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*GetPageImageOK) getPageImageRes() {}
@@ -166,17 +186,27 @@ type GetPageThumbnailImageForbidden struct{}
 func (*GetPageThumbnailImageForbidden) getPageThumbnailImageRes() {}
 
 type GetPageThumbnailImageOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s GetPageThumbnailImageOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s GetPageThumbnailImageOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*GetPageThumbnailImageOK) getPageThumbnailImageRes() {}

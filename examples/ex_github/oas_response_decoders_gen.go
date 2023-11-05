@@ -10105,7 +10105,7 @@ func decodeCodeScanningGetAnalysisResponse(resp *http.Response) (res CodeScannin
 				return res, err
 			}
 
-			response := CodeScanningGetAnalysisOKApplicationJSONSarif{Data: bytes.NewReader(b)}
+			response := CodeScanningGetAnalysisOKApplicationJSONSarif{Data: io.NopCloser(bytes.NewReader(b))}
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -20874,7 +20874,7 @@ func decodeMarkdownRenderResponse(resp *http.Response) (res MarkdownRenderRes, _
 				return res, err
 			}
 
-			response := MarkdownRenderOK{Data: bytes.NewReader(b)}
+			response := MarkdownRenderOK{Data: io.NopCloser(bytes.NewReader(b))}
 			var wrapper MarkdownRenderOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
@@ -20979,7 +20979,7 @@ func decodeMarkdownRenderRawResponse(resp *http.Response) (res MarkdownRenderRaw
 				return res, err
 			}
 
-			response := MarkdownRenderRawOK{Data: bytes.NewReader(b)}
+			response := MarkdownRenderRawOK{Data: io.NopCloser(bytes.NewReader(b))}
 			var wrapper MarkdownRenderRawOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
@@ -21091,7 +21091,7 @@ func decodeMetaGetOctocatResponse(resp *http.Response) (res MetaGetOctocatOK, _ 
 				return res, err
 			}
 
-			response := MetaGetOctocatOK{Data: bytes.NewReader(b)}
+			response := MetaGetOctocatOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -21116,7 +21116,7 @@ func decodeMetaGetZenResponse(resp *http.Response) (res MetaGetZenOK, _ error) {
 				return res, err
 			}
 
-			response := MetaGetZenOK{Data: bytes.NewReader(b)}
+			response := MetaGetZenOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)

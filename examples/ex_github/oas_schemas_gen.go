@@ -11769,17 +11769,27 @@ type CodeScanningGetAnalysisNotFound BasicError
 func (*CodeScanningGetAnalysisNotFound) codeScanningGetAnalysisRes() {}
 
 type CodeScanningGetAnalysisOKApplicationJSONSarif struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s CodeScanningGetAnalysisOKApplicationJSONSarif) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s CodeScanningGetAnalysisOKApplicationJSONSarif) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*CodeScanningGetAnalysisOKApplicationJSONSarif) codeScanningGetAnalysisRes() {}
@@ -30765,17 +30775,27 @@ func (s *LinkWithType) SetType(val string) {
 }
 
 type MarkdownRenderOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s MarkdownRenderOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s MarkdownRenderOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 // MarkdownRenderOKHeaders wraps MarkdownRenderOK with response headers.
@@ -30818,17 +30838,27 @@ func (s *MarkdownRenderOKHeaders) SetResponse(val MarkdownRenderOK) {
 func (*MarkdownRenderOKHeaders) markdownRenderRes() {}
 
 type MarkdownRenderRawOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s MarkdownRenderRawOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s MarkdownRenderRawOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 // MarkdownRenderRawOKHeaders wraps MarkdownRenderRawOK with response headers.
@@ -30864,12 +30894,12 @@ type MarkdownRenderRawReqEmptyBody struct{}
 func (*MarkdownRenderRawReqEmptyBody) markdownRenderRawReq() {}
 
 type MarkdownRenderRawReqTextPlain struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s MarkdownRenderRawReqTextPlain) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
@@ -30877,20 +30907,40 @@ func (s MarkdownRenderRawReqTextPlain) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
 
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s MarkdownRenderRawReqTextPlain) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
+}
+
 func (*MarkdownRenderRawReqTextPlain) markdownRenderRawReq() {}
 
 type MarkdownRenderRawReqTextXMarkdown struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s MarkdownRenderRawReqTextXMarkdown) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s MarkdownRenderRawReqTextXMarkdown) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*MarkdownRenderRawReqTextXMarkdown) markdownRenderRawReq() {}
@@ -31539,12 +31589,12 @@ func (s *MergedUpstreamMergeType) UnmarshalText(data []byte) error {
 }
 
 type MetaGetOctocatOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s MetaGetOctocatOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
@@ -31552,18 +31602,38 @@ func (s MetaGetOctocatOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
 
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s MetaGetOctocatOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
+}
+
 type MetaGetZenOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s MetaGetZenOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s MetaGetZenOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 type MetaRootOK struct {
@@ -89042,17 +89112,27 @@ func (s *ReposUpdateWebhookReqConfig) SetRoom(val OptString) {
 
 // The raw file data.
 type ReposUploadReleaseAssetReq struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s ReposUploadReleaseAssetReq) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s ReposUploadReleaseAssetReq) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 // ReposUploadReleaseAssetReqWithContentType wraps ReposUploadReleaseAssetReq with Content-Type.

@@ -32,7 +32,7 @@ func decodeAllRequestBodiesResponse(resp *http.Response) (res AllRequestBodiesOK
 				return res, err
 			}
 
-			response := AllRequestBodiesOK{Data: bytes.NewReader(b)}
+			response := AllRequestBodiesOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -57,7 +57,7 @@ func decodeAllRequestBodiesOptionalResponse(resp *http.Response) (res AllRequest
 				return res, err
 			}
 
-			response := AllRequestBodiesOptionalOK{Data: bytes.NewReader(b)}
+			response := AllRequestBodiesOptionalOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -82,7 +82,7 @@ func decodeBase64RequestResponse(resp *http.Response) (res Base64RequestOK, _ er
 				return res, err
 			}
 
-			response := Base64RequestOK{Data: bytes.NewReader(b)}
+			response := Base64RequestOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)

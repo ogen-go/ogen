@@ -1067,12 +1067,12 @@ func encodeMarkdownRenderRawRequest(
 	case *MarkdownRenderRawReqTextPlain:
 		const contentType = "text/plain"
 		body := req
-		ht.SetBody(r, body, contentType)
+		ht.SetCloserBody(r, body, contentType)
 		return nil
 	case *MarkdownRenderRawReqTextXMarkdown:
 		const contentType = "text/x-markdown"
 		body := req
-		ht.SetBody(r, body, contentType)
+		ht.SetCloserBody(r, body, contentType)
 		return nil
 	default:
 		return errors.Errorf("unexpected request type: %T", req)
@@ -2598,7 +2598,7 @@ func encodeReposUploadReleaseAssetRequest(
 	{
 		req := req.Content
 		body := req
-		ht.SetBody(r, body, contentType)
+		ht.SetCloserBody(r, body, contentType)
 		return nil
 	}
 }

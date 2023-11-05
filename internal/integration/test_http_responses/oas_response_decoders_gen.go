@@ -34,7 +34,7 @@ func decodeAnyContentTypeBinaryStringSchemaResponse(resp *http.Response) (res An
 				return res, err
 			}
 
-			response := AnyContentTypeBinaryStringSchemaOK{Data: bytes.NewReader(b)}
+			response := AnyContentTypeBinaryStringSchemaOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -58,7 +58,7 @@ func decodeAnyContentTypeBinaryStringSchemaDefaultResponse(resp *http.Response) 
 				return res, err
 			}
 
-			response := AnyContentTypeBinaryStringSchemaDefaultDef{Data: bytes.NewReader(b)}
+			response := AnyContentTypeBinaryStringSchemaDefaultDef{Data: io.NopCloser(bytes.NewReader(b))}
 			return &AnyContentTypeBinaryStringSchemaDefaultDefStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -798,7 +798,7 @@ func decodeOctetStreamBinaryStringSchemaResponse(resp *http.Response) (res Octet
 				return res, err
 			}
 
-			response := OctetStreamBinaryStringSchemaOK{Data: bytes.NewReader(b)}
+			response := OctetStreamBinaryStringSchemaOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -823,7 +823,7 @@ func decodeOctetStreamEmptySchemaResponse(resp *http.Response) (res OctetStreamE
 				return res, err
 			}
 
-			response := OctetStreamEmptySchemaOK{Data: bytes.NewReader(b)}
+			response := OctetStreamEmptySchemaOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -995,7 +995,7 @@ func decodeTextPlainBinaryStringSchemaResponse(resp *http.Response) (res TextPla
 				return res, err
 			}
 
-			response := TextPlainBinaryStringSchemaOK{Data: bytes.NewReader(b)}
+			response := TextPlainBinaryStringSchemaOK{Data: io.NopCloser(bytes.NewReader(b))}
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)

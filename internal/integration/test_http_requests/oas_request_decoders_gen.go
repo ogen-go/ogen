@@ -499,7 +499,13 @@ func (s *Server) decodeBase64RequestRequest(r *http.Request) (
 	}
 	switch {
 	case ct == "text/plain":
-		reader := base64.NewDecoder(base64.StdEncoding, r.Body)
+		reader := struct {
+			io.Reader
+			io.Closer
+		}{
+			Reader: base64.NewDecoder(base64.StdEncoding, r.Body),
+			Closer: r.Body,
+		}
 		request := Base64RequestReq{Data: reader}
 		return request, close, nil
 	default:

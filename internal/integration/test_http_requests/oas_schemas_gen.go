@@ -15,17 +15,27 @@ type AllRequestBodiesApplicationXWwwFormUrlencoded SimpleObject
 func (*AllRequestBodiesApplicationXWwwFormUrlencoded) allRequestBodiesReq() {}
 
 type AllRequestBodiesOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s AllRequestBodiesOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s AllRequestBodiesOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 type AllRequestBodiesOptionalApplicationJSON SimpleObject
@@ -37,12 +47,12 @@ type AllRequestBodiesOptionalApplicationXWwwFormUrlencoded SimpleObject
 func (*AllRequestBodiesOptionalApplicationXWwwFormUrlencoded) allRequestBodiesOptionalReq() {}
 
 type AllRequestBodiesOptionalOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s AllRequestBodiesOptionalOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
@@ -50,18 +60,38 @@ func (s AllRequestBodiesOptionalOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
 
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s AllRequestBodiesOptionalOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
+}
+
 type AllRequestBodiesOptionalReqApplicationOctetStream struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s AllRequestBodiesOptionalReqApplicationOctetStream) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s AllRequestBodiesOptionalReqApplicationOctetStream) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 func (*AllRequestBodiesOptionalReqApplicationOctetStream) allRequestBodiesOptionalReq() {}
@@ -71,12 +101,12 @@ type AllRequestBodiesOptionalReqEmptyBody struct{}
 func (*AllRequestBodiesOptionalReqEmptyBody) allRequestBodiesOptionalReq() {}
 
 type AllRequestBodiesOptionalReqTextPlain struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s AllRequestBodiesOptionalReqTextPlain) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
@@ -84,15 +114,25 @@ func (s AllRequestBodiesOptionalReqTextPlain) Read(p []byte) (n int, err error) 
 	return s.Data.Read(p)
 }
 
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s AllRequestBodiesOptionalReqTextPlain) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
+}
+
 func (*AllRequestBodiesOptionalReqTextPlain) allRequestBodiesOptionalReq() {}
 
 type AllRequestBodiesReqApplicationOctetStream struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s AllRequestBodiesReqApplicationOctetStream) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
@@ -100,15 +140,25 @@ func (s AllRequestBodiesReqApplicationOctetStream) Read(p []byte) (n int, err er
 	return s.Data.Read(p)
 }
 
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s AllRequestBodiesReqApplicationOctetStream) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
+}
+
 func (*AllRequestBodiesReqApplicationOctetStream) allRequestBodiesReq() {}
 
 type AllRequestBodiesReqTextPlain struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s AllRequestBodiesReqTextPlain) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
@@ -116,15 +166,25 @@ func (s AllRequestBodiesReqTextPlain) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
 
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s AllRequestBodiesReqTextPlain) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
+}
+
 func (*AllRequestBodiesReqTextPlain) allRequestBodiesReq() {}
 
 type Base64RequestOK struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s Base64RequestOK) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
@@ -132,13 +192,23 @@ func (s Base64RequestOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
 
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s Base64RequestOK) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
+}
+
 type Base64RequestReq struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s Base64RequestReq) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
@@ -146,18 +216,38 @@ func (s Base64RequestReq) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
 
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s Base64RequestReq) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
+}
+
 type MaskContentTypeOptionalReq struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s MaskContentTypeOptionalReq) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s MaskContentTypeOptionalReq) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 // MaskContentTypeOptionalReqWithContentType wraps MaskContentTypeOptionalReq with Content-Type.
@@ -187,17 +277,27 @@ func (s *MaskContentTypeOptionalReqWithContentType) SetContent(val MaskContentTy
 }
 
 type MaskContentTypeReq struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
 //
-// Kept to satisfy the io.Reader interface.
+// Kept to satisfy the io.ReadCloser interface.
 func (s MaskContentTypeReq) Read(p []byte) (n int, err error) {
 	if s.Data == nil {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the Data reader.
+//
+// Kept to satisfy the io.ReadCloser interface.
+func (s MaskContentTypeReq) Close() error {
+	if s.Data == nil {
+		return nil
+	}
+	return s.Data.Close()
 }
 
 // MaskContentTypeReqWithContentType wraps MaskContentTypeReq with Content-Type.
