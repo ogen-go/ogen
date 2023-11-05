@@ -48,8 +48,8 @@ type InvalidContentTypeError struct {
 }
 
 // InvalidContentTypeError implements error.
-func (i *InvalidContentTypeError) Error() string {
-	return fmt.Sprintf("unexpected Content-Type: %s", i.ContentType)
+func (e *InvalidContentTypeError) Error() string {
+	return fmt.Sprintf("unexpected Content-Type: %s", e.ContentType)
 }
 
 // InvalidContentType creates new InvalidContentTypeError.
@@ -72,9 +72,31 @@ func UnexpectedStatusCode(statusCode int) error {
 }
 
 // UnexpectedStatusCodeError implements error.
-func (i *UnexpectedStatusCodeError) Error() string {
-	return fmt.Sprintf("unexpected status code: %d", i.StatusCode)
+func (e *UnexpectedStatusCodeError) Error() string {
+	return fmt.Sprintf("unexpected status code: %d", e.StatusCode)
 }
 
 // ErrNilPointer reports that use Validate, but receiver pointer is nil.
 var ErrNilPointer = errors.New("nil pointer")
+
+// MinLengthError reports that len less than minimum.
+type MinLengthError struct {
+	Len       int
+	MinLength int
+}
+
+// MinLengthError implements error.
+func (e *MinLengthError) Error() string {
+	return fmt.Sprintf("len %d less than minimum %d", e.Len, e.MinLength)
+}
+
+// MaxLengthError reports that len greater than maximum.
+type MaxLengthError struct {
+	Len       int
+	MaxLength int
+}
+
+// MaxLengthError implements error.
+func (e *MaxLengthError) Error() string {
+	return fmt.Sprintf("len %d greater than maximum %d", e.Len, e.MaxLength)
+}
