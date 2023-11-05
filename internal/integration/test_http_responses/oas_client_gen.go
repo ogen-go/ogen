@@ -197,7 +197,6 @@ func (c *Client) sendAnyContentTypeBinaryStringSchema(ctx context.Context) (res 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeAnyContentTypeBinaryStringSchemaResponse(resp)
@@ -267,7 +266,6 @@ func (c *Client) sendAnyContentTypeBinaryStringSchemaDefault(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeAnyContentTypeBinaryStringSchemaDefaultResponse(resp)
@@ -355,7 +353,6 @@ func (c *Client) sendCombined(ctx context.Context, params CombinedParams) (res C
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeCombinedResponse(resp)
@@ -425,7 +422,6 @@ func (c *Client) sendHeaders200(ctx context.Context) (res *Headers200OK, err err
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeHeaders200Response(resp)
@@ -513,7 +509,6 @@ func (c *Client) sendHeadersCombined(ctx context.Context, params HeadersCombined
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeHeadersCombinedResponse(resp)
@@ -583,7 +578,6 @@ func (c *Client) sendHeadersDefault(ctx context.Context) (res *HeadersDefaultDef
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeHeadersDefaultResponse(resp)
@@ -653,7 +647,6 @@ func (c *Client) sendHeadersJSON(ctx context.Context) (res *HeadersJSONOK, err e
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeHeadersJSONResponse(resp)
@@ -723,7 +716,6 @@ func (c *Client) sendHeadersPattern(ctx context.Context) (res *HeadersPattern4XX
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeHeadersPatternResponse(resp)
@@ -814,7 +806,6 @@ func (c *Client) sendIntersectPatternCode(ctx context.Context, params IntersectP
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeIntersectPatternCodeResponse(resp)
@@ -884,7 +875,6 @@ func (c *Client) sendMultipleGenericResponses(ctx context.Context) (res Multiple
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeMultipleGenericResponsesResponse(resp)
@@ -954,7 +944,6 @@ func (c *Client) sendOctetStreamBinaryStringSchema(ctx context.Context) (res Oct
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeOctetStreamBinaryStringSchemaResponse(resp)
@@ -1024,7 +1013,6 @@ func (c *Client) sendOctetStreamEmptySchema(ctx context.Context) (res OctetStrea
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeOctetStreamEmptySchemaResponse(resp)
@@ -1096,7 +1084,6 @@ func (c *Client) sendOptionalHeaders(ctx context.Context) (res *OptionalHeadersO
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeOptionalHeadersResponse(resp)
@@ -1184,7 +1171,6 @@ func (c *Client) sendStreamJSON(ctx context.Context, params StreamJSONParams) (r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeStreamJSONResponse(resp)
@@ -1254,7 +1240,6 @@ func (c *Client) sendTextPlainBinaryStringSchema(ctx context.Context) (res TextP
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTextPlainBinaryStringSchemaResponse(resp)

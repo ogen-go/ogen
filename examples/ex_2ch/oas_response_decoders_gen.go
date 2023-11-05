@@ -20,10 +20,12 @@ func decodeAPICaptcha2chcaptchaIDGetResponse(resp *http.Response) (res *Captcha,
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -49,6 +51,7 @@ func decodeAPICaptcha2chcaptchaIDGetResponse(resp *http.Response) (res *Captcha,
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -59,9 +62,11 @@ func decodeAPICaptcha2chcaptchaShowGetResponse(resp *http.Response) (res APICapt
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
+		defer resp.Body.Close()
 		return &APICaptcha2chcaptchaShowGetOK{}, nil
 	case 404:
 		// Code 404.
+		defer resp.Body.Close()
 		return &APICaptcha2chcaptchaShowGetNotFound{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -73,10 +78,12 @@ func decodeAPICaptchaAppIDPublicKeyGetResponse(resp *http.Response) (res *Captch
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -102,6 +109,7 @@ func decodeAPICaptchaAppIDPublicKeyGetResponse(resp *http.Response) (res *Captch
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -114,10 +122,12 @@ func decodeAPICaptchaInvisibleRecaptchaIDGetResponse(resp *http.Response) (res *
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -143,6 +153,7 @@ func decodeAPICaptchaInvisibleRecaptchaIDGetResponse(resp *http.Response) (res *
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -153,6 +164,7 @@ func decodeAPICaptchaInvisibleRecaptchaMobileGetResponse(resp *http.Response) (r
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
+		defer resp.Body.Close()
 		return &APICaptchaInvisibleRecaptchaMobileGetOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -164,10 +176,12 @@ func decodeAPICaptchaRecaptchaIDGetResponse(resp *http.Response) (res *Captcha, 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -193,6 +207,7 @@ func decodeAPICaptchaRecaptchaIDGetResponse(resp *http.Response) (res *Captcha, 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -203,6 +218,7 @@ func decodeAPICaptchaRecaptchaMobileGetResponse(resp *http.Response) (res *APICa
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
+		defer resp.Body.Close()
 		return &APICaptchaRecaptchaMobileGetOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -214,10 +230,12 @@ func decodeAPIDislikeGetResponse(resp *http.Response) (res *Like, _ error) {
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -243,6 +261,7 @@ func decodeAPIDislikeGetResponse(resp *http.Response) (res *Like, _ error) {
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -255,10 +274,12 @@ func decodeAPILikeGetResponse(resp *http.Response) (res *Like, _ error) {
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -284,6 +305,7 @@ func decodeAPILikeGetResponse(resp *http.Response) (res *Like, _ error) {
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -296,10 +318,12 @@ func decodeAPIMobileV2AfterBoardThreadNumGetResponse(resp *http.Response) (res *
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -325,6 +349,7 @@ func decodeAPIMobileV2AfterBoardThreadNumGetResponse(resp *http.Response) (res *
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -337,10 +362,12 @@ func decodeAPIMobileV2BoardsGetResponse(resp *http.Response) (res Boards, _ erro
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -366,6 +393,7 @@ func decodeAPIMobileV2BoardsGetResponse(resp *http.Response) (res Boards, _ erro
 			}
 			return response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -378,10 +406,12 @@ func decodeAPIMobileV2InfoBoardThreadGetResponse(resp *http.Response) (res *Mobi
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -407,6 +437,7 @@ func decodeAPIMobileV2InfoBoardThreadGetResponse(resp *http.Response) (res *Mobi
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -419,10 +450,12 @@ func decodeAPIMobileV2PostBoardNumGetResponse(resp *http.Response) (res *MobileP
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -448,6 +481,7 @@ func decodeAPIMobileV2PostBoardNumGetResponse(resp *http.Response) (res *MobileP
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -460,10 +494,12 @@ func decodeUserPassloginPostResponse(resp *http.Response) (res *Passcode, _ erro
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -489,6 +525,7 @@ func decodeUserPassloginPostResponse(resp *http.Response) (res *Passcode, _ erro
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -501,10 +538,12 @@ func decodeUserPostingPostResponse(resp *http.Response) (res UserPostingPostOK, 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -530,6 +569,7 @@ func decodeUserPostingPostResponse(resp *http.Response) (res UserPostingPostOK, 
 			}
 			return response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -542,10 +582,12 @@ func decodeUserReportPostResponse(resp *http.Response) (res *Report, _ error) {
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -571,6 +613,7 @@ func decodeUserReportPostResponse(resp *http.Response) (res *Report, _ error) {
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}

@@ -18,6 +18,7 @@ func decodeOnlyFormResponse(resp *http.Response) (res *OnlyFormOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
+		defer resp.Body.Close()
 		return &OnlyFormOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -27,6 +28,7 @@ func decodeOnlyMultipartFileResponse(resp *http.Response) (res *OnlyMultipartFil
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
+		defer resp.Body.Close()
 		return &OnlyMultipartFileOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -36,6 +38,7 @@ func decodeOnlyMultipartFormResponse(resp *http.Response) (res *OnlyMultipartFor
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
+		defer resp.Body.Close()
 		return &OnlyMultipartFormOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -45,6 +48,7 @@ func decodeTestFormURLEncodedResponse(resp *http.Response) (res *TestFormURLEnco
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
+		defer resp.Body.Close()
 		return &TestFormURLEncodedOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -54,6 +58,7 @@ func decodeTestMultipartResponse(resp *http.Response) (res *TestMultipartOK, _ e
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
+		defer resp.Body.Close()
 		return &TestMultipartOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -65,10 +70,12 @@ func decodeTestMultipartUploadResponse(resp *http.Response) (res *TestMultipartU
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -94,6 +101,7 @@ func decodeTestMultipartUploadResponse(resp *http.Response) (res *TestMultipartU
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -104,6 +112,7 @@ func decodeTestReuseFormOptionalSchemaResponse(resp *http.Response) (res *TestRe
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
+		defer resp.Body.Close()
 		return &TestReuseFormOptionalSchemaOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -113,6 +122,7 @@ func decodeTestReuseFormSchemaResponse(resp *http.Response) (res *TestReuseFormS
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
+		defer resp.Body.Close()
 		return &TestReuseFormSchemaOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -122,6 +132,7 @@ func decodeTestShareFormSchemaResponse(resp *http.Response) (res *TestShareFormS
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
+		defer resp.Body.Close()
 		return &TestShareFormSchemaOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)

@@ -3,7 +3,6 @@
 package api
 
 import (
-	"bytes"
 	"io"
 	"mime"
 	"net/http"
@@ -22,23 +21,22 @@ func decodeConnectCoreV1DeleteNamespacedPodProxyResponse(resp *http.Response) (r
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1DeleteNamespacedPodProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1DeleteNamespacedPodProxyOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1DeleteNamespacedPodProxyUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -50,23 +48,22 @@ func decodeConnectCoreV1DeleteNamespacedPodProxyWithPathResponse(resp *http.Resp
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1DeleteNamespacedPodProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1DeleteNamespacedPodProxyWithPathOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1DeleteNamespacedPodProxyWithPathUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -78,23 +75,22 @@ func decodeConnectCoreV1DeleteNamespacedServiceProxyResponse(resp *http.Response
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1DeleteNamespacedServiceProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1DeleteNamespacedServiceProxyOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1DeleteNamespacedServiceProxyUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -106,23 +102,22 @@ func decodeConnectCoreV1DeleteNamespacedServiceProxyWithPathResponse(resp *http.
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1DeleteNamespacedServiceProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1DeleteNamespacedServiceProxyWithPathOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1DeleteNamespacedServiceProxyWithPathUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -134,23 +129,22 @@ func decodeConnectCoreV1DeleteNodeProxyResponse(resp *http.Response) (res Connec
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1DeleteNodeProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1DeleteNodeProxyOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1DeleteNodeProxyUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -162,23 +156,22 @@ func decodeConnectCoreV1DeleteNodeProxyWithPathResponse(resp *http.Response) (re
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1DeleteNodeProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1DeleteNodeProxyWithPathOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1DeleteNodeProxyWithPathUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -190,23 +183,22 @@ func decodeConnectCoreV1GetNamespacedPodAttachResponse(resp *http.Response) (res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1GetNamespacedPodAttachOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1GetNamespacedPodAttachOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1GetNamespacedPodAttachUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -218,23 +210,22 @@ func decodeConnectCoreV1GetNamespacedPodExecResponse(resp *http.Response) (res C
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1GetNamespacedPodExecOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1GetNamespacedPodExecOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1GetNamespacedPodExecUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -246,23 +237,22 @@ func decodeConnectCoreV1GetNamespacedPodPortforwardResponse(resp *http.Response)
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1GetNamespacedPodPortforwardOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1GetNamespacedPodPortforwardOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1GetNamespacedPodPortforwardUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -274,23 +264,22 @@ func decodeConnectCoreV1GetNamespacedPodProxyResponse(resp *http.Response) (res 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1GetNamespacedPodProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1GetNamespacedPodProxyOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1GetNamespacedPodProxyUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -302,23 +291,22 @@ func decodeConnectCoreV1GetNamespacedPodProxyWithPathResponse(resp *http.Respons
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1GetNamespacedPodProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1GetNamespacedPodProxyWithPathOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1GetNamespacedPodProxyWithPathUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -330,23 +318,22 @@ func decodeConnectCoreV1GetNamespacedServiceProxyResponse(resp *http.Response) (
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1GetNamespacedServiceProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1GetNamespacedServiceProxyOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1GetNamespacedServiceProxyUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -358,23 +345,22 @@ func decodeConnectCoreV1GetNamespacedServiceProxyWithPathResponse(resp *http.Res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1GetNamespacedServiceProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1GetNamespacedServiceProxyWithPathOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1GetNamespacedServiceProxyWithPathUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -386,23 +372,22 @@ func decodeConnectCoreV1GetNodeProxyResponse(resp *http.Response) (res ConnectCo
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1GetNodeProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1GetNodeProxyOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1GetNodeProxyUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -414,23 +399,22 @@ func decodeConnectCoreV1GetNodeProxyWithPathResponse(resp *http.Response) (res C
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1GetNodeProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1GetNodeProxyWithPathOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1GetNodeProxyWithPathUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -442,23 +426,22 @@ func decodeConnectCoreV1HeadNamespacedPodProxyResponse(resp *http.Response) (res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1HeadNamespacedPodProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1HeadNamespacedPodProxyOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1HeadNamespacedPodProxyUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -470,23 +453,22 @@ func decodeConnectCoreV1HeadNamespacedPodProxyWithPathResponse(resp *http.Respon
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1HeadNamespacedPodProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1HeadNamespacedPodProxyWithPathOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1HeadNamespacedPodProxyWithPathUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -498,23 +480,22 @@ func decodeConnectCoreV1HeadNamespacedServiceProxyResponse(resp *http.Response) 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1HeadNamespacedServiceProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1HeadNamespacedServiceProxyOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1HeadNamespacedServiceProxyUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -526,23 +507,22 @@ func decodeConnectCoreV1HeadNamespacedServiceProxyWithPathResponse(resp *http.Re
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1HeadNamespacedServiceProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1HeadNamespacedServiceProxyWithPathOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1HeadNamespacedServiceProxyWithPathUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -554,23 +534,22 @@ func decodeConnectCoreV1HeadNodeProxyResponse(resp *http.Response) (res ConnectC
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1HeadNodeProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1HeadNodeProxyOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1HeadNodeProxyUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -582,23 +561,22 @@ func decodeConnectCoreV1HeadNodeProxyWithPathResponse(resp *http.Response) (res 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1HeadNodeProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1HeadNodeProxyWithPathOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1HeadNodeProxyWithPathUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -610,23 +588,22 @@ func decodeConnectCoreV1OptionsNamespacedPodProxyResponse(resp *http.Response) (
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1OptionsNamespacedPodProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1OptionsNamespacedPodProxyOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1OptionsNamespacedPodProxyUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -638,23 +615,22 @@ func decodeConnectCoreV1OptionsNamespacedPodProxyWithPathResponse(resp *http.Res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1OptionsNamespacedPodProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1OptionsNamespacedPodProxyWithPathOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1OptionsNamespacedPodProxyWithPathUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -666,23 +642,22 @@ func decodeConnectCoreV1OptionsNamespacedServiceProxyResponse(resp *http.Respons
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1OptionsNamespacedServiceProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1OptionsNamespacedServiceProxyOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1OptionsNamespacedServiceProxyUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -694,23 +669,22 @@ func decodeConnectCoreV1OptionsNamespacedServiceProxyWithPathResponse(resp *http
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1OptionsNamespacedServiceProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1OptionsNamespacedServiceProxyWithPathOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1OptionsNamespacedServiceProxyWithPathUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -722,23 +696,22 @@ func decodeConnectCoreV1OptionsNodeProxyResponse(resp *http.Response) (res Conne
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1OptionsNodeProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1OptionsNodeProxyOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1OptionsNodeProxyUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -750,23 +723,22 @@ func decodeConnectCoreV1OptionsNodeProxyWithPathResponse(resp *http.Response) (r
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1OptionsNodeProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1OptionsNodeProxyWithPathOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1OptionsNodeProxyWithPathUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -778,23 +750,22 @@ func decodeConnectCoreV1PatchNamespacedPodProxyResponse(resp *http.Response) (re
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1PatchNamespacedPodProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1PatchNamespacedPodProxyOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1PatchNamespacedPodProxyUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -806,23 +777,22 @@ func decodeConnectCoreV1PatchNamespacedPodProxyWithPathResponse(resp *http.Respo
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1PatchNamespacedPodProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1PatchNamespacedPodProxyWithPathOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1PatchNamespacedPodProxyWithPathUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -834,23 +804,22 @@ func decodeConnectCoreV1PatchNamespacedServiceProxyResponse(resp *http.Response)
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1PatchNamespacedServiceProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1PatchNamespacedServiceProxyOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1PatchNamespacedServiceProxyUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -862,23 +831,22 @@ func decodeConnectCoreV1PatchNamespacedServiceProxyWithPathResponse(resp *http.R
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1PatchNamespacedServiceProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1PatchNamespacedServiceProxyWithPathOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1PatchNamespacedServiceProxyWithPathUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -890,23 +858,22 @@ func decodeConnectCoreV1PatchNodeProxyResponse(resp *http.Response) (res Connect
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1PatchNodeProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1PatchNodeProxyOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1PatchNodeProxyUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -918,23 +885,22 @@ func decodeConnectCoreV1PatchNodeProxyWithPathResponse(resp *http.Response) (res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1PatchNodeProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1PatchNodeProxyWithPathOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1PatchNodeProxyWithPathUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -946,23 +912,22 @@ func decodeConnectCoreV1PostNamespacedPodAttachResponse(resp *http.Response) (re
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1PostNamespacedPodAttachOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1PostNamespacedPodAttachOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1PostNamespacedPodAttachUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -974,23 +939,22 @@ func decodeConnectCoreV1PostNamespacedPodExecResponse(resp *http.Response) (res 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1PostNamespacedPodExecOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1PostNamespacedPodExecOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1PostNamespacedPodExecUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -1002,23 +966,22 @@ func decodeConnectCoreV1PostNamespacedPodPortforwardResponse(resp *http.Response
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1PostNamespacedPodPortforwardOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1PostNamespacedPodPortforwardOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1PostNamespacedPodPortforwardUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -1030,23 +993,22 @@ func decodeConnectCoreV1PostNamespacedPodProxyResponse(resp *http.Response) (res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1PostNamespacedPodProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1PostNamespacedPodProxyOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1PostNamespacedPodProxyUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -1058,23 +1020,22 @@ func decodeConnectCoreV1PostNamespacedPodProxyWithPathResponse(resp *http.Respon
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1PostNamespacedPodProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1PostNamespacedPodProxyWithPathOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1PostNamespacedPodProxyWithPathUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -1086,23 +1047,22 @@ func decodeConnectCoreV1PostNamespacedServiceProxyResponse(resp *http.Response) 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1PostNamespacedServiceProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1PostNamespacedServiceProxyOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1PostNamespacedServiceProxyUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -1114,23 +1074,22 @@ func decodeConnectCoreV1PostNamespacedServiceProxyWithPathResponse(resp *http.Re
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1PostNamespacedServiceProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1PostNamespacedServiceProxyWithPathOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1PostNamespacedServiceProxyWithPathUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -1142,23 +1101,22 @@ func decodeConnectCoreV1PostNodeProxyResponse(resp *http.Response) (res ConnectC
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1PostNodeProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1PostNodeProxyOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1PostNodeProxyUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -1170,23 +1128,22 @@ func decodeConnectCoreV1PostNodeProxyWithPathResponse(resp *http.Response) (res 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1PostNodeProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1PostNodeProxyWithPathOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1PostNodeProxyWithPathUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -1198,23 +1155,22 @@ func decodeConnectCoreV1PutNamespacedPodProxyResponse(resp *http.Response) (res 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1PutNamespacedPodProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1PutNamespacedPodProxyOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1PutNamespacedPodProxyUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -1226,23 +1182,22 @@ func decodeConnectCoreV1PutNamespacedPodProxyWithPathResponse(resp *http.Respons
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1PutNamespacedPodProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1PutNamespacedPodProxyWithPathOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1PutNamespacedPodProxyWithPathUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -1254,23 +1209,22 @@ func decodeConnectCoreV1PutNamespacedServiceProxyResponse(resp *http.Response) (
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1PutNamespacedServiceProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1PutNamespacedServiceProxyOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1PutNamespacedServiceProxyUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -1282,23 +1236,22 @@ func decodeConnectCoreV1PutNamespacedServiceProxyWithPathResponse(resp *http.Res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1PutNamespacedServiceProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1PutNamespacedServiceProxyWithPathOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1PutNamespacedServiceProxyWithPathUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -1310,23 +1263,22 @@ func decodeConnectCoreV1PutNodeProxyResponse(resp *http.Response) (res ConnectCo
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1PutNodeProxyOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1PutNodeProxyOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1PutNodeProxyUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -1338,23 +1290,22 @@ func decodeConnectCoreV1PutNodeProxyWithPathResponse(resp *http.Response) (res C
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ConnectCoreV1PutNodeProxyWithPathOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ConnectCoreV1PutNodeProxyWithPathOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ConnectCoreV1PutNodeProxyWithPathUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -1366,10 +1317,12 @@ func decodeGetAPIVersionsResponse(resp *http.Response) (res GetAPIVersionsRes, _
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1395,10 +1348,12 @@ func decodeGetAPIVersionsResponse(resp *http.Response) (res GetAPIVersionsRes, _
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetAPIVersionsUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -1410,10 +1365,12 @@ func decodeGetAdmissionregistrationAPIGroupResponse(resp *http.Response) (res Ge
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1439,10 +1396,12 @@ func decodeGetAdmissionregistrationAPIGroupResponse(resp *http.Response) (res Ge
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetAdmissionregistrationAPIGroupUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -1454,10 +1413,12 @@ func decodeGetAdmissionregistrationV1APIResourcesResponse(resp *http.Response) (
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1483,10 +1444,12 @@ func decodeGetAdmissionregistrationV1APIResourcesResponse(resp *http.Response) (
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetAdmissionregistrationV1APIResourcesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -1498,10 +1461,12 @@ func decodeGetApiextensionsAPIGroupResponse(resp *http.Response) (res GetApiexte
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1527,10 +1492,12 @@ func decodeGetApiextensionsAPIGroupResponse(resp *http.Response) (res GetApiexte
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetApiextensionsAPIGroupUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -1542,10 +1509,12 @@ func decodeGetApiextensionsV1APIResourcesResponse(resp *http.Response) (res GetA
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1571,10 +1540,12 @@ func decodeGetApiextensionsV1APIResourcesResponse(resp *http.Response) (res GetA
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetApiextensionsV1APIResourcesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -1586,10 +1557,12 @@ func decodeGetApiregistrationAPIGroupResponse(resp *http.Response) (res GetApire
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1615,10 +1588,12 @@ func decodeGetApiregistrationAPIGroupResponse(resp *http.Response) (res GetApire
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetApiregistrationAPIGroupUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -1630,10 +1605,12 @@ func decodeGetApiregistrationV1APIResourcesResponse(resp *http.Response) (res Ge
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1659,10 +1636,12 @@ func decodeGetApiregistrationV1APIResourcesResponse(resp *http.Response) (res Ge
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetApiregistrationV1APIResourcesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -1674,10 +1653,12 @@ func decodeGetAppsAPIGroupResponse(resp *http.Response) (res GetAppsAPIGroupRes,
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1703,10 +1684,12 @@ func decodeGetAppsAPIGroupResponse(resp *http.Response) (res GetAppsAPIGroupRes,
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetAppsAPIGroupUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -1718,10 +1701,12 @@ func decodeGetAppsV1APIResourcesResponse(resp *http.Response) (res GetAppsV1APIR
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1747,10 +1732,12 @@ func decodeGetAppsV1APIResourcesResponse(resp *http.Response) (res GetAppsV1APIR
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetAppsV1APIResourcesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -1762,10 +1749,12 @@ func decodeGetAuthenticationAPIGroupResponse(resp *http.Response) (res GetAuthen
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1791,10 +1780,12 @@ func decodeGetAuthenticationAPIGroupResponse(resp *http.Response) (res GetAuthen
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetAuthenticationAPIGroupUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -1806,10 +1797,12 @@ func decodeGetAuthenticationV1APIResourcesResponse(resp *http.Response) (res Get
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1835,10 +1828,12 @@ func decodeGetAuthenticationV1APIResourcesResponse(resp *http.Response) (res Get
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetAuthenticationV1APIResourcesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -1850,10 +1845,12 @@ func decodeGetAuthorizationAPIGroupResponse(resp *http.Response) (res GetAuthori
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1879,10 +1876,12 @@ func decodeGetAuthorizationAPIGroupResponse(resp *http.Response) (res GetAuthori
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetAuthorizationAPIGroupUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -1894,10 +1893,12 @@ func decodeGetAuthorizationV1APIResourcesResponse(resp *http.Response) (res GetA
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1923,10 +1924,12 @@ func decodeGetAuthorizationV1APIResourcesResponse(resp *http.Response) (res GetA
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetAuthorizationV1APIResourcesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -1938,10 +1941,12 @@ func decodeGetAutoscalingAPIGroupResponse(resp *http.Response) (res GetAutoscali
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1967,10 +1972,12 @@ func decodeGetAutoscalingAPIGroupResponse(resp *http.Response) (res GetAutoscali
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetAutoscalingAPIGroupUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -1982,10 +1989,12 @@ func decodeGetAutoscalingV1APIResourcesResponse(resp *http.Response) (res GetAut
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -2011,10 +2020,12 @@ func decodeGetAutoscalingV1APIResourcesResponse(resp *http.Response) (res GetAut
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetAutoscalingV1APIResourcesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -2026,10 +2037,12 @@ func decodeGetAutoscalingV2beta1APIResourcesResponse(resp *http.Response) (res G
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -2055,10 +2068,12 @@ func decodeGetAutoscalingV2beta1APIResourcesResponse(resp *http.Response) (res G
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetAutoscalingV2beta1APIResourcesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -2070,10 +2085,12 @@ func decodeGetAutoscalingV2beta2APIResourcesResponse(resp *http.Response) (res G
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -2099,10 +2116,12 @@ func decodeGetAutoscalingV2beta2APIResourcesResponse(resp *http.Response) (res G
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetAutoscalingV2beta2APIResourcesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -2114,10 +2133,12 @@ func decodeGetBatchAPIGroupResponse(resp *http.Response) (res GetBatchAPIGroupRe
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -2143,10 +2164,12 @@ func decodeGetBatchAPIGroupResponse(resp *http.Response) (res GetBatchAPIGroupRe
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetBatchAPIGroupUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -2158,10 +2181,12 @@ func decodeGetBatchV1APIResourcesResponse(resp *http.Response) (res GetBatchV1AP
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -2187,10 +2212,12 @@ func decodeGetBatchV1APIResourcesResponse(resp *http.Response) (res GetBatchV1AP
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetBatchV1APIResourcesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -2202,10 +2229,12 @@ func decodeGetBatchV1beta1APIResourcesResponse(resp *http.Response) (res GetBatc
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -2231,10 +2260,12 @@ func decodeGetBatchV1beta1APIResourcesResponse(resp *http.Response) (res GetBatc
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetBatchV1beta1APIResourcesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -2246,10 +2277,12 @@ func decodeGetCertificatesAPIGroupResponse(resp *http.Response) (res GetCertific
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -2275,10 +2308,12 @@ func decodeGetCertificatesAPIGroupResponse(resp *http.Response) (res GetCertific
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetCertificatesAPIGroupUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -2290,10 +2325,12 @@ func decodeGetCertificatesV1APIResourcesResponse(resp *http.Response) (res GetCe
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -2319,10 +2356,12 @@ func decodeGetCertificatesV1APIResourcesResponse(resp *http.Response) (res GetCe
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetCertificatesV1APIResourcesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -2334,10 +2373,12 @@ func decodeGetCodeVersionResponse(resp *http.Response) (res GetCodeVersionRes, _
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -2363,10 +2404,12 @@ func decodeGetCodeVersionResponse(resp *http.Response) (res GetCodeVersionRes, _
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetCodeVersionUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -2378,10 +2421,12 @@ func decodeGetCoordinationAPIGroupResponse(resp *http.Response) (res GetCoordina
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -2407,10 +2452,12 @@ func decodeGetCoordinationAPIGroupResponse(resp *http.Response) (res GetCoordina
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetCoordinationAPIGroupUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -2422,10 +2469,12 @@ func decodeGetCoordinationV1APIResourcesResponse(resp *http.Response) (res GetCo
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -2451,10 +2500,12 @@ func decodeGetCoordinationV1APIResourcesResponse(resp *http.Response) (res GetCo
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetCoordinationV1APIResourcesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -2466,10 +2517,12 @@ func decodeGetCoreAPIVersionsResponse(resp *http.Response) (res GetCoreAPIVersio
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -2495,10 +2548,12 @@ func decodeGetCoreAPIVersionsResponse(resp *http.Response) (res GetCoreAPIVersio
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetCoreAPIVersionsUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -2510,10 +2565,12 @@ func decodeGetCoreV1APIResourcesResponse(resp *http.Response) (res GetCoreV1APIR
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -2539,10 +2596,12 @@ func decodeGetCoreV1APIResourcesResponse(resp *http.Response) (res GetCoreV1APIR
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetCoreV1APIResourcesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -2554,10 +2613,12 @@ func decodeGetDiscoveryAPIGroupResponse(resp *http.Response) (res GetDiscoveryAP
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -2583,10 +2644,12 @@ func decodeGetDiscoveryAPIGroupResponse(resp *http.Response) (res GetDiscoveryAP
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetDiscoveryAPIGroupUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -2598,10 +2661,12 @@ func decodeGetDiscoveryV1APIResourcesResponse(resp *http.Response) (res GetDisco
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -2627,10 +2692,12 @@ func decodeGetDiscoveryV1APIResourcesResponse(resp *http.Response) (res GetDisco
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetDiscoveryV1APIResourcesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -2642,10 +2709,12 @@ func decodeGetDiscoveryV1beta1APIResourcesResponse(resp *http.Response) (res Get
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -2671,10 +2740,12 @@ func decodeGetDiscoveryV1beta1APIResourcesResponse(resp *http.Response) (res Get
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetDiscoveryV1beta1APIResourcesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -2686,10 +2757,12 @@ func decodeGetEventsAPIGroupResponse(resp *http.Response) (res GetEventsAPIGroup
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -2715,10 +2788,12 @@ func decodeGetEventsAPIGroupResponse(resp *http.Response) (res GetEventsAPIGroup
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetEventsAPIGroupUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -2730,10 +2805,12 @@ func decodeGetEventsV1APIResourcesResponse(resp *http.Response) (res GetEventsV1
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -2759,10 +2836,12 @@ func decodeGetEventsV1APIResourcesResponse(resp *http.Response) (res GetEventsV1
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetEventsV1APIResourcesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -2774,10 +2853,12 @@ func decodeGetEventsV1beta1APIResourcesResponse(resp *http.Response) (res GetEve
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -2803,10 +2884,12 @@ func decodeGetEventsV1beta1APIResourcesResponse(resp *http.Response) (res GetEve
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetEventsV1beta1APIResourcesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -2818,10 +2901,12 @@ func decodeGetFlowcontrolApiserverAPIGroupResponse(resp *http.Response) (res Get
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -2847,10 +2932,12 @@ func decodeGetFlowcontrolApiserverAPIGroupResponse(resp *http.Response) (res Get
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetFlowcontrolApiserverAPIGroupUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -2862,10 +2949,12 @@ func decodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(resp *http.Respons
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -2891,10 +2980,12 @@ func decodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(resp *http.Respons
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -2906,10 +2997,12 @@ func decodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(resp *http.Respons
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -2935,10 +3028,12 @@ func decodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(resp *http.Respons
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -2950,10 +3045,12 @@ func decodeGetInternalApiserverAPIGroupResponse(resp *http.Response) (res GetInt
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -2979,10 +3076,12 @@ func decodeGetInternalApiserverAPIGroupResponse(resp *http.Response) (res GetInt
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetInternalApiserverAPIGroupUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -2994,10 +3093,12 @@ func decodeGetInternalApiserverV1alpha1APIResourcesResponse(resp *http.Response)
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -3023,10 +3124,12 @@ func decodeGetInternalApiserverV1alpha1APIResourcesResponse(resp *http.Response)
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetInternalApiserverV1alpha1APIResourcesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -3038,10 +3141,12 @@ func decodeGetNetworkingAPIGroupResponse(resp *http.Response) (res GetNetworking
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -3067,10 +3172,12 @@ func decodeGetNetworkingAPIGroupResponse(resp *http.Response) (res GetNetworking
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetNetworkingAPIGroupUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -3082,10 +3189,12 @@ func decodeGetNetworkingV1APIResourcesResponse(resp *http.Response) (res GetNetw
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -3111,10 +3220,12 @@ func decodeGetNetworkingV1APIResourcesResponse(resp *http.Response) (res GetNetw
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetNetworkingV1APIResourcesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -3126,10 +3237,12 @@ func decodeGetNodeAPIGroupResponse(resp *http.Response) (res GetNodeAPIGroupRes,
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -3155,10 +3268,12 @@ func decodeGetNodeAPIGroupResponse(resp *http.Response) (res GetNodeAPIGroupRes,
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetNodeAPIGroupUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -3170,10 +3285,12 @@ func decodeGetNodeV1APIResourcesResponse(resp *http.Response) (res GetNodeV1APIR
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -3199,10 +3316,12 @@ func decodeGetNodeV1APIResourcesResponse(resp *http.Response) (res GetNodeV1APIR
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetNodeV1APIResourcesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -3214,10 +3333,12 @@ func decodeGetNodeV1alpha1APIResourcesResponse(resp *http.Response) (res GetNode
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -3243,10 +3364,12 @@ func decodeGetNodeV1alpha1APIResourcesResponse(resp *http.Response) (res GetNode
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetNodeV1alpha1APIResourcesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -3258,10 +3381,12 @@ func decodeGetNodeV1beta1APIResourcesResponse(resp *http.Response) (res GetNodeV
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -3287,10 +3412,12 @@ func decodeGetNodeV1beta1APIResourcesResponse(resp *http.Response) (res GetNodeV
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetNodeV1beta1APIResourcesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -3302,10 +3429,12 @@ func decodeGetPolicyAPIGroupResponse(resp *http.Response) (res GetPolicyAPIGroup
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -3331,10 +3460,12 @@ func decodeGetPolicyAPIGroupResponse(resp *http.Response) (res GetPolicyAPIGroup
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetPolicyAPIGroupUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -3346,10 +3477,12 @@ func decodeGetPolicyV1APIResourcesResponse(resp *http.Response) (res GetPolicyV1
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -3375,10 +3508,12 @@ func decodeGetPolicyV1APIResourcesResponse(resp *http.Response) (res GetPolicyV1
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetPolicyV1APIResourcesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -3390,10 +3525,12 @@ func decodeGetPolicyV1beta1APIResourcesResponse(resp *http.Response) (res GetPol
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -3419,10 +3556,12 @@ func decodeGetPolicyV1beta1APIResourcesResponse(resp *http.Response) (res GetPol
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetPolicyV1beta1APIResourcesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -3434,10 +3573,12 @@ func decodeGetRbacAuthorizationAPIGroupResponse(resp *http.Response) (res GetRba
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -3463,10 +3604,12 @@ func decodeGetRbacAuthorizationAPIGroupResponse(resp *http.Response) (res GetRba
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetRbacAuthorizationAPIGroupUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -3478,10 +3621,12 @@ func decodeGetRbacAuthorizationV1APIResourcesResponse(resp *http.Response) (res 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -3507,10 +3652,12 @@ func decodeGetRbacAuthorizationV1APIResourcesResponse(resp *http.Response) (res 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetRbacAuthorizationV1APIResourcesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -3522,10 +3669,12 @@ func decodeGetSchedulingAPIGroupResponse(resp *http.Response) (res GetScheduling
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -3551,10 +3700,12 @@ func decodeGetSchedulingAPIGroupResponse(resp *http.Response) (res GetScheduling
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetSchedulingAPIGroupUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -3566,10 +3717,12 @@ func decodeGetSchedulingV1APIResourcesResponse(resp *http.Response) (res GetSche
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -3595,10 +3748,12 @@ func decodeGetSchedulingV1APIResourcesResponse(resp *http.Response) (res GetSche
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetSchedulingV1APIResourcesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -3610,10 +3765,12 @@ func decodeGetServiceAccountIssuerOpenIDConfigurationResponse(resp *http.Respons
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -3639,10 +3796,12 @@ func decodeGetServiceAccountIssuerOpenIDConfigurationResponse(resp *http.Respons
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetServiceAccountIssuerOpenIDConfigurationUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -3654,23 +3813,22 @@ func decodeGetServiceAccountIssuerOpenIDKeysetResponse(resp *http.Response) (res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/jwk-set+json":
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := GetServiceAccountIssuerOpenIDKeysetOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := GetServiceAccountIssuerOpenIDKeysetOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetServiceAccountIssuerOpenIDKeysetUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -3682,10 +3840,12 @@ func decodeGetStorageAPIGroupResponse(resp *http.Response) (res GetStorageAPIGro
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -3711,10 +3871,12 @@ func decodeGetStorageAPIGroupResponse(resp *http.Response) (res GetStorageAPIGro
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetStorageAPIGroupUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -3726,10 +3888,12 @@ func decodeGetStorageV1APIResourcesResponse(resp *http.Response) (res GetStorage
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -3755,10 +3919,12 @@ func decodeGetStorageV1APIResourcesResponse(resp *http.Response) (res GetStorage
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetStorageV1APIResourcesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -3770,10 +3936,12 @@ func decodeGetStorageV1alpha1APIResourcesResponse(resp *http.Response) (res GetS
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -3799,10 +3967,12 @@ func decodeGetStorageV1alpha1APIResourcesResponse(resp *http.Response) (res GetS
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetStorageV1alpha1APIResourcesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -3814,10 +3984,12 @@ func decodeGetStorageV1beta1APIResourcesResponse(resp *http.Response) (res GetSt
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -3843,10 +4015,12 @@ func decodeGetStorageV1beta1APIResourcesResponse(resp *http.Response) (res GetSt
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &GetStorageV1beta1APIResourcesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -3858,10 +4032,12 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -3887,10 +4063,12 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -3902,10 +4080,12 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -3931,10 +4111,12 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -3946,10 +4128,12 @@ func decodeListApiextensionsV1CustomResourceDefinitionResponse(resp *http.Respon
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -3975,10 +4159,12 @@ func decodeListApiextensionsV1CustomResourceDefinitionResponse(resp *http.Respon
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListApiextensionsV1CustomResourceDefinitionUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -3990,10 +4176,12 @@ func decodeListApiregistrationV1APIServiceResponse(resp *http.Response) (res Lis
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -4019,10 +4207,12 @@ func decodeListApiregistrationV1APIServiceResponse(resp *http.Response) (res Lis
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListApiregistrationV1APIServiceUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -4034,10 +4224,12 @@ func decodeListAppsV1ControllerRevisionForAllNamespacesResponse(resp *http.Respo
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -4063,10 +4255,12 @@ func decodeListAppsV1ControllerRevisionForAllNamespacesResponse(resp *http.Respo
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListAppsV1ControllerRevisionForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -4078,10 +4272,12 @@ func decodeListAppsV1DaemonSetForAllNamespacesResponse(resp *http.Response) (res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -4107,10 +4303,12 @@ func decodeListAppsV1DaemonSetForAllNamespacesResponse(resp *http.Response) (res
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListAppsV1DaemonSetForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -4122,10 +4320,12 @@ func decodeListAppsV1DeploymentForAllNamespacesResponse(resp *http.Response) (re
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -4151,10 +4351,12 @@ func decodeListAppsV1DeploymentForAllNamespacesResponse(resp *http.Response) (re
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListAppsV1DeploymentForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -4166,10 +4368,12 @@ func decodeListAppsV1NamespacedControllerRevisionResponse(resp *http.Response) (
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -4195,10 +4399,12 @@ func decodeListAppsV1NamespacedControllerRevisionResponse(resp *http.Response) (
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListAppsV1NamespacedControllerRevisionUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -4210,10 +4416,12 @@ func decodeListAppsV1NamespacedDaemonSetResponse(resp *http.Response) (res ListA
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -4239,10 +4447,12 @@ func decodeListAppsV1NamespacedDaemonSetResponse(resp *http.Response) (res ListA
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListAppsV1NamespacedDaemonSetUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -4254,10 +4464,12 @@ func decodeListAppsV1NamespacedDeploymentResponse(resp *http.Response) (res List
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -4283,10 +4495,12 @@ func decodeListAppsV1NamespacedDeploymentResponse(resp *http.Response) (res List
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListAppsV1NamespacedDeploymentUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -4298,10 +4512,12 @@ func decodeListAppsV1NamespacedReplicaSetResponse(resp *http.Response) (res List
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -4327,10 +4543,12 @@ func decodeListAppsV1NamespacedReplicaSetResponse(resp *http.Response) (res List
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListAppsV1NamespacedReplicaSetUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -4342,10 +4560,12 @@ func decodeListAppsV1NamespacedStatefulSetResponse(resp *http.Response) (res Lis
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -4371,10 +4591,12 @@ func decodeListAppsV1NamespacedStatefulSetResponse(resp *http.Response) (res Lis
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListAppsV1NamespacedStatefulSetUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -4386,10 +4608,12 @@ func decodeListAppsV1ReplicaSetForAllNamespacesResponse(resp *http.Response) (re
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -4415,10 +4639,12 @@ func decodeListAppsV1ReplicaSetForAllNamespacesResponse(resp *http.Response) (re
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListAppsV1ReplicaSetForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -4430,10 +4656,12 @@ func decodeListAppsV1StatefulSetForAllNamespacesResponse(resp *http.Response) (r
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -4459,10 +4687,12 @@ func decodeListAppsV1StatefulSetForAllNamespacesResponse(resp *http.Response) (r
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListAppsV1StatefulSetForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -4474,10 +4704,12 @@ func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -4503,10 +4735,12 @@ func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -4518,10 +4752,12 @@ func decodeListAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(resp *http
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -4547,10 +4783,12 @@ func decodeListAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(resp *http
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListAutoscalingV1NamespacedHorizontalPodAutoscalerUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -4562,10 +4800,12 @@ func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -4591,10 +4831,12 @@ func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -4606,10 +4848,12 @@ func decodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -4635,10 +4879,12 @@ func decodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -4650,10 +4896,12 @@ func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -4679,10 +4927,12 @@ func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -4694,10 +4944,12 @@ func decodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -4723,10 +4975,12 @@ func decodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -4738,10 +4992,12 @@ func decodeListBatchV1CronJobForAllNamespacesResponse(resp *http.Response) (res 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -4767,10 +5023,12 @@ func decodeListBatchV1CronJobForAllNamespacesResponse(resp *http.Response) (res 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListBatchV1CronJobForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -4782,10 +5040,12 @@ func decodeListBatchV1JobForAllNamespacesResponse(resp *http.Response) (res List
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -4811,10 +5071,12 @@ func decodeListBatchV1JobForAllNamespacesResponse(resp *http.Response) (res List
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListBatchV1JobForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -4826,10 +5088,12 @@ func decodeListBatchV1NamespacedCronJobResponse(resp *http.Response) (res ListBa
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -4855,10 +5119,12 @@ func decodeListBatchV1NamespacedCronJobResponse(resp *http.Response) (res ListBa
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListBatchV1NamespacedCronJobUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -4870,10 +5136,12 @@ func decodeListBatchV1NamespacedJobResponse(resp *http.Response) (res ListBatchV
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -4899,10 +5167,12 @@ func decodeListBatchV1NamespacedJobResponse(resp *http.Response) (res ListBatchV
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListBatchV1NamespacedJobUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -4914,10 +5184,12 @@ func decodeListBatchV1beta1CronJobForAllNamespacesResponse(resp *http.Response) 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -4943,10 +5215,12 @@ func decodeListBatchV1beta1CronJobForAllNamespacesResponse(resp *http.Response) 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListBatchV1beta1CronJobForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -4958,10 +5232,12 @@ func decodeListBatchV1beta1NamespacedCronJobResponse(resp *http.Response) (res L
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -4987,10 +5263,12 @@ func decodeListBatchV1beta1NamespacedCronJobResponse(resp *http.Response) (res L
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListBatchV1beta1NamespacedCronJobUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -5002,10 +5280,12 @@ func decodeListCertificatesV1CertificateSigningRequestResponse(resp *http.Respon
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -5031,10 +5311,12 @@ func decodeListCertificatesV1CertificateSigningRequestResponse(resp *http.Respon
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListCertificatesV1CertificateSigningRequestUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -5046,10 +5328,12 @@ func decodeListCoordinationV1LeaseForAllNamespacesResponse(resp *http.Response) 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -5075,10 +5359,12 @@ func decodeListCoordinationV1LeaseForAllNamespacesResponse(resp *http.Response) 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListCoordinationV1LeaseForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -5090,10 +5376,12 @@ func decodeListCoordinationV1NamespacedLeaseResponse(resp *http.Response) (res L
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -5119,10 +5407,12 @@ func decodeListCoordinationV1NamespacedLeaseResponse(resp *http.Response) (res L
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListCoordinationV1NamespacedLeaseUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -5134,10 +5424,12 @@ func decodeListCoreV1ComponentStatusResponse(resp *http.Response) (res ListCoreV
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -5163,10 +5455,12 @@ func decodeListCoreV1ComponentStatusResponse(resp *http.Response) (res ListCoreV
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListCoreV1ComponentStatusUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -5178,10 +5472,12 @@ func decodeListCoreV1ConfigMapForAllNamespacesResponse(resp *http.Response) (res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -5207,10 +5503,12 @@ func decodeListCoreV1ConfigMapForAllNamespacesResponse(resp *http.Response) (res
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListCoreV1ConfigMapForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -5222,10 +5520,12 @@ func decodeListCoreV1EndpointsForAllNamespacesResponse(resp *http.Response) (res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -5251,10 +5551,12 @@ func decodeListCoreV1EndpointsForAllNamespacesResponse(resp *http.Response) (res
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListCoreV1EndpointsForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -5266,10 +5568,12 @@ func decodeListCoreV1EventForAllNamespacesResponse(resp *http.Response) (res Lis
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -5295,10 +5599,12 @@ func decodeListCoreV1EventForAllNamespacesResponse(resp *http.Response) (res Lis
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListCoreV1EventForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -5310,10 +5616,12 @@ func decodeListCoreV1LimitRangeForAllNamespacesResponse(resp *http.Response) (re
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -5339,10 +5647,12 @@ func decodeListCoreV1LimitRangeForAllNamespacesResponse(resp *http.Response) (re
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListCoreV1LimitRangeForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -5354,10 +5664,12 @@ func decodeListCoreV1NamespaceResponse(resp *http.Response) (res ListCoreV1Names
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -5383,10 +5695,12 @@ func decodeListCoreV1NamespaceResponse(resp *http.Response) (res ListCoreV1Names
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListCoreV1NamespaceUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -5398,10 +5712,12 @@ func decodeListCoreV1NamespacedConfigMapResponse(resp *http.Response) (res ListC
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -5427,10 +5743,12 @@ func decodeListCoreV1NamespacedConfigMapResponse(resp *http.Response) (res ListC
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListCoreV1NamespacedConfigMapUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -5442,10 +5760,12 @@ func decodeListCoreV1NamespacedEndpointsResponse(resp *http.Response) (res ListC
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -5471,10 +5791,12 @@ func decodeListCoreV1NamespacedEndpointsResponse(resp *http.Response) (res ListC
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListCoreV1NamespacedEndpointsUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -5486,10 +5808,12 @@ func decodeListCoreV1NamespacedEventResponse(resp *http.Response) (res ListCoreV
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -5515,10 +5839,12 @@ func decodeListCoreV1NamespacedEventResponse(resp *http.Response) (res ListCoreV
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListCoreV1NamespacedEventUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -5530,10 +5856,12 @@ func decodeListCoreV1NamespacedLimitRangeResponse(resp *http.Response) (res List
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -5559,10 +5887,12 @@ func decodeListCoreV1NamespacedLimitRangeResponse(resp *http.Response) (res List
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListCoreV1NamespacedLimitRangeUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -5574,10 +5904,12 @@ func decodeListCoreV1NamespacedPersistentVolumeClaimResponse(resp *http.Response
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -5603,10 +5935,12 @@ func decodeListCoreV1NamespacedPersistentVolumeClaimResponse(resp *http.Response
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListCoreV1NamespacedPersistentVolumeClaimUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -5618,10 +5952,12 @@ func decodeListCoreV1NamespacedPodResponse(resp *http.Response) (res ListCoreV1N
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -5647,10 +5983,12 @@ func decodeListCoreV1NamespacedPodResponse(resp *http.Response) (res ListCoreV1N
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListCoreV1NamespacedPodUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -5662,10 +6000,12 @@ func decodeListCoreV1NamespacedPodTemplateResponse(resp *http.Response) (res Lis
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -5691,10 +6031,12 @@ func decodeListCoreV1NamespacedPodTemplateResponse(resp *http.Response) (res Lis
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListCoreV1NamespacedPodTemplateUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -5706,10 +6048,12 @@ func decodeListCoreV1NamespacedReplicationControllerResponse(resp *http.Response
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -5735,10 +6079,12 @@ func decodeListCoreV1NamespacedReplicationControllerResponse(resp *http.Response
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListCoreV1NamespacedReplicationControllerUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -5750,10 +6096,12 @@ func decodeListCoreV1NamespacedResourceQuotaResponse(resp *http.Response) (res L
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -5779,10 +6127,12 @@ func decodeListCoreV1NamespacedResourceQuotaResponse(resp *http.Response) (res L
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListCoreV1NamespacedResourceQuotaUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -5794,10 +6144,12 @@ func decodeListCoreV1NamespacedSecretResponse(resp *http.Response) (res ListCore
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -5823,10 +6175,12 @@ func decodeListCoreV1NamespacedSecretResponse(resp *http.Response) (res ListCore
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListCoreV1NamespacedSecretUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -5838,10 +6192,12 @@ func decodeListCoreV1NamespacedServiceResponse(resp *http.Response) (res ListCor
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -5867,10 +6223,12 @@ func decodeListCoreV1NamespacedServiceResponse(resp *http.Response) (res ListCor
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListCoreV1NamespacedServiceUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -5882,10 +6240,12 @@ func decodeListCoreV1NamespacedServiceAccountResponse(resp *http.Response) (res 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -5911,10 +6271,12 @@ func decodeListCoreV1NamespacedServiceAccountResponse(resp *http.Response) (res 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListCoreV1NamespacedServiceAccountUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -5926,10 +6288,12 @@ func decodeListCoreV1NodeResponse(resp *http.Response) (res ListCoreV1NodeRes, _
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -5955,10 +6319,12 @@ func decodeListCoreV1NodeResponse(resp *http.Response) (res ListCoreV1NodeRes, _
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListCoreV1NodeUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -5970,10 +6336,12 @@ func decodeListCoreV1PersistentVolumeResponse(resp *http.Response) (res ListCore
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -5999,10 +6367,12 @@ func decodeListCoreV1PersistentVolumeResponse(resp *http.Response) (res ListCore
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListCoreV1PersistentVolumeUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -6014,10 +6384,12 @@ func decodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(resp *http.Re
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -6043,10 +6415,12 @@ func decodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(resp *http.Re
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -6058,10 +6432,12 @@ func decodeListCoreV1PodForAllNamespacesResponse(resp *http.Response) (res ListC
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -6087,10 +6463,12 @@ func decodeListCoreV1PodForAllNamespacesResponse(resp *http.Response) (res ListC
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListCoreV1PodForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -6102,10 +6480,12 @@ func decodeListCoreV1PodTemplateForAllNamespacesResponse(resp *http.Response) (r
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -6131,10 +6511,12 @@ func decodeListCoreV1PodTemplateForAllNamespacesResponse(resp *http.Response) (r
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListCoreV1PodTemplateForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -6146,10 +6528,12 @@ func decodeListCoreV1ReplicationControllerForAllNamespacesResponse(resp *http.Re
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -6175,10 +6559,12 @@ func decodeListCoreV1ReplicationControllerForAllNamespacesResponse(resp *http.Re
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListCoreV1ReplicationControllerForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -6190,10 +6576,12 @@ func decodeListCoreV1ResourceQuotaForAllNamespacesResponse(resp *http.Response) 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -6219,10 +6607,12 @@ func decodeListCoreV1ResourceQuotaForAllNamespacesResponse(resp *http.Response) 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListCoreV1ResourceQuotaForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -6234,10 +6624,12 @@ func decodeListCoreV1SecretForAllNamespacesResponse(resp *http.Response) (res Li
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -6263,10 +6655,12 @@ func decodeListCoreV1SecretForAllNamespacesResponse(resp *http.Response) (res Li
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListCoreV1SecretForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -6278,10 +6672,12 @@ func decodeListCoreV1ServiceAccountForAllNamespacesResponse(resp *http.Response)
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -6307,10 +6703,12 @@ func decodeListCoreV1ServiceAccountForAllNamespacesResponse(resp *http.Response)
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListCoreV1ServiceAccountForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -6322,10 +6720,12 @@ func decodeListCoreV1ServiceForAllNamespacesResponse(resp *http.Response) (res L
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -6351,10 +6751,12 @@ func decodeListCoreV1ServiceForAllNamespacesResponse(resp *http.Response) (res L
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListCoreV1ServiceForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -6366,10 +6768,12 @@ func decodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(resp *http.Respo
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -6395,10 +6799,12 @@ func decodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(resp *http.Respo
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -6410,10 +6816,12 @@ func decodeListDiscoveryV1NamespacedEndpointSliceResponse(resp *http.Response) (
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -6439,10 +6847,12 @@ func decodeListDiscoveryV1NamespacedEndpointSliceResponse(resp *http.Response) (
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListDiscoveryV1NamespacedEndpointSliceUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -6454,10 +6864,12 @@ func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(resp *http.
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -6483,10 +6895,12 @@ func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(resp *http.
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -6498,10 +6912,12 @@ func decodeListDiscoveryV1beta1NamespacedEndpointSliceResponse(resp *http.Respon
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -6527,10 +6943,12 @@ func decodeListDiscoveryV1beta1NamespacedEndpointSliceResponse(resp *http.Respon
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListDiscoveryV1beta1NamespacedEndpointSliceUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -6542,10 +6960,12 @@ func decodeListEventsV1EventForAllNamespacesResponse(resp *http.Response) (res L
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -6571,10 +6991,12 @@ func decodeListEventsV1EventForAllNamespacesResponse(resp *http.Response) (res L
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListEventsV1EventForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -6586,10 +7008,12 @@ func decodeListEventsV1NamespacedEventResponse(resp *http.Response) (res ListEve
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -6615,10 +7039,12 @@ func decodeListEventsV1NamespacedEventResponse(resp *http.Response) (res ListEve
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListEventsV1NamespacedEventUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -6630,10 +7056,12 @@ func decodeListEventsV1beta1EventForAllNamespacesResponse(resp *http.Response) (
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -6659,10 +7087,12 @@ func decodeListEventsV1beta1EventForAllNamespacesResponse(resp *http.Response) (
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListEventsV1beta1EventForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -6674,10 +7104,12 @@ func decodeListEventsV1beta1NamespacedEventResponse(resp *http.Response) (res Li
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -6703,10 +7135,12 @@ func decodeListEventsV1beta1NamespacedEventResponse(resp *http.Response) (res Li
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListEventsV1beta1NamespacedEventUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -6718,10 +7152,12 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Response
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -6747,10 +7183,12 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Response
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -6762,10 +7200,12 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -6791,10 +7231,12 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -6806,10 +7248,12 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Response
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -6835,10 +7279,12 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Response
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -6850,10 +7296,12 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -6879,10 +7327,12 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -6894,10 +7344,12 @@ func decodeListInternalApiserverV1alpha1StorageVersionResponse(resp *http.Respon
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -6923,10 +7375,12 @@ func decodeListInternalApiserverV1alpha1StorageVersionResponse(resp *http.Respon
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListInternalApiserverV1alpha1StorageVersionUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -6938,10 +7392,12 @@ func decodeListNetworkingV1IngressClassResponse(resp *http.Response) (res ListNe
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -6967,10 +7423,12 @@ func decodeListNetworkingV1IngressClassResponse(resp *http.Response) (res ListNe
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListNetworkingV1IngressClassUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -6982,10 +7440,12 @@ func decodeListNetworkingV1IngressForAllNamespacesResponse(resp *http.Response) 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -7011,10 +7471,12 @@ func decodeListNetworkingV1IngressForAllNamespacesResponse(resp *http.Response) 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListNetworkingV1IngressForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -7026,10 +7488,12 @@ func decodeListNetworkingV1NamespacedIngressResponse(resp *http.Response) (res L
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -7055,10 +7519,12 @@ func decodeListNetworkingV1NamespacedIngressResponse(resp *http.Response) (res L
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListNetworkingV1NamespacedIngressUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -7070,10 +7536,12 @@ func decodeListNetworkingV1NamespacedNetworkPolicyResponse(resp *http.Response) 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -7099,10 +7567,12 @@ func decodeListNetworkingV1NamespacedNetworkPolicyResponse(resp *http.Response) 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListNetworkingV1NamespacedNetworkPolicyUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -7114,10 +7584,12 @@ func decodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(resp *http.Resp
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -7143,10 +7615,12 @@ func decodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(resp *http.Resp
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -7158,10 +7632,12 @@ func decodeListNodeV1RuntimeClassResponse(resp *http.Response) (res ListNodeV1Ru
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -7187,10 +7663,12 @@ func decodeListNodeV1RuntimeClassResponse(resp *http.Response) (res ListNodeV1Ru
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListNodeV1RuntimeClassUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -7202,10 +7680,12 @@ func decodeListNodeV1alpha1RuntimeClassResponse(resp *http.Response) (res ListNo
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -7231,10 +7711,12 @@ func decodeListNodeV1alpha1RuntimeClassResponse(resp *http.Response) (res ListNo
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListNodeV1alpha1RuntimeClassUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -7246,10 +7728,12 @@ func decodeListNodeV1beta1RuntimeClassResponse(resp *http.Response) (res ListNod
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -7275,10 +7759,12 @@ func decodeListNodeV1beta1RuntimeClassResponse(resp *http.Response) (res ListNod
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListNodeV1beta1RuntimeClassUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -7290,10 +7776,12 @@ func decodeListPolicyV1NamespacedPodDisruptionBudgetResponse(resp *http.Response
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -7319,10 +7807,12 @@ func decodeListPolicyV1NamespacedPodDisruptionBudgetResponse(resp *http.Response
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListPolicyV1NamespacedPodDisruptionBudgetUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -7334,10 +7824,12 @@ func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(resp *http.Re
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -7363,10 +7855,12 @@ func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(resp *http.Re
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -7378,10 +7872,12 @@ func decodeListPolicyV1beta1NamespacedPodDisruptionBudgetResponse(resp *http.Res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -7407,10 +7903,12 @@ func decodeListPolicyV1beta1NamespacedPodDisruptionBudgetResponse(resp *http.Res
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListPolicyV1beta1NamespacedPodDisruptionBudgetUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -7422,10 +7920,12 @@ func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(resp *ht
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -7451,10 +7951,12 @@ func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(resp *ht
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -7466,10 +7968,12 @@ func decodeListPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (res 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -7495,10 +7999,12 @@ func decodeListPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (res 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListPolicyV1beta1PodSecurityPolicyUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -7510,10 +8016,12 @@ func decodeListRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (res 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -7539,10 +8047,12 @@ func decodeListRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (res 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListRbacAuthorizationV1ClusterRoleUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -7554,10 +8064,12 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Response
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -7583,10 +8095,12 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Response
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListRbacAuthorizationV1ClusterRoleBindingUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -7598,10 +8112,12 @@ func decodeListRbacAuthorizationV1NamespacedRoleResponse(resp *http.Response) (r
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -7627,10 +8143,12 @@ func decodeListRbacAuthorizationV1NamespacedRoleResponse(resp *http.Response) (r
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListRbacAuthorizationV1NamespacedRoleUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -7642,10 +8160,12 @@ func decodeListRbacAuthorizationV1NamespacedRoleBindingResponse(resp *http.Respo
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -7671,10 +8191,12 @@ func decodeListRbacAuthorizationV1NamespacedRoleBindingResponse(resp *http.Respo
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListRbacAuthorizationV1NamespacedRoleBindingUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -7686,10 +8208,12 @@ func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(resp *http
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -7715,10 +8239,12 @@ func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(resp *http
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -7730,10 +8256,12 @@ func decodeListRbacAuthorizationV1RoleForAllNamespacesResponse(resp *http.Respon
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -7759,10 +8287,12 @@ func decodeListRbacAuthorizationV1RoleForAllNamespacesResponse(resp *http.Respon
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -7774,10 +8304,12 @@ func decodeListSchedulingV1PriorityClassResponse(resp *http.Response) (res ListS
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -7803,10 +8335,12 @@ func decodeListSchedulingV1PriorityClassResponse(resp *http.Response) (res ListS
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListSchedulingV1PriorityClassUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -7818,10 +8352,12 @@ func decodeListStorageV1CSIDriverResponse(resp *http.Response) (res ListStorageV
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -7847,10 +8383,12 @@ func decodeListStorageV1CSIDriverResponse(resp *http.Response) (res ListStorageV
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListStorageV1CSIDriverUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -7862,10 +8400,12 @@ func decodeListStorageV1CSINodeResponse(resp *http.Response) (res ListStorageV1C
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -7891,10 +8431,12 @@ func decodeListStorageV1CSINodeResponse(resp *http.Response) (res ListStorageV1C
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListStorageV1CSINodeUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -7906,10 +8448,12 @@ func decodeListStorageV1StorageClassResponse(resp *http.Response) (res ListStora
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -7935,10 +8479,12 @@ func decodeListStorageV1StorageClassResponse(resp *http.Response) (res ListStora
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListStorageV1StorageClassUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -7950,10 +8496,12 @@ func decodeListStorageV1VolumeAttachmentResponse(resp *http.Response) (res ListS
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -7979,10 +8527,12 @@ func decodeListStorageV1VolumeAttachmentResponse(resp *http.Response) (res ListS
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListStorageV1VolumeAttachmentUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -7994,10 +8544,12 @@ func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(resp *h
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -8023,10 +8575,12 @@ func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(resp *h
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -8038,10 +8592,12 @@ func decodeListStorageV1alpha1NamespacedCSIStorageCapacityResponse(resp *http.Re
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -8067,10 +8623,12 @@ func decodeListStorageV1alpha1NamespacedCSIStorageCapacityResponse(resp *http.Re
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListStorageV1alpha1NamespacedCSIStorageCapacityUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -8082,10 +8640,12 @@ func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(resp *ht
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -8111,10 +8671,12 @@ func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(resp *ht
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -8126,10 +8688,12 @@ func decodeListStorageV1beta1NamespacedCSIStorageCapacityResponse(resp *http.Res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -8155,10 +8719,12 @@ func decodeListStorageV1beta1NamespacedCSIStorageCapacityResponse(resp *http.Res
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ListStorageV1beta1NamespacedCSIStorageCapacityUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -8168,6 +8734,7 @@ func decodeLogFileHandlerResponse(resp *http.Response) (res *LogFileHandlerUnaut
 	switch resp.StatusCode {
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &LogFileHandlerUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -8177,6 +8744,7 @@ func decodeLogFileListHandlerResponse(resp *http.Response) (res *LogFileListHand
 	switch resp.StatusCode {
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &LogFileListHandlerUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -8188,10 +8756,12 @@ func decodeReadAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -8217,10 +8787,12 @@ func decodeReadAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -8232,10 +8804,12 @@ func decodeReadAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -8261,10 +8835,12 @@ func decodeReadAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -8276,10 +8852,12 @@ func decodeReadApiextensionsV1CustomResourceDefinitionResponse(resp *http.Respon
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -8305,10 +8883,12 @@ func decodeReadApiextensionsV1CustomResourceDefinitionResponse(resp *http.Respon
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadApiextensionsV1CustomResourceDefinitionUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -8320,10 +8900,12 @@ func decodeReadApiextensionsV1CustomResourceDefinitionStatusResponse(resp *http.
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -8349,10 +8931,12 @@ func decodeReadApiextensionsV1CustomResourceDefinitionStatusResponse(resp *http.
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadApiextensionsV1CustomResourceDefinitionStatusUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -8364,10 +8948,12 @@ func decodeReadApiregistrationV1APIServiceResponse(resp *http.Response) (res Rea
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -8393,10 +8979,12 @@ func decodeReadApiregistrationV1APIServiceResponse(resp *http.Response) (res Rea
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadApiregistrationV1APIServiceUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -8408,10 +8996,12 @@ func decodeReadApiregistrationV1APIServiceStatusResponse(resp *http.Response) (r
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -8437,10 +9027,12 @@ func decodeReadApiregistrationV1APIServiceStatusResponse(resp *http.Response) (r
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadApiregistrationV1APIServiceStatusUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -8452,10 +9044,12 @@ func decodeReadAppsV1NamespacedControllerRevisionResponse(resp *http.Response) (
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -8481,10 +9075,12 @@ func decodeReadAppsV1NamespacedControllerRevisionResponse(resp *http.Response) (
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadAppsV1NamespacedControllerRevisionUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -8496,10 +9092,12 @@ func decodeReadAppsV1NamespacedDaemonSetResponse(resp *http.Response) (res ReadA
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -8525,10 +9123,12 @@ func decodeReadAppsV1NamespacedDaemonSetResponse(resp *http.Response) (res ReadA
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadAppsV1NamespacedDaemonSetUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -8540,10 +9140,12 @@ func decodeReadAppsV1NamespacedDaemonSetStatusResponse(resp *http.Response) (res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -8569,10 +9171,12 @@ func decodeReadAppsV1NamespacedDaemonSetStatusResponse(resp *http.Response) (res
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadAppsV1NamespacedDaemonSetStatusUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -8584,10 +9188,12 @@ func decodeReadAppsV1NamespacedDeploymentResponse(resp *http.Response) (res Read
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -8613,10 +9219,12 @@ func decodeReadAppsV1NamespacedDeploymentResponse(resp *http.Response) (res Read
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadAppsV1NamespacedDeploymentUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -8628,10 +9236,12 @@ func decodeReadAppsV1NamespacedDeploymentScaleResponse(resp *http.Response) (res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -8657,10 +9267,12 @@ func decodeReadAppsV1NamespacedDeploymentScaleResponse(resp *http.Response) (res
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadAppsV1NamespacedDeploymentScaleUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -8672,10 +9284,12 @@ func decodeReadAppsV1NamespacedDeploymentStatusResponse(resp *http.Response) (re
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -8701,10 +9315,12 @@ func decodeReadAppsV1NamespacedDeploymentStatusResponse(resp *http.Response) (re
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadAppsV1NamespacedDeploymentStatusUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -8716,10 +9332,12 @@ func decodeReadAppsV1NamespacedReplicaSetResponse(resp *http.Response) (res Read
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -8745,10 +9363,12 @@ func decodeReadAppsV1NamespacedReplicaSetResponse(resp *http.Response) (res Read
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadAppsV1NamespacedReplicaSetUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -8760,10 +9380,12 @@ func decodeReadAppsV1NamespacedReplicaSetScaleResponse(resp *http.Response) (res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -8789,10 +9411,12 @@ func decodeReadAppsV1NamespacedReplicaSetScaleResponse(resp *http.Response) (res
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadAppsV1NamespacedReplicaSetScaleUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -8804,10 +9428,12 @@ func decodeReadAppsV1NamespacedReplicaSetStatusResponse(resp *http.Response) (re
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -8833,10 +9459,12 @@ func decodeReadAppsV1NamespacedReplicaSetStatusResponse(resp *http.Response) (re
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadAppsV1NamespacedReplicaSetStatusUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -8848,10 +9476,12 @@ func decodeReadAppsV1NamespacedStatefulSetResponse(resp *http.Response) (res Rea
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -8877,10 +9507,12 @@ func decodeReadAppsV1NamespacedStatefulSetResponse(resp *http.Response) (res Rea
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadAppsV1NamespacedStatefulSetUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -8892,10 +9524,12 @@ func decodeReadAppsV1NamespacedStatefulSetScaleResponse(resp *http.Response) (re
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -8921,10 +9555,12 @@ func decodeReadAppsV1NamespacedStatefulSetScaleResponse(resp *http.Response) (re
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadAppsV1NamespacedStatefulSetScaleUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -8936,10 +9572,12 @@ func decodeReadAppsV1NamespacedStatefulSetStatusResponse(resp *http.Response) (r
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -8965,10 +9603,12 @@ func decodeReadAppsV1NamespacedStatefulSetStatusResponse(resp *http.Response) (r
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadAppsV1NamespacedStatefulSetStatusUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -8980,10 +9620,12 @@ func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(resp *http
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -9009,10 +9651,12 @@ func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(resp *http
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadAutoscalingV1NamespacedHorizontalPodAutoscalerUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -9024,10 +9668,12 @@ func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusResponse(resp
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -9053,10 +9699,12 @@ func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusResponse(resp
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -9068,10 +9716,12 @@ func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -9097,10 +9747,12 @@ func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -9112,10 +9764,12 @@ func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusResponse
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -9141,10 +9795,12 @@ func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusResponse
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -9156,10 +9812,12 @@ func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -9185,10 +9843,12 @@ func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -9200,10 +9860,12 @@ func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusResponse
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -9229,10 +9891,12 @@ func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusResponse
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -9244,10 +9908,12 @@ func decodeReadBatchV1NamespacedCronJobResponse(resp *http.Response) (res ReadBa
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -9273,10 +9939,12 @@ func decodeReadBatchV1NamespacedCronJobResponse(resp *http.Response) (res ReadBa
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadBatchV1NamespacedCronJobUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -9288,10 +9956,12 @@ func decodeReadBatchV1NamespacedCronJobStatusResponse(resp *http.Response) (res 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -9317,10 +9987,12 @@ func decodeReadBatchV1NamespacedCronJobStatusResponse(resp *http.Response) (res 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadBatchV1NamespacedCronJobStatusUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -9332,10 +10004,12 @@ func decodeReadBatchV1NamespacedJobResponse(resp *http.Response) (res ReadBatchV
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -9361,10 +10035,12 @@ func decodeReadBatchV1NamespacedJobResponse(resp *http.Response) (res ReadBatchV
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadBatchV1NamespacedJobUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -9376,10 +10052,12 @@ func decodeReadBatchV1NamespacedJobStatusResponse(resp *http.Response) (res Read
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -9405,10 +10083,12 @@ func decodeReadBatchV1NamespacedJobStatusResponse(resp *http.Response) (res Read
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadBatchV1NamespacedJobStatusUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -9420,10 +10100,12 @@ func decodeReadBatchV1beta1NamespacedCronJobResponse(resp *http.Response) (res R
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -9449,10 +10131,12 @@ func decodeReadBatchV1beta1NamespacedCronJobResponse(resp *http.Response) (res R
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadBatchV1beta1NamespacedCronJobUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -9464,10 +10148,12 @@ func decodeReadBatchV1beta1NamespacedCronJobStatusResponse(resp *http.Response) 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -9493,10 +10179,12 @@ func decodeReadBatchV1beta1NamespacedCronJobStatusResponse(resp *http.Response) 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadBatchV1beta1NamespacedCronJobStatusUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -9508,10 +10196,12 @@ func decodeReadCertificatesV1CertificateSigningRequestResponse(resp *http.Respon
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -9537,10 +10227,12 @@ func decodeReadCertificatesV1CertificateSigningRequestResponse(resp *http.Respon
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadCertificatesV1CertificateSigningRequestUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -9552,10 +10244,12 @@ func decodeReadCertificatesV1CertificateSigningRequestApprovalResponse(resp *htt
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -9581,10 +10275,12 @@ func decodeReadCertificatesV1CertificateSigningRequestApprovalResponse(resp *htt
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadCertificatesV1CertificateSigningRequestApprovalUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -9596,10 +10292,12 @@ func decodeReadCertificatesV1CertificateSigningRequestStatusResponse(resp *http.
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -9625,10 +10323,12 @@ func decodeReadCertificatesV1CertificateSigningRequestStatusResponse(resp *http.
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadCertificatesV1CertificateSigningRequestStatusUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -9640,10 +10340,12 @@ func decodeReadCoordinationV1NamespacedLeaseResponse(resp *http.Response) (res R
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -9669,10 +10371,12 @@ func decodeReadCoordinationV1NamespacedLeaseResponse(resp *http.Response) (res R
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadCoordinationV1NamespacedLeaseUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -9684,10 +10388,12 @@ func decodeReadCoreV1ComponentStatusResponse(resp *http.Response) (res ReadCoreV
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -9713,10 +10419,12 @@ func decodeReadCoreV1ComponentStatusResponse(resp *http.Response) (res ReadCoreV
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadCoreV1ComponentStatusUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -9728,10 +10436,12 @@ func decodeReadCoreV1NamespaceResponse(resp *http.Response) (res ReadCoreV1Names
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -9757,10 +10467,12 @@ func decodeReadCoreV1NamespaceResponse(resp *http.Response) (res ReadCoreV1Names
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadCoreV1NamespaceUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -9772,10 +10484,12 @@ func decodeReadCoreV1NamespaceStatusResponse(resp *http.Response) (res ReadCoreV
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -9801,10 +10515,12 @@ func decodeReadCoreV1NamespaceStatusResponse(resp *http.Response) (res ReadCoreV
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadCoreV1NamespaceStatusUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -9816,10 +10532,12 @@ func decodeReadCoreV1NamespacedConfigMapResponse(resp *http.Response) (res ReadC
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -9845,10 +10563,12 @@ func decodeReadCoreV1NamespacedConfigMapResponse(resp *http.Response) (res ReadC
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadCoreV1NamespacedConfigMapUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -9860,10 +10580,12 @@ func decodeReadCoreV1NamespacedEndpointsResponse(resp *http.Response) (res ReadC
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -9889,10 +10611,12 @@ func decodeReadCoreV1NamespacedEndpointsResponse(resp *http.Response) (res ReadC
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadCoreV1NamespacedEndpointsUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -9904,10 +10628,12 @@ func decodeReadCoreV1NamespacedEventResponse(resp *http.Response) (res ReadCoreV
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -9933,10 +10659,12 @@ func decodeReadCoreV1NamespacedEventResponse(resp *http.Response) (res ReadCoreV
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadCoreV1NamespacedEventUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -9948,10 +10676,12 @@ func decodeReadCoreV1NamespacedLimitRangeResponse(resp *http.Response) (res Read
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -9977,10 +10707,12 @@ func decodeReadCoreV1NamespacedLimitRangeResponse(resp *http.Response) (res Read
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadCoreV1NamespacedLimitRangeUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -9992,10 +10724,12 @@ func decodeReadCoreV1NamespacedPersistentVolumeClaimResponse(resp *http.Response
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -10021,10 +10755,12 @@ func decodeReadCoreV1NamespacedPersistentVolumeClaimResponse(resp *http.Response
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadCoreV1NamespacedPersistentVolumeClaimUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -10036,10 +10772,12 @@ func decodeReadCoreV1NamespacedPersistentVolumeClaimStatusResponse(resp *http.Re
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -10065,10 +10803,12 @@ func decodeReadCoreV1NamespacedPersistentVolumeClaimStatusResponse(resp *http.Re
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadCoreV1NamespacedPersistentVolumeClaimStatusUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -10080,10 +10820,12 @@ func decodeReadCoreV1NamespacedPodResponse(resp *http.Response) (res ReadCoreV1N
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -10109,10 +10851,12 @@ func decodeReadCoreV1NamespacedPodResponse(resp *http.Response) (res ReadCoreV1N
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadCoreV1NamespacedPodUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -10124,10 +10868,12 @@ func decodeReadCoreV1NamespacedPodEphemeralcontainersResponse(resp *http.Respons
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -10153,10 +10899,12 @@ func decodeReadCoreV1NamespacedPodEphemeralcontainersResponse(resp *http.Respons
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadCoreV1NamespacedPodEphemeralcontainersUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -10168,10 +10916,12 @@ func decodeReadCoreV1NamespacedPodLogResponse(resp *http.Response) (res ReadCore
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -10198,36 +10948,26 @@ func decodeReadCoreV1NamespacedPodLogResponse(resp *http.Response) (res ReadCore
 			return &response, nil
 		case ct == "application/vnd.kubernetes.protobuf":
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ReadCoreV1NamespacedPodLogOKApplicationVndKubernetesProtobuf{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ReadCoreV1NamespacedPodLogOKApplicationVndKubernetesProtobuf{Data: reader}
 			return &response, nil
 		case ct == "application/yaml":
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ReadCoreV1NamespacedPodLogOKApplicationYaml{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ReadCoreV1NamespacedPodLogOKApplicationYaml{Data: reader}
 			return &response, nil
 		case ct == "text/plain":
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := ReadCoreV1NamespacedPodLogOKTextPlain{Data: io.NopCloser(bytes.NewReader(b))}
+			response := ReadCoreV1NamespacedPodLogOKTextPlain{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadCoreV1NamespacedPodLogUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -10239,10 +10979,12 @@ func decodeReadCoreV1NamespacedPodStatusResponse(resp *http.Response) (res ReadC
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -10268,10 +11010,12 @@ func decodeReadCoreV1NamespacedPodStatusResponse(resp *http.Response) (res ReadC
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadCoreV1NamespacedPodStatusUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -10283,10 +11027,12 @@ func decodeReadCoreV1NamespacedPodTemplateResponse(resp *http.Response) (res Rea
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -10312,10 +11058,12 @@ func decodeReadCoreV1NamespacedPodTemplateResponse(resp *http.Response) (res Rea
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadCoreV1NamespacedPodTemplateUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -10327,10 +11075,12 @@ func decodeReadCoreV1NamespacedReplicationControllerResponse(resp *http.Response
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -10356,10 +11106,12 @@ func decodeReadCoreV1NamespacedReplicationControllerResponse(resp *http.Response
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadCoreV1NamespacedReplicationControllerUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -10371,10 +11123,12 @@ func decodeReadCoreV1NamespacedReplicationControllerScaleResponse(resp *http.Res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -10400,10 +11154,12 @@ func decodeReadCoreV1NamespacedReplicationControllerScaleResponse(resp *http.Res
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadCoreV1NamespacedReplicationControllerScaleUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -10415,10 +11171,12 @@ func decodeReadCoreV1NamespacedReplicationControllerStatusResponse(resp *http.Re
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -10444,10 +11202,12 @@ func decodeReadCoreV1NamespacedReplicationControllerStatusResponse(resp *http.Re
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadCoreV1NamespacedReplicationControllerStatusUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -10459,10 +11219,12 @@ func decodeReadCoreV1NamespacedResourceQuotaResponse(resp *http.Response) (res R
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -10488,10 +11250,12 @@ func decodeReadCoreV1NamespacedResourceQuotaResponse(resp *http.Response) (res R
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadCoreV1NamespacedResourceQuotaUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -10503,10 +11267,12 @@ func decodeReadCoreV1NamespacedResourceQuotaStatusResponse(resp *http.Response) 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -10532,10 +11298,12 @@ func decodeReadCoreV1NamespacedResourceQuotaStatusResponse(resp *http.Response) 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadCoreV1NamespacedResourceQuotaStatusUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -10547,10 +11315,12 @@ func decodeReadCoreV1NamespacedSecretResponse(resp *http.Response) (res ReadCore
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -10576,10 +11346,12 @@ func decodeReadCoreV1NamespacedSecretResponse(resp *http.Response) (res ReadCore
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadCoreV1NamespacedSecretUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -10591,10 +11363,12 @@ func decodeReadCoreV1NamespacedServiceResponse(resp *http.Response) (res ReadCor
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -10620,10 +11394,12 @@ func decodeReadCoreV1NamespacedServiceResponse(resp *http.Response) (res ReadCor
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadCoreV1NamespacedServiceUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -10635,10 +11411,12 @@ func decodeReadCoreV1NamespacedServiceAccountResponse(resp *http.Response) (res 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -10664,10 +11442,12 @@ func decodeReadCoreV1NamespacedServiceAccountResponse(resp *http.Response) (res 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadCoreV1NamespacedServiceAccountUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -10679,10 +11459,12 @@ func decodeReadCoreV1NamespacedServiceStatusResponse(resp *http.Response) (res R
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -10708,10 +11490,12 @@ func decodeReadCoreV1NamespacedServiceStatusResponse(resp *http.Response) (res R
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadCoreV1NamespacedServiceStatusUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -10723,10 +11507,12 @@ func decodeReadCoreV1NodeResponse(resp *http.Response) (res ReadCoreV1NodeRes, _
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -10752,10 +11538,12 @@ func decodeReadCoreV1NodeResponse(resp *http.Response) (res ReadCoreV1NodeRes, _
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadCoreV1NodeUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -10767,10 +11555,12 @@ func decodeReadCoreV1NodeStatusResponse(resp *http.Response) (res ReadCoreV1Node
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -10796,10 +11586,12 @@ func decodeReadCoreV1NodeStatusResponse(resp *http.Response) (res ReadCoreV1Node
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadCoreV1NodeStatusUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -10811,10 +11603,12 @@ func decodeReadCoreV1PersistentVolumeResponse(resp *http.Response) (res ReadCore
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -10840,10 +11634,12 @@ func decodeReadCoreV1PersistentVolumeResponse(resp *http.Response) (res ReadCore
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadCoreV1PersistentVolumeUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -10855,10 +11651,12 @@ func decodeReadCoreV1PersistentVolumeStatusResponse(resp *http.Response) (res Re
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -10884,10 +11682,12 @@ func decodeReadCoreV1PersistentVolumeStatusResponse(resp *http.Response) (res Re
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadCoreV1PersistentVolumeStatusUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -10899,10 +11699,12 @@ func decodeReadDiscoveryV1NamespacedEndpointSliceResponse(resp *http.Response) (
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -10928,10 +11730,12 @@ func decodeReadDiscoveryV1NamespacedEndpointSliceResponse(resp *http.Response) (
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadDiscoveryV1NamespacedEndpointSliceUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -10943,10 +11747,12 @@ func decodeReadDiscoveryV1beta1NamespacedEndpointSliceResponse(resp *http.Respon
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -10972,10 +11778,12 @@ func decodeReadDiscoveryV1beta1NamespacedEndpointSliceResponse(resp *http.Respon
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadDiscoveryV1beta1NamespacedEndpointSliceUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -10987,10 +11795,12 @@ func decodeReadEventsV1NamespacedEventResponse(resp *http.Response) (res ReadEve
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -11016,10 +11826,12 @@ func decodeReadEventsV1NamespacedEventResponse(resp *http.Response) (res ReadEve
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadEventsV1NamespacedEventUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -11031,10 +11843,12 @@ func decodeReadEventsV1beta1NamespacedEventResponse(resp *http.Response) (res Re
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -11060,10 +11874,12 @@ func decodeReadEventsV1beta1NamespacedEventResponse(resp *http.Response) (res Re
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadEventsV1beta1NamespacedEventUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -11075,10 +11891,12 @@ func decodeReadFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Response
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -11104,10 +11922,12 @@ func decodeReadFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Response
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadFlowcontrolApiserverV1beta1FlowSchemaUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -11119,10 +11939,12 @@ func decodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusResponse(resp *http.Re
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -11148,10 +11970,12 @@ func decodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusResponse(resp *http.Re
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadFlowcontrolApiserverV1beta1FlowSchemaStatusUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -11163,10 +11987,12 @@ func decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -11192,10 +12018,12 @@ func decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -11207,10 +12035,12 @@ func decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRespon
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -11236,10 +12066,12 @@ func decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRespon
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -11251,10 +12083,12 @@ func decodeReadFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Response
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -11280,10 +12114,12 @@ func decodeReadFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Response
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadFlowcontrolApiserverV1beta2FlowSchemaUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -11295,10 +12131,12 @@ func decodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusResponse(resp *http.Re
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -11324,10 +12162,12 @@ func decodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusResponse(resp *http.Re
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadFlowcontrolApiserverV1beta2FlowSchemaStatusUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -11339,10 +12179,12 @@ func decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -11368,10 +12210,12 @@ func decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -11383,10 +12227,12 @@ func decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRespon
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -11412,10 +12258,12 @@ func decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRespon
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -11427,10 +12275,12 @@ func decodeReadInternalApiserverV1alpha1StorageVersionResponse(resp *http.Respon
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -11456,10 +12306,12 @@ func decodeReadInternalApiserverV1alpha1StorageVersionResponse(resp *http.Respon
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadInternalApiserverV1alpha1StorageVersionUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -11471,10 +12323,12 @@ func decodeReadInternalApiserverV1alpha1StorageVersionStatusResponse(resp *http.
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -11500,10 +12354,12 @@ func decodeReadInternalApiserverV1alpha1StorageVersionStatusResponse(resp *http.
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadInternalApiserverV1alpha1StorageVersionStatusUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -11515,10 +12371,12 @@ func decodeReadNetworkingV1IngressClassResponse(resp *http.Response) (res ReadNe
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -11544,10 +12402,12 @@ func decodeReadNetworkingV1IngressClassResponse(resp *http.Response) (res ReadNe
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadNetworkingV1IngressClassUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -11559,10 +12419,12 @@ func decodeReadNetworkingV1NamespacedIngressResponse(resp *http.Response) (res R
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -11588,10 +12450,12 @@ func decodeReadNetworkingV1NamespacedIngressResponse(resp *http.Response) (res R
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadNetworkingV1NamespacedIngressUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -11603,10 +12467,12 @@ func decodeReadNetworkingV1NamespacedIngressStatusResponse(resp *http.Response) 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -11632,10 +12498,12 @@ func decodeReadNetworkingV1NamespacedIngressStatusResponse(resp *http.Response) 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadNetworkingV1NamespacedIngressStatusUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -11647,10 +12515,12 @@ func decodeReadNetworkingV1NamespacedNetworkPolicyResponse(resp *http.Response) 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -11676,10 +12546,12 @@ func decodeReadNetworkingV1NamespacedNetworkPolicyResponse(resp *http.Response) 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadNetworkingV1NamespacedNetworkPolicyUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -11691,10 +12563,12 @@ func decodeReadNodeV1RuntimeClassResponse(resp *http.Response) (res ReadNodeV1Ru
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -11720,10 +12594,12 @@ func decodeReadNodeV1RuntimeClassResponse(resp *http.Response) (res ReadNodeV1Ru
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadNodeV1RuntimeClassUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -11735,10 +12611,12 @@ func decodeReadNodeV1alpha1RuntimeClassResponse(resp *http.Response) (res ReadNo
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -11764,10 +12642,12 @@ func decodeReadNodeV1alpha1RuntimeClassResponse(resp *http.Response) (res ReadNo
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadNodeV1alpha1RuntimeClassUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -11779,10 +12659,12 @@ func decodeReadNodeV1beta1RuntimeClassResponse(resp *http.Response) (res ReadNod
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -11808,10 +12690,12 @@ func decodeReadNodeV1beta1RuntimeClassResponse(resp *http.Response) (res ReadNod
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadNodeV1beta1RuntimeClassUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -11823,10 +12707,12 @@ func decodeReadPolicyV1NamespacedPodDisruptionBudgetResponse(resp *http.Response
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -11852,10 +12738,12 @@ func decodeReadPolicyV1NamespacedPodDisruptionBudgetResponse(resp *http.Response
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadPolicyV1NamespacedPodDisruptionBudgetUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -11867,10 +12755,12 @@ func decodeReadPolicyV1NamespacedPodDisruptionBudgetStatusResponse(resp *http.Re
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -11896,10 +12786,12 @@ func decodeReadPolicyV1NamespacedPodDisruptionBudgetStatusResponse(resp *http.Re
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadPolicyV1NamespacedPodDisruptionBudgetStatusUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -11911,10 +12803,12 @@ func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetResponse(resp *http.Res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -11940,10 +12834,12 @@ func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetResponse(resp *http.Res
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadPolicyV1beta1NamespacedPodDisruptionBudgetUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -11955,10 +12851,12 @@ func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusResponse(resp *ht
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -11984,10 +12882,12 @@ func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusResponse(resp *ht
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -11999,10 +12899,12 @@ func decodeReadPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (res 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -12028,10 +12930,12 @@ func decodeReadPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (res 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadPolicyV1beta1PodSecurityPolicyUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -12043,10 +12947,12 @@ func decodeReadRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (res 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -12072,10 +12978,12 @@ func decodeReadRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (res 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadRbacAuthorizationV1ClusterRoleUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -12087,10 +12995,12 @@ func decodeReadRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Response
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -12116,10 +13026,12 @@ func decodeReadRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Response
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadRbacAuthorizationV1ClusterRoleBindingUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -12131,10 +13043,12 @@ func decodeReadRbacAuthorizationV1NamespacedRoleResponse(resp *http.Response) (r
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -12160,10 +13074,12 @@ func decodeReadRbacAuthorizationV1NamespacedRoleResponse(resp *http.Response) (r
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadRbacAuthorizationV1NamespacedRoleUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -12175,10 +13091,12 @@ func decodeReadRbacAuthorizationV1NamespacedRoleBindingResponse(resp *http.Respo
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -12204,10 +13122,12 @@ func decodeReadRbacAuthorizationV1NamespacedRoleBindingResponse(resp *http.Respo
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadRbacAuthorizationV1NamespacedRoleBindingUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -12219,10 +13139,12 @@ func decodeReadSchedulingV1PriorityClassResponse(resp *http.Response) (res ReadS
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -12248,10 +13170,12 @@ func decodeReadSchedulingV1PriorityClassResponse(resp *http.Response) (res ReadS
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadSchedulingV1PriorityClassUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -12263,10 +13187,12 @@ func decodeReadStorageV1CSIDriverResponse(resp *http.Response) (res ReadStorageV
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -12292,10 +13218,12 @@ func decodeReadStorageV1CSIDriverResponse(resp *http.Response) (res ReadStorageV
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadStorageV1CSIDriverUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -12307,10 +13235,12 @@ func decodeReadStorageV1CSINodeResponse(resp *http.Response) (res ReadStorageV1C
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -12336,10 +13266,12 @@ func decodeReadStorageV1CSINodeResponse(resp *http.Response) (res ReadStorageV1C
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadStorageV1CSINodeUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -12351,10 +13283,12 @@ func decodeReadStorageV1StorageClassResponse(resp *http.Response) (res ReadStora
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -12380,10 +13314,12 @@ func decodeReadStorageV1StorageClassResponse(resp *http.Response) (res ReadStora
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadStorageV1StorageClassUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -12395,10 +13331,12 @@ func decodeReadStorageV1VolumeAttachmentResponse(resp *http.Response) (res ReadS
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -12424,10 +13362,12 @@ func decodeReadStorageV1VolumeAttachmentResponse(resp *http.Response) (res ReadS
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadStorageV1VolumeAttachmentUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -12439,10 +13379,12 @@ func decodeReadStorageV1VolumeAttachmentStatusResponse(resp *http.Response) (res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -12468,10 +13410,12 @@ func decodeReadStorageV1VolumeAttachmentStatusResponse(resp *http.Response) (res
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadStorageV1VolumeAttachmentStatusUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -12483,10 +13427,12 @@ func decodeReadStorageV1alpha1NamespacedCSIStorageCapacityResponse(resp *http.Re
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -12512,10 +13458,12 @@ func decodeReadStorageV1alpha1NamespacedCSIStorageCapacityResponse(resp *http.Re
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadStorageV1alpha1NamespacedCSIStorageCapacityUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -12527,10 +13475,12 @@ func decodeReadStorageV1beta1NamespacedCSIStorageCapacityResponse(resp *http.Res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -12556,10 +13506,12 @@ func decodeReadStorageV1beta1NamespacedCSIStorageCapacityResponse(resp *http.Res
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &ReadStorageV1beta1NamespacedCSIStorageCapacityUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -12571,10 +13523,12 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -12600,10 +13554,12 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -12615,10 +13571,12 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -12644,10 +13602,12 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -12659,10 +13619,12 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationResponse(re
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -12688,10 +13650,12 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationResponse(re
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -12703,10 +13667,12 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRespons
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -12732,10 +13698,12 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRespons
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -12747,10 +13715,12 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionResponse(resp *http.Respo
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -12776,10 +13746,12 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionResponse(resp *http.Respo
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchApiextensionsV1CustomResourceDefinitionUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -12791,10 +13763,12 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionListResponse(resp *http.R
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -12820,10 +13794,12 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionListResponse(resp *http.R
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchApiextensionsV1CustomResourceDefinitionListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -12835,10 +13811,12 @@ func decodeWatchApiregistrationV1APIServiceResponse(resp *http.Response) (res Wa
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -12864,10 +13842,12 @@ func decodeWatchApiregistrationV1APIServiceResponse(resp *http.Response) (res Wa
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchApiregistrationV1APIServiceUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -12879,10 +13859,12 @@ func decodeWatchApiregistrationV1APIServiceListResponse(resp *http.Response) (re
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -12908,10 +13890,12 @@ func decodeWatchApiregistrationV1APIServiceListResponse(resp *http.Response) (re
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchApiregistrationV1APIServiceListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -12923,10 +13907,12 @@ func decodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(resp *http.
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -12952,10 +13938,12 @@ func decodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(resp *http.
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -12967,10 +13955,12 @@ func decodeWatchAppsV1DaemonSetListForAllNamespacesResponse(resp *http.Response)
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -12996,10 +13986,12 @@ func decodeWatchAppsV1DaemonSetListForAllNamespacesResponse(resp *http.Response)
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchAppsV1DaemonSetListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -13011,10 +14003,12 @@ func decodeWatchAppsV1DeploymentListForAllNamespacesResponse(resp *http.Response
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -13040,10 +14034,12 @@ func decodeWatchAppsV1DeploymentListForAllNamespacesResponse(resp *http.Response
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchAppsV1DeploymentListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -13055,10 +14051,12 @@ func decodeWatchAppsV1NamespacedControllerRevisionResponse(resp *http.Response) 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -13084,10 +14082,12 @@ func decodeWatchAppsV1NamespacedControllerRevisionResponse(resp *http.Response) 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchAppsV1NamespacedControllerRevisionUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -13099,10 +14099,12 @@ func decodeWatchAppsV1NamespacedControllerRevisionListResponse(resp *http.Respon
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -13128,10 +14130,12 @@ func decodeWatchAppsV1NamespacedControllerRevisionListResponse(resp *http.Respon
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchAppsV1NamespacedControllerRevisionListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -13143,10 +14147,12 @@ func decodeWatchAppsV1NamespacedDaemonSetResponse(resp *http.Response) (res Watc
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -13172,10 +14178,12 @@ func decodeWatchAppsV1NamespacedDaemonSetResponse(resp *http.Response) (res Watc
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchAppsV1NamespacedDaemonSetUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -13187,10 +14195,12 @@ func decodeWatchAppsV1NamespacedDaemonSetListResponse(resp *http.Response) (res 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -13216,10 +14226,12 @@ func decodeWatchAppsV1NamespacedDaemonSetListResponse(resp *http.Response) (res 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchAppsV1NamespacedDaemonSetListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -13231,10 +14243,12 @@ func decodeWatchAppsV1NamespacedDeploymentResponse(resp *http.Response) (res Wat
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -13260,10 +14274,12 @@ func decodeWatchAppsV1NamespacedDeploymentResponse(resp *http.Response) (res Wat
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchAppsV1NamespacedDeploymentUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -13275,10 +14291,12 @@ func decodeWatchAppsV1NamespacedDeploymentListResponse(resp *http.Response) (res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -13304,10 +14322,12 @@ func decodeWatchAppsV1NamespacedDeploymentListResponse(resp *http.Response) (res
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchAppsV1NamespacedDeploymentListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -13319,10 +14339,12 @@ func decodeWatchAppsV1NamespacedReplicaSetResponse(resp *http.Response) (res Wat
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -13348,10 +14370,12 @@ func decodeWatchAppsV1NamespacedReplicaSetResponse(resp *http.Response) (res Wat
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchAppsV1NamespacedReplicaSetUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -13363,10 +14387,12 @@ func decodeWatchAppsV1NamespacedReplicaSetListResponse(resp *http.Response) (res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -13392,10 +14418,12 @@ func decodeWatchAppsV1NamespacedReplicaSetListResponse(resp *http.Response) (res
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchAppsV1NamespacedReplicaSetListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -13407,10 +14435,12 @@ func decodeWatchAppsV1NamespacedStatefulSetResponse(resp *http.Response) (res Wa
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -13436,10 +14466,12 @@ func decodeWatchAppsV1NamespacedStatefulSetResponse(resp *http.Response) (res Wa
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchAppsV1NamespacedStatefulSetUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -13451,10 +14483,12 @@ func decodeWatchAppsV1NamespacedStatefulSetListResponse(resp *http.Response) (re
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -13480,10 +14514,12 @@ func decodeWatchAppsV1NamespacedStatefulSetListResponse(resp *http.Response) (re
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchAppsV1NamespacedStatefulSetListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -13495,10 +14531,12 @@ func decodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(resp *http.Response
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -13524,10 +14562,12 @@ func decodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(resp *http.Response
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -13539,10 +14579,12 @@ func decodeWatchAppsV1StatefulSetListForAllNamespacesResponse(resp *http.Respons
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -13568,10 +14610,12 @@ func decodeWatchAppsV1StatefulSetListForAllNamespacesResponse(resp *http.Respons
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchAppsV1StatefulSetListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -13583,10 +14627,12 @@ func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -13612,10 +14658,12 @@ func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -13627,10 +14675,12 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(resp *htt
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -13656,10 +14706,12 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(resp *htt
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchAutoscalingV1NamespacedHorizontalPodAutoscalerUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -13671,10 +14723,12 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListResponse(resp 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -13700,10 +14754,12 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListResponse(resp 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -13715,10 +14771,12 @@ func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -13744,10 +14802,12 @@ func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -13759,10 +14819,12 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -13788,10 +14850,12 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -13803,10 +14867,12 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListResponse(
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -13832,10 +14898,12 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListResponse(
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -13847,10 +14915,12 @@ func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -13876,10 +14946,12 @@ func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -13891,10 +14963,12 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -13920,10 +14994,12 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -13935,10 +15011,12 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListResponse(
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -13964,10 +15042,12 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListResponse(
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -13979,10 +15059,12 @@ func decodeWatchBatchV1CronJobListForAllNamespacesResponse(resp *http.Response) 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -14008,10 +15090,12 @@ func decodeWatchBatchV1CronJobListForAllNamespacesResponse(resp *http.Response) 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchBatchV1CronJobListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -14023,10 +15107,12 @@ func decodeWatchBatchV1JobListForAllNamespacesResponse(resp *http.Response) (res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -14052,10 +15138,12 @@ func decodeWatchBatchV1JobListForAllNamespacesResponse(resp *http.Response) (res
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchBatchV1JobListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -14067,10 +15155,12 @@ func decodeWatchBatchV1NamespacedCronJobResponse(resp *http.Response) (res Watch
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -14096,10 +15186,12 @@ func decodeWatchBatchV1NamespacedCronJobResponse(resp *http.Response) (res Watch
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchBatchV1NamespacedCronJobUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -14111,10 +15203,12 @@ func decodeWatchBatchV1NamespacedCronJobListResponse(resp *http.Response) (res W
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -14140,10 +15234,12 @@ func decodeWatchBatchV1NamespacedCronJobListResponse(resp *http.Response) (res W
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchBatchV1NamespacedCronJobListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -14155,10 +15251,12 @@ func decodeWatchBatchV1NamespacedJobResponse(resp *http.Response) (res WatchBatc
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -14184,10 +15282,12 @@ func decodeWatchBatchV1NamespacedJobResponse(resp *http.Response) (res WatchBatc
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchBatchV1NamespacedJobUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -14199,10 +15299,12 @@ func decodeWatchBatchV1NamespacedJobListResponse(resp *http.Response) (res Watch
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -14228,10 +15330,12 @@ func decodeWatchBatchV1NamespacedJobListResponse(resp *http.Response) (res Watch
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchBatchV1NamespacedJobListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -14243,10 +15347,12 @@ func decodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(resp *http.Respo
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -14272,10 +15378,12 @@ func decodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(resp *http.Respo
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -14287,10 +15395,12 @@ func decodeWatchBatchV1beta1NamespacedCronJobResponse(resp *http.Response) (res 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -14316,10 +15426,12 @@ func decodeWatchBatchV1beta1NamespacedCronJobResponse(resp *http.Response) (res 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchBatchV1beta1NamespacedCronJobUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -14331,10 +15443,12 @@ func decodeWatchBatchV1beta1NamespacedCronJobListResponse(resp *http.Response) (
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -14360,10 +15474,12 @@ func decodeWatchBatchV1beta1NamespacedCronJobListResponse(resp *http.Response) (
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchBatchV1beta1NamespacedCronJobListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -14375,10 +15491,12 @@ func decodeWatchCertificatesV1CertificateSigningRequestResponse(resp *http.Respo
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -14404,10 +15522,12 @@ func decodeWatchCertificatesV1CertificateSigningRequestResponse(resp *http.Respo
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCertificatesV1CertificateSigningRequestUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -14419,10 +15539,12 @@ func decodeWatchCertificatesV1CertificateSigningRequestListResponse(resp *http.R
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -14448,10 +15570,12 @@ func decodeWatchCertificatesV1CertificateSigningRequestListResponse(resp *http.R
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCertificatesV1CertificateSigningRequestListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -14463,10 +15587,12 @@ func decodeWatchCoordinationV1LeaseListForAllNamespacesResponse(resp *http.Respo
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -14492,10 +15618,12 @@ func decodeWatchCoordinationV1LeaseListForAllNamespacesResponse(resp *http.Respo
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoordinationV1LeaseListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -14507,10 +15635,12 @@ func decodeWatchCoordinationV1NamespacedLeaseResponse(resp *http.Response) (res 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -14536,10 +15666,12 @@ func decodeWatchCoordinationV1NamespacedLeaseResponse(resp *http.Response) (res 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoordinationV1NamespacedLeaseUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -14551,10 +15683,12 @@ func decodeWatchCoordinationV1NamespacedLeaseListResponse(resp *http.Response) (
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -14580,10 +15714,12 @@ func decodeWatchCoordinationV1NamespacedLeaseListResponse(resp *http.Response) (
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoordinationV1NamespacedLeaseListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -14595,10 +15731,12 @@ func decodeWatchCoreV1ConfigMapListForAllNamespacesResponse(resp *http.Response)
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -14624,10 +15762,12 @@ func decodeWatchCoreV1ConfigMapListForAllNamespacesResponse(resp *http.Response)
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1ConfigMapListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -14639,10 +15779,12 @@ func decodeWatchCoreV1EndpointsListForAllNamespacesResponse(resp *http.Response)
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -14668,10 +15810,12 @@ func decodeWatchCoreV1EndpointsListForAllNamespacesResponse(resp *http.Response)
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1EndpointsListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -14683,10 +15827,12 @@ func decodeWatchCoreV1EventListForAllNamespacesResponse(resp *http.Response) (re
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -14712,10 +15858,12 @@ func decodeWatchCoreV1EventListForAllNamespacesResponse(resp *http.Response) (re
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1EventListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -14727,10 +15875,12 @@ func decodeWatchCoreV1LimitRangeListForAllNamespacesResponse(resp *http.Response
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -14756,10 +15906,12 @@ func decodeWatchCoreV1LimitRangeListForAllNamespacesResponse(resp *http.Response
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1LimitRangeListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -14771,10 +15923,12 @@ func decodeWatchCoreV1NamespaceResponse(resp *http.Response) (res WatchCoreV1Nam
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -14800,10 +15954,12 @@ func decodeWatchCoreV1NamespaceResponse(resp *http.Response) (res WatchCoreV1Nam
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1NamespaceUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -14815,10 +15971,12 @@ func decodeWatchCoreV1NamespaceListResponse(resp *http.Response) (res WatchCoreV
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -14844,10 +16002,12 @@ func decodeWatchCoreV1NamespaceListResponse(resp *http.Response) (res WatchCoreV
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1NamespaceListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -14859,10 +16019,12 @@ func decodeWatchCoreV1NamespacedConfigMapResponse(resp *http.Response) (res Watc
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -14888,10 +16050,12 @@ func decodeWatchCoreV1NamespacedConfigMapResponse(resp *http.Response) (res Watc
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1NamespacedConfigMapUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -14903,10 +16067,12 @@ func decodeWatchCoreV1NamespacedConfigMapListResponse(resp *http.Response) (res 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -14932,10 +16098,12 @@ func decodeWatchCoreV1NamespacedConfigMapListResponse(resp *http.Response) (res 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1NamespacedConfigMapListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -14947,10 +16115,12 @@ func decodeWatchCoreV1NamespacedEndpointsResponse(resp *http.Response) (res Watc
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -14976,10 +16146,12 @@ func decodeWatchCoreV1NamespacedEndpointsResponse(resp *http.Response) (res Watc
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1NamespacedEndpointsUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -14991,10 +16163,12 @@ func decodeWatchCoreV1NamespacedEndpointsListResponse(resp *http.Response) (res 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -15020,10 +16194,12 @@ func decodeWatchCoreV1NamespacedEndpointsListResponse(resp *http.Response) (res 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1NamespacedEndpointsListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -15035,10 +16211,12 @@ func decodeWatchCoreV1NamespacedEventResponse(resp *http.Response) (res WatchCor
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -15064,10 +16242,12 @@ func decodeWatchCoreV1NamespacedEventResponse(resp *http.Response) (res WatchCor
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1NamespacedEventUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -15079,10 +16259,12 @@ func decodeWatchCoreV1NamespacedEventListResponse(resp *http.Response) (res Watc
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -15108,10 +16290,12 @@ func decodeWatchCoreV1NamespacedEventListResponse(resp *http.Response) (res Watc
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1NamespacedEventListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -15123,10 +16307,12 @@ func decodeWatchCoreV1NamespacedLimitRangeResponse(resp *http.Response) (res Wat
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -15152,10 +16338,12 @@ func decodeWatchCoreV1NamespacedLimitRangeResponse(resp *http.Response) (res Wat
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1NamespacedLimitRangeUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -15167,10 +16355,12 @@ func decodeWatchCoreV1NamespacedLimitRangeListResponse(resp *http.Response) (res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -15196,10 +16386,12 @@ func decodeWatchCoreV1NamespacedLimitRangeListResponse(resp *http.Response) (res
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1NamespacedLimitRangeListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -15211,10 +16403,12 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimResponse(resp *http.Respons
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -15240,10 +16434,12 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimResponse(resp *http.Respons
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1NamespacedPersistentVolumeClaimUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -15255,10 +16451,12 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimListResponse(resp *http.Res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -15284,10 +16482,12 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimListResponse(resp *http.Res
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1NamespacedPersistentVolumeClaimListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -15299,10 +16499,12 @@ func decodeWatchCoreV1NamespacedPodResponse(resp *http.Response) (res WatchCoreV
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -15328,10 +16530,12 @@ func decodeWatchCoreV1NamespacedPodResponse(resp *http.Response) (res WatchCoreV
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1NamespacedPodUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -15343,10 +16547,12 @@ func decodeWatchCoreV1NamespacedPodListResponse(resp *http.Response) (res WatchC
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -15372,10 +16578,12 @@ func decodeWatchCoreV1NamespacedPodListResponse(resp *http.Response) (res WatchC
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1NamespacedPodListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -15387,10 +16595,12 @@ func decodeWatchCoreV1NamespacedPodTemplateResponse(resp *http.Response) (res Wa
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -15416,10 +16626,12 @@ func decodeWatchCoreV1NamespacedPodTemplateResponse(resp *http.Response) (res Wa
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1NamespacedPodTemplateUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -15431,10 +16643,12 @@ func decodeWatchCoreV1NamespacedPodTemplateListResponse(resp *http.Response) (re
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -15460,10 +16674,12 @@ func decodeWatchCoreV1NamespacedPodTemplateListResponse(resp *http.Response) (re
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1NamespacedPodTemplateListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -15475,10 +16691,12 @@ func decodeWatchCoreV1NamespacedReplicationControllerResponse(resp *http.Respons
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -15504,10 +16722,12 @@ func decodeWatchCoreV1NamespacedReplicationControllerResponse(resp *http.Respons
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1NamespacedReplicationControllerUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -15519,10 +16739,12 @@ func decodeWatchCoreV1NamespacedReplicationControllerListResponse(resp *http.Res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -15548,10 +16770,12 @@ func decodeWatchCoreV1NamespacedReplicationControllerListResponse(resp *http.Res
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1NamespacedReplicationControllerListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -15563,10 +16787,12 @@ func decodeWatchCoreV1NamespacedResourceQuotaResponse(resp *http.Response) (res 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -15592,10 +16818,12 @@ func decodeWatchCoreV1NamespacedResourceQuotaResponse(resp *http.Response) (res 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1NamespacedResourceQuotaUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -15607,10 +16835,12 @@ func decodeWatchCoreV1NamespacedResourceQuotaListResponse(resp *http.Response) (
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -15636,10 +16866,12 @@ func decodeWatchCoreV1NamespacedResourceQuotaListResponse(resp *http.Response) (
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1NamespacedResourceQuotaListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -15651,10 +16883,12 @@ func decodeWatchCoreV1NamespacedSecretResponse(resp *http.Response) (res WatchCo
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -15680,10 +16914,12 @@ func decodeWatchCoreV1NamespacedSecretResponse(resp *http.Response) (res WatchCo
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1NamespacedSecretUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -15695,10 +16931,12 @@ func decodeWatchCoreV1NamespacedSecretListResponse(resp *http.Response) (res Wat
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -15724,10 +16962,12 @@ func decodeWatchCoreV1NamespacedSecretListResponse(resp *http.Response) (res Wat
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1NamespacedSecretListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -15739,10 +16979,12 @@ func decodeWatchCoreV1NamespacedServiceResponse(resp *http.Response) (res WatchC
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -15768,10 +17010,12 @@ func decodeWatchCoreV1NamespacedServiceResponse(resp *http.Response) (res WatchC
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1NamespacedServiceUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -15783,10 +17027,12 @@ func decodeWatchCoreV1NamespacedServiceAccountResponse(resp *http.Response) (res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -15812,10 +17058,12 @@ func decodeWatchCoreV1NamespacedServiceAccountResponse(resp *http.Response) (res
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1NamespacedServiceAccountUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -15827,10 +17075,12 @@ func decodeWatchCoreV1NamespacedServiceAccountListResponse(resp *http.Response) 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -15856,10 +17106,12 @@ func decodeWatchCoreV1NamespacedServiceAccountListResponse(resp *http.Response) 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1NamespacedServiceAccountListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -15871,10 +17123,12 @@ func decodeWatchCoreV1NamespacedServiceListResponse(resp *http.Response) (res Wa
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -15900,10 +17154,12 @@ func decodeWatchCoreV1NamespacedServiceListResponse(resp *http.Response) (res Wa
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1NamespacedServiceListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -15915,10 +17171,12 @@ func decodeWatchCoreV1NodeResponse(resp *http.Response) (res WatchCoreV1NodeRes,
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -15944,10 +17202,12 @@ func decodeWatchCoreV1NodeResponse(resp *http.Response) (res WatchCoreV1NodeRes,
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1NodeUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -15959,10 +17219,12 @@ func decodeWatchCoreV1NodeListResponse(resp *http.Response) (res WatchCoreV1Node
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -15988,10 +17250,12 @@ func decodeWatchCoreV1NodeListResponse(resp *http.Response) (res WatchCoreV1Node
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1NodeListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -16003,10 +17267,12 @@ func decodeWatchCoreV1PersistentVolumeResponse(resp *http.Response) (res WatchCo
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -16032,10 +17298,12 @@ func decodeWatchCoreV1PersistentVolumeResponse(resp *http.Response) (res WatchCo
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1PersistentVolumeUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -16047,10 +17315,12 @@ func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(resp *ht
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -16076,10 +17346,12 @@ func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(resp *ht
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -16091,10 +17363,12 @@ func decodeWatchCoreV1PersistentVolumeListResponse(resp *http.Response) (res Wat
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -16120,10 +17394,12 @@ func decodeWatchCoreV1PersistentVolumeListResponse(resp *http.Response) (res Wat
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1PersistentVolumeListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -16135,10 +17411,12 @@ func decodeWatchCoreV1PodListForAllNamespacesResponse(resp *http.Response) (res 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -16164,10 +17442,12 @@ func decodeWatchCoreV1PodListForAllNamespacesResponse(resp *http.Response) (res 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1PodListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -16179,10 +17459,12 @@ func decodeWatchCoreV1PodTemplateListForAllNamespacesResponse(resp *http.Respons
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -16208,10 +17490,12 @@ func decodeWatchCoreV1PodTemplateListForAllNamespacesResponse(resp *http.Respons
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1PodTemplateListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -16223,10 +17507,12 @@ func decodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(resp *ht
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -16252,10 +17538,12 @@ func decodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(resp *ht
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -16267,10 +17555,12 @@ func decodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(resp *http.Respo
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -16296,10 +17586,12 @@ func decodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(resp *http.Respo
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -16311,10 +17603,12 @@ func decodeWatchCoreV1SecretListForAllNamespacesResponse(resp *http.Response) (r
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -16340,10 +17634,12 @@ func decodeWatchCoreV1SecretListForAllNamespacesResponse(resp *http.Response) (r
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1SecretListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -16355,10 +17651,12 @@ func decodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(resp *http.Resp
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -16384,10 +17682,12 @@ func decodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(resp *http.Resp
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -16399,10 +17699,12 @@ func decodeWatchCoreV1ServiceListForAllNamespacesResponse(resp *http.Response) (
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -16428,10 +17730,12 @@ func decodeWatchCoreV1ServiceListForAllNamespacesResponse(resp *http.Response) (
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchCoreV1ServiceListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -16443,10 +17747,12 @@ func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(resp *http.
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -16472,10 +17778,12 @@ func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(resp *http.
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -16487,10 +17795,12 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceResponse(resp *http.Response) 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -16516,10 +17826,12 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceResponse(resp *http.Response) 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchDiscoveryV1NamespacedEndpointSliceUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -16531,10 +17843,12 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceListResponse(resp *http.Respon
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -16560,10 +17874,12 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceListResponse(resp *http.Respon
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchDiscoveryV1NamespacedEndpointSliceListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -16575,10 +17891,12 @@ func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(resp *
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -16604,10 +17922,12 @@ func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(resp *
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -16619,10 +17939,12 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceResponse(resp *http.Respo
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -16648,10 +17970,12 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceResponse(resp *http.Respo
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchDiscoveryV1beta1NamespacedEndpointSliceUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -16663,10 +17987,12 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceListResponse(resp *http.R
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -16692,10 +18018,12 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceListResponse(resp *http.R
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchDiscoveryV1beta1NamespacedEndpointSliceListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -16707,10 +18035,12 @@ func decodeWatchEventsV1EventListForAllNamespacesResponse(resp *http.Response) (
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -16736,10 +18066,12 @@ func decodeWatchEventsV1EventListForAllNamespacesResponse(resp *http.Response) (
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchEventsV1EventListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -16751,10 +18083,12 @@ func decodeWatchEventsV1NamespacedEventResponse(resp *http.Response) (res WatchE
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -16780,10 +18114,12 @@ func decodeWatchEventsV1NamespacedEventResponse(resp *http.Response) (res WatchE
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchEventsV1NamespacedEventUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -16795,10 +18131,12 @@ func decodeWatchEventsV1NamespacedEventListResponse(resp *http.Response) (res Wa
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -16824,10 +18162,12 @@ func decodeWatchEventsV1NamespacedEventListResponse(resp *http.Response) (res Wa
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchEventsV1NamespacedEventListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -16839,10 +18179,12 @@ func decodeWatchEventsV1beta1EventListForAllNamespacesResponse(resp *http.Respon
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -16868,10 +18210,12 @@ func decodeWatchEventsV1beta1EventListForAllNamespacesResponse(resp *http.Respon
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchEventsV1beta1EventListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -16883,10 +18227,12 @@ func decodeWatchEventsV1beta1NamespacedEventResponse(resp *http.Response) (res W
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -16912,10 +18258,12 @@ func decodeWatchEventsV1beta1NamespacedEventResponse(resp *http.Response) (res W
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchEventsV1beta1NamespacedEventUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -16927,10 +18275,12 @@ func decodeWatchEventsV1beta1NamespacedEventListResponse(resp *http.Response) (r
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -16956,10 +18306,12 @@ func decodeWatchEventsV1beta1NamespacedEventListResponse(resp *http.Response) (r
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchEventsV1beta1NamespacedEventListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -16971,10 +18323,12 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Respons
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -17000,10 +18354,12 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Respons
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchFlowcontrolApiserverV1beta1FlowSchemaUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -17015,10 +18371,12 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(resp *http.Res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -17044,10 +18402,12 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(resp *http.Res
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -17059,10 +18419,12 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(re
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -17088,10 +18450,12 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(re
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -17103,10 +18467,12 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRespons
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -17132,10 +18498,12 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRespons
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -17147,10 +18515,12 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Respons
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -17176,10 +18546,12 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Respons
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchFlowcontrolApiserverV1beta2FlowSchemaUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -17191,10 +18563,12 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(resp *http.Res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -17220,10 +18594,12 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(resp *http.Res
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -17235,10 +18611,12 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(re
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -17264,10 +18642,12 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(re
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -17279,10 +18659,12 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRespons
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -17308,10 +18690,12 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRespons
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -17323,10 +18707,12 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionResponse(resp *http.Respo
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -17352,10 +18738,12 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionResponse(resp *http.Respo
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchInternalApiserverV1alpha1StorageVersionUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -17367,10 +18755,12 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionListResponse(resp *http.R
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -17396,10 +18786,12 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionListResponse(resp *http.R
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchInternalApiserverV1alpha1StorageVersionListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -17411,10 +18803,12 @@ func decodeWatchNetworkingV1IngressClassResponse(resp *http.Response) (res Watch
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -17440,10 +18834,12 @@ func decodeWatchNetworkingV1IngressClassResponse(resp *http.Response) (res Watch
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchNetworkingV1IngressClassUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -17455,10 +18851,12 @@ func decodeWatchNetworkingV1IngressClassListResponse(resp *http.Response) (res W
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -17484,10 +18882,12 @@ func decodeWatchNetworkingV1IngressClassListResponse(resp *http.Response) (res W
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchNetworkingV1IngressClassListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -17499,10 +18899,12 @@ func decodeWatchNetworkingV1IngressListForAllNamespacesResponse(resp *http.Respo
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -17528,10 +18930,12 @@ func decodeWatchNetworkingV1IngressListForAllNamespacesResponse(resp *http.Respo
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchNetworkingV1IngressListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -17543,10 +18947,12 @@ func decodeWatchNetworkingV1NamespacedIngressResponse(resp *http.Response) (res 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -17572,10 +18978,12 @@ func decodeWatchNetworkingV1NamespacedIngressResponse(resp *http.Response) (res 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchNetworkingV1NamespacedIngressUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -17587,10 +18995,12 @@ func decodeWatchNetworkingV1NamespacedIngressListResponse(resp *http.Response) (
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -17616,10 +19026,12 @@ func decodeWatchNetworkingV1NamespacedIngressListResponse(resp *http.Response) (
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchNetworkingV1NamespacedIngressListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -17631,10 +19043,12 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyResponse(resp *http.Response)
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -17660,10 +19074,12 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyResponse(resp *http.Response)
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchNetworkingV1NamespacedNetworkPolicyUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -17675,10 +19091,12 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyListResponse(resp *http.Respo
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -17704,10 +19122,12 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyListResponse(resp *http.Respo
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchNetworkingV1NamespacedNetworkPolicyListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -17719,10 +19139,12 @@ func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(resp *http
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -17748,10 +19170,12 @@ func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(resp *http
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -17763,10 +19187,12 @@ func decodeWatchNodeV1RuntimeClassResponse(resp *http.Response) (res WatchNodeV1
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -17792,10 +19218,12 @@ func decodeWatchNodeV1RuntimeClassResponse(resp *http.Response) (res WatchNodeV1
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchNodeV1RuntimeClassUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -17807,10 +19235,12 @@ func decodeWatchNodeV1RuntimeClassListResponse(resp *http.Response) (res WatchNo
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -17836,10 +19266,12 @@ func decodeWatchNodeV1RuntimeClassListResponse(resp *http.Response) (res WatchNo
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchNodeV1RuntimeClassListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -17851,10 +19283,12 @@ func decodeWatchNodeV1alpha1RuntimeClassResponse(resp *http.Response) (res Watch
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -17880,10 +19314,12 @@ func decodeWatchNodeV1alpha1RuntimeClassResponse(resp *http.Response) (res Watch
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchNodeV1alpha1RuntimeClassUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -17895,10 +19331,12 @@ func decodeWatchNodeV1alpha1RuntimeClassListResponse(resp *http.Response) (res W
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -17924,10 +19362,12 @@ func decodeWatchNodeV1alpha1RuntimeClassListResponse(resp *http.Response) (res W
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchNodeV1alpha1RuntimeClassListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -17939,10 +19379,12 @@ func decodeWatchNodeV1beta1RuntimeClassResponse(resp *http.Response) (res WatchN
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -17968,10 +19410,12 @@ func decodeWatchNodeV1beta1RuntimeClassResponse(resp *http.Response) (res WatchN
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchNodeV1beta1RuntimeClassUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -17983,10 +19427,12 @@ func decodeWatchNodeV1beta1RuntimeClassListResponse(resp *http.Response) (res Wa
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -18012,10 +19458,12 @@ func decodeWatchNodeV1beta1RuntimeClassListResponse(resp *http.Response) (res Wa
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchNodeV1beta1RuntimeClassListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -18027,10 +19475,12 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetResponse(resp *http.Respons
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -18056,10 +19506,12 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetResponse(resp *http.Respons
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchPolicyV1NamespacedPodDisruptionBudgetUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -18071,10 +19523,12 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetListResponse(resp *http.Res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -18100,10 +19554,12 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetListResponse(resp *http.Res
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchPolicyV1NamespacedPodDisruptionBudgetListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -18115,10 +19571,12 @@ func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(resp *ht
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -18144,10 +19602,12 @@ func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(resp *ht
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -18159,10 +19619,12 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetResponse(resp *http.Re
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -18188,10 +19650,12 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetResponse(resp *http.Re
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchPolicyV1beta1NamespacedPodDisruptionBudgetUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -18203,10 +19667,12 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListResponse(resp *htt
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -18232,10 +19698,12 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListResponse(resp *htt
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchPolicyV1beta1NamespacedPodDisruptionBudgetListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -18247,10 +19715,12 @@ func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -18276,10 +19746,12 @@ func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(res
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -18291,10 +19763,12 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -18320,10 +19794,12 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (res
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchPolicyV1beta1PodSecurityPolicyUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -18335,10 +19811,12 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyListResponse(resp *http.Response) 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -18364,10 +19842,12 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyListResponse(resp *http.Response) 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchPolicyV1beta1PodSecurityPolicyListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -18379,10 +19859,12 @@ func decodeWatchRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -18408,10 +19890,12 @@ func decodeWatchRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (res
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchRbacAuthorizationV1ClusterRoleUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -18423,10 +19907,12 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Respons
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -18452,10 +19938,12 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Respons
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchRbacAuthorizationV1ClusterRoleBindingUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -18467,10 +19955,12 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(resp *http.Res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -18496,10 +19986,12 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(resp *http.Res
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -18511,10 +20003,12 @@ func decodeWatchRbacAuthorizationV1ClusterRoleListResponse(resp *http.Response) 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -18540,10 +20034,12 @@ func decodeWatchRbacAuthorizationV1ClusterRoleListResponse(resp *http.Response) 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchRbacAuthorizationV1ClusterRoleListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -18555,10 +20051,12 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleResponse(resp *http.Response) (
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -18584,10 +20082,12 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleResponse(resp *http.Response) (
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchRbacAuthorizationV1NamespacedRoleUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -18599,10 +20099,12 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingResponse(resp *http.Resp
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -18628,10 +20130,12 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingResponse(resp *http.Resp
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchRbacAuthorizationV1NamespacedRoleBindingUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -18643,10 +20147,12 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingListResponse(resp *http.
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -18672,10 +20178,12 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingListResponse(resp *http.
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchRbacAuthorizationV1NamespacedRoleBindingListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -18687,10 +20195,12 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleListResponse(resp *http.Respons
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -18716,10 +20226,12 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleListResponse(resp *http.Respons
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchRbacAuthorizationV1NamespacedRoleListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -18731,10 +20243,12 @@ func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(resp 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -18760,10 +20274,12 @@ func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(resp 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -18775,10 +20291,12 @@ func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(resp *http.R
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -18804,10 +20322,12 @@ func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(resp *http.R
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -18819,10 +20339,12 @@ func decodeWatchSchedulingV1PriorityClassResponse(resp *http.Response) (res Watc
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -18848,10 +20370,12 @@ func decodeWatchSchedulingV1PriorityClassResponse(resp *http.Response) (res Watc
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchSchedulingV1PriorityClassUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -18863,10 +20387,12 @@ func decodeWatchSchedulingV1PriorityClassListResponse(resp *http.Response) (res 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -18892,10 +20418,12 @@ func decodeWatchSchedulingV1PriorityClassListResponse(resp *http.Response) (res 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchSchedulingV1PriorityClassListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -18907,10 +20435,12 @@ func decodeWatchStorageV1CSIDriverResponse(resp *http.Response) (res WatchStorag
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -18936,10 +20466,12 @@ func decodeWatchStorageV1CSIDriverResponse(resp *http.Response) (res WatchStorag
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchStorageV1CSIDriverUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -18951,10 +20483,12 @@ func decodeWatchStorageV1CSIDriverListResponse(resp *http.Response) (res WatchSt
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -18980,10 +20514,12 @@ func decodeWatchStorageV1CSIDriverListResponse(resp *http.Response) (res WatchSt
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchStorageV1CSIDriverListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -18995,10 +20531,12 @@ func decodeWatchStorageV1CSINodeResponse(resp *http.Response) (res WatchStorageV
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -19024,10 +20562,12 @@ func decodeWatchStorageV1CSINodeResponse(resp *http.Response) (res WatchStorageV
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchStorageV1CSINodeUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -19039,10 +20579,12 @@ func decodeWatchStorageV1CSINodeListResponse(resp *http.Response) (res WatchStor
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -19068,10 +20610,12 @@ func decodeWatchStorageV1CSINodeListResponse(resp *http.Response) (res WatchStor
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchStorageV1CSINodeListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -19083,10 +20627,12 @@ func decodeWatchStorageV1StorageClassResponse(resp *http.Response) (res WatchSto
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -19112,10 +20658,12 @@ func decodeWatchStorageV1StorageClassResponse(resp *http.Response) (res WatchSto
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchStorageV1StorageClassUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -19127,10 +20675,12 @@ func decodeWatchStorageV1StorageClassListResponse(resp *http.Response) (res Watc
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -19156,10 +20706,12 @@ func decodeWatchStorageV1StorageClassListResponse(resp *http.Response) (res Watc
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchStorageV1StorageClassListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -19171,10 +20723,12 @@ func decodeWatchStorageV1VolumeAttachmentResponse(resp *http.Response) (res Watc
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -19200,10 +20754,12 @@ func decodeWatchStorageV1VolumeAttachmentResponse(resp *http.Response) (res Watc
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchStorageV1VolumeAttachmentUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -19215,10 +20771,12 @@ func decodeWatchStorageV1VolumeAttachmentListResponse(resp *http.Response) (res 
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -19244,10 +20802,12 @@ func decodeWatchStorageV1VolumeAttachmentListResponse(resp *http.Response) (res 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchStorageV1VolumeAttachmentListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -19259,10 +20819,12 @@ func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(re
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -19288,10 +20850,12 @@ func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(re
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -19303,10 +20867,12 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityResponse(resp *http.R
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -19332,10 +20898,12 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityResponse(resp *http.R
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchStorageV1alpha1NamespacedCSIStorageCapacityUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -19347,10 +20915,12 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListResponse(resp *ht
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -19376,10 +20946,12 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListResponse(resp *ht
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchStorageV1alpha1NamespacedCSIStorageCapacityListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -19391,10 +20963,12 @@ func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(res
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -19420,10 +20994,12 @@ func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(res
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -19435,10 +21011,12 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityResponse(resp *http.Re
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -19464,10 +21042,12 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityResponse(resp *http.Re
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchStorageV1beta1NamespacedCSIStorageCapacityUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -19479,10 +21059,12 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityListResponse(resp *htt
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -19508,10 +21090,12 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityListResponse(resp *htt
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 401:
 		// Code 401.
+		defer resp.Body.Close()
 		return &WatchStorageV1beta1NamespacedCSIStorageCapacityListUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)

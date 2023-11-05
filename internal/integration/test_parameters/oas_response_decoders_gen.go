@@ -18,6 +18,7 @@ func decodeComplicatedParameterNameGetResponse(resp *http.Response) (res *Compli
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
+		defer resp.Body.Close()
 		return &ComplicatedParameterNameGetOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -29,10 +30,12 @@ func decodeContentParametersResponse(resp *http.Response) (res *ContentParameter
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -58,6 +61,7 @@ func decodeContentParametersResponse(resp *http.Response) (res *ContentParameter
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -70,10 +74,12 @@ func decodeCookieParameterResponse(resp *http.Response) (res *Value, _ error) {
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -99,6 +105,7 @@ func decodeCookieParameterResponse(resp *http.Response) (res *Value, _ error) {
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -111,10 +118,12 @@ func decodeHeaderParameterResponse(resp *http.Response) (res *Value, _ error) {
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -140,6 +149,7 @@ func decodeHeaderParameterResponse(resp *http.Response) (res *Value, _ error) {
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -152,10 +162,12 @@ func decodeObjectCookieParameterResponse(resp *http.Response) (res *OneLevelObje
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -181,6 +193,7 @@ func decodeObjectCookieParameterResponse(resp *http.Response) (res *OneLevelObje
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -193,10 +206,12 @@ func decodeObjectQueryParameterResponse(resp *http.Response) (res *ObjectQueryPa
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -222,6 +237,7 @@ func decodeObjectQueryParameterResponse(resp *http.Response) (res *ObjectQueryPa
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -234,10 +250,12 @@ func decodePathParameterResponse(resp *http.Response) (res *Value, _ error) {
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -263,6 +281,7 @@ func decodePathParameterResponse(resp *http.Response) (res *Value, _ error) {
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -273,6 +292,7 @@ func decodeSameNameResponse(resp *http.Response) (res *SameNameOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
+		defer resp.Body.Close()
 		return &SameNameOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -282,6 +302,7 @@ func decodeSimilarNamesResponse(resp *http.Response) (res *SimilarNamesOK, _ err
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
+		defer resp.Body.Close()
 		return &SimilarNamesOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)

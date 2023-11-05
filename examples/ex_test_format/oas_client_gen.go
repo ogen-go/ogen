@@ -6142,7 +6142,6 @@ func (c *Client) sendTestQueryParameter(ctx context.Context, request string, par
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestQueryParameterResponse(resp)
@@ -6215,7 +6214,6 @@ func (c *Client) sendTestRequestAny(ctx context.Context, request jx.Raw) (res *E
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestAnyResponse(resp)
@@ -6288,7 +6286,6 @@ func (c *Client) sendTestRequestBoolean(ctx context.Context, request OptBool) (r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestBooleanResponse(resp)
@@ -6361,7 +6358,6 @@ func (c *Client) sendTestRequestBooleanArray(ctx context.Context, request []bool
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestBooleanArrayResponse(resp)
@@ -6457,7 +6453,6 @@ func (c *Client) sendTestRequestBooleanArrayArray(ctx context.Context, request [
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestBooleanArrayArrayResponse(resp)
@@ -6530,7 +6525,6 @@ func (c *Client) sendTestRequestBooleanNullable(ctx context.Context, request Opt
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestBooleanNullableResponse(resp)
@@ -6603,7 +6597,6 @@ func (c *Client) sendTestRequestBooleanNullableArray(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestBooleanNullableArrayResponse(resp)
@@ -6699,7 +6692,6 @@ func (c *Client) sendTestRequestBooleanNullableArrayArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestBooleanNullableArrayArrayResponse(resp)
@@ -6772,7 +6764,6 @@ func (c *Client) sendTestRequestEmptyStruct(ctx context.Context, request *TestRe
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestEmptyStructResponse(resp)
@@ -6861,7 +6852,6 @@ func (c *Client) sendTestRequestFormatTest(ctx context.Context, request OptTestR
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestFormatTestResponse(resp)
@@ -6934,7 +6924,6 @@ func (c *Client) sendTestRequestInteger(ctx context.Context, request OptInt) (re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerResponse(resp)
@@ -7007,7 +6996,6 @@ func (c *Client) sendTestRequestIntegerArray(ctx context.Context, request []int)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerArrayResponse(resp)
@@ -7103,7 +7091,6 @@ func (c *Client) sendTestRequestIntegerArrayArray(ctx context.Context, request [
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerArrayArrayResponse(resp)
@@ -7176,7 +7163,6 @@ func (c *Client) sendTestRequestIntegerInt16(ctx context.Context, request OptInt
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerInt16Response(resp)
@@ -7249,7 +7235,6 @@ func (c *Client) sendTestRequestIntegerInt16Array(ctx context.Context, request [
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerInt16ArrayResponse(resp)
@@ -7345,7 +7330,6 @@ func (c *Client) sendTestRequestIntegerInt16ArrayArray(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerInt16ArrayArrayResponse(resp)
@@ -7418,7 +7402,6 @@ func (c *Client) sendTestRequestIntegerInt16Nullable(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerInt16NullableResponse(resp)
@@ -7491,7 +7474,6 @@ func (c *Client) sendTestRequestIntegerInt16NullableArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerInt16NullableArrayResponse(resp)
@@ -7587,7 +7569,6 @@ func (c *Client) sendTestRequestIntegerInt16NullableArrayArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerInt16NullableArrayArrayResponse(resp)
@@ -7660,7 +7641,6 @@ func (c *Client) sendTestRequestIntegerInt32(ctx context.Context, request OptInt
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerInt32Response(resp)
@@ -7733,7 +7713,6 @@ func (c *Client) sendTestRequestIntegerInt32Array(ctx context.Context, request [
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerInt32ArrayResponse(resp)
@@ -7829,7 +7808,6 @@ func (c *Client) sendTestRequestIntegerInt32ArrayArray(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerInt32ArrayArrayResponse(resp)
@@ -7902,7 +7880,6 @@ func (c *Client) sendTestRequestIntegerInt32Nullable(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerInt32NullableResponse(resp)
@@ -7975,7 +7952,6 @@ func (c *Client) sendTestRequestIntegerInt32NullableArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerInt32NullableArrayResponse(resp)
@@ -8071,7 +8047,6 @@ func (c *Client) sendTestRequestIntegerInt32NullableArrayArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerInt32NullableArrayArrayResponse(resp)
@@ -8144,7 +8119,6 @@ func (c *Client) sendTestRequestIntegerInt64(ctx context.Context, request OptInt
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerInt64Response(resp)
@@ -8217,7 +8191,6 @@ func (c *Client) sendTestRequestIntegerInt64Array(ctx context.Context, request [
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerInt64ArrayResponse(resp)
@@ -8313,7 +8286,6 @@ func (c *Client) sendTestRequestIntegerInt64ArrayArray(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerInt64ArrayArrayResponse(resp)
@@ -8386,7 +8358,6 @@ func (c *Client) sendTestRequestIntegerInt64Nullable(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerInt64NullableResponse(resp)
@@ -8459,7 +8430,6 @@ func (c *Client) sendTestRequestIntegerInt64NullableArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerInt64NullableArrayResponse(resp)
@@ -8555,7 +8525,6 @@ func (c *Client) sendTestRequestIntegerInt64NullableArrayArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerInt64NullableArrayArrayResponse(resp)
@@ -8628,7 +8597,6 @@ func (c *Client) sendTestRequestIntegerInt8(ctx context.Context, request OptInt8
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerInt8Response(resp)
@@ -8701,7 +8669,6 @@ func (c *Client) sendTestRequestIntegerInt8Array(ctx context.Context, request []
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerInt8ArrayResponse(resp)
@@ -8797,7 +8764,6 @@ func (c *Client) sendTestRequestIntegerInt8ArrayArray(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerInt8ArrayArrayResponse(resp)
@@ -8870,7 +8836,6 @@ func (c *Client) sendTestRequestIntegerInt8Nullable(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerInt8NullableResponse(resp)
@@ -8943,7 +8908,6 @@ func (c *Client) sendTestRequestIntegerInt8NullableArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerInt8NullableArrayResponse(resp)
@@ -9039,7 +9003,6 @@ func (c *Client) sendTestRequestIntegerInt8NullableArrayArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerInt8NullableArrayArrayResponse(resp)
@@ -9112,7 +9075,6 @@ func (c *Client) sendTestRequestIntegerNullable(ctx context.Context, request Opt
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerNullableResponse(resp)
@@ -9185,7 +9147,6 @@ func (c *Client) sendTestRequestIntegerNullableArray(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerNullableArrayResponse(resp)
@@ -9281,7 +9242,6 @@ func (c *Client) sendTestRequestIntegerNullableArrayArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerNullableArrayArrayResponse(resp)
@@ -9354,7 +9314,6 @@ func (c *Client) sendTestRequestIntegerUint(ctx context.Context, request OptUint
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUintResponse(resp)
@@ -9427,7 +9386,6 @@ func (c *Client) sendTestRequestIntegerUint16(ctx context.Context, request OptUi
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUint16Response(resp)
@@ -9500,7 +9458,6 @@ func (c *Client) sendTestRequestIntegerUint16Array(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUint16ArrayResponse(resp)
@@ -9596,7 +9553,6 @@ func (c *Client) sendTestRequestIntegerUint16ArrayArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUint16ArrayArrayResponse(resp)
@@ -9669,7 +9625,6 @@ func (c *Client) sendTestRequestIntegerUint16Nullable(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUint16NullableResponse(resp)
@@ -9742,7 +9697,6 @@ func (c *Client) sendTestRequestIntegerUint16NullableArray(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUint16NullableArrayResponse(resp)
@@ -9838,7 +9792,6 @@ func (c *Client) sendTestRequestIntegerUint16NullableArrayArray(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUint16NullableArrayArrayResponse(resp)
@@ -9911,7 +9864,6 @@ func (c *Client) sendTestRequestIntegerUint32(ctx context.Context, request OptUi
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUint32Response(resp)
@@ -9984,7 +9936,6 @@ func (c *Client) sendTestRequestIntegerUint32Array(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUint32ArrayResponse(resp)
@@ -10080,7 +10031,6 @@ func (c *Client) sendTestRequestIntegerUint32ArrayArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUint32ArrayArrayResponse(resp)
@@ -10153,7 +10103,6 @@ func (c *Client) sendTestRequestIntegerUint32Nullable(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUint32NullableResponse(resp)
@@ -10226,7 +10175,6 @@ func (c *Client) sendTestRequestIntegerUint32NullableArray(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUint32NullableArrayResponse(resp)
@@ -10322,7 +10270,6 @@ func (c *Client) sendTestRequestIntegerUint32NullableArrayArray(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUint32NullableArrayArrayResponse(resp)
@@ -10395,7 +10342,6 @@ func (c *Client) sendTestRequestIntegerUint64(ctx context.Context, request OptUi
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUint64Response(resp)
@@ -10468,7 +10414,6 @@ func (c *Client) sendTestRequestIntegerUint64Array(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUint64ArrayResponse(resp)
@@ -10564,7 +10509,6 @@ func (c *Client) sendTestRequestIntegerUint64ArrayArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUint64ArrayArrayResponse(resp)
@@ -10637,7 +10581,6 @@ func (c *Client) sendTestRequestIntegerUint64Nullable(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUint64NullableResponse(resp)
@@ -10710,7 +10653,6 @@ func (c *Client) sendTestRequestIntegerUint64NullableArray(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUint64NullableArrayResponse(resp)
@@ -10806,7 +10748,6 @@ func (c *Client) sendTestRequestIntegerUint64NullableArrayArray(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUint64NullableArrayArrayResponse(resp)
@@ -10879,7 +10820,6 @@ func (c *Client) sendTestRequestIntegerUint8(ctx context.Context, request OptUin
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUint8Response(resp)
@@ -10952,7 +10892,6 @@ func (c *Client) sendTestRequestIntegerUint8Array(ctx context.Context, request [
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUint8ArrayResponse(resp)
@@ -11048,7 +10987,6 @@ func (c *Client) sendTestRequestIntegerUint8ArrayArray(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUint8ArrayArrayResponse(resp)
@@ -11121,7 +11059,6 @@ func (c *Client) sendTestRequestIntegerUint8Nullable(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUint8NullableResponse(resp)
@@ -11194,7 +11131,6 @@ func (c *Client) sendTestRequestIntegerUint8NullableArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUint8NullableArrayResponse(resp)
@@ -11290,7 +11226,6 @@ func (c *Client) sendTestRequestIntegerUint8NullableArrayArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUint8NullableArrayArrayResponse(resp)
@@ -11363,7 +11298,6 @@ func (c *Client) sendTestRequestIntegerUintArray(ctx context.Context, request []
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUintArrayResponse(resp)
@@ -11459,7 +11393,6 @@ func (c *Client) sendTestRequestIntegerUintArrayArray(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUintArrayArrayResponse(resp)
@@ -11532,7 +11465,6 @@ func (c *Client) sendTestRequestIntegerUintNullable(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUintNullableResponse(resp)
@@ -11605,7 +11537,6 @@ func (c *Client) sendTestRequestIntegerUintNullableArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUintNullableArrayResponse(resp)
@@ -11701,7 +11632,6 @@ func (c *Client) sendTestRequestIntegerUintNullableArrayArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUintNullableArrayArrayResponse(resp)
@@ -11774,7 +11704,6 @@ func (c *Client) sendTestRequestIntegerUnix(ctx context.Context, request OptUnix
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUnixResponse(resp)
@@ -11847,7 +11776,6 @@ func (c *Client) sendTestRequestIntegerUnixArray(ctx context.Context, request []
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUnixArrayResponse(resp)
@@ -11943,7 +11871,6 @@ func (c *Client) sendTestRequestIntegerUnixArrayArray(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUnixArrayArrayResponse(resp)
@@ -12016,7 +11943,6 @@ func (c *Client) sendTestRequestIntegerUnixMicro(ctx context.Context, request Op
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUnixMicroResponse(resp)
@@ -12089,7 +12015,6 @@ func (c *Client) sendTestRequestIntegerUnixMicroArray(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUnixMicroArrayResponse(resp)
@@ -12185,7 +12110,6 @@ func (c *Client) sendTestRequestIntegerUnixMicroArrayArray(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUnixMicroArrayArrayResponse(resp)
@@ -12258,7 +12182,6 @@ func (c *Client) sendTestRequestIntegerUnixMicroNullable(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUnixMicroNullableResponse(resp)
@@ -12331,7 +12254,6 @@ func (c *Client) sendTestRequestIntegerUnixMicroNullableArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUnixMicroNullableArrayResponse(resp)
@@ -12427,7 +12349,6 @@ func (c *Client) sendTestRequestIntegerUnixMicroNullableArrayArray(ctx context.C
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUnixMicroNullableArrayArrayResponse(resp)
@@ -12500,7 +12421,6 @@ func (c *Client) sendTestRequestIntegerUnixMilli(ctx context.Context, request Op
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUnixMilliResponse(resp)
@@ -12573,7 +12493,6 @@ func (c *Client) sendTestRequestIntegerUnixMilliArray(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUnixMilliArrayResponse(resp)
@@ -12669,7 +12588,6 @@ func (c *Client) sendTestRequestIntegerUnixMilliArrayArray(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUnixMilliArrayArrayResponse(resp)
@@ -12742,7 +12660,6 @@ func (c *Client) sendTestRequestIntegerUnixMilliNullable(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUnixMilliNullableResponse(resp)
@@ -12815,7 +12732,6 @@ func (c *Client) sendTestRequestIntegerUnixMilliNullableArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUnixMilliNullableArrayResponse(resp)
@@ -12911,7 +12827,6 @@ func (c *Client) sendTestRequestIntegerUnixMilliNullableArrayArray(ctx context.C
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUnixMilliNullableArrayArrayResponse(resp)
@@ -12984,7 +12899,6 @@ func (c *Client) sendTestRequestIntegerUnixNano(ctx context.Context, request Opt
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUnixNanoResponse(resp)
@@ -13057,7 +12971,6 @@ func (c *Client) sendTestRequestIntegerUnixNanoArray(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUnixNanoArrayResponse(resp)
@@ -13153,7 +13066,6 @@ func (c *Client) sendTestRequestIntegerUnixNanoArrayArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUnixNanoArrayArrayResponse(resp)
@@ -13226,7 +13138,6 @@ func (c *Client) sendTestRequestIntegerUnixNanoNullable(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUnixNanoNullableResponse(resp)
@@ -13299,7 +13210,6 @@ func (c *Client) sendTestRequestIntegerUnixNanoNullableArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUnixNanoNullableArrayResponse(resp)
@@ -13395,7 +13305,6 @@ func (c *Client) sendTestRequestIntegerUnixNanoNullableArrayArray(ctx context.Co
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUnixNanoNullableArrayArrayResponse(resp)
@@ -13468,7 +13377,6 @@ func (c *Client) sendTestRequestIntegerUnixNullable(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUnixNullableResponse(resp)
@@ -13541,7 +13449,6 @@ func (c *Client) sendTestRequestIntegerUnixNullableArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUnixNullableArrayResponse(resp)
@@ -13637,7 +13544,6 @@ func (c *Client) sendTestRequestIntegerUnixNullableArrayArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUnixNullableArrayArrayResponse(resp)
@@ -13710,7 +13616,6 @@ func (c *Client) sendTestRequestIntegerUnixSeconds(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUnixSecondsResponse(resp)
@@ -13783,7 +13688,6 @@ func (c *Client) sendTestRequestIntegerUnixSecondsArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUnixSecondsArrayResponse(resp)
@@ -13879,7 +13783,6 @@ func (c *Client) sendTestRequestIntegerUnixSecondsArrayArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUnixSecondsArrayArrayResponse(resp)
@@ -13952,7 +13855,6 @@ func (c *Client) sendTestRequestIntegerUnixSecondsNullable(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUnixSecondsNullableResponse(resp)
@@ -14025,7 +13927,6 @@ func (c *Client) sendTestRequestIntegerUnixSecondsNullableArray(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUnixSecondsNullableArrayResponse(resp)
@@ -14121,7 +14022,6 @@ func (c *Client) sendTestRequestIntegerUnixSecondsNullableArrayArray(ctx context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUnixSecondsNullableArrayArrayResponse(resp)
@@ -14194,7 +14094,6 @@ func (c *Client) sendTestRequestNull(ctx context.Context, request OptNull) (res 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNullResponse(resp)
@@ -14267,7 +14166,6 @@ func (c *Client) sendTestRequestNullArray(ctx context.Context, request []struct{
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNullArrayResponse(resp)
@@ -14363,7 +14261,6 @@ func (c *Client) sendTestRequestNullArrayArray(ctx context.Context, request [][]
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNullArrayArrayResponse(resp)
@@ -14436,7 +14333,6 @@ func (c *Client) sendTestRequestNullNullable(ctx context.Context, request OptNul
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNullNullableResponse(resp)
@@ -14509,7 +14405,6 @@ func (c *Client) sendTestRequestNullNullableArray(ctx context.Context, request [
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNullNullableArrayResponse(resp)
@@ -14605,7 +14500,6 @@ func (c *Client) sendTestRequestNullNullableArrayArray(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNullNullableArrayArrayResponse(resp)
@@ -14694,7 +14588,6 @@ func (c *Client) sendTestRequestNumber(ctx context.Context, request OptFloat64) 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNumberResponse(resp)
@@ -14790,7 +14683,6 @@ func (c *Client) sendTestRequestNumberArray(ctx context.Context, request []float
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNumberArrayResponse(resp)
@@ -14903,7 +14795,6 @@ func (c *Client) sendTestRequestNumberArrayArray(ctx context.Context, request []
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNumberArrayArrayResponse(resp)
@@ -14992,7 +14883,6 @@ func (c *Client) sendTestRequestNumberDouble(ctx context.Context, request OptFlo
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNumberDoubleResponse(resp)
@@ -15088,7 +14978,6 @@ func (c *Client) sendTestRequestNumberDoubleArray(ctx context.Context, request [
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNumberDoubleArrayResponse(resp)
@@ -15201,7 +15090,6 @@ func (c *Client) sendTestRequestNumberDoubleArrayArray(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNumberDoubleArrayArrayResponse(resp)
@@ -15290,7 +15178,6 @@ func (c *Client) sendTestRequestNumberDoubleNullable(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNumberDoubleNullableResponse(resp)
@@ -15393,7 +15280,6 @@ func (c *Client) sendTestRequestNumberDoubleNullableArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNumberDoubleNullableArrayResponse(resp)
@@ -15513,7 +15399,6 @@ func (c *Client) sendTestRequestNumberDoubleNullableArrayArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNumberDoubleNullableArrayArrayResponse(resp)
@@ -15602,7 +15487,6 @@ func (c *Client) sendTestRequestNumberFloat(ctx context.Context, request OptFloa
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNumberFloatResponse(resp)
@@ -15698,7 +15582,6 @@ func (c *Client) sendTestRequestNumberFloatArray(ctx context.Context, request []
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNumberFloatArrayResponse(resp)
@@ -15811,7 +15694,6 @@ func (c *Client) sendTestRequestNumberFloatArrayArray(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNumberFloatArrayArrayResponse(resp)
@@ -15900,7 +15782,6 @@ func (c *Client) sendTestRequestNumberFloatNullable(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNumberFloatNullableResponse(resp)
@@ -16003,7 +15884,6 @@ func (c *Client) sendTestRequestNumberFloatNullableArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNumberFloatNullableArrayResponse(resp)
@@ -16123,7 +16003,6 @@ func (c *Client) sendTestRequestNumberFloatNullableArrayArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNumberFloatNullableArrayArrayResponse(resp)
@@ -16196,7 +16075,6 @@ func (c *Client) sendTestRequestNumberInt32(ctx context.Context, request OptInt3
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNumberInt32Response(resp)
@@ -16269,7 +16147,6 @@ func (c *Client) sendTestRequestNumberInt32Array(ctx context.Context, request []
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNumberInt32ArrayResponse(resp)
@@ -16365,7 +16242,6 @@ func (c *Client) sendTestRequestNumberInt32ArrayArray(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNumberInt32ArrayArrayResponse(resp)
@@ -16438,7 +16314,6 @@ func (c *Client) sendTestRequestNumberInt32Nullable(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNumberInt32NullableResponse(resp)
@@ -16511,7 +16386,6 @@ func (c *Client) sendTestRequestNumberInt32NullableArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNumberInt32NullableArrayResponse(resp)
@@ -16607,7 +16481,6 @@ func (c *Client) sendTestRequestNumberInt32NullableArrayArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNumberInt32NullableArrayArrayResponse(resp)
@@ -16680,7 +16553,6 @@ func (c *Client) sendTestRequestNumberInt64(ctx context.Context, request OptInt6
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNumberInt64Response(resp)
@@ -16753,7 +16625,6 @@ func (c *Client) sendTestRequestNumberInt64Array(ctx context.Context, request []
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNumberInt64ArrayResponse(resp)
@@ -16849,7 +16720,6 @@ func (c *Client) sendTestRequestNumberInt64ArrayArray(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNumberInt64ArrayArrayResponse(resp)
@@ -16922,7 +16792,6 @@ func (c *Client) sendTestRequestNumberInt64Nullable(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNumberInt64NullableResponse(resp)
@@ -16995,7 +16864,6 @@ func (c *Client) sendTestRequestNumberInt64NullableArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNumberInt64NullableArrayResponse(resp)
@@ -17091,7 +16959,6 @@ func (c *Client) sendTestRequestNumberInt64NullableArrayArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNumberInt64NullableArrayArrayResponse(resp)
@@ -17180,7 +17047,6 @@ func (c *Client) sendTestRequestNumberNullable(ctx context.Context, request OptN
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNumberNullableResponse(resp)
@@ -17283,7 +17149,6 @@ func (c *Client) sendTestRequestNumberNullableArray(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNumberNullableArrayResponse(resp)
@@ -17403,7 +17268,6 @@ func (c *Client) sendTestRequestNumberNullableArrayArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNumberNullableArrayArrayResponse(resp)
@@ -17476,7 +17340,6 @@ func (c *Client) sendTestRequestRequiredAny(ctx context.Context, request jx.Raw)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredAnyResponse(resp)
@@ -17549,7 +17412,6 @@ func (c *Client) sendTestRequestRequiredBoolean(ctx context.Context, request boo
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredBooleanResponse(resp)
@@ -17631,7 +17493,6 @@ func (c *Client) sendTestRequestRequiredBooleanArray(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredBooleanArrayResponse(resp)
@@ -17730,7 +17591,6 @@ func (c *Client) sendTestRequestRequiredBooleanArrayArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredBooleanArrayArrayResponse(resp)
@@ -17803,7 +17663,6 @@ func (c *Client) sendTestRequestRequiredBooleanNullable(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredBooleanNullableResponse(resp)
@@ -17885,7 +17744,6 @@ func (c *Client) sendTestRequestRequiredBooleanNullableArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredBooleanNullableArrayResponse(resp)
@@ -17984,7 +17842,6 @@ func (c *Client) sendTestRequestRequiredBooleanNullableArrayArray(ctx context.Co
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredBooleanNullableArrayArrayResponse(resp)
@@ -18057,7 +17914,6 @@ func (c *Client) sendTestRequestRequiredEmptyStruct(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredEmptyStructResponse(resp)
@@ -18139,7 +17995,6 @@ func (c *Client) sendTestRequestRequiredFormatTest(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredFormatTestResponse(resp)
@@ -18212,7 +18067,6 @@ func (c *Client) sendTestRequestRequiredInteger(ctx context.Context, request int
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerResponse(resp)
@@ -18294,7 +18148,6 @@ func (c *Client) sendTestRequestRequiredIntegerArray(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerArrayResponse(resp)
@@ -18393,7 +18246,6 @@ func (c *Client) sendTestRequestRequiredIntegerArrayArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerArrayArrayResponse(resp)
@@ -18466,7 +18318,6 @@ func (c *Client) sendTestRequestRequiredIntegerInt16(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerInt16Response(resp)
@@ -18548,7 +18399,6 @@ func (c *Client) sendTestRequestRequiredIntegerInt16Array(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerInt16ArrayResponse(resp)
@@ -18647,7 +18497,6 @@ func (c *Client) sendTestRequestRequiredIntegerInt16ArrayArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerInt16ArrayArrayResponse(resp)
@@ -18720,7 +18569,6 @@ func (c *Client) sendTestRequestRequiredIntegerInt16Nullable(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerInt16NullableResponse(resp)
@@ -18802,7 +18650,6 @@ func (c *Client) sendTestRequestRequiredIntegerInt16NullableArray(ctx context.Co
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerInt16NullableArrayResponse(resp)
@@ -18901,7 +18748,6 @@ func (c *Client) sendTestRequestRequiredIntegerInt16NullableArrayArray(ctx conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerInt16NullableArrayArrayResponse(resp)
@@ -18974,7 +18820,6 @@ func (c *Client) sendTestRequestRequiredIntegerInt32(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerInt32Response(resp)
@@ -19056,7 +18901,6 @@ func (c *Client) sendTestRequestRequiredIntegerInt32Array(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerInt32ArrayResponse(resp)
@@ -19155,7 +18999,6 @@ func (c *Client) sendTestRequestRequiredIntegerInt32ArrayArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerInt32ArrayArrayResponse(resp)
@@ -19228,7 +19071,6 @@ func (c *Client) sendTestRequestRequiredIntegerInt32Nullable(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerInt32NullableResponse(resp)
@@ -19310,7 +19152,6 @@ func (c *Client) sendTestRequestRequiredIntegerInt32NullableArray(ctx context.Co
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerInt32NullableArrayResponse(resp)
@@ -19409,7 +19250,6 @@ func (c *Client) sendTestRequestRequiredIntegerInt32NullableArrayArray(ctx conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerInt32NullableArrayArrayResponse(resp)
@@ -19482,7 +19322,6 @@ func (c *Client) sendTestRequestRequiredIntegerInt64(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerInt64Response(resp)
@@ -19564,7 +19403,6 @@ func (c *Client) sendTestRequestRequiredIntegerInt64Array(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerInt64ArrayResponse(resp)
@@ -19663,7 +19501,6 @@ func (c *Client) sendTestRequestRequiredIntegerInt64ArrayArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerInt64ArrayArrayResponse(resp)
@@ -19736,7 +19573,6 @@ func (c *Client) sendTestRequestRequiredIntegerInt64Nullable(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerInt64NullableResponse(resp)
@@ -19818,7 +19654,6 @@ func (c *Client) sendTestRequestRequiredIntegerInt64NullableArray(ctx context.Co
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerInt64NullableArrayResponse(resp)
@@ -19917,7 +19752,6 @@ func (c *Client) sendTestRequestRequiredIntegerInt64NullableArrayArray(ctx conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerInt64NullableArrayArrayResponse(resp)
@@ -19990,7 +19824,6 @@ func (c *Client) sendTestRequestRequiredIntegerInt8(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerInt8Response(resp)
@@ -20072,7 +19905,6 @@ func (c *Client) sendTestRequestRequiredIntegerInt8Array(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerInt8ArrayResponse(resp)
@@ -20171,7 +20003,6 @@ func (c *Client) sendTestRequestRequiredIntegerInt8ArrayArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerInt8ArrayArrayResponse(resp)
@@ -20244,7 +20075,6 @@ func (c *Client) sendTestRequestRequiredIntegerInt8Nullable(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerInt8NullableResponse(resp)
@@ -20326,7 +20156,6 @@ func (c *Client) sendTestRequestRequiredIntegerInt8NullableArray(ctx context.Con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerInt8NullableArrayResponse(resp)
@@ -20425,7 +20254,6 @@ func (c *Client) sendTestRequestRequiredIntegerInt8NullableArrayArray(ctx contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerInt8NullableArrayArrayResponse(resp)
@@ -20498,7 +20326,6 @@ func (c *Client) sendTestRequestRequiredIntegerNullable(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerNullableResponse(resp)
@@ -20580,7 +20407,6 @@ func (c *Client) sendTestRequestRequiredIntegerNullableArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerNullableArrayResponse(resp)
@@ -20679,7 +20505,6 @@ func (c *Client) sendTestRequestRequiredIntegerNullableArrayArray(ctx context.Co
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerNullableArrayArrayResponse(resp)
@@ -20752,7 +20577,6 @@ func (c *Client) sendTestRequestRequiredIntegerUint(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUintResponse(resp)
@@ -20825,7 +20649,6 @@ func (c *Client) sendTestRequestRequiredIntegerUint16(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUint16Response(resp)
@@ -20907,7 +20730,6 @@ func (c *Client) sendTestRequestRequiredIntegerUint16Array(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUint16ArrayResponse(resp)
@@ -21006,7 +20828,6 @@ func (c *Client) sendTestRequestRequiredIntegerUint16ArrayArray(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUint16ArrayArrayResponse(resp)
@@ -21079,7 +20900,6 @@ func (c *Client) sendTestRequestRequiredIntegerUint16Nullable(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUint16NullableResponse(resp)
@@ -21161,7 +20981,6 @@ func (c *Client) sendTestRequestRequiredIntegerUint16NullableArray(ctx context.C
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUint16NullableArrayResponse(resp)
@@ -21260,7 +21079,6 @@ func (c *Client) sendTestRequestRequiredIntegerUint16NullableArrayArray(ctx cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUint16NullableArrayArrayResponse(resp)
@@ -21333,7 +21151,6 @@ func (c *Client) sendTestRequestRequiredIntegerUint32(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUint32Response(resp)
@@ -21415,7 +21232,6 @@ func (c *Client) sendTestRequestRequiredIntegerUint32Array(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUint32ArrayResponse(resp)
@@ -21514,7 +21330,6 @@ func (c *Client) sendTestRequestRequiredIntegerUint32ArrayArray(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUint32ArrayArrayResponse(resp)
@@ -21587,7 +21402,6 @@ func (c *Client) sendTestRequestRequiredIntegerUint32Nullable(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUint32NullableResponse(resp)
@@ -21669,7 +21483,6 @@ func (c *Client) sendTestRequestRequiredIntegerUint32NullableArray(ctx context.C
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUint32NullableArrayResponse(resp)
@@ -21768,7 +21581,6 @@ func (c *Client) sendTestRequestRequiredIntegerUint32NullableArrayArray(ctx cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUint32NullableArrayArrayResponse(resp)
@@ -21841,7 +21653,6 @@ func (c *Client) sendTestRequestRequiredIntegerUint64(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUint64Response(resp)
@@ -21923,7 +21734,6 @@ func (c *Client) sendTestRequestRequiredIntegerUint64Array(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUint64ArrayResponse(resp)
@@ -22022,7 +21832,6 @@ func (c *Client) sendTestRequestRequiredIntegerUint64ArrayArray(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUint64ArrayArrayResponse(resp)
@@ -22095,7 +21904,6 @@ func (c *Client) sendTestRequestRequiredIntegerUint64Nullable(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUint64NullableResponse(resp)
@@ -22177,7 +21985,6 @@ func (c *Client) sendTestRequestRequiredIntegerUint64NullableArray(ctx context.C
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUint64NullableArrayResponse(resp)
@@ -22276,7 +22083,6 @@ func (c *Client) sendTestRequestRequiredIntegerUint64NullableArrayArray(ctx cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUint64NullableArrayArrayResponse(resp)
@@ -22349,7 +22155,6 @@ func (c *Client) sendTestRequestRequiredIntegerUint8(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUint8Response(resp)
@@ -22431,7 +22236,6 @@ func (c *Client) sendTestRequestRequiredIntegerUint8Array(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUint8ArrayResponse(resp)
@@ -22530,7 +22334,6 @@ func (c *Client) sendTestRequestRequiredIntegerUint8ArrayArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUint8ArrayArrayResponse(resp)
@@ -22603,7 +22406,6 @@ func (c *Client) sendTestRequestRequiredIntegerUint8Nullable(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUint8NullableResponse(resp)
@@ -22685,7 +22487,6 @@ func (c *Client) sendTestRequestRequiredIntegerUint8NullableArray(ctx context.Co
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUint8NullableArrayResponse(resp)
@@ -22784,7 +22585,6 @@ func (c *Client) sendTestRequestRequiredIntegerUint8NullableArrayArray(ctx conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUint8NullableArrayArrayResponse(resp)
@@ -22866,7 +22666,6 @@ func (c *Client) sendTestRequestRequiredIntegerUintArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUintArrayResponse(resp)
@@ -22965,7 +22764,6 @@ func (c *Client) sendTestRequestRequiredIntegerUintArrayArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUintArrayArrayResponse(resp)
@@ -23038,7 +22836,6 @@ func (c *Client) sendTestRequestRequiredIntegerUintNullable(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUintNullableResponse(resp)
@@ -23120,7 +22917,6 @@ func (c *Client) sendTestRequestRequiredIntegerUintNullableArray(ctx context.Con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUintNullableArrayResponse(resp)
@@ -23219,7 +23015,6 @@ func (c *Client) sendTestRequestRequiredIntegerUintNullableArrayArray(ctx contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUintNullableArrayArrayResponse(resp)
@@ -23292,7 +23087,6 @@ func (c *Client) sendTestRequestRequiredIntegerUnix(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUnixResponse(resp)
@@ -23374,7 +23168,6 @@ func (c *Client) sendTestRequestRequiredIntegerUnixArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUnixArrayResponse(resp)
@@ -23473,7 +23266,6 @@ func (c *Client) sendTestRequestRequiredIntegerUnixArrayArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUnixArrayArrayResponse(resp)
@@ -23546,7 +23338,6 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMicro(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUnixMicroResponse(resp)
@@ -23628,7 +23419,6 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMicroArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUnixMicroArrayResponse(resp)
@@ -23727,7 +23517,6 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMicroArrayArray(ctx context.C
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUnixMicroArrayArrayResponse(resp)
@@ -23800,7 +23589,6 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMicroNullable(ctx context.Con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUnixMicroNullableResponse(resp)
@@ -23882,7 +23670,6 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMicroNullableArray(ctx contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUnixMicroNullableArrayResponse(resp)
@@ -23981,7 +23768,6 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMicroNullableArrayArray(ctx c
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUnixMicroNullableArrayArrayResponse(resp)
@@ -24054,7 +23840,6 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMilli(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUnixMilliResponse(resp)
@@ -24136,7 +23921,6 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMilliArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUnixMilliArrayResponse(resp)
@@ -24235,7 +24019,6 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMilliArrayArray(ctx context.C
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUnixMilliArrayArrayResponse(resp)
@@ -24308,7 +24091,6 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMilliNullable(ctx context.Con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUnixMilliNullableResponse(resp)
@@ -24390,7 +24172,6 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMilliNullableArray(ctx contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUnixMilliNullableArrayResponse(resp)
@@ -24489,7 +24270,6 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMilliNullableArrayArray(ctx c
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUnixMilliNullableArrayArrayResponse(resp)
@@ -24562,7 +24342,6 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNano(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUnixNanoResponse(resp)
@@ -24644,7 +24423,6 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNanoArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUnixNanoArrayResponse(resp)
@@ -24743,7 +24521,6 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNanoArrayArray(ctx context.Co
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUnixNanoArrayArrayResponse(resp)
@@ -24816,7 +24593,6 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNanoNullable(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUnixNanoNullableResponse(resp)
@@ -24898,7 +24674,6 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNanoNullableArray(ctx context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUnixNanoNullableArrayResponse(resp)
@@ -24997,7 +24772,6 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNanoNullableArrayArray(ctx co
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUnixNanoNullableArrayArrayResponse(resp)
@@ -25070,7 +24844,6 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNullable(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUnixNullableResponse(resp)
@@ -25152,7 +24925,6 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNullableArray(ctx context.Con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUnixNullableArrayResponse(resp)
@@ -25251,7 +25023,6 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNullableArrayArray(ctx contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUnixNullableArrayArrayResponse(resp)
@@ -25324,7 +25095,6 @@ func (c *Client) sendTestRequestRequiredIntegerUnixSeconds(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUnixSecondsResponse(resp)
@@ -25406,7 +25176,6 @@ func (c *Client) sendTestRequestRequiredIntegerUnixSecondsArray(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUnixSecondsArrayResponse(resp)
@@ -25505,7 +25274,6 @@ func (c *Client) sendTestRequestRequiredIntegerUnixSecondsArrayArray(ctx context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUnixSecondsArrayArrayResponse(resp)
@@ -25578,7 +25346,6 @@ func (c *Client) sendTestRequestRequiredIntegerUnixSecondsNullable(ctx context.C
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUnixSecondsNullableResponse(resp)
@@ -25660,7 +25427,6 @@ func (c *Client) sendTestRequestRequiredIntegerUnixSecondsNullableArray(ctx cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUnixSecondsNullableArrayResponse(resp)
@@ -25759,7 +25525,6 @@ func (c *Client) sendTestRequestRequiredIntegerUnixSecondsNullableArrayArray(ctx
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUnixSecondsNullableArrayArrayResponse(resp)
@@ -25832,7 +25597,6 @@ func (c *Client) sendTestRequestRequiredNull(ctx context.Context, request struct
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNullResponse(resp)
@@ -25914,7 +25678,6 @@ func (c *Client) sendTestRequestRequiredNullArray(ctx context.Context, request [
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNullArrayResponse(resp)
@@ -26013,7 +25776,6 @@ func (c *Client) sendTestRequestRequiredNullArrayArray(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNullArrayArrayResponse(resp)
@@ -26086,7 +25848,6 @@ func (c *Client) sendTestRequestRequiredNullNullable(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNullNullableResponse(resp)
@@ -26168,7 +25929,6 @@ func (c *Client) sendTestRequestRequiredNullNullableArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNullNullableArrayResponse(resp)
@@ -26267,7 +26027,6 @@ func (c *Client) sendTestRequestRequiredNullNullableArrayArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNullNullableArrayArrayResponse(resp)
@@ -26349,7 +26108,6 @@ func (c *Client) sendTestRequestRequiredNumber(ctx context.Context, request floa
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNumberResponse(resp)
@@ -26448,7 +26206,6 @@ func (c *Client) sendTestRequestRequiredNumberArray(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNumberArrayResponse(resp)
@@ -26564,7 +26321,6 @@ func (c *Client) sendTestRequestRequiredNumberArrayArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNumberArrayArrayResponse(resp)
@@ -26646,7 +26402,6 @@ func (c *Client) sendTestRequestRequiredNumberDouble(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNumberDoubleResponse(resp)
@@ -26745,7 +26500,6 @@ func (c *Client) sendTestRequestRequiredNumberDoubleArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNumberDoubleArrayResponse(resp)
@@ -26861,7 +26615,6 @@ func (c *Client) sendTestRequestRequiredNumberDoubleArrayArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNumberDoubleArrayArrayResponse(resp)
@@ -26950,7 +26703,6 @@ func (c *Client) sendTestRequestRequiredNumberDoubleNullable(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNumberDoubleNullableResponse(resp)
@@ -27056,7 +26808,6 @@ func (c *Client) sendTestRequestRequiredNumberDoubleNullableArray(ctx context.Co
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNumberDoubleNullableArrayResponse(resp)
@@ -27179,7 +26930,6 @@ func (c *Client) sendTestRequestRequiredNumberDoubleNullableArrayArray(ctx conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNumberDoubleNullableArrayArrayResponse(resp)
@@ -27261,7 +27011,6 @@ func (c *Client) sendTestRequestRequiredNumberFloat(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNumberFloatResponse(resp)
@@ -27360,7 +27109,6 @@ func (c *Client) sendTestRequestRequiredNumberFloatArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNumberFloatArrayResponse(resp)
@@ -27476,7 +27224,6 @@ func (c *Client) sendTestRequestRequiredNumberFloatArrayArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNumberFloatArrayArrayResponse(resp)
@@ -27565,7 +27312,6 @@ func (c *Client) sendTestRequestRequiredNumberFloatNullable(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNumberFloatNullableResponse(resp)
@@ -27671,7 +27417,6 @@ func (c *Client) sendTestRequestRequiredNumberFloatNullableArray(ctx context.Con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNumberFloatNullableArrayResponse(resp)
@@ -27794,7 +27539,6 @@ func (c *Client) sendTestRequestRequiredNumberFloatNullableArrayArray(ctx contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNumberFloatNullableArrayArrayResponse(resp)
@@ -27867,7 +27611,6 @@ func (c *Client) sendTestRequestRequiredNumberInt32(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNumberInt32Response(resp)
@@ -27949,7 +27692,6 @@ func (c *Client) sendTestRequestRequiredNumberInt32Array(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNumberInt32ArrayResponse(resp)
@@ -28048,7 +27790,6 @@ func (c *Client) sendTestRequestRequiredNumberInt32ArrayArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNumberInt32ArrayArrayResponse(resp)
@@ -28121,7 +27862,6 @@ func (c *Client) sendTestRequestRequiredNumberInt32Nullable(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNumberInt32NullableResponse(resp)
@@ -28203,7 +27943,6 @@ func (c *Client) sendTestRequestRequiredNumberInt32NullableArray(ctx context.Con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNumberInt32NullableArrayResponse(resp)
@@ -28302,7 +28041,6 @@ func (c *Client) sendTestRequestRequiredNumberInt32NullableArrayArray(ctx contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNumberInt32NullableArrayArrayResponse(resp)
@@ -28375,7 +28113,6 @@ func (c *Client) sendTestRequestRequiredNumberInt64(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNumberInt64Response(resp)
@@ -28457,7 +28194,6 @@ func (c *Client) sendTestRequestRequiredNumberInt64Array(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNumberInt64ArrayResponse(resp)
@@ -28556,7 +28292,6 @@ func (c *Client) sendTestRequestRequiredNumberInt64ArrayArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNumberInt64ArrayArrayResponse(resp)
@@ -28629,7 +28364,6 @@ func (c *Client) sendTestRequestRequiredNumberInt64Nullable(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNumberInt64NullableResponse(resp)
@@ -28711,7 +28445,6 @@ func (c *Client) sendTestRequestRequiredNumberInt64NullableArray(ctx context.Con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNumberInt64NullableArrayResponse(resp)
@@ -28810,7 +28543,6 @@ func (c *Client) sendTestRequestRequiredNumberInt64NullableArrayArray(ctx contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNumberInt64NullableArrayArrayResponse(resp)
@@ -28899,7 +28631,6 @@ func (c *Client) sendTestRequestRequiredNumberNullable(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNumberNullableResponse(resp)
@@ -29005,7 +28736,6 @@ func (c *Client) sendTestRequestRequiredNumberNullableArray(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNumberNullableArrayResponse(resp)
@@ -29128,7 +28858,6 @@ func (c *Client) sendTestRequestRequiredNumberNullableArrayArray(ctx context.Con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredNumberNullableArrayArrayResponse(resp)
@@ -29201,7 +28930,6 @@ func (c *Client) sendTestRequestRequiredString(ctx context.Context, request stri
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringResponse(resp)
@@ -29283,7 +29011,6 @@ func (c *Client) sendTestRequestRequiredStringArray(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringArrayResponse(resp)
@@ -29382,7 +29109,6 @@ func (c *Client) sendTestRequestRequiredStringArrayArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringArrayArrayResponse(resp)
@@ -29455,7 +29181,6 @@ func (c *Client) sendTestRequestRequiredStringBase64(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringBase64Response(resp)
@@ -29537,7 +29262,6 @@ func (c *Client) sendTestRequestRequiredStringBase64Array(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringBase64ArrayResponse(resp)
@@ -29636,7 +29360,6 @@ func (c *Client) sendTestRequestRequiredStringBase64ArrayArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringBase64ArrayArrayResponse(resp)
@@ -29709,7 +29432,6 @@ func (c *Client) sendTestRequestRequiredStringBase64Nullable(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringBase64NullableResponse(resp)
@@ -29791,7 +29513,6 @@ func (c *Client) sendTestRequestRequiredStringBase64NullableArray(ctx context.Co
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringBase64NullableArrayResponse(resp)
@@ -29890,7 +29611,6 @@ func (c *Client) sendTestRequestRequiredStringBase64NullableArrayArray(ctx conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringBase64NullableArrayArrayResponse(resp)
@@ -29963,7 +29683,6 @@ func (c *Client) sendTestRequestRequiredStringBinary(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringBinaryResponse(resp)
@@ -30045,7 +29764,6 @@ func (c *Client) sendTestRequestRequiredStringBinaryArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringBinaryArrayResponse(resp)
@@ -30144,7 +29862,6 @@ func (c *Client) sendTestRequestRequiredStringBinaryArrayArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringBinaryArrayArrayResponse(resp)
@@ -30217,7 +29934,6 @@ func (c *Client) sendTestRequestRequiredStringBinaryNullable(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringBinaryNullableResponse(resp)
@@ -30299,7 +30015,6 @@ func (c *Client) sendTestRequestRequiredStringBinaryNullableArray(ctx context.Co
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringBinaryNullableArrayResponse(resp)
@@ -30398,7 +30113,6 @@ func (c *Client) sendTestRequestRequiredStringBinaryNullableArrayArray(ctx conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringBinaryNullableArrayArrayResponse(resp)
@@ -30471,7 +30185,6 @@ func (c *Client) sendTestRequestRequiredStringByte(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringByteResponse(resp)
@@ -30553,7 +30266,6 @@ func (c *Client) sendTestRequestRequiredStringByteArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringByteArrayResponse(resp)
@@ -30652,7 +30364,6 @@ func (c *Client) sendTestRequestRequiredStringByteArrayArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringByteArrayArrayResponse(resp)
@@ -30725,7 +30436,6 @@ func (c *Client) sendTestRequestRequiredStringByteNullable(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringByteNullableResponse(resp)
@@ -30807,7 +30517,6 @@ func (c *Client) sendTestRequestRequiredStringByteNullableArray(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringByteNullableArrayResponse(resp)
@@ -30906,7 +30615,6 @@ func (c *Client) sendTestRequestRequiredStringByteNullableArrayArray(ctx context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringByteNullableArrayArrayResponse(resp)
@@ -30979,7 +30687,6 @@ func (c *Client) sendTestRequestRequiredStringDate(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringDateResponse(resp)
@@ -31061,7 +30768,6 @@ func (c *Client) sendTestRequestRequiredStringDateArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringDateArrayResponse(resp)
@@ -31160,7 +30866,6 @@ func (c *Client) sendTestRequestRequiredStringDateArrayArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringDateArrayArrayResponse(resp)
@@ -31233,7 +30938,6 @@ func (c *Client) sendTestRequestRequiredStringDateNullable(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringDateNullableResponse(resp)
@@ -31315,7 +31019,6 @@ func (c *Client) sendTestRequestRequiredStringDateNullableArray(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringDateNullableArrayResponse(resp)
@@ -31414,7 +31117,6 @@ func (c *Client) sendTestRequestRequiredStringDateNullableArrayArray(ctx context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringDateNullableArrayArrayResponse(resp)
@@ -31487,7 +31189,6 @@ func (c *Client) sendTestRequestRequiredStringDateTime(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringDateTimeResponse(resp)
@@ -31569,7 +31270,6 @@ func (c *Client) sendTestRequestRequiredStringDateTimeArray(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringDateTimeArrayResponse(resp)
@@ -31668,7 +31368,6 @@ func (c *Client) sendTestRequestRequiredStringDateTimeArrayArray(ctx context.Con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringDateTimeArrayArrayResponse(resp)
@@ -31741,7 +31440,6 @@ func (c *Client) sendTestRequestRequiredStringDateTimeNullable(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringDateTimeNullableResponse(resp)
@@ -31823,7 +31521,6 @@ func (c *Client) sendTestRequestRequiredStringDateTimeNullableArray(ctx context.
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringDateTimeNullableArrayResponse(resp)
@@ -31922,7 +31619,6 @@ func (c *Client) sendTestRequestRequiredStringDateTimeNullableArrayArray(ctx con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringDateTimeNullableArrayArrayResponse(resp)
@@ -31995,7 +31691,6 @@ func (c *Client) sendTestRequestRequiredStringDuration(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringDurationResponse(resp)
@@ -32077,7 +31772,6 @@ func (c *Client) sendTestRequestRequiredStringDurationArray(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringDurationArrayResponse(resp)
@@ -32176,7 +31870,6 @@ func (c *Client) sendTestRequestRequiredStringDurationArrayArray(ctx context.Con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringDurationArrayArrayResponse(resp)
@@ -32249,7 +31942,6 @@ func (c *Client) sendTestRequestRequiredStringDurationNullable(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringDurationNullableResponse(resp)
@@ -32331,7 +32023,6 @@ func (c *Client) sendTestRequestRequiredStringDurationNullableArray(ctx context.
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringDurationNullableArrayResponse(resp)
@@ -32430,7 +32121,6 @@ func (c *Client) sendTestRequestRequiredStringDurationNullableArrayArray(ctx con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringDurationNullableArrayArrayResponse(resp)
@@ -32520,7 +32210,6 @@ func (c *Client) sendTestRequestRequiredStringEmail(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringEmailResponse(resp)
@@ -32627,7 +32316,6 @@ func (c *Client) sendTestRequestRequiredStringEmailArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringEmailArrayResponse(resp)
@@ -32751,7 +32439,6 @@ func (c *Client) sendTestRequestRequiredStringEmailArrayArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringEmailArrayArrayResponse(resp)
@@ -32848,7 +32535,6 @@ func (c *Client) sendTestRequestRequiredStringEmailNullable(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringEmailNullableResponse(resp)
@@ -32962,7 +32648,6 @@ func (c *Client) sendTestRequestRequiredStringEmailNullableArray(ctx context.Con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringEmailNullableArrayResponse(resp)
@@ -33093,7 +32778,6 @@ func (c *Client) sendTestRequestRequiredStringEmailNullableArrayArray(ctx contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringEmailNullableArrayArrayResponse(resp)
@@ -33175,7 +32859,6 @@ func (c *Client) sendTestRequestRequiredStringFloat32(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringFloat32Response(resp)
@@ -33274,7 +32957,6 @@ func (c *Client) sendTestRequestRequiredStringFloat32Array(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringFloat32ArrayResponse(resp)
@@ -33390,7 +33072,6 @@ func (c *Client) sendTestRequestRequiredStringFloat32ArrayArray(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringFloat32ArrayArrayResponse(resp)
@@ -33479,7 +33160,6 @@ func (c *Client) sendTestRequestRequiredStringFloat32Nullable(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringFloat32NullableResponse(resp)
@@ -33585,7 +33265,6 @@ func (c *Client) sendTestRequestRequiredStringFloat32NullableArray(ctx context.C
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringFloat32NullableArrayResponse(resp)
@@ -33708,7 +33387,6 @@ func (c *Client) sendTestRequestRequiredStringFloat32NullableArrayArray(ctx cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringFloat32NullableArrayArrayResponse(resp)
@@ -33790,7 +33468,6 @@ func (c *Client) sendTestRequestRequiredStringFloat64(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringFloat64Response(resp)
@@ -33889,7 +33566,6 @@ func (c *Client) sendTestRequestRequiredStringFloat64Array(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringFloat64ArrayResponse(resp)
@@ -34005,7 +33681,6 @@ func (c *Client) sendTestRequestRequiredStringFloat64ArrayArray(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringFloat64ArrayArrayResponse(resp)
@@ -34094,7 +33769,6 @@ func (c *Client) sendTestRequestRequiredStringFloat64Nullable(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringFloat64NullableResponse(resp)
@@ -34200,7 +33874,6 @@ func (c *Client) sendTestRequestRequiredStringFloat64NullableArray(ctx context.C
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringFloat64NullableArrayResponse(resp)
@@ -34323,7 +33996,6 @@ func (c *Client) sendTestRequestRequiredStringFloat64NullableArrayArray(ctx cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringFloat64NullableArrayArrayResponse(resp)
@@ -34413,7 +34085,6 @@ func (c *Client) sendTestRequestRequiredStringHostname(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringHostnameResponse(resp)
@@ -34520,7 +34191,6 @@ func (c *Client) sendTestRequestRequiredStringHostnameArray(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringHostnameArrayResponse(resp)
@@ -34644,7 +34314,6 @@ func (c *Client) sendTestRequestRequiredStringHostnameArrayArray(ctx context.Con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringHostnameArrayArrayResponse(resp)
@@ -34741,7 +34410,6 @@ func (c *Client) sendTestRequestRequiredStringHostnameNullable(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringHostnameNullableResponse(resp)
@@ -34855,7 +34523,6 @@ func (c *Client) sendTestRequestRequiredStringHostnameNullableArray(ctx context.
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringHostnameNullableArrayResponse(resp)
@@ -34986,7 +34653,6 @@ func (c *Client) sendTestRequestRequiredStringHostnameNullableArrayArray(ctx con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringHostnameNullableArrayArrayResponse(resp)
@@ -35059,7 +34725,6 @@ func (c *Client) sendTestRequestRequiredStringIP(ctx context.Context, request ne
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringIPResponse(resp)
@@ -35141,7 +34806,6 @@ func (c *Client) sendTestRequestRequiredStringIPArray(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringIPArrayResponse(resp)
@@ -35240,7 +34904,6 @@ func (c *Client) sendTestRequestRequiredStringIPArrayArray(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringIPArrayArrayResponse(resp)
@@ -35313,7 +34976,6 @@ func (c *Client) sendTestRequestRequiredStringIPNullable(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringIPNullableResponse(resp)
@@ -35395,7 +35057,6 @@ func (c *Client) sendTestRequestRequiredStringIPNullableArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringIPNullableArrayResponse(resp)
@@ -35494,7 +35155,6 @@ func (c *Client) sendTestRequestRequiredStringIPNullableArrayArray(ctx context.C
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringIPNullableArrayArrayResponse(resp)
@@ -35567,7 +35227,6 @@ func (c *Client) sendTestRequestRequiredStringInt(ctx context.Context, request i
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringIntResponse(resp)
@@ -35640,7 +35299,6 @@ func (c *Client) sendTestRequestRequiredStringInt16(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringInt16Response(resp)
@@ -35722,7 +35380,6 @@ func (c *Client) sendTestRequestRequiredStringInt16Array(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringInt16ArrayResponse(resp)
@@ -35821,7 +35478,6 @@ func (c *Client) sendTestRequestRequiredStringInt16ArrayArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringInt16ArrayArrayResponse(resp)
@@ -35894,7 +35550,6 @@ func (c *Client) sendTestRequestRequiredStringInt16Nullable(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringInt16NullableResponse(resp)
@@ -35976,7 +35631,6 @@ func (c *Client) sendTestRequestRequiredStringInt16NullableArray(ctx context.Con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringInt16NullableArrayResponse(resp)
@@ -36075,7 +35729,6 @@ func (c *Client) sendTestRequestRequiredStringInt16NullableArrayArray(ctx contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringInt16NullableArrayArrayResponse(resp)
@@ -36148,7 +35801,6 @@ func (c *Client) sendTestRequestRequiredStringInt32(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringInt32Response(resp)
@@ -36230,7 +35882,6 @@ func (c *Client) sendTestRequestRequiredStringInt32Array(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringInt32ArrayResponse(resp)
@@ -36329,7 +35980,6 @@ func (c *Client) sendTestRequestRequiredStringInt32ArrayArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringInt32ArrayArrayResponse(resp)
@@ -36402,7 +36052,6 @@ func (c *Client) sendTestRequestRequiredStringInt32Nullable(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringInt32NullableResponse(resp)
@@ -36484,7 +36133,6 @@ func (c *Client) sendTestRequestRequiredStringInt32NullableArray(ctx context.Con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringInt32NullableArrayResponse(resp)
@@ -36583,7 +36231,6 @@ func (c *Client) sendTestRequestRequiredStringInt32NullableArrayArray(ctx contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringInt32NullableArrayArrayResponse(resp)
@@ -36656,7 +36303,6 @@ func (c *Client) sendTestRequestRequiredStringInt64(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringInt64Response(resp)
@@ -36738,7 +36384,6 @@ func (c *Client) sendTestRequestRequiredStringInt64Array(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringInt64ArrayResponse(resp)
@@ -36837,7 +36482,6 @@ func (c *Client) sendTestRequestRequiredStringInt64ArrayArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringInt64ArrayArrayResponse(resp)
@@ -36910,7 +36554,6 @@ func (c *Client) sendTestRequestRequiredStringInt64Nullable(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringInt64NullableResponse(resp)
@@ -36992,7 +36635,6 @@ func (c *Client) sendTestRequestRequiredStringInt64NullableArray(ctx context.Con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringInt64NullableArrayResponse(resp)
@@ -37091,7 +36733,6 @@ func (c *Client) sendTestRequestRequiredStringInt64NullableArrayArray(ctx contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringInt64NullableArrayArrayResponse(resp)
@@ -37164,7 +36805,6 @@ func (c *Client) sendTestRequestRequiredStringInt8(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringInt8Response(resp)
@@ -37246,7 +36886,6 @@ func (c *Client) sendTestRequestRequiredStringInt8Array(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringInt8ArrayResponse(resp)
@@ -37345,7 +36984,6 @@ func (c *Client) sendTestRequestRequiredStringInt8ArrayArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringInt8ArrayArrayResponse(resp)
@@ -37418,7 +37056,6 @@ func (c *Client) sendTestRequestRequiredStringInt8Nullable(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringInt8NullableResponse(resp)
@@ -37500,7 +37137,6 @@ func (c *Client) sendTestRequestRequiredStringInt8NullableArray(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringInt8NullableArrayResponse(resp)
@@ -37599,7 +37235,6 @@ func (c *Client) sendTestRequestRequiredStringInt8NullableArrayArray(ctx context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringInt8NullableArrayArrayResponse(resp)
@@ -37681,7 +37316,6 @@ func (c *Client) sendTestRequestRequiredStringIntArray(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringIntArrayResponse(resp)
@@ -37780,7 +37414,6 @@ func (c *Client) sendTestRequestRequiredStringIntArrayArray(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringIntArrayArrayResponse(resp)
@@ -37853,7 +37486,6 @@ func (c *Client) sendTestRequestRequiredStringIntNullable(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringIntNullableResponse(resp)
@@ -37935,7 +37567,6 @@ func (c *Client) sendTestRequestRequiredStringIntNullableArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringIntNullableArrayResponse(resp)
@@ -38034,7 +37665,6 @@ func (c *Client) sendTestRequestRequiredStringIntNullableArrayArray(ctx context.
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringIntNullableArrayArrayResponse(resp)
@@ -38107,7 +37737,6 @@ func (c *Client) sendTestRequestRequiredStringIpv4(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringIpv4Response(resp)
@@ -38189,7 +37818,6 @@ func (c *Client) sendTestRequestRequiredStringIpv4Array(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringIpv4ArrayResponse(resp)
@@ -38288,7 +37916,6 @@ func (c *Client) sendTestRequestRequiredStringIpv4ArrayArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringIpv4ArrayArrayResponse(resp)
@@ -38361,7 +37988,6 @@ func (c *Client) sendTestRequestRequiredStringIpv4Nullable(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringIpv4NullableResponse(resp)
@@ -38443,7 +38069,6 @@ func (c *Client) sendTestRequestRequiredStringIpv4NullableArray(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringIpv4NullableArrayResponse(resp)
@@ -38542,7 +38167,6 @@ func (c *Client) sendTestRequestRequiredStringIpv4NullableArrayArray(ctx context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringIpv4NullableArrayArrayResponse(resp)
@@ -38615,7 +38239,6 @@ func (c *Client) sendTestRequestRequiredStringIpv6(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringIpv6Response(resp)
@@ -38697,7 +38320,6 @@ func (c *Client) sendTestRequestRequiredStringIpv6Array(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringIpv6ArrayResponse(resp)
@@ -38796,7 +38418,6 @@ func (c *Client) sendTestRequestRequiredStringIpv6ArrayArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringIpv6ArrayArrayResponse(resp)
@@ -38869,7 +38490,6 @@ func (c *Client) sendTestRequestRequiredStringIpv6Nullable(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringIpv6NullableResponse(resp)
@@ -38951,7 +38571,6 @@ func (c *Client) sendTestRequestRequiredStringIpv6NullableArray(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringIpv6NullableArrayResponse(resp)
@@ -39050,7 +38669,6 @@ func (c *Client) sendTestRequestRequiredStringIpv6NullableArrayArray(ctx context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringIpv6NullableArrayArrayResponse(resp)
@@ -39123,7 +38741,6 @@ func (c *Client) sendTestRequestRequiredStringNullable(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringNullableResponse(resp)
@@ -39205,7 +38822,6 @@ func (c *Client) sendTestRequestRequiredStringNullableArray(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringNullableArrayResponse(resp)
@@ -39304,7 +38920,6 @@ func (c *Client) sendTestRequestRequiredStringNullableArrayArray(ctx context.Con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringNullableArrayArrayResponse(resp)
@@ -39377,7 +38992,6 @@ func (c *Client) sendTestRequestRequiredStringPassword(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringPasswordResponse(resp)
@@ -39459,7 +39073,6 @@ func (c *Client) sendTestRequestRequiredStringPasswordArray(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringPasswordArrayResponse(resp)
@@ -39558,7 +39171,6 @@ func (c *Client) sendTestRequestRequiredStringPasswordArrayArray(ctx context.Con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringPasswordArrayArrayResponse(resp)
@@ -39631,7 +39243,6 @@ func (c *Client) sendTestRequestRequiredStringPasswordNullable(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringPasswordNullableResponse(resp)
@@ -39713,7 +39324,6 @@ func (c *Client) sendTestRequestRequiredStringPasswordNullableArray(ctx context.
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringPasswordNullableArrayResponse(resp)
@@ -39812,7 +39422,6 @@ func (c *Client) sendTestRequestRequiredStringPasswordNullableArrayArray(ctx con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringPasswordNullableArrayArrayResponse(resp)
@@ -39885,7 +39494,6 @@ func (c *Client) sendTestRequestRequiredStringTime(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringTimeResponse(resp)
@@ -39967,7 +39575,6 @@ func (c *Client) sendTestRequestRequiredStringTimeArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringTimeArrayResponse(resp)
@@ -40066,7 +39673,6 @@ func (c *Client) sendTestRequestRequiredStringTimeArrayArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringTimeArrayArrayResponse(resp)
@@ -40139,7 +39745,6 @@ func (c *Client) sendTestRequestRequiredStringTimeNullable(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringTimeNullableResponse(resp)
@@ -40221,7 +39826,6 @@ func (c *Client) sendTestRequestRequiredStringTimeNullableArray(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringTimeNullableArrayResponse(resp)
@@ -40320,7 +39924,6 @@ func (c *Client) sendTestRequestRequiredStringTimeNullableArrayArray(ctx context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringTimeNullableArrayArrayResponse(resp)
@@ -40393,7 +39996,6 @@ func (c *Client) sendTestRequestRequiredStringURI(ctx context.Context, request u
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringURIResponse(resp)
@@ -40475,7 +40077,6 @@ func (c *Client) sendTestRequestRequiredStringURIArray(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringURIArrayResponse(resp)
@@ -40574,7 +40175,6 @@ func (c *Client) sendTestRequestRequiredStringURIArrayArray(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringURIArrayArrayResponse(resp)
@@ -40647,7 +40247,6 @@ func (c *Client) sendTestRequestRequiredStringURINullable(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringURINullableResponse(resp)
@@ -40729,7 +40328,6 @@ func (c *Client) sendTestRequestRequiredStringURINullableArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringURINullableArrayResponse(resp)
@@ -40828,7 +40426,6 @@ func (c *Client) sendTestRequestRequiredStringURINullableArrayArray(ctx context.
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringURINullableArrayArrayResponse(resp)
@@ -40901,7 +40498,6 @@ func (c *Client) sendTestRequestRequiredStringUUID(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUUIDResponse(resp)
@@ -40983,7 +40579,6 @@ func (c *Client) sendTestRequestRequiredStringUUIDArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUUIDArrayResponse(resp)
@@ -41082,7 +40677,6 @@ func (c *Client) sendTestRequestRequiredStringUUIDArrayArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUUIDArrayArrayResponse(resp)
@@ -41155,7 +40749,6 @@ func (c *Client) sendTestRequestRequiredStringUUIDNullable(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUUIDNullableResponse(resp)
@@ -41237,7 +40830,6 @@ func (c *Client) sendTestRequestRequiredStringUUIDNullableArray(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUUIDNullableArrayResponse(resp)
@@ -41336,7 +40928,6 @@ func (c *Client) sendTestRequestRequiredStringUUIDNullableArrayArray(ctx context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUUIDNullableArrayArrayResponse(resp)
@@ -41409,7 +41000,6 @@ func (c *Client) sendTestRequestRequiredStringUint(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUintResponse(resp)
@@ -41482,7 +41072,6 @@ func (c *Client) sendTestRequestRequiredStringUint16(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUint16Response(resp)
@@ -41564,7 +41153,6 @@ func (c *Client) sendTestRequestRequiredStringUint16Array(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUint16ArrayResponse(resp)
@@ -41663,7 +41251,6 @@ func (c *Client) sendTestRequestRequiredStringUint16ArrayArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUint16ArrayArrayResponse(resp)
@@ -41736,7 +41323,6 @@ func (c *Client) sendTestRequestRequiredStringUint16Nullable(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUint16NullableResponse(resp)
@@ -41818,7 +41404,6 @@ func (c *Client) sendTestRequestRequiredStringUint16NullableArray(ctx context.Co
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUint16NullableArrayResponse(resp)
@@ -41917,7 +41502,6 @@ func (c *Client) sendTestRequestRequiredStringUint16NullableArrayArray(ctx conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUint16NullableArrayArrayResponse(resp)
@@ -41990,7 +41574,6 @@ func (c *Client) sendTestRequestRequiredStringUint32(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUint32Response(resp)
@@ -42072,7 +41655,6 @@ func (c *Client) sendTestRequestRequiredStringUint32Array(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUint32ArrayResponse(resp)
@@ -42171,7 +41753,6 @@ func (c *Client) sendTestRequestRequiredStringUint32ArrayArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUint32ArrayArrayResponse(resp)
@@ -42244,7 +41825,6 @@ func (c *Client) sendTestRequestRequiredStringUint32Nullable(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUint32NullableResponse(resp)
@@ -42326,7 +41906,6 @@ func (c *Client) sendTestRequestRequiredStringUint32NullableArray(ctx context.Co
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUint32NullableArrayResponse(resp)
@@ -42425,7 +42004,6 @@ func (c *Client) sendTestRequestRequiredStringUint32NullableArrayArray(ctx conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUint32NullableArrayArrayResponse(resp)
@@ -42498,7 +42076,6 @@ func (c *Client) sendTestRequestRequiredStringUint64(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUint64Response(resp)
@@ -42580,7 +42157,6 @@ func (c *Client) sendTestRequestRequiredStringUint64Array(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUint64ArrayResponse(resp)
@@ -42679,7 +42255,6 @@ func (c *Client) sendTestRequestRequiredStringUint64ArrayArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUint64ArrayArrayResponse(resp)
@@ -42752,7 +42327,6 @@ func (c *Client) sendTestRequestRequiredStringUint64Nullable(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUint64NullableResponse(resp)
@@ -42834,7 +42408,6 @@ func (c *Client) sendTestRequestRequiredStringUint64NullableArray(ctx context.Co
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUint64NullableArrayResponse(resp)
@@ -42933,7 +42506,6 @@ func (c *Client) sendTestRequestRequiredStringUint64NullableArrayArray(ctx conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUint64NullableArrayArrayResponse(resp)
@@ -43006,7 +42578,6 @@ func (c *Client) sendTestRequestRequiredStringUint8(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUint8Response(resp)
@@ -43088,7 +42659,6 @@ func (c *Client) sendTestRequestRequiredStringUint8Array(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUint8ArrayResponse(resp)
@@ -43187,7 +42757,6 @@ func (c *Client) sendTestRequestRequiredStringUint8ArrayArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUint8ArrayArrayResponse(resp)
@@ -43260,7 +42829,6 @@ func (c *Client) sendTestRequestRequiredStringUint8Nullable(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUint8NullableResponse(resp)
@@ -43342,7 +42910,6 @@ func (c *Client) sendTestRequestRequiredStringUint8NullableArray(ctx context.Con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUint8NullableArrayResponse(resp)
@@ -43441,7 +43008,6 @@ func (c *Client) sendTestRequestRequiredStringUint8NullableArrayArray(ctx contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUint8NullableArrayArrayResponse(resp)
@@ -43523,7 +43089,6 @@ func (c *Client) sendTestRequestRequiredStringUintArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUintArrayResponse(resp)
@@ -43622,7 +43187,6 @@ func (c *Client) sendTestRequestRequiredStringUintArrayArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUintArrayArrayResponse(resp)
@@ -43695,7 +43259,6 @@ func (c *Client) sendTestRequestRequiredStringUintNullable(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUintNullableResponse(resp)
@@ -43777,7 +43340,6 @@ func (c *Client) sendTestRequestRequiredStringUintNullableArray(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUintNullableArrayResponse(resp)
@@ -43876,7 +43438,6 @@ func (c *Client) sendTestRequestRequiredStringUintNullableArrayArray(ctx context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUintNullableArrayArrayResponse(resp)
@@ -43949,7 +43510,6 @@ func (c *Client) sendTestRequestRequiredStringUnix(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUnixResponse(resp)
@@ -44031,7 +43591,6 @@ func (c *Client) sendTestRequestRequiredStringUnixArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUnixArrayResponse(resp)
@@ -44130,7 +43689,6 @@ func (c *Client) sendTestRequestRequiredStringUnixArrayArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUnixArrayArrayResponse(resp)
@@ -44203,7 +43761,6 @@ func (c *Client) sendTestRequestRequiredStringUnixMicro(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUnixMicroResponse(resp)
@@ -44285,7 +43842,6 @@ func (c *Client) sendTestRequestRequiredStringUnixMicroArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUnixMicroArrayResponse(resp)
@@ -44384,7 +43940,6 @@ func (c *Client) sendTestRequestRequiredStringUnixMicroArrayArray(ctx context.Co
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUnixMicroArrayArrayResponse(resp)
@@ -44457,7 +44012,6 @@ func (c *Client) sendTestRequestRequiredStringUnixMicroNullable(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUnixMicroNullableResponse(resp)
@@ -44539,7 +44093,6 @@ func (c *Client) sendTestRequestRequiredStringUnixMicroNullableArray(ctx context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUnixMicroNullableArrayResponse(resp)
@@ -44638,7 +44191,6 @@ func (c *Client) sendTestRequestRequiredStringUnixMicroNullableArrayArray(ctx co
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUnixMicroNullableArrayArrayResponse(resp)
@@ -44711,7 +44263,6 @@ func (c *Client) sendTestRequestRequiredStringUnixMilli(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUnixMilliResponse(resp)
@@ -44793,7 +44344,6 @@ func (c *Client) sendTestRequestRequiredStringUnixMilliArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUnixMilliArrayResponse(resp)
@@ -44892,7 +44442,6 @@ func (c *Client) sendTestRequestRequiredStringUnixMilliArrayArray(ctx context.Co
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUnixMilliArrayArrayResponse(resp)
@@ -44965,7 +44514,6 @@ func (c *Client) sendTestRequestRequiredStringUnixMilliNullable(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUnixMilliNullableResponse(resp)
@@ -45047,7 +44595,6 @@ func (c *Client) sendTestRequestRequiredStringUnixMilliNullableArray(ctx context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUnixMilliNullableArrayResponse(resp)
@@ -45146,7 +44693,6 @@ func (c *Client) sendTestRequestRequiredStringUnixMilliNullableArrayArray(ctx co
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUnixMilliNullableArrayArrayResponse(resp)
@@ -45219,7 +44765,6 @@ func (c *Client) sendTestRequestRequiredStringUnixNano(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUnixNanoResponse(resp)
@@ -45301,7 +44846,6 @@ func (c *Client) sendTestRequestRequiredStringUnixNanoArray(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUnixNanoArrayResponse(resp)
@@ -45400,7 +44944,6 @@ func (c *Client) sendTestRequestRequiredStringUnixNanoArrayArray(ctx context.Con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUnixNanoArrayArrayResponse(resp)
@@ -45473,7 +45016,6 @@ func (c *Client) sendTestRequestRequiredStringUnixNanoNullable(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUnixNanoNullableResponse(resp)
@@ -45555,7 +45097,6 @@ func (c *Client) sendTestRequestRequiredStringUnixNanoNullableArray(ctx context.
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUnixNanoNullableArrayResponse(resp)
@@ -45654,7 +45195,6 @@ func (c *Client) sendTestRequestRequiredStringUnixNanoNullableArrayArray(ctx con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUnixNanoNullableArrayArrayResponse(resp)
@@ -45727,7 +45267,6 @@ func (c *Client) sendTestRequestRequiredStringUnixNullable(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUnixNullableResponse(resp)
@@ -45809,7 +45348,6 @@ func (c *Client) sendTestRequestRequiredStringUnixNullableArray(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUnixNullableArrayResponse(resp)
@@ -45908,7 +45446,6 @@ func (c *Client) sendTestRequestRequiredStringUnixNullableArrayArray(ctx context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUnixNullableArrayArrayResponse(resp)
@@ -45981,7 +45518,6 @@ func (c *Client) sendTestRequestRequiredStringUnixSeconds(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUnixSecondsResponse(resp)
@@ -46063,7 +45599,6 @@ func (c *Client) sendTestRequestRequiredStringUnixSecondsArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUnixSecondsArrayResponse(resp)
@@ -46162,7 +45697,6 @@ func (c *Client) sendTestRequestRequiredStringUnixSecondsArrayArray(ctx context.
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUnixSecondsArrayArrayResponse(resp)
@@ -46235,7 +45769,6 @@ func (c *Client) sendTestRequestRequiredStringUnixSecondsNullable(ctx context.Co
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUnixSecondsNullableResponse(resp)
@@ -46317,7 +45850,6 @@ func (c *Client) sendTestRequestRequiredStringUnixSecondsNullableArray(ctx conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUnixSecondsNullableArrayResponse(resp)
@@ -46416,7 +45948,6 @@ func (c *Client) sendTestRequestRequiredStringUnixSecondsNullableArrayArray(ctx 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayResponse(resp)
@@ -46489,7 +46020,6 @@ func (c *Client) sendTestRequestString(ctx context.Context, request OptString) (
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringResponse(resp)
@@ -46562,7 +46092,6 @@ func (c *Client) sendTestRequestStringArray(ctx context.Context, request []strin
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringArrayResponse(resp)
@@ -46658,7 +46187,6 @@ func (c *Client) sendTestRequestStringArrayArray(ctx context.Context, request []
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringArrayArrayResponse(resp)
@@ -46731,7 +46259,6 @@ func (c *Client) sendTestRequestStringBase64(ctx context.Context, request []byte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringBase64Response(resp)
@@ -46804,7 +46331,6 @@ func (c *Client) sendTestRequestStringBase64Array(ctx context.Context, request [
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringBase64ArrayResponse(resp)
@@ -46900,7 +46426,6 @@ func (c *Client) sendTestRequestStringBase64ArrayArray(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringBase64ArrayArrayResponse(resp)
@@ -46973,7 +46498,6 @@ func (c *Client) sendTestRequestStringBase64Nullable(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringBase64NullableResponse(resp)
@@ -47046,7 +46570,6 @@ func (c *Client) sendTestRequestStringBase64NullableArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringBase64NullableArrayResponse(resp)
@@ -47142,7 +46665,6 @@ func (c *Client) sendTestRequestStringBase64NullableArrayArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringBase64NullableArrayArrayResponse(resp)
@@ -47215,7 +46737,6 @@ func (c *Client) sendTestRequestStringBinary(ctx context.Context, request OptStr
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringBinaryResponse(resp)
@@ -47288,7 +46809,6 @@ func (c *Client) sendTestRequestStringBinaryArray(ctx context.Context, request [
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringBinaryArrayResponse(resp)
@@ -47384,7 +46904,6 @@ func (c *Client) sendTestRequestStringBinaryArrayArray(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringBinaryArrayArrayResponse(resp)
@@ -47457,7 +46976,6 @@ func (c *Client) sendTestRequestStringBinaryNullable(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringBinaryNullableResponse(resp)
@@ -47530,7 +47048,6 @@ func (c *Client) sendTestRequestStringBinaryNullableArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringBinaryNullableArrayResponse(resp)
@@ -47626,7 +47143,6 @@ func (c *Client) sendTestRequestStringBinaryNullableArrayArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringBinaryNullableArrayArrayResponse(resp)
@@ -47699,7 +47215,6 @@ func (c *Client) sendTestRequestStringByte(ctx context.Context, request []byte) 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringByteResponse(resp)
@@ -47772,7 +47287,6 @@ func (c *Client) sendTestRequestStringByteArray(ctx context.Context, request [][
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringByteArrayResponse(resp)
@@ -47868,7 +47382,6 @@ func (c *Client) sendTestRequestStringByteArrayArray(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringByteArrayArrayResponse(resp)
@@ -47941,7 +47454,6 @@ func (c *Client) sendTestRequestStringByteNullable(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringByteNullableResponse(resp)
@@ -48014,7 +47526,6 @@ func (c *Client) sendTestRequestStringByteNullableArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringByteNullableArrayResponse(resp)
@@ -48110,7 +47621,6 @@ func (c *Client) sendTestRequestStringByteNullableArrayArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringByteNullableArrayArrayResponse(resp)
@@ -48183,7 +47693,6 @@ func (c *Client) sendTestRequestStringDate(ctx context.Context, request OptDate)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringDateResponse(resp)
@@ -48256,7 +47765,6 @@ func (c *Client) sendTestRequestStringDateArray(ctx context.Context, request []t
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringDateArrayResponse(resp)
@@ -48352,7 +47860,6 @@ func (c *Client) sendTestRequestStringDateArrayArray(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringDateArrayArrayResponse(resp)
@@ -48425,7 +47932,6 @@ func (c *Client) sendTestRequestStringDateNullable(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringDateNullableResponse(resp)
@@ -48498,7 +48004,6 @@ func (c *Client) sendTestRequestStringDateNullableArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringDateNullableArrayResponse(resp)
@@ -48594,7 +48099,6 @@ func (c *Client) sendTestRequestStringDateNullableArrayArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringDateNullableArrayArrayResponse(resp)
@@ -48667,7 +48171,6 @@ func (c *Client) sendTestRequestStringDateTime(ctx context.Context, request OptD
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringDateTimeResponse(resp)
@@ -48740,7 +48243,6 @@ func (c *Client) sendTestRequestStringDateTimeArray(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringDateTimeArrayResponse(resp)
@@ -48836,7 +48338,6 @@ func (c *Client) sendTestRequestStringDateTimeArrayArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringDateTimeArrayArrayResponse(resp)
@@ -48909,7 +48410,6 @@ func (c *Client) sendTestRequestStringDateTimeNullable(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringDateTimeNullableResponse(resp)
@@ -48982,7 +48482,6 @@ func (c *Client) sendTestRequestStringDateTimeNullableArray(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringDateTimeNullableArrayResponse(resp)
@@ -49078,7 +48577,6 @@ func (c *Client) sendTestRequestStringDateTimeNullableArrayArray(ctx context.Con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringDateTimeNullableArrayArrayResponse(resp)
@@ -49151,7 +48649,6 @@ func (c *Client) sendTestRequestStringDuration(ctx context.Context, request OptD
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringDurationResponse(resp)
@@ -49224,7 +48721,6 @@ func (c *Client) sendTestRequestStringDurationArray(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringDurationArrayResponse(resp)
@@ -49320,7 +48816,6 @@ func (c *Client) sendTestRequestStringDurationArrayArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringDurationArrayArrayResponse(resp)
@@ -49393,7 +48888,6 @@ func (c *Client) sendTestRequestStringDurationNullable(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringDurationNullableResponse(resp)
@@ -49466,7 +48960,6 @@ func (c *Client) sendTestRequestStringDurationNullableArray(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringDurationNullableArrayResponse(resp)
@@ -49562,7 +49055,6 @@ func (c *Client) sendTestRequestStringDurationNullableArrayArray(ctx context.Con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringDurationNullableArrayArrayResponse(resp)
@@ -49659,7 +49151,6 @@ func (c *Client) sendTestRequestStringEmail(ctx context.Context, request OptStri
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringEmailResponse(resp)
@@ -49763,7 +49254,6 @@ func (c *Client) sendTestRequestStringEmailArray(ctx context.Context, request []
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringEmailArrayResponse(resp)
@@ -49884,7 +49374,6 @@ func (c *Client) sendTestRequestStringEmailArrayArray(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringEmailArrayArrayResponse(resp)
@@ -49981,7 +49470,6 @@ func (c *Client) sendTestRequestStringEmailNullable(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringEmailNullableResponse(resp)
@@ -50092,7 +49580,6 @@ func (c *Client) sendTestRequestStringEmailNullableArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringEmailNullableArrayResponse(resp)
@@ -50220,7 +49707,6 @@ func (c *Client) sendTestRequestStringEmailNullableArrayArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringEmailNullableArrayArrayResponse(resp)
@@ -50309,7 +49795,6 @@ func (c *Client) sendTestRequestStringFloat32(ctx context.Context, request OptFl
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringFloat32Response(resp)
@@ -50405,7 +49890,6 @@ func (c *Client) sendTestRequestStringFloat32Array(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringFloat32ArrayResponse(resp)
@@ -50518,7 +50002,6 @@ func (c *Client) sendTestRequestStringFloat32ArrayArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringFloat32ArrayArrayResponse(resp)
@@ -50607,7 +50090,6 @@ func (c *Client) sendTestRequestStringFloat32Nullable(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringFloat32NullableResponse(resp)
@@ -50710,7 +50192,6 @@ func (c *Client) sendTestRequestStringFloat32NullableArray(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringFloat32NullableArrayResponse(resp)
@@ -50830,7 +50311,6 @@ func (c *Client) sendTestRequestStringFloat32NullableArrayArray(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringFloat32NullableArrayArrayResponse(resp)
@@ -50919,7 +50399,6 @@ func (c *Client) sendTestRequestStringFloat64(ctx context.Context, request OptFl
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringFloat64Response(resp)
@@ -51015,7 +50494,6 @@ func (c *Client) sendTestRequestStringFloat64Array(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringFloat64ArrayResponse(resp)
@@ -51128,7 +50606,6 @@ func (c *Client) sendTestRequestStringFloat64ArrayArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringFloat64ArrayArrayResponse(resp)
@@ -51217,7 +50694,6 @@ func (c *Client) sendTestRequestStringFloat64Nullable(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringFloat64NullableResponse(resp)
@@ -51320,7 +50796,6 @@ func (c *Client) sendTestRequestStringFloat64NullableArray(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringFloat64NullableArrayResponse(resp)
@@ -51440,7 +50915,6 @@ func (c *Client) sendTestRequestStringFloat64NullableArrayArray(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringFloat64NullableArrayArrayResponse(resp)
@@ -51537,7 +51011,6 @@ func (c *Client) sendTestRequestStringHostname(ctx context.Context, request OptS
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringHostnameResponse(resp)
@@ -51641,7 +51114,6 @@ func (c *Client) sendTestRequestStringHostnameArray(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringHostnameArrayResponse(resp)
@@ -51762,7 +51234,6 @@ func (c *Client) sendTestRequestStringHostnameArrayArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringHostnameArrayArrayResponse(resp)
@@ -51859,7 +51330,6 @@ func (c *Client) sendTestRequestStringHostnameNullable(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringHostnameNullableResponse(resp)
@@ -51970,7 +51440,6 @@ func (c *Client) sendTestRequestStringHostnameNullableArray(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringHostnameNullableArrayResponse(resp)
@@ -52098,7 +51567,6 @@ func (c *Client) sendTestRequestStringHostnameNullableArrayArray(ctx context.Con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringHostnameNullableArrayArrayResponse(resp)
@@ -52171,7 +51639,6 @@ func (c *Client) sendTestRequestStringIP(ctx context.Context, request OptIP) (re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringIPResponse(resp)
@@ -52244,7 +51711,6 @@ func (c *Client) sendTestRequestStringIPArray(ctx context.Context, request []net
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringIPArrayResponse(resp)
@@ -52340,7 +51806,6 @@ func (c *Client) sendTestRequestStringIPArrayArray(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringIPArrayArrayResponse(resp)
@@ -52413,7 +51878,6 @@ func (c *Client) sendTestRequestStringIPNullable(ctx context.Context, request Op
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringIPNullableResponse(resp)
@@ -52486,7 +51950,6 @@ func (c *Client) sendTestRequestStringIPNullableArray(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringIPNullableArrayResponse(resp)
@@ -52582,7 +52045,6 @@ func (c *Client) sendTestRequestStringIPNullableArrayArray(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringIPNullableArrayArrayResponse(resp)
@@ -52655,7 +52117,6 @@ func (c *Client) sendTestRequestStringInt(ctx context.Context, request OptInt) (
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringIntResponse(resp)
@@ -52728,7 +52189,6 @@ func (c *Client) sendTestRequestStringInt16(ctx context.Context, request OptInt1
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringInt16Response(resp)
@@ -52801,7 +52261,6 @@ func (c *Client) sendTestRequestStringInt16Array(ctx context.Context, request []
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringInt16ArrayResponse(resp)
@@ -52897,7 +52356,6 @@ func (c *Client) sendTestRequestStringInt16ArrayArray(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringInt16ArrayArrayResponse(resp)
@@ -52970,7 +52428,6 @@ func (c *Client) sendTestRequestStringInt16Nullable(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringInt16NullableResponse(resp)
@@ -53043,7 +52500,6 @@ func (c *Client) sendTestRequestStringInt16NullableArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringInt16NullableArrayResponse(resp)
@@ -53139,7 +52595,6 @@ func (c *Client) sendTestRequestStringInt16NullableArrayArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringInt16NullableArrayArrayResponse(resp)
@@ -53212,7 +52667,6 @@ func (c *Client) sendTestRequestStringInt32(ctx context.Context, request OptStri
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringInt32Response(resp)
@@ -53285,7 +52739,6 @@ func (c *Client) sendTestRequestStringInt32Array(ctx context.Context, request []
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringInt32ArrayResponse(resp)
@@ -53381,7 +52834,6 @@ func (c *Client) sendTestRequestStringInt32ArrayArray(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringInt32ArrayArrayResponse(resp)
@@ -53454,7 +52906,6 @@ func (c *Client) sendTestRequestStringInt32Nullable(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringInt32NullableResponse(resp)
@@ -53527,7 +52978,6 @@ func (c *Client) sendTestRequestStringInt32NullableArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringInt32NullableArrayResponse(resp)
@@ -53623,7 +53073,6 @@ func (c *Client) sendTestRequestStringInt32NullableArrayArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringInt32NullableArrayArrayResponse(resp)
@@ -53696,7 +53145,6 @@ func (c *Client) sendTestRequestStringInt64(ctx context.Context, request OptStri
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringInt64Response(resp)
@@ -53769,7 +53217,6 @@ func (c *Client) sendTestRequestStringInt64Array(ctx context.Context, request []
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringInt64ArrayResponse(resp)
@@ -53865,7 +53312,6 @@ func (c *Client) sendTestRequestStringInt64ArrayArray(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringInt64ArrayArrayResponse(resp)
@@ -53938,7 +53384,6 @@ func (c *Client) sendTestRequestStringInt64Nullable(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringInt64NullableResponse(resp)
@@ -54011,7 +53456,6 @@ func (c *Client) sendTestRequestStringInt64NullableArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringInt64NullableArrayResponse(resp)
@@ -54107,7 +53551,6 @@ func (c *Client) sendTestRequestStringInt64NullableArrayArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringInt64NullableArrayArrayResponse(resp)
@@ -54180,7 +53623,6 @@ func (c *Client) sendTestRequestStringInt8(ctx context.Context, request OptInt8)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringInt8Response(resp)
@@ -54253,7 +53695,6 @@ func (c *Client) sendTestRequestStringInt8Array(ctx context.Context, request []i
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringInt8ArrayResponse(resp)
@@ -54349,7 +53790,6 @@ func (c *Client) sendTestRequestStringInt8ArrayArray(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringInt8ArrayArrayResponse(resp)
@@ -54422,7 +53862,6 @@ func (c *Client) sendTestRequestStringInt8Nullable(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringInt8NullableResponse(resp)
@@ -54495,7 +53934,6 @@ func (c *Client) sendTestRequestStringInt8NullableArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringInt8NullableArrayResponse(resp)
@@ -54591,7 +54029,6 @@ func (c *Client) sendTestRequestStringInt8NullableArrayArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringInt8NullableArrayArrayResponse(resp)
@@ -54664,7 +54101,6 @@ func (c *Client) sendTestRequestStringIntArray(ctx context.Context, request []in
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringIntArrayResponse(resp)
@@ -54760,7 +54196,6 @@ func (c *Client) sendTestRequestStringIntArrayArray(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringIntArrayArrayResponse(resp)
@@ -54833,7 +54268,6 @@ func (c *Client) sendTestRequestStringIntNullable(ctx context.Context, request O
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringIntNullableResponse(resp)
@@ -54906,7 +54340,6 @@ func (c *Client) sendTestRequestStringIntNullableArray(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringIntNullableArrayResponse(resp)
@@ -55002,7 +54435,6 @@ func (c *Client) sendTestRequestStringIntNullableArrayArray(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringIntNullableArrayArrayResponse(resp)
@@ -55075,7 +54507,6 @@ func (c *Client) sendTestRequestStringIpv4(ctx context.Context, request OptIPv4)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringIpv4Response(resp)
@@ -55148,7 +54579,6 @@ func (c *Client) sendTestRequestStringIpv4Array(ctx context.Context, request []n
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringIpv4ArrayResponse(resp)
@@ -55244,7 +54674,6 @@ func (c *Client) sendTestRequestStringIpv4ArrayArray(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringIpv4ArrayArrayResponse(resp)
@@ -55317,7 +54746,6 @@ func (c *Client) sendTestRequestStringIpv4Nullable(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringIpv4NullableResponse(resp)
@@ -55390,7 +54818,6 @@ func (c *Client) sendTestRequestStringIpv4NullableArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringIpv4NullableArrayResponse(resp)
@@ -55486,7 +54913,6 @@ func (c *Client) sendTestRequestStringIpv4NullableArrayArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringIpv4NullableArrayArrayResponse(resp)
@@ -55559,7 +54985,6 @@ func (c *Client) sendTestRequestStringIpv6(ctx context.Context, request OptIPv6)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringIpv6Response(resp)
@@ -55632,7 +55057,6 @@ func (c *Client) sendTestRequestStringIpv6Array(ctx context.Context, request []n
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringIpv6ArrayResponse(resp)
@@ -55728,7 +55152,6 @@ func (c *Client) sendTestRequestStringIpv6ArrayArray(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringIpv6ArrayArrayResponse(resp)
@@ -55801,7 +55224,6 @@ func (c *Client) sendTestRequestStringIpv6Nullable(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringIpv6NullableResponse(resp)
@@ -55874,7 +55296,6 @@ func (c *Client) sendTestRequestStringIpv6NullableArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringIpv6NullableArrayResponse(resp)
@@ -55970,7 +55391,6 @@ func (c *Client) sendTestRequestStringIpv6NullableArrayArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringIpv6NullableArrayArrayResponse(resp)
@@ -56043,7 +55463,6 @@ func (c *Client) sendTestRequestStringNullable(ctx context.Context, request OptN
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringNullableResponse(resp)
@@ -56116,7 +55535,6 @@ func (c *Client) sendTestRequestStringNullableArray(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringNullableArrayResponse(resp)
@@ -56212,7 +55630,6 @@ func (c *Client) sendTestRequestStringNullableArrayArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringNullableArrayArrayResponse(resp)
@@ -56285,7 +55702,6 @@ func (c *Client) sendTestRequestStringPassword(ctx context.Context, request OptS
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringPasswordResponse(resp)
@@ -56358,7 +55774,6 @@ func (c *Client) sendTestRequestStringPasswordArray(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringPasswordArrayResponse(resp)
@@ -56454,7 +55869,6 @@ func (c *Client) sendTestRequestStringPasswordArrayArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringPasswordArrayArrayResponse(resp)
@@ -56527,7 +55941,6 @@ func (c *Client) sendTestRequestStringPasswordNullable(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringPasswordNullableResponse(resp)
@@ -56600,7 +56013,6 @@ func (c *Client) sendTestRequestStringPasswordNullableArray(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringPasswordNullableArrayResponse(resp)
@@ -56696,7 +56108,6 @@ func (c *Client) sendTestRequestStringPasswordNullableArrayArray(ctx context.Con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringPasswordNullableArrayArrayResponse(resp)
@@ -56769,7 +56180,6 @@ func (c *Client) sendTestRequestStringTime(ctx context.Context, request OptTime)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringTimeResponse(resp)
@@ -56842,7 +56252,6 @@ func (c *Client) sendTestRequestStringTimeArray(ctx context.Context, request []t
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringTimeArrayResponse(resp)
@@ -56938,7 +56347,6 @@ func (c *Client) sendTestRequestStringTimeArrayArray(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringTimeArrayArrayResponse(resp)
@@ -57011,7 +56419,6 @@ func (c *Client) sendTestRequestStringTimeNullable(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringTimeNullableResponse(resp)
@@ -57084,7 +56491,6 @@ func (c *Client) sendTestRequestStringTimeNullableArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringTimeNullableArrayResponse(resp)
@@ -57180,7 +56586,6 @@ func (c *Client) sendTestRequestStringTimeNullableArrayArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringTimeNullableArrayArrayResponse(resp)
@@ -57253,7 +56658,6 @@ func (c *Client) sendTestRequestStringURI(ctx context.Context, request OptURI) (
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringURIResponse(resp)
@@ -57326,7 +56730,6 @@ func (c *Client) sendTestRequestStringURIArray(ctx context.Context, request []ur
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringURIArrayResponse(resp)
@@ -57422,7 +56825,6 @@ func (c *Client) sendTestRequestStringURIArrayArray(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringURIArrayArrayResponse(resp)
@@ -57495,7 +56897,6 @@ func (c *Client) sendTestRequestStringURINullable(ctx context.Context, request O
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringURINullableResponse(resp)
@@ -57568,7 +56969,6 @@ func (c *Client) sendTestRequestStringURINullableArray(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringURINullableArrayResponse(resp)
@@ -57664,7 +57064,6 @@ func (c *Client) sendTestRequestStringURINullableArrayArray(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringURINullableArrayArrayResponse(resp)
@@ -57737,7 +57136,6 @@ func (c *Client) sendTestRequestStringUUID(ctx context.Context, request OptUUID)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUUIDResponse(resp)
@@ -57810,7 +57208,6 @@ func (c *Client) sendTestRequestStringUUIDArray(ctx context.Context, request []u
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUUIDArrayResponse(resp)
@@ -57906,7 +57303,6 @@ func (c *Client) sendTestRequestStringUUIDArrayArray(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUUIDArrayArrayResponse(resp)
@@ -57979,7 +57375,6 @@ func (c *Client) sendTestRequestStringUUIDNullable(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUUIDNullableResponse(resp)
@@ -58052,7 +57447,6 @@ func (c *Client) sendTestRequestStringUUIDNullableArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUUIDNullableArrayResponse(resp)
@@ -58148,7 +57542,6 @@ func (c *Client) sendTestRequestStringUUIDNullableArrayArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUUIDNullableArrayArrayResponse(resp)
@@ -58221,7 +57614,6 @@ func (c *Client) sendTestRequestStringUint(ctx context.Context, request OptUint)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUintResponse(resp)
@@ -58294,7 +57686,6 @@ func (c *Client) sendTestRequestStringUint16(ctx context.Context, request OptUin
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUint16Response(resp)
@@ -58367,7 +57758,6 @@ func (c *Client) sendTestRequestStringUint16Array(ctx context.Context, request [
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUint16ArrayResponse(resp)
@@ -58463,7 +57853,6 @@ func (c *Client) sendTestRequestStringUint16ArrayArray(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUint16ArrayArrayResponse(resp)
@@ -58536,7 +57925,6 @@ func (c *Client) sendTestRequestStringUint16Nullable(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUint16NullableResponse(resp)
@@ -58609,7 +57997,6 @@ func (c *Client) sendTestRequestStringUint16NullableArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUint16NullableArrayResponse(resp)
@@ -58705,7 +58092,6 @@ func (c *Client) sendTestRequestStringUint16NullableArrayArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUint16NullableArrayArrayResponse(resp)
@@ -58778,7 +58164,6 @@ func (c *Client) sendTestRequestStringUint32(ctx context.Context, request OptUin
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUint32Response(resp)
@@ -58851,7 +58236,6 @@ func (c *Client) sendTestRequestStringUint32Array(ctx context.Context, request [
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUint32ArrayResponse(resp)
@@ -58947,7 +58331,6 @@ func (c *Client) sendTestRequestStringUint32ArrayArray(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUint32ArrayArrayResponse(resp)
@@ -59020,7 +58403,6 @@ func (c *Client) sendTestRequestStringUint32Nullable(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUint32NullableResponse(resp)
@@ -59093,7 +58475,6 @@ func (c *Client) sendTestRequestStringUint32NullableArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUint32NullableArrayResponse(resp)
@@ -59189,7 +58570,6 @@ func (c *Client) sendTestRequestStringUint32NullableArrayArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUint32NullableArrayArrayResponse(resp)
@@ -59262,7 +58642,6 @@ func (c *Client) sendTestRequestStringUint64(ctx context.Context, request OptUin
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUint64Response(resp)
@@ -59335,7 +58714,6 @@ func (c *Client) sendTestRequestStringUint64Array(ctx context.Context, request [
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUint64ArrayResponse(resp)
@@ -59431,7 +58809,6 @@ func (c *Client) sendTestRequestStringUint64ArrayArray(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUint64ArrayArrayResponse(resp)
@@ -59504,7 +58881,6 @@ func (c *Client) sendTestRequestStringUint64Nullable(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUint64NullableResponse(resp)
@@ -59577,7 +58953,6 @@ func (c *Client) sendTestRequestStringUint64NullableArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUint64NullableArrayResponse(resp)
@@ -59673,7 +59048,6 @@ func (c *Client) sendTestRequestStringUint64NullableArrayArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUint64NullableArrayArrayResponse(resp)
@@ -59746,7 +59120,6 @@ func (c *Client) sendTestRequestStringUint8(ctx context.Context, request OptUint
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUint8Response(resp)
@@ -59819,7 +59192,6 @@ func (c *Client) sendTestRequestStringUint8Array(ctx context.Context, request []
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUint8ArrayResponse(resp)
@@ -59915,7 +59287,6 @@ func (c *Client) sendTestRequestStringUint8ArrayArray(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUint8ArrayArrayResponse(resp)
@@ -59988,7 +59359,6 @@ func (c *Client) sendTestRequestStringUint8Nullable(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUint8NullableResponse(resp)
@@ -60061,7 +59431,6 @@ func (c *Client) sendTestRequestStringUint8NullableArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUint8NullableArrayResponse(resp)
@@ -60157,7 +59526,6 @@ func (c *Client) sendTestRequestStringUint8NullableArrayArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUint8NullableArrayArrayResponse(resp)
@@ -60230,7 +59598,6 @@ func (c *Client) sendTestRequestStringUintArray(ctx context.Context, request []u
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUintArrayResponse(resp)
@@ -60326,7 +59693,6 @@ func (c *Client) sendTestRequestStringUintArrayArray(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUintArrayArrayResponse(resp)
@@ -60399,7 +59765,6 @@ func (c *Client) sendTestRequestStringUintNullable(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUintNullableResponse(resp)
@@ -60472,7 +59837,6 @@ func (c *Client) sendTestRequestStringUintNullableArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUintNullableArrayResponse(resp)
@@ -60568,7 +59932,6 @@ func (c *Client) sendTestRequestStringUintNullableArrayArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUintNullableArrayArrayResponse(resp)
@@ -60641,7 +60004,6 @@ func (c *Client) sendTestRequestStringUnix(ctx context.Context, request OptStrin
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUnixResponse(resp)
@@ -60714,7 +60076,6 @@ func (c *Client) sendTestRequestStringUnixArray(ctx context.Context, request []t
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUnixArrayResponse(resp)
@@ -60810,7 +60171,6 @@ func (c *Client) sendTestRequestStringUnixArrayArray(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUnixArrayArrayResponse(resp)
@@ -60883,7 +60243,6 @@ func (c *Client) sendTestRequestStringUnixMicro(ctx context.Context, request Opt
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUnixMicroResponse(resp)
@@ -60956,7 +60315,6 @@ func (c *Client) sendTestRequestStringUnixMicroArray(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUnixMicroArrayResponse(resp)
@@ -61052,7 +60410,6 @@ func (c *Client) sendTestRequestStringUnixMicroArrayArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUnixMicroArrayArrayResponse(resp)
@@ -61125,7 +60482,6 @@ func (c *Client) sendTestRequestStringUnixMicroNullable(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUnixMicroNullableResponse(resp)
@@ -61198,7 +60554,6 @@ func (c *Client) sendTestRequestStringUnixMicroNullableArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUnixMicroNullableArrayResponse(resp)
@@ -61294,7 +60649,6 @@ func (c *Client) sendTestRequestStringUnixMicroNullableArrayArray(ctx context.Co
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUnixMicroNullableArrayArrayResponse(resp)
@@ -61367,7 +60721,6 @@ func (c *Client) sendTestRequestStringUnixMilli(ctx context.Context, request Opt
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUnixMilliResponse(resp)
@@ -61440,7 +60793,6 @@ func (c *Client) sendTestRequestStringUnixMilliArray(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUnixMilliArrayResponse(resp)
@@ -61536,7 +60888,6 @@ func (c *Client) sendTestRequestStringUnixMilliArrayArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUnixMilliArrayArrayResponse(resp)
@@ -61609,7 +60960,6 @@ func (c *Client) sendTestRequestStringUnixMilliNullable(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUnixMilliNullableResponse(resp)
@@ -61682,7 +61032,6 @@ func (c *Client) sendTestRequestStringUnixMilliNullableArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUnixMilliNullableArrayResponse(resp)
@@ -61778,7 +61127,6 @@ func (c *Client) sendTestRequestStringUnixMilliNullableArrayArray(ctx context.Co
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUnixMilliNullableArrayArrayResponse(resp)
@@ -61851,7 +61199,6 @@ func (c *Client) sendTestRequestStringUnixNano(ctx context.Context, request OptS
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUnixNanoResponse(resp)
@@ -61924,7 +61271,6 @@ func (c *Client) sendTestRequestStringUnixNanoArray(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUnixNanoArrayResponse(resp)
@@ -62020,7 +61366,6 @@ func (c *Client) sendTestRequestStringUnixNanoArrayArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUnixNanoArrayArrayResponse(resp)
@@ -62093,7 +61438,6 @@ func (c *Client) sendTestRequestStringUnixNanoNullable(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUnixNanoNullableResponse(resp)
@@ -62166,7 +61510,6 @@ func (c *Client) sendTestRequestStringUnixNanoNullableArray(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUnixNanoNullableArrayResponse(resp)
@@ -62262,7 +61605,6 @@ func (c *Client) sendTestRequestStringUnixNanoNullableArrayArray(ctx context.Con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUnixNanoNullableArrayArrayResponse(resp)
@@ -62335,7 +61677,6 @@ func (c *Client) sendTestRequestStringUnixNullable(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUnixNullableResponse(resp)
@@ -62408,7 +61749,6 @@ func (c *Client) sendTestRequestStringUnixNullableArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUnixNullableArrayResponse(resp)
@@ -62504,7 +61844,6 @@ func (c *Client) sendTestRequestStringUnixNullableArrayArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUnixNullableArrayArrayResponse(resp)
@@ -62577,7 +61916,6 @@ func (c *Client) sendTestRequestStringUnixSeconds(ctx context.Context, request O
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUnixSecondsResponse(resp)
@@ -62650,7 +61988,6 @@ func (c *Client) sendTestRequestStringUnixSecondsArray(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUnixSecondsArrayResponse(resp)
@@ -62746,7 +62083,6 @@ func (c *Client) sendTestRequestStringUnixSecondsArrayArray(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUnixSecondsArrayArrayResponse(resp)
@@ -62819,7 +62155,6 @@ func (c *Client) sendTestRequestStringUnixSecondsNullable(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUnixSecondsNullableResponse(resp)
@@ -62892,7 +62227,6 @@ func (c *Client) sendTestRequestStringUnixSecondsNullableArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUnixSecondsNullableArrayResponse(resp)
@@ -62988,7 +62322,6 @@ func (c *Client) sendTestRequestStringUnixSecondsNullableArrayArray(ctx context.
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringUnixSecondsNullableArrayArrayResponse(resp)
@@ -63061,7 +62394,6 @@ func (c *Client) sendTestResponseAny(ctx context.Context, request string) (res j
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseAnyResponse(resp)
@@ -63134,7 +62466,6 @@ func (c *Client) sendTestResponseBoolean(ctx context.Context, request string) (r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseBooleanResponse(resp)
@@ -63207,7 +62538,6 @@ func (c *Client) sendTestResponseBooleanArray(ctx context.Context, request strin
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseBooleanArrayResponse(resp)
@@ -63280,7 +62610,6 @@ func (c *Client) sendTestResponseBooleanArrayArray(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseBooleanArrayArrayResponse(resp)
@@ -63353,7 +62682,6 @@ func (c *Client) sendTestResponseBooleanNullable(ctx context.Context, request st
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseBooleanNullableResponse(resp)
@@ -63426,7 +62754,6 @@ func (c *Client) sendTestResponseBooleanNullableArray(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseBooleanNullableArrayResponse(resp)
@@ -63499,7 +62826,6 @@ func (c *Client) sendTestResponseBooleanNullableArrayArray(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseBooleanNullableArrayArrayResponse(resp)
@@ -63572,7 +62898,6 @@ func (c *Client) sendTestResponseEmptyStruct(ctx context.Context, request string
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseEmptyStructResponse(resp)
@@ -63645,7 +62970,6 @@ func (c *Client) sendTestResponseFormatTest(ctx context.Context, request string)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseFormatTestResponse(resp)
@@ -63718,7 +63042,6 @@ func (c *Client) sendTestResponseInteger(ctx context.Context, request string) (r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerResponse(resp)
@@ -63791,7 +63114,6 @@ func (c *Client) sendTestResponseIntegerArray(ctx context.Context, request strin
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerArrayResponse(resp)
@@ -63864,7 +63186,6 @@ func (c *Client) sendTestResponseIntegerArrayArray(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerArrayArrayResponse(resp)
@@ -63937,7 +63258,6 @@ func (c *Client) sendTestResponseIntegerInt16(ctx context.Context, request strin
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerInt16Response(resp)
@@ -64010,7 +63330,6 @@ func (c *Client) sendTestResponseIntegerInt16Array(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerInt16ArrayResponse(resp)
@@ -64083,7 +63402,6 @@ func (c *Client) sendTestResponseIntegerInt16ArrayArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerInt16ArrayArrayResponse(resp)
@@ -64156,7 +63474,6 @@ func (c *Client) sendTestResponseIntegerInt16Nullable(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerInt16NullableResponse(resp)
@@ -64229,7 +63546,6 @@ func (c *Client) sendTestResponseIntegerInt16NullableArray(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerInt16NullableArrayResponse(resp)
@@ -64302,7 +63618,6 @@ func (c *Client) sendTestResponseIntegerInt16NullableArrayArray(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerInt16NullableArrayArrayResponse(resp)
@@ -64375,7 +63690,6 @@ func (c *Client) sendTestResponseIntegerInt32(ctx context.Context, request strin
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerInt32Response(resp)
@@ -64448,7 +63762,6 @@ func (c *Client) sendTestResponseIntegerInt32Array(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerInt32ArrayResponse(resp)
@@ -64521,7 +63834,6 @@ func (c *Client) sendTestResponseIntegerInt32ArrayArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerInt32ArrayArrayResponse(resp)
@@ -64594,7 +63906,6 @@ func (c *Client) sendTestResponseIntegerInt32Nullable(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerInt32NullableResponse(resp)
@@ -64667,7 +63978,6 @@ func (c *Client) sendTestResponseIntegerInt32NullableArray(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerInt32NullableArrayResponse(resp)
@@ -64740,7 +64050,6 @@ func (c *Client) sendTestResponseIntegerInt32NullableArrayArray(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerInt32NullableArrayArrayResponse(resp)
@@ -64813,7 +64122,6 @@ func (c *Client) sendTestResponseIntegerInt64(ctx context.Context, request strin
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerInt64Response(resp)
@@ -64886,7 +64194,6 @@ func (c *Client) sendTestResponseIntegerInt64Array(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerInt64ArrayResponse(resp)
@@ -64959,7 +64266,6 @@ func (c *Client) sendTestResponseIntegerInt64ArrayArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerInt64ArrayArrayResponse(resp)
@@ -65032,7 +64338,6 @@ func (c *Client) sendTestResponseIntegerInt64Nullable(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerInt64NullableResponse(resp)
@@ -65105,7 +64410,6 @@ func (c *Client) sendTestResponseIntegerInt64NullableArray(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerInt64NullableArrayResponse(resp)
@@ -65178,7 +64482,6 @@ func (c *Client) sendTestResponseIntegerInt64NullableArrayArray(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerInt64NullableArrayArrayResponse(resp)
@@ -65251,7 +64554,6 @@ func (c *Client) sendTestResponseIntegerInt8(ctx context.Context, request string
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerInt8Response(resp)
@@ -65324,7 +64626,6 @@ func (c *Client) sendTestResponseIntegerInt8Array(ctx context.Context, request s
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerInt8ArrayResponse(resp)
@@ -65397,7 +64698,6 @@ func (c *Client) sendTestResponseIntegerInt8ArrayArray(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerInt8ArrayArrayResponse(resp)
@@ -65470,7 +64770,6 @@ func (c *Client) sendTestResponseIntegerInt8Nullable(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerInt8NullableResponse(resp)
@@ -65543,7 +64842,6 @@ func (c *Client) sendTestResponseIntegerInt8NullableArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerInt8NullableArrayResponse(resp)
@@ -65616,7 +64914,6 @@ func (c *Client) sendTestResponseIntegerInt8NullableArrayArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerInt8NullableArrayArrayResponse(resp)
@@ -65689,7 +64986,6 @@ func (c *Client) sendTestResponseIntegerNullable(ctx context.Context, request st
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerNullableResponse(resp)
@@ -65762,7 +65058,6 @@ func (c *Client) sendTestResponseIntegerNullableArray(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerNullableArrayResponse(resp)
@@ -65835,7 +65130,6 @@ func (c *Client) sendTestResponseIntegerNullableArrayArray(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerNullableArrayArrayResponse(resp)
@@ -65908,7 +65202,6 @@ func (c *Client) sendTestResponseIntegerUint(ctx context.Context, request string
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUintResponse(resp)
@@ -65981,7 +65274,6 @@ func (c *Client) sendTestResponseIntegerUint16(ctx context.Context, request stri
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUint16Response(resp)
@@ -66054,7 +65346,6 @@ func (c *Client) sendTestResponseIntegerUint16Array(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUint16ArrayResponse(resp)
@@ -66127,7 +65418,6 @@ func (c *Client) sendTestResponseIntegerUint16ArrayArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUint16ArrayArrayResponse(resp)
@@ -66200,7 +65490,6 @@ func (c *Client) sendTestResponseIntegerUint16Nullable(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUint16NullableResponse(resp)
@@ -66273,7 +65562,6 @@ func (c *Client) sendTestResponseIntegerUint16NullableArray(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUint16NullableArrayResponse(resp)
@@ -66346,7 +65634,6 @@ func (c *Client) sendTestResponseIntegerUint16NullableArrayArray(ctx context.Con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUint16NullableArrayArrayResponse(resp)
@@ -66419,7 +65706,6 @@ func (c *Client) sendTestResponseIntegerUint32(ctx context.Context, request stri
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUint32Response(resp)
@@ -66492,7 +65778,6 @@ func (c *Client) sendTestResponseIntegerUint32Array(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUint32ArrayResponse(resp)
@@ -66565,7 +65850,6 @@ func (c *Client) sendTestResponseIntegerUint32ArrayArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUint32ArrayArrayResponse(resp)
@@ -66638,7 +65922,6 @@ func (c *Client) sendTestResponseIntegerUint32Nullable(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUint32NullableResponse(resp)
@@ -66711,7 +65994,6 @@ func (c *Client) sendTestResponseIntegerUint32NullableArray(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUint32NullableArrayResponse(resp)
@@ -66784,7 +66066,6 @@ func (c *Client) sendTestResponseIntegerUint32NullableArrayArray(ctx context.Con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUint32NullableArrayArrayResponse(resp)
@@ -66857,7 +66138,6 @@ func (c *Client) sendTestResponseIntegerUint64(ctx context.Context, request stri
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUint64Response(resp)
@@ -66930,7 +66210,6 @@ func (c *Client) sendTestResponseIntegerUint64Array(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUint64ArrayResponse(resp)
@@ -67003,7 +66282,6 @@ func (c *Client) sendTestResponseIntegerUint64ArrayArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUint64ArrayArrayResponse(resp)
@@ -67076,7 +66354,6 @@ func (c *Client) sendTestResponseIntegerUint64Nullable(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUint64NullableResponse(resp)
@@ -67149,7 +66426,6 @@ func (c *Client) sendTestResponseIntegerUint64NullableArray(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUint64NullableArrayResponse(resp)
@@ -67222,7 +66498,6 @@ func (c *Client) sendTestResponseIntegerUint64NullableArrayArray(ctx context.Con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUint64NullableArrayArrayResponse(resp)
@@ -67295,7 +66570,6 @@ func (c *Client) sendTestResponseIntegerUint8(ctx context.Context, request strin
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUint8Response(resp)
@@ -67368,7 +66642,6 @@ func (c *Client) sendTestResponseIntegerUint8Array(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUint8ArrayResponse(resp)
@@ -67441,7 +66714,6 @@ func (c *Client) sendTestResponseIntegerUint8ArrayArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUint8ArrayArrayResponse(resp)
@@ -67514,7 +66786,6 @@ func (c *Client) sendTestResponseIntegerUint8Nullable(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUint8NullableResponse(resp)
@@ -67587,7 +66858,6 @@ func (c *Client) sendTestResponseIntegerUint8NullableArray(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUint8NullableArrayResponse(resp)
@@ -67660,7 +66930,6 @@ func (c *Client) sendTestResponseIntegerUint8NullableArrayArray(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUint8NullableArrayArrayResponse(resp)
@@ -67733,7 +67002,6 @@ func (c *Client) sendTestResponseIntegerUintArray(ctx context.Context, request s
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUintArrayResponse(resp)
@@ -67806,7 +67074,6 @@ func (c *Client) sendTestResponseIntegerUintArrayArray(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUintArrayArrayResponse(resp)
@@ -67879,7 +67146,6 @@ func (c *Client) sendTestResponseIntegerUintNullable(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUintNullableResponse(resp)
@@ -67952,7 +67218,6 @@ func (c *Client) sendTestResponseIntegerUintNullableArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUintNullableArrayResponse(resp)
@@ -68025,7 +67290,6 @@ func (c *Client) sendTestResponseIntegerUintNullableArrayArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUintNullableArrayArrayResponse(resp)
@@ -68098,7 +67362,6 @@ func (c *Client) sendTestResponseIntegerUnix(ctx context.Context, request string
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUnixResponse(resp)
@@ -68171,7 +67434,6 @@ func (c *Client) sendTestResponseIntegerUnixArray(ctx context.Context, request s
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUnixArrayResponse(resp)
@@ -68244,7 +67506,6 @@ func (c *Client) sendTestResponseIntegerUnixArrayArray(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUnixArrayArrayResponse(resp)
@@ -68317,7 +67578,6 @@ func (c *Client) sendTestResponseIntegerUnixMicro(ctx context.Context, request s
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUnixMicroResponse(resp)
@@ -68390,7 +67650,6 @@ func (c *Client) sendTestResponseIntegerUnixMicroArray(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUnixMicroArrayResponse(resp)
@@ -68463,7 +67722,6 @@ func (c *Client) sendTestResponseIntegerUnixMicroArrayArray(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUnixMicroArrayArrayResponse(resp)
@@ -68536,7 +67794,6 @@ func (c *Client) sendTestResponseIntegerUnixMicroNullable(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUnixMicroNullableResponse(resp)
@@ -68609,7 +67866,6 @@ func (c *Client) sendTestResponseIntegerUnixMicroNullableArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUnixMicroNullableArrayResponse(resp)
@@ -68682,7 +67938,6 @@ func (c *Client) sendTestResponseIntegerUnixMicroNullableArrayArray(ctx context.
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUnixMicroNullableArrayArrayResponse(resp)
@@ -68755,7 +68010,6 @@ func (c *Client) sendTestResponseIntegerUnixMilli(ctx context.Context, request s
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUnixMilliResponse(resp)
@@ -68828,7 +68082,6 @@ func (c *Client) sendTestResponseIntegerUnixMilliArray(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUnixMilliArrayResponse(resp)
@@ -68901,7 +68154,6 @@ func (c *Client) sendTestResponseIntegerUnixMilliArrayArray(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUnixMilliArrayArrayResponse(resp)
@@ -68974,7 +68226,6 @@ func (c *Client) sendTestResponseIntegerUnixMilliNullable(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUnixMilliNullableResponse(resp)
@@ -69047,7 +68298,6 @@ func (c *Client) sendTestResponseIntegerUnixMilliNullableArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUnixMilliNullableArrayResponse(resp)
@@ -69120,7 +68370,6 @@ func (c *Client) sendTestResponseIntegerUnixMilliNullableArrayArray(ctx context.
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUnixMilliNullableArrayArrayResponse(resp)
@@ -69193,7 +68442,6 @@ func (c *Client) sendTestResponseIntegerUnixNano(ctx context.Context, request st
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUnixNanoResponse(resp)
@@ -69266,7 +68514,6 @@ func (c *Client) sendTestResponseIntegerUnixNanoArray(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUnixNanoArrayResponse(resp)
@@ -69339,7 +68586,6 @@ func (c *Client) sendTestResponseIntegerUnixNanoArrayArray(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUnixNanoArrayArrayResponse(resp)
@@ -69412,7 +68658,6 @@ func (c *Client) sendTestResponseIntegerUnixNanoNullable(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUnixNanoNullableResponse(resp)
@@ -69485,7 +68730,6 @@ func (c *Client) sendTestResponseIntegerUnixNanoNullableArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUnixNanoNullableArrayResponse(resp)
@@ -69558,7 +68802,6 @@ func (c *Client) sendTestResponseIntegerUnixNanoNullableArrayArray(ctx context.C
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUnixNanoNullableArrayArrayResponse(resp)
@@ -69631,7 +68874,6 @@ func (c *Client) sendTestResponseIntegerUnixNullable(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUnixNullableResponse(resp)
@@ -69704,7 +68946,6 @@ func (c *Client) sendTestResponseIntegerUnixNullableArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUnixNullableArrayResponse(resp)
@@ -69777,7 +69018,6 @@ func (c *Client) sendTestResponseIntegerUnixNullableArrayArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUnixNullableArrayArrayResponse(resp)
@@ -69850,7 +69090,6 @@ func (c *Client) sendTestResponseIntegerUnixSeconds(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUnixSecondsResponse(resp)
@@ -69923,7 +69162,6 @@ func (c *Client) sendTestResponseIntegerUnixSecondsArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUnixSecondsArrayResponse(resp)
@@ -69996,7 +69234,6 @@ func (c *Client) sendTestResponseIntegerUnixSecondsArrayArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUnixSecondsArrayArrayResponse(resp)
@@ -70069,7 +69306,6 @@ func (c *Client) sendTestResponseIntegerUnixSecondsNullable(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUnixSecondsNullableResponse(resp)
@@ -70142,7 +69378,6 @@ func (c *Client) sendTestResponseIntegerUnixSecondsNullableArray(ctx context.Con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUnixSecondsNullableArrayResponse(resp)
@@ -70215,7 +69450,6 @@ func (c *Client) sendTestResponseIntegerUnixSecondsNullableArrayArray(ctx contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUnixSecondsNullableArrayArrayResponse(resp)
@@ -70288,7 +69522,6 @@ func (c *Client) sendTestResponseNull(ctx context.Context, request string) (res 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNullResponse(resp)
@@ -70361,7 +69594,6 @@ func (c *Client) sendTestResponseNullArray(ctx context.Context, request string) 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNullArrayResponse(resp)
@@ -70434,7 +69666,6 @@ func (c *Client) sendTestResponseNullArrayArray(ctx context.Context, request str
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNullArrayArrayResponse(resp)
@@ -70507,7 +69738,6 @@ func (c *Client) sendTestResponseNullNullable(ctx context.Context, request strin
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNullNullableResponse(resp)
@@ -70580,7 +69810,6 @@ func (c *Client) sendTestResponseNullNullableArray(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNullNullableArrayResponse(resp)
@@ -70653,7 +69882,6 @@ func (c *Client) sendTestResponseNullNullableArrayArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNullNullableArrayArrayResponse(resp)
@@ -70726,7 +69954,6 @@ func (c *Client) sendTestResponseNumber(ctx context.Context, request string) (re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNumberResponse(resp)
@@ -70799,7 +70026,6 @@ func (c *Client) sendTestResponseNumberArray(ctx context.Context, request string
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNumberArrayResponse(resp)
@@ -70872,7 +70098,6 @@ func (c *Client) sendTestResponseNumberArrayArray(ctx context.Context, request s
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNumberArrayArrayResponse(resp)
@@ -70945,7 +70170,6 @@ func (c *Client) sendTestResponseNumberDouble(ctx context.Context, request strin
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNumberDoubleResponse(resp)
@@ -71018,7 +70242,6 @@ func (c *Client) sendTestResponseNumberDoubleArray(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNumberDoubleArrayResponse(resp)
@@ -71091,7 +70314,6 @@ func (c *Client) sendTestResponseNumberDoubleArrayArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNumberDoubleArrayArrayResponse(resp)
@@ -71164,7 +70386,6 @@ func (c *Client) sendTestResponseNumberDoubleNullable(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNumberDoubleNullableResponse(resp)
@@ -71237,7 +70458,6 @@ func (c *Client) sendTestResponseNumberDoubleNullableArray(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNumberDoubleNullableArrayResponse(resp)
@@ -71310,7 +70530,6 @@ func (c *Client) sendTestResponseNumberDoubleNullableArrayArray(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNumberDoubleNullableArrayArrayResponse(resp)
@@ -71383,7 +70602,6 @@ func (c *Client) sendTestResponseNumberFloat(ctx context.Context, request string
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNumberFloatResponse(resp)
@@ -71456,7 +70674,6 @@ func (c *Client) sendTestResponseNumberFloatArray(ctx context.Context, request s
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNumberFloatArrayResponse(resp)
@@ -71529,7 +70746,6 @@ func (c *Client) sendTestResponseNumberFloatArrayArray(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNumberFloatArrayArrayResponse(resp)
@@ -71602,7 +70818,6 @@ func (c *Client) sendTestResponseNumberFloatNullable(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNumberFloatNullableResponse(resp)
@@ -71675,7 +70890,6 @@ func (c *Client) sendTestResponseNumberFloatNullableArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNumberFloatNullableArrayResponse(resp)
@@ -71748,7 +70962,6 @@ func (c *Client) sendTestResponseNumberFloatNullableArrayArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNumberFloatNullableArrayArrayResponse(resp)
@@ -71821,7 +71034,6 @@ func (c *Client) sendTestResponseNumberInt32(ctx context.Context, request string
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNumberInt32Response(resp)
@@ -71894,7 +71106,6 @@ func (c *Client) sendTestResponseNumberInt32Array(ctx context.Context, request s
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNumberInt32ArrayResponse(resp)
@@ -71967,7 +71178,6 @@ func (c *Client) sendTestResponseNumberInt32ArrayArray(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNumberInt32ArrayArrayResponse(resp)
@@ -72040,7 +71250,6 @@ func (c *Client) sendTestResponseNumberInt32Nullable(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNumberInt32NullableResponse(resp)
@@ -72113,7 +71322,6 @@ func (c *Client) sendTestResponseNumberInt32NullableArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNumberInt32NullableArrayResponse(resp)
@@ -72186,7 +71394,6 @@ func (c *Client) sendTestResponseNumberInt32NullableArrayArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNumberInt32NullableArrayArrayResponse(resp)
@@ -72259,7 +71466,6 @@ func (c *Client) sendTestResponseNumberInt64(ctx context.Context, request string
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNumberInt64Response(resp)
@@ -72332,7 +71538,6 @@ func (c *Client) sendTestResponseNumberInt64Array(ctx context.Context, request s
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNumberInt64ArrayResponse(resp)
@@ -72405,7 +71610,6 @@ func (c *Client) sendTestResponseNumberInt64ArrayArray(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNumberInt64ArrayArrayResponse(resp)
@@ -72478,7 +71682,6 @@ func (c *Client) sendTestResponseNumberInt64Nullable(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNumberInt64NullableResponse(resp)
@@ -72551,7 +71754,6 @@ func (c *Client) sendTestResponseNumberInt64NullableArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNumberInt64NullableArrayResponse(resp)
@@ -72624,7 +71826,6 @@ func (c *Client) sendTestResponseNumberInt64NullableArrayArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNumberInt64NullableArrayArrayResponse(resp)
@@ -72697,7 +71898,6 @@ func (c *Client) sendTestResponseNumberNullable(ctx context.Context, request str
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNumberNullableResponse(resp)
@@ -72770,7 +71970,6 @@ func (c *Client) sendTestResponseNumberNullableArray(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNumberNullableArrayResponse(resp)
@@ -72843,7 +72042,6 @@ func (c *Client) sendTestResponseNumberNullableArrayArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseNumberNullableArrayArrayResponse(resp)
@@ -72916,7 +72114,6 @@ func (c *Client) sendTestResponseString(ctx context.Context, request string) (re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringResponse(resp)
@@ -72989,7 +72186,6 @@ func (c *Client) sendTestResponseStringArray(ctx context.Context, request string
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringArrayResponse(resp)
@@ -73062,7 +72258,6 @@ func (c *Client) sendTestResponseStringArrayArray(ctx context.Context, request s
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringArrayArrayResponse(resp)
@@ -73135,7 +72330,6 @@ func (c *Client) sendTestResponseStringBase64(ctx context.Context, request strin
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringBase64Response(resp)
@@ -73208,7 +72402,6 @@ func (c *Client) sendTestResponseStringBase64Array(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringBase64ArrayResponse(resp)
@@ -73281,7 +72474,6 @@ func (c *Client) sendTestResponseStringBase64ArrayArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringBase64ArrayArrayResponse(resp)
@@ -73354,7 +72546,6 @@ func (c *Client) sendTestResponseStringBase64Nullable(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringBase64NullableResponse(resp)
@@ -73427,7 +72618,6 @@ func (c *Client) sendTestResponseStringBase64NullableArray(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringBase64NullableArrayResponse(resp)
@@ -73500,7 +72690,6 @@ func (c *Client) sendTestResponseStringBase64NullableArrayArray(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringBase64NullableArrayArrayResponse(resp)
@@ -73573,7 +72762,6 @@ func (c *Client) sendTestResponseStringBinary(ctx context.Context, request strin
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringBinaryResponse(resp)
@@ -73646,7 +72834,6 @@ func (c *Client) sendTestResponseStringBinaryArray(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringBinaryArrayResponse(resp)
@@ -73719,7 +72906,6 @@ func (c *Client) sendTestResponseStringBinaryArrayArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringBinaryArrayArrayResponse(resp)
@@ -73792,7 +72978,6 @@ func (c *Client) sendTestResponseStringBinaryNullable(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringBinaryNullableResponse(resp)
@@ -73865,7 +73050,6 @@ func (c *Client) sendTestResponseStringBinaryNullableArray(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringBinaryNullableArrayResponse(resp)
@@ -73938,7 +73122,6 @@ func (c *Client) sendTestResponseStringBinaryNullableArrayArray(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringBinaryNullableArrayArrayResponse(resp)
@@ -74011,7 +73194,6 @@ func (c *Client) sendTestResponseStringByte(ctx context.Context, request string)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringByteResponse(resp)
@@ -74084,7 +73266,6 @@ func (c *Client) sendTestResponseStringByteArray(ctx context.Context, request st
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringByteArrayResponse(resp)
@@ -74157,7 +73338,6 @@ func (c *Client) sendTestResponseStringByteArrayArray(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringByteArrayArrayResponse(resp)
@@ -74230,7 +73410,6 @@ func (c *Client) sendTestResponseStringByteNullable(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringByteNullableResponse(resp)
@@ -74303,7 +73482,6 @@ func (c *Client) sendTestResponseStringByteNullableArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringByteNullableArrayResponse(resp)
@@ -74376,7 +73554,6 @@ func (c *Client) sendTestResponseStringByteNullableArrayArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringByteNullableArrayArrayResponse(resp)
@@ -74449,7 +73626,6 @@ func (c *Client) sendTestResponseStringDate(ctx context.Context, request string)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringDateResponse(resp)
@@ -74522,7 +73698,6 @@ func (c *Client) sendTestResponseStringDateArray(ctx context.Context, request st
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringDateArrayResponse(resp)
@@ -74595,7 +73770,6 @@ func (c *Client) sendTestResponseStringDateArrayArray(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringDateArrayArrayResponse(resp)
@@ -74668,7 +73842,6 @@ func (c *Client) sendTestResponseStringDateNullable(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringDateNullableResponse(resp)
@@ -74741,7 +73914,6 @@ func (c *Client) sendTestResponseStringDateNullableArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringDateNullableArrayResponse(resp)
@@ -74814,7 +73986,6 @@ func (c *Client) sendTestResponseStringDateNullableArrayArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringDateNullableArrayArrayResponse(resp)
@@ -74887,7 +74058,6 @@ func (c *Client) sendTestResponseStringDateTime(ctx context.Context, request str
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringDateTimeResponse(resp)
@@ -74960,7 +74130,6 @@ func (c *Client) sendTestResponseStringDateTimeArray(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringDateTimeArrayResponse(resp)
@@ -75033,7 +74202,6 @@ func (c *Client) sendTestResponseStringDateTimeArrayArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringDateTimeArrayArrayResponse(resp)
@@ -75106,7 +74274,6 @@ func (c *Client) sendTestResponseStringDateTimeNullable(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringDateTimeNullableResponse(resp)
@@ -75179,7 +74346,6 @@ func (c *Client) sendTestResponseStringDateTimeNullableArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringDateTimeNullableArrayResponse(resp)
@@ -75252,7 +74418,6 @@ func (c *Client) sendTestResponseStringDateTimeNullableArrayArray(ctx context.Co
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringDateTimeNullableArrayArrayResponse(resp)
@@ -75325,7 +74490,6 @@ func (c *Client) sendTestResponseStringDuration(ctx context.Context, request str
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringDurationResponse(resp)
@@ -75398,7 +74562,6 @@ func (c *Client) sendTestResponseStringDurationArray(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringDurationArrayResponse(resp)
@@ -75471,7 +74634,6 @@ func (c *Client) sendTestResponseStringDurationArrayArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringDurationArrayArrayResponse(resp)
@@ -75544,7 +74706,6 @@ func (c *Client) sendTestResponseStringDurationNullable(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringDurationNullableResponse(resp)
@@ -75617,7 +74778,6 @@ func (c *Client) sendTestResponseStringDurationNullableArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringDurationNullableArrayResponse(resp)
@@ -75690,7 +74850,6 @@ func (c *Client) sendTestResponseStringDurationNullableArrayArray(ctx context.Co
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringDurationNullableArrayArrayResponse(resp)
@@ -75763,7 +74922,6 @@ func (c *Client) sendTestResponseStringEmail(ctx context.Context, request string
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringEmailResponse(resp)
@@ -75836,7 +74994,6 @@ func (c *Client) sendTestResponseStringEmailArray(ctx context.Context, request s
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringEmailArrayResponse(resp)
@@ -75909,7 +75066,6 @@ func (c *Client) sendTestResponseStringEmailArrayArray(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringEmailArrayArrayResponse(resp)
@@ -75982,7 +75138,6 @@ func (c *Client) sendTestResponseStringEmailNullable(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringEmailNullableResponse(resp)
@@ -76055,7 +75210,6 @@ func (c *Client) sendTestResponseStringEmailNullableArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringEmailNullableArrayResponse(resp)
@@ -76128,7 +75282,6 @@ func (c *Client) sendTestResponseStringEmailNullableArrayArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringEmailNullableArrayArrayResponse(resp)
@@ -76201,7 +75354,6 @@ func (c *Client) sendTestResponseStringFloat32(ctx context.Context, request stri
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringFloat32Response(resp)
@@ -76274,7 +75426,6 @@ func (c *Client) sendTestResponseStringFloat32Array(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringFloat32ArrayResponse(resp)
@@ -76347,7 +75498,6 @@ func (c *Client) sendTestResponseStringFloat32ArrayArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringFloat32ArrayArrayResponse(resp)
@@ -76420,7 +75570,6 @@ func (c *Client) sendTestResponseStringFloat32Nullable(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringFloat32NullableResponse(resp)
@@ -76493,7 +75642,6 @@ func (c *Client) sendTestResponseStringFloat32NullableArray(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringFloat32NullableArrayResponse(resp)
@@ -76566,7 +75714,6 @@ func (c *Client) sendTestResponseStringFloat32NullableArrayArray(ctx context.Con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringFloat32NullableArrayArrayResponse(resp)
@@ -76639,7 +75786,6 @@ func (c *Client) sendTestResponseStringFloat64(ctx context.Context, request stri
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringFloat64Response(resp)
@@ -76712,7 +75858,6 @@ func (c *Client) sendTestResponseStringFloat64Array(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringFloat64ArrayResponse(resp)
@@ -76785,7 +75930,6 @@ func (c *Client) sendTestResponseStringFloat64ArrayArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringFloat64ArrayArrayResponse(resp)
@@ -76858,7 +76002,6 @@ func (c *Client) sendTestResponseStringFloat64Nullable(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringFloat64NullableResponse(resp)
@@ -76931,7 +76074,6 @@ func (c *Client) sendTestResponseStringFloat64NullableArray(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringFloat64NullableArrayResponse(resp)
@@ -77004,7 +76146,6 @@ func (c *Client) sendTestResponseStringFloat64NullableArrayArray(ctx context.Con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringFloat64NullableArrayArrayResponse(resp)
@@ -77077,7 +76218,6 @@ func (c *Client) sendTestResponseStringHostname(ctx context.Context, request str
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringHostnameResponse(resp)
@@ -77150,7 +76290,6 @@ func (c *Client) sendTestResponseStringHostnameArray(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringHostnameArrayResponse(resp)
@@ -77223,7 +76362,6 @@ func (c *Client) sendTestResponseStringHostnameArrayArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringHostnameArrayArrayResponse(resp)
@@ -77296,7 +76434,6 @@ func (c *Client) sendTestResponseStringHostnameNullable(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringHostnameNullableResponse(resp)
@@ -77369,7 +76506,6 @@ func (c *Client) sendTestResponseStringHostnameNullableArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringHostnameNullableArrayResponse(resp)
@@ -77442,7 +76578,6 @@ func (c *Client) sendTestResponseStringHostnameNullableArrayArray(ctx context.Co
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringHostnameNullableArrayArrayResponse(resp)
@@ -77515,7 +76650,6 @@ func (c *Client) sendTestResponseStringIP(ctx context.Context, request string) (
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringIPResponse(resp)
@@ -77588,7 +76722,6 @@ func (c *Client) sendTestResponseStringIPArray(ctx context.Context, request stri
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringIPArrayResponse(resp)
@@ -77661,7 +76794,6 @@ func (c *Client) sendTestResponseStringIPArrayArray(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringIPArrayArrayResponse(resp)
@@ -77734,7 +76866,6 @@ func (c *Client) sendTestResponseStringIPNullable(ctx context.Context, request s
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringIPNullableResponse(resp)
@@ -77807,7 +76938,6 @@ func (c *Client) sendTestResponseStringIPNullableArray(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringIPNullableArrayResponse(resp)
@@ -77880,7 +77010,6 @@ func (c *Client) sendTestResponseStringIPNullableArrayArray(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringIPNullableArrayArrayResponse(resp)
@@ -77953,7 +77082,6 @@ func (c *Client) sendTestResponseStringInt(ctx context.Context, request string) 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringIntResponse(resp)
@@ -78026,7 +77154,6 @@ func (c *Client) sendTestResponseStringInt16(ctx context.Context, request string
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringInt16Response(resp)
@@ -78099,7 +77226,6 @@ func (c *Client) sendTestResponseStringInt16Array(ctx context.Context, request s
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringInt16ArrayResponse(resp)
@@ -78172,7 +77298,6 @@ func (c *Client) sendTestResponseStringInt16ArrayArray(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringInt16ArrayArrayResponse(resp)
@@ -78245,7 +77370,6 @@ func (c *Client) sendTestResponseStringInt16Nullable(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringInt16NullableResponse(resp)
@@ -78318,7 +77442,6 @@ func (c *Client) sendTestResponseStringInt16NullableArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringInt16NullableArrayResponse(resp)
@@ -78391,7 +77514,6 @@ func (c *Client) sendTestResponseStringInt16NullableArrayArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringInt16NullableArrayArrayResponse(resp)
@@ -78464,7 +77586,6 @@ func (c *Client) sendTestResponseStringInt32(ctx context.Context, request string
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringInt32Response(resp)
@@ -78537,7 +77658,6 @@ func (c *Client) sendTestResponseStringInt32Array(ctx context.Context, request s
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringInt32ArrayResponse(resp)
@@ -78610,7 +77730,6 @@ func (c *Client) sendTestResponseStringInt32ArrayArray(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringInt32ArrayArrayResponse(resp)
@@ -78683,7 +77802,6 @@ func (c *Client) sendTestResponseStringInt32Nullable(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringInt32NullableResponse(resp)
@@ -78756,7 +77874,6 @@ func (c *Client) sendTestResponseStringInt32NullableArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringInt32NullableArrayResponse(resp)
@@ -78829,7 +77946,6 @@ func (c *Client) sendTestResponseStringInt32NullableArrayArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringInt32NullableArrayArrayResponse(resp)
@@ -78902,7 +78018,6 @@ func (c *Client) sendTestResponseStringInt64(ctx context.Context, request string
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringInt64Response(resp)
@@ -78975,7 +78090,6 @@ func (c *Client) sendTestResponseStringInt64Array(ctx context.Context, request s
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringInt64ArrayResponse(resp)
@@ -79048,7 +78162,6 @@ func (c *Client) sendTestResponseStringInt64ArrayArray(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringInt64ArrayArrayResponse(resp)
@@ -79121,7 +78234,6 @@ func (c *Client) sendTestResponseStringInt64Nullable(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringInt64NullableResponse(resp)
@@ -79194,7 +78306,6 @@ func (c *Client) sendTestResponseStringInt64NullableArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringInt64NullableArrayResponse(resp)
@@ -79267,7 +78378,6 @@ func (c *Client) sendTestResponseStringInt64NullableArrayArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringInt64NullableArrayArrayResponse(resp)
@@ -79340,7 +78450,6 @@ func (c *Client) sendTestResponseStringInt8(ctx context.Context, request string)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringInt8Response(resp)
@@ -79413,7 +78522,6 @@ func (c *Client) sendTestResponseStringInt8Array(ctx context.Context, request st
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringInt8ArrayResponse(resp)
@@ -79486,7 +78594,6 @@ func (c *Client) sendTestResponseStringInt8ArrayArray(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringInt8ArrayArrayResponse(resp)
@@ -79559,7 +78666,6 @@ func (c *Client) sendTestResponseStringInt8Nullable(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringInt8NullableResponse(resp)
@@ -79632,7 +78738,6 @@ func (c *Client) sendTestResponseStringInt8NullableArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringInt8NullableArrayResponse(resp)
@@ -79705,7 +78810,6 @@ func (c *Client) sendTestResponseStringInt8NullableArrayArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringInt8NullableArrayArrayResponse(resp)
@@ -79778,7 +78882,6 @@ func (c *Client) sendTestResponseStringIntArray(ctx context.Context, request str
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringIntArrayResponse(resp)
@@ -79851,7 +78954,6 @@ func (c *Client) sendTestResponseStringIntArrayArray(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringIntArrayArrayResponse(resp)
@@ -79924,7 +79026,6 @@ func (c *Client) sendTestResponseStringIntNullable(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringIntNullableResponse(resp)
@@ -79997,7 +79098,6 @@ func (c *Client) sendTestResponseStringIntNullableArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringIntNullableArrayResponse(resp)
@@ -80070,7 +79170,6 @@ func (c *Client) sendTestResponseStringIntNullableArrayArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringIntNullableArrayArrayResponse(resp)
@@ -80143,7 +79242,6 @@ func (c *Client) sendTestResponseStringIpv4(ctx context.Context, request string)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringIpv4Response(resp)
@@ -80216,7 +79314,6 @@ func (c *Client) sendTestResponseStringIpv4Array(ctx context.Context, request st
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringIpv4ArrayResponse(resp)
@@ -80289,7 +79386,6 @@ func (c *Client) sendTestResponseStringIpv4ArrayArray(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringIpv4ArrayArrayResponse(resp)
@@ -80362,7 +79458,6 @@ func (c *Client) sendTestResponseStringIpv4Nullable(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringIpv4NullableResponse(resp)
@@ -80435,7 +79530,6 @@ func (c *Client) sendTestResponseStringIpv4NullableArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringIpv4NullableArrayResponse(resp)
@@ -80508,7 +79602,6 @@ func (c *Client) sendTestResponseStringIpv4NullableArrayArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringIpv4NullableArrayArrayResponse(resp)
@@ -80581,7 +79674,6 @@ func (c *Client) sendTestResponseStringIpv6(ctx context.Context, request string)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringIpv6Response(resp)
@@ -80654,7 +79746,6 @@ func (c *Client) sendTestResponseStringIpv6Array(ctx context.Context, request st
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringIpv6ArrayResponse(resp)
@@ -80727,7 +79818,6 @@ func (c *Client) sendTestResponseStringIpv6ArrayArray(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringIpv6ArrayArrayResponse(resp)
@@ -80800,7 +79890,6 @@ func (c *Client) sendTestResponseStringIpv6Nullable(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringIpv6NullableResponse(resp)
@@ -80873,7 +79962,6 @@ func (c *Client) sendTestResponseStringIpv6NullableArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringIpv6NullableArrayResponse(resp)
@@ -80946,7 +80034,6 @@ func (c *Client) sendTestResponseStringIpv6NullableArrayArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringIpv6NullableArrayArrayResponse(resp)
@@ -81019,7 +80106,6 @@ func (c *Client) sendTestResponseStringNullable(ctx context.Context, request str
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringNullableResponse(resp)
@@ -81092,7 +80178,6 @@ func (c *Client) sendTestResponseStringNullableArray(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringNullableArrayResponse(resp)
@@ -81165,7 +80250,6 @@ func (c *Client) sendTestResponseStringNullableArrayArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringNullableArrayArrayResponse(resp)
@@ -81238,7 +80322,6 @@ func (c *Client) sendTestResponseStringPassword(ctx context.Context, request str
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringPasswordResponse(resp)
@@ -81311,7 +80394,6 @@ func (c *Client) sendTestResponseStringPasswordArray(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringPasswordArrayResponse(resp)
@@ -81384,7 +80466,6 @@ func (c *Client) sendTestResponseStringPasswordArrayArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringPasswordArrayArrayResponse(resp)
@@ -81457,7 +80538,6 @@ func (c *Client) sendTestResponseStringPasswordNullable(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringPasswordNullableResponse(resp)
@@ -81530,7 +80610,6 @@ func (c *Client) sendTestResponseStringPasswordNullableArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringPasswordNullableArrayResponse(resp)
@@ -81603,7 +80682,6 @@ func (c *Client) sendTestResponseStringPasswordNullableArrayArray(ctx context.Co
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringPasswordNullableArrayArrayResponse(resp)
@@ -81676,7 +80754,6 @@ func (c *Client) sendTestResponseStringTime(ctx context.Context, request string)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringTimeResponse(resp)
@@ -81749,7 +80826,6 @@ func (c *Client) sendTestResponseStringTimeArray(ctx context.Context, request st
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringTimeArrayResponse(resp)
@@ -81822,7 +80898,6 @@ func (c *Client) sendTestResponseStringTimeArrayArray(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringTimeArrayArrayResponse(resp)
@@ -81895,7 +80970,6 @@ func (c *Client) sendTestResponseStringTimeNullable(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringTimeNullableResponse(resp)
@@ -81968,7 +81042,6 @@ func (c *Client) sendTestResponseStringTimeNullableArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringTimeNullableArrayResponse(resp)
@@ -82041,7 +81114,6 @@ func (c *Client) sendTestResponseStringTimeNullableArrayArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringTimeNullableArrayArrayResponse(resp)
@@ -82114,7 +81186,6 @@ func (c *Client) sendTestResponseStringURI(ctx context.Context, request string) 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringURIResponse(resp)
@@ -82187,7 +81258,6 @@ func (c *Client) sendTestResponseStringURIArray(ctx context.Context, request str
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringURIArrayResponse(resp)
@@ -82260,7 +81330,6 @@ func (c *Client) sendTestResponseStringURIArrayArray(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringURIArrayArrayResponse(resp)
@@ -82333,7 +81402,6 @@ func (c *Client) sendTestResponseStringURINullable(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringURINullableResponse(resp)
@@ -82406,7 +81474,6 @@ func (c *Client) sendTestResponseStringURINullableArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringURINullableArrayResponse(resp)
@@ -82479,7 +81546,6 @@ func (c *Client) sendTestResponseStringURINullableArrayArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringURINullableArrayArrayResponse(resp)
@@ -82552,7 +81618,6 @@ func (c *Client) sendTestResponseStringUUID(ctx context.Context, request string)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUUIDResponse(resp)
@@ -82625,7 +81690,6 @@ func (c *Client) sendTestResponseStringUUIDArray(ctx context.Context, request st
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUUIDArrayResponse(resp)
@@ -82698,7 +81762,6 @@ func (c *Client) sendTestResponseStringUUIDArrayArray(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUUIDArrayArrayResponse(resp)
@@ -82771,7 +81834,6 @@ func (c *Client) sendTestResponseStringUUIDNullable(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUUIDNullableResponse(resp)
@@ -82844,7 +81906,6 @@ func (c *Client) sendTestResponseStringUUIDNullableArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUUIDNullableArrayResponse(resp)
@@ -82917,7 +81978,6 @@ func (c *Client) sendTestResponseStringUUIDNullableArrayArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUUIDNullableArrayArrayResponse(resp)
@@ -82990,7 +82050,6 @@ func (c *Client) sendTestResponseStringUint(ctx context.Context, request string)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUintResponse(resp)
@@ -83063,7 +82122,6 @@ func (c *Client) sendTestResponseStringUint16(ctx context.Context, request strin
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUint16Response(resp)
@@ -83136,7 +82194,6 @@ func (c *Client) sendTestResponseStringUint16Array(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUint16ArrayResponse(resp)
@@ -83209,7 +82266,6 @@ func (c *Client) sendTestResponseStringUint16ArrayArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUint16ArrayArrayResponse(resp)
@@ -83282,7 +82338,6 @@ func (c *Client) sendTestResponseStringUint16Nullable(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUint16NullableResponse(resp)
@@ -83355,7 +82410,6 @@ func (c *Client) sendTestResponseStringUint16NullableArray(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUint16NullableArrayResponse(resp)
@@ -83428,7 +82482,6 @@ func (c *Client) sendTestResponseStringUint16NullableArrayArray(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUint16NullableArrayArrayResponse(resp)
@@ -83501,7 +82554,6 @@ func (c *Client) sendTestResponseStringUint32(ctx context.Context, request strin
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUint32Response(resp)
@@ -83574,7 +82626,6 @@ func (c *Client) sendTestResponseStringUint32Array(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUint32ArrayResponse(resp)
@@ -83647,7 +82698,6 @@ func (c *Client) sendTestResponseStringUint32ArrayArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUint32ArrayArrayResponse(resp)
@@ -83720,7 +82770,6 @@ func (c *Client) sendTestResponseStringUint32Nullable(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUint32NullableResponse(resp)
@@ -83793,7 +82842,6 @@ func (c *Client) sendTestResponseStringUint32NullableArray(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUint32NullableArrayResponse(resp)
@@ -83866,7 +82914,6 @@ func (c *Client) sendTestResponseStringUint32NullableArrayArray(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUint32NullableArrayArrayResponse(resp)
@@ -83939,7 +82986,6 @@ func (c *Client) sendTestResponseStringUint64(ctx context.Context, request strin
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUint64Response(resp)
@@ -84012,7 +83058,6 @@ func (c *Client) sendTestResponseStringUint64Array(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUint64ArrayResponse(resp)
@@ -84085,7 +83130,6 @@ func (c *Client) sendTestResponseStringUint64ArrayArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUint64ArrayArrayResponse(resp)
@@ -84158,7 +83202,6 @@ func (c *Client) sendTestResponseStringUint64Nullable(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUint64NullableResponse(resp)
@@ -84231,7 +83274,6 @@ func (c *Client) sendTestResponseStringUint64NullableArray(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUint64NullableArrayResponse(resp)
@@ -84304,7 +83346,6 @@ func (c *Client) sendTestResponseStringUint64NullableArrayArray(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUint64NullableArrayArrayResponse(resp)
@@ -84377,7 +83418,6 @@ func (c *Client) sendTestResponseStringUint8(ctx context.Context, request string
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUint8Response(resp)
@@ -84450,7 +83490,6 @@ func (c *Client) sendTestResponseStringUint8Array(ctx context.Context, request s
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUint8ArrayResponse(resp)
@@ -84523,7 +83562,6 @@ func (c *Client) sendTestResponseStringUint8ArrayArray(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUint8ArrayArrayResponse(resp)
@@ -84596,7 +83634,6 @@ func (c *Client) sendTestResponseStringUint8Nullable(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUint8NullableResponse(resp)
@@ -84669,7 +83706,6 @@ func (c *Client) sendTestResponseStringUint8NullableArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUint8NullableArrayResponse(resp)
@@ -84742,7 +83778,6 @@ func (c *Client) sendTestResponseStringUint8NullableArrayArray(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUint8NullableArrayArrayResponse(resp)
@@ -84815,7 +83850,6 @@ func (c *Client) sendTestResponseStringUintArray(ctx context.Context, request st
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUintArrayResponse(resp)
@@ -84888,7 +83922,6 @@ func (c *Client) sendTestResponseStringUintArrayArray(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUintArrayArrayResponse(resp)
@@ -84961,7 +83994,6 @@ func (c *Client) sendTestResponseStringUintNullable(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUintNullableResponse(resp)
@@ -85034,7 +84066,6 @@ func (c *Client) sendTestResponseStringUintNullableArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUintNullableArrayResponse(resp)
@@ -85107,7 +84138,6 @@ func (c *Client) sendTestResponseStringUintNullableArrayArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUintNullableArrayArrayResponse(resp)
@@ -85180,7 +84210,6 @@ func (c *Client) sendTestResponseStringUnix(ctx context.Context, request string)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUnixResponse(resp)
@@ -85253,7 +84282,6 @@ func (c *Client) sendTestResponseStringUnixArray(ctx context.Context, request st
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUnixArrayResponse(resp)
@@ -85326,7 +84354,6 @@ func (c *Client) sendTestResponseStringUnixArrayArray(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUnixArrayArrayResponse(resp)
@@ -85399,7 +84426,6 @@ func (c *Client) sendTestResponseStringUnixMicro(ctx context.Context, request st
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUnixMicroResponse(resp)
@@ -85472,7 +84498,6 @@ func (c *Client) sendTestResponseStringUnixMicroArray(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUnixMicroArrayResponse(resp)
@@ -85545,7 +84570,6 @@ func (c *Client) sendTestResponseStringUnixMicroArrayArray(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUnixMicroArrayArrayResponse(resp)
@@ -85618,7 +84642,6 @@ func (c *Client) sendTestResponseStringUnixMicroNullable(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUnixMicroNullableResponse(resp)
@@ -85691,7 +84714,6 @@ func (c *Client) sendTestResponseStringUnixMicroNullableArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUnixMicroNullableArrayResponse(resp)
@@ -85764,7 +84786,6 @@ func (c *Client) sendTestResponseStringUnixMicroNullableArrayArray(ctx context.C
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUnixMicroNullableArrayArrayResponse(resp)
@@ -85837,7 +84858,6 @@ func (c *Client) sendTestResponseStringUnixMilli(ctx context.Context, request st
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUnixMilliResponse(resp)
@@ -85910,7 +84930,6 @@ func (c *Client) sendTestResponseStringUnixMilliArray(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUnixMilliArrayResponse(resp)
@@ -85983,7 +85002,6 @@ func (c *Client) sendTestResponseStringUnixMilliArrayArray(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUnixMilliArrayArrayResponse(resp)
@@ -86056,7 +85074,6 @@ func (c *Client) sendTestResponseStringUnixMilliNullable(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUnixMilliNullableResponse(resp)
@@ -86129,7 +85146,6 @@ func (c *Client) sendTestResponseStringUnixMilliNullableArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUnixMilliNullableArrayResponse(resp)
@@ -86202,7 +85218,6 @@ func (c *Client) sendTestResponseStringUnixMilliNullableArrayArray(ctx context.C
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUnixMilliNullableArrayArrayResponse(resp)
@@ -86275,7 +85290,6 @@ func (c *Client) sendTestResponseStringUnixNano(ctx context.Context, request str
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUnixNanoResponse(resp)
@@ -86348,7 +85362,6 @@ func (c *Client) sendTestResponseStringUnixNanoArray(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUnixNanoArrayResponse(resp)
@@ -86421,7 +85434,6 @@ func (c *Client) sendTestResponseStringUnixNanoArrayArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUnixNanoArrayArrayResponse(resp)
@@ -86494,7 +85506,6 @@ func (c *Client) sendTestResponseStringUnixNanoNullable(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUnixNanoNullableResponse(resp)
@@ -86567,7 +85578,6 @@ func (c *Client) sendTestResponseStringUnixNanoNullableArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUnixNanoNullableArrayResponse(resp)
@@ -86640,7 +85650,6 @@ func (c *Client) sendTestResponseStringUnixNanoNullableArrayArray(ctx context.Co
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUnixNanoNullableArrayArrayResponse(resp)
@@ -86713,7 +85722,6 @@ func (c *Client) sendTestResponseStringUnixNullable(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUnixNullableResponse(resp)
@@ -86786,7 +85794,6 @@ func (c *Client) sendTestResponseStringUnixNullableArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUnixNullableArrayResponse(resp)
@@ -86859,7 +85866,6 @@ func (c *Client) sendTestResponseStringUnixNullableArrayArray(ctx context.Contex
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUnixNullableArrayArrayResponse(resp)
@@ -86932,7 +85938,6 @@ func (c *Client) sendTestResponseStringUnixSeconds(ctx context.Context, request 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUnixSecondsResponse(resp)
@@ -87005,7 +86010,6 @@ func (c *Client) sendTestResponseStringUnixSecondsArray(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUnixSecondsArrayResponse(resp)
@@ -87078,7 +86082,6 @@ func (c *Client) sendTestResponseStringUnixSecondsArrayArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUnixSecondsArrayArrayResponse(resp)
@@ -87151,7 +86154,6 @@ func (c *Client) sendTestResponseStringUnixSecondsNullable(ctx context.Context, 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUnixSecondsNullableResponse(resp)
@@ -87224,7 +86226,6 @@ func (c *Client) sendTestResponseStringUnixSecondsNullableArray(ctx context.Cont
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUnixSecondsNullableArrayResponse(resp)
@@ -87297,7 +86298,6 @@ func (c *Client) sendTestResponseStringUnixSecondsNullableArrayArray(ctx context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUnixSecondsNullableArrayArrayResponse(resp)

@@ -207,7 +207,6 @@ func (c *Client) sendNullableStrings(ctx context.Context, request NilString) (re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeNullableStringsResponse(resp)
@@ -291,7 +290,6 @@ func (c *Client) sendObjectsWithConflictingArrayProperty(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeObjectsWithConflictingArrayPropertyResponse(resp)
@@ -375,7 +373,6 @@ func (c *Client) sendObjectsWithConflictingProperties(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeObjectsWithConflictingPropertiesResponse(resp)
@@ -473,7 +470,6 @@ func (c *Client) sendReferencedAllof(ctx context.Context, request ReferencedAllo
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeReferencedAllofResponse(resp)
@@ -573,7 +569,6 @@ func (c *Client) sendReferencedAllofOptional(ctx context.Context, request Refere
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeReferencedAllofOptionalResponse(resp)
@@ -666,7 +661,6 @@ func (c *Client) sendSimpleInteger(ctx context.Context, request int) (res *Simpl
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSimpleIntegerResponse(resp)
@@ -741,7 +735,6 @@ func (c *Client) sendSimpleObjects(ctx context.Context, request *SimpleObjectsRe
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSimpleObjectsResponse(resp)
@@ -838,7 +831,6 @@ func (c *Client) sendStringsNotype(ctx context.Context, request NilString) (res 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeStringsNotypeResponse(resp)

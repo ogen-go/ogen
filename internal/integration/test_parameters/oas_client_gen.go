@@ -252,7 +252,6 @@ func (c *Client) sendComplicatedParameterNameGet(ctx context.Context, params Com
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeComplicatedParameterNameGetResponse(resp)
@@ -404,7 +403,6 @@ func (c *Client) sendContentParameters(ctx context.Context, params ContentParame
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeContentParametersResponse(resp)
@@ -492,7 +490,6 @@ func (c *Client) sendCookieParameter(ctx context.Context, params CookieParameter
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeCookieParameterResponse(resp)
@@ -578,7 +575,6 @@ func (c *Client) sendHeaderParameter(ctx context.Context, params HeaderParameter
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeHeaderParameterResponse(resp)
@@ -664,7 +660,6 @@ func (c *Client) sendObjectCookieParameter(ctx context.Context, params ObjectCoo
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeObjectCookieParameterResponse(resp)
@@ -772,7 +767,6 @@ func (c *Client) sendObjectQueryParameter(ctx context.Context, params ObjectQuer
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeObjectQueryParameterResponse(resp)
@@ -862,7 +856,6 @@ func (c *Client) sendPathParameter(ctx context.Context, params PathParameterPara
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodePathParameterResponse(resp)
@@ -970,7 +963,6 @@ func (c *Client) sendSameName(ctx context.Context, params SameNameParams) (res *
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSameNameResponse(resp)
@@ -1074,7 +1066,6 @@ func (c *Client) sendSimilarNames(ctx context.Context, params SimilarNamesParams
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSimilarNamesResponse(resp)

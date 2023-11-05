@@ -12,6 +12,7 @@ func decodeNullableStringsResponse(resp *http.Response) (res *NullableStringsOK,
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
+		defer resp.Body.Close()
 		return &NullableStringsOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -21,6 +22,7 @@ func decodeObjectsWithConflictingArrayPropertyResponse(resp *http.Response) (res
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
+		defer resp.Body.Close()
 		return &ObjectsWithConflictingArrayPropertyOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -30,6 +32,7 @@ func decodeObjectsWithConflictingPropertiesResponse(resp *http.Response) (res *O
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
+		defer resp.Body.Close()
 		return &ObjectsWithConflictingPropertiesOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -39,6 +42,7 @@ func decodeReferencedAllofResponse(resp *http.Response) (res *ReferencedAllofOK,
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
+		defer resp.Body.Close()
 		return &ReferencedAllofOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -48,6 +52,7 @@ func decodeReferencedAllofOptionalResponse(resp *http.Response) (res *Referenced
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
+		defer resp.Body.Close()
 		return &ReferencedAllofOptionalOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -57,6 +62,7 @@ func decodeSimpleIntegerResponse(resp *http.Response) (res *SimpleIntegerOK, _ e
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
+		defer resp.Body.Close()
 		return &SimpleIntegerOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -66,6 +72,7 @@ func decodeSimpleObjectsResponse(resp *http.Response) (res *SimpleObjectsOK, _ e
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
+		defer resp.Body.Close()
 		return &SimpleObjectsOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -75,6 +82,7 @@ func decodeStringsNotypeResponse(resp *http.Response) (res *StringsNotypeOK, _ e
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
+		defer resp.Body.Close()
 		return &StringsNotypeOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)

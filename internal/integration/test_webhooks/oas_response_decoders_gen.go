@@ -20,10 +20,12 @@ func decodePublishEventResponse(resp *http.Response) (res *Event, _ error) {
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -49,6 +51,7 @@ func decodePublishEventResponse(resp *http.Response) (res *Event, _ error) {
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -56,10 +59,12 @@ func decodePublishEventResponse(resp *http.Response) (res *Event, _ error) {
 	defRes, err := func() (res *ErrorStatusCode, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -88,6 +93,7 @@ func decodePublishEventResponse(resp *http.Response) (res *Event, _ error) {
 				Response:   response,
 			}, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}()
@@ -103,10 +109,12 @@ func decodeStatusWebhookResponse(resp *http.Response) (res *StatusWebhookOK, _ e
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -132,6 +140,7 @@ func decodeStatusWebhookResponse(resp *http.Response) (res *StatusWebhookOK, _ e
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -142,16 +151,19 @@ func decodeUpdateDeleteResponse(resp *http.Response) (res UpdateDeleteRes, _ err
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
+		defer resp.Body.Close()
 		return &UpdateDeleteOK{}, nil
 	}
 	// Default response.
 	res, err := func() (res UpdateDeleteRes, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -180,6 +192,7 @@ func decodeUpdateDeleteResponse(resp *http.Response) (res UpdateDeleteRes, _ err
 				Response:   response,
 			}, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}()
@@ -195,10 +208,12 @@ func decodeUpdateWebhookResponse(resp *http.Response) (res UpdateWebhookRes, _ e
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -224,6 +239,7 @@ func decodeUpdateWebhookResponse(resp *http.Response) (res UpdateWebhookRes, _ e
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -231,10 +247,12 @@ func decodeUpdateWebhookResponse(resp *http.Response) (res UpdateWebhookRes, _ e
 	res, err := func() (res UpdateWebhookRes, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -263,6 +281,7 @@ func decodeUpdateWebhookResponse(resp *http.Response) (res UpdateWebhookRes, _ e
 				Response:   response,
 			}, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}()

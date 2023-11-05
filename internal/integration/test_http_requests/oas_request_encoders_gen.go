@@ -251,8 +251,8 @@ func encodeBase64RequestRequest(
 			}
 		}()
 
-		defer req.Close()
 		_, err := io.Copy(writer, req)
+		req.Close()
 		return err
 	})
 	ht.SetCloserBody(r, body, contentType)

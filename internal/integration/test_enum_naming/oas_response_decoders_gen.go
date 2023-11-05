@@ -20,10 +20,12 @@ func decodeProbeLivenessResponse(resp *http.Response) (res *ProbeLivenessOK, _ e
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -49,6 +51,7 @@ func decodeProbeLivenessResponse(resp *http.Response) (res *ProbeLivenessOK, _ e
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}

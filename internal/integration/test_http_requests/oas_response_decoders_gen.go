@@ -3,7 +3,6 @@
 package api
 
 import (
-	"bytes"
 	"encoding/base64"
 	"io"
 	"mime"
@@ -22,19 +21,17 @@ func decodeAllRequestBodiesResponse(resp *http.Response) (res AllRequestBodiesOK
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/octet-stream":
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := AllRequestBodiesOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := AllRequestBodiesOK{Data: reader}
 			return response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -47,19 +44,17 @@ func decodeAllRequestBodiesOptionalResponse(resp *http.Response) (res AllRequest
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/octet-stream":
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := AllRequestBodiesOptionalOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := AllRequestBodiesOptionalOK{Data: reader}
 			return response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -72,19 +67,23 @@ func decodeBase64RequestResponse(resp *http.Response) (res Base64RequestOK, _ er
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "text/plain":
-			reader := base64.NewDecoder(base64.StdEncoding, resp.Body)
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
+			reader := struct {
+				io.Reader
+				io.Closer
+			}{
+				Reader: base64.NewDecoder(base64.StdEncoding, resp.Body),
+				Closer: resp.Body,
 			}
 
-			response := Base64RequestOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := Base64RequestOK{Data: reader}
 			return response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -97,10 +96,12 @@ func decodeMaskContentTypeResponse(resp *http.Response) (res *MaskResponse, _ er
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -126,6 +127,7 @@ func decodeMaskContentTypeResponse(resp *http.Response) (res *MaskResponse, _ er
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -138,10 +140,12 @@ func decodeMaskContentTypeOptionalResponse(resp *http.Response) (res *MaskRespon
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -167,6 +171,7 @@ func decodeMaskContentTypeOptionalResponse(resp *http.Response) (res *MaskRespon
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -179,10 +184,12 @@ func decodeStreamJSONResponse(resp *http.Response) (res float64, _ error) {
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -210,6 +217,7 @@ func decodeStreamJSONResponse(resp *http.Response) (res float64, _ error) {
 			}
 			return response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}

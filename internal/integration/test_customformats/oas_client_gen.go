@@ -140,7 +140,6 @@ func (c *Client) sendEventPost(ctx context.Context, request any) (res any, err e
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeEventPostResponse(resp)
@@ -264,7 +263,6 @@ func (c *Client) sendPhoneGet(ctx context.Context, request *User, params PhoneGe
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodePhoneGetResponse(resp)

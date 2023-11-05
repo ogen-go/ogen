@@ -18,15 +18,18 @@ func decodeCreateSnapshotResponse(resp *http.Response) (res CreateSnapshotRes, _
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
+		defer resp.Body.Close()
 		return &CreateSnapshotNoContent{}, nil
 	case 400:
 		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -52,6 +55,7 @@ func decodeCreateSnapshotResponse(resp *http.Response) (res CreateSnapshotRes, _
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -59,10 +63,12 @@ func decodeCreateSnapshotResponse(resp *http.Response) (res CreateSnapshotRes, _
 	defRes, err := func() (res *ErrorStatusCode, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -91,6 +97,7 @@ func decodeCreateSnapshotResponse(resp *http.Response) (res CreateSnapshotRes, _
 				Response:   response,
 			}, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}()
@@ -104,15 +111,18 @@ func decodeCreateSyncActionResponse(resp *http.Response) (res CreateSyncActionRe
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
+		defer resp.Body.Close()
 		return &CreateSyncActionNoContent{}, nil
 	case 400:
 		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -138,6 +148,7 @@ func decodeCreateSyncActionResponse(resp *http.Response) (res CreateSyncActionRe
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -145,10 +156,12 @@ func decodeCreateSyncActionResponse(resp *http.Response) (res CreateSyncActionRe
 	defRes, err := func() (res *ErrorStatusCode, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -177,6 +190,7 @@ func decodeCreateSyncActionResponse(resp *http.Response) (res CreateSyncActionRe
 				Response:   response,
 			}, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}()
@@ -192,10 +206,12 @@ func decodeDescribeBalloonConfigResponse(resp *http.Response) (res DescribeBallo
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -221,16 +237,19 @@ func decodeDescribeBalloonConfigResponse(resp *http.Response) (res DescribeBallo
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 400:
 		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -256,6 +275,7 @@ func decodeDescribeBalloonConfigResponse(resp *http.Response) (res DescribeBallo
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -263,10 +283,12 @@ func decodeDescribeBalloonConfigResponse(resp *http.Response) (res DescribeBallo
 	defRes, err := func() (res *ErrorStatusCode, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -295,6 +317,7 @@ func decodeDescribeBalloonConfigResponse(resp *http.Response) (res DescribeBallo
 				Response:   response,
 			}, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}()
@@ -310,10 +333,12 @@ func decodeDescribeBalloonStatsResponse(resp *http.Response) (res DescribeBalloo
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -339,16 +364,19 @@ func decodeDescribeBalloonStatsResponse(resp *http.Response) (res DescribeBalloo
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 400:
 		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -374,6 +402,7 @@ func decodeDescribeBalloonStatsResponse(resp *http.Response) (res DescribeBalloo
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -381,10 +410,12 @@ func decodeDescribeBalloonStatsResponse(resp *http.Response) (res DescribeBalloo
 	defRes, err := func() (res *ErrorStatusCode, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -413,6 +444,7 @@ func decodeDescribeBalloonStatsResponse(resp *http.Response) (res DescribeBalloo
 				Response:   response,
 			}, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}()
@@ -428,10 +460,12 @@ func decodeDescribeInstanceResponse(resp *http.Response) (res *InstanceInfo, _ e
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -457,6 +491,7 @@ func decodeDescribeInstanceResponse(resp *http.Response) (res *InstanceInfo, _ e
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -464,10 +499,12 @@ func decodeDescribeInstanceResponse(resp *http.Response) (res *InstanceInfo, _ e
 	defRes, err := func() (res *ErrorStatusCode, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -496,6 +533,7 @@ func decodeDescribeInstanceResponse(resp *http.Response) (res *InstanceInfo, _ e
 				Response:   response,
 			}, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}()
@@ -511,10 +549,12 @@ func decodeGetExportVmConfigResponse(resp *http.Response) (res *FullVmConfigurat
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -540,6 +580,7 @@ func decodeGetExportVmConfigResponse(resp *http.Response) (res *FullVmConfigurat
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -547,10 +588,12 @@ func decodeGetExportVmConfigResponse(resp *http.Response) (res *FullVmConfigurat
 	defRes, err := func() (res *ErrorStatusCode, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -579,6 +622,7 @@ func decodeGetExportVmConfigResponse(resp *http.Response) (res *FullVmConfigurat
 				Response:   response,
 			}, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}()
@@ -594,10 +638,12 @@ func decodeGetMachineConfigurationResponse(resp *http.Response) (res *MachineCon
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -623,6 +669,7 @@ func decodeGetMachineConfigurationResponse(resp *http.Response) (res *MachineCon
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -630,10 +677,12 @@ func decodeGetMachineConfigurationResponse(resp *http.Response) (res *MachineCon
 	defRes, err := func() (res *ErrorStatusCode, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -662,6 +711,7 @@ func decodeGetMachineConfigurationResponse(resp *http.Response) (res *MachineCon
 				Response:   response,
 			}, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}()
@@ -675,15 +725,18 @@ func decodeLoadSnapshotResponse(resp *http.Response) (res LoadSnapshotRes, _ err
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
+		defer resp.Body.Close()
 		return &LoadSnapshotNoContent{}, nil
 	case 400:
 		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -709,6 +762,7 @@ func decodeLoadSnapshotResponse(resp *http.Response) (res LoadSnapshotRes, _ err
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -716,10 +770,12 @@ func decodeLoadSnapshotResponse(resp *http.Response) (res LoadSnapshotRes, _ err
 	defRes, err := func() (res *ErrorStatusCode, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -748,6 +804,7 @@ func decodeLoadSnapshotResponse(resp *http.Response) (res LoadSnapshotRes, _ err
 				Response:   response,
 			}, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}()
@@ -761,15 +818,18 @@ func decodeMmdsConfigPutResponse(resp *http.Response) (res MmdsConfigPutRes, _ e
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
+		defer resp.Body.Close()
 		return &MmdsConfigPutNoContent{}, nil
 	case 400:
 		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -795,6 +855,7 @@ func decodeMmdsConfigPutResponse(resp *http.Response) (res MmdsConfigPutRes, _ e
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -802,10 +863,12 @@ func decodeMmdsConfigPutResponse(resp *http.Response) (res MmdsConfigPutRes, _ e
 	defRes, err := func() (res *ErrorStatusCode, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -834,6 +897,7 @@ func decodeMmdsConfigPutResponse(resp *http.Response) (res MmdsConfigPutRes, _ e
 				Response:   response,
 			}, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}()
@@ -849,10 +913,12 @@ func decodeMmdsGetResponse(resp *http.Response) (res MmdsGetRes, _ error) {
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -878,16 +944,19 @@ func decodeMmdsGetResponse(resp *http.Response) (res MmdsGetRes, _ error) {
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 404:
 		// Code 404.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -913,6 +982,7 @@ func decodeMmdsGetResponse(resp *http.Response) (res MmdsGetRes, _ error) {
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -920,10 +990,12 @@ func decodeMmdsGetResponse(resp *http.Response) (res MmdsGetRes, _ error) {
 	defRes, err := func() (res *ErrorStatusCode, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -952,6 +1024,7 @@ func decodeMmdsGetResponse(resp *http.Response) (res MmdsGetRes, _ error) {
 				Response:   response,
 			}, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}()
@@ -965,15 +1038,18 @@ func decodeMmdsPatchResponse(resp *http.Response) (res MmdsPatchRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
+		defer resp.Body.Close()
 		return &MmdsPatchNoContent{}, nil
 	case 400:
 		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -999,6 +1075,7 @@ func decodeMmdsPatchResponse(resp *http.Response) (res MmdsPatchRes, _ error) {
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -1006,10 +1083,12 @@ func decodeMmdsPatchResponse(resp *http.Response) (res MmdsPatchRes, _ error) {
 	defRes, err := func() (res *ErrorStatusCode, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1038,6 +1117,7 @@ func decodeMmdsPatchResponse(resp *http.Response) (res MmdsPatchRes, _ error) {
 				Response:   response,
 			}, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}()
@@ -1051,15 +1131,18 @@ func decodeMmdsPutResponse(resp *http.Response) (res MmdsPutRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
+		defer resp.Body.Close()
 		return &MmdsPutNoContent{}, nil
 	case 400:
 		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1085,6 +1168,7 @@ func decodeMmdsPutResponse(resp *http.Response) (res MmdsPutRes, _ error) {
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -1092,10 +1176,12 @@ func decodeMmdsPutResponse(resp *http.Response) (res MmdsPutRes, _ error) {
 	defRes, err := func() (res *ErrorStatusCode, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1124,6 +1210,7 @@ func decodeMmdsPutResponse(resp *http.Response) (res MmdsPutRes, _ error) {
 				Response:   response,
 			}, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}()
@@ -1137,15 +1224,18 @@ func decodePatchBalloonResponse(resp *http.Response) (res PatchBalloonRes, _ err
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
+		defer resp.Body.Close()
 		return &PatchBalloonNoContent{}, nil
 	case 400:
 		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1171,6 +1261,7 @@ func decodePatchBalloonResponse(resp *http.Response) (res PatchBalloonRes, _ err
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -1178,10 +1269,12 @@ func decodePatchBalloonResponse(resp *http.Response) (res PatchBalloonRes, _ err
 	defRes, err := func() (res *ErrorStatusCode, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1210,6 +1303,7 @@ func decodePatchBalloonResponse(resp *http.Response) (res PatchBalloonRes, _ err
 				Response:   response,
 			}, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}()
@@ -1223,15 +1317,18 @@ func decodePatchBalloonStatsIntervalResponse(resp *http.Response) (res PatchBall
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
+		defer resp.Body.Close()
 		return &PatchBalloonStatsIntervalNoContent{}, nil
 	case 400:
 		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1257,6 +1354,7 @@ func decodePatchBalloonStatsIntervalResponse(resp *http.Response) (res PatchBall
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -1264,10 +1362,12 @@ func decodePatchBalloonStatsIntervalResponse(resp *http.Response) (res PatchBall
 	defRes, err := func() (res *ErrorStatusCode, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1296,6 +1396,7 @@ func decodePatchBalloonStatsIntervalResponse(resp *http.Response) (res PatchBall
 				Response:   response,
 			}, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}()
@@ -1309,15 +1410,18 @@ func decodePatchGuestDriveByIDResponse(resp *http.Response) (res PatchGuestDrive
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
+		defer resp.Body.Close()
 		return &PatchGuestDriveByIDNoContent{}, nil
 	case 400:
 		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1343,6 +1447,7 @@ func decodePatchGuestDriveByIDResponse(resp *http.Response) (res PatchGuestDrive
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -1350,10 +1455,12 @@ func decodePatchGuestDriveByIDResponse(resp *http.Response) (res PatchGuestDrive
 	defRes, err := func() (res *ErrorStatusCode, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1382,6 +1489,7 @@ func decodePatchGuestDriveByIDResponse(resp *http.Response) (res PatchGuestDrive
 				Response:   response,
 			}, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}()
@@ -1395,15 +1503,18 @@ func decodePatchGuestNetworkInterfaceByIDResponse(resp *http.Response) (res Patc
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
+		defer resp.Body.Close()
 		return &PatchGuestNetworkInterfaceByIDNoContent{}, nil
 	case 400:
 		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1429,6 +1540,7 @@ func decodePatchGuestNetworkInterfaceByIDResponse(resp *http.Response) (res Patc
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -1436,10 +1548,12 @@ func decodePatchGuestNetworkInterfaceByIDResponse(resp *http.Response) (res Patc
 	defRes, err := func() (res *ErrorStatusCode, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1468,6 +1582,7 @@ func decodePatchGuestNetworkInterfaceByIDResponse(resp *http.Response) (res Patc
 				Response:   response,
 			}, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}()
@@ -1481,15 +1596,18 @@ func decodePatchMachineConfigurationResponse(resp *http.Response) (res PatchMach
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
+		defer resp.Body.Close()
 		return &PatchMachineConfigurationNoContent{}, nil
 	case 400:
 		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1515,6 +1633,7 @@ func decodePatchMachineConfigurationResponse(resp *http.Response) (res PatchMach
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -1522,10 +1641,12 @@ func decodePatchMachineConfigurationResponse(resp *http.Response) (res PatchMach
 	defRes, err := func() (res *ErrorStatusCode, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1554,6 +1675,7 @@ func decodePatchMachineConfigurationResponse(resp *http.Response) (res PatchMach
 				Response:   response,
 			}, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}()
@@ -1567,15 +1689,18 @@ func decodePatchVmResponse(resp *http.Response) (res PatchVmRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
+		defer resp.Body.Close()
 		return &PatchVmNoContent{}, nil
 	case 400:
 		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1601,6 +1726,7 @@ func decodePatchVmResponse(resp *http.Response) (res PatchVmRes, _ error) {
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -1608,10 +1734,12 @@ func decodePatchVmResponse(resp *http.Response) (res PatchVmRes, _ error) {
 	defRes, err := func() (res *ErrorStatusCode, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1640,6 +1768,7 @@ func decodePatchVmResponse(resp *http.Response) (res PatchVmRes, _ error) {
 				Response:   response,
 			}, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}()
@@ -1653,15 +1782,18 @@ func decodePutBalloonResponse(resp *http.Response) (res PutBalloonRes, _ error) 
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
+		defer resp.Body.Close()
 		return &PutBalloonNoContent{}, nil
 	case 400:
 		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1687,6 +1819,7 @@ func decodePutBalloonResponse(resp *http.Response) (res PutBalloonRes, _ error) 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -1694,10 +1827,12 @@ func decodePutBalloonResponse(resp *http.Response) (res PutBalloonRes, _ error) 
 	defRes, err := func() (res *ErrorStatusCode, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1726,6 +1861,7 @@ func decodePutBalloonResponse(resp *http.Response) (res PutBalloonRes, _ error) 
 				Response:   response,
 			}, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}()
@@ -1739,15 +1875,18 @@ func decodePutGuestBootSourceResponse(resp *http.Response) (res PutGuestBootSour
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
+		defer resp.Body.Close()
 		return &PutGuestBootSourceNoContent{}, nil
 	case 400:
 		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1773,6 +1912,7 @@ func decodePutGuestBootSourceResponse(resp *http.Response) (res PutGuestBootSour
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -1780,10 +1920,12 @@ func decodePutGuestBootSourceResponse(resp *http.Response) (res PutGuestBootSour
 	defRes, err := func() (res *ErrorStatusCode, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1812,6 +1954,7 @@ func decodePutGuestBootSourceResponse(resp *http.Response) (res PutGuestBootSour
 				Response:   response,
 			}, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}()
@@ -1825,15 +1968,18 @@ func decodePutGuestDriveByIDResponse(resp *http.Response) (res PutGuestDriveByID
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
+		defer resp.Body.Close()
 		return &PutGuestDriveByIDNoContent{}, nil
 	case 400:
 		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1859,6 +2005,7 @@ func decodePutGuestDriveByIDResponse(resp *http.Response) (res PutGuestDriveByID
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -1866,10 +2013,12 @@ func decodePutGuestDriveByIDResponse(resp *http.Response) (res PutGuestDriveByID
 	defRes, err := func() (res *ErrorStatusCode, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1898,6 +2047,7 @@ func decodePutGuestDriveByIDResponse(resp *http.Response) (res PutGuestDriveByID
 				Response:   response,
 			}, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}()
@@ -1911,15 +2061,18 @@ func decodePutGuestNetworkInterfaceByIDResponse(resp *http.Response) (res PutGue
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
+		defer resp.Body.Close()
 		return &PutGuestNetworkInterfaceByIDNoContent{}, nil
 	case 400:
 		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1945,6 +2098,7 @@ func decodePutGuestNetworkInterfaceByIDResponse(resp *http.Response) (res PutGue
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -1952,10 +2106,12 @@ func decodePutGuestNetworkInterfaceByIDResponse(resp *http.Response) (res PutGue
 	defRes, err := func() (res *ErrorStatusCode, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -1984,6 +2140,7 @@ func decodePutGuestNetworkInterfaceByIDResponse(resp *http.Response) (res PutGue
 				Response:   response,
 			}, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}()
@@ -1997,15 +2154,18 @@ func decodePutGuestVsockResponse(resp *http.Response) (res PutGuestVsockRes, _ e
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
+		defer resp.Body.Close()
 		return &PutGuestVsockNoContent{}, nil
 	case 400:
 		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -2031,6 +2191,7 @@ func decodePutGuestVsockResponse(resp *http.Response) (res PutGuestVsockRes, _ e
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -2038,10 +2199,12 @@ func decodePutGuestVsockResponse(resp *http.Response) (res PutGuestVsockRes, _ e
 	defRes, err := func() (res *ErrorStatusCode, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -2070,6 +2233,7 @@ func decodePutGuestVsockResponse(resp *http.Response) (res PutGuestVsockRes, _ e
 				Response:   response,
 			}, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}()
@@ -2083,15 +2247,18 @@ func decodePutLoggerResponse(resp *http.Response) (res PutLoggerRes, _ error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
+		defer resp.Body.Close()
 		return &PutLoggerNoContent{}, nil
 	case 400:
 		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -2117,6 +2284,7 @@ func decodePutLoggerResponse(resp *http.Response) (res PutLoggerRes, _ error) {
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -2124,10 +2292,12 @@ func decodePutLoggerResponse(resp *http.Response) (res PutLoggerRes, _ error) {
 	defRes, err := func() (res *ErrorStatusCode, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -2156,6 +2326,7 @@ func decodePutLoggerResponse(resp *http.Response) (res PutLoggerRes, _ error) {
 				Response:   response,
 			}, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}()
@@ -2169,15 +2340,18 @@ func decodePutMachineConfigurationResponse(resp *http.Response) (res PutMachineC
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
+		defer resp.Body.Close()
 		return &PutMachineConfigurationNoContent{}, nil
 	case 400:
 		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -2203,6 +2377,7 @@ func decodePutMachineConfigurationResponse(resp *http.Response) (res PutMachineC
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -2210,10 +2385,12 @@ func decodePutMachineConfigurationResponse(resp *http.Response) (res PutMachineC
 	defRes, err := func() (res *ErrorStatusCode, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -2242,6 +2419,7 @@ func decodePutMachineConfigurationResponse(resp *http.Response) (res PutMachineC
 				Response:   response,
 			}, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}()
@@ -2255,15 +2433,18 @@ func decodePutMetricsResponse(resp *http.Response) (res PutMetricsRes, _ error) 
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
+		defer resp.Body.Close()
 		return &PutMetricsNoContent{}, nil
 	case 400:
 		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -2289,6 +2470,7 @@ func decodePutMetricsResponse(resp *http.Response) (res PutMetricsRes, _ error) 
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -2296,10 +2478,12 @@ func decodePutMetricsResponse(resp *http.Response) (res PutMetricsRes, _ error) 
 	defRes, err := func() (res *ErrorStatusCode, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -2328,6 +2512,7 @@ func decodePutMetricsResponse(resp *http.Response) (res PutMetricsRes, _ error) 
 				Response:   response,
 			}, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}()

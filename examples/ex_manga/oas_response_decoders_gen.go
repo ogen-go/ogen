@@ -3,7 +3,6 @@
 package api
 
 import (
-	"bytes"
 	"io"
 	"mime"
 	"net/http"
@@ -22,10 +21,12 @@ func decodeGetBookResponse(resp *http.Response) (res GetBookRes, _ error) {
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -51,10 +52,12 @@ func decodeGetBookResponse(resp *http.Response) (res GetBookRes, _ error) {
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 403:
 		// Code 403.
+		defer resp.Body.Close()
 		return &GetBookForbidden{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -66,23 +69,22 @@ func decodeGetPageCoverImageResponse(resp *http.Response) (res GetPageCoverImage
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("image/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := GetPageCoverImageOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := GetPageCoverImageOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 403:
 		// Code 403.
+		defer resp.Body.Close()
 		return &GetPageCoverImageForbidden{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -94,23 +96,22 @@ func decodeGetPageImageResponse(resp *http.Response) (res GetPageImageRes, _ err
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("image/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := GetPageImageOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := GetPageImageOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 403:
 		// Code 403.
+		defer resp.Body.Close()
 		return &GetPageImageForbidden{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -122,23 +123,22 @@ func decodeGetPageThumbnailImageResponse(resp *http.Response) (res GetPageThumbn
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ht.MatchContentType("image/*", ct):
 			reader := resp.Body
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				return res, err
-			}
 
-			response := GetPageThumbnailImageOK{Data: io.NopCloser(bytes.NewReader(b))}
+			response := GetPageThumbnailImageOK{Data: reader}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 403:
 		// Code 403.
+		defer resp.Body.Close()
 		return &GetPageThumbnailImageForbidden{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -150,10 +150,12 @@ func decodeSearchResponse(resp *http.Response) (res SearchRes, _ error) {
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -179,10 +181,12 @@ func decodeSearchResponse(resp *http.Response) (res SearchRes, _ error) {
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 403:
 		// Code 403.
+		defer resp.Body.Close()
 		return &SearchForbidden{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -194,10 +198,12 @@ func decodeSearchByTagIDResponse(resp *http.Response) (res SearchByTagIDRes, _ e
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -223,10 +229,12 @@ func decodeSearchByTagIDResponse(resp *http.Response) (res SearchByTagIDRes, _ e
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	case 403:
 		// Code 403.
+		defer resp.Body.Close()
 		return &SearchByTagIDForbidden{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)

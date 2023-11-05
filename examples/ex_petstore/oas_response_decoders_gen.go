@@ -20,16 +20,19 @@ func decodeCreatePetsResponse(resp *http.Response) (res *CreatePetsCreated, _ er
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
+		defer resp.Body.Close()
 		return &CreatePetsCreated{}, nil
 	}
 	// Convenient error response.
 	defRes, err := func() (res *ErrorStatusCode, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -58,6 +61,7 @@ func decodeCreatePetsResponse(resp *http.Response) (res *CreatePetsCreated, _ er
 				Response:   response,
 			}, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}()
@@ -73,10 +77,12 @@ func decodeListPetsResponse(resp *http.Response) (res *PetsHeaders, _ error) {
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -142,6 +148,7 @@ func decodeListPetsResponse(resp *http.Response) (res *PetsHeaders, _ error) {
 			}
 			return &wrapper, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -149,10 +156,12 @@ func decodeListPetsResponse(resp *http.Response) (res *PetsHeaders, _ error) {
 	defRes, err := func() (res *ErrorStatusCode, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -181,6 +190,7 @@ func decodeListPetsResponse(resp *http.Response) (res *PetsHeaders, _ error) {
 				Response:   response,
 			}, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}()
@@ -196,10 +206,12 @@ func decodeShowPetByIdResponse(resp *http.Response) (res *Pet, _ error) {
 		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -225,6 +237,7 @@ func decodeShowPetByIdResponse(resp *http.Response) (res *Pet, _ error) {
 			}
 			return &response, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}
@@ -232,10 +245,12 @@ func decodeShowPetByIdResponse(resp *http.Response) (res *Pet, _ error) {
 	defRes, err := func() (res *ErrorStatusCode, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
+			resp.Body.Close()
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
+			defer resp.Body.Close()
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -264,6 +279,7 @@ func decodeShowPetByIdResponse(resp *http.Response) (res *Pet, _ error) {
 				Response:   response,
 			}, nil
 		default:
+			resp.Body.Close()
 			return res, validate.InvalidContentType(ct)
 		}
 	}()

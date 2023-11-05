@@ -357,7 +357,6 @@ func (c *Client) sendCancelFineTune(ctx context.Context, params CancelFineTunePa
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeCancelFineTuneResponse(resp)
@@ -446,7 +445,6 @@ func (c *Client) sendCreateAnswer(ctx context.Context, request *CreateAnswerRequ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeCreateAnswerResponse(resp)
@@ -530,7 +528,6 @@ func (c *Client) sendCreateChatCompletion(ctx context.Context, request *CreateCh
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeCreateChatCompletionResponse(resp)
@@ -622,7 +619,6 @@ func (c *Client) sendCreateClassification(ctx context.Context, request *CreateCl
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeCreateClassificationResponse(resp)
@@ -706,7 +702,6 @@ func (c *Client) sendCreateCompletion(ctx context.Context, request *CreateComple
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeCreateCompletionResponse(resp)
@@ -790,7 +785,6 @@ func (c *Client) sendCreateEdit(ctx context.Context, request *CreateEditRequest)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeCreateEditResponse(resp)
@@ -874,7 +868,6 @@ func (c *Client) sendCreateEmbedding(ctx context.Context, request *CreateEmbeddi
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeCreateEmbeddingResponse(resp)
@@ -951,7 +944,6 @@ func (c *Client) sendCreateFile(ctx context.Context, request *CreateFileRequestM
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeCreateFileResponse(resp)
@@ -1038,7 +1030,6 @@ func (c *Client) sendCreateFineTune(ctx context.Context, request *CreateFineTune
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeCreateFineTuneResponse(resp)
@@ -1122,7 +1113,6 @@ func (c *Client) sendCreateImage(ctx context.Context, request *CreateImageReques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeCreateImageResponse(resp)
@@ -1206,7 +1196,6 @@ func (c *Client) sendCreateImageEdit(ctx context.Context, request *CreateImageEd
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeCreateImageEditResponse(resp)
@@ -1290,7 +1279,6 @@ func (c *Client) sendCreateImageVariation(ctx context.Context, request *CreateIm
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeCreateImageVariationResponse(resp)
@@ -1374,7 +1362,6 @@ func (c *Client) sendCreateModeration(ctx context.Context, request *CreateModera
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeCreateModerationResponse(resp)
@@ -1486,7 +1473,6 @@ func (c *Client) sendCreateSearch(ctx context.Context, request *CreateSearchRequ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeCreateSearchResponse(resp)
@@ -1570,7 +1556,6 @@ func (c *Client) sendCreateTranscription(ctx context.Context, request *CreateTra
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeCreateTranscriptionResponse(resp)
@@ -1654,7 +1639,6 @@ func (c *Client) sendCreateTranslation(ctx context.Context, request *CreateTrans
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeCreateTranslationResponse(resp)
@@ -1744,7 +1728,6 @@ func (c *Client) sendDeleteFile(ctx context.Context, params DeleteFileParams) (r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeDeleteFileResponse(resp)
@@ -1834,7 +1817,6 @@ func (c *Client) sendDeleteModel(ctx context.Context, params DeleteModelParams) 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeDeleteModelResponse(resp)
@@ -1925,7 +1907,6 @@ func (c *Client) sendDownloadFile(ctx context.Context, params DownloadFileParams
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeDownloadFileResponse(resp)
@@ -2000,7 +1981,6 @@ func (c *Client) sendListEngines(ctx context.Context) (res *ListEnginesResponse,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeListEnginesResponse(resp)
@@ -2072,7 +2052,6 @@ func (c *Client) sendListFiles(ctx context.Context) (res *ListFilesResponse, err
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeListFilesResponse(resp)
@@ -2184,7 +2163,6 @@ func (c *Client) sendListFineTuneEvents(ctx context.Context, params ListFineTune
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeListFineTuneEventsResponse(resp)
@@ -2256,7 +2234,6 @@ func (c *Client) sendListFineTunes(ctx context.Context) (res *ListFineTunesRespo
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeListFineTunesResponse(resp)
@@ -2329,7 +2306,6 @@ func (c *Client) sendListModels(ctx context.Context) (res *ListModelsResponse, e
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeListModelsResponse(resp)
@@ -2422,7 +2398,6 @@ func (c *Client) sendRetrieveEngine(ctx context.Context, params RetrieveEnginePa
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeRetrieveEngineResponse(resp)
@@ -2512,7 +2487,6 @@ func (c *Client) sendRetrieveFile(ctx context.Context, params RetrieveFileParams
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeRetrieveFileResponse(resp)
@@ -2603,7 +2577,6 @@ func (c *Client) sendRetrieveFineTune(ctx context.Context, params RetrieveFineTu
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeRetrieveFineTuneResponse(resp)
@@ -2694,7 +2667,6 @@ func (c *Client) sendRetrieveModel(ctx context.Context, params RetrieveModelPara
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeRetrieveModelResponse(resp)

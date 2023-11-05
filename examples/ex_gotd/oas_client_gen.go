@@ -495,7 +495,6 @@ func (c *Client) sendAddStickerToSet(ctx context.Context, request *AddStickerToS
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeAddStickerToSetResponse(resp)
@@ -577,7 +576,6 @@ func (c *Client) sendAnswerCallbackQuery(ctx context.Context, request *AnswerCal
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeAnswerCallbackQueryResponse(resp)
@@ -659,7 +657,6 @@ func (c *Client) sendAnswerInlineQuery(ctx context.Context, request *AnswerInlin
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeAnswerInlineQueryResponse(resp)
@@ -732,7 +729,6 @@ func (c *Client) sendAnswerPreCheckoutQuery(ctx context.Context, request *Answer
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeAnswerPreCheckoutQueryResponse(resp)
@@ -814,7 +810,6 @@ func (c *Client) sendAnswerShippingQuery(ctx context.Context, request *AnswerShi
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeAnswerShippingQueryResponse(resp)
@@ -896,7 +891,6 @@ func (c *Client) sendAnswerWebAppQuery(ctx context.Context, request *AnswerWebAp
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeAnswerWebAppQueryResponse(resp)
@@ -969,7 +963,6 @@ func (c *Client) sendApproveChatJoinRequest(ctx context.Context, request *Approv
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeApproveChatJoinRequestResponse(resp)
@@ -1042,7 +1035,6 @@ func (c *Client) sendBanChatMember(ctx context.Context, request *BanChatMember) 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeBanChatMemberResponse(resp)
@@ -1115,7 +1107,6 @@ func (c *Client) sendBanChatSenderChat(ctx context.Context, request *BanChatSend
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeBanChatSenderChatResponse(resp)
@@ -1185,7 +1176,6 @@ func (c *Client) sendClose(ctx context.Context) (res *Result, err error) {
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeCloseResponse(resp)
@@ -1267,7 +1257,6 @@ func (c *Client) sendCopyMessage(ctx context.Context, request *CopyMessage) (res
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeCopyMessageResponse(resp)
@@ -1349,7 +1338,6 @@ func (c *Client) sendCreateChatInviteLink(ctx context.Context, request *CreateCh
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeCreateChatInviteLinkResponse(resp)
@@ -1431,7 +1419,6 @@ func (c *Client) sendCreateNewStickerSet(ctx context.Context, request *CreateNew
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeCreateNewStickerSetResponse(resp)
@@ -1504,7 +1491,6 @@ func (c *Client) sendDeclineChatJoinRequest(ctx context.Context, request *Declin
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeDeclineChatJoinRequestResponse(resp)
@@ -1577,7 +1563,6 @@ func (c *Client) sendDeleteChatPhoto(ctx context.Context, request *DeleteChatPho
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeDeleteChatPhotoResponse(resp)
@@ -1650,7 +1635,6 @@ func (c *Client) sendDeleteChatStickerSet(ctx context.Context, request *DeleteCh
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeDeleteChatStickerSetResponse(resp)
@@ -1723,7 +1707,6 @@ func (c *Client) sendDeleteMessage(ctx context.Context, request *DeleteMessage) 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeDeleteMessageResponse(resp)
@@ -1796,7 +1779,6 @@ func (c *Client) sendDeleteMyCommands(ctx context.Context, request OptDeleteMyCo
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeDeleteMyCommandsResponse(resp)
@@ -1869,7 +1851,6 @@ func (c *Client) sendDeleteStickerFromSet(ctx context.Context, request *DeleteSt
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeDeleteStickerFromSetResponse(resp)
@@ -1942,7 +1923,6 @@ func (c *Client) sendDeleteWebhook(ctx context.Context, request OptDeleteWebhook
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeDeleteWebhookResponse(resp)
@@ -2024,7 +2004,6 @@ func (c *Client) sendEditChatInviteLink(ctx context.Context, request *EditChatIn
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeEditChatInviteLinkResponse(resp)
@@ -2106,7 +2085,6 @@ func (c *Client) sendEditMessageCaption(ctx context.Context, request *EditMessag
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeEditMessageCaptionResponse(resp)
@@ -2188,7 +2166,6 @@ func (c *Client) sendEditMessageLiveLocation(ctx context.Context, request *EditM
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeEditMessageLiveLocationResponse(resp)
@@ -2270,7 +2247,6 @@ func (c *Client) sendEditMessageMedia(ctx context.Context, request *EditMessageM
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeEditMessageMediaResponse(resp)
@@ -2352,7 +2328,6 @@ func (c *Client) sendEditMessageReplyMarkup(ctx context.Context, request *EditMe
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeEditMessageReplyMarkupResponse(resp)
@@ -2434,7 +2409,6 @@ func (c *Client) sendEditMessageText(ctx context.Context, request *EditMessageTe
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeEditMessageTextResponse(resp)
@@ -2507,7 +2481,6 @@ func (c *Client) sendExportChatInviteLink(ctx context.Context, request *ExportCh
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeExportChatInviteLinkResponse(resp)
@@ -2580,7 +2553,6 @@ func (c *Client) sendForwardMessage(ctx context.Context, request *ForwardMessage
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeForwardMessageResponse(resp)
@@ -2653,7 +2625,6 @@ func (c *Client) sendGetChat(ctx context.Context, request *GetChat) (res *Result
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeGetChatResponse(resp)
@@ -2726,7 +2697,6 @@ func (c *Client) sendGetChatAdministrators(ctx context.Context, request *GetChat
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeGetChatAdministratorsResponse(resp)
@@ -2799,7 +2769,6 @@ func (c *Client) sendGetChatMember(ctx context.Context, request *GetChatMember) 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeGetChatMemberResponse(resp)
@@ -2872,7 +2841,6 @@ func (c *Client) sendGetChatMemberCount(ctx context.Context, request *GetChatMem
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeGetChatMemberCountResponse(resp)
@@ -2945,7 +2913,6 @@ func (c *Client) sendGetChatMenuButton(ctx context.Context, request OptGetChatMe
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeGetChatMenuButtonResponse(resp)
@@ -3018,7 +2985,6 @@ func (c *Client) sendGetFile(ctx context.Context, request *GetFile) (res *Result
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeGetFileResponse(resp)
@@ -3091,7 +3057,6 @@ func (c *Client) sendGetGameHighScores(ctx context.Context, request *GetGameHigh
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeGetGameHighScoresResponse(resp)
@@ -3161,7 +3126,6 @@ func (c *Client) sendGetMe(ctx context.Context) (res *ResultUser, err error) {
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeGetMeResponse(resp)
@@ -3234,7 +3198,6 @@ func (c *Client) sendGetMyCommands(ctx context.Context, request OptGetMyCommands
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeGetMyCommandsResponse(resp)
@@ -3307,7 +3270,6 @@ func (c *Client) sendGetMyDefaultAdministratorRights(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeGetMyDefaultAdministratorRightsResponse(resp)
@@ -3380,7 +3342,6 @@ func (c *Client) sendGetStickerSet(ctx context.Context, request *GetStickerSet) 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeGetStickerSetResponse(resp)
@@ -3469,7 +3430,6 @@ func (c *Client) sendGetUpdates(ctx context.Context, request OptGetUpdates) (res
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeGetUpdatesResponse(resp)
@@ -3551,7 +3511,6 @@ func (c *Client) sendGetUserProfilePhotos(ctx context.Context, request *GetUserP
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeGetUserProfilePhotosResponse(resp)
@@ -3621,7 +3580,6 @@ func (c *Client) sendGetWebhookInfo(ctx context.Context) (res *ResultWebhookInfo
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeGetWebhookInfoResponse(resp)
@@ -3694,7 +3652,6 @@ func (c *Client) sendLeaveChat(ctx context.Context, request *LeaveChat) (res *Re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeLeaveChatResponse(resp)
@@ -3764,7 +3721,6 @@ func (c *Client) sendLogOut(ctx context.Context) (res *Result, err error) {
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeLogOutResponse(resp)
@@ -3837,7 +3793,6 @@ func (c *Client) sendPinChatMessage(ctx context.Context, request *PinChatMessage
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodePinChatMessageResponse(resp)
@@ -3910,7 +3865,6 @@ func (c *Client) sendPromoteChatMember(ctx context.Context, request *PromoteChat
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodePromoteChatMemberResponse(resp)
@@ -3983,7 +3937,6 @@ func (c *Client) sendRestrictChatMember(ctx context.Context, request *RestrictCh
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeRestrictChatMemberResponse(resp)
@@ -4056,7 +4009,6 @@ func (c *Client) sendRevokeChatInviteLink(ctx context.Context, request *RevokeCh
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeRevokeChatInviteLinkResponse(resp)
@@ -4138,7 +4090,6 @@ func (c *Client) sendSendAnimation(ctx context.Context, request *SendAnimation) 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSendAnimationResponse(resp)
@@ -4220,7 +4171,6 @@ func (c *Client) sendSendAudio(ctx context.Context, request *SendAudio) (res *Re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSendAudioResponse(resp)
@@ -4293,7 +4243,6 @@ func (c *Client) sendSendChatAction(ctx context.Context, request *SendChatAction
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSendChatActionResponse(resp)
@@ -4375,7 +4324,6 @@ func (c *Client) sendSendContact(ctx context.Context, request *SendContact) (res
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSendContactResponse(resp)
@@ -4457,7 +4405,6 @@ func (c *Client) sendSendDice(ctx context.Context, request *SendDice) (res *Resu
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSendDiceResponse(resp)
@@ -4539,7 +4486,6 @@ func (c *Client) sendSendDocument(ctx context.Context, request *SendDocument) (r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSendDocumentResponse(resp)
@@ -4621,7 +4567,6 @@ func (c *Client) sendSendGame(ctx context.Context, request *SendGame) (res *Resu
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSendGameResponse(resp)
@@ -4703,7 +4648,6 @@ func (c *Client) sendSendInvoice(ctx context.Context, request *SendInvoice) (res
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSendInvoiceResponse(resp)
@@ -4785,7 +4729,6 @@ func (c *Client) sendSendLocation(ctx context.Context, request *SendLocation) (r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSendLocationResponse(resp)
@@ -4867,7 +4810,6 @@ func (c *Client) sendSendMediaGroup(ctx context.Context, request *SendMediaGroup
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSendMediaGroupResponse(resp)
@@ -4949,7 +4891,6 @@ func (c *Client) sendSendMessage(ctx context.Context, request *SendMessage) (res
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSendMessageResponse(resp)
@@ -5031,7 +4972,6 @@ func (c *Client) sendSendPhoto(ctx context.Context, request *SendPhoto) (res *Re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSendPhotoResponse(resp)
@@ -5113,7 +5053,6 @@ func (c *Client) sendSendPoll(ctx context.Context, request *SendPoll) (res *Resu
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSendPollResponse(resp)
@@ -5195,7 +5134,6 @@ func (c *Client) sendSendSticker(ctx context.Context, request *SendSticker) (res
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSendStickerResponse(resp)
@@ -5277,7 +5215,6 @@ func (c *Client) sendSendVenue(ctx context.Context, request *SendVenue) (res *Re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSendVenueResponse(resp)
@@ -5359,7 +5296,6 @@ func (c *Client) sendSendVideo(ctx context.Context, request *SendVideo) (res *Re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSendVideoResponse(resp)
@@ -5441,7 +5377,6 @@ func (c *Client) sendSendVideoNote(ctx context.Context, request *SendVideoNote) 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSendVideoNoteResponse(resp)
@@ -5523,7 +5458,6 @@ func (c *Client) sendSendVoice(ctx context.Context, request *SendVoice) (res *Re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSendVoiceResponse(resp)
@@ -5605,7 +5539,6 @@ func (c *Client) sendSetChatAdministratorCustomTitle(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSetChatAdministratorCustomTitleResponse(resp)
@@ -5687,7 +5620,6 @@ func (c *Client) sendSetChatDescription(ctx context.Context, request *SetChatDes
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSetChatDescriptionResponse(resp)
@@ -5760,7 +5692,6 @@ func (c *Client) sendSetChatMenuButton(ctx context.Context, request OptSetChatMe
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSetChatMenuButtonResponse(resp)
@@ -5833,7 +5764,6 @@ func (c *Client) sendSetChatPermissions(ctx context.Context, request *SetChatPer
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSetChatPermissionsResponse(resp)
@@ -5906,7 +5836,6 @@ func (c *Client) sendSetChatPhoto(ctx context.Context, request *SetChatPhoto) (r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSetChatPhotoResponse(resp)
@@ -5979,7 +5908,6 @@ func (c *Client) sendSetChatStickerSet(ctx context.Context, request *SetChatStic
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSetChatStickerSetResponse(resp)
@@ -6061,7 +5989,6 @@ func (c *Client) sendSetChatTitle(ctx context.Context, request *SetChatTitle) (r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSetChatTitleResponse(resp)
@@ -6134,7 +6061,6 @@ func (c *Client) sendSetGameScore(ctx context.Context, request *SetGameScore) (r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSetGameScoreResponse(resp)
@@ -6216,7 +6142,6 @@ func (c *Client) sendSetMyCommands(ctx context.Context, request *SetMyCommands) 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSetMyCommandsResponse(resp)
@@ -6289,7 +6214,6 @@ func (c *Client) sendSetMyDefaultAdministratorRights(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSetMyDefaultAdministratorRightsResponse(resp)
@@ -6371,7 +6295,6 @@ func (c *Client) sendSetPassportDataErrors(ctx context.Context, request *SetPass
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSetPassportDataErrorsResponse(resp)
@@ -6444,7 +6367,6 @@ func (c *Client) sendSetStickerPositionInSet(ctx context.Context, request *SetSt
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSetStickerPositionInSetResponse(resp)
@@ -6517,7 +6439,6 @@ func (c *Client) sendSetStickerSetThumb(ctx context.Context, request *SetSticker
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSetStickerSetThumbResponse(resp)
@@ -6590,7 +6511,6 @@ func (c *Client) sendSetWebhook(ctx context.Context, request *SetWebhook) (res *
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSetWebhookResponse(resp)
@@ -6672,7 +6592,6 @@ func (c *Client) sendStopMessageLiveLocation(ctx context.Context, request *StopM
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeStopMessageLiveLocationResponse(resp)
@@ -6754,7 +6673,6 @@ func (c *Client) sendStopPoll(ctx context.Context, request *StopPoll) (res *Resu
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeStopPollResponse(resp)
@@ -6827,7 +6745,6 @@ func (c *Client) sendUnbanChatMember(ctx context.Context, request *UnbanChatMemb
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeUnbanChatMemberResponse(resp)
@@ -6900,7 +6817,6 @@ func (c *Client) sendUnbanChatSenderChat(ctx context.Context, request *UnbanChat
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeUnbanChatSenderChatResponse(resp)
@@ -6973,7 +6889,6 @@ func (c *Client) sendUnpinAllChatMessages(ctx context.Context, request *UnpinAll
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeUnpinAllChatMessagesResponse(resp)
@@ -7046,7 +6961,6 @@ func (c *Client) sendUnpinChatMessage(ctx context.Context, request *UnpinChatMes
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeUnpinChatMessageResponse(resp)
@@ -7119,7 +7033,6 @@ func (c *Client) sendUploadStickerFile(ctx context.Context, request *UploadStick
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeUploadStickerFileResponse(resp)

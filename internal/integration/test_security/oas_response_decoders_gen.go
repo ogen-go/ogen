@@ -12,6 +12,7 @@ func decodeCustomSecurityResponse(resp *http.Response) (res *CustomSecurityOK, _
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
+		defer resp.Body.Close()
 		return &CustomSecurityOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -21,6 +22,7 @@ func decodeDisjointSecurityResponse(resp *http.Response) (res *DisjointSecurityO
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
+		defer resp.Body.Close()
 		return &DisjointSecurityOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -30,6 +32,7 @@ func decodeIntersectSecurityResponse(resp *http.Response) (res *IntersectSecurit
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
+		defer resp.Body.Close()
 		return &IntersectSecurityOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
@@ -39,6 +42,7 @@ func decodeOptionalSecurityResponse(resp *http.Response) (res *OptionalSecurityO
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
+		defer resp.Body.Close()
 		return &OptionalSecurityOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)

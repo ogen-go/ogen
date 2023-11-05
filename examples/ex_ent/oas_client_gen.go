@@ -209,7 +209,6 @@ func (c *Client) sendCreatePet(ctx context.Context, request *CreatePetReq) (res 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeCreatePetResponse(resp)
@@ -303,7 +302,6 @@ func (c *Client) sendCreatePetCategories(ctx context.Context, request *CreatePet
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeCreatePetCategoriesResponse(resp)
@@ -397,7 +395,6 @@ func (c *Client) sendCreatePetFriends(ctx context.Context, request *CreatePetFri
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeCreatePetFriendsResponse(resp)
@@ -491,7 +488,6 @@ func (c *Client) sendCreatePetOwner(ctx context.Context, request *CreatePetOwner
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeCreatePetOwnerResponse(resp)
@@ -581,7 +577,6 @@ func (c *Client) sendDeletePet(ctx context.Context, params DeletePetParams) (res
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeDeletePetResponse(resp)
@@ -672,7 +667,6 @@ func (c *Client) sendDeletePetOwner(ctx context.Context, params DeletePetOwnerPa
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeDeletePetOwnerResponse(resp)
@@ -782,7 +776,6 @@ func (c *Client) sendListPet(ctx context.Context, params ListPetParams) (res Lis
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeListPetResponse(resp)
@@ -911,7 +904,6 @@ func (c *Client) sendListPetCategories(ctx context.Context, params ListPetCatego
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeListPetCategoriesResponse(resp)
@@ -1040,7 +1032,6 @@ func (c *Client) sendListPetFriends(ctx context.Context, params ListPetFriendsPa
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeListPetFriendsResponse(resp)
@@ -1130,7 +1121,6 @@ func (c *Client) sendReadPet(ctx context.Context, params ReadPetParams) (res Rea
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeReadPetResponse(resp)
@@ -1221,7 +1211,6 @@ func (c *Client) sendReadPetOwner(ctx context.Context, params ReadPetOwnerParams
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeReadPetOwnerResponse(resp)
@@ -1314,7 +1303,6 @@ func (c *Client) sendUpdatePet(ctx context.Context, request *UpdatePetReq, param
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeUpdatePetResponse(resp)
