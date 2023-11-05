@@ -96,14 +96,14 @@ func encode{{ $op.Name }}Request(
 				}
 			}()
 
+			defer req.Close()
 			_, err := io.Copy(writer, req)
 			return err
 		})
-		ht.SetCloserBody(r, body, contentType)
 	{{- else }}
 		body := req
-		ht.SetBody(r, body, contentType)
 	{{- end }}
+	ht.SetCloserBody(r, body, contentType)
 	return nil
 {{- else if $encoding.JSON }}
 	{{- if $.JSONStreaming }}

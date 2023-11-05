@@ -28,7 +28,7 @@ type testHTTPResponses struct {
 
 func (t testHTTPResponses) AnyContentTypeBinaryStringSchema(ctx context.Context) (api.AnyContentTypeBinaryStringSchemaOK, error) {
 	return api.AnyContentTypeBinaryStringSchemaOK{
-		Data: bytes.NewReader(t.data),
+		Data: io.NopCloser(bytes.NewReader(t.data)),
 	}, nil
 }
 
@@ -36,7 +36,7 @@ func (t testHTTPResponses) AnyContentTypeBinaryStringSchemaDefault(ctx context.C
 	return &api.AnyContentTypeBinaryStringSchemaDefaultDefStatusCode{
 		StatusCode: 200,
 		Response: api.AnyContentTypeBinaryStringSchemaDefaultDef{
-			Data: bytes.NewReader(t.data),
+			Data: io.NopCloser(bytes.NewReader(t.data)),
 		},
 	}, nil
 }
@@ -49,19 +49,19 @@ func (t testHTTPResponses) MultipleGenericResponses(ctx context.Context) (api.Mu
 
 func (t testHTTPResponses) OctetStreamBinaryStringSchema(ctx context.Context) (api.OctetStreamBinaryStringSchemaOK, error) {
 	return api.OctetStreamBinaryStringSchemaOK{
-		Data: bytes.NewReader(t.data),
+		Data: io.NopCloser(bytes.NewReader(t.data)),
 	}, nil
 }
 
 func (t testHTTPResponses) OctetStreamEmptySchema(ctx context.Context) (api.OctetStreamEmptySchemaOK, error) {
 	return api.OctetStreamEmptySchemaOK{
-		Data: bytes.NewReader(t.data),
+		Data: io.NopCloser(bytes.NewReader(t.data)),
 	}, nil
 }
 
 func (t testHTTPResponses) TextPlainBinaryStringSchema(ctx context.Context) (api.TextPlainBinaryStringSchemaOK, error) {
 	return api.TextPlainBinaryStringSchemaOK{
-		Data: bytes.NewReader(t.data),
+		Data: io.NopCloser(bytes.NewReader(t.data)),
 	}, nil
 }
 
@@ -199,6 +199,8 @@ func TestResponsesEncoding(t *testing.T) {
 		data, err := io.ReadAll(r.Data)
 		a.NoError(err)
 		a.Equal(testData, data)
+
+		a.NoError(r.Data.Close())
 	})
 	t.Run("AnyContentTypeBinaryStringSchemaDefault", func(t *testing.T) {
 		ctx, a, client := create(t)
@@ -209,6 +211,8 @@ func TestResponsesEncoding(t *testing.T) {
 		a.NoError(err)
 		a.Equal(testData, data)
 		a.Equal(200, r.StatusCode)
+
+		a.NoError(r.Response.Data.Close())
 	})
 	t.Run("MultipleGenericResponses", func(t *testing.T) {
 		ctx, a, client := create(t)
@@ -225,6 +229,8 @@ func TestResponsesEncoding(t *testing.T) {
 		data, err := io.ReadAll(r.Data)
 		a.NoError(err)
 		a.Equal(testData, data)
+
+		a.NoError(r.Data.Close())
 	})
 	t.Run("OctetStreamEmptySchema", func(t *testing.T) {
 		ctx, a, client := create(t)
@@ -234,6 +240,8 @@ func TestResponsesEncoding(t *testing.T) {
 		data, err := io.ReadAll(r.Data)
 		a.NoError(err)
 		a.Equal(testData, data)
+
+		a.NoError(r.Data.Close())
 	})
 	t.Run("TextPlainBinaryStringSchema", func(t *testing.T) {
 		ctx, a, client := create(t)
@@ -243,6 +251,8 @@ func TestResponsesEncoding(t *testing.T) {
 		data, err := io.ReadAll(r.Data)
 		a.NoError(err)
 		a.Equal(testData, data)
+
+		a.NoError(r.Data.Close())
 	})
 }
 

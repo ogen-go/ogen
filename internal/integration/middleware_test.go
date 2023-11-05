@@ -61,7 +61,13 @@ func ModifyRequest(logger *zap.Logger) middleware.Middleware {
 			if v, ok := req.Params[key].(int64); ok {
 				logger.Info("Modifying request", zap.Int64("petID", v))
 				req.Body = api.PetUploadAvatarByIDReq{
-					Data: io.MultiReader(strings.NewReader("prefix"), body.Data),
+					Data: struct {
+						io.Reader
+						io.Closer
+					}{
+						io.MultiReader(strings.NewReader("prefix"), body.Data),
+						body.Data,
+					},
 				}
 				req.Params[key] = v + 1
 			}

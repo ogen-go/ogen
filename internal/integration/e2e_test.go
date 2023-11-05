@@ -114,7 +114,7 @@ func (s *sampleAPIServer) PetGetByName(ctx context.Context, params api.PetGetByN
 
 func (s *sampleAPIServer) PetGetAvatarByName(ctx context.Context, params api.PetGetAvatarByNameParams) (api.PetGetAvatarByNameRes, error) {
 	return &api.PetGetAvatarByNameOK{
-		Data: bytes.NewReader(petAvatar),
+		Data: io.NopCloser(bytes.NewReader(petAvatar)),
 	}, nil
 }
 
@@ -129,7 +129,7 @@ func (s *sampleAPIServer) PetGetAvatarByID(ctx context.Context, params api.PetGe
 		}, nil
 	default:
 		return &api.PetGetAvatarByIDOK{
-			Data: bytes.NewReader(petAvatar),
+			Data: io.NopCloser(bytes.NewReader(petAvatar)),
 		}, nil
 	}
 }
@@ -403,7 +403,7 @@ func TestIntegration(t *testing.T) {
 			})
 			t.Run("Error", func(t *testing.T) {
 				stream := api.PetUploadAvatarByIDReq{
-					Data: bytes.NewReader(petAvatar),
+					Data: io.NopCloser(bytes.NewReader(petAvatar)),
 				}
 				got, err := client.PetUploadAvatarByID(ctx, stream, api.PetUploadAvatarByIDParams{
 					PetID: petErrorID,
@@ -423,6 +423,7 @@ func TestIntegration(t *testing.T) {
 				raw := got.(*api.PetGetAvatarByIDOK)
 				avatar, err := io.ReadAll(raw)
 				require.NoError(t, err)
+				require.NoError(t, raw.Close())
 
 				require.Equal(t, petAvatar, avatar)
 			})

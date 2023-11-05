@@ -28,17 +28,17 @@ func (t testHTTPRequests) AllRequestBodies(
 	_ context.Context,
 	req api.AllRequestBodiesReq,
 ) (api.AllRequestBodiesOK, error) {
-	var r io.Reader
+	var r io.ReadCloser
 
 	switch req := req.(type) {
 	case *api.AllRequestBodiesApplicationJSON:
-		r = strings.NewReader(req.Name)
+		r = io.NopCloser(strings.NewReader(req.Name))
 	case *api.AllRequestBodiesReqApplicationOctetStream:
 		r = req
 	case *api.AllRequestBodiesApplicationXWwwFormUrlencoded:
-		r = strings.NewReader(req.Name)
+		r = io.NopCloser(strings.NewReader(req.Name))
 	case *api.SimpleObjectMultipart:
-		r = strings.NewReader(req.Name)
+		r = io.NopCloser(strings.NewReader(req.Name))
 	case *api.AllRequestBodiesReqTextPlain:
 		r = req
 	default:
@@ -54,21 +54,21 @@ func (t testHTTPRequests) AllRequestBodiesOptional(
 	_ context.Context,
 	req api.AllRequestBodiesOptionalReq,
 ) (api.AllRequestBodiesOptionalOK, error) {
-	var r io.Reader
+	var r io.ReadCloser
 
 	switch req := req.(type) {
 	case *api.AllRequestBodiesOptionalApplicationJSON:
-		r = strings.NewReader(req.Name)
+		r = io.NopCloser(strings.NewReader(req.Name))
 	case *api.AllRequestBodiesOptionalReqApplicationOctetStream:
 		r = req
 	case *api.AllRequestBodiesOptionalApplicationXWwwFormUrlencoded:
-		r = strings.NewReader(req.Name)
+		r = io.NopCloser(strings.NewReader(req.Name))
 	case *api.SimpleObjectMultipart:
-		r = strings.NewReader(req.Name)
+		r = io.NopCloser(strings.NewReader(req.Name))
 	case *api.AllRequestBodiesOptionalReqTextPlain:
 		r = req
 	case *api.AllRequestBodiesOptionalReqEmptyBody:
-		r = strings.NewReader("<empty body>")
+		r = io.NopCloser(strings.NewReader("<empty body>"))
 	default:
 		panic(fmt.Sprintf("unknown request type: %T", req))
 	}
@@ -126,7 +126,7 @@ func TestRequests(t *testing.T) {
 				Name: testData,
 			},
 			&api.AllRequestBodiesReqApplicationOctetStream{
-				Data: strings.NewReader(testData),
+				Data: io.NopCloser(strings.NewReader(testData)),
 			},
 			&api.AllRequestBodiesApplicationXWwwFormUrlencoded{
 				Name: testData,
@@ -135,7 +135,7 @@ func TestRequests(t *testing.T) {
 				Name: testData,
 			},
 			&api.AllRequestBodiesReqTextPlain{
-				Data: strings.NewReader(testData),
+				Data: io.NopCloser(strings.NewReader(testData)),
 			},
 		}
 
@@ -147,6 +147,8 @@ func TestRequests(t *testing.T) {
 			data, err := io.ReadAll(resp.Data)
 			a.NoError(err)
 			a.Equal(testData, string(data))
+
+			a.NoError(resp.Data.Close())
 		}
 	})
 	t.Run("AllRequestBodiesOptional", func(t *testing.T) {
@@ -155,7 +157,7 @@ func TestRequests(t *testing.T) {
 				Name: testData,
 			},
 			&api.AllRequestBodiesOptionalReqApplicationOctetStream{
-				Data: strings.NewReader(testData),
+				Data: io.NopCloser(strings.NewReader(testData)),
 			},
 			&api.AllRequestBodiesOptionalApplicationXWwwFormUrlencoded{
 				Name: testData,
@@ -164,7 +166,7 @@ func TestRequests(t *testing.T) {
 				Name: testData,
 			},
 			&api.AllRequestBodiesOptionalReqTextPlain{
-				Data: strings.NewReader(testData),
+				Data: io.NopCloser(strings.NewReader(testData)),
 			},
 		}
 
@@ -176,6 +178,8 @@ func TestRequests(t *testing.T) {
 			data, err := io.ReadAll(resp.Data)
 			a.NoError(err)
 			a.Equal(testData, string(data))
+
+			a.NoError(resp.Data.Close())
 		}
 
 		// Check that empty body is handled correctly.
@@ -185,6 +189,8 @@ func TestRequests(t *testing.T) {
 		data, err := io.ReadAll(resp.Data)
 		a.NoError(err)
 		a.Equal("<empty body>", string(data))
+
+		a.NoError(resp.Data.Close())
 	})
 	t.Run("MaskContentType", func(t *testing.T) {
 		a := require.New(t)
@@ -192,7 +198,7 @@ func TestRequests(t *testing.T) {
 		_, err := client.MaskContentType(ctx, &api.MaskContentTypeReqWithContentType{
 			ContentType: "invalidCT",
 			Content: api.MaskContentTypeReq{
-				Data: strings.NewReader(testData),
+				Data: io.NopCloser(strings.NewReader(testData)),
 			},
 		})
 		a.EqualError(err, `encode request: "invalidCT" does not match mask "application/*"`)
@@ -200,7 +206,7 @@ func TestRequests(t *testing.T) {
 		resp, err := client.MaskContentType(ctx, &api.MaskContentTypeReqWithContentType{
 			ContentType: "application/json",
 			Content: api.MaskContentTypeReq{
-				Data: strings.NewReader(testData),
+				Data: io.NopCloser(strings.NewReader(testData)),
 			},
 		})
 		a.NoError(err)
@@ -213,7 +219,7 @@ func TestRequests(t *testing.T) {
 		_, err := client.MaskContentTypeOptional(ctx, &api.MaskContentTypeOptionalReqWithContentType{
 			ContentType: "invalidCT",
 			Content: api.MaskContentTypeOptionalReq{
-				Data: strings.NewReader(testData),
+				Data: io.NopCloser(strings.NewReader(testData)),
 			},
 		})
 		a.EqualError(err, `encode request: "invalidCT" does not match mask "application/*"`)
@@ -221,7 +227,7 @@ func TestRequests(t *testing.T) {
 		resp, err := client.MaskContentTypeOptional(ctx, &api.MaskContentTypeOptionalReqWithContentType{
 			ContentType: "application/json",
 			Content: api.MaskContentTypeOptionalReq{
-				Data: strings.NewReader(testData),
+				Data: io.NopCloser(strings.NewReader(testData)),
 			},
 		})
 		a.NoError(err)
@@ -245,7 +251,7 @@ func TestRequestBase64(t *testing.T) {
 	a.NoError(err)
 
 	resp, err := client.Base64Request(ctx, api.Base64RequestReq{
-		Data: strings.NewReader(testData),
+		Data: io.NopCloser(strings.NewReader(testData)),
 	})
 	a.NoError(err)
 
@@ -253,6 +259,8 @@ func TestRequestBase64(t *testing.T) {
 	_, err = io.Copy(&sb, resp.Data)
 	a.NoError(err)
 	a.Equal(testData, sb.String())
+
+	a.NoError(resp.Data.Close())
 
 	{
 		encoded := base64.StdEncoding.EncodeToString([]byte(testData))
@@ -348,7 +356,7 @@ func TestServerURLOverride(t *testing.T) {
 	resp, err := client.MaskContentType(api.WithServerURL(ctx, override), &api.MaskContentTypeReqWithContentType{
 		ContentType: "application/json",
 		Content: api.MaskContentTypeReq{
-			Data: strings.NewReader(testData),
+			Data: io.NopCloser(strings.NewReader(testData)),
 		},
 	})
 	a.NoError(err)
@@ -382,7 +390,7 @@ func TestServerURLTrimSlashes(t *testing.T) {
 		resp, err := client.MaskContentType(ctx, &api.MaskContentTypeReqWithContentType{
 			ContentType: "application/json",
 			Content: api.MaskContentTypeReq{
-				Data: strings.NewReader(testData),
+				Data: io.NopCloser(strings.NewReader(testData)),
 			},
 		})
 		a.NoError(err)

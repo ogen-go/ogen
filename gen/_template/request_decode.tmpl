@@ -64,7 +64,13 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) decode{{ $op.Name }}Req
 	{{- end }}
 	{{- if $t.IsStream }}
 		{{- if $t.IsBase64Stream }}
-		reader := base64.NewDecoder(base64.StdEncoding, r.Body)
+		reader := struct {
+			io.Reader
+			io.Closer
+		}{
+			Reader: base64.NewDecoder(base64.StdEncoding, r.Body),
+			Closer: r.Body,
+		}
 		{{- else }}
 		reader := r.Body
 		{{- end }}
