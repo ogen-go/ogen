@@ -141,12 +141,12 @@ func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Responses.GoT
 		{{- else if $type.IsStream }}
 			{{- if $type.IsBase64Stream }}
 			reader := struct {
-            	io.Reader
-            	io.Closer
-            }{
-            	Reader: base64.NewDecoder(base64.StdEncoding, resp.Body),
-            	Closer: resp.Body,
-            }
+				io.Reader
+				io.Closer
+			}{
+				Reader: base64.NewDecoder(base64.StdEncoding, resp.Body),
+				Closer: resp.Body,
+			}
 			{{- else }}
 			reader := resp.Body
 			{{- end }}
