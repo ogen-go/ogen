@@ -74,6 +74,7 @@ func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Responses.GoT
 {{- $response := $.Response }}
 {{- $ptr := $.Ptr }}
 {{- if $response.NoContent }}{{/* Decode NoContent response */}}
+	defer resp.Body.Close()
 	{{- if $response.WithHeaders }}
 		var wrapper {{ $response.NoContent.Name }}
 		{{- if $response.WithStatusCode }}
@@ -91,6 +92,7 @@ func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Responses.GoT
 {{- else }}{{/* Decode content response */}}
 	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 	if err != nil {
+		resp.Body.Close()
 		return res, errors.Wrap(err, "parse media type")
 	}
 	switch {
@@ -108,6 +110,7 @@ func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Responses.GoT
 		{{- end }}
 
 		{{- if $encoding.JSON }}
+			defer resp.Body.Close()
 			{{- if $media.JSONStreaming }}
 			d := jx.Decode(resp.Body, -1)
 			{{- else }}
@@ -137,17 +140,20 @@ func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Responses.GoT
 			}
 		{{- else if $type.IsStream }}
 			{{- if $type.IsBase64Stream }}
-			reader := base64.NewDecoder(base64.StdEncoding, resp.Body)
+			reader := struct {
+            	io.Reader
+            	io.Closer
+            }{
+            	Reader: base64.NewDecoder(base64.StdEncoding, resp.Body),
+            	Closer: resp.Body,
+            }
 			{{- else }}
 			reader := resp.Body
 			{{- end }}
-			b, err := io.ReadAll(reader){{/* TODO: don't copy stream */}}
-			if err != nil {
-				return res, err
-			}
 
-			response := {{ $type.Name }}{Data: io.NopCloser(bytes.NewReader(b))}
+			response := {{ $type.Name }}{Data: reader}
 		{{- else }}
+			resp.Body.Close()
 			{{- errorf "%q: %s decoder not implemented" $encoding $type }}
 		{{- end }}
 
@@ -169,6 +175,7 @@ func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Responses.GoT
 		{{- end }}
 	{{- end }}{{/* Range over contents */}}
 	default:
+		resp.Body.Close()
 		return res, validate.InvalidContentType(ct)
 	}
 {{- end }}{{/* Decode content response */}}

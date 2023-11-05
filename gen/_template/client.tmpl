@@ -300,7 +300,6 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decode{{ $op.Name }}Response(resp)

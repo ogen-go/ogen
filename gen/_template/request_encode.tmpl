@@ -96,8 +96,8 @@ func encode{{ $op.Name }}Request(
 				}
 			}()
 
-			defer req.Close()
 			_, err := io.Copy(writer, req)
+			req.Close()
 			return err
 		})
 	{{- else }}
