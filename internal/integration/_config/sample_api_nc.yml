@@ -1,0 +1,5 @@
+parser:
+  infer_types: true
+generator:
+  no_client: true
+  ignore_not_implemented: ["enum format"]
