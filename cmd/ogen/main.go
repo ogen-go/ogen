@@ -2,18 +2,19 @@
 package main
 
 import (
+	"bytes"
 	"flag"
 	"fmt"
 	"io"
 	"os"
 	"path/filepath"
-	"regexp"
 	"runtime"
 	"runtime/pprof"
 	"strings"
 	"time"
 
 	"github.com/go-faster/errors"
+	"github.com/go-faster/yaml"
 	"go.uber.org/multierr"
 	"go.uber.org/zap"
 
@@ -48,12 +49,15 @@ func cleanDir(targetDir string, files []os.DirEntry) (rerr error) {
 
 func generate(data []byte, packageName, targetDir string, clean bool, opts gen.Options) error {
 	log := opts.Logger
+	if log == nil {
+		log = zap.NewNop()
+	}
 
 	spec, err := ogen.Parse(data)
 	if err != nil {
 		// For pretty error message, we need to pass location.File.
 		return &location.Error{
-			File: opts.File,
+			File: opts.Parser.File,
 			Err:  errors.Wrap(err, "parse spec"),
 		}
 	}
@@ -131,6 +135,37 @@ Also, you can use --ct-alias to map content types to supported ones.
 	return false
 }
 
+func loadConfig(cfgPath string) (opts gen.Options, _ error) {
+	if cfgPath == "" {
+		for _, potentialPath := range []string{
+			"ogen.yml",
+			"ogen.yaml",
+			".ogen.yml",
+			".ogen.yaml",
+		} {
+			if _, err := os.Stat(potentialPath); err == nil {
+				cfgPath = potentialPath
+				goto read
+			}
+		}
+		return opts, nil
+	}
+read:
+	data, err := os.ReadFile(cfgPath)
+	if err != nil {
+		return opts, err
+	}
+
+	d := yaml.NewDecoder(bytes.NewReader(data))
+	d.KnownFields(true)
+
+	if err := d.Decode(&opts); err != nil {
+		return opts, err
+	}
+
+	return opts, nil
+}
+
 func run() error {
 	set := flag.NewFlagSet(os.Args[0], flag.ExitOnError)
 	set.Usage = func() {
@@ -140,24 +175,13 @@ func run() error {
 	}
 
 	var (
+		// Config flag.
+		cfgPath = set.String("config", "", "Path to config file")
+
 		// Generator options.
-		targetDir         = set.String("target", "api", "Path to target dir")
-		packageName       = set.String("package", "api", "Target package name")
-		inferTypes        = set.Bool("infer-types", false, "Infer schema types, if type is not defined explicitly")
-		clean             = set.Bool("clean", false, "Clean generated files before generation")
-		generateTests     = set.Bool("generate-tests", false, "Generate tests encode-decode/based on schema examples")
-		allowRemote       = set.Bool("allow-remote", false, "Enables remote references resolving")
-		skipTestsRegex    = set.String("skip-tests", "", "Skip tests matched by regex")
-		skipUnimplemented = set.Bool("skip-unimplemented", false, "Disables generation of UnimplementedHandler")
-		noClient          = set.Bool("no-client", false, "Disables client generation")
-		noServer          = set.Bool("no-server", false, "Disables server generation")
-		noWebhookClient   = set.Bool("no-webhook-client", false, "Disables webhook client generation")
-		noWebhookServer   = set.Bool("no-webhook-server", false, "Disables webhook server generation")
-		expandSpec        = set.String("expand-spec", "", "Path to file to generate expanded spec")
-		// Debug options.
-		debugIgnoreNotImplemented = set.String("debug.ignoreNotImplemented", "",
-			"Ignore methods having functionality which is not implemented")
-		debugNoerr = set.Bool("debug.noerr", false, "Ignore errors")
+		targetDir   = set.String("target", "api", "Path to target dir")
+		packageName = set.String("package", "api", "Target package name")
+		clean       = set.Bool("clean", false, "Clean generated files before generation")
 
 		// Logging options.
 		logOptions ogenzap.Options
@@ -171,30 +195,6 @@ func run() error {
 		version = set.Bool("version", false, "Print version and exit")
 	)
 	logOptions.RegisterFlags(set)
-
-	var (
-		ctAliases        gen.ContentTypeAliases
-		convenientErrors gen.ConvenientErrors
-
-		filterPath    *regexp.Regexp
-		filterMethods []string
-	)
-	set.Var(&convenientErrors, "convenient-errors", `Convenient errors mode: on, off or auto (default)`)
-	set.Var(&ctAliases, "ct-alias", "Content type alias, e.g. text/x-markdown=text/plain")
-	set.Func("filter-path", "Filter operations by path regex", func(s string) (err error) {
-		filterPath, err = regexp.Compile(s)
-		return err
-	})
-	set.Func("filter-methods", "Filter operations by HTTP methods (comma-separated)", func(s string) error {
-		for _, m := range strings.Split(s, ",") {
-			m = strings.TrimSpace(m)
-			if m == "" {
-				continue
-			}
-			filterMethods = append(filterMethods, m)
-		}
-		return nil
-	})
 
 	if err := set.Parse(os.Args[1:]); err != nil {
 		return err
@@ -255,46 +255,15 @@ func run() error {
 		}()
 	}
 
-	opts := gen.Options{
-		NoClient:             *noClient,
-		NoServer:             *noServer,
-		NoWebhookClient:      *noWebhookClient,
-		NoWebhookServer:      *noWebhookServer,
-		GenerateExampleTests: *generateTests,
-		SkipTestRegex:        nil, // Set below.
-		SkipUnimplemented:    *skipUnimplemented,
-		InferSchemaType:      *inferTypes,
-		AllowRemote:          *allowRemote,
-		Filters: gen.Filters{
-			PathRegex: filterPath,
-			Methods:   filterMethods,
-		},
-		IgnoreNotImplemented: strings.Split(*debugIgnoreNotImplemented, ","),
-		ConvenientErrors:     convenientErrors,
-		ContentTypeAliases:   ctAliases,
-		ExpandSpec:           *expandSpec,
-		Logger:               logger,
+	opts, err := loadConfig(*cfgPath)
+	if err != nil {
+		return errors.Wrap(err, "load config")
 	}
+	opts.Logger = logger
 
 	data, err := opts.SetLocation(specPath, gen.RemoteOptions{})
 	if err != nil {
-		return err
-	}
-
-	if expr := *skipTestsRegex; expr != "" {
-		r, err := regexp.Compile(expr)
-		if err != nil {
-			return errors.Wrap(err, "skipTestsRegex")
-		}
-		opts.SkipTestRegex = r
-	}
-	if *debugNoerr {
-		opts.IgnoreNotImplemented = []string{"all"}
-	} else {
-		// Normalize ignore rules.
-		for i := range opts.IgnoreNotImplemented {
-			opts.IgnoreNotImplemented[i] = strings.TrimSpace(opts.IgnoreNotImplemented[i])
-		}
+		return errors.Wrap(err, "resolve spec")
 	}
 
 	if err := generate(data, *packageName, *targetDir, *clean, opts); err != nil {
