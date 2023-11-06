@@ -14,10 +14,7 @@ import (
 	"github.com/ogen-go/ogen/gen"
 	"github.com/ogen-go/ogen/gen/genfs"
 	"github.com/ogen-go/ogen/gen/ir"
-	"github.com/ogen-go/ogen/internal/integration/customformats/phonetype"
-	"github.com/ogen-go/ogen/internal/integration/customformats/rgbatype"
 	"github.com/ogen-go/ogen/internal/location"
-	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi/parser"
 )
 
@@ -41,8 +38,7 @@ func testGenerate(t *testing.T, dir, filename string, data []byte, aliases ctAli
 		Logger:             log,
 	}
 
-	switch filename {
-	case "file_reference.yml": // HACK
+	if filename == "file_reference.yml" { // HACK
 		opt.AllowRemote = true
 		opt.RootURL = &url.URL{
 			Scheme: "file",
@@ -61,21 +57,6 @@ func testGenerate(t *testing.T, dir, filename string, data []byte, aliases ctAli
 					return u.Opaque, nil
 				}
 				return u.Path, nil
-			},
-		}
-	case "custom_formats.json":
-		opt.CustomFormats = gen.CustomFormatsMap{
-			jsonschema.String: {
-				"phone": gen.CustomFormat[
-					phonetype.Phone,
-					phonetype.JSONPhoneEncoding,
-					phonetype.TextPhoneEncoding,
-				](),
-				"rgba": gen.CustomFormat[
-					rgbatype.RGBA,
-					rgbatype.JSONRGBAEncoding,
-					rgbatype.TextRGBAEncoding,
-				](),
 			},
 		}
 	}

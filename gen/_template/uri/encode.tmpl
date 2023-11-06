@@ -2,9 +2,7 @@
 {{- define "uri/encode" }}
 {{- $t := $.Type }}
 {{- $var := $.Var }}
-{{- if $t.CustomFormat }}
-	return e.EncodeValue(format{{ $t.CustomFormat }}().EncodeText({{ $var }}))
-{{- else if $t.IsPrimitive }}
+{{- if $t.IsPrimitive }}
 	return e.EncodeValue(conv.{{ $t.ToString }}({{ $var }}))
 {{- else if $t.IsEnum }}
 	return e.EncodeValue(conv.{{ $t.ToString }}({{ $t.Primitive.String }}({{ $var }})))

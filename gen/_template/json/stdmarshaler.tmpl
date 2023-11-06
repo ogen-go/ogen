@@ -7,8 +7,6 @@ func (s {{ $.ReadOnlyReceiver }}) MarshalJSON() ([]byte, error) {
 {{- if $.IsGeneric }}
 	{{- if $g.Format }}
 	s.Encode(&e, json.Encode{{ $g.JSON.Format }})
-	{{- else if $g.CustomFormat }}
-	s.Encode(&e, format{{ $g.CustomFormat }}().EncodeJSON)
 	{{- else }}
 	s.Encode(&e)
 	{{- end }}
@@ -24,8 +22,6 @@ func (s *{{ $.Name }}) UnmarshalJSON(data []byte) error {
 {{- if $.IsGeneric }}
 	{{- if $g.Format }}
 	return s.Decode(d, json.Decode{{ $g.JSON.Format }})
-	{{- else if $g.CustomFormat }}
-	return s.Decode(d, format{{ $g.CustomFormat }}().DecodeJSON)
 	{{- else }}
 	return s.Decode(d)
 	{{- end }}
