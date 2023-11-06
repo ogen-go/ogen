@@ -152,20 +152,11 @@ func (g *schemaGen) parseSimple(schema *jsonschema.Schema) *ir.Type {
 	// TODO(tdakkota): check ContentEncoding field
 	t, found := mapping[schema.Type][schema.Format]
 	if !found {
-		if custom, ok := g.customFormats[schema.Type][schema.Format]; ok {
-			return g.customFormat(custom, schema)
-		}
 		// Fallback to default.
 		t = mapping[schema.Type][""]
 	}
 
 	return ir.Primitive(t, schema)
-}
-
-func (g *schemaGen) customFormat(custom ir.CustomFormat, schema *jsonschema.Schema) *ir.Type {
-	typ := ir.Primitive(ir.Custom, schema)
-	typ.CustomFormat = &custom
-	return typ
 }
 
 func TypeFormatMapping() map[jsonschema.SchemaType]map[string]ir.PrimitiveType {

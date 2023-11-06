@@ -8,7 +8,6 @@ import (
 	"regexp"
 	"runtime"
 	"runtime/pprof"
-	"strings"
 	"sync"
 	"text/template"
 
@@ -35,7 +34,6 @@ type TemplateConfig struct {
 	Router        Router
 	WebhookRouter WebhookRouter
 	CustomImports []string
-	CustomFormats []ir.CustomFormat
 
 	PathsClientEnabled   bool
 	PathsServerEnabled   bool
@@ -238,16 +236,6 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		types[name] = t
 	}
 
-	var customFormats []ir.CustomFormat
-	for _, formats := range g.customFormats {
-		for _, format := range formats {
-			customFormats = append(customFormats, format)
-		}
-	}
-	slices.SortStableFunc(customFormats, func(i, j ir.CustomFormat) int {
-		return strings.Compare(i.Name, j.Name)
-	})
-
 	cfg := TemplateConfig{
 		Package:              pkgName,
 		Operations:           g.operations,
@@ -261,12 +249,12 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		Router:               g.router,
 		WebhookRouter:        g.webhookRouter,
 		CustomImports:        g.imports,
-		CustomFormats:        customFormats,
 		PathsClientEnabled:   !g.opt.NoClient,
 		PathsServerEnabled:   !g.opt.NoServer,
 		WebhookClientEnabled: !g.opt.NoWebhookClient && len(g.webhooks) > 0,
 		WebhookServerEnabled: !g.opt.NoWebhookServer && len(g.webhooks) > 0,
-		skipTestRegex:        g.opt.SkipTestRegex,
+		// Unused for now.
+		skipTestRegex: nil,
 	}
 	if cfg.Error != nil {
 		if len(cfg.Error.Contents) != 1 {
@@ -323,7 +311,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		{"security", (genClient || genServer) && len(g.securities) > 0},
 		{"test_examples", g.opt.GenerateExampleTests},
 		{"faker", g.opt.GenerateExampleTests},
-		{"unimplemented", !g.opt.SkipUnimplemented && genServer},
+		{"unimplemented", !g.opt.NoUnimplemented && genServer},
 	} {
 		t := t
 		if !t.enabled {

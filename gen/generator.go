@@ -20,7 +20,8 @@ import (
 
 // Generator is OpenAPI-to-Go generator.
 type Generator struct {
-	opt           Options
+	opt           GenerateOptions
+	parseOpts     ParseOptions
 	api           *openapi.API
 	servers       []ir.Server
 	operations    []*ir.Operation
@@ -30,8 +31,6 @@ type Generator struct {
 	errType       *ir.Response
 	webhookRouter WebhookRouter
 	router        Router
-
-	customFormats map[jsonschema.SchemaType]map[string]ir.CustomFormat
 	imports       []string
 
 	log *zap.Logger
@@ -70,14 +69,14 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	opts.setDefaults()
 
 	var external jsonschema.ExternalResolver
-	if opts.AllowRemote {
-		external = jsonschema.NewExternalResolver(opts.Remote)
+	if opts.Parser.AllowRemote {
+		external = jsonschema.NewExternalResolver(opts.Parser.Remote)
 	}
 	api, err := parser.Parse(spec, parser.Settings{
 		External:   external,
-		File:       opts.File,
-		RootURL:    opts.RootURL,
-		InferTypes: opts.InferSchemaType,
+		File:       opts.Parser.File,
+		RootURL:    opts.Parser.RootURL,
+		InferTypes: opts.Parser.InferSchemaType,
 	})
 	if err != nil {
 		return nil, &ErrParseSpec{err: err}
@@ -90,7 +89,8 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	}
 
 	g := &Generator{
-		opt:           opts,
+		opt:           opts.Generator,
+		parseOpts:     opts.Parser,
 		api:           api,
 		servers:       nil,
 		operations:    nil,
@@ -100,12 +100,7 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 		errType:       nil,
 		webhookRouter: WebhookRouter{},
 		router:        Router{},
-		customFormats: map[jsonschema.SchemaType]map[string]ir.CustomFormat{},
 		log:           opts.Logger,
-	}
-
-	if err := g.makeCustomFormats(); err != nil {
-		return nil, errors.Wrap(err, "make custom formats")
 	}
 
 	if err := g.makeIR(api); err != nil {
