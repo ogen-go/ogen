@@ -1,0 +1,3 @@
+generator:
+  generate_tests: true
+  ignore_not_implemented: ["all"]
