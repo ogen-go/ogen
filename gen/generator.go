@@ -31,7 +31,6 @@ type Generator struct {
 	errType       *ir.Response
 	webhookRouter WebhookRouter
 	router        Router
-	imports       []string
 
 	log *zap.Logger
 }

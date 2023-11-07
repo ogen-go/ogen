@@ -248,7 +248,6 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		Securities:           g.securities,
 		Router:               g.router,
 		WebhookRouter:        g.webhookRouter,
-		CustomImports:        g.imports,
 		PathsClientEnabled:   !g.opt.NoClient,
 		PathsServerEnabled:   !g.opt.NoServer,
 		WebhookClientEnabled: !g.opt.NoWebhookClient && len(g.webhooks) > 0,
