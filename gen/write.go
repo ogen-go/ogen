@@ -33,7 +33,6 @@ type TemplateConfig struct {
 	Securities    map[string]*ir.Security
 	Router        Router
 	WebhookRouter WebhookRouter
-	CustomImports []string
 
 	PathsClientEnabled   bool
 	PathsServerEnabled   bool
@@ -236,6 +235,10 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		types[name] = t
 	}
 
+	features, err := g.opt.Features.Build()
+	if err != nil {
+		return errors.Wrap(err, "build feature set")
+	}
 	cfg := TemplateConfig{
 		Package:              pkgName,
 		Operations:           g.operations,
@@ -248,10 +251,10 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		Securities:           g.securities,
 		Router:               g.router,
 		WebhookRouter:        g.webhookRouter,
-		PathsClientEnabled:   !g.opt.NoClient,
-		PathsServerEnabled:   !g.opt.NoServer,
-		WebhookClientEnabled: !g.opt.NoWebhookClient && len(g.webhooks) > 0,
-		WebhookServerEnabled: !g.opt.NoWebhookServer && len(g.webhooks) > 0,
+		PathsClientEnabled:   features.Has(PathsClient),
+		PathsServerEnabled:   features.Has(PathsServer),
+		WebhookClientEnabled: features.Has(WebhooksClient) && len(g.webhooks) > 0,
+		WebhookServerEnabled: features.Has(WebhooksServer) && len(g.webhooks) > 0,
 		// Unused for now.
 		skipTestRegex: nil,
 	}
@@ -282,8 +285,8 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		})
 	}
 	var (
-		genClient = cfg.PathsClientEnabled || cfg.WebhookClientEnabled
-		genServer = cfg.PathsServerEnabled || cfg.WebhookServerEnabled
+		genClient = cfg.AnyClientEnabled()
+		genServer = cfg.AnyServerEnabled()
 	)
 	for _, t := range []struct {
 		name    string
@@ -308,9 +311,9 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		{"router", genServer},
 		{"defaults", g.hasDefaultFields()},
 		{"security", (genClient || genServer) && len(g.securities) > 0},
-		{"test_examples", g.opt.GenerateExampleTests},
-		{"faker", g.opt.GenerateExampleTests},
-		{"unimplemented", !g.opt.NoUnimplemented && genServer},
+		{"test_examples", features.Has(DebugExampleTests)},
+		{"faker", features.Has(DebugExampleTests)},
+		{"unimplemented", features.Has(OgenUnimplemented) && genServer},
 	} {
 		t := t
 		if !t.enabled {

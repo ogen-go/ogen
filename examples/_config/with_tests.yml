@@ -1,2 +1,4 @@
 generator:
-  generate_tests: true
+  features:
+    enable:
+      - "debug/example_tests"

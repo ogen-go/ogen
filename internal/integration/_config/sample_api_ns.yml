@@ -1,5 +1,7 @@
 parser:
   infer_types: true
 generator:
-  no_server: true
+  features:
+    disable:
+      - "paths/server"
   ignore_not_implemented: ["enum format"]
