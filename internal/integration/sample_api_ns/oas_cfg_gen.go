@@ -78,14 +78,13 @@ type ClientOption interface {
 	applyClient(*clientConfig)
 }
 
-var _ = []ClientOption{
-	(optionFunc[clientConfig])(nil),
-	(otelOptionFunc)(nil),
-}
+var _ ClientOption = (optionFunc[clientConfig])(nil)
 
 func (o optionFunc[C]) applyClient(c *C) {
 	o(c)
 }
+
+var _ ClientOption = (otelOptionFunc)(nil)
 
 func (o otelOptionFunc) applyClient(c *clientConfig) {
 	o(&c.otelConfig)

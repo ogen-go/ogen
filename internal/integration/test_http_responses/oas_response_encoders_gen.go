@@ -35,8 +35,7 @@ func encodeAnyContentTypeBinaryStringSchemaDefaultResponse(response *AnyContentT
 		code = http.StatusOK
 	}
 	w.WriteHeader(code)
-	st := http.StatusText(code)
-	if code >= http.StatusBadRequest {
+	if st := http.StatusText(code); code >= http.StatusBadRequest {
 		span.SetStatus(codes.Error, st)
 	} else {
 		span.SetStatus(codes.Ok, st)
@@ -76,8 +75,7 @@ func encodeCombinedResponse(response CombinedRes, w http.ResponseWriter, span tr
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
+		if st := http.StatusText(code); code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -102,8 +100,7 @@ func encodeCombinedResponse(response CombinedRes, w http.ResponseWriter, span tr
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
+		if st := http.StatusText(code); code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -128,8 +125,7 @@ func encodeCombinedResponse(response CombinedRes, w http.ResponseWriter, span tr
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
+		if st := http.StatusText(code); code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -225,8 +221,7 @@ func encodeHeadersCombinedResponse(response HeadersCombinedRes, w http.ResponseW
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
+		if st := http.StatusText(code); code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -260,8 +255,7 @@ func encodeHeadersCombinedResponse(response HeadersCombinedRes, w http.ResponseW
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
+		if st := http.StatusText(code); code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -300,8 +294,7 @@ func encodeHeadersDefaultResponse(response *HeadersDefaultDef, w http.ResponseWr
 		code = http.StatusOK
 	}
 	w.WriteHeader(code)
-	st := http.StatusText(code)
-	if code >= http.StatusBadRequest {
+	if st := http.StatusText(code); code >= http.StatusBadRequest {
 		span.SetStatus(codes.Error, st)
 	} else {
 		span.SetStatus(codes.Ok, st)
@@ -383,8 +376,7 @@ func encodeHeadersPatternResponse(response *HeadersPattern4XX, w http.ResponseWr
 		code = http.StatusOK
 	}
 	w.WriteHeader(code)
-	st := http.StatusText(code)
-	if code >= http.StatusBadRequest {
+	if st := http.StatusText(code); code >= http.StatusBadRequest {
 		span.SetStatus(codes.Error, st)
 	} else {
 		span.SetStatus(codes.Ok, st)
@@ -419,8 +411,7 @@ func encodeIntersectPatternCodeResponse(response IntersectPatternCodeRes, w http
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
+		if st := http.StatusText(code); code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
