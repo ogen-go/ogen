@@ -24,7 +24,7 @@ var ratMap = map[string]*big.Rat{
 }
 {{- end }}
 
-{{- if or $.AnyServerEnabled $.AnyClientEnabled }}
+{{- if $.AnyInstrumentable }}
 var (
 	{{- if $.AnyClientEnabled }}
 	// Allocate option closure once.

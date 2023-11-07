@@ -38,6 +38,7 @@ type TemplateConfig struct {
 	PathsServerEnabled   bool
 	WebhookClientEnabled bool
 	WebhookServerEnabled bool
+	OpenTelemetryEnabled bool
 
 	skipTestRegex *regexp.Regexp
 }
@@ -50,6 +51,11 @@ func (t TemplateConfig) AnyClientEnabled() bool {
 // AnyServerEnabled returns true, if webhooks or paths server is enabled.
 func (t TemplateConfig) AnyServerEnabled() bool {
 	return t.PathsServerEnabled || t.WebhookServerEnabled
+}
+
+// AnyInstrumentable returns true, if OpenTelemetry integration enabled and there is client/server to instrument.
+func (t TemplateConfig) AnyInstrumentable() bool {
+	return t.OpenTelemetryEnabled && (t.AnyClientEnabled() || t.AnyServerEnabled())
 }
 
 // ErrorGoType returns Go type of error.
@@ -255,6 +261,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		PathsServerEnabled:   features.Has(PathsServer),
 		WebhookClientEnabled: features.Has(WebhooksClient) && len(g.webhooks) > 0,
 		WebhookServerEnabled: features.Has(WebhooksServer) && len(g.webhooks) > 0,
+		OpenTelemetryEnabled: features.Has(OgenOtel),
 		// Unused for now.
 		skipTestRegex: nil,
 	}
