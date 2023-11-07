@@ -2,10 +2,11 @@ package integration
 
 // Sample API matrix:
 //
-//go:generate go run ../../cmd/ogen -v --clean --config _config/sample_api.yml      --target sample_api      ../../_testdata/positive/sample.json
-//go:generate go run ../../cmd/ogen -v --clean --config _config/sample_api_ns.yml   --target sample_api_ns   ../../_testdata/positive/sample.json
-//go:generate go run ../../cmd/ogen -v --clean --config _config/sample_api_nc.yml   --target sample_api_nc   ../../_testdata/positive/sample.json
-//go:generate go run ../../cmd/ogen -v --clean --config _config/sample_api_nsnc.yml --target sample_api_nsnc ../../_testdata/positive/sample.json
+//go:generate go run ../../cmd/ogen -v --clean --config _config/sample_api.yml         --target sample_api         ../../_testdata/positive/sample.json
+//go:generate go run ../../cmd/ogen -v --clean --config _config/sample_api_ns.yml      --target sample_api_ns      ../../_testdata/positive/sample.json
+//go:generate go run ../../cmd/ogen -v --clean --config _config/sample_api_nc.yml      --target sample_api_nc      ../../_testdata/positive/sample.json
+//go:generate go run ../../cmd/ogen -v --clean --config _config/sample_api_nsnc.yml    --target sample_api_nsnc    ../../_testdata/positive/sample.json
+//go:generate go run ../../cmd/ogen -v --clean --config _config/sample_api_no_otel.yml --target sample_api_no_otel ../../_testdata/positive/sample.json
 
 //go:generate go run ../../cmd/ogen -v --clean --config _config/errors.yml --target sample_err ../../_testdata/positive/convenient_errors/errors.json
 //go:generate go run ../../cmd/ogen -v --clean --config _config/techempower.yml --package techempower --target techempower ../../_testdata/examples/techempower.json
