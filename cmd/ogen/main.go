@@ -115,19 +115,52 @@ func handleGenerateError(w io.Writer, color bool, err error) (r bool) {
 	if notImplErr, ok := errors.Into[*gen.ErrNotImplemented](err); ok {
 		_, _ = fmt.Fprintf(w, `
 Feature %[1]q is not implemented yet.
-Try to run ogen with --debug.ignoreNotImplemented %[1]q or with --debug.noerr to skip unsupported operations.
+Try to create ogen.yml with:
+
+generator:
+	ignore_not_implemented: %[1]q
+
+or
+
+generator:
+	ignore_not_implemented: ["all"]
+
+to skip unsupported operations.
 `, notImplErr.Name)
 		return true
 	}
 
 	if ctErr, ok := errors.Into[*gen.ErrUnsupportedContentTypes](err); ok {
+		var msg string
+		if len(ctErr.ContentTypes) == 1 {
+			msg = fmt.Sprintf(
+				`Content type %q is unsupported.`,
+				ctErr.ContentTypes[0],
+			)
+		} else {
+			msg = fmt.Sprintf(
+				`Content types [%s] are unsupported.`,
+				strings.Join(ctErr.ContentTypes, ", "),
+			)
+		}
+
 		_, _ = fmt.Fprintf(w, `
-Content types [%s] are unsupported.
-Try to run ogen with --debug.ignoreNotImplemented %q or with --debug.noerr to skip unsupported operations.
-Also, you can use --ct-alias to map content types to supported ones.
+%s
+Try to create ogen.yml with:
+
+generator:
+	ignore_not_implemented: [%q]
+
+or
+
+generator:
+	ignore_not_implemented: ["all"]
+
+to skip unsupported operations.
+Also, you can use "content_type_aliases" field to map content types to supported ones.
 `,
-			strings.Join(ctErr.ContentTypes, ", "),
-			"unsupported content type",
+			msg,
+			"unsupported content types",
 		)
 		return true
 	}
