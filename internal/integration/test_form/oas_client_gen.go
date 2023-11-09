@@ -477,11 +477,6 @@ func (c *Client) TestMultipartUpload(ctx context.Context, request *TestMultipart
 }
 
 func (c *Client) sendTestMultipartUpload(ctx context.Context, request *TestMultipartUploadReq) (res *TestMultipartUploadOK, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("testMultipartUpload"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/testMultipartUpload"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -490,6 +485,11 @@ func (c *Client) sendTestMultipartUpload(ctx context.Context, request *TestMulti
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("testMultipartUpload"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/testMultipartUpload"),
 	}
 
 	// Run stopwatch.
@@ -702,11 +702,6 @@ func (c *Client) TestShareFormSchema(ctx context.Context, request TestShareFormS
 }
 
 func (c *Client) sendTestShareFormSchema(ctx context.Context, request TestShareFormSchemaReq) (res *TestShareFormSchemaOK, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("testShareFormSchema"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/testShareFormSchema"),
-	}
 	// Validate request before sending.
 	switch request := request.(type) {
 	case *SharedRequest:
@@ -715,6 +710,11 @@ func (c *Client) sendTestShareFormSchema(ctx context.Context, request TestShareF
 		// Validation is not required for this type.
 	default:
 		return res, errors.Errorf("unexpected request type: %T", request)
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("testShareFormSchema"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/testShareFormSchema"),
 	}
 
 	// Run stopwatch.

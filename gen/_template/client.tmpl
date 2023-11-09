@@ -81,7 +81,7 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 }
 
 {{- range $op := $ops }}
-	{{ template "client/operation" $op }}
+	{{ template "client/operation" op_elem $op $ }}
 {{- end }}
 
 {{- end }}
@@ -106,7 +106,7 @@ func NewWebhookClient(opts ...ClientOption) (*WebhookClient, error) {
 }
 
 {{- range $op := $ops }}
-    {{ template "client/operation" $op }}
+    {{ template "client/operation" op_elem $op $ }}
 {{- end }}
 
 {{- end }}
@@ -115,7 +115,8 @@ func NewWebhookClient(opts ...ClientOption) (*WebhookClient, error) {
 {{ end }}
 
 {{ define "client/operation" }}
-{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/ -}}{{ $op := $ }}
+{{- /*gotype: github.com/ogen-go/ogen/gen.OperationElem*/ -}}{{ $op := $.Operation }}
+{{- $otel := $.Config.OpenTelemetryEnabled }}
 // {{ $op.Name }} invokes {{ $op.PrettyOperationID }} operation.
 //
 {{- template "godoc_op" $op }}
@@ -135,23 +136,6 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 	{{- if $op.WebhookInfo }}, targetURL string{{ end }}
 	{{- if $op.Request }}, request {{ $op.Request.GoType }}{{ end }}
 	{{- if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (res {{ $op.Responses.GoType }}, err error) {
-
-	{{- $hasOTELAttrs := false }}
-	{{- $ogenAttrs := $op.OTELAttributes }}
-	{{- if or $ogenAttrs (not $op.WebhookInfo) }}
-	{{- $hasOTELAttrs = true }}
-	otelAttrs := []attribute.KeyValue{
-		{{- range $attr := $ogenAttrs }}
-		{{ $attr.String }},
-		{{- end }}
-		{{- if not $op.WebhookInfo }}
-		semconv.HTTPMethodKey.String({{ upper $op.Spec.HTTPMethod | quote }}),
-		semconv.HTTPRouteKey.String({{ quote $op.Spec.Path }}),
-		{{- end }}
-	}
-	{{- else }}
-	var otelAttrs []attribute.KeyValue
-	{{- end }}
 
 	{{- if $op.Request }}{{/* Request validation */}}
 		{{- if $op.Request.Type.IsInterface }}
@@ -187,36 +171,55 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 		{{- end }}
 	{{- end }}{{/* Request validation */}}
 
-	// Run stopwatch.
-	startTime := time.Now()
-	defer func() {
-		// Use floating point division here for higher precision (instead of Millisecond method).
-		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
-	}()
-
-	// Increment request counter.
-	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
-
-	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, {{ quote $op.Name }},
-		{{- if $hasOTELAttrs }}
-		trace.WithAttributes(otelAttrs...),
-		{{- end }}
-		clientSpanKind,
-	)
-	// Track stage for error reporting.
-	var stage string
-	defer func() {
-		if err != nil {
-			span.RecordError(err)
-			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+	{{- if $otel }}
+		{{- $hasOTELAttrs := false }}
+		{{- $ogenAttrs := $op.OTELAttributes }}
+		{{- if or $ogenAttrs (not $op.WebhookInfo) }}
+		{{- $hasOTELAttrs = true }}
+		otelAttrs := []attribute.KeyValue{
+			{{- range $attr := $ogenAttrs }}
+			{{ $attr.String }},
+			{{- end }}
+			{{- if not $op.WebhookInfo }}
+			semconv.HTTPMethodKey.String({{ upper $op.Spec.HTTPMethod | quote }}),
+			semconv.HTTPRouteKey.String({{ quote $op.Spec.Path }}),
+			{{- end }}
 		}
-		span.End()
-	}()
+		{{- else }}
+		var otelAttrs []attribute.KeyValue
+		{{- end }}
 
-	stage = "BuildURL"
+		// Run stopwatch.
+		startTime := time.Now()
+		defer func() {
+			// Use floating point division here for higher precision (instead of Millisecond method).
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		}()
+
+		// Increment request counter.
+		c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+		// Start a span for this request.
+		ctx, span := c.cfg.Tracer.Start(ctx, {{ quote $op.Name }},
+			{{- if $hasOTELAttrs }}
+			trace.WithAttributes(otelAttrs...),
+			{{- end }}
+			clientSpanKind,
+		)
+		// Track stage for error reporting.
+		var stage string
+		defer func() {
+			if err != nil {
+				span.RecordError(err)
+				span.SetStatus(codes.Error, stage)
+				c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+			}
+			span.End()
+		}()
+	{{- end }}
+
+	{{ if $otel }}stage = "BuildURL"{{ end }}
 	{{- if $op.WebhookInfo }}
 	u, err := url.Parse(targetURL)
 	if err != nil {
@@ -228,29 +231,29 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 	{{- end }}
 
 	{{ if $op.HasQueryParams }}
-	stage = "EncodeQueryParams"
-	{{- template "encode_query_parameters" $op }}
+		{{ if $otel }}stage = "EncodeQueryParams"{{ end }}
+		{{- template "encode_query_parameters" $op }}
 	{{- end }}
 
-	stage = "EncodeRequest"
+	{{ if $otel }}stage = "EncodeRequest"{{ end }}
 	r, err := ht.NewRequest(ctx, {{ $op.Spec.HTTPMethod | upper | quote }}, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
 	{{- if $op.Request }}
-	if err := encode{{ $op.Name }}Request(request, r); err != nil {
-		return res, errors.Wrap(err, "encode request")
-	}
+		if err := encode{{ $op.Name }}Request(request, r); err != nil {
+			return res, errors.Wrap(err, "encode request")
+		}
 	{{- end }}
 
 	{{ if $op.HasHeaderParams }}
-	stage = "EncodeHeaderParams"
-	{{- template "encode_header_parameters" $op }}
+		{{ if $otel }}stage = "EncodeHeaderParams"{{ end }}
+		{{- template "encode_header_parameters" $op }}
 	{{- end }}
 
 	{{ if $op.HasCookieParams }}
-	stage = "EncodeCookieParams"
-	{{- template "encode_cookie_parameters" $op }}
+		{{ if $otel }}stage = "EncodeCookieParams"{{ end }}
+		{{- template "encode_cookie_parameters" $op }}
     {{- end }}
 
 	{{- with $securities := $op.Security.Securities }}
@@ -260,7 +263,7 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 		{{- range $idx, $s := $op.Security.Securities }}
 		{
 			{{- $securityName := $s.Type.Name }}
-			stage = {{ printf "Security:%s" $securityName | quote }}
+			{{ if $otel }}stage = {{ printf "Security:%s" $securityName | quote }}{{ end }}
 			switch err := c.security{{ $securityName }}(ctx, {{ quote $op.Name }}, r); {
 			case err == nil: // if NO error
 				satisfied[{{ div $idx 8 }}] |= 1 << {{ mod $idx 8 }}
@@ -295,13 +298,13 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 	}
 	{{- end }}
 
-	stage = "SendRequest"
+	{{ if $otel }}stage = "SendRequest"{{ end }}
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 
-	stage = "DecodeResponse"
+	{{ if $otel }}stage = "DecodeResponse"{{ end }}
 	result, err := decode{{ $op.Name }}Response(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")

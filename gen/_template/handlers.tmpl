@@ -2,6 +2,11 @@
 {{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
 {{ template "header" $ }}
 
+{{- if not $.OpenTelemetryEnabled }}
+{{/* Define static no-op recordError, it would be optimized to nothing. */}}
+func recordError(string, error) {}
+{{- end }}
+
 {{- if $.PathsServerEnabled }}
 {{- range $op := $.Operations }}
 	{{- template "handlers/operation" op_elem $op $ }}
@@ -18,54 +23,60 @@
 
 {{ define "handlers/operation" }}
 {{- /*gotype: github.com/ogen-go/ogen/gen.OperationElem*/ -}}{{ $op := $.Operation }}
+{{- $otel := $.Config.OpenTelemetryEnabled }}
 // handle{{ $op.Name }}Request handles {{ $op.PrettyOperationID }} operation.
 //
 {{- template "godoc_op" $op }}
 func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
-	{{- $hasOTELAttrs := false }}
-	{{- $ogenAttrs := $op.OTELAttributes }}
-	{{- if or $ogenAttrs (not $op.WebhookInfo) }}
-	{{- $hasOTELAttrs = true }}
-	otelAttrs := []attribute.KeyValue{
-		{{- range $attr := $ogenAttrs }}
-		{{ $attr.String }},
+	{{- if $.Config.OpenTelemetryEnabled }}
+		{{- $hasOTELAttrs := false }}
+		{{- $ogenAttrs := $op.OTELAttributes }}
+		{{- if or $ogenAttrs (not $op.WebhookInfo) }}
+		{{- $hasOTELAttrs = true }}
+		otelAttrs := []attribute.KeyValue{
+			{{- range $attr := $ogenAttrs }}
+			{{ $attr.String }},
+			{{- end }}
+			{{- if not $op.WebhookInfo }}
+			semconv.HTTPMethodKey.String({{ upper $op.Spec.HTTPMethod | quote }}),
+			semconv.HTTPRouteKey.String({{ quote $op.Spec.Path }}),
+			{{- end }}
+		}
+		{{- else }}
+		var otelAttrs []attribute.KeyValue
 		{{- end }}
-		{{- if not $op.WebhookInfo }}
-		semconv.HTTPMethodKey.String({{ upper $op.Spec.HTTPMethod | quote }}),
-		semconv.HTTPRouteKey.String({{ quote $op.Spec.Path }}),
-		{{- end }}
-	}
+
+		// Start a span for this request.
+		ctx, span := s.cfg.Tracer.Start(r.Context(), {{ quote $op.Name }},
+			{{- if $hasOTELAttrs }}
+			trace.WithAttributes(otelAttrs...),
+			{{- end }}
+			serverSpanKind,
+		)
+		defer span.End()
+
+		// Run stopwatch.
+		startTime := time.Now()
+		defer func() {
+			elapsedDuration := time.Since(startTime)
+			// Use floating point division here for higher precision (instead of Millisecond method).
+			s.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		}()
+
+		// Increment request counter.
+		s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 	{{- else }}
-	var otelAttrs []attribute.KeyValue
+	ctx := r.Context()
 	{{- end }}
 
-
-	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), {{ quote $op.Name }},
-		{{- if $hasOTELAttrs }}
-		trace.WithAttributes(otelAttrs...),
-		{{- end }}
-		serverSpanKind,
-	)
-	defer span.End()
-
-	// Run stopwatch.
-	startTime := time.Now()
-	defer func() {
-		elapsedDuration := time.Since(startTime)
-		// Use floating point division here for higher precision (instead of Millisecond method).
-		s.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
-	}()
-
-	// Increment request counter.
-	s.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
-
 	var (
+		{{- if $.Config.OpenTelemetryEnabled }}
 		recordError = func(stage string, err error) {
-			span.RecordError(err)
-			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+				span.RecordError(err)
+				span.SetStatus(codes.Error, stage)
+				s.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 		}
+		{{- end }}
 		err error
 		{{- if or $op.Request $op.Params $op.Security.Securities }}
 		opErrContext = ogenerrors.OperationContext{
@@ -216,7 +227,7 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 		{{- /* It is not secure to expose internal error to client, but better than nothing. */ -}}
 		{{- if and $.Config.Error (not $op.WebhookInfo) }}
 		if errRes, ok := errors.Into[{{ $.Config.ErrorGoType }}](err); ok {
-			if err := encodeErrorResponse(errRes, w, span); err != nil {
+			if err := encodeErrorResponse(errRes, w, {{ if $otel }}span{{ end }}); err != nil {
 				recordError("Internal", err)
 			}
 			return
@@ -225,7 +236,7 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
-		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, span); err != nil {
+		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, {{ if $otel }}span{{ end }}); err != nil {
 			recordError("Internal", err)
 		}
 		{{- else }}
@@ -235,7 +246,7 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 		return
 	}
 
-	if err := encode{{ $op.Name }}Response(response, w, span); err != nil {
+	if err := encode{{ $op.Name }}Response(response, w, {{ if $otel }}span{{ end }}); err != nil {
 		recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)

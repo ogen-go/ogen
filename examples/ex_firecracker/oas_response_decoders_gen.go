@@ -489,6 +489,15 @@ func decodeDescribeInstanceResponse(resp *http.Response) (res *InstanceInfo, _ e
 				}
 				return res, err
 			}
+			// Validate response.
+			if err := func() error {
+				if err := response.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
+			}
 			return &response, nil
 		default:
 			resp.Body.Close()
@@ -578,6 +587,15 @@ func decodeGetExportVmConfigResponse(resp *http.Response) (res *FullVmConfigurat
 				}
 				return res, err
 			}
+			// Validate response.
+			if err := func() error {
+				if err := response.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
+			}
 			return &response, nil
 		default:
 			resp.Body.Close()
@@ -666,6 +684,15 @@ func decodeGetMachineConfigurationResponse(resp *http.Response) (res *MachineCon
 					Err:         err,
 				}
 				return res, err
+			}
+			// Validate response.
+			if err := func() error {
+				if err := response.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
 			}
 			return &response, nil
 		default:

@@ -929,6 +929,15 @@ func decodeListPetResponse(resp *http.Response) (res ListPetRes, _ error) {
 				}
 				return res, err
 			}
+			// Validate response.
+			if err := func() error {
+				if err := response.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
+			}
 			return &response, nil
 		default:
 			resp.Body.Close()
@@ -1087,6 +1096,15 @@ func decodeListPetCategoriesResponse(resp *http.Response) (res ListPetCategories
 				}
 				return res, err
 			}
+			// Validate response.
+			if err := func() error {
+				if err := response.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
+			}
 			return &response, nil
 		default:
 			resp.Body.Close()
@@ -1244,6 +1262,15 @@ func decodeListPetFriendsResponse(resp *http.Response) (res ListPetFriendsRes, _
 					Err:         err,
 				}
 				return res, err
+			}
+			// Validate response.
+			if err := func() error {
+				if err := response.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
 			}
 			return &response, nil
 		default:

@@ -80,8 +80,7 @@ func (g *Generator) generateSchema(
 	}
 	gen.log = g.log.Named("schemagen")
 	gen.fail = g.fail
-	gen.customFormats = g.customFormats
-	gen.depthLimit = g.opt.SchemaDepthLimit
+	gen.depthLimit = g.parseOpts.SchemaDepthLimit
 
 	t, err := gen.generate(name, schema, optional)
 	if err != nil {

@@ -50,8 +50,7 @@ func encodeErrorGetResponse(response *ErrorStatusCode, w http.ResponseWriter, sp
 		code = http.StatusOK
 	}
 	w.WriteHeader(code)
-	st := http.StatusText(code)
-	if code >= http.StatusBadRequest {
+	if st := http.StatusText(code); code >= http.StatusBadRequest {
 		span.SetStatus(codes.Error, st)
 	} else {
 		span.SetStatus(codes.Ok, st)
@@ -124,8 +123,7 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter, spa
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
+		if st := http.StatusText(code); code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -154,8 +152,7 @@ func encodeFoobarPutResponse(response *FoobarPutDef, w http.ResponseWriter, span
 		code = http.StatusOK
 	}
 	w.WriteHeader(code)
-	st := http.StatusText(code)
-	if code >= http.StatusBadRequest {
+	if st := http.StatusText(code); code >= http.StatusBadRequest {
 		span.SetStatus(codes.Error, st)
 	} else {
 		span.SetStatus(codes.Ok, st)
@@ -189,8 +186,7 @@ func encodeNullableDefaultResponseResponse(response *NilIntStatusCode, w http.Re
 		code = http.StatusOK
 	}
 	w.WriteHeader(code)
-	st := http.StatusText(code)
-	if code >= http.StatusBadRequest {
+	if st := http.StatusText(code); code >= http.StatusBadRequest {
 		span.SetStatus(codes.Error, st)
 	} else {
 		span.SetStatus(codes.Ok, st)
@@ -284,8 +280,7 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter, span trace.
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
+		if st := http.StatusText(code); code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -336,8 +331,7 @@ func encodePetGetAvatarByIDResponse(response PetGetAvatarByIDRes, w http.Respons
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
+		if st := http.StatusText(code); code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -388,8 +382,7 @@ func encodePetGetAvatarByNameResponse(response PetGetAvatarByNameRes, w http.Res
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
+		if st := http.StatusText(code); code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -446,8 +439,7 @@ func encodePetUpdateNameAliasPostResponse(response *PetUpdateNameAliasPostDef, w
 		code = http.StatusOK
 	}
 	w.WriteHeader(code)
-	st := http.StatusText(code)
-	if code >= http.StatusBadRequest {
+	if st := http.StatusText(code); code >= http.StatusBadRequest {
 		span.SetStatus(codes.Error, st)
 	} else {
 		span.SetStatus(codes.Ok, st)
@@ -466,8 +458,7 @@ func encodePetUpdateNamePostResponse(response *PetUpdateNamePostDef, w http.Resp
 		code = http.StatusOK
 	}
 	w.WriteHeader(code)
-	st := http.StatusText(code)
-	if code >= http.StatusBadRequest {
+	if st := http.StatusText(code); code >= http.StatusBadRequest {
 		span.SetStatus(codes.Error, st)
 	} else {
 		span.SetStatus(codes.Ok, st)
@@ -501,8 +492,7 @@ func encodePetUploadAvatarByIDResponse(response PetUploadAvatarByIDRes, w http.R
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
+		if st := http.StatusText(code); code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)

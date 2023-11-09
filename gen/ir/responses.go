@@ -15,6 +15,7 @@ type ResponseInfo struct {
 	WithStatusCode bool
 	WithHeaders    bool
 	JSONStreaming  bool
+	OpenTelemetry  bool
 	Headers        map[string]*Parameter
 }
 
@@ -34,7 +35,7 @@ func sortResponseInfos(result []ResponseInfo) {
 	})
 }
 
-func (op *Operation) ListResponseTypes() []ResponseInfo {
+func (op *Operation) ListResponseTypes(otel bool) []ResponseInfo {
 	var result []ResponseInfo
 	for statusCode, resp := range op.Responses.StatusCode {
 		if noc := resp.NoContent; noc != nil {
@@ -44,6 +45,7 @@ func (op *Operation) ListResponseTypes() []ResponseInfo {
 				NoContent:      true,
 				WithStatusCode: resp.WithStatusCode,
 				WithHeaders:    resp.WithHeaders,
+				OpenTelemetry:  otel,
 				Headers:        resp.Headers,
 			})
 			continue
@@ -57,6 +59,7 @@ func (op *Operation) ListResponseTypes() []ResponseInfo {
 				WithStatusCode: resp.WithStatusCode,
 				WithHeaders:    resp.WithHeaders,
 				JSONStreaming:  media.JSONStreaming,
+				OpenTelemetry:  otel,
 				Headers:        resp.Headers,
 			})
 		}
@@ -73,6 +76,7 @@ func (op *Operation) ListResponseTypes() []ResponseInfo {
 				NoContent:      true,
 				WithStatusCode: resp.WithStatusCode,
 				WithHeaders:    resp.WithHeaders,
+				OpenTelemetry:  otel,
 				Headers:        resp.Headers,
 			})
 			continue
@@ -85,6 +89,7 @@ func (op *Operation) ListResponseTypes() []ResponseInfo {
 				WithStatusCode: resp.WithStatusCode,
 				WithHeaders:    resp.WithHeaders,
 				JSONStreaming:  media.JSONStreaming,
+				OpenTelemetry:  otel,
 				Headers:        resp.Headers,
 			})
 		}
@@ -97,6 +102,7 @@ func (op *Operation) ListResponseTypes() []ResponseInfo {
 				NoContent:      true,
 				WithStatusCode: def.WithStatusCode,
 				WithHeaders:    def.WithHeaders,
+				OpenTelemetry:  otel,
 				Headers:        def.Headers,
 			})
 		}
@@ -108,6 +114,7 @@ func (op *Operation) ListResponseTypes() []ResponseInfo {
 				WithStatusCode: def.WithStatusCode,
 				WithHeaders:    def.WithHeaders,
 				JSONStreaming:  media.JSONStreaming,
+				OpenTelemetry:  otel,
 				Headers:        def.Headers,
 			})
 		}

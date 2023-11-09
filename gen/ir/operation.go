@@ -243,7 +243,7 @@ type Response struct {
 	// which will contain the actual response body.
 }
 
-func (s Response) ResponseInfo() []ResponseInfo {
+func (s Response) ResponseInfo(otel bool) []ResponseInfo {
 	var result []ResponseInfo
 
 	if noc := s.NoContent; noc != nil {
@@ -252,6 +252,7 @@ func (s Response) ResponseInfo() []ResponseInfo {
 			NoContent:      true,
 			WithStatusCode: s.WithStatusCode,
 			WithHeaders:    s.WithHeaders,
+			OpenTelemetry:  otel,
 			Headers:        s.Headers,
 		})
 	}
@@ -263,7 +264,9 @@ func (s Response) ResponseInfo() []ResponseInfo {
 			WithStatusCode: s.WithStatusCode,
 			WithHeaders:    s.WithHeaders,
 			JSONStreaming:  media.JSONStreaming,
-			Headers:        s.Headers,
+			OpenTelemetry:  otel,
+
+			Headers: s.Headers,
 		})
 	}
 

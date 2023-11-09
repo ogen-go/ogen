@@ -252,6 +252,15 @@ func decodeCombinedResponse(resp *http.Response) (res CombinedRes, _ error) {
 				}
 				return res, err
 			}
+			// Validate response.
+			if err := func() error {
+				if response == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
+			}
 			return &CombinedDefStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -960,6 +969,15 @@ func decodeStreamJSONResponse(resp *http.Response) (res StreamJSONRes, _ error) 
 				return nil
 			}(); err != nil {
 				return res, err
+			}
+			// Validate response.
+			if err := func() error {
+				if err := response.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
 			}
 			return &response, nil
 		default:

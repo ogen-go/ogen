@@ -35,8 +35,7 @@ func encodeErrorResponse(response *ErrorStatusCode, w http.ResponseWriter, span 
 		code = http.StatusOK
 	}
 	w.WriteHeader(code)
-	st := http.StatusText(code)
-	if code >= http.StatusBadRequest {
+	if st := http.StatusText(code); code >= http.StatusBadRequest {
 		span.SetStatus(codes.Error, st)
 	} else {
 		span.SetStatus(codes.Ok, st)
@@ -84,8 +83,7 @@ func encodeUpdateDeleteResponse(response UpdateDeleteRes, w http.ResponseWriter,
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
+		if st := http.StatusText(code); code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -130,8 +128,7 @@ func encodeUpdateWebhookResponse(response UpdateWebhookRes, w http.ResponseWrite
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		st := http.StatusText(code)
-		if code >= http.StatusBadRequest {
+		if st := http.StatusText(code); code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)

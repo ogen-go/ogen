@@ -137,6 +137,15 @@ func decodeCreateChatCompletionResponse(resp *http.Response) (res *CreateChatCom
 				}
 				return res, err
 			}
+			// Validate response.
+			if err := func() error {
+				if err := response.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
+			}
 			return &response, nil
 		default:
 			resp.Body.Close()
@@ -225,6 +234,15 @@ func decodeCreateCompletionResponse(resp *http.Response) (res *CreateCompletionR
 				}
 				return res, err
 			}
+			// Validate response.
+			if err := func() error {
+				if err := response.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
+			}
 			return &response, nil
 		default:
 			resp.Body.Close()
@@ -269,6 +287,15 @@ func decodeCreateEditResponse(resp *http.Response) (res *CreateEditResponse, _ e
 				}
 				return res, err
 			}
+			// Validate response.
+			if err := func() error {
+				if err := response.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
+			}
 			return &response, nil
 		default:
 			resp.Body.Close()
@@ -312,6 +339,15 @@ func decodeCreateEmbeddingResponse(resp *http.Response) (res *CreateEmbeddingRes
 					Err:         err,
 				}
 				return res, err
+			}
+			// Validate response.
+			if err := func() error {
+				if err := response.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
 			}
 			return &response, nil
 		default:
@@ -577,6 +613,15 @@ func decodeCreateModerationResponse(resp *http.Response) (res *CreateModerationR
 				}
 				return res, err
 			}
+			// Validate response.
+			if err := func() error {
+				if err := response.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
+			}
 			return &response, nil
 		default:
 			resp.Body.Close()
@@ -620,6 +665,15 @@ func decodeCreateSearchResponse(resp *http.Response) (res *CreateSearchResponse,
 					Err:         err,
 				}
 				return res, err
+			}
+			// Validate response.
+			if err := func() error {
+				if err := response.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
 			}
 			return &response, nil
 		default:
@@ -887,6 +941,15 @@ func decodeListEnginesResponse(resp *http.Response) (res *ListEnginesResponse, _
 				}
 				return res, err
 			}
+			// Validate response.
+			if err := func() error {
+				if err := response.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
+			}
 			return &response, nil
 		default:
 			resp.Body.Close()
@@ -930,6 +993,15 @@ func decodeListFilesResponse(resp *http.Response) (res *ListFilesResponse, _ err
 					Err:         err,
 				}
 				return res, err
+			}
+			// Validate response.
+			if err := func() error {
+				if err := response.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
 			}
 			return &response, nil
 		default:
@@ -975,6 +1047,15 @@ func decodeListFineTuneEventsResponse(resp *http.Response) (res *ListFineTuneEve
 				}
 				return res, err
 			}
+			// Validate response.
+			if err := func() error {
+				if err := response.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
+			}
 			return &response, nil
 		default:
 			resp.Body.Close()
@@ -1019,6 +1100,15 @@ func decodeListFineTunesResponse(resp *http.Response) (res *ListFineTunesRespons
 				}
 				return res, err
 			}
+			// Validate response.
+			if err := func() error {
+				if err := response.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
+			}
 			return &response, nil
 		default:
 			resp.Body.Close()
@@ -1062,6 +1152,15 @@ func decodeListModelsResponse(resp *http.Response) (res *ListModelsResponse, _ e
 					Err:         err,
 				}
 				return res, err
+			}
+			// Validate response.
+			if err := func() error {
+				if err := response.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
 			}
 			return &response, nil
 		default:

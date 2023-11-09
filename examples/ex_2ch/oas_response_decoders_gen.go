@@ -49,6 +49,15 @@ func decodeAPICaptcha2chcaptchaIDGetResponse(resp *http.Response) (res *Captcha,
 				}
 				return res, err
 			}
+			// Validate response.
+			if err := func() error {
+				if err := response.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
+			}
 			return &response, nil
 		default:
 			resp.Body.Close()
@@ -107,6 +116,15 @@ func decodeAPICaptchaAppIDPublicKeyGetResponse(resp *http.Response) (res *Captch
 				}
 				return res, err
 			}
+			// Validate response.
+			if err := func() error {
+				if err := response.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
+			}
 			return &response, nil
 		default:
 			resp.Body.Close()
@@ -150,6 +168,15 @@ func decodeAPICaptchaInvisibleRecaptchaIDGetResponse(resp *http.Response) (res *
 					Err:         err,
 				}
 				return res, err
+			}
+			// Validate response.
+			if err := func() error {
+				if err := response.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
 			}
 			return &response, nil
 		default:
@@ -205,6 +232,15 @@ func decodeAPICaptchaRecaptchaIDGetResponse(resp *http.Response) (res *Captcha, 
 				}
 				return res, err
 			}
+			// Validate response.
+			if err := func() error {
+				if err := response.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
+			}
 			return &response, nil
 		default:
 			resp.Body.Close()
@@ -259,6 +295,15 @@ func decodeAPIDislikeGetResponse(resp *http.Response) (res *Like, _ error) {
 				}
 				return res, err
 			}
+			// Validate response.
+			if err := func() error {
+				if err := response.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
+			}
 			return &response, nil
 		default:
 			resp.Body.Close()
@@ -302,6 +347,15 @@ func decodeAPILikeGetResponse(resp *http.Response) (res *Like, _ error) {
 					Err:         err,
 				}
 				return res, err
+			}
+			// Validate response.
+			if err := func() error {
+				if err := response.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
 			}
 			return &response, nil
 		default:
@@ -347,6 +401,15 @@ func decodeAPIMobileV2AfterBoardThreadNumGetResponse(resp *http.Response) (res *
 				}
 				return res, err
 			}
+			// Validate response.
+			if err := func() error {
+				if err := response.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
+			}
 			return &response, nil
 		default:
 			resp.Body.Close()
@@ -390,6 +453,15 @@ func decodeAPIMobileV2BoardsGetResponse(resp *http.Response) (res Boards, _ erro
 					Err:         err,
 				}
 				return res, err
+			}
+			// Validate response.
+			if err := func() error {
+				if err := response.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
 			}
 			return response, nil
 		default:
@@ -435,6 +507,15 @@ func decodeAPIMobileV2InfoBoardThreadGetResponse(resp *http.Response) (res *Mobi
 				}
 				return res, err
 			}
+			// Validate response.
+			if err := func() error {
+				if err := response.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
+			}
 			return &response, nil
 		default:
 			resp.Body.Close()
@@ -478,6 +559,15 @@ func decodeAPIMobileV2PostBoardNumGetResponse(resp *http.Response) (res *MobileP
 					Err:         err,
 				}
 				return res, err
+			}
+			// Validate response.
+			if err := func() error {
+				if err := response.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
 			}
 			return &response, nil
 		default:
@@ -523,6 +613,15 @@ func decodeUserPassloginPostResponse(resp *http.Response) (res *Passcode, _ erro
 				}
 				return res, err
 			}
+			// Validate response.
+			if err := func() error {
+				if err := response.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
+			}
 			return &response, nil
 		default:
 			resp.Body.Close()
@@ -567,6 +666,15 @@ func decodeUserPostingPostResponse(resp *http.Response) (res UserPostingPostOK, 
 				}
 				return res, err
 			}
+			// Validate response.
+			if err := func() error {
+				if err := response.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
+			}
 			return response, nil
 		default:
 			resp.Body.Close()
@@ -610,6 +718,15 @@ func decodeUserReportPostResponse(resp *http.Response) (res *Report, _ error) {
 					Err:         err,
 				}
 				return res, err
+			}
+			// Validate response.
+			if err := func() error {
+				if err := response.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
 			}
 			return &response, nil
 		default:

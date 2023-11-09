@@ -161,28 +161,32 @@ func generate(f file, skipWrite bool) *GenerateError {
 		firstNotImpl error
 	)
 	g, err := gen.NewGenerator(spec, gen.Options{
-		InferSchemaType: true,
-		AllowRemote:     true,
-		RootURL:         f.rootURL,
-		Remote: gen.RemoteOptions{
-			HTTPClient: workerHTTPClient(),
-			ReadFile: func(string) ([]byte, error) {
-				return nil, errors.New("local file reference is not allowed")
+		Parser: gen.ParseOptions{
+			InferSchemaType: true,
+			AllowRemote:     true,
+			RootURL:         f.rootURL,
+			Remote: gen.RemoteOptions{
+				HTTPClient: workerHTTPClient(),
+				ReadFile: func(string) ([]byte, error) {
+					return nil, errors.New("local file reference is not allowed")
+				},
+			},
+			File: f.location(),
+		},
+		Generator: gen.GenerateOptions{
+			IgnoreNotImplemented: []string{"all"},
+			NotImplementedHook: func(name string, err error) {
+				for _, existing := range notImpl {
+					if existing == name {
+						return
+					}
+				}
+				if firstNotImpl == nil {
+					firstNotImpl = err
+				}
+				notImpl = append(notImpl, name)
 			},
 		},
-		IgnoreNotImplemented: []string{"all"},
-		NotImplementedHook: func(name string, err error) {
-			for _, existing := range notImpl {
-				if existing == name {
-					return
-				}
-			}
-			if firstNotImpl == nil {
-				firstNotImpl = err
-			}
-			notImpl = append(notImpl, name)
-		},
-		File: f.location(),
 	})
 
 	slices.Sort(notImpl)
