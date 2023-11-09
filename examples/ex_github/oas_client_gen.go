@@ -8546,11 +8546,6 @@ func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req
 }
 
 func (c *Client) sendActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, request *ActionsCreateOrUpdateEnvironmentSecretReq, params ActionsCreateOrUpdateEnvironmentSecretParams) (res ActionsCreateOrUpdateEnvironmentSecretRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("actions/create-or-update-environment-secret"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -8559,6 +8554,11 @@ func (c *Client) sendActionsCreateOrUpdateEnvironmentSecret(ctx context.Context,
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/create-or-update-environment-secret"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"),
 	}
 
 	// Run stopwatch.
@@ -8739,11 +8739,6 @@ func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, request *Ac
 }
 
 func (c *Client) sendActionsCreateOrUpdateOrgSecret(ctx context.Context, request *ActionsCreateOrUpdateOrgSecretReq, params ActionsCreateOrUpdateOrgSecretParams) (res ActionsCreateOrUpdateOrgSecretRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("actions/create-or-update-org-secret"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/{secret_name}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -8752,6 +8747,11 @@ func (c *Client) sendActionsCreateOrUpdateOrgSecret(ctx context.Context, request
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/create-or-update-org-secret"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/{secret_name}"),
 	}
 
 	// Run stopwatch.
@@ -8913,11 +8913,6 @@ func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, request *A
 }
 
 func (c *Client) sendActionsCreateOrUpdateRepoSecret(ctx context.Context, request *ActionsCreateOrUpdateRepoSecretReq, params ActionsCreateOrUpdateRepoSecretParams) (res ActionsCreateOrUpdateRepoSecretRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("actions/create-or-update-repo-secret"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/secrets/{secret_name}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -8926,6 +8921,11 @@ func (c *Client) sendActionsCreateOrUpdateRepoSecret(ctx context.Context, reques
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/create-or-update-repo-secret"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/secrets/{secret_name}"),
 	}
 
 	// Run stopwatch.
@@ -9491,11 +9491,6 @@ func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 }
 
 func (c *Client) sendActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, request *ActionsCreateSelfHostedRunnerGroupForOrgReq, params ActionsCreateSelfHostedRunnerGroupForOrgParams) (res *RunnerGroupsOrg, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("actions/create-self-hosted-runner-group-for-org"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -9504,6 +9499,11 @@ func (c *Client) sendActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Contex
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/create-self-hosted-runner-group-for-org"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups"),
 	}
 
 	// Run stopwatch.
@@ -16684,11 +16684,6 @@ func (c *Client) ActionsReviewPendingDeploymentsForRun(ctx context.Context, requ
 }
 
 func (c *Client) sendActionsReviewPendingDeploymentsForRun(ctx context.Context, request *ActionsReviewPendingDeploymentsForRunReq, params ActionsReviewPendingDeploymentsForRunParams) (res []Deployment, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("actions/review-pending-deployments-for-run"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -16697,6 +16692,11 @@ func (c *Client) sendActionsReviewPendingDeploymentsForRun(ctx context.Context, 
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/review-pending-deployments-for-run"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments"),
 	}
 
 	// Run stopwatch.
@@ -17056,11 +17056,6 @@ func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Cont
 }
 
 func (c *Client) sendActionsSetGithubActionsPermissionsOrganization(ctx context.Context, request *ActionsSetGithubActionsPermissionsOrganizationReq, params ActionsSetGithubActionsPermissionsOrganizationParams) (res *ActionsSetGithubActionsPermissionsOrganizationNoContent, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("actions/set-github-actions-permissions-organization"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -17069,6 +17064,11 @@ func (c *Client) sendActionsSetGithubActionsPermissionsOrganization(ctx context.
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/set-github-actions-permissions-organization"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions"),
 	}
 
 	// Run stopwatch.
@@ -17165,11 +17165,6 @@ func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Contex
 }
 
 func (c *Client) sendActionsSetGithubActionsPermissionsRepository(ctx context.Context, request *ActionsSetGithubActionsPermissionsRepositoryReq, params ActionsSetGithubActionsPermissionsRepositoryParams) (res *ActionsSetGithubActionsPermissionsRepositoryNoContent, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("actions/set-github-actions-permissions-repository"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/permissions"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -17178,6 +17173,11 @@ func (c *Client) sendActionsSetGithubActionsPermissionsRepository(ctx context.Co
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/set-github-actions-permissions-repository"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/permissions"),
 	}
 
 	// Run stopwatch.
@@ -17292,11 +17292,6 @@ func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 }
 
 func (c *Client) sendActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, request *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq, params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams) (res *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("actions/set-repo-access-to-self-hosted-runner-group-in-org"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -17305,6 +17300,11 @@ func (c *Client) sendActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx contex
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/set-repo-access-to-self-hosted-runner-group-in-org"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories"),
 	}
 
 	// Run stopwatch.
@@ -17418,11 +17418,6 @@ func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, reques
 }
 
 func (c *Client) sendActionsSetSelectedReposForOrgSecret(ctx context.Context, request *ActionsSetSelectedReposForOrgSecretReq, params ActionsSetSelectedReposForOrgSecretParams) (res *ActionsSetSelectedReposForOrgSecretNoContent, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("actions/set-selected-repos-for-org-secret"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/{secret_name}/repositories"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -17431,6 +17426,11 @@ func (c *Client) sendActionsSetSelectedReposForOrgSecret(ctx context.Context, re
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/set-selected-repos-for-org-secret"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/{secret_name}/repositories"),
 	}
 
 	// Run stopwatch.
@@ -17545,11 +17545,6 @@ func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(
 }
 
 func (c *Client) sendActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, request *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq, params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams) (res *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("actions/set-selected-repositories-enabled-github-actions-organization"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions/repositories"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -17558,6 +17553,11 @@ func (c *Client) sendActionsSetSelectedRepositoriesEnabledGithubActionsOrganizat
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/set-selected-repositories-enabled-github-actions-organization"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions/repositories"),
 	}
 
 	// Run stopwatch.
@@ -17652,11 +17652,6 @@ func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, r
 }
 
 func (c *Client) sendActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, request *ActionsSetSelfHostedRunnersInGroupForOrgReq, params ActionsSetSelfHostedRunnersInGroupForOrgParams) (res *ActionsSetSelfHostedRunnersInGroupForOrgNoContent, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("actions/set-self-hosted-runners-in-group-for-org"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/runners"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -17665,6 +17660,11 @@ func (c *Client) sendActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Contex
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/set-self-hosted-runners-in-group-for-org"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/runners"),
 	}
 
 	// Run stopwatch.
@@ -17778,11 +17778,6 @@ func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 }
 
 func (c *Client) sendActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, request *ActionsUpdateSelfHostedRunnerGroupForOrgReq, params ActionsUpdateSelfHostedRunnerGroupForOrgParams) (res *RunnerGroupsOrg, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("actions/update-self-hosted-runner-group-for-org"),
-		semconv.HTTPMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -17791,6 +17786,11 @@ func (c *Client) sendActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Contex
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/update-self-hosted-runner-group-for-org"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}"),
 	}
 
 	// Run stopwatch.
@@ -21673,11 +21673,6 @@ func (c *Client) AppsCreateContentAttachment(ctx context.Context, request *AppsC
 }
 
 func (c *Client) sendAppsCreateContentAttachment(ctx context.Context, request *AppsCreateContentAttachmentReq, params AppsCreateContentAttachmentParams) (res AppsCreateContentAttachmentRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("apps/create-content-attachment"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/content_references/{content_reference_id}/attachments"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -21686,6 +21681,11 @@ func (c *Client) sendAppsCreateContentAttachment(ctx context.Context, request *A
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/create-content-attachment"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/content_references/{content_reference_id}/attachments"),
 	}
 
 	// Run stopwatch.
@@ -21920,11 +21920,6 @@ func (c *Client) AppsCreateInstallationAccessToken(ctx context.Context, request 
 }
 
 func (c *Client) sendAppsCreateInstallationAccessToken(ctx context.Context, request OptAppsCreateInstallationAccessTokenReq, params AppsCreateInstallationAccessTokenParams) (res AppsCreateInstallationAccessTokenRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("apps/create-installation-access-token"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/app/installations/{installation_id}/access_tokens"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -21940,6 +21935,11 @@ func (c *Client) sendAppsCreateInstallationAccessToken(ctx context.Context, requ
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/create-installation-access-token"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/app/installations/{installation_id}/access_tokens"),
 	}
 
 	// Run stopwatch.
@@ -24414,11 +24414,6 @@ func (c *Client) AppsScopeToken(ctx context.Context, request *AppsScopeTokenReq,
 }
 
 func (c *Client) sendAppsScopeToken(ctx context.Context, request *AppsScopeTokenReq, params AppsScopeTokenParams) (res AppsScopeTokenRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("apps/scope-token"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/applications/{client_id}/token/scoped"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -24427,6 +24422,11 @@ func (c *Client) sendAppsScopeToken(ctx context.Context, request *AppsScopeToken
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/scope-token"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/applications/{client_id}/token/scoped"),
 	}
 
 	// Run stopwatch.
@@ -24711,11 +24711,6 @@ func (c *Client) AppsUpdateWebhookConfigForApp(ctx context.Context, request OptA
 }
 
 func (c *Client) sendAppsUpdateWebhookConfigForApp(ctx context.Context, request OptAppsUpdateWebhookConfigForAppReq) (res *WebhookConfig, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("apps/update-webhook-config-for-app"),
-		semconv.HTTPMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/app/hook/config"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -24731,6 +24726,11 @@ func (c *Client) sendAppsUpdateWebhookConfigForApp(ctx context.Context, request 
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/update-webhook-config-for-app"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/app/hook/config"),
 	}
 
 	// Run stopwatch.
@@ -28436,11 +28436,6 @@ func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request *CodeScann
 }
 
 func (c *Client) sendCodeScanningUpdateAlert(ctx context.Context, request *CodeScanningUpdateAlertReq, params CodeScanningUpdateAlertParams) (res CodeScanningUpdateAlertRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("code-scanning/update-alert"),
-		semconv.HTTPMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -28449,6 +28444,11 @@ func (c *Client) sendCodeScanningUpdateAlert(ctx context.Context, request *CodeS
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("code-scanning/update-alert"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"),
 	}
 
 	// Run stopwatch.
@@ -28605,11 +28605,6 @@ func (c *Client) CodeScanningUploadSarif(ctx context.Context, request *CodeScann
 }
 
 func (c *Client) sendCodeScanningUploadSarif(ctx context.Context, request *CodeScanningUploadSarifReq, params CodeScanningUploadSarifParams) (res CodeScanningUploadSarifRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("code-scanning/upload-sarif"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/sarifs"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -28618,6 +28613,11 @@ func (c *Client) sendCodeScanningUploadSarif(ctx context.Context, request *CodeS
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("code-scanning/upload-sarif"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/sarifs"),
 	}
 
 	// Run stopwatch.
@@ -29422,11 +29422,6 @@ func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx con
 }
 
 func (c *Client) sendEnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx context.Context, request *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams) (res *RunnerGroupsEnterprise, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("enterprise-admin/create-self-hosted-runner-group-for-enterprise"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -29435,6 +29430,11 @@ func (c *Client) sendEnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/create-self-hosted-runner-group-for-enterprise"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups"),
 	}
 
 	// Run stopwatch.
@@ -32178,11 +32178,6 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Co
 }
 
 func (c *Client) sendEnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Context, request *EnterpriseAdminProvisionAndInviteEnterpriseGroupReq, params EnterpriseAdminProvisionAndInviteEnterpriseGroupParams) (res *ScimEnterpriseGroup, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("enterprise-admin/provision-and-invite-enterprise-group"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Groups"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -32191,6 +32186,11 @@ func (c *Client) sendEnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx contex
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/provision-and-invite-enterprise-group"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Groups"),
 	}
 
 	// Run stopwatch.
@@ -32287,11 +32287,6 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Con
 }
 
 func (c *Client) sendEnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Context, request *EnterpriseAdminProvisionAndInviteEnterpriseUserReq, params EnterpriseAdminProvisionAndInviteEnterpriseUserParams) (res *ScimEnterpriseUser, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("enterprise-admin/provision-and-invite-enterprise-user"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Users"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -32300,6 +32295,11 @@ func (c *Client) sendEnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/provision-and-invite-enterprise-user"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Users"),
 	}
 
 	// Run stopwatch.
@@ -32751,11 +32751,6 @@ func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx contex
 }
 
 func (c *Client) sendEnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx context.Context, request *EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq, params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams) (res *EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("enterprise-admin/set-github-actions-permissions-enterprise"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -32764,6 +32759,11 @@ func (c *Client) sendEnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx co
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/set-github-actions-permissions-enterprise"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions"),
 	}
 
 	// Run stopwatch.
@@ -32860,11 +32860,6 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx 
 }
 
 func (c *Client) sendEnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx context.Context, request *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams) (res *ScimEnterpriseGroup, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("enterprise-admin/set-information-for-provisioned-enterprise-group"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -32873,6 +32868,11 @@ func (c *Client) sendEnterpriseAdminSetInformationForProvisionedEnterpriseGroup(
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/set-information-for-provisioned-enterprise-group"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"),
 	}
 
 	// Run stopwatch.
@@ -32990,11 +32990,6 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx c
 }
 
 func (c *Client) sendEnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx context.Context, request *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams) (res *ScimEnterpriseUser, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("enterprise-admin/set-information-for-provisioned-enterprise-user"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -33003,6 +32998,11 @@ func (c *Client) sendEnterpriseAdminSetInformationForProvisionedEnterpriseUser(c
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/set-information-for-provisioned-enterprise-user"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"),
 	}
 
 	// Run stopwatch.
@@ -33113,11 +33113,6 @@ func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(
 }
 
 func (c *Client) sendEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, request *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq, params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -33126,6 +33121,11 @@ func (c *Client) sendEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpr
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations"),
 	}
 
 	// Run stopwatch.
@@ -33239,11 +33239,6 @@ func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnte
 }
 
 func (c *Client) sendEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, request *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq, params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (res *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions/organizations"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -33252,6 +33247,11 @@ func (c *Client) sendEnterpriseAdminSetSelectedOrganizationsEnabledGithubActions
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions/organizations"),
 	}
 
 	// Run stopwatch.
@@ -33343,11 +33343,6 @@ func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx con
 }
 
 func (c *Client) sendEnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx context.Context, request *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq, params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) (res *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("enterprise-admin/set-self-hosted-runners-in-group-for-enterprise"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -33356,6 +33351,11 @@ func (c *Client) sendEnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/set-self-hosted-runners-in-group-for-enterprise"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners"),
 	}
 
 	// Run stopwatch.
@@ -33470,11 +33470,6 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx context.Co
 }
 
 func (c *Client) sendEnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx context.Context, request *EnterpriseAdminUpdateAttributeForEnterpriseGroupReq, params EnterpriseAdminUpdateAttributeForEnterpriseGroupParams) (res *ScimEnterpriseGroup, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("enterprise-admin/update-attribute-for-enterprise-group"),
-		semconv.HTTPMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -33483,6 +33478,11 @@ func (c *Client) sendEnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx contex
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/update-attribute-for-enterprise-group"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"),
 	}
 
 	// Run stopwatch.
@@ -33613,11 +33613,6 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Con
 }
 
 func (c *Client) sendEnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Context, request *EnterpriseAdminUpdateAttributeForEnterpriseUserReq, params EnterpriseAdminUpdateAttributeForEnterpriseUserParams) (res *ScimEnterpriseUser, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("enterprise-admin/update-attribute-for-enterprise-user"),
-		semconv.HTTPMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -33626,6 +33621,11 @@ func (c *Client) sendEnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/update-attribute-for-enterprise-user"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"),
 	}
 
 	// Run stopwatch.
@@ -33735,11 +33735,6 @@ func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx con
 }
 
 func (c *Client) sendEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx context.Context, request OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams) (res *RunnerGroupsEnterprise, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("enterprise-admin/update-self-hosted-runner-group-for-enterprise"),
-		semconv.HTTPMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -33755,6 +33750,11 @@ func (c *Client) sendEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/update-self-hosted-runner-group-for-enterprise"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"),
 	}
 
 	// Run stopwatch.
@@ -33956,11 +33956,6 @@ func (c *Client) GistsCreate(ctx context.Context, request *GistsCreateReq) (Gist
 }
 
 func (c *Client) sendGistsCreate(ctx context.Context, request *GistsCreateReq) (res GistsCreateRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("gists/create"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/gists"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -33969,6 +33964,11 @@ func (c *Client) sendGistsCreate(ctx context.Context, request *GistsCreateReq) (
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("gists/create"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/gists"),
 	}
 
 	// Run stopwatch.
@@ -34040,11 +34040,6 @@ func (c *Client) GistsCreateComment(ctx context.Context, request *GistsCreateCom
 }
 
 func (c *Client) sendGistsCreateComment(ctx context.Context, request *GistsCreateCommentReq, params GistsCreateCommentParams) (res GistsCreateCommentRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("gists/create-comment"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/gists/{gist_id}/comments"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -34053,6 +34048,11 @@ func (c *Client) sendGistsCreateComment(ctx context.Context, request *GistsCreat
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("gists/create-comment"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/gists/{gist_id}/comments"),
 	}
 
 	// Run stopwatch.
@@ -35843,11 +35843,6 @@ func (c *Client) GistsUpdateComment(ctx context.Context, request *GistsUpdateCom
 }
 
 func (c *Client) sendGistsUpdateComment(ctx context.Context, request *GistsUpdateCommentReq, params GistsUpdateCommentParams) (res GistsUpdateCommentRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("gists/update-comment"),
-		semconv.HTTPMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/gists/{gist_id}/comments/{comment_id}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -35856,6 +35851,11 @@ func (c *Client) sendGistsUpdateComment(ctx context.Context, request *GistsUpdat
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("gists/update-comment"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/gists/{gist_id}/comments/{comment_id}"),
 	}
 
 	// Run stopwatch.
@@ -36374,11 +36374,6 @@ func (c *Client) GitCreateTag(ctx context.Context, request *GitCreateTagReq, par
 }
 
 func (c *Client) sendGitCreateTag(ctx context.Context, request *GitCreateTagReq, params GitCreateTagParams) (res GitCreateTagRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("git/create-tag"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/tags"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -36387,6 +36382,11 @@ func (c *Client) sendGitCreateTag(ctx context.Context, request *GitCreateTagReq,
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("git/create-tag"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/tags"),
 	}
 
 	// Run stopwatch.
@@ -36502,11 +36502,6 @@ func (c *Client) GitCreateTree(ctx context.Context, request *GitCreateTreeReq, p
 }
 
 func (c *Client) sendGitCreateTree(ctx context.Context, request *GitCreateTreeReq, params GitCreateTreeParams) (res GitCreateTreeRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("git/create-tree"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/trees"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -36515,6 +36510,11 @@ func (c *Client) sendGitCreateTree(ctx context.Context, request *GitCreateTreeRe
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("git/create-tree"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/trees"),
 	}
 
 	// Run stopwatch.
@@ -38243,11 +38243,6 @@ func (c *Client) InteractionsSetRestrictionsForAuthenticatedUser(ctx context.Con
 }
 
 func (c *Client) sendInteractionsSetRestrictionsForAuthenticatedUser(ctx context.Context, request *InteractionLimit) (res InteractionsSetRestrictionsForAuthenticatedUserRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("interactions/set-restrictions-for-authenticated-user"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/user/interaction-limits"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -38256,6 +38251,11 @@ func (c *Client) sendInteractionsSetRestrictionsForAuthenticatedUser(ctx context
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("interactions/set-restrictions-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/user/interaction-limits"),
 	}
 
 	// Run stopwatch.
@@ -38330,11 +38330,6 @@ func (c *Client) InteractionsSetRestrictionsForOrg(ctx context.Context, request 
 }
 
 func (c *Client) sendInteractionsSetRestrictionsForOrg(ctx context.Context, request *InteractionLimit, params InteractionsSetRestrictionsForOrgParams) (res InteractionsSetRestrictionsForOrgRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("interactions/set-restrictions-for-org"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/interaction-limits"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -38343,6 +38338,11 @@ func (c *Client) sendInteractionsSetRestrictionsForOrg(ctx context.Context, requ
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("interactions/set-restrictions-for-org"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/interaction-limits"),
 	}
 
 	// Run stopwatch.
@@ -38436,11 +38436,6 @@ func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, request
 }
 
 func (c *Client) sendInteractionsSetRestrictionsForRepo(ctx context.Context, request *InteractionLimit, params InteractionsSetRestrictionsForRepoParams) (res InteractionsSetRestrictionsForRepoRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("interactions/set-restrictions-for-repo"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/interaction-limits"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -38449,6 +38444,11 @@ func (c *Client) sendInteractionsSetRestrictionsForRepo(ctx context.Context, req
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("interactions/set-restrictions-for-repo"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/interaction-limits"),
 	}
 
 	// Run stopwatch.
@@ -39194,11 +39194,6 @@ func (c *Client) IssuesCreateMilestone(ctx context.Context, request *IssuesCreat
 }
 
 func (c *Client) sendIssuesCreateMilestone(ctx context.Context, request *IssuesCreateMilestoneReq, params IssuesCreateMilestoneParams) (res IssuesCreateMilestoneRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("issues/create-milestone"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/milestones"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -39207,6 +39202,11 @@ func (c *Client) sendIssuesCreateMilestone(ctx context.Context, request *IssuesC
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/create-milestone"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/milestones"),
 	}
 
 	// Run stopwatch.
@@ -42782,11 +42782,6 @@ func (c *Client) IssuesLock(ctx context.Context, request OptNilIssuesLockReq, pa
 }
 
 func (c *Client) sendIssuesLock(ctx context.Context, request OptNilIssuesLockReq, params IssuesLockParams) (res IssuesLockRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("issues/lock"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/lock"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -42802,6 +42797,11 @@ func (c *Client) sendIssuesLock(ctx context.Context, request OptNilIssuesLockReq
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/lock"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/lock"),
 	}
 
 	// Run stopwatch.
@@ -43468,11 +43468,6 @@ func (c *Client) IssuesUpdate(ctx context.Context, request OptIssuesUpdateReq, p
 }
 
 func (c *Client) sendIssuesUpdate(ctx context.Context, request OptIssuesUpdateReq, params IssuesUpdateParams) (res IssuesUpdateRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("issues/update"),
-		semconv.HTTPMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -43488,6 +43483,11 @@ func (c *Client) sendIssuesUpdate(ctx context.Context, request OptIssuesUpdateRe
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/update"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}"),
 	}
 
 	// Run stopwatch.
@@ -43877,11 +43877,6 @@ func (c *Client) IssuesUpdateMilestone(ctx context.Context, request OptIssuesUpd
 }
 
 func (c *Client) sendIssuesUpdateMilestone(ctx context.Context, request OptIssuesUpdateMilestoneReq, params IssuesUpdateMilestoneParams) (res *Milestone, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("issues/update-milestone"),
-		semconv.HTTPMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/milestones/{milestone_number}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -43897,6 +43892,11 @@ func (c *Client) sendIssuesUpdateMilestone(ctx context.Context, request OptIssue
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/update-milestone"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/milestones/{milestone_number}"),
 	}
 
 	// Run stopwatch.
@@ -44355,11 +44355,6 @@ func (c *Client) MarkdownRender(ctx context.Context, request *MarkdownRenderReq)
 }
 
 func (c *Client) sendMarkdownRender(ctx context.Context, request *MarkdownRenderReq) (res MarkdownRenderRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("markdown/render"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/markdown"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -44368,6 +44363,11 @@ func (c *Client) sendMarkdownRender(ctx context.Context, request *MarkdownRender
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("markdown/render"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/markdown"),
 	}
 
 	// Run stopwatch.
@@ -44442,11 +44442,6 @@ func (c *Client) MarkdownRenderRaw(ctx context.Context, request MarkdownRenderRa
 }
 
 func (c *Client) sendMarkdownRenderRaw(ctx context.Context, request MarkdownRenderRawReq) (res MarkdownRenderRawRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("markdown/render-raw"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/markdown/raw"),
-	}
 	// Validate request before sending.
 	switch request := request.(type) {
 	case *MarkdownRenderRawReqEmptyBody:
@@ -44457,6 +44452,11 @@ func (c *Client) sendMarkdownRenderRaw(ctx context.Context, request MarkdownRend
 		// Validation is not required for this type.
 	default:
 		return res, errors.Errorf("unexpected request type: %T", request)
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("markdown/render-raw"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/markdown/raw"),
 	}
 
 	// Run stopwatch.
@@ -46727,11 +46727,6 @@ func (c *Client) MigrationsSetLfsPreference(ctx context.Context, request *Migrat
 }
 
 func (c *Client) sendMigrationsSetLfsPreference(ctx context.Context, request *MigrationsSetLfsPreferenceReq, params MigrationsSetLfsPreferenceParams) (res MigrationsSetLfsPreferenceRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("migrations/set-lfs-preference"),
-		semconv.HTTPMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import/lfs"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -46740,6 +46735,11 @@ func (c *Client) sendMigrationsSetLfsPreference(ctx context.Context, request *Mi
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("migrations/set-lfs-preference"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import/lfs"),
 	}
 
 	// Run stopwatch.
@@ -46849,11 +46849,6 @@ func (c *Client) MigrationsStartForAuthenticatedUser(ctx context.Context, reques
 }
 
 func (c *Client) sendMigrationsStartForAuthenticatedUser(ctx context.Context, request *MigrationsStartForAuthenticatedUserReq) (res MigrationsStartForAuthenticatedUserRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("migrations/start-for-authenticated-user"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/user/migrations"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -46862,6 +46857,11 @@ func (c *Client) sendMigrationsStartForAuthenticatedUser(ctx context.Context, re
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("migrations/start-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/user/migrations"),
 	}
 
 	// Run stopwatch.
@@ -46933,11 +46933,6 @@ func (c *Client) MigrationsStartForOrg(ctx context.Context, request *MigrationsS
 }
 
 func (c *Client) sendMigrationsStartForOrg(ctx context.Context, request *MigrationsStartForOrgReq, params MigrationsStartForOrgParams) (res MigrationsStartForOrgRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("migrations/start-for-org"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/migrations"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -46946,6 +46941,11 @@ func (c *Client) sendMigrationsStartForOrg(ctx context.Context, request *Migrati
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("migrations/start-for-org"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/migrations"),
 	}
 
 	// Run stopwatch.
@@ -47036,11 +47036,6 @@ func (c *Client) MigrationsStartImport(ctx context.Context, request *MigrationsS
 }
 
 func (c *Client) sendMigrationsStartImport(ctx context.Context, request *MigrationsStartImportReq, params MigrationsStartImportParams) (res MigrationsStartImportRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("migrations/start-import"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -47049,6 +47044,11 @@ func (c *Client) sendMigrationsStartImport(ctx context.Context, request *Migrati
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("migrations/start-import"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import"),
 	}
 
 	// Run stopwatch.
@@ -47547,11 +47547,6 @@ func (c *Client) OAuthAuthorizationsCreateAuthorization(ctx context.Context, req
 }
 
 func (c *Client) sendOAuthAuthorizationsCreateAuthorization(ctx context.Context, request OptOAuthAuthorizationsCreateAuthorizationReq) (res OAuthAuthorizationsCreateAuthorizationRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("oauth-authorizations/create-authorization"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/authorizations"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -47567,6 +47562,11 @@ func (c *Client) sendOAuthAuthorizationsCreateAuthorization(ctx context.Context,
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("oauth-authorizations/create-authorization"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/authorizations"),
 	}
 
 	// Run stopwatch.
@@ -48065,11 +48065,6 @@ func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx context.C
 }
 
 func (c *Client) sendOAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx context.Context, request *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq, params OAuthAuthorizationsGetOrCreateAuthorizationForAppParams) (res OAuthAuthorizationsGetOrCreateAuthorizationForAppRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("oauth-authorizations/get-or-create-authorization-for-app"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/authorizations/clients/{client_id}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -48078,6 +48073,11 @@ func (c *Client) sendOAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx conte
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("oauth-authorizations/get-or-create-authorization-for-app"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/authorizations/clients/{client_id}"),
 	}
 
 	// Run stopwatch.
@@ -48190,11 +48190,6 @@ func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint
 }
 
 func (c *Client) sendOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint(ctx context.Context, request *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq, params OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams) (res OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/authorizations/clients/{client_id}/{fingerprint}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -48203,6 +48198,11 @@ func (c *Client) sendOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerp
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/authorizations/clients/{client_id}/{fingerprint}"),
 	}
 
 	// Run stopwatch.
@@ -48607,11 +48607,6 @@ func (c *Client) OAuthAuthorizationsUpdateAuthorization(ctx context.Context, req
 }
 
 func (c *Client) sendOAuthAuthorizationsUpdateAuthorization(ctx context.Context, request OptOAuthAuthorizationsUpdateAuthorizationReq, params OAuthAuthorizationsUpdateAuthorizationParams) (res OAuthAuthorizationsUpdateAuthorizationRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("oauth-authorizations/update-authorization"),
-		semconv.HTTPMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/authorizations/{authorization_id}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -48627,6 +48622,11 @@ func (c *Client) sendOAuthAuthorizationsUpdateAuthorization(ctx context.Context,
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("oauth-authorizations/update-authorization"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/authorizations/{authorization_id}"),
 	}
 
 	// Run stopwatch.
@@ -49385,11 +49385,6 @@ func (c *Client) OrgsCreateInvitation(ctx context.Context, request OptOrgsCreate
 }
 
 func (c *Client) sendOrgsCreateInvitation(ctx context.Context, request OptOrgsCreateInvitationReq, params OrgsCreateInvitationParams) (res OrgsCreateInvitationRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("orgs/create-invitation"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/invitations"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -49405,6 +49400,11 @@ func (c *Client) sendOrgsCreateInvitation(ctx context.Context, request OptOrgsCr
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/create-invitation"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/invitations"),
 	}
 
 	// Run stopwatch.
@@ -49495,11 +49495,6 @@ func (c *Client) OrgsCreateWebhook(ctx context.Context, request *OrgsCreateWebho
 }
 
 func (c *Client) sendOrgsCreateWebhook(ctx context.Context, request *OrgsCreateWebhookReq, params OrgsCreateWebhookParams) (res OrgsCreateWebhookRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("orgs/create-webhook"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/hooks"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -49508,6 +49503,11 @@ func (c *Client) sendOrgsCreateWebhook(ctx context.Context, request *OrgsCreateW
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/create-webhook"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/hooks"),
 	}
 
 	// Run stopwatch.
@@ -53192,11 +53192,6 @@ func (c *Client) OrgsSetMembershipForUser(ctx context.Context, request OptOrgsSe
 }
 
 func (c *Client) sendOrgsSetMembershipForUser(ctx context.Context, request OptOrgsSetMembershipForUserReq, params OrgsSetMembershipForUserParams) (res OrgsSetMembershipForUserRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("orgs/set-membership-for-user"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/memberships/{username}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -53212,6 +53207,11 @@ func (c *Client) sendOrgsSetMembershipForUser(ctx context.Context, request OptOr
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/set-membership-for-user"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/memberships/{username}"),
 	}
 
 	// Run stopwatch.
@@ -53542,11 +53542,6 @@ func (c *Client) OrgsUpdateMembershipForAuthenticatedUser(ctx context.Context, r
 }
 
 func (c *Client) sendOrgsUpdateMembershipForAuthenticatedUser(ctx context.Context, request *OrgsUpdateMembershipForAuthenticatedUserReq, params OrgsUpdateMembershipForAuthenticatedUserParams) (res OrgsUpdateMembershipForAuthenticatedUserRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("orgs/update-membership-for-authenticated-user"),
-		semconv.HTTPMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/user/memberships/orgs/{org}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -53555,6 +53550,11 @@ func (c *Client) sendOrgsUpdateMembershipForAuthenticatedUser(ctx context.Contex
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/update-membership-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/user/memberships/orgs/{org}"),
 	}
 
 	// Run stopwatch.
@@ -53648,11 +53648,6 @@ func (c *Client) OrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdateWeb
 }
 
 func (c *Client) sendOrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdateWebhookReq, params OrgsUpdateWebhookParams) (res OrgsUpdateWebhookRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("orgs/update-webhook"),
-		semconv.HTTPMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -53668,6 +53663,11 @@ func (c *Client) sendOrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdat
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/update-webhook"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}"),
 	}
 
 	// Run stopwatch.
@@ -53780,11 +53780,6 @@ func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request OptO
 }
 
 func (c *Client) sendOrgsUpdateWebhookConfigForOrg(ctx context.Context, request OptOrgsUpdateWebhookConfigForOrgReq, params OrgsUpdateWebhookConfigForOrgParams) (res *WebhookConfig, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("orgs/update-webhook-config-for-org"),
-		semconv.HTTPMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}/config"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -53800,6 +53795,11 @@ func (c *Client) sendOrgsUpdateWebhookConfigForOrg(ctx context.Context, request 
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/update-webhook-config-for-org"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}/config"),
 	}
 
 	// Run stopwatch.
@@ -57302,11 +57302,6 @@ func (c *Client) ProjectsAddCollaborator(ctx context.Context, request OptNilProj
 }
 
 func (c *Client) sendProjectsAddCollaborator(ctx context.Context, request OptNilProjectsAddCollaboratorReq, params ProjectsAddCollaboratorParams) (res ProjectsAddCollaboratorRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("projects/add-collaborator"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/projects/{project_id}/collaborators/{username}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -57322,6 +57317,11 @@ func (c *Client) sendProjectsAddCollaborator(ctx context.Context, request OptNil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("projects/add-collaborator"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/projects/{project_id}/collaborators/{username}"),
 	}
 
 	// Run stopwatch.
@@ -59350,11 +59350,6 @@ func (c *Client) ProjectsMoveCard(ctx context.Context, request *ProjectsMoveCard
 }
 
 func (c *Client) sendProjectsMoveCard(ctx context.Context, request *ProjectsMoveCardReq, params ProjectsMoveCardParams) (res ProjectsMoveCardRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("projects/move-card"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/projects/columns/cards/{card_id}/moves"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -59363,6 +59358,11 @@ func (c *Client) sendProjectsMoveCard(ctx context.Context, request *ProjectsMove
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("projects/move-card"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/projects/columns/cards/{card_id}/moves"),
 	}
 
 	// Run stopwatch.
@@ -59453,11 +59453,6 @@ func (c *Client) ProjectsMoveColumn(ctx context.Context, request *ProjectsMoveCo
 }
 
 func (c *Client) sendProjectsMoveColumn(ctx context.Context, request *ProjectsMoveColumnReq, params ProjectsMoveColumnParams) (res ProjectsMoveColumnRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("projects/move-column"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/projects/columns/{column_id}/moves"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -59466,6 +59461,11 @@ func (c *Client) sendProjectsMoveColumn(ctx context.Context, request *ProjectsMo
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("projects/move-column"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/projects/columns/{column_id}/moves"),
 	}
 
 	// Run stopwatch.
@@ -59668,11 +59668,6 @@ func (c *Client) ProjectsUpdate(ctx context.Context, request OptProjectsUpdateRe
 }
 
 func (c *Client) sendProjectsUpdate(ctx context.Context, request OptProjectsUpdateReq, params ProjectsUpdateParams) (res ProjectsUpdateRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("projects/update"),
-		semconv.HTTPMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/projects/{project_id}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -59688,6 +59683,11 @@ func (c *Client) sendProjectsUpdate(ctx context.Context, request OptProjectsUpda
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("projects/update"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/projects/{project_id}"),
 	}
 
 	// Run stopwatch.
@@ -60398,11 +60398,6 @@ func (c *Client) PullsCreateReview(ctx context.Context, request OptPullsCreateRe
 }
 
 func (c *Client) sendPullsCreateReview(ctx context.Context, request OptPullsCreateReviewReq, params PullsCreateReviewParams) (res PullsCreateReviewRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("pulls/create-review"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -60418,6 +60413,11 @@ func (c *Client) sendPullsCreateReview(ctx context.Context, request OptPullsCrea
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pulls/create-review"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews"),
 	}
 
 	// Run stopwatch.
@@ -60565,11 +60565,6 @@ func (c *Client) PullsCreateReviewComment(ctx context.Context, request *PullsCre
 }
 
 func (c *Client) sendPullsCreateReviewComment(ctx context.Context, request *PullsCreateReviewCommentReq, params PullsCreateReviewCommentParams) (res PullsCreateReviewCommentRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("pulls/create-review-comment"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/comments"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -60578,6 +60573,11 @@ func (c *Client) sendPullsCreateReviewComment(ctx context.Context, request *Pull
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pulls/create-review-comment"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/comments"),
 	}
 
 	// Run stopwatch.
@@ -63089,11 +63089,6 @@ func (c *Client) PullsMerge(ctx context.Context, request OptNilPullsMergeReq, pa
 }
 
 func (c *Client) sendPullsMerge(ctx context.Context, request OptNilPullsMergeReq, params PullsMergeParams) (res PullsMergeRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("pulls/merge"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/merge"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -63109,6 +63104,11 @@ func (c *Client) sendPullsMerge(ctx context.Context, request OptNilPullsMergeReq
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pulls/merge"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/merge"),
 	}
 
 	// Run stopwatch.
@@ -63237,11 +63237,6 @@ func (c *Client) PullsRemoveRequestedReviewers(ctx context.Context, request *Pul
 }
 
 func (c *Client) sendPullsRemoveRequestedReviewers(ctx context.Context, request *PullsRemoveRequestedReviewersReq, params PullsRemoveRequestedReviewersParams) (res PullsRemoveRequestedReviewersRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("pulls/remove-requested-reviewers"),
-		semconv.HTTPMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -63250,6 +63245,11 @@ func (c *Client) sendPullsRemoveRequestedReviewers(ctx context.Context, request 
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pulls/remove-requested-reviewers"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"),
 	}
 
 	// Run stopwatch.
@@ -63378,11 +63378,6 @@ func (c *Client) PullsSubmitReview(ctx context.Context, request *PullsSubmitRevi
 }
 
 func (c *Client) sendPullsSubmitReview(ctx context.Context, request *PullsSubmitReviewReq, params PullsSubmitReviewParams) (res PullsSubmitReviewRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("pulls/submit-review"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -63391,6 +63386,11 @@ func (c *Client) sendPullsSubmitReview(ctx context.Context, request *PullsSubmit
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pulls/submit-review"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events"),
 	}
 
 	// Run stopwatch.
@@ -63545,11 +63545,6 @@ func (c *Client) PullsUpdate(ctx context.Context, request OptPullsUpdateReq, par
 }
 
 func (c *Client) sendPullsUpdate(ctx context.Context, request OptPullsUpdateReq, params PullsUpdateParams) (res PullsUpdateRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("pulls/update"),
-		semconv.HTTPMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -63565,6 +63560,11 @@ func (c *Client) sendPullsUpdate(ctx context.Context, request OptPullsUpdateReq,
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pulls/update"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}"),
 	}
 
 	// Run stopwatch.
@@ -64183,11 +64183,6 @@ func (c *Client) ReactionsCreateForCommitComment(ctx context.Context, request *R
 }
 
 func (c *Client) sendReactionsCreateForCommitComment(ctx context.Context, request *ReactionsCreateForCommitCommentReq, params ReactionsCreateForCommitCommentParams) (res ReactionsCreateForCommitCommentRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("reactions/create-for-commit-comment"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/comments/{comment_id}/reactions"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -64196,6 +64191,11 @@ func (c *Client) sendReactionsCreateForCommitComment(ctx context.Context, reques
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("reactions/create-for-commit-comment"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/comments/{comment_id}/reactions"),
 	}
 
 	// Run stopwatch.
@@ -64325,11 +64325,6 @@ func (c *Client) ReactionsCreateForIssue(ctx context.Context, request *Reactions
 }
 
 func (c *Client) sendReactionsCreateForIssue(ctx context.Context, request *ReactionsCreateForIssueReq, params ReactionsCreateForIssueParams) (res ReactionsCreateForIssueRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("reactions/create-for-issue"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/reactions"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -64338,6 +64333,11 @@ func (c *Client) sendReactionsCreateForIssue(ctx context.Context, request *React
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("reactions/create-for-issue"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/reactions"),
 	}
 
 	// Run stopwatch.
@@ -64468,11 +64468,6 @@ func (c *Client) ReactionsCreateForIssueComment(ctx context.Context, request *Re
 }
 
 func (c *Client) sendReactionsCreateForIssueComment(ctx context.Context, request *ReactionsCreateForIssueCommentReq, params ReactionsCreateForIssueCommentParams) (res ReactionsCreateForIssueCommentRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("reactions/create-for-issue-comment"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -64481,6 +64476,11 @@ func (c *Client) sendReactionsCreateForIssueComment(ctx context.Context, request
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("reactions/create-for-issue-comment"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions"),
 	}
 
 	// Run stopwatch.
@@ -64611,11 +64611,6 @@ func (c *Client) ReactionsCreateForPullRequestReviewComment(ctx context.Context,
 }
 
 func (c *Client) sendReactionsCreateForPullRequestReviewComment(ctx context.Context, request *ReactionsCreateForPullRequestReviewCommentReq, params ReactionsCreateForPullRequestReviewCommentParams) (res ReactionsCreateForPullRequestReviewCommentRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("reactions/create-for-pull-request-review-comment"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -64624,6 +64619,11 @@ func (c *Client) sendReactionsCreateForPullRequestReviewComment(ctx context.Cont
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("reactions/create-for-pull-request-review-comment"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions"),
 	}
 
 	// Run stopwatch.
@@ -64753,11 +64753,6 @@ func (c *Client) ReactionsCreateForRelease(ctx context.Context, request *Reactio
 }
 
 func (c *Client) sendReactionsCreateForRelease(ctx context.Context, request *ReactionsCreateForReleaseReq, params ReactionsCreateForReleaseParams) (res ReactionsCreateForReleaseRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("reactions/create-for-release"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/{release_id}/reactions"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -64766,6 +64761,11 @@ func (c *Client) sendReactionsCreateForRelease(ctx context.Context, request *Rea
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("reactions/create-for-release"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/{release_id}/reactions"),
 	}
 
 	// Run stopwatch.
@@ -64900,11 +64900,6 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Contex
 }
 
 func (c *Client) sendReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Context, request *ReactionsCreateForTeamDiscussionCommentInOrgReq, params ReactionsCreateForTeamDiscussionCommentInOrgParams) (res ReactionsCreateForTeamDiscussionCommentInOrgRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("reactions/create-for-team-discussion-comment-in-org"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -64913,6 +64908,11 @@ func (c *Client) sendReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Co
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("reactions/create-for-team-discussion-comment-in-org"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions"),
 	}
 
 	// Run stopwatch.
@@ -65070,11 +65070,6 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Conte
 }
 
 func (c *Client) sendReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Context, request *ReactionsCreateForTeamDiscussionCommentLegacyReq, params ReactionsCreateForTeamDiscussionCommentLegacyParams) (res *Reaction, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("reactions/create-for-team-discussion-comment-legacy"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -65083,6 +65078,11 @@ func (c *Client) sendReactionsCreateForTeamDiscussionCommentLegacy(ctx context.C
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("reactions/create-for-team-discussion-comment-legacy"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"),
 	}
 
 	// Run stopwatch.
@@ -65218,11 +65218,6 @@ func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, requ
 }
 
 func (c *Client) sendReactionsCreateForTeamDiscussionInOrg(ctx context.Context, request *ReactionsCreateForTeamDiscussionInOrgReq, params ReactionsCreateForTeamDiscussionInOrgParams) (res ReactionsCreateForTeamDiscussionInOrgRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("reactions/create-for-team-discussion-in-org"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -65231,6 +65226,11 @@ func (c *Client) sendReactionsCreateForTeamDiscussionInOrg(ctx context.Context, 
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("reactions/create-for-team-discussion-in-org"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions"),
 	}
 
 	// Run stopwatch.
@@ -65370,11 +65370,6 @@ func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req
 }
 
 func (c *Client) sendReactionsCreateForTeamDiscussionLegacy(ctx context.Context, request *ReactionsCreateForTeamDiscussionLegacyReq, params ReactionsCreateForTeamDiscussionLegacyParams) (res *Reaction, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("reactions/create-for-team-discussion-legacy"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/reactions"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -65383,6 +65378,11 @@ func (c *Client) sendReactionsCreateForTeamDiscussionLegacy(ctx context.Context,
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("reactions/create-for-team-discussion-legacy"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/reactions"),
 	}
 
 	// Run stopwatch.
@@ -68114,11 +68114,6 @@ func (c *Client) ReposAddAppAccessRestrictions(ctx context.Context, request OptR
 }
 
 func (c *Client) sendReposAddAppAccessRestrictions(ctx context.Context, request OptReposAddAppAccessRestrictionsReq, params ReposAddAppAccessRestrictionsParams) (res ReposAddAppAccessRestrictionsRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("repos/add-app-access-restrictions"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -68134,6 +68129,11 @@ func (c *Client) sendReposAddAppAccessRestrictions(ctx context.Context, request 
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/add-app-access-restrictions"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"),
 	}
 
 	// Run stopwatch.
@@ -68281,11 +68281,6 @@ func (c *Client) ReposAddCollaborator(ctx context.Context, request OptReposAddCo
 }
 
 func (c *Client) sendReposAddCollaborator(ctx context.Context, request OptReposAddCollaboratorReq, params ReposAddCollaboratorParams) (res ReposAddCollaboratorRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("repos/add-collaborator"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/collaborators/{username}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -68301,6 +68296,11 @@ func (c *Client) sendReposAddCollaborator(ctx context.Context, request OptReposA
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/add-collaborator"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/collaborators/{username}"),
 	}
 
 	// Run stopwatch.
@@ -68432,11 +68432,6 @@ func (c *Client) ReposAddStatusCheckContexts(ctx context.Context, request OptRep
 }
 
 func (c *Client) sendReposAddStatusCheckContexts(ctx context.Context, request OptReposAddStatusCheckContextsReq, params ReposAddStatusCheckContextsParams) (res ReposAddStatusCheckContextsRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("repos/add-status-check-contexts"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -68452,6 +68447,11 @@ func (c *Client) sendReposAddStatusCheckContexts(ctx context.Context, request Op
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/add-status-check-contexts"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"),
 	}
 
 	// Run stopwatch.
@@ -68594,11 +68594,6 @@ func (c *Client) ReposAddTeamAccessRestrictions(ctx context.Context, request Opt
 }
 
 func (c *Client) sendReposAddTeamAccessRestrictions(ctx context.Context, request OptReposAddTeamAccessRestrictionsReq, params ReposAddTeamAccessRestrictionsParams) (res ReposAddTeamAccessRestrictionsRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("repos/add-team-access-restrictions"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -68614,6 +68609,11 @@ func (c *Client) sendReposAddTeamAccessRestrictions(ctx context.Context, request
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/add-team-access-restrictions"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"),
 	}
 
 	// Run stopwatch.
@@ -68755,11 +68755,6 @@ func (c *Client) ReposAddUserAccessRestrictions(ctx context.Context, request Opt
 }
 
 func (c *Client) sendReposAddUserAccessRestrictions(ctx context.Context, request OptReposAddUserAccessRestrictionsReq, params ReposAddUserAccessRestrictionsParams) (res ReposAddUserAccessRestrictionsRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("repos/add-user-access-restrictions"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -68775,6 +68770,11 @@ func (c *Client) sendReposAddUserAccessRestrictions(ctx context.Context, request
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/add-user-access-restrictions"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"),
 	}
 
 	// Run stopwatch.
@@ -69757,11 +69757,6 @@ func (c *Client) ReposCreateCommitStatus(ctx context.Context, request *ReposCrea
 }
 
 func (c *Client) sendReposCreateCommitStatus(ctx context.Context, request *ReposCreateCommitStatusReq, params ReposCreateCommitStatusParams) (res *StatusHeaders, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("repos/create-commit-status"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/statuses/{sha}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -69770,6 +69765,11 @@ func (c *Client) sendReposCreateCommitStatus(ctx context.Context, request *Repos
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/create-commit-status"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/statuses/{sha}"),
 	}
 
 	// Run stopwatch.
@@ -70180,11 +70180,6 @@ func (c *Client) ReposCreateDeploymentStatus(ctx context.Context, request *Repos
 }
 
 func (c *Client) sendReposCreateDeploymentStatus(ctx context.Context, request *ReposCreateDeploymentStatusReq, params ReposCreateDeploymentStatusParams) (res ReposCreateDeploymentStatusRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("repos/create-deployment-status"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -70193,6 +70188,11 @@ func (c *Client) sendReposCreateDeploymentStatus(ctx context.Context, request *R
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/create-deployment-status"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses"),
 	}
 
 	// Run stopwatch.
@@ -70340,11 +70340,6 @@ func (c *Client) ReposCreateDispatchEvent(ctx context.Context, request *ReposCre
 }
 
 func (c *Client) sendReposCreateDispatchEvent(ctx context.Context, request *ReposCreateDispatchEventReq, params ReposCreateDispatchEventParams) (res ReposCreateDispatchEventRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("repos/create-dispatch-event"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/dispatches"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -70353,6 +70348,11 @@ func (c *Client) sendReposCreateDispatchEvent(ctx context.Context, request *Repo
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/create-dispatch-event"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/dispatches"),
 	}
 
 	// Run stopwatch.
@@ -70666,11 +70666,6 @@ func (c *Client) ReposCreateInOrg(ctx context.Context, request *ReposCreateInOrg
 }
 
 func (c *Client) sendReposCreateInOrg(ctx context.Context, request *ReposCreateInOrgReq, params ReposCreateInOrgParams) (res ReposCreateInOrgRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("repos/create-in-org"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/repos"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -70679,6 +70674,11 @@ func (c *Client) sendReposCreateInOrg(ctx context.Context, request *ReposCreateI
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/create-in-org"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/repos"),
 	}
 
 	// Run stopwatch.
@@ -70901,11 +70901,6 @@ func (c *Client) ReposCreatePagesSite(ctx context.Context, request NilReposCreat
 }
 
 func (c *Client) sendReposCreatePagesSite(ctx context.Context, request NilReposCreatePagesSiteReq, params ReposCreatePagesSiteParams) (res ReposCreatePagesSiteRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("repos/create-pages-site"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -70921,6 +70916,11 @@ func (c *Client) sendReposCreatePagesSite(ctx context.Context, request NilReposC
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/create-pages-site"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages"),
 	}
 
 	// Run stopwatch.
@@ -71276,11 +71276,6 @@ func (c *Client) ReposCreateWebhook(ctx context.Context, request OptNilReposCrea
 }
 
 func (c *Client) sendReposCreateWebhook(ctx context.Context, request OptNilReposCreateWebhookReq, params ReposCreateWebhookParams) (res ReposCreateWebhookRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("repos/create-webhook"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -71296,6 +71291,11 @@ func (c *Client) sendReposCreateWebhook(ctx context.Context, request OptNilRepos
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/create-webhook"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks"),
 	}
 
 	// Run stopwatch.
@@ -85408,11 +85408,6 @@ func (c *Client) ReposRemoveAppAccessRestrictions(ctx context.Context, request O
 }
 
 func (c *Client) sendReposRemoveAppAccessRestrictions(ctx context.Context, request OptReposRemoveAppAccessRestrictionsReq, params ReposRemoveAppAccessRestrictionsParams) (res ReposRemoveAppAccessRestrictionsRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("repos/remove-app-access-restrictions"),
-		semconv.HTTPMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -85428,6 +85423,11 @@ func (c *Client) sendReposRemoveAppAccessRestrictions(ctx context.Context, reque
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/remove-app-access-restrictions"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"),
 	}
 
 	// Run stopwatch.
@@ -85688,11 +85688,6 @@ func (c *Client) ReposRemoveStatusCheckContexts(ctx context.Context, request Opt
 }
 
 func (c *Client) sendReposRemoveStatusCheckContexts(ctx context.Context, request OptReposRemoveStatusCheckContextsReq, params ReposRemoveStatusCheckContextsParams) (res ReposRemoveStatusCheckContextsRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("repos/remove-status-check-contexts"),
-		semconv.HTTPMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -85708,6 +85703,11 @@ func (c *Client) sendReposRemoveStatusCheckContexts(ctx context.Context, request
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/remove-status-check-contexts"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"),
 	}
 
 	// Run stopwatch.
@@ -85983,11 +85983,6 @@ func (c *Client) ReposRemoveTeamAccessRestrictions(ctx context.Context, request 
 }
 
 func (c *Client) sendReposRemoveTeamAccessRestrictions(ctx context.Context, request OptReposRemoveTeamAccessRestrictionsReq, params ReposRemoveTeamAccessRestrictionsParams) (res ReposRemoveTeamAccessRestrictionsRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("repos/remove-team-access-restrictions"),
-		semconv.HTTPMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -86003,6 +85998,11 @@ func (c *Client) sendReposRemoveTeamAccessRestrictions(ctx context.Context, requ
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/remove-team-access-restrictions"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"),
 	}
 
 	// Run stopwatch.
@@ -86144,11 +86144,6 @@ func (c *Client) ReposRemoveUserAccessRestrictions(ctx context.Context, request 
 }
 
 func (c *Client) sendReposRemoveUserAccessRestrictions(ctx context.Context, request OptReposRemoveUserAccessRestrictionsReq, params ReposRemoveUserAccessRestrictionsParams) (res ReposRemoveUserAccessRestrictionsRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("repos/remove-user-access-restrictions"),
-		semconv.HTTPMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -86164,6 +86159,11 @@ func (c *Client) sendReposRemoveUserAccessRestrictions(ctx context.Context, requ
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/remove-user-access-restrictions"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"),
 	}
 
 	// Run stopwatch.
@@ -86436,11 +86436,6 @@ func (c *Client) ReposReplaceAllTopics(ctx context.Context, request *ReposReplac
 }
 
 func (c *Client) sendReposReplaceAllTopics(ctx context.Context, request *ReposReplaceAllTopicsReq, params ReposReplaceAllTopicsParams) (res ReposReplaceAllTopicsRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("repos/replace-all-topics"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/topics"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -86449,6 +86444,11 @@ func (c *Client) sendReposReplaceAllTopics(ctx context.Context, request *ReposRe
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/replace-all-topics"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/topics"),
 	}
 
 	// Run stopwatch.
@@ -86824,11 +86824,6 @@ func (c *Client) ReposSetAppAccessRestrictions(ctx context.Context, request OptR
 }
 
 func (c *Client) sendReposSetAppAccessRestrictions(ctx context.Context, request OptReposSetAppAccessRestrictionsReq, params ReposSetAppAccessRestrictionsParams) (res ReposSetAppAccessRestrictionsRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("repos/set-app-access-restrictions"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -86844,6 +86839,11 @@ func (c *Client) sendReposSetAppAccessRestrictions(ctx context.Context, request 
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/set-app-access-restrictions"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"),
 	}
 
 	// Run stopwatch.
@@ -86976,11 +86976,6 @@ func (c *Client) ReposSetStatusCheckContexts(ctx context.Context, request OptRep
 }
 
 func (c *Client) sendReposSetStatusCheckContexts(ctx context.Context, request OptReposSetStatusCheckContextsReq, params ReposSetStatusCheckContextsParams) (res ReposSetStatusCheckContextsRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("repos/set-status-check-contexts"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -86996,6 +86991,11 @@ func (c *Client) sendReposSetStatusCheckContexts(ctx context.Context, request Op
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/set-status-check-contexts"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"),
 	}
 
 	// Run stopwatch.
@@ -87139,11 +87139,6 @@ func (c *Client) ReposSetTeamAccessRestrictions(ctx context.Context, request Opt
 }
 
 func (c *Client) sendReposSetTeamAccessRestrictions(ctx context.Context, request OptReposSetTeamAccessRestrictionsReq, params ReposSetTeamAccessRestrictionsParams) (res ReposSetTeamAccessRestrictionsRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("repos/set-team-access-restrictions"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -87159,6 +87154,11 @@ func (c *Client) sendReposSetTeamAccessRestrictions(ctx context.Context, request
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/set-team-access-restrictions"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"),
 	}
 
 	// Run stopwatch.
@@ -87301,11 +87301,6 @@ func (c *Client) ReposSetUserAccessRestrictions(ctx context.Context, request Opt
 }
 
 func (c *Client) sendReposSetUserAccessRestrictions(ctx context.Context, request OptReposSetUserAccessRestrictionsReq, params ReposSetUserAccessRestrictionsParams) (res ReposSetUserAccessRestrictionsRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("repos/set-user-access-restrictions"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -87321,6 +87316,11 @@ func (c *Client) sendReposSetUserAccessRestrictions(ctx context.Context, request
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/set-user-access-restrictions"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"),
 	}
 
 	// Run stopwatch.
@@ -87699,11 +87699,6 @@ func (c *Client) ReposUpdate(ctx context.Context, request OptReposUpdateReq, par
 }
 
 func (c *Client) sendReposUpdate(ctx context.Context, request OptReposUpdateReq, params ReposUpdateParams) (res ReposUpdateRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("repos/update"),
-		semconv.HTTPMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -87719,6 +87714,11 @@ func (c *Client) sendReposUpdate(ctx context.Context, request OptReposUpdateReq,
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/update"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}"),
 	}
 
 	// Run stopwatch.
@@ -87834,11 +87834,6 @@ func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request *Repos
 }
 
 func (c *Client) sendReposUpdateBranchProtection(ctx context.Context, request *ReposUpdateBranchProtectionReq, params ReposUpdateBranchProtectionParams) (res ReposUpdateBranchProtectionRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("repos/update-branch-protection"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -87847,6 +87842,11 @@ func (c *Client) sendReposUpdateBranchProtection(ctx context.Context, request *R
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/update-branch-protection"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection"),
 	}
 
 	// Run stopwatch.
@@ -88106,11 +88106,6 @@ func (c *Client) ReposUpdateInvitation(ctx context.Context, request OptReposUpda
 }
 
 func (c *Client) sendReposUpdateInvitation(ctx context.Context, request OptReposUpdateInvitationReq, params ReposUpdateInvitationParams) (res *RepositoryInvitation, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("repos/update-invitation"),
-		semconv.HTTPMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/invitations/{invitation_id}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -88126,6 +88121,11 @@ func (c *Client) sendReposUpdateInvitation(ctx context.Context, request OptRepos
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/update-invitation"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/invitations/{invitation_id}"),
 	}
 
 	// Run stopwatch.
@@ -88795,11 +88795,6 @@ func (c *Client) ReposUpdateWebhook(ctx context.Context, request OptReposUpdateW
 }
 
 func (c *Client) sendReposUpdateWebhook(ctx context.Context, request OptReposUpdateWebhookReq, params ReposUpdateWebhookParams) (res ReposUpdateWebhookRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("repos/update-webhook"),
-		semconv.HTTPMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -88815,6 +88810,11 @@ func (c *Client) sendReposUpdateWebhook(ctx context.Context, request OptReposUpd
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/update-webhook"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}"),
 	}
 
 	// Run stopwatch.
@@ -88946,11 +88946,6 @@ func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request Op
 }
 
 func (c *Client) sendReposUpdateWebhookConfigForRepo(ctx context.Context, request OptReposUpdateWebhookConfigForRepoReq, params ReposUpdateWebhookConfigForRepoParams) (res *WebhookConfig, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("repos/update-webhook-config-for-repo"),
-		semconv.HTTPMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/config"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -88966,6 +88961,11 @@ func (c *Client) sendReposUpdateWebhookConfigForRepo(ctx context.Context, reques
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/update-webhook-config-for-repo"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/config"),
 	}
 
 	// Run stopwatch.
@@ -91069,11 +91069,6 @@ func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request *SecretS
 }
 
 func (c *Client) sendSecretScanningUpdateAlert(ctx context.Context, request *SecretScanningUpdateAlertReq, params SecretScanningUpdateAlertParams) (res SecretScanningUpdateAlertRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("secret-scanning/update-alert"),
-		semconv.HTTPMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -91082,6 +91077,11 @@ func (c *Client) sendSecretScanningUpdateAlert(ctx context.Context, request *Sec
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("secret-scanning/update-alert"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"),
 	}
 
 	// Run stopwatch.
@@ -91363,11 +91363,6 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req
 }
 
 func (c *Client) sendTeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, request OptTeamsAddOrUpdateMembershipForUserInOrgReq, params TeamsAddOrUpdateMembershipForUserInOrgParams) (res TeamsAddOrUpdateMembershipForUserInOrgRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("teams/add-or-update-membership-for-user-in-org"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/memberships/{username}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -91383,6 +91378,11 @@ func (c *Client) sendTeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context,
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/add-or-update-membership-for-user-in-org"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/memberships/{username}"),
 	}
 
 	// Run stopwatch.
@@ -91536,11 +91536,6 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, re
 }
 
 func (c *Client) sendTeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, request OptTeamsAddOrUpdateMembershipForUserLegacyReq, params TeamsAddOrUpdateMembershipForUserLegacyParams) (res TeamsAddOrUpdateMembershipForUserLegacyRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("teams/add-or-update-membership-for-user-legacy"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/memberships/{username}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -91556,6 +91551,11 @@ func (c *Client) sendTeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/add-or-update-membership-for-user-legacy"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/memberships/{username}"),
 	}
 
 	// Run stopwatch.
@@ -91668,11 +91668,6 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 }
 
 func (c *Client) sendTeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, request OptNilTeamsAddOrUpdateProjectPermissionsInOrgReq, params TeamsAddOrUpdateProjectPermissionsInOrgParams) (res TeamsAddOrUpdateProjectPermissionsInOrgRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("teams/add-or-update-project-permissions-in-org"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/projects/{project_id}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -91688,6 +91683,11 @@ func (c *Client) sendTeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/add-or-update-project-permissions-in-org"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/projects/{project_id}"),
 	}
 
 	// Run stopwatch.
@@ -91823,11 +91823,6 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Context, r
 }
 
 func (c *Client) sendTeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Context, request OptTeamsAddOrUpdateProjectPermissionsLegacyReq, params TeamsAddOrUpdateProjectPermissionsLegacyParams) (res TeamsAddOrUpdateProjectPermissionsLegacyRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("teams/add-or-update-project-permissions-legacy"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/projects/{project_id}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -91843,6 +91838,11 @@ func (c *Client) sendTeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Contex
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/add-or-update-project-permissions-legacy"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/projects/{project_id}"),
 	}
 
 	// Run stopwatch.
@@ -91962,11 +91962,6 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 }
 
 func (c *Client) sendTeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, request OptTeamsAddOrUpdateRepoPermissionsInOrgReq, params TeamsAddOrUpdateRepoPermissionsInOrgParams) (res *TeamsAddOrUpdateRepoPermissionsInOrgNoContent, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("teams/add-or-update-repo-permissions-in-org"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -91982,6 +91977,11 @@ func (c *Client) sendTeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, r
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/add-or-update-repo-permissions-in-org"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"),
 	}
 
 	// Run stopwatch.
@@ -92141,11 +92141,6 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, requ
 }
 
 func (c *Client) sendTeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, request OptTeamsAddOrUpdateRepoPermissionsLegacyReq, params TeamsAddOrUpdateRepoPermissionsLegacyParams) (res TeamsAddOrUpdateRepoPermissionsLegacyRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("teams/add-or-update-repo-permissions-legacy"),
-		semconv.HTTPMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/repos/{owner}/{repo}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -92161,6 +92156,11 @@ func (c *Client) sendTeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, 
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/add-or-update-repo-permissions-legacy"),
+		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/repos/{owner}/{repo}"),
 	}
 
 	// Run stopwatch.
@@ -92834,11 +92834,6 @@ func (c *Client) TeamsCreate(ctx context.Context, request *TeamsCreateReq, param
 }
 
 func (c *Client) sendTeamsCreate(ctx context.Context, request *TeamsCreateReq, params TeamsCreateParams) (res TeamsCreateRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("teams/create"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -92847,6 +92842,11 @@ func (c *Client) sendTeamsCreate(ctx context.Context, request *TeamsCreateReq, p
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/create"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams"),
 	}
 
 	// Run stopwatch.
@@ -93566,11 +93566,6 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Contex
 }
 
 func (c *Client) sendTeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Context, request *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq, params TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams) (res TeamsCreateOrUpdateIdpGroupConnectionsLegacyRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("teams/create-or-update-idp-group-connections-legacy"),
-		semconv.HTTPMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/team-sync/group-mappings"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -93579,6 +93574,11 @@ func (c *Client) sendTeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Co
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/create-or-update-idp-group-connections-legacy"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}/team-sync/group-mappings"),
 	}
 
 	// Run stopwatch.
@@ -99737,11 +99737,6 @@ func (c *Client) TeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdateInO
 }
 
 func (c *Client) sendTeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdateInOrgReq, params TeamsUpdateInOrgParams) (res *TeamFull, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("teams/update-in-org"),
-		semconv.HTTPMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -99757,6 +99752,11 @@ func (c *Client) sendTeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdat
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/update-in-org"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}"),
 	}
 
 	// Run stopwatch.
@@ -99871,11 +99871,6 @@ func (c *Client) TeamsUpdateLegacy(ctx context.Context, request *TeamsUpdateLega
 }
 
 func (c *Client) sendTeamsUpdateLegacy(ctx context.Context, request *TeamsUpdateLegacyReq, params TeamsUpdateLegacyParams) (res TeamsUpdateLegacyRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("teams/update-legacy"),
-		semconv.HTTPMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -99884,6 +99879,11 @@ func (c *Client) sendTeamsUpdateLegacy(ctx context.Context, request *TeamsUpdate
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/update-legacy"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/teams/{team_id}"),
 	}
 
 	// Run stopwatch.
@@ -99973,11 +99973,6 @@ func (c *Client) UsersAddEmailForAuthenticated(ctx context.Context, request OptU
 }
 
 func (c *Client) sendUsersAddEmailForAuthenticated(ctx context.Context, request OptUsersAddEmailForAuthenticatedReq) (res UsersAddEmailForAuthenticatedRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("users/add-email-for-authenticated"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/user/emails"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -99993,6 +99988,11 @@ func (c *Client) sendUsersAddEmailForAuthenticated(ctx context.Context, request 
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/add-email-for-authenticated"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/user/emails"),
 	}
 
 	// Run stopwatch.
@@ -100522,11 +100522,6 @@ func (c *Client) UsersCreatePublicSSHKeyForAuthenticated(ctx context.Context, re
 }
 
 func (c *Client) sendUsersCreatePublicSSHKeyForAuthenticated(ctx context.Context, request *UsersCreatePublicSSHKeyForAuthenticatedReq) (res UsersCreatePublicSSHKeyForAuthenticatedRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("users/create-public-ssh-key-for-authenticated"),
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/user/keys"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -100535,6 +100530,11 @@ func (c *Client) sendUsersCreatePublicSSHKeyForAuthenticated(ctx context.Context
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/create-public-ssh-key-for-authenticated"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/user/keys"),
 	}
 
 	// Run stopwatch.
@@ -100606,11 +100606,6 @@ func (c *Client) UsersDeleteEmailForAuthenticated(ctx context.Context, request O
 }
 
 func (c *Client) sendUsersDeleteEmailForAuthenticated(ctx context.Context, request OptUsersDeleteEmailForAuthenticatedReq) (res UsersDeleteEmailForAuthenticatedRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("users/delete-email-for-authenticated"),
-		semconv.HTTPMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/user/emails"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -100626,6 +100621,11 @@ func (c *Client) sendUsersDeleteEmailForAuthenticated(ctx context.Context, reque
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/delete-email-for-authenticated"),
+		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/user/emails"),
 	}
 
 	// Run stopwatch.
@@ -102846,11 +102846,6 @@ func (c *Client) UsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.Cont
 }
 
 func (c *Client) sendUsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.Context, request *UsersSetPrimaryEmailVisibilityForAuthenticatedReq) (res UsersSetPrimaryEmailVisibilityForAuthenticatedRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("users/set-primary-email-visibility-for-authenticated"),
-		semconv.HTTPMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/user/email/visibility"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -102859,6 +102854,11 @@ func (c *Client) sendUsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/set-primary-email-visibility-for-authenticated"),
+		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/user/email/visibility"),
 	}
 
 	// Run stopwatch.

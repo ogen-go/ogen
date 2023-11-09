@@ -30,10 +30,14 @@ func BenchmarkGenerator(b *testing.B) {
 			a.NoError(err)
 
 			opts := gen.Options{
-				IgnoreNotImplemented: []string{
-					"all",
+				Parser: gen.ParseOptions{
+					InferSchemaType: true,
 				},
-				InferSchemaType: true,
+				Generator: gen.GenerateOptions{
+					IgnoreNotImplemented: []string{
+						"all",
+					},
+				},
 			}
 			dir := b.TempDir()
 			fs := genfs.FormattedSource{

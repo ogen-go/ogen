@@ -4,18 +4,20 @@
 
 {{- if $.PathsServerEnabled }}
 {{- range $op := $.Operations }}
-	{{- template "response_encoders/operation" $op }}
+	{{- template "response_encoders/operation" op_elem $op $ }}
 {{ end }}
 
 {{- if $.Error }}
+{{- $otel := $.OpenTelemetryEnabled }}
 func encodeErrorResponse(response {{ $.ErrorGoType }}, w http.ResponseWriter, span trace.Span) error {
-	{{- if eq (len $.Error.ResponseInfo) 1 }}
-		{{- range $info := $.Error.ResponseInfo }}
+	{{- $infos := $.Error.ResponseInfo $otel }}
+	{{- if eq (len $infos) 1 }}
+		{{- range $info := $infos }}
 			{{- template "respond" $info }}
 		{{- end }}
 	{{- else }}
 		switch response := response.(type) {
-		{{- range $info := $.Error.ResponseInfo }}
+		{{- range $info := $infos }}
 			case *{{ $info.Type.Name }}:
 			{{- template "respond" $info }}
 		{{- end }}
@@ -29,22 +31,24 @@ func encodeErrorResponse(response {{ $.ErrorGoType }}, w http.ResponseWriter, sp
 
 {{- if $.WebhookServerEnabled }}
 {{- range $op := $.Webhooks }}
-    {{- template "response_encoders/operation" $op }}
+    {{- template "response_encoders/operation" op_elem $op $ }}
 {{ end }}
 {{- end }}
 
 {{ end }}
 
 {{ define "response_encoders/operation" }}
-{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/ -}}{{ $op := $ }}
-func encode{{ $op.Name }}Response(response {{ $op.Responses.GoType }}, w http.ResponseWriter, span trace.Span) error {
-	{{- if eq (len $op.ListResponseTypes) 1 }}
-		{{- range $info := $op.ListResponseTypes }}
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/ -}}{{ $op := $.Operation }}
+{{- $otel := $.Config.OpenTelemetryEnabled }}
+func encode{{ $op.Name }}Response(response {{ $op.Responses.GoType }}, w http.ResponseWriter, {{ if $otel }}span trace.Span{{ end }}) error {
+	{{- $types := $op.ListResponseTypes $otel }}
+	{{- if eq (len $types) 1 }}
+		{{- range $info := $types }}
 			{{- template "respond" $info }}
 		{{- end }}
 	{{- else }}
 		switch response := response.(type) {
-		{{- range $info := $op.ListResponseTypes }}
+		{{- range $info := $types }}
 			case *{{ $info.Type.Name }}:
 			{{- template "respond" $info }}
 		{{- end }}
@@ -99,18 +103,21 @@ func encode{{ $op.Name }}Response(response {{ $op.Responses.GoType }}, w http.Re
 		code = http.StatusOK
 	}
 	w.WriteHeader(code)
-	st := http.StatusText(code)
-	if code >= http.StatusBadRequest {
+	{{- if $.OpenTelemetry }}
+	if st := http.StatusText(code); code >= http.StatusBadRequest {
 		span.SetStatus(codes.Error, st)
 	} else {
 		span.SetStatus(codes.Ok, st)
 	}
+	{{- end }}
 {{- else }}
 	w.WriteHeader({{ $.StatusCode }})
-	{{- if ge .StatusCode 400 }}
-		span.SetStatus(codes.Error, http.StatusText({{ $.StatusCode }}))
-	{{- else }}
-		span.SetStatus(codes.Ok, http.StatusText({{ $.StatusCode }}))
+	{{- if $.OpenTelemetry }}
+		{{- if ge .StatusCode 400 }}
+			span.SetStatus(codes.Error, http.StatusText({{ $.StatusCode }}))
+		{{- else }}
+			span.SetStatus(codes.Ok, http.StatusText({{ $.StatusCode }}))
+		{{- end }}
 	{{- end }}
 {{- end }}
 

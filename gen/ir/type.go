@@ -67,7 +67,6 @@ type Type struct {
 	Kind                Kind                // kind
 	Name                string              // only for struct, alias, interface, enum, stream, generic, map, sum
 	Primitive           PrimitiveType       // only for primitive, enum
-	CustomFormat        *CustomFormat       // only for primitive
 	AliasTo             *Type               // only for alias
 	PointerTo           *Type               // only for pointer
 	SumOf               []*Type             // only for sum
@@ -170,9 +169,6 @@ func (t *Type) Is(vs ...Kind) bool {
 func (t *Type) Go() string {
 	switch t.Kind {
 	case KindPrimitive:
-		if cf := t.CustomFormat; cf != nil {
-			return cf.Type.Go()
-		}
 		return t.Primitive.String()
 	case KindAny:
 		return "jx.Raw"
@@ -191,9 +187,6 @@ func (t *Type) Go() string {
 func (t *Type) NamePostfix() string {
 	switch t.Kind {
 	case KindPrimitive:
-		if cf := t.CustomFormat; cf != nil {
-			return cf.GoName
-		}
 		if t.Primitive == Null {
 			return "Null"
 		}

@@ -1606,10 +1606,6 @@ func (c *Client) OrdersLimitOrderPost(ctx context.Context, request *LimitOrderRe
 }
 
 func (c *Client) sendOrdersLimitOrderPost(ctx context.Context, request *LimitOrderRequest, params OrdersLimitOrderPostParams) (res OrdersLimitOrderPostRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/orders/limit-order"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -1618,6 +1614,10 @@ func (c *Client) sendOrdersLimitOrderPost(ctx context.Context, request *LimitOrd
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/orders/limit-order"),
 	}
 
 	// Run stopwatch.
@@ -1757,10 +1757,6 @@ func (c *Client) OrdersMarketOrderPost(ctx context.Context, request *MarketOrder
 }
 
 func (c *Client) sendOrdersMarketOrderPost(ctx context.Context, request *MarketOrderRequest, params OrdersMarketOrderPostParams) (res OrdersMarketOrderPostRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/orders/market-order"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -1769,6 +1765,10 @@ func (c *Client) sendOrdersMarketOrderPost(ctx context.Context, request *MarketO
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/orders/market-order"),
 	}
 
 	// Run stopwatch.
@@ -2283,10 +2283,6 @@ func (c *Client) SandboxCurrenciesBalancePost(ctx context.Context, request *Sand
 }
 
 func (c *Client) sendSandboxCurrenciesBalancePost(ctx context.Context, request *SandboxSetCurrencyBalanceRequest, params SandboxCurrenciesBalancePostParams) (res SandboxCurrenciesBalancePostRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/sandbox/currencies/balance"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -2295,6 +2291,10 @@ func (c *Client) sendSandboxCurrenciesBalancePost(ctx context.Context, request *
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/sandbox/currencies/balance"),
 	}
 
 	// Run stopwatch.
@@ -2420,10 +2420,6 @@ func (c *Client) SandboxPositionsBalancePost(ctx context.Context, request *Sandb
 }
 
 func (c *Client) sendSandboxPositionsBalancePost(ctx context.Context, request *SandboxSetPositionBalanceRequest, params SandboxPositionsBalancePostParams) (res SandboxPositionsBalancePostRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/sandbox/positions/balance"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -2432,6 +2428,10 @@ func (c *Client) sendSandboxPositionsBalancePost(ctx context.Context, request *S
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/sandbox/positions/balance"),
 	}
 
 	// Run stopwatch.
@@ -2557,10 +2557,6 @@ func (c *Client) SandboxRegisterPost(ctx context.Context, request OptSandboxRegi
 }
 
 func (c *Client) sendSandboxRegisterPost(ctx context.Context, request OptSandboxRegisterRequest) (res SandboxRegisterPostRes, err error) {
-	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/sandbox/register"),
-	}
 	// Validate request before sending.
 	if err := func() error {
 		if value, ok := request.Get(); ok {
@@ -2576,6 +2572,10 @@ func (c *Client) sendSandboxRegisterPost(ctx context.Context, request OptSandbox
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/sandbox/register"),
 	}
 
 	// Run stopwatch.

@@ -14,10 +14,7 @@ import (
 	"github.com/ogen-go/ogen/gen"
 	"github.com/ogen-go/ogen/gen/genfs"
 	"github.com/ogen-go/ogen/gen/ir"
-	"github.com/ogen-go/ogen/internal/integration/customformats/phonetype"
-	"github.com/ogen-go/ogen/internal/integration/customformats/rgbatype"
 	"github.com/ogen-go/ogen/internal/location"
-	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi/parser"
 )
 
@@ -31,24 +28,27 @@ func testGenerate(t *testing.T, dir, filename string, data []byte, aliases ctAli
 
 	notImplemented := map[string]struct{}{}
 	opt := gen.Options{
-		InferSchemaType:      true,
-		IgnoreNotImplemented: ignore,
-		NotImplementedHook: func(name string, err error) {
-			notImplemented[name] = struct{}{}
+		Parser: gen.ParseOptions{
+			InferSchemaType: true,
+			File:            location.NewFile(filename, filename, data),
 		},
-		ContentTypeAliases: aliases,
-		File:               location.NewFile(filename, filename, data),
-		Logger:             log,
+		Generator: gen.GenerateOptions{
+			IgnoreNotImplemented: ignore,
+			NotImplementedHook: func(name string, err error) {
+				notImplemented[name] = struct{}{}
+			},
+			ContentTypeAliases: aliases,
+		},
+		Logger: log,
 	}
 
-	switch filename {
-	case "file_reference.yml": // HACK
-		opt.AllowRemote = true
-		opt.RootURL = &url.URL{
+	if filename == "file_reference.yml" { // HACK
+		opt.Parser.AllowRemote = true
+		opt.Parser.RootURL = &url.URL{
 			Scheme: "file",
 			Path:   "/" + path.Join(dir, filename),
 		}
-		opt.Remote = gen.RemoteOptions{
+		opt.Parser.Remote = gen.RemoteOptions{
 			ReadFile: func(p string) ([]byte, error) {
 				p = strings.TrimPrefix(p, "/")
 				return testdata.ReadFile(p)
@@ -63,25 +63,10 @@ func testGenerate(t *testing.T, dir, filename string, data []byte, aliases ctAli
 				return u.Path, nil
 			},
 		}
-	case "custom_formats.json":
-		opt.CustomFormats = gen.CustomFormatsMap{
-			jsonschema.String: {
-				"phone": gen.CustomFormat[
-					phonetype.Phone,
-					phonetype.JSONPhoneEncoding,
-					phonetype.TextPhoneEncoding,
-				](),
-				"rgba": gen.CustomFormat[
-					rgbatype.RGBA,
-					rgbatype.JSONRGBAEncoding,
-					rgbatype.TextRGBAEncoding,
-				](),
-			},
-		}
 	}
 
 	if path.Base(dir) == "convenient_errors" {
-		require.NoError(t, opt.ConvenientErrors.Set("on"))
+		require.NoError(t, opt.Generator.ConvenientErrors.Set("on"))
 	}
 
 	t.Run("Gen", func(t *testing.T) {
@@ -95,7 +80,7 @@ func testGenerate(t *testing.T, dir, filename string, data []byte, aliases ctAli
 		require.NoError(t, err)
 		require.NoError(t, g.WriteSource(genfs.CheckFS{}, "api"))
 
-		if len(opt.IgnoreNotImplemented) > 0 {
+		if len(opt.Generator.IgnoreNotImplemented) > 0 {
 			// Check that all ignore rules are necessary.
 			for _, feature := range ignore {
 				if _, ok := notImplemented[feature]; !ok {
@@ -105,7 +90,7 @@ func testGenerate(t *testing.T, dir, filename string, data []byte, aliases ctAli
 		}
 	})
 	t.Run("Full", func(t *testing.T) {
-		t.Skipf("Ignoring: [%s]", strings.Join(opt.IgnoreNotImplemented, ", "))
+		t.Skipf("Ignoring: [%s]", strings.Join(opt.Generator.IgnoreNotImplemented, ", "))
 	})
 }
 
@@ -215,13 +200,15 @@ func TestNegative(t *testing.T) {
 		a.NoError(err, "If the error is related to parser, move this test to parser package testdata")
 
 		opt := gen.Options{
-			InferSchemaType: true,
-			File:            f,
-			Logger:          log,
+			Parser: gen.ParseOptions{
+				InferSchemaType: true,
+				File:            f,
+			},
+			Logger: log,
 		}
 		t.Logf("Dir: %q, file: %q", dir, name)
 		if strings.Contains(dir, "convenient_errors") {
-			require.NoError(t, opt.ConvenientErrors.Set("on"))
+			require.NoError(t, opt.Generator.ConvenientErrors.Set("on"))
 		}
 
 		_, err = gen.NewGenerator(spec, opt)

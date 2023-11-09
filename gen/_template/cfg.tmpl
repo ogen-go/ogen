@@ -9,9 +9,12 @@
 
 type (
 	optionFunc[C any] func(*C)
+	{{ if $.AnyInstrumentable -}}
 	otelOptionFunc func(*otelConfig)
+	{{- end }}
 )
 
+{{ if $.AnyInstrumentable -}}
 type otelConfig struct {
 	TracerProvider     trace.TracerProvider
 	Tracer             trace.Tracer
@@ -31,13 +34,16 @@ func (cfg *otelConfig) initOTEL() {
 	)
 	cfg.Meter = cfg.MeterProvider.Meter(otelogen.Name)
 }
+{{- end }}
 
 {{- if $.AnyServerEnabled }}
 // ErrorHandler is error handler.
 type ErrorHandler = ogenerrors.ErrorHandler
 
 type serverConfig struct {
+	{{- if $.AnyInstrumentable }}
 	otelConfig
+	{{- end }}
 	NotFound           http.HandlerFunc
 	MethodNotAllowed   func(w http.ResponseWriter, r *http.Request, allowed string)
 	ErrorHandler       ErrorHandler
@@ -51,18 +57,19 @@ type ServerOption interface {
 	applyServer(*serverConfig)
 }
 
-var _ = []ServerOption{
-	(optionFunc[serverConfig])(nil),
-	(otelOptionFunc)(nil),
-}
+var _ ServerOption = (optionFunc[serverConfig])(nil)
 
 func (o optionFunc[C]) applyServer(c *C) {
 	o(c)
 }
 
+{{- if $.AnyInstrumentable }}
+var _ ServerOption = (otelOptionFunc)(nil)
+
 func (o otelOptionFunc) applyServer(c *serverConfig) {
 	o(&c.otelConfig)
 }
+{{- end }}
 
 func newServerConfig(opts ...ServerOption) serverConfig {
 	cfg := serverConfig{
@@ -78,15 +85,19 @@ func newServerConfig(opts ...ServerOption) serverConfig {
 	for _, opt := range opts {
 		opt.applyServer(&cfg)
 	}
+	{{- if $.AnyInstrumentable }}
 	cfg.initOTEL()
+	{{- end }}
 	return cfg
 }
 
 type baseServer struct {
 	cfg       serverConfig
+	{{- if $.AnyInstrumentable }}
 	requests  metric.Int64Counter
 	errors    metric.Int64Counter
 	duration  metric.Float64Histogram
+	{{- end }}
 }
 
 func (s baseServer) notFound(w http.ResponseWriter, r *http.Request) {
@@ -99,6 +110,7 @@ func (s baseServer) notAllowed(w http.ResponseWriter, r *http.Request, allowed s
 
 func (cfg serverConfig) baseServer() (s baseServer, err error) {
 	s = baseServer{cfg: cfg}
+	{{- if $.AnyInstrumentable }}
 	if s.requests, err = s.cfg.Meter.Int64Counter(otelogen.ServerRequestCount); err != nil {
 		return s, err
 	}
@@ -108,13 +120,16 @@ func (cfg serverConfig) baseServer() (s baseServer, err error) {
 	if s.duration, err = s.cfg.Meter.Float64Histogram(otelogen.ServerDuration); err != nil {
 		return s, err
 	}
+	{{- end }}
 	return s, nil
 }
 {{- end }}
 
 {{- if $.AnyClientEnabled }}
 type clientConfig struct {
+	{{- if $.AnyInstrumentable }}
 	otelConfig
+	{{- end }}
 	Client ht.Client
 }
 
@@ -123,18 +138,19 @@ type ClientOption interface {
 	applyClient(*clientConfig)
 }
 
-var _ = []ClientOption{
-	(optionFunc[clientConfig])(nil),
-	(otelOptionFunc)(nil),
-}
+var _ ClientOption = (optionFunc[clientConfig])(nil)
 
 func (o optionFunc[C]) applyClient(c *C) {
 	o(c)
 }
 
+{{- if $.AnyInstrumentable }}
+var _ ClientOption = (otelOptionFunc)(nil)
+
 func (o otelOptionFunc) applyClient(c *clientConfig) {
 	o(&c.otelConfig)
 }
+{{- end }}
 
 func newClientConfig(opts ...ClientOption) clientConfig {
 	cfg := clientConfig{
@@ -143,19 +159,24 @@ func newClientConfig(opts ...ClientOption) clientConfig {
 	for _, opt := range opts {
 		opt.applyClient(&cfg)
 	}
+	{{- if $.AnyInstrumentable }}
 	cfg.initOTEL()
+	{{- end }}
 	return cfg
 }
 
 type baseClient struct {
 	cfg       clientConfig
+	{{- if $.AnyInstrumentable }}
 	requests  metric.Int64Counter
 	errors    metric.Int64Counter
 	duration  metric.Float64Histogram
+	{{- end }}
 }
 
 func (cfg clientConfig) baseClient() (c baseClient, err error) {
 	c = baseClient{cfg: cfg}
+	{{- if $.AnyInstrumentable }}
 	if c.requests, err = c.cfg.Meter.Int64Counter(otelogen.ClientRequestCount); err != nil {
 		return c, err
 	}
@@ -165,6 +186,7 @@ func (cfg clientConfig) baseClient() (c baseClient, err error) {
 	if c.duration, err = c.cfg.Meter.Float64Histogram(otelogen.ClientDuration); err != nil {
 		return c, err
 	}
+	{{- end }}
 	return c, nil
 }
 {{- end }}
@@ -179,6 +201,7 @@ type Option interface {
 	{{- end }}
 }
 
+{{- if $.AnyInstrumentable }}
 // WithTracerProvider specifies a tracer provider to use for creating a tracer.
 //
 // If none is specified, the global provider is used.
@@ -200,6 +223,7 @@ func WithMeterProvider(provider metric.MeterProvider) Option {
 		}
 	})
 }
+{{- end }}
 
 {{- if $.AnyClientEnabled }}
 // WithClient specifies http client to use.

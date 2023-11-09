@@ -77,8 +77,7 @@ func encodeErrorResponse(response *ErrorStatusCode, w http.ResponseWriter, span 
 		code = http.StatusOK
 	}
 	w.WriteHeader(code)
-	st := http.StatusText(code)
-	if code >= http.StatusBadRequest {
+	if st := http.StatusText(code); code >= http.StatusBadRequest {
 		span.SetStatus(codes.Error, st)
 	} else {
 		span.SetStatus(codes.Ok, st)
