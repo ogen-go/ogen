@@ -125,7 +125,7 @@ func encodePetUploadAvatarByIDRequest(
 ) error {
 	const contentType = "application/octet-stream"
 	body := req
-	ht.SetBody(r, body, contentType)
+	ht.SetCloserBody(r, body, contentType)
 	return nil
 }
 
