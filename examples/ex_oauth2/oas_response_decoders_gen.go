@@ -272,6 +272,15 @@ func decodeFindPetsResponse(resp *http.Response) (res []Pet, _ error) {
 				}
 				return res, err
 			}
+			// Validate response.
+			if err := func() error {
+				if response == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
+			}
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)

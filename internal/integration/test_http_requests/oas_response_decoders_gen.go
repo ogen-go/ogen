@@ -208,6 +208,15 @@ func decodeStreamJSONResponse(resp *http.Response) (res float64, _ error) {
 				}
 				return res, err
 			}
+			// Validate response.
+			if err := func() error {
+				if err := (validate.Float{}).Validate(float64(response)); err != nil {
+					return errors.Wrap(err, "float")
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
+			}
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
