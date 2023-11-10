@@ -108,6 +108,16 @@ func (g *Generator) generateFormContent(
 		return nil, &ErrNotImplemented{"complex form schema"}
 	}
 
+	getEncoding := func(f *ir.Field) (ct ir.Encoding) {
+		if e, ok := media.Encoding[f.Tag.JSON]; ok {
+			ct = ir.Encoding(e.ContentType)
+		}
+		if ct == "" && encoding.MultipartForm() && isComplexMultipartType(f.Spec.Schema) {
+			ct = ir.EncodingJSON
+		}
+		return ct
+	}
+
 	var override generateSchemaOverride
 	switch encoding {
 	case ir.EncodingFormURLEncoded:
@@ -140,7 +150,17 @@ func (g *Generator) generateFormContent(
 				t.AddFeature("multipart-file")
 				return nil
 			}
-			f.Type.AddFeature("uri")
+			switch ct := getEncoding(f); ct {
+			case "", ir.EncodingFormURLEncoded:
+				f.Type.AddFeature("uri")
+			case ir.EncodingJSON:
+				f.Type.AddFeature("json")
+			default:
+				return errors.Wrapf(
+					&ErrNotImplemented{"form content encoding"},
+					"%q", ct,
+				)
+			}
 			return nil
 		}
 	}
@@ -188,17 +208,25 @@ func (g *Generator) generateFormContent(
 			if e, ok := media.Encoding[tag]; ok {
 				spec.Style = e.Style
 				spec.Explode = e.Explode
-				if e.ContentType != "" {
-					return &ErrNotImplemented{"parameter content-type"}
+			}
+			switch ct := getEncoding(f); ct {
+			case "", ir.EncodingFormURLEncoded:
+				if err := isSupportedParamStyle(spec); err != nil {
+					return err
 				}
-			}
 
-			if err := isSupportedParamStyle(spec); err != nil {
-				return err
-			}
-
-			if err := isParamAllowed(f.Type, true, map[*ir.Type]struct{}{}); err != nil {
-				return err
+				if err := isParamAllowed(f.Type, true, map[*ir.Type]struct{}{}); err != nil {
+					return err
+				}
+			case ir.EncodingJSON:
+				spec.Content = &openapi.ParameterContent{
+					Name: ct.String(),
+				}
+			default:
+				return errors.Wrapf(
+					&ErrNotImplemented{"form content encoding"},
+					"%q", ct,
+				)
 			}
 
 			return nil
@@ -209,6 +237,21 @@ func (g *Generator) generateFormContent(
 		f.Tag.Form = spec
 	}
 	return t, nil
+}
+
+func isComplexMultipartType(s *jsonschema.Schema) bool {
+	if s == nil {
+		return true
+	}
+
+	switch s.Type {
+	case jsonschema.Object, jsonschema.Empty:
+		return true
+	case jsonschema.Array:
+		return len(s.Items) > 0 || isComplexMultipartType(s.Item)
+	default:
+		return false
+	}
 }
 
 func (g *Generator) generateContents(

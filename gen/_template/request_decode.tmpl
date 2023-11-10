@@ -242,7 +242,21 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) decode{{ $op.Name }}Req
 			}
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					{{- template "uri/decode" $el }}
+					{{- if $p.Spec.Content }}
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+						if err := func(d *jx.Decoder) error {
+							{{- template "json/dec" $el }}
+							return nil
+						}(jx.DecodeStr(val)); err != nil {
+							return err
+						}
+						return nil
+					{{- else }}
+						{{- template "uri/decode" $el }}
+					{{- end }}
 				}); err != nil {
 					return req, close, errors.Wrap(err, {{ printf "decode %q" $p.Spec.Name | quote }})
 				}
