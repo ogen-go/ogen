@@ -109,6 +109,14 @@ var (
 		"webhooks/server",
 		`Enables webhooks server generation`,
 	}
+	ClientRequestValidation = Feature{
+		"client/request/validation",
+		`Enables validation of client requests`,
+	}
+	ServerResponseValidation = Feature{
+		"server/response/validation",
+		`Enables validation of server responses`,
+	}
 	OgenOtel = Feature{
 		"ogen/otel",
 		`Enables OpenTelemetry integration`,
@@ -139,6 +147,8 @@ var AllFeatures = []Feature{
 	PathsServer,
 	WebhooksClient,
 	WebhooksServer,
+	ClientRequestValidation,
+	ServerResponseValidation,
 	OgenOtel,
 	OgenUnimplemented,
 	DebugExampleTests,

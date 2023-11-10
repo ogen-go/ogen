@@ -4,7 +4,6 @@ package api
 
 import (
 	"context"
-	"fmt"
 	"net/url"
 	"strings"
 	"time"
@@ -19,7 +18,6 @@ import (
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
-	"github.com/ogen-go/ogen/validate"
 )
 
 // Invoker invokes operations described by OpenAPI v3 specification.
@@ -107,21 +105,6 @@ func (c *Client) AllRequestBodies(ctx context.Context, request AllRequestBodiesR
 }
 
 func (c *Client) sendAllRequestBodies(ctx context.Context, request AllRequestBodiesReq) (res AllRequestBodiesOK, err error) {
-	// Validate request before sending.
-	switch request := request.(type) {
-	case *AllRequestBodiesApplicationJSON:
-		// Validation is not required for this type.
-	case *AllRequestBodiesReqApplicationOctetStream:
-		// Validation is not required for this type.
-	case *AllRequestBodiesApplicationXWwwFormUrlencoded:
-		// Validation is not required for this type.
-	case *SimpleObjectMultipart:
-		// Validation is not required for this type.
-	case *AllRequestBodiesReqTextPlain:
-		// Validation is not required for this type.
-	default:
-		return res, errors.Errorf("unexpected request type: %T", request)
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("allRequestBodies"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -194,23 +177,6 @@ func (c *Client) AllRequestBodiesOptional(ctx context.Context, request AllReques
 }
 
 func (c *Client) sendAllRequestBodiesOptional(ctx context.Context, request AllRequestBodiesOptionalReq) (res AllRequestBodiesOptionalOK, err error) {
-	// Validate request before sending.
-	switch request := request.(type) {
-	case *AllRequestBodiesOptionalReqEmptyBody:
-		// Validation is not needed for the empty body type.
-	case *AllRequestBodiesOptionalApplicationJSON:
-		// Validation is not required for this type.
-	case *AllRequestBodiesOptionalReqApplicationOctetStream:
-		// Validation is not required for this type.
-	case *AllRequestBodiesOptionalApplicationXWwwFormUrlencoded:
-		// Validation is not required for this type.
-	case *SimpleObjectMultipart:
-		// Validation is not required for this type.
-	case *AllRequestBodiesOptionalReqTextPlain:
-		// Validation is not required for this type.
-	default:
-		return res, errors.Errorf("unexpected request type: %T", request)
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("allRequestBodiesOptional"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -499,32 +465,6 @@ func (c *Client) StreamJSON(ctx context.Context, request []float64) (float64, er
 }
 
 func (c *Client) sendStreamJSON(ctx context.Context, request []float64) (res float64, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
-					return errors.Wrap(err, "float")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("streamJSON"),
 		semconv.HTTPMethodKey.String("POST"),

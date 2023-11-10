@@ -4,7 +4,6 @@ package api
 
 import (
 	"context"
-	"fmt"
 	"net/netip"
 	"net/url"
 	"strings"
@@ -23,7 +22,6 @@ import (
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
-	"github.com/ogen-go/ogen/validate"
 )
 
 // Invoker invokes operations described by OpenAPI v3 specification.
@@ -6377,29 +6375,6 @@ func (c *Client) TestRequestBooleanArrayArray(ctx context.Context, request [][]b
 }
 
 func (c *Client) sendTestRequestBooleanArrayArray(ctx context.Context, request [][]bool) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_boolean_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -6616,29 +6591,6 @@ func (c *Client) TestRequestBooleanNullableArrayArray(ctx context.Context, reque
 }
 
 func (c *Client) sendTestRequestBooleanNullableArrayArray(ctx context.Context, request [][]NilBool) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_boolean_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -6783,22 +6735,6 @@ func (c *Client) TestRequestFormatTest(ctx context.Context, request OptTestReque
 }
 
 func (c *Client) sendTestRequestFormatTest(ctx context.Context, request OptTestRequestFormatTestReq) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if value, ok := request.Get(); ok {
-			if err := func() error {
-				if err := value.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_FormatTest"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -7015,29 +6951,6 @@ func (c *Client) TestRequestIntegerArrayArray(ctx context.Context, request [][]i
 }
 
 func (c *Client) sendTestRequestIntegerArrayArray(ctx context.Context, request [][]int) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -7254,29 +7167,6 @@ func (c *Client) TestRequestIntegerInt16ArrayArray(ctx context.Context, request 
 }
 
 func (c *Client) sendTestRequestIntegerInt16ArrayArray(ctx context.Context, request [][]int16) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int16_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -7493,29 +7383,6 @@ func (c *Client) TestRequestIntegerInt16NullableArrayArray(ctx context.Context, 
 }
 
 func (c *Client) sendTestRequestIntegerInt16NullableArrayArray(ctx context.Context, request [][]NilInt16) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int16_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -7732,29 +7599,6 @@ func (c *Client) TestRequestIntegerInt32ArrayArray(ctx context.Context, request 
 }
 
 func (c *Client) sendTestRequestIntegerInt32ArrayArray(ctx context.Context, request [][]int32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int32_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -7971,29 +7815,6 @@ func (c *Client) TestRequestIntegerInt32NullableArrayArray(ctx context.Context, 
 }
 
 func (c *Client) sendTestRequestIntegerInt32NullableArrayArray(ctx context.Context, request [][]NilInt32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int32_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -8210,29 +8031,6 @@ func (c *Client) TestRequestIntegerInt64ArrayArray(ctx context.Context, request 
 }
 
 func (c *Client) sendTestRequestIntegerInt64ArrayArray(ctx context.Context, request [][]int64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int64_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -8449,29 +8247,6 @@ func (c *Client) TestRequestIntegerInt64NullableArrayArray(ctx context.Context, 
 }
 
 func (c *Client) sendTestRequestIntegerInt64NullableArrayArray(ctx context.Context, request [][]NilInt64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int64_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -8688,29 +8463,6 @@ func (c *Client) TestRequestIntegerInt8ArrayArray(ctx context.Context, request [
 }
 
 func (c *Client) sendTestRequestIntegerInt8ArrayArray(ctx context.Context, request [][]int8) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int8_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -8927,29 +8679,6 @@ func (c *Client) TestRequestIntegerInt8NullableArrayArray(ctx context.Context, r
 }
 
 func (c *Client) sendTestRequestIntegerInt8NullableArrayArray(ctx context.Context, request [][]NilInt8) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int8_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -9166,29 +8895,6 @@ func (c *Client) TestRequestIntegerNullableArrayArray(ctx context.Context, reque
 }
 
 func (c *Client) sendTestRequestIntegerNullableArrayArray(ctx context.Context, request [][]NilInt) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -9477,29 +9183,6 @@ func (c *Client) TestRequestIntegerUint16ArrayArray(ctx context.Context, request
 }
 
 func (c *Client) sendTestRequestIntegerUint16ArrayArray(ctx context.Context, request [][]uint16) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint16_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -9716,29 +9399,6 @@ func (c *Client) TestRequestIntegerUint16NullableArrayArray(ctx context.Context,
 }
 
 func (c *Client) sendTestRequestIntegerUint16NullableArrayArray(ctx context.Context, request [][]NilUint16) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint16_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -9955,29 +9615,6 @@ func (c *Client) TestRequestIntegerUint32ArrayArray(ctx context.Context, request
 }
 
 func (c *Client) sendTestRequestIntegerUint32ArrayArray(ctx context.Context, request [][]uint32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint32_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -10194,29 +9831,6 @@ func (c *Client) TestRequestIntegerUint32NullableArrayArray(ctx context.Context,
 }
 
 func (c *Client) sendTestRequestIntegerUint32NullableArrayArray(ctx context.Context, request [][]NilUint32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint32_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -10433,29 +10047,6 @@ func (c *Client) TestRequestIntegerUint64ArrayArray(ctx context.Context, request
 }
 
 func (c *Client) sendTestRequestIntegerUint64ArrayArray(ctx context.Context, request [][]uint64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint64_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -10672,29 +10263,6 @@ func (c *Client) TestRequestIntegerUint64NullableArrayArray(ctx context.Context,
 }
 
 func (c *Client) sendTestRequestIntegerUint64NullableArrayArray(ctx context.Context, request [][]NilUint64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint64_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -10911,29 +10479,6 @@ func (c *Client) TestRequestIntegerUint8ArrayArray(ctx context.Context, request 
 }
 
 func (c *Client) sendTestRequestIntegerUint8ArrayArray(ctx context.Context, request [][]uint8) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint8_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -11150,29 +10695,6 @@ func (c *Client) TestRequestIntegerUint8NullableArrayArray(ctx context.Context, 
 }
 
 func (c *Client) sendTestRequestIntegerUint8NullableArrayArray(ctx context.Context, request [][]NilUint8) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint8_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -11317,29 +10839,6 @@ func (c *Client) TestRequestIntegerUintArrayArray(ctx context.Context, request [
 }
 
 func (c *Client) sendTestRequestIntegerUintArrayArray(ctx context.Context, request [][]uint) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -11556,29 +11055,6 @@ func (c *Client) TestRequestIntegerUintNullableArrayArray(ctx context.Context, r
 }
 
 func (c *Client) sendTestRequestIntegerUintNullableArrayArray(ctx context.Context, request [][]NilUint) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -11795,29 +11271,6 @@ func (c *Client) TestRequestIntegerUnixArrayArray(ctx context.Context, request [
 }
 
 func (c *Client) sendTestRequestIntegerUnixArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -12034,29 +11487,6 @@ func (c *Client) TestRequestIntegerUnixMicroArrayArray(ctx context.Context, requ
 }
 
 func (c *Client) sendTestRequestIntegerUnixMicroArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-micro_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -12273,29 +11703,6 @@ func (c *Client) TestRequestIntegerUnixMicroNullableArrayArray(ctx context.Conte
 }
 
 func (c *Client) sendTestRequestIntegerUnixMicroNullableArrayArray(ctx context.Context, request [][]NilUnixMicro) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-micro_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -12512,29 +11919,6 @@ func (c *Client) TestRequestIntegerUnixMilliArrayArray(ctx context.Context, requ
 }
 
 func (c *Client) sendTestRequestIntegerUnixMilliArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-milli_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -12751,29 +12135,6 @@ func (c *Client) TestRequestIntegerUnixMilliNullableArrayArray(ctx context.Conte
 }
 
 func (c *Client) sendTestRequestIntegerUnixMilliNullableArrayArray(ctx context.Context, request [][]NilUnixMilli) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-milli_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -12990,29 +12351,6 @@ func (c *Client) TestRequestIntegerUnixNanoArrayArray(ctx context.Context, reque
 }
 
 func (c *Client) sendTestRequestIntegerUnixNanoArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-nano_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -13229,29 +12567,6 @@ func (c *Client) TestRequestIntegerUnixNanoNullableArrayArray(ctx context.Contex
 }
 
 func (c *Client) sendTestRequestIntegerUnixNanoNullableArrayArray(ctx context.Context, request [][]NilUnixNano) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-nano_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -13468,29 +12783,6 @@ func (c *Client) TestRequestIntegerUnixNullableArrayArray(ctx context.Context, r
 }
 
 func (c *Client) sendTestRequestIntegerUnixNullableArrayArray(ctx context.Context, request [][]NilUnixSeconds) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -13707,29 +12999,6 @@ func (c *Client) TestRequestIntegerUnixSecondsArrayArray(ctx context.Context, re
 }
 
 func (c *Client) sendTestRequestIntegerUnixSecondsArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-seconds_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -13946,29 +13215,6 @@ func (c *Client) TestRequestIntegerUnixSecondsNullableArrayArray(ctx context.Con
 }
 
 func (c *Client) sendTestRequestIntegerUnixSecondsNullableArrayArray(ctx context.Context, request [][]NilUnixSeconds) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-seconds_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -14185,29 +13431,6 @@ func (c *Client) TestRequestNullArrayArray(ctx context.Context, request [][]stru
 }
 
 func (c *Client) sendTestRequestNullArrayArray(ctx context.Context, request [][]struct{}) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_null_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -14424,29 +13647,6 @@ func (c *Client) TestRequestNullNullableArrayArray(ctx context.Context, request 
 }
 
 func (c *Client) sendTestRequestNullNullableArrayArray(ctx context.Context, request [][]struct{}) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_null_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -14519,22 +13719,6 @@ func (c *Client) TestRequestNumber(ctx context.Context, request OptFloat64) (*Er
 }
 
 func (c *Client) sendTestRequestNumber(ctx context.Context, request OptFloat64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if value, ok := request.Get(); ok {
-			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(value)); err != nil {
-					return errors.Wrap(err, "float")
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -14607,29 +13791,6 @@ func (c *Client) TestRequestNumberArray(ctx context.Context, request []float64) 
 }
 
 func (c *Client) sendTestRequestNumberArray(ctx context.Context, request []float64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
-					return errors.Wrap(err, "float")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -14702,46 +13863,6 @@ func (c *Client) TestRequestNumberArrayArray(ctx context.Context, request [][]fl
 }
 
 func (c *Client) sendTestRequestNumberArrayArray(ctx context.Context, request [][]float64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				var failures []validate.FieldError
-				for i, elem := range elem {
-					if err := func() error {
-						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
-							return errors.Wrap(err, "float")
-						}
-						return nil
-					}(); err != nil {
-						failures = append(failures, validate.FieldError{
-							Name:  fmt.Sprintf("[%d]", i),
-							Error: err,
-						})
-					}
-				}
-				if len(failures) > 0 {
-					return &validate.Error{Fields: failures}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -14814,22 +13935,6 @@ func (c *Client) TestRequestNumberDouble(ctx context.Context, request OptFloat64
 }
 
 func (c *Client) sendTestRequestNumberDouble(ctx context.Context, request OptFloat64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if value, ok := request.Get(); ok {
-			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(value)); err != nil {
-					return errors.Wrap(err, "float")
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_double"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -14902,29 +14007,6 @@ func (c *Client) TestRequestNumberDoubleArray(ctx context.Context, request []flo
 }
 
 func (c *Client) sendTestRequestNumberDoubleArray(ctx context.Context, request []float64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
-					return errors.Wrap(err, "float")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_double_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -14997,46 +14079,6 @@ func (c *Client) TestRequestNumberDoubleArrayArray(ctx context.Context, request 
 }
 
 func (c *Client) sendTestRequestNumberDoubleArrayArray(ctx context.Context, request [][]float64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				var failures []validate.FieldError
-				for i, elem := range elem {
-					if err := func() error {
-						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
-							return errors.Wrap(err, "float")
-						}
-						return nil
-					}(); err != nil {
-						failures = append(failures, validate.FieldError{
-							Name:  fmt.Sprintf("[%d]", i),
-							Error: err,
-						})
-					}
-				}
-				if len(failures) > 0 {
-					return &validate.Error{Fields: failures}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_double_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -15109,22 +14151,6 @@ func (c *Client) TestRequestNumberDoubleNullable(ctx context.Context, request Op
 }
 
 func (c *Client) sendTestRequestNumberDoubleNullable(ctx context.Context, request OptNilFloat64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if value, ok := request.Get(); ok {
-			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(value)); err != nil {
-					return errors.Wrap(err, "float")
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_double_nullable"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -15197,36 +14223,6 @@ func (c *Client) TestRequestNumberDoubleNullableArray(ctx context.Context, reque
 }
 
 func (c *Client) sendTestRequestNumberDoubleNullableArray(ctx context.Context, request []NilFloat64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if value, ok := elem.Get(); ok {
-					if err := func() error {
-						if err := (validate.Float{}).Validate(float64(value)); err != nil {
-							return errors.Wrap(err, "float")
-						}
-						return nil
-					}(); err != nil {
-						return err
-					}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_double_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -15299,53 +14295,6 @@ func (c *Client) TestRequestNumberDoubleNullableArrayArray(ctx context.Context, 
 }
 
 func (c *Client) sendTestRequestNumberDoubleNullableArrayArray(ctx context.Context, request [][]NilFloat64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				var failures []validate.FieldError
-				for i, elem := range elem {
-					if err := func() error {
-						if value, ok := elem.Get(); ok {
-							if err := func() error {
-								if err := (validate.Float{}).Validate(float64(value)); err != nil {
-									return errors.Wrap(err, "float")
-								}
-								return nil
-							}(); err != nil {
-								return err
-							}
-						}
-						return nil
-					}(); err != nil {
-						failures = append(failures, validate.FieldError{
-							Name:  fmt.Sprintf("[%d]", i),
-							Error: err,
-						})
-					}
-				}
-				if len(failures) > 0 {
-					return &validate.Error{Fields: failures}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_double_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -15418,22 +14367,6 @@ func (c *Client) TestRequestNumberFloat(ctx context.Context, request OptFloat32)
 }
 
 func (c *Client) sendTestRequestNumberFloat(ctx context.Context, request OptFloat32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if value, ok := request.Get(); ok {
-			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(value)); err != nil {
-					return errors.Wrap(err, "float")
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_float"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -15506,29 +14439,6 @@ func (c *Client) TestRequestNumberFloatArray(ctx context.Context, request []floa
 }
 
 func (c *Client) sendTestRequestNumberFloatArray(ctx context.Context, request []float32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
-					return errors.Wrap(err, "float")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_float_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -15601,46 +14511,6 @@ func (c *Client) TestRequestNumberFloatArrayArray(ctx context.Context, request [
 }
 
 func (c *Client) sendTestRequestNumberFloatArrayArray(ctx context.Context, request [][]float32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				var failures []validate.FieldError
-				for i, elem := range elem {
-					if err := func() error {
-						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
-							return errors.Wrap(err, "float")
-						}
-						return nil
-					}(); err != nil {
-						failures = append(failures, validate.FieldError{
-							Name:  fmt.Sprintf("[%d]", i),
-							Error: err,
-						})
-					}
-				}
-				if len(failures) > 0 {
-					return &validate.Error{Fields: failures}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_float_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -15713,22 +14583,6 @@ func (c *Client) TestRequestNumberFloatNullable(ctx context.Context, request Opt
 }
 
 func (c *Client) sendTestRequestNumberFloatNullable(ctx context.Context, request OptNilFloat32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if value, ok := request.Get(); ok {
-			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(value)); err != nil {
-					return errors.Wrap(err, "float")
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_float_nullable"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -15801,36 +14655,6 @@ func (c *Client) TestRequestNumberFloatNullableArray(ctx context.Context, reques
 }
 
 func (c *Client) sendTestRequestNumberFloatNullableArray(ctx context.Context, request []NilFloat32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if value, ok := elem.Get(); ok {
-					if err := func() error {
-						if err := (validate.Float{}).Validate(float64(value)); err != nil {
-							return errors.Wrap(err, "float")
-						}
-						return nil
-					}(); err != nil {
-						return err
-					}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_float_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -15903,53 +14727,6 @@ func (c *Client) TestRequestNumberFloatNullableArrayArray(ctx context.Context, r
 }
 
 func (c *Client) sendTestRequestNumberFloatNullableArrayArray(ctx context.Context, request [][]NilFloat32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				var failures []validate.FieldError
-				for i, elem := range elem {
-					if err := func() error {
-						if value, ok := elem.Get(); ok {
-							if err := func() error {
-								if err := (validate.Float{}).Validate(float64(value)); err != nil {
-									return errors.Wrap(err, "float")
-								}
-								return nil
-							}(); err != nil {
-								return err
-							}
-						}
-						return nil
-					}(); err != nil {
-						failures = append(failures, validate.FieldError{
-							Name:  fmt.Sprintf("[%d]", i),
-							Error: err,
-						})
-					}
-				}
-				if len(failures) > 0 {
-					return &validate.Error{Fields: failures}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_float_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -16166,29 +14943,6 @@ func (c *Client) TestRequestNumberInt32ArrayArray(ctx context.Context, request [
 }
 
 func (c *Client) sendTestRequestNumberInt32ArrayArray(ctx context.Context, request [][]int32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int32_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -16405,29 +15159,6 @@ func (c *Client) TestRequestNumberInt32NullableArrayArray(ctx context.Context, r
 }
 
 func (c *Client) sendTestRequestNumberInt32NullableArrayArray(ctx context.Context, request [][]NilInt32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int32_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -16644,29 +15375,6 @@ func (c *Client) TestRequestNumberInt64ArrayArray(ctx context.Context, request [
 }
 
 func (c *Client) sendTestRequestNumberInt64ArrayArray(ctx context.Context, request [][]int64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int64_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -16883,29 +15591,6 @@ func (c *Client) TestRequestNumberInt64NullableArrayArray(ctx context.Context, r
 }
 
 func (c *Client) sendTestRequestNumberInt64NullableArrayArray(ctx context.Context, request [][]NilInt64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int64_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -16978,22 +15663,6 @@ func (c *Client) TestRequestNumberNullable(ctx context.Context, request OptNilFl
 }
 
 func (c *Client) sendTestRequestNumberNullable(ctx context.Context, request OptNilFloat64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if value, ok := request.Get(); ok {
-			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(value)); err != nil {
-					return errors.Wrap(err, "float")
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_nullable"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -17066,36 +15735,6 @@ func (c *Client) TestRequestNumberNullableArray(ctx context.Context, request []N
 }
 
 func (c *Client) sendTestRequestNumberNullableArray(ctx context.Context, request []NilFloat64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if value, ok := elem.Get(); ok {
-					if err := func() error {
-						if err := (validate.Float{}).Validate(float64(value)); err != nil {
-							return errors.Wrap(err, "float")
-						}
-						return nil
-					}(); err != nil {
-						return err
-					}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -17168,53 +15807,6 @@ func (c *Client) TestRequestNumberNullableArrayArray(ctx context.Context, reques
 }
 
 func (c *Client) sendTestRequestNumberNullableArrayArray(ctx context.Context, request [][]NilFloat64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				var failures []validate.FieldError
-				for i, elem := range elem {
-					if err := func() error {
-						if value, ok := elem.Get(); ok {
-							if err := func() error {
-								if err := (validate.Float{}).Validate(float64(value)); err != nil {
-									return errors.Wrap(err, "float")
-								}
-								return nil
-							}(); err != nil {
-								return err
-							}
-						}
-						return nil
-					}(); err != nil {
-						failures = append(failures, validate.FieldError{
-							Name:  fmt.Sprintf("[%d]", i),
-							Error: err,
-						})
-					}
-				}
-				if len(failures) > 0 {
-					return &validate.Error{Fields: failures}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -17431,15 +16023,6 @@ func (c *Client) TestRequestRequiredBooleanArray(ctx context.Context, request []
 }
 
 func (c *Client) sendTestRequestRequiredBooleanArray(ctx context.Context, request []bool) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_boolean_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -17512,32 +16095,6 @@ func (c *Client) TestRequestRequiredBooleanArrayArray(ctx context.Context, reque
 }
 
 func (c *Client) sendTestRequestRequiredBooleanArrayArray(ctx context.Context, request [][]bool) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_boolean_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -17682,15 +16239,6 @@ func (c *Client) TestRequestRequiredBooleanNullableArray(ctx context.Context, re
 }
 
 func (c *Client) sendTestRequestRequiredBooleanNullableArray(ctx context.Context, request []NilBool) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_boolean_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -17763,32 +16311,6 @@ func (c *Client) TestRequestRequiredBooleanNullableArrayArray(ctx context.Contex
 }
 
 func (c *Client) sendTestRequestRequiredBooleanNullableArrayArray(ctx context.Context, request [][]NilBool) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_boolean_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -17933,15 +16455,6 @@ func (c *Client) TestRequestRequiredFormatTest(ctx context.Context, request *Tes
 }
 
 func (c *Client) sendTestRequestRequiredFormatTest(ctx context.Context, request *TestRequestRequiredFormatTestReq) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_FormatTest"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -18086,15 +16599,6 @@ func (c *Client) TestRequestRequiredIntegerArray(ctx context.Context, request []
 }
 
 func (c *Client) sendTestRequestRequiredIntegerArray(ctx context.Context, request []int) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -18167,32 +16671,6 @@ func (c *Client) TestRequestRequiredIntegerArrayArray(ctx context.Context, reque
 }
 
 func (c *Client) sendTestRequestRequiredIntegerArrayArray(ctx context.Context, request [][]int) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -18337,15 +16815,6 @@ func (c *Client) TestRequestRequiredIntegerInt16Array(ctx context.Context, reque
 }
 
 func (c *Client) sendTestRequestRequiredIntegerInt16Array(ctx context.Context, request []int16) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int16_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -18418,32 +16887,6 @@ func (c *Client) TestRequestRequiredIntegerInt16ArrayArray(ctx context.Context, 
 }
 
 func (c *Client) sendTestRequestRequiredIntegerInt16ArrayArray(ctx context.Context, request [][]int16) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int16_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -18588,15 +17031,6 @@ func (c *Client) TestRequestRequiredIntegerInt16NullableArray(ctx context.Contex
 }
 
 func (c *Client) sendTestRequestRequiredIntegerInt16NullableArray(ctx context.Context, request []NilInt16) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int16_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -18669,32 +17103,6 @@ func (c *Client) TestRequestRequiredIntegerInt16NullableArrayArray(ctx context.C
 }
 
 func (c *Client) sendTestRequestRequiredIntegerInt16NullableArrayArray(ctx context.Context, request [][]NilInt16) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int16_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -18839,15 +17247,6 @@ func (c *Client) TestRequestRequiredIntegerInt32Array(ctx context.Context, reque
 }
 
 func (c *Client) sendTestRequestRequiredIntegerInt32Array(ctx context.Context, request []int32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int32_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -18920,32 +17319,6 @@ func (c *Client) TestRequestRequiredIntegerInt32ArrayArray(ctx context.Context, 
 }
 
 func (c *Client) sendTestRequestRequiredIntegerInt32ArrayArray(ctx context.Context, request [][]int32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int32_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -19090,15 +17463,6 @@ func (c *Client) TestRequestRequiredIntegerInt32NullableArray(ctx context.Contex
 }
 
 func (c *Client) sendTestRequestRequiredIntegerInt32NullableArray(ctx context.Context, request []NilInt32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int32_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -19171,32 +17535,6 @@ func (c *Client) TestRequestRequiredIntegerInt32NullableArrayArray(ctx context.C
 }
 
 func (c *Client) sendTestRequestRequiredIntegerInt32NullableArrayArray(ctx context.Context, request [][]NilInt32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int32_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -19341,15 +17679,6 @@ func (c *Client) TestRequestRequiredIntegerInt64Array(ctx context.Context, reque
 }
 
 func (c *Client) sendTestRequestRequiredIntegerInt64Array(ctx context.Context, request []int64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int64_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -19422,32 +17751,6 @@ func (c *Client) TestRequestRequiredIntegerInt64ArrayArray(ctx context.Context, 
 }
 
 func (c *Client) sendTestRequestRequiredIntegerInt64ArrayArray(ctx context.Context, request [][]int64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int64_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -19592,15 +17895,6 @@ func (c *Client) TestRequestRequiredIntegerInt64NullableArray(ctx context.Contex
 }
 
 func (c *Client) sendTestRequestRequiredIntegerInt64NullableArray(ctx context.Context, request []NilInt64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int64_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -19673,32 +17967,6 @@ func (c *Client) TestRequestRequiredIntegerInt64NullableArrayArray(ctx context.C
 }
 
 func (c *Client) sendTestRequestRequiredIntegerInt64NullableArrayArray(ctx context.Context, request [][]NilInt64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int64_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -19843,15 +18111,6 @@ func (c *Client) TestRequestRequiredIntegerInt8Array(ctx context.Context, reques
 }
 
 func (c *Client) sendTestRequestRequiredIntegerInt8Array(ctx context.Context, request []int8) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int8_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -19924,32 +18183,6 @@ func (c *Client) TestRequestRequiredIntegerInt8ArrayArray(ctx context.Context, r
 }
 
 func (c *Client) sendTestRequestRequiredIntegerInt8ArrayArray(ctx context.Context, request [][]int8) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int8_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -20094,15 +18327,6 @@ func (c *Client) TestRequestRequiredIntegerInt8NullableArray(ctx context.Context
 }
 
 func (c *Client) sendTestRequestRequiredIntegerInt8NullableArray(ctx context.Context, request []NilInt8) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int8_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -20175,32 +18399,6 @@ func (c *Client) TestRequestRequiredIntegerInt8NullableArrayArray(ctx context.Co
 }
 
 func (c *Client) sendTestRequestRequiredIntegerInt8NullableArrayArray(ctx context.Context, request [][]NilInt8) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int8_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -20345,15 +18543,6 @@ func (c *Client) TestRequestRequiredIntegerNullableArray(ctx context.Context, re
 }
 
 func (c *Client) sendTestRequestRequiredIntegerNullableArray(ctx context.Context, request []NilInt) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -20426,32 +18615,6 @@ func (c *Client) TestRequestRequiredIntegerNullableArrayArray(ctx context.Contex
 }
 
 func (c *Client) sendTestRequestRequiredIntegerNullableArrayArray(ctx context.Context, request [][]NilInt) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -20668,15 +18831,6 @@ func (c *Client) TestRequestRequiredIntegerUint16Array(ctx context.Context, requ
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUint16Array(ctx context.Context, request []uint16) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint16_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -20749,32 +18903,6 @@ func (c *Client) TestRequestRequiredIntegerUint16ArrayArray(ctx context.Context,
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUint16ArrayArray(ctx context.Context, request [][]uint16) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint16_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -20919,15 +19047,6 @@ func (c *Client) TestRequestRequiredIntegerUint16NullableArray(ctx context.Conte
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUint16NullableArray(ctx context.Context, request []NilUint16) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint16_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -21000,32 +19119,6 @@ func (c *Client) TestRequestRequiredIntegerUint16NullableArrayArray(ctx context.
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUint16NullableArrayArray(ctx context.Context, request [][]NilUint16) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint16_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -21170,15 +19263,6 @@ func (c *Client) TestRequestRequiredIntegerUint32Array(ctx context.Context, requ
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUint32Array(ctx context.Context, request []uint32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint32_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -21251,32 +19335,6 @@ func (c *Client) TestRequestRequiredIntegerUint32ArrayArray(ctx context.Context,
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUint32ArrayArray(ctx context.Context, request [][]uint32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint32_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -21421,15 +19479,6 @@ func (c *Client) TestRequestRequiredIntegerUint32NullableArray(ctx context.Conte
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUint32NullableArray(ctx context.Context, request []NilUint32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint32_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -21502,32 +19551,6 @@ func (c *Client) TestRequestRequiredIntegerUint32NullableArrayArray(ctx context.
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUint32NullableArrayArray(ctx context.Context, request [][]NilUint32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint32_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -21672,15 +19695,6 @@ func (c *Client) TestRequestRequiredIntegerUint64Array(ctx context.Context, requ
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUint64Array(ctx context.Context, request []uint64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint64_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -21753,32 +19767,6 @@ func (c *Client) TestRequestRequiredIntegerUint64ArrayArray(ctx context.Context,
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUint64ArrayArray(ctx context.Context, request [][]uint64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint64_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -21923,15 +19911,6 @@ func (c *Client) TestRequestRequiredIntegerUint64NullableArray(ctx context.Conte
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUint64NullableArray(ctx context.Context, request []NilUint64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint64_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -22004,32 +19983,6 @@ func (c *Client) TestRequestRequiredIntegerUint64NullableArrayArray(ctx context.
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUint64NullableArrayArray(ctx context.Context, request [][]NilUint64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint64_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -22174,15 +20127,6 @@ func (c *Client) TestRequestRequiredIntegerUint8Array(ctx context.Context, reque
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUint8Array(ctx context.Context, request []uint8) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint8_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -22255,32 +20199,6 @@ func (c *Client) TestRequestRequiredIntegerUint8ArrayArray(ctx context.Context, 
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUint8ArrayArray(ctx context.Context, request [][]uint8) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint8_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -22425,15 +20343,6 @@ func (c *Client) TestRequestRequiredIntegerUint8NullableArray(ctx context.Contex
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUint8NullableArray(ctx context.Context, request []NilUint8) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint8_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -22506,32 +20415,6 @@ func (c *Client) TestRequestRequiredIntegerUint8NullableArrayArray(ctx context.C
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUint8NullableArrayArray(ctx context.Context, request [][]NilUint8) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint8_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -22604,15 +20487,6 @@ func (c *Client) TestRequestRequiredIntegerUintArray(ctx context.Context, reques
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUintArray(ctx context.Context, request []uint) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -22685,32 +20559,6 @@ func (c *Client) TestRequestRequiredIntegerUintArrayArray(ctx context.Context, r
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUintArrayArray(ctx context.Context, request [][]uint) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -22855,15 +20703,6 @@ func (c *Client) TestRequestRequiredIntegerUintNullableArray(ctx context.Context
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUintNullableArray(ctx context.Context, request []NilUint) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -22936,32 +20775,6 @@ func (c *Client) TestRequestRequiredIntegerUintNullableArrayArray(ctx context.Co
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUintNullableArrayArray(ctx context.Context, request [][]NilUint) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -23106,15 +20919,6 @@ func (c *Client) TestRequestRequiredIntegerUnixArray(ctx context.Context, reques
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUnixArray(ctx context.Context, request []time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -23187,32 +20991,6 @@ func (c *Client) TestRequestRequiredIntegerUnixArrayArray(ctx context.Context, r
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUnixArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -23357,15 +21135,6 @@ func (c *Client) TestRequestRequiredIntegerUnixMicroArray(ctx context.Context, r
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUnixMicroArray(ctx context.Context, request []time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-micro_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -23438,32 +21207,6 @@ func (c *Client) TestRequestRequiredIntegerUnixMicroArrayArray(ctx context.Conte
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUnixMicroArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-micro_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -23608,15 +21351,6 @@ func (c *Client) TestRequestRequiredIntegerUnixMicroNullableArray(ctx context.Co
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUnixMicroNullableArray(ctx context.Context, request []NilUnixMicro) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-micro_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -23689,32 +21423,6 @@ func (c *Client) TestRequestRequiredIntegerUnixMicroNullableArrayArray(ctx conte
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUnixMicroNullableArrayArray(ctx context.Context, request [][]NilUnixMicro) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-micro_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -23859,15 +21567,6 @@ func (c *Client) TestRequestRequiredIntegerUnixMilliArray(ctx context.Context, r
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUnixMilliArray(ctx context.Context, request []time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-milli_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -23940,32 +21639,6 @@ func (c *Client) TestRequestRequiredIntegerUnixMilliArrayArray(ctx context.Conte
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUnixMilliArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-milli_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -24110,15 +21783,6 @@ func (c *Client) TestRequestRequiredIntegerUnixMilliNullableArray(ctx context.Co
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUnixMilliNullableArray(ctx context.Context, request []NilUnixMilli) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-milli_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -24191,32 +21855,6 @@ func (c *Client) TestRequestRequiredIntegerUnixMilliNullableArrayArray(ctx conte
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUnixMilliNullableArrayArray(ctx context.Context, request [][]NilUnixMilli) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-milli_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -24361,15 +21999,6 @@ func (c *Client) TestRequestRequiredIntegerUnixNanoArray(ctx context.Context, re
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUnixNanoArray(ctx context.Context, request []time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-nano_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -24442,32 +22071,6 @@ func (c *Client) TestRequestRequiredIntegerUnixNanoArrayArray(ctx context.Contex
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUnixNanoArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-nano_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -24612,15 +22215,6 @@ func (c *Client) TestRequestRequiredIntegerUnixNanoNullableArray(ctx context.Con
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUnixNanoNullableArray(ctx context.Context, request []NilUnixNano) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-nano_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -24693,32 +22287,6 @@ func (c *Client) TestRequestRequiredIntegerUnixNanoNullableArrayArray(ctx contex
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUnixNanoNullableArrayArray(ctx context.Context, request [][]NilUnixNano) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-nano_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -24863,15 +22431,6 @@ func (c *Client) TestRequestRequiredIntegerUnixNullableArray(ctx context.Context
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUnixNullableArray(ctx context.Context, request []NilUnixSeconds) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -24944,32 +22503,6 @@ func (c *Client) TestRequestRequiredIntegerUnixNullableArrayArray(ctx context.Co
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUnixNullableArrayArray(ctx context.Context, request [][]NilUnixSeconds) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -25114,15 +22647,6 @@ func (c *Client) TestRequestRequiredIntegerUnixSecondsArray(ctx context.Context,
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUnixSecondsArray(ctx context.Context, request []time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-seconds_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -25195,32 +22719,6 @@ func (c *Client) TestRequestRequiredIntegerUnixSecondsArrayArray(ctx context.Con
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUnixSecondsArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-seconds_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -25365,15 +22863,6 @@ func (c *Client) TestRequestRequiredIntegerUnixSecondsNullableArray(ctx context.
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUnixSecondsNullableArray(ctx context.Context, request []NilUnixSeconds) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-seconds_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -25446,32 +22935,6 @@ func (c *Client) TestRequestRequiredIntegerUnixSecondsNullableArrayArray(ctx con
 }
 
 func (c *Client) sendTestRequestRequiredIntegerUnixSecondsNullableArrayArray(ctx context.Context, request [][]NilUnixSeconds) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-seconds_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -25616,15 +23079,6 @@ func (c *Client) TestRequestRequiredNullArray(ctx context.Context, request []str
 }
 
 func (c *Client) sendTestRequestRequiredNullArray(ctx context.Context, request []struct{}) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_null_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -25697,32 +23151,6 @@ func (c *Client) TestRequestRequiredNullArrayArray(ctx context.Context, request 
 }
 
 func (c *Client) sendTestRequestRequiredNullArrayArray(ctx context.Context, request [][]struct{}) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_null_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -25867,15 +23295,6 @@ func (c *Client) TestRequestRequiredNullNullableArray(ctx context.Context, reque
 }
 
 func (c *Client) sendTestRequestRequiredNullNullableArray(ctx context.Context, request []struct{}) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_null_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -25948,32 +23367,6 @@ func (c *Client) TestRequestRequiredNullNullableArrayArray(ctx context.Context, 
 }
 
 func (c *Client) sendTestRequestRequiredNullNullableArrayArray(ctx context.Context, request [][]struct{}) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_null_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -26046,15 +23439,6 @@ func (c *Client) TestRequestRequiredNumber(ctx context.Context, request float64)
 }
 
 func (c *Client) sendTestRequestRequiredNumber(ctx context.Context, request float64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := (validate.Float{}).Validate(float64(request)); err != nil {
-			return errors.Wrap(err, "float")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -26127,32 +23511,6 @@ func (c *Client) TestRequestRequiredNumberArray(ctx context.Context, request []f
 }
 
 func (c *Client) sendTestRequestRequiredNumberArray(ctx context.Context, request []float64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
-					return errors.Wrap(err, "float")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -26225,49 +23583,6 @@ func (c *Client) TestRequestRequiredNumberArrayArray(ctx context.Context, reques
 }
 
 func (c *Client) sendTestRequestRequiredNumberArrayArray(ctx context.Context, request [][]float64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				var failures []validate.FieldError
-				for i, elem := range elem {
-					if err := func() error {
-						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
-							return errors.Wrap(err, "float")
-						}
-						return nil
-					}(); err != nil {
-						failures = append(failures, validate.FieldError{
-							Name:  fmt.Sprintf("[%d]", i),
-							Error: err,
-						})
-					}
-				}
-				if len(failures) > 0 {
-					return &validate.Error{Fields: failures}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -26340,15 +23655,6 @@ func (c *Client) TestRequestRequiredNumberDouble(ctx context.Context, request fl
 }
 
 func (c *Client) sendTestRequestRequiredNumberDouble(ctx context.Context, request float64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := (validate.Float{}).Validate(float64(request)); err != nil {
-			return errors.Wrap(err, "float")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_double"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -26421,32 +23727,6 @@ func (c *Client) TestRequestRequiredNumberDoubleArray(ctx context.Context, reque
 }
 
 func (c *Client) sendTestRequestRequiredNumberDoubleArray(ctx context.Context, request []float64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
-					return errors.Wrap(err, "float")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_double_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -26519,49 +23799,6 @@ func (c *Client) TestRequestRequiredNumberDoubleArrayArray(ctx context.Context, 
 }
 
 func (c *Client) sendTestRequestRequiredNumberDoubleArrayArray(ctx context.Context, request [][]float64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				var failures []validate.FieldError
-				for i, elem := range elem {
-					if err := func() error {
-						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
-							return errors.Wrap(err, "float")
-						}
-						return nil
-					}(); err != nil {
-						failures = append(failures, validate.FieldError{
-							Name:  fmt.Sprintf("[%d]", i),
-							Error: err,
-						})
-					}
-				}
-				if len(failures) > 0 {
-					return &validate.Error{Fields: failures}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_double_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -26634,22 +23871,6 @@ func (c *Client) TestRequestRequiredNumberDoubleNullable(ctx context.Context, re
 }
 
 func (c *Client) sendTestRequestRequiredNumberDoubleNullable(ctx context.Context, request NilFloat64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if value, ok := request.Get(); ok {
-			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(value)); err != nil {
-					return errors.Wrap(err, "float")
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_double_nullable"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -26722,39 +23943,6 @@ func (c *Client) TestRequestRequiredNumberDoubleNullableArray(ctx context.Contex
 }
 
 func (c *Client) sendTestRequestRequiredNumberDoubleNullableArray(ctx context.Context, request []NilFloat64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if value, ok := elem.Get(); ok {
-					if err := func() error {
-						if err := (validate.Float{}).Validate(float64(value)); err != nil {
-							return errors.Wrap(err, "float")
-						}
-						return nil
-					}(); err != nil {
-						return err
-					}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_double_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -26827,56 +24015,6 @@ func (c *Client) TestRequestRequiredNumberDoubleNullableArrayArray(ctx context.C
 }
 
 func (c *Client) sendTestRequestRequiredNumberDoubleNullableArrayArray(ctx context.Context, request [][]NilFloat64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				var failures []validate.FieldError
-				for i, elem := range elem {
-					if err := func() error {
-						if value, ok := elem.Get(); ok {
-							if err := func() error {
-								if err := (validate.Float{}).Validate(float64(value)); err != nil {
-									return errors.Wrap(err, "float")
-								}
-								return nil
-							}(); err != nil {
-								return err
-							}
-						}
-						return nil
-					}(); err != nil {
-						failures = append(failures, validate.FieldError{
-							Name:  fmt.Sprintf("[%d]", i),
-							Error: err,
-						})
-					}
-				}
-				if len(failures) > 0 {
-					return &validate.Error{Fields: failures}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_double_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -26949,15 +24087,6 @@ func (c *Client) TestRequestRequiredNumberFloat(ctx context.Context, request flo
 }
 
 func (c *Client) sendTestRequestRequiredNumberFloat(ctx context.Context, request float32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := (validate.Float{}).Validate(float64(request)); err != nil {
-			return errors.Wrap(err, "float")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_float"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -27030,32 +24159,6 @@ func (c *Client) TestRequestRequiredNumberFloatArray(ctx context.Context, reques
 }
 
 func (c *Client) sendTestRequestRequiredNumberFloatArray(ctx context.Context, request []float32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
-					return errors.Wrap(err, "float")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_float_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -27128,49 +24231,6 @@ func (c *Client) TestRequestRequiredNumberFloatArrayArray(ctx context.Context, r
 }
 
 func (c *Client) sendTestRequestRequiredNumberFloatArrayArray(ctx context.Context, request [][]float32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				var failures []validate.FieldError
-				for i, elem := range elem {
-					if err := func() error {
-						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
-							return errors.Wrap(err, "float")
-						}
-						return nil
-					}(); err != nil {
-						failures = append(failures, validate.FieldError{
-							Name:  fmt.Sprintf("[%d]", i),
-							Error: err,
-						})
-					}
-				}
-				if len(failures) > 0 {
-					return &validate.Error{Fields: failures}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_float_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -27243,22 +24303,6 @@ func (c *Client) TestRequestRequiredNumberFloatNullable(ctx context.Context, req
 }
 
 func (c *Client) sendTestRequestRequiredNumberFloatNullable(ctx context.Context, request NilFloat32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if value, ok := request.Get(); ok {
-			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(value)); err != nil {
-					return errors.Wrap(err, "float")
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_float_nullable"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -27331,39 +24375,6 @@ func (c *Client) TestRequestRequiredNumberFloatNullableArray(ctx context.Context
 }
 
 func (c *Client) sendTestRequestRequiredNumberFloatNullableArray(ctx context.Context, request []NilFloat32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if value, ok := elem.Get(); ok {
-					if err := func() error {
-						if err := (validate.Float{}).Validate(float64(value)); err != nil {
-							return errors.Wrap(err, "float")
-						}
-						return nil
-					}(); err != nil {
-						return err
-					}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_float_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -27436,56 +24447,6 @@ func (c *Client) TestRequestRequiredNumberFloatNullableArrayArray(ctx context.Co
 }
 
 func (c *Client) sendTestRequestRequiredNumberFloatNullableArrayArray(ctx context.Context, request [][]NilFloat32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				var failures []validate.FieldError
-				for i, elem := range elem {
-					if err := func() error {
-						if value, ok := elem.Get(); ok {
-							if err := func() error {
-								if err := (validate.Float{}).Validate(float64(value)); err != nil {
-									return errors.Wrap(err, "float")
-								}
-								return nil
-							}(); err != nil {
-								return err
-							}
-						}
-						return nil
-					}(); err != nil {
-						failures = append(failures, validate.FieldError{
-							Name:  fmt.Sprintf("[%d]", i),
-							Error: err,
-						})
-					}
-				}
-				if len(failures) > 0 {
-					return &validate.Error{Fields: failures}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_float_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -27630,15 +24591,6 @@ func (c *Client) TestRequestRequiredNumberInt32Array(ctx context.Context, reques
 }
 
 func (c *Client) sendTestRequestRequiredNumberInt32Array(ctx context.Context, request []int32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int32_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -27711,32 +24663,6 @@ func (c *Client) TestRequestRequiredNumberInt32ArrayArray(ctx context.Context, r
 }
 
 func (c *Client) sendTestRequestRequiredNumberInt32ArrayArray(ctx context.Context, request [][]int32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int32_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -27881,15 +24807,6 @@ func (c *Client) TestRequestRequiredNumberInt32NullableArray(ctx context.Context
 }
 
 func (c *Client) sendTestRequestRequiredNumberInt32NullableArray(ctx context.Context, request []NilInt32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int32_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -27962,32 +24879,6 @@ func (c *Client) TestRequestRequiredNumberInt32NullableArrayArray(ctx context.Co
 }
 
 func (c *Client) sendTestRequestRequiredNumberInt32NullableArrayArray(ctx context.Context, request [][]NilInt32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int32_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -28132,15 +25023,6 @@ func (c *Client) TestRequestRequiredNumberInt64Array(ctx context.Context, reques
 }
 
 func (c *Client) sendTestRequestRequiredNumberInt64Array(ctx context.Context, request []int64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int64_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -28213,32 +25095,6 @@ func (c *Client) TestRequestRequiredNumberInt64ArrayArray(ctx context.Context, r
 }
 
 func (c *Client) sendTestRequestRequiredNumberInt64ArrayArray(ctx context.Context, request [][]int64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int64_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -28383,15 +25239,6 @@ func (c *Client) TestRequestRequiredNumberInt64NullableArray(ctx context.Context
 }
 
 func (c *Client) sendTestRequestRequiredNumberInt64NullableArray(ctx context.Context, request []NilInt64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int64_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -28464,32 +25311,6 @@ func (c *Client) TestRequestRequiredNumberInt64NullableArrayArray(ctx context.Co
 }
 
 func (c *Client) sendTestRequestRequiredNumberInt64NullableArrayArray(ctx context.Context, request [][]NilInt64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int64_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -28562,22 +25383,6 @@ func (c *Client) TestRequestRequiredNumberNullable(ctx context.Context, request 
 }
 
 func (c *Client) sendTestRequestRequiredNumberNullable(ctx context.Context, request NilFloat64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if value, ok := request.Get(); ok {
-			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(value)); err != nil {
-					return errors.Wrap(err, "float")
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_nullable"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -28650,39 +25455,6 @@ func (c *Client) TestRequestRequiredNumberNullableArray(ctx context.Context, req
 }
 
 func (c *Client) sendTestRequestRequiredNumberNullableArray(ctx context.Context, request []NilFloat64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if value, ok := elem.Get(); ok {
-					if err := func() error {
-						if err := (validate.Float{}).Validate(float64(value)); err != nil {
-							return errors.Wrap(err, "float")
-						}
-						return nil
-					}(); err != nil {
-						return err
-					}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -28755,56 +25527,6 @@ func (c *Client) TestRequestRequiredNumberNullableArrayArray(ctx context.Context
 }
 
 func (c *Client) sendTestRequestRequiredNumberNullableArrayArray(ctx context.Context, request [][]NilFloat64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				var failures []validate.FieldError
-				for i, elem := range elem {
-					if err := func() error {
-						if value, ok := elem.Get(); ok {
-							if err := func() error {
-								if err := (validate.Float{}).Validate(float64(value)); err != nil {
-									return errors.Wrap(err, "float")
-								}
-								return nil
-							}(); err != nil {
-								return err
-							}
-						}
-						return nil
-					}(); err != nil {
-						failures = append(failures, validate.FieldError{
-							Name:  fmt.Sprintf("[%d]", i),
-							Error: err,
-						})
-					}
-				}
-				if len(failures) > 0 {
-					return &validate.Error{Fields: failures}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -28949,15 +25671,6 @@ func (c *Client) TestRequestRequiredStringArray(ctx context.Context, request []s
 }
 
 func (c *Client) sendTestRequestRequiredStringArray(ctx context.Context, request []string) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -29030,32 +25743,6 @@ func (c *Client) TestRequestRequiredStringArrayArray(ctx context.Context, reques
 }
 
 func (c *Client) sendTestRequestRequiredStringArrayArray(ctx context.Context, request [][]string) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -29200,15 +25887,6 @@ func (c *Client) TestRequestRequiredStringBase64Array(ctx context.Context, reque
 }
 
 func (c *Client) sendTestRequestRequiredStringBase64Array(ctx context.Context, request [][]byte) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_base64_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -29281,32 +25959,6 @@ func (c *Client) TestRequestRequiredStringBase64ArrayArray(ctx context.Context, 
 }
 
 func (c *Client) sendTestRequestRequiredStringBase64ArrayArray(ctx context.Context, request [][][]byte) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_base64_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -29451,15 +26103,6 @@ func (c *Client) TestRequestRequiredStringBase64NullableArray(ctx context.Contex
 }
 
 func (c *Client) sendTestRequestRequiredStringBase64NullableArray(ctx context.Context, request [][]byte) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_base64_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -29532,32 +26175,6 @@ func (c *Client) TestRequestRequiredStringBase64NullableArrayArray(ctx context.C
 }
 
 func (c *Client) sendTestRequestRequiredStringBase64NullableArrayArray(ctx context.Context, request [][][]byte) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_base64_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -29702,15 +26319,6 @@ func (c *Client) TestRequestRequiredStringBinaryArray(ctx context.Context, reque
 }
 
 func (c *Client) sendTestRequestRequiredStringBinaryArray(ctx context.Context, request []string) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_binary_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -29783,32 +26391,6 @@ func (c *Client) TestRequestRequiredStringBinaryArrayArray(ctx context.Context, 
 }
 
 func (c *Client) sendTestRequestRequiredStringBinaryArrayArray(ctx context.Context, request [][]string) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_binary_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -29953,15 +26535,6 @@ func (c *Client) TestRequestRequiredStringBinaryNullableArray(ctx context.Contex
 }
 
 func (c *Client) sendTestRequestRequiredStringBinaryNullableArray(ctx context.Context, request []NilString) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_binary_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -30034,32 +26607,6 @@ func (c *Client) TestRequestRequiredStringBinaryNullableArrayArray(ctx context.C
 }
 
 func (c *Client) sendTestRequestRequiredStringBinaryNullableArrayArray(ctx context.Context, request [][]NilString) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_binary_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -30204,15 +26751,6 @@ func (c *Client) TestRequestRequiredStringByteArray(ctx context.Context, request
 }
 
 func (c *Client) sendTestRequestRequiredStringByteArray(ctx context.Context, request [][]byte) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_byte_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -30285,32 +26823,6 @@ func (c *Client) TestRequestRequiredStringByteArrayArray(ctx context.Context, re
 }
 
 func (c *Client) sendTestRequestRequiredStringByteArrayArray(ctx context.Context, request [][][]byte) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_byte_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -30455,15 +26967,6 @@ func (c *Client) TestRequestRequiredStringByteNullableArray(ctx context.Context,
 }
 
 func (c *Client) sendTestRequestRequiredStringByteNullableArray(ctx context.Context, request [][]byte) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_byte_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -30536,32 +27039,6 @@ func (c *Client) TestRequestRequiredStringByteNullableArrayArray(ctx context.Con
 }
 
 func (c *Client) sendTestRequestRequiredStringByteNullableArrayArray(ctx context.Context, request [][][]byte) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_byte_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -30706,15 +27183,6 @@ func (c *Client) TestRequestRequiredStringDateArray(ctx context.Context, request
 }
 
 func (c *Client) sendTestRequestRequiredStringDateArray(ctx context.Context, request []time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -30787,32 +27255,6 @@ func (c *Client) TestRequestRequiredStringDateArrayArray(ctx context.Context, re
 }
 
 func (c *Client) sendTestRequestRequiredStringDateArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -30957,15 +27399,6 @@ func (c *Client) TestRequestRequiredStringDateNullableArray(ctx context.Context,
 }
 
 func (c *Client) sendTestRequestRequiredStringDateNullableArray(ctx context.Context, request []NilDate) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -31038,32 +27471,6 @@ func (c *Client) TestRequestRequiredStringDateNullableArrayArray(ctx context.Con
 }
 
 func (c *Client) sendTestRequestRequiredStringDateNullableArrayArray(ctx context.Context, request [][]NilDate) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -31208,15 +27615,6 @@ func (c *Client) TestRequestRequiredStringDateTimeArray(ctx context.Context, req
 }
 
 func (c *Client) sendTestRequestRequiredStringDateTimeArray(ctx context.Context, request []time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date-time_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -31289,32 +27687,6 @@ func (c *Client) TestRequestRequiredStringDateTimeArrayArray(ctx context.Context
 }
 
 func (c *Client) sendTestRequestRequiredStringDateTimeArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date-time_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -31459,15 +27831,6 @@ func (c *Client) TestRequestRequiredStringDateTimeNullableArray(ctx context.Cont
 }
 
 func (c *Client) sendTestRequestRequiredStringDateTimeNullableArray(ctx context.Context, request []NilDateTime) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date-time_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -31540,32 +27903,6 @@ func (c *Client) TestRequestRequiredStringDateTimeNullableArrayArray(ctx context
 }
 
 func (c *Client) sendTestRequestRequiredStringDateTimeNullableArrayArray(ctx context.Context, request [][]NilDateTime) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date-time_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -31710,15 +28047,6 @@ func (c *Client) TestRequestRequiredStringDurationArray(ctx context.Context, req
 }
 
 func (c *Client) sendTestRequestRequiredStringDurationArray(ctx context.Context, request []time.Duration) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_duration_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -31791,32 +28119,6 @@ func (c *Client) TestRequestRequiredStringDurationArrayArray(ctx context.Context
 }
 
 func (c *Client) sendTestRequestRequiredStringDurationArrayArray(ctx context.Context, request [][]time.Duration) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_duration_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -31961,15 +28263,6 @@ func (c *Client) TestRequestRequiredStringDurationNullableArray(ctx context.Cont
 }
 
 func (c *Client) sendTestRequestRequiredStringDurationNullableArray(ctx context.Context, request []NilDuration) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_duration_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -32042,32 +28335,6 @@ func (c *Client) TestRequestRequiredStringDurationNullableArrayArray(ctx context
 }
 
 func (c *Client) sendTestRequestRequiredStringDurationNullableArrayArray(ctx context.Context, request [][]NilDuration) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_duration_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -32140,23 +28407,6 @@ func (c *Client) TestRequestRequiredStringEmail(ctx context.Context, request str
 }
 
 func (c *Client) sendTestRequestRequiredStringEmail(ctx context.Context, request string) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := (validate.String{
-			MinLength:    0,
-			MinLengthSet: false,
-			MaxLength:    0,
-			MaxLengthSet: false,
-			Email:        true,
-			Hostname:     false,
-			Regex:        nil,
-		}).Validate(string(request)); err != nil {
-			return errors.Wrap(err, "string")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_email"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -32229,40 +28479,6 @@ func (c *Client) TestRequestRequiredStringEmailArray(ctx context.Context, reques
 }
 
 func (c *Client) sendTestRequestRequiredStringEmailArray(ctx context.Context, request []string) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if err := (validate.String{
-					MinLength:    0,
-					MinLengthSet: false,
-					MaxLength:    0,
-					MaxLengthSet: false,
-					Email:        true,
-					Hostname:     false,
-					Regex:        nil,
-				}).Validate(string(elem)); err != nil {
-					return errors.Wrap(err, "string")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_email_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -32335,57 +28551,6 @@ func (c *Client) TestRequestRequiredStringEmailArrayArray(ctx context.Context, r
 }
 
 func (c *Client) sendTestRequestRequiredStringEmailArrayArray(ctx context.Context, request [][]string) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				var failures []validate.FieldError
-				for i, elem := range elem {
-					if err := func() error {
-						if err := (validate.String{
-							MinLength:    0,
-							MinLengthSet: false,
-							MaxLength:    0,
-							MaxLengthSet: false,
-							Email:        true,
-							Hostname:     false,
-							Regex:        nil,
-						}).Validate(string(elem)); err != nil {
-							return errors.Wrap(err, "string")
-						}
-						return nil
-					}(); err != nil {
-						failures = append(failures, validate.FieldError{
-							Name:  fmt.Sprintf("[%d]", i),
-							Error: err,
-						})
-					}
-				}
-				if len(failures) > 0 {
-					return &validate.Error{Fields: failures}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_email_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -32458,30 +28623,6 @@ func (c *Client) TestRequestRequiredStringEmailNullable(ctx context.Context, req
 }
 
 func (c *Client) sendTestRequestRequiredStringEmailNullable(ctx context.Context, request NilString) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if value, ok := request.Get(); ok {
-			if err := func() error {
-				if err := (validate.String{
-					MinLength:    0,
-					MinLengthSet: false,
-					MaxLength:    0,
-					MaxLengthSet: false,
-					Email:        true,
-					Hostname:     false,
-					Regex:        nil,
-				}).Validate(string(value)); err != nil {
-					return errors.Wrap(err, "string")
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_email_nullable"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -32554,47 +28695,6 @@ func (c *Client) TestRequestRequiredStringEmailNullableArray(ctx context.Context
 }
 
 func (c *Client) sendTestRequestRequiredStringEmailNullableArray(ctx context.Context, request []NilString) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if value, ok := elem.Get(); ok {
-					if err := func() error {
-						if err := (validate.String{
-							MinLength:    0,
-							MinLengthSet: false,
-							MaxLength:    0,
-							MaxLengthSet: false,
-							Email:        true,
-							Hostname:     false,
-							Regex:        nil,
-						}).Validate(string(value)); err != nil {
-							return errors.Wrap(err, "string")
-						}
-						return nil
-					}(); err != nil {
-						return err
-					}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_email_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -32667,64 +28767,6 @@ func (c *Client) TestRequestRequiredStringEmailNullableArrayArray(ctx context.Co
 }
 
 func (c *Client) sendTestRequestRequiredStringEmailNullableArrayArray(ctx context.Context, request [][]NilString) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				var failures []validate.FieldError
-				for i, elem := range elem {
-					if err := func() error {
-						if value, ok := elem.Get(); ok {
-							if err := func() error {
-								if err := (validate.String{
-									MinLength:    0,
-									MinLengthSet: false,
-									MaxLength:    0,
-									MaxLengthSet: false,
-									Email:        true,
-									Hostname:     false,
-									Regex:        nil,
-								}).Validate(string(value)); err != nil {
-									return errors.Wrap(err, "string")
-								}
-								return nil
-							}(); err != nil {
-								return err
-							}
-						}
-						return nil
-					}(); err != nil {
-						failures = append(failures, validate.FieldError{
-							Name:  fmt.Sprintf("[%d]", i),
-							Error: err,
-						})
-					}
-				}
-				if len(failures) > 0 {
-					return &validate.Error{Fields: failures}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_email_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -32797,15 +28839,6 @@ func (c *Client) TestRequestRequiredStringFloat32(ctx context.Context, request f
 }
 
 func (c *Client) sendTestRequestRequiredStringFloat32(ctx context.Context, request float32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := (validate.Float{}).ValidateStringified(float64(request)); err != nil {
-			return errors.Wrap(err, "float")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float32"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -32878,32 +28911,6 @@ func (c *Client) TestRequestRequiredStringFloat32Array(ctx context.Context, requ
 }
 
 func (c *Client) sendTestRequestRequiredStringFloat32Array(ctx context.Context, request []float32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
-					return errors.Wrap(err, "float")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float32_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -32976,49 +28983,6 @@ func (c *Client) TestRequestRequiredStringFloat32ArrayArray(ctx context.Context,
 }
 
 func (c *Client) sendTestRequestRequiredStringFloat32ArrayArray(ctx context.Context, request [][]float32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				var failures []validate.FieldError
-				for i, elem := range elem {
-					if err := func() error {
-						if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
-							return errors.Wrap(err, "float")
-						}
-						return nil
-					}(); err != nil {
-						failures = append(failures, validate.FieldError{
-							Name:  fmt.Sprintf("[%d]", i),
-							Error: err,
-						})
-					}
-				}
-				if len(failures) > 0 {
-					return &validate.Error{Fields: failures}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float32_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -33091,22 +29055,6 @@ func (c *Client) TestRequestRequiredStringFloat32Nullable(ctx context.Context, r
 }
 
 func (c *Client) sendTestRequestRequiredStringFloat32Nullable(ctx context.Context, request NilFloat32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if value, ok := request.Get(); ok {
-			if err := func() error {
-				if err := (validate.Float{}).ValidateStringified(float64(value)); err != nil {
-					return errors.Wrap(err, "float")
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float32_nullable"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -33179,39 +29127,6 @@ func (c *Client) TestRequestRequiredStringFloat32NullableArray(ctx context.Conte
 }
 
 func (c *Client) sendTestRequestRequiredStringFloat32NullableArray(ctx context.Context, request []NilFloat32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if value, ok := elem.Get(); ok {
-					if err := func() error {
-						if err := (validate.Float{}).ValidateStringified(float64(value)); err != nil {
-							return errors.Wrap(err, "float")
-						}
-						return nil
-					}(); err != nil {
-						return err
-					}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float32_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -33284,56 +29199,6 @@ func (c *Client) TestRequestRequiredStringFloat32NullableArrayArray(ctx context.
 }
 
 func (c *Client) sendTestRequestRequiredStringFloat32NullableArrayArray(ctx context.Context, request [][]NilFloat32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				var failures []validate.FieldError
-				for i, elem := range elem {
-					if err := func() error {
-						if value, ok := elem.Get(); ok {
-							if err := func() error {
-								if err := (validate.Float{}).ValidateStringified(float64(value)); err != nil {
-									return errors.Wrap(err, "float")
-								}
-								return nil
-							}(); err != nil {
-								return err
-							}
-						}
-						return nil
-					}(); err != nil {
-						failures = append(failures, validate.FieldError{
-							Name:  fmt.Sprintf("[%d]", i),
-							Error: err,
-						})
-					}
-				}
-				if len(failures) > 0 {
-					return &validate.Error{Fields: failures}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float32_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -33406,15 +29271,6 @@ func (c *Client) TestRequestRequiredStringFloat64(ctx context.Context, request f
 }
 
 func (c *Client) sendTestRequestRequiredStringFloat64(ctx context.Context, request float64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := (validate.Float{}).ValidateStringified(float64(request)); err != nil {
-			return errors.Wrap(err, "float")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float64"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -33487,32 +29343,6 @@ func (c *Client) TestRequestRequiredStringFloat64Array(ctx context.Context, requ
 }
 
 func (c *Client) sendTestRequestRequiredStringFloat64Array(ctx context.Context, request []float64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
-					return errors.Wrap(err, "float")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float64_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -33585,49 +29415,6 @@ func (c *Client) TestRequestRequiredStringFloat64ArrayArray(ctx context.Context,
 }
 
 func (c *Client) sendTestRequestRequiredStringFloat64ArrayArray(ctx context.Context, request [][]float64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				var failures []validate.FieldError
-				for i, elem := range elem {
-					if err := func() error {
-						if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
-							return errors.Wrap(err, "float")
-						}
-						return nil
-					}(); err != nil {
-						failures = append(failures, validate.FieldError{
-							Name:  fmt.Sprintf("[%d]", i),
-							Error: err,
-						})
-					}
-				}
-				if len(failures) > 0 {
-					return &validate.Error{Fields: failures}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float64_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -33700,22 +29487,6 @@ func (c *Client) TestRequestRequiredStringFloat64Nullable(ctx context.Context, r
 }
 
 func (c *Client) sendTestRequestRequiredStringFloat64Nullable(ctx context.Context, request NilFloat64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if value, ok := request.Get(); ok {
-			if err := func() error {
-				if err := (validate.Float{}).ValidateStringified(float64(value)); err != nil {
-					return errors.Wrap(err, "float")
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float64_nullable"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -33788,39 +29559,6 @@ func (c *Client) TestRequestRequiredStringFloat64NullableArray(ctx context.Conte
 }
 
 func (c *Client) sendTestRequestRequiredStringFloat64NullableArray(ctx context.Context, request []NilFloat64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if value, ok := elem.Get(); ok {
-					if err := func() error {
-						if err := (validate.Float{}).ValidateStringified(float64(value)); err != nil {
-							return errors.Wrap(err, "float")
-						}
-						return nil
-					}(); err != nil {
-						return err
-					}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float64_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -33893,56 +29631,6 @@ func (c *Client) TestRequestRequiredStringFloat64NullableArrayArray(ctx context.
 }
 
 func (c *Client) sendTestRequestRequiredStringFloat64NullableArrayArray(ctx context.Context, request [][]NilFloat64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				var failures []validate.FieldError
-				for i, elem := range elem {
-					if err := func() error {
-						if value, ok := elem.Get(); ok {
-							if err := func() error {
-								if err := (validate.Float{}).ValidateStringified(float64(value)); err != nil {
-									return errors.Wrap(err, "float")
-								}
-								return nil
-							}(); err != nil {
-								return err
-							}
-						}
-						return nil
-					}(); err != nil {
-						failures = append(failures, validate.FieldError{
-							Name:  fmt.Sprintf("[%d]", i),
-							Error: err,
-						})
-					}
-				}
-				if len(failures) > 0 {
-					return &validate.Error{Fields: failures}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float64_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -34015,23 +29703,6 @@ func (c *Client) TestRequestRequiredStringHostname(ctx context.Context, request 
 }
 
 func (c *Client) sendTestRequestRequiredStringHostname(ctx context.Context, request string) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := (validate.String{
-			MinLength:    0,
-			MinLengthSet: false,
-			MaxLength:    0,
-			MaxLengthSet: false,
-			Email:        false,
-			Hostname:     true,
-			Regex:        nil,
-		}).Validate(string(request)); err != nil {
-			return errors.Wrap(err, "string")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_hostname"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -34104,40 +29775,6 @@ func (c *Client) TestRequestRequiredStringHostnameArray(ctx context.Context, req
 }
 
 func (c *Client) sendTestRequestRequiredStringHostnameArray(ctx context.Context, request []string) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if err := (validate.String{
-					MinLength:    0,
-					MinLengthSet: false,
-					MaxLength:    0,
-					MaxLengthSet: false,
-					Email:        false,
-					Hostname:     true,
-					Regex:        nil,
-				}).Validate(string(elem)); err != nil {
-					return errors.Wrap(err, "string")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_hostname_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -34210,57 +29847,6 @@ func (c *Client) TestRequestRequiredStringHostnameArrayArray(ctx context.Context
 }
 
 func (c *Client) sendTestRequestRequiredStringHostnameArrayArray(ctx context.Context, request [][]string) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				var failures []validate.FieldError
-				for i, elem := range elem {
-					if err := func() error {
-						if err := (validate.String{
-							MinLength:    0,
-							MinLengthSet: false,
-							MaxLength:    0,
-							MaxLengthSet: false,
-							Email:        false,
-							Hostname:     true,
-							Regex:        nil,
-						}).Validate(string(elem)); err != nil {
-							return errors.Wrap(err, "string")
-						}
-						return nil
-					}(); err != nil {
-						failures = append(failures, validate.FieldError{
-							Name:  fmt.Sprintf("[%d]", i),
-							Error: err,
-						})
-					}
-				}
-				if len(failures) > 0 {
-					return &validate.Error{Fields: failures}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_hostname_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -34333,30 +29919,6 @@ func (c *Client) TestRequestRequiredStringHostnameNullable(ctx context.Context, 
 }
 
 func (c *Client) sendTestRequestRequiredStringHostnameNullable(ctx context.Context, request NilString) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if value, ok := request.Get(); ok {
-			if err := func() error {
-				if err := (validate.String{
-					MinLength:    0,
-					MinLengthSet: false,
-					MaxLength:    0,
-					MaxLengthSet: false,
-					Email:        false,
-					Hostname:     true,
-					Regex:        nil,
-				}).Validate(string(value)); err != nil {
-					return errors.Wrap(err, "string")
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_hostname_nullable"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -34429,47 +29991,6 @@ func (c *Client) TestRequestRequiredStringHostnameNullableArray(ctx context.Cont
 }
 
 func (c *Client) sendTestRequestRequiredStringHostnameNullableArray(ctx context.Context, request []NilString) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if value, ok := elem.Get(); ok {
-					if err := func() error {
-						if err := (validate.String{
-							MinLength:    0,
-							MinLengthSet: false,
-							MaxLength:    0,
-							MaxLengthSet: false,
-							Email:        false,
-							Hostname:     true,
-							Regex:        nil,
-						}).Validate(string(value)); err != nil {
-							return errors.Wrap(err, "string")
-						}
-						return nil
-					}(); err != nil {
-						return err
-					}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_hostname_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -34542,64 +30063,6 @@ func (c *Client) TestRequestRequiredStringHostnameNullableArrayArray(ctx context
 }
 
 func (c *Client) sendTestRequestRequiredStringHostnameNullableArrayArray(ctx context.Context, request [][]NilString) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				var failures []validate.FieldError
-				for i, elem := range elem {
-					if err := func() error {
-						if value, ok := elem.Get(); ok {
-							if err := func() error {
-								if err := (validate.String{
-									MinLength:    0,
-									MinLengthSet: false,
-									MaxLength:    0,
-									MaxLengthSet: false,
-									Email:        false,
-									Hostname:     true,
-									Regex:        nil,
-								}).Validate(string(value)); err != nil {
-									return errors.Wrap(err, "string")
-								}
-								return nil
-							}(); err != nil {
-								return err
-							}
-						}
-						return nil
-					}(); err != nil {
-						failures = append(failures, validate.FieldError{
-							Name:  fmt.Sprintf("[%d]", i),
-							Error: err,
-						})
-					}
-				}
-				if len(failures) > 0 {
-					return &validate.Error{Fields: failures}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_hostname_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -34744,15 +30207,6 @@ func (c *Client) TestRequestRequiredStringIPArray(ctx context.Context, request [
 }
 
 func (c *Client) sendTestRequestRequiredStringIPArray(ctx context.Context, request []netip.Addr) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ip_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -34825,32 +30279,6 @@ func (c *Client) TestRequestRequiredStringIPArrayArray(ctx context.Context, requ
 }
 
 func (c *Client) sendTestRequestRequiredStringIPArrayArray(ctx context.Context, request [][]netip.Addr) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ip_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -34995,15 +30423,6 @@ func (c *Client) TestRequestRequiredStringIPNullableArray(ctx context.Context, r
 }
 
 func (c *Client) sendTestRequestRequiredStringIPNullableArray(ctx context.Context, request []NilIP) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ip_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -35076,32 +30495,6 @@ func (c *Client) TestRequestRequiredStringIPNullableArrayArray(ctx context.Conte
 }
 
 func (c *Client) sendTestRequestRequiredStringIPNullableArrayArray(ctx context.Context, request [][]NilIP) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ip_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -35318,15 +30711,6 @@ func (c *Client) TestRequestRequiredStringInt16Array(ctx context.Context, reques
 }
 
 func (c *Client) sendTestRequestRequiredStringInt16Array(ctx context.Context, request []int16) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int16_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -35399,32 +30783,6 @@ func (c *Client) TestRequestRequiredStringInt16ArrayArray(ctx context.Context, r
 }
 
 func (c *Client) sendTestRequestRequiredStringInt16ArrayArray(ctx context.Context, request [][]int16) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int16_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -35569,15 +30927,6 @@ func (c *Client) TestRequestRequiredStringInt16NullableArray(ctx context.Context
 }
 
 func (c *Client) sendTestRequestRequiredStringInt16NullableArray(ctx context.Context, request []NilInt16) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int16_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -35650,32 +30999,6 @@ func (c *Client) TestRequestRequiredStringInt16NullableArrayArray(ctx context.Co
 }
 
 func (c *Client) sendTestRequestRequiredStringInt16NullableArrayArray(ctx context.Context, request [][]NilInt16) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int16_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -35820,15 +31143,6 @@ func (c *Client) TestRequestRequiredStringInt32Array(ctx context.Context, reques
 }
 
 func (c *Client) sendTestRequestRequiredStringInt32Array(ctx context.Context, request []int32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int32_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -35901,32 +31215,6 @@ func (c *Client) TestRequestRequiredStringInt32ArrayArray(ctx context.Context, r
 }
 
 func (c *Client) sendTestRequestRequiredStringInt32ArrayArray(ctx context.Context, request [][]int32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int32_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -36071,15 +31359,6 @@ func (c *Client) TestRequestRequiredStringInt32NullableArray(ctx context.Context
 }
 
 func (c *Client) sendTestRequestRequiredStringInt32NullableArray(ctx context.Context, request []NilStringInt32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int32_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -36152,32 +31431,6 @@ func (c *Client) TestRequestRequiredStringInt32NullableArrayArray(ctx context.Co
 }
 
 func (c *Client) sendTestRequestRequiredStringInt32NullableArrayArray(ctx context.Context, request [][]NilStringInt32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int32_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -36322,15 +31575,6 @@ func (c *Client) TestRequestRequiredStringInt64Array(ctx context.Context, reques
 }
 
 func (c *Client) sendTestRequestRequiredStringInt64Array(ctx context.Context, request []int64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int64_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -36403,32 +31647,6 @@ func (c *Client) TestRequestRequiredStringInt64ArrayArray(ctx context.Context, r
 }
 
 func (c *Client) sendTestRequestRequiredStringInt64ArrayArray(ctx context.Context, request [][]int64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int64_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -36573,15 +31791,6 @@ func (c *Client) TestRequestRequiredStringInt64NullableArray(ctx context.Context
 }
 
 func (c *Client) sendTestRequestRequiredStringInt64NullableArray(ctx context.Context, request []NilStringInt64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int64_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -36654,32 +31863,6 @@ func (c *Client) TestRequestRequiredStringInt64NullableArrayArray(ctx context.Co
 }
 
 func (c *Client) sendTestRequestRequiredStringInt64NullableArrayArray(ctx context.Context, request [][]NilStringInt64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int64_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -36824,15 +32007,6 @@ func (c *Client) TestRequestRequiredStringInt8Array(ctx context.Context, request
 }
 
 func (c *Client) sendTestRequestRequiredStringInt8Array(ctx context.Context, request []int8) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int8_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -36905,32 +32079,6 @@ func (c *Client) TestRequestRequiredStringInt8ArrayArray(ctx context.Context, re
 }
 
 func (c *Client) sendTestRequestRequiredStringInt8ArrayArray(ctx context.Context, request [][]int8) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int8_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -37075,15 +32223,6 @@ func (c *Client) TestRequestRequiredStringInt8NullableArray(ctx context.Context,
 }
 
 func (c *Client) sendTestRequestRequiredStringInt8NullableArray(ctx context.Context, request []NilInt8) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int8_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -37156,32 +32295,6 @@ func (c *Client) TestRequestRequiredStringInt8NullableArrayArray(ctx context.Con
 }
 
 func (c *Client) sendTestRequestRequiredStringInt8NullableArrayArray(ctx context.Context, request [][]NilInt8) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int8_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -37254,15 +32367,6 @@ func (c *Client) TestRequestRequiredStringIntArray(ctx context.Context, request 
 }
 
 func (c *Client) sendTestRequestRequiredStringIntArray(ctx context.Context, request []int) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -37335,32 +32439,6 @@ func (c *Client) TestRequestRequiredStringIntArrayArray(ctx context.Context, req
 }
 
 func (c *Client) sendTestRequestRequiredStringIntArrayArray(ctx context.Context, request [][]int) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -37505,15 +32583,6 @@ func (c *Client) TestRequestRequiredStringIntNullableArray(ctx context.Context, 
 }
 
 func (c *Client) sendTestRequestRequiredStringIntNullableArray(ctx context.Context, request []NilInt) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -37586,32 +32655,6 @@ func (c *Client) TestRequestRequiredStringIntNullableArrayArray(ctx context.Cont
 }
 
 func (c *Client) sendTestRequestRequiredStringIntNullableArrayArray(ctx context.Context, request [][]NilInt) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -37756,15 +32799,6 @@ func (c *Client) TestRequestRequiredStringIpv4Array(ctx context.Context, request
 }
 
 func (c *Client) sendTestRequestRequiredStringIpv4Array(ctx context.Context, request []netip.Addr) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv4_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -37837,32 +32871,6 @@ func (c *Client) TestRequestRequiredStringIpv4ArrayArray(ctx context.Context, re
 }
 
 func (c *Client) sendTestRequestRequiredStringIpv4ArrayArray(ctx context.Context, request [][]netip.Addr) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv4_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -38007,15 +33015,6 @@ func (c *Client) TestRequestRequiredStringIpv4NullableArray(ctx context.Context,
 }
 
 func (c *Client) sendTestRequestRequiredStringIpv4NullableArray(ctx context.Context, request []NilIPv4) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv4_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -38088,32 +33087,6 @@ func (c *Client) TestRequestRequiredStringIpv4NullableArrayArray(ctx context.Con
 }
 
 func (c *Client) sendTestRequestRequiredStringIpv4NullableArrayArray(ctx context.Context, request [][]NilIPv4) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv4_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -38258,15 +33231,6 @@ func (c *Client) TestRequestRequiredStringIpv6Array(ctx context.Context, request
 }
 
 func (c *Client) sendTestRequestRequiredStringIpv6Array(ctx context.Context, request []netip.Addr) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv6_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -38339,32 +33303,6 @@ func (c *Client) TestRequestRequiredStringIpv6ArrayArray(ctx context.Context, re
 }
 
 func (c *Client) sendTestRequestRequiredStringIpv6ArrayArray(ctx context.Context, request [][]netip.Addr) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv6_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -38509,15 +33447,6 @@ func (c *Client) TestRequestRequiredStringIpv6NullableArray(ctx context.Context,
 }
 
 func (c *Client) sendTestRequestRequiredStringIpv6NullableArray(ctx context.Context, request []NilIPv6) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv6_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -38590,32 +33519,6 @@ func (c *Client) TestRequestRequiredStringIpv6NullableArrayArray(ctx context.Con
 }
 
 func (c *Client) sendTestRequestRequiredStringIpv6NullableArrayArray(ctx context.Context, request [][]NilIPv6) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv6_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -38760,15 +33663,6 @@ func (c *Client) TestRequestRequiredStringNullableArray(ctx context.Context, req
 }
 
 func (c *Client) sendTestRequestRequiredStringNullableArray(ctx context.Context, request []NilString) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -38841,32 +33735,6 @@ func (c *Client) TestRequestRequiredStringNullableArrayArray(ctx context.Context
 }
 
 func (c *Client) sendTestRequestRequiredStringNullableArrayArray(ctx context.Context, request [][]NilString) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -39011,15 +33879,6 @@ func (c *Client) TestRequestRequiredStringPasswordArray(ctx context.Context, req
 }
 
 func (c *Client) sendTestRequestRequiredStringPasswordArray(ctx context.Context, request []string) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_password_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -39092,32 +33951,6 @@ func (c *Client) TestRequestRequiredStringPasswordArrayArray(ctx context.Context
 }
 
 func (c *Client) sendTestRequestRequiredStringPasswordArrayArray(ctx context.Context, request [][]string) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_password_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -39262,15 +34095,6 @@ func (c *Client) TestRequestRequiredStringPasswordNullableArray(ctx context.Cont
 }
 
 func (c *Client) sendTestRequestRequiredStringPasswordNullableArray(ctx context.Context, request []NilString) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_password_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -39343,32 +34167,6 @@ func (c *Client) TestRequestRequiredStringPasswordNullableArrayArray(ctx context
 }
 
 func (c *Client) sendTestRequestRequiredStringPasswordNullableArrayArray(ctx context.Context, request [][]NilString) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_password_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -39513,15 +34311,6 @@ func (c *Client) TestRequestRequiredStringTimeArray(ctx context.Context, request
 }
 
 func (c *Client) sendTestRequestRequiredStringTimeArray(ctx context.Context, request []time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_time_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -39594,32 +34383,6 @@ func (c *Client) TestRequestRequiredStringTimeArrayArray(ctx context.Context, re
 }
 
 func (c *Client) sendTestRequestRequiredStringTimeArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_time_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -39764,15 +34527,6 @@ func (c *Client) TestRequestRequiredStringTimeNullableArray(ctx context.Context,
 }
 
 func (c *Client) sendTestRequestRequiredStringTimeNullableArray(ctx context.Context, request []NilTime) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_time_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -39845,32 +34599,6 @@ func (c *Client) TestRequestRequiredStringTimeNullableArrayArray(ctx context.Con
 }
 
 func (c *Client) sendTestRequestRequiredStringTimeNullableArrayArray(ctx context.Context, request [][]NilTime) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_time_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -40015,15 +34743,6 @@ func (c *Client) TestRequestRequiredStringURIArray(ctx context.Context, request 
 }
 
 func (c *Client) sendTestRequestRequiredStringURIArray(ctx context.Context, request []url.URL) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uri_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -40096,32 +34815,6 @@ func (c *Client) TestRequestRequiredStringURIArrayArray(ctx context.Context, req
 }
 
 func (c *Client) sendTestRequestRequiredStringURIArrayArray(ctx context.Context, request [][]url.URL) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uri_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -40266,15 +34959,6 @@ func (c *Client) TestRequestRequiredStringURINullableArray(ctx context.Context, 
 }
 
 func (c *Client) sendTestRequestRequiredStringURINullableArray(ctx context.Context, request []NilURI) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uri_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -40347,32 +35031,6 @@ func (c *Client) TestRequestRequiredStringURINullableArrayArray(ctx context.Cont
 }
 
 func (c *Client) sendTestRequestRequiredStringURINullableArrayArray(ctx context.Context, request [][]NilURI) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uri_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -40517,15 +35175,6 @@ func (c *Client) TestRequestRequiredStringUUIDArray(ctx context.Context, request
 }
 
 func (c *Client) sendTestRequestRequiredStringUUIDArray(ctx context.Context, request []uuid.UUID) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uuid_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -40598,32 +35247,6 @@ func (c *Client) TestRequestRequiredStringUUIDArrayArray(ctx context.Context, re
 }
 
 func (c *Client) sendTestRequestRequiredStringUUIDArrayArray(ctx context.Context, request [][]uuid.UUID) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uuid_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -40768,15 +35391,6 @@ func (c *Client) TestRequestRequiredStringUUIDNullableArray(ctx context.Context,
 }
 
 func (c *Client) sendTestRequestRequiredStringUUIDNullableArray(ctx context.Context, request []NilUUID) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uuid_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -40849,32 +35463,6 @@ func (c *Client) TestRequestRequiredStringUUIDNullableArrayArray(ctx context.Con
 }
 
 func (c *Client) sendTestRequestRequiredStringUUIDNullableArrayArray(ctx context.Context, request [][]NilUUID) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uuid_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -41091,15 +35679,6 @@ func (c *Client) TestRequestRequiredStringUint16Array(ctx context.Context, reque
 }
 
 func (c *Client) sendTestRequestRequiredStringUint16Array(ctx context.Context, request []uint16) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint16_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -41172,32 +35751,6 @@ func (c *Client) TestRequestRequiredStringUint16ArrayArray(ctx context.Context, 
 }
 
 func (c *Client) sendTestRequestRequiredStringUint16ArrayArray(ctx context.Context, request [][]uint16) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint16_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -41342,15 +35895,6 @@ func (c *Client) TestRequestRequiredStringUint16NullableArray(ctx context.Contex
 }
 
 func (c *Client) sendTestRequestRequiredStringUint16NullableArray(ctx context.Context, request []NilUint16) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint16_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -41423,32 +35967,6 @@ func (c *Client) TestRequestRequiredStringUint16NullableArrayArray(ctx context.C
 }
 
 func (c *Client) sendTestRequestRequiredStringUint16NullableArrayArray(ctx context.Context, request [][]NilUint16) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint16_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -41593,15 +36111,6 @@ func (c *Client) TestRequestRequiredStringUint32Array(ctx context.Context, reque
 }
 
 func (c *Client) sendTestRequestRequiredStringUint32Array(ctx context.Context, request []uint32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint32_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -41674,32 +36183,6 @@ func (c *Client) TestRequestRequiredStringUint32ArrayArray(ctx context.Context, 
 }
 
 func (c *Client) sendTestRequestRequiredStringUint32ArrayArray(ctx context.Context, request [][]uint32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint32_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -41844,15 +36327,6 @@ func (c *Client) TestRequestRequiredStringUint32NullableArray(ctx context.Contex
 }
 
 func (c *Client) sendTestRequestRequiredStringUint32NullableArray(ctx context.Context, request []NilUint32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint32_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -41925,32 +36399,6 @@ func (c *Client) TestRequestRequiredStringUint32NullableArrayArray(ctx context.C
 }
 
 func (c *Client) sendTestRequestRequiredStringUint32NullableArrayArray(ctx context.Context, request [][]NilUint32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint32_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -42095,15 +36543,6 @@ func (c *Client) TestRequestRequiredStringUint64Array(ctx context.Context, reque
 }
 
 func (c *Client) sendTestRequestRequiredStringUint64Array(ctx context.Context, request []uint64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint64_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -42176,32 +36615,6 @@ func (c *Client) TestRequestRequiredStringUint64ArrayArray(ctx context.Context, 
 }
 
 func (c *Client) sendTestRequestRequiredStringUint64ArrayArray(ctx context.Context, request [][]uint64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint64_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -42346,15 +36759,6 @@ func (c *Client) TestRequestRequiredStringUint64NullableArray(ctx context.Contex
 }
 
 func (c *Client) sendTestRequestRequiredStringUint64NullableArray(ctx context.Context, request []NilUint64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint64_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -42427,32 +36831,6 @@ func (c *Client) TestRequestRequiredStringUint64NullableArrayArray(ctx context.C
 }
 
 func (c *Client) sendTestRequestRequiredStringUint64NullableArrayArray(ctx context.Context, request [][]NilUint64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint64_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -42597,15 +36975,6 @@ func (c *Client) TestRequestRequiredStringUint8Array(ctx context.Context, reques
 }
 
 func (c *Client) sendTestRequestRequiredStringUint8Array(ctx context.Context, request []uint8) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint8_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -42678,32 +37047,6 @@ func (c *Client) TestRequestRequiredStringUint8ArrayArray(ctx context.Context, r
 }
 
 func (c *Client) sendTestRequestRequiredStringUint8ArrayArray(ctx context.Context, request [][]uint8) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint8_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -42848,15 +37191,6 @@ func (c *Client) TestRequestRequiredStringUint8NullableArray(ctx context.Context
 }
 
 func (c *Client) sendTestRequestRequiredStringUint8NullableArray(ctx context.Context, request []NilUint8) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint8_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -42929,32 +37263,6 @@ func (c *Client) TestRequestRequiredStringUint8NullableArrayArray(ctx context.Co
 }
 
 func (c *Client) sendTestRequestRequiredStringUint8NullableArrayArray(ctx context.Context, request [][]NilUint8) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint8_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -43027,15 +37335,6 @@ func (c *Client) TestRequestRequiredStringUintArray(ctx context.Context, request
 }
 
 func (c *Client) sendTestRequestRequiredStringUintArray(ctx context.Context, request []uint) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -43108,32 +37407,6 @@ func (c *Client) TestRequestRequiredStringUintArrayArray(ctx context.Context, re
 }
 
 func (c *Client) sendTestRequestRequiredStringUintArrayArray(ctx context.Context, request [][]uint) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -43278,15 +37551,6 @@ func (c *Client) TestRequestRequiredStringUintNullableArray(ctx context.Context,
 }
 
 func (c *Client) sendTestRequestRequiredStringUintNullableArray(ctx context.Context, request []NilUint) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -43359,32 +37623,6 @@ func (c *Client) TestRequestRequiredStringUintNullableArrayArray(ctx context.Con
 }
 
 func (c *Client) sendTestRequestRequiredStringUintNullableArrayArray(ctx context.Context, request [][]NilUint) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -43529,15 +37767,6 @@ func (c *Client) TestRequestRequiredStringUnixArray(ctx context.Context, request
 }
 
 func (c *Client) sendTestRequestRequiredStringUnixArray(ctx context.Context, request []time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -43610,32 +37839,6 @@ func (c *Client) TestRequestRequiredStringUnixArrayArray(ctx context.Context, re
 }
 
 func (c *Client) sendTestRequestRequiredStringUnixArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -43780,15 +37983,6 @@ func (c *Client) TestRequestRequiredStringUnixMicroArray(ctx context.Context, re
 }
 
 func (c *Client) sendTestRequestRequiredStringUnixMicroArray(ctx context.Context, request []time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-micro_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -43861,32 +38055,6 @@ func (c *Client) TestRequestRequiredStringUnixMicroArrayArray(ctx context.Contex
 }
 
 func (c *Client) sendTestRequestRequiredStringUnixMicroArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-micro_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -44031,15 +38199,6 @@ func (c *Client) TestRequestRequiredStringUnixMicroNullableArray(ctx context.Con
 }
 
 func (c *Client) sendTestRequestRequiredStringUnixMicroNullableArray(ctx context.Context, request []NilStringUnixMicro) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-micro_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -44112,32 +38271,6 @@ func (c *Client) TestRequestRequiredStringUnixMicroNullableArrayArray(ctx contex
 }
 
 func (c *Client) sendTestRequestRequiredStringUnixMicroNullableArrayArray(ctx context.Context, request [][]NilStringUnixMicro) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-micro_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -44282,15 +38415,6 @@ func (c *Client) TestRequestRequiredStringUnixMilliArray(ctx context.Context, re
 }
 
 func (c *Client) sendTestRequestRequiredStringUnixMilliArray(ctx context.Context, request []time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-milli_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -44363,32 +38487,6 @@ func (c *Client) TestRequestRequiredStringUnixMilliArrayArray(ctx context.Contex
 }
 
 func (c *Client) sendTestRequestRequiredStringUnixMilliArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-milli_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -44533,15 +38631,6 @@ func (c *Client) TestRequestRequiredStringUnixMilliNullableArray(ctx context.Con
 }
 
 func (c *Client) sendTestRequestRequiredStringUnixMilliNullableArray(ctx context.Context, request []NilStringUnixMilli) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-milli_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -44614,32 +38703,6 @@ func (c *Client) TestRequestRequiredStringUnixMilliNullableArrayArray(ctx contex
 }
 
 func (c *Client) sendTestRequestRequiredStringUnixMilliNullableArrayArray(ctx context.Context, request [][]NilStringUnixMilli) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-milli_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -44784,15 +38847,6 @@ func (c *Client) TestRequestRequiredStringUnixNanoArray(ctx context.Context, req
 }
 
 func (c *Client) sendTestRequestRequiredStringUnixNanoArray(ctx context.Context, request []time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-nano_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -44865,32 +38919,6 @@ func (c *Client) TestRequestRequiredStringUnixNanoArrayArray(ctx context.Context
 }
 
 func (c *Client) sendTestRequestRequiredStringUnixNanoArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-nano_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -45035,15 +39063,6 @@ func (c *Client) TestRequestRequiredStringUnixNanoNullableArray(ctx context.Cont
 }
 
 func (c *Client) sendTestRequestRequiredStringUnixNanoNullableArray(ctx context.Context, request []NilStringUnixNano) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-nano_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -45116,32 +39135,6 @@ func (c *Client) TestRequestRequiredStringUnixNanoNullableArrayArray(ctx context
 }
 
 func (c *Client) sendTestRequestRequiredStringUnixNanoNullableArrayArray(ctx context.Context, request [][]NilStringUnixNano) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-nano_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -45286,15 +39279,6 @@ func (c *Client) TestRequestRequiredStringUnixNullableArray(ctx context.Context,
 }
 
 func (c *Client) sendTestRequestRequiredStringUnixNullableArray(ctx context.Context, request []NilStringUnixSeconds) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -45367,32 +39351,6 @@ func (c *Client) TestRequestRequiredStringUnixNullableArrayArray(ctx context.Con
 }
 
 func (c *Client) sendTestRequestRequiredStringUnixNullableArrayArray(ctx context.Context, request [][]NilStringUnixSeconds) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -45537,15 +39495,6 @@ func (c *Client) TestRequestRequiredStringUnixSecondsArray(ctx context.Context, 
 }
 
 func (c *Client) sendTestRequestRequiredStringUnixSecondsArray(ctx context.Context, request []time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-seconds_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -45618,32 +39567,6 @@ func (c *Client) TestRequestRequiredStringUnixSecondsArrayArray(ctx context.Cont
 }
 
 func (c *Client) sendTestRequestRequiredStringUnixSecondsArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-seconds_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -45788,15 +39711,6 @@ func (c *Client) TestRequestRequiredStringUnixSecondsNullableArray(ctx context.C
 }
 
 func (c *Client) sendTestRequestRequiredStringUnixSecondsNullableArray(ctx context.Context, request []NilStringUnixSeconds) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-seconds_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -45869,32 +39783,6 @@ func (c *Client) TestRequestRequiredStringUnixSecondsNullableArrayArray(ctx cont
 }
 
 func (c *Client) sendTestRequestRequiredStringUnixSecondsNullableArrayArray(ctx context.Context, request [][]NilStringUnixSeconds) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if request == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-seconds_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -46111,29 +39999,6 @@ func (c *Client) TestRequestStringArrayArray(ctx context.Context, request [][]st
 }
 
 func (c *Client) sendTestRequestStringArrayArray(ctx context.Context, request [][]string) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -46350,29 +40215,6 @@ func (c *Client) TestRequestStringBase64ArrayArray(ctx context.Context, request 
 }
 
 func (c *Client) sendTestRequestStringBase64ArrayArray(ctx context.Context, request [][][]byte) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_base64_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -46589,29 +40431,6 @@ func (c *Client) TestRequestStringBase64NullableArrayArray(ctx context.Context, 
 }
 
 func (c *Client) sendTestRequestStringBase64NullableArrayArray(ctx context.Context, request [][][]byte) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_base64_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -46828,29 +40647,6 @@ func (c *Client) TestRequestStringBinaryArrayArray(ctx context.Context, request 
 }
 
 func (c *Client) sendTestRequestStringBinaryArrayArray(ctx context.Context, request [][]string) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_binary_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -47067,29 +40863,6 @@ func (c *Client) TestRequestStringBinaryNullableArrayArray(ctx context.Context, 
 }
 
 func (c *Client) sendTestRequestStringBinaryNullableArrayArray(ctx context.Context, request [][]NilString) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_binary_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -47306,29 +41079,6 @@ func (c *Client) TestRequestStringByteArrayArray(ctx context.Context, request []
 }
 
 func (c *Client) sendTestRequestStringByteArrayArray(ctx context.Context, request [][][]byte) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_byte_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -47545,29 +41295,6 @@ func (c *Client) TestRequestStringByteNullableArrayArray(ctx context.Context, re
 }
 
 func (c *Client) sendTestRequestStringByteNullableArrayArray(ctx context.Context, request [][][]byte) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_byte_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -47784,29 +41511,6 @@ func (c *Client) TestRequestStringDateArrayArray(ctx context.Context, request []
 }
 
 func (c *Client) sendTestRequestStringDateArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -48023,29 +41727,6 @@ func (c *Client) TestRequestStringDateNullableArrayArray(ctx context.Context, re
 }
 
 func (c *Client) sendTestRequestStringDateNullableArrayArray(ctx context.Context, request [][]NilDate) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -48262,29 +41943,6 @@ func (c *Client) TestRequestStringDateTimeArrayArray(ctx context.Context, reques
 }
 
 func (c *Client) sendTestRequestStringDateTimeArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date-time_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -48501,29 +42159,6 @@ func (c *Client) TestRequestStringDateTimeNullableArrayArray(ctx context.Context
 }
 
 func (c *Client) sendTestRequestStringDateTimeNullableArrayArray(ctx context.Context, request [][]NilDateTime) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date-time_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -48740,29 +42375,6 @@ func (c *Client) TestRequestStringDurationArrayArray(ctx context.Context, reques
 }
 
 func (c *Client) sendTestRequestStringDurationArrayArray(ctx context.Context, request [][]time.Duration) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_duration_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -48979,29 +42591,6 @@ func (c *Client) TestRequestStringDurationNullableArrayArray(ctx context.Context
 }
 
 func (c *Client) sendTestRequestStringDurationNullableArrayArray(ctx context.Context, request [][]NilDuration) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_duration_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -49074,30 +42663,6 @@ func (c *Client) TestRequestStringEmail(ctx context.Context, request OptString) 
 }
 
 func (c *Client) sendTestRequestStringEmail(ctx context.Context, request OptString) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if value, ok := request.Get(); ok {
-			if err := func() error {
-				if err := (validate.String{
-					MinLength:    0,
-					MinLengthSet: false,
-					MaxLength:    0,
-					MaxLengthSet: false,
-					Email:        true,
-					Hostname:     false,
-					Regex:        nil,
-				}).Validate(string(value)); err != nil {
-					return errors.Wrap(err, "string")
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_email"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -49170,37 +42735,6 @@ func (c *Client) TestRequestStringEmailArray(ctx context.Context, request []stri
 }
 
 func (c *Client) sendTestRequestStringEmailArray(ctx context.Context, request []string) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if err := (validate.String{
-					MinLength:    0,
-					MinLengthSet: false,
-					MaxLength:    0,
-					MaxLengthSet: false,
-					Email:        true,
-					Hostname:     false,
-					Regex:        nil,
-				}).Validate(string(elem)); err != nil {
-					return errors.Wrap(err, "string")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_email_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -49273,54 +42807,6 @@ func (c *Client) TestRequestStringEmailArrayArray(ctx context.Context, request [
 }
 
 func (c *Client) sendTestRequestStringEmailArrayArray(ctx context.Context, request [][]string) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				var failures []validate.FieldError
-				for i, elem := range elem {
-					if err := func() error {
-						if err := (validate.String{
-							MinLength:    0,
-							MinLengthSet: false,
-							MaxLength:    0,
-							MaxLengthSet: false,
-							Email:        true,
-							Hostname:     false,
-							Regex:        nil,
-						}).Validate(string(elem)); err != nil {
-							return errors.Wrap(err, "string")
-						}
-						return nil
-					}(); err != nil {
-						failures = append(failures, validate.FieldError{
-							Name:  fmt.Sprintf("[%d]", i),
-							Error: err,
-						})
-					}
-				}
-				if len(failures) > 0 {
-					return &validate.Error{Fields: failures}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_email_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -49393,30 +42879,6 @@ func (c *Client) TestRequestStringEmailNullable(ctx context.Context, request Opt
 }
 
 func (c *Client) sendTestRequestStringEmailNullable(ctx context.Context, request OptNilString) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if value, ok := request.Get(); ok {
-			if err := func() error {
-				if err := (validate.String{
-					MinLength:    0,
-					MinLengthSet: false,
-					MaxLength:    0,
-					MaxLengthSet: false,
-					Email:        true,
-					Hostname:     false,
-					Regex:        nil,
-				}).Validate(string(value)); err != nil {
-					return errors.Wrap(err, "string")
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_email_nullable"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -49489,44 +42951,6 @@ func (c *Client) TestRequestStringEmailNullableArray(ctx context.Context, reques
 }
 
 func (c *Client) sendTestRequestStringEmailNullableArray(ctx context.Context, request []NilString) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if value, ok := elem.Get(); ok {
-					if err := func() error {
-						if err := (validate.String{
-							MinLength:    0,
-							MinLengthSet: false,
-							MaxLength:    0,
-							MaxLengthSet: false,
-							Email:        true,
-							Hostname:     false,
-							Regex:        nil,
-						}).Validate(string(value)); err != nil {
-							return errors.Wrap(err, "string")
-						}
-						return nil
-					}(); err != nil {
-						return err
-					}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_email_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -49599,61 +43023,6 @@ func (c *Client) TestRequestStringEmailNullableArrayArray(ctx context.Context, r
 }
 
 func (c *Client) sendTestRequestStringEmailNullableArrayArray(ctx context.Context, request [][]NilString) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				var failures []validate.FieldError
-				for i, elem := range elem {
-					if err := func() error {
-						if value, ok := elem.Get(); ok {
-							if err := func() error {
-								if err := (validate.String{
-									MinLength:    0,
-									MinLengthSet: false,
-									MaxLength:    0,
-									MaxLengthSet: false,
-									Email:        true,
-									Hostname:     false,
-									Regex:        nil,
-								}).Validate(string(value)); err != nil {
-									return errors.Wrap(err, "string")
-								}
-								return nil
-							}(); err != nil {
-								return err
-							}
-						}
-						return nil
-					}(); err != nil {
-						failures = append(failures, validate.FieldError{
-							Name:  fmt.Sprintf("[%d]", i),
-							Error: err,
-						})
-					}
-				}
-				if len(failures) > 0 {
-					return &validate.Error{Fields: failures}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_email_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -49726,22 +43095,6 @@ func (c *Client) TestRequestStringFloat32(ctx context.Context, request OptFloat3
 }
 
 func (c *Client) sendTestRequestStringFloat32(ctx context.Context, request OptFloat32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if value, ok := request.Get(); ok {
-			if err := func() error {
-				if err := (validate.Float{}).ValidateStringified(float64(value)); err != nil {
-					return errors.Wrap(err, "float")
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float32"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -49814,29 +43167,6 @@ func (c *Client) TestRequestStringFloat32Array(ctx context.Context, request []fl
 }
 
 func (c *Client) sendTestRequestStringFloat32Array(ctx context.Context, request []float32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
-					return errors.Wrap(err, "float")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float32_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -49909,46 +43239,6 @@ func (c *Client) TestRequestStringFloat32ArrayArray(ctx context.Context, request
 }
 
 func (c *Client) sendTestRequestStringFloat32ArrayArray(ctx context.Context, request [][]float32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				var failures []validate.FieldError
-				for i, elem := range elem {
-					if err := func() error {
-						if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
-							return errors.Wrap(err, "float")
-						}
-						return nil
-					}(); err != nil {
-						failures = append(failures, validate.FieldError{
-							Name:  fmt.Sprintf("[%d]", i),
-							Error: err,
-						})
-					}
-				}
-				if len(failures) > 0 {
-					return &validate.Error{Fields: failures}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float32_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -50021,22 +43311,6 @@ func (c *Client) TestRequestStringFloat32Nullable(ctx context.Context, request O
 }
 
 func (c *Client) sendTestRequestStringFloat32Nullable(ctx context.Context, request OptNilFloat32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if value, ok := request.Get(); ok {
-			if err := func() error {
-				if err := (validate.Float{}).ValidateStringified(float64(value)); err != nil {
-					return errors.Wrap(err, "float")
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float32_nullable"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -50109,36 +43383,6 @@ func (c *Client) TestRequestStringFloat32NullableArray(ctx context.Context, requ
 }
 
 func (c *Client) sendTestRequestStringFloat32NullableArray(ctx context.Context, request []NilFloat32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if value, ok := elem.Get(); ok {
-					if err := func() error {
-						if err := (validate.Float{}).ValidateStringified(float64(value)); err != nil {
-							return errors.Wrap(err, "float")
-						}
-						return nil
-					}(); err != nil {
-						return err
-					}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float32_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -50211,53 +43455,6 @@ func (c *Client) TestRequestStringFloat32NullableArrayArray(ctx context.Context,
 }
 
 func (c *Client) sendTestRequestStringFloat32NullableArrayArray(ctx context.Context, request [][]NilFloat32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				var failures []validate.FieldError
-				for i, elem := range elem {
-					if err := func() error {
-						if value, ok := elem.Get(); ok {
-							if err := func() error {
-								if err := (validate.Float{}).ValidateStringified(float64(value)); err != nil {
-									return errors.Wrap(err, "float")
-								}
-								return nil
-							}(); err != nil {
-								return err
-							}
-						}
-						return nil
-					}(); err != nil {
-						failures = append(failures, validate.FieldError{
-							Name:  fmt.Sprintf("[%d]", i),
-							Error: err,
-						})
-					}
-				}
-				if len(failures) > 0 {
-					return &validate.Error{Fields: failures}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float32_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -50330,22 +43527,6 @@ func (c *Client) TestRequestStringFloat64(ctx context.Context, request OptFloat6
 }
 
 func (c *Client) sendTestRequestStringFloat64(ctx context.Context, request OptFloat64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if value, ok := request.Get(); ok {
-			if err := func() error {
-				if err := (validate.Float{}).ValidateStringified(float64(value)); err != nil {
-					return errors.Wrap(err, "float")
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float64"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -50418,29 +43599,6 @@ func (c *Client) TestRequestStringFloat64Array(ctx context.Context, request []fl
 }
 
 func (c *Client) sendTestRequestStringFloat64Array(ctx context.Context, request []float64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
-					return errors.Wrap(err, "float")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float64_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -50513,46 +43671,6 @@ func (c *Client) TestRequestStringFloat64ArrayArray(ctx context.Context, request
 }
 
 func (c *Client) sendTestRequestStringFloat64ArrayArray(ctx context.Context, request [][]float64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				var failures []validate.FieldError
-				for i, elem := range elem {
-					if err := func() error {
-						if err := (validate.Float{}).ValidateStringified(float64(elem)); err != nil {
-							return errors.Wrap(err, "float")
-						}
-						return nil
-					}(); err != nil {
-						failures = append(failures, validate.FieldError{
-							Name:  fmt.Sprintf("[%d]", i),
-							Error: err,
-						})
-					}
-				}
-				if len(failures) > 0 {
-					return &validate.Error{Fields: failures}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float64_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -50625,22 +43743,6 @@ func (c *Client) TestRequestStringFloat64Nullable(ctx context.Context, request O
 }
 
 func (c *Client) sendTestRequestStringFloat64Nullable(ctx context.Context, request OptNilFloat64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if value, ok := request.Get(); ok {
-			if err := func() error {
-				if err := (validate.Float{}).ValidateStringified(float64(value)); err != nil {
-					return errors.Wrap(err, "float")
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float64_nullable"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -50713,36 +43815,6 @@ func (c *Client) TestRequestStringFloat64NullableArray(ctx context.Context, requ
 }
 
 func (c *Client) sendTestRequestStringFloat64NullableArray(ctx context.Context, request []NilFloat64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if value, ok := elem.Get(); ok {
-					if err := func() error {
-						if err := (validate.Float{}).ValidateStringified(float64(value)); err != nil {
-							return errors.Wrap(err, "float")
-						}
-						return nil
-					}(); err != nil {
-						return err
-					}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float64_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -50815,53 +43887,6 @@ func (c *Client) TestRequestStringFloat64NullableArrayArray(ctx context.Context,
 }
 
 func (c *Client) sendTestRequestStringFloat64NullableArrayArray(ctx context.Context, request [][]NilFloat64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				var failures []validate.FieldError
-				for i, elem := range elem {
-					if err := func() error {
-						if value, ok := elem.Get(); ok {
-							if err := func() error {
-								if err := (validate.Float{}).ValidateStringified(float64(value)); err != nil {
-									return errors.Wrap(err, "float")
-								}
-								return nil
-							}(); err != nil {
-								return err
-							}
-						}
-						return nil
-					}(); err != nil {
-						failures = append(failures, validate.FieldError{
-							Name:  fmt.Sprintf("[%d]", i),
-							Error: err,
-						})
-					}
-				}
-				if len(failures) > 0 {
-					return &validate.Error{Fields: failures}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float64_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -50934,30 +43959,6 @@ func (c *Client) TestRequestStringHostname(ctx context.Context, request OptStrin
 }
 
 func (c *Client) sendTestRequestStringHostname(ctx context.Context, request OptString) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if value, ok := request.Get(); ok {
-			if err := func() error {
-				if err := (validate.String{
-					MinLength:    0,
-					MinLengthSet: false,
-					MaxLength:    0,
-					MaxLengthSet: false,
-					Email:        false,
-					Hostname:     true,
-					Regex:        nil,
-				}).Validate(string(value)); err != nil {
-					return errors.Wrap(err, "string")
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_hostname"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -51030,37 +44031,6 @@ func (c *Client) TestRequestStringHostnameArray(ctx context.Context, request []s
 }
 
 func (c *Client) sendTestRequestStringHostnameArray(ctx context.Context, request []string) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if err := (validate.String{
-					MinLength:    0,
-					MinLengthSet: false,
-					MaxLength:    0,
-					MaxLengthSet: false,
-					Email:        false,
-					Hostname:     true,
-					Regex:        nil,
-				}).Validate(string(elem)); err != nil {
-					return errors.Wrap(err, "string")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_hostname_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -51133,54 +44103,6 @@ func (c *Client) TestRequestStringHostnameArrayArray(ctx context.Context, reques
 }
 
 func (c *Client) sendTestRequestStringHostnameArrayArray(ctx context.Context, request [][]string) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				var failures []validate.FieldError
-				for i, elem := range elem {
-					if err := func() error {
-						if err := (validate.String{
-							MinLength:    0,
-							MinLengthSet: false,
-							MaxLength:    0,
-							MaxLengthSet: false,
-							Email:        false,
-							Hostname:     true,
-							Regex:        nil,
-						}).Validate(string(elem)); err != nil {
-							return errors.Wrap(err, "string")
-						}
-						return nil
-					}(); err != nil {
-						failures = append(failures, validate.FieldError{
-							Name:  fmt.Sprintf("[%d]", i),
-							Error: err,
-						})
-					}
-				}
-				if len(failures) > 0 {
-					return &validate.Error{Fields: failures}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_hostname_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -51253,30 +44175,6 @@ func (c *Client) TestRequestStringHostnameNullable(ctx context.Context, request 
 }
 
 func (c *Client) sendTestRequestStringHostnameNullable(ctx context.Context, request OptNilString) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if value, ok := request.Get(); ok {
-			if err := func() error {
-				if err := (validate.String{
-					MinLength:    0,
-					MinLengthSet: false,
-					MaxLength:    0,
-					MaxLengthSet: false,
-					Email:        false,
-					Hostname:     true,
-					Regex:        nil,
-				}).Validate(string(value)); err != nil {
-					return errors.Wrap(err, "string")
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_hostname_nullable"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -51349,44 +44247,6 @@ func (c *Client) TestRequestStringHostnameNullableArray(ctx context.Context, req
 }
 
 func (c *Client) sendTestRequestStringHostnameNullableArray(ctx context.Context, request []NilString) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if value, ok := elem.Get(); ok {
-					if err := func() error {
-						if err := (validate.String{
-							MinLength:    0,
-							MinLengthSet: false,
-							MaxLength:    0,
-							MaxLengthSet: false,
-							Email:        false,
-							Hostname:     true,
-							Regex:        nil,
-						}).Validate(string(value)); err != nil {
-							return errors.Wrap(err, "string")
-						}
-						return nil
-					}(); err != nil {
-						return err
-					}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_hostname_nullable_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -51459,61 +44319,6 @@ func (c *Client) TestRequestStringHostnameNullableArrayArray(ctx context.Context
 }
 
 func (c *Client) sendTestRequestStringHostnameNullableArrayArray(ctx context.Context, request [][]NilString) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				var failures []validate.FieldError
-				for i, elem := range elem {
-					if err := func() error {
-						if value, ok := elem.Get(); ok {
-							if err := func() error {
-								if err := (validate.String{
-									MinLength:    0,
-									MinLengthSet: false,
-									MaxLength:    0,
-									MaxLengthSet: false,
-									Email:        false,
-									Hostname:     true,
-									Regex:        nil,
-								}).Validate(string(value)); err != nil {
-									return errors.Wrap(err, "string")
-								}
-								return nil
-							}(); err != nil {
-								return err
-							}
-						}
-						return nil
-					}(); err != nil {
-						failures = append(failures, validate.FieldError{
-							Name:  fmt.Sprintf("[%d]", i),
-							Error: err,
-						})
-					}
-				}
-				if len(failures) > 0 {
-					return &validate.Error{Fields: failures}
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_hostname_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -51730,29 +44535,6 @@ func (c *Client) TestRequestStringIPArrayArray(ctx context.Context, request [][]
 }
 
 func (c *Client) sendTestRequestStringIPArrayArray(ctx context.Context, request [][]netip.Addr) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ip_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -51969,29 +44751,6 @@ func (c *Client) TestRequestStringIPNullableArrayArray(ctx context.Context, requ
 }
 
 func (c *Client) sendTestRequestStringIPNullableArrayArray(ctx context.Context, request [][]NilIP) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ip_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -52280,29 +45039,6 @@ func (c *Client) TestRequestStringInt16ArrayArray(ctx context.Context, request [
 }
 
 func (c *Client) sendTestRequestStringInt16ArrayArray(ctx context.Context, request [][]int16) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int16_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -52519,29 +45255,6 @@ func (c *Client) TestRequestStringInt16NullableArrayArray(ctx context.Context, r
 }
 
 func (c *Client) sendTestRequestStringInt16NullableArrayArray(ctx context.Context, request [][]NilInt16) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int16_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -52758,29 +45471,6 @@ func (c *Client) TestRequestStringInt32ArrayArray(ctx context.Context, request [
 }
 
 func (c *Client) sendTestRequestStringInt32ArrayArray(ctx context.Context, request [][]int32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int32_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -52997,29 +45687,6 @@ func (c *Client) TestRequestStringInt32NullableArrayArray(ctx context.Context, r
 }
 
 func (c *Client) sendTestRequestStringInt32NullableArrayArray(ctx context.Context, request [][]NilStringInt32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int32_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -53236,29 +45903,6 @@ func (c *Client) TestRequestStringInt64ArrayArray(ctx context.Context, request [
 }
 
 func (c *Client) sendTestRequestStringInt64ArrayArray(ctx context.Context, request [][]int64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int64_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -53475,29 +46119,6 @@ func (c *Client) TestRequestStringInt64NullableArrayArray(ctx context.Context, r
 }
 
 func (c *Client) sendTestRequestStringInt64NullableArrayArray(ctx context.Context, request [][]NilStringInt64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int64_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -53714,29 +46335,6 @@ func (c *Client) TestRequestStringInt8ArrayArray(ctx context.Context, request []
 }
 
 func (c *Client) sendTestRequestStringInt8ArrayArray(ctx context.Context, request [][]int8) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int8_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -53953,29 +46551,6 @@ func (c *Client) TestRequestStringInt8NullableArrayArray(ctx context.Context, re
 }
 
 func (c *Client) sendTestRequestStringInt8NullableArrayArray(ctx context.Context, request [][]NilInt8) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int8_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -54120,29 +46695,6 @@ func (c *Client) TestRequestStringIntArrayArray(ctx context.Context, request [][
 }
 
 func (c *Client) sendTestRequestStringIntArrayArray(ctx context.Context, request [][]int) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -54359,29 +46911,6 @@ func (c *Client) TestRequestStringIntNullableArrayArray(ctx context.Context, req
 }
 
 func (c *Client) sendTestRequestStringIntNullableArrayArray(ctx context.Context, request [][]NilInt) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -54598,29 +47127,6 @@ func (c *Client) TestRequestStringIpv4ArrayArray(ctx context.Context, request []
 }
 
 func (c *Client) sendTestRequestStringIpv4ArrayArray(ctx context.Context, request [][]netip.Addr) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv4_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -54837,29 +47343,6 @@ func (c *Client) TestRequestStringIpv4NullableArrayArray(ctx context.Context, re
 }
 
 func (c *Client) sendTestRequestStringIpv4NullableArrayArray(ctx context.Context, request [][]NilIPv4) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv4_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -55076,29 +47559,6 @@ func (c *Client) TestRequestStringIpv6ArrayArray(ctx context.Context, request []
 }
 
 func (c *Client) sendTestRequestStringIpv6ArrayArray(ctx context.Context, request [][]netip.Addr) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv6_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -55315,29 +47775,6 @@ func (c *Client) TestRequestStringIpv6NullableArrayArray(ctx context.Context, re
 }
 
 func (c *Client) sendTestRequestStringIpv6NullableArrayArray(ctx context.Context, request [][]NilIPv6) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv6_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -55554,29 +47991,6 @@ func (c *Client) TestRequestStringNullableArrayArray(ctx context.Context, reques
 }
 
 func (c *Client) sendTestRequestStringNullableArrayArray(ctx context.Context, request [][]NilString) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -55793,29 +48207,6 @@ func (c *Client) TestRequestStringPasswordArrayArray(ctx context.Context, reques
 }
 
 func (c *Client) sendTestRequestStringPasswordArrayArray(ctx context.Context, request [][]string) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_password_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -56032,29 +48423,6 @@ func (c *Client) TestRequestStringPasswordNullableArrayArray(ctx context.Context
 }
 
 func (c *Client) sendTestRequestStringPasswordNullableArrayArray(ctx context.Context, request [][]NilString) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_password_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -56271,29 +48639,6 @@ func (c *Client) TestRequestStringTimeArrayArray(ctx context.Context, request []
 }
 
 func (c *Client) sendTestRequestStringTimeArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_time_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -56510,29 +48855,6 @@ func (c *Client) TestRequestStringTimeNullableArrayArray(ctx context.Context, re
 }
 
 func (c *Client) sendTestRequestStringTimeNullableArrayArray(ctx context.Context, request [][]NilTime) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_time_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -56749,29 +49071,6 @@ func (c *Client) TestRequestStringURIArrayArray(ctx context.Context, request [][
 }
 
 func (c *Client) sendTestRequestStringURIArrayArray(ctx context.Context, request [][]url.URL) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uri_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -56988,29 +49287,6 @@ func (c *Client) TestRequestStringURINullableArrayArray(ctx context.Context, req
 }
 
 func (c *Client) sendTestRequestStringURINullableArrayArray(ctx context.Context, request [][]NilURI) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uri_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -57227,29 +49503,6 @@ func (c *Client) TestRequestStringUUIDArrayArray(ctx context.Context, request []
 }
 
 func (c *Client) sendTestRequestStringUUIDArrayArray(ctx context.Context, request [][]uuid.UUID) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uuid_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -57466,29 +49719,6 @@ func (c *Client) TestRequestStringUUIDNullableArrayArray(ctx context.Context, re
 }
 
 func (c *Client) sendTestRequestStringUUIDNullableArrayArray(ctx context.Context, request [][]NilUUID) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uuid_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -57777,29 +50007,6 @@ func (c *Client) TestRequestStringUint16ArrayArray(ctx context.Context, request 
 }
 
 func (c *Client) sendTestRequestStringUint16ArrayArray(ctx context.Context, request [][]uint16) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint16_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -58016,29 +50223,6 @@ func (c *Client) TestRequestStringUint16NullableArrayArray(ctx context.Context, 
 }
 
 func (c *Client) sendTestRequestStringUint16NullableArrayArray(ctx context.Context, request [][]NilUint16) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint16_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -58255,29 +50439,6 @@ func (c *Client) TestRequestStringUint32ArrayArray(ctx context.Context, request 
 }
 
 func (c *Client) sendTestRequestStringUint32ArrayArray(ctx context.Context, request [][]uint32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint32_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -58494,29 +50655,6 @@ func (c *Client) TestRequestStringUint32NullableArrayArray(ctx context.Context, 
 }
 
 func (c *Client) sendTestRequestStringUint32NullableArrayArray(ctx context.Context, request [][]NilUint32) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint32_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -58733,29 +50871,6 @@ func (c *Client) TestRequestStringUint64ArrayArray(ctx context.Context, request 
 }
 
 func (c *Client) sendTestRequestStringUint64ArrayArray(ctx context.Context, request [][]uint64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint64_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -58972,29 +51087,6 @@ func (c *Client) TestRequestStringUint64NullableArrayArray(ctx context.Context, 
 }
 
 func (c *Client) sendTestRequestStringUint64NullableArrayArray(ctx context.Context, request [][]NilUint64) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint64_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -59211,29 +51303,6 @@ func (c *Client) TestRequestStringUint8ArrayArray(ctx context.Context, request [
 }
 
 func (c *Client) sendTestRequestStringUint8ArrayArray(ctx context.Context, request [][]uint8) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint8_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -59450,29 +51519,6 @@ func (c *Client) TestRequestStringUint8NullableArrayArray(ctx context.Context, r
 }
 
 func (c *Client) sendTestRequestStringUint8NullableArrayArray(ctx context.Context, request [][]NilUint8) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint8_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -59617,29 +51663,6 @@ func (c *Client) TestRequestStringUintArrayArray(ctx context.Context, request []
 }
 
 func (c *Client) sendTestRequestStringUintArrayArray(ctx context.Context, request [][]uint) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -59856,29 +51879,6 @@ func (c *Client) TestRequestStringUintNullableArrayArray(ctx context.Context, re
 }
 
 func (c *Client) sendTestRequestStringUintNullableArrayArray(ctx context.Context, request [][]NilUint) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -60095,29 +52095,6 @@ func (c *Client) TestRequestStringUnixArrayArray(ctx context.Context, request []
 }
 
 func (c *Client) sendTestRequestStringUnixArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -60334,29 +52311,6 @@ func (c *Client) TestRequestStringUnixMicroArrayArray(ctx context.Context, reque
 }
 
 func (c *Client) sendTestRequestStringUnixMicroArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-micro_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -60573,29 +52527,6 @@ func (c *Client) TestRequestStringUnixMicroNullableArrayArray(ctx context.Contex
 }
 
 func (c *Client) sendTestRequestStringUnixMicroNullableArrayArray(ctx context.Context, request [][]NilStringUnixMicro) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-micro_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -60812,29 +52743,6 @@ func (c *Client) TestRequestStringUnixMilliArrayArray(ctx context.Context, reque
 }
 
 func (c *Client) sendTestRequestStringUnixMilliArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-milli_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -61051,29 +52959,6 @@ func (c *Client) TestRequestStringUnixMilliNullableArrayArray(ctx context.Contex
 }
 
 func (c *Client) sendTestRequestStringUnixMilliNullableArrayArray(ctx context.Context, request [][]NilStringUnixMilli) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-milli_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -61290,29 +53175,6 @@ func (c *Client) TestRequestStringUnixNanoArrayArray(ctx context.Context, reques
 }
 
 func (c *Client) sendTestRequestStringUnixNanoArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-nano_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -61529,29 +53391,6 @@ func (c *Client) TestRequestStringUnixNanoNullableArrayArray(ctx context.Context
 }
 
 func (c *Client) sendTestRequestStringUnixNanoNullableArrayArray(ctx context.Context, request [][]NilStringUnixNano) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-nano_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -61768,29 +53607,6 @@ func (c *Client) TestRequestStringUnixNullableArrayArray(ctx context.Context, re
 }
 
 func (c *Client) sendTestRequestStringUnixNullableArrayArray(ctx context.Context, request [][]NilStringUnixSeconds) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -62007,29 +53823,6 @@ func (c *Client) TestRequestStringUnixSecondsArrayArray(ctx context.Context, req
 }
 
 func (c *Client) sendTestRequestStringUnixSecondsArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-seconds_array_array"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -62246,29 +54039,6 @@ func (c *Client) TestRequestStringUnixSecondsNullableArrayArray(ctx context.Cont
 }
 
 func (c *Client) sendTestRequestStringUnixSecondsNullableArrayArray(ctx context.Context, request [][]NilStringUnixSeconds) (res *Error, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range request {
-			if err := func() error {
-				if elem == nil {
-					return errors.New("nil is invalid value")
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-seconds_nullable_array_array"),
 		semconv.HTTPMethodKey.String("POST"),

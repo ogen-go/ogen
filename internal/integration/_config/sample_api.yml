@@ -4,4 +4,6 @@ generator:
   features:
     enable:
       - "debug/example_tests"
+      - "client/request/validation"
+      - "server/response/validation"
   ignore_not_implemented: ["enum format"]
