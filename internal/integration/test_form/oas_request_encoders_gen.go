@@ -290,10 +290,13 @@ func encodeTestMultipartRequest(
 			Explode: true,
 		}
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := request.Object.Get(); ok {
-				return val.EncodeURI(e)
-			}
-			return nil
+			var enc jx.Encoder
+			func(e *jx.Encoder) {
+				if request.Object.Set {
+					request.Object.Encode(e)
+				}
+			}(&enc)
+			return e.EncodeValue(string(enc.Bytes()))
 		}); err != nil {
 			return errors.Wrap(err, "encode query")
 		}

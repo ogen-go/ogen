@@ -111,7 +111,11 @@ func encodeReferencedAllofRequest(
 				Explode: true,
 			}
 			if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-				return request.Location.EncodeURI(e)
+				var enc jx.Encoder
+				func(e *jx.Encoder) {
+					request.Location.Encode(e)
+				}(&enc)
+				return e.EncodeValue(string(enc.Bytes()))
 			}); err != nil {
 				return errors.Wrap(err, "encode query")
 			}
@@ -185,7 +189,11 @@ func encodeReferencedAllofOptionalRequest(
 				Explode: true,
 			}
 			if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-				return request.Location.EncodeURI(e)
+				var enc jx.Encoder
+				func(e *jx.Encoder) {
+					request.Location.Encode(e)
+				}(&enc)
+				return e.EncodeValue(string(enc.Bytes()))
 			}); err != nil {
 				return errors.Wrap(err, "encode query")
 			}
