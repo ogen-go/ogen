@@ -34,11 +34,13 @@ type TemplateConfig struct {
 	Router        Router
 	WebhookRouter WebhookRouter
 
-	PathsClientEnabled   bool
-	PathsServerEnabled   bool
-	WebhookClientEnabled bool
-	WebhookServerEnabled bool
-	OpenTelemetryEnabled bool
+	PathsClientEnabled        bool
+	PathsServerEnabled        bool
+	WebhookClientEnabled      bool
+	WebhookServerEnabled      bool
+	OpenTelemetryEnabled      bool
+	RequestValidationEnabled  bool
+	ResponseValidationEnabled bool
 
 	skipTestRegex *regexp.Regexp
 }
@@ -246,22 +248,24 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		return errors.Wrap(err, "build feature set")
 	}
 	cfg := TemplateConfig{
-		Package:              pkgName,
-		Operations:           g.operations,
-		Webhooks:             g.webhooks,
-		Types:                types,
-		Interfaces:           interfaces,
-		Error:                g.errType,
-		ErrorType:            nil,
-		Servers:              g.servers,
-		Securities:           g.securities,
-		Router:               g.router,
-		WebhookRouter:        g.webhookRouter,
-		PathsClientEnabled:   features.Has(PathsClient),
-		PathsServerEnabled:   features.Has(PathsServer),
-		WebhookClientEnabled: features.Has(WebhooksClient) && len(g.webhooks) > 0,
-		WebhookServerEnabled: features.Has(WebhooksServer) && len(g.webhooks) > 0,
-		OpenTelemetryEnabled: features.Has(OgenOtel),
+		Package:                   pkgName,
+		Operations:                g.operations,
+		Webhooks:                  g.webhooks,
+		Types:                     types,
+		Interfaces:                interfaces,
+		Error:                     g.errType,
+		ErrorType:                 nil,
+		Servers:                   g.servers,
+		Securities:                g.securities,
+		Router:                    g.router,
+		WebhookRouter:             g.webhookRouter,
+		PathsClientEnabled:        features.Has(PathsClient),
+		PathsServerEnabled:        features.Has(PathsServer),
+		WebhookClientEnabled:      features.Has(WebhooksClient) && len(g.webhooks) > 0,
+		WebhookServerEnabled:      features.Has(WebhooksServer) && len(g.webhooks) > 0,
+		OpenTelemetryEnabled:      features.Has(OgenOtel),
+		RequestValidationEnabled:  features.Has(ClientRequestValidation),
+		ResponseValidationEnabled: features.Has(ServerResponseValidation),
 		// Unused for now.
 		skipTestRegex: nil,
 	}

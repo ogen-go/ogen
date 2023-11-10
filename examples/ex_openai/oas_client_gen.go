@@ -384,15 +384,6 @@ func (c *Client) CreateAnswer(ctx context.Context, request *CreateAnswerRequest)
 }
 
 func (c *Client) sendCreateAnswer(ctx context.Context, request *CreateAnswerRequest) (res *CreateAnswerResponse, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createAnswer"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -468,15 +459,6 @@ func (c *Client) CreateChatCompletion(ctx context.Context, request *CreateChatCo
 }
 
 func (c *Client) sendCreateChatCompletion(ctx context.Context, request *CreateChatCompletionRequest) (res *CreateChatCompletionResponse, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createChatCompletion"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -560,15 +542,6 @@ func (c *Client) CreateClassification(ctx context.Context, request *CreateClassi
 }
 
 func (c *Client) sendCreateClassification(ctx context.Context, request *CreateClassificationRequest) (res *CreateClassificationResponse, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createClassification"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -644,15 +617,6 @@ func (c *Client) CreateCompletion(ctx context.Context, request *CreateCompletion
 }
 
 func (c *Client) sendCreateCompletion(ctx context.Context, request *CreateCompletionRequest) (res *CreateCompletionResponse, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createCompletion"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -728,15 +692,6 @@ func (c *Client) CreateEdit(ctx context.Context, request *CreateEditRequest) (*C
 }
 
 func (c *Client) sendCreateEdit(ctx context.Context, request *CreateEditRequest) (res *CreateEditResponse, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createEdit"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -812,15 +767,6 @@ func (c *Client) CreateEmbedding(ctx context.Context, request *CreateEmbeddingRe
 }
 
 func (c *Client) sendCreateEmbedding(ctx context.Context, request *CreateEmbeddingRequest) (res *CreateEmbeddingResponse, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createEmbedding"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -976,15 +922,6 @@ func (c *Client) CreateFineTune(ctx context.Context, request *CreateFineTuneRequ
 }
 
 func (c *Client) sendCreateFineTune(ctx context.Context, request *CreateFineTuneRequest) (res FineTune, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createFineTune"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -1060,15 +997,6 @@ func (c *Client) CreateImage(ctx context.Context, request *CreateImageRequest) (
 }
 
 func (c *Client) sendCreateImage(ctx context.Context, request *CreateImageRequest) (res ImagesResponse, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createImage"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -1144,15 +1072,6 @@ func (c *Client) CreateImageEdit(ctx context.Context, request *CreateImageEditRe
 }
 
 func (c *Client) sendCreateImageEdit(ctx context.Context, request *CreateImageEditRequestMultipart) (res ImagesResponse, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createImageEdit"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -1228,15 +1147,6 @@ func (c *Client) CreateImageVariation(ctx context.Context, request *CreateImageV
 }
 
 func (c *Client) sendCreateImageVariation(ctx context.Context, request *CreateImageVariationRequestMultipart) (res ImagesResponse, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createImageVariation"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -1312,15 +1222,6 @@ func (c *Client) CreateModeration(ctx context.Context, request *CreateModeration
 }
 
 func (c *Client) sendCreateModeration(ctx context.Context, request *CreateModerationRequest) (res *CreateModerationResponse, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createModeration"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -1405,15 +1306,6 @@ func (c *Client) CreateSearch(ctx context.Context, request *CreateSearchRequest,
 }
 
 func (c *Client) sendCreateSearch(ctx context.Context, request *CreateSearchRequest, params CreateSearchParams) (res *CreateSearchResponse, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createSearch"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -1508,15 +1400,6 @@ func (c *Client) CreateTranscription(ctx context.Context, request *CreateTranscr
 }
 
 func (c *Client) sendCreateTranscription(ctx context.Context, request *CreateTranscriptionRequestMultipart) (res *CreateTranscriptionResponse, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createTranscription"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -1592,15 +1475,6 @@ func (c *Client) CreateTranslation(ctx context.Context, request *CreateTranslati
 }
 
 func (c *Client) sendCreateTranslation(ctx context.Context, request *CreateTranslationRequestMultipart) (res *CreateTranslationResponse, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createTranslation"),
 		semconv.HTTPMethodKey.String("POST"),

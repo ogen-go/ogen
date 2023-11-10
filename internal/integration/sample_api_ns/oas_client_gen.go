@@ -20,7 +20,6 @@ import (
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
-	"github.com/ogen-go/ogen/validate"
 )
 
 // Invoker invokes operations described by OpenAPI v3 specification.
@@ -392,15 +391,6 @@ func (c *Client) DefaultTest(ctx context.Context, request *DefaultTest, params D
 }
 
 func (c *Client) sendDefaultTest(ctx context.Context, request *DefaultTest, params DefaultTestParams) (res int32, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("defaultTest"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -673,22 +663,6 @@ func (c *Client) FoobarPost(ctx context.Context, request OptPet) (FoobarPostRes,
 }
 
 func (c *Client) sendFoobarPost(ctx context.Context, request OptPet) (res FoobarPostRes, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if value, ok := request.Get(); ok {
-			if err := func() error {
-				if err := value.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("foobarPost"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -971,15 +945,6 @@ func (c *Client) OneofBug(ctx context.Context, request *OneOfBugs) error {
 }
 
 func (c *Client) sendOneofBug(ctx context.Context, request *OneOfBugs) (res *OneofBugOK, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oneofBug"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -1124,22 +1089,6 @@ func (c *Client) PetCreate(ctx context.Context, request OptPet) (*Pet, error) {
 }
 
 func (c *Client) sendPetCreate(ctx context.Context, request OptPet) (res *Pet, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if value, ok := request.Get(); ok {
-			if err := func() error {
-				if err := value.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petCreate"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -1811,22 +1760,6 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request OptPetName)
 }
 
 func (c *Client) sendPetUpdateNameAliasPost(ctx context.Context, request OptPetName) (res *PetUpdateNameAliasPostDef, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if value, ok := request.Get(); ok {
-			if err := func() error {
-				if err := value.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/pet/updateNameAlias"),
@@ -1899,30 +1832,6 @@ func (c *Client) PetUpdateNamePost(ctx context.Context, request OptString) (*Pet
 }
 
 func (c *Client) sendPetUpdateNamePost(ctx context.Context, request OptString) (res *PetUpdateNamePostDef, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if value, ok := request.Get(); ok {
-			if err := func() error {
-				if err := (validate.String{
-					MinLength:    6,
-					MinLengthSet: true,
-					MaxLength:    0,
-					MaxLengthSet: false,
-					Email:        false,
-					Hostname:     false,
-					Regex:        nil,
-				}).Validate(string(value)); err != nil {
-					return errors.Wrap(err, "string")
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/pet/updateName"),
@@ -2398,15 +2307,6 @@ func (c *Client) TestFloatValidation(ctx context.Context, request *TestFloatVali
 }
 
 func (c *Client) sendTestFloatValidation(ctx context.Context, request *TestFloatValidation) (res *TestFloatValidationOK, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testFloatValidation"),
 		semconv.HTTPMethodKey.String("POST"),

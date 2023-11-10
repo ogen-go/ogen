@@ -2,3 +2,4 @@ generator:
   features:
     enable:
       - "debug/example_tests"
+      - "client/request/validation"

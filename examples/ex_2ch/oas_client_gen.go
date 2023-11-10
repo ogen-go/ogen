@@ -1588,22 +1588,6 @@ func (c *Client) UserPostingPost(ctx context.Context, request OptUserPostingPost
 }
 
 func (c *Client) sendUserPostingPost(ctx context.Context, request OptUserPostingPostReq) (res UserPostingPostOK, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if value, ok := request.Get(); ok {
-			if err := func() error {
-				if err := value.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/user/posting"),

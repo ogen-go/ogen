@@ -116,7 +116,8 @@ func NewWebhookClient(opts ...ClientOption) (*WebhookClient, error) {
 
 {{ define "client/operation" }}
 {{- /*gotype: github.com/ogen-go/ogen/gen.OperationElem*/ -}}{{ $op := $.Operation }}
-{{- $otel := $.Config.OpenTelemetryEnabled }}
+{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}{{ $cfg := $.Config }}
+{{- $otel := $cfg.OpenTelemetryEnabled }}
 // {{ $op.Name }} invokes {{ $op.PrettyOperationID }} operation.
 //
 {{- template "godoc_op" $op }}
@@ -137,7 +138,7 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 	{{- if $op.Request }}, request {{ $op.Request.GoType }}{{ end }}
 	{{- if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (res {{ $op.Responses.GoType }}, err error) {
 
-	{{- if $op.Request }}{{/* Request validation */}}
+	{{- if and $op.Request $cfg.RequestValidationEnabled }}{{/* Request validation */}}
 		{{- if $op.Request.Type.IsInterface }}
 			// Validate request before sending.
 			switch request := request.(type) {
