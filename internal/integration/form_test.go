@@ -59,13 +59,17 @@ func testFormMultipart() *api.TestFormMultipart {
 	}
 }
 
-func checkTestFormValues(a *assert.Assertions, form url.Values) {
+func checkTestFormValues(a *assert.Assertions, form url.Values, multipartForm bool) {
 	a.Equal("10", form.Get("id"))
 	a.Equal("00000000-0000-0000-0000-000000000000", form.Get("uuid"))
 	a.Equal("foobar", form.Get("description"))
 	a.Equal([]string{"foo", "bar"}, form["array"])
-	a.Equal("10", form.Get("min"))
-	a.Equal("10", form.Get("max"))
+	if multipartForm {
+		a.JSONEq(`{"min":10,"max":10}`, form.Get("object"))
+	} else {
+		a.Equal("10", form.Get("min"))
+		a.Equal("10", form.Get("max"))
+	}
 	a.Equal("10", form.Get("deepObject[min]"))
 	a.Equal("10", form.Get("deepObject[max]"))
 }
@@ -196,7 +200,7 @@ func TestURIEncodingE2E(t *testing.T) {
 
 			s := tt.serverSetup(http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
 				a.NoError(req.ParseForm())
-				checkTestFormValues(a, req.PostForm)
+				checkTestFormValues(a, req.PostForm, false)
 				apiServer.ServeHTTP(w, req)
 			}))
 			defer s.Close()
@@ -224,7 +228,7 @@ func TestMultipartEncodingE2E(t *testing.T) {
 	s := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
 		a.NoError(req.ParseMultipartForm(32 << 20))
 		form := url.Values(req.MultipartForm.Value)
-		checkTestFormValues(a, form)
+		checkTestFormValues(a, form, true)
 		apiServer.ServeHTTP(w, req)
 	}))
 	defer s.Close()
