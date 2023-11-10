@@ -39,6 +39,7 @@
             "multipart/form-data": {
               "encoding": {
                 "deepObject": {
+                  "contentType": "application/x-www-form-urlencoded",
                   "style": "deepObject"
                 }
               },
