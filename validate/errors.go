@@ -106,5 +106,5 @@ type NoRegexMatchError struct{}
 
 // MaxLengthError implements error.
 func (*NoRegexMatchError) Error() string {
-	return "no regexp match"
+	return "no regex match"
 }
