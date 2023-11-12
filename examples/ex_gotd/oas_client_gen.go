@@ -433,15 +433,6 @@ func (c *Client) AddStickerToSet(ctx context.Context, request *AddStickerToSet) 
 }
 
 func (c *Client) sendAddStickerToSet(ctx context.Context, request *AddStickerToSet) (res *Result, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("addStickerToSet"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -515,15 +506,6 @@ func (c *Client) AnswerCallbackQuery(ctx context.Context, request *AnswerCallbac
 }
 
 func (c *Client) sendAnswerCallbackQuery(ctx context.Context, request *AnswerCallbackQuery) (res *Result, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("answerCallbackQuery"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -597,15 +579,6 @@ func (c *Client) AnswerInlineQuery(ctx context.Context, request *AnswerInlineQue
 }
 
 func (c *Client) sendAnswerInlineQuery(ctx context.Context, request *AnswerInlineQuery) (res *Result, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("answerInlineQuery"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -752,15 +725,6 @@ func (c *Client) AnswerShippingQuery(ctx context.Context, request *AnswerShippin
 }
 
 func (c *Client) sendAnswerShippingQuery(ctx context.Context, request *AnswerShippingQuery) (res *Result, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("answerShippingQuery"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -834,15 +798,6 @@ func (c *Client) AnswerWebAppQuery(ctx context.Context, request *AnswerWebAppQue
 }
 
 func (c *Client) sendAnswerWebAppQuery(ctx context.Context, request *AnswerWebAppQuery) (res *Result, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("answerWebAppQuery"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -1205,15 +1160,6 @@ func (c *Client) CopyMessage(ctx context.Context, request *CopyMessage) (*Result
 }
 
 func (c *Client) sendCopyMessage(ctx context.Context, request *CopyMessage) (res *ResultMessageId, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("copyMessage"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -1287,15 +1233,6 @@ func (c *Client) CreateChatInviteLink(ctx context.Context, request *CreateChatIn
 }
 
 func (c *Client) sendCreateChatInviteLink(ctx context.Context, request *CreateChatInviteLink) (res *ResultChatInviteLink, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createChatInviteLink"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -1369,15 +1306,6 @@ func (c *Client) CreateNewStickerSet(ctx context.Context, request *CreateNewStic
 }
 
 func (c *Client) sendCreateNewStickerSet(ctx context.Context, request *CreateNewStickerSet) (res *Result, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createNewStickerSet"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -1962,15 +1890,6 @@ func (c *Client) EditChatInviteLink(ctx context.Context, request *EditChatInvite
 }
 
 func (c *Client) sendEditChatInviteLink(ctx context.Context, request *EditChatInviteLink) (res *ResultChatInviteLink, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("editChatInviteLink"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -2044,15 +1963,6 @@ func (c *Client) EditMessageCaption(ctx context.Context, request *EditMessageCap
 }
 
 func (c *Client) sendEditMessageCaption(ctx context.Context, request *EditMessageCaption) (res *ResultMessageOrBoolean, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("editMessageCaption"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -2126,15 +2036,6 @@ func (c *Client) EditMessageLiveLocation(ctx context.Context, request *EditMessa
 }
 
 func (c *Client) sendEditMessageLiveLocation(ctx context.Context, request *EditMessageLiveLocation) (res *ResultMessageOrBoolean, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("editMessageLiveLocation"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -2208,15 +2109,6 @@ func (c *Client) EditMessageMedia(ctx context.Context, request *EditMessageMedia
 }
 
 func (c *Client) sendEditMessageMedia(ctx context.Context, request *EditMessageMedia) (res *ResultMessageOrBoolean, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("editMessageMedia"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -2290,15 +2182,6 @@ func (c *Client) EditMessageReplyMarkup(ctx context.Context, request *EditMessag
 }
 
 func (c *Client) sendEditMessageReplyMarkup(ctx context.Context, request *EditMessageReplyMarkup) (res *ResultMessageOrBoolean, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("editMessageReplyMarkup"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -2372,15 +2255,6 @@ func (c *Client) EditMessageText(ctx context.Context, request *EditMessageText) 
 }
 
 func (c *Client) sendEditMessageText(ctx context.Context, request *EditMessageText) (res *ResultMessageOrBoolean, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("editMessageText"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -3400,22 +3274,6 @@ func (c *Client) GetUpdates(ctx context.Context, request OptGetUpdates) (*Result
 }
 
 func (c *Client) sendGetUpdates(ctx context.Context, request OptGetUpdates) (res *ResultArrayOfUpdate, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if value, ok := request.Get(); ok {
-			if err := func() error {
-				if err := value.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getUpdates"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -3489,15 +3347,6 @@ func (c *Client) GetUserProfilePhotos(ctx context.Context, request *GetUserProfi
 }
 
 func (c *Client) sendGetUserProfilePhotos(ctx context.Context, request *GetUserProfilePhotos) (res *ResultUserProfilePhotos, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getUserProfilePhotos"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -4076,15 +3925,6 @@ func (c *Client) SendAnimation(ctx context.Context, request *SendAnimation) (*Re
 }
 
 func (c *Client) sendSendAnimation(ctx context.Context, request *SendAnimation) (res *ResultMessage, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendAnimation"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -4158,15 +3998,6 @@ func (c *Client) SendAudio(ctx context.Context, request *SendAudio) (*ResultMess
 }
 
 func (c *Client) sendSendAudio(ctx context.Context, request *SendAudio) (res *ResultMessage, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendAudio"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -4313,15 +4144,6 @@ func (c *Client) SendContact(ctx context.Context, request *SendContact) (*Result
 }
 
 func (c *Client) sendSendContact(ctx context.Context, request *SendContact) (res *ResultMessage, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendContact"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -4395,15 +4217,6 @@ func (c *Client) SendDice(ctx context.Context, request *SendDice) (*ResultMessag
 }
 
 func (c *Client) sendSendDice(ctx context.Context, request *SendDice) (res *ResultMessage, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendDice"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -4477,15 +4290,6 @@ func (c *Client) SendDocument(ctx context.Context, request *SendDocument) (*Resu
 }
 
 func (c *Client) sendSendDocument(ctx context.Context, request *SendDocument) (res *ResultMessage, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendDocument"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -4559,15 +4363,6 @@ func (c *Client) SendGame(ctx context.Context, request *SendGame) (*ResultMessag
 }
 
 func (c *Client) sendSendGame(ctx context.Context, request *SendGame) (res *ResultMessage, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendGame"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -4641,15 +4436,6 @@ func (c *Client) SendInvoice(ctx context.Context, request *SendInvoice) (*Result
 }
 
 func (c *Client) sendSendInvoice(ctx context.Context, request *SendInvoice) (res *ResultMessage, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendInvoice"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -4723,15 +4509,6 @@ func (c *Client) SendLocation(ctx context.Context, request *SendLocation) (*Resu
 }
 
 func (c *Client) sendSendLocation(ctx context.Context, request *SendLocation) (res *ResultMessage, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendLocation"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -4805,15 +4582,6 @@ func (c *Client) SendMediaGroup(ctx context.Context, request *SendMediaGroup) (*
 }
 
 func (c *Client) sendSendMediaGroup(ctx context.Context, request *SendMediaGroup) (res *ResultArrayOfMessage, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendMediaGroup"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -4887,15 +4655,6 @@ func (c *Client) SendMessage(ctx context.Context, request *SendMessage) (*Result
 }
 
 func (c *Client) sendSendMessage(ctx context.Context, request *SendMessage) (res *ResultMessage, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendMessage"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -4969,15 +4728,6 @@ func (c *Client) SendPhoto(ctx context.Context, request *SendPhoto) (*ResultMess
 }
 
 func (c *Client) sendSendPhoto(ctx context.Context, request *SendPhoto) (res *ResultMessage, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendPhoto"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -5051,15 +4801,6 @@ func (c *Client) SendPoll(ctx context.Context, request *SendPoll) (*ResultMessag
 }
 
 func (c *Client) sendSendPoll(ctx context.Context, request *SendPoll) (res *ResultMessage, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendPoll"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -5133,15 +4874,6 @@ func (c *Client) SendSticker(ctx context.Context, request *SendSticker) (*Result
 }
 
 func (c *Client) sendSendSticker(ctx context.Context, request *SendSticker) (res *ResultMessage, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendSticker"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -5215,15 +4947,6 @@ func (c *Client) SendVenue(ctx context.Context, request *SendVenue) (*ResultMess
 }
 
 func (c *Client) sendSendVenue(ctx context.Context, request *SendVenue) (res *ResultMessage, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendVenue"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -5297,15 +5020,6 @@ func (c *Client) SendVideo(ctx context.Context, request *SendVideo) (*ResultMess
 }
 
 func (c *Client) sendSendVideo(ctx context.Context, request *SendVideo) (res *ResultMessage, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendVideo"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -5379,15 +5093,6 @@ func (c *Client) SendVideoNote(ctx context.Context, request *SendVideoNote) (*Re
 }
 
 func (c *Client) sendSendVideoNote(ctx context.Context, request *SendVideoNote) (res *ResultMessage, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendVideoNote"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -5461,15 +5166,6 @@ func (c *Client) SendVoice(ctx context.Context, request *SendVoice) (*ResultMess
 }
 
 func (c *Client) sendSendVoice(ctx context.Context, request *SendVoice) (res *ResultMessage, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendVoice"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -5543,15 +5239,6 @@ func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, request *S
 }
 
 func (c *Client) sendSetChatAdministratorCustomTitle(ctx context.Context, request *SetChatAdministratorCustomTitle) (res *Result, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setChatAdministratorCustomTitle"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -5625,15 +5312,6 @@ func (c *Client) SetChatDescription(ctx context.Context, request *SetChatDescrip
 }
 
 func (c *Client) sendSetChatDescription(ctx context.Context, request *SetChatDescription) (res *Result, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setChatDescription"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -5999,15 +5677,6 @@ func (c *Client) SetChatTitle(ctx context.Context, request *SetChatTitle) (*Resu
 }
 
 func (c *Client) sendSetChatTitle(ctx context.Context, request *SetChatTitle) (res *Result, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setChatTitle"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -6154,15 +5823,6 @@ func (c *Client) SetMyCommands(ctx context.Context, request *SetMyCommands) (*Re
 }
 
 func (c *Client) sendSetMyCommands(ctx context.Context, request *SetMyCommands) (res *Result, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setMyCommands"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -6309,15 +5969,6 @@ func (c *Client) SetPassportDataErrors(ctx context.Context, request *SetPassport
 }
 
 func (c *Client) sendSetPassportDataErrors(ctx context.Context, request *SetPassportDataErrors) (res *Result, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setPassportDataErrors"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -6610,15 +6261,6 @@ func (c *Client) StopMessageLiveLocation(ctx context.Context, request *StopMessa
 }
 
 func (c *Client) sendStopMessageLiveLocation(ctx context.Context, request *StopMessageLiveLocation) (res *ResultMessageOrBoolean, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("stopMessageLiveLocation"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -6692,15 +6334,6 @@ func (c *Client) StopPoll(ctx context.Context, request *StopPoll) (*ResultPoll, 
 }
 
 func (c *Client) sendStopPoll(ctx context.Context, request *StopPoll) (res *ResultPoll, err error) {
-	// Validate request before sending.
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("stopPoll"),
 		semconv.HTTPMethodKey.String("POST"),

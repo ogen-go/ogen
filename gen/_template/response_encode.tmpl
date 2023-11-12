@@ -13,12 +13,26 @@ func encodeErrorResponse(response {{ $.ErrorGoType }}, w http.ResponseWriter, sp
 	{{- $infos := $.Error.ResponseInfo $otel }}
 	{{- if eq (len $infos) 1 }}
 		{{- range $info := $infos }}
+			{{- if and $info.Type.NeedValidation $.ResponseValidationEnabled }}
+			if err := func() error {
+				{{- template "validate" elem $info.Type "response" }}
+			}(); err != nil {
+				return errors.Wrap(err, "validate")
+			}
+			{{- end }}
 			{{- template "respond" $info }}
 		{{- end }}
 	{{- else }}
 		switch response := response.(type) {
 		{{- range $info := $infos }}
 			case *{{ $info.Type.Name }}:
+			{{- if and $info.Type.NeedValidation $.ResponseValidationEnabled }}
+			if err := func() error {
+				{{- template "validate" elem $info.Type "response" }}
+			}(); err != nil {
+				return errors.Wrap(err, "validate")
+			}
+			{{- end }}
 			{{- template "respond" $info }}
 		{{- end }}
 		default:
@@ -38,18 +52,33 @@ func encodeErrorResponse(response {{ $.ErrorGoType }}, w http.ResponseWriter, sp
 {{ end }}
 
 {{ define "response_encoders/operation" }}
-{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/ -}}{{ $op := $.Operation }}
-{{- $otel := $.Config.OpenTelemetryEnabled }}
+{{- /*gotype: github.com/ogen-go/ogen/gen.OperationElem*/ -}}{{ $op := $.Operation }}
+{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}{{ $cfg := $.Config }}
+{{- $otel := $cfg.OpenTelemetryEnabled }}
 func encode{{ $op.Name }}Response(response {{ $op.Responses.GoType }}, w http.ResponseWriter, {{ if $otel }}span trace.Span{{ end }}) error {
 	{{- $types := $op.ListResponseTypes $otel }}
 	{{- if eq (len $types) 1 }}
 		{{- range $info := $types }}
+			{{- if and $info.Type.NeedValidation $cfg.ResponseValidationEnabled }}
+			if err := func() error {
+				{{- template "validate" elem $info.Type "response" }}
+			}(); err != nil {
+				return errors.Wrap(err, "validate")
+			}
+			{{- end }}
 			{{- template "respond" $info }}
 		{{- end }}
 	{{- else }}
 		switch response := response.(type) {
 		{{- range $info := $types }}
 			case *{{ $info.Type.Name }}:
+			{{- if and $info.Type.NeedValidation $cfg.ResponseValidationEnabled }}
+			if err := func() error {
+				{{- template "validate" elem $info.Type "response" }}
+			}(); err != nil {
+				return errors.Wrap(err, "validate")
+			}
+			{{- end }}
 			{{- template "respond" $info }}
 		{{- end }}
 		default:
