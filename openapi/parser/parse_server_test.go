@@ -3,9 +3,10 @@ package parser_test
 import (
 	"testing"
 
+	"github.com/stretchr/testify/require"
+
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/openapi/parser"
-	"github.com/stretchr/testify/require"
 )
 
 func TestServerURL(t *testing.T) {

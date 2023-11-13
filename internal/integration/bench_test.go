@@ -18,7 +18,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/require"
 	"github.com/valyala/fasthttp"
-	"go.opentelemetry.io/otel/trace"
+	"go.opentelemetry.io/otel/trace/noop"
 
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
@@ -246,7 +246,7 @@ func BenchmarkIntegration(b *testing.B) {
 		httpClient := benchClient()
 		client, err := techempower.NewClient(s.URL,
 			techempower.WithClient(httpClient),
-			techempower.WithTracerProvider(trace.NewNoopTracerProvider()),
+			techempower.WithTracerProvider(noop.NewTracerProvider()),
 		)
 		require.NoError(b, err)
 		ctx := context.Background()
