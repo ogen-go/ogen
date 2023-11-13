@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
+
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/jsonschema"

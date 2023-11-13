@@ -7,9 +7,10 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/yaml"
-	"github.com/ogen-go/ogen/internal/xmaps"
 	"go.uber.org/multierr"
 	"golang.org/x/exp/slices"
+
+	"github.com/ogen-go/ogen/internal/xmaps"
 )
 
 var _ interface {
