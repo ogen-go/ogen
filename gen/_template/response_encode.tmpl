@@ -91,8 +91,20 @@ func encode{{ $op.Name }}Response(response {{ $op.Responses.GoType }}, w http.Re
 {{ define "respond" }}
 {{- /*gotype: github.com/ogen-go/ogen/gen/ir.ResponseInfo*/ -}}
 
-{{- if and (not $.NoContent) (not $.ContentType.Mask) }}
-	w.Header().Set("Content-Type", {{ quote $.ContentType }})
+{{- $type := $.Type }}
+{{- $var := "response" }}
+
+{{- if not $.NoContent }}
+	{{- if or $.WithStatusCode $.WithHeaders }}
+		{{- $type = ($.Type.MustField "Response").Type }}
+		{{- $var = "response.Response" }}
+	{{- end }}
+	{{- if $type.IsStream }}
+		defer {{ $var }}.Close()
+	{{- end }}
+	{{- if not $.ContentType.Mask }}
+		w.Header().Set("Content-Type", {{ quote $.ContentType }})
+	{{- end }}
 {{- end }}
 
 {{- if $.WithHeaders }}
@@ -153,13 +165,6 @@ func encode{{ $op.Name }}Response(response {{ $op.Responses.GoType }}, w http.Re
 {{ if $.NoContent }}
 	{{ template "respond/return" $}}
 {{- else }}
-	{{- $type := $.Type }}
-	{{- $var := "response" }}
-	{{- if or $.WithStatusCode $.WithHeaders }}
-		{{- $type = ($.Type.MustField "Response").Type }}
-		{{- $var = "response.Response" }}
-	{{- end }}
-
 	{{- if $.Encoding.JSON }}
 		{{- if $.JSONStreaming }}
 		e := jx.NewStreamingEncoder(w, -1)
@@ -182,7 +187,6 @@ func encode{{ $op.Name }}Response(response {{ $op.Responses.GoType }}, w http.Re
 		{{- else }}
 		writer := w
 		{{- end }}
-		defer {{ $var }}.Close()
 		if _, err := io.Copy(writer, {{ $var }}); err != nil {
 			return errors.Wrap(err, "write")
 		}
