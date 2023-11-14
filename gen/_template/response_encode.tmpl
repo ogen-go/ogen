@@ -92,7 +92,7 @@ func encode{{ $op.Name }}Response(response {{ $op.Responses.GoType }}, w http.Re
 {{- /*gotype: github.com/ogen-go/ogen/gen/ir.ResponseInfo*/ -}}
 
 {{- if and (not $.NoContent) (not $.ContentType.Mask) }}
-	w.Header().Set("Content-Type", {{ quote $.ContentType }})
+	w.Header().Set("Content-Type", "{{ $.ContentType }}; charset=utf-8")
 {{- end }}
 
 {{- if $.WithHeaders }}
