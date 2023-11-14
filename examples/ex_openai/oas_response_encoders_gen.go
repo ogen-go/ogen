@@ -12,7 +12,7 @@ import (
 )
 
 func encodeCancelFineTuneResponse(response FineTune, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -26,7 +26,7 @@ func encodeCancelFineTuneResponse(response FineTune, w http.ResponseWriter, span
 }
 
 func encodeCreateAnswerResponse(response *CreateAnswerResponse, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -40,7 +40,7 @@ func encodeCreateAnswerResponse(response *CreateAnswerResponse, w http.ResponseW
 }
 
 func encodeCreateChatCompletionResponse(response *CreateChatCompletionResponse, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -54,7 +54,7 @@ func encodeCreateChatCompletionResponse(response *CreateChatCompletionResponse, 
 }
 
 func encodeCreateClassificationResponse(response *CreateClassificationResponse, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -68,7 +68,7 @@ func encodeCreateClassificationResponse(response *CreateClassificationResponse, 
 }
 
 func encodeCreateCompletionResponse(response *CreateCompletionResponse, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -82,7 +82,7 @@ func encodeCreateCompletionResponse(response *CreateCompletionResponse, w http.R
 }
 
 func encodeCreateEditResponse(response *CreateEditResponse, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -96,7 +96,7 @@ func encodeCreateEditResponse(response *CreateEditResponse, w http.ResponseWrite
 }
 
 func encodeCreateEmbeddingResponse(response *CreateEmbeddingResponse, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -110,7 +110,7 @@ func encodeCreateEmbeddingResponse(response *CreateEmbeddingResponse, w http.Res
 }
 
 func encodeCreateFileResponse(response OpenAIFile, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -124,7 +124,7 @@ func encodeCreateFileResponse(response OpenAIFile, w http.ResponseWriter, span t
 }
 
 func encodeCreateFineTuneResponse(response FineTune, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -138,7 +138,7 @@ func encodeCreateFineTuneResponse(response FineTune, w http.ResponseWriter, span
 }
 
 func encodeCreateImageResponse(response ImagesResponse, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -152,7 +152,7 @@ func encodeCreateImageResponse(response ImagesResponse, w http.ResponseWriter, s
 }
 
 func encodeCreateImageEditResponse(response ImagesResponse, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -166,7 +166,7 @@ func encodeCreateImageEditResponse(response ImagesResponse, w http.ResponseWrite
 }
 
 func encodeCreateImageVariationResponse(response ImagesResponse, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -180,7 +180,7 @@ func encodeCreateImageVariationResponse(response ImagesResponse, w http.Response
 }
 
 func encodeCreateModerationResponse(response *CreateModerationResponse, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -194,7 +194,7 @@ func encodeCreateModerationResponse(response *CreateModerationResponse, w http.R
 }
 
 func encodeCreateSearchResponse(response *CreateSearchResponse, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -208,7 +208,7 @@ func encodeCreateSearchResponse(response *CreateSearchResponse, w http.ResponseW
 }
 
 func encodeCreateTranscriptionResponse(response *CreateTranscriptionResponse, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -222,7 +222,7 @@ func encodeCreateTranscriptionResponse(response *CreateTranscriptionResponse, w 
 }
 
 func encodeCreateTranslationResponse(response *CreateTranslationResponse, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -236,7 +236,7 @@ func encodeCreateTranslationResponse(response *CreateTranslationResponse, w http
 }
 
 func encodeDeleteFileResponse(response *DeleteFileResponse, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -250,7 +250,7 @@ func encodeDeleteFileResponse(response *DeleteFileResponse, w http.ResponseWrite
 }
 
 func encodeDeleteModelResponse(response *DeleteModelResponse, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -264,7 +264,7 @@ func encodeDeleteModelResponse(response *DeleteModelResponse, w http.ResponseWri
 }
 
 func encodeDownloadFileResponse(response string, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -278,7 +278,7 @@ func encodeDownloadFileResponse(response string, w http.ResponseWriter, span tra
 }
 
 func encodeListEnginesResponse(response *ListEnginesResponse, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -292,7 +292,7 @@ func encodeListEnginesResponse(response *ListEnginesResponse, w http.ResponseWri
 }
 
 func encodeListFilesResponse(response *ListFilesResponse, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -306,7 +306,7 @@ func encodeListFilesResponse(response *ListFilesResponse, w http.ResponseWriter,
 }
 
 func encodeListFineTuneEventsResponse(response *ListFineTuneEventsResponse, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -320,7 +320,7 @@ func encodeListFineTuneEventsResponse(response *ListFineTuneEventsResponse, w ht
 }
 
 func encodeListFineTunesResponse(response *ListFineTunesResponse, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -334,7 +334,7 @@ func encodeListFineTunesResponse(response *ListFineTunesResponse, w http.Respons
 }
 
 func encodeListModelsResponse(response *ListModelsResponse, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -348,7 +348,7 @@ func encodeListModelsResponse(response *ListModelsResponse, w http.ResponseWrite
 }
 
 func encodeRetrieveEngineResponse(response Engine, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -362,7 +362,7 @@ func encodeRetrieveEngineResponse(response Engine, w http.ResponseWriter, span t
 }
 
 func encodeRetrieveFileResponse(response OpenAIFile, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -376,7 +376,7 @@ func encodeRetrieveFileResponse(response OpenAIFile, w http.ResponseWriter, span
 }
 
 func encodeRetrieveFineTuneResponse(response FineTune, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -390,7 +390,7 @@ func encodeRetrieveFineTuneResponse(response FineTune, w http.ResponseWriter, sp
 }
 
 func encodeRetrieveModelResponse(response Model, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 

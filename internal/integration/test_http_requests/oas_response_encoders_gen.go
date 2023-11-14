@@ -14,7 +14,7 @@ import (
 )
 
 func encodeAllRequestBodiesResponse(response AllRequestBodiesOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/octet-stream; charset=utf-8")
+	w.Header().Set("Content-Type", "application/octet-stream")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -27,7 +27,7 @@ func encodeAllRequestBodiesResponse(response AllRequestBodiesOK, w http.Response
 }
 
 func encodeAllRequestBodiesOptionalResponse(response AllRequestBodiesOptionalOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/octet-stream; charset=utf-8")
+	w.Header().Set("Content-Type", "application/octet-stream")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 

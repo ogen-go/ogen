@@ -467,7 +467,7 @@ func encodeMultipleGenericResponsesResponse(response MultipleGenericResponsesRes
 }
 
 func encodeOctetStreamBinaryStringSchemaResponse(response OctetStreamBinaryStringSchemaOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/octet-stream; charset=utf-8")
+	w.Header().Set("Content-Type", "application/octet-stream")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -480,7 +480,7 @@ func encodeOctetStreamBinaryStringSchemaResponse(response OctetStreamBinaryStrin
 }
 
 func encodeOctetStreamEmptySchemaResponse(response OctetStreamEmptySchemaOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/octet-stream; charset=utf-8")
+	w.Header().Set("Content-Type", "application/octet-stream")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 

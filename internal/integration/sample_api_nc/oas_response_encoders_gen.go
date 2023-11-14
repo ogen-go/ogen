@@ -305,7 +305,7 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter, span trace.
 func encodePetGetAvatarByIDResponse(response PetGetAvatarByIDRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PetGetAvatarByIDOK:
-		w.Header().Set("Content-Type", "application/octet-stream; charset=utf-8")
+		w.Header().Set("Content-Type", "application/octet-stream")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -355,7 +355,7 @@ func encodePetGetAvatarByIDResponse(response PetGetAvatarByIDRes, w http.Respons
 func encodePetGetAvatarByNameResponse(response PetGetAvatarByNameRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PetGetAvatarByNameOK:
-		w.Header().Set("Content-Type", "application/octet-stream; charset=utf-8")
+		w.Header().Set("Content-Type", "application/octet-stream")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 

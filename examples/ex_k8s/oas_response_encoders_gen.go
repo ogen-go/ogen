@@ -1167,7 +1167,7 @@ func encodeConnectCoreV1PutNodeProxyWithPathResponse(response ConnectCoreV1PutNo
 func encodeGetAPIVersionsResponse(response GetAPIVersionsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroupList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1193,7 +1193,7 @@ func encodeGetAPIVersionsResponse(response GetAPIVersionsRes, w http.ResponseWri
 func encodeGetAdmissionregistrationAPIGroupResponse(response GetAdmissionregistrationAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1219,7 +1219,7 @@ func encodeGetAdmissionregistrationAPIGroupResponse(response GetAdmissionregistr
 func encodeGetAdmissionregistrationV1APIResourcesResponse(response GetAdmissionregistrationV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1245,7 +1245,7 @@ func encodeGetAdmissionregistrationV1APIResourcesResponse(response GetAdmissionr
 func encodeGetApiextensionsAPIGroupResponse(response GetApiextensionsAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1271,7 +1271,7 @@ func encodeGetApiextensionsAPIGroupResponse(response GetApiextensionsAPIGroupRes
 func encodeGetApiextensionsV1APIResourcesResponse(response GetApiextensionsV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1297,7 +1297,7 @@ func encodeGetApiextensionsV1APIResourcesResponse(response GetApiextensionsV1API
 func encodeGetApiregistrationAPIGroupResponse(response GetApiregistrationAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1323,7 +1323,7 @@ func encodeGetApiregistrationAPIGroupResponse(response GetApiregistrationAPIGrou
 func encodeGetApiregistrationV1APIResourcesResponse(response GetApiregistrationV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1349,7 +1349,7 @@ func encodeGetApiregistrationV1APIResourcesResponse(response GetApiregistrationV
 func encodeGetAppsAPIGroupResponse(response GetAppsAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1375,7 +1375,7 @@ func encodeGetAppsAPIGroupResponse(response GetAppsAPIGroupRes, w http.ResponseW
 func encodeGetAppsV1APIResourcesResponse(response GetAppsV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1401,7 +1401,7 @@ func encodeGetAppsV1APIResourcesResponse(response GetAppsV1APIResourcesRes, w ht
 func encodeGetAuthenticationAPIGroupResponse(response GetAuthenticationAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1427,7 +1427,7 @@ func encodeGetAuthenticationAPIGroupResponse(response GetAuthenticationAPIGroupR
 func encodeGetAuthenticationV1APIResourcesResponse(response GetAuthenticationV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1453,7 +1453,7 @@ func encodeGetAuthenticationV1APIResourcesResponse(response GetAuthenticationV1A
 func encodeGetAuthorizationAPIGroupResponse(response GetAuthorizationAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1479,7 +1479,7 @@ func encodeGetAuthorizationAPIGroupResponse(response GetAuthorizationAPIGroupRes
 func encodeGetAuthorizationV1APIResourcesResponse(response GetAuthorizationV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1505,7 +1505,7 @@ func encodeGetAuthorizationV1APIResourcesResponse(response GetAuthorizationV1API
 func encodeGetAutoscalingAPIGroupResponse(response GetAutoscalingAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1531,7 +1531,7 @@ func encodeGetAutoscalingAPIGroupResponse(response GetAutoscalingAPIGroupRes, w 
 func encodeGetAutoscalingV1APIResourcesResponse(response GetAutoscalingV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1557,7 +1557,7 @@ func encodeGetAutoscalingV1APIResourcesResponse(response GetAutoscalingV1APIReso
 func encodeGetAutoscalingV2beta1APIResourcesResponse(response GetAutoscalingV2beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1583,7 +1583,7 @@ func encodeGetAutoscalingV2beta1APIResourcesResponse(response GetAutoscalingV2be
 func encodeGetAutoscalingV2beta2APIResourcesResponse(response GetAutoscalingV2beta2APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1609,7 +1609,7 @@ func encodeGetAutoscalingV2beta2APIResourcesResponse(response GetAutoscalingV2be
 func encodeGetBatchAPIGroupResponse(response GetBatchAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1635,7 +1635,7 @@ func encodeGetBatchAPIGroupResponse(response GetBatchAPIGroupRes, w http.Respons
 func encodeGetBatchV1APIResourcesResponse(response GetBatchV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1661,7 +1661,7 @@ func encodeGetBatchV1APIResourcesResponse(response GetBatchV1APIResourcesRes, w 
 func encodeGetBatchV1beta1APIResourcesResponse(response GetBatchV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1687,7 +1687,7 @@ func encodeGetBatchV1beta1APIResourcesResponse(response GetBatchV1beta1APIResour
 func encodeGetCertificatesAPIGroupResponse(response GetCertificatesAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1713,7 +1713,7 @@ func encodeGetCertificatesAPIGroupResponse(response GetCertificatesAPIGroupRes, 
 func encodeGetCertificatesV1APIResourcesResponse(response GetCertificatesV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1739,7 +1739,7 @@ func encodeGetCertificatesV1APIResourcesResponse(response GetCertificatesV1APIRe
 func encodeGetCodeVersionResponse(response GetCodeVersionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgVersionInfo:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1765,7 +1765,7 @@ func encodeGetCodeVersionResponse(response GetCodeVersionRes, w http.ResponseWri
 func encodeGetCoordinationAPIGroupResponse(response GetCoordinationAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1791,7 +1791,7 @@ func encodeGetCoordinationAPIGroupResponse(response GetCoordinationAPIGroupRes, 
 func encodeGetCoordinationV1APIResourcesResponse(response GetCoordinationV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1817,7 +1817,7 @@ func encodeGetCoordinationV1APIResourcesResponse(response GetCoordinationV1APIRe
 func encodeGetCoreAPIVersionsResponse(response GetCoreAPIVersionsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIVersions:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1843,7 +1843,7 @@ func encodeGetCoreAPIVersionsResponse(response GetCoreAPIVersionsRes, w http.Res
 func encodeGetCoreV1APIResourcesResponse(response GetCoreV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1869,7 +1869,7 @@ func encodeGetCoreV1APIResourcesResponse(response GetCoreV1APIResourcesRes, w ht
 func encodeGetDiscoveryAPIGroupResponse(response GetDiscoveryAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1895,7 +1895,7 @@ func encodeGetDiscoveryAPIGroupResponse(response GetDiscoveryAPIGroupRes, w http
 func encodeGetDiscoveryV1APIResourcesResponse(response GetDiscoveryV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1921,7 +1921,7 @@ func encodeGetDiscoveryV1APIResourcesResponse(response GetDiscoveryV1APIResource
 func encodeGetDiscoveryV1beta1APIResourcesResponse(response GetDiscoveryV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1947,7 +1947,7 @@ func encodeGetDiscoveryV1beta1APIResourcesResponse(response GetDiscoveryV1beta1A
 func encodeGetEventsAPIGroupResponse(response GetEventsAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1973,7 +1973,7 @@ func encodeGetEventsAPIGroupResponse(response GetEventsAPIGroupRes, w http.Respo
 func encodeGetEventsV1APIResourcesResponse(response GetEventsV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1999,7 +1999,7 @@ func encodeGetEventsV1APIResourcesResponse(response GetEventsV1APIResourcesRes, 
 func encodeGetEventsV1beta1APIResourcesResponse(response GetEventsV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2025,7 +2025,7 @@ func encodeGetEventsV1beta1APIResourcesResponse(response GetEventsV1beta1APIReso
 func encodeGetFlowcontrolApiserverAPIGroupResponse(response GetFlowcontrolApiserverAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2051,7 +2051,7 @@ func encodeGetFlowcontrolApiserverAPIGroupResponse(response GetFlowcontrolApiser
 func encodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(response GetFlowcontrolApiserverV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2077,7 +2077,7 @@ func encodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(response GetFlowco
 func encodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(response GetFlowcontrolApiserverV1beta2APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2103,7 +2103,7 @@ func encodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(response GetFlowco
 func encodeGetInternalApiserverAPIGroupResponse(response GetInternalApiserverAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2129,7 +2129,7 @@ func encodeGetInternalApiserverAPIGroupResponse(response GetInternalApiserverAPI
 func encodeGetInternalApiserverV1alpha1APIResourcesResponse(response GetInternalApiserverV1alpha1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2155,7 +2155,7 @@ func encodeGetInternalApiserverV1alpha1APIResourcesResponse(response GetInternal
 func encodeGetNetworkingAPIGroupResponse(response GetNetworkingAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2181,7 +2181,7 @@ func encodeGetNetworkingAPIGroupResponse(response GetNetworkingAPIGroupRes, w ht
 func encodeGetNetworkingV1APIResourcesResponse(response GetNetworkingV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2207,7 +2207,7 @@ func encodeGetNetworkingV1APIResourcesResponse(response GetNetworkingV1APIResour
 func encodeGetNodeAPIGroupResponse(response GetNodeAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2233,7 +2233,7 @@ func encodeGetNodeAPIGroupResponse(response GetNodeAPIGroupRes, w http.ResponseW
 func encodeGetNodeV1APIResourcesResponse(response GetNodeV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2259,7 +2259,7 @@ func encodeGetNodeV1APIResourcesResponse(response GetNodeV1APIResourcesRes, w ht
 func encodeGetNodeV1alpha1APIResourcesResponse(response GetNodeV1alpha1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2285,7 +2285,7 @@ func encodeGetNodeV1alpha1APIResourcesResponse(response GetNodeV1alpha1APIResour
 func encodeGetNodeV1beta1APIResourcesResponse(response GetNodeV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2311,7 +2311,7 @@ func encodeGetNodeV1beta1APIResourcesResponse(response GetNodeV1beta1APIResource
 func encodeGetPolicyAPIGroupResponse(response GetPolicyAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2337,7 +2337,7 @@ func encodeGetPolicyAPIGroupResponse(response GetPolicyAPIGroupRes, w http.Respo
 func encodeGetPolicyV1APIResourcesResponse(response GetPolicyV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2363,7 +2363,7 @@ func encodeGetPolicyV1APIResourcesResponse(response GetPolicyV1APIResourcesRes, 
 func encodeGetPolicyV1beta1APIResourcesResponse(response GetPolicyV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2389,7 +2389,7 @@ func encodeGetPolicyV1beta1APIResourcesResponse(response GetPolicyV1beta1APIReso
 func encodeGetRbacAuthorizationAPIGroupResponse(response GetRbacAuthorizationAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2415,7 +2415,7 @@ func encodeGetRbacAuthorizationAPIGroupResponse(response GetRbacAuthorizationAPI
 func encodeGetRbacAuthorizationV1APIResourcesResponse(response GetRbacAuthorizationV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2441,7 +2441,7 @@ func encodeGetRbacAuthorizationV1APIResourcesResponse(response GetRbacAuthorizat
 func encodeGetSchedulingAPIGroupResponse(response GetSchedulingAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2467,7 +2467,7 @@ func encodeGetSchedulingAPIGroupResponse(response GetSchedulingAPIGroupRes, w ht
 func encodeGetSchedulingV1APIResourcesResponse(response GetSchedulingV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2493,7 +2493,7 @@ func encodeGetSchedulingV1APIResourcesResponse(response GetSchedulingV1APIResour
 func encodeGetServiceAccountIssuerOpenIDConfigurationResponse(response GetServiceAccountIssuerOpenIDConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2544,7 +2544,7 @@ func encodeGetServiceAccountIssuerOpenIDKeysetResponse(response GetServiceAccoun
 func encodeGetStorageAPIGroupResponse(response GetStorageAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2570,7 +2570,7 @@ func encodeGetStorageAPIGroupResponse(response GetStorageAPIGroupRes, w http.Res
 func encodeGetStorageV1APIResourcesResponse(response GetStorageV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2596,7 +2596,7 @@ func encodeGetStorageV1APIResourcesResponse(response GetStorageV1APIResourcesRes
 func encodeGetStorageV1alpha1APIResourcesResponse(response GetStorageV1alpha1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2622,7 +2622,7 @@ func encodeGetStorageV1alpha1APIResourcesResponse(response GetStorageV1alpha1API
 func encodeGetStorageV1beta1APIResourcesResponse(response GetStorageV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2648,7 +2648,7 @@ func encodeGetStorageV1beta1APIResourcesResponse(response GetStorageV1beta1APIRe
 func encodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(response ListAdmissionregistrationV1MutatingWebhookConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2674,7 +2674,7 @@ func encodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(respo
 func encodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(response ListAdmissionregistrationV1ValidatingWebhookConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2700,7 +2700,7 @@ func encodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 func encodeListApiextensionsV1CustomResourceDefinitionResponse(response ListApiextensionsV1CustomResourceDefinitionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2726,7 +2726,7 @@ func encodeListApiextensionsV1CustomResourceDefinitionResponse(response ListApie
 func encodeListApiregistrationV1APIServiceResponse(response ListApiregistrationV1APIServiceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2752,7 +2752,7 @@ func encodeListApiregistrationV1APIServiceResponse(response ListApiregistrationV
 func encodeListAppsV1ControllerRevisionForAllNamespacesResponse(response ListAppsV1ControllerRevisionForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1ControllerRevisionList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2778,7 +2778,7 @@ func encodeListAppsV1ControllerRevisionForAllNamespacesResponse(response ListApp
 func encodeListAppsV1DaemonSetForAllNamespacesResponse(response ListAppsV1DaemonSetForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1DaemonSetList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2804,7 +2804,7 @@ func encodeListAppsV1DaemonSetForAllNamespacesResponse(response ListAppsV1Daemon
 func encodeListAppsV1DeploymentForAllNamespacesResponse(response ListAppsV1DeploymentForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1DeploymentList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2830,7 +2830,7 @@ func encodeListAppsV1DeploymentForAllNamespacesResponse(response ListAppsV1Deplo
 func encodeListAppsV1NamespacedControllerRevisionResponse(response ListAppsV1NamespacedControllerRevisionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1ControllerRevisionList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2856,7 +2856,7 @@ func encodeListAppsV1NamespacedControllerRevisionResponse(response ListAppsV1Nam
 func encodeListAppsV1NamespacedDaemonSetResponse(response ListAppsV1NamespacedDaemonSetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1DaemonSetList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2882,7 +2882,7 @@ func encodeListAppsV1NamespacedDaemonSetResponse(response ListAppsV1NamespacedDa
 func encodeListAppsV1NamespacedDeploymentResponse(response ListAppsV1NamespacedDeploymentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1DeploymentList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2908,7 +2908,7 @@ func encodeListAppsV1NamespacedDeploymentResponse(response ListAppsV1NamespacedD
 func encodeListAppsV1NamespacedReplicaSetResponse(response ListAppsV1NamespacedReplicaSetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1ReplicaSetList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2934,7 +2934,7 @@ func encodeListAppsV1NamespacedReplicaSetResponse(response ListAppsV1NamespacedR
 func encodeListAppsV1NamespacedStatefulSetResponse(response ListAppsV1NamespacedStatefulSetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1StatefulSetList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2960,7 +2960,7 @@ func encodeListAppsV1NamespacedStatefulSetResponse(response ListAppsV1Namespaced
 func encodeListAppsV1ReplicaSetForAllNamespacesResponse(response ListAppsV1ReplicaSetForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1ReplicaSetList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2986,7 +2986,7 @@ func encodeListAppsV1ReplicaSetForAllNamespacesResponse(response ListAppsV1Repli
 func encodeListAppsV1StatefulSetForAllNamespacesResponse(response ListAppsV1StatefulSetForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1StatefulSetList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3012,7 +3012,7 @@ func encodeListAppsV1StatefulSetForAllNamespacesResponse(response ListAppsV1Stat
 func encodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(response ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3038,7 +3038,7 @@ func encodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp
 func encodeListAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response ListAutoscalingV1NamespacedHorizontalPodAutoscalerRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3064,7 +3064,7 @@ func encodeListAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response L
 func encodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse(response ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3090,7 +3090,7 @@ func encodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse
 func encodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(response ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3116,7 +3116,7 @@ func encodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(respo
 func encodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse(response ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3142,7 +3142,7 @@ func encodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse
 func encodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(response ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3168,7 +3168,7 @@ func encodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(respo
 func encodeListBatchV1CronJobForAllNamespacesResponse(response ListBatchV1CronJobForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIBatchV1CronJobList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3194,7 +3194,7 @@ func encodeListBatchV1CronJobForAllNamespacesResponse(response ListBatchV1CronJo
 func encodeListBatchV1JobForAllNamespacesResponse(response ListBatchV1JobForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIBatchV1JobList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3220,7 +3220,7 @@ func encodeListBatchV1JobForAllNamespacesResponse(response ListBatchV1JobForAllN
 func encodeListBatchV1NamespacedCronJobResponse(response ListBatchV1NamespacedCronJobRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIBatchV1CronJobList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3246,7 +3246,7 @@ func encodeListBatchV1NamespacedCronJobResponse(response ListBatchV1NamespacedCr
 func encodeListBatchV1NamespacedJobResponse(response ListBatchV1NamespacedJobRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIBatchV1JobList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3272,7 +3272,7 @@ func encodeListBatchV1NamespacedJobResponse(response ListBatchV1NamespacedJobRes
 func encodeListBatchV1beta1CronJobForAllNamespacesResponse(response ListBatchV1beta1CronJobForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIBatchV1beta1CronJobList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3298,7 +3298,7 @@ func encodeListBatchV1beta1CronJobForAllNamespacesResponse(response ListBatchV1b
 func encodeListBatchV1beta1NamespacedCronJobResponse(response ListBatchV1beta1NamespacedCronJobRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIBatchV1beta1CronJobList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3324,7 +3324,7 @@ func encodeListBatchV1beta1NamespacedCronJobResponse(response ListBatchV1beta1Na
 func encodeListCertificatesV1CertificateSigningRequestResponse(response ListCertificatesV1CertificateSigningRequestRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICertificatesV1CertificateSigningRequestList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3350,7 +3350,7 @@ func encodeListCertificatesV1CertificateSigningRequestResponse(response ListCert
 func encodeListCoordinationV1LeaseForAllNamespacesResponse(response ListCoordinationV1LeaseForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoordinationV1LeaseList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3376,7 +3376,7 @@ func encodeListCoordinationV1LeaseForAllNamespacesResponse(response ListCoordina
 func encodeListCoordinationV1NamespacedLeaseResponse(response ListCoordinationV1NamespacedLeaseRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoordinationV1LeaseList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3402,7 +3402,7 @@ func encodeListCoordinationV1NamespacedLeaseResponse(response ListCoordinationV1
 func encodeListCoreV1ComponentStatusResponse(response ListCoreV1ComponentStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ComponentStatusList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3428,7 +3428,7 @@ func encodeListCoreV1ComponentStatusResponse(response ListCoreV1ComponentStatusR
 func encodeListCoreV1ConfigMapForAllNamespacesResponse(response ListCoreV1ConfigMapForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ConfigMapList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3454,7 +3454,7 @@ func encodeListCoreV1ConfigMapForAllNamespacesResponse(response ListCoreV1Config
 func encodeListCoreV1EndpointsForAllNamespacesResponse(response ListCoreV1EndpointsForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1EndpointsList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3480,7 +3480,7 @@ func encodeListCoreV1EndpointsForAllNamespacesResponse(response ListCoreV1Endpoi
 func encodeListCoreV1EventForAllNamespacesResponse(response ListCoreV1EventForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1EventList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3506,7 +3506,7 @@ func encodeListCoreV1EventForAllNamespacesResponse(response ListCoreV1EventForAl
 func encodeListCoreV1LimitRangeForAllNamespacesResponse(response ListCoreV1LimitRangeForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1LimitRangeList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3532,7 +3532,7 @@ func encodeListCoreV1LimitRangeForAllNamespacesResponse(response ListCoreV1Limit
 func encodeListCoreV1NamespaceResponse(response ListCoreV1NamespaceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1NamespaceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3558,7 +3558,7 @@ func encodeListCoreV1NamespaceResponse(response ListCoreV1NamespaceRes, w http.R
 func encodeListCoreV1NamespacedConfigMapResponse(response ListCoreV1NamespacedConfigMapRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ConfigMapList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3584,7 +3584,7 @@ func encodeListCoreV1NamespacedConfigMapResponse(response ListCoreV1NamespacedCo
 func encodeListCoreV1NamespacedEndpointsResponse(response ListCoreV1NamespacedEndpointsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1EndpointsList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3610,7 +3610,7 @@ func encodeListCoreV1NamespacedEndpointsResponse(response ListCoreV1NamespacedEn
 func encodeListCoreV1NamespacedEventResponse(response ListCoreV1NamespacedEventRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1EventList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3636,7 +3636,7 @@ func encodeListCoreV1NamespacedEventResponse(response ListCoreV1NamespacedEventR
 func encodeListCoreV1NamespacedLimitRangeResponse(response ListCoreV1NamespacedLimitRangeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1LimitRangeList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3662,7 +3662,7 @@ func encodeListCoreV1NamespacedLimitRangeResponse(response ListCoreV1NamespacedL
 func encodeListCoreV1NamespacedPersistentVolumeClaimResponse(response ListCoreV1NamespacedPersistentVolumeClaimRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1PersistentVolumeClaimList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3688,7 +3688,7 @@ func encodeListCoreV1NamespacedPersistentVolumeClaimResponse(response ListCoreV1
 func encodeListCoreV1NamespacedPodResponse(response ListCoreV1NamespacedPodRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1PodList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3714,7 +3714,7 @@ func encodeListCoreV1NamespacedPodResponse(response ListCoreV1NamespacedPodRes, 
 func encodeListCoreV1NamespacedPodTemplateResponse(response ListCoreV1NamespacedPodTemplateRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1PodTemplateList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3740,7 +3740,7 @@ func encodeListCoreV1NamespacedPodTemplateResponse(response ListCoreV1Namespaced
 func encodeListCoreV1NamespacedReplicationControllerResponse(response ListCoreV1NamespacedReplicationControllerRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ReplicationControllerList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3766,7 +3766,7 @@ func encodeListCoreV1NamespacedReplicationControllerResponse(response ListCoreV1
 func encodeListCoreV1NamespacedResourceQuotaResponse(response ListCoreV1NamespacedResourceQuotaRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ResourceQuotaList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3792,7 +3792,7 @@ func encodeListCoreV1NamespacedResourceQuotaResponse(response ListCoreV1Namespac
 func encodeListCoreV1NamespacedSecretResponse(response ListCoreV1NamespacedSecretRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1SecretList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3818,7 +3818,7 @@ func encodeListCoreV1NamespacedSecretResponse(response ListCoreV1NamespacedSecre
 func encodeListCoreV1NamespacedServiceResponse(response ListCoreV1NamespacedServiceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ServiceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3844,7 +3844,7 @@ func encodeListCoreV1NamespacedServiceResponse(response ListCoreV1NamespacedServ
 func encodeListCoreV1NamespacedServiceAccountResponse(response ListCoreV1NamespacedServiceAccountRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ServiceAccountList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3870,7 +3870,7 @@ func encodeListCoreV1NamespacedServiceAccountResponse(response ListCoreV1Namespa
 func encodeListCoreV1NodeResponse(response ListCoreV1NodeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1NodeList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3896,7 +3896,7 @@ func encodeListCoreV1NodeResponse(response ListCoreV1NodeRes, w http.ResponseWri
 func encodeListCoreV1PersistentVolumeResponse(response ListCoreV1PersistentVolumeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1PersistentVolumeList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3922,7 +3922,7 @@ func encodeListCoreV1PersistentVolumeResponse(response ListCoreV1PersistentVolum
 func encodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(response ListCoreV1PersistentVolumeClaimForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1PersistentVolumeClaimList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3948,7 +3948,7 @@ func encodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(response List
 func encodeListCoreV1PodForAllNamespacesResponse(response ListCoreV1PodForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1PodList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3974,7 +3974,7 @@ func encodeListCoreV1PodForAllNamespacesResponse(response ListCoreV1PodForAllNam
 func encodeListCoreV1PodTemplateForAllNamespacesResponse(response ListCoreV1PodTemplateForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1PodTemplateList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4000,7 +4000,7 @@ func encodeListCoreV1PodTemplateForAllNamespacesResponse(response ListCoreV1PodT
 func encodeListCoreV1ReplicationControllerForAllNamespacesResponse(response ListCoreV1ReplicationControllerForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ReplicationControllerList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4026,7 +4026,7 @@ func encodeListCoreV1ReplicationControllerForAllNamespacesResponse(response List
 func encodeListCoreV1ResourceQuotaForAllNamespacesResponse(response ListCoreV1ResourceQuotaForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ResourceQuotaList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4052,7 +4052,7 @@ func encodeListCoreV1ResourceQuotaForAllNamespacesResponse(response ListCoreV1Re
 func encodeListCoreV1SecretForAllNamespacesResponse(response ListCoreV1SecretForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1SecretList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4078,7 +4078,7 @@ func encodeListCoreV1SecretForAllNamespacesResponse(response ListCoreV1SecretFor
 func encodeListCoreV1ServiceAccountForAllNamespacesResponse(response ListCoreV1ServiceAccountForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ServiceAccountList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4104,7 +4104,7 @@ func encodeListCoreV1ServiceAccountForAllNamespacesResponse(response ListCoreV1S
 func encodeListCoreV1ServiceForAllNamespacesResponse(response ListCoreV1ServiceForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ServiceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4130,7 +4130,7 @@ func encodeListCoreV1ServiceForAllNamespacesResponse(response ListCoreV1ServiceF
 func encodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(response ListDiscoveryV1EndpointSliceForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIDiscoveryV1EndpointSliceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4156,7 +4156,7 @@ func encodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(response ListDis
 func encodeListDiscoveryV1NamespacedEndpointSliceResponse(response ListDiscoveryV1NamespacedEndpointSliceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIDiscoveryV1EndpointSliceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4182,7 +4182,7 @@ func encodeListDiscoveryV1NamespacedEndpointSliceResponse(response ListDiscovery
 func encodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(response ListDiscoveryV1beta1EndpointSliceForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIDiscoveryV1beta1EndpointSliceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4208,7 +4208,7 @@ func encodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(response Li
 func encodeListDiscoveryV1beta1NamespacedEndpointSliceResponse(response ListDiscoveryV1beta1NamespacedEndpointSliceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIDiscoveryV1beta1EndpointSliceList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4234,7 +4234,7 @@ func encodeListDiscoveryV1beta1NamespacedEndpointSliceResponse(response ListDisc
 func encodeListEventsV1EventForAllNamespacesResponse(response ListEventsV1EventForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIEventsV1EventList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4260,7 +4260,7 @@ func encodeListEventsV1EventForAllNamespacesResponse(response ListEventsV1EventF
 func encodeListEventsV1NamespacedEventResponse(response ListEventsV1NamespacedEventRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIEventsV1EventList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4286,7 +4286,7 @@ func encodeListEventsV1NamespacedEventResponse(response ListEventsV1NamespacedEv
 func encodeListEventsV1beta1EventForAllNamespacesResponse(response ListEventsV1beta1EventForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIEventsV1beta1EventList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4312,7 +4312,7 @@ func encodeListEventsV1beta1EventForAllNamespacesResponse(response ListEventsV1b
 func encodeListEventsV1beta1NamespacedEventResponse(response ListEventsV1beta1NamespacedEventRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIEventsV1beta1EventList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4338,7 +4338,7 @@ func encodeListEventsV1beta1NamespacedEventResponse(response ListEventsV1beta1Na
 func encodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(response ListFlowcontrolApiserverV1beta1FlowSchemaRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIFlowcontrolV1beta1FlowSchemaList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4364,7 +4364,7 @@ func encodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(response ListFlowco
 func encodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(response ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4390,7 +4390,7 @@ func encodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 func encodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(response ListFlowcontrolApiserverV1beta2FlowSchemaRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIFlowcontrolV1beta2FlowSchemaList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4416,7 +4416,7 @@ func encodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(response ListFlowco
 func encodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(response ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4442,7 +4442,7 @@ func encodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 func encodeListInternalApiserverV1alpha1StorageVersionResponse(response ListInternalApiserverV1alpha1StorageVersionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIApiserverinternalV1alpha1StorageVersionList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4468,7 +4468,7 @@ func encodeListInternalApiserverV1alpha1StorageVersionResponse(response ListInte
 func encodeListNetworkingV1IngressClassResponse(response ListNetworkingV1IngressClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPINetworkingV1IngressClassList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4494,7 +4494,7 @@ func encodeListNetworkingV1IngressClassResponse(response ListNetworkingV1Ingress
 func encodeListNetworkingV1IngressForAllNamespacesResponse(response ListNetworkingV1IngressForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPINetworkingV1IngressList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4520,7 +4520,7 @@ func encodeListNetworkingV1IngressForAllNamespacesResponse(response ListNetworki
 func encodeListNetworkingV1NamespacedIngressResponse(response ListNetworkingV1NamespacedIngressRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPINetworkingV1IngressList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4546,7 +4546,7 @@ func encodeListNetworkingV1NamespacedIngressResponse(response ListNetworkingV1Na
 func encodeListNetworkingV1NamespacedNetworkPolicyResponse(response ListNetworkingV1NamespacedNetworkPolicyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPINetworkingV1NetworkPolicyList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4572,7 +4572,7 @@ func encodeListNetworkingV1NamespacedNetworkPolicyResponse(response ListNetworki
 func encodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(response ListNetworkingV1NetworkPolicyForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPINetworkingV1NetworkPolicyList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4598,7 +4598,7 @@ func encodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(response ListNe
 func encodeListNodeV1RuntimeClassResponse(response ListNodeV1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPINodeV1RuntimeClassList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4624,7 +4624,7 @@ func encodeListNodeV1RuntimeClassResponse(response ListNodeV1RuntimeClassRes, w 
 func encodeListNodeV1alpha1RuntimeClassResponse(response ListNodeV1alpha1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPINodeV1alpha1RuntimeClassList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4650,7 +4650,7 @@ func encodeListNodeV1alpha1RuntimeClassResponse(response ListNodeV1alpha1Runtime
 func encodeListNodeV1beta1RuntimeClassResponse(response ListNodeV1beta1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPINodeV1beta1RuntimeClassList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4676,7 +4676,7 @@ func encodeListNodeV1beta1RuntimeClassResponse(response ListNodeV1beta1RuntimeCl
 func encodeListPolicyV1NamespacedPodDisruptionBudgetResponse(response ListPolicyV1NamespacedPodDisruptionBudgetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIPolicyV1PodDisruptionBudgetList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4702,7 +4702,7 @@ func encodeListPolicyV1NamespacedPodDisruptionBudgetResponse(response ListPolicy
 func encodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(response ListPolicyV1PodDisruptionBudgetForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIPolicyV1PodDisruptionBudgetList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4728,7 +4728,7 @@ func encodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(response List
 func encodeListPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response ListPolicyV1beta1NamespacedPodDisruptionBudgetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4754,7 +4754,7 @@ func encodeListPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response ListP
 func encodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(response ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4780,7 +4780,7 @@ func encodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(response
 func encodeListPolicyV1beta1PodSecurityPolicyResponse(response ListPolicyV1beta1PodSecurityPolicyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIPolicyV1beta1PodSecurityPolicyList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4806,7 +4806,7 @@ func encodeListPolicyV1beta1PodSecurityPolicyResponse(response ListPolicyV1beta1
 func encodeListRbacAuthorizationV1ClusterRoleResponse(response ListRbacAuthorizationV1ClusterRoleRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIRbacV1ClusterRoleList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4832,7 +4832,7 @@ func encodeListRbacAuthorizationV1ClusterRoleResponse(response ListRbacAuthoriza
 func encodeListRbacAuthorizationV1ClusterRoleBindingResponse(response ListRbacAuthorizationV1ClusterRoleBindingRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIRbacV1ClusterRoleBindingList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4858,7 +4858,7 @@ func encodeListRbacAuthorizationV1ClusterRoleBindingResponse(response ListRbacAu
 func encodeListRbacAuthorizationV1NamespacedRoleResponse(response ListRbacAuthorizationV1NamespacedRoleRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIRbacV1RoleList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4884,7 +4884,7 @@ func encodeListRbacAuthorizationV1NamespacedRoleResponse(response ListRbacAuthor
 func encodeListRbacAuthorizationV1NamespacedRoleBindingResponse(response ListRbacAuthorizationV1NamespacedRoleBindingRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIRbacV1RoleBindingList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4910,7 +4910,7 @@ func encodeListRbacAuthorizationV1NamespacedRoleBindingResponse(response ListRba
 func encodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(response ListRbacAuthorizationV1RoleBindingForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIRbacV1RoleBindingList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4936,7 +4936,7 @@ func encodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(response L
 func encodeListRbacAuthorizationV1RoleForAllNamespacesResponse(response ListRbacAuthorizationV1RoleForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIRbacV1RoleList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4962,7 +4962,7 @@ func encodeListRbacAuthorizationV1RoleForAllNamespacesResponse(response ListRbac
 func encodeListSchedulingV1PriorityClassResponse(response ListSchedulingV1PriorityClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPISchedulingV1PriorityClassList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4988,7 +4988,7 @@ func encodeListSchedulingV1PriorityClassResponse(response ListSchedulingV1Priori
 func encodeListStorageV1CSIDriverResponse(response ListStorageV1CSIDriverRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIStorageV1CSIDriverList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5014,7 +5014,7 @@ func encodeListStorageV1CSIDriverResponse(response ListStorageV1CSIDriverRes, w 
 func encodeListStorageV1CSINodeResponse(response ListStorageV1CSINodeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIStorageV1CSINodeList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5040,7 +5040,7 @@ func encodeListStorageV1CSINodeResponse(response ListStorageV1CSINodeRes, w http
 func encodeListStorageV1StorageClassResponse(response ListStorageV1StorageClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIStorageV1StorageClassList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5066,7 +5066,7 @@ func encodeListStorageV1StorageClassResponse(response ListStorageV1StorageClassR
 func encodeListStorageV1VolumeAttachmentResponse(response ListStorageV1VolumeAttachmentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIStorageV1VolumeAttachmentList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5092,7 +5092,7 @@ func encodeListStorageV1VolumeAttachmentResponse(response ListStorageV1VolumeAtt
 func encodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(response ListStorageV1alpha1CSIStorageCapacityForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIStorageV1alpha1CSIStorageCapacityList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5118,7 +5118,7 @@ func encodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(respons
 func encodeListStorageV1alpha1NamespacedCSIStorageCapacityResponse(response ListStorageV1alpha1NamespacedCSIStorageCapacityRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIStorageV1alpha1CSIStorageCapacityList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5144,7 +5144,7 @@ func encodeListStorageV1alpha1NamespacedCSIStorageCapacityResponse(response List
 func encodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(response ListStorageV1beta1CSIStorageCapacityForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIStorageV1beta1CSIStorageCapacityList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5170,7 +5170,7 @@ func encodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(response
 func encodeListStorageV1beta1NamespacedCSIStorageCapacityResponse(response ListStorageV1beta1NamespacedCSIStorageCapacityRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIStorageV1beta1CSIStorageCapacityList:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5210,7 +5210,7 @@ func encodeLogFileListHandlerResponse(response *LogFileListHandlerUnauthorized, 
 func encodeReadAdmissionregistrationV1MutatingWebhookConfigurationResponse(response ReadAdmissionregistrationV1MutatingWebhookConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5236,7 +5236,7 @@ func encodeReadAdmissionregistrationV1MutatingWebhookConfigurationResponse(respo
 func encodeReadAdmissionregistrationV1ValidatingWebhookConfigurationResponse(response ReadAdmissionregistrationV1ValidatingWebhookConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5262,7 +5262,7 @@ func encodeReadAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 func encodeReadApiextensionsV1CustomResourceDefinitionResponse(response ReadApiextensionsV1CustomResourceDefinitionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5288,7 +5288,7 @@ func encodeReadApiextensionsV1CustomResourceDefinitionResponse(response ReadApie
 func encodeReadApiextensionsV1CustomResourceDefinitionStatusResponse(response ReadApiextensionsV1CustomResourceDefinitionStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5314,7 +5314,7 @@ func encodeReadApiextensionsV1CustomResourceDefinitionStatusResponse(response Re
 func encodeReadApiregistrationV1APIServiceResponse(response ReadApiregistrationV1APIServiceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5340,7 +5340,7 @@ func encodeReadApiregistrationV1APIServiceResponse(response ReadApiregistrationV
 func encodeReadApiregistrationV1APIServiceStatusResponse(response ReadApiregistrationV1APIServiceStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5366,7 +5366,7 @@ func encodeReadApiregistrationV1APIServiceStatusResponse(response ReadApiregistr
 func encodeReadAppsV1NamespacedControllerRevisionResponse(response ReadAppsV1NamespacedControllerRevisionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1ControllerRevision:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5392,7 +5392,7 @@ func encodeReadAppsV1NamespacedControllerRevisionResponse(response ReadAppsV1Nam
 func encodeReadAppsV1NamespacedDaemonSetResponse(response ReadAppsV1NamespacedDaemonSetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1DaemonSet:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5418,7 +5418,7 @@ func encodeReadAppsV1NamespacedDaemonSetResponse(response ReadAppsV1NamespacedDa
 func encodeReadAppsV1NamespacedDaemonSetStatusResponse(response ReadAppsV1NamespacedDaemonSetStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1DaemonSet:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5444,7 +5444,7 @@ func encodeReadAppsV1NamespacedDaemonSetStatusResponse(response ReadAppsV1Namesp
 func encodeReadAppsV1NamespacedDeploymentResponse(response ReadAppsV1NamespacedDeploymentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1Deployment:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5470,7 +5470,7 @@ func encodeReadAppsV1NamespacedDeploymentResponse(response ReadAppsV1NamespacedD
 func encodeReadAppsV1NamespacedDeploymentScaleResponse(response ReadAppsV1NamespacedDeploymentScaleRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAutoscalingV1Scale:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5496,7 +5496,7 @@ func encodeReadAppsV1NamespacedDeploymentScaleResponse(response ReadAppsV1Namesp
 func encodeReadAppsV1NamespacedDeploymentStatusResponse(response ReadAppsV1NamespacedDeploymentStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1Deployment:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5522,7 +5522,7 @@ func encodeReadAppsV1NamespacedDeploymentStatusResponse(response ReadAppsV1Names
 func encodeReadAppsV1NamespacedReplicaSetResponse(response ReadAppsV1NamespacedReplicaSetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1ReplicaSet:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5548,7 +5548,7 @@ func encodeReadAppsV1NamespacedReplicaSetResponse(response ReadAppsV1NamespacedR
 func encodeReadAppsV1NamespacedReplicaSetScaleResponse(response ReadAppsV1NamespacedReplicaSetScaleRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAutoscalingV1Scale:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5574,7 +5574,7 @@ func encodeReadAppsV1NamespacedReplicaSetScaleResponse(response ReadAppsV1Namesp
 func encodeReadAppsV1NamespacedReplicaSetStatusResponse(response ReadAppsV1NamespacedReplicaSetStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1ReplicaSet:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5600,7 +5600,7 @@ func encodeReadAppsV1NamespacedReplicaSetStatusResponse(response ReadAppsV1Names
 func encodeReadAppsV1NamespacedStatefulSetResponse(response ReadAppsV1NamespacedStatefulSetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1StatefulSet:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5626,7 +5626,7 @@ func encodeReadAppsV1NamespacedStatefulSetResponse(response ReadAppsV1Namespaced
 func encodeReadAppsV1NamespacedStatefulSetScaleResponse(response ReadAppsV1NamespacedStatefulSetScaleRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAutoscalingV1Scale:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5652,7 +5652,7 @@ func encodeReadAppsV1NamespacedStatefulSetScaleResponse(response ReadAppsV1Names
 func encodeReadAppsV1NamespacedStatefulSetStatusResponse(response ReadAppsV1NamespacedStatefulSetStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1StatefulSet:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5678,7 +5678,7 @@ func encodeReadAppsV1NamespacedStatefulSetStatusResponse(response ReadAppsV1Name
 func encodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response ReadAutoscalingV1NamespacedHorizontalPodAutoscalerRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5704,7 +5704,7 @@ func encodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response R
 func encodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusResponse(response ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5730,7 +5730,7 @@ func encodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusResponse(resp
 func encodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(response ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5756,7 +5756,7 @@ func encodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(respo
 func encodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusResponse(response ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5782,7 +5782,7 @@ func encodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusResponse
 func encodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(response ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5808,7 +5808,7 @@ func encodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(respo
 func encodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusResponse(response ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5834,7 +5834,7 @@ func encodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusResponse
 func encodeReadBatchV1NamespacedCronJobResponse(response ReadBatchV1NamespacedCronJobRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIBatchV1CronJob:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5860,7 +5860,7 @@ func encodeReadBatchV1NamespacedCronJobResponse(response ReadBatchV1NamespacedCr
 func encodeReadBatchV1NamespacedCronJobStatusResponse(response ReadBatchV1NamespacedCronJobStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIBatchV1CronJob:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5886,7 +5886,7 @@ func encodeReadBatchV1NamespacedCronJobStatusResponse(response ReadBatchV1Namesp
 func encodeReadBatchV1NamespacedJobResponse(response ReadBatchV1NamespacedJobRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIBatchV1Job:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5912,7 +5912,7 @@ func encodeReadBatchV1NamespacedJobResponse(response ReadBatchV1NamespacedJobRes
 func encodeReadBatchV1NamespacedJobStatusResponse(response ReadBatchV1NamespacedJobStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIBatchV1Job:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5938,7 +5938,7 @@ func encodeReadBatchV1NamespacedJobStatusResponse(response ReadBatchV1Namespaced
 func encodeReadBatchV1beta1NamespacedCronJobResponse(response ReadBatchV1beta1NamespacedCronJobRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIBatchV1beta1CronJob:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5964,7 +5964,7 @@ func encodeReadBatchV1beta1NamespacedCronJobResponse(response ReadBatchV1beta1Na
 func encodeReadBatchV1beta1NamespacedCronJobStatusResponse(response ReadBatchV1beta1NamespacedCronJobStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIBatchV1beta1CronJob:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5990,7 +5990,7 @@ func encodeReadBatchV1beta1NamespacedCronJobStatusResponse(response ReadBatchV1b
 func encodeReadCertificatesV1CertificateSigningRequestResponse(response ReadCertificatesV1CertificateSigningRequestRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICertificatesV1CertificateSigningRequest:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6016,7 +6016,7 @@ func encodeReadCertificatesV1CertificateSigningRequestResponse(response ReadCert
 func encodeReadCertificatesV1CertificateSigningRequestApprovalResponse(response ReadCertificatesV1CertificateSigningRequestApprovalRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICertificatesV1CertificateSigningRequest:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6042,7 +6042,7 @@ func encodeReadCertificatesV1CertificateSigningRequestApprovalResponse(response 
 func encodeReadCertificatesV1CertificateSigningRequestStatusResponse(response ReadCertificatesV1CertificateSigningRequestStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICertificatesV1CertificateSigningRequest:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6068,7 +6068,7 @@ func encodeReadCertificatesV1CertificateSigningRequestStatusResponse(response Re
 func encodeReadCoordinationV1NamespacedLeaseResponse(response ReadCoordinationV1NamespacedLeaseRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoordinationV1Lease:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6094,7 +6094,7 @@ func encodeReadCoordinationV1NamespacedLeaseResponse(response ReadCoordinationV1
 func encodeReadCoreV1ComponentStatusResponse(response ReadCoreV1ComponentStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ComponentStatus:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6120,7 +6120,7 @@ func encodeReadCoreV1ComponentStatusResponse(response ReadCoreV1ComponentStatusR
 func encodeReadCoreV1NamespaceResponse(response ReadCoreV1NamespaceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1Namespace:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6146,7 +6146,7 @@ func encodeReadCoreV1NamespaceResponse(response ReadCoreV1NamespaceRes, w http.R
 func encodeReadCoreV1NamespaceStatusResponse(response ReadCoreV1NamespaceStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1Namespace:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6172,7 +6172,7 @@ func encodeReadCoreV1NamespaceStatusResponse(response ReadCoreV1NamespaceStatusR
 func encodeReadCoreV1NamespacedConfigMapResponse(response ReadCoreV1NamespacedConfigMapRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ConfigMap:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6198,7 +6198,7 @@ func encodeReadCoreV1NamespacedConfigMapResponse(response ReadCoreV1NamespacedCo
 func encodeReadCoreV1NamespacedEndpointsResponse(response ReadCoreV1NamespacedEndpointsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1Endpoints:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6224,7 +6224,7 @@ func encodeReadCoreV1NamespacedEndpointsResponse(response ReadCoreV1NamespacedEn
 func encodeReadCoreV1NamespacedEventResponse(response ReadCoreV1NamespacedEventRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1Event:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6250,7 +6250,7 @@ func encodeReadCoreV1NamespacedEventResponse(response ReadCoreV1NamespacedEventR
 func encodeReadCoreV1NamespacedLimitRangeResponse(response ReadCoreV1NamespacedLimitRangeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1LimitRange:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6276,7 +6276,7 @@ func encodeReadCoreV1NamespacedLimitRangeResponse(response ReadCoreV1NamespacedL
 func encodeReadCoreV1NamespacedPersistentVolumeClaimResponse(response ReadCoreV1NamespacedPersistentVolumeClaimRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1PersistentVolumeClaim:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6302,7 +6302,7 @@ func encodeReadCoreV1NamespacedPersistentVolumeClaimResponse(response ReadCoreV1
 func encodeReadCoreV1NamespacedPersistentVolumeClaimStatusResponse(response ReadCoreV1NamespacedPersistentVolumeClaimStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1PersistentVolumeClaim:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6328,7 +6328,7 @@ func encodeReadCoreV1NamespacedPersistentVolumeClaimStatusResponse(response Read
 func encodeReadCoreV1NamespacedPodResponse(response ReadCoreV1NamespacedPodRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1Pod:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6354,7 +6354,7 @@ func encodeReadCoreV1NamespacedPodResponse(response ReadCoreV1NamespacedPodRes, 
 func encodeReadCoreV1NamespacedPodEphemeralcontainersResponse(response ReadCoreV1NamespacedPodEphemeralcontainersRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1Pod:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6380,7 +6380,7 @@ func encodeReadCoreV1NamespacedPodEphemeralcontainersResponse(response ReadCoreV
 func encodeReadCoreV1NamespacedPodLogResponse(response ReadCoreV1NamespacedPodLogRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReadCoreV1NamespacedPodLogOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6417,7 +6417,7 @@ func encodeReadCoreV1NamespacedPodLogResponse(response ReadCoreV1NamespacedPodLo
 		return nil
 
 	case *ReadCoreV1NamespacedPodLogOKTextPlain:
-		w.Header().Set("Content-Type", "text/plain")
+		w.Header().Set("Content-Type", "text/plain; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6442,7 +6442,7 @@ func encodeReadCoreV1NamespacedPodLogResponse(response ReadCoreV1NamespacedPodLo
 func encodeReadCoreV1NamespacedPodStatusResponse(response ReadCoreV1NamespacedPodStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1Pod:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6468,7 +6468,7 @@ func encodeReadCoreV1NamespacedPodStatusResponse(response ReadCoreV1NamespacedPo
 func encodeReadCoreV1NamespacedPodTemplateResponse(response ReadCoreV1NamespacedPodTemplateRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1PodTemplate:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6494,7 +6494,7 @@ func encodeReadCoreV1NamespacedPodTemplateResponse(response ReadCoreV1Namespaced
 func encodeReadCoreV1NamespacedReplicationControllerResponse(response ReadCoreV1NamespacedReplicationControllerRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ReplicationController:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6520,7 +6520,7 @@ func encodeReadCoreV1NamespacedReplicationControllerResponse(response ReadCoreV1
 func encodeReadCoreV1NamespacedReplicationControllerScaleResponse(response ReadCoreV1NamespacedReplicationControllerScaleRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAutoscalingV1Scale:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6546,7 +6546,7 @@ func encodeReadCoreV1NamespacedReplicationControllerScaleResponse(response ReadC
 func encodeReadCoreV1NamespacedReplicationControllerStatusResponse(response ReadCoreV1NamespacedReplicationControllerStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ReplicationController:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6572,7 +6572,7 @@ func encodeReadCoreV1NamespacedReplicationControllerStatusResponse(response Read
 func encodeReadCoreV1NamespacedResourceQuotaResponse(response ReadCoreV1NamespacedResourceQuotaRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ResourceQuota:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6598,7 +6598,7 @@ func encodeReadCoreV1NamespacedResourceQuotaResponse(response ReadCoreV1Namespac
 func encodeReadCoreV1NamespacedResourceQuotaStatusResponse(response ReadCoreV1NamespacedResourceQuotaStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ResourceQuota:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6624,7 +6624,7 @@ func encodeReadCoreV1NamespacedResourceQuotaStatusResponse(response ReadCoreV1Na
 func encodeReadCoreV1NamespacedSecretResponse(response ReadCoreV1NamespacedSecretRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1Secret:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6650,7 +6650,7 @@ func encodeReadCoreV1NamespacedSecretResponse(response ReadCoreV1NamespacedSecre
 func encodeReadCoreV1NamespacedServiceResponse(response ReadCoreV1NamespacedServiceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1Service:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6676,7 +6676,7 @@ func encodeReadCoreV1NamespacedServiceResponse(response ReadCoreV1NamespacedServ
 func encodeReadCoreV1NamespacedServiceAccountResponse(response ReadCoreV1NamespacedServiceAccountRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ServiceAccount:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6702,7 +6702,7 @@ func encodeReadCoreV1NamespacedServiceAccountResponse(response ReadCoreV1Namespa
 func encodeReadCoreV1NamespacedServiceStatusResponse(response ReadCoreV1NamespacedServiceStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1Service:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6728,7 +6728,7 @@ func encodeReadCoreV1NamespacedServiceStatusResponse(response ReadCoreV1Namespac
 func encodeReadCoreV1NodeResponse(response ReadCoreV1NodeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1Node:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6754,7 +6754,7 @@ func encodeReadCoreV1NodeResponse(response ReadCoreV1NodeRes, w http.ResponseWri
 func encodeReadCoreV1NodeStatusResponse(response ReadCoreV1NodeStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1Node:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6780,7 +6780,7 @@ func encodeReadCoreV1NodeStatusResponse(response ReadCoreV1NodeStatusRes, w http
 func encodeReadCoreV1PersistentVolumeResponse(response ReadCoreV1PersistentVolumeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1PersistentVolume:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6806,7 +6806,7 @@ func encodeReadCoreV1PersistentVolumeResponse(response ReadCoreV1PersistentVolum
 func encodeReadCoreV1PersistentVolumeStatusResponse(response ReadCoreV1PersistentVolumeStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1PersistentVolume:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6832,7 +6832,7 @@ func encodeReadCoreV1PersistentVolumeStatusResponse(response ReadCoreV1Persisten
 func encodeReadDiscoveryV1NamespacedEndpointSliceResponse(response ReadDiscoveryV1NamespacedEndpointSliceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIDiscoveryV1EndpointSlice:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6858,7 +6858,7 @@ func encodeReadDiscoveryV1NamespacedEndpointSliceResponse(response ReadDiscovery
 func encodeReadDiscoveryV1beta1NamespacedEndpointSliceResponse(response ReadDiscoveryV1beta1NamespacedEndpointSliceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIDiscoveryV1beta1EndpointSlice:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6884,7 +6884,7 @@ func encodeReadDiscoveryV1beta1NamespacedEndpointSliceResponse(response ReadDisc
 func encodeReadEventsV1NamespacedEventResponse(response ReadEventsV1NamespacedEventRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIEventsV1Event:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6910,7 +6910,7 @@ func encodeReadEventsV1NamespacedEventResponse(response ReadEventsV1NamespacedEv
 func encodeReadEventsV1beta1NamespacedEventResponse(response ReadEventsV1beta1NamespacedEventRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIEventsV1beta1Event:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6936,7 +6936,7 @@ func encodeReadEventsV1beta1NamespacedEventResponse(response ReadEventsV1beta1Na
 func encodeReadFlowcontrolApiserverV1beta1FlowSchemaResponse(response ReadFlowcontrolApiserverV1beta1FlowSchemaRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIFlowcontrolV1beta1FlowSchema:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6962,7 +6962,7 @@ func encodeReadFlowcontrolApiserverV1beta1FlowSchemaResponse(response ReadFlowco
 func encodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusResponse(response ReadFlowcontrolApiserverV1beta1FlowSchemaStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIFlowcontrolV1beta1FlowSchema:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6988,7 +6988,7 @@ func encodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusResponse(response Read
 func encodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(response ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7014,7 +7014,7 @@ func encodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 func encodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusResponse(response ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7040,7 +7040,7 @@ func encodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRespon
 func encodeReadFlowcontrolApiserverV1beta2FlowSchemaResponse(response ReadFlowcontrolApiserverV1beta2FlowSchemaRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIFlowcontrolV1beta2FlowSchema:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7066,7 +7066,7 @@ func encodeReadFlowcontrolApiserverV1beta2FlowSchemaResponse(response ReadFlowco
 func encodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusResponse(response ReadFlowcontrolApiserverV1beta2FlowSchemaStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIFlowcontrolV1beta2FlowSchema:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7092,7 +7092,7 @@ func encodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusResponse(response Read
 func encodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(response ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7118,7 +7118,7 @@ func encodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 func encodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusResponse(response ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7144,7 +7144,7 @@ func encodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRespon
 func encodeReadInternalApiserverV1alpha1StorageVersionResponse(response ReadInternalApiserverV1alpha1StorageVersionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIApiserverinternalV1alpha1StorageVersion:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7170,7 +7170,7 @@ func encodeReadInternalApiserverV1alpha1StorageVersionResponse(response ReadInte
 func encodeReadInternalApiserverV1alpha1StorageVersionStatusResponse(response ReadInternalApiserverV1alpha1StorageVersionStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIApiserverinternalV1alpha1StorageVersion:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7196,7 +7196,7 @@ func encodeReadInternalApiserverV1alpha1StorageVersionStatusResponse(response Re
 func encodeReadNetworkingV1IngressClassResponse(response ReadNetworkingV1IngressClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPINetworkingV1IngressClass:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7222,7 +7222,7 @@ func encodeReadNetworkingV1IngressClassResponse(response ReadNetworkingV1Ingress
 func encodeReadNetworkingV1NamespacedIngressResponse(response ReadNetworkingV1NamespacedIngressRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPINetworkingV1Ingress:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7248,7 +7248,7 @@ func encodeReadNetworkingV1NamespacedIngressResponse(response ReadNetworkingV1Na
 func encodeReadNetworkingV1NamespacedIngressStatusResponse(response ReadNetworkingV1NamespacedIngressStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPINetworkingV1Ingress:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7274,7 +7274,7 @@ func encodeReadNetworkingV1NamespacedIngressStatusResponse(response ReadNetworki
 func encodeReadNetworkingV1NamespacedNetworkPolicyResponse(response ReadNetworkingV1NamespacedNetworkPolicyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPINetworkingV1NetworkPolicy:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7300,7 +7300,7 @@ func encodeReadNetworkingV1NamespacedNetworkPolicyResponse(response ReadNetworki
 func encodeReadNodeV1RuntimeClassResponse(response ReadNodeV1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPINodeV1RuntimeClass:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7326,7 +7326,7 @@ func encodeReadNodeV1RuntimeClassResponse(response ReadNodeV1RuntimeClassRes, w 
 func encodeReadNodeV1alpha1RuntimeClassResponse(response ReadNodeV1alpha1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPINodeV1alpha1RuntimeClass:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7352,7 +7352,7 @@ func encodeReadNodeV1alpha1RuntimeClassResponse(response ReadNodeV1alpha1Runtime
 func encodeReadNodeV1beta1RuntimeClassResponse(response ReadNodeV1beta1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPINodeV1beta1RuntimeClass:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7378,7 +7378,7 @@ func encodeReadNodeV1beta1RuntimeClassResponse(response ReadNodeV1beta1RuntimeCl
 func encodeReadPolicyV1NamespacedPodDisruptionBudgetResponse(response ReadPolicyV1NamespacedPodDisruptionBudgetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIPolicyV1PodDisruptionBudget:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7404,7 +7404,7 @@ func encodeReadPolicyV1NamespacedPodDisruptionBudgetResponse(response ReadPolicy
 func encodeReadPolicyV1NamespacedPodDisruptionBudgetStatusResponse(response ReadPolicyV1NamespacedPodDisruptionBudgetStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIPolicyV1PodDisruptionBudget:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7430,7 +7430,7 @@ func encodeReadPolicyV1NamespacedPodDisruptionBudgetStatusResponse(response Read
 func encodeReadPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response ReadPolicyV1beta1NamespacedPodDisruptionBudgetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIPolicyV1beta1PodDisruptionBudget:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7456,7 +7456,7 @@ func encodeReadPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response ReadP
 func encodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusResponse(response ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIPolicyV1beta1PodDisruptionBudget:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7482,7 +7482,7 @@ func encodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusResponse(response
 func encodeReadPolicyV1beta1PodSecurityPolicyResponse(response ReadPolicyV1beta1PodSecurityPolicyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIPolicyV1beta1PodSecurityPolicy:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7508,7 +7508,7 @@ func encodeReadPolicyV1beta1PodSecurityPolicyResponse(response ReadPolicyV1beta1
 func encodeReadRbacAuthorizationV1ClusterRoleResponse(response ReadRbacAuthorizationV1ClusterRoleRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIRbacV1ClusterRole:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7534,7 +7534,7 @@ func encodeReadRbacAuthorizationV1ClusterRoleResponse(response ReadRbacAuthoriza
 func encodeReadRbacAuthorizationV1ClusterRoleBindingResponse(response ReadRbacAuthorizationV1ClusterRoleBindingRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIRbacV1ClusterRoleBinding:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7560,7 +7560,7 @@ func encodeReadRbacAuthorizationV1ClusterRoleBindingResponse(response ReadRbacAu
 func encodeReadRbacAuthorizationV1NamespacedRoleResponse(response ReadRbacAuthorizationV1NamespacedRoleRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIRbacV1Role:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7586,7 +7586,7 @@ func encodeReadRbacAuthorizationV1NamespacedRoleResponse(response ReadRbacAuthor
 func encodeReadRbacAuthorizationV1NamespacedRoleBindingResponse(response ReadRbacAuthorizationV1NamespacedRoleBindingRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIRbacV1RoleBinding:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7612,7 +7612,7 @@ func encodeReadRbacAuthorizationV1NamespacedRoleBindingResponse(response ReadRba
 func encodeReadSchedulingV1PriorityClassResponse(response ReadSchedulingV1PriorityClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPISchedulingV1PriorityClass:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7638,7 +7638,7 @@ func encodeReadSchedulingV1PriorityClassResponse(response ReadSchedulingV1Priori
 func encodeReadStorageV1CSIDriverResponse(response ReadStorageV1CSIDriverRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIStorageV1CSIDriver:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7664,7 +7664,7 @@ func encodeReadStorageV1CSIDriverResponse(response ReadStorageV1CSIDriverRes, w 
 func encodeReadStorageV1CSINodeResponse(response ReadStorageV1CSINodeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIStorageV1CSINode:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7690,7 +7690,7 @@ func encodeReadStorageV1CSINodeResponse(response ReadStorageV1CSINodeRes, w http
 func encodeReadStorageV1StorageClassResponse(response ReadStorageV1StorageClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIStorageV1StorageClass:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7716,7 +7716,7 @@ func encodeReadStorageV1StorageClassResponse(response ReadStorageV1StorageClassR
 func encodeReadStorageV1VolumeAttachmentResponse(response ReadStorageV1VolumeAttachmentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIStorageV1VolumeAttachment:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7742,7 +7742,7 @@ func encodeReadStorageV1VolumeAttachmentResponse(response ReadStorageV1VolumeAtt
 func encodeReadStorageV1VolumeAttachmentStatusResponse(response ReadStorageV1VolumeAttachmentStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIStorageV1VolumeAttachment:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7768,7 +7768,7 @@ func encodeReadStorageV1VolumeAttachmentStatusResponse(response ReadStorageV1Vol
 func encodeReadStorageV1alpha1NamespacedCSIStorageCapacityResponse(response ReadStorageV1alpha1NamespacedCSIStorageCapacityRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIStorageV1alpha1CSIStorageCapacity:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7794,7 +7794,7 @@ func encodeReadStorageV1alpha1NamespacedCSIStorageCapacityResponse(response Read
 func encodeReadStorageV1beta1NamespacedCSIStorageCapacityResponse(response ReadStorageV1beta1NamespacedCSIStorageCapacityRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIStorageV1beta1CSIStorageCapacity:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7820,7 +7820,7 @@ func encodeReadStorageV1beta1NamespacedCSIStorageCapacityResponse(response ReadS
 func encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationResponse(response WatchAdmissionregistrationV1MutatingWebhookConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7846,7 +7846,7 @@ func encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp
 func encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(response WatchAdmissionregistrationV1MutatingWebhookConfigurationListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7872,7 +7872,7 @@ func encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(
 func encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationResponse(response WatchAdmissionregistrationV1ValidatingWebhookConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7898,7 +7898,7 @@ func encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationResponse(re
 func encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListResponse(response WatchAdmissionregistrationV1ValidatingWebhookConfigurationListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7924,7 +7924,7 @@ func encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRespons
 func encodeWatchApiextensionsV1CustomResourceDefinitionResponse(response WatchApiextensionsV1CustomResourceDefinitionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7950,7 +7950,7 @@ func encodeWatchApiextensionsV1CustomResourceDefinitionResponse(response WatchAp
 func encodeWatchApiextensionsV1CustomResourceDefinitionListResponse(response WatchApiextensionsV1CustomResourceDefinitionListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7976,7 +7976,7 @@ func encodeWatchApiextensionsV1CustomResourceDefinitionListResponse(response Wat
 func encodeWatchApiregistrationV1APIServiceResponse(response WatchApiregistrationV1APIServiceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8002,7 +8002,7 @@ func encodeWatchApiregistrationV1APIServiceResponse(response WatchApiregistratio
 func encodeWatchApiregistrationV1APIServiceListResponse(response WatchApiregistrationV1APIServiceListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8028,7 +8028,7 @@ func encodeWatchApiregistrationV1APIServiceListResponse(response WatchApiregistr
 func encodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(response WatchAppsV1ControllerRevisionListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8054,7 +8054,7 @@ func encodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(response Wa
 func encodeWatchAppsV1DaemonSetListForAllNamespacesResponse(response WatchAppsV1DaemonSetListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8080,7 +8080,7 @@ func encodeWatchAppsV1DaemonSetListForAllNamespacesResponse(response WatchAppsV1
 func encodeWatchAppsV1DeploymentListForAllNamespacesResponse(response WatchAppsV1DeploymentListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8106,7 +8106,7 @@ func encodeWatchAppsV1DeploymentListForAllNamespacesResponse(response WatchAppsV
 func encodeWatchAppsV1NamespacedControllerRevisionResponse(response WatchAppsV1NamespacedControllerRevisionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8132,7 +8132,7 @@ func encodeWatchAppsV1NamespacedControllerRevisionResponse(response WatchAppsV1N
 func encodeWatchAppsV1NamespacedControllerRevisionListResponse(response WatchAppsV1NamespacedControllerRevisionListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8158,7 +8158,7 @@ func encodeWatchAppsV1NamespacedControllerRevisionListResponse(response WatchApp
 func encodeWatchAppsV1NamespacedDaemonSetResponse(response WatchAppsV1NamespacedDaemonSetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8184,7 +8184,7 @@ func encodeWatchAppsV1NamespacedDaemonSetResponse(response WatchAppsV1Namespaced
 func encodeWatchAppsV1NamespacedDaemonSetListResponse(response WatchAppsV1NamespacedDaemonSetListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8210,7 +8210,7 @@ func encodeWatchAppsV1NamespacedDaemonSetListResponse(response WatchAppsV1Namesp
 func encodeWatchAppsV1NamespacedDeploymentResponse(response WatchAppsV1NamespacedDeploymentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8236,7 +8236,7 @@ func encodeWatchAppsV1NamespacedDeploymentResponse(response WatchAppsV1Namespace
 func encodeWatchAppsV1NamespacedDeploymentListResponse(response WatchAppsV1NamespacedDeploymentListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8262,7 +8262,7 @@ func encodeWatchAppsV1NamespacedDeploymentListResponse(response WatchAppsV1Names
 func encodeWatchAppsV1NamespacedReplicaSetResponse(response WatchAppsV1NamespacedReplicaSetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8288,7 +8288,7 @@ func encodeWatchAppsV1NamespacedReplicaSetResponse(response WatchAppsV1Namespace
 func encodeWatchAppsV1NamespacedReplicaSetListResponse(response WatchAppsV1NamespacedReplicaSetListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8314,7 +8314,7 @@ func encodeWatchAppsV1NamespacedReplicaSetListResponse(response WatchAppsV1Names
 func encodeWatchAppsV1NamespacedStatefulSetResponse(response WatchAppsV1NamespacedStatefulSetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8340,7 +8340,7 @@ func encodeWatchAppsV1NamespacedStatefulSetResponse(response WatchAppsV1Namespac
 func encodeWatchAppsV1NamespacedStatefulSetListResponse(response WatchAppsV1NamespacedStatefulSetListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8366,7 +8366,7 @@ func encodeWatchAppsV1NamespacedStatefulSetListResponse(response WatchAppsV1Name
 func encodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(response WatchAppsV1ReplicaSetListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8392,7 +8392,7 @@ func encodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(response WatchAppsV
 func encodeWatchAppsV1StatefulSetListForAllNamespacesResponse(response WatchAppsV1StatefulSetListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8418,7 +8418,7 @@ func encodeWatchAppsV1StatefulSetListForAllNamespacesResponse(response WatchApps
 func encodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse(response WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8444,7 +8444,7 @@ func encodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse
 func encodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response WatchAutoscalingV1NamespacedHorizontalPodAutoscalerRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8470,7 +8470,7 @@ func encodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response 
 func encodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListResponse(response WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8496,7 +8496,7 @@ func encodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListResponse(respo
 func encodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResponse(response WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8522,7 +8522,7 @@ func encodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes
 func encodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(response WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8548,7 +8548,7 @@ func encodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp
 func encodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListResponse(response WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8574,7 +8574,7 @@ func encodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListResponse(
 func encodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResponse(response WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8600,7 +8600,7 @@ func encodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes
 func encodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(response WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8626,7 +8626,7 @@ func encodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp
 func encodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListResponse(response WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8652,7 +8652,7 @@ func encodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListResponse(
 func encodeWatchBatchV1CronJobListForAllNamespacesResponse(response WatchBatchV1CronJobListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8678,7 +8678,7 @@ func encodeWatchBatchV1CronJobListForAllNamespacesResponse(response WatchBatchV1
 func encodeWatchBatchV1JobListForAllNamespacesResponse(response WatchBatchV1JobListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8704,7 +8704,7 @@ func encodeWatchBatchV1JobListForAllNamespacesResponse(response WatchBatchV1JobL
 func encodeWatchBatchV1NamespacedCronJobResponse(response WatchBatchV1NamespacedCronJobRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8730,7 +8730,7 @@ func encodeWatchBatchV1NamespacedCronJobResponse(response WatchBatchV1Namespaced
 func encodeWatchBatchV1NamespacedCronJobListResponse(response WatchBatchV1NamespacedCronJobListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8756,7 +8756,7 @@ func encodeWatchBatchV1NamespacedCronJobListResponse(response WatchBatchV1Namesp
 func encodeWatchBatchV1NamespacedJobResponse(response WatchBatchV1NamespacedJobRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8782,7 +8782,7 @@ func encodeWatchBatchV1NamespacedJobResponse(response WatchBatchV1NamespacedJobR
 func encodeWatchBatchV1NamespacedJobListResponse(response WatchBatchV1NamespacedJobListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8808,7 +8808,7 @@ func encodeWatchBatchV1NamespacedJobListResponse(response WatchBatchV1Namespaced
 func encodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(response WatchBatchV1beta1CronJobListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8834,7 +8834,7 @@ func encodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(response WatchBa
 func encodeWatchBatchV1beta1NamespacedCronJobResponse(response WatchBatchV1beta1NamespacedCronJobRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8860,7 +8860,7 @@ func encodeWatchBatchV1beta1NamespacedCronJobResponse(response WatchBatchV1beta1
 func encodeWatchBatchV1beta1NamespacedCronJobListResponse(response WatchBatchV1beta1NamespacedCronJobListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8886,7 +8886,7 @@ func encodeWatchBatchV1beta1NamespacedCronJobListResponse(response WatchBatchV1b
 func encodeWatchCertificatesV1CertificateSigningRequestResponse(response WatchCertificatesV1CertificateSigningRequestRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8912,7 +8912,7 @@ func encodeWatchCertificatesV1CertificateSigningRequestResponse(response WatchCe
 func encodeWatchCertificatesV1CertificateSigningRequestListResponse(response WatchCertificatesV1CertificateSigningRequestListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8938,7 +8938,7 @@ func encodeWatchCertificatesV1CertificateSigningRequestListResponse(response Wat
 func encodeWatchCoordinationV1LeaseListForAllNamespacesResponse(response WatchCoordinationV1LeaseListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8964,7 +8964,7 @@ func encodeWatchCoordinationV1LeaseListForAllNamespacesResponse(response WatchCo
 func encodeWatchCoordinationV1NamespacedLeaseResponse(response WatchCoordinationV1NamespacedLeaseRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8990,7 +8990,7 @@ func encodeWatchCoordinationV1NamespacedLeaseResponse(response WatchCoordination
 func encodeWatchCoordinationV1NamespacedLeaseListResponse(response WatchCoordinationV1NamespacedLeaseListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9016,7 +9016,7 @@ func encodeWatchCoordinationV1NamespacedLeaseListResponse(response WatchCoordina
 func encodeWatchCoreV1ConfigMapListForAllNamespacesResponse(response WatchCoreV1ConfigMapListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9042,7 +9042,7 @@ func encodeWatchCoreV1ConfigMapListForAllNamespacesResponse(response WatchCoreV1
 func encodeWatchCoreV1EndpointsListForAllNamespacesResponse(response WatchCoreV1EndpointsListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9068,7 +9068,7 @@ func encodeWatchCoreV1EndpointsListForAllNamespacesResponse(response WatchCoreV1
 func encodeWatchCoreV1EventListForAllNamespacesResponse(response WatchCoreV1EventListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9094,7 +9094,7 @@ func encodeWatchCoreV1EventListForAllNamespacesResponse(response WatchCoreV1Even
 func encodeWatchCoreV1LimitRangeListForAllNamespacesResponse(response WatchCoreV1LimitRangeListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9120,7 +9120,7 @@ func encodeWatchCoreV1LimitRangeListForAllNamespacesResponse(response WatchCoreV
 func encodeWatchCoreV1NamespaceResponse(response WatchCoreV1NamespaceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9146,7 +9146,7 @@ func encodeWatchCoreV1NamespaceResponse(response WatchCoreV1NamespaceRes, w http
 func encodeWatchCoreV1NamespaceListResponse(response WatchCoreV1NamespaceListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9172,7 +9172,7 @@ func encodeWatchCoreV1NamespaceListResponse(response WatchCoreV1NamespaceListRes
 func encodeWatchCoreV1NamespacedConfigMapResponse(response WatchCoreV1NamespacedConfigMapRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9198,7 +9198,7 @@ func encodeWatchCoreV1NamespacedConfigMapResponse(response WatchCoreV1Namespaced
 func encodeWatchCoreV1NamespacedConfigMapListResponse(response WatchCoreV1NamespacedConfigMapListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9224,7 +9224,7 @@ func encodeWatchCoreV1NamespacedConfigMapListResponse(response WatchCoreV1Namesp
 func encodeWatchCoreV1NamespacedEndpointsResponse(response WatchCoreV1NamespacedEndpointsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9250,7 +9250,7 @@ func encodeWatchCoreV1NamespacedEndpointsResponse(response WatchCoreV1Namespaced
 func encodeWatchCoreV1NamespacedEndpointsListResponse(response WatchCoreV1NamespacedEndpointsListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9276,7 +9276,7 @@ func encodeWatchCoreV1NamespacedEndpointsListResponse(response WatchCoreV1Namesp
 func encodeWatchCoreV1NamespacedEventResponse(response WatchCoreV1NamespacedEventRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9302,7 +9302,7 @@ func encodeWatchCoreV1NamespacedEventResponse(response WatchCoreV1NamespacedEven
 func encodeWatchCoreV1NamespacedEventListResponse(response WatchCoreV1NamespacedEventListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9328,7 +9328,7 @@ func encodeWatchCoreV1NamespacedEventListResponse(response WatchCoreV1Namespaced
 func encodeWatchCoreV1NamespacedLimitRangeResponse(response WatchCoreV1NamespacedLimitRangeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9354,7 +9354,7 @@ func encodeWatchCoreV1NamespacedLimitRangeResponse(response WatchCoreV1Namespace
 func encodeWatchCoreV1NamespacedLimitRangeListResponse(response WatchCoreV1NamespacedLimitRangeListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9380,7 +9380,7 @@ func encodeWatchCoreV1NamespacedLimitRangeListResponse(response WatchCoreV1Names
 func encodeWatchCoreV1NamespacedPersistentVolumeClaimResponse(response WatchCoreV1NamespacedPersistentVolumeClaimRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9406,7 +9406,7 @@ func encodeWatchCoreV1NamespacedPersistentVolumeClaimResponse(response WatchCore
 func encodeWatchCoreV1NamespacedPersistentVolumeClaimListResponse(response WatchCoreV1NamespacedPersistentVolumeClaimListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9432,7 +9432,7 @@ func encodeWatchCoreV1NamespacedPersistentVolumeClaimListResponse(response Watch
 func encodeWatchCoreV1NamespacedPodResponse(response WatchCoreV1NamespacedPodRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9458,7 +9458,7 @@ func encodeWatchCoreV1NamespacedPodResponse(response WatchCoreV1NamespacedPodRes
 func encodeWatchCoreV1NamespacedPodListResponse(response WatchCoreV1NamespacedPodListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9484,7 +9484,7 @@ func encodeWatchCoreV1NamespacedPodListResponse(response WatchCoreV1NamespacedPo
 func encodeWatchCoreV1NamespacedPodTemplateResponse(response WatchCoreV1NamespacedPodTemplateRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9510,7 +9510,7 @@ func encodeWatchCoreV1NamespacedPodTemplateResponse(response WatchCoreV1Namespac
 func encodeWatchCoreV1NamespacedPodTemplateListResponse(response WatchCoreV1NamespacedPodTemplateListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9536,7 +9536,7 @@ func encodeWatchCoreV1NamespacedPodTemplateListResponse(response WatchCoreV1Name
 func encodeWatchCoreV1NamespacedReplicationControllerResponse(response WatchCoreV1NamespacedReplicationControllerRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9562,7 +9562,7 @@ func encodeWatchCoreV1NamespacedReplicationControllerResponse(response WatchCore
 func encodeWatchCoreV1NamespacedReplicationControllerListResponse(response WatchCoreV1NamespacedReplicationControllerListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9588,7 +9588,7 @@ func encodeWatchCoreV1NamespacedReplicationControllerListResponse(response Watch
 func encodeWatchCoreV1NamespacedResourceQuotaResponse(response WatchCoreV1NamespacedResourceQuotaRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9614,7 +9614,7 @@ func encodeWatchCoreV1NamespacedResourceQuotaResponse(response WatchCoreV1Namesp
 func encodeWatchCoreV1NamespacedResourceQuotaListResponse(response WatchCoreV1NamespacedResourceQuotaListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9640,7 +9640,7 @@ func encodeWatchCoreV1NamespacedResourceQuotaListResponse(response WatchCoreV1Na
 func encodeWatchCoreV1NamespacedSecretResponse(response WatchCoreV1NamespacedSecretRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9666,7 +9666,7 @@ func encodeWatchCoreV1NamespacedSecretResponse(response WatchCoreV1NamespacedSec
 func encodeWatchCoreV1NamespacedSecretListResponse(response WatchCoreV1NamespacedSecretListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9692,7 +9692,7 @@ func encodeWatchCoreV1NamespacedSecretListResponse(response WatchCoreV1Namespace
 func encodeWatchCoreV1NamespacedServiceResponse(response WatchCoreV1NamespacedServiceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9718,7 +9718,7 @@ func encodeWatchCoreV1NamespacedServiceResponse(response WatchCoreV1NamespacedSe
 func encodeWatchCoreV1NamespacedServiceAccountResponse(response WatchCoreV1NamespacedServiceAccountRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9744,7 +9744,7 @@ func encodeWatchCoreV1NamespacedServiceAccountResponse(response WatchCoreV1Names
 func encodeWatchCoreV1NamespacedServiceAccountListResponse(response WatchCoreV1NamespacedServiceAccountListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9770,7 +9770,7 @@ func encodeWatchCoreV1NamespacedServiceAccountListResponse(response WatchCoreV1N
 func encodeWatchCoreV1NamespacedServiceListResponse(response WatchCoreV1NamespacedServiceListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9796,7 +9796,7 @@ func encodeWatchCoreV1NamespacedServiceListResponse(response WatchCoreV1Namespac
 func encodeWatchCoreV1NodeResponse(response WatchCoreV1NodeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9822,7 +9822,7 @@ func encodeWatchCoreV1NodeResponse(response WatchCoreV1NodeRes, w http.ResponseW
 func encodeWatchCoreV1NodeListResponse(response WatchCoreV1NodeListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9848,7 +9848,7 @@ func encodeWatchCoreV1NodeListResponse(response WatchCoreV1NodeListRes, w http.R
 func encodeWatchCoreV1PersistentVolumeResponse(response WatchCoreV1PersistentVolumeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9874,7 +9874,7 @@ func encodeWatchCoreV1PersistentVolumeResponse(response WatchCoreV1PersistentVol
 func encodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(response WatchCoreV1PersistentVolumeClaimListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9900,7 +9900,7 @@ func encodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(response
 func encodeWatchCoreV1PersistentVolumeListResponse(response WatchCoreV1PersistentVolumeListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9926,7 +9926,7 @@ func encodeWatchCoreV1PersistentVolumeListResponse(response WatchCoreV1Persisten
 func encodeWatchCoreV1PodListForAllNamespacesResponse(response WatchCoreV1PodListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9952,7 +9952,7 @@ func encodeWatchCoreV1PodListForAllNamespacesResponse(response WatchCoreV1PodLis
 func encodeWatchCoreV1PodTemplateListForAllNamespacesResponse(response WatchCoreV1PodTemplateListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9978,7 +9978,7 @@ func encodeWatchCoreV1PodTemplateListForAllNamespacesResponse(response WatchCore
 func encodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(response WatchCoreV1ReplicationControllerListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10004,7 +10004,7 @@ func encodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(response
 func encodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(response WatchCoreV1ResourceQuotaListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10030,7 +10030,7 @@ func encodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(response WatchCo
 func encodeWatchCoreV1SecretListForAllNamespacesResponse(response WatchCoreV1SecretListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10056,7 +10056,7 @@ func encodeWatchCoreV1SecretListForAllNamespacesResponse(response WatchCoreV1Sec
 func encodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(response WatchCoreV1ServiceAccountListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10082,7 +10082,7 @@ func encodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(response WatchC
 func encodeWatchCoreV1ServiceListForAllNamespacesResponse(response WatchCoreV1ServiceListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10108,7 +10108,7 @@ func encodeWatchCoreV1ServiceListForAllNamespacesResponse(response WatchCoreV1Se
 func encodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(response WatchDiscoveryV1EndpointSliceListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10134,7 +10134,7 @@ func encodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(response Wa
 func encodeWatchDiscoveryV1NamespacedEndpointSliceResponse(response WatchDiscoveryV1NamespacedEndpointSliceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10160,7 +10160,7 @@ func encodeWatchDiscoveryV1NamespacedEndpointSliceResponse(response WatchDiscove
 func encodeWatchDiscoveryV1NamespacedEndpointSliceListResponse(response WatchDiscoveryV1NamespacedEndpointSliceListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10186,7 +10186,7 @@ func encodeWatchDiscoveryV1NamespacedEndpointSliceListResponse(response WatchDis
 func encodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(response WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10212,7 +10212,7 @@ func encodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(respon
 func encodeWatchDiscoveryV1beta1NamespacedEndpointSliceResponse(response WatchDiscoveryV1beta1NamespacedEndpointSliceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10238,7 +10238,7 @@ func encodeWatchDiscoveryV1beta1NamespacedEndpointSliceResponse(response WatchDi
 func encodeWatchDiscoveryV1beta1NamespacedEndpointSliceListResponse(response WatchDiscoveryV1beta1NamespacedEndpointSliceListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10264,7 +10264,7 @@ func encodeWatchDiscoveryV1beta1NamespacedEndpointSliceListResponse(response Wat
 func encodeWatchEventsV1EventListForAllNamespacesResponse(response WatchEventsV1EventListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10290,7 +10290,7 @@ func encodeWatchEventsV1EventListForAllNamespacesResponse(response WatchEventsV1
 func encodeWatchEventsV1NamespacedEventResponse(response WatchEventsV1NamespacedEventRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10316,7 +10316,7 @@ func encodeWatchEventsV1NamespacedEventResponse(response WatchEventsV1Namespaced
 func encodeWatchEventsV1NamespacedEventListResponse(response WatchEventsV1NamespacedEventListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10342,7 +10342,7 @@ func encodeWatchEventsV1NamespacedEventListResponse(response WatchEventsV1Namesp
 func encodeWatchEventsV1beta1EventListForAllNamespacesResponse(response WatchEventsV1beta1EventListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10368,7 +10368,7 @@ func encodeWatchEventsV1beta1EventListForAllNamespacesResponse(response WatchEve
 func encodeWatchEventsV1beta1NamespacedEventResponse(response WatchEventsV1beta1NamespacedEventRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10394,7 +10394,7 @@ func encodeWatchEventsV1beta1NamespacedEventResponse(response WatchEventsV1beta1
 func encodeWatchEventsV1beta1NamespacedEventListResponse(response WatchEventsV1beta1NamespacedEventListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10420,7 +10420,7 @@ func encodeWatchEventsV1beta1NamespacedEventListResponse(response WatchEventsV1b
 func encodeWatchFlowcontrolApiserverV1beta1FlowSchemaResponse(response WatchFlowcontrolApiserverV1beta1FlowSchemaRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10446,7 +10446,7 @@ func encodeWatchFlowcontrolApiserverV1beta1FlowSchemaResponse(response WatchFlow
 func encodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(response WatchFlowcontrolApiserverV1beta1FlowSchemaListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10472,7 +10472,7 @@ func encodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(response Watch
 func encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(response WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10498,7 +10498,7 @@ func encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(re
 func encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResponse(response WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10524,7 +10524,7 @@ func encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRespons
 func encodeWatchFlowcontrolApiserverV1beta2FlowSchemaResponse(response WatchFlowcontrolApiserverV1beta2FlowSchemaRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10550,7 +10550,7 @@ func encodeWatchFlowcontrolApiserverV1beta2FlowSchemaResponse(response WatchFlow
 func encodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(response WatchFlowcontrolApiserverV1beta2FlowSchemaListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10576,7 +10576,7 @@ func encodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(response Watch
 func encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(response WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10602,7 +10602,7 @@ func encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(re
 func encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResponse(response WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10628,7 +10628,7 @@ func encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRespons
 func encodeWatchInternalApiserverV1alpha1StorageVersionResponse(response WatchInternalApiserverV1alpha1StorageVersionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10654,7 +10654,7 @@ func encodeWatchInternalApiserverV1alpha1StorageVersionResponse(response WatchIn
 func encodeWatchInternalApiserverV1alpha1StorageVersionListResponse(response WatchInternalApiserverV1alpha1StorageVersionListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10680,7 +10680,7 @@ func encodeWatchInternalApiserverV1alpha1StorageVersionListResponse(response Wat
 func encodeWatchNetworkingV1IngressClassResponse(response WatchNetworkingV1IngressClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10706,7 +10706,7 @@ func encodeWatchNetworkingV1IngressClassResponse(response WatchNetworkingV1Ingre
 func encodeWatchNetworkingV1IngressClassListResponse(response WatchNetworkingV1IngressClassListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10732,7 +10732,7 @@ func encodeWatchNetworkingV1IngressClassListResponse(response WatchNetworkingV1I
 func encodeWatchNetworkingV1IngressListForAllNamespacesResponse(response WatchNetworkingV1IngressListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10758,7 +10758,7 @@ func encodeWatchNetworkingV1IngressListForAllNamespacesResponse(response WatchNe
 func encodeWatchNetworkingV1NamespacedIngressResponse(response WatchNetworkingV1NamespacedIngressRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10784,7 +10784,7 @@ func encodeWatchNetworkingV1NamespacedIngressResponse(response WatchNetworkingV1
 func encodeWatchNetworkingV1NamespacedIngressListResponse(response WatchNetworkingV1NamespacedIngressListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10810,7 +10810,7 @@ func encodeWatchNetworkingV1NamespacedIngressListResponse(response WatchNetworki
 func encodeWatchNetworkingV1NamespacedNetworkPolicyResponse(response WatchNetworkingV1NamespacedNetworkPolicyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10836,7 +10836,7 @@ func encodeWatchNetworkingV1NamespacedNetworkPolicyResponse(response WatchNetwor
 func encodeWatchNetworkingV1NamespacedNetworkPolicyListResponse(response WatchNetworkingV1NamespacedNetworkPolicyListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10862,7 +10862,7 @@ func encodeWatchNetworkingV1NamespacedNetworkPolicyListResponse(response WatchNe
 func encodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(response WatchNetworkingV1NetworkPolicyListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10888,7 +10888,7 @@ func encodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(response W
 func encodeWatchNodeV1RuntimeClassResponse(response WatchNodeV1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10914,7 +10914,7 @@ func encodeWatchNodeV1RuntimeClassResponse(response WatchNodeV1RuntimeClassRes, 
 func encodeWatchNodeV1RuntimeClassListResponse(response WatchNodeV1RuntimeClassListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10940,7 +10940,7 @@ func encodeWatchNodeV1RuntimeClassListResponse(response WatchNodeV1RuntimeClassL
 func encodeWatchNodeV1alpha1RuntimeClassResponse(response WatchNodeV1alpha1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10966,7 +10966,7 @@ func encodeWatchNodeV1alpha1RuntimeClassResponse(response WatchNodeV1alpha1Runti
 func encodeWatchNodeV1alpha1RuntimeClassListResponse(response WatchNodeV1alpha1RuntimeClassListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10992,7 +10992,7 @@ func encodeWatchNodeV1alpha1RuntimeClassListResponse(response WatchNodeV1alpha1R
 func encodeWatchNodeV1beta1RuntimeClassResponse(response WatchNodeV1beta1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11018,7 +11018,7 @@ func encodeWatchNodeV1beta1RuntimeClassResponse(response WatchNodeV1beta1Runtime
 func encodeWatchNodeV1beta1RuntimeClassListResponse(response WatchNodeV1beta1RuntimeClassListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11044,7 +11044,7 @@ func encodeWatchNodeV1beta1RuntimeClassListResponse(response WatchNodeV1beta1Run
 func encodeWatchPolicyV1NamespacedPodDisruptionBudgetResponse(response WatchPolicyV1NamespacedPodDisruptionBudgetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11070,7 +11070,7 @@ func encodeWatchPolicyV1NamespacedPodDisruptionBudgetResponse(response WatchPoli
 func encodeWatchPolicyV1NamespacedPodDisruptionBudgetListResponse(response WatchPolicyV1NamespacedPodDisruptionBudgetListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11096,7 +11096,7 @@ func encodeWatchPolicyV1NamespacedPodDisruptionBudgetListResponse(response Watch
 func encodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(response WatchPolicyV1PodDisruptionBudgetListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11122,7 +11122,7 @@ func encodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(response
 func encodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response WatchPolicyV1beta1NamespacedPodDisruptionBudgetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11148,7 +11148,7 @@ func encodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response Watc
 func encodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListResponse(response WatchPolicyV1beta1NamespacedPodDisruptionBudgetListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11174,7 +11174,7 @@ func encodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListResponse(response 
 func encodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(response WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11200,7 +11200,7 @@ func encodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(res
 func encodeWatchPolicyV1beta1PodSecurityPolicyResponse(response WatchPolicyV1beta1PodSecurityPolicyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11226,7 +11226,7 @@ func encodeWatchPolicyV1beta1PodSecurityPolicyResponse(response WatchPolicyV1bet
 func encodeWatchPolicyV1beta1PodSecurityPolicyListResponse(response WatchPolicyV1beta1PodSecurityPolicyListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11252,7 +11252,7 @@ func encodeWatchPolicyV1beta1PodSecurityPolicyListResponse(response WatchPolicyV
 func encodeWatchRbacAuthorizationV1ClusterRoleResponse(response WatchRbacAuthorizationV1ClusterRoleRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11278,7 +11278,7 @@ func encodeWatchRbacAuthorizationV1ClusterRoleResponse(response WatchRbacAuthori
 func encodeWatchRbacAuthorizationV1ClusterRoleBindingResponse(response WatchRbacAuthorizationV1ClusterRoleBindingRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11304,7 +11304,7 @@ func encodeWatchRbacAuthorizationV1ClusterRoleBindingResponse(response WatchRbac
 func encodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(response WatchRbacAuthorizationV1ClusterRoleBindingListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11330,7 +11330,7 @@ func encodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(response Watch
 func encodeWatchRbacAuthorizationV1ClusterRoleListResponse(response WatchRbacAuthorizationV1ClusterRoleListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11356,7 +11356,7 @@ func encodeWatchRbacAuthorizationV1ClusterRoleListResponse(response WatchRbacAut
 func encodeWatchRbacAuthorizationV1NamespacedRoleResponse(response WatchRbacAuthorizationV1NamespacedRoleRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11382,7 +11382,7 @@ func encodeWatchRbacAuthorizationV1NamespacedRoleResponse(response WatchRbacAuth
 func encodeWatchRbacAuthorizationV1NamespacedRoleBindingResponse(response WatchRbacAuthorizationV1NamespacedRoleBindingRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11408,7 +11408,7 @@ func encodeWatchRbacAuthorizationV1NamespacedRoleBindingResponse(response WatchR
 func encodeWatchRbacAuthorizationV1NamespacedRoleBindingListResponse(response WatchRbacAuthorizationV1NamespacedRoleBindingListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11434,7 +11434,7 @@ func encodeWatchRbacAuthorizationV1NamespacedRoleBindingListResponse(response Wa
 func encodeWatchRbacAuthorizationV1NamespacedRoleListResponse(response WatchRbacAuthorizationV1NamespacedRoleListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11460,7 +11460,7 @@ func encodeWatchRbacAuthorizationV1NamespacedRoleListResponse(response WatchRbac
 func encodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(response WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11486,7 +11486,7 @@ func encodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(respo
 func encodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(response WatchRbacAuthorizationV1RoleListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11512,7 +11512,7 @@ func encodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(response Wat
 func encodeWatchSchedulingV1PriorityClassResponse(response WatchSchedulingV1PriorityClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11538,7 +11538,7 @@ func encodeWatchSchedulingV1PriorityClassResponse(response WatchSchedulingV1Prio
 func encodeWatchSchedulingV1PriorityClassListResponse(response WatchSchedulingV1PriorityClassListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11564,7 +11564,7 @@ func encodeWatchSchedulingV1PriorityClassListResponse(response WatchSchedulingV1
 func encodeWatchStorageV1CSIDriverResponse(response WatchStorageV1CSIDriverRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11590,7 +11590,7 @@ func encodeWatchStorageV1CSIDriverResponse(response WatchStorageV1CSIDriverRes, 
 func encodeWatchStorageV1CSIDriverListResponse(response WatchStorageV1CSIDriverListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11616,7 +11616,7 @@ func encodeWatchStorageV1CSIDriverListResponse(response WatchStorageV1CSIDriverL
 func encodeWatchStorageV1CSINodeResponse(response WatchStorageV1CSINodeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11642,7 +11642,7 @@ func encodeWatchStorageV1CSINodeResponse(response WatchStorageV1CSINodeRes, w ht
 func encodeWatchStorageV1CSINodeListResponse(response WatchStorageV1CSINodeListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11668,7 +11668,7 @@ func encodeWatchStorageV1CSINodeListResponse(response WatchStorageV1CSINodeListR
 func encodeWatchStorageV1StorageClassResponse(response WatchStorageV1StorageClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11694,7 +11694,7 @@ func encodeWatchStorageV1StorageClassResponse(response WatchStorageV1StorageClas
 func encodeWatchStorageV1StorageClassListResponse(response WatchStorageV1StorageClassListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11720,7 +11720,7 @@ func encodeWatchStorageV1StorageClassListResponse(response WatchStorageV1Storage
 func encodeWatchStorageV1VolumeAttachmentResponse(response WatchStorageV1VolumeAttachmentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11746,7 +11746,7 @@ func encodeWatchStorageV1VolumeAttachmentResponse(response WatchStorageV1VolumeA
 func encodeWatchStorageV1VolumeAttachmentListResponse(response WatchStorageV1VolumeAttachmentListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11772,7 +11772,7 @@ func encodeWatchStorageV1VolumeAttachmentListResponse(response WatchStorageV1Vol
 func encodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(response WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11798,7 +11798,7 @@ func encodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(re
 func encodeWatchStorageV1alpha1NamespacedCSIStorageCapacityResponse(response WatchStorageV1alpha1NamespacedCSIStorageCapacityRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11824,7 +11824,7 @@ func encodeWatchStorageV1alpha1NamespacedCSIStorageCapacityResponse(response Wat
 func encodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListResponse(response WatchStorageV1alpha1NamespacedCSIStorageCapacityListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11850,7 +11850,7 @@ func encodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListResponse(response
 func encodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(response WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11876,7 +11876,7 @@ func encodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(res
 func encodeWatchStorageV1beta1NamespacedCSIStorageCapacityResponse(response WatchStorageV1beta1NamespacedCSIStorageCapacityRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11902,7 +11902,7 @@ func encodeWatchStorageV1beta1NamespacedCSIStorageCapacityResponse(response Watc
 func encodeWatchStorageV1beta1NamespacedCSIStorageCapacityListResponse(response WatchStorageV1beta1NamespacedCSIStorageCapacityListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 

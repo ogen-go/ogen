@@ -12,7 +12,7 @@ import (
 )
 
 func encodeAPICaptcha2chcaptchaIDGetResponse(response *Captcha, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -45,7 +45,7 @@ func encodeAPICaptcha2chcaptchaShowGetResponse(response APICaptcha2chcaptchaShow
 }
 
 func encodeAPICaptchaAppIDPublicKeyGetResponse(response *Captcha, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -59,7 +59,7 @@ func encodeAPICaptchaAppIDPublicKeyGetResponse(response *Captcha, w http.Respons
 }
 
 func encodeAPICaptchaInvisibleRecaptchaIDGetResponse(response *Captcha, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -80,7 +80,7 @@ func encodeAPICaptchaInvisibleRecaptchaMobileGetResponse(response *APICaptchaInv
 }
 
 func encodeAPICaptchaRecaptchaIDGetResponse(response *Captcha, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -101,7 +101,7 @@ func encodeAPICaptchaRecaptchaMobileGetResponse(response *APICaptchaRecaptchaMob
 }
 
 func encodeAPIDislikeGetResponse(response *Like, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -115,7 +115,7 @@ func encodeAPIDislikeGetResponse(response *Like, w http.ResponseWriter, span tra
 }
 
 func encodeAPILikeGetResponse(response *Like, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -129,7 +129,7 @@ func encodeAPILikeGetResponse(response *Like, w http.ResponseWriter, span trace.
 }
 
 func encodeAPIMobileV2AfterBoardThreadNumGetResponse(response *MobileThreadPostsAfter, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -143,7 +143,7 @@ func encodeAPIMobileV2AfterBoardThreadNumGetResponse(response *MobileThreadPosts
 }
 
 func encodeAPIMobileV2BoardsGetResponse(response Boards, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -157,7 +157,7 @@ func encodeAPIMobileV2BoardsGetResponse(response Boards, w http.ResponseWriter, 
 }
 
 func encodeAPIMobileV2InfoBoardThreadGetResponse(response *MobileThreadLastInfo, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -171,7 +171,7 @@ func encodeAPIMobileV2InfoBoardThreadGetResponse(response *MobileThreadLastInfo,
 }
 
 func encodeAPIMobileV2PostBoardNumGetResponse(response *MobilePost, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -185,7 +185,7 @@ func encodeAPIMobileV2PostBoardNumGetResponse(response *MobilePost, w http.Respo
 }
 
 func encodeUserPassloginPostResponse(response *Passcode, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -199,7 +199,7 @@ func encodeUserPassloginPostResponse(response *Passcode, w http.ResponseWriter, 
 }
 
 func encodeUserPostingPostResponse(response UserPostingPostOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -213,7 +213,7 @@ func encodeUserPostingPostResponse(response UserPostingPostOK, w http.ResponseWr
 }
 
 func encodeUserReportPostResponse(response *Report, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
