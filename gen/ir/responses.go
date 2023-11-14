@@ -1,6 +1,7 @@
 package ir
 
 import (
+	"fmt"
 	"strings"
 
 	"golang.org/x/exp/slices"
@@ -17,6 +18,15 @@ type ResponseInfo struct {
 	JSONStreaming  bool
 	OpenTelemetry  bool
 	Headers        map[string]*Parameter
+}
+
+func (r ResponseInfo) ContentTypeHeader() string {
+	switch r.ContentType {
+	case "application/json", "text/html", "text/plain":
+		return fmt.Sprintf(`"%s; charset=utf-8"`, r.ContentType)
+	default:
+		return fmt.Sprintf(`%q`, r.ContentType)
+	}
 }
 
 func sortResponseInfos(result []ResponseInfo) {
