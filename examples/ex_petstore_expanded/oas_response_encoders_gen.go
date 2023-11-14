@@ -14,7 +14,7 @@ import (
 )
 
 func encodeAddPetResponse(response *Pet, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -35,7 +35,7 @@ func encodeDeletePetResponse(response *DeletePetNoContent, w http.ResponseWriter
 }
 
 func encodeFindPetByIDResponse(response *Pet, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -49,7 +49,7 @@ func encodeFindPetByIDResponse(response *Pet, w http.ResponseWriter, span trace.
 }
 
 func encodeFindPetsResponse(response []Pet, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -67,7 +67,7 @@ func encodeFindPetsResponse(response []Pet, w http.ResponseWriter, span trace.Sp
 }
 
 func encodeErrorResponse(response *ErrorStatusCode, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	code := response.StatusCode
 	if code == 0 {
 		// Set default status code.

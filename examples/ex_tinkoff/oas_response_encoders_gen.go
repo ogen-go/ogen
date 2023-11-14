@@ -14,7 +14,7 @@ import (
 func encodeMarketBondsGetResponse(response MarketBondsGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MarketInstrumentListResponse:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -27,7 +27,7 @@ func encodeMarketBondsGetResponse(response MarketBondsGetRes, w http.ResponseWri
 		return nil
 
 	case *Error:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
 
@@ -47,7 +47,7 @@ func encodeMarketBondsGetResponse(response MarketBondsGetRes, w http.ResponseWri
 func encodeMarketCandlesGetResponse(response MarketCandlesGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CandlesResponse:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -60,7 +60,7 @@ func encodeMarketCandlesGetResponse(response MarketCandlesGetRes, w http.Respons
 		return nil
 
 	case *Error:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
 
@@ -80,7 +80,7 @@ func encodeMarketCandlesGetResponse(response MarketCandlesGetRes, w http.Respons
 func encodeMarketCurrenciesGetResponse(response MarketCurrenciesGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MarketInstrumentListResponse:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -93,7 +93,7 @@ func encodeMarketCurrenciesGetResponse(response MarketCurrenciesGetRes, w http.R
 		return nil
 
 	case *Error:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
 
@@ -113,7 +113,7 @@ func encodeMarketCurrenciesGetResponse(response MarketCurrenciesGetRes, w http.R
 func encodeMarketEtfsGetResponse(response MarketEtfsGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MarketInstrumentListResponse:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -126,7 +126,7 @@ func encodeMarketEtfsGetResponse(response MarketEtfsGetRes, w http.ResponseWrite
 		return nil
 
 	case *Error:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
 
@@ -146,7 +146,7 @@ func encodeMarketEtfsGetResponse(response MarketEtfsGetRes, w http.ResponseWrite
 func encodeMarketOrderbookGetResponse(response MarketOrderbookGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrderbookResponse:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -159,7 +159,7 @@ func encodeMarketOrderbookGetResponse(response MarketOrderbookGetRes, w http.Res
 		return nil
 
 	case *Error:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
 
@@ -179,7 +179,7 @@ func encodeMarketOrderbookGetResponse(response MarketOrderbookGetRes, w http.Res
 func encodeMarketSearchByFigiGetResponse(response MarketSearchByFigiGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SearchMarketInstrumentResponse:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -192,7 +192,7 @@ func encodeMarketSearchByFigiGetResponse(response MarketSearchByFigiGetRes, w ht
 		return nil
 
 	case *Error:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
 
@@ -212,7 +212,7 @@ func encodeMarketSearchByFigiGetResponse(response MarketSearchByFigiGetRes, w ht
 func encodeMarketSearchByTickerGetResponse(response MarketSearchByTickerGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MarketInstrumentListResponse:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -225,7 +225,7 @@ func encodeMarketSearchByTickerGetResponse(response MarketSearchByTickerGetRes, 
 		return nil
 
 	case *Error:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
 
@@ -245,7 +245,7 @@ func encodeMarketSearchByTickerGetResponse(response MarketSearchByTickerGetRes, 
 func encodeMarketStocksGetResponse(response MarketStocksGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MarketInstrumentListResponse:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -258,7 +258,7 @@ func encodeMarketStocksGetResponse(response MarketStocksGetRes, w http.ResponseW
 		return nil
 
 	case *Error:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
 
@@ -278,7 +278,7 @@ func encodeMarketStocksGetResponse(response MarketStocksGetRes, w http.ResponseW
 func encodeOperationsGetResponse(response OperationsGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OperationsResponse:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -291,7 +291,7 @@ func encodeOperationsGetResponse(response OperationsGetRes, w http.ResponseWrite
 		return nil
 
 	case *Error:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
 
@@ -311,7 +311,7 @@ func encodeOperationsGetResponse(response OperationsGetRes, w http.ResponseWrite
 func encodeOrdersCancelPostResponse(response OrdersCancelPostRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Empty:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -324,7 +324,7 @@ func encodeOrdersCancelPostResponse(response OrdersCancelPostRes, w http.Respons
 		return nil
 
 	case *Error:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
 
@@ -344,7 +344,7 @@ func encodeOrdersCancelPostResponse(response OrdersCancelPostRes, w http.Respons
 func encodeOrdersGetResponse(response OrdersGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrdersResponse:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -357,7 +357,7 @@ func encodeOrdersGetResponse(response OrdersGetRes, w http.ResponseWriter, span 
 		return nil
 
 	case *Error:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
 
@@ -377,7 +377,7 @@ func encodeOrdersGetResponse(response OrdersGetRes, w http.ResponseWriter, span 
 func encodeOrdersLimitOrderPostResponse(response OrdersLimitOrderPostRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *LimitOrderResponse:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -390,7 +390,7 @@ func encodeOrdersLimitOrderPostResponse(response OrdersLimitOrderPostRes, w http
 		return nil
 
 	case *Error:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
 
@@ -410,7 +410,7 @@ func encodeOrdersLimitOrderPostResponse(response OrdersLimitOrderPostRes, w http
 func encodeOrdersMarketOrderPostResponse(response OrdersMarketOrderPostRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MarketOrderResponse:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -423,7 +423,7 @@ func encodeOrdersMarketOrderPostResponse(response OrdersMarketOrderPostRes, w ht
 		return nil
 
 	case *Error:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
 
@@ -443,7 +443,7 @@ func encodeOrdersMarketOrderPostResponse(response OrdersMarketOrderPostRes, w ht
 func encodePortfolioCurrenciesGetResponse(response PortfolioCurrenciesGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PortfolioCurrenciesResponse:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -456,7 +456,7 @@ func encodePortfolioCurrenciesGetResponse(response PortfolioCurrenciesGetRes, w 
 		return nil
 
 	case *Error:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
 
@@ -476,7 +476,7 @@ func encodePortfolioCurrenciesGetResponse(response PortfolioCurrenciesGetRes, w 
 func encodePortfolioGetResponse(response PortfolioGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PortfolioResponse:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -489,7 +489,7 @@ func encodePortfolioGetResponse(response PortfolioGetRes, w http.ResponseWriter,
 		return nil
 
 	case *Error:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
 
@@ -509,7 +509,7 @@ func encodePortfolioGetResponse(response PortfolioGetRes, w http.ResponseWriter,
 func encodeSandboxClearPostResponse(response SandboxClearPostRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Empty:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -522,7 +522,7 @@ func encodeSandboxClearPostResponse(response SandboxClearPostRes, w http.Respons
 		return nil
 
 	case *Error:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
 
@@ -542,7 +542,7 @@ func encodeSandboxClearPostResponse(response SandboxClearPostRes, w http.Respons
 func encodeSandboxCurrenciesBalancePostResponse(response SandboxCurrenciesBalancePostRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Empty:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -555,7 +555,7 @@ func encodeSandboxCurrenciesBalancePostResponse(response SandboxCurrenciesBalanc
 		return nil
 
 	case *Error:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
 
@@ -575,7 +575,7 @@ func encodeSandboxCurrenciesBalancePostResponse(response SandboxCurrenciesBalanc
 func encodeSandboxPositionsBalancePostResponse(response SandboxPositionsBalancePostRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Empty:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -588,7 +588,7 @@ func encodeSandboxPositionsBalancePostResponse(response SandboxPositionsBalanceP
 		return nil
 
 	case *Error:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
 
@@ -608,7 +608,7 @@ func encodeSandboxPositionsBalancePostResponse(response SandboxPositionsBalanceP
 func encodeSandboxRegisterPostResponse(response SandboxRegisterPostRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SandboxRegisterResponse:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -621,7 +621,7 @@ func encodeSandboxRegisterPostResponse(response SandboxRegisterPostRes, w http.R
 		return nil
 
 	case *Error:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
 
@@ -641,7 +641,7 @@ func encodeSandboxRegisterPostResponse(response SandboxRegisterPostRes, w http.R
 func encodeSandboxRemovePostResponse(response SandboxRemovePostRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Empty:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -654,7 +654,7 @@ func encodeSandboxRemovePostResponse(response SandboxRemovePostRes, w http.Respo
 		return nil
 
 	case *Error:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
 
@@ -674,7 +674,7 @@ func encodeSandboxRemovePostResponse(response SandboxRemovePostRes, w http.Respo
 func encodeUserAccountsGetResponse(response UserAccountsGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UserAccountsResponse:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -687,7 +687,7 @@ func encodeUserAccountsGetResponse(response UserAccountsGetRes, w http.ResponseW
 		return nil
 
 	case *Error:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
 

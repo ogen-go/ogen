@@ -51,7 +51,7 @@ func encodeActionsAddSelfHostedRunnerToGroupForOrgResponse(response *ActionsAddS
 func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *EmptyObject:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -64,7 +64,7 @@ func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunR
 		return nil
 
 	case *ActionsApproveWorkflowRunForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -77,7 +77,7 @@ func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunR
 		return nil
 
 	case *ActionsApproveWorkflowRunNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -95,7 +95,7 @@ func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunR
 }
 
 func encodeActionsCancelWorkflowRunResponse(response *ActionsCancelWorkflowRunAccepted, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(202)
 	span.SetStatus(codes.Ok, http.StatusText(202))
 
@@ -111,7 +111,7 @@ func encodeActionsCancelWorkflowRunResponse(response *ActionsCancelWorkflowRunAc
 func encodeActionsCreateOrUpdateEnvironmentSecretResponse(response ActionsCreateOrUpdateEnvironmentSecretRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *EmptyObject:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -137,7 +137,7 @@ func encodeActionsCreateOrUpdateEnvironmentSecretResponse(response ActionsCreate
 func encodeActionsCreateOrUpdateOrgSecretResponse(response ActionsCreateOrUpdateOrgSecretRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *EmptyObject:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -163,7 +163,7 @@ func encodeActionsCreateOrUpdateOrgSecretResponse(response ActionsCreateOrUpdate
 func encodeActionsCreateOrUpdateRepoSecretResponse(response ActionsCreateOrUpdateRepoSecretRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActionsCreateOrUpdateRepoSecretCreated:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -187,7 +187,7 @@ func encodeActionsCreateOrUpdateRepoSecretResponse(response ActionsCreateOrUpdat
 }
 
 func encodeActionsCreateRegistrationTokenForOrgResponse(response *AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -201,7 +201,7 @@ func encodeActionsCreateRegistrationTokenForOrgResponse(response *Authentication
 }
 
 func encodeActionsCreateRegistrationTokenForRepoResponse(response *AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -215,7 +215,7 @@ func encodeActionsCreateRegistrationTokenForRepoResponse(response *Authenticatio
 }
 
 func encodeActionsCreateRemoveTokenForOrgResponse(response *AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -229,7 +229,7 @@ func encodeActionsCreateRemoveTokenForOrgResponse(response *AuthenticationToken,
 }
 
 func encodeActionsCreateRemoveTokenForRepoResponse(response *AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -243,7 +243,7 @@ func encodeActionsCreateRemoveTokenForRepoResponse(response *AuthenticationToken
 }
 
 func encodeActionsCreateSelfHostedRunnerGroupForOrgResponse(response *RunnerGroupsOrg, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -412,7 +412,7 @@ func encodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(resp
 }
 
 func encodeActionsGetAllowedActionsOrganizationResponse(response *SelectedActions, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -426,7 +426,7 @@ func encodeActionsGetAllowedActionsOrganizationResponse(response *SelectedAction
 }
 
 func encodeActionsGetAllowedActionsRepositoryResponse(response *SelectedActions, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -440,7 +440,7 @@ func encodeActionsGetAllowedActionsRepositoryResponse(response *SelectedActions,
 }
 
 func encodeActionsGetArtifactResponse(response *Artifact, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -454,7 +454,7 @@ func encodeActionsGetArtifactResponse(response *Artifact, w http.ResponseWriter,
 }
 
 func encodeActionsGetEnvironmentPublicKeyResponse(response *ActionsPublicKey, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -468,7 +468,7 @@ func encodeActionsGetEnvironmentPublicKeyResponse(response *ActionsPublicKey, w 
 }
 
 func encodeActionsGetEnvironmentSecretResponse(response *ActionsSecret, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -482,7 +482,7 @@ func encodeActionsGetEnvironmentSecretResponse(response *ActionsSecret, w http.R
 }
 
 func encodeActionsGetGithubActionsPermissionsOrganizationResponse(response *ActionsOrganizationPermissions, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -496,7 +496,7 @@ func encodeActionsGetGithubActionsPermissionsOrganizationResponse(response *Acti
 }
 
 func encodeActionsGetGithubActionsPermissionsRepositoryResponse(response *ActionsRepositoryPermissions, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -510,7 +510,7 @@ func encodeActionsGetGithubActionsPermissionsRepositoryResponse(response *Action
 }
 
 func encodeActionsGetJobForWorkflowRunResponse(response *Job, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -524,7 +524,7 @@ func encodeActionsGetJobForWorkflowRunResponse(response *Job, w http.ResponseWri
 }
 
 func encodeActionsGetOrgPublicKeyResponse(response *ActionsPublicKey, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -538,7 +538,7 @@ func encodeActionsGetOrgPublicKeyResponse(response *ActionsPublicKey, w http.Res
 }
 
 func encodeActionsGetOrgSecretResponse(response *OrganizationActionsSecret, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -552,7 +552,7 @@ func encodeActionsGetOrgSecretResponse(response *OrganizationActionsSecret, w ht
 }
 
 func encodeActionsGetRepoPublicKeyResponse(response *ActionsPublicKey, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -566,7 +566,7 @@ func encodeActionsGetRepoPublicKeyResponse(response *ActionsPublicKey, w http.Re
 }
 
 func encodeActionsGetRepoSecretResponse(response *ActionsSecret, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -580,7 +580,7 @@ func encodeActionsGetRepoSecretResponse(response *ActionsSecret, w http.Response
 }
 
 func encodeActionsGetReviewsForRunResponse(response []EnvironmentApprovals, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -598,7 +598,7 @@ func encodeActionsGetReviewsForRunResponse(response []EnvironmentApprovals, w ht
 }
 
 func encodeActionsGetSelfHostedRunnerForOrgResponse(response *Runner, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -612,7 +612,7 @@ func encodeActionsGetSelfHostedRunnerForOrgResponse(response *Runner, w http.Res
 }
 
 func encodeActionsGetSelfHostedRunnerForRepoResponse(response *Runner, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -626,7 +626,7 @@ func encodeActionsGetSelfHostedRunnerForRepoResponse(response *Runner, w http.Re
 }
 
 func encodeActionsGetSelfHostedRunnerGroupForOrgResponse(response *RunnerGroupsOrg, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -640,7 +640,7 @@ func encodeActionsGetSelfHostedRunnerGroupForOrgResponse(response *RunnerGroupsO
 }
 
 func encodeActionsGetWorkflowRunResponse(response *WorkflowRun, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -654,7 +654,7 @@ func encodeActionsGetWorkflowRunResponse(response *WorkflowRun, w http.ResponseW
 }
 
 func encodeActionsGetWorkflowRunUsageResponse(response *WorkflowRunUsage, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -668,7 +668,7 @@ func encodeActionsGetWorkflowRunUsageResponse(response *WorkflowRunUsage, w http
 }
 
 func encodeActionsListArtifactsForRepoResponse(response *ActionsListArtifactsForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -701,7 +701,7 @@ func encodeActionsListArtifactsForRepoResponse(response *ActionsListArtifactsFor
 }
 
 func encodeActionsListEnvironmentSecretsResponse(response *ActionsListEnvironmentSecretsOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -734,7 +734,7 @@ func encodeActionsListEnvironmentSecretsResponse(response *ActionsListEnvironmen
 }
 
 func encodeActionsListJobsForWorkflowRunResponse(response *ActionsListJobsForWorkflowRunOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -767,7 +767,7 @@ func encodeActionsListJobsForWorkflowRunResponse(response *ActionsListJobsForWor
 }
 
 func encodeActionsListOrgSecretsResponse(response *ActionsListOrgSecretsOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -800,7 +800,7 @@ func encodeActionsListOrgSecretsResponse(response *ActionsListOrgSecretsOKHeader
 }
 
 func encodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(response *ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -814,7 +814,7 @@ func encodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(response *A
 }
 
 func encodeActionsListRepoSecretsResponse(response *ActionsListRepoSecretsOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -847,7 +847,7 @@ func encodeActionsListRepoSecretsResponse(response *ActionsListRepoSecretsOKHead
 }
 
 func encodeActionsListRepoWorkflowsResponse(response *ActionsListRepoWorkflowsOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -880,7 +880,7 @@ func encodeActionsListRepoWorkflowsResponse(response *ActionsListRepoWorkflowsOK
 }
 
 func encodeActionsListRunnerApplicationsForOrgResponse(response []RunnerApplication, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -898,7 +898,7 @@ func encodeActionsListRunnerApplicationsForOrgResponse(response []RunnerApplicat
 }
 
 func encodeActionsListRunnerApplicationsForRepoResponse(response []RunnerApplication, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -916,7 +916,7 @@ func encodeActionsListRunnerApplicationsForRepoResponse(response []RunnerApplica
 }
 
 func encodeActionsListSelectedReposForOrgSecretResponse(response *ActionsListSelectedReposForOrgSecretOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -930,7 +930,7 @@ func encodeActionsListSelectedReposForOrgSecretResponse(response *ActionsListSel
 }
 
 func encodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse(response *ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -944,7 +944,7 @@ func encodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRespon
 }
 
 func encodeActionsListSelfHostedRunnerGroupsForOrgResponse(response *ActionsListSelfHostedRunnerGroupsForOrgOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -958,7 +958,7 @@ func encodeActionsListSelfHostedRunnerGroupsForOrgResponse(response *ActionsList
 }
 
 func encodeActionsListSelfHostedRunnersForOrgResponse(response *ActionsListSelfHostedRunnersForOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -991,7 +991,7 @@ func encodeActionsListSelfHostedRunnersForOrgResponse(response *ActionsListSelfH
 }
 
 func encodeActionsListSelfHostedRunnersForRepoResponse(response *ActionsListSelfHostedRunnersForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -1024,7 +1024,7 @@ func encodeActionsListSelfHostedRunnersForRepoResponse(response *ActionsListSelf
 }
 
 func encodeActionsListSelfHostedRunnersInGroupForOrgResponse(response *ActionsListSelfHostedRunnersInGroupForOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -1057,7 +1057,7 @@ func encodeActionsListSelfHostedRunnersInGroupForOrgResponse(response *ActionsLi
 }
 
 func encodeActionsListWorkflowRunArtifactsResponse(response *ActionsListWorkflowRunArtifactsOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -1090,7 +1090,7 @@ func encodeActionsListWorkflowRunArtifactsResponse(response *ActionsListWorkflow
 }
 
 func encodeActionsListWorkflowRunsForRepoResponse(response *ActionsListWorkflowRunsForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -1123,7 +1123,7 @@ func encodeActionsListWorkflowRunsForRepoResponse(response *ActionsListWorkflowR
 }
 
 func encodeActionsReRunWorkflowResponse(response *ActionsReRunWorkflowCreated, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -1170,7 +1170,7 @@ func encodeActionsRemoveSelfHostedRunnerFromGroupForOrgResponse(response *Action
 }
 
 func encodeActionsRetryWorkflowResponse(response *ActionsRetryWorkflowCreated, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -1184,7 +1184,7 @@ func encodeActionsRetryWorkflowResponse(response *ActionsRetryWorkflowCreated, w
 }
 
 func encodeActionsReviewPendingDeploymentsForRunResponse(response []Deployment, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1258,7 +1258,7 @@ func encodeActionsSetSelfHostedRunnersInGroupForOrgResponse(response *ActionsSet
 }
 
 func encodeActionsUpdateSelfHostedRunnerGroupForOrgResponse(response *RunnerGroupsOrg, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1286,7 +1286,7 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 		return nil
 
 	case *ActivityCheckRepoIsStarredByAuthenticatedUserUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -1299,7 +1299,7 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 		return nil
 
 	case *ActivityCheckRepoIsStarredByAuthenticatedUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -1312,7 +1312,7 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 		return nil
 
 	case *ActivityCheckRepoIsStarredByAuthenticatedUserNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -1351,7 +1351,7 @@ func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThrea
 		return nil
 
 	case *ActivityDeleteThreadSubscriptionUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -1364,7 +1364,7 @@ func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThrea
 		return nil
 
 	case *ActivityDeleteThreadSubscriptionForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -1382,7 +1382,7 @@ func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThrea
 }
 
 func encodeActivityGetFeedsResponse(response *Feed, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1398,7 +1398,7 @@ func encodeActivityGetFeedsResponse(response *Feed, w http.ResponseWriter, span 
 func encodeActivityGetRepoSubscriptionResponse(response ActivityGetRepoSubscriptionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *RepositorySubscription:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1411,7 +1411,7 @@ func encodeActivityGetRepoSubscriptionResponse(response ActivityGetRepoSubscript
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -1437,7 +1437,7 @@ func encodeActivityGetRepoSubscriptionResponse(response ActivityGetRepoSubscript
 func encodeActivityGetThreadResponse(response ActivityGetThreadRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Thread:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1456,7 +1456,7 @@ func encodeActivityGetThreadResponse(response ActivityGetThreadRes, w http.Respo
 		return nil
 
 	case *ActivityGetThreadUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -1469,7 +1469,7 @@ func encodeActivityGetThreadResponse(response ActivityGetThreadRes, w http.Respo
 		return nil
 
 	case *ActivityGetThreadForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -1489,7 +1489,7 @@ func encodeActivityGetThreadResponse(response ActivityGetThreadRes, w http.Respo
 func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response ActivityGetThreadSubscriptionForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ThreadSubscription:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1508,7 +1508,7 @@ func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response Ac
 		return nil
 
 	case *ActivityGetThreadSubscriptionForAuthenticatedUserUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -1521,7 +1521,7 @@ func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response Ac
 		return nil
 
 	case *ActivityGetThreadSubscriptionForAuthenticatedUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -1539,7 +1539,7 @@ func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response Ac
 }
 
 func encodeActivityListEventsForAuthenticatedUserResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1559,7 +1559,7 @@ func encodeActivityListEventsForAuthenticatedUserResponse(response []Event, w ht
 func encodeActivityListNotificationsForAuthenticatedUserResponse(response ActivityListNotificationsForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActivityListNotificationsForAuthenticatedUserOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -1601,7 +1601,7 @@ func encodeActivityListNotificationsForAuthenticatedUserResponse(response Activi
 		return nil
 
 	case *ActivityListNotificationsForAuthenticatedUserUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -1614,7 +1614,7 @@ func encodeActivityListNotificationsForAuthenticatedUserResponse(response Activi
 		return nil
 
 	case *ActivityListNotificationsForAuthenticatedUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -1627,7 +1627,7 @@ func encodeActivityListNotificationsForAuthenticatedUserResponse(response Activi
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -1645,7 +1645,7 @@ func encodeActivityListNotificationsForAuthenticatedUserResponse(response Activi
 }
 
 func encodeActivityListOrgEventsForAuthenticatedUserResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1665,7 +1665,7 @@ func encodeActivityListOrgEventsForAuthenticatedUserResponse(response []Event, w
 func encodeActivityListPublicEventsResponse(response ActivityListPublicEventsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActivityListPublicEventsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1684,7 +1684,7 @@ func encodeActivityListPublicEventsResponse(response ActivityListPublicEventsRes
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -1697,7 +1697,7 @@ func encodeActivityListPublicEventsResponse(response ActivityListPublicEventsRes
 		return nil
 
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(503)
 		span.SetStatus(codes.Error, http.StatusText(503))
 
@@ -1717,7 +1717,7 @@ func encodeActivityListPublicEventsResponse(response ActivityListPublicEventsRes
 func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListPublicEventsForRepoNetworkRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActivityListPublicEventsForRepoNetworkOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1730,7 +1730,7 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 		return nil
 
 	case *ActivityListPublicEventsForRepoNetworkMovedPermanently:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(301)
 		span.SetStatus(codes.Ok, http.StatusText(301))
 
@@ -1749,7 +1749,7 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 		return nil
 
 	case *ActivityListPublicEventsForRepoNetworkForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -1762,7 +1762,7 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 		return nil
 
 	case *ActivityListPublicEventsForRepoNetworkNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -1780,7 +1780,7 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 }
 
 func encodeActivityListPublicEventsForUserResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1798,7 +1798,7 @@ func encodeActivityListPublicEventsForUserResponse(response []Event, w http.Resp
 }
 
 func encodeActivityListPublicOrgEventsResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1816,7 +1816,7 @@ func encodeActivityListPublicOrgEventsResponse(response []Event, w http.Response
 }
 
 func encodeActivityListReceivedEventsForUserResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1834,7 +1834,7 @@ func encodeActivityListReceivedEventsForUserResponse(response []Event, w http.Re
 }
 
 func encodeActivityListReceivedPublicEventsForUserResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1852,7 +1852,7 @@ func encodeActivityListReceivedPublicEventsForUserResponse(response []Event, w h
 }
 
 func encodeActivityListRepoEventsResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -1870,7 +1870,7 @@ func encodeActivityListRepoEventsResponse(response []Event, w http.ResponseWrite
 }
 
 func encodeActivityListRepoNotificationsForAuthenticatedUserResponse(response *ActivityListRepoNotificationsForAuthenticatedUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -1909,7 +1909,7 @@ func encodeActivityListRepoNotificationsForAuthenticatedUserResponse(response *A
 func encodeActivityListReposStarredByAuthenticatedUserResponse(response ActivityListReposStarredByAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActivityListReposStarredByAuthenticatedUserOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -1951,7 +1951,7 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 		return nil
 
 	case *ActivityListReposStarredByAuthenticatedUserUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -1964,7 +1964,7 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 		return nil
 
 	case *ActivityListReposStarredByAuthenticatedUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -1982,7 +1982,7 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 }
 
 func encodeActivityListReposWatchedByUserResponse(response *ActivityListReposWatchedByUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -2021,7 +2021,7 @@ func encodeActivityListReposWatchedByUserResponse(response *ActivityListReposWat
 func encodeActivityListWatchedReposForAuthenticatedUserResponse(response ActivityListWatchedReposForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActivityListWatchedReposForAuthenticatedUserOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -2063,7 +2063,7 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 		return nil
 
 	case *ActivityListWatchedReposForAuthenticatedUserUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -2076,7 +2076,7 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 		return nil
 
 	case *ActivityListWatchedReposForAuthenticatedUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -2094,7 +2094,7 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 }
 
 func encodeActivityListWatchersForRepoResponse(response *ActivityListWatchersForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -2133,7 +2133,7 @@ func encodeActivityListWatchersForRepoResponse(response *ActivityListWatchersFor
 func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotificationsAsReadRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActivityMarkNotificationsAsReadAccepted:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(202)
 		span.SetStatus(codes.Ok, http.StatusText(202))
 
@@ -2158,7 +2158,7 @@ func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotifica
 		return nil
 
 	case *ActivityMarkNotificationsAsReadUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -2171,7 +2171,7 @@ func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotifica
 		return nil
 
 	case *ActivityMarkNotificationsAsReadForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -2191,7 +2191,7 @@ func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotifica
 func encodeActivityMarkRepoNotificationsAsReadResponse(response ActivityMarkRepoNotificationsAsReadRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActivityMarkRepoNotificationsAsReadAccepted:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(202)
 		span.SetStatus(codes.Ok, http.StatusText(202))
 
@@ -2229,7 +2229,7 @@ func encodeActivityMarkThreadAsReadResponse(response ActivityMarkThreadAsReadRes
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -2247,7 +2247,7 @@ func encodeActivityMarkThreadAsReadResponse(response ActivityMarkThreadAsReadRes
 }
 
 func encodeActivitySetRepoSubscriptionResponse(response *RepositorySubscription, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2263,7 +2263,7 @@ func encodeActivitySetRepoSubscriptionResponse(response *RepositorySubscription,
 func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubscriptionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ThreadSubscription:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2282,7 +2282,7 @@ func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubsc
 		return nil
 
 	case *ActivitySetThreadSubscriptionUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -2295,7 +2295,7 @@ func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubsc
 		return nil
 
 	case *ActivitySetThreadSubscriptionForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -2327,7 +2327,7 @@ func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRep
 		return nil
 
 	case *ActivityStarRepoForAuthenticatedUserUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -2340,7 +2340,7 @@ func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRep
 		return nil
 
 	case *ActivityStarRepoForAuthenticatedUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -2353,7 +2353,7 @@ func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRep
 		return nil
 
 	case *ActivityStarRepoForAuthenticatedUserNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -2385,7 +2385,7 @@ func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnsta
 		return nil
 
 	case *ActivityUnstarRepoForAuthenticatedUserUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -2398,7 +2398,7 @@ func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnsta
 		return nil
 
 	case *ActivityUnstarRepoForAuthenticatedUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -2411,7 +2411,7 @@ func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnsta
 		return nil
 
 	case *ActivityUnstarRepoForAuthenticatedUserNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -2443,7 +2443,7 @@ func encodeAppsAddRepoToInstallationResponse(response AppsAddRepoToInstallationR
 		return nil
 
 	case *AppsAddRepoToInstallationForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -2456,7 +2456,7 @@ func encodeAppsAddRepoToInstallationResponse(response AppsAddRepoToInstallationR
 		return nil
 
 	case *AppsAddRepoToInstallationNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -2476,7 +2476,7 @@ func encodeAppsAddRepoToInstallationResponse(response AppsAddRepoToInstallationR
 func encodeAppsCheckTokenResponse(response AppsCheckTokenRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Authorization:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2489,7 +2489,7 @@ func encodeAppsCheckTokenResponse(response AppsCheckTokenRes, w http.ResponseWri
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -2502,7 +2502,7 @@ func encodeAppsCheckTokenResponse(response AppsCheckTokenRes, w http.ResponseWri
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -2522,7 +2522,7 @@ func encodeAppsCheckTokenResponse(response AppsCheckTokenRes, w http.ResponseWri
 func encodeAppsCreateContentAttachmentResponse(response AppsCreateContentAttachmentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ContentReferenceAttachment:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2541,7 +2541,7 @@ func encodeAppsCreateContentAttachmentResponse(response AppsCreateContentAttachm
 		return nil
 
 	case *AppsCreateContentAttachmentForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -2554,7 +2554,7 @@ func encodeAppsCreateContentAttachmentResponse(response AppsCreateContentAttachm
 		return nil
 
 	case *AppsCreateContentAttachmentNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -2567,7 +2567,7 @@ func encodeAppsCreateContentAttachmentResponse(response AppsCreateContentAttachm
 		return nil
 
 	case *AppsCreateContentAttachmentGone:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
 
@@ -2580,7 +2580,7 @@ func encodeAppsCreateContentAttachmentResponse(response AppsCreateContentAttachm
 		return nil
 
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(415)
 		span.SetStatus(codes.Error, http.StatusText(415))
 
@@ -2593,7 +2593,7 @@ func encodeAppsCreateContentAttachmentResponse(response AppsCreateContentAttachm
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -2613,7 +2613,7 @@ func encodeAppsCreateContentAttachmentResponse(response AppsCreateContentAttachm
 func encodeAppsCreateFromManifestResponse(response AppsCreateFromManifestRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsCreateFromManifestCreated:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -2626,7 +2626,7 @@ func encodeAppsCreateFromManifestResponse(response AppsCreateFromManifestRes, w 
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -2639,7 +2639,7 @@ func encodeAppsCreateFromManifestResponse(response AppsCreateFromManifestRes, w 
 		return nil
 
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -2659,7 +2659,7 @@ func encodeAppsCreateFromManifestResponse(response AppsCreateFromManifestRes, w 
 func encodeAppsCreateInstallationAccessTokenResponse(response AppsCreateInstallationAccessTokenRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *InstallationToken:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -2672,7 +2672,7 @@ func encodeAppsCreateInstallationAccessTokenResponse(response AppsCreateInstalla
 		return nil
 
 	case *AppsCreateInstallationAccessTokenUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -2685,7 +2685,7 @@ func encodeAppsCreateInstallationAccessTokenResponse(response AppsCreateInstalla
 		return nil
 
 	case *AppsCreateInstallationAccessTokenForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -2698,7 +2698,7 @@ func encodeAppsCreateInstallationAccessTokenResponse(response AppsCreateInstalla
 		return nil
 
 	case *AppsCreateInstallationAccessTokenNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -2711,7 +2711,7 @@ func encodeAppsCreateInstallationAccessTokenResponse(response AppsCreateInstalla
 		return nil
 
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(415)
 		span.SetStatus(codes.Error, http.StatusText(415))
 
@@ -2724,7 +2724,7 @@ func encodeAppsCreateInstallationAccessTokenResponse(response AppsCreateInstalla
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -2750,7 +2750,7 @@ func encodeAppsDeleteAuthorizationResponse(response AppsDeleteAuthorizationRes, 
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -2776,7 +2776,7 @@ func encodeAppsDeleteInstallationResponse(response AppsDeleteInstallationRes, w 
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -2802,7 +2802,7 @@ func encodeAppsDeleteTokenResponse(response AppsDeleteTokenRes, w http.ResponseW
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -2820,7 +2820,7 @@ func encodeAppsDeleteTokenResponse(response AppsDeleteTokenRes, w http.ResponseW
 }
 
 func encodeAppsGetAuthenticatedResponse(response *Integration, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2836,7 +2836,7 @@ func encodeAppsGetAuthenticatedResponse(response *Integration, w http.ResponseWr
 func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Integration:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2849,7 +2849,7 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWrite
 		return nil
 
 	case *AppsGetBySlugForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -2862,7 +2862,7 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWrite
 		return nil
 
 	case *AppsGetBySlugNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -2875,7 +2875,7 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWrite
 		return nil
 
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(415)
 		span.SetStatus(codes.Error, http.StatusText(415))
 
@@ -2895,7 +2895,7 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWrite
 func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptionPlanForAccountRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MarketplacePurchase:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2908,7 +2908,7 @@ func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptio
 		return nil
 
 	case *AppsGetSubscriptionPlanForAccountUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -2921,7 +2921,7 @@ func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptio
 		return nil
 
 	case *AppsGetSubscriptionPlanForAccountNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -2941,7 +2941,7 @@ func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptio
 func encodeAppsGetSubscriptionPlanForAccountStubbedResponse(response AppsGetSubscriptionPlanForAccountStubbedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MarketplacePurchase:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2954,7 +2954,7 @@ func encodeAppsGetSubscriptionPlanForAccountStubbedResponse(response AppsGetSubs
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -2978,7 +2978,7 @@ func encodeAppsGetSubscriptionPlanForAccountStubbedResponse(response AppsGetSubs
 }
 
 func encodeAppsGetWebhookConfigForAppResponse(response *WebhookConfig, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -2994,7 +2994,7 @@ func encodeAppsGetWebhookConfigForAppResponse(response *WebhookConfig, w http.Re
 func encodeAppsGetWebhookDeliveryResponse(response AppsGetWebhookDeliveryRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *HookDelivery:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3007,7 +3007,7 @@ func encodeAppsGetWebhookDeliveryResponse(response AppsGetWebhookDeliveryRes, w 
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
 
@@ -3020,7 +3020,7 @@ func encodeAppsGetWebhookDeliveryResponse(response AppsGetWebhookDeliveryRes, w 
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -3040,7 +3040,7 @@ func encodeAppsGetWebhookDeliveryResponse(response AppsGetWebhookDeliveryRes, w 
 func encodeAppsListAccountsForPlanResponse(response AppsListAccountsForPlanRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsListAccountsForPlanOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -3076,7 +3076,7 @@ func encodeAppsListAccountsForPlanResponse(response AppsListAccountsForPlanRes, 
 		return nil
 
 	case *AppsListAccountsForPlanUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -3089,7 +3089,7 @@ func encodeAppsListAccountsForPlanResponse(response AppsListAccountsForPlanRes, 
 		return nil
 
 	case *AppsListAccountsForPlanNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -3102,7 +3102,7 @@ func encodeAppsListAccountsForPlanResponse(response AppsListAccountsForPlanRes, 
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -3122,7 +3122,7 @@ func encodeAppsListAccountsForPlanResponse(response AppsListAccountsForPlanRes, 
 func encodeAppsListAccountsForPlanStubbedResponse(response AppsListAccountsForPlanStubbedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsListAccountsForPlanStubbedOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -3158,7 +3158,7 @@ func encodeAppsListAccountsForPlanStubbedResponse(response AppsListAccountsForPl
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -3178,7 +3178,7 @@ func encodeAppsListAccountsForPlanStubbedResponse(response AppsListAccountsForPl
 func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsListInstallationReposForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsListInstallationReposForAuthenticatedUserOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -3216,7 +3216,7 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 		return nil
 
 	case *AppsListInstallationReposForAuthenticatedUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -3229,7 +3229,7 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 		return nil
 
 	case *AppsListInstallationReposForAuthenticatedUserNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -3249,7 +3249,7 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsListPlansOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -3285,7 +3285,7 @@ func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWrite
 		return nil
 
 	case *AppsListPlansUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -3298,7 +3298,7 @@ func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWrite
 		return nil
 
 	case *AppsListPlansNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -3318,7 +3318,7 @@ func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWrite
 func encodeAppsListPlansStubbedResponse(response AppsListPlansStubbedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsListPlansStubbedOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -3354,7 +3354,7 @@ func encodeAppsListPlansStubbedResponse(response AppsListPlansStubbedRes, w http
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -3374,7 +3374,7 @@ func encodeAppsListPlansStubbedResponse(response AppsListPlansStubbedRes, w http
 func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposAccessibleToInstallationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsListReposAccessibleToInstallationOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -3412,7 +3412,7 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 		return nil
 
 	case *AppsListReposAccessibleToInstallationUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -3425,7 +3425,7 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 		return nil
 
 	case *AppsListReposAccessibleToInstallationForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -3445,7 +3445,7 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSubscriptionsForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsListSubscriptionsForAuthenticatedUserOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -3487,7 +3487,7 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 		return nil
 
 	case *AppsListSubscriptionsForAuthenticatedUserUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -3500,7 +3500,7 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 		return nil
 
 	case *AppsListSubscriptionsForAuthenticatedUserNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -3520,7 +3520,7 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response AppsListSubscriptionsForAuthenticatedUserStubbedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsListSubscriptionsForAuthenticatedUserStubbedOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -3562,7 +3562,7 @@ func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response App
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -3582,7 +3582,7 @@ func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response App
 func encodeAppsListWebhookDeliveriesResponse(response AppsListWebhookDeliveriesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsListWebhookDeliveriesOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3595,7 +3595,7 @@ func encodeAppsListWebhookDeliveriesResponse(response AppsListWebhookDeliveriesR
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
 
@@ -3608,7 +3608,7 @@ func encodeAppsListWebhookDeliveriesResponse(response AppsListWebhookDeliveriesR
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -3628,7 +3628,7 @@ func encodeAppsListWebhookDeliveriesResponse(response AppsListWebhookDeliveriesR
 func encodeAppsRedeliverWebhookDeliveryResponse(response AppsRedeliverWebhookDeliveryRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Accepted:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(202)
 		span.SetStatus(codes.Ok, http.StatusText(202))
 
@@ -3641,7 +3641,7 @@ func encodeAppsRedeliverWebhookDeliveryResponse(response AppsRedeliverWebhookDel
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
 
@@ -3654,7 +3654,7 @@ func encodeAppsRedeliverWebhookDeliveryResponse(response AppsRedeliverWebhookDel
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -3686,7 +3686,7 @@ func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromIns
 		return nil
 
 	case *AppsRemoveRepoFromInstallationForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -3699,7 +3699,7 @@ func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromIns
 		return nil
 
 	case *AppsRemoveRepoFromInstallationNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -3719,7 +3719,7 @@ func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromIns
 func encodeAppsResetTokenResponse(response AppsResetTokenRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Authorization:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3732,7 +3732,7 @@ func encodeAppsResetTokenResponse(response AppsResetTokenRes, w http.ResponseWri
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -3759,7 +3759,7 @@ func encodeAppsRevokeInstallationAccessTokenResponse(response *AppsRevokeInstall
 func encodeAppsScopeTokenResponse(response AppsScopeTokenRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Authorization:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3772,7 +3772,7 @@ func encodeAppsScopeTokenResponse(response AppsScopeTokenRes, w http.ResponseWri
 		return nil
 
 	case *AppsScopeTokenUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -3785,7 +3785,7 @@ func encodeAppsScopeTokenResponse(response AppsScopeTokenRes, w http.ResponseWri
 		return nil
 
 	case *AppsScopeTokenForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -3798,7 +3798,7 @@ func encodeAppsScopeTokenResponse(response AppsScopeTokenRes, w http.ResponseWri
 		return nil
 
 	case *AppsScopeTokenNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -3811,7 +3811,7 @@ func encodeAppsScopeTokenResponse(response AppsScopeTokenRes, w http.ResponseWri
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -3837,7 +3837,7 @@ func encodeAppsSuspendInstallationResponse(response AppsSuspendInstallationRes, 
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -3863,7 +3863,7 @@ func encodeAppsUnsuspendInstallationResponse(response AppsUnsuspendInstallationR
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -3881,7 +3881,7 @@ func encodeAppsUnsuspendInstallationResponse(response AppsUnsuspendInstallationR
 }
 
 func encodeAppsUpdateWebhookConfigForAppResponse(response *WebhookConfig, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3895,7 +3895,7 @@ func encodeAppsUpdateWebhookConfigForAppResponse(response *WebhookConfig, w http
 }
 
 func encodeBillingGetGithubActionsBillingGheResponse(response *ActionsBillingUsage, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3909,7 +3909,7 @@ func encodeBillingGetGithubActionsBillingGheResponse(response *ActionsBillingUsa
 }
 
 func encodeBillingGetGithubActionsBillingOrgResponse(response *ActionsBillingUsage, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3923,7 +3923,7 @@ func encodeBillingGetGithubActionsBillingOrgResponse(response *ActionsBillingUsa
 }
 
 func encodeBillingGetGithubActionsBillingUserResponse(response *ActionsBillingUsage, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3937,7 +3937,7 @@ func encodeBillingGetGithubActionsBillingUserResponse(response *ActionsBillingUs
 }
 
 func encodeBillingGetGithubPackagesBillingGheResponse(response *PackagesBillingUsage, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3951,7 +3951,7 @@ func encodeBillingGetGithubPackagesBillingGheResponse(response *PackagesBillingU
 }
 
 func encodeBillingGetGithubPackagesBillingOrgResponse(response *PackagesBillingUsage, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3965,7 +3965,7 @@ func encodeBillingGetGithubPackagesBillingOrgResponse(response *PackagesBillingU
 }
 
 func encodeBillingGetGithubPackagesBillingUserResponse(response *PackagesBillingUsage, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3979,7 +3979,7 @@ func encodeBillingGetGithubPackagesBillingUserResponse(response *PackagesBilling
 }
 
 func encodeBillingGetSharedStorageBillingGheResponse(response *CombinedBillingUsage, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -3993,7 +3993,7 @@ func encodeBillingGetSharedStorageBillingGheResponse(response *CombinedBillingUs
 }
 
 func encodeBillingGetSharedStorageBillingOrgResponse(response *CombinedBillingUsage, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4007,7 +4007,7 @@ func encodeBillingGetSharedStorageBillingOrgResponse(response *CombinedBillingUs
 }
 
 func encodeBillingGetSharedStorageBillingUserResponse(response *CombinedBillingUsage, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4023,7 +4023,7 @@ func encodeBillingGetSharedStorageBillingUserResponse(response *CombinedBillingU
 func encodeChecksCreateSuiteResponse(response ChecksCreateSuiteRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ChecksCreateSuiteOK:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4036,7 +4036,7 @@ func encodeChecksCreateSuiteResponse(response ChecksCreateSuiteRes, w http.Respo
 		return nil
 
 	case *ChecksCreateSuiteCreated:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -4054,7 +4054,7 @@ func encodeChecksCreateSuiteResponse(response ChecksCreateSuiteRes, w http.Respo
 }
 
 func encodeChecksGetResponse(response *CheckRun, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4068,7 +4068,7 @@ func encodeChecksGetResponse(response *CheckRun, w http.ResponseWriter, span tra
 }
 
 func encodeChecksGetSuiteResponse(response *CheckSuite, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4082,7 +4082,7 @@ func encodeChecksGetSuiteResponse(response *CheckSuite, w http.ResponseWriter, s
 }
 
 func encodeChecksListAnnotationsResponse(response *ChecksListAnnotationsOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -4119,7 +4119,7 @@ func encodeChecksListAnnotationsResponse(response *ChecksListAnnotationsOKHeader
 }
 
 func encodeChecksListForRefResponse(response *ChecksListForRefOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -4152,7 +4152,7 @@ func encodeChecksListForRefResponse(response *ChecksListForRefOKHeaders, w http.
 }
 
 func encodeChecksListForSuiteResponse(response *ChecksListForSuiteOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -4185,7 +4185,7 @@ func encodeChecksListForSuiteResponse(response *ChecksListForSuiteOKHeaders, w h
 }
 
 func encodeChecksListSuitesForRefResponse(response *ChecksListSuitesForRefOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -4218,7 +4218,7 @@ func encodeChecksListSuitesForRefResponse(response *ChecksListSuitesForRefOKHead
 }
 
 func encodeChecksRerequestSuiteResponse(response *ChecksRerequestSuiteCreated, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -4232,7 +4232,7 @@ func encodeChecksRerequestSuiteResponse(response *ChecksRerequestSuiteCreated, w
 }
 
 func encodeChecksSetSuitesPreferencesResponse(response *CheckSuitePreference, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4248,7 +4248,7 @@ func encodeChecksSetSuitesPreferencesResponse(response *CheckSuitePreference, w 
 func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysisRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CodeScanningAnalysisDeletion:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4261,7 +4261,7 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 		return nil
 
 	case *CodeScanningDeleteAnalysisBadRequest:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
 
@@ -4274,7 +4274,7 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 		return nil
 
 	case *CodeScanningDeleteAnalysisForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -4287,7 +4287,7 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 		return nil
 
 	case *CodeScanningDeleteAnalysisNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -4300,7 +4300,7 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 		return nil
 
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(503)
 		span.SetStatus(codes.Error, http.StatusText(503))
 
@@ -4320,7 +4320,7 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CodeScanningAlert:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4333,7 +4333,7 @@ func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertRes, w http
 		return nil
 
 	case *CodeScanningGetAlertForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -4346,7 +4346,7 @@ func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertRes, w http
 		return nil
 
 	case *CodeScanningGetAlertNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -4359,7 +4359,7 @@ func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertRes, w http
 		return nil
 
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(503)
 		span.SetStatus(codes.Error, http.StatusText(503))
 
@@ -4379,7 +4379,7 @@ func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertRes, w http
 func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CodeScanningAnalysis:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4404,7 +4404,7 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 		return nil
 
 	case *CodeScanningGetAnalysisForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -4417,7 +4417,7 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 		return nil
 
 	case *CodeScanningGetAnalysisNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -4430,7 +4430,7 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 		return nil
 
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(503)
 		span.SetStatus(codes.Error, http.StatusText(503))
 
@@ -4450,7 +4450,7 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 func encodeCodeScanningGetSarifResponse(response CodeScanningGetSarifRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CodeScanningSarifsStatus:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4463,7 +4463,7 @@ func encodeCodeScanningGetSarifResponse(response CodeScanningGetSarifRes, w http
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -4482,7 +4482,7 @@ func encodeCodeScanningGetSarifResponse(response CodeScanningGetSarifRes, w http
 		return nil
 
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(503)
 		span.SetStatus(codes.Error, http.StatusText(503))
 
@@ -4502,7 +4502,7 @@ func encodeCodeScanningGetSarifResponse(response CodeScanningGetSarifRes, w http
 func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlertInstancesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CodeScanningListAlertInstancesOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4515,7 +4515,7 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 		return nil
 
 	case *CodeScanningListAlertInstancesForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -4528,7 +4528,7 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 		return nil
 
 	case *CodeScanningListAlertInstancesNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -4541,7 +4541,7 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 		return nil
 
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(503)
 		span.SetStatus(codes.Error, http.StatusText(503))
 
@@ -4561,7 +4561,7 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlertsForRepoRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CodeScanningListAlertsForRepoOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4574,7 +4574,7 @@ func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlerts
 		return nil
 
 	case *CodeScanningListAlertsForRepoForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -4587,7 +4587,7 @@ func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlerts
 		return nil
 
 	case *CodeScanningListAlertsForRepoNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -4600,7 +4600,7 @@ func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlerts
 		return nil
 
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(503)
 		span.SetStatus(codes.Error, http.StatusText(503))
 
@@ -4620,7 +4620,7 @@ func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlerts
 func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecentAnalysesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CodeScanningListRecentAnalysesOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4633,7 +4633,7 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 		return nil
 
 	case *CodeScanningListRecentAnalysesForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -4646,7 +4646,7 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 		return nil
 
 	case *CodeScanningListRecentAnalysesNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -4659,7 +4659,7 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 		return nil
 
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(503)
 		span.SetStatus(codes.Error, http.StatusText(503))
 
@@ -4679,7 +4679,7 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CodeScanningAlert:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4692,7 +4692,7 @@ func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRes, 
 		return nil
 
 	case *CodeScanningUpdateAlertForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -4705,7 +4705,7 @@ func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRes, 
 		return nil
 
 	case *CodeScanningUpdateAlertNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -4718,7 +4718,7 @@ func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRes, 
 		return nil
 
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(503)
 		span.SetStatus(codes.Error, http.StatusText(503))
 
@@ -4738,7 +4738,7 @@ func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRes, 
 func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CodeScanningSarifsReceipt:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(202)
 		span.SetStatus(codes.Ok, http.StatusText(202))
 
@@ -4757,7 +4757,7 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 		return nil
 
 	case *CodeScanningUploadSarifForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -4770,7 +4770,7 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 		return nil
 
 	case *CodeScanningUploadSarifNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -4789,7 +4789,7 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 		return nil
 
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(503)
 		span.SetStatus(codes.Error, http.StatusText(503))
 
@@ -4809,7 +4809,7 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 func encodeCodesOfConductGetAllCodesOfConductResponse(response CodesOfConductGetAllCodesOfConductRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CodesOfConductGetAllCodesOfConductOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4835,7 +4835,7 @@ func encodeCodesOfConductGetAllCodesOfConductResponse(response CodesOfConductGet
 func encodeCodesOfConductGetConductCodeResponse(response CodesOfConductGetConductCodeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CodeOfConduct:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4854,7 +4854,7 @@ func encodeCodesOfConductGetConductCodeResponse(response CodesOfConductGetConduc
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -4874,7 +4874,7 @@ func encodeCodesOfConductGetConductCodeResponse(response CodesOfConductGetConduc
 func encodeEmojisGetResponse(response EmojisGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *EmojisGetOK:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -4912,7 +4912,7 @@ func encodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse(respon
 }
 
 func encodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(response *AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -4926,7 +4926,7 @@ func encodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(response 
 }
 
 func encodeEnterpriseAdminCreateRemoveTokenForEnterpriseResponse(response *AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -4940,7 +4940,7 @@ func encodeEnterpriseAdminCreateRemoveTokenForEnterpriseResponse(response *Authe
 }
 
 func encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(response *RunnerGroupsEnterprise, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -4996,7 +4996,7 @@ func encodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRespo
 }
 
 func encodeEnterpriseAdminGetAllowedActionsEnterpriseResponse(response *SelectedActions, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5010,7 +5010,7 @@ func encodeEnterpriseAdminGetAllowedActionsEnterpriseResponse(response *Selected
 }
 
 func encodeEnterpriseAdminGetAuditLogResponse(response []AuditLogEvent, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5028,7 +5028,7 @@ func encodeEnterpriseAdminGetAuditLogResponse(response []AuditLogEvent, w http.R
 }
 
 func encodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse(response *ActionsEnterprisePermissions, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5042,7 +5042,7 @@ func encodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse(response
 }
 
 func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupResponse(response *ScimEnterpriseGroup, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5056,7 +5056,7 @@ func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupResponse(r
 }
 
 func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserResponse(response *ScimEnterpriseUser, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5070,7 +5070,7 @@ func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserResponse(re
 }
 
 func encodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse(response *Runner, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5084,7 +5084,7 @@ func encodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse(response *Run
 }
 
 func encodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(response *RunnerGroupsEnterprise, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5098,7 +5098,7 @@ func encodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(response
 }
 
 func encodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response *EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5112,7 +5112,7 @@ func encodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRespon
 }
 
 func encodeEnterpriseAdminListProvisionedGroupsEnterpriseResponse(response *ScimGroupListEnterprise, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5126,7 +5126,7 @@ func encodeEnterpriseAdminListProvisionedGroupsEnterpriseResponse(response *Scim
 }
 
 func encodeEnterpriseAdminListProvisionedIdentitiesEnterpriseResponse(response *ScimUserListEnterprise, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5140,7 +5140,7 @@ func encodeEnterpriseAdminListProvisionedIdentitiesEnterpriseResponse(response *
 }
 
 func encodeEnterpriseAdminListRunnerApplicationsForEnterpriseResponse(response []RunnerApplication, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5158,7 +5158,7 @@ func encodeEnterpriseAdminListRunnerApplicationsForEnterpriseResponse(response [
 }
 
 func encodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(response *EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5172,7 +5172,7 @@ func encodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 }
 
 func encodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(response *EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5186,7 +5186,7 @@ func encodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(respon
 }
 
 func encodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(response *EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -5219,7 +5219,7 @@ func encodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(response *E
 }
 
 func encodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(response *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -5252,7 +5252,7 @@ func encodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(resp
 }
 
 func encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupResponse(response *ScimEnterpriseGroup, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -5266,7 +5266,7 @@ func encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupResponse(response *Sc
 }
 
 func encodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(response *ScimEnterpriseUser, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -5308,7 +5308,7 @@ func encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse(response
 }
 
 func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupResponse(response *ScimEnterpriseGroup, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5322,7 +5322,7 @@ func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupResponse(re
 }
 
 func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(response *ScimEnterpriseUser, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5357,7 +5357,7 @@ func encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse(respo
 }
 
 func encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupResponse(response *ScimEnterpriseGroup, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5371,7 +5371,7 @@ func encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupResponse(response *Sc
 }
 
 func encodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(response *ScimEnterpriseUser, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5385,7 +5385,7 @@ func encodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(response *Sci
 }
 
 func encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponse(response *RunnerGroupsEnterprise, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5413,7 +5413,7 @@ func encodeGistsCheckIsStarredResponse(response GistsCheckIsStarredRes, w http.R
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -5426,7 +5426,7 @@ func encodeGistsCheckIsStarredResponse(response GistsCheckIsStarredRes, w http.R
 		return nil
 
 	case *GistsCheckIsStarredNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -5446,7 +5446,7 @@ func encodeGistsCheckIsStarredResponse(response GistsCheckIsStarredRes, w http.R
 func encodeGistsCreateResponse(response GistsCreateRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistSimpleHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -5484,7 +5484,7 @@ func encodeGistsCreateResponse(response GistsCreateRes, w http.ResponseWriter, s
 		return nil
 
 	case *GistsCreateForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -5497,7 +5497,7 @@ func encodeGistsCreateResponse(response GistsCreateRes, w http.ResponseWriter, s
 		return nil
 
 	case *GistsCreateNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -5510,7 +5510,7 @@ func encodeGistsCreateResponse(response GistsCreateRes, w http.ResponseWriter, s
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -5530,7 +5530,7 @@ func encodeGistsCreateResponse(response GistsCreateRes, w http.ResponseWriter, s
 func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistCommentHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -5568,7 +5568,7 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.Res
 		return nil
 
 	case *GistsCreateCommentForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -5581,7 +5581,7 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.Res
 		return nil
 
 	case *GistsCreateCommentNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -5613,7 +5613,7 @@ func encodeGistsDeleteResponse(response GistsDeleteRes, w http.ResponseWriter, s
 		return nil
 
 	case *GistsDeleteForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -5626,7 +5626,7 @@ func encodeGistsDeleteResponse(response GistsDeleteRes, w http.ResponseWriter, s
 		return nil
 
 	case *GistsDeleteNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -5658,7 +5658,7 @@ func encodeGistsDeleteCommentResponse(response GistsDeleteCommentRes, w http.Res
 		return nil
 
 	case *GistsDeleteCommentForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -5671,7 +5671,7 @@ func encodeGistsDeleteCommentResponse(response GistsDeleteCommentRes, w http.Res
 		return nil
 
 	case *GistsDeleteCommentNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -5691,7 +5691,7 @@ func encodeGistsDeleteCommentResponse(response GistsDeleteCommentRes, w http.Res
 func encodeGistsForkResponse(response GistsForkRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *BaseGistHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -5729,7 +5729,7 @@ func encodeGistsForkResponse(response GistsForkRes, w http.ResponseWriter, span 
 		return nil
 
 	case *GistsForkForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -5742,7 +5742,7 @@ func encodeGistsForkResponse(response GistsForkRes, w http.ResponseWriter, span 
 		return nil
 
 	case *GistsForkNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -5755,7 +5755,7 @@ func encodeGistsForkResponse(response GistsForkRes, w http.ResponseWriter, span 
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -5775,7 +5775,7 @@ func encodeGistsForkResponse(response GistsForkRes, w http.ResponseWriter, span 
 func encodeGistsGetResponse(response GistsGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistSimple:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5794,7 +5794,7 @@ func encodeGistsGetResponse(response GistsGetRes, w http.ResponseWriter, span tr
 		return nil
 
 	case *ForbiddenGist:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -5807,7 +5807,7 @@ func encodeGistsGetResponse(response GistsGetRes, w http.ResponseWriter, span tr
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -5827,7 +5827,7 @@ func encodeGistsGetResponse(response GistsGetRes, w http.ResponseWriter, span tr
 func encodeGistsGetCommentResponse(response GistsGetCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistComment:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5846,7 +5846,7 @@ func encodeGistsGetCommentResponse(response GistsGetCommentRes, w http.ResponseW
 		return nil
 
 	case *ForbiddenGist:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -5859,7 +5859,7 @@ func encodeGistsGetCommentResponse(response GistsGetCommentRes, w http.ResponseW
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -5879,7 +5879,7 @@ func encodeGistsGetCommentResponse(response GistsGetCommentRes, w http.ResponseW
 func encodeGistsGetRevisionResponse(response GistsGetRevisionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistSimple:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -5892,7 +5892,7 @@ func encodeGistsGetRevisionResponse(response GistsGetRevisionRes, w http.Respons
 		return nil
 
 	case *GistsGetRevisionForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -5905,7 +5905,7 @@ func encodeGistsGetRevisionResponse(response GistsGetRevisionRes, w http.Respons
 		return nil
 
 	case *GistsGetRevisionNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -5918,7 +5918,7 @@ func encodeGistsGetRevisionResponse(response GistsGetRevisionRes, w http.Respons
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -5938,7 +5938,7 @@ func encodeGistsGetRevisionResponse(response GistsGetRevisionRes, w http.Respons
 func encodeGistsListResponse(response GistsListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistsListOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -5980,7 +5980,7 @@ func encodeGistsListResponse(response GistsListRes, w http.ResponseWriter, span 
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -6000,7 +6000,7 @@ func encodeGistsListResponse(response GistsListRes, w http.ResponseWriter, span 
 func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistsListCommentsOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -6042,7 +6042,7 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 		return nil
 
 	case *GistsListCommentsForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -6055,7 +6055,7 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 		return nil
 
 	case *GistsListCommentsNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -6075,7 +6075,7 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistsListCommitsOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -6117,7 +6117,7 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 		return nil
 
 	case *GistsListCommitsForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -6130,7 +6130,7 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 		return nil
 
 	case *GistsListCommitsNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -6150,7 +6150,7 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 func encodeGistsListForUserResponse(response GistsListForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistsListForUserOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -6186,7 +6186,7 @@ func encodeGistsListForUserResponse(response GistsListForUserRes, w http.Respons
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -6206,7 +6206,7 @@ func encodeGistsListForUserResponse(response GistsListForUserRes, w http.Respons
 func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistsListForksOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -6248,7 +6248,7 @@ func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWri
 		return nil
 
 	case *GistsListForksForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -6261,7 +6261,7 @@ func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWri
 		return nil
 
 	case *GistsListForksNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -6281,7 +6281,7 @@ func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWri
 func encodeGistsListPublicResponse(response GistsListPublicRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistsListPublicOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -6323,7 +6323,7 @@ func encodeGistsListPublicResponse(response GistsListPublicRes, w http.ResponseW
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -6336,7 +6336,7 @@ func encodeGistsListPublicResponse(response GistsListPublicRes, w http.ResponseW
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -6356,7 +6356,7 @@ func encodeGistsListPublicResponse(response GistsListPublicRes, w http.ResponseW
 func encodeGistsListStarredResponse(response GistsListStarredRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistsListStarredOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -6398,7 +6398,7 @@ func encodeGistsListStarredResponse(response GistsListStarredRes, w http.Respons
 		return nil
 
 	case *GistsListStarredUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -6411,7 +6411,7 @@ func encodeGistsListStarredResponse(response GistsListStarredRes, w http.Respons
 		return nil
 
 	case *GistsListStarredForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -6443,7 +6443,7 @@ func encodeGistsStarResponse(response GistsStarRes, w http.ResponseWriter, span 
 		return nil
 
 	case *GistsStarForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -6456,7 +6456,7 @@ func encodeGistsStarResponse(response GistsStarRes, w http.ResponseWriter, span 
 		return nil
 
 	case *GistsStarNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -6488,7 +6488,7 @@ func encodeGistsUnstarResponse(response GistsUnstarRes, w http.ResponseWriter, s
 		return nil
 
 	case *GistsUnstarForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -6501,7 +6501,7 @@ func encodeGistsUnstarResponse(response GistsUnstarRes, w http.ResponseWriter, s
 		return nil
 
 	case *GistsUnstarNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -6521,7 +6521,7 @@ func encodeGistsUnstarResponse(response GistsUnstarRes, w http.ResponseWriter, s
 func encodeGistsUpdateCommentResponse(response GistsUpdateCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistComment:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6534,7 +6534,7 @@ func encodeGistsUpdateCommentResponse(response GistsUpdateCommentRes, w http.Res
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -6554,7 +6554,7 @@ func encodeGistsUpdateCommentResponse(response GistsUpdateCommentRes, w http.Res
 func encodeGitCreateBlobResponse(response GitCreateBlobRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ShortBlobHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -6586,7 +6586,7 @@ func encodeGitCreateBlobResponse(response GitCreateBlobRes, w http.ResponseWrite
 		return nil
 
 	case *GitCreateBlobForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -6599,7 +6599,7 @@ func encodeGitCreateBlobResponse(response GitCreateBlobRes, w http.ResponseWrite
 		return nil
 
 	case *GitCreateBlobNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -6612,7 +6612,7 @@ func encodeGitCreateBlobResponse(response GitCreateBlobRes, w http.ResponseWrite
 		return nil
 
 	case *GitCreateBlobConflict:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(409)
 		span.SetStatus(codes.Error, http.StatusText(409))
 
@@ -6625,7 +6625,7 @@ func encodeGitCreateBlobResponse(response GitCreateBlobRes, w http.ResponseWrite
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -6645,7 +6645,7 @@ func encodeGitCreateBlobResponse(response GitCreateBlobRes, w http.ResponseWrite
 func encodeGitCreateCommitResponse(response GitCreateCommitRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GitCommitHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -6677,7 +6677,7 @@ func encodeGitCreateCommitResponse(response GitCreateCommitRes, w http.ResponseW
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -6690,7 +6690,7 @@ func encodeGitCreateCommitResponse(response GitCreateCommitRes, w http.ResponseW
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -6710,7 +6710,7 @@ func encodeGitCreateCommitResponse(response GitCreateCommitRes, w http.ResponseW
 func encodeGitCreateRefResponse(response GitCreateRefRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GitRefHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -6742,7 +6742,7 @@ func encodeGitCreateRefResponse(response GitCreateRefRes, w http.ResponseWriter,
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -6762,7 +6762,7 @@ func encodeGitCreateRefResponse(response GitCreateRefRes, w http.ResponseWriter,
 func encodeGitCreateTagResponse(response GitCreateTagRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GitTagHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -6794,7 +6794,7 @@ func encodeGitCreateTagResponse(response GitCreateTagRes, w http.ResponseWriter,
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -6814,7 +6814,7 @@ func encodeGitCreateTagResponse(response GitCreateTagRes, w http.ResponseWriter,
 func encodeGitCreateTreeResponse(response GitCreateTreeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GitTreeHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -6846,7 +6846,7 @@ func encodeGitCreateTreeResponse(response GitCreateTreeRes, w http.ResponseWrite
 		return nil
 
 	case *GitCreateTreeForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -6859,7 +6859,7 @@ func encodeGitCreateTreeResponse(response GitCreateTreeRes, w http.ResponseWrite
 		return nil
 
 	case *GitCreateTreeNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -6872,7 +6872,7 @@ func encodeGitCreateTreeResponse(response GitCreateTreeRes, w http.ResponseWrite
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -6898,7 +6898,7 @@ func encodeGitDeleteRefResponse(response GitDeleteRefRes, w http.ResponseWriter,
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -6918,7 +6918,7 @@ func encodeGitDeleteRefResponse(response GitDeleteRefRes, w http.ResponseWriter,
 func encodeGitGetBlobResponse(response GitGetBlobRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Blob:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6931,7 +6931,7 @@ func encodeGitGetBlobResponse(response GitGetBlobRes, w http.ResponseWriter, spa
 		return nil
 
 	case *GitGetBlobForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -6944,7 +6944,7 @@ func encodeGitGetBlobResponse(response GitGetBlobRes, w http.ResponseWriter, spa
 		return nil
 
 	case *GitGetBlobNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -6957,7 +6957,7 @@ func encodeGitGetBlobResponse(response GitGetBlobRes, w http.ResponseWriter, spa
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -6977,7 +6977,7 @@ func encodeGitGetBlobResponse(response GitGetBlobRes, w http.ResponseWriter, spa
 func encodeGitGetCommitResponse(response GitGetCommitRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GitCommit:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -6990,7 +6990,7 @@ func encodeGitGetCommitResponse(response GitGetCommitRes, w http.ResponseWriter,
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -7010,7 +7010,7 @@ func encodeGitGetCommitResponse(response GitGetCommitRes, w http.ResponseWriter,
 func encodeGitGetRefResponse(response GitGetRefRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GitRef:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7023,7 +7023,7 @@ func encodeGitGetRefResponse(response GitGetRefRes, w http.ResponseWriter, span 
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -7043,7 +7043,7 @@ func encodeGitGetRefResponse(response GitGetRefRes, w http.ResponseWriter, span 
 func encodeGitGetTagResponse(response GitGetTagRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GitTag:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7056,7 +7056,7 @@ func encodeGitGetTagResponse(response GitGetTagRes, w http.ResponseWriter, span 
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -7076,7 +7076,7 @@ func encodeGitGetTagResponse(response GitGetTagRes, w http.ResponseWriter, span 
 func encodeGitGetTreeResponse(response GitGetTreeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GitTree:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7089,7 +7089,7 @@ func encodeGitGetTreeResponse(response GitGetTreeRes, w http.ResponseWriter, spa
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -7102,7 +7102,7 @@ func encodeGitGetTreeResponse(response GitGetTreeRes, w http.ResponseWriter, spa
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -7120,7 +7120,7 @@ func encodeGitGetTreeResponse(response GitGetTreeRes, w http.ResponseWriter, spa
 }
 
 func encodeGitListMatchingRefsResponse(response *GitListMatchingRefsOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -7159,7 +7159,7 @@ func encodeGitListMatchingRefsResponse(response *GitListMatchingRefsOKHeaders, w
 func encodeGitUpdateRefResponse(response GitUpdateRefRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GitRef:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7172,7 +7172,7 @@ func encodeGitUpdateRefResponse(response GitUpdateRefRes, w http.ResponseWriter,
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -7192,7 +7192,7 @@ func encodeGitUpdateRefResponse(response GitUpdateRefRes, w http.ResponseWriter,
 func encodeGitignoreGetAllTemplatesResponse(response GitignoreGetAllTemplatesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GitignoreGetAllTemplatesOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7218,7 +7218,7 @@ func encodeGitignoreGetAllTemplatesResponse(response GitignoreGetAllTemplatesRes
 func encodeGitignoreGetTemplateResponse(response GitignoreGetTemplateRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GitignoreTemplate:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7277,7 +7277,7 @@ func encodeInteractionsRemoveRestrictionsForRepoResponse(response InteractionsRe
 func encodeInteractionsSetRestrictionsForAuthenticatedUserResponse(response InteractionsSetRestrictionsForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *InteractionLimitResponse:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7290,7 +7290,7 @@ func encodeInteractionsSetRestrictionsForAuthenticatedUserResponse(response Inte
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -7310,7 +7310,7 @@ func encodeInteractionsSetRestrictionsForAuthenticatedUserResponse(response Inte
 func encodeInteractionsSetRestrictionsForOrgResponse(response InteractionsSetRestrictionsForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *InteractionLimitResponse:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7323,7 +7323,7 @@ func encodeInteractionsSetRestrictionsForOrgResponse(response InteractionsSetRes
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -7343,7 +7343,7 @@ func encodeInteractionsSetRestrictionsForOrgResponse(response InteractionsSetRes
 func encodeInteractionsSetRestrictionsForRepoResponse(response InteractionsSetRestrictionsForRepoRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *InteractionLimitResponse:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7367,7 +7367,7 @@ func encodeInteractionsSetRestrictionsForRepoResponse(response InteractionsSetRe
 }
 
 func encodeIssuesAddAssigneesResponse(response *IssueSimple, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -7389,7 +7389,7 @@ func encodeIssuesCheckUserCanBeAssignedResponse(response IssuesCheckUserCanBeAss
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -7409,7 +7409,7 @@ func encodeIssuesCheckUserCanBeAssignedResponse(response IssuesCheckUserCanBeAss
 func encodeIssuesCreateResponse(response IssuesCreateRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssueHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -7441,7 +7441,7 @@ func encodeIssuesCreateResponse(response IssuesCreateRes, w http.ResponseWriter,
 		return nil
 
 	case *IssuesCreateForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -7454,7 +7454,7 @@ func encodeIssuesCreateResponse(response IssuesCreateRes, w http.ResponseWriter,
 		return nil
 
 	case *IssuesCreateNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -7467,7 +7467,7 @@ func encodeIssuesCreateResponse(response IssuesCreateRes, w http.ResponseWriter,
 		return nil
 
 	case *IssuesCreateGone:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
 
@@ -7480,7 +7480,7 @@ func encodeIssuesCreateResponse(response IssuesCreateRes, w http.ResponseWriter,
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -7493,7 +7493,7 @@ func encodeIssuesCreateResponse(response IssuesCreateRes, w http.ResponseWriter,
 		return nil
 
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(503)
 		span.SetStatus(codes.Error, http.StatusText(503))
 
@@ -7513,7 +7513,7 @@ func encodeIssuesCreateResponse(response IssuesCreateRes, w http.ResponseWriter,
 func encodeIssuesCreateCommentResponse(response IssuesCreateCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssueCommentHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -7545,7 +7545,7 @@ func encodeIssuesCreateCommentResponse(response IssuesCreateCommentRes, w http.R
 		return nil
 
 	case *IssuesCreateCommentForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -7558,7 +7558,7 @@ func encodeIssuesCreateCommentResponse(response IssuesCreateCommentRes, w http.R
 		return nil
 
 	case *IssuesCreateCommentNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -7571,7 +7571,7 @@ func encodeIssuesCreateCommentResponse(response IssuesCreateCommentRes, w http.R
 		return nil
 
 	case *IssuesCreateCommentGone:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
 
@@ -7584,7 +7584,7 @@ func encodeIssuesCreateCommentResponse(response IssuesCreateCommentRes, w http.R
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -7604,7 +7604,7 @@ func encodeIssuesCreateCommentResponse(response IssuesCreateCommentRes, w http.R
 func encodeIssuesCreateLabelResponse(response IssuesCreateLabelRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *LabelHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -7636,7 +7636,7 @@ func encodeIssuesCreateLabelResponse(response IssuesCreateLabelRes, w http.Respo
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -7649,7 +7649,7 @@ func encodeIssuesCreateLabelResponse(response IssuesCreateLabelRes, w http.Respo
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -7669,7 +7669,7 @@ func encodeIssuesCreateLabelResponse(response IssuesCreateLabelRes, w http.Respo
 func encodeIssuesCreateMilestoneResponse(response IssuesCreateMilestoneRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MilestoneHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -7701,7 +7701,7 @@ func encodeIssuesCreateMilestoneResponse(response IssuesCreateMilestoneRes, w ht
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -7714,7 +7714,7 @@ func encodeIssuesCreateMilestoneResponse(response IssuesCreateMilestoneRes, w ht
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -7754,7 +7754,7 @@ func encodeIssuesDeleteMilestoneResponse(response IssuesDeleteMilestoneRes, w ht
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -7774,7 +7774,7 @@ func encodeIssuesDeleteMilestoneResponse(response IssuesDeleteMilestoneRes, w ht
 func encodeIssuesGetResponse(response IssuesGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Issue:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7787,7 +7787,7 @@ func encodeIssuesGetResponse(response IssuesGetRes, w http.ResponseWriter, span 
 		return nil
 
 	case *IssuesGetMovedPermanently:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(301)
 		span.SetStatus(codes.Ok, http.StatusText(301))
 
@@ -7806,7 +7806,7 @@ func encodeIssuesGetResponse(response IssuesGetRes, w http.ResponseWriter, span 
 		return nil
 
 	case *IssuesGetNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -7819,7 +7819,7 @@ func encodeIssuesGetResponse(response IssuesGetRes, w http.ResponseWriter, span 
 		return nil
 
 	case *IssuesGetGone:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
 
@@ -7839,7 +7839,7 @@ func encodeIssuesGetResponse(response IssuesGetRes, w http.ResponseWriter, span 
 func encodeIssuesGetCommentResponse(response IssuesGetCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssueComment:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7852,7 +7852,7 @@ func encodeIssuesGetCommentResponse(response IssuesGetCommentRes, w http.Respons
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -7872,7 +7872,7 @@ func encodeIssuesGetCommentResponse(response IssuesGetCommentRes, w http.Respons
 func encodeIssuesGetEventResponse(response IssuesGetEventRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssueEvent:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7885,7 +7885,7 @@ func encodeIssuesGetEventResponse(response IssuesGetEventRes, w http.ResponseWri
 		return nil
 
 	case *IssuesGetEventForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -7898,7 +7898,7 @@ func encodeIssuesGetEventResponse(response IssuesGetEventRes, w http.ResponseWri
 		return nil
 
 	case *IssuesGetEventNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -7911,7 +7911,7 @@ func encodeIssuesGetEventResponse(response IssuesGetEventRes, w http.ResponseWri
 		return nil
 
 	case *IssuesGetEventGone:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
 
@@ -7931,7 +7931,7 @@ func encodeIssuesGetEventResponse(response IssuesGetEventRes, w http.ResponseWri
 func encodeIssuesGetLabelResponse(response IssuesGetLabelRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Label:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7944,7 +7944,7 @@ func encodeIssuesGetLabelResponse(response IssuesGetLabelRes, w http.ResponseWri
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -7964,7 +7964,7 @@ func encodeIssuesGetLabelResponse(response IssuesGetLabelRes, w http.ResponseWri
 func encodeIssuesGetMilestoneResponse(response IssuesGetMilestoneRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Milestone:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -7977,7 +7977,7 @@ func encodeIssuesGetMilestoneResponse(response IssuesGetMilestoneRes, w http.Res
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -7997,7 +7997,7 @@ func encodeIssuesGetMilestoneResponse(response IssuesGetMilestoneRes, w http.Res
 func encodeIssuesListResponse(response IssuesListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesListOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -8039,7 +8039,7 @@ func encodeIssuesListResponse(response IssuesListRes, w http.ResponseWriter, spa
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -8052,7 +8052,7 @@ func encodeIssuesListResponse(response IssuesListRes, w http.ResponseWriter, spa
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -8072,7 +8072,7 @@ func encodeIssuesListResponse(response IssuesListRes, w http.ResponseWriter, spa
 func encodeIssuesListAssigneesResponse(response IssuesListAssigneesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesListAssigneesOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -8108,7 +8108,7 @@ func encodeIssuesListAssigneesResponse(response IssuesListAssigneesRes, w http.R
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -8128,7 +8128,7 @@ func encodeIssuesListAssigneesResponse(response IssuesListAssigneesRes, w http.R
 func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesListCommentsOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -8164,7 +8164,7 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 		return nil
 
 	case *IssuesListCommentsNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -8177,7 +8177,7 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 		return nil
 
 	case *IssuesListCommentsGone:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
 
@@ -8197,7 +8197,7 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 func encodeIssuesListCommentsForRepoResponse(response IssuesListCommentsForRepoRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesListCommentsForRepoOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -8233,7 +8233,7 @@ func encodeIssuesListCommentsForRepoResponse(response IssuesListCommentsForRepoR
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -8246,7 +8246,7 @@ func encodeIssuesListCommentsForRepoResponse(response IssuesListCommentsForRepoR
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -8266,7 +8266,7 @@ func encodeIssuesListCommentsForRepoResponse(response IssuesListCommentsForRepoR
 func encodeIssuesListEventsForRepoResponse(response IssuesListEventsForRepoRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesListEventsForRepoOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -8302,7 +8302,7 @@ func encodeIssuesListEventsForRepoResponse(response IssuesListEventsForRepoRes, 
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -8322,7 +8322,7 @@ func encodeIssuesListEventsForRepoResponse(response IssuesListEventsForRepoRes, 
 func encodeIssuesListForAuthenticatedUserResponse(response IssuesListForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesListForAuthenticatedUserOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -8364,7 +8364,7 @@ func encodeIssuesListForAuthenticatedUserResponse(response IssuesListForAuthenti
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -8384,7 +8384,7 @@ func encodeIssuesListForAuthenticatedUserResponse(response IssuesListForAuthenti
 func encodeIssuesListForOrgResponse(response IssuesListForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesListForOrgOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -8420,7 +8420,7 @@ func encodeIssuesListForOrgResponse(response IssuesListForOrgRes, w http.Respons
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -8440,7 +8440,7 @@ func encodeIssuesListForOrgResponse(response IssuesListForOrgRes, w http.Respons
 func encodeIssuesListForRepoResponse(response IssuesListForRepoRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesListForRepoOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -8476,7 +8476,7 @@ func encodeIssuesListForRepoResponse(response IssuesListForRepoRes, w http.Respo
 		return nil
 
 	case *IssuesListForRepoMovedPermanently:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(301)
 		span.SetStatus(codes.Ok, http.StatusText(301))
 
@@ -8489,7 +8489,7 @@ func encodeIssuesListForRepoResponse(response IssuesListForRepoRes, w http.Respo
 		return nil
 
 	case *IssuesListForRepoNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -8502,7 +8502,7 @@ func encodeIssuesListForRepoResponse(response IssuesListForRepoRes, w http.Respo
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -8520,7 +8520,7 @@ func encodeIssuesListForRepoResponse(response IssuesListForRepoRes, w http.Respo
 }
 
 func encodeIssuesListLabelsForMilestoneResponse(response *IssuesListLabelsForMilestoneOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -8559,7 +8559,7 @@ func encodeIssuesListLabelsForMilestoneResponse(response *IssuesListLabelsForMil
 func encodeIssuesListLabelsForRepoResponse(response IssuesListLabelsForRepoRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesListLabelsForRepoOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -8595,7 +8595,7 @@ func encodeIssuesListLabelsForRepoResponse(response IssuesListLabelsForRepoRes, 
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -8615,7 +8615,7 @@ func encodeIssuesListLabelsForRepoResponse(response IssuesListLabelsForRepoRes, 
 func encodeIssuesListLabelsOnIssueResponse(response IssuesListLabelsOnIssueRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesListLabelsOnIssueOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -8651,7 +8651,7 @@ func encodeIssuesListLabelsOnIssueResponse(response IssuesListLabelsOnIssueRes, 
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
 
@@ -8671,7 +8671,7 @@ func encodeIssuesListLabelsOnIssueResponse(response IssuesListLabelsOnIssueRes, 
 func encodeIssuesListMilestonesResponse(response IssuesListMilestonesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesListMilestonesOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -8707,7 +8707,7 @@ func encodeIssuesListMilestonesResponse(response IssuesListMilestonesRes, w http
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -8733,7 +8733,7 @@ func encodeIssuesLockResponse(response IssuesLockRes, w http.ResponseWriter, spa
 		return nil
 
 	case *IssuesLockForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -8746,7 +8746,7 @@ func encodeIssuesLockResponse(response IssuesLockRes, w http.ResponseWriter, spa
 		return nil
 
 	case *IssuesLockNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -8759,7 +8759,7 @@ func encodeIssuesLockResponse(response IssuesLockRes, w http.ResponseWriter, spa
 		return nil
 
 	case *IssuesLockGone:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
 
@@ -8772,7 +8772,7 @@ func encodeIssuesLockResponse(response IssuesLockRes, w http.ResponseWriter, spa
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -8798,7 +8798,7 @@ func encodeIssuesRemoveAllLabelsResponse(response IssuesRemoveAllLabelsRes, w ht
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
 
@@ -8816,7 +8816,7 @@ func encodeIssuesRemoveAllLabelsResponse(response IssuesRemoveAllLabelsRes, w ht
 }
 
 func encodeIssuesRemoveAssigneesResponse(response *IssueSimple, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8832,7 +8832,7 @@ func encodeIssuesRemoveAssigneesResponse(response *IssueSimple, w http.ResponseW
 func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesRemoveLabelOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8845,7 +8845,7 @@ func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelRes, w http.Respo
 		return nil
 
 	case *IssuesRemoveLabelNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -8858,7 +8858,7 @@ func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelRes, w http.Respo
 		return nil
 
 	case *IssuesRemoveLabelGone:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
 
@@ -8884,7 +8884,7 @@ func encodeIssuesUnlockResponse(response IssuesUnlockRes, w http.ResponseWriter,
 		return nil
 
 	case *IssuesUnlockForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -8897,7 +8897,7 @@ func encodeIssuesUnlockResponse(response IssuesUnlockRes, w http.ResponseWriter,
 		return nil
 
 	case *IssuesUnlockNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -8917,7 +8917,7 @@ func encodeIssuesUnlockResponse(response IssuesUnlockRes, w http.ResponseWriter,
 func encodeIssuesUpdateResponse(response IssuesUpdateRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Issue:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -8930,7 +8930,7 @@ func encodeIssuesUpdateResponse(response IssuesUpdateRes, w http.ResponseWriter,
 		return nil
 
 	case *IssuesUpdateMovedPermanently:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(301)
 		span.SetStatus(codes.Ok, http.StatusText(301))
 
@@ -8943,7 +8943,7 @@ func encodeIssuesUpdateResponse(response IssuesUpdateRes, w http.ResponseWriter,
 		return nil
 
 	case *IssuesUpdateForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -8956,7 +8956,7 @@ func encodeIssuesUpdateResponse(response IssuesUpdateRes, w http.ResponseWriter,
 		return nil
 
 	case *IssuesUpdateNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -8969,7 +8969,7 @@ func encodeIssuesUpdateResponse(response IssuesUpdateRes, w http.ResponseWriter,
 		return nil
 
 	case *IssuesUpdateGone:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
 
@@ -8982,7 +8982,7 @@ func encodeIssuesUpdateResponse(response IssuesUpdateRes, w http.ResponseWriter,
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -8995,7 +8995,7 @@ func encodeIssuesUpdateResponse(response IssuesUpdateRes, w http.ResponseWriter,
 		return nil
 
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(503)
 		span.SetStatus(codes.Error, http.StatusText(503))
 
@@ -9015,7 +9015,7 @@ func encodeIssuesUpdateResponse(response IssuesUpdateRes, w http.ResponseWriter,
 func encodeIssuesUpdateCommentResponse(response IssuesUpdateCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssueComment:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9028,7 +9028,7 @@ func encodeIssuesUpdateCommentResponse(response IssuesUpdateCommentRes, w http.R
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -9046,7 +9046,7 @@ func encodeIssuesUpdateCommentResponse(response IssuesUpdateCommentRes, w http.R
 }
 
 func encodeIssuesUpdateLabelResponse(response *Label, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9060,7 +9060,7 @@ func encodeIssuesUpdateLabelResponse(response *Label, w http.ResponseWriter, spa
 }
 
 func encodeIssuesUpdateMilestoneResponse(response *Milestone, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9076,7 +9076,7 @@ func encodeIssuesUpdateMilestoneResponse(response *Milestone, w http.ResponseWri
 func encodeLicensesGetResponse(response LicensesGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *License:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9095,7 +9095,7 @@ func encodeLicensesGetResponse(response LicensesGetRes, w http.ResponseWriter, s
 		return nil
 
 	case *LicensesGetForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -9108,7 +9108,7 @@ func encodeLicensesGetResponse(response LicensesGetRes, w http.ResponseWriter, s
 		return nil
 
 	case *LicensesGetNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -9128,7 +9128,7 @@ func encodeLicensesGetResponse(response LicensesGetRes, w http.ResponseWriter, s
 func encodeLicensesGetAllCommonlyUsedResponse(response LicensesGetAllCommonlyUsedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *LicensesGetAllCommonlyUsedOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9152,7 +9152,7 @@ func encodeLicensesGetAllCommonlyUsedResponse(response LicensesGetAllCommonlyUse
 }
 
 func encodeLicensesGetForRepoResponse(response *LicenseContent, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9168,7 +9168,7 @@ func encodeLicensesGetForRepoResponse(response *LicenseContent, w http.ResponseW
 func encodeMarkdownRenderResponse(response MarkdownRenderRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MarkdownRenderOKHeaders:
-		w.Header().Set("Content-Type", "text/html")
+		w.Header().Set("Content-Type", "text/html; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -9227,7 +9227,7 @@ func encodeMarkdownRenderResponse(response MarkdownRenderRes, w http.ResponseWri
 func encodeMarkdownRenderRawResponse(response MarkdownRenderRawRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MarkdownRenderRawOKHeaders:
-		w.Header().Set("Content-Type", "text/html")
+		w.Header().Set("Content-Type", "text/html; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -9271,7 +9271,7 @@ func encodeMarkdownRenderRawResponse(response MarkdownRenderRawRes, w http.Respo
 func encodeMetaGetResponse(response MetaGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *APIOverview:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9308,7 +9308,7 @@ func encodeMetaGetOctocatResponse(response MetaGetOctocatOK, w http.ResponseWrit
 }
 
 func encodeMetaGetZenResponse(response MetaGetZenOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "text/plain")
+	w.Header().Set("Content-Type", "text/plain; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9321,7 +9321,7 @@ func encodeMetaGetZenResponse(response MetaGetZenOK, w http.ResponseWriter, span
 }
 
 func encodeMetaRootResponse(response *MetaRootOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9356,7 +9356,7 @@ func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response Migratio
 		return nil
 
 	case *MigrationsDeleteArchiveForAuthenticatedUserUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -9369,7 +9369,7 @@ func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response Migratio
 		return nil
 
 	case *MigrationsDeleteArchiveForAuthenticatedUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -9382,7 +9382,7 @@ func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response Migratio
 		return nil
 
 	case *MigrationsDeleteArchiveForAuthenticatedUserNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -9408,7 +9408,7 @@ func encodeMigrationsDeleteArchiveForOrgResponse(response MigrationsDeleteArchiv
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -9434,7 +9434,7 @@ func encodeMigrationsDownloadArchiveForOrgResponse(response MigrationsDownloadAr
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -9466,7 +9466,7 @@ func encodeMigrationsGetArchiveForAuthenticatedUserResponse(response MigrationsG
 		return nil
 
 	case *MigrationsGetArchiveForAuthenticatedUserUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -9479,7 +9479,7 @@ func encodeMigrationsGetArchiveForAuthenticatedUserResponse(response MigrationsG
 		return nil
 
 	case *MigrationsGetArchiveForAuthenticatedUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -9499,7 +9499,7 @@ func encodeMigrationsGetArchiveForAuthenticatedUserResponse(response MigrationsG
 func encodeMigrationsGetCommitAuthorsResponse(response MigrationsGetCommitAuthorsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MigrationsGetCommitAuthorsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9512,7 +9512,7 @@ func encodeMigrationsGetCommitAuthorsResponse(response MigrationsGetCommitAuthor
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -9532,7 +9532,7 @@ func encodeMigrationsGetCommitAuthorsResponse(response MigrationsGetCommitAuthor
 func encodeMigrationsGetImportStatusResponse(response MigrationsGetImportStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Import:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9545,7 +9545,7 @@ func encodeMigrationsGetImportStatusResponse(response MigrationsGetImportStatusR
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -9563,7 +9563,7 @@ func encodeMigrationsGetImportStatusResponse(response MigrationsGetImportStatusR
 }
 
 func encodeMigrationsGetLargeFilesResponse(response []PorterLargeFile, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9583,7 +9583,7 @@ func encodeMigrationsGetLargeFilesResponse(response []PorterLargeFile, w http.Re
 func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGetStatusForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Migration:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9602,7 +9602,7 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 		return nil
 
 	case *MigrationsGetStatusForAuthenticatedUserUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -9615,7 +9615,7 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 		return nil
 
 	case *MigrationsGetStatusForAuthenticatedUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -9628,7 +9628,7 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 		return nil
 
 	case *MigrationsGetStatusForAuthenticatedUserNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -9648,7 +9648,7 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 func encodeMigrationsGetStatusForOrgResponse(response MigrationsGetStatusForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Migration:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9661,7 +9661,7 @@ func encodeMigrationsGetStatusForOrgResponse(response MigrationsGetStatusForOrgR
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -9681,7 +9681,7 @@ func encodeMigrationsGetStatusForOrgResponse(response MigrationsGetStatusForOrgR
 func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MigrationsListForAuthenticatedUserOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -9723,7 +9723,7 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 		return nil
 
 	case *MigrationsListForAuthenticatedUserUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -9736,7 +9736,7 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 		return nil
 
 	case *MigrationsListForAuthenticatedUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -9754,7 +9754,7 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 }
 
 func encodeMigrationsListForOrgResponse(response *MigrationsListForOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -9793,7 +9793,7 @@ func encodeMigrationsListForOrgResponse(response *MigrationsListForOrgOKHeaders,
 func encodeMigrationsListReposForOrgResponse(response MigrationsListReposForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MigrationsListReposForOrgOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -9829,7 +9829,7 @@ func encodeMigrationsListReposForOrgResponse(response MigrationsListReposForOrgR
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -9849,7 +9849,7 @@ func encodeMigrationsListReposForOrgResponse(response MigrationsListReposForOrgR
 func encodeMigrationsListReposForUserResponse(response MigrationsListReposForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MigrationsListReposForUserOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -9885,7 +9885,7 @@ func encodeMigrationsListReposForUserResponse(response MigrationsListReposForUse
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -9905,7 +9905,7 @@ func encodeMigrationsListReposForUserResponse(response MigrationsListReposForUse
 func encodeMigrationsMapCommitAuthorResponse(response MigrationsMapCommitAuthorRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PorterAuthor:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9918,7 +9918,7 @@ func encodeMigrationsMapCommitAuthorResponse(response MigrationsMapCommitAuthorR
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -9931,7 +9931,7 @@ func encodeMigrationsMapCommitAuthorResponse(response MigrationsMapCommitAuthorR
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -9951,7 +9951,7 @@ func encodeMigrationsMapCommitAuthorResponse(response MigrationsMapCommitAuthorR
 func encodeMigrationsSetLfsPreferenceResponse(response MigrationsSetLfsPreferenceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Import:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -9964,7 +9964,7 @@ func encodeMigrationsSetLfsPreferenceResponse(response MigrationsSetLfsPreferenc
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -9984,7 +9984,7 @@ func encodeMigrationsSetLfsPreferenceResponse(response MigrationsSetLfsPreferenc
 func encodeMigrationsStartForAuthenticatedUserResponse(response MigrationsStartForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Migration:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -10003,7 +10003,7 @@ func encodeMigrationsStartForAuthenticatedUserResponse(response MigrationsStartF
 		return nil
 
 	case *MigrationsStartForAuthenticatedUserUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -10016,7 +10016,7 @@ func encodeMigrationsStartForAuthenticatedUserResponse(response MigrationsStartF
 		return nil
 
 	case *MigrationsStartForAuthenticatedUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -10029,7 +10029,7 @@ func encodeMigrationsStartForAuthenticatedUserResponse(response MigrationsStartF
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -10049,7 +10049,7 @@ func encodeMigrationsStartForAuthenticatedUserResponse(response MigrationsStartF
 func encodeMigrationsStartForOrgResponse(response MigrationsStartForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Migration:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -10062,7 +10062,7 @@ func encodeMigrationsStartForOrgResponse(response MigrationsStartForOrgRes, w ht
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -10075,7 +10075,7 @@ func encodeMigrationsStartForOrgResponse(response MigrationsStartForOrgRes, w ht
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -10095,7 +10095,7 @@ func encodeMigrationsStartForOrgResponse(response MigrationsStartForOrgRes, w ht
 func encodeMigrationsStartImportResponse(response MigrationsStartImportRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ImportHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -10127,7 +10127,7 @@ func encodeMigrationsStartImportResponse(response MigrationsStartImportRes, w ht
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -10140,7 +10140,7 @@ func encodeMigrationsStartImportResponse(response MigrationsStartImportRes, w ht
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -10172,7 +10172,7 @@ func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsU
 		return nil
 
 	case *MigrationsUnlockRepoForAuthenticatedUserUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -10185,7 +10185,7 @@ func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsU
 		return nil
 
 	case *MigrationsUnlockRepoForAuthenticatedUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -10198,7 +10198,7 @@ func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsU
 		return nil
 
 	case *MigrationsUnlockRepoForAuthenticatedUserNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -10224,7 +10224,7 @@ func encodeMigrationsUnlockRepoForOrgResponse(response MigrationsUnlockRepoForOr
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -10242,7 +10242,7 @@ func encodeMigrationsUnlockRepoForOrgResponse(response MigrationsUnlockRepoForOr
 }
 
 func encodeMigrationsUpdateImportResponse(response *Import, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10258,7 +10258,7 @@ func encodeMigrationsUpdateImportResponse(response *Import, w http.ResponseWrite
 func encodeOAuthAuthorizationsCreateAuthorizationResponse(response OAuthAuthorizationsCreateAuthorizationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AuthorizationHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -10296,7 +10296,7 @@ func encodeOAuthAuthorizationsCreateAuthorizationResponse(response OAuthAuthoriz
 		return nil
 
 	case *OAuthAuthorizationsCreateAuthorizationUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -10309,7 +10309,7 @@ func encodeOAuthAuthorizationsCreateAuthorizationResponse(response OAuthAuthoriz
 		return nil
 
 	case *OAuthAuthorizationsCreateAuthorizationForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -10322,7 +10322,7 @@ func encodeOAuthAuthorizationsCreateAuthorizationResponse(response OAuthAuthoriz
 		return nil
 
 	case *OAuthAuthorizationsCreateAuthorizationGone:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
 
@@ -10335,7 +10335,7 @@ func encodeOAuthAuthorizationsCreateAuthorizationResponse(response OAuthAuthoriz
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -10367,7 +10367,7 @@ func encodeOAuthAuthorizationsDeleteAuthorizationResponse(response OAuthAuthoriz
 		return nil
 
 	case *OAuthAuthorizationsDeleteAuthorizationUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -10380,7 +10380,7 @@ func encodeOAuthAuthorizationsDeleteAuthorizationResponse(response OAuthAuthoriz
 		return nil
 
 	case *OAuthAuthorizationsDeleteAuthorizationForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -10412,7 +10412,7 @@ func encodeOAuthAuthorizationsDeleteGrantResponse(response OAuthAuthorizationsDe
 		return nil
 
 	case *OAuthAuthorizationsDeleteGrantUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -10425,7 +10425,7 @@ func encodeOAuthAuthorizationsDeleteGrantResponse(response OAuthAuthorizationsDe
 		return nil
 
 	case *OAuthAuthorizationsDeleteGrantForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -10445,7 +10445,7 @@ func encodeOAuthAuthorizationsDeleteGrantResponse(response OAuthAuthorizationsDe
 func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizationsGetAuthorizationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Authorization:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10464,7 +10464,7 @@ func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizati
 		return nil
 
 	case *OAuthAuthorizationsGetAuthorizationUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -10477,7 +10477,7 @@ func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizati
 		return nil
 
 	case *OAuthAuthorizationsGetAuthorizationForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -10497,7 +10497,7 @@ func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizati
 func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGrantRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ApplicationGrant:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10516,7 +10516,7 @@ func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGr
 		return nil
 
 	case *OAuthAuthorizationsGetGrantUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -10529,7 +10529,7 @@ func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGr
 		return nil
 
 	case *OAuthAuthorizationsGetGrantForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -10549,7 +10549,7 @@ func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGr
 func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response OAuthAuthorizationsGetOrCreateAuthorizationForAppRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppOK:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -10581,7 +10581,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response OA
 		return nil
 
 	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppCreated:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -10619,7 +10619,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response OA
 		return nil
 
 	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -10632,7 +10632,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response OA
 		return nil
 
 	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -10645,7 +10645,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response OA
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -10665,7 +10665,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response OA
 func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintResponse(response OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintOK:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -10697,7 +10697,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 		return nil
 
 	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintCreated:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -10729,7 +10729,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -10749,7 +10749,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthorizationsListAuthorizationsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OAuthAuthorizationsListAuthorizationsOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -10791,7 +10791,7 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 		return nil
 
 	case *OAuthAuthorizationsListAuthorizationsUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -10804,7 +10804,7 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 		return nil
 
 	case *OAuthAuthorizationsListAuthorizationsForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -10817,7 +10817,7 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 		return nil
 
 	case *OAuthAuthorizationsListAuthorizationsNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -10837,7 +10837,7 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsListGrantsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OAuthAuthorizationsListGrantsOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -10879,7 +10879,7 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 		return nil
 
 	case *OAuthAuthorizationsListGrantsUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -10892,7 +10892,7 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 		return nil
 
 	case *OAuthAuthorizationsListGrantsForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -10905,7 +10905,7 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 		return nil
 
 	case *OAuthAuthorizationsListGrantsNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -10925,7 +10925,7 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 func encodeOAuthAuthorizationsUpdateAuthorizationResponse(response OAuthAuthorizationsUpdateAuthorizationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Authorization:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -10938,7 +10938,7 @@ func encodeOAuthAuthorizationsUpdateAuthorizationResponse(response OAuthAuthoriz
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -10964,7 +10964,7 @@ func encodeOrgsBlockUserResponse(response OrgsBlockUserRes, w http.ResponseWrite
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -10990,7 +10990,7 @@ func encodeOrgsCancelInvitationResponse(response OrgsCancelInvitationRes, w http
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -11003,7 +11003,7 @@ func encodeOrgsCancelInvitationResponse(response OrgsCancelInvitationRes, w http
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -11029,7 +11029,7 @@ func encodeOrgsCheckBlockedUserResponse(response OrgsCheckBlockedUserRes, w http
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -11112,7 +11112,7 @@ func encodeOrgsCheckPublicMembershipForUserResponse(response OrgsCheckPublicMemb
 func encodeOrgsConvertMemberToOutsideCollaboratorResponse(response OrgsConvertMemberToOutsideCollaboratorRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsConvertMemberToOutsideCollaboratorAccepted:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(202)
 		span.SetStatus(codes.Ok, http.StatusText(202))
 
@@ -11137,7 +11137,7 @@ func encodeOrgsConvertMemberToOutsideCollaboratorResponse(response OrgsConvertMe
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -11157,7 +11157,7 @@ func encodeOrgsConvertMemberToOutsideCollaboratorResponse(response OrgsConvertMe
 func encodeOrgsCreateInvitationResponse(response OrgsCreateInvitationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrganizationInvitation:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -11170,7 +11170,7 @@ func encodeOrgsCreateInvitationResponse(response OrgsCreateInvitationRes, w http
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -11183,7 +11183,7 @@ func encodeOrgsCreateInvitationResponse(response OrgsCreateInvitationRes, w http
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -11203,7 +11203,7 @@ func encodeOrgsCreateInvitationResponse(response OrgsCreateInvitationRes, w http
 func encodeOrgsCreateWebhookResponse(response OrgsCreateWebhookRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgHookHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -11235,7 +11235,7 @@ func encodeOrgsCreateWebhookResponse(response OrgsCreateWebhookRes, w http.Respo
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -11248,7 +11248,7 @@ func encodeOrgsCreateWebhookResponse(response OrgsCreateWebhookRes, w http.Respo
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -11274,7 +11274,7 @@ func encodeOrgsDeleteWebhookResponse(response OrgsDeleteWebhookRes, w http.Respo
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -11294,7 +11294,7 @@ func encodeOrgsDeleteWebhookResponse(response OrgsDeleteWebhookRes, w http.Respo
 func encodeOrgsGetResponse(response OrgsGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrganizationFull:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11307,7 +11307,7 @@ func encodeOrgsGetResponse(response OrgsGetRes, w http.ResponseWriter, span trac
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -11325,7 +11325,7 @@ func encodeOrgsGetResponse(response OrgsGetRes, w http.ResponseWriter, span trac
 }
 
 func encodeOrgsGetAuditLogResponse(response []AuditLogEvent, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11345,7 +11345,7 @@ func encodeOrgsGetAuditLogResponse(response []AuditLogEvent, w http.ResponseWrit
 func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembershipForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgMembership:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11358,7 +11358,7 @@ func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembers
 		return nil
 
 	case *OrgsGetMembershipForAuthenticatedUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -11371,7 +11371,7 @@ func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembers
 		return nil
 
 	case *OrgsGetMembershipForAuthenticatedUserNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -11391,7 +11391,7 @@ func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembers
 func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgMembership:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11404,7 +11404,7 @@ func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes
 		return nil
 
 	case *OrgsGetMembershipForUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -11417,7 +11417,7 @@ func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes
 		return nil
 
 	case *OrgsGetMembershipForUserNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -11437,7 +11437,7 @@ func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes
 func encodeOrgsGetWebhookResponse(response OrgsGetWebhookRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgHook:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11450,7 +11450,7 @@ func encodeOrgsGetWebhookResponse(response OrgsGetWebhookRes, w http.ResponseWri
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -11468,7 +11468,7 @@ func encodeOrgsGetWebhookResponse(response OrgsGetWebhookRes, w http.ResponseWri
 }
 
 func encodeOrgsGetWebhookConfigForOrgResponse(response *WebhookConfig, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11484,7 +11484,7 @@ func encodeOrgsGetWebhookConfigForOrgResponse(response *WebhookConfig, w http.Re
 func encodeOrgsGetWebhookDeliveryResponse(response OrgsGetWebhookDeliveryRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *HookDelivery:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11497,7 +11497,7 @@ func encodeOrgsGetWebhookDeliveryResponse(response OrgsGetWebhookDeliveryRes, w 
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
 
@@ -11510,7 +11510,7 @@ func encodeOrgsGetWebhookDeliveryResponse(response OrgsGetWebhookDeliveryRes, w 
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -11530,7 +11530,7 @@ func encodeOrgsGetWebhookDeliveryResponse(response OrgsGetWebhookDeliveryRes, w 
 func encodeOrgsListResponse(response OrgsListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsListOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -11579,7 +11579,7 @@ func encodeOrgsListResponse(response OrgsListRes, w http.ResponseWriter, span tr
 func encodeOrgsListBlockedUsersResponse(response OrgsListBlockedUsersRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsListBlockedUsersOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -11592,7 +11592,7 @@ func encodeOrgsListBlockedUsersResponse(response OrgsListBlockedUsersRes, w http
 		return nil
 
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(415)
 		span.SetStatus(codes.Error, http.StatusText(415))
 
@@ -11612,7 +11612,7 @@ func encodeOrgsListBlockedUsersResponse(response OrgsListBlockedUsersRes, w http
 func encodeOrgsListFailedInvitationsResponse(response OrgsListFailedInvitationsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsListFailedInvitationsOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -11648,7 +11648,7 @@ func encodeOrgsListFailedInvitationsResponse(response OrgsListFailedInvitationsR
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -11668,7 +11668,7 @@ func encodeOrgsListFailedInvitationsResponse(response OrgsListFailedInvitationsR
 func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsListForAuthenticatedUserOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -11710,7 +11710,7 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 		return nil
 
 	case *OrgsListForAuthenticatedUserUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -11723,7 +11723,7 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 		return nil
 
 	case *OrgsListForAuthenticatedUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -11741,7 +11741,7 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 }
 
 func encodeOrgsListForUserResponse(response *OrgsListForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -11780,7 +11780,7 @@ func encodeOrgsListForUserResponse(response *OrgsListForUserOKHeaders, w http.Re
 func encodeOrgsListInvitationTeamsResponse(response OrgsListInvitationTeamsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsListInvitationTeamsOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -11816,7 +11816,7 @@ func encodeOrgsListInvitationTeamsResponse(response OrgsListInvitationTeamsRes, 
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -11836,7 +11836,7 @@ func encodeOrgsListInvitationTeamsResponse(response OrgsListInvitationTeamsRes, 
 func encodeOrgsListMembersResponse(response OrgsListMembersRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsListMembersOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -11897,7 +11897,7 @@ func encodeOrgsListMembersResponse(response OrgsListMembersRes, w http.ResponseW
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -11917,7 +11917,7 @@ func encodeOrgsListMembersResponse(response OrgsListMembersRes, w http.ResponseW
 func encodeOrgsListMembershipsForAuthenticatedUserResponse(response OrgsListMembershipsForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsListMembershipsForAuthenticatedUserOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -11959,7 +11959,7 @@ func encodeOrgsListMembershipsForAuthenticatedUserResponse(response OrgsListMemb
 		return nil
 
 	case *OrgsListMembershipsForAuthenticatedUserUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -11972,7 +11972,7 @@ func encodeOrgsListMembershipsForAuthenticatedUserResponse(response OrgsListMemb
 		return nil
 
 	case *OrgsListMembershipsForAuthenticatedUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -11985,7 +11985,7 @@ func encodeOrgsListMembershipsForAuthenticatedUserResponse(response OrgsListMemb
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -12003,7 +12003,7 @@ func encodeOrgsListMembershipsForAuthenticatedUserResponse(response OrgsListMemb
 }
 
 func encodeOrgsListOutsideCollaboratorsResponse(response *OrgsListOutsideCollaboratorsOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -12042,7 +12042,7 @@ func encodeOrgsListOutsideCollaboratorsResponse(response *OrgsListOutsideCollabo
 func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitationsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsListPendingInvitationsOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -12078,7 +12078,7 @@ func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitation
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -12096,7 +12096,7 @@ func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitation
 }
 
 func encodeOrgsListPublicMembersResponse(response *OrgsListPublicMembersOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -12133,7 +12133,7 @@ func encodeOrgsListPublicMembersResponse(response *OrgsListPublicMembersOKHeader
 }
 
 func encodeOrgsListSamlSSOAuthorizationsResponse(response []CredentialAuthorization, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -12153,7 +12153,7 @@ func encodeOrgsListSamlSSOAuthorizationsResponse(response []CredentialAuthorizat
 func encodeOrgsListWebhookDeliveriesResponse(response OrgsListWebhookDeliveriesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsListWebhookDeliveriesOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -12166,7 +12166,7 @@ func encodeOrgsListWebhookDeliveriesResponse(response OrgsListWebhookDeliveriesR
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
 
@@ -12179,7 +12179,7 @@ func encodeOrgsListWebhookDeliveriesResponse(response OrgsListWebhookDeliveriesR
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -12199,7 +12199,7 @@ func encodeOrgsListWebhookDeliveriesResponse(response OrgsListWebhookDeliveriesR
 func encodeOrgsListWebhooksResponse(response OrgsListWebhooksRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsListWebhooksOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -12235,7 +12235,7 @@ func encodeOrgsListWebhooksResponse(response OrgsListWebhooksRes, w http.Respons
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -12261,7 +12261,7 @@ func encodeOrgsPingWebhookResponse(response OrgsPingWebhookRes, w http.ResponseW
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -12281,7 +12281,7 @@ func encodeOrgsPingWebhookResponse(response OrgsPingWebhookRes, w http.ResponseW
 func encodeOrgsRedeliverWebhookDeliveryResponse(response OrgsRedeliverWebhookDeliveryRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Accepted:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(202)
 		span.SetStatus(codes.Ok, http.StatusText(202))
 
@@ -12294,7 +12294,7 @@ func encodeOrgsRedeliverWebhookDeliveryResponse(response OrgsRedeliverWebhookDel
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
 
@@ -12307,7 +12307,7 @@ func encodeOrgsRedeliverWebhookDeliveryResponse(response OrgsRedeliverWebhookDel
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -12333,7 +12333,7 @@ func encodeOrgsRemoveMemberResponse(response OrgsRemoveMemberRes, w http.Respons
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -12359,7 +12359,7 @@ func encodeOrgsRemoveMembershipForUserResponse(response OrgsRemoveMembershipForU
 		return nil
 
 	case *OrgsRemoveMembershipForUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -12372,7 +12372,7 @@ func encodeOrgsRemoveMembershipForUserResponse(response OrgsRemoveMembershipForU
 		return nil
 
 	case *OrgsRemoveMembershipForUserNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -12398,7 +12398,7 @@ func encodeOrgsRemoveOutsideCollaboratorResponse(response OrgsRemoveOutsideColla
 		return nil
 
 	case *OrgsRemoveOutsideCollaboratorUnprocessableEntity:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -12431,7 +12431,7 @@ func encodeOrgsRemoveSamlSSOAuthorizationResponse(response OrgsRemoveSamlSSOAuth
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -12451,7 +12451,7 @@ func encodeOrgsRemoveSamlSSOAuthorizationResponse(response OrgsRemoveSamlSSOAuth
 func encodeOrgsSetMembershipForUserResponse(response OrgsSetMembershipForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgMembership:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -12464,7 +12464,7 @@ func encodeOrgsSetMembershipForUserResponse(response OrgsSetMembershipForUserRes
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -12477,7 +12477,7 @@ func encodeOrgsSetMembershipForUserResponse(response OrgsSetMembershipForUserRes
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -12503,7 +12503,7 @@ func encodeOrgsSetPublicMembershipForAuthenticatedUserResponse(response OrgsSetP
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -12530,7 +12530,7 @@ func encodeOrgsUnblockUserResponse(response *OrgsUnblockUserNoContent, w http.Re
 func encodeOrgsUpdateMembershipForAuthenticatedUserResponse(response OrgsUpdateMembershipForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgMembership:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -12543,7 +12543,7 @@ func encodeOrgsUpdateMembershipForAuthenticatedUserResponse(response OrgsUpdateM
 		return nil
 
 	case *OrgsUpdateMembershipForAuthenticatedUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -12556,7 +12556,7 @@ func encodeOrgsUpdateMembershipForAuthenticatedUserResponse(response OrgsUpdateM
 		return nil
 
 	case *OrgsUpdateMembershipForAuthenticatedUserNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -12569,7 +12569,7 @@ func encodeOrgsUpdateMembershipForAuthenticatedUserResponse(response OrgsUpdateM
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -12589,7 +12589,7 @@ func encodeOrgsUpdateMembershipForAuthenticatedUserResponse(response OrgsUpdateM
 func encodeOrgsUpdateWebhookResponse(response OrgsUpdateWebhookRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgHook:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -12602,7 +12602,7 @@ func encodeOrgsUpdateWebhookResponse(response OrgsUpdateWebhookRes, w http.Respo
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -12615,7 +12615,7 @@ func encodeOrgsUpdateWebhookResponse(response OrgsUpdateWebhookRes, w http.Respo
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -12633,7 +12633,7 @@ func encodeOrgsUpdateWebhookResponse(response OrgsUpdateWebhookRes, w http.Respo
 }
 
 func encodeOrgsUpdateWebhookConfigForOrgResponse(response *WebhookConfig, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -12655,7 +12655,7 @@ func encodePackagesDeletePackageForAuthenticatedUserResponse(response PackagesDe
 		return nil
 
 	case *PackagesDeletePackageForAuthenticatedUserUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -12668,7 +12668,7 @@ func encodePackagesDeletePackageForAuthenticatedUserResponse(response PackagesDe
 		return nil
 
 	case *PackagesDeletePackageForAuthenticatedUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -12681,7 +12681,7 @@ func encodePackagesDeletePackageForAuthenticatedUserResponse(response PackagesDe
 		return nil
 
 	case *PackagesDeletePackageForAuthenticatedUserNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -12707,7 +12707,7 @@ func encodePackagesDeletePackageForOrgResponse(response PackagesDeletePackageFor
 		return nil
 
 	case *PackagesDeletePackageForOrgUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -12720,7 +12720,7 @@ func encodePackagesDeletePackageForOrgResponse(response PackagesDeletePackageFor
 		return nil
 
 	case *PackagesDeletePackageForOrgForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -12733,7 +12733,7 @@ func encodePackagesDeletePackageForOrgResponse(response PackagesDeletePackageFor
 		return nil
 
 	case *PackagesDeletePackageForOrgNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -12759,7 +12759,7 @@ func encodePackagesDeletePackageForUserResponse(response PackagesDeletePackageFo
 		return nil
 
 	case *PackagesDeletePackageForUserUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -12772,7 +12772,7 @@ func encodePackagesDeletePackageForUserResponse(response PackagesDeletePackageFo
 		return nil
 
 	case *PackagesDeletePackageForUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -12785,7 +12785,7 @@ func encodePackagesDeletePackageForUserResponse(response PackagesDeletePackageFo
 		return nil
 
 	case *PackagesDeletePackageForUserNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -12811,7 +12811,7 @@ func encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response Pac
 		return nil
 
 	case *PackagesDeletePackageVersionForAuthenticatedUserUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -12824,7 +12824,7 @@ func encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response Pac
 		return nil
 
 	case *PackagesDeletePackageVersionForAuthenticatedUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -12837,7 +12837,7 @@ func encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response Pac
 		return nil
 
 	case *PackagesDeletePackageVersionForAuthenticatedUserNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -12863,7 +12863,7 @@ func encodePackagesDeletePackageVersionForOrgResponse(response PackagesDeletePac
 		return nil
 
 	case *PackagesDeletePackageVersionForOrgUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -12876,7 +12876,7 @@ func encodePackagesDeletePackageVersionForOrgResponse(response PackagesDeletePac
 		return nil
 
 	case *PackagesDeletePackageVersionForOrgForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -12889,7 +12889,7 @@ func encodePackagesDeletePackageVersionForOrgResponse(response PackagesDeletePac
 		return nil
 
 	case *PackagesDeletePackageVersionForOrgNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -12915,7 +12915,7 @@ func encodePackagesDeletePackageVersionForUserResponse(response PackagesDeletePa
 		return nil
 
 	case *PackagesDeletePackageVersionForUserUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -12928,7 +12928,7 @@ func encodePackagesDeletePackageVersionForUserResponse(response PackagesDeletePa
 		return nil
 
 	case *PackagesDeletePackageVersionForUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -12941,7 +12941,7 @@ func encodePackagesDeletePackageVersionForUserResponse(response PackagesDeletePa
 		return nil
 
 	case *PackagesDeletePackageVersionForUserNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -12961,7 +12961,7 @@ func encodePackagesDeletePackageVersionForUserResponse(response PackagesDeletePa
 func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse(response PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -12974,7 +12974,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 		return nil
 
 	case *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -12987,7 +12987,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 		return nil
 
 	case *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -13000,7 +13000,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 		return nil
 
 	case *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -13020,7 +13020,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response PackagesGetAllPackageVersionsForPackageOwnedByOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -13033,7 +13033,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response Pa
 		return nil
 
 	case *PackagesGetAllPackageVersionsForPackageOwnedByOrgUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -13046,7 +13046,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response Pa
 		return nil
 
 	case *PackagesGetAllPackageVersionsForPackageOwnedByOrgForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -13059,7 +13059,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response Pa
 		return nil
 
 	case *PackagesGetAllPackageVersionsForPackageOwnedByOrgNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -13079,7 +13079,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response Pa
 func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response PackagesGetAllPackageVersionsForPackageOwnedByUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -13092,7 +13092,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response P
 		return nil
 
 	case *PackagesGetAllPackageVersionsForPackageOwnedByUserUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -13105,7 +13105,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response P
 		return nil
 
 	case *PackagesGetAllPackageVersionsForPackageOwnedByUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -13118,7 +13118,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response P
 		return nil
 
 	case *PackagesGetAllPackageVersionsForPackageOwnedByUserNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -13136,7 +13136,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response P
 }
 
 func encodePackagesGetPackageForAuthenticatedUserResponse(response *Package, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -13150,7 +13150,7 @@ func encodePackagesGetPackageForAuthenticatedUserResponse(response *Package, w h
 }
 
 func encodePackagesGetPackageForOrganizationResponse(response *Package, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -13164,7 +13164,7 @@ func encodePackagesGetPackageForOrganizationResponse(response *Package, w http.R
 }
 
 func encodePackagesGetPackageForUserResponse(response *Package, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -13178,7 +13178,7 @@ func encodePackagesGetPackageForUserResponse(response *Package, w http.ResponseW
 }
 
 func encodePackagesGetPackageVersionForAuthenticatedUserResponse(response *PackageVersion, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -13192,7 +13192,7 @@ func encodePackagesGetPackageVersionForAuthenticatedUserResponse(response *Packa
 }
 
 func encodePackagesGetPackageVersionForOrganizationResponse(response *PackageVersion, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -13206,7 +13206,7 @@ func encodePackagesGetPackageVersionForOrganizationResponse(response *PackageVer
 }
 
 func encodePackagesGetPackageVersionForUserResponse(response *PackageVersion, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -13220,7 +13220,7 @@ func encodePackagesGetPackageVersionForUserResponse(response *PackageVersion, w 
 }
 
 func encodePackagesListPackagesForAuthenticatedUserResponse(response []Package, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -13240,7 +13240,7 @@ func encodePackagesListPackagesForAuthenticatedUserResponse(response []Package, 
 func encodePackagesListPackagesForOrganizationResponse(response PackagesListPackagesForOrganizationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesListPackagesForOrganizationOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -13253,7 +13253,7 @@ func encodePackagesListPackagesForOrganizationResponse(response PackagesListPack
 		return nil
 
 	case *PackagesListPackagesForOrganizationUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -13266,7 +13266,7 @@ func encodePackagesListPackagesForOrganizationResponse(response PackagesListPack
 		return nil
 
 	case *PackagesListPackagesForOrganizationForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -13286,7 +13286,7 @@ func encodePackagesListPackagesForOrganizationResponse(response PackagesListPack
 func encodePackagesListPackagesForUserResponse(response PackagesListPackagesForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesListPackagesForUserOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -13299,7 +13299,7 @@ func encodePackagesListPackagesForUserResponse(response PackagesListPackagesForU
 		return nil
 
 	case *PackagesListPackagesForUserUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -13312,7 +13312,7 @@ func encodePackagesListPackagesForUserResponse(response PackagesListPackagesForU
 		return nil
 
 	case *PackagesListPackagesForUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -13338,7 +13338,7 @@ func encodePackagesRestorePackageForAuthenticatedUserResponse(response PackagesR
 		return nil
 
 	case *PackagesRestorePackageForAuthenticatedUserUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -13351,7 +13351,7 @@ func encodePackagesRestorePackageForAuthenticatedUserResponse(response PackagesR
 		return nil
 
 	case *PackagesRestorePackageForAuthenticatedUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -13364,7 +13364,7 @@ func encodePackagesRestorePackageForAuthenticatedUserResponse(response PackagesR
 		return nil
 
 	case *PackagesRestorePackageForAuthenticatedUserNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -13390,7 +13390,7 @@ func encodePackagesRestorePackageForOrgResponse(response PackagesRestorePackageF
 		return nil
 
 	case *PackagesRestorePackageForOrgUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -13403,7 +13403,7 @@ func encodePackagesRestorePackageForOrgResponse(response PackagesRestorePackageF
 		return nil
 
 	case *PackagesRestorePackageForOrgForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -13416,7 +13416,7 @@ func encodePackagesRestorePackageForOrgResponse(response PackagesRestorePackageF
 		return nil
 
 	case *PackagesRestorePackageForOrgNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -13442,7 +13442,7 @@ func encodePackagesRestorePackageForUserResponse(response PackagesRestorePackage
 		return nil
 
 	case *PackagesRestorePackageForUserUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -13455,7 +13455,7 @@ func encodePackagesRestorePackageForUserResponse(response PackagesRestorePackage
 		return nil
 
 	case *PackagesRestorePackageForUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -13468,7 +13468,7 @@ func encodePackagesRestorePackageForUserResponse(response PackagesRestorePackage
 		return nil
 
 	case *PackagesRestorePackageForUserNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -13494,7 +13494,7 @@ func encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response Pa
 		return nil
 
 	case *PackagesRestorePackageVersionForAuthenticatedUserUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -13507,7 +13507,7 @@ func encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response Pa
 		return nil
 
 	case *PackagesRestorePackageVersionForAuthenticatedUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -13520,7 +13520,7 @@ func encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response Pa
 		return nil
 
 	case *PackagesRestorePackageVersionForAuthenticatedUserNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -13546,7 +13546,7 @@ func encodePackagesRestorePackageVersionForOrgResponse(response PackagesRestoreP
 		return nil
 
 	case *PackagesRestorePackageVersionForOrgUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -13559,7 +13559,7 @@ func encodePackagesRestorePackageVersionForOrgResponse(response PackagesRestoreP
 		return nil
 
 	case *PackagesRestorePackageVersionForOrgForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -13572,7 +13572,7 @@ func encodePackagesRestorePackageVersionForOrgResponse(response PackagesRestoreP
 		return nil
 
 	case *PackagesRestorePackageVersionForOrgNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -13598,7 +13598,7 @@ func encodePackagesRestorePackageVersionForUserResponse(response PackagesRestore
 		return nil
 
 	case *PackagesRestorePackageVersionForUserUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -13611,7 +13611,7 @@ func encodePackagesRestorePackageVersionForUserResponse(response PackagesRestore
 		return nil
 
 	case *PackagesRestorePackageVersionForUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -13624,7 +13624,7 @@ func encodePackagesRestorePackageVersionForUserResponse(response PackagesRestore
 		return nil
 
 	case *PackagesRestorePackageVersionForUserNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -13656,7 +13656,7 @@ func encodeProjectsAddCollaboratorResponse(response ProjectsAddCollaboratorRes, 
 		return nil
 
 	case *ProjectsAddCollaboratorUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -13669,7 +13669,7 @@ func encodeProjectsAddCollaboratorResponse(response ProjectsAddCollaboratorRes, 
 		return nil
 
 	case *ProjectsAddCollaboratorForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -13682,7 +13682,7 @@ func encodeProjectsAddCollaboratorResponse(response ProjectsAddCollaboratorRes, 
 		return nil
 
 	case *ProjectsAddCollaboratorNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -13695,7 +13695,7 @@ func encodeProjectsAddCollaboratorResponse(response ProjectsAddCollaboratorRes, 
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -13715,7 +13715,7 @@ func encodeProjectsAddCollaboratorResponse(response ProjectsAddCollaboratorRes, 
 func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectColumn:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -13734,7 +13734,7 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http
 		return nil
 
 	case *ProjectsCreateColumnUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -13747,7 +13747,7 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http
 		return nil
 
 	case *ProjectsCreateColumnForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -13760,7 +13760,7 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http
 		return nil
 
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -13780,7 +13780,7 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http
 func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Project:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -13799,7 +13799,7 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 		return nil
 
 	case *ProjectsCreateForAuthenticatedUserUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -13812,7 +13812,7 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 		return nil
 
 	case *ProjectsCreateForAuthenticatedUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -13825,7 +13825,7 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 		return nil
 
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(415)
 		span.SetStatus(codes.Error, http.StatusText(415))
 
@@ -13838,7 +13838,7 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 		return nil
 
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -13858,7 +13858,7 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Project:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -13871,7 +13871,7 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 		return nil
 
 	case *ProjectsCreateForOrgUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -13884,7 +13884,7 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 		return nil
 
 	case *ProjectsCreateForOrgForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -13897,7 +13897,7 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 		return nil
 
 	case *ProjectsCreateForOrgNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -13910,7 +13910,7 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 		return nil
 
 	case *ProjectsCreateForOrgGone:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
 
@@ -13923,7 +13923,7 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 		return nil
 
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -13943,7 +13943,7 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Project:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -13956,7 +13956,7 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 		return nil
 
 	case *ProjectsCreateForRepoUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -13969,7 +13969,7 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 		return nil
 
 	case *ProjectsCreateForRepoForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -13982,7 +13982,7 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 		return nil
 
 	case *ProjectsCreateForRepoNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -13995,7 +13995,7 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 		return nil
 
 	case *ProjectsCreateForRepoGone:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
 
@@ -14008,7 +14008,7 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 		return nil
 
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -14040,7 +14040,7 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 		return nil
 
 	case *ProjectsDeleteUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -14053,7 +14053,7 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 		return nil
 
 	case *ProjectsDeleteForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -14066,7 +14066,7 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 		return nil
 
 	case *ProjectsDeleteNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -14079,7 +14079,7 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 		return nil
 
 	case *ProjectsDeleteGone:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
 
@@ -14111,7 +14111,7 @@ func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardRes, w http.Res
 		return nil
 
 	case *ProjectsDeleteCardUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -14124,7 +14124,7 @@ func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardRes, w http.Res
 		return nil
 
 	case *ProjectsDeleteCardForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -14137,7 +14137,7 @@ func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardRes, w http.Res
 		return nil
 
 	case *ProjectsDeleteCardNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -14169,7 +14169,7 @@ func encodeProjectsDeleteColumnResponse(response ProjectsDeleteColumnRes, w http
 		return nil
 
 	case *ProjectsDeleteColumnUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -14182,7 +14182,7 @@ func encodeProjectsDeleteColumnResponse(response ProjectsDeleteColumnRes, w http
 		return nil
 
 	case *ProjectsDeleteColumnForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -14202,7 +14202,7 @@ func encodeProjectsDeleteColumnResponse(response ProjectsDeleteColumnRes, w http
 func encodeProjectsGetResponse(response ProjectsGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Project:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -14221,7 +14221,7 @@ func encodeProjectsGetResponse(response ProjectsGetRes, w http.ResponseWriter, s
 		return nil
 
 	case *ProjectsGetUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -14234,7 +14234,7 @@ func encodeProjectsGetResponse(response ProjectsGetRes, w http.ResponseWriter, s
 		return nil
 
 	case *ProjectsGetForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -14254,7 +14254,7 @@ func encodeProjectsGetResponse(response ProjectsGetRes, w http.ResponseWriter, s
 func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectCard:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -14273,7 +14273,7 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 		return nil
 
 	case *ProjectsGetCardUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -14286,7 +14286,7 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 		return nil
 
 	case *ProjectsGetCardForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -14299,7 +14299,7 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 		return nil
 
 	case *ProjectsGetCardNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -14319,7 +14319,7 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectColumn:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -14338,7 +14338,7 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 		return nil
 
 	case *ProjectsGetColumnUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -14351,7 +14351,7 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 		return nil
 
 	case *ProjectsGetColumnForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -14364,7 +14364,7 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 		return nil
 
 	case *ProjectsGetColumnNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -14384,7 +14384,7 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 func encodeProjectsGetPermissionForUserResponse(response ProjectsGetPermissionForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *RepositoryCollaboratorPermission:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -14403,7 +14403,7 @@ func encodeProjectsGetPermissionForUserResponse(response ProjectsGetPermissionFo
 		return nil
 
 	case *ProjectsGetPermissionForUserUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -14416,7 +14416,7 @@ func encodeProjectsGetPermissionForUserResponse(response ProjectsGetPermissionFo
 		return nil
 
 	case *ProjectsGetPermissionForUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -14429,7 +14429,7 @@ func encodeProjectsGetPermissionForUserResponse(response ProjectsGetPermissionFo
 		return nil
 
 	case *ProjectsGetPermissionForUserNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -14442,7 +14442,7 @@ func encodeProjectsGetPermissionForUserResponse(response ProjectsGetPermissionFo
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -14462,7 +14462,7 @@ func encodeProjectsGetPermissionForUserResponse(response ProjectsGetPermissionFo
 func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectsListCardsOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -14504,7 +14504,7 @@ func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.Respo
 		return nil
 
 	case *ProjectsListCardsUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -14517,7 +14517,7 @@ func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.Respo
 		return nil
 
 	case *ProjectsListCardsForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -14537,7 +14537,7 @@ func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.Respo
 func encodeProjectsListCollaboratorsResponse(response ProjectsListCollaboratorsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectsListCollaboratorsOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -14579,7 +14579,7 @@ func encodeProjectsListCollaboratorsResponse(response ProjectsListCollaboratorsR
 		return nil
 
 	case *ProjectsListCollaboratorsUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -14592,7 +14592,7 @@ func encodeProjectsListCollaboratorsResponse(response ProjectsListCollaboratorsR
 		return nil
 
 	case *ProjectsListCollaboratorsForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -14605,7 +14605,7 @@ func encodeProjectsListCollaboratorsResponse(response ProjectsListCollaboratorsR
 		return nil
 
 	case *ProjectsListCollaboratorsNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -14618,7 +14618,7 @@ func encodeProjectsListCollaboratorsResponse(response ProjectsListCollaboratorsR
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -14638,7 +14638,7 @@ func encodeProjectsListCollaboratorsResponse(response ProjectsListCollaboratorsR
 func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectsListColumnsOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -14680,7 +14680,7 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 		return nil
 
 	case *ProjectsListColumnsUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -14693,7 +14693,7 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 		return nil
 
 	case *ProjectsListColumnsForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -14713,7 +14713,7 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 func encodeProjectsListForOrgResponse(response ProjectsListForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectsListForOrgOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -14749,7 +14749,7 @@ func encodeProjectsListForOrgResponse(response ProjectsListForOrgRes, w http.Res
 		return nil
 
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -14769,7 +14769,7 @@ func encodeProjectsListForOrgResponse(response ProjectsListForOrgRes, w http.Res
 func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectsListForRepoOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -14805,7 +14805,7 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 		return nil
 
 	case *ProjectsListForRepoUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -14818,7 +14818,7 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 		return nil
 
 	case *ProjectsListForRepoForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -14831,7 +14831,7 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 		return nil
 
 	case *ProjectsListForRepoNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -14844,7 +14844,7 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 		return nil
 
 	case *ProjectsListForRepoGone:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
 
@@ -14857,7 +14857,7 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 		return nil
 
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -14877,7 +14877,7 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 func encodeProjectsListForUserResponse(response ProjectsListForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectsListForUserOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -14913,7 +14913,7 @@ func encodeProjectsListForUserResponse(response ProjectsListForUserRes, w http.R
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -14933,7 +14933,7 @@ func encodeProjectsListForUserResponse(response ProjectsListForUserRes, w http.R
 func encodeProjectsMoveCardResponse(response ProjectsMoveCardRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectsMoveCardCreated:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -14952,7 +14952,7 @@ func encodeProjectsMoveCardResponse(response ProjectsMoveCardRes, w http.Respons
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -14965,7 +14965,7 @@ func encodeProjectsMoveCardResponse(response ProjectsMoveCardRes, w http.Respons
 		return nil
 
 	case *ProjectsMoveCardForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -14978,7 +14978,7 @@ func encodeProjectsMoveCardResponse(response ProjectsMoveCardRes, w http.Respons
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -14991,7 +14991,7 @@ func encodeProjectsMoveCardResponse(response ProjectsMoveCardRes, w http.Respons
 		return nil
 
 	case *ProjectsMoveCardServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(503)
 		span.SetStatus(codes.Error, http.StatusText(503))
 
@@ -15011,7 +15011,7 @@ func encodeProjectsMoveCardResponse(response ProjectsMoveCardRes, w http.Respons
 func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectsMoveColumnCreated:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -15030,7 +15030,7 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.Res
 		return nil
 
 	case *ProjectsMoveColumnUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -15043,7 +15043,7 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.Res
 		return nil
 
 	case *ProjectsMoveColumnForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -15056,7 +15056,7 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.Res
 		return nil
 
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -15088,7 +15088,7 @@ func encodeProjectsRemoveCollaboratorResponse(response ProjectsRemoveCollaborato
 		return nil
 
 	case *ProjectsRemoveCollaboratorUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -15101,7 +15101,7 @@ func encodeProjectsRemoveCollaboratorResponse(response ProjectsRemoveCollaborato
 		return nil
 
 	case *ProjectsRemoveCollaboratorForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -15114,7 +15114,7 @@ func encodeProjectsRemoveCollaboratorResponse(response ProjectsRemoveCollaborato
 		return nil
 
 	case *ProjectsRemoveCollaboratorNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -15127,7 +15127,7 @@ func encodeProjectsRemoveCollaboratorResponse(response ProjectsRemoveCollaborato
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -15147,7 +15147,7 @@ func encodeProjectsRemoveCollaboratorResponse(response ProjectsRemoveCollaborato
 func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Project:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -15166,7 +15166,7 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 		return nil
 
 	case *ProjectsUpdateUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -15179,7 +15179,7 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 		return nil
 
 	case *ProjectsUpdateForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -15198,7 +15198,7 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 		return nil
 
 	case *ProjectsUpdateGone:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
 
@@ -15211,7 +15211,7 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 		return nil
 
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -15231,7 +15231,7 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectCard:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -15250,7 +15250,7 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 		return nil
 
 	case *ProjectsUpdateCardUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -15263,7 +15263,7 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 		return nil
 
 	case *ProjectsUpdateCardForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -15276,7 +15276,7 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 		return nil
 
 	case *ProjectsUpdateCardNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -15289,7 +15289,7 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 		return nil
 
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -15309,7 +15309,7 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectColumn:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -15328,7 +15328,7 @@ func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnRes, w http
 		return nil
 
 	case *ProjectsUpdateColumnUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -15341,7 +15341,7 @@ func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnRes, w http
 		return nil
 
 	case *ProjectsUpdateColumnForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -15380,7 +15380,7 @@ func encodePullsCheckIfMergedResponse(response PullsCheckIfMergedRes, w http.Res
 func encodePullsCreateResponse(response PullsCreateRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -15412,7 +15412,7 @@ func encodePullsCreateResponse(response PullsCreateRes, w http.ResponseWriter, s
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -15425,7 +15425,7 @@ func encodePullsCreateResponse(response PullsCreateRes, w http.ResponseWriter, s
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -15445,7 +15445,7 @@ func encodePullsCreateResponse(response PullsCreateRes, w http.ResponseWriter, s
 func encodePullsCreateReplyForReviewCommentResponse(response PullsCreateReplyForReviewCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestReviewCommentHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -15477,7 +15477,7 @@ func encodePullsCreateReplyForReviewCommentResponse(response PullsCreateReplyFor
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -15497,7 +15497,7 @@ func encodePullsCreateReplyForReviewCommentResponse(response PullsCreateReplyFor
 func encodePullsCreateReviewResponse(response PullsCreateReviewRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestReview:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -15510,7 +15510,7 @@ func encodePullsCreateReviewResponse(response PullsCreateReviewRes, w http.Respo
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -15523,7 +15523,7 @@ func encodePullsCreateReviewResponse(response PullsCreateReviewRes, w http.Respo
 		return nil
 
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -15543,7 +15543,7 @@ func encodePullsCreateReviewResponse(response PullsCreateReviewRes, w http.Respo
 func encodePullsCreateReviewCommentResponse(response PullsCreateReviewCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestReviewCommentHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -15575,7 +15575,7 @@ func encodePullsCreateReviewCommentResponse(response PullsCreateReviewCommentRes
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -15588,7 +15588,7 @@ func encodePullsCreateReviewCommentResponse(response PullsCreateReviewCommentRes
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -15608,7 +15608,7 @@ func encodePullsCreateReviewCommentResponse(response PullsCreateReviewCommentRes
 func encodePullsDeletePendingReviewResponse(response PullsDeletePendingReviewRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestReview:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -15621,7 +15621,7 @@ func encodePullsDeletePendingReviewResponse(response PullsDeletePendingReviewRes
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -15634,7 +15634,7 @@ func encodePullsDeletePendingReviewResponse(response PullsDeletePendingReviewRes
 		return nil
 
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -15660,7 +15660,7 @@ func encodePullsDeleteReviewCommentResponse(response PullsDeleteReviewCommentRes
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -15680,7 +15680,7 @@ func encodePullsDeleteReviewCommentResponse(response PullsDeleteReviewCommentRes
 func encodePullsDismissReviewResponse(response PullsDismissReviewRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestReview:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -15693,7 +15693,7 @@ func encodePullsDismissReviewResponse(response PullsDismissReviewRes, w http.Res
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -15706,7 +15706,7 @@ func encodePullsDismissReviewResponse(response PullsDismissReviewRes, w http.Res
 		return nil
 
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -15726,7 +15726,7 @@ func encodePullsDismissReviewResponse(response PullsDismissReviewRes, w http.Res
 func encodePullsGetResponse(response PullsGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequest:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -15745,7 +15745,7 @@ func encodePullsGetResponse(response PullsGetRes, w http.ResponseWriter, span tr
 		return nil
 
 	case *PullsGetNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -15758,7 +15758,7 @@ func encodePullsGetResponse(response PullsGetRes, w http.ResponseWriter, span tr
 		return nil
 
 	case *PullsGetInternalServerError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
 
@@ -15778,7 +15778,7 @@ func encodePullsGetResponse(response PullsGetRes, w http.ResponseWriter, span tr
 func encodePullsGetReviewResponse(response PullsGetReviewRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestReview:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -15791,7 +15791,7 @@ func encodePullsGetReviewResponse(response PullsGetReviewRes, w http.ResponseWri
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -15811,7 +15811,7 @@ func encodePullsGetReviewResponse(response PullsGetReviewRes, w http.ResponseWri
 func encodePullsGetReviewCommentResponse(response PullsGetReviewCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestReviewComment:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -15824,7 +15824,7 @@ func encodePullsGetReviewCommentResponse(response PullsGetReviewCommentRes, w ht
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -15844,7 +15844,7 @@ func encodePullsGetReviewCommentResponse(response PullsGetReviewCommentRes, w ht
 func encodePullsListResponse(response PullsListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullsListOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -15886,7 +15886,7 @@ func encodePullsListResponse(response PullsListRes, w http.ResponseWriter, span 
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -15906,7 +15906,7 @@ func encodePullsListResponse(response PullsListRes, w http.ResponseWriter, span 
 func encodePullsListCommentsForReviewResponse(response PullsListCommentsForReviewRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullsListCommentsForReviewOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -15942,7 +15942,7 @@ func encodePullsListCommentsForReviewResponse(response PullsListCommentsForRevie
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -15960,7 +15960,7 @@ func encodePullsListCommentsForReviewResponse(response PullsListCommentsForRevie
 }
 
 func encodePullsListCommitsResponse(response *PullsListCommitsOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -15999,7 +15999,7 @@ func encodePullsListCommitsResponse(response *PullsListCommitsOKHeaders, w http.
 func encodePullsListFilesResponse(response PullsListFilesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullsListFilesOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -16035,7 +16035,7 @@ func encodePullsListFilesResponse(response PullsListFilesRes, w http.ResponseWri
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -16048,7 +16048,7 @@ func encodePullsListFilesResponse(response PullsListFilesRes, w http.ResponseWri
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
 
@@ -16066,7 +16066,7 @@ func encodePullsListFilesResponse(response PullsListFilesRes, w http.ResponseWri
 }
 
 func encodePullsListRequestedReviewersResponse(response *PullRequestReviewRequestHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -16099,7 +16099,7 @@ func encodePullsListRequestedReviewersResponse(response *PullRequestReviewReques
 }
 
 func encodePullsListReviewCommentsResponse(response *PullsListReviewCommentsOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -16136,7 +16136,7 @@ func encodePullsListReviewCommentsResponse(response *PullsListReviewCommentsOKHe
 }
 
 func encodePullsListReviewCommentsForRepoResponse(response *PullsListReviewCommentsForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -16173,7 +16173,7 @@ func encodePullsListReviewCommentsForRepoResponse(response *PullsListReviewComme
 }
 
 func encodePullsListReviewsResponse(response *PullsListReviewsOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -16212,7 +16212,7 @@ func encodePullsListReviewsResponse(response *PullsListReviewsOKHeaders, w http.
 func encodePullsMergeResponse(response PullsMergeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestMergeResult:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -16225,7 +16225,7 @@ func encodePullsMergeResponse(response PullsMergeRes, w http.ResponseWriter, spa
 		return nil
 
 	case *PullsMergeForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -16238,7 +16238,7 @@ func encodePullsMergeResponse(response PullsMergeRes, w http.ResponseWriter, spa
 		return nil
 
 	case *PullsMergeNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -16251,7 +16251,7 @@ func encodePullsMergeResponse(response PullsMergeRes, w http.ResponseWriter, spa
 		return nil
 
 	case *PullsMergeMethodNotAllowed:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(405)
 		span.SetStatus(codes.Error, http.StatusText(405))
 
@@ -16264,7 +16264,7 @@ func encodePullsMergeResponse(response PullsMergeRes, w http.ResponseWriter, spa
 		return nil
 
 	case *PullsMergeConflict:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(409)
 		span.SetStatus(codes.Error, http.StatusText(409))
 
@@ -16277,7 +16277,7 @@ func encodePullsMergeResponse(response PullsMergeRes, w http.ResponseWriter, spa
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -16297,7 +16297,7 @@ func encodePullsMergeResponse(response PullsMergeRes, w http.ResponseWriter, spa
 func encodePullsRemoveRequestedReviewersResponse(response PullsRemoveRequestedReviewersRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestSimple:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -16310,7 +16310,7 @@ func encodePullsRemoveRequestedReviewersResponse(response PullsRemoveRequestedRe
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -16330,7 +16330,7 @@ func encodePullsRemoveRequestedReviewersResponse(response PullsRemoveRequestedRe
 func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestReview:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -16343,7 +16343,7 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.Respo
 		return nil
 
 	case *PullsSubmitReviewForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -16356,7 +16356,7 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.Respo
 		return nil
 
 	case *PullsSubmitReviewNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -16369,7 +16369,7 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.Respo
 		return nil
 
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -16389,7 +16389,7 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.Respo
 func encodePullsUpdateResponse(response PullsUpdateRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequest:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -16402,7 +16402,7 @@ func encodePullsUpdateResponse(response PullsUpdateRes, w http.ResponseWriter, s
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -16415,7 +16415,7 @@ func encodePullsUpdateResponse(response PullsUpdateRes, w http.ResponseWriter, s
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -16435,7 +16435,7 @@ func encodePullsUpdateResponse(response PullsUpdateRes, w http.ResponseWriter, s
 func encodePullsUpdateBranchResponse(response PullsUpdateBranchRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullsUpdateBranchAccepted:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(202)
 		span.SetStatus(codes.Ok, http.StatusText(202))
 
@@ -16448,7 +16448,7 @@ func encodePullsUpdateBranchResponse(response PullsUpdateBranchRes, w http.Respo
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -16461,7 +16461,7 @@ func encodePullsUpdateBranchResponse(response PullsUpdateBranchRes, w http.Respo
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -16481,7 +16481,7 @@ func encodePullsUpdateBranchResponse(response PullsUpdateBranchRes, w http.Respo
 func encodePullsUpdateReviewResponse(response PullsUpdateReviewRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestReview:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -16494,7 +16494,7 @@ func encodePullsUpdateReviewResponse(response PullsUpdateReviewRes, w http.Respo
 		return nil
 
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -16512,7 +16512,7 @@ func encodePullsUpdateReviewResponse(response PullsUpdateReviewRes, w http.Respo
 }
 
 func encodePullsUpdateReviewCommentResponse(response *PullRequestReviewComment, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -16528,7 +16528,7 @@ func encodePullsUpdateReviewCommentResponse(response *PullRequestReviewComment, 
 func encodeRateLimitGetResponse(response RateLimitGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *RateLimitOverviewHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -16596,7 +16596,7 @@ func encodeRateLimitGetResponse(response RateLimitGetRes, w http.ResponseWriter,
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -16616,7 +16616,7 @@ func encodeRateLimitGetResponse(response RateLimitGetRes, w http.ResponseWriter,
 func encodeReactionsCreateForCommitCommentResponse(response ReactionsCreateForCommitCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReactionsCreateForCommitCommentOK:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -16629,7 +16629,7 @@ func encodeReactionsCreateForCommitCommentResponse(response ReactionsCreateForCo
 		return nil
 
 	case *ReactionsCreateForCommitCommentCreated:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -16642,7 +16642,7 @@ func encodeReactionsCreateForCommitCommentResponse(response ReactionsCreateForCo
 		return nil
 
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(415)
 		span.SetStatus(codes.Error, http.StatusText(415))
 
@@ -16655,7 +16655,7 @@ func encodeReactionsCreateForCommitCommentResponse(response ReactionsCreateForCo
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -16675,7 +16675,7 @@ func encodeReactionsCreateForCommitCommentResponse(response ReactionsCreateForCo
 func encodeReactionsCreateForIssueResponse(response ReactionsCreateForIssueRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReactionsCreateForIssueOK:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -16688,7 +16688,7 @@ func encodeReactionsCreateForIssueResponse(response ReactionsCreateForIssueRes, 
 		return nil
 
 	case *ReactionsCreateForIssueCreated:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -16701,7 +16701,7 @@ func encodeReactionsCreateForIssueResponse(response ReactionsCreateForIssueRes, 
 		return nil
 
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(415)
 		span.SetStatus(codes.Error, http.StatusText(415))
 
@@ -16714,7 +16714,7 @@ func encodeReactionsCreateForIssueResponse(response ReactionsCreateForIssueRes, 
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -16734,7 +16734,7 @@ func encodeReactionsCreateForIssueResponse(response ReactionsCreateForIssueRes, 
 func encodeReactionsCreateForIssueCommentResponse(response ReactionsCreateForIssueCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReactionsCreateForIssueCommentOK:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -16747,7 +16747,7 @@ func encodeReactionsCreateForIssueCommentResponse(response ReactionsCreateForIss
 		return nil
 
 	case *ReactionsCreateForIssueCommentCreated:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -16760,7 +16760,7 @@ func encodeReactionsCreateForIssueCommentResponse(response ReactionsCreateForIss
 		return nil
 
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(415)
 		span.SetStatus(codes.Error, http.StatusText(415))
 
@@ -16773,7 +16773,7 @@ func encodeReactionsCreateForIssueCommentResponse(response ReactionsCreateForIss
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -16793,7 +16793,7 @@ func encodeReactionsCreateForIssueCommentResponse(response ReactionsCreateForIss
 func encodeReactionsCreateForPullRequestReviewCommentResponse(response ReactionsCreateForPullRequestReviewCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReactionsCreateForPullRequestReviewCommentOK:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -16806,7 +16806,7 @@ func encodeReactionsCreateForPullRequestReviewCommentResponse(response Reactions
 		return nil
 
 	case *ReactionsCreateForPullRequestReviewCommentCreated:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -16819,7 +16819,7 @@ func encodeReactionsCreateForPullRequestReviewCommentResponse(response Reactions
 		return nil
 
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(415)
 		span.SetStatus(codes.Error, http.StatusText(415))
 
@@ -16832,7 +16832,7 @@ func encodeReactionsCreateForPullRequestReviewCommentResponse(response Reactions
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -16852,7 +16852,7 @@ func encodeReactionsCreateForPullRequestReviewCommentResponse(response Reactions
 func encodeReactionsCreateForReleaseResponse(response ReactionsCreateForReleaseRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReactionsCreateForReleaseOK:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -16865,7 +16865,7 @@ func encodeReactionsCreateForReleaseResponse(response ReactionsCreateForReleaseR
 		return nil
 
 	case *ReactionsCreateForReleaseCreated:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -16878,7 +16878,7 @@ func encodeReactionsCreateForReleaseResponse(response ReactionsCreateForReleaseR
 		return nil
 
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(415)
 		span.SetStatus(codes.Error, http.StatusText(415))
 
@@ -16891,7 +16891,7 @@ func encodeReactionsCreateForReleaseResponse(response ReactionsCreateForReleaseR
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -16911,7 +16911,7 @@ func encodeReactionsCreateForReleaseResponse(response ReactionsCreateForReleaseR
 func encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response ReactionsCreateForTeamDiscussionCommentInOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReactionsCreateForTeamDiscussionCommentInOrgOK:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -16924,7 +16924,7 @@ func encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response Reactio
 		return nil
 
 	case *ReactionsCreateForTeamDiscussionCommentInOrgCreated:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -16942,7 +16942,7 @@ func encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response Reactio
 }
 
 func encodeReactionsCreateForTeamDiscussionCommentLegacyResponse(response *Reaction, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -16958,7 +16958,7 @@ func encodeReactionsCreateForTeamDiscussionCommentLegacyResponse(response *React
 func encodeReactionsCreateForTeamDiscussionInOrgResponse(response ReactionsCreateForTeamDiscussionInOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReactionsCreateForTeamDiscussionInOrgOK:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -16971,7 +16971,7 @@ func encodeReactionsCreateForTeamDiscussionInOrgResponse(response ReactionsCreat
 		return nil
 
 	case *ReactionsCreateForTeamDiscussionInOrgCreated:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -16989,7 +16989,7 @@ func encodeReactionsCreateForTeamDiscussionInOrgResponse(response ReactionsCreat
 }
 
 func encodeReactionsCreateForTeamDiscussionLegacyResponse(response *Reaction, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -17059,7 +17059,7 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 		return nil
 
 	case *ReactionsDeleteLegacyUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -17072,7 +17072,7 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 		return nil
 
 	case *ReactionsDeleteLegacyForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -17085,7 +17085,7 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 		return nil
 
 	case *ReactionsDeleteLegacyGone:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
 
@@ -17098,7 +17098,7 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 		return nil
 
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(415)
 		span.SetStatus(codes.Error, http.StatusText(415))
 
@@ -17118,7 +17118,7 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 func encodeReactionsListForCommitCommentResponse(response ReactionsListForCommitCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReactionsListForCommitCommentOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -17154,7 +17154,7 @@ func encodeReactionsListForCommitCommentResponse(response ReactionsListForCommit
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -17167,7 +17167,7 @@ func encodeReactionsListForCommitCommentResponse(response ReactionsListForCommit
 		return nil
 
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(415)
 		span.SetStatus(codes.Error, http.StatusText(415))
 
@@ -17187,7 +17187,7 @@ func encodeReactionsListForCommitCommentResponse(response ReactionsListForCommit
 func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReactionsListForIssueOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -17223,7 +17223,7 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 		return nil
 
 	case *ReactionsListForIssueNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -17236,7 +17236,7 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 		return nil
 
 	case *ReactionsListForIssueGone:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
 
@@ -17249,7 +17249,7 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 		return nil
 
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(415)
 		span.SetStatus(codes.Error, http.StatusText(415))
 
@@ -17269,7 +17269,7 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 func encodeReactionsListForIssueCommentResponse(response ReactionsListForIssueCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReactionsListForIssueCommentOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -17305,7 +17305,7 @@ func encodeReactionsListForIssueCommentResponse(response ReactionsListForIssueCo
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -17318,7 +17318,7 @@ func encodeReactionsListForIssueCommentResponse(response ReactionsListForIssueCo
 		return nil
 
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(415)
 		span.SetStatus(codes.Error, http.StatusText(415))
 
@@ -17338,7 +17338,7 @@ func encodeReactionsListForIssueCommentResponse(response ReactionsListForIssueCo
 func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsListForPullRequestReviewCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReactionsListForPullRequestReviewCommentOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -17374,7 +17374,7 @@ func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsLi
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -17387,7 +17387,7 @@ func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsLi
 		return nil
 
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(415)
 		span.SetStatus(codes.Error, http.StatusText(415))
 
@@ -17405,7 +17405,7 @@ func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsLi
 }
 
 func encodeReactionsListForTeamDiscussionCommentInOrgResponse(response *ReactionsListForTeamDiscussionCommentInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -17442,7 +17442,7 @@ func encodeReactionsListForTeamDiscussionCommentInOrgResponse(response *Reaction
 }
 
 func encodeReactionsListForTeamDiscussionCommentLegacyResponse(response *ReactionsListForTeamDiscussionCommentLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -17479,7 +17479,7 @@ func encodeReactionsListForTeamDiscussionCommentLegacyResponse(response *Reactio
 }
 
 func encodeReactionsListForTeamDiscussionInOrgResponse(response *ReactionsListForTeamDiscussionInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -17516,7 +17516,7 @@ func encodeReactionsListForTeamDiscussionInOrgResponse(response *ReactionsListFo
 }
 
 func encodeReactionsListForTeamDiscussionLegacyResponse(response *ReactionsListForTeamDiscussionLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -17567,7 +17567,7 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w ht
 		return nil
 
 	case *ReposAcceptInvitationForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -17580,7 +17580,7 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w ht
 		return nil
 
 	case *ReposAcceptInvitationNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -17593,7 +17593,7 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w ht
 		return nil
 
 	case *ReposAcceptInvitationConflict:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(409)
 		span.SetStatus(codes.Error, http.StatusText(409))
 
@@ -17613,7 +17613,7 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w ht
 func encodeReposAddAppAccessRestrictionsResponse(response ReposAddAppAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposAddAppAccessRestrictionsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -17626,7 +17626,7 @@ func encodeReposAddAppAccessRestrictionsResponse(response ReposAddAppAccessRestr
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -17646,7 +17646,7 @@ func encodeReposAddAppAccessRestrictionsResponse(response ReposAddAppAccessRestr
 func encodeReposAddCollaboratorResponse(response ReposAddCollaboratorRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *RepositoryInvitation:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -17665,7 +17665,7 @@ func encodeReposAddCollaboratorResponse(response ReposAddCollaboratorRes, w http
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -17678,7 +17678,7 @@ func encodeReposAddCollaboratorResponse(response ReposAddCollaboratorRes, w http
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -17698,7 +17698,7 @@ func encodeReposAddCollaboratorResponse(response ReposAddCollaboratorRes, w http
 func encodeReposAddStatusCheckContextsResponse(response ReposAddStatusCheckContextsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposAddStatusCheckContextsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -17711,7 +17711,7 @@ func encodeReposAddStatusCheckContextsResponse(response ReposAddStatusCheckConte
 		return nil
 
 	case *ReposAddStatusCheckContextsForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -17724,7 +17724,7 @@ func encodeReposAddStatusCheckContextsResponse(response ReposAddStatusCheckConte
 		return nil
 
 	case *ReposAddStatusCheckContextsNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -17737,7 +17737,7 @@ func encodeReposAddStatusCheckContextsResponse(response ReposAddStatusCheckConte
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -17757,7 +17757,7 @@ func encodeReposAddStatusCheckContextsResponse(response ReposAddStatusCheckConte
 func encodeReposAddTeamAccessRestrictionsResponse(response ReposAddTeamAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposAddTeamAccessRestrictionsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -17770,7 +17770,7 @@ func encodeReposAddTeamAccessRestrictionsResponse(response ReposAddTeamAccessRes
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -17790,7 +17790,7 @@ func encodeReposAddTeamAccessRestrictionsResponse(response ReposAddTeamAccessRes
 func encodeReposAddUserAccessRestrictionsResponse(response ReposAddUserAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposAddUserAccessRestrictionsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -17803,7 +17803,7 @@ func encodeReposAddUserAccessRestrictionsResponse(response ReposAddUserAccessRes
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -17861,7 +17861,7 @@ func encodeReposCheckVulnerabilityAlertsResponse(response ReposCheckVulnerabilit
 func encodeReposCompareCommitsResponse(response ReposCompareCommitsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CommitComparison:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -17874,7 +17874,7 @@ func encodeReposCompareCommitsResponse(response ReposCompareCommitsRes, w http.R
 		return nil
 
 	case *ReposCompareCommitsNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -17887,7 +17887,7 @@ func encodeReposCompareCommitsResponse(response ReposCompareCommitsRes, w http.R
 		return nil
 
 	case *ReposCompareCommitsInternalServerError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
 
@@ -17907,7 +17907,7 @@ func encodeReposCompareCommitsResponse(response ReposCompareCommitsRes, w http.R
 func encodeReposCreateAutolinkResponse(response ReposCreateAutolinkRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AutolinkHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -17939,7 +17939,7 @@ func encodeReposCreateAutolinkResponse(response ReposCreateAutolinkRes, w http.R
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -17959,7 +17959,7 @@ func encodeReposCreateAutolinkResponse(response ReposCreateAutolinkRes, w http.R
 func encodeReposCreateCommitCommentResponse(response ReposCreateCommitCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CommitCommentHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -17991,7 +17991,7 @@ func encodeReposCreateCommitCommentResponse(response ReposCreateCommitCommentRes
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -18004,7 +18004,7 @@ func encodeReposCreateCommitCommentResponse(response ReposCreateCommitCommentRes
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -18024,7 +18024,7 @@ func encodeReposCreateCommitCommentResponse(response ReposCreateCommitCommentRes
 func encodeReposCreateCommitSignatureProtectionResponse(response ReposCreateCommitSignatureProtectionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProtectedBranchAdminEnforced:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -18037,7 +18037,7 @@ func encodeReposCreateCommitSignatureProtectionResponse(response ReposCreateComm
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -18055,7 +18055,7 @@ func encodeReposCreateCommitSignatureProtectionResponse(response ReposCreateComm
 }
 
 func encodeReposCreateCommitStatusResponse(response *StatusHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -18090,7 +18090,7 @@ func encodeReposCreateCommitStatusResponse(response *StatusHeaders, w http.Respo
 func encodeReposCreateDeployKeyResponse(response ReposCreateDeployKeyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeployKeyHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -18122,7 +18122,7 @@ func encodeReposCreateDeployKeyResponse(response ReposCreateDeployKeyRes, w http
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -18142,7 +18142,7 @@ func encodeReposCreateDeployKeyResponse(response ReposCreateDeployKeyRes, w http
 func encodeReposCreateDeploymentResponse(response ReposCreateDeploymentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Deployment:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -18155,7 +18155,7 @@ func encodeReposCreateDeploymentResponse(response ReposCreateDeploymentRes, w ht
 		return nil
 
 	case *ReposCreateDeploymentAccepted:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(202)
 		span.SetStatus(codes.Ok, http.StatusText(202))
 
@@ -18174,7 +18174,7 @@ func encodeReposCreateDeploymentResponse(response ReposCreateDeploymentRes, w ht
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -18194,7 +18194,7 @@ func encodeReposCreateDeploymentResponse(response ReposCreateDeploymentRes, w ht
 func encodeReposCreateDeploymentStatusResponse(response ReposCreateDeploymentStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeploymentStatusHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -18226,7 +18226,7 @@ func encodeReposCreateDeploymentStatusResponse(response ReposCreateDeploymentSta
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -18252,7 +18252,7 @@ func encodeReposCreateDispatchEventResponse(response ReposCreateDispatchEventRes
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -18272,7 +18272,7 @@ func encodeReposCreateDispatchEventResponse(response ReposCreateDispatchEventRes
 func encodeReposCreateForAuthenticatedUserResponse(response ReposCreateForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *RepositoryHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -18310,7 +18310,7 @@ func encodeReposCreateForAuthenticatedUserResponse(response ReposCreateForAuthen
 		return nil
 
 	case *ReposCreateForAuthenticatedUserBadRequest:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
 
@@ -18323,7 +18323,7 @@ func encodeReposCreateForAuthenticatedUserResponse(response ReposCreateForAuthen
 		return nil
 
 	case *ReposCreateForAuthenticatedUserUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -18336,7 +18336,7 @@ func encodeReposCreateForAuthenticatedUserResponse(response ReposCreateForAuthen
 		return nil
 
 	case *ReposCreateForAuthenticatedUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -18349,7 +18349,7 @@ func encodeReposCreateForAuthenticatedUserResponse(response ReposCreateForAuthen
 		return nil
 
 	case *ReposCreateForAuthenticatedUserNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -18362,7 +18362,7 @@ func encodeReposCreateForAuthenticatedUserResponse(response ReposCreateForAuthen
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -18382,7 +18382,7 @@ func encodeReposCreateForAuthenticatedUserResponse(response ReposCreateForAuthen
 func encodeReposCreateForkResponse(response ReposCreateForkRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *FullRepository:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(202)
 		span.SetStatus(codes.Ok, http.StatusText(202))
 
@@ -18395,7 +18395,7 @@ func encodeReposCreateForkResponse(response ReposCreateForkRes, w http.ResponseW
 		return nil
 
 	case *ReposCreateForkBadRequest:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
 
@@ -18408,7 +18408,7 @@ func encodeReposCreateForkResponse(response ReposCreateForkRes, w http.ResponseW
 		return nil
 
 	case *ReposCreateForkForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -18421,7 +18421,7 @@ func encodeReposCreateForkResponse(response ReposCreateForkRes, w http.ResponseW
 		return nil
 
 	case *ReposCreateForkNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -18434,7 +18434,7 @@ func encodeReposCreateForkResponse(response ReposCreateForkRes, w http.ResponseW
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -18454,7 +18454,7 @@ func encodeReposCreateForkResponse(response ReposCreateForkRes, w http.ResponseW
 func encodeReposCreateInOrgResponse(response ReposCreateInOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *RepositoryHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -18486,7 +18486,7 @@ func encodeReposCreateInOrgResponse(response ReposCreateInOrgRes, w http.Respons
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -18499,7 +18499,7 @@ func encodeReposCreateInOrgResponse(response ReposCreateInOrgRes, w http.Respons
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -18519,7 +18519,7 @@ func encodeReposCreateInOrgResponse(response ReposCreateInOrgRes, w http.Respons
 func encodeReposCreateOrUpdateFileContentsResponse(response ReposCreateOrUpdateFileContentsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposCreateOrUpdateFileContentsOK:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -18532,7 +18532,7 @@ func encodeReposCreateOrUpdateFileContentsResponse(response ReposCreateOrUpdateF
 		return nil
 
 	case *ReposCreateOrUpdateFileContentsCreated:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -18545,7 +18545,7 @@ func encodeReposCreateOrUpdateFileContentsResponse(response ReposCreateOrUpdateF
 		return nil
 
 	case *ReposCreateOrUpdateFileContentsNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -18558,7 +18558,7 @@ func encodeReposCreateOrUpdateFileContentsResponse(response ReposCreateOrUpdateF
 		return nil
 
 	case *ReposCreateOrUpdateFileContentsConflict:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(409)
 		span.SetStatus(codes.Error, http.StatusText(409))
 
@@ -18571,7 +18571,7 @@ func encodeReposCreateOrUpdateFileContentsResponse(response ReposCreateOrUpdateF
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -18591,7 +18591,7 @@ func encodeReposCreateOrUpdateFileContentsResponse(response ReposCreateOrUpdateF
 func encodeReposCreatePagesSiteResponse(response ReposCreatePagesSiteRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Page:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -18604,7 +18604,7 @@ func encodeReposCreatePagesSiteResponse(response ReposCreatePagesSiteRes, w http
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(409)
 		span.SetStatus(codes.Error, http.StatusText(409))
 
@@ -18617,7 +18617,7 @@ func encodeReposCreatePagesSiteResponse(response ReposCreatePagesSiteRes, w http
 		return nil
 
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(415)
 		span.SetStatus(codes.Error, http.StatusText(415))
 
@@ -18630,7 +18630,7 @@ func encodeReposCreatePagesSiteResponse(response ReposCreatePagesSiteRes, w http
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -18650,7 +18650,7 @@ func encodeReposCreatePagesSiteResponse(response ReposCreatePagesSiteRes, w http
 func encodeReposCreateReleaseResponse(response ReposCreateReleaseRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReleaseHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -18682,7 +18682,7 @@ func encodeReposCreateReleaseResponse(response ReposCreateReleaseRes, w http.Res
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -18695,7 +18695,7 @@ func encodeReposCreateReleaseResponse(response ReposCreateReleaseRes, w http.Res
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -18713,7 +18713,7 @@ func encodeReposCreateReleaseResponse(response ReposCreateReleaseRes, w http.Res
 }
 
 func encodeReposCreateUsingTemplateResponse(response *RepositoryHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -18748,7 +18748,7 @@ func encodeReposCreateUsingTemplateResponse(response *RepositoryHeaders, w http.
 func encodeReposCreateWebhookResponse(response ReposCreateWebhookRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *HookHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -18780,7 +18780,7 @@ func encodeReposCreateWebhookResponse(response ReposCreateWebhookRes, w http.Res
 		return nil
 
 	case *ReposCreateWebhookForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -18793,7 +18793,7 @@ func encodeReposCreateWebhookResponse(response ReposCreateWebhookRes, w http.Res
 		return nil
 
 	case *ReposCreateWebhookNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -18806,7 +18806,7 @@ func encodeReposCreateWebhookResponse(response ReposCreateWebhookRes, w http.Res
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -18838,7 +18838,7 @@ func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w 
 		return nil
 
 	case *ReposDeclineInvitationForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -18851,7 +18851,7 @@ func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w 
 		return nil
 
 	case *ReposDeclineInvitationNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -18864,7 +18864,7 @@ func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w 
 		return nil
 
 	case *ReposDeclineInvitationConflict:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(409)
 		span.SetStatus(codes.Error, http.StatusText(409))
 
@@ -18890,7 +18890,7 @@ func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter, s
 		return nil
 
 	case *ReposDeleteTemporaryRedirect:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(307)
 		span.SetStatus(codes.Ok, http.StatusText(307))
 
@@ -18903,7 +18903,7 @@ func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter, s
 		return nil
 
 	case *ReposDeleteForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -18916,7 +18916,7 @@ func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter, s
 		return nil
 
 	case *ReposDeleteNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -18949,7 +18949,7 @@ func encodeReposDeleteAdminBranchProtectionResponse(response ReposDeleteAdminBra
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -18982,7 +18982,7 @@ func encodeReposDeleteAutolinkResponse(response ReposDeleteAutolinkRes, w http.R
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -19008,7 +19008,7 @@ func encodeReposDeleteBranchProtectionResponse(response ReposDeleteBranchProtect
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -19034,7 +19034,7 @@ func encodeReposDeleteCommitCommentResponse(response ReposDeleteCommitCommentRes
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -19060,7 +19060,7 @@ func encodeReposDeleteCommitSignatureProtectionResponse(response ReposDeleteComm
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -19093,7 +19093,7 @@ func encodeReposDeleteDeploymentResponse(response ReposDeleteDeploymentRes, w ht
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -19106,7 +19106,7 @@ func encodeReposDeleteDeploymentResponse(response ReposDeleteDeploymentRes, w ht
 		return nil
 
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -19126,7 +19126,7 @@ func encodeReposDeleteDeploymentResponse(response ReposDeleteDeploymentRes, w ht
 func encodeReposDeleteFileResponse(response ReposDeleteFileRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *FileCommit:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -19139,7 +19139,7 @@ func encodeReposDeleteFileResponse(response ReposDeleteFileRes, w http.ResponseW
 		return nil
 
 	case *ReposDeleteFileNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -19152,7 +19152,7 @@ func encodeReposDeleteFileResponse(response ReposDeleteFileRes, w http.ResponseW
 		return nil
 
 	case *ReposDeleteFileConflict:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(409)
 		span.SetStatus(codes.Error, http.StatusText(409))
 
@@ -19165,7 +19165,7 @@ func encodeReposDeleteFileResponse(response ReposDeleteFileRes, w http.ResponseW
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -19178,7 +19178,7 @@ func encodeReposDeleteFileResponse(response ReposDeleteFileRes, w http.ResponseW
 		return nil
 
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(503)
 		span.SetStatus(codes.Error, http.StatusText(503))
 
@@ -19211,7 +19211,7 @@ func encodeReposDeletePagesSiteResponse(response ReposDeletePagesSiteRes, w http
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -19224,7 +19224,7 @@ func encodeReposDeletePagesSiteResponse(response ReposDeletePagesSiteRes, w http
 		return nil
 
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(415)
 		span.SetStatus(codes.Error, http.StatusText(415))
 
@@ -19237,7 +19237,7 @@ func encodeReposDeletePagesSiteResponse(response ReposDeletePagesSiteRes, w http
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -19263,7 +19263,7 @@ func encodeReposDeletePullRequestReviewProtectionResponse(response ReposDeletePu
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -19303,7 +19303,7 @@ func encodeReposDeleteWebhookResponse(response ReposDeleteWebhookRes, w http.Res
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -19403,7 +19403,7 @@ func encodeReposEnableAutomatedSecurityFixesResponse(response *ReposEnableAutoma
 func encodeReposEnableLfsForRepoResponse(response ReposEnableLfsForRepoRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Accepted:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(202)
 		span.SetStatus(codes.Ok, http.StatusText(202))
 
@@ -19436,7 +19436,7 @@ func encodeReposEnableVulnerabilityAlertsResponse(response *ReposEnableVulnerabi
 func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *FullRepository:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -19449,7 +19449,7 @@ func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter, span tr
 		return nil
 
 	case *ReposGetMovedPermanently:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(301)
 		span.SetStatus(codes.Ok, http.StatusText(301))
 
@@ -19462,7 +19462,7 @@ func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter, span tr
 		return nil
 
 	case *ReposGetForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -19475,7 +19475,7 @@ func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter, span tr
 		return nil
 
 	case *ReposGetNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -19495,7 +19495,7 @@ func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter, span tr
 func encodeReposGetAccessRestrictionsResponse(response ReposGetAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *BranchRestrictionPolicy:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -19508,7 +19508,7 @@ func encodeReposGetAccessRestrictionsResponse(response ReposGetAccessRestriction
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -19526,7 +19526,7 @@ func encodeReposGetAccessRestrictionsResponse(response ReposGetAccessRestriction
 }
 
 func encodeReposGetAdminBranchProtectionResponse(response *ProtectedBranchAdminEnforced, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -19542,7 +19542,7 @@ func encodeReposGetAdminBranchProtectionResponse(response *ProtectedBranchAdminE
 func encodeReposGetAllStatusCheckContextsResponse(response ReposGetAllStatusCheckContextsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposGetAllStatusCheckContextsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -19555,7 +19555,7 @@ func encodeReposGetAllStatusCheckContextsResponse(response ReposGetAllStatusChec
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -19575,7 +19575,7 @@ func encodeReposGetAllStatusCheckContextsResponse(response ReposGetAllStatusChec
 func encodeReposGetAllTopicsResponse(response ReposGetAllTopicsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Topic:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -19588,7 +19588,7 @@ func encodeReposGetAllTopicsResponse(response ReposGetAllTopicsRes, w http.Respo
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -19601,7 +19601,7 @@ func encodeReposGetAllTopicsResponse(response ReposGetAllTopicsRes, w http.Respo
 		return nil
 
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(415)
 		span.SetStatus(codes.Error, http.StatusText(415))
 
@@ -19621,7 +19621,7 @@ func encodeReposGetAllTopicsResponse(response ReposGetAllTopicsRes, w http.Respo
 func encodeReposGetAppsWithAccessToProtectedBranchResponse(response ReposGetAppsWithAccessToProtectedBranchRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -19634,7 +19634,7 @@ func encodeReposGetAppsWithAccessToProtectedBranchResponse(response ReposGetApps
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -19654,7 +19654,7 @@ func encodeReposGetAppsWithAccessToProtectedBranchResponse(response ReposGetApps
 func encodeReposGetAutolinkResponse(response ReposGetAutolinkRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Autolink:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -19667,7 +19667,7 @@ func encodeReposGetAutolinkResponse(response ReposGetAutolinkRes, w http.Respons
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -19687,7 +19687,7 @@ func encodeReposGetAutolinkResponse(response ReposGetAutolinkRes, w http.Respons
 func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *BranchWithProtection:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -19700,7 +19700,7 @@ func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWri
 		return nil
 
 	case *ReposGetBranchMovedPermanently:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(301)
 		span.SetStatus(codes.Ok, http.StatusText(301))
 
@@ -19713,7 +19713,7 @@ func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWri
 		return nil
 
 	case *ReposGetBranchNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -19726,7 +19726,7 @@ func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWri
 		return nil
 
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(415)
 		span.SetStatus(codes.Error, http.StatusText(415))
 
@@ -19746,7 +19746,7 @@ func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWri
 func encodeReposGetBranchProtectionResponse(response ReposGetBranchProtectionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *BranchProtection:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -19759,7 +19759,7 @@ func encodeReposGetBranchProtectionResponse(response ReposGetBranchProtectionRes
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -19779,7 +19779,7 @@ func encodeReposGetBranchProtectionResponse(response ReposGetBranchProtectionRes
 func encodeReposGetClonesResponse(response ReposGetClonesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CloneTraffic:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -19792,7 +19792,7 @@ func encodeReposGetClonesResponse(response ReposGetClonesRes, w http.ResponseWri
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -19812,7 +19812,7 @@ func encodeReposGetClonesResponse(response ReposGetClonesRes, w http.ResponseWri
 func encodeReposGetCodeFrequencyStatsResponse(response ReposGetCodeFrequencyStatsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposGetCodeFrequencyStatsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -19825,7 +19825,7 @@ func encodeReposGetCodeFrequencyStatsResponse(response ReposGetCodeFrequencyStat
 		return nil
 
 	case *Accepted:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(202)
 		span.SetStatus(codes.Ok, http.StatusText(202))
 
@@ -19851,7 +19851,7 @@ func encodeReposGetCodeFrequencyStatsResponse(response ReposGetCodeFrequencyStat
 func encodeReposGetCollaboratorPermissionLevelResponse(response ReposGetCollaboratorPermissionLevelRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *RepositoryCollaboratorPermission:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -19864,7 +19864,7 @@ func encodeReposGetCollaboratorPermissionLevelResponse(response ReposGetCollabor
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -19884,7 +19884,7 @@ func encodeReposGetCollaboratorPermissionLevelResponse(response ReposGetCollabor
 func encodeReposGetCombinedStatusForRefResponse(response ReposGetCombinedStatusForRefRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CombinedCommitStatus:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -19897,7 +19897,7 @@ func encodeReposGetCombinedStatusForRefResponse(response ReposGetCombinedStatusF
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -19917,7 +19917,7 @@ func encodeReposGetCombinedStatusForRefResponse(response ReposGetCombinedStatusF
 func encodeReposGetCommitResponse(response ReposGetCommitRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Commit:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -19930,7 +19930,7 @@ func encodeReposGetCommitResponse(response ReposGetCommitRes, w http.ResponseWri
 		return nil
 
 	case *ReposGetCommitNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -19943,7 +19943,7 @@ func encodeReposGetCommitResponse(response ReposGetCommitRes, w http.ResponseWri
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -19956,7 +19956,7 @@ func encodeReposGetCommitResponse(response ReposGetCommitRes, w http.ResponseWri
 		return nil
 
 	case *ReposGetCommitInternalServerError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
 
@@ -19976,7 +19976,7 @@ func encodeReposGetCommitResponse(response ReposGetCommitRes, w http.ResponseWri
 func encodeReposGetCommitActivityStatsResponse(response ReposGetCommitActivityStatsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposGetCommitActivityStatsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -19989,7 +19989,7 @@ func encodeReposGetCommitActivityStatsResponse(response ReposGetCommitActivitySt
 		return nil
 
 	case *Accepted:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(202)
 		span.SetStatus(codes.Ok, http.StatusText(202))
 
@@ -20015,7 +20015,7 @@ func encodeReposGetCommitActivityStatsResponse(response ReposGetCommitActivitySt
 func encodeReposGetCommitCommentResponse(response ReposGetCommitCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CommitComment:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -20028,7 +20028,7 @@ func encodeReposGetCommitCommentResponse(response ReposGetCommitCommentRes, w ht
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -20048,7 +20048,7 @@ func encodeReposGetCommitCommentResponse(response ReposGetCommitCommentRes, w ht
 func encodeReposGetCommitSignatureProtectionResponse(response ReposGetCommitSignatureProtectionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProtectedBranchAdminEnforced:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -20061,7 +20061,7 @@ func encodeReposGetCommitSignatureProtectionResponse(response ReposGetCommitSign
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -20079,7 +20079,7 @@ func encodeReposGetCommitSignatureProtectionResponse(response ReposGetCommitSign
 }
 
 func encodeReposGetCommunityProfileMetricsResponse(response *CommunityProfile, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -20095,7 +20095,7 @@ func encodeReposGetCommunityProfileMetricsResponse(response *CommunityProfile, w
 func encodeReposGetContributorsStatsResponse(response ReposGetContributorsStatsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposGetContributorsStatsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -20108,7 +20108,7 @@ func encodeReposGetContributorsStatsResponse(response ReposGetContributorsStatsR
 		return nil
 
 	case *Accepted:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(202)
 		span.SetStatus(codes.Ok, http.StatusText(202))
 
@@ -20134,7 +20134,7 @@ func encodeReposGetContributorsStatsResponse(response ReposGetContributorsStatsR
 func encodeReposGetDeployKeyResponse(response ReposGetDeployKeyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeployKey:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -20147,7 +20147,7 @@ func encodeReposGetDeployKeyResponse(response ReposGetDeployKeyRes, w http.Respo
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -20167,7 +20167,7 @@ func encodeReposGetDeployKeyResponse(response ReposGetDeployKeyRes, w http.Respo
 func encodeReposGetDeploymentResponse(response ReposGetDeploymentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Deployment:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -20180,7 +20180,7 @@ func encodeReposGetDeploymentResponse(response ReposGetDeploymentRes, w http.Res
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -20200,7 +20200,7 @@ func encodeReposGetDeploymentResponse(response ReposGetDeploymentRes, w http.Res
 func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeploymentStatus:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -20213,7 +20213,7 @@ func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusRes
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -20226,7 +20226,7 @@ func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusRes
 		return nil
 
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(415)
 		span.SetStatus(codes.Error, http.StatusText(415))
 
@@ -20244,7 +20244,7 @@ func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusRes
 }
 
 func encodeReposGetLatestPagesBuildResponse(response *PageBuild, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -20258,7 +20258,7 @@ func encodeReposGetLatestPagesBuildResponse(response *PageBuild, w http.Response
 }
 
 func encodeReposGetLatestReleaseResponse(response *Release, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -20274,7 +20274,7 @@ func encodeReposGetLatestReleaseResponse(response *Release, w http.ResponseWrite
 func encodeReposGetPagesResponse(response ReposGetPagesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Page:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -20287,7 +20287,7 @@ func encodeReposGetPagesResponse(response ReposGetPagesRes, w http.ResponseWrite
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -20305,7 +20305,7 @@ func encodeReposGetPagesResponse(response ReposGetPagesRes, w http.ResponseWrite
 }
 
 func encodeReposGetPagesBuildResponse(response *PageBuild, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -20321,7 +20321,7 @@ func encodeReposGetPagesBuildResponse(response *PageBuild, w http.ResponseWriter
 func encodeReposGetPagesHealthCheckResponse(response ReposGetPagesHealthCheckRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PagesHealthCheck:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -20334,7 +20334,7 @@ func encodeReposGetPagesHealthCheckResponse(response ReposGetPagesHealthCheckRes
 		return nil
 
 	case *EmptyObject:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(202)
 		span.SetStatus(codes.Ok, http.StatusText(202))
 
@@ -20353,7 +20353,7 @@ func encodeReposGetPagesHealthCheckResponse(response ReposGetPagesHealthCheckRes
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -20379,7 +20379,7 @@ func encodeReposGetPagesHealthCheckResponse(response ReposGetPagesHealthCheckRes
 func encodeReposGetParticipationStatsResponse(response ReposGetParticipationStatsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ParticipationStats:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -20392,7 +20392,7 @@ func encodeReposGetParticipationStatsResponse(response ReposGetParticipationStat
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -20410,7 +20410,7 @@ func encodeReposGetParticipationStatsResponse(response ReposGetParticipationStat
 }
 
 func encodeReposGetPullRequestReviewProtectionResponse(response *ProtectedBranchPullRequestReview, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -20426,7 +20426,7 @@ func encodeReposGetPullRequestReviewProtectionResponse(response *ProtectedBranch
 func encodeReposGetPunchCardStatsResponse(response ReposGetPunchCardStatsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposGetPunchCardStatsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -20452,7 +20452,7 @@ func encodeReposGetPunchCardStatsResponse(response ReposGetPunchCardStatsRes, w 
 func encodeReposGetReadmeResponse(response ReposGetReadmeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ContentFile:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -20465,7 +20465,7 @@ func encodeReposGetReadmeResponse(response ReposGetReadmeRes, w http.ResponseWri
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -20478,7 +20478,7 @@ func encodeReposGetReadmeResponse(response ReposGetReadmeRes, w http.ResponseWri
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -20498,7 +20498,7 @@ func encodeReposGetReadmeResponse(response ReposGetReadmeRes, w http.ResponseWri
 func encodeReposGetReadmeInDirectoryResponse(response ReposGetReadmeInDirectoryRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ContentFile:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -20511,7 +20511,7 @@ func encodeReposGetReadmeInDirectoryResponse(response ReposGetReadmeInDirectoryR
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -20524,7 +20524,7 @@ func encodeReposGetReadmeInDirectoryResponse(response ReposGetReadmeInDirectoryR
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -20544,7 +20544,7 @@ func encodeReposGetReadmeInDirectoryResponse(response ReposGetReadmeInDirectoryR
 func encodeReposGetReleaseResponse(response ReposGetReleaseRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Release:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -20557,7 +20557,7 @@ func encodeReposGetReleaseResponse(response ReposGetReleaseRes, w http.ResponseW
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -20577,7 +20577,7 @@ func encodeReposGetReleaseResponse(response ReposGetReleaseRes, w http.ResponseW
 func encodeReposGetReleaseAssetResponse(response ReposGetReleaseAssetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReleaseAsset:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -20596,7 +20596,7 @@ func encodeReposGetReleaseAssetResponse(response ReposGetReleaseAssetRes, w http
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -20609,7 +20609,7 @@ func encodeReposGetReleaseAssetResponse(response ReposGetReleaseAssetRes, w http
 		return nil
 
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(415)
 		span.SetStatus(codes.Error, http.StatusText(415))
 
@@ -20629,7 +20629,7 @@ func encodeReposGetReleaseAssetResponse(response ReposGetReleaseAssetRes, w http
 func encodeReposGetReleaseByTagResponse(response ReposGetReleaseByTagRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Release:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -20642,7 +20642,7 @@ func encodeReposGetReleaseByTagResponse(response ReposGetReleaseByTagRes, w http
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -20662,7 +20662,7 @@ func encodeReposGetReleaseByTagResponse(response ReposGetReleaseByTagRes, w http
 func encodeReposGetStatusChecksProtectionResponse(response ReposGetStatusChecksProtectionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *StatusCheckPolicy:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -20675,7 +20675,7 @@ func encodeReposGetStatusChecksProtectionResponse(response ReposGetStatusChecksP
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -20695,7 +20695,7 @@ func encodeReposGetStatusChecksProtectionResponse(response ReposGetStatusChecksP
 func encodeReposGetTeamsWithAccessToProtectedBranchResponse(response ReposGetTeamsWithAccessToProtectedBranchRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -20708,7 +20708,7 @@ func encodeReposGetTeamsWithAccessToProtectedBranchResponse(response ReposGetTea
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -20728,7 +20728,7 @@ func encodeReposGetTeamsWithAccessToProtectedBranchResponse(response ReposGetTea
 func encodeReposGetTopPathsResponse(response ReposGetTopPathsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposGetTopPathsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -20741,7 +20741,7 @@ func encodeReposGetTopPathsResponse(response ReposGetTopPathsRes, w http.Respons
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -20761,7 +20761,7 @@ func encodeReposGetTopPathsResponse(response ReposGetTopPathsRes, w http.Respons
 func encodeReposGetTopReferrersResponse(response ReposGetTopReferrersRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposGetTopReferrersOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -20774,7 +20774,7 @@ func encodeReposGetTopReferrersResponse(response ReposGetTopReferrersRes, w http
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -20794,7 +20794,7 @@ func encodeReposGetTopReferrersResponse(response ReposGetTopReferrersRes, w http
 func encodeReposGetUsersWithAccessToProtectedBranchResponse(response ReposGetUsersWithAccessToProtectedBranchRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -20807,7 +20807,7 @@ func encodeReposGetUsersWithAccessToProtectedBranchResponse(response ReposGetUse
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -20827,7 +20827,7 @@ func encodeReposGetUsersWithAccessToProtectedBranchResponse(response ReposGetUse
 func encodeReposGetViewsResponse(response ReposGetViewsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ViewTraffic:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -20840,7 +20840,7 @@ func encodeReposGetViewsResponse(response ReposGetViewsRes, w http.ResponseWrite
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -20860,7 +20860,7 @@ func encodeReposGetViewsResponse(response ReposGetViewsRes, w http.ResponseWrite
 func encodeReposGetWebhookResponse(response ReposGetWebhookRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Hook:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -20873,7 +20873,7 @@ func encodeReposGetWebhookResponse(response ReposGetWebhookRes, w http.ResponseW
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -20891,7 +20891,7 @@ func encodeReposGetWebhookResponse(response ReposGetWebhookRes, w http.ResponseW
 }
 
 func encodeReposGetWebhookConfigForRepoResponse(response *WebhookConfig, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -20907,7 +20907,7 @@ func encodeReposGetWebhookConfigForRepoResponse(response *WebhookConfig, w http.
 func encodeReposGetWebhookDeliveryResponse(response ReposGetWebhookDeliveryRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *HookDelivery:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -20920,7 +20920,7 @@ func encodeReposGetWebhookDeliveryResponse(response ReposGetWebhookDeliveryRes, 
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
 
@@ -20933,7 +20933,7 @@ func encodeReposGetWebhookDeliveryResponse(response ReposGetWebhookDeliveryRes, 
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -20951,7 +20951,7 @@ func encodeReposGetWebhookDeliveryResponse(response ReposGetWebhookDeliveryRes, 
 }
 
 func encodeReposListAutolinksResponse(response []Autolink, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -20971,7 +20971,7 @@ func encodeReposListAutolinksResponse(response []Autolink, w http.ResponseWriter
 func encodeReposListBranchesResponse(response ReposListBranchesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListBranchesOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -21007,7 +21007,7 @@ func encodeReposListBranchesResponse(response ReposListBranchesRes, w http.Respo
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -21027,7 +21027,7 @@ func encodeReposListBranchesResponse(response ReposListBranchesRes, w http.Respo
 func encodeReposListBranchesForHeadCommitResponse(response ReposListBranchesForHeadCommitRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListBranchesForHeadCommitOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -21040,7 +21040,7 @@ func encodeReposListBranchesForHeadCommitResponse(response ReposListBranchesForH
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -21060,7 +21060,7 @@ func encodeReposListBranchesForHeadCommitResponse(response ReposListBranchesForH
 func encodeReposListCollaboratorsResponse(response ReposListCollaboratorsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListCollaboratorsOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -21096,7 +21096,7 @@ func encodeReposListCollaboratorsResponse(response ReposListCollaboratorsRes, w 
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -21114,7 +21114,7 @@ func encodeReposListCollaboratorsResponse(response ReposListCollaboratorsRes, w 
 }
 
 func encodeReposListCommentsForCommitResponse(response *ReposListCommentsForCommitOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -21151,7 +21151,7 @@ func encodeReposListCommentsForCommitResponse(response *ReposListCommentsForComm
 }
 
 func encodeReposListCommitCommentsForRepoResponse(response *ReposListCommitCommentsForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -21190,7 +21190,7 @@ func encodeReposListCommitCommentsForRepoResponse(response *ReposListCommitComme
 func encodeReposListCommitStatusesForRefResponse(response ReposListCommitStatusesForRefRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListCommitStatusesForRefOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -21226,7 +21226,7 @@ func encodeReposListCommitStatusesForRefResponse(response ReposListCommitStatuse
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(301)
 		span.SetStatus(codes.Ok, http.StatusText(301))
 
@@ -21246,7 +21246,7 @@ func encodeReposListCommitStatusesForRefResponse(response ReposListCommitStatuse
 func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListCommitsOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -21282,7 +21282,7 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 		return nil
 
 	case *ReposListCommitsBadRequest:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
 
@@ -21295,7 +21295,7 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 		return nil
 
 	case *ReposListCommitsNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -21308,7 +21308,7 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 		return nil
 
 	case *ReposListCommitsConflict:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(409)
 		span.SetStatus(codes.Error, http.StatusText(409))
 
@@ -21321,7 +21321,7 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 		return nil
 
 	case *ReposListCommitsInternalServerError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
 
@@ -21341,7 +21341,7 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 func encodeReposListContributorsResponse(response ReposListContributorsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListContributorsOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -21383,7 +21383,7 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 		return nil
 
 	case *ReposListContributorsForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -21396,7 +21396,7 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 		return nil
 
 	case *ReposListContributorsNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -21414,7 +21414,7 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 }
 
 func encodeReposListDeployKeysResponse(response *ReposListDeployKeysOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -21453,7 +21453,7 @@ func encodeReposListDeployKeysResponse(response *ReposListDeployKeysOKHeaders, w
 func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatusesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListDeploymentStatusesOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -21489,7 +21489,7 @@ func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatu
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -21507,7 +21507,7 @@ func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatu
 }
 
 func encodeReposListDeploymentsResponse(response *ReposListDeploymentsOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -21546,7 +21546,7 @@ func encodeReposListDeploymentsResponse(response *ReposListDeploymentsOKHeaders,
 func encodeReposListForAuthenticatedUserResponse(response ReposListForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListForAuthenticatedUserOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -21565,7 +21565,7 @@ func encodeReposListForAuthenticatedUserResponse(response ReposListForAuthentica
 		return nil
 
 	case *ReposListForAuthenticatedUserUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -21578,7 +21578,7 @@ func encodeReposListForAuthenticatedUserResponse(response ReposListForAuthentica
 		return nil
 
 	case *ReposListForAuthenticatedUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -21591,7 +21591,7 @@ func encodeReposListForAuthenticatedUserResponse(response ReposListForAuthentica
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -21609,7 +21609,7 @@ func encodeReposListForAuthenticatedUserResponse(response ReposListForAuthentica
 }
 
 func encodeReposListForOrgResponse(response *ReposListForOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -21646,7 +21646,7 @@ func encodeReposListForOrgResponse(response *ReposListForOrgOKHeaders, w http.Re
 }
 
 func encodeReposListForUserResponse(response *ReposListForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -21685,7 +21685,7 @@ func encodeReposListForUserResponse(response *ReposListForUserOKHeaders, w http.
 func encodeReposListForksResponse(response ReposListForksRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListForksOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -21721,7 +21721,7 @@ func encodeReposListForksResponse(response ReposListForksRes, w http.ResponseWri
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
 
@@ -21739,7 +21739,7 @@ func encodeReposListForksResponse(response ReposListForksRes, w http.ResponseWri
 }
 
 func encodeReposListInvitationsResponse(response *ReposListInvitationsOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -21778,7 +21778,7 @@ func encodeReposListInvitationsResponse(response *ReposListInvitationsOKHeaders,
 func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListInvitationsForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListInvitationsForAuthenticatedUserOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -21820,7 +21820,7 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 		return nil
 
 	case *ReposListInvitationsForAuthenticatedUserUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -21833,7 +21833,7 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 		return nil
 
 	case *ReposListInvitationsForAuthenticatedUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -21846,7 +21846,7 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 		return nil
 
 	case *ReposListInvitationsForAuthenticatedUserNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -21864,7 +21864,7 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 }
 
 func encodeReposListLanguagesResponse(response Language, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -21878,7 +21878,7 @@ func encodeReposListLanguagesResponse(response Language, w http.ResponseWriter, 
 }
 
 func encodeReposListPagesBuildsResponse(response *ReposListPagesBuildsOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -21917,7 +21917,7 @@ func encodeReposListPagesBuildsResponse(response *ReposListPagesBuildsOKHeaders,
 func encodeReposListPublicResponse(response ReposListPublicRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListPublicOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -21959,7 +21959,7 @@ func encodeReposListPublicResponse(response ReposListPublicRes, w http.ResponseW
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -21977,7 +21977,7 @@ func encodeReposListPublicResponse(response ReposListPublicRes, w http.ResponseW
 }
 
 func encodeReposListPullRequestsAssociatedWithCommitResponse(response *ReposListPullRequestsAssociatedWithCommitOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -22014,7 +22014,7 @@ func encodeReposListPullRequestsAssociatedWithCommitResponse(response *ReposList
 }
 
 func encodeReposListReleaseAssetsResponse(response *ReposListReleaseAssetsOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -22053,7 +22053,7 @@ func encodeReposListReleaseAssetsResponse(response *ReposListReleaseAssetsOKHead
 func encodeReposListReleasesResponse(response ReposListReleasesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListReleasesOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -22089,7 +22089,7 @@ func encodeReposListReleasesResponse(response ReposListReleasesRes, w http.Respo
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -22107,7 +22107,7 @@ func encodeReposListReleasesResponse(response ReposListReleasesRes, w http.Respo
 }
 
 func encodeReposListTagsResponse(response *ReposListTagsOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -22144,7 +22144,7 @@ func encodeReposListTagsResponse(response *ReposListTagsOKHeaders, w http.Respon
 }
 
 func encodeReposListTeamsResponse(response *ReposListTeamsOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -22183,7 +22183,7 @@ func encodeReposListTeamsResponse(response *ReposListTeamsOKHeaders, w http.Resp
 func encodeReposListWebhookDeliveriesResponse(response ReposListWebhookDeliveriesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListWebhookDeliveriesOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -22196,7 +22196,7 @@ func encodeReposListWebhookDeliveriesResponse(response ReposListWebhookDeliverie
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
 
@@ -22209,7 +22209,7 @@ func encodeReposListWebhookDeliveriesResponse(response ReposListWebhookDeliverie
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -22229,7 +22229,7 @@ func encodeReposListWebhookDeliveriesResponse(response ReposListWebhookDeliverie
 func encodeReposListWebhooksResponse(response ReposListWebhooksRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListWebhooksOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -22265,7 +22265,7 @@ func encodeReposListWebhooksResponse(response ReposListWebhooksRes, w http.Respo
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -22285,7 +22285,7 @@ func encodeReposListWebhooksResponse(response ReposListWebhooksRes, w http.Respo
 func encodeReposMergeResponse(response ReposMergeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Commit:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -22304,7 +22304,7 @@ func encodeReposMergeResponse(response ReposMergeRes, w http.ResponseWriter, spa
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -22329,7 +22329,7 @@ func encodeReposMergeResponse(response ReposMergeRes, w http.ResponseWriter, spa
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -22349,7 +22349,7 @@ func encodeReposMergeResponse(response ReposMergeRes, w http.ResponseWriter, spa
 func encodeReposMergeUpstreamResponse(response ReposMergeUpstreamRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MergedUpstream:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -22387,7 +22387,7 @@ func encodeReposPingWebhookResponse(response ReposPingWebhookRes, w http.Respons
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -22407,7 +22407,7 @@ func encodeReposPingWebhookResponse(response ReposPingWebhookRes, w http.Respons
 func encodeReposRedeliverWebhookDeliveryResponse(response ReposRedeliverWebhookDeliveryRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Accepted:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(202)
 		span.SetStatus(codes.Ok, http.StatusText(202))
 
@@ -22420,7 +22420,7 @@ func encodeReposRedeliverWebhookDeliveryResponse(response ReposRedeliverWebhookD
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
 
@@ -22433,7 +22433,7 @@ func encodeReposRedeliverWebhookDeliveryResponse(response ReposRedeliverWebhookD
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -22453,7 +22453,7 @@ func encodeReposRedeliverWebhookDeliveryResponse(response ReposRedeliverWebhookD
 func encodeReposRemoveAppAccessRestrictionsResponse(response ReposRemoveAppAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposRemoveAppAccessRestrictionsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -22466,7 +22466,7 @@ func encodeReposRemoveAppAccessRestrictionsResponse(response ReposRemoveAppAcces
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -22493,7 +22493,7 @@ func encodeReposRemoveCollaboratorResponse(response *ReposRemoveCollaboratorNoCo
 func encodeReposRemoveStatusCheckContextsResponse(response ReposRemoveStatusCheckContextsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposRemoveStatusCheckContextsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -22506,7 +22506,7 @@ func encodeReposRemoveStatusCheckContextsResponse(response ReposRemoveStatusChec
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -22519,7 +22519,7 @@ func encodeReposRemoveStatusCheckContextsResponse(response ReposRemoveStatusChec
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -22546,7 +22546,7 @@ func encodeReposRemoveStatusCheckProtectionResponse(response *ReposRemoveStatusC
 func encodeReposRemoveTeamAccessRestrictionsResponse(response ReposRemoveTeamAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposRemoveTeamAccessRestrictionsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -22559,7 +22559,7 @@ func encodeReposRemoveTeamAccessRestrictionsResponse(response ReposRemoveTeamAcc
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -22579,7 +22579,7 @@ func encodeReposRemoveTeamAccessRestrictionsResponse(response ReposRemoveTeamAcc
 func encodeReposRemoveUserAccessRestrictionsResponse(response ReposRemoveUserAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposRemoveUserAccessRestrictionsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -22592,7 +22592,7 @@ func encodeReposRemoveUserAccessRestrictionsResponse(response ReposRemoveUserAcc
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -22612,7 +22612,7 @@ func encodeReposRemoveUserAccessRestrictionsResponse(response ReposRemoveUserAcc
 func encodeReposRenameBranchResponse(response ReposRenameBranchRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *BranchWithProtection:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -22625,7 +22625,7 @@ func encodeReposRenameBranchResponse(response ReposRenameBranchRes, w http.Respo
 		return nil
 
 	case *ReposRenameBranchForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -22638,7 +22638,7 @@ func encodeReposRenameBranchResponse(response ReposRenameBranchRes, w http.Respo
 		return nil
 
 	case *ReposRenameBranchNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -22651,7 +22651,7 @@ func encodeReposRenameBranchResponse(response ReposRenameBranchRes, w http.Respo
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -22671,7 +22671,7 @@ func encodeReposRenameBranchResponse(response ReposRenameBranchRes, w http.Respo
 func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Topic:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -22684,7 +22684,7 @@ func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w ht
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -22697,7 +22697,7 @@ func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w ht
 		return nil
 
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(415)
 		span.SetStatus(codes.Error, http.StatusText(415))
 
@@ -22710,7 +22710,7 @@ func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w ht
 		return nil
 
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -22728,7 +22728,7 @@ func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w ht
 }
 
 func encodeReposRequestPagesBuildResponse(response *PageBuildStatus, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -22742,7 +22742,7 @@ func encodeReposRequestPagesBuildResponse(response *PageBuildStatus, w http.Resp
 }
 
 func encodeReposSetAdminBranchProtectionResponse(response *ProtectedBranchAdminEnforced, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -22758,7 +22758,7 @@ func encodeReposSetAdminBranchProtectionResponse(response *ProtectedBranchAdminE
 func encodeReposSetAppAccessRestrictionsResponse(response ReposSetAppAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposSetAppAccessRestrictionsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -22771,7 +22771,7 @@ func encodeReposSetAppAccessRestrictionsResponse(response ReposSetAppAccessRestr
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -22791,7 +22791,7 @@ func encodeReposSetAppAccessRestrictionsResponse(response ReposSetAppAccessRestr
 func encodeReposSetStatusCheckContextsResponse(response ReposSetStatusCheckContextsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposSetStatusCheckContextsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -22804,7 +22804,7 @@ func encodeReposSetStatusCheckContextsResponse(response ReposSetStatusCheckConte
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -22817,7 +22817,7 @@ func encodeReposSetStatusCheckContextsResponse(response ReposSetStatusCheckConte
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -22837,7 +22837,7 @@ func encodeReposSetStatusCheckContextsResponse(response ReposSetStatusCheckConte
 func encodeReposSetTeamAccessRestrictionsResponse(response ReposSetTeamAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposSetTeamAccessRestrictionsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -22850,7 +22850,7 @@ func encodeReposSetTeamAccessRestrictionsResponse(response ReposSetTeamAccessRes
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -22870,7 +22870,7 @@ func encodeReposSetTeamAccessRestrictionsResponse(response ReposSetTeamAccessRes
 func encodeReposSetUserAccessRestrictionsResponse(response ReposSetUserAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposSetUserAccessRestrictionsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -22883,7 +22883,7 @@ func encodeReposSetUserAccessRestrictionsResponse(response ReposSetUserAccessRes
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -22909,7 +22909,7 @@ func encodeReposTestPushWebhookResponse(response ReposTestPushWebhookRes, w http
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -22927,7 +22927,7 @@ func encodeReposTestPushWebhookResponse(response ReposTestPushWebhookRes, w http
 }
 
 func encodeReposTransferResponse(response *MinimalRepository, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(202)
 	span.SetStatus(codes.Ok, http.StatusText(202))
 
@@ -22943,7 +22943,7 @@ func encodeReposTransferResponse(response *MinimalRepository, w http.ResponseWri
 func encodeReposUpdateResponse(response ReposUpdateRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *FullRepository:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -22956,7 +22956,7 @@ func encodeReposUpdateResponse(response ReposUpdateRes, w http.ResponseWriter, s
 		return nil
 
 	case *ReposUpdateTemporaryRedirect:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(307)
 		span.SetStatus(codes.Ok, http.StatusText(307))
 
@@ -22969,7 +22969,7 @@ func encodeReposUpdateResponse(response ReposUpdateRes, w http.ResponseWriter, s
 		return nil
 
 	case *ReposUpdateForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -22982,7 +22982,7 @@ func encodeReposUpdateResponse(response ReposUpdateRes, w http.ResponseWriter, s
 		return nil
 
 	case *ReposUpdateNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -22995,7 +22995,7 @@ func encodeReposUpdateResponse(response ReposUpdateRes, w http.ResponseWriter, s
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -23015,7 +23015,7 @@ func encodeReposUpdateResponse(response ReposUpdateRes, w http.ResponseWriter, s
 func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtectionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProtectedBranch:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -23028,7 +23028,7 @@ func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtect
 		return nil
 
 	case *ReposUpdateBranchProtectionForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -23041,7 +23041,7 @@ func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtect
 		return nil
 
 	case *ReposUpdateBranchProtectionNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -23054,7 +23054,7 @@ func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtect
 		return nil
 
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -23074,7 +23074,7 @@ func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtect
 func encodeReposUpdateCommitCommentResponse(response ReposUpdateCommitCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CommitComment:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -23087,7 +23087,7 @@ func encodeReposUpdateCommitCommentResponse(response ReposUpdateCommitCommentRes
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -23105,7 +23105,7 @@ func encodeReposUpdateCommitCommentResponse(response ReposUpdateCommitCommentRes
 }
 
 func encodeReposUpdateInvitationResponse(response *RepositoryInvitation, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -23121,7 +23121,7 @@ func encodeReposUpdateInvitationResponse(response *RepositoryInvitation, w http.
 func encodeReposUpdatePullRequestReviewProtectionResponse(response ReposUpdatePullRequestReviewProtectionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProtectedBranchPullRequestReview:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -23134,7 +23134,7 @@ func encodeReposUpdatePullRequestReviewProtectionResponse(response ReposUpdatePu
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -23154,7 +23154,7 @@ func encodeReposUpdatePullRequestReviewProtectionResponse(response ReposUpdatePu
 func encodeReposUpdateReleaseResponse(response ReposUpdateReleaseRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Release:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -23167,7 +23167,7 @@ func encodeReposUpdateReleaseResponse(response ReposUpdateReleaseRes, w http.Res
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -23185,7 +23185,7 @@ func encodeReposUpdateReleaseResponse(response ReposUpdateReleaseRes, w http.Res
 }
 
 func encodeReposUpdateReleaseAssetResponse(response *ReleaseAsset, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -23201,7 +23201,7 @@ func encodeReposUpdateReleaseAssetResponse(response *ReleaseAsset, w http.Respon
 func encodeReposUpdateStatusCheckProtectionResponse(response ReposUpdateStatusCheckProtectionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *StatusCheckPolicy:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -23214,7 +23214,7 @@ func encodeReposUpdateStatusCheckProtectionResponse(response ReposUpdateStatusCh
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -23227,7 +23227,7 @@ func encodeReposUpdateStatusCheckProtectionResponse(response ReposUpdateStatusCh
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -23247,7 +23247,7 @@ func encodeReposUpdateStatusCheckProtectionResponse(response ReposUpdateStatusCh
 func encodeReposUpdateWebhookResponse(response ReposUpdateWebhookRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Hook:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -23260,7 +23260,7 @@ func encodeReposUpdateWebhookResponse(response ReposUpdateWebhookRes, w http.Res
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -23273,7 +23273,7 @@ func encodeReposUpdateWebhookResponse(response ReposUpdateWebhookRes, w http.Res
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -23291,7 +23291,7 @@ func encodeReposUpdateWebhookResponse(response ReposUpdateWebhookRes, w http.Res
 }
 
 func encodeReposUpdateWebhookConfigForRepoResponse(response *WebhookConfig, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -23305,7 +23305,7 @@ func encodeReposUpdateWebhookConfigForRepoResponse(response *WebhookConfig, w ht
 }
 
 func encodeReposUploadReleaseAssetResponse(response *ReleaseAsset, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -23333,7 +23333,7 @@ func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgRes, w ht
 		return nil
 
 	case *ScimDeleteUserFromOrgForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -23346,7 +23346,7 @@ func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgRes, w ht
 		return nil
 
 	case *ScimDeleteUserFromOrgNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -23366,7 +23366,7 @@ func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgRes, w ht
 func encodeSearchCodeResponse(response SearchCodeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SearchCodeOK:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -23385,7 +23385,7 @@ func encodeSearchCodeResponse(response SearchCodeRes, w http.ResponseWriter, spa
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -23398,7 +23398,7 @@ func encodeSearchCodeResponse(response SearchCodeRes, w http.ResponseWriter, spa
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -23411,7 +23411,7 @@ func encodeSearchCodeResponse(response SearchCodeRes, w http.ResponseWriter, spa
 		return nil
 
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(503)
 		span.SetStatus(codes.Error, http.StatusText(503))
 
@@ -23431,7 +23431,7 @@ func encodeSearchCodeResponse(response SearchCodeRes, w http.ResponseWriter, spa
 func encodeSearchCommitsResponse(response SearchCommitsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SearchCommitsOK:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -23450,7 +23450,7 @@ func encodeSearchCommitsResponse(response SearchCommitsRes, w http.ResponseWrite
 		return nil
 
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(415)
 		span.SetStatus(codes.Error, http.StatusText(415))
 
@@ -23470,7 +23470,7 @@ func encodeSearchCommitsResponse(response SearchCommitsRes, w http.ResponseWrite
 func encodeSearchIssuesAndPullRequestsResponse(response SearchIssuesAndPullRequestsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SearchIssuesAndPullRequestsOK:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -23489,7 +23489,7 @@ func encodeSearchIssuesAndPullRequestsResponse(response SearchIssuesAndPullReque
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -23502,7 +23502,7 @@ func encodeSearchIssuesAndPullRequestsResponse(response SearchIssuesAndPullReque
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -23515,7 +23515,7 @@ func encodeSearchIssuesAndPullRequestsResponse(response SearchIssuesAndPullReque
 		return nil
 
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(503)
 		span.SetStatus(codes.Error, http.StatusText(503))
 
@@ -23535,7 +23535,7 @@ func encodeSearchIssuesAndPullRequestsResponse(response SearchIssuesAndPullReque
 func encodeSearchLabelsResponse(response SearchLabelsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SearchLabelsOK:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -23554,7 +23554,7 @@ func encodeSearchLabelsResponse(response SearchLabelsRes, w http.ResponseWriter,
 		return nil
 
 	case *SearchLabelsForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -23567,7 +23567,7 @@ func encodeSearchLabelsResponse(response SearchLabelsRes, w http.ResponseWriter,
 		return nil
 
 	case *SearchLabelsNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -23580,7 +23580,7 @@ func encodeSearchLabelsResponse(response SearchLabelsRes, w http.ResponseWriter,
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -23600,7 +23600,7 @@ func encodeSearchLabelsResponse(response SearchLabelsRes, w http.ResponseWriter,
 func encodeSearchReposResponse(response SearchReposRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SearchReposOK:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -23619,7 +23619,7 @@ func encodeSearchReposResponse(response SearchReposRes, w http.ResponseWriter, s
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -23632,7 +23632,7 @@ func encodeSearchReposResponse(response SearchReposRes, w http.ResponseWriter, s
 		return nil
 
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(503)
 		span.SetStatus(codes.Error, http.StatusText(503))
 
@@ -23652,7 +23652,7 @@ func encodeSearchReposResponse(response SearchReposRes, w http.ResponseWriter, s
 func encodeSearchTopicsResponse(response SearchTopicsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SearchTopicsOK:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -23671,7 +23671,7 @@ func encodeSearchTopicsResponse(response SearchTopicsRes, w http.ResponseWriter,
 		return nil
 
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(415)
 		span.SetStatus(codes.Error, http.StatusText(415))
 
@@ -23691,7 +23691,7 @@ func encodeSearchTopicsResponse(response SearchTopicsRes, w http.ResponseWriter,
 func encodeSearchUsersResponse(response SearchUsersRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SearchUsersOK:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -23710,7 +23710,7 @@ func encodeSearchUsersResponse(response SearchUsersRes, w http.ResponseWriter, s
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -23723,7 +23723,7 @@ func encodeSearchUsersResponse(response SearchUsersRes, w http.ResponseWriter, s
 		return nil
 
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(503)
 		span.SetStatus(codes.Error, http.StatusText(503))
 
@@ -23743,7 +23743,7 @@ func encodeSearchUsersResponse(response SearchUsersRes, w http.ResponseWriter, s
 func encodeSecretScanningGetAlertResponse(response SecretScanningGetAlertRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SecretScanningAlert:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -23762,7 +23762,7 @@ func encodeSecretScanningGetAlertResponse(response SecretScanningGetAlertRes, w 
 		return nil
 
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(503)
 		span.SetStatus(codes.Error, http.StatusText(503))
 
@@ -23782,7 +23782,7 @@ func encodeSecretScanningGetAlertResponse(response SecretScanningGetAlertRes, w 
 func encodeSecretScanningListAlertsForOrgResponse(response SecretScanningListAlertsForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SecretScanningListAlertsForOrgOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -23818,7 +23818,7 @@ func encodeSecretScanningListAlertsForOrgResponse(response SecretScanningListAle
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -23831,7 +23831,7 @@ func encodeSecretScanningListAlertsForOrgResponse(response SecretScanningListAle
 		return nil
 
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(503)
 		span.SetStatus(codes.Error, http.StatusText(503))
 
@@ -23851,7 +23851,7 @@ func encodeSecretScanningListAlertsForOrgResponse(response SecretScanningListAle
 func encodeSecretScanningListAlertsForRepoResponse(response SecretScanningListAlertsForRepoRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SecretScanningListAlertsForRepoOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -23870,7 +23870,7 @@ func encodeSecretScanningListAlertsForRepoResponse(response SecretScanningListAl
 		return nil
 
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(503)
 		span.SetStatus(codes.Error, http.StatusText(503))
 
@@ -23890,7 +23890,7 @@ func encodeSecretScanningListAlertsForRepoResponse(response SecretScanningListAl
 func encodeSecretScanningUpdateAlertResponse(response SecretScanningUpdateAlertRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SecretScanningAlert:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -23915,7 +23915,7 @@ func encodeSecretScanningUpdateAlertResponse(response SecretScanningUpdateAlertR
 		return nil
 
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(503)
 		span.SetStatus(codes.Error, http.StatusText(503))
 
@@ -23941,7 +23941,7 @@ func encodeTeamsAddMemberLegacyResponse(response TeamsAddMemberLegacyRes, w http
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -23973,7 +23973,7 @@ func encodeTeamsAddMemberLegacyResponse(response TeamsAddMemberLegacyRes, w http
 func encodeTeamsAddOrUpdateMembershipForUserInOrgResponse(response TeamsAddOrUpdateMembershipForUserInOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamMembership:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -24005,7 +24005,7 @@ func encodeTeamsAddOrUpdateMembershipForUserInOrgResponse(response TeamsAddOrUpd
 func encodeTeamsAddOrUpdateMembershipForUserLegacyResponse(response TeamsAddOrUpdateMembershipForUserLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamMembership:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -24024,7 +24024,7 @@ func encodeTeamsAddOrUpdateMembershipForUserLegacyResponse(response TeamsAddOrUp
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -24056,7 +24056,7 @@ func encodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(response TeamsAddOrUp
 		return nil
 
 	case *TeamsAddOrUpdateProjectPermissionsInOrgForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -24082,7 +24082,7 @@ func encodeTeamsAddOrUpdateProjectPermissionsLegacyResponse(response TeamsAddOrU
 		return nil
 
 	case *TeamsAddOrUpdateProjectPermissionsLegacyForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -24095,7 +24095,7 @@ func encodeTeamsAddOrUpdateProjectPermissionsLegacyResponse(response TeamsAddOrU
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -24108,7 +24108,7 @@ func encodeTeamsAddOrUpdateProjectPermissionsLegacyResponse(response TeamsAddOrU
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -24141,7 +24141,7 @@ func encodeTeamsAddOrUpdateRepoPermissionsLegacyResponse(response TeamsAddOrUpda
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -24154,7 +24154,7 @@ func encodeTeamsAddOrUpdateRepoPermissionsLegacyResponse(response TeamsAddOrUpda
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -24174,7 +24174,7 @@ func encodeTeamsAddOrUpdateRepoPermissionsLegacyResponse(response TeamsAddOrUpda
 func encodeTeamsCheckPermissionsForProjectInOrgResponse(response TeamsCheckPermissionsForProjectInOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamProject:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -24200,7 +24200,7 @@ func encodeTeamsCheckPermissionsForProjectInOrgResponse(response TeamsCheckPermi
 func encodeTeamsCheckPermissionsForProjectLegacyResponse(response TeamsCheckPermissionsForProjectLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamProject:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -24226,7 +24226,7 @@ func encodeTeamsCheckPermissionsForProjectLegacyResponse(response TeamsCheckPerm
 func encodeTeamsCheckPermissionsForRepoInOrgResponse(response TeamsCheckPermissionsForRepoInOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamRepository:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -24258,7 +24258,7 @@ func encodeTeamsCheckPermissionsForRepoInOrgResponse(response TeamsCheckPermissi
 func encodeTeamsCheckPermissionsForRepoLegacyResponse(response TeamsCheckPermissionsForRepoLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamRepository:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -24290,7 +24290,7 @@ func encodeTeamsCheckPermissionsForRepoLegacyResponse(response TeamsCheckPermiss
 func encodeTeamsCreateResponse(response TeamsCreateRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamFull:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -24303,7 +24303,7 @@ func encodeTeamsCreateResponse(response TeamsCreateRes, w http.ResponseWriter, s
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -24316,7 +24316,7 @@ func encodeTeamsCreateResponse(response TeamsCreateRes, w http.ResponseWriter, s
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -24334,7 +24334,7 @@ func encodeTeamsCreateResponse(response TeamsCreateRes, w http.ResponseWriter, s
 }
 
 func encodeTeamsCreateDiscussionCommentInOrgResponse(response *TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -24348,7 +24348,7 @@ func encodeTeamsCreateDiscussionCommentInOrgResponse(response *TeamDiscussionCom
 }
 
 func encodeTeamsCreateDiscussionCommentLegacyResponse(response *TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -24362,7 +24362,7 @@ func encodeTeamsCreateDiscussionCommentLegacyResponse(response *TeamDiscussionCo
 }
 
 func encodeTeamsCreateDiscussionInOrgResponse(response *TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -24376,7 +24376,7 @@ func encodeTeamsCreateDiscussionInOrgResponse(response *TeamDiscussion, w http.R
 }
 
 func encodeTeamsCreateDiscussionLegacyResponse(response *TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -24390,7 +24390,7 @@ func encodeTeamsCreateDiscussionLegacyResponse(response *TeamDiscussion, w http.
 }
 
 func encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgResponse(response *GroupMapping, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -24406,7 +24406,7 @@ func encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgResponse(response *GroupMa
 func encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse(response TeamsCreateOrUpdateIdpGroupConnectionsLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GroupMapping:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -24419,7 +24419,7 @@ func encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse(response TeamsCr
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -24432,7 +24432,7 @@ func encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse(response TeamsCr
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -24493,7 +24493,7 @@ func encodeTeamsDeleteLegacyResponse(response TeamsDeleteLegacyRes, w http.Respo
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -24506,7 +24506,7 @@ func encodeTeamsDeleteLegacyResponse(response TeamsDeleteLegacyRes, w http.Respo
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -24526,7 +24526,7 @@ func encodeTeamsDeleteLegacyResponse(response TeamsDeleteLegacyRes, w http.Respo
 func encodeTeamsGetByNameResponse(response TeamsGetByNameRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamFull:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -24539,7 +24539,7 @@ func encodeTeamsGetByNameResponse(response TeamsGetByNameRes, w http.ResponseWri
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -24557,7 +24557,7 @@ func encodeTeamsGetByNameResponse(response TeamsGetByNameRes, w http.ResponseWri
 }
 
 func encodeTeamsGetDiscussionCommentInOrgResponse(response *TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -24571,7 +24571,7 @@ func encodeTeamsGetDiscussionCommentInOrgResponse(response *TeamDiscussionCommen
 }
 
 func encodeTeamsGetDiscussionCommentLegacyResponse(response *TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -24585,7 +24585,7 @@ func encodeTeamsGetDiscussionCommentLegacyResponse(response *TeamDiscussionComme
 }
 
 func encodeTeamsGetDiscussionInOrgResponse(response *TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -24599,7 +24599,7 @@ func encodeTeamsGetDiscussionInOrgResponse(response *TeamDiscussion, w http.Resp
 }
 
 func encodeTeamsGetDiscussionLegacyResponse(response *TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -24615,7 +24615,7 @@ func encodeTeamsGetDiscussionLegacyResponse(response *TeamDiscussion, w http.Res
 func encodeTeamsGetLegacyResponse(response TeamsGetLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamFull:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -24628,7 +24628,7 @@ func encodeTeamsGetLegacyResponse(response TeamsGetLegacyRes, w http.ResponseWri
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -24667,7 +24667,7 @@ func encodeTeamsGetMemberLegacyResponse(response TeamsGetMemberLegacyRes, w http
 func encodeTeamsGetMembershipForUserInOrgResponse(response TeamsGetMembershipForUserInOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamMembership:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -24693,7 +24693,7 @@ func encodeTeamsGetMembershipForUserInOrgResponse(response TeamsGetMembershipFor
 func encodeTeamsGetMembershipForUserLegacyResponse(response TeamsGetMembershipForUserLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamMembership:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -24706,7 +24706,7 @@ func encodeTeamsGetMembershipForUserLegacyResponse(response TeamsGetMembershipFo
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -24726,7 +24726,7 @@ func encodeTeamsGetMembershipForUserLegacyResponse(response TeamsGetMembershipFo
 func encodeTeamsListResponse(response TeamsListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsListOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -24762,7 +24762,7 @@ func encodeTeamsListResponse(response TeamsListRes, w http.ResponseWriter, span 
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -24780,7 +24780,7 @@ func encodeTeamsListResponse(response TeamsListRes, w http.ResponseWriter, span 
 }
 
 func encodeTeamsListChildInOrgResponse(response *TeamsListChildInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -24819,7 +24819,7 @@ func encodeTeamsListChildInOrgResponse(response *TeamsListChildInOrgOKHeaders, w
 func encodeTeamsListChildLegacyResponse(response TeamsListChildLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsListChildLegacyOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -24855,7 +24855,7 @@ func encodeTeamsListChildLegacyResponse(response TeamsListChildLegacyRes, w http
 		return nil
 
 	case *TeamsListChildLegacyForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -24868,7 +24868,7 @@ func encodeTeamsListChildLegacyResponse(response TeamsListChildLegacyRes, w http
 		return nil
 
 	case *TeamsListChildLegacyNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -24881,7 +24881,7 @@ func encodeTeamsListChildLegacyResponse(response TeamsListChildLegacyRes, w http
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -24899,7 +24899,7 @@ func encodeTeamsListChildLegacyResponse(response TeamsListChildLegacyRes, w http
 }
 
 func encodeTeamsListDiscussionCommentsInOrgResponse(response *TeamsListDiscussionCommentsInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -24936,7 +24936,7 @@ func encodeTeamsListDiscussionCommentsInOrgResponse(response *TeamsListDiscussio
 }
 
 func encodeTeamsListDiscussionCommentsLegacyResponse(response *TeamsListDiscussionCommentsLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -24973,7 +24973,7 @@ func encodeTeamsListDiscussionCommentsLegacyResponse(response *TeamsListDiscussi
 }
 
 func encodeTeamsListDiscussionsInOrgResponse(response *TeamsListDiscussionsInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -25010,7 +25010,7 @@ func encodeTeamsListDiscussionsInOrgResponse(response *TeamsListDiscussionsInOrg
 }
 
 func encodeTeamsListDiscussionsLegacyResponse(response *TeamsListDiscussionsLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -25049,7 +25049,7 @@ func encodeTeamsListDiscussionsLegacyResponse(response *TeamsListDiscussionsLega
 func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsListForAuthenticatedUserOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -25091,7 +25091,7 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 		return nil
 
 	case *TeamsListForAuthenticatedUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -25104,7 +25104,7 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 		return nil
 
 	case *TeamsListForAuthenticatedUserNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -25124,7 +25124,7 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GroupMapping:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -25137,7 +25137,7 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 		return nil
 
 	case *TeamsListIdpGroupsForLegacyForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -25150,7 +25150,7 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 		return nil
 
 	case *TeamsListIdpGroupsForLegacyNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -25168,7 +25168,7 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 }
 
 func encodeTeamsListIdpGroupsForOrgResponse(response *GroupMappingHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -25201,7 +25201,7 @@ func encodeTeamsListIdpGroupsForOrgResponse(response *GroupMappingHeaders, w htt
 }
 
 func encodeTeamsListIdpGroupsInOrgResponse(response *GroupMapping, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -25215,7 +25215,7 @@ func encodeTeamsListIdpGroupsInOrgResponse(response *GroupMapping, w http.Respon
 }
 
 func encodeTeamsListMembersInOrgResponse(response *TeamsListMembersInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -25254,7 +25254,7 @@ func encodeTeamsListMembersInOrgResponse(response *TeamsListMembersInOrgOKHeader
 func encodeTeamsListMembersLegacyResponse(response TeamsListMembersLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsListMembersLegacyOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -25290,7 +25290,7 @@ func encodeTeamsListMembersLegacyResponse(response TeamsListMembersLegacyRes, w 
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -25308,7 +25308,7 @@ func encodeTeamsListMembersLegacyResponse(response TeamsListMembersLegacyRes, w 
 }
 
 func encodeTeamsListPendingInvitationsInOrgResponse(response *TeamsListPendingInvitationsInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -25345,7 +25345,7 @@ func encodeTeamsListPendingInvitationsInOrgResponse(response *TeamsListPendingIn
 }
 
 func encodeTeamsListPendingInvitationsLegacyResponse(response *TeamsListPendingInvitationsLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -25382,7 +25382,7 @@ func encodeTeamsListPendingInvitationsLegacyResponse(response *TeamsListPendingI
 }
 
 func encodeTeamsListProjectsInOrgResponse(response *TeamsListProjectsInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -25421,7 +25421,7 @@ func encodeTeamsListProjectsInOrgResponse(response *TeamsListProjectsInOrgOKHead
 func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsListProjectsLegacyOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -25457,7 +25457,7 @@ func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyRes, 
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -25475,7 +25475,7 @@ func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyRes, 
 }
 
 func encodeTeamsListReposInOrgResponse(response *TeamsListReposInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -25514,7 +25514,7 @@ func encodeTeamsListReposInOrgResponse(response *TeamsListReposInOrgOKHeaders, w
 func encodeTeamsListReposLegacyResponse(response TeamsListReposLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsListReposLegacyOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -25550,7 +25550,7 @@ func encodeTeamsListReposLegacyResponse(response TeamsListReposLegacyRes, w http
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -25640,7 +25640,7 @@ func encodeTeamsRemoveProjectLegacyResponse(response TeamsRemoveProjectLegacyRes
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -25653,7 +25653,7 @@ func encodeTeamsRemoveProjectLegacyResponse(response TeamsRemoveProjectLegacyRes
 		return nil
 
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(415)
 		span.SetStatus(codes.Error, http.StatusText(415))
 
@@ -25666,7 +25666,7 @@ func encodeTeamsRemoveProjectLegacyResponse(response TeamsRemoveProjectLegacyRes
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -25698,7 +25698,7 @@ func encodeTeamsRemoveRepoLegacyResponse(response *TeamsRemoveRepoLegacyNoConten
 }
 
 func encodeTeamsUpdateDiscussionCommentInOrgResponse(response *TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -25712,7 +25712,7 @@ func encodeTeamsUpdateDiscussionCommentInOrgResponse(response *TeamDiscussionCom
 }
 
 func encodeTeamsUpdateDiscussionCommentLegacyResponse(response *TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -25726,7 +25726,7 @@ func encodeTeamsUpdateDiscussionCommentLegacyResponse(response *TeamDiscussionCo
 }
 
 func encodeTeamsUpdateDiscussionInOrgResponse(response *TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -25740,7 +25740,7 @@ func encodeTeamsUpdateDiscussionInOrgResponse(response *TeamDiscussion, w http.R
 }
 
 func encodeTeamsUpdateDiscussionLegacyResponse(response *TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -25754,7 +25754,7 @@ func encodeTeamsUpdateDiscussionLegacyResponse(response *TeamDiscussion, w http.
 }
 
 func encodeTeamsUpdateInOrgResponse(response *TeamFull, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -25770,7 +25770,7 @@ func encodeTeamsUpdateInOrgResponse(response *TeamFull, w http.ResponseWriter, s
 func encodeTeamsUpdateLegacyResponse(response TeamsUpdateLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsUpdateLegacyOK:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -25783,7 +25783,7 @@ func encodeTeamsUpdateLegacyResponse(response TeamsUpdateLegacyRes, w http.Respo
 		return nil
 
 	case *TeamsUpdateLegacyCreated:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -25796,7 +25796,7 @@ func encodeTeamsUpdateLegacyResponse(response TeamsUpdateLegacyRes, w http.Respo
 		return nil
 
 	case *TeamsUpdateLegacyForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -25809,7 +25809,7 @@ func encodeTeamsUpdateLegacyResponse(response TeamsUpdateLegacyRes, w http.Respo
 		return nil
 
 	case *TeamsUpdateLegacyNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -25822,7 +25822,7 @@ func encodeTeamsUpdateLegacyResponse(response TeamsUpdateLegacyRes, w http.Respo
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -25842,7 +25842,7 @@ func encodeTeamsUpdateLegacyResponse(response TeamsUpdateLegacyRes, w http.Respo
 func encodeUsersAddEmailForAuthenticatedResponse(response UsersAddEmailForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersAddEmailForAuthenticatedCreatedApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -25861,7 +25861,7 @@ func encodeUsersAddEmailForAuthenticatedResponse(response UsersAddEmailForAuthen
 		return nil
 
 	case *UsersAddEmailForAuthenticatedUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -25874,7 +25874,7 @@ func encodeUsersAddEmailForAuthenticatedResponse(response UsersAddEmailForAuthen
 		return nil
 
 	case *UsersAddEmailForAuthenticatedForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -25887,7 +25887,7 @@ func encodeUsersAddEmailForAuthenticatedResponse(response UsersAddEmailForAuthen
 		return nil
 
 	case *UsersAddEmailForAuthenticatedNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -25900,7 +25900,7 @@ func encodeUsersAddEmailForAuthenticatedResponse(response UsersAddEmailForAuthen
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -25932,7 +25932,7 @@ func encodeUsersBlockResponse(response UsersBlockRes, w http.ResponseWriter, spa
 		return nil
 
 	case *UsersBlockUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -25945,7 +25945,7 @@ func encodeUsersBlockResponse(response UsersBlockRes, w http.ResponseWriter, spa
 		return nil
 
 	case *UsersBlockForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -25958,7 +25958,7 @@ func encodeUsersBlockResponse(response UsersBlockRes, w http.ResponseWriter, spa
 		return nil
 
 	case *UsersBlockNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -25971,7 +25971,7 @@ func encodeUsersBlockResponse(response UsersBlockRes, w http.ResponseWriter, spa
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -26003,7 +26003,7 @@ func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.Respo
 		return nil
 
 	case *UsersCheckBlockedUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -26016,7 +26016,7 @@ func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.Respo
 		return nil
 
 	case *UsersCheckBlockedForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -26029,7 +26029,7 @@ func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.Respo
 		return nil
 
 	case *UsersCheckBlockedNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -26080,7 +26080,7 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 		return nil
 
 	case *UsersCheckPersonIsFollowedByAuthenticatedUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -26093,7 +26093,7 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 		return nil
 
 	case *UsersCheckPersonIsFollowedByAuthenticatedForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -26106,7 +26106,7 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 		return nil
 
 	case *UsersCheckPersonIsFollowedByAuthenticatedNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -26126,7 +26126,7 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 func encodeUsersCreateGpgKeyForAuthenticatedResponse(response UsersCreateGpgKeyForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GpgKey:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -26145,7 +26145,7 @@ func encodeUsersCreateGpgKeyForAuthenticatedResponse(response UsersCreateGpgKeyF
 		return nil
 
 	case *UsersCreateGpgKeyForAuthenticatedUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -26158,7 +26158,7 @@ func encodeUsersCreateGpgKeyForAuthenticatedResponse(response UsersCreateGpgKeyF
 		return nil
 
 	case *UsersCreateGpgKeyForAuthenticatedForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -26171,7 +26171,7 @@ func encodeUsersCreateGpgKeyForAuthenticatedResponse(response UsersCreateGpgKeyF
 		return nil
 
 	case *UsersCreateGpgKeyForAuthenticatedNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -26184,7 +26184,7 @@ func encodeUsersCreateGpgKeyForAuthenticatedResponse(response UsersCreateGpgKeyF
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -26204,7 +26204,7 @@ func encodeUsersCreateGpgKeyForAuthenticatedResponse(response UsersCreateGpgKeyF
 func encodeUsersCreatePublicSSHKeyForAuthenticatedResponse(response UsersCreatePublicSSHKeyForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Key:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 
@@ -26223,7 +26223,7 @@ func encodeUsersCreatePublicSSHKeyForAuthenticatedResponse(response UsersCreateP
 		return nil
 
 	case *UsersCreatePublicSSHKeyForAuthenticatedUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -26236,7 +26236,7 @@ func encodeUsersCreatePublicSSHKeyForAuthenticatedResponse(response UsersCreateP
 		return nil
 
 	case *UsersCreatePublicSSHKeyForAuthenticatedForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -26249,7 +26249,7 @@ func encodeUsersCreatePublicSSHKeyForAuthenticatedResponse(response UsersCreateP
 		return nil
 
 	case *UsersCreatePublicSSHKeyForAuthenticatedNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -26262,7 +26262,7 @@ func encodeUsersCreatePublicSSHKeyForAuthenticatedResponse(response UsersCreateP
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -26294,7 +26294,7 @@ func encodeUsersDeleteEmailForAuthenticatedResponse(response UsersDeleteEmailFor
 		return nil
 
 	case *UsersDeleteEmailForAuthenticatedUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -26307,7 +26307,7 @@ func encodeUsersDeleteEmailForAuthenticatedResponse(response UsersDeleteEmailFor
 		return nil
 
 	case *UsersDeleteEmailForAuthenticatedForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -26320,7 +26320,7 @@ func encodeUsersDeleteEmailForAuthenticatedResponse(response UsersDeleteEmailFor
 		return nil
 
 	case *UsersDeleteEmailForAuthenticatedNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -26333,7 +26333,7 @@ func encodeUsersDeleteEmailForAuthenticatedResponse(response UsersDeleteEmailFor
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -26365,7 +26365,7 @@ func encodeUsersDeleteGpgKeyForAuthenticatedResponse(response UsersDeleteGpgKeyF
 		return nil
 
 	case *UsersDeleteGpgKeyForAuthenticatedUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -26378,7 +26378,7 @@ func encodeUsersDeleteGpgKeyForAuthenticatedResponse(response UsersDeleteGpgKeyF
 		return nil
 
 	case *UsersDeleteGpgKeyForAuthenticatedForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -26391,7 +26391,7 @@ func encodeUsersDeleteGpgKeyForAuthenticatedResponse(response UsersDeleteGpgKeyF
 		return nil
 
 	case *UsersDeleteGpgKeyForAuthenticatedNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -26404,7 +26404,7 @@ func encodeUsersDeleteGpgKeyForAuthenticatedResponse(response UsersDeleteGpgKeyF
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -26436,7 +26436,7 @@ func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeleteP
 		return nil
 
 	case *UsersDeletePublicSSHKeyForAuthenticatedUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -26449,7 +26449,7 @@ func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeleteP
 		return nil
 
 	case *UsersDeletePublicSSHKeyForAuthenticatedForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -26462,7 +26462,7 @@ func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeleteP
 		return nil
 
 	case *UsersDeletePublicSSHKeyForAuthenticatedNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -26494,7 +26494,7 @@ func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter, s
 		return nil
 
 	case *UsersFollowUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -26507,7 +26507,7 @@ func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter, s
 		return nil
 
 	case *UsersFollowForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -26520,7 +26520,7 @@ func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter, s
 		return nil
 
 	case *UsersFollowNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -26540,7 +26540,7 @@ func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter, s
 func encodeUsersGetAuthenticatedResponse(response UsersGetAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersGetAuthenticatedOK:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -26559,7 +26559,7 @@ func encodeUsersGetAuthenticatedResponse(response UsersGetAuthenticatedRes, w ht
 		return nil
 
 	case *UsersGetAuthenticatedUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -26572,7 +26572,7 @@ func encodeUsersGetAuthenticatedResponse(response UsersGetAuthenticatedRes, w ht
 		return nil
 
 	case *UsersGetAuthenticatedForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -26592,7 +26592,7 @@ func encodeUsersGetAuthenticatedResponse(response UsersGetAuthenticatedRes, w ht
 func encodeUsersGetByUsernameResponse(response UsersGetByUsernameRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersGetByUsernameOK:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -26605,7 +26605,7 @@ func encodeUsersGetByUsernameResponse(response UsersGetByUsernameRes, w http.Res
 		return nil
 
 	case *Accepted:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(202)
 		span.SetStatus(codes.Ok, http.StatusText(202))
 
@@ -26618,7 +26618,7 @@ func encodeUsersGetByUsernameResponse(response UsersGetByUsernameRes, w http.Res
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -26638,7 +26638,7 @@ func encodeUsersGetByUsernameResponse(response UsersGetByUsernameRes, w http.Res
 func encodeUsersGetContextForUserResponse(response UsersGetContextForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Hovercard:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -26651,7 +26651,7 @@ func encodeUsersGetContextForUserResponse(response UsersGetContextForUserRes, w 
 		return nil
 
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -26664,7 +26664,7 @@ func encodeUsersGetContextForUserResponse(response UsersGetContextForUserRes, w 
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -26684,7 +26684,7 @@ func encodeUsersGetContextForUserResponse(response UsersGetContextForUserRes, w 
 func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GpgKey:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -26703,7 +26703,7 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 		return nil
 
 	case *UsersGetGpgKeyForAuthenticatedUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -26716,7 +26716,7 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 		return nil
 
 	case *UsersGetGpgKeyForAuthenticatedForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -26729,7 +26729,7 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 		return nil
 
 	case *UsersGetGpgKeyForAuthenticatedNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -26749,7 +26749,7 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicSSHKeyForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Key:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -26768,7 +26768,7 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 		return nil
 
 	case *UsersGetPublicSSHKeyForAuthenticatedUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -26781,7 +26781,7 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 		return nil
 
 	case *UsersGetPublicSSHKeyForAuthenticatedForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -26794,7 +26794,7 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 		return nil
 
 	case *UsersGetPublicSSHKeyForAuthenticatedNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -26814,7 +26814,7 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 func encodeUsersListResponse(response UsersListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersListOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -26863,7 +26863,7 @@ func encodeUsersListResponse(response UsersListRes, w http.ResponseWriter, span 
 func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersListBlockedByAuthenticatedOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -26882,7 +26882,7 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 		return nil
 
 	case *UsersListBlockedByAuthenticatedUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -26895,7 +26895,7 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 		return nil
 
 	case *UsersListBlockedByAuthenticatedForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -26908,7 +26908,7 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 		return nil
 
 	case *UsersListBlockedByAuthenticatedNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -26921,7 +26921,7 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 		return nil
 
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(415)
 		span.SetStatus(codes.Error, http.StatusText(415))
 
@@ -26941,7 +26941,7 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersListEmailsForAuthenticatedOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -26983,7 +26983,7 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 		return nil
 
 	case *UsersListEmailsForAuthenticatedUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -26996,7 +26996,7 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 		return nil
 
 	case *UsersListEmailsForAuthenticatedForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -27009,7 +27009,7 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 		return nil
 
 	case *UsersListEmailsForAuthenticatedNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -27029,7 +27029,7 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedByAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersListFollowedByAuthenticatedOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -27071,7 +27071,7 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 		return nil
 
 	case *UsersListFollowedByAuthenticatedUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -27084,7 +27084,7 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 		return nil
 
 	case *UsersListFollowedByAuthenticatedForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -27104,7 +27104,7 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFollowersForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersListFollowersForAuthenticatedUserOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -27146,7 +27146,7 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 		return nil
 
 	case *UsersListFollowersForAuthenticatedUserUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -27159,7 +27159,7 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 		return nil
 
 	case *UsersListFollowersForAuthenticatedUserForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -27177,7 +27177,7 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 }
 
 func encodeUsersListFollowersForUserResponse(response *UsersListFollowersForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -27214,7 +27214,7 @@ func encodeUsersListFollowersForUserResponse(response *UsersListFollowersForUser
 }
 
 func encodeUsersListFollowingForUserResponse(response *UsersListFollowingForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -27253,7 +27253,7 @@ func encodeUsersListFollowingForUserResponse(response *UsersListFollowingForUser
 func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersListGpgKeysForAuthenticatedOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -27295,7 +27295,7 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 		return nil
 
 	case *UsersListGpgKeysForAuthenticatedUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -27308,7 +27308,7 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 		return nil
 
 	case *UsersListGpgKeysForAuthenticatedForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -27321,7 +27321,7 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 		return nil
 
 	case *UsersListGpgKeysForAuthenticatedNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -27339,7 +27339,7 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 }
 
 func encodeUsersListGpgKeysForUserResponse(response *UsersListGpgKeysForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -27378,7 +27378,7 @@ func encodeUsersListGpgKeysForUserResponse(response *UsersListGpgKeysForUserOKHe
 func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPublicEmailsForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersListPublicEmailsForAuthenticatedOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -27420,7 +27420,7 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 		return nil
 
 	case *UsersListPublicEmailsForAuthenticatedUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -27433,7 +27433,7 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 		return nil
 
 	case *UsersListPublicEmailsForAuthenticatedForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -27446,7 +27446,7 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 		return nil
 
 	case *UsersListPublicEmailsForAuthenticatedNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -27464,7 +27464,7 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 }
 
 func encodeUsersListPublicKeysForUserResponse(response *UsersListPublicKeysForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -27503,7 +27503,7 @@ func encodeUsersListPublicKeysForUserResponse(response *UsersListPublicKeysForUs
 func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPublicSSHKeysForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersListPublicSSHKeysForAuthenticatedOKHeaders:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -27545,7 +27545,7 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 		return nil
 
 	case *UsersListPublicSSHKeysForAuthenticatedUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -27558,7 +27558,7 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 		return nil
 
 	case *UsersListPublicSSHKeysForAuthenticatedForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -27571,7 +27571,7 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 		return nil
 
 	case *UsersListPublicSSHKeysForAuthenticatedNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -27591,7 +27591,7 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 func encodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(response UsersSetPrimaryEmailVisibilityForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersSetPrimaryEmailVisibilityForAuthenticatedOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -27610,7 +27610,7 @@ func encodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(response Users
 		return nil
 
 	case *UsersSetPrimaryEmailVisibilityForAuthenticatedUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -27623,7 +27623,7 @@ func encodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(response Users
 		return nil
 
 	case *UsersSetPrimaryEmailVisibilityForAuthenticatedForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -27636,7 +27636,7 @@ func encodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(response Users
 		return nil
 
 	case *UsersSetPrimaryEmailVisibilityForAuthenticatedNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -27649,7 +27649,7 @@ func encodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(response Users
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
@@ -27681,7 +27681,7 @@ func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter,
 		return nil
 
 	case *UsersUnblockUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -27694,7 +27694,7 @@ func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter,
 		return nil
 
 	case *UsersUnblockForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -27707,7 +27707,7 @@ func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter,
 		return nil
 
 	case *UsersUnblockNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -27739,7 +27739,7 @@ func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWrite
 		return nil
 
 	case *UsersUnfollowUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -27752,7 +27752,7 @@ func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWrite
 		return nil
 
 	case *UsersUnfollowForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -27765,7 +27765,7 @@ func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWrite
 		return nil
 
 	case *UsersUnfollowNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -27785,7 +27785,7 @@ func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWrite
 func encodeUsersUpdateAuthenticatedResponse(response UsersUpdateAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PrivateUser:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -27804,7 +27804,7 @@ func encodeUsersUpdateAuthenticatedResponse(response UsersUpdateAuthenticatedRes
 		return nil
 
 	case *UsersUpdateAuthenticatedUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
 
@@ -27817,7 +27817,7 @@ func encodeUsersUpdateAuthenticatedResponse(response UsersUpdateAuthenticatedRes
 		return nil
 
 	case *UsersUpdateAuthenticatedForbidden:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
 
@@ -27830,7 +27830,7 @@ func encodeUsersUpdateAuthenticatedResponse(response UsersUpdateAuthenticatedRes
 		return nil
 
 	case *UsersUpdateAuthenticatedNotFound:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
 
@@ -27843,7 +27843,7 @@ func encodeUsersUpdateAuthenticatedResponse(response UsersUpdateAuthenticatedRes
 		return nil
 
 	case *ValidationError:
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(422)
 		span.SetStatus(codes.Error, http.StatusText(422))
 
