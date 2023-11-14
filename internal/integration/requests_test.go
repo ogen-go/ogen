@@ -270,7 +270,7 @@ func TestRequestBase64(t *testing.T) {
 		defer resp.Body.Close()
 
 		a.Equal(http.StatusOK, resp.StatusCode)
-		a.Equal("text/plain", resp.Header.Get("Content-Type"))
+		a.Equal("text/plain; charset=utf-8", resp.Header.Get("Content-Type"))
 
 		var sb strings.Builder
 		_, err = io.Copy(&sb, base64.NewDecoder(base64.StdEncoding, resp.Body))
