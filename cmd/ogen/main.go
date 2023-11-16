@@ -168,7 +168,9 @@ Also, you can use "content_type_aliases" field to map content types to supported
 	return false
 }
 
-func loadConfig(cfgPath string) (opts gen.Options, _ error) {
+func loadConfig(cfgPath string, log *zap.Logger) (opts gen.Options, _ error) {
+	opts.Logger = log
+
 	if cfgPath == "" {
 		for _, potentialPath := range []string{
 			"ogen.yml",
@@ -178,12 +180,15 @@ func loadConfig(cfgPath string) (opts gen.Options, _ error) {
 		} {
 			if _, err := os.Stat(potentialPath); err == nil {
 				cfgPath = potentialPath
+				log.Debug("Found config file", zap.String("path", potentialPath))
 				goto read
 			}
 		}
+		log.Debug("No config file found")
 		return opts, nil
 	}
 read:
+	log.Debug("Reading config file", zap.String("path", cfgPath))
 	data, err := os.ReadFile(cfgPath)
 	if err != nil {
 		return opts, err
@@ -288,11 +293,10 @@ func run() error {
 		}()
 	}
 
-	opts, err := loadConfig(*cfgPath)
+	opts, err := loadConfig(*cfgPath, logger)
 	if err != nil {
 		return errors.Wrap(err, "load config")
 	}
-	opts.Logger = logger
 
 	data, err := opts.SetLocation(specPath, gen.RemoteOptions{})
 	if err != nil {
