@@ -56,6 +56,7 @@ func NewClient(serverURL string, {{- if $.Securities }}sec SecuritySource,{{- en
 	if err != nil {
 		return nil, err
 	}
+
 	return &Client{
 		serverURL: u,
 		{{- if $.Securities }}
@@ -64,6 +65,12 @@ func NewClient(serverURL string, {{- if $.Securities }}sec SecuritySource,{{- en
 		baseClient: c,
 	}, nil
 }
+
+{{ if $.Securities }}
+func (c *Client) SetSec(sec SecuritySource) {
+	c.sec = sec
+}
+{{ end }}
 
 type serverURLKey struct{}
 

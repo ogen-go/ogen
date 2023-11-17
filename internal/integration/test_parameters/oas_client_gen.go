@@ -99,6 +99,7 @@ func NewClient(serverURL string, opts ...ClientOption) (*Client, error) {
 	if err != nil {
 		return nil, err
 	}
+
 	return &Client{
 		serverURL:  u,
 		baseClient: c,

@@ -191,11 +191,16 @@ func NewClient(serverURL string, sec SecuritySource, opts ...ClientOption) (*Cli
 	if err != nil {
 		return nil, err
 	}
+
 	return &Client{
 		serverURL:  u,
 		sec:        sec,
 		baseClient: c,
 	}, nil
+}
+
+func (c *Client) SetSec(sec SecuritySource) {
+	c.sec = sec
 }
 
 type serverURLKey struct{}
