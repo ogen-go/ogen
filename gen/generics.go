@@ -64,6 +64,7 @@ func boxType(t *ir.Type, v ir.GenericVariant) (*ir.Type, error) {
 	if dealiased.IsAlias() {
 		dealiased = dealiased.AliasTo
 	}
+
 	// Do not wrap if
 	//  * type is Any
 	//  * type is Stream
@@ -93,6 +94,7 @@ func boxType(t *ir.Type, v ir.GenericVariant) (*ir.Type, error) {
 			}
 			return ir.Generic(postfix, t, v), nil
 		}
+		dealiased.NilSemantic = t.NilSemantic
 
 		return t, nil
 	}

@@ -7245,14 +7245,19 @@ func (s *Encodings) UnmarshalJSON(data []byte) error {
 // Encode encodes Enum as json.
 func (s Enum) Encode(e *jx.Encoder) {
 	unwrapped := []jx.Raw(s)
-
-	e.ArrStart()
-	for _, elem := range unwrapped {
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+	if unwrapped == nil {
+		e.ArrEmpty()
+		return
 	}
-	e.ArrEnd()
+	if unwrapped != nil {
+		e.ArrStart()
+		for _, elem := range unwrapped {
+			if len(elem) != 0 {
+				e.Raw(elem)
+			}
+		}
+		e.ArrEnd()
+	}
 }
 
 // Decode decodes Enum from json.
@@ -17240,12 +17245,17 @@ func (s *SpecificationExtension) UnmarshalJSON(data []byte) error {
 // Encode encodes StringArray as json.
 func (s StringArray) Encode(e *jx.Encoder) {
 	unwrapped := []string(s)
-
-	e.ArrStart()
-	for _, elem := range unwrapped {
-		e.Str(elem)
+	if unwrapped == nil {
+		e.ArrEmpty()
+		return
 	}
-	e.ArrEnd()
+	if unwrapped != nil {
+		e.ArrStart()
+		for _, elem := range unwrapped {
+			e.Str(elem)
+		}
+		e.ArrEnd()
+	}
 }
 
 // Decode decodes StringArray from json.
@@ -18115,9 +18125,6 @@ func (s Encodings) Validate() error {
 
 func (s Enum) Validate() error {
 	alias := ([]jx.Raw)(s)
-	if alias == nil {
-		return errors.New("nil is invalid value")
-	}
 	if err := (validate.Array{
 		MinLength:    1,
 		MinLengthSet: true,
@@ -19594,9 +19601,6 @@ func (s *Spec) Validate() error {
 
 func (s StringArray) Validate() error {
 	alias := ([]string)(s)
-	if alias == nil {
-		return errors.New("nil is invalid value")
-	}
 	if err := (validate.Array{
 		MinLength:    1,
 		MinLengthSet: true,
