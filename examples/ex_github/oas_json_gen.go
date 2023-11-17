@@ -152811,12 +152811,17 @@ func (s *SearchReposOK) UnmarshalJSON(data []byte) error {
 // Encode encodes SearchResultTextMatches as json.
 func (s SearchResultTextMatches) Encode(e *jx.Encoder) {
 	unwrapped := []SearchResultTextMatchesItem(s)
-
-	e.ArrStart()
-	for _, elem := range unwrapped {
-		elem.Encode(e)
+	if unwrapped == nil {
+		e.ArrEmpty()
+		return
 	}
-	e.ArrEnd()
+	if unwrapped != nil {
+		e.ArrStart()
+		for _, elem := range unwrapped {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
+	}
 }
 
 // Decode decodes SearchResultTextMatches from json.

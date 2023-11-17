@@ -4540,17 +4540,6 @@ func (s *CodeSearchResultItem) Validate() error {
 			Error: err,
 		})
 	}
-	if err := func() error {
-		if err := s.TextMatches.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "text_matches",
-			Error: err,
-		})
-	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -4818,17 +4807,6 @@ func (s *CommitSearchResultItem) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "score",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		if err := s.TextMatches.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "text_matches",
 			Error: err,
 		})
 	}
@@ -7834,17 +7812,6 @@ func (s *IssueSearchResultItem) Validate() error {
 		})
 	}
 	if err := func() error {
-		if err := s.TextMatches.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "text_matches",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.Score)); err != nil {
 			return errors.Wrap(err, "float")
 		}
@@ -8939,17 +8906,6 @@ func (s *LabelSearchResultItem) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "score",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		if err := s.TextMatches.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "text_matches",
 			Error: err,
 		})
 	}
@@ -15024,17 +14980,6 @@ func (s *RepoSearchResultItem) Validate() error {
 			Error: err,
 		})
 	}
-	if err := func() error {
-		if err := s.TextMatches.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "text_matches",
-			Error: err,
-		})
-	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -18338,14 +18283,6 @@ func (s SearchReposSort) Validate() error {
 	}
 }
 
-func (s SearchResultTextMatches) Validate() error {
-	alias := ([]SearchResultTextMatchesItem)(s)
-	if alias == nil {
-		return errors.New("nil is invalid value")
-	}
-	return nil
-}
-
 func (s *SearchTopicsOK) Validate() error {
 	if s == nil {
 		return validate.ErrNilPointer
@@ -19822,17 +19759,6 @@ func (s *TopicSearchResultItem) Validate() error {
 		})
 	}
 	if err := func() error {
-		if err := s.TextMatches.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "text_matches",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		if value, ok := s.Related.Get(); ok {
 			if err := func() error {
 				if value == nil {
@@ -19948,17 +19874,6 @@ func (s *UserSearchResultItem) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "email",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		if err := s.TextMatches.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "text_matches",
 			Error: err,
 		})
 	}
