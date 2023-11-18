@@ -70,7 +70,7 @@ func (s *Server) decodeUserPassloginPostRequest(r *http.Request) (
 					Style:   uri.QueryStyleForm,
 					Explode: true,
 				}
-				if err := q.HasParam(cfg); err == nil {
+				if err := q.HasParam(cfg); err == nil { // if NO error
 					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 						val, err := d.DecodeValue()
 						if err != nil {
@@ -156,7 +156,7 @@ func (s *Server) decodeUserPostingPostRequest(r *http.Request) (
 					Style:   uri.QueryStyleForm,
 					Explode: true,
 				}
-				if err := q.HasParam(cfg); err == nil {
+				if err := q.HasParam(cfg); err == nil { // if NO error
 					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 						val, err := d.DecodeValue()
 						if err != nil {
@@ -191,7 +191,7 @@ func (s *Server) decodeUserPostingPostRequest(r *http.Request) (
 					Style:   uri.QueryStyleForm,
 					Explode: true,
 				}
-				if err := q.HasParam(cfg); err == nil {
+				if err := q.HasParam(cfg); err == nil { // if NO error
 					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 						val, err := d.DecodeValue()
 						if err != nil {
@@ -218,7 +218,7 @@ func (s *Server) decodeUserPostingPostRequest(r *http.Request) (
 					Style:   uri.QueryStyleForm,
 					Explode: true,
 				}
-				if err := q.HasParam(cfg); err == nil {
+				if err := q.HasParam(cfg); err == nil { // if NO error
 					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 						var optFormDotThreadVal int
 						if err := func() error {
@@ -250,7 +250,7 @@ func (s *Server) decodeUserPostingPostRequest(r *http.Request) (
 					Style:   uri.QueryStyleForm,
 					Explode: true,
 				}
-				if err := q.HasParam(cfg); err == nil {
+				if err := q.HasParam(cfg); err == nil { // if NO error
 					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 						var optFormDotNameVal string
 						if err := func() error {
@@ -282,7 +282,7 @@ func (s *Server) decodeUserPostingPostRequest(r *http.Request) (
 					Style:   uri.QueryStyleForm,
 					Explode: true,
 				}
-				if err := q.HasParam(cfg); err == nil {
+				if err := q.HasParam(cfg); err == nil { // if NO error
 					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 						var optFormDotEmailVal string
 						if err := func() error {
@@ -314,7 +314,7 @@ func (s *Server) decodeUserPostingPostRequest(r *http.Request) (
 					Style:   uri.QueryStyleForm,
 					Explode: true,
 				}
-				if err := q.HasParam(cfg); err == nil {
+				if err := q.HasParam(cfg); err == nil { // if NO error
 					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 						var optFormDotTagsVal string
 						if err := func() error {
@@ -346,7 +346,7 @@ func (s *Server) decodeUserPostingPostRequest(r *http.Request) (
 					Style:   uri.QueryStyleForm,
 					Explode: true,
 				}
-				if err := q.HasParam(cfg); err == nil {
+				if err := q.HasParam(cfg); err == nil { // if NO error
 					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 						var optFormDotSubjectVal string
 						if err := func() error {
@@ -378,7 +378,7 @@ func (s *Server) decodeUserPostingPostRequest(r *http.Request) (
 					Style:   uri.QueryStyleForm,
 					Explode: true,
 				}
-				if err := q.HasParam(cfg); err == nil {
+				if err := q.HasParam(cfg); err == nil { // if NO error
 					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 						var optFormDotCommentVal string
 						if err := func() error {
@@ -410,7 +410,7 @@ func (s *Server) decodeUserPostingPostRequest(r *http.Request) (
 					Style:   uri.QueryStyleForm,
 					Explode: true,
 				}
-				if err := q.HasParam(cfg); err == nil {
+				if err := q.HasParam(cfg); err == nil { // if NO error
 					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 						var optFormDotIconVal int
 						if err := func() error {
@@ -442,7 +442,7 @@ func (s *Server) decodeUserPostingPostRequest(r *http.Request) (
 					Style:   uri.QueryStyleForm,
 					Explode: true,
 				}
-				if err := q.HasParam(cfg); err == nil {
+				if err := q.HasParam(cfg); err == nil { // if NO error
 					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 						var optFormDotOpMarkVal int
 						if err := func() error {
@@ -556,7 +556,7 @@ func (s *Server) decodeUserReportPostRequest(r *http.Request) (
 					Style:   uri.QueryStyleForm,
 					Explode: true,
 				}
-				if err := q.HasParam(cfg); err == nil {
+				if err := q.HasParam(cfg); err == nil { // if NO error
 					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 						val, err := d.DecodeValue()
 						if err != nil {
@@ -583,7 +583,7 @@ func (s *Server) decodeUserReportPostRequest(r *http.Request) (
 					Style:   uri.QueryStyleForm,
 					Explode: true,
 				}
-				if err := q.HasParam(cfg); err == nil {
+				if err := q.HasParam(cfg); err == nil { // if NO error
 					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 						val, err := d.DecodeValue()
 						if err != nil {
@@ -610,7 +610,7 @@ func (s *Server) decodeUserReportPostRequest(r *http.Request) (
 					Style:   uri.QueryStyleForm,
 					Explode: true,
 				}
-				if err := q.HasParam(cfg); err == nil {
+				if err := q.HasParam(cfg); err == nil { // if NO error
 					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 						return d.DecodeArray(func(d uri.Decoder) error {
 							var optFormDotPostVal int
@@ -644,7 +644,7 @@ func (s *Server) decodeUserReportPostRequest(r *http.Request) (
 					Style:   uri.QueryStyleForm,
 					Explode: true,
 				}
-				if err := q.HasParam(cfg); err == nil {
+				if err := q.HasParam(cfg); err == nil { // if NO error
 					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 						val, err := d.DecodeValue()
 						if err != nil {

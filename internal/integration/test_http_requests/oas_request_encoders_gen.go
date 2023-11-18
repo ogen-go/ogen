@@ -246,7 +246,7 @@ func encodeBase64RequestRequest(
 	body := ht.CreateBodyWriter(func(w io.Writer) (rerr error) {
 		writer := base64.NewEncoder(base64.StdEncoding, w)
 		defer func() {
-			if rerr == nil {
+			if rerr == nil { // if NO error
 				rerr = writer.Close()
 			}
 		}()
@@ -298,7 +298,7 @@ func encodeStreamJSONRequest(
 	body := ht.CreateBodyWriter(func(w io.Writer) (rerr error) {
 		e := jx.NewStreamingEncoder(w, -1)
 		defer func() {
-			if rerr == nil {
+			if rerr == nil { // if NO error
 				rerr = e.Close()
 			}
 		}()

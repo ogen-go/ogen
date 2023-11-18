@@ -195,7 +195,7 @@ h := uri.NewHeaderDecoder(resp.Header)
 	}
 	{{- $el := elem $header.Type (printf "wrapper.%s" $header.Name) }}
 	if err := func() error {
-		if err := h.HasParam(cfg); err == nil {
+		if err := h.HasParam(cfg); err == nil { // if NO error
 			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 				{{- if $header.Spec.Content }}
 					val, err := d.DecodeValue()

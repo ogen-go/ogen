@@ -38,7 +38,7 @@ func decodeCombinedParams(args [0]string, argsEscaped bool, r *http.Request) (pa
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -103,7 +103,7 @@ func decodeHeadersCombinedParams(args [0]string, argsEscaped bool, r *http.Reque
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -168,7 +168,7 @@ func decodeIntersectPatternCodeParams(args [0]string, argsEscaped bool, r *http.
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -225,7 +225,7 @@ func decodeStreamJSONParams(args [0]string, argsEscaped bool, r *http.Request) (
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {

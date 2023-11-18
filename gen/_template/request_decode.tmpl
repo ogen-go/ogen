@@ -240,7 +240,7 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) decode{{ $op.Name }}Req
 				Fields: {{ paramObjectFields $p.Type }},
 				{{- end }}
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					{{- template "uri/decode" $el }}
 				}); err != nil {

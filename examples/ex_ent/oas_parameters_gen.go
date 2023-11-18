@@ -385,7 +385,7 @@ func decodeListPetParams(args [0]string, argsEscaped bool, r *http.Request) (par
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int32
 				if err := func() error {
@@ -426,7 +426,7 @@ func decodeListPetParams(args [0]string, argsEscaped bool, r *http.Request) (par
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotItemsPerPageVal int32
 				if err := func() error {
@@ -556,7 +556,7 @@ func decodeListPetCategoriesParams(args [1]string, argsEscaped bool, r *http.Req
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int32
 				if err := func() error {
@@ -597,7 +597,7 @@ func decodeListPetCategoriesParams(args [1]string, argsEscaped bool, r *http.Req
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotItemsPerPageVal int32
 				if err := func() error {
@@ -727,7 +727,7 @@ func decodeListPetFriendsParams(args [1]string, argsEscaped bool, r *http.Reques
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int32
 				if err := func() error {
@@ -768,7 +768,7 @@ func decodeListPetFriendsParams(args [1]string, argsEscaped bool, r *http.Reques
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotItemsPerPageVal int32
 				if err := func() error {

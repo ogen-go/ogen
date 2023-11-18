@@ -49,7 +49,7 @@ func decodeUpdateWebhookParams(args [0]string, argsEscaped bool, r *http.Request
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -83,7 +83,7 @@ func decodeUpdateWebhookParams(args [0]string, argsEscaped bool, r *http.Request
 			Name:    "X-Webhook-Token",
 			Explode: false,
 		}
-		if err := h.HasParam(cfg); err == nil {
+		if err := h.HasParam(cfg); err == nil { // if NO error
 			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotXWebhookTokenVal string
 				if err := func() error {

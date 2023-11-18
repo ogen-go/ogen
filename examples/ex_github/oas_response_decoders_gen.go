@@ -685,7 +685,7 @@ func decodeActionsDownloadArtifactResponse(resp *http.Response) (res *ActionsDow
 				Explode: false,
 			}
 			if err := func() error {
-				if err := h.HasParam(cfg); err == nil {
+				if err := h.HasParam(cfg); err == nil { // if NO error
 					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 						var wrapperDotLocationVal string
 						if err := func() error {
@@ -733,7 +733,7 @@ func decodeActionsDownloadJobLogsForWorkflowRunResponse(resp *http.Response) (re
 				Explode: false,
 			}
 			if err := func() error {
-				if err := h.HasParam(cfg); err == nil {
+				if err := h.HasParam(cfg); err == nil { // if NO error
 					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 						var wrapperDotLocationVal string
 						if err := func() error {
@@ -781,7 +781,7 @@ func decodeActionsDownloadWorkflowRunLogsResponse(resp *http.Response) (res *Act
 				Explode: false,
 			}
 			if err := func() error {
-				if err := h.HasParam(cfg); err == nil {
+				if err := h.HasParam(cfg); err == nil { // if NO error
 					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 						var wrapperDotLocationVal string
 						if err := func() error {
@@ -1712,7 +1712,7 @@ func decodeActionsListArtifactsForRepoResponse(resp *http.Response) (res *Action
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -1802,7 +1802,7 @@ func decodeActionsListEnvironmentSecretsResponse(resp *http.Response) (res *Acti
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -1892,7 +1892,7 @@ func decodeActionsListJobsForWorkflowRunResponse(resp *http.Response) (res *Acti
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -1982,7 +1982,7 @@ func decodeActionsListOrgSecretsResponse(resp *http.Response) (res *ActionsListO
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -2122,7 +2122,7 @@ func decodeActionsListRepoSecretsResponse(resp *http.Response) (res *ActionsList
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -2212,7 +2212,7 @@ func decodeActionsListRepoWorkflowsResponse(resp *http.Response) (res *ActionsLi
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -2568,7 +2568,7 @@ func decodeActionsListSelfHostedRunnersForOrgResponse(resp *http.Response) (res 
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -2658,7 +2658,7 @@ func decodeActionsListSelfHostedRunnersForRepoResponse(resp *http.Response) (res
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -2748,7 +2748,7 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgResponse(resp *http.Response
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -2838,7 +2838,7 @@ func decodeActionsListWorkflowRunArtifactsResponse(resp *http.Response) (res *Ac
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -2928,7 +2928,7 @@ func decodeActionsListWorkflowRunsForRepoResponse(resp *http.Response) (res *Act
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -3966,7 +3966,7 @@ func decodeActivityListNotificationsForAuthenticatedUserResponse(resp *http.Resp
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -4912,7 +4912,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserResponse(resp *http.
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -5010,7 +5010,7 @@ func decodeActivityListReposStarredByAuthenticatedUserResponse(resp *http.Respon
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -5181,7 +5181,7 @@ func decodeActivityListReposWatchedByUserResponse(resp *http.Response) (res *Act
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -5279,7 +5279,7 @@ func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Respo
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -5450,7 +5450,7 @@ func decodeActivityListWatchersForRepoResponse(resp *http.Response) (res *Activi
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -7706,7 +7706,7 @@ func decodeAppsListAccountsForPlanResponse(resp *http.Response) (res AppsListAcc
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -7935,7 +7935,7 @@ func decodeAppsListAccountsForPlanStubbedResponse(resp *http.Response) (res Apps
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -8060,7 +8060,7 @@ func decodeAppsListInstallationReposForAuthenticatedUserResponse(resp *http.Resp
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -8248,7 +8248,7 @@ func decodeAppsListPlansResponse(resp *http.Response) (res AppsListPlansRes, _ e
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -8433,7 +8433,7 @@ func decodeAppsListPlansStubbedResponse(resp *http.Response) (res AppsListPlansS
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -8558,7 +8558,7 @@ func decodeAppsListReposAccessibleToInstallationResponse(resp *http.Response) (r
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -8746,7 +8746,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -8934,7 +8934,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(resp *http.R
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -10404,7 +10404,7 @@ func decodeChecksListAnnotationsResponse(resp *http.Response) (res *ChecksListAn
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -10494,7 +10494,7 @@ func decodeChecksListForRefResponse(resp *http.Response) (res *ChecksListForRefO
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -10584,7 +10584,7 @@ func decodeChecksListForSuiteResponse(resp *http.Response) (res *ChecksListForSu
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -10674,7 +10674,7 @@ func decodeChecksListSuitesForRefResponse(resp *http.Response) (res *ChecksListS
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -13296,7 +13296,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(resp *http.
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -13386,7 +13386,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(resp
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -13971,7 +13971,7 @@ func decodeGistsCreateResponse(resp *http.Response) (res GistsCreateRes, _ error
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLocationVal string
 							if err := func() error {
@@ -14178,7 +14178,7 @@ func decodeGistsCreateCommentResponse(resp *http.Response) (res GistsCreateComme
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLocationVal string
 							if err := func() error {
@@ -14496,7 +14496,7 @@ func decodeGistsForkResponse(resp *http.Response) (res GistsForkRes, _ error) {
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLocationVal string
 							if err := func() error {
@@ -15121,7 +15121,7 @@ func decodeGistsListResponse(resp *http.Response) (res GistsListRes, _ error) {
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -15274,7 +15274,7 @@ func decodeGistsListCommentsResponse(resp *http.Response) (res GistsListComments
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -15445,7 +15445,7 @@ func decodeGistsListCommitsResponse(resp *http.Response) (res GistsListCommitsRe
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -15616,7 +15616,7 @@ func decodeGistsListForUserResponse(resp *http.Response) (res GistsListForUserRe
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -15775,7 +15775,7 @@ func decodeGistsListForksResponse(resp *http.Response) (res GistsListForksRes, _
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -15946,7 +15946,7 @@ func decodeGistsListPublicResponse(resp *http.Response) (res GistsListPublicRes,
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -16126,7 +16126,7 @@ func decodeGistsListStarredResponse(resp *http.Response) (res GistsListStarredRe
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -16529,7 +16529,7 @@ func decodeGitCreateBlobResponse(resp *http.Response) (res GitCreateBlobRes, _ e
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLocationVal string
 							if err := func() error {
@@ -16768,7 +16768,7 @@ func decodeGitCreateCommitResponse(resp *http.Response) (res GitCreateCommitRes,
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLocationVal string
 							if err := func() error {
@@ -16937,7 +16937,7 @@ func decodeGitCreateRefResponse(resp *http.Response) (res GitCreateRefRes, _ err
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLocationVal string
 							if err := func() error {
@@ -17062,7 +17062,7 @@ func decodeGitCreateTagResponse(resp *http.Response) (res GitCreateTagRes, _ err
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLocationVal string
 							if err := func() error {
@@ -17196,7 +17196,7 @@ func decodeGitCreateTreeResponse(resp *http.Response) (res GitCreateTreeRes, _ e
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLocationVal string
 							if err := func() error {
@@ -18008,7 +18008,7 @@ func decodeGitListMatchingRefsResponse(resp *http.Response) (res *GitListMatchin
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -18654,7 +18654,7 @@ func decodeIssuesCreateResponse(resp *http.Response) (res IssuesCreateRes, _ err
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLocationVal string
 							if err := func() error {
@@ -18928,7 +18928,7 @@ func decodeIssuesCreateCommentResponse(resp *http.Response) (res IssuesCreateCom
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLocationVal string
 							if err := func() error {
@@ -19158,7 +19158,7 @@ func decodeIssuesCreateLabelResponse(resp *http.Response) (res IssuesCreateLabel
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLocationVal string
 							if err := func() error {
@@ -19327,7 +19327,7 @@ func decodeIssuesCreateMilestoneResponse(resp *http.Response) (res IssuesCreateM
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLocationVal string
 							if err := func() error {
@@ -20142,7 +20142,7 @@ func decodeIssuesListResponse(resp *http.Response) (res IssuesListRes, _ error) 
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -20322,7 +20322,7 @@ func decodeIssuesListAssigneesResponse(resp *http.Response) (res IssuesListAssig
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -20472,7 +20472,7 @@ func decodeIssuesListCommentsResponse(resp *http.Response) (res IssuesListCommen
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -20657,7 +20657,7 @@ func decodeIssuesListCommentsForRepoResponse(resp *http.Response) (res IssuesLis
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -20851,7 +20851,7 @@ func decodeIssuesListEventsForRepoResponse(resp *http.Response) (res IssuesListE
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -21010,7 +21010,7 @@ func decodeIssuesListForAuthenticatedUserResponse(resp *http.Response) (res Issu
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -21163,7 +21163,7 @@ func decodeIssuesListForOrgResponse(resp *http.Response) (res IssuesListForOrgRe
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -21313,7 +21313,7 @@ func decodeIssuesListForRepoResponse(resp *http.Response) (res IssuesListForRepo
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -21525,7 +21525,7 @@ func decodeIssuesListLabelsForMilestoneResponse(resp *http.Response) (res *Issue
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -21623,7 +21623,7 @@ func decodeIssuesListLabelsForRepoResponse(resp *http.Response) (res IssuesListL
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -21756,7 +21756,7 @@ func decodeIssuesListLabelsOnIssueResponse(resp *http.Response) (res IssuesListL
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -21906,7 +21906,7 @@ func decodeIssuesListMilestonesResponse(resp *http.Response) (res IssuesListMile
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -23128,7 +23128,7 @@ func decodeMarkdownRenderResponse(resp *http.Response) (res MarkdownRenderRes, _
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotContentLengthVal string
 							if err := func() error {
@@ -23165,7 +23165,7 @@ func decodeMarkdownRenderResponse(resp *http.Response) (res MarkdownRenderRes, _
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotXCommonMarkerVersionVal string
 							if err := func() error {
@@ -23233,7 +23233,7 @@ func decodeMarkdownRenderRawResponse(resp *http.Response) (res MarkdownRenderRaw
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotXCommonMarkerVersionVal string
 							if err := func() error {
@@ -24253,7 +24253,7 @@ func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response) (res 
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -24441,7 +24441,7 @@ func decodeMigrationsListForOrgResponse(resp *http.Response) (res *MigrationsLis
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -24539,7 +24539,7 @@ func decodeMigrationsListReposForOrgResponse(resp *http.Response) (res Migration
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -24672,7 +24672,7 @@ func decodeMigrationsListReposForUserResponse(resp *http.Response) (res Migratio
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -25307,7 +25307,7 @@ func decodeMigrationsStartImportResponse(resp *http.Response) (res MigrationsSta
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLocationVal string
 							if err := func() error {
@@ -25687,7 +25687,7 @@ func decodeOAuthAuthorizationsCreateAuthorizationResponse(resp *http.Response) (
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLocationVal string
 							if err := func() error {
@@ -26339,7 +26339,7 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(resp *http.
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLocationVal string
 							if err := func() error {
@@ -26423,7 +26423,7 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(resp *http.
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLocationVal string
 							if err := func() error {
@@ -26630,7 +26630,7 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLocationVal string
 							if err := func() error {
@@ -26714,7 +26714,7 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLocationVal string
 							if err := func() error {
@@ -26873,7 +26873,7 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response) (r
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -27096,7 +27096,7 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response) (res OAuth
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -27537,7 +27537,7 @@ func decodeOrgsCheckMembershipForUserResponse(resp *http.Response) (res OrgsChec
 				Explode: false,
 			}
 			if err := func() error {
-				if err := h.HasParam(cfg); err == nil {
+				if err := h.HasParam(cfg); err == nil { // if NO error
 					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 						var wrapperDotLocationVal string
 						if err := func() error {
@@ -27841,7 +27841,7 @@ func decodeOrgsCreateWebhookResponse(resp *http.Response) (res OrgsCreateWebhook
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLocationVal string
 							if err := func() error {
@@ -28709,7 +28709,7 @@ func decodeOrgsListResponse(resp *http.Response) (res OrgsListRes, _ error) {
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -28895,7 +28895,7 @@ func decodeOrgsListFailedInvitationsResponse(resp *http.Response) (res OrgsListF
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -29028,7 +29028,7 @@ func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response) (res OrgsLi
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -29199,7 +29199,7 @@ func decodeOrgsListForUserResponse(resp *http.Response) (res *OrgsListForUserOKH
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -29297,7 +29297,7 @@ func decodeOrgsListInvitationTeamsResponse(resp *http.Response) (res OrgsListInv
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -29430,7 +29430,7 @@ func decodeOrgsListMembersResponse(resp *http.Response) (res OrgsListMembersRes,
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -29475,7 +29475,7 @@ func decodeOrgsListMembersResponse(resp *http.Response) (res OrgsListMembersRes,
 				Explode: false,
 			}
 			if err := func() error {
-				if err := h.HasParam(cfg); err == nil {
+				if err := h.HasParam(cfg); err == nil { // if NO error
 					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 						var wrapperDotLocationVal string
 						if err := func() error {
@@ -29631,7 +29631,7 @@ func decodeOrgsListMembershipsForAuthenticatedUserResponse(resp *http.Response) 
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -29846,7 +29846,7 @@ func decodeOrgsListOutsideCollaboratorsResponse(resp *http.Response) (res *OrgsL
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -29944,7 +29944,7 @@ func decodeOrgsListPendingInvitationsResponse(resp *http.Response) (res OrgsList
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -30077,7 +30077,7 @@ func decodeOrgsListPublicMembersResponse(resp *http.Response) (res *OrgsListPubl
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -30379,7 +30379,7 @@ func decodeOrgsListWebhooksResponse(resp *http.Response) (res OrgsListWebhooksRe
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -35787,7 +35787,7 @@ func decodeProjectsListCardsResponse(resp *http.Response) (res ProjectsListCards
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -35958,7 +35958,7 @@ func decodeProjectsListCollaboratorsResponse(resp *http.Response) (res ProjectsL
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -36208,7 +36208,7 @@ func decodeProjectsListColumnsResponse(resp *http.Response) (res ProjectsListCol
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -36396,7 +36396,7 @@ func decodeProjectsListForOrgResponse(resp *http.Response) (res ProjectsListForO
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -36546,7 +36546,7 @@ func decodeProjectsListForRepoResponse(resp *http.Response) (res ProjectsListFor
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -36836,7 +36836,7 @@ func decodeProjectsListForUserResponse(resp *http.Response) (res ProjectsListFor
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -37979,7 +37979,7 @@ func decodePullsCreateResponse(resp *http.Response) (res PullsCreateRes, _ error
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLocationVal string
 							if err := func() error {
@@ -38148,7 +38148,7 @@ func decodePullsCreateReplyForReviewCommentResponse(resp *http.Response) (res Pu
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLocationVal string
 							if err := func() error {
@@ -38393,7 +38393,7 @@ func decodePullsCreateReviewCommentResponse(resp *http.Response) (res PullsCreat
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLocationVal string
 							if err := func() error {
@@ -39164,7 +39164,7 @@ func decodePullsListResponse(resp *http.Response) (res PullsListRes, _ error) {
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -39326,7 +39326,7 @@ func decodePullsListCommentsForReviewResponse(resp *http.Response) (res PullsLis
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -39476,7 +39476,7 @@ func decodePullsListCommitsResponse(resp *http.Response) (res *PullsListCommitsO
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -39591,7 +39591,7 @@ func decodePullsListFilesResponse(resp *http.Response) (res PullsListFilesRes, _
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -39760,7 +39760,7 @@ func decodePullsListRequestedReviewersResponse(resp *http.Response) (res *PullRe
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -39875,7 +39875,7 @@ func decodePullsListReviewCommentsResponse(resp *http.Response) (res *PullsListR
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -39990,7 +39990,7 @@ func decodePullsListReviewCommentsForRepoResponse(resp *http.Response) (res *Pul
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -40105,7 +40105,7 @@ func decodePullsListReviewsResponse(resp *http.Response) (res *PullsListReviewsO
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -41044,7 +41044,7 @@ func decodeRateLimitGetResponse(resp *http.Response) (res RateLimitGetRes, _ err
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotXRateLimitLimitVal int
 							if err := func() error {
@@ -41081,7 +41081,7 @@ func decodeRateLimitGetResponse(resp *http.Response) (res RateLimitGetRes, _ err
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotXRateLimitRemainingVal int
 							if err := func() error {
@@ -41118,7 +41118,7 @@ func decodeRateLimitGetResponse(resp *http.Response) (res RateLimitGetRes, _ err
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotXRateLimitResetVal int
 							if err := func() error {
@@ -42630,7 +42630,7 @@ func decodeReactionsListForCommitCommentResponse(resp *http.Response) (res React
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -42815,7 +42815,7 @@ func decodeReactionsListForIssueResponse(resp *http.Response) (res ReactionsList
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -43035,7 +43035,7 @@ func decodeReactionsListForIssueCommentResponse(resp *http.Response) (res Reacti
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -43220,7 +43220,7 @@ func decodeReactionsListForPullRequestReviewCommentResponse(resp *http.Response)
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -43405,7 +43405,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgResponse(resp *http.Respons
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -43520,7 +43520,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyResponse(resp *http.Respon
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -43635,7 +43635,7 @@ func decodeReactionsListForTeamDiscussionInOrgResponse(resp *http.Response) (res
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -43750,7 +43750,7 @@ func decodeReactionsListForTeamDiscussionLegacyResponse(resp *http.Response) (re
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -44670,7 +44670,7 @@ func decodeReposCreateAutolinkResponse(resp *http.Response) (res ReposCreateAuto
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLocationVal string
 							if err := func() error {
@@ -44804,7 +44804,7 @@ func decodeReposCreateCommitCommentResponse(resp *http.Response) (res ReposCreat
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLocationVal string
 							if err := func() error {
@@ -45040,7 +45040,7 @@ func decodeReposCreateCommitStatusResponse(resp *http.Response) (res *StatusHead
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLocationVal string
 							if err := func() error {
@@ -45121,7 +45121,7 @@ func decodeReposCreateDeployKeyResponse(resp *http.Response) (res ReposCreateDep
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLocationVal string
 							if err := func() error {
@@ -45387,7 +45387,7 @@ func decodeReposCreateDeploymentStatusResponse(resp *http.Response) (res ReposCr
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLocationVal string
 							if err := func() error {
@@ -45565,7 +45565,7 @@ func decodeReposCreateForAuthenticatedUserResponse(resp *http.Response) (res Rep
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLocationVal string
 							if err := func() error {
@@ -46032,7 +46032,7 @@ func decodeReposCreateInOrgResponse(resp *http.Response) (res ReposCreateInOrgRe
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLocationVal string
 							if err := func() error {
@@ -46555,7 +46555,7 @@ func decodeReposCreateReleaseResponse(resp *http.Response) (res ReposCreateRelea
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLocationVal string
 							if err := func() error {
@@ -46715,7 +46715,7 @@ func decodeReposCreateUsingTemplateResponse(resp *http.Response) (res *Repositor
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLocationVal string
 							if err := func() error {
@@ -46805,7 +46805,7 @@ func decodeReposCreateWebhookResponse(resp *http.Response) (res ReposCreateWebho
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLocationVal string
 							if err := func() error {
@@ -47982,7 +47982,7 @@ func decodeReposDownloadTarballArchiveResponse(resp *http.Response) (res *ReposD
 				Explode: false,
 			}
 			if err := func() error {
-				if err := h.HasParam(cfg); err == nil {
+				if err := h.HasParam(cfg); err == nil { // if NO error
 					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 						var wrapperDotLocationVal string
 						if err := func() error {
@@ -48030,7 +48030,7 @@ func decodeReposDownloadZipballArchiveResponse(resp *http.Response) (res *ReposD
 				Explode: false,
 			}
 			if err := func() error {
-				if err := h.HasParam(cfg); err == nil {
+				if err := h.HasParam(cfg); err == nil { // if NO error
 					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 						var wrapperDotLocationVal string
 						if err := func() error {
@@ -52135,7 +52135,7 @@ func decodeReposListBranchesResponse(resp *http.Response) (res ReposListBranches
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -52362,7 +52362,7 @@ func decodeReposListCollaboratorsResponse(resp *http.Response) (res ReposListCol
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -52512,7 +52512,7 @@ func decodeReposListCommentsForCommitResponse(resp *http.Response) (res *ReposLi
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -52627,7 +52627,7 @@ func decodeReposListCommitCommentsForRepoResponse(resp *http.Response) (res *Rep
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -52725,7 +52725,7 @@ func decodeReposListCommitStatusesForRefResponse(resp *http.Response) (res Repos
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -52875,7 +52875,7 @@ func decodeReposListCommitsResponse(resp *http.Response) (res ReposListCommitsRe
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -53113,7 +53113,7 @@ func decodeReposListContributorsResponse(resp *http.Response) (res ReposListCont
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -53284,7 +53284,7 @@ func decodeReposListDeployKeysResponse(resp *http.Response) (res *ReposListDeplo
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -53399,7 +53399,7 @@ func decodeReposListDeploymentStatusesResponse(resp *http.Response) (res ReposLi
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -53549,7 +53549,7 @@ func decodeReposListDeploymentsResponse(resp *http.Response) (res *ReposListDepl
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -53814,7 +53814,7 @@ func decodeReposListForOrgResponse(resp *http.Response) (res *ReposListForOrgOKH
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -53912,7 +53912,7 @@ func decodeReposListForUserResponse(resp *http.Response) (res *ReposListForUserO
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -54010,7 +54010,7 @@ func decodeReposListForksResponse(resp *http.Response) (res ReposListForksRes, _
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -54160,7 +54160,7 @@ func decodeReposListInvitationsResponse(resp *http.Response) (res *ReposListInvi
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -54275,7 +54275,7 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response)
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -54522,7 +54522,7 @@ func decodeReposListPagesBuildsResponse(resp *http.Response) (res *ReposListPage
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -54620,7 +54620,7 @@ func decodeReposListPublicResponse(resp *http.Response) (res ReposListPublicRes,
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -54782,7 +54782,7 @@ func decodeReposListPullRequestsAssociatedWithCommitResponse(resp *http.Response
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -54897,7 +54897,7 @@ func decodeReposListReleaseAssetsResponse(resp *http.Response) (res *ReposListRe
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -55012,7 +55012,7 @@ func decodeReposListReleasesResponse(resp *http.Response) (res ReposListReleases
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -55145,7 +55145,7 @@ func decodeReposListTagsResponse(resp *http.Response) (res *ReposListTagsOKHeade
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -55243,7 +55243,7 @@ func decodeReposListTeamsResponse(resp *http.Response) (res *ReposListTeamsOKHea
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -55487,7 +55487,7 @@ func decodeReposListWebhooksResponse(resp *http.Response) (res ReposListWebhooks
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -59508,7 +59508,7 @@ func decodeSecretScanningListAlertsForOrgResponse(resp *http.Response) (res Secr
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -61569,7 +61569,7 @@ func decodeTeamsListResponse(resp *http.Response) (res TeamsListRes, _ error) {
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -61702,7 +61702,7 @@ func decodeTeamsListChildInOrgResponse(resp *http.Response) (res *TeamsListChild
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -61800,7 +61800,7 @@ func decodeTeamsListChildLegacyResponse(resp *http.Response) (res TeamsListChild
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -62012,7 +62012,7 @@ func decodeTeamsListDiscussionCommentsInOrgResponse(resp *http.Response) (res *T
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -62110,7 +62110,7 @@ func decodeTeamsListDiscussionCommentsLegacyResponse(resp *http.Response) (res *
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -62208,7 +62208,7 @@ func decodeTeamsListDiscussionsInOrgResponse(resp *http.Response) (res *TeamsLis
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -62306,7 +62306,7 @@ func decodeTeamsListDiscussionsLegacyResponse(resp *http.Response) (res *TeamsLi
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -62421,7 +62421,7 @@ func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response) (res Teams
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -62686,7 +62686,7 @@ func decodeTeamsListIdpGroupsForOrgResponse(resp *http.Response) (res *GroupMapp
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -62825,7 +62825,7 @@ func decodeTeamsListMembersInOrgResponse(resp *http.Response) (res *TeamsListMem
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -62923,7 +62923,7 @@ func decodeTeamsListMembersLegacyResponse(resp *http.Response) (res TeamsListMem
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -63056,7 +63056,7 @@ func decodeTeamsListPendingInvitationsInOrgResponse(resp *http.Response) (res *T
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -63154,7 +63154,7 @@ func decodeTeamsListPendingInvitationsLegacyResponse(resp *http.Response) (res *
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -63252,7 +63252,7 @@ func decodeTeamsListProjectsInOrgResponse(resp *http.Response) (res *TeamsListPr
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -63350,7 +63350,7 @@ func decodeTeamsListProjectsLegacyResponse(resp *http.Response) (res TeamsListPr
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -63483,7 +63483,7 @@ func decodeTeamsListReposInOrgResponse(resp *http.Response) (res *TeamsListRepos
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -63581,7 +63581,7 @@ func decodeTeamsListReposLegacyResponse(resp *http.Response) (res TeamsListRepos
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -66561,7 +66561,7 @@ func decodeUsersListResponse(resp *http.Response) (res UsersListRes, _ error) {
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -66872,7 +66872,7 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response) (res Use
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -67078,7 +67078,7 @@ func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response) (res Us
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -67249,7 +67249,7 @@ func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response) (
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -67420,7 +67420,7 @@ func decodeUsersListFollowersForUserResponse(resp *http.Response) (res *UsersLis
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -67518,7 +67518,7 @@ func decodeUsersListFollowingForUserResponse(resp *http.Response) (res *UsersLis
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -67633,7 +67633,7 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response) (res Us
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -67856,7 +67856,7 @@ func decodeUsersListGpgKeysForUserResponse(resp *http.Response) (res *UsersListG
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -67971,7 +67971,7 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response) (r
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -68177,7 +68177,7 @@ func decodeUsersListPublicKeysForUserResponse(resp *http.Response) (res *UsersLi
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {
@@ -68275,7 +68275,7 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response) (
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotLinkVal string
 							if err := func() error {

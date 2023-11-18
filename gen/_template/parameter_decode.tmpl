@@ -53,7 +53,7 @@ func decode{{ $.Name }}Params(args [{{ $.PathParamsCount }}]string, argsEscaped 
 			{{- end }}
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
     			{{- template "decode_parameter" $p -}}
 			}); err != nil {
@@ -114,7 +114,7 @@ func decode{{ $.Name }}Params(args [{{ $.PathParamsCount }}]string, argsEscaped 
 			Name:   {{ quote $p.Spec.Name }},
 			Explode:{{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
 		}
-		if err := h.HasParam(cfg); err == nil {
+		if err := h.HasParam(cfg); err == nil { // if NO error
 			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
         		{{- template "decode_parameter" $p -}}
 			}); err != nil {
@@ -136,7 +136,7 @@ func decode{{ $.Name }}Params(args [{{ $.PathParamsCount }}]string, argsEscaped 
 			Name:   {{ quote $p.Spec.Name }},
 			Explode:{{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
 		}
-		if err := c.HasParam(cfg); err == nil {
+		if err := c.HasParam(cfg); err == nil { // if NO error
 			if err := c.DecodeParam(cfg, func(d uri.Decoder) error {
         		{{- template "decode_parameter" $p -}}
 			}); err != nil {

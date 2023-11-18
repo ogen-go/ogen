@@ -712,7 +712,7 @@ func decodeSearchParams(args [0]string, argsEscaped bool, r *http.Request) (para
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -748,7 +748,7 @@ func decodeSearchParams(args [0]string, argsEscaped bool, r *http.Request) (para
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -822,7 +822,7 @@ func decodeSearchByTagIDParams(args [0]string, argsEscaped bool, r *http.Request
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -858,7 +858,7 @@ func decodeSearchByTagIDParams(args [0]string, argsEscaped bool, r *http.Request
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {

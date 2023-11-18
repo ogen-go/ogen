@@ -119,7 +119,7 @@ func decodeListPetsResponse(resp *http.Response) (res *PetsHeaders, _ error) {
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							var wrapperDotXNextVal string
 							if err := func() error {

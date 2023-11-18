@@ -44,7 +44,7 @@ func decodeListPetsParams(args [0]string, argsEscaped bool, r *http.Request) (pa
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotLimitVal int32
 				if err := func() error {

@@ -211,7 +211,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 		}
 		defer func() {
 			for i, arg := range r.args[:r.count] {
-				if unescaped, err := url.PathUnescape(arg); err == nil {
+				if unescaped, err := url.PathUnescape(arg); err == nil { // if NO error
 					r.args[i] = unescaped
 				}
 			}

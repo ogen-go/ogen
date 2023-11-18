@@ -102,7 +102,7 @@ func (s *Server) decodeAllRequestBodiesRequest(r *http.Request) (
 					Style:   uri.QueryStyleForm,
 					Explode: true,
 				}
-				if err := q.HasParam(cfg); err == nil {
+				if err := q.HasParam(cfg); err == nil { // if NO error
 					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 						val, err := d.DecodeValue()
 						if err != nil {
@@ -129,7 +129,7 @@ func (s *Server) decodeAllRequestBodiesRequest(r *http.Request) (
 					Style:   uri.QueryStyleForm,
 					Explode: true,
 				}
-				if err := q.HasParam(cfg); err == nil {
+				if err := q.HasParam(cfg); err == nil { // if NO error
 					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 						var unwrappedDotAgeVal int
 						if err := func() error {
@@ -182,7 +182,7 @@ func (s *Server) decodeAllRequestBodiesRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -209,7 +209,7 @@ func (s *Server) decodeAllRequestBodiesRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotAgeVal int
 					if err := func() error {
@@ -330,7 +330,7 @@ func (s *Server) decodeAllRequestBodiesOptionalRequest(r *http.Request) (
 					Style:   uri.QueryStyleForm,
 					Explode: true,
 				}
-				if err := q.HasParam(cfg); err == nil {
+				if err := q.HasParam(cfg); err == nil { // if NO error
 					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 						val, err := d.DecodeValue()
 						if err != nil {
@@ -357,7 +357,7 @@ func (s *Server) decodeAllRequestBodiesOptionalRequest(r *http.Request) (
 					Style:   uri.QueryStyleForm,
 					Explode: true,
 				}
-				if err := q.HasParam(cfg); err == nil {
+				if err := q.HasParam(cfg); err == nil { // if NO error
 					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 						var unwrappedDotAgeVal int
 						if err := func() error {
@@ -410,7 +410,7 @@ func (s *Server) decodeAllRequestBodiesOptionalRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -437,7 +437,7 @@ func (s *Server) decodeAllRequestBodiesOptionalRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotAgeVal int
 					if err := func() error {

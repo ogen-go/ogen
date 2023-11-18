@@ -407,7 +407,7 @@ func decodeDefaultTestParams(args [0]string, argsEscaped bool, r *http.Request) 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDefaultVal int32
 				if err := func() error {
@@ -479,7 +479,7 @@ func decodeFoobarGetParams(args [0]string, argsEscaped bool, r *http.Request) (p
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -515,7 +515,7 @@ func decodeFoobarGetParams(args [0]string, argsEscaped bool, r *http.Request) (p
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -667,7 +667,7 @@ func decodePetGetParams(args [0]string, argsEscaped bool, r *http.Request) (para
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -718,7 +718,7 @@ func decodePetGetParams(args [0]string, argsEscaped bool, r *http.Request) (para
 			Name:    "X-Tags",
 			Explode: false,
 		}
-		if err := h.HasParam(cfg); err == nil {
+		if err := h.HasParam(cfg); err == nil { // if NO error
 			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotXTagsVal uuid.UUID
@@ -769,7 +769,7 @@ func decodePetGetParams(args [0]string, argsEscaped bool, r *http.Request) (para
 			Name:    "X-Scope",
 			Explode: false,
 		}
-		if err := h.HasParam(cfg); err == nil {
+		if err := h.HasParam(cfg); err == nil { // if NO error
 			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotXScopeVal string
@@ -822,7 +822,7 @@ func decodePetGetParams(args [0]string, argsEscaped bool, r *http.Request) (para
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -880,7 +880,7 @@ func decodePetGetAvatarByIDParams(args [0]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -1136,7 +1136,7 @@ func decodePetUploadAvatarByIDParams(args [0]string, argsEscaped bool, r *http.R
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {

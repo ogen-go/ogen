@@ -77,7 +77,7 @@ func (s *Server) decodeOnlyFormRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -259,7 +259,7 @@ func (s *Server) decodeOnlyMultipartFormRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -328,7 +328,7 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotIDVal int
 					if err := func() error {
@@ -360,7 +360,7 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotUUIDVal uuid.UUID
 					if err := func() error {
@@ -392,7 +392,7 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -419,7 +419,7 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					return d.DecodeArray(func(d uri.Decoder) error {
 						var requestDotArrayVal string
@@ -454,7 +454,7 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request) (
 				Explode: true,
 				Fields:  []uri.QueryParameterObjectField{{"min", false}, {"max", true}},
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotObjectVal TestFormObject
 					if err := func() error {
@@ -476,7 +476,7 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request) (
 				Explode: true,
 				Fields:  []uri.QueryParameterObjectField{{"min", false}, {"max", true}},
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotDeepObjectVal TestFormDeepObject
 					if err := func() error {
@@ -546,7 +546,7 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotIDVal int
 					if err := func() error {
@@ -578,7 +578,7 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotUUIDVal uuid.UUID
 					if err := func() error {
@@ -610,7 +610,7 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -637,7 +637,7 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					return d.DecodeArray(func(d uri.Decoder) error {
 						var requestDotArrayVal string
@@ -672,7 +672,7 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request) (
 				Explode: true,
 				Fields:  []uri.QueryParameterObjectField{{"min", false}, {"max", true}},
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotObjectVal TestFormMultipartObject
 					if err := func() error {
@@ -694,7 +694,7 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request) (
 				Explode: true,
 				Fields:  []uri.QueryParameterObjectField{{"min", false}, {"max", true}},
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotDeepObjectVal TestFormMultipartDeepObject
 					if err := func() error {
@@ -796,7 +796,7 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotOrderIdVal int
 					if err := func() error {
@@ -828,7 +828,7 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotUserIdVal int
 					if err := func() error {
@@ -996,7 +996,7 @@ func (s *Server) decodeTestReuseFormOptionalSchemaRequest(r *http.Request) (
 					Style:   uri.QueryStyleForm,
 					Explode: true,
 				}
-				if err := q.HasParam(cfg); err == nil {
+				if err := q.HasParam(cfg); err == nil { // if NO error
 					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 						var optFormDotFilenameVal string
 						if err := func() error {
@@ -1105,7 +1105,7 @@ func (s *Server) decodeTestReuseFormSchemaRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotFilenameVal string
 					if err := func() error {
@@ -1242,7 +1242,7 @@ func (s *Server) decodeTestShareFormSchemaRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotFilenameVal string
 					if err := func() error {

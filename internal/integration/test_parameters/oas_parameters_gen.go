@@ -74,7 +74,7 @@ func decodeComplicatedParameterNameGetParams(args [0]string, argsEscaped bool, r
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -110,7 +110,7 @@ func decodeComplicatedParameterNameGetParams(args [0]string, argsEscaped bool, r
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -146,7 +146,7 @@ func decodeComplicatedParameterNameGetParams(args [0]string, argsEscaped bool, r
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -182,7 +182,7 @@ func decodeComplicatedParameterNameGetParams(args [0]string, argsEscaped bool, r
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -218,7 +218,7 @@ func decodeComplicatedParameterNameGetParams(args [0]string, argsEscaped bool, r
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -301,7 +301,7 @@ func decodeContentParametersParams(args [1]string, argsEscaped bool, r *http.Req
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -398,7 +398,7 @@ func decodeContentParametersParams(args [1]string, argsEscaped bool, r *http.Req
 			Name:    "X-Header",
 			Explode: false,
 		}
-		if err := h.HasParam(cfg); err == nil {
+		if err := h.HasParam(cfg); err == nil { // if NO error
 			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -441,7 +441,7 @@ func decodeContentParametersParams(args [1]string, argsEscaped bool, r *http.Req
 			Name:    "cookie",
 			Explode: true,
 		}
-		if err := c.HasParam(cfg); err == nil {
+		if err := c.HasParam(cfg); err == nil { // if NO error
 			if err := c.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -505,7 +505,7 @@ func decodeCookieParameterParams(args [0]string, argsEscaped bool, r *http.Reque
 			Name:    "value",
 			Explode: true,
 		}
-		if err := c.HasParam(cfg); err == nil {
+		if err := c.HasParam(cfg); err == nil { // if NO error
 			if err := c.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -560,7 +560,7 @@ func decodeHeaderParameterParams(args [0]string, argsEscaped bool, r *http.Reque
 			Name:    "X-Value",
 			Explode: false,
 		}
-		if err := h.HasParam(cfg); err == nil {
+		if err := h.HasParam(cfg); err == nil { // if NO error
 			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -615,7 +615,7 @@ func decodeObjectCookieParameterParams(args [0]string, argsEscaped bool, r *http
 			Name:    "value",
 			Explode: false,
 		}
-		if err := c.HasParam(cfg); err == nil {
+		if err := c.HasParam(cfg); err == nil { // if NO error
 			if err := c.DecodeParam(cfg, func(d uri.Decoder) error {
 				return params.Value.DecodeURI(d)
 			}); err != nil {
@@ -674,7 +674,7 @@ func decodeObjectQueryParameterParams(args [0]string, argsEscaped bool, r *http.
 			Fields:  []uri.QueryParameterObjectField{{"min", true}, {"max", true}, {"filter", true}},
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotFormObjectVal OneLevelObject
 				if err := func() error {
@@ -705,7 +705,7 @@ func decodeObjectQueryParameterParams(args [0]string, argsEscaped bool, r *http.
 			Fields:  []uri.QueryParameterObjectField{{"min", true}, {"max", true}, {"filter", true}},
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDeepObjectVal OneLevelObject
 				if err := func() error {
@@ -874,7 +874,7 @@ func decodeSameNameParams(args [1]string, argsEscaped bool, r *http.Request) (pa
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -940,7 +940,7 @@ func decodeSimilarNamesParams(args [0]string, argsEscaped bool, r *http.Request)
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -974,7 +974,7 @@ func decodeSimilarNamesParams(args [0]string, argsEscaped bool, r *http.Request)
 			Name:    "X-Param",
 			Explode: false,
 		}
-		if err := h.HasParam(cfg); err == nil {
+		if err := h.HasParam(cfg); err == nil { // if NO error
 			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {

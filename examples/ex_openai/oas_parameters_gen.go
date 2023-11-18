@@ -441,7 +441,7 @@ func decodeListFineTuneEventsParams(args [1]string, argsEscaped bool, r *http.Re
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStreamVal bool
 				if err := func() error {

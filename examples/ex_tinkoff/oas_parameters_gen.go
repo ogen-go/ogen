@@ -67,7 +67,7 @@ func decodeMarketCandlesGetParams(args [0]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -103,7 +103,7 @@ func decodeMarketCandlesGetParams(args [0]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -139,7 +139,7 @@ func decodeMarketCandlesGetParams(args [0]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -175,7 +175,7 @@ func decodeMarketCandlesGetParams(args [0]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -250,7 +250,7 @@ func decodeMarketOrderbookGetParams(args [0]string, argsEscaped bool, r *http.Re
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -286,7 +286,7 @@ func decodeMarketOrderbookGetParams(args [0]string, argsEscaped bool, r *http.Re
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -344,7 +344,7 @@ func decodeMarketSearchByFigiGetParams(args [0]string, argsEscaped bool, r *http
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -402,7 +402,7 @@ func decodeMarketSearchByTickerGetParams(args [0]string, argsEscaped bool, r *ht
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -491,7 +491,7 @@ func decodeOperationsGetParams(args [0]string, argsEscaped bool, r *http.Request
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -527,7 +527,7 @@ func decodeOperationsGetParams(args [0]string, argsEscaped bool, r *http.Request
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -563,7 +563,7 @@ func decodeOperationsGetParams(args [0]string, argsEscaped bool, r *http.Request
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotFigiVal string
 				if err := func() error {
@@ -604,7 +604,7 @@ func decodeOperationsGetParams(args [0]string, argsEscaped bool, r *http.Request
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBrokerAccountIdVal string
 				if err := func() error {
@@ -678,7 +678,7 @@ func decodeOrdersCancelPostParams(args [0]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -714,7 +714,7 @@ func decodeOrdersCancelPostParams(args [0]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBrokerAccountIdVal string
 				if err := func() error {
@@ -779,7 +779,7 @@ func decodeOrdersGetParams(args [0]string, argsEscaped bool, r *http.Request) (p
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBrokerAccountIdVal string
 				if err := func() error {
@@ -853,7 +853,7 @@ func decodeOrdersLimitOrderPostParams(args [0]string, argsEscaped bool, r *http.
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -889,7 +889,7 @@ func decodeOrdersLimitOrderPostParams(args [0]string, argsEscaped bool, r *http.
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBrokerAccountIdVal string
 				if err := func() error {
@@ -964,7 +964,7 @@ func decodeOrdersMarketOrderPostParams(args [0]string, argsEscaped bool, r *http
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -1000,7 +1000,7 @@ func decodeOrdersMarketOrderPostParams(args [0]string, argsEscaped bool, r *http
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBrokerAccountIdVal string
 				if err := func() error {
@@ -1065,7 +1065,7 @@ func decodePortfolioCurrenciesGetParams(args [0]string, argsEscaped bool, r *htt
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBrokerAccountIdVal string
 				if err := func() error {
@@ -1130,7 +1130,7 @@ func decodePortfolioGetParams(args [0]string, argsEscaped bool, r *http.Request)
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBrokerAccountIdVal string
 				if err := func() error {
@@ -1195,7 +1195,7 @@ func decodeSandboxClearPostParams(args [0]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBrokerAccountIdVal string
 				if err := func() error {
@@ -1260,7 +1260,7 @@ func decodeSandboxCurrenciesBalancePostParams(args [0]string, argsEscaped bool, 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBrokerAccountIdVal string
 				if err := func() error {
@@ -1325,7 +1325,7 @@ func decodeSandboxPositionsBalancePostParams(args [0]string, argsEscaped bool, r
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBrokerAccountIdVal string
 				if err := func() error {
@@ -1390,7 +1390,7 @@ func decodeSandboxRemovePostParams(args [0]string, argsEscaped bool, r *http.Req
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBrokerAccountIdVal string
 				if err := func() error {

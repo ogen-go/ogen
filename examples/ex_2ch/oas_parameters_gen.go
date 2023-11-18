@@ -55,7 +55,7 @@ func decodeAPICaptcha2chcaptchaIDGetParams(args [0]string, argsEscaped bool, r *
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBoardVal string
 				if err := func() error {
@@ -96,7 +96,7 @@ func decodeAPICaptcha2chcaptchaIDGetParams(args [0]string, argsEscaped bool, r *
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotThreadVal int
 				if err := func() error {
@@ -183,7 +183,7 @@ func decodeAPICaptcha2chcaptchaShowGetParams(args [0]string, argsEscaped bool, r
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -310,7 +310,7 @@ func decodeAPICaptchaAppIDPublicKeyGetParams(args [1]string, argsEscaped bool, r
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBoardVal string
 				if err := func() error {
@@ -351,7 +351,7 @@ func decodeAPICaptchaAppIDPublicKeyGetParams(args [1]string, argsEscaped bool, r
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotThreadVal int
 				if err := func() error {
@@ -451,7 +451,7 @@ func decodeAPICaptchaInvisibleRecaptchaIDGetParams(args [0]string, argsEscaped b
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBoardVal string
 				if err := func() error {
@@ -492,7 +492,7 @@ func decodeAPICaptchaInvisibleRecaptchaIDGetParams(args [0]string, argsEscaped b
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotThreadVal int
 				if err := func() error {
@@ -592,7 +592,7 @@ func decodeAPICaptchaRecaptchaIDGetParams(args [0]string, argsEscaped bool, r *h
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBoardVal string
 				if err := func() error {
@@ -633,7 +633,7 @@ func decodeAPICaptchaRecaptchaIDGetParams(args [0]string, argsEscaped bool, r *h
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotThreadVal int
 				if err := func() error {
@@ -729,7 +729,7 @@ func decodeAPIDislikeGetParams(args [0]string, argsEscaped bool, r *http.Request
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -765,7 +765,7 @@ func decodeAPIDislikeGetParams(args [0]string, argsEscaped bool, r *http.Request
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -849,7 +849,7 @@ func decodeAPILikeGetParams(args [0]string, argsEscaped bool, r *http.Request) (
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -885,7 +885,7 @@ func decodeAPILikeGetParams(args [0]string, argsEscaped bool, r *http.Request) (
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -1448,7 +1448,7 @@ func decodeUserPassloginPostParams(args [0]string, argsEscaped bool, r *http.Req
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {

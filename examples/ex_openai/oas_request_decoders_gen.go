@@ -494,7 +494,7 @@ func (s *Server) decodeCreateFileRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -735,7 +735,7 @@ func (s *Server) decodeCreateImageEditRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -762,7 +762,7 @@ func (s *Server) decodeCreateImageEditRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotNVal int
 					if err := func() error {
@@ -818,7 +818,7 @@ func (s *Server) decodeCreateImageEditRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotSizeVal CreateImageEditRequestMultipartSize
 					if err := func() error {
@@ -865,7 +865,7 @@ func (s *Server) decodeCreateImageEditRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotResponseFormatVal CreateImageEditRequestMultipartResponseFormat
 					if err := func() error {
@@ -912,7 +912,7 @@ func (s *Server) decodeCreateImageEditRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotUserVal string
 					if err := func() error {
@@ -1039,7 +1039,7 @@ func (s *Server) decodeCreateImageVariationRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotNVal int
 					if err := func() error {
@@ -1095,7 +1095,7 @@ func (s *Server) decodeCreateImageVariationRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotSizeVal CreateImageVariationRequestMultipartSize
 					if err := func() error {
@@ -1142,7 +1142,7 @@ func (s *Server) decodeCreateImageVariationRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotResponseFormatVal CreateImageVariationRequestMultipartResponseFormat
 					if err := func() error {
@@ -1189,7 +1189,7 @@ func (s *Server) decodeCreateImageVariationRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotUserVal string
 					if err := func() error {
@@ -1435,7 +1435,7 @@ func (s *Server) decodeCreateTranscriptionRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -1462,7 +1462,7 @@ func (s *Server) decodeCreateTranscriptionRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotPromptVal string
 					if err := func() error {
@@ -1494,7 +1494,7 @@ func (s *Server) decodeCreateTranscriptionRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotResponseFormatVal string
 					if err := func() error {
@@ -1526,7 +1526,7 @@ func (s *Server) decodeCreateTranscriptionRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotTemperatureVal float64
 					if err := func() error {
@@ -1573,7 +1573,7 @@ func (s *Server) decodeCreateTranscriptionRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotLanguageVal string
 					if err := func() error {
@@ -1677,7 +1677,7 @@ func (s *Server) decodeCreateTranslationRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -1704,7 +1704,7 @@ func (s *Server) decodeCreateTranslationRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotPromptVal string
 					if err := func() error {
@@ -1736,7 +1736,7 @@ func (s *Server) decodeCreateTranslationRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotResponseFormatVal string
 					if err := func() error {
@@ -1768,7 +1768,7 @@ func (s *Server) decodeCreateTranslationRequest(r *http.Request) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-			if err := q.HasParam(cfg); err == nil {
+			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotTemperatureVal float64
 					if err := func() error {

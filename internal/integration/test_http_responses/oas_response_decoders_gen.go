@@ -282,7 +282,7 @@ func decodeHeaders200Response(resp *http.Response) (res *Headers200OK, _ error) 
 				Explode: false,
 			}
 			if err := func() error {
-				if err := h.HasParam(cfg); err == nil {
+				if err := h.HasParam(cfg); err == nil { // if NO error
 					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 						val, err := d.DecodeValue()
 						if err != nil {
@@ -325,7 +325,7 @@ func decodeHeadersCombinedResponse(resp *http.Response) (res HeadersCombinedRes,
 				Explode: false,
 			}
 			if err := func() error {
-				if err := h.HasParam(cfg); err == nil {
+				if err := h.HasParam(cfg); err == nil { // if NO error
 					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 						val, err := d.DecodeValue()
 						if err != nil {
@@ -366,7 +366,7 @@ func decodeHeadersCombinedResponse(resp *http.Response) (res HeadersCombinedRes,
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							val, err := d.DecodeValue()
 							if err != nil {
@@ -410,7 +410,7 @@ func decodeHeadersCombinedResponse(resp *http.Response) (res HeadersCombinedRes,
 				Explode: false,
 			}
 			if err := func() error {
-				if err := h.HasParam(cfg); err == nil {
+				if err := h.HasParam(cfg); err == nil { // if NO error
 					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 						val, err := d.DecodeValue()
 						if err != nil {
@@ -456,7 +456,7 @@ func decodeHeadersDefaultResponse(resp *http.Response) (res *HeadersDefaultDef, 
 				Explode: false,
 			}
 			if err := func() error {
-				if err := h.HasParam(cfg); err == nil {
+				if err := h.HasParam(cfg); err == nil { // if NO error
 					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 						val, err := d.DecodeValue()
 						if err != nil {
@@ -502,7 +502,7 @@ func decodeHeadersJSONResponse(resp *http.Response) (res *HeadersJSONOK, _ error
 				Explode: false,
 			}
 			if err := func() error {
-				if err := h.HasParam(cfg); err == nil {
+				if err := h.HasParam(cfg); err == nil { // if NO error
 					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 						val, err := d.DecodeValue()
 						if err != nil {
@@ -537,7 +537,7 @@ func decodeHeadersJSONResponse(resp *http.Response) (res *HeadersJSONOK, _ error
 				Explode: false,
 			}
 			if err := func() error {
-				if err := h.HasParam(cfg); err == nil {
+				if err := h.HasParam(cfg); err == nil { // if NO error
 					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 						val, err := d.DecodeValue()
 						if err != nil {
@@ -591,7 +591,7 @@ func decodeHeadersPatternResponse(resp *http.Response) (res *HeadersPattern4XX, 
 					Explode: false,
 				}
 				if err := func() error {
-					if err := h.HasParam(cfg); err == nil {
+					if err := h.HasParam(cfg); err == nil { // if NO error
 						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 							val, err := d.DecodeValue()
 							if err != nil {
@@ -854,7 +854,7 @@ func decodeOptionalHeadersResponse(resp *http.Response) (res *OptionalHeadersOK,
 				Explode: false,
 			}
 			if err := func() error {
-				if err := h.HasParam(cfg); err == nil {
+				if err := h.HasParam(cfg); err == nil { // if NO error
 					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 						var wrapperDotXOptionalVal string
 						if err := func() error {
@@ -891,7 +891,7 @@ func decodeOptionalHeadersResponse(resp *http.Response) (res *OptionalHeadersOK,
 				Explode: false,
 			}
 			if err := func() error {
-				if err := h.HasParam(cfg); err == nil {
+				if err := h.HasParam(cfg); err == nil { // if NO error
 					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 						val, err := d.DecodeValue()
 						if err != nil {

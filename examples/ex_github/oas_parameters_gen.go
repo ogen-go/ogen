@@ -6521,7 +6521,7 @@ func decodeActionsListArtifactsForRepoParams(args [2]string, argsEscaped bool, r
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -6567,7 +6567,7 @@ func decodeActionsListArtifactsForRepoParams(args [2]string, argsEscaped bool, r
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -6755,7 +6755,7 @@ func decodeActionsListEnvironmentSecretsParams(args [2]string, argsEscaped bool,
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -6801,7 +6801,7 @@ func decodeActionsListEnvironmentSecretsParams(args [2]string, argsEscaped bool,
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -7055,7 +7055,7 @@ func decodeActionsListJobsForWorkflowRunParams(args [3]string, argsEscaped bool,
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotFilterVal ActionsListJobsForWorkflowRunFilter
 				if err := func() error {
@@ -7116,7 +7116,7 @@ func decodeActionsListJobsForWorkflowRunParams(args [3]string, argsEscaped bool,
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -7162,7 +7162,7 @@ func decodeActionsListJobsForWorkflowRunParams(args [3]string, argsEscaped bool,
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -7296,7 +7296,7 @@ func decodeActionsListOrgSecretsParams(args [1]string, argsEscaped bool, r *http
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -7342,7 +7342,7 @@ func decodeActionsListOrgSecretsParams(args [1]string, argsEscaped bool, r *http
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -7530,7 +7530,7 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]strin
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -7576,7 +7576,7 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]strin
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -7763,7 +7763,7 @@ func decodeActionsListRepoSecretsParams(args [2]string, argsEscaped bool, r *htt
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -7809,7 +7809,7 @@ func decodeActionsListRepoSecretsParams(args [2]string, argsEscaped bool, r *htt
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -7996,7 +7996,7 @@ func decodeActionsListRepoWorkflowsParams(args [2]string, argsEscaped bool, r *h
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -8042,7 +8042,7 @@ func decodeActionsListRepoWorkflowsParams(args [2]string, argsEscaped bool, r *h
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -8413,7 +8413,7 @@ func decodeActionsListSelectedReposForOrgSecretParams(args [2]string, argsEscape
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -8459,7 +8459,7 @@ func decodeActionsListSelectedReposForOrgSecretParams(args [2]string, argsEscape
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -8593,7 +8593,7 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -8639,7 +8639,7 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -8773,7 +8773,7 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(args [1]string, argsEsc
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -8819,7 +8819,7 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(args [1]string, argsEsc
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -8953,7 +8953,7 @@ func decodeActionsListSelfHostedRunnersForOrgParams(args [1]string, argsEscaped 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -8999,7 +8999,7 @@ func decodeActionsListSelfHostedRunnersForOrgParams(args [1]string, argsEscaped 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -9186,7 +9186,7 @@ func decodeActionsListSelfHostedRunnersForRepoParams(args [2]string, argsEscaped
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -9232,7 +9232,7 @@ func decodeActionsListSelfHostedRunnersForRepoParams(args [2]string, argsEscaped
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -9420,7 +9420,7 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(args [2]string, argsE
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -9466,7 +9466,7 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(args [2]string, argsE
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -9707,7 +9707,7 @@ func decodeActionsListWorkflowRunArtifactsParams(args [3]string, argsEscaped boo
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -9753,7 +9753,7 @@ func decodeActionsListWorkflowRunArtifactsParams(args [3]string, argsEscaped boo
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -9995,7 +9995,7 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotActorVal string
 				if err := func() error {
@@ -10036,7 +10036,7 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBranchVal string
 				if err := func() error {
@@ -10077,7 +10077,7 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotEventVal string
 				if err := func() error {
@@ -10118,7 +10118,7 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStatusVal ActionsListWorkflowRunsForRepoStatus
 				if err := func() error {
@@ -10179,7 +10179,7 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -10225,7 +10225,7 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -10266,7 +10266,7 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotCreatedVal time.Time
 				if err := func() error {
@@ -12892,7 +12892,7 @@ func decodeActivityListEventsForAuthenticatedUserParams(args [1]string, argsEsca
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -12938,7 +12938,7 @@ func decodeActivityListEventsForAuthenticatedUserParams(args [1]string, argsEsca
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -13065,7 +13065,7 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, a
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotAllVal bool
 				if err := func() error {
@@ -13111,7 +13111,7 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, a
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotParticipatingVal bool
 				if err := func() error {
@@ -13152,7 +13152,7 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, a
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal time.Time
 				if err := func() error {
@@ -13193,7 +13193,7 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, a
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBeforeVal time.Time
 				if err := func() error {
@@ -13239,7 +13239,7 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, a
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -13285,7 +13285,7 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, a
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -13472,7 +13472,7 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(args [2]string, argsE
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -13518,7 +13518,7 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(args [2]string, argsE
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -13599,7 +13599,7 @@ func decodeActivityListPublicEventsParams(args [0]string, argsEscaped bool, r *h
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -13645,7 +13645,7 @@ func decodeActivityListPublicEventsParams(args [0]string, argsEscaped bool, r *h
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -13832,7 +13832,7 @@ func decodeActivityListPublicEventsForRepoNetworkParams(args [2]string, argsEsca
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -13878,7 +13878,7 @@ func decodeActivityListPublicEventsForRepoNetworkParams(args [2]string, argsEsca
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -14012,7 +14012,7 @@ func decodeActivityListPublicEventsForUserParams(args [1]string, argsEscaped boo
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -14058,7 +14058,7 @@ func decodeActivityListPublicEventsForUserParams(args [1]string, argsEscaped boo
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -14192,7 +14192,7 @@ func decodeActivityListPublicOrgEventsParams(args [1]string, argsEscaped bool, r
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -14238,7 +14238,7 @@ func decodeActivityListPublicOrgEventsParams(args [1]string, argsEscaped bool, r
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -14372,7 +14372,7 @@ func decodeActivityListReceivedEventsForUserParams(args [1]string, argsEscaped b
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -14418,7 +14418,7 @@ func decodeActivityListReceivedEventsForUserParams(args [1]string, argsEscaped b
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -14552,7 +14552,7 @@ func decodeActivityListReceivedPublicEventsForUserParams(args [1]string, argsEsc
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -14598,7 +14598,7 @@ func decodeActivityListReceivedPublicEventsForUserParams(args [1]string, argsEsc
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -14785,7 +14785,7 @@ func decodeActivityListRepoEventsParams(args [2]string, argsEscaped bool, r *htt
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -14831,7 +14831,7 @@ func decodeActivityListRepoEventsParams(args [2]string, argsEscaped bool, r *htt
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -15064,7 +15064,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotAllVal bool
 				if err := func() error {
@@ -15110,7 +15110,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotParticipatingVal bool
 				if err := func() error {
@@ -15151,7 +15151,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal time.Time
 				if err := func() error {
@@ -15192,7 +15192,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBeforeVal time.Time
 				if err := func() error {
@@ -15238,7 +15238,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -15284,7 +15284,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -15387,7 +15387,7 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, arg
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal ActivityListReposStarredByAuthenticatedUserSort
 				if err := func() error {
@@ -15448,7 +15448,7 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, arg
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal ActivityListReposStarredByAuthenticatedUserDirection
 				if err := func() error {
@@ -15509,7 +15509,7 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, arg
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -15555,7 +15555,7 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, arg
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -15689,7 +15689,7 @@ func decodeActivityListReposWatchedByUserParams(args [1]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -15735,7 +15735,7 @@ func decodeActivityListReposWatchedByUserParams(args [1]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -15816,7 +15816,7 @@ func decodeActivityListWatchedReposForAuthenticatedUserParams(args [0]string, ar
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -15862,7 +15862,7 @@ func decodeActivityListWatchedReposForAuthenticatedUserParams(args [0]string, ar
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -16049,7 +16049,7 @@ func decodeActivityListWatchersForRepoParams(args [2]string, argsEscaped bool, r
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -16095,7 +16095,7 @@ func decodeActivityListWatchersForRepoParams(args [2]string, argsEscaped bool, r
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -17809,7 +17809,7 @@ func decodeAppsListAccountsForPlanParams(args [1]string, argsEscaped bool, r *ht
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal AppsListAccountsForPlanSort
 				if err := func() error {
@@ -17865,7 +17865,7 @@ func decodeAppsListAccountsForPlanParams(args [1]string, argsEscaped bool, r *ht
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal AppsListAccountsForPlanDirection
 				if err := func() error {
@@ -17926,7 +17926,7 @@ func decodeAppsListAccountsForPlanParams(args [1]string, argsEscaped bool, r *ht
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -17972,7 +17972,7 @@ func decodeAppsListAccountsForPlanParams(args [1]string, argsEscaped bool, r *ht
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -18130,7 +18130,7 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal AppsListAccountsForPlanStubbedSort
 				if err := func() error {
@@ -18186,7 +18186,7 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal AppsListAccountsForPlanStubbedDirection
 				if err := func() error {
@@ -18247,7 +18247,7 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -18293,7 +18293,7 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -18428,7 +18428,7 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(args [1]string, a
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -18474,7 +18474,7 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(args [1]string, a
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -18555,7 +18555,7 @@ func decodeAppsListPlansParams(args [0]string, argsEscaped bool, r *http.Request
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -18601,7 +18601,7 @@ func decodeAppsListPlansParams(args [0]string, argsEscaped bool, r *http.Request
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -18682,7 +18682,7 @@ func decodeAppsListPlansStubbedParams(args [0]string, argsEscaped bool, r *http.
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -18728,7 +18728,7 @@ func decodeAppsListPlansStubbedParams(args [0]string, argsEscaped bool, r *http.
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -18809,7 +18809,7 @@ func decodeAppsListReposAccessibleToInstallationParams(args [0]string, argsEscap
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -18855,7 +18855,7 @@ func decodeAppsListReposAccessibleToInstallationParams(args [0]string, argsEscap
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -18936,7 +18936,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserParams(args [0]string, argsE
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -18982,7 +18982,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserParams(args [0]string, argsE
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -19063,7 +19063,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args [0]string
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -19109,7 +19109,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args [0]string
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -19191,7 +19191,7 @@ func decodeAppsListWebhookDeliveriesParams(args [0]string, argsEscaped bool, r *
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -19232,7 +19232,7 @@ func decodeAppsListWebhookDeliveriesParams(args [0]string, argsEscaped bool, r *
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotCursorVal string
 				if err := func() error {
@@ -20971,7 +20971,7 @@ func decodeChecksListAnnotationsParams(args [3]string, argsEscaped bool, r *http
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -21017,7 +21017,7 @@ func decodeChecksListAnnotationsParams(args [3]string, argsEscaped bool, r *http
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -21298,7 +21298,7 @@ func decodeChecksListForRefParams(args [3]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotCheckNameVal string
 				if err := func() error {
@@ -21339,7 +21339,7 @@ func decodeChecksListForRefParams(args [3]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStatusVal ChecksListForRefStatus
 				if err := func() error {
@@ -21400,7 +21400,7 @@ func decodeChecksListForRefParams(args [3]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotFilterVal ChecksListForRefFilter
 				if err := func() error {
@@ -21461,7 +21461,7 @@ func decodeChecksListForRefParams(args [3]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -21507,7 +21507,7 @@ func decodeChecksListForRefParams(args [3]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -21548,7 +21548,7 @@ func decodeChecksListForRefParams(args [3]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotAppIDVal int
 				if err := func() error {
@@ -21819,7 +21819,7 @@ func decodeChecksListForSuiteParams(args [3]string, argsEscaped bool, r *http.Re
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotCheckNameVal string
 				if err := func() error {
@@ -21860,7 +21860,7 @@ func decodeChecksListForSuiteParams(args [3]string, argsEscaped bool, r *http.Re
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStatusVal ChecksListForSuiteStatus
 				if err := func() error {
@@ -21921,7 +21921,7 @@ func decodeChecksListForSuiteParams(args [3]string, argsEscaped bool, r *http.Re
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotFilterVal ChecksListForSuiteFilter
 				if err := func() error {
@@ -21982,7 +21982,7 @@ func decodeChecksListForSuiteParams(args [3]string, argsEscaped bool, r *http.Re
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -22028,7 +22028,7 @@ func decodeChecksListForSuiteParams(args [3]string, argsEscaped bool, r *http.Re
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -22286,7 +22286,7 @@ func decodeChecksListSuitesForRefParams(args [3]string, argsEscaped bool, r *htt
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotAppIDVal int
 				if err := func() error {
@@ -22327,7 +22327,7 @@ func decodeChecksListSuitesForRefParams(args [3]string, argsEscaped bool, r *htt
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotCheckNameVal string
 				if err := func() error {
@@ -22373,7 +22373,7 @@ func decodeChecksListSuitesForRefParams(args [3]string, argsEscaped bool, r *htt
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -22419,7 +22419,7 @@ func decodeChecksListSuitesForRefParams(args [3]string, argsEscaped bool, r *htt
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -22938,7 +22938,7 @@ func decodeCodeScanningDeleteAnalysisParams(args [3]string, argsEscaped bool, r 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotConfirmDeleteVal string
 				if err := func() error {
@@ -23727,7 +23727,7 @@ func decodeCodeScanningListAlertInstancesParams(args [3]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -23773,7 +23773,7 @@ func decodeCodeScanningListAlertInstancesParams(args [3]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -23814,7 +23814,7 @@ func decodeCodeScanningListAlertInstancesParams(args [3]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotRefVal CodeScanningRef
 				if err := func() error {
@@ -24052,7 +24052,7 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, argsEscaped bool,
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotToolNameVal CodeScanningAnalysisToolName
 				if err := func() error {
@@ -24100,7 +24100,7 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, argsEscaped bool,
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotToolGUIDVal CodeScanningAnalysisToolGUID
 				if err := func() error {
@@ -24153,7 +24153,7 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, argsEscaped bool,
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -24199,7 +24199,7 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, argsEscaped bool,
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -24240,7 +24240,7 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, argsEscaped bool,
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotRefVal CodeScanningRef
 				if err := func() error {
@@ -24288,7 +24288,7 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, argsEscaped bool,
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStateVal CodeScanningAlertState
 				if err := func() error {
@@ -24534,7 +24534,7 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotToolNameVal CodeScanningAnalysisToolName
 				if err := func() error {
@@ -24582,7 +24582,7 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotToolGUIDVal CodeScanningAnalysisToolGUID
 				if err := func() error {
@@ -24635,7 +24635,7 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -24681,7 +24681,7 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -24722,7 +24722,7 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotRefVal CodeScanningRef
 				if err := func() error {
@@ -24770,7 +24770,7 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSarifIDVal CodeScanningAnalysisSarifID
 				if err := func() error {
@@ -26669,7 +26669,7 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, argsEscaped bool, r 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPhraseVal string
 				if err := func() error {
@@ -26710,7 +26710,7 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, argsEscaped bool, r 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotIncludeVal EnterpriseAdminGetAuditLogInclude
 				if err := func() error {
@@ -26766,7 +26766,7 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, argsEscaped bool, r 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotAfterVal string
 				if err := func() error {
@@ -26807,7 +26807,7 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, argsEscaped bool, r 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBeforeVal string
 				if err := func() error {
@@ -26848,7 +26848,7 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, argsEscaped bool, r 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotOrderVal EnterpriseAdminGetAuditLogOrder
 				if err := func() error {
@@ -26909,7 +26909,7 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, argsEscaped bool, r 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -26955,7 +26955,7 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, argsEscaped bool, r 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -27194,7 +27194,7 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(arg
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotExcludedAttributesVal string
 				if err := func() error {
@@ -27743,7 +27743,7 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -27789,7 +27789,7 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -27941,7 +27941,7 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args [1]string, 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStartIndexVal int
 				if err := func() error {
@@ -27982,7 +27982,7 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args [1]string, 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotCountVal int
 				if err := func() error {
@@ -28023,7 +28023,7 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args [1]string, 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotFilterVal string
 				if err := func() error {
@@ -28064,7 +28064,7 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args [1]string, 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotExcludedAttributesVal string
 				if err := func() error {
@@ -28205,7 +28205,7 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args [1]stri
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStartIndexVal int
 				if err := func() error {
@@ -28246,7 +28246,7 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args [1]stri
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotCountVal int
 				if err := func() error {
@@ -28287,7 +28287,7 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args [1]stri
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotFilterVal string
 				if err := func() error {
@@ -28488,7 +28488,7 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -28534,7 +28534,7 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -28669,7 +28669,7 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args [1]
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -28715,7 +28715,7 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args [1]
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -28850,7 +28850,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args [1]strin
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -28896,7 +28896,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args [1]strin
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -29085,7 +29085,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args [
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -29131,7 +29131,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args [
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -31426,7 +31426,7 @@ func decodeGistsListParams(args [0]string, argsEscaped bool, r *http.Request) (p
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal time.Time
 				if err := func() error {
@@ -31472,7 +31472,7 @@ func decodeGistsListParams(args [0]string, argsEscaped bool, r *http.Request) (p
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -31518,7 +31518,7 @@ func decodeGistsListParams(args [0]string, argsEscaped bool, r *http.Request) (p
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -31653,7 +31653,7 @@ func decodeGistsListCommentsParams(args [1]string, argsEscaped bool, r *http.Req
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -31699,7 +31699,7 @@ func decodeGistsListCommentsParams(args [1]string, argsEscaped bool, r *http.Req
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -31834,7 +31834,7 @@ func decodeGistsListCommitsParams(args [1]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -31880,7 +31880,7 @@ func decodeGistsListCommitsParams(args [1]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -32021,7 +32021,7 @@ func decodeGistsListForUserParams(args [1]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal time.Time
 				if err := func() error {
@@ -32067,7 +32067,7 @@ func decodeGistsListForUserParams(args [1]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -32113,7 +32113,7 @@ func decodeGistsListForUserParams(args [1]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -32248,7 +32248,7 @@ func decodeGistsListForksParams(args [1]string, argsEscaped bool, r *http.Reques
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -32294,7 +32294,7 @@ func decodeGistsListForksParams(args [1]string, argsEscaped bool, r *http.Reques
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -32382,7 +32382,7 @@ func decodeGistsListPublicParams(args [0]string, argsEscaped bool, r *http.Reque
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal time.Time
 				if err := func() error {
@@ -32428,7 +32428,7 @@ func decodeGistsListPublicParams(args [0]string, argsEscaped bool, r *http.Reque
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -32474,7 +32474,7 @@ func decodeGistsListPublicParams(args [0]string, argsEscaped bool, r *http.Reque
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -32562,7 +32562,7 @@ func decodeGistsListStarredParams(args [0]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal time.Time
 				if err := func() error {
@@ -32608,7 +32608,7 @@ func decodeGistsListStarredParams(args [0]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -32654,7 +32654,7 @@ func decodeGistsListStarredParams(args [0]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -34581,7 +34581,7 @@ func decodeGitGetTreeParams(args [3]string, argsEscaped bool, r *http.Request) (
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotRecursiveVal string
 				if err := func() error {
@@ -34822,7 +34822,7 @@ func decodeGitListMatchingRefsParams(args [3]string, argsEscaped bool, r *http.R
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -34868,7 +34868,7 @@ func decodeGitListMatchingRefsParams(args [3]string, argsEscaped bool, r *http.R
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -37907,7 +37907,7 @@ func decodeIssuesListParams(args [0]string, argsEscaped bool, r *http.Request) (
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotFilterVal IssuesListFilter
 				if err := func() error {
@@ -37968,7 +37968,7 @@ func decodeIssuesListParams(args [0]string, argsEscaped bool, r *http.Request) (
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStateVal IssuesListState
 				if err := func() error {
@@ -38024,7 +38024,7 @@ func decodeIssuesListParams(args [0]string, argsEscaped bool, r *http.Request) (
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotLabelsVal string
 				if err := func() error {
@@ -38070,7 +38070,7 @@ func decodeIssuesListParams(args [0]string, argsEscaped bool, r *http.Request) (
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal IssuesListSort
 				if err := func() error {
@@ -38131,7 +38131,7 @@ func decodeIssuesListParams(args [0]string, argsEscaped bool, r *http.Request) (
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal IssuesListDirection
 				if err := func() error {
@@ -38187,7 +38187,7 @@ func decodeIssuesListParams(args [0]string, argsEscaped bool, r *http.Request) (
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal time.Time
 				if err := func() error {
@@ -38228,7 +38228,7 @@ func decodeIssuesListParams(args [0]string, argsEscaped bool, r *http.Request) (
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotCollabVal bool
 				if err := func() error {
@@ -38269,7 +38269,7 @@ func decodeIssuesListParams(args [0]string, argsEscaped bool, r *http.Request) (
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotOrgsVal bool
 				if err := func() error {
@@ -38310,7 +38310,7 @@ func decodeIssuesListParams(args [0]string, argsEscaped bool, r *http.Request) (
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotOwnedVal bool
 				if err := func() error {
@@ -38351,7 +38351,7 @@ func decodeIssuesListParams(args [0]string, argsEscaped bool, r *http.Request) (
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPullsVal bool
 				if err := func() error {
@@ -38397,7 +38397,7 @@ func decodeIssuesListParams(args [0]string, argsEscaped bool, r *http.Request) (
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -38443,7 +38443,7 @@ func decodeIssuesListParams(args [0]string, argsEscaped bool, r *http.Request) (
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -38630,7 +38630,7 @@ func decodeIssuesListAssigneesParams(args [2]string, argsEscaped bool, r *http.R
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -38676,7 +38676,7 @@ func decodeIssuesListAssigneesParams(args [2]string, argsEscaped bool, r *http.R
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -38924,7 +38924,7 @@ func decodeIssuesListCommentsParams(args [3]string, argsEscaped bool, r *http.Re
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal time.Time
 				if err := func() error {
@@ -38970,7 +38970,7 @@ func decodeIssuesListCommentsParams(args [3]string, argsEscaped bool, r *http.Re
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -39016,7 +39016,7 @@ func decodeIssuesListCommentsParams(args [3]string, argsEscaped bool, r *http.Re
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -39237,7 +39237,7 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, argsEscaped bool, r *
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal IssuesListCommentsForRepoSort
 				if err := func() error {
@@ -39293,7 +39293,7 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, argsEscaped bool, r *
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal IssuesListCommentsForRepoDirection
 				if err := func() error {
@@ -39349,7 +39349,7 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, argsEscaped bool, r *
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal time.Time
 				if err := func() error {
@@ -39395,7 +39395,7 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, argsEscaped bool, r *
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -39441,7 +39441,7 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, argsEscaped bool, r *
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -39628,7 +39628,7 @@ func decodeIssuesListEventsForRepoParams(args [2]string, argsEscaped bool, r *ht
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -39674,7 +39674,7 @@ func decodeIssuesListEventsForRepoParams(args [2]string, argsEscaped bool, r *ht
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -39828,7 +39828,7 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotFilterVal IssuesListForAuthenticatedUserFilter
 				if err := func() error {
@@ -39889,7 +39889,7 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStateVal IssuesListForAuthenticatedUserState
 				if err := func() error {
@@ -39945,7 +39945,7 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotLabelsVal string
 				if err := func() error {
@@ -39991,7 +39991,7 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal IssuesListForAuthenticatedUserSort
 				if err := func() error {
@@ -40052,7 +40052,7 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal IssuesListForAuthenticatedUserDirection
 				if err := func() error {
@@ -40108,7 +40108,7 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal time.Time
 				if err := func() error {
@@ -40154,7 +40154,7 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -40200,7 +40200,7 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -40407,7 +40407,7 @@ func decodeIssuesListForOrgParams(args [1]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotFilterVal IssuesListForOrgFilter
 				if err := func() error {
@@ -40468,7 +40468,7 @@ func decodeIssuesListForOrgParams(args [1]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStateVal IssuesListForOrgState
 				if err := func() error {
@@ -40524,7 +40524,7 @@ func decodeIssuesListForOrgParams(args [1]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotLabelsVal string
 				if err := func() error {
@@ -40570,7 +40570,7 @@ func decodeIssuesListForOrgParams(args [1]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal IssuesListForOrgSort
 				if err := func() error {
@@ -40631,7 +40631,7 @@ func decodeIssuesListForOrgParams(args [1]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal IssuesListForOrgDirection
 				if err := func() error {
@@ -40687,7 +40687,7 @@ func decodeIssuesListForOrgParams(args [1]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal time.Time
 				if err := func() error {
@@ -40733,7 +40733,7 @@ func decodeIssuesListForOrgParams(args [1]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -40779,7 +40779,7 @@ func decodeIssuesListForOrgParams(args [1]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -41064,7 +41064,7 @@ func decodeIssuesListForRepoParams(args [2]string, argsEscaped bool, r *http.Req
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotMilestoneVal string
 				if err := func() error {
@@ -41110,7 +41110,7 @@ func decodeIssuesListForRepoParams(args [2]string, argsEscaped bool, r *http.Req
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStateVal IssuesListForRepoState
 				if err := func() error {
@@ -41166,7 +41166,7 @@ func decodeIssuesListForRepoParams(args [2]string, argsEscaped bool, r *http.Req
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotAssigneeVal string
 				if err := func() error {
@@ -41207,7 +41207,7 @@ func decodeIssuesListForRepoParams(args [2]string, argsEscaped bool, r *http.Req
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotCreatorVal string
 				if err := func() error {
@@ -41248,7 +41248,7 @@ func decodeIssuesListForRepoParams(args [2]string, argsEscaped bool, r *http.Req
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotMentionedVal string
 				if err := func() error {
@@ -41289,7 +41289,7 @@ func decodeIssuesListForRepoParams(args [2]string, argsEscaped bool, r *http.Req
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotLabelsVal string
 				if err := func() error {
@@ -41335,7 +41335,7 @@ func decodeIssuesListForRepoParams(args [2]string, argsEscaped bool, r *http.Req
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal IssuesListForRepoSort
 				if err := func() error {
@@ -41396,7 +41396,7 @@ func decodeIssuesListForRepoParams(args [2]string, argsEscaped bool, r *http.Req
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal IssuesListForRepoDirection
 				if err := func() error {
@@ -41452,7 +41452,7 @@ func decodeIssuesListForRepoParams(args [2]string, argsEscaped bool, r *http.Req
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal time.Time
 				if err := func() error {
@@ -41498,7 +41498,7 @@ func decodeIssuesListForRepoParams(args [2]string, argsEscaped bool, r *http.Req
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -41544,7 +41544,7 @@ func decodeIssuesListForRepoParams(args [2]string, argsEscaped bool, r *http.Req
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -41785,7 +41785,7 @@ func decodeIssuesListLabelsForMilestoneParams(args [3]string, argsEscaped bool, 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -41831,7 +41831,7 @@ func decodeIssuesListLabelsForMilestoneParams(args [3]string, argsEscaped bool, 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -42018,7 +42018,7 @@ func decodeIssuesListLabelsForRepoParams(args [2]string, argsEscaped bool, r *ht
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -42064,7 +42064,7 @@ func decodeIssuesListLabelsForRepoParams(args [2]string, argsEscaped bool, r *ht
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -42305,7 +42305,7 @@ func decodeIssuesListLabelsOnIssueParams(args [3]string, argsEscaped bool, r *ht
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -42351,7 +42351,7 @@ func decodeIssuesListLabelsOnIssueParams(args [3]string, argsEscaped bool, r *ht
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -42571,7 +42571,7 @@ func decodeIssuesListMilestonesParams(args [2]string, argsEscaped bool, r *http.
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStateVal IssuesListMilestonesState
 				if err := func() error {
@@ -42632,7 +42632,7 @@ func decodeIssuesListMilestonesParams(args [2]string, argsEscaped bool, r *http.
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal IssuesListMilestonesSort
 				if err := func() error {
@@ -42693,7 +42693,7 @@ func decodeIssuesListMilestonesParams(args [2]string, argsEscaped bool, r *http.
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal IssuesListMilestonesDirection
 				if err := func() error {
@@ -42754,7 +42754,7 @@ func decodeIssuesListMilestonesParams(args [2]string, argsEscaped bool, r *http.
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -42800,7 +42800,7 @@ func decodeIssuesListMilestonesParams(args [2]string, argsEscaped bool, r *http.
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -44551,7 +44551,7 @@ func decodeLicensesGetAllCommonlyUsedParams(args [0]string, argsEscaped bool, r 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotFeaturedVal bool
 				if err := func() error {
@@ -44597,7 +44597,7 @@ func decodeLicensesGetAllCommonlyUsedParams(args [0]string, argsEscaped bool, r 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -44643,7 +44643,7 @@ func decodeLicensesGetAllCommonlyUsedParams(args [0]string, argsEscaped bool, r 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -44826,7 +44826,7 @@ func decodeMetaGetOctocatParams(args [0]string, argsEscaped bool, r *http.Reques
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSVal string
 				if err := func() error {
@@ -45485,7 +45485,7 @@ func decodeMigrationsGetCommitAuthorsParams(args [2]string, argsEscaped bool, r 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal int
 				if err := func() error {
@@ -45839,7 +45839,7 @@ func decodeMigrationsGetStatusForAuthenticatedUserParams(args [1]string, argsEsc
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotExcludeVal string
@@ -46013,7 +46013,7 @@ func decodeMigrationsGetStatusForOrgParams(args [2]string, argsEscaped bool, r *
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotExcludeVal MigrationsGetStatusForOrgExcludeItem
@@ -46118,7 +46118,7 @@ func decodeMigrationsListForAuthenticatedUserParams(args [0]string, argsEscaped 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -46164,7 +46164,7 @@ func decodeMigrationsListForAuthenticatedUserParams(args [0]string, argsEscaped 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -46309,7 +46309,7 @@ func decodeMigrationsListForOrgParams(args [1]string, argsEscaped bool, r *http.
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -46355,7 +46355,7 @@ func decodeMigrationsListForOrgParams(args [1]string, argsEscaped bool, r *http.
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -46396,7 +46396,7 @@ func decodeMigrationsListForOrgParams(args [1]string, argsEscaped bool, r *http.
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotExcludeVal MigrationsListForOrgExcludeItem
@@ -46608,7 +46608,7 @@ func decodeMigrationsListReposForOrgParams(args [2]string, argsEscaped bool, r *
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -46654,7 +46654,7 @@ func decodeMigrationsListReposForOrgParams(args [2]string, argsEscaped bool, r *
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -46789,7 +46789,7 @@ func decodeMigrationsListReposForUserParams(args [1]string, argsEscaped bool, r 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -46835,7 +46835,7 @@ func decodeMigrationsListReposForUserParams(args [1]string, argsEscaped bool, r 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -48259,7 +48259,7 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(args [0]string, argsEscap
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -48305,7 +48305,7 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(args [0]string, argsEscap
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -48346,7 +48346,7 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(args [0]string, argsEscap
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotClientIDVal string
 				if err := func() error {
@@ -48438,7 +48438,7 @@ func decodeOAuthAuthorizationsListGrantsParams(args [0]string, argsEscaped bool,
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -48484,7 +48484,7 @@ func decodeOAuthAuthorizationsListGrantsParams(args [0]string, argsEscaped bool,
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -48525,7 +48525,7 @@ func decodeOAuthAuthorizationsListGrantsParams(args [0]string, argsEscaped bool,
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotClientIDVal string
 				if err := func() error {
@@ -49808,7 +49808,7 @@ func decodeOrgsGetAuditLogParams(args [1]string, argsEscaped bool, r *http.Reque
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPhraseVal string
 				if err := func() error {
@@ -49849,7 +49849,7 @@ func decodeOrgsGetAuditLogParams(args [1]string, argsEscaped bool, r *http.Reque
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotIncludeVal OrgsGetAuditLogInclude
 				if err := func() error {
@@ -49905,7 +49905,7 @@ func decodeOrgsGetAuditLogParams(args [1]string, argsEscaped bool, r *http.Reque
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotAfterVal string
 				if err := func() error {
@@ -49946,7 +49946,7 @@ func decodeOrgsGetAuditLogParams(args [1]string, argsEscaped bool, r *http.Reque
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBeforeVal string
 				if err := func() error {
@@ -49987,7 +49987,7 @@ func decodeOrgsGetAuditLogParams(args [1]string, argsEscaped bool, r *http.Reque
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotOrderVal OrgsGetAuditLogOrder
 				if err := func() error {
@@ -50048,7 +50048,7 @@ func decodeOrgsGetAuditLogParams(args [1]string, argsEscaped bool, r *http.Reque
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -50094,7 +50094,7 @@ func decodeOrgsGetAuditLogParams(args [1]string, argsEscaped bool, r *http.Reque
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -50760,7 +50760,7 @@ func decodeOrgsListParams(args [0]string, argsEscaped bool, r *http.Request) (pa
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal int
 				if err := func() error {
@@ -50806,7 +50806,7 @@ func decodeOrgsListParams(args [0]string, argsEscaped bool, r *http.Request) (pa
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -51005,7 +51005,7 @@ func decodeOrgsListFailedInvitationsParams(args [1]string, argsEscaped bool, r *
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -51051,7 +51051,7 @@ func decodeOrgsListFailedInvitationsParams(args [1]string, argsEscaped bool, r *
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -51132,7 +51132,7 @@ func decodeOrgsListForAuthenticatedUserParams(args [0]string, argsEscaped bool, 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -51178,7 +51178,7 @@ func decodeOrgsListForAuthenticatedUserParams(args [0]string, argsEscaped bool, 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -51312,7 +51312,7 @@ func decodeOrgsListForUserParams(args [1]string, argsEscaped bool, r *http.Reque
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -51358,7 +51358,7 @@ func decodeOrgsListForUserParams(args [1]string, argsEscaped bool, r *http.Reque
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -51546,7 +51546,7 @@ func decodeOrgsListInvitationTeamsParams(args [2]string, argsEscaped bool, r *ht
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -51592,7 +51592,7 @@ func decodeOrgsListInvitationTeamsParams(args [2]string, argsEscaped bool, r *ht
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -51754,7 +51754,7 @@ func decodeOrgsListMembersParams(args [1]string, argsEscaped bool, r *http.Reque
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotFilterVal OrgsListMembersFilter
 				if err := func() error {
@@ -51815,7 +51815,7 @@ func decodeOrgsListMembersParams(args [1]string, argsEscaped bool, r *http.Reque
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotRoleVal OrgsListMembersRole
 				if err := func() error {
@@ -51876,7 +51876,7 @@ func decodeOrgsListMembersParams(args [1]string, argsEscaped bool, r *http.Reque
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -51922,7 +51922,7 @@ func decodeOrgsListMembersParams(args [1]string, argsEscaped bool, r *http.Reque
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -52010,7 +52010,7 @@ func decodeOrgsListMembershipsForAuthenticatedUserParams(args [0]string, argsEsc
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStateVal OrgsListMembershipsForAuthenticatedUserState
 				if err := func() error {
@@ -52071,7 +52071,7 @@ func decodeOrgsListMembershipsForAuthenticatedUserParams(args [0]string, argsEsc
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -52117,7 +52117,7 @@ func decodeOrgsListMembershipsForAuthenticatedUserParams(args [0]string, argsEsc
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -52265,7 +52265,7 @@ func decodeOrgsListOutsideCollaboratorsParams(args [1]string, argsEscaped bool, 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotFilterVal OrgsListOutsideCollaboratorsFilter
 				if err := func() error {
@@ -52326,7 +52326,7 @@ func decodeOrgsListOutsideCollaboratorsParams(args [1]string, argsEscaped bool, 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -52372,7 +52372,7 @@ func decodeOrgsListOutsideCollaboratorsParams(args [1]string, argsEscaped bool, 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -52506,7 +52506,7 @@ func decodeOrgsListPendingInvitationsParams(args [1]string, argsEscaped bool, r 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -52552,7 +52552,7 @@ func decodeOrgsListPendingInvitationsParams(args [1]string, argsEscaped bool, r 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -52686,7 +52686,7 @@ func decodeOrgsListPublicMembersParams(args [1]string, argsEscaped bool, r *http
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -52732,7 +52732,7 @@ func decodeOrgsListPublicMembersParams(args [1]string, argsEscaped bool, r *http
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -52985,7 +52985,7 @@ func decodeOrgsListWebhookDeliveriesParams(args [2]string, argsEscaped bool, r *
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -53026,7 +53026,7 @@ func decodeOrgsListWebhookDeliveriesParams(args [2]string, argsEscaped bool, r *
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotCursorVal string
 				if err := func() error {
@@ -53160,7 +53160,7 @@ func decodeOrgsListWebhooksParams(args [1]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -53206,7 +53206,7 @@ func decodeOrgsListWebhooksParams(args [1]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -56118,7 +56118,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -56164,7 +56164,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -56210,7 +56210,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStateVal PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState
 				if err := func() error {
@@ -56490,7 +56490,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]strin
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -56536,7 +56536,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]strin
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -56582,7 +56582,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]strin
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStateVal PackagesGetAllPackageVersionsForPackageOwnedByOrgState
 				if err := func() error {
@@ -58029,7 +58029,7 @@ func decodePackagesListPackagesForAuthenticatedUserParams(args [0]string, argsEs
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -58073,7 +58073,7 @@ func decodePackagesListPackagesForAuthenticatedUserParams(args [0]string, argsEs
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotVisibilityVal PackagesListPackagesForAuthenticatedUserVisibility
 				if err := func() error {
@@ -58177,7 +58177,7 @@ func decodePackagesListPackagesForOrganizationParams(args [1]string, argsEscaped
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -58266,7 +58266,7 @@ func decodePackagesListPackagesForOrganizationParams(args [1]string, argsEscaped
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotVisibilityVal PackagesListPackagesForOrganizationVisibility
 				if err := func() error {
@@ -58370,7 +58370,7 @@ func decodePackagesListPackagesForUserParams(args [1]string, argsEscaped bool, r
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -58414,7 +58414,7 @@ func decodePackagesListPackagesForUserParams(args [1]string, argsEscaped bool, r
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotVisibilityVal PackagesListPackagesForUserVisibility
 				if err := func() error {
@@ -58659,7 +58659,7 @@ func decodePackagesRestorePackageForAuthenticatedUserParams(args [2]string, args
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotTokenVal string
 				if err := func() error {
@@ -58897,7 +58897,7 @@ func decodePackagesRestorePackageForOrgParams(args [3]string, argsEscaped bool, 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotTokenVal string
 				if err := func() error {
@@ -59135,7 +59135,7 @@ func decodePackagesRestorePackageForUserParams(args [3]string, argsEscaped bool,
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotTokenVal string
 				if err := func() error {
@@ -60824,7 +60824,7 @@ func decodeProjectsListCardsParams(args [1]string, argsEscaped bool, r *http.Req
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotArchivedStateVal ProjectsListCardsArchivedState
 				if err := func() error {
@@ -60885,7 +60885,7 @@ func decodeProjectsListCardsParams(args [1]string, argsEscaped bool, r *http.Req
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -60931,7 +60931,7 @@ func decodeProjectsListCardsParams(args [1]string, argsEscaped bool, r *http.Req
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -61081,7 +61081,7 @@ func decodeProjectsListCollaboratorsParams(args [1]string, argsEscaped bool, r *
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotAffiliationVal ProjectsListCollaboratorsAffiliation
 				if err := func() error {
@@ -61142,7 +61142,7 @@ func decodeProjectsListCollaboratorsParams(args [1]string, argsEscaped bool, r *
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -61188,7 +61188,7 @@ func decodeProjectsListCollaboratorsParams(args [1]string, argsEscaped bool, r *
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -61322,7 +61322,7 @@ func decodeProjectsListColumnsParams(args [1]string, argsEscaped bool, r *http.R
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -61368,7 +61368,7 @@ func decodeProjectsListColumnsParams(args [1]string, argsEscaped bool, r *http.R
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -61513,7 +61513,7 @@ func decodeProjectsListForOrgParams(args [1]string, argsEscaped bool, r *http.Re
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStateVal ProjectsListForOrgState
 				if err := func() error {
@@ -61574,7 +61574,7 @@ func decodeProjectsListForOrgParams(args [1]string, argsEscaped bool, r *http.Re
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -61620,7 +61620,7 @@ func decodeProjectsListForOrgParams(args [1]string, argsEscaped bool, r *http.Re
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -61818,7 +61818,7 @@ func decodeProjectsListForRepoParams(args [2]string, argsEscaped bool, r *http.R
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStateVal ProjectsListForRepoState
 				if err := func() error {
@@ -61879,7 +61879,7 @@ func decodeProjectsListForRepoParams(args [2]string, argsEscaped bool, r *http.R
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -61925,7 +61925,7 @@ func decodeProjectsListForRepoParams(args [2]string, argsEscaped bool, r *http.R
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -62070,7 +62070,7 @@ func decodeProjectsListForUserParams(args [1]string, argsEscaped bool, r *http.R
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStateVal ProjectsListForUserState
 				if err := func() error {
@@ -62131,7 +62131,7 @@ func decodeProjectsListForUserParams(args [1]string, argsEscaped bool, r *http.R
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -62177,7 +62177,7 @@ func decodeProjectsListForUserParams(args [1]string, argsEscaped bool, r *http.R
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -64915,7 +64915,7 @@ func decodePullsListParams(args [2]string, argsEscaped bool, r *http.Request) (p
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStateVal PullsListState
 				if err := func() error {
@@ -64971,7 +64971,7 @@ func decodePullsListParams(args [2]string, argsEscaped bool, r *http.Request) (p
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotHeadVal string
 				if err := func() error {
@@ -65012,7 +65012,7 @@ func decodePullsListParams(args [2]string, argsEscaped bool, r *http.Request) (p
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBaseVal string
 				if err := func() error {
@@ -65058,7 +65058,7 @@ func decodePullsListParams(args [2]string, argsEscaped bool, r *http.Request) (p
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal PullsListSort
 				if err := func() error {
@@ -65114,7 +65114,7 @@ func decodePullsListParams(args [2]string, argsEscaped bool, r *http.Request) (p
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal PullsListDirection
 				if err := func() error {
@@ -65175,7 +65175,7 @@ func decodePullsListParams(args [2]string, argsEscaped bool, r *http.Request) (p
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -65221,7 +65221,7 @@ func decodePullsListParams(args [2]string, argsEscaped bool, r *http.Request) (p
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -65515,7 +65515,7 @@ func decodePullsListCommentsForReviewParams(args [4]string, argsEscaped bool, r 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -65561,7 +65561,7 @@ func decodePullsListCommentsForReviewParams(args [4]string, argsEscaped bool, r 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -65801,7 +65801,7 @@ func decodePullsListCommitsParams(args [3]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -65847,7 +65847,7 @@ func decodePullsListCommitsParams(args [3]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -66087,7 +66087,7 @@ func decodePullsListFilesParams(args [3]string, argsEscaped bool, r *http.Reques
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -66133,7 +66133,7 @@ func decodePullsListFilesParams(args [3]string, argsEscaped bool, r *http.Reques
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -66373,7 +66373,7 @@ func decodePullsListRequestedReviewersParams(args [3]string, argsEscaped bool, r
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -66419,7 +66419,7 @@ func decodePullsListRequestedReviewersParams(args [3]string, argsEscaped bool, r
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -66693,7 +66693,7 @@ func decodePullsListReviewCommentsParams(args [3]string, argsEscaped bool, r *ht
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal PullsListReviewCommentsSort
 				if err := func() error {
@@ -66749,7 +66749,7 @@ func decodePullsListReviewCommentsParams(args [3]string, argsEscaped bool, r *ht
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal PullsListReviewCommentsDirection
 				if err := func() error {
@@ -66805,7 +66805,7 @@ func decodePullsListReviewCommentsParams(args [3]string, argsEscaped bool, r *ht
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal time.Time
 				if err := func() error {
@@ -66851,7 +66851,7 @@ func decodePullsListReviewCommentsParams(args [3]string, argsEscaped bool, r *ht
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -66897,7 +66897,7 @@ func decodePullsListReviewCommentsParams(args [3]string, argsEscaped bool, r *ht
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -67112,7 +67112,7 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal PullsListReviewCommentsForRepoSort
 				if err := func() error {
@@ -67168,7 +67168,7 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal PullsListReviewCommentsForRepoDirection
 				if err := func() error {
@@ -67224,7 +67224,7 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal time.Time
 				if err := func() error {
@@ -67270,7 +67270,7 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -67316,7 +67316,7 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -67556,7 +67556,7 @@ func decodePullsListReviewsParams(args [3]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -67602,7 +67602,7 @@ func decodePullsListReviewsParams(args [3]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -72170,7 +72170,7 @@ func decodeReactionsListForCommitCommentParams(args [3]string, argsEscaped bool,
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotContentVal ReactionsListForCommitCommentContent
 				if err := func() error {
@@ -72231,7 +72231,7 @@ func decodeReactionsListForCommitCommentParams(args [3]string, argsEscaped bool,
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -72277,7 +72277,7 @@ func decodeReactionsListForCommitCommentParams(args [3]string, argsEscaped bool,
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -72525,7 +72525,7 @@ func decodeReactionsListForIssueParams(args [3]string, argsEscaped bool, r *http
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotContentVal ReactionsListForIssueContent
 				if err := func() error {
@@ -72586,7 +72586,7 @@ func decodeReactionsListForIssueParams(args [3]string, argsEscaped bool, r *http
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -72632,7 +72632,7 @@ func decodeReactionsListForIssueParams(args [3]string, argsEscaped bool, r *http
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -72880,7 +72880,7 @@ func decodeReactionsListForIssueCommentParams(args [3]string, argsEscaped bool, 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotContentVal ReactionsListForIssueCommentContent
 				if err := func() error {
@@ -72941,7 +72941,7 @@ func decodeReactionsListForIssueCommentParams(args [3]string, argsEscaped bool, 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -72987,7 +72987,7 @@ func decodeReactionsListForIssueCommentParams(args [3]string, argsEscaped bool, 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -73235,7 +73235,7 @@ func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, argsEs
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotContentVal ReactionsListForPullRequestReviewCommentContent
 				if err := func() error {
@@ -73296,7 +73296,7 @@ func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, argsEs
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -73342,7 +73342,7 @@ func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, argsEs
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -73643,7 +73643,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, args
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotContentVal ReactionsListForTeamDiscussionCommentInOrgContent
 				if err := func() error {
@@ -73704,7 +73704,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, args
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -73750,7 +73750,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, args
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -73997,7 +73997,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, arg
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotContentVal ReactionsListForTeamDiscussionCommentLegacyContent
 				if err := func() error {
@@ -74058,7 +74058,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, arg
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -74104,7 +74104,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, arg
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -74352,7 +74352,7 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, argsEscaped
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotContentVal ReactionsListForTeamDiscussionInOrgContent
 				if err := func() error {
@@ -74413,7 +74413,7 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, argsEscaped
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -74459,7 +74459,7 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, argsEscaped
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -74653,7 +74653,7 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args [2]string, argsEscape
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotContentVal ReactionsListForTeamDiscussionLegacyContent
 				if err := func() error {
@@ -74714,7 +74714,7 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args [2]string, argsEscape
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -74760,7 +74760,7 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args [2]string, argsEscape
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -76170,7 +76170,7 @@ func decodeReposCompareCommitsParams(args [3]string, argsEscaped bool, r *http.R
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -76216,7 +76216,7 @@ func decodeReposCompareCommitsParams(args [3]string, argsEscaped bool, r *http.R
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -82999,7 +82999,7 @@ func decodeReposGetAllTopicsParams(args [2]string, argsEscaped bool, r *http.Req
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -83045,7 +83045,7 @@ func decodeReposGetAllTopicsParams(args [2]string, argsEscaped bool, r *http.Req
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -83909,7 +83909,7 @@ func decodeReposGetClonesParams(args [2]string, argsEscaped bool, r *http.Reques
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerVal ReposGetClonesPer
 				if err := func() error {
@@ -84454,7 +84454,7 @@ func decodeReposGetCombinedStatusForRefParams(args [3]string, argsEscaped bool, 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -84500,7 +84500,7 @@ func decodeReposGetCombinedStatusForRefParams(args [3]string, argsEscaped bool, 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -84696,7 +84696,7 @@ func decodeReposGetCommitParams(args [3]string, argsEscaped bool, r *http.Reques
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -84742,7 +84742,7 @@ func decodeReposGetCommitParams(args [3]string, argsEscaped bool, r *http.Reques
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -87276,7 +87276,7 @@ func decodeReposGetReadmeParams(args [2]string, argsEscaped bool, r *http.Reques
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotRefVal string
 				if err := func() error {
@@ -87501,7 +87501,7 @@ func decodeReposGetReadmeInDirectoryParams(args [3]string, argsEscaped bool, r *
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotRefVal string
 				if err := func() error {
@@ -88945,7 +88945,7 @@ func decodeReposGetViewsParams(args [2]string, argsEscaped bool, r *http.Request
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerVal ReposGetViewsPer
 				if err := func() error {
@@ -89702,7 +89702,7 @@ func decodeReposListAutolinksParams(args [2]string, argsEscaped bool, r *http.Re
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -89896,7 +89896,7 @@ func decodeReposListBranchesParams(args [2]string, argsEscaped bool, r *http.Req
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotProtectedVal bool
 				if err := func() error {
@@ -89942,7 +89942,7 @@ func decodeReposListBranchesParams(args [2]string, argsEscaped bool, r *http.Req
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -89988,7 +89988,7 @@ func decodeReposListBranchesParams(args [2]string, argsEscaped bool, r *http.Req
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -90362,7 +90362,7 @@ func decodeReposListCollaboratorsParams(args [2]string, argsEscaped bool, r *htt
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotAffiliationVal ReposListCollaboratorsAffiliation
 				if err := func() error {
@@ -90423,7 +90423,7 @@ func decodeReposListCollaboratorsParams(args [2]string, argsEscaped bool, r *htt
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -90469,7 +90469,7 @@ func decodeReposListCollaboratorsParams(args [2]string, argsEscaped bool, r *htt
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -90710,7 +90710,7 @@ func decodeReposListCommentsForCommitParams(args [3]string, argsEscaped bool, r 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -90756,7 +90756,7 @@ func decodeReposListCommentsForCommitParams(args [3]string, argsEscaped bool, r 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -90943,7 +90943,7 @@ func decodeReposListCommitCommentsForRepoParams(args [2]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -90989,7 +90989,7 @@ func decodeReposListCommitCommentsForRepoParams(args [2]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -91230,7 +91230,7 @@ func decodeReposListCommitStatusesForRefParams(args [3]string, argsEscaped bool,
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -91276,7 +91276,7 @@ func decodeReposListCommitStatusesForRefParams(args [3]string, argsEscaped bool,
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -91516,7 +91516,7 @@ func decodeReposListCommitsParams(args [2]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotShaVal string
 				if err := func() error {
@@ -91557,7 +91557,7 @@ func decodeReposListCommitsParams(args [2]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPathVal string
 				if err := func() error {
@@ -91598,7 +91598,7 @@ func decodeReposListCommitsParams(args [2]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotAuthorVal string
 				if err := func() error {
@@ -91639,7 +91639,7 @@ func decodeReposListCommitsParams(args [2]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal time.Time
 				if err := func() error {
@@ -91680,7 +91680,7 @@ func decodeReposListCommitsParams(args [2]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotUntilVal time.Time
 				if err := func() error {
@@ -91726,7 +91726,7 @@ func decodeReposListCommitsParams(args [2]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -91772,7 +91772,7 @@ func decodeReposListCommitsParams(args [2]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -91965,7 +91965,7 @@ func decodeReposListContributorsParams(args [2]string, argsEscaped bool, r *http
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotAnonVal string
 				if err := func() error {
@@ -92011,7 +92011,7 @@ func decodeReposListContributorsParams(args [2]string, argsEscaped bool, r *http
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -92057,7 +92057,7 @@ func decodeReposListContributorsParams(args [2]string, argsEscaped bool, r *http
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -92244,7 +92244,7 @@ func decodeReposListDeployKeysParams(args [2]string, argsEscaped bool, r *http.R
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -92290,7 +92290,7 @@ func decodeReposListDeployKeysParams(args [2]string, argsEscaped bool, r *http.R
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -92531,7 +92531,7 @@ func decodeReposListDeploymentStatusesParams(args [3]string, argsEscaped bool, r
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -92577,7 +92577,7 @@ func decodeReposListDeploymentStatusesParams(args [3]string, argsEscaped bool, r
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -92808,7 +92808,7 @@ func decodeReposListDeploymentsParams(args [2]string, argsEscaped bool, r *http.
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotShaVal string
 				if err := func() error {
@@ -92854,7 +92854,7 @@ func decodeReposListDeploymentsParams(args [2]string, argsEscaped bool, r *http.
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotRefVal string
 				if err := func() error {
@@ -92900,7 +92900,7 @@ func decodeReposListDeploymentsParams(args [2]string, argsEscaped bool, r *http.
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotTaskVal string
 				if err := func() error {
@@ -92946,7 +92946,7 @@ func decodeReposListDeploymentsParams(args [2]string, argsEscaped bool, r *http.
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotEnvironmentVal string
 				if err := func() error {
@@ -92992,7 +92992,7 @@ func decodeReposListDeploymentsParams(args [2]string, argsEscaped bool, r *http.
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -93038,7 +93038,7 @@ func decodeReposListDeploymentsParams(args [2]string, argsEscaped bool, r *http.
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -93206,7 +93206,7 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, argsEscaped bool,
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotVisibilityVal ReposListForAuthenticatedUserVisibility
 				if err := func() error {
@@ -93267,7 +93267,7 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, argsEscaped bool,
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotAffiliationVal string
 				if err := func() error {
@@ -93313,7 +93313,7 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, argsEscaped bool,
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotTypeVal ReposListForAuthenticatedUserType
 				if err := func() error {
@@ -93374,7 +93374,7 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, argsEscaped bool,
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal ReposListForAuthenticatedUserSort
 				if err := func() error {
@@ -93430,7 +93430,7 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, argsEscaped bool,
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal ReposListForAuthenticatedUserDirection
 				if err := func() error {
@@ -93491,7 +93491,7 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, argsEscaped bool,
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -93537,7 +93537,7 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, argsEscaped bool,
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -93578,7 +93578,7 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, argsEscaped bool,
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal time.Time
 				if err := func() error {
@@ -93619,7 +93619,7 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, argsEscaped bool,
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBeforeVal time.Time
 				if err := func() error {
@@ -93786,7 +93786,7 @@ func decodeReposListForOrgParams(args [1]string, argsEscaped bool, r *http.Reque
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotTypeVal ReposListForOrgType
 				if err := func() error {
@@ -93847,7 +93847,7 @@ func decodeReposListForOrgParams(args [1]string, argsEscaped bool, r *http.Reque
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal ReposListForOrgSort
 				if err := func() error {
@@ -93903,7 +93903,7 @@ func decodeReposListForOrgParams(args [1]string, argsEscaped bool, r *http.Reque
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal ReposListForOrgDirection
 				if err := func() error {
@@ -93964,7 +93964,7 @@ func decodeReposListForOrgParams(args [1]string, argsEscaped bool, r *http.Reque
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -94010,7 +94010,7 @@ func decodeReposListForOrgParams(args [1]string, argsEscaped bool, r *http.Reque
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -94177,7 +94177,7 @@ func decodeReposListForUserParams(args [1]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotTypeVal ReposListForUserType
 				if err := func() error {
@@ -94238,7 +94238,7 @@ func decodeReposListForUserParams(args [1]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal ReposListForUserSort
 				if err := func() error {
@@ -94294,7 +94294,7 @@ func decodeReposListForUserParams(args [1]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal ReposListForUserDirection
 				if err := func() error {
@@ -94355,7 +94355,7 @@ func decodeReposListForUserParams(args [1]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -94401,7 +94401,7 @@ func decodeReposListForUserParams(args [1]string, argsEscaped bool, r *http.Requ
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -94599,7 +94599,7 @@ func decodeReposListForksParams(args [2]string, argsEscaped bool, r *http.Reques
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal ReposListForksSort
 				if err := func() error {
@@ -94660,7 +94660,7 @@ func decodeReposListForksParams(args [2]string, argsEscaped bool, r *http.Reques
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -94706,7 +94706,7 @@ func decodeReposListForksParams(args [2]string, argsEscaped bool, r *http.Reques
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -94893,7 +94893,7 @@ func decodeReposListInvitationsParams(args [2]string, argsEscaped bool, r *http.
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -94939,7 +94939,7 @@ func decodeReposListInvitationsParams(args [2]string, argsEscaped bool, r *http.
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -95020,7 +95020,7 @@ func decodeReposListInvitationsForAuthenticatedUserParams(args [0]string, argsEs
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -95066,7 +95066,7 @@ func decodeReposListInvitationsForAuthenticatedUserParams(args [0]string, argsEs
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -95371,7 +95371,7 @@ func decodeReposListPagesBuildsParams(args [2]string, argsEscaped bool, r *http.
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -95417,7 +95417,7 @@ func decodeReposListPagesBuildsParams(args [2]string, argsEscaped bool, r *http.
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -95482,7 +95482,7 @@ func decodeReposListPublicParams(args [0]string, argsEscaped bool, r *http.Reque
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal int
 				if err := func() error {
@@ -95723,7 +95723,7 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(args [3]string, argsE
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -95769,7 +95769,7 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(args [3]string, argsE
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -96010,7 +96010,7 @@ func decodeReposListReleaseAssetsParams(args [3]string, argsEscaped bool, r *htt
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -96056,7 +96056,7 @@ func decodeReposListReleaseAssetsParams(args [3]string, argsEscaped bool, r *htt
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -96243,7 +96243,7 @@ func decodeReposListReleasesParams(args [2]string, argsEscaped bool, r *http.Req
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -96289,7 +96289,7 @@ func decodeReposListReleasesParams(args [2]string, argsEscaped bool, r *http.Req
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -96476,7 +96476,7 @@ func decodeReposListTagsParams(args [2]string, argsEscaped bool, r *http.Request
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -96522,7 +96522,7 @@ func decodeReposListTagsParams(args [2]string, argsEscaped bool, r *http.Request
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -96709,7 +96709,7 @@ func decodeReposListTeamsParams(args [2]string, argsEscaped bool, r *http.Reques
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -96755,7 +96755,7 @@ func decodeReposListTeamsParams(args [2]string, argsEscaped bool, r *http.Reques
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -96996,7 +96996,7 @@ func decodeReposListWebhookDeliveriesParams(args [3]string, argsEscaped bool, r 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -97037,7 +97037,7 @@ func decodeReposListWebhookDeliveriesParams(args [3]string, argsEscaped bool, r 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotCursorVal string
 				if err := func() error {
@@ -97224,7 +97224,7 @@ func decodeReposListWebhooksParams(args [2]string, argsEscaped bool, r *http.Req
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -97270,7 +97270,7 @@ func decodeReposListWebhooksParams(args [2]string, argsEscaped bool, r *http.Req
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -102385,7 +102385,7 @@ func decodeReposUploadReleaseAssetParams(args [3]string, argsEscaped bool, r *ht
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -102421,7 +102421,7 @@ func decodeReposUploadReleaseAssetParams(args [3]string, argsEscaped bool, r *ht
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotLabelVal string
 				if err := func() error {
@@ -102654,7 +102654,7 @@ func decodeSearchCodeParams(args [0]string, argsEscaped bool, r *http.Request) (
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -102690,7 +102690,7 @@ func decodeSearchCodeParams(args [0]string, argsEscaped bool, r *http.Request) (
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal SearchCodeSort
 				if err := func() error {
@@ -102751,7 +102751,7 @@ func decodeSearchCodeParams(args [0]string, argsEscaped bool, r *http.Request) (
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotOrderVal SearchCodeOrder
 				if err := func() error {
@@ -102812,7 +102812,7 @@ func decodeSearchCodeParams(args [0]string, argsEscaped bool, r *http.Request) (
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -102858,7 +102858,7 @@ func decodeSearchCodeParams(args [0]string, argsEscaped bool, r *http.Request) (
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -102971,7 +102971,7 @@ func decodeSearchCommitsParams(args [0]string, argsEscaped bool, r *http.Request
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -103007,7 +103007,7 @@ func decodeSearchCommitsParams(args [0]string, argsEscaped bool, r *http.Request
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal SearchCommitsSort
 				if err := func() error {
@@ -103068,7 +103068,7 @@ func decodeSearchCommitsParams(args [0]string, argsEscaped bool, r *http.Request
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotOrderVal SearchCommitsOrder
 				if err := func() error {
@@ -103129,7 +103129,7 @@ func decodeSearchCommitsParams(args [0]string, argsEscaped bool, r *http.Request
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -103175,7 +103175,7 @@ func decodeSearchCommitsParams(args [0]string, argsEscaped bool, r *http.Request
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -103291,7 +103291,7 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, argsEscaped bool, r
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -103327,7 +103327,7 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, argsEscaped bool, r
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal SearchIssuesAndPullRequestsSort
 				if err := func() error {
@@ -103388,7 +103388,7 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, argsEscaped bool, r
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotOrderVal SearchIssuesAndPullRequestsOrder
 				if err := func() error {
@@ -103449,7 +103449,7 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, argsEscaped bool, r
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -103495,7 +103495,7 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, argsEscaped bool, r
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -103615,7 +103615,7 @@ func decodeSearchLabelsParams(args [0]string, argsEscaped bool, r *http.Request)
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -103651,7 +103651,7 @@ func decodeSearchLabelsParams(args [0]string, argsEscaped bool, r *http.Request)
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -103687,7 +103687,7 @@ func decodeSearchLabelsParams(args [0]string, argsEscaped bool, r *http.Request)
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal SearchLabelsSort
 				if err := func() error {
@@ -103748,7 +103748,7 @@ func decodeSearchLabelsParams(args [0]string, argsEscaped bool, r *http.Request)
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotOrderVal SearchLabelsOrder
 				if err := func() error {
@@ -103809,7 +103809,7 @@ func decodeSearchLabelsParams(args [0]string, argsEscaped bool, r *http.Request)
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -103855,7 +103855,7 @@ func decodeSearchLabelsParams(args [0]string, argsEscaped bool, r *http.Request)
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -103970,7 +103970,7 @@ func decodeSearchReposParams(args [0]string, argsEscaped bool, r *http.Request) 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -104006,7 +104006,7 @@ func decodeSearchReposParams(args [0]string, argsEscaped bool, r *http.Request) 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal SearchReposSort
 				if err := func() error {
@@ -104067,7 +104067,7 @@ func decodeSearchReposParams(args [0]string, argsEscaped bool, r *http.Request) 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotOrderVal SearchReposOrder
 				if err := func() error {
@@ -104128,7 +104128,7 @@ func decodeSearchReposParams(args [0]string, argsEscaped bool, r *http.Request) 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -104174,7 +104174,7 @@ func decodeSearchReposParams(args [0]string, argsEscaped bool, r *http.Request) 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -104262,7 +104262,7 @@ func decodeSearchTopicsParams(args [0]string, argsEscaped bool, r *http.Request)
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -104303,7 +104303,7 @@ func decodeSearchTopicsParams(args [0]string, argsEscaped bool, r *http.Request)
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -104349,7 +104349,7 @@ func decodeSearchTopicsParams(args [0]string, argsEscaped bool, r *http.Request)
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -104463,7 +104463,7 @@ func decodeSearchUsersParams(args [0]string, argsEscaped bool, r *http.Request) 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -104499,7 +104499,7 @@ func decodeSearchUsersParams(args [0]string, argsEscaped bool, r *http.Request) 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal SearchUsersSort
 				if err := func() error {
@@ -104560,7 +104560,7 @@ func decodeSearchUsersParams(args [0]string, argsEscaped bool, r *http.Request) 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotOrderVal SearchUsersOrder
 				if err := func() error {
@@ -104621,7 +104621,7 @@ func decodeSearchUsersParams(args [0]string, argsEscaped bool, r *http.Request) 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -104667,7 +104667,7 @@ func decodeSearchUsersParams(args [0]string, argsEscaped bool, r *http.Request) 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -104999,7 +104999,7 @@ func decodeSecretScanningListAlertsForOrgParams(args [1]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStateVal SecretScanningListAlertsForOrgState
 				if err := func() error {
@@ -105055,7 +105055,7 @@ func decodeSecretScanningListAlertsForOrgParams(args [1]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSecretTypeVal string
 				if err := func() error {
@@ -105101,7 +105101,7 @@ func decodeSecretScanningListAlertsForOrgParams(args [1]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -105147,7 +105147,7 @@ func decodeSecretScanningListAlertsForOrgParams(args [1]string, argsEscaped bool
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -105353,7 +105353,7 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, argsEscaped boo
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStateVal SecretScanningListAlertsForRepoState
 				if err := func() error {
@@ -105409,7 +105409,7 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, argsEscaped boo
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSecretTypeVal string
 				if err := func() error {
@@ -105455,7 +105455,7 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, argsEscaped boo
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -105501,7 +105501,7 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, argsEscaped boo
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -110467,7 +110467,7 @@ func decodeTeamsListParams(args [1]string, argsEscaped bool, r *http.Request) (p
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -110513,7 +110513,7 @@ func decodeTeamsListParams(args [1]string, argsEscaped bool, r *http.Request) (p
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -110701,7 +110701,7 @@ func decodeTeamsListChildInOrgParams(args [2]string, argsEscaped bool, r *http.R
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -110747,7 +110747,7 @@ func decodeTeamsListChildInOrgParams(args [2]string, argsEscaped bool, r *http.R
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -110881,7 +110881,7 @@ func decodeTeamsListChildLegacyParams(args [1]string, argsEscaped bool, r *http.
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -110927,7 +110927,7 @@ func decodeTeamsListChildLegacyParams(args [1]string, argsEscaped bool, r *http.
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -111179,7 +111179,7 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, argsEscaped bo
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal TeamsListDiscussionCommentsInOrgDirection
 				if err := func() error {
@@ -111240,7 +111240,7 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, argsEscaped bo
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -111286,7 +111286,7 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, argsEscaped bo
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -111484,7 +111484,7 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, argsEscaped b
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal TeamsListDiscussionCommentsLegacyDirection
 				if err := func() error {
@@ -111545,7 +111545,7 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, argsEscaped b
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -111591,7 +111591,7 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, argsEscaped b
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -111801,7 +111801,7 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, argsEscaped bool, r *
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal TeamsListDiscussionsInOrgDirection
 				if err := func() error {
@@ -111862,7 +111862,7 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, argsEscaped bool, r *
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -111908,7 +111908,7 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, argsEscaped bool, r *
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -111949,7 +111949,7 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, argsEscaped bool, r *
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPinnedVal string
 				if err := func() error {
@@ -112094,7 +112094,7 @@ func decodeTeamsListDiscussionsLegacyParams(args [1]string, argsEscaped bool, r 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal TeamsListDiscussionsLegacyDirection
 				if err := func() error {
@@ -112155,7 +112155,7 @@ func decodeTeamsListDiscussionsLegacyParams(args [1]string, argsEscaped bool, r 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -112201,7 +112201,7 @@ func decodeTeamsListDiscussionsLegacyParams(args [1]string, argsEscaped bool, r 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -112282,7 +112282,7 @@ func decodeTeamsListForAuthenticatedUserParams(args [0]string, argsEscaped bool,
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -112328,7 +112328,7 @@ func decodeTeamsListForAuthenticatedUserParams(args [0]string, argsEscaped bool,
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -112527,7 +112527,7 @@ func decodeTeamsListIdpGroupsForOrgParams(args [1]string, argsEscaped bool, r *h
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -112568,7 +112568,7 @@ func decodeTeamsListIdpGroupsForOrgParams(args [1]string, argsEscaped bool, r *h
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal string
 				if err := func() error {
@@ -112889,7 +112889,7 @@ func decodeTeamsListMembersInOrgParams(args [2]string, argsEscaped bool, r *http
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotRoleVal TeamsListMembersInOrgRole
 				if err := func() error {
@@ -112950,7 +112950,7 @@ func decodeTeamsListMembersInOrgParams(args [2]string, argsEscaped bool, r *http
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -112996,7 +112996,7 @@ func decodeTeamsListMembersInOrgParams(args [2]string, argsEscaped bool, r *http
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -113144,7 +113144,7 @@ func decodeTeamsListMembersLegacyParams(args [1]string, argsEscaped bool, r *htt
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotRoleVal TeamsListMembersLegacyRole
 				if err := func() error {
@@ -113205,7 +113205,7 @@ func decodeTeamsListMembersLegacyParams(args [1]string, argsEscaped bool, r *htt
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -113251,7 +113251,7 @@ func decodeTeamsListMembersLegacyParams(args [1]string, argsEscaped bool, r *htt
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -113439,7 +113439,7 @@ func decodeTeamsListPendingInvitationsInOrgParams(args [2]string, argsEscaped bo
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -113485,7 +113485,7 @@ func decodeTeamsListPendingInvitationsInOrgParams(args [2]string, argsEscaped bo
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -113619,7 +113619,7 @@ func decodeTeamsListPendingInvitationsLegacyParams(args [1]string, argsEscaped b
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -113665,7 +113665,7 @@ func decodeTeamsListPendingInvitationsLegacyParams(args [1]string, argsEscaped b
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -113853,7 +113853,7 @@ func decodeTeamsListProjectsInOrgParams(args [2]string, argsEscaped bool, r *htt
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -113899,7 +113899,7 @@ func decodeTeamsListProjectsInOrgParams(args [2]string, argsEscaped bool, r *htt
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -114033,7 +114033,7 @@ func decodeTeamsListProjectsLegacyParams(args [1]string, argsEscaped bool, r *ht
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -114079,7 +114079,7 @@ func decodeTeamsListProjectsLegacyParams(args [1]string, argsEscaped bool, r *ht
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -114267,7 +114267,7 @@ func decodeTeamsListReposInOrgParams(args [2]string, argsEscaped bool, r *http.R
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -114313,7 +114313,7 @@ func decodeTeamsListReposInOrgParams(args [2]string, argsEscaped bool, r *http.R
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -114447,7 +114447,7 @@ func decodeTeamsListReposLegacyParams(args [1]string, argsEscaped bool, r *http.
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -114493,7 +114493,7 @@ func decodeTeamsListReposLegacyParams(args [1]string, argsEscaped bool, r *http.
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -117162,7 +117162,7 @@ func decodeUsersGetContextForUserParams(args [1]string, argsEscaped bool, r *htt
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSubjectTypeVal UsersGetContextForUserSubjectType
 				if err := func() error {
@@ -117218,7 +117218,7 @@ func decodeUsersGetContextForUserParams(args [1]string, argsEscaped bool, r *htt
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSubjectIDVal string
 				if err := func() error {
@@ -117426,7 +117426,7 @@ func decodeUsersListParams(args [0]string, argsEscaped bool, r *http.Request) (p
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal int
 				if err := func() error {
@@ -117472,7 +117472,7 @@ func decodeUsersListParams(args [0]string, argsEscaped bool, r *http.Request) (p
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -117553,7 +117553,7 @@ func decodeUsersListEmailsForAuthenticatedParams(args [0]string, argsEscaped boo
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -117599,7 +117599,7 @@ func decodeUsersListEmailsForAuthenticatedParams(args [0]string, argsEscaped boo
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -117680,7 +117680,7 @@ func decodeUsersListFollowedByAuthenticatedParams(args [0]string, argsEscaped bo
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -117726,7 +117726,7 @@ func decodeUsersListFollowedByAuthenticatedParams(args [0]string, argsEscaped bo
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -117807,7 +117807,7 @@ func decodeUsersListFollowersForAuthenticatedUserParams(args [0]string, argsEsca
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -117853,7 +117853,7 @@ func decodeUsersListFollowersForAuthenticatedUserParams(args [0]string, argsEsca
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -117987,7 +117987,7 @@ func decodeUsersListFollowersForUserParams(args [1]string, argsEscaped bool, r *
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -118033,7 +118033,7 @@ func decodeUsersListFollowersForUserParams(args [1]string, argsEscaped bool, r *
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -118167,7 +118167,7 @@ func decodeUsersListFollowingForUserParams(args [1]string, argsEscaped bool, r *
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -118213,7 +118213,7 @@ func decodeUsersListFollowingForUserParams(args [1]string, argsEscaped bool, r *
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -118294,7 +118294,7 @@ func decodeUsersListGpgKeysForAuthenticatedParams(args [0]string, argsEscaped bo
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -118340,7 +118340,7 @@ func decodeUsersListGpgKeysForAuthenticatedParams(args [0]string, argsEscaped bo
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -118474,7 +118474,7 @@ func decodeUsersListGpgKeysForUserParams(args [1]string, argsEscaped bool, r *ht
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -118520,7 +118520,7 @@ func decodeUsersListGpgKeysForUserParams(args [1]string, argsEscaped bool, r *ht
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -118601,7 +118601,7 @@ func decodeUsersListPublicEmailsForAuthenticatedParams(args [0]string, argsEscap
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -118647,7 +118647,7 @@ func decodeUsersListPublicEmailsForAuthenticatedParams(args [0]string, argsEscap
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -118781,7 +118781,7 @@ func decodeUsersListPublicKeysForUserParams(args [1]string, argsEscaped bool, r 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -118827,7 +118827,7 @@ func decodeUsersListPublicKeysForUserParams(args [1]string, argsEscaped bool, r 
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
@@ -118908,7 +118908,7 @@ func decodeUsersListPublicSSHKeysForAuthenticatedParams(args [0]string, argsEsca
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
@@ -118954,7 +118954,7 @@ func decodeUsersListPublicSSHKeysForAuthenticatedParams(args [0]string, argsEsca
 			Explode: true,
 		}
 
-		if err := q.HasParam(cfg); err == nil {
+		if err := q.HasParam(cfg); err == nil { // if NO error
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
