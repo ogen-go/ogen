@@ -124,7 +124,7 @@ func (t String) Validate(v string) error {
 			return errors.Wrap(err, "execute regex")
 		}
 		if !match {
-			return errors.New("no regex match")
+			return &NoRegexMatchError{}
 		}
 	}
 	return nil
