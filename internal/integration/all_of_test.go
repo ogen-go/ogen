@@ -6,9 +6,11 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/go-faster/errors"
 	"github.com/stretchr/testify/require"
 
 	api "github.com/ogen-go/ogen/internal/integration/test_allof"
+	"github.com/ogen-go/ogen/validate"
 )
 
 type allofTestServer struct {
@@ -51,10 +53,12 @@ func TestAllof(t *testing.T) {
 	ctx := context.Background()
 	t.Run("nullableStrings", func(t *testing.T) {
 		err := client.NullableStrings(ctx, api.NilString{})
-		require.EqualError(t, err, "validate: string: no regex match")
+		_, ok := errors.Into[*validate.NoRegexMatchError](err)
+		require.True(t, ok, "validate: string: no regex match")
 
 		err = client.NullableStrings(ctx, api.NewNilString("foo"))
-		require.EqualError(t, err, "validate: string: no regex match")
+		_, ok = errors.Into[*validate.NoRegexMatchError](err)
+		require.True(t, ok, "validate: string: no regex match")
 
 		err = client.NullableStrings(ctx, api.NewNilString("127.0.0.1"))
 		require.NoError(t, err)

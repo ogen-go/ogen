@@ -100,3 +100,11 @@ type MaxLengthError struct {
 func (e *MaxLengthError) Error() string {
 	return fmt.Sprintf("len %d greater than maximum %d", e.Len, e.MaxLength)
 }
+
+// NoRegexMatchError reports that value have no regexp match.
+type NoRegexMatchError struct{}
+
+// MaxLengthError implements error.
+func (*NoRegexMatchError) Error() string {
+	return "no regex match"
+}
