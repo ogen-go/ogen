@@ -1,0 +1,63 @@
+# sets parser options.
+parser:
+  # enables type inference for schemas. Schema parser will try to detect schema type by its properties.
+  infer_types: true
+  #  enables remote references resolving. See https://github.com/ogen-go/ogen/issues/385.
+  allow_remote: true
+  # is maximum depth of schema generation. Default is 1000.
+  depth_limit: 1000
+
+# sets generator options.
+generator:
+  # sets generator features.
+  features:
+    enable:
+      # Enables paths client generation
+      - 'paths/client'
+      # Enables paths server generation
+      - 'paths/server'
+      # Enables webhooks client generation
+      - 'webhooks/client'
+      # Enables webhooks server generation
+      - 'webhooks/server'
+      # Enables validation of client requests
+      - 'client/request/validation'
+      # Enables validation of server responses
+      - 'server/response/validation'
+      # Enables OpenTelemetry integration
+      - 'ogen/otel'
+      # Enables stub Handler generation
+      - 'ogen/unimplemented'
+      # Enables example tests generation
+      - 'debug/example_tests'
+    disable:
+      # Disables paths client generation
+      - 'paths/client'
+      # Disables paths server generation
+      - 'paths/server'
+      # Disables webhooks client generation
+      - 'webhooks/client'
+      # Disables webhooks server generation
+      - 'webhooks/server'
+      # Disables validation of client requests
+      - 'client/request/validation'
+      # Disables validation of server responses
+      - 'server/response/validation'
+      # Disables OpenTelemetry integration
+      - 'ogen/otel'
+      # Disables stub Handler generation
+      - 'ogen/unimplemented'
+      # Disables example tests generation
+      - 'debug/example_tests'
+    disable_all: true
+
+  # contains filters to skip operations.
+  filters:
+    path_regex: "*"
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"]
+
+  # functions to ignore
+  ignore_not_implemented: ["all"]
+
+# is a path to expanded spec.
+expand: ""
