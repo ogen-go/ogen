@@ -670,17 +670,22 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request) (
 				Name:    "object",
 				Style:   uri.QueryStyleForm,
 				Explode: true,
-				Fields:  []uri.QueryParameterObjectField{{"min", false}, {"max", true}},
 			}
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					var requestDotObjectVal TestFormMultipartObject
-					if err := func() error {
-						return requestDotObjectVal.DecodeURI(d)
-					}(); err != nil {
+					val, err := d.DecodeValue()
+					if err != nil {
 						return err
 					}
-					request.Object.SetTo(requestDotObjectVal)
+					if err := func(d *jx.Decoder) error {
+						request.Object.Reset()
+						if err := request.Object.Decode(d); err != nil {
+							return err
+						}
+						return nil
+					}(jx.DecodeStr(val)); err != nil {
+						return err
+					}
 					return nil
 				}); err != nil {
 					return req, close, errors.Wrap(err, "decode \"object\"")

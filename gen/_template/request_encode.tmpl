@@ -149,7 +149,16 @@ func encode{{ $op.Name }}Request(
 			Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
 		}
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			{{- template "uri/encode" elem $param.Type (printf "request.%s" $param.Name) }}
+			{{- $el := elem $param.Type (printf "request.%s" $param.Name) }}
+			{{- if $param.Spec.Content }}
+				var enc jx.Encoder
+				func(e *jx.Encoder) {
+					{{- template "json/enc" $el }}
+				}(&enc)
+				return e.EncodeValue(string(enc.Bytes()))
+			{{- else }}
+				{{- template "uri/encode" $el }}
+			{{- end }}
 		}); err != nil {
 			return errors.Wrap(err, "encode query")
 		}
