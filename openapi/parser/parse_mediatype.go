@@ -7,9 +7,9 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen"
-	"github.com/ogen-go/ogen/internal/jsonpointer"
-	"github.com/ogen-go/ogen/internal/location"
+	"github.com/ogen-go/ogen/jsonpointer"
 	"github.com/ogen-go/ogen/jsonschema"
+	"github.com/ogen-go/ogen/location"
 	"github.com/ogen-go/ogen/openapi"
 )
 

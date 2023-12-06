@@ -16,9 +16,9 @@ import (
 	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen/gen/ir"
-	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/internal/urlpath"
 	"github.com/ogen-go/ogen/jsonschema"
+	"github.com/ogen-go/ogen/location"
 	"github.com/ogen-go/ogen/openapi"
 )
 

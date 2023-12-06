@@ -11,9 +11,9 @@ import (
 	"github.com/go-faster/errors"
 	"golang.org/x/exp/slices"
 
-	"github.com/ogen-go/ogen/internal/jsonpointer"
-	"github.com/ogen-go/ogen/internal/location"
 	ogenjson "github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/jsonpointer"
+	"github.com/ogen-go/ogen/location"
 	"github.com/ogen-go/ogen/ogenregex"
 )
 

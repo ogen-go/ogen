@@ -17,7 +17,7 @@ import (
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen"
-	"github.com/ogen-go/ogen/internal/location"
+	"github.com/ogen-go/ogen/location"
 )
 
 var errPanic = errors.New("panic")

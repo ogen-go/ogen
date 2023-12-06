@@ -13,9 +13,9 @@ import (
 
 	"github.com/ogen-go/ogen/gen"
 	"github.com/ogen-go/ogen/gen/genfs"
-	"github.com/ogen-go/ogen/internal/jsonpointer"
 	"github.com/ogen-go/ogen/internal/ogenzap"
 	"github.com/ogen-go/ogen/internal/urlpath"
+	"github.com/ogen-go/ogen/jsonpointer"
 	"github.com/ogen-go/ogen/jsonschema"
 )
 

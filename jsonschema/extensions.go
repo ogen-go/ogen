@@ -9,7 +9,7 @@ import (
 	"github.com/go-faster/jx"
 	"github.com/go-faster/yaml"
 
-	"github.com/ogen-go/ogen/internal/location"
+	"github.com/ogen-go/ogen/location"
 )
 
 // Extensions map is "^x-" fields list.
