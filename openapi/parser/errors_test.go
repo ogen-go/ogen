@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/require"
 
 	"github.com/ogen-go/ogen"
-	"github.com/ogen-go/ogen/internal/location"
+	"github.com/ogen-go/ogen/location"
 )
 
 func TestRemoteLocation(t *testing.T) {

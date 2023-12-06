@@ -2,7 +2,7 @@
 package openapi
 
 import (
-	"github.com/ogen-go/ogen/internal/jsonpointer"
+	"github.com/ogen-go/ogen/jsonpointer"
 	"github.com/ogen-go/ogen/jsonschema"
 )
 

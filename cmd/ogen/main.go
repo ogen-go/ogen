@@ -21,9 +21,9 @@ import (
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen"
 	"github.com/ogen-go/ogen/gen/genfs"
-	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/internal/ogenversion"
 	"github.com/ogen-go/ogen/internal/ogenzap"
+	"github.com/ogen-go/ogen/location"
 )
 
 func cleanDir(targetDir string, files []os.DirEntry) (rerr error) {
