@@ -23,29 +23,40 @@ func (s AnyContentTypeBinaryStringSchemaDefaultDef) Read(p []byte) (n int, err e
 	return s.Data.Read(p)
 }
 
-// AnyContentTypeBinaryStringSchemaDefaultDefStatusCode wraps AnyContentTypeBinaryStringSchemaDefaultDef with StatusCode.
-type AnyContentTypeBinaryStringSchemaDefaultDefStatusCode struct {
-	StatusCode int
-	Response   AnyContentTypeBinaryStringSchemaDefaultDef
+// AnyContentTypeBinaryStringSchemaDefaultDefStatusCodeWithHeaders wraps AnyContentTypeBinaryStringSchemaDefaultDef with status code and response headers.
+type AnyContentTypeBinaryStringSchemaDefaultDefStatusCodeWithHeaders struct {
+	StatusCode  int
+	ContentType string
+	Response    AnyContentTypeBinaryStringSchemaDefaultDef
 }
 
 // GetStatusCode returns the value of StatusCode.
-func (s *AnyContentTypeBinaryStringSchemaDefaultDefStatusCode) GetStatusCode() int {
+func (s *AnyContentTypeBinaryStringSchemaDefaultDefStatusCodeWithHeaders) GetStatusCode() int {
 	return s.StatusCode
 }
 
+// GetContentType returns the value of ContentType.
+func (s *AnyContentTypeBinaryStringSchemaDefaultDefStatusCodeWithHeaders) GetContentType() string {
+	return s.ContentType
+}
+
 // GetResponse returns the value of Response.
-func (s *AnyContentTypeBinaryStringSchemaDefaultDefStatusCode) GetResponse() AnyContentTypeBinaryStringSchemaDefaultDef {
+func (s *AnyContentTypeBinaryStringSchemaDefaultDefStatusCodeWithHeaders) GetResponse() AnyContentTypeBinaryStringSchemaDefaultDef {
 	return s.Response
 }
 
 // SetStatusCode sets the value of StatusCode.
-func (s *AnyContentTypeBinaryStringSchemaDefaultDefStatusCode) SetStatusCode(val int) {
+func (s *AnyContentTypeBinaryStringSchemaDefaultDefStatusCodeWithHeaders) SetStatusCode(val int) {
 	s.StatusCode = val
 }
 
+// SetContentType sets the value of ContentType.
+func (s *AnyContentTypeBinaryStringSchemaDefaultDefStatusCodeWithHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
 // SetResponse sets the value of Response.
-func (s *AnyContentTypeBinaryStringSchemaDefaultDefStatusCode) SetResponse(val AnyContentTypeBinaryStringSchemaDefaultDef) {
+func (s *AnyContentTypeBinaryStringSchemaDefaultDefStatusCodeWithHeaders) SetResponse(val AnyContentTypeBinaryStringSchemaDefaultDef) {
 	s.Response = val
 }
 
@@ -61,6 +72,32 @@ func (s AnyContentTypeBinaryStringSchemaOK) Read(p []byte) (n int, err error) {
 		return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// AnyContentTypeBinaryStringSchemaOKHeaders wraps AnyContentTypeBinaryStringSchemaOK with response headers.
+type AnyContentTypeBinaryStringSchemaOKHeaders struct {
+	ContentType string
+	Response    AnyContentTypeBinaryStringSchemaOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *AnyContentTypeBinaryStringSchemaOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *AnyContentTypeBinaryStringSchemaOKHeaders) GetResponse() AnyContentTypeBinaryStringSchemaOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *AnyContentTypeBinaryStringSchemaOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *AnyContentTypeBinaryStringSchemaOKHeaders) SetResponse(val AnyContentTypeBinaryStringSchemaOK) {
+	s.Response = val
 }
 
 // Combined2XXStatusCode wraps int with StatusCode.

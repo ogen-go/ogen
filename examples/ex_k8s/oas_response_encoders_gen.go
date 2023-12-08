@@ -10,16 +10,35 @@ import (
 	"github.com/go-faster/jx"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
+
+	"github.com/ogen-go/ogen/conv"
+	"github.com/ogen-go/ogen/uri"
 )
 
 func encodeConnectCoreV1DeleteNamespacedPodProxyResponse(response ConnectCoreV1DeleteNamespacedPodProxyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1DeleteNamespacedPodProxyOK:
+	case *ConnectCoreV1DeleteNamespacedPodProxyOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -38,12 +57,28 @@ func encodeConnectCoreV1DeleteNamespacedPodProxyResponse(response ConnectCoreV1D
 
 func encodeConnectCoreV1DeleteNamespacedPodProxyWithPathResponse(response ConnectCoreV1DeleteNamespacedPodProxyWithPathRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1DeleteNamespacedPodProxyWithPathOK:
+	case *ConnectCoreV1DeleteNamespacedPodProxyWithPathOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -62,12 +97,28 @@ func encodeConnectCoreV1DeleteNamespacedPodProxyWithPathResponse(response Connec
 
 func encodeConnectCoreV1DeleteNamespacedServiceProxyResponse(response ConnectCoreV1DeleteNamespacedServiceProxyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1DeleteNamespacedServiceProxyOK:
+	case *ConnectCoreV1DeleteNamespacedServiceProxyOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -86,12 +137,28 @@ func encodeConnectCoreV1DeleteNamespacedServiceProxyResponse(response ConnectCor
 
 func encodeConnectCoreV1DeleteNamespacedServiceProxyWithPathResponse(response ConnectCoreV1DeleteNamespacedServiceProxyWithPathRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1DeleteNamespacedServiceProxyWithPathOK:
+	case *ConnectCoreV1DeleteNamespacedServiceProxyWithPathOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -110,12 +177,28 @@ func encodeConnectCoreV1DeleteNamespacedServiceProxyWithPathResponse(response Co
 
 func encodeConnectCoreV1DeleteNodeProxyResponse(response ConnectCoreV1DeleteNodeProxyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1DeleteNodeProxyOK:
+	case *ConnectCoreV1DeleteNodeProxyOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -134,12 +217,28 @@ func encodeConnectCoreV1DeleteNodeProxyResponse(response ConnectCoreV1DeleteNode
 
 func encodeConnectCoreV1DeleteNodeProxyWithPathResponse(response ConnectCoreV1DeleteNodeProxyWithPathRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1DeleteNodeProxyWithPathOK:
+	case *ConnectCoreV1DeleteNodeProxyWithPathOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -158,12 +257,28 @@ func encodeConnectCoreV1DeleteNodeProxyWithPathResponse(response ConnectCoreV1De
 
 func encodeConnectCoreV1GetNamespacedPodAttachResponse(response ConnectCoreV1GetNamespacedPodAttachRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1GetNamespacedPodAttachOK:
+	case *ConnectCoreV1GetNamespacedPodAttachOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -182,12 +297,28 @@ func encodeConnectCoreV1GetNamespacedPodAttachResponse(response ConnectCoreV1Get
 
 func encodeConnectCoreV1GetNamespacedPodExecResponse(response ConnectCoreV1GetNamespacedPodExecRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1GetNamespacedPodExecOK:
+	case *ConnectCoreV1GetNamespacedPodExecOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -206,12 +337,28 @@ func encodeConnectCoreV1GetNamespacedPodExecResponse(response ConnectCoreV1GetNa
 
 func encodeConnectCoreV1GetNamespacedPodPortforwardResponse(response ConnectCoreV1GetNamespacedPodPortforwardRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1GetNamespacedPodPortforwardOK:
+	case *ConnectCoreV1GetNamespacedPodPortforwardOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -230,12 +377,28 @@ func encodeConnectCoreV1GetNamespacedPodPortforwardResponse(response ConnectCore
 
 func encodeConnectCoreV1GetNamespacedPodProxyResponse(response ConnectCoreV1GetNamespacedPodProxyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1GetNamespacedPodProxyOK:
+	case *ConnectCoreV1GetNamespacedPodProxyOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -254,12 +417,28 @@ func encodeConnectCoreV1GetNamespacedPodProxyResponse(response ConnectCoreV1GetN
 
 func encodeConnectCoreV1GetNamespacedPodProxyWithPathResponse(response ConnectCoreV1GetNamespacedPodProxyWithPathRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1GetNamespacedPodProxyWithPathOK:
+	case *ConnectCoreV1GetNamespacedPodProxyWithPathOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -278,12 +457,28 @@ func encodeConnectCoreV1GetNamespacedPodProxyWithPathResponse(response ConnectCo
 
 func encodeConnectCoreV1GetNamespacedServiceProxyResponse(response ConnectCoreV1GetNamespacedServiceProxyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1GetNamespacedServiceProxyOK:
+	case *ConnectCoreV1GetNamespacedServiceProxyOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -302,12 +497,28 @@ func encodeConnectCoreV1GetNamespacedServiceProxyResponse(response ConnectCoreV1
 
 func encodeConnectCoreV1GetNamespacedServiceProxyWithPathResponse(response ConnectCoreV1GetNamespacedServiceProxyWithPathRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1GetNamespacedServiceProxyWithPathOK:
+	case *ConnectCoreV1GetNamespacedServiceProxyWithPathOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -326,12 +537,28 @@ func encodeConnectCoreV1GetNamespacedServiceProxyWithPathResponse(response Conne
 
 func encodeConnectCoreV1GetNodeProxyResponse(response ConnectCoreV1GetNodeProxyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1GetNodeProxyOK:
+	case *ConnectCoreV1GetNodeProxyOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -350,12 +577,28 @@ func encodeConnectCoreV1GetNodeProxyResponse(response ConnectCoreV1GetNodeProxyR
 
 func encodeConnectCoreV1GetNodeProxyWithPathResponse(response ConnectCoreV1GetNodeProxyWithPathRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1GetNodeProxyWithPathOK:
+	case *ConnectCoreV1GetNodeProxyWithPathOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -374,12 +617,28 @@ func encodeConnectCoreV1GetNodeProxyWithPathResponse(response ConnectCoreV1GetNo
 
 func encodeConnectCoreV1HeadNamespacedPodProxyResponse(response ConnectCoreV1HeadNamespacedPodProxyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1HeadNamespacedPodProxyOK:
+	case *ConnectCoreV1HeadNamespacedPodProxyOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -398,12 +657,28 @@ func encodeConnectCoreV1HeadNamespacedPodProxyResponse(response ConnectCoreV1Hea
 
 func encodeConnectCoreV1HeadNamespacedPodProxyWithPathResponse(response ConnectCoreV1HeadNamespacedPodProxyWithPathRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1HeadNamespacedPodProxyWithPathOK:
+	case *ConnectCoreV1HeadNamespacedPodProxyWithPathOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -422,12 +697,28 @@ func encodeConnectCoreV1HeadNamespacedPodProxyWithPathResponse(response ConnectC
 
 func encodeConnectCoreV1HeadNamespacedServiceProxyResponse(response ConnectCoreV1HeadNamespacedServiceProxyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1HeadNamespacedServiceProxyOK:
+	case *ConnectCoreV1HeadNamespacedServiceProxyOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -446,12 +737,28 @@ func encodeConnectCoreV1HeadNamespacedServiceProxyResponse(response ConnectCoreV
 
 func encodeConnectCoreV1HeadNamespacedServiceProxyWithPathResponse(response ConnectCoreV1HeadNamespacedServiceProxyWithPathRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1HeadNamespacedServiceProxyWithPathOK:
+	case *ConnectCoreV1HeadNamespacedServiceProxyWithPathOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -470,12 +777,28 @@ func encodeConnectCoreV1HeadNamespacedServiceProxyWithPathResponse(response Conn
 
 func encodeConnectCoreV1HeadNodeProxyResponse(response ConnectCoreV1HeadNodeProxyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1HeadNodeProxyOK:
+	case *ConnectCoreV1HeadNodeProxyOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -494,12 +817,28 @@ func encodeConnectCoreV1HeadNodeProxyResponse(response ConnectCoreV1HeadNodeProx
 
 func encodeConnectCoreV1HeadNodeProxyWithPathResponse(response ConnectCoreV1HeadNodeProxyWithPathRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1HeadNodeProxyWithPathOK:
+	case *ConnectCoreV1HeadNodeProxyWithPathOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -518,12 +857,28 @@ func encodeConnectCoreV1HeadNodeProxyWithPathResponse(response ConnectCoreV1Head
 
 func encodeConnectCoreV1OptionsNamespacedPodProxyResponse(response ConnectCoreV1OptionsNamespacedPodProxyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1OptionsNamespacedPodProxyOK:
+	case *ConnectCoreV1OptionsNamespacedPodProxyOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -542,12 +897,28 @@ func encodeConnectCoreV1OptionsNamespacedPodProxyResponse(response ConnectCoreV1
 
 func encodeConnectCoreV1OptionsNamespacedPodProxyWithPathResponse(response ConnectCoreV1OptionsNamespacedPodProxyWithPathRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1OptionsNamespacedPodProxyWithPathOK:
+	case *ConnectCoreV1OptionsNamespacedPodProxyWithPathOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -566,12 +937,28 @@ func encodeConnectCoreV1OptionsNamespacedPodProxyWithPathResponse(response Conne
 
 func encodeConnectCoreV1OptionsNamespacedServiceProxyResponse(response ConnectCoreV1OptionsNamespacedServiceProxyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1OptionsNamespacedServiceProxyOK:
+	case *ConnectCoreV1OptionsNamespacedServiceProxyOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -590,12 +977,28 @@ func encodeConnectCoreV1OptionsNamespacedServiceProxyResponse(response ConnectCo
 
 func encodeConnectCoreV1OptionsNamespacedServiceProxyWithPathResponse(response ConnectCoreV1OptionsNamespacedServiceProxyWithPathRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1OptionsNamespacedServiceProxyWithPathOK:
+	case *ConnectCoreV1OptionsNamespacedServiceProxyWithPathOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -614,12 +1017,28 @@ func encodeConnectCoreV1OptionsNamespacedServiceProxyWithPathResponse(response C
 
 func encodeConnectCoreV1OptionsNodeProxyResponse(response ConnectCoreV1OptionsNodeProxyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1OptionsNodeProxyOK:
+	case *ConnectCoreV1OptionsNodeProxyOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -638,12 +1057,28 @@ func encodeConnectCoreV1OptionsNodeProxyResponse(response ConnectCoreV1OptionsNo
 
 func encodeConnectCoreV1OptionsNodeProxyWithPathResponse(response ConnectCoreV1OptionsNodeProxyWithPathRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1OptionsNodeProxyWithPathOK:
+	case *ConnectCoreV1OptionsNodeProxyWithPathOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -662,12 +1097,28 @@ func encodeConnectCoreV1OptionsNodeProxyWithPathResponse(response ConnectCoreV1O
 
 func encodeConnectCoreV1PatchNamespacedPodProxyResponse(response ConnectCoreV1PatchNamespacedPodProxyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1PatchNamespacedPodProxyOK:
+	case *ConnectCoreV1PatchNamespacedPodProxyOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -686,12 +1137,28 @@ func encodeConnectCoreV1PatchNamespacedPodProxyResponse(response ConnectCoreV1Pa
 
 func encodeConnectCoreV1PatchNamespacedPodProxyWithPathResponse(response ConnectCoreV1PatchNamespacedPodProxyWithPathRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1PatchNamespacedPodProxyWithPathOK:
+	case *ConnectCoreV1PatchNamespacedPodProxyWithPathOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -710,12 +1177,28 @@ func encodeConnectCoreV1PatchNamespacedPodProxyWithPathResponse(response Connect
 
 func encodeConnectCoreV1PatchNamespacedServiceProxyResponse(response ConnectCoreV1PatchNamespacedServiceProxyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1PatchNamespacedServiceProxyOK:
+	case *ConnectCoreV1PatchNamespacedServiceProxyOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -734,12 +1217,28 @@ func encodeConnectCoreV1PatchNamespacedServiceProxyResponse(response ConnectCore
 
 func encodeConnectCoreV1PatchNamespacedServiceProxyWithPathResponse(response ConnectCoreV1PatchNamespacedServiceProxyWithPathRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1PatchNamespacedServiceProxyWithPathOK:
+	case *ConnectCoreV1PatchNamespacedServiceProxyWithPathOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -758,12 +1257,28 @@ func encodeConnectCoreV1PatchNamespacedServiceProxyWithPathResponse(response Con
 
 func encodeConnectCoreV1PatchNodeProxyResponse(response ConnectCoreV1PatchNodeProxyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1PatchNodeProxyOK:
+	case *ConnectCoreV1PatchNodeProxyOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -782,12 +1297,28 @@ func encodeConnectCoreV1PatchNodeProxyResponse(response ConnectCoreV1PatchNodePr
 
 func encodeConnectCoreV1PatchNodeProxyWithPathResponse(response ConnectCoreV1PatchNodeProxyWithPathRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1PatchNodeProxyWithPathOK:
+	case *ConnectCoreV1PatchNodeProxyWithPathOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -806,12 +1337,28 @@ func encodeConnectCoreV1PatchNodeProxyWithPathResponse(response ConnectCoreV1Pat
 
 func encodeConnectCoreV1PostNamespacedPodAttachResponse(response ConnectCoreV1PostNamespacedPodAttachRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1PostNamespacedPodAttachOK:
+	case *ConnectCoreV1PostNamespacedPodAttachOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -830,12 +1377,28 @@ func encodeConnectCoreV1PostNamespacedPodAttachResponse(response ConnectCoreV1Po
 
 func encodeConnectCoreV1PostNamespacedPodExecResponse(response ConnectCoreV1PostNamespacedPodExecRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1PostNamespacedPodExecOK:
+	case *ConnectCoreV1PostNamespacedPodExecOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -854,12 +1417,28 @@ func encodeConnectCoreV1PostNamespacedPodExecResponse(response ConnectCoreV1Post
 
 func encodeConnectCoreV1PostNamespacedPodPortforwardResponse(response ConnectCoreV1PostNamespacedPodPortforwardRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1PostNamespacedPodPortforwardOK:
+	case *ConnectCoreV1PostNamespacedPodPortforwardOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -878,12 +1457,28 @@ func encodeConnectCoreV1PostNamespacedPodPortforwardResponse(response ConnectCor
 
 func encodeConnectCoreV1PostNamespacedPodProxyResponse(response ConnectCoreV1PostNamespacedPodProxyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1PostNamespacedPodProxyOK:
+	case *ConnectCoreV1PostNamespacedPodProxyOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -902,12 +1497,28 @@ func encodeConnectCoreV1PostNamespacedPodProxyResponse(response ConnectCoreV1Pos
 
 func encodeConnectCoreV1PostNamespacedPodProxyWithPathResponse(response ConnectCoreV1PostNamespacedPodProxyWithPathRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1PostNamespacedPodProxyWithPathOK:
+	case *ConnectCoreV1PostNamespacedPodProxyWithPathOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -926,12 +1537,28 @@ func encodeConnectCoreV1PostNamespacedPodProxyWithPathResponse(response ConnectC
 
 func encodeConnectCoreV1PostNamespacedServiceProxyResponse(response ConnectCoreV1PostNamespacedServiceProxyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1PostNamespacedServiceProxyOK:
+	case *ConnectCoreV1PostNamespacedServiceProxyOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -950,12 +1577,28 @@ func encodeConnectCoreV1PostNamespacedServiceProxyResponse(response ConnectCoreV
 
 func encodeConnectCoreV1PostNamespacedServiceProxyWithPathResponse(response ConnectCoreV1PostNamespacedServiceProxyWithPathRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1PostNamespacedServiceProxyWithPathOK:
+	case *ConnectCoreV1PostNamespacedServiceProxyWithPathOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -974,12 +1617,28 @@ func encodeConnectCoreV1PostNamespacedServiceProxyWithPathResponse(response Conn
 
 func encodeConnectCoreV1PostNodeProxyResponse(response ConnectCoreV1PostNodeProxyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1PostNodeProxyOK:
+	case *ConnectCoreV1PostNodeProxyOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -998,12 +1657,28 @@ func encodeConnectCoreV1PostNodeProxyResponse(response ConnectCoreV1PostNodeProx
 
 func encodeConnectCoreV1PostNodeProxyWithPathResponse(response ConnectCoreV1PostNodeProxyWithPathRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1PostNodeProxyWithPathOK:
+	case *ConnectCoreV1PostNodeProxyWithPathOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -1022,12 +1697,28 @@ func encodeConnectCoreV1PostNodeProxyWithPathResponse(response ConnectCoreV1Post
 
 func encodeConnectCoreV1PutNamespacedPodProxyResponse(response ConnectCoreV1PutNamespacedPodProxyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1PutNamespacedPodProxyOK:
+	case *ConnectCoreV1PutNamespacedPodProxyOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -1046,12 +1737,28 @@ func encodeConnectCoreV1PutNamespacedPodProxyResponse(response ConnectCoreV1PutN
 
 func encodeConnectCoreV1PutNamespacedPodProxyWithPathResponse(response ConnectCoreV1PutNamespacedPodProxyWithPathRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1PutNamespacedPodProxyWithPathOK:
+	case *ConnectCoreV1PutNamespacedPodProxyWithPathOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -1070,12 +1777,28 @@ func encodeConnectCoreV1PutNamespacedPodProxyWithPathResponse(response ConnectCo
 
 func encodeConnectCoreV1PutNamespacedServiceProxyResponse(response ConnectCoreV1PutNamespacedServiceProxyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1PutNamespacedServiceProxyOK:
+	case *ConnectCoreV1PutNamespacedServiceProxyOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -1094,12 +1817,28 @@ func encodeConnectCoreV1PutNamespacedServiceProxyResponse(response ConnectCoreV1
 
 func encodeConnectCoreV1PutNamespacedServiceProxyWithPathResponse(response ConnectCoreV1PutNamespacedServiceProxyWithPathRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1PutNamespacedServiceProxyWithPathOK:
+	case *ConnectCoreV1PutNamespacedServiceProxyWithPathOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -1118,12 +1857,28 @@ func encodeConnectCoreV1PutNamespacedServiceProxyWithPathResponse(response Conne
 
 func encodeConnectCoreV1PutNodeProxyResponse(response ConnectCoreV1PutNodeProxyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1PutNodeProxyOK:
+	case *ConnectCoreV1PutNodeProxyOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 
@@ -1142,12 +1897,28 @@ func encodeConnectCoreV1PutNodeProxyResponse(response ConnectCoreV1PutNodeProxyR
 
 func encodeConnectCoreV1PutNodeProxyWithPathResponse(response ConnectCoreV1PutNodeProxyWithPathRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ConnectCoreV1PutNodeProxyWithPathOK:
+	case *ConnectCoreV1PutNodeProxyWithPathOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.ContentType))
+				}); err != nil {
+					return errors.Wrap(err, "encode Content-Type header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
-		if _, err := io.Copy(writer, response); err != nil {
+		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 

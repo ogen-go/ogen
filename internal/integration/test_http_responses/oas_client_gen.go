@@ -26,11 +26,11 @@ type Invoker interface {
 	// AnyContentTypeBinaryStringSchema invokes anyContentTypeBinaryStringSchema operation.
 	//
 	// GET /anyContentTypeBinaryStringSchema
-	AnyContentTypeBinaryStringSchema(ctx context.Context) (AnyContentTypeBinaryStringSchemaOK, error)
+	AnyContentTypeBinaryStringSchema(ctx context.Context) (*AnyContentTypeBinaryStringSchemaOKHeaders, error)
 	// AnyContentTypeBinaryStringSchemaDefault invokes anyContentTypeBinaryStringSchemaDefault operation.
 	//
 	// GET /anyContentTypeBinaryStringSchemaDefault
-	AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (*AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, error)
+	AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (*AnyContentTypeBinaryStringSchemaDefaultDefStatusCodeWithHeaders, error)
 	// Combined invokes combined operation.
 	//
 	// GET /combined
@@ -141,12 +141,12 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // AnyContentTypeBinaryStringSchema invokes anyContentTypeBinaryStringSchema operation.
 //
 // GET /anyContentTypeBinaryStringSchema
-func (c *Client) AnyContentTypeBinaryStringSchema(ctx context.Context) (AnyContentTypeBinaryStringSchemaOK, error) {
+func (c *Client) AnyContentTypeBinaryStringSchema(ctx context.Context) (*AnyContentTypeBinaryStringSchemaOKHeaders, error) {
 	res, err := c.sendAnyContentTypeBinaryStringSchema(ctx)
 	return res, err
 }
 
-func (c *Client) sendAnyContentTypeBinaryStringSchema(ctx context.Context) (res AnyContentTypeBinaryStringSchemaOK, err error) {
+func (c *Client) sendAnyContentTypeBinaryStringSchema(ctx context.Context) (res *AnyContentTypeBinaryStringSchemaOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("anyContentTypeBinaryStringSchema"),
 		semconv.HTTPMethodKey.String("GET"),
@@ -211,12 +211,12 @@ func (c *Client) sendAnyContentTypeBinaryStringSchema(ctx context.Context) (res 
 // AnyContentTypeBinaryStringSchemaDefault invokes anyContentTypeBinaryStringSchemaDefault operation.
 //
 // GET /anyContentTypeBinaryStringSchemaDefault
-func (c *Client) AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (*AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, error) {
+func (c *Client) AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (*AnyContentTypeBinaryStringSchemaDefaultDefStatusCodeWithHeaders, error) {
 	res, err := c.sendAnyContentTypeBinaryStringSchemaDefault(ctx)
 	return res, err
 }
 
-func (c *Client) sendAnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (res *AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, err error) {
+func (c *Client) sendAnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (res *AnyContentTypeBinaryStringSchemaDefaultDefStatusCodeWithHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("anyContentTypeBinaryStringSchemaDefault"),
 		semconv.HTTPMethodKey.String("GET"),

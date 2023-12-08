@@ -11,11 +11,11 @@ type Handler interface {
 	// AnyContentTypeBinaryStringSchema implements anyContentTypeBinaryStringSchema operation.
 	//
 	// GET /anyContentTypeBinaryStringSchema
-	AnyContentTypeBinaryStringSchema(ctx context.Context) (AnyContentTypeBinaryStringSchemaOK, error)
+	AnyContentTypeBinaryStringSchema(ctx context.Context) (*AnyContentTypeBinaryStringSchemaOKHeaders, error)
 	// AnyContentTypeBinaryStringSchemaDefault implements anyContentTypeBinaryStringSchemaDefault operation.
 	//
 	// GET /anyContentTypeBinaryStringSchemaDefault
-	AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (*AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, error)
+	AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (*AnyContentTypeBinaryStringSchemaDefaultDefStatusCodeWithHeaders, error)
 	// Combined implements combined operation.
 	//
 	// GET /combined
