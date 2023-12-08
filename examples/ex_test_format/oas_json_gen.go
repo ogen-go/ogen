@@ -287,7 +287,7 @@ func (o NilFloat32) Encode(e *jx.Encoder) {
 		e.Null()
 		return
 	}
-	json.EncodeStringFloat32(e, o.Value)
+	e.Float32(float32(o.Value))
 }
 
 // Decode decodes float32 from json.
@@ -306,11 +306,11 @@ func (o *NilFloat32) Decode(d *jx.Decoder) error {
 		return nil
 	}
 	o.Null = false
-	v, err := json.DecodeStringFloat32(d)
+	v, err := d.Float32()
 	if err != nil {
 		return err
 	}
-	o.Value = v
+	o.Value = float32(v)
 	return nil
 }
 
@@ -333,7 +333,7 @@ func (o NilFloat64) Encode(e *jx.Encoder) {
 		e.Null()
 		return
 	}
-	json.EncodeStringFloat64(e, o.Value)
+	e.Float64(float64(o.Value))
 }
 
 // Decode decodes float64 from json.
@@ -352,11 +352,11 @@ func (o *NilFloat64) Decode(d *jx.Decoder) error {
 		return nil
 	}
 	o.Null = false
-	v, err := json.DecodeStringFloat64(d)
+	v, err := d.Float64()
 	if err != nil {
 		return err
 	}
-	o.Value = v
+	o.Value = float64(v)
 	return nil
 }
 
@@ -517,7 +517,7 @@ func (o NilInt) Encode(e *jx.Encoder) {
 		e.Null()
 		return
 	}
-	json.EncodeStringInt(e, o.Value)
+	e.Int(int(o.Value))
 }
 
 // Decode decodes int from json.
@@ -536,11 +536,11 @@ func (o *NilInt) Decode(d *jx.Decoder) error {
 		return nil
 	}
 	o.Null = false
-	v, err := json.DecodeStringInt(d)
+	v, err := d.Int()
 	if err != nil {
 		return err
 	}
-	o.Value = v
+	o.Value = int(v)
 	return nil
 }
 
@@ -563,7 +563,7 @@ func (o NilInt16) Encode(e *jx.Encoder) {
 		e.Null()
 		return
 	}
-	json.EncodeStringInt16(e, o.Value)
+	e.Int16(int16(o.Value))
 }
 
 // Decode decodes int16 from json.
@@ -582,11 +582,11 @@ func (o *NilInt16) Decode(d *jx.Decoder) error {
 		return nil
 	}
 	o.Null = false
-	v, err := json.DecodeStringInt16(d)
+	v, err := d.Int16()
 	if err != nil {
 		return err
 	}
-	o.Value = v
+	o.Value = int16(v)
 	return nil
 }
 
@@ -701,7 +701,7 @@ func (o NilInt8) Encode(e *jx.Encoder) {
 		e.Null()
 		return
 	}
-	json.EncodeStringInt8(e, o.Value)
+	e.Int8(int8(o.Value))
 }
 
 // Decode decodes int8 from json.
@@ -720,11 +720,11 @@ func (o *NilInt8) Decode(d *jx.Decoder) error {
 		return nil
 	}
 	o.Null = false
-	v, err := json.DecodeStringInt8(d)
+	v, err := d.Int8()
 	if err != nil {
 		return err
 	}
-	o.Value = v
+	o.Value = int8(v)
 	return nil
 }
 
@@ -783,6 +783,190 @@ func (s NilString) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *NilString) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes float32 as json.
+func (o NilStringFloat32) Encode(e *jx.Encoder) {
+	if o.Null {
+		e.Null()
+		return
+	}
+	json.EncodeStringFloat32(e, o.Value)
+}
+
+// Decode decodes float32 from json.
+func (o *NilStringFloat32) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode NilStringFloat32 to nil")
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		var v float32
+		o.Value = v
+		o.Null = true
+		return nil
+	}
+	o.Null = false
+	v, err := json.DecodeStringFloat32(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s NilStringFloat32) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *NilStringFloat32) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes float64 as json.
+func (o NilStringFloat64) Encode(e *jx.Encoder) {
+	if o.Null {
+		e.Null()
+		return
+	}
+	json.EncodeStringFloat64(e, o.Value)
+}
+
+// Decode decodes float64 from json.
+func (o *NilStringFloat64) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode NilStringFloat64 to nil")
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		var v float64
+		o.Value = v
+		o.Null = true
+		return nil
+	}
+	o.Null = false
+	v, err := json.DecodeStringFloat64(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s NilStringFloat64) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *NilStringFloat64) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes int as json.
+func (o NilStringInt) Encode(e *jx.Encoder) {
+	if o.Null {
+		e.Null()
+		return
+	}
+	json.EncodeStringInt(e, o.Value)
+}
+
+// Decode decodes int from json.
+func (o *NilStringInt) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode NilStringInt to nil")
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		var v int
+		o.Value = v
+		o.Null = true
+		return nil
+	}
+	o.Null = false
+	v, err := json.DecodeStringInt(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s NilStringInt) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *NilStringInt) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes int16 as json.
+func (o NilStringInt16) Encode(e *jx.Encoder) {
+	if o.Null {
+		e.Null()
+		return
+	}
+	json.EncodeStringInt16(e, o.Value)
+}
+
+// Decode decodes int16 from json.
+func (o *NilStringInt16) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode NilStringInt16 to nil")
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		var v int16
+		o.Value = v
+		o.Null = true
+		return nil
+	}
+	o.Null = false
+	v, err := json.DecodeStringInt16(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s NilStringInt16) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *NilStringInt16) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -875,6 +1059,282 @@ func (s NilStringInt64) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *NilStringInt64) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes int8 as json.
+func (o NilStringInt8) Encode(e *jx.Encoder) {
+	if o.Null {
+		e.Null()
+		return
+	}
+	json.EncodeStringInt8(e, o.Value)
+}
+
+// Decode decodes int8 from json.
+func (o *NilStringInt8) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode NilStringInt8 to nil")
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		var v int8
+		o.Value = v
+		o.Null = true
+		return nil
+	}
+	o.Null = false
+	v, err := json.DecodeStringInt8(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s NilStringInt8) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *NilStringInt8) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes uint as json.
+func (o NilStringUint) Encode(e *jx.Encoder) {
+	if o.Null {
+		e.Null()
+		return
+	}
+	json.EncodeStringUint(e, o.Value)
+}
+
+// Decode decodes uint from json.
+func (o *NilStringUint) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode NilStringUint to nil")
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		var v uint
+		o.Value = v
+		o.Null = true
+		return nil
+	}
+	o.Null = false
+	v, err := json.DecodeStringUint(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s NilStringUint) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *NilStringUint) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes uint16 as json.
+func (o NilStringUint16) Encode(e *jx.Encoder) {
+	if o.Null {
+		e.Null()
+		return
+	}
+	json.EncodeStringUint16(e, o.Value)
+}
+
+// Decode decodes uint16 from json.
+func (o *NilStringUint16) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode NilStringUint16 to nil")
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		var v uint16
+		o.Value = v
+		o.Null = true
+		return nil
+	}
+	o.Null = false
+	v, err := json.DecodeStringUint16(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s NilStringUint16) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *NilStringUint16) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes uint32 as json.
+func (o NilStringUint32) Encode(e *jx.Encoder) {
+	if o.Null {
+		e.Null()
+		return
+	}
+	json.EncodeStringUint32(e, o.Value)
+}
+
+// Decode decodes uint32 from json.
+func (o *NilStringUint32) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode NilStringUint32 to nil")
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		var v uint32
+		o.Value = v
+		o.Null = true
+		return nil
+	}
+	o.Null = false
+	v, err := json.DecodeStringUint32(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s NilStringUint32) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *NilStringUint32) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes uint64 as json.
+func (o NilStringUint64) Encode(e *jx.Encoder) {
+	if o.Null {
+		e.Null()
+		return
+	}
+	json.EncodeStringUint64(e, o.Value)
+}
+
+// Decode decodes uint64 from json.
+func (o *NilStringUint64) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode NilStringUint64 to nil")
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		var v uint64
+		o.Value = v
+		o.Null = true
+		return nil
+	}
+	o.Null = false
+	v, err := json.DecodeStringUint64(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s NilStringUint64) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *NilStringUint64) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes uint8 as json.
+func (o NilStringUint8) Encode(e *jx.Encoder) {
+	if o.Null {
+		e.Null()
+		return
+	}
+	json.EncodeStringUint8(e, o.Value)
+}
+
+// Decode decodes uint8 from json.
+func (o *NilStringUint8) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode NilStringUint8 to nil")
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		var v uint8
+		o.Value = v
+		o.Null = true
+		return nil
+	}
+	o.Null = false
+	v, err := json.DecodeStringUint8(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s NilStringUint8) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *NilStringUint8) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -1207,7 +1667,7 @@ func (o NilUint) Encode(e *jx.Encoder) {
 		e.Null()
 		return
 	}
-	json.EncodeStringUint(e, o.Value)
+	e.UInt(uint(o.Value))
 }
 
 // Decode decodes uint from json.
@@ -1226,11 +1686,11 @@ func (o *NilUint) Decode(d *jx.Decoder) error {
 		return nil
 	}
 	o.Null = false
-	v, err := json.DecodeStringUint(d)
+	v, err := d.UInt()
 	if err != nil {
 		return err
 	}
-	o.Value = v
+	o.Value = uint(v)
 	return nil
 }
 
@@ -1253,7 +1713,7 @@ func (o NilUint16) Encode(e *jx.Encoder) {
 		e.Null()
 		return
 	}
-	json.EncodeStringUint16(e, o.Value)
+	e.UInt16(uint16(o.Value))
 }
 
 // Decode decodes uint16 from json.
@@ -1272,11 +1732,11 @@ func (o *NilUint16) Decode(d *jx.Decoder) error {
 		return nil
 	}
 	o.Null = false
-	v, err := json.DecodeStringUint16(d)
+	v, err := d.UInt16()
 	if err != nil {
 		return err
 	}
-	o.Value = v
+	o.Value = uint16(v)
 	return nil
 }
 
@@ -1299,7 +1759,7 @@ func (o NilUint32) Encode(e *jx.Encoder) {
 		e.Null()
 		return
 	}
-	json.EncodeStringUint32(e, o.Value)
+	e.UInt32(uint32(o.Value))
 }
 
 // Decode decodes uint32 from json.
@@ -1318,11 +1778,11 @@ func (o *NilUint32) Decode(d *jx.Decoder) error {
 		return nil
 	}
 	o.Null = false
-	v, err := json.DecodeStringUint32(d)
+	v, err := d.UInt32()
 	if err != nil {
 		return err
 	}
-	o.Value = v
+	o.Value = uint32(v)
 	return nil
 }
 
@@ -1345,7 +1805,7 @@ func (o NilUint64) Encode(e *jx.Encoder) {
 		e.Null()
 		return
 	}
-	json.EncodeStringUint64(e, o.Value)
+	e.UInt64(uint64(o.Value))
 }
 
 // Decode decodes uint64 from json.
@@ -1364,11 +1824,11 @@ func (o *NilUint64) Decode(d *jx.Decoder) error {
 		return nil
 	}
 	o.Null = false
-	v, err := json.DecodeStringUint64(d)
+	v, err := d.UInt64()
 	if err != nil {
 		return err
 	}
-	o.Value = v
+	o.Value = uint64(v)
 	return nil
 }
 
@@ -1391,7 +1851,7 @@ func (o NilUint8) Encode(e *jx.Encoder) {
 		e.Null()
 		return
 	}
-	json.EncodeStringUint8(e, o.Value)
+	e.UInt8(uint8(o.Value))
 }
 
 // Decode decodes uint8 from json.
@@ -1410,11 +1870,11 @@ func (o *NilUint8) Decode(d *jx.Decoder) error {
 		return nil
 	}
 	o.Null = false
-	v, err := json.DecodeStringUint8(d)
+	v, err := d.UInt8()
 	if err != nil {
 		return err
 	}
-	o.Value = v
+	o.Value = uint8(v)
 	return nil
 }
 
@@ -1760,7 +2220,7 @@ func (o OptFloat32) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
-	json.EncodeStringFloat32(e, o.Value)
+	e.Float32(float32(o.Value))
 }
 
 // Decode decodes float32 from json.
@@ -1769,11 +2229,11 @@ func (o *OptFloat32) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode OptFloat32 to nil")
 	}
 	o.Set = true
-	v, err := json.DecodeStringFloat32(d)
+	v, err := d.Float32()
 	if err != nil {
 		return err
 	}
-	o.Value = v
+	o.Value = float32(v)
 	return nil
 }
 
@@ -1795,7 +2255,7 @@ func (o OptFloat64) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
-	json.EncodeStringFloat64(e, o.Value)
+	e.Float64(float64(o.Value))
 }
 
 // Decode decodes float64 from json.
@@ -1804,11 +2264,11 @@ func (o *OptFloat64) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode OptFloat64 to nil")
 	}
 	o.Set = true
-	v, err := json.DecodeStringFloat64(d)
+	v, err := d.Float64()
 	if err != nil {
 		return err
 	}
-	o.Value = v
+	o.Value = float64(v)
 	return nil
 }
 
@@ -1935,7 +2395,7 @@ func (o OptInt) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
-	json.EncodeStringInt(e, o.Value)
+	e.Int(int(o.Value))
 }
 
 // Decode decodes int from json.
@@ -1944,11 +2404,11 @@ func (o *OptInt) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode OptInt to nil")
 	}
 	o.Set = true
-	v, err := json.DecodeStringInt(d)
+	v, err := d.Int()
 	if err != nil {
 		return err
 	}
-	o.Value = v
+	o.Value = int(v)
 	return nil
 }
 
@@ -1970,7 +2430,7 @@ func (o OptInt16) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
-	json.EncodeStringInt16(e, o.Value)
+	e.Int16(int16(o.Value))
 }
 
 // Decode decodes int16 from json.
@@ -1979,11 +2439,11 @@ func (o *OptInt16) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode OptInt16 to nil")
 	}
 	o.Set = true
-	v, err := json.DecodeStringInt16(d)
+	v, err := d.Int16()
 	if err != nil {
 		return err
 	}
-	o.Value = v
+	o.Value = int16(v)
 	return nil
 }
 
@@ -2075,7 +2535,7 @@ func (o OptInt8) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
-	json.EncodeStringInt8(e, o.Value)
+	e.Int8(int8(o.Value))
 }
 
 // Decode decodes int8 from json.
@@ -2084,11 +2544,11 @@ func (o *OptInt8) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode OptInt8 to nil")
 	}
 	o.Set = true
-	v, err := json.DecodeStringInt8(d)
+	v, err := d.Int8()
 	if err != nil {
 		return err
 	}
-	o.Value = v
+	o.Value = int8(v)
 	return nil
 }
 
@@ -2369,7 +2829,7 @@ func (o OptNilFloat32) Encode(e *jx.Encoder) {
 		e.Null()
 		return
 	}
-	json.EncodeStringFloat32(e, o.Value)
+	e.Float32(float32(o.Value))
 }
 
 // Decode decodes float32 from json.
@@ -2390,11 +2850,11 @@ func (o *OptNilFloat32) Decode(d *jx.Decoder) error {
 	}
 	o.Set = true
 	o.Null = false
-	v, err := json.DecodeStringFloat32(d)
+	v, err := d.Float32()
 	if err != nil {
 		return err
 	}
-	o.Value = v
+	o.Value = float32(v)
 	return nil
 }
 
@@ -2420,7 +2880,7 @@ func (o OptNilFloat64) Encode(e *jx.Encoder) {
 		e.Null()
 		return
 	}
-	json.EncodeStringFloat64(e, o.Value)
+	e.Float64(float64(o.Value))
 }
 
 // Decode decodes float64 from json.
@@ -2441,11 +2901,11 @@ func (o *OptNilFloat64) Decode(d *jx.Decoder) error {
 	}
 	o.Set = true
 	o.Null = false
-	v, err := json.DecodeStringFloat64(d)
+	v, err := d.Float64()
 	if err != nil {
 		return err
 	}
-	o.Value = v
+	o.Value = float64(v)
 	return nil
 }
 
@@ -2624,7 +3084,7 @@ func (o OptNilInt) Encode(e *jx.Encoder) {
 		e.Null()
 		return
 	}
-	json.EncodeStringInt(e, o.Value)
+	e.Int(int(o.Value))
 }
 
 // Decode decodes int from json.
@@ -2645,11 +3105,11 @@ func (o *OptNilInt) Decode(d *jx.Decoder) error {
 	}
 	o.Set = true
 	o.Null = false
-	v, err := json.DecodeStringInt(d)
+	v, err := d.Int()
 	if err != nil {
 		return err
 	}
-	o.Value = v
+	o.Value = int(v)
 	return nil
 }
 
@@ -2675,7 +3135,7 @@ func (o OptNilInt16) Encode(e *jx.Encoder) {
 		e.Null()
 		return
 	}
-	json.EncodeStringInt16(e, o.Value)
+	e.Int16(int16(o.Value))
 }
 
 // Decode decodes int16 from json.
@@ -2696,11 +3156,11 @@ func (o *OptNilInt16) Decode(d *jx.Decoder) error {
 	}
 	o.Set = true
 	o.Null = false
-	v, err := json.DecodeStringInt16(d)
+	v, err := d.Int16()
 	if err != nil {
 		return err
 	}
-	o.Value = v
+	o.Value = int16(v)
 	return nil
 }
 
@@ -2828,7 +3288,7 @@ func (o OptNilInt8) Encode(e *jx.Encoder) {
 		e.Null()
 		return
 	}
-	json.EncodeStringInt8(e, o.Value)
+	e.Int8(int8(o.Value))
 }
 
 // Decode decodes int8 from json.
@@ -2849,11 +3309,11 @@ func (o *OptNilInt8) Decode(d *jx.Decoder) error {
 	}
 	o.Set = true
 	o.Null = false
-	v, err := json.DecodeStringInt8(d)
+	v, err := d.Int8()
 	if err != nil {
 		return err
 	}
-	o.Value = v
+	o.Value = int8(v)
 	return nil
 }
 
@@ -2917,6 +3377,210 @@ func (s OptNilString) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *OptNilString) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes float32 as json.
+func (o OptNilStringFloat32) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	if o.Null {
+		e.Null()
+		return
+	}
+	json.EncodeStringFloat32(e, o.Value)
+}
+
+// Decode decodes float32 from json.
+func (o *OptNilStringFloat32) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptNilStringFloat32 to nil")
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		var v float32
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		return nil
+	}
+	o.Set = true
+	o.Null = false
+	v, err := json.DecodeStringFloat32(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptNilStringFloat32) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptNilStringFloat32) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes float64 as json.
+func (o OptNilStringFloat64) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	if o.Null {
+		e.Null()
+		return
+	}
+	json.EncodeStringFloat64(e, o.Value)
+}
+
+// Decode decodes float64 from json.
+func (o *OptNilStringFloat64) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptNilStringFloat64 to nil")
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		var v float64
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		return nil
+	}
+	o.Set = true
+	o.Null = false
+	v, err := json.DecodeStringFloat64(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptNilStringFloat64) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptNilStringFloat64) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes int as json.
+func (o OptNilStringInt) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	if o.Null {
+		e.Null()
+		return
+	}
+	json.EncodeStringInt(e, o.Value)
+}
+
+// Decode decodes int from json.
+func (o *OptNilStringInt) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptNilStringInt to nil")
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		var v int
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		return nil
+	}
+	o.Set = true
+	o.Null = false
+	v, err := json.DecodeStringInt(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptNilStringInt) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptNilStringInt) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes int16 as json.
+func (o OptNilStringInt16) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	if o.Null {
+		e.Null()
+		return
+	}
+	json.EncodeStringInt16(e, o.Value)
+}
+
+// Decode decodes int16 from json.
+func (o *OptNilStringInt16) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptNilStringInt16 to nil")
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		var v int16
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		return nil
+	}
+	o.Set = true
+	o.Null = false
+	v, err := json.DecodeStringInt16(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptNilStringInt16) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptNilStringInt16) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -3019,6 +3683,312 @@ func (s OptNilStringInt64) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *OptNilStringInt64) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes int8 as json.
+func (o OptNilStringInt8) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	if o.Null {
+		e.Null()
+		return
+	}
+	json.EncodeStringInt8(e, o.Value)
+}
+
+// Decode decodes int8 from json.
+func (o *OptNilStringInt8) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptNilStringInt8 to nil")
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		var v int8
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		return nil
+	}
+	o.Set = true
+	o.Null = false
+	v, err := json.DecodeStringInt8(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptNilStringInt8) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptNilStringInt8) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes uint as json.
+func (o OptNilStringUint) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	if o.Null {
+		e.Null()
+		return
+	}
+	json.EncodeStringUint(e, o.Value)
+}
+
+// Decode decodes uint from json.
+func (o *OptNilStringUint) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptNilStringUint to nil")
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		var v uint
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		return nil
+	}
+	o.Set = true
+	o.Null = false
+	v, err := json.DecodeStringUint(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptNilStringUint) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptNilStringUint) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes uint16 as json.
+func (o OptNilStringUint16) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	if o.Null {
+		e.Null()
+		return
+	}
+	json.EncodeStringUint16(e, o.Value)
+}
+
+// Decode decodes uint16 from json.
+func (o *OptNilStringUint16) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptNilStringUint16 to nil")
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		var v uint16
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		return nil
+	}
+	o.Set = true
+	o.Null = false
+	v, err := json.DecodeStringUint16(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptNilStringUint16) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptNilStringUint16) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes uint32 as json.
+func (o OptNilStringUint32) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	if o.Null {
+		e.Null()
+		return
+	}
+	json.EncodeStringUint32(e, o.Value)
+}
+
+// Decode decodes uint32 from json.
+func (o *OptNilStringUint32) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptNilStringUint32 to nil")
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		var v uint32
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		return nil
+	}
+	o.Set = true
+	o.Null = false
+	v, err := json.DecodeStringUint32(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptNilStringUint32) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptNilStringUint32) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes uint64 as json.
+func (o OptNilStringUint64) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	if o.Null {
+		e.Null()
+		return
+	}
+	json.EncodeStringUint64(e, o.Value)
+}
+
+// Decode decodes uint64 from json.
+func (o *OptNilStringUint64) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptNilStringUint64 to nil")
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		var v uint64
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		return nil
+	}
+	o.Set = true
+	o.Null = false
+	v, err := json.DecodeStringUint64(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptNilStringUint64) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptNilStringUint64) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes uint8 as json.
+func (o OptNilStringUint8) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	if o.Null {
+		e.Null()
+		return
+	}
+	json.EncodeStringUint8(e, o.Value)
+}
+
+// Decode decodes uint8 from json.
+func (o *OptNilStringUint8) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptNilStringUint8 to nil")
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		var v uint8
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		return nil
+	}
+	o.Set = true
+	o.Null = false
+	v, err := json.DecodeStringUint8(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptNilStringUint8) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptNilStringUint8) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -3389,7 +4359,7 @@ func (o OptNilUint) Encode(e *jx.Encoder) {
 		e.Null()
 		return
 	}
-	json.EncodeStringUint(e, o.Value)
+	e.UInt(uint(o.Value))
 }
 
 // Decode decodes uint from json.
@@ -3410,11 +4380,11 @@ func (o *OptNilUint) Decode(d *jx.Decoder) error {
 	}
 	o.Set = true
 	o.Null = false
-	v, err := json.DecodeStringUint(d)
+	v, err := d.UInt()
 	if err != nil {
 		return err
 	}
-	o.Value = v
+	o.Value = uint(v)
 	return nil
 }
 
@@ -3440,7 +4410,7 @@ func (o OptNilUint16) Encode(e *jx.Encoder) {
 		e.Null()
 		return
 	}
-	json.EncodeStringUint16(e, o.Value)
+	e.UInt16(uint16(o.Value))
 }
 
 // Decode decodes uint16 from json.
@@ -3461,11 +4431,11 @@ func (o *OptNilUint16) Decode(d *jx.Decoder) error {
 	}
 	o.Set = true
 	o.Null = false
-	v, err := json.DecodeStringUint16(d)
+	v, err := d.UInt16()
 	if err != nil {
 		return err
 	}
-	o.Value = v
+	o.Value = uint16(v)
 	return nil
 }
 
@@ -3491,7 +4461,7 @@ func (o OptNilUint32) Encode(e *jx.Encoder) {
 		e.Null()
 		return
 	}
-	json.EncodeStringUint32(e, o.Value)
+	e.UInt32(uint32(o.Value))
 }
 
 // Decode decodes uint32 from json.
@@ -3512,11 +4482,11 @@ func (o *OptNilUint32) Decode(d *jx.Decoder) error {
 	}
 	o.Set = true
 	o.Null = false
-	v, err := json.DecodeStringUint32(d)
+	v, err := d.UInt32()
 	if err != nil {
 		return err
 	}
-	o.Value = v
+	o.Value = uint32(v)
 	return nil
 }
 
@@ -3542,7 +4512,7 @@ func (o OptNilUint64) Encode(e *jx.Encoder) {
 		e.Null()
 		return
 	}
-	json.EncodeStringUint64(e, o.Value)
+	e.UInt64(uint64(o.Value))
 }
 
 // Decode decodes uint64 from json.
@@ -3563,11 +4533,11 @@ func (o *OptNilUint64) Decode(d *jx.Decoder) error {
 	}
 	o.Set = true
 	o.Null = false
-	v, err := json.DecodeStringUint64(d)
+	v, err := d.UInt64()
 	if err != nil {
 		return err
 	}
-	o.Value = v
+	o.Value = uint64(v)
 	return nil
 }
 
@@ -3593,7 +4563,7 @@ func (o OptNilUint8) Encode(e *jx.Encoder) {
 		e.Null()
 		return
 	}
-	json.EncodeStringUint8(e, o.Value)
+	e.UInt8(uint8(o.Value))
 }
 
 // Decode decodes uint8 from json.
@@ -3614,11 +4584,11 @@ func (o *OptNilUint8) Decode(d *jx.Decoder) error {
 	}
 	o.Set = true
 	o.Null = false
-	v, err := json.DecodeStringUint8(d)
+	v, err := d.UInt8()
 	if err != nil {
 		return err
 	}
-	o.Value = v
+	o.Value = uint8(v)
 	return nil
 }
 
@@ -3907,6 +4877,146 @@ func (s *OptString) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
+// Encode encodes float32 as json.
+func (o OptStringFloat32) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	json.EncodeStringFloat32(e, o.Value)
+}
+
+// Decode decodes float32 from json.
+func (o *OptStringFloat32) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptStringFloat32 to nil")
+	}
+	o.Set = true
+	v, err := json.DecodeStringFloat32(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptStringFloat32) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptStringFloat32) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes float64 as json.
+func (o OptStringFloat64) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	json.EncodeStringFloat64(e, o.Value)
+}
+
+// Decode decodes float64 from json.
+func (o *OptStringFloat64) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptStringFloat64 to nil")
+	}
+	o.Set = true
+	v, err := json.DecodeStringFloat64(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptStringFloat64) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptStringFloat64) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes int as json.
+func (o OptStringInt) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	json.EncodeStringInt(e, o.Value)
+}
+
+// Decode decodes int from json.
+func (o *OptStringInt) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptStringInt to nil")
+	}
+	o.Set = true
+	v, err := json.DecodeStringInt(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptStringInt) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptStringInt) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes int16 as json.
+func (o OptStringInt16) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	json.EncodeStringInt16(e, o.Value)
+}
+
+// Decode decodes int16 from json.
+func (o *OptStringInt16) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptStringInt16 to nil")
+	}
+	o.Set = true
+	v, err := json.DecodeStringInt16(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptStringInt16) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptStringInt16) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes int32 as json.
 func (o OptStringInt32) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -3973,6 +5083,216 @@ func (s OptStringInt64) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *OptStringInt64) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes int8 as json.
+func (o OptStringInt8) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	json.EncodeStringInt8(e, o.Value)
+}
+
+// Decode decodes int8 from json.
+func (o *OptStringInt8) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptStringInt8 to nil")
+	}
+	o.Set = true
+	v, err := json.DecodeStringInt8(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptStringInt8) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptStringInt8) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes uint as json.
+func (o OptStringUint) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	json.EncodeStringUint(e, o.Value)
+}
+
+// Decode decodes uint from json.
+func (o *OptStringUint) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptStringUint to nil")
+	}
+	o.Set = true
+	v, err := json.DecodeStringUint(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptStringUint) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptStringUint) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes uint16 as json.
+func (o OptStringUint16) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	json.EncodeStringUint16(e, o.Value)
+}
+
+// Decode decodes uint16 from json.
+func (o *OptStringUint16) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptStringUint16 to nil")
+	}
+	o.Set = true
+	v, err := json.DecodeStringUint16(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptStringUint16) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptStringUint16) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes uint32 as json.
+func (o OptStringUint32) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	json.EncodeStringUint32(e, o.Value)
+}
+
+// Decode decodes uint32 from json.
+func (o *OptStringUint32) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptStringUint32 to nil")
+	}
+	o.Set = true
+	v, err := json.DecodeStringUint32(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptStringUint32) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptStringUint32) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes uint64 as json.
+func (o OptStringUint64) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	json.EncodeStringUint64(e, o.Value)
+}
+
+// Decode decodes uint64 from json.
+func (o *OptStringUint64) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptStringUint64 to nil")
+	}
+	o.Set = true
+	v, err := json.DecodeStringUint64(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptStringUint64) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptStringUint64) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes uint8 as json.
+func (o OptStringUint8) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	json.EncodeStringUint8(e, o.Value)
+}
+
+// Decode decodes uint8 from json.
+func (o *OptStringUint8) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptStringUint8 to nil")
+	}
+	o.Set = true
+	v, err := json.DecodeStringUint8(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptStringUint8) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptStringUint8) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -4260,7 +5580,7 @@ func (o OptUint) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
-	json.EncodeStringUint(e, o.Value)
+	e.UInt(uint(o.Value))
 }
 
 // Decode decodes uint from json.
@@ -4269,11 +5589,11 @@ func (o *OptUint) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode OptUint to nil")
 	}
 	o.Set = true
-	v, err := json.DecodeStringUint(d)
+	v, err := d.UInt()
 	if err != nil {
 		return err
 	}
-	o.Value = v
+	o.Value = uint(v)
 	return nil
 }
 
@@ -4295,7 +5615,7 @@ func (o OptUint16) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
-	json.EncodeStringUint16(e, o.Value)
+	e.UInt16(uint16(o.Value))
 }
 
 // Decode decodes uint16 from json.
@@ -4304,11 +5624,11 @@ func (o *OptUint16) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode OptUint16 to nil")
 	}
 	o.Set = true
-	v, err := json.DecodeStringUint16(d)
+	v, err := d.UInt16()
 	if err != nil {
 		return err
 	}
-	o.Value = v
+	o.Value = uint16(v)
 	return nil
 }
 
@@ -4330,7 +5650,7 @@ func (o OptUint32) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
-	json.EncodeStringUint32(e, o.Value)
+	e.UInt32(uint32(o.Value))
 }
 
 // Decode decodes uint32 from json.
@@ -4339,11 +5659,11 @@ func (o *OptUint32) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode OptUint32 to nil")
 	}
 	o.Set = true
-	v, err := json.DecodeStringUint32(d)
+	v, err := d.UInt32()
 	if err != nil {
 		return err
 	}
-	o.Value = v
+	o.Value = uint32(v)
 	return nil
 }
 
@@ -4365,7 +5685,7 @@ func (o OptUint64) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
-	json.EncodeStringUint64(e, o.Value)
+	e.UInt64(uint64(o.Value))
 }
 
 // Decode decodes uint64 from json.
@@ -4374,11 +5694,11 @@ func (o *OptUint64) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode OptUint64 to nil")
 	}
 	o.Set = true
-	v, err := json.DecodeStringUint64(d)
+	v, err := d.UInt64()
 	if err != nil {
 		return err
 	}
-	o.Value = v
+	o.Value = uint64(v)
 	return nil
 }
 
@@ -4400,7 +5720,7 @@ func (o OptUint8) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
-	json.EncodeStringUint8(e, o.Value)
+	e.UInt8(uint8(o.Value))
 }
 
 // Decode decodes uint8 from json.
@@ -4409,11 +5729,11 @@ func (o *OptUint8) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode OptUint8 to nil")
 	}
 	o.Set = true
-	v, err := json.DecodeStringUint8(d)
+	v, err := d.UInt8()
 	if err != nil {
 		return err
 	}
-	o.Value = v
+	o.Value = uint8(v)
 	return nil
 }
 

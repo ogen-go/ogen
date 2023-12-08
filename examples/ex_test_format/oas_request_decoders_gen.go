@@ -27197,7 +27197,7 @@ func (s *Server) decodeTestRequestRequiredStringFloat32ArrayArrayRequest(r *http
 }
 
 func (s *Server) decodeTestRequestRequiredStringFloat32NullableRequest(r *http.Request) (
-	req NilFloat32,
+	req NilStringFloat32,
 	close func() error,
 	rerr error,
 ) {
@@ -27236,7 +27236,7 @@ func (s *Server) decodeTestRequestRequiredStringFloat32NullableRequest(r *http.R
 
 		d := jx.DecodeBytes(buf)
 
-		var request NilFloat32
+		var request NilStringFloat32
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -27275,7 +27275,7 @@ func (s *Server) decodeTestRequestRequiredStringFloat32NullableRequest(r *http.R
 }
 
 func (s *Server) decodeTestRequestRequiredStringFloat32NullableArrayRequest(r *http.Request) (
-	req []NilFloat32,
+	req []NilStringFloat32,
 	close func() error,
 	rerr error,
 ) {
@@ -27314,11 +27314,11 @@ func (s *Server) decodeTestRequestRequiredStringFloat32NullableArrayRequest(r *h
 
 		d := jx.DecodeBytes(buf)
 
-		var request []NilFloat32
+		var request []NilStringFloat32
 		if err := func() error {
-			request = make([]NilFloat32, 0)
+			request = make([]NilStringFloat32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem NilFloat32
+				var elem NilStringFloat32
 				if err := elem.Decode(d); err != nil {
 					return err
 				}
@@ -27378,7 +27378,7 @@ func (s *Server) decodeTestRequestRequiredStringFloat32NullableArrayRequest(r *h
 }
 
 func (s *Server) decodeTestRequestRequiredStringFloat32NullableArrayArrayRequest(r *http.Request) (
-	req [][]NilFloat32,
+	req [][]NilStringFloat32,
 	close func() error,
 	rerr error,
 ) {
@@ -27417,14 +27417,14 @@ func (s *Server) decodeTestRequestRequiredStringFloat32NullableArrayArrayRequest
 
 		d := jx.DecodeBytes(buf)
 
-		var request [][]NilFloat32
+		var request [][]NilStringFloat32
 		if err := func() error {
-			request = make([][]NilFloat32, 0)
+			request = make([][]NilStringFloat32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []NilFloat32
-				elem = make([]NilFloat32, 0)
+				var elem []NilStringFloat32
+				elem = make([]NilStringFloat32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem NilFloat32
+					var elemElem NilStringFloat32
 					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
@@ -27800,7 +27800,7 @@ func (s *Server) decodeTestRequestRequiredStringFloat64ArrayArrayRequest(r *http
 }
 
 func (s *Server) decodeTestRequestRequiredStringFloat64NullableRequest(r *http.Request) (
-	req NilFloat64,
+	req NilStringFloat64,
 	close func() error,
 	rerr error,
 ) {
@@ -27839,7 +27839,7 @@ func (s *Server) decodeTestRequestRequiredStringFloat64NullableRequest(r *http.R
 
 		d := jx.DecodeBytes(buf)
 
-		var request NilFloat64
+		var request NilStringFloat64
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -27878,7 +27878,7 @@ func (s *Server) decodeTestRequestRequiredStringFloat64NullableRequest(r *http.R
 }
 
 func (s *Server) decodeTestRequestRequiredStringFloat64NullableArrayRequest(r *http.Request) (
-	req []NilFloat64,
+	req []NilStringFloat64,
 	close func() error,
 	rerr error,
 ) {
@@ -27917,11 +27917,11 @@ func (s *Server) decodeTestRequestRequiredStringFloat64NullableArrayRequest(r *h
 
 		d := jx.DecodeBytes(buf)
 
-		var request []NilFloat64
+		var request []NilStringFloat64
 		if err := func() error {
-			request = make([]NilFloat64, 0)
+			request = make([]NilStringFloat64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem NilFloat64
+				var elem NilStringFloat64
 				if err := elem.Decode(d); err != nil {
 					return err
 				}
@@ -27981,7 +27981,7 @@ func (s *Server) decodeTestRequestRequiredStringFloat64NullableArrayRequest(r *h
 }
 
 func (s *Server) decodeTestRequestRequiredStringFloat64NullableArrayArrayRequest(r *http.Request) (
-	req [][]NilFloat64,
+	req [][]NilStringFloat64,
 	close func() error,
 	rerr error,
 ) {
@@ -28020,14 +28020,14 @@ func (s *Server) decodeTestRequestRequiredStringFloat64NullableArrayArrayRequest
 
 		d := jx.DecodeBytes(buf)
 
-		var request [][]NilFloat64
+		var request [][]NilStringFloat64
 		if err := func() error {
-			request = make([][]NilFloat64, 0)
+			request = make([][]NilStringFloat64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []NilFloat64
-				elem = make([]NilFloat64, 0)
+				var elem []NilStringFloat64
+				elem = make([]NilStringFloat64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem NilFloat64
+					var elemElem NilStringFloat64
 					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
@@ -29575,7 +29575,7 @@ func (s *Server) decodeTestRequestRequiredStringInt16ArrayArrayRequest(r *http.R
 }
 
 func (s *Server) decodeTestRequestRequiredStringInt16NullableRequest(r *http.Request) (
-	req NilInt16,
+	req NilStringInt16,
 	close func() error,
 	rerr error,
 ) {
@@ -29614,7 +29614,7 @@ func (s *Server) decodeTestRequestRequiredStringInt16NullableRequest(r *http.Req
 
 		d := jx.DecodeBytes(buf)
 
-		var request NilInt16
+		var request NilStringInt16
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -29638,7 +29638,7 @@ func (s *Server) decodeTestRequestRequiredStringInt16NullableRequest(r *http.Req
 }
 
 func (s *Server) decodeTestRequestRequiredStringInt16NullableArrayRequest(r *http.Request) (
-	req []NilInt16,
+	req []NilStringInt16,
 	close func() error,
 	rerr error,
 ) {
@@ -29677,11 +29677,11 @@ func (s *Server) decodeTestRequestRequiredStringInt16NullableArrayRequest(r *htt
 
 		d := jx.DecodeBytes(buf)
 
-		var request []NilInt16
+		var request []NilStringInt16
 		if err := func() error {
-			request = make([]NilInt16, 0)
+			request = make([]NilStringInt16, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem NilInt16
+				var elem NilStringInt16
 				if err := elem.Decode(d); err != nil {
 					return err
 				}
@@ -29717,7 +29717,7 @@ func (s *Server) decodeTestRequestRequiredStringInt16NullableArrayRequest(r *htt
 }
 
 func (s *Server) decodeTestRequestRequiredStringInt16NullableArrayArrayRequest(r *http.Request) (
-	req [][]NilInt16,
+	req [][]NilStringInt16,
 	close func() error,
 	rerr error,
 ) {
@@ -29756,14 +29756,14 @@ func (s *Server) decodeTestRequestRequiredStringInt16NullableArrayArrayRequest(r
 
 		d := jx.DecodeBytes(buf)
 
-		var request [][]NilInt16
+		var request [][]NilStringInt16
 		if err := func() error {
-			request = make([][]NilInt16, 0)
+			request = make([][]NilStringInt16, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []NilInt16
-				elem = make([]NilInt16, 0)
+				var elem []NilStringInt16
+				elem = make([]NilStringInt16, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem NilInt16
+					var elemElem NilStringInt16
 					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
@@ -31069,7 +31069,7 @@ func (s *Server) decodeTestRequestRequiredStringInt8ArrayArrayRequest(r *http.Re
 }
 
 func (s *Server) decodeTestRequestRequiredStringInt8NullableRequest(r *http.Request) (
-	req NilInt8,
+	req NilStringInt8,
 	close func() error,
 	rerr error,
 ) {
@@ -31108,7 +31108,7 @@ func (s *Server) decodeTestRequestRequiredStringInt8NullableRequest(r *http.Requ
 
 		d := jx.DecodeBytes(buf)
 
-		var request NilInt8
+		var request NilStringInt8
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -31132,7 +31132,7 @@ func (s *Server) decodeTestRequestRequiredStringInt8NullableRequest(r *http.Requ
 }
 
 func (s *Server) decodeTestRequestRequiredStringInt8NullableArrayRequest(r *http.Request) (
-	req []NilInt8,
+	req []NilStringInt8,
 	close func() error,
 	rerr error,
 ) {
@@ -31171,11 +31171,11 @@ func (s *Server) decodeTestRequestRequiredStringInt8NullableArrayRequest(r *http
 
 		d := jx.DecodeBytes(buf)
 
-		var request []NilInt8
+		var request []NilStringInt8
 		if err := func() error {
-			request = make([]NilInt8, 0)
+			request = make([]NilStringInt8, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem NilInt8
+				var elem NilStringInt8
 				if err := elem.Decode(d); err != nil {
 					return err
 				}
@@ -31211,7 +31211,7 @@ func (s *Server) decodeTestRequestRequiredStringInt8NullableArrayRequest(r *http
 }
 
 func (s *Server) decodeTestRequestRequiredStringInt8NullableArrayArrayRequest(r *http.Request) (
-	req [][]NilInt8,
+	req [][]NilStringInt8,
 	close func() error,
 	rerr error,
 ) {
@@ -31250,14 +31250,14 @@ func (s *Server) decodeTestRequestRequiredStringInt8NullableArrayArrayRequest(r 
 
 		d := jx.DecodeBytes(buf)
 
-		var request [][]NilInt8
+		var request [][]NilStringInt8
 		if err := func() error {
-			request = make([][]NilInt8, 0)
+			request = make([][]NilStringInt8, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []NilInt8
-				elem = make([]NilInt8, 0)
+				var elem []NilStringInt8
+				elem = make([]NilStringInt8, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem NilInt8
+					var elemElem NilStringInt8
 					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
@@ -31502,7 +31502,7 @@ func (s *Server) decodeTestRequestRequiredStringIntArrayArrayRequest(r *http.Req
 }
 
 func (s *Server) decodeTestRequestRequiredStringIntNullableRequest(r *http.Request) (
-	req NilInt,
+	req NilStringInt,
 	close func() error,
 	rerr error,
 ) {
@@ -31541,7 +31541,7 @@ func (s *Server) decodeTestRequestRequiredStringIntNullableRequest(r *http.Reque
 
 		d := jx.DecodeBytes(buf)
 
-		var request NilInt
+		var request NilStringInt
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -31565,7 +31565,7 @@ func (s *Server) decodeTestRequestRequiredStringIntNullableRequest(r *http.Reque
 }
 
 func (s *Server) decodeTestRequestRequiredStringIntNullableArrayRequest(r *http.Request) (
-	req []NilInt,
+	req []NilStringInt,
 	close func() error,
 	rerr error,
 ) {
@@ -31604,11 +31604,11 @@ func (s *Server) decodeTestRequestRequiredStringIntNullableArrayRequest(r *http.
 
 		d := jx.DecodeBytes(buf)
 
-		var request []NilInt
+		var request []NilStringInt
 		if err := func() error {
-			request = make([]NilInt, 0)
+			request = make([]NilStringInt, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem NilInt
+				var elem NilStringInt
 				if err := elem.Decode(d); err != nil {
 					return err
 				}
@@ -31644,7 +31644,7 @@ func (s *Server) decodeTestRequestRequiredStringIntNullableArrayRequest(r *http.
 }
 
 func (s *Server) decodeTestRequestRequiredStringIntNullableArrayArrayRequest(r *http.Request) (
-	req [][]NilInt,
+	req [][]NilStringInt,
 	close func() error,
 	rerr error,
 ) {
@@ -31683,14 +31683,14 @@ func (s *Server) decodeTestRequestRequiredStringIntNullableArrayArrayRequest(r *
 
 		d := jx.DecodeBytes(buf)
 
-		var request [][]NilInt
+		var request [][]NilStringInt
 		if err := func() error {
-			request = make([][]NilInt, 0)
+			request = make([][]NilStringInt, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []NilInt
-				elem = make([]NilInt, 0)
+				var elem []NilStringInt
+				elem = make([]NilStringInt, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem NilInt
+					var elemElem NilStringInt
 					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
@@ -35299,7 +35299,7 @@ func (s *Server) decodeTestRequestRequiredStringUint16ArrayArrayRequest(r *http.
 }
 
 func (s *Server) decodeTestRequestRequiredStringUint16NullableRequest(r *http.Request) (
-	req NilUint16,
+	req NilStringUint16,
 	close func() error,
 	rerr error,
 ) {
@@ -35338,7 +35338,7 @@ func (s *Server) decodeTestRequestRequiredStringUint16NullableRequest(r *http.Re
 
 		d := jx.DecodeBytes(buf)
 
-		var request NilUint16
+		var request NilStringUint16
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -35362,7 +35362,7 @@ func (s *Server) decodeTestRequestRequiredStringUint16NullableRequest(r *http.Re
 }
 
 func (s *Server) decodeTestRequestRequiredStringUint16NullableArrayRequest(r *http.Request) (
-	req []NilUint16,
+	req []NilStringUint16,
 	close func() error,
 	rerr error,
 ) {
@@ -35401,11 +35401,11 @@ func (s *Server) decodeTestRequestRequiredStringUint16NullableArrayRequest(r *ht
 
 		d := jx.DecodeBytes(buf)
 
-		var request []NilUint16
+		var request []NilStringUint16
 		if err := func() error {
-			request = make([]NilUint16, 0)
+			request = make([]NilStringUint16, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem NilUint16
+				var elem NilStringUint16
 				if err := elem.Decode(d); err != nil {
 					return err
 				}
@@ -35441,7 +35441,7 @@ func (s *Server) decodeTestRequestRequiredStringUint16NullableArrayRequest(r *ht
 }
 
 func (s *Server) decodeTestRequestRequiredStringUint16NullableArrayArrayRequest(r *http.Request) (
-	req [][]NilUint16,
+	req [][]NilStringUint16,
 	close func() error,
 	rerr error,
 ) {
@@ -35480,14 +35480,14 @@ func (s *Server) decodeTestRequestRequiredStringUint16NullableArrayArrayRequest(
 
 		d := jx.DecodeBytes(buf)
 
-		var request [][]NilUint16
+		var request [][]NilStringUint16
 		if err := func() error {
-			request = make([][]NilUint16, 0)
+			request = make([][]NilStringUint16, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []NilUint16
-				elem = make([]NilUint16, 0)
+				var elem []NilStringUint16
+				elem = make([]NilStringUint16, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem NilUint16
+					var elemElem NilStringUint16
 					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
@@ -35797,7 +35797,7 @@ func (s *Server) decodeTestRequestRequiredStringUint32ArrayArrayRequest(r *http.
 }
 
 func (s *Server) decodeTestRequestRequiredStringUint32NullableRequest(r *http.Request) (
-	req NilUint32,
+	req NilStringUint32,
 	close func() error,
 	rerr error,
 ) {
@@ -35836,7 +35836,7 @@ func (s *Server) decodeTestRequestRequiredStringUint32NullableRequest(r *http.Re
 
 		d := jx.DecodeBytes(buf)
 
-		var request NilUint32
+		var request NilStringUint32
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -35860,7 +35860,7 @@ func (s *Server) decodeTestRequestRequiredStringUint32NullableRequest(r *http.Re
 }
 
 func (s *Server) decodeTestRequestRequiredStringUint32NullableArrayRequest(r *http.Request) (
-	req []NilUint32,
+	req []NilStringUint32,
 	close func() error,
 	rerr error,
 ) {
@@ -35899,11 +35899,11 @@ func (s *Server) decodeTestRequestRequiredStringUint32NullableArrayRequest(r *ht
 
 		d := jx.DecodeBytes(buf)
 
-		var request []NilUint32
+		var request []NilStringUint32
 		if err := func() error {
-			request = make([]NilUint32, 0)
+			request = make([]NilStringUint32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem NilUint32
+				var elem NilStringUint32
 				if err := elem.Decode(d); err != nil {
 					return err
 				}
@@ -35939,7 +35939,7 @@ func (s *Server) decodeTestRequestRequiredStringUint32NullableArrayRequest(r *ht
 }
 
 func (s *Server) decodeTestRequestRequiredStringUint32NullableArrayArrayRequest(r *http.Request) (
-	req [][]NilUint32,
+	req [][]NilStringUint32,
 	close func() error,
 	rerr error,
 ) {
@@ -35978,14 +35978,14 @@ func (s *Server) decodeTestRequestRequiredStringUint32NullableArrayArrayRequest(
 
 		d := jx.DecodeBytes(buf)
 
-		var request [][]NilUint32
+		var request [][]NilStringUint32
 		if err := func() error {
-			request = make([][]NilUint32, 0)
+			request = make([][]NilStringUint32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []NilUint32
-				elem = make([]NilUint32, 0)
+				var elem []NilStringUint32
+				elem = make([]NilStringUint32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem NilUint32
+					var elemElem NilStringUint32
 					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
@@ -36295,7 +36295,7 @@ func (s *Server) decodeTestRequestRequiredStringUint64ArrayArrayRequest(r *http.
 }
 
 func (s *Server) decodeTestRequestRequiredStringUint64NullableRequest(r *http.Request) (
-	req NilUint64,
+	req NilStringUint64,
 	close func() error,
 	rerr error,
 ) {
@@ -36334,7 +36334,7 @@ func (s *Server) decodeTestRequestRequiredStringUint64NullableRequest(r *http.Re
 
 		d := jx.DecodeBytes(buf)
 
-		var request NilUint64
+		var request NilStringUint64
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -36358,7 +36358,7 @@ func (s *Server) decodeTestRequestRequiredStringUint64NullableRequest(r *http.Re
 }
 
 func (s *Server) decodeTestRequestRequiredStringUint64NullableArrayRequest(r *http.Request) (
-	req []NilUint64,
+	req []NilStringUint64,
 	close func() error,
 	rerr error,
 ) {
@@ -36397,11 +36397,11 @@ func (s *Server) decodeTestRequestRequiredStringUint64NullableArrayRequest(r *ht
 
 		d := jx.DecodeBytes(buf)
 
-		var request []NilUint64
+		var request []NilStringUint64
 		if err := func() error {
-			request = make([]NilUint64, 0)
+			request = make([]NilStringUint64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem NilUint64
+				var elem NilStringUint64
 				if err := elem.Decode(d); err != nil {
 					return err
 				}
@@ -36437,7 +36437,7 @@ func (s *Server) decodeTestRequestRequiredStringUint64NullableArrayRequest(r *ht
 }
 
 func (s *Server) decodeTestRequestRequiredStringUint64NullableArrayArrayRequest(r *http.Request) (
-	req [][]NilUint64,
+	req [][]NilStringUint64,
 	close func() error,
 	rerr error,
 ) {
@@ -36476,14 +36476,14 @@ func (s *Server) decodeTestRequestRequiredStringUint64NullableArrayArrayRequest(
 
 		d := jx.DecodeBytes(buf)
 
-		var request [][]NilUint64
+		var request [][]NilStringUint64
 		if err := func() error {
-			request = make([][]NilUint64, 0)
+			request = make([][]NilStringUint64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []NilUint64
-				elem = make([]NilUint64, 0)
+				var elem []NilStringUint64
+				elem = make([]NilStringUint64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem NilUint64
+					var elemElem NilStringUint64
 					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
@@ -36793,7 +36793,7 @@ func (s *Server) decodeTestRequestRequiredStringUint8ArrayArrayRequest(r *http.R
 }
 
 func (s *Server) decodeTestRequestRequiredStringUint8NullableRequest(r *http.Request) (
-	req NilUint8,
+	req NilStringUint8,
 	close func() error,
 	rerr error,
 ) {
@@ -36832,7 +36832,7 @@ func (s *Server) decodeTestRequestRequiredStringUint8NullableRequest(r *http.Req
 
 		d := jx.DecodeBytes(buf)
 
-		var request NilUint8
+		var request NilStringUint8
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -36856,7 +36856,7 @@ func (s *Server) decodeTestRequestRequiredStringUint8NullableRequest(r *http.Req
 }
 
 func (s *Server) decodeTestRequestRequiredStringUint8NullableArrayRequest(r *http.Request) (
-	req []NilUint8,
+	req []NilStringUint8,
 	close func() error,
 	rerr error,
 ) {
@@ -36895,11 +36895,11 @@ func (s *Server) decodeTestRequestRequiredStringUint8NullableArrayRequest(r *htt
 
 		d := jx.DecodeBytes(buf)
 
-		var request []NilUint8
+		var request []NilStringUint8
 		if err := func() error {
-			request = make([]NilUint8, 0)
+			request = make([]NilStringUint8, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem NilUint8
+				var elem NilStringUint8
 				if err := elem.Decode(d); err != nil {
 					return err
 				}
@@ -36935,7 +36935,7 @@ func (s *Server) decodeTestRequestRequiredStringUint8NullableArrayRequest(r *htt
 }
 
 func (s *Server) decodeTestRequestRequiredStringUint8NullableArrayArrayRequest(r *http.Request) (
-	req [][]NilUint8,
+	req [][]NilStringUint8,
 	close func() error,
 	rerr error,
 ) {
@@ -36974,14 +36974,14 @@ func (s *Server) decodeTestRequestRequiredStringUint8NullableArrayArrayRequest(r
 
 		d := jx.DecodeBytes(buf)
 
-		var request [][]NilUint8
+		var request [][]NilStringUint8
 		if err := func() error {
-			request = make([][]NilUint8, 0)
+			request = make([][]NilStringUint8, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []NilUint8
-				elem = make([]NilUint8, 0)
+				var elem []NilStringUint8
+				elem = make([]NilStringUint8, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem NilUint8
+					var elemElem NilStringUint8
 					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
@@ -37226,7 +37226,7 @@ func (s *Server) decodeTestRequestRequiredStringUintArrayArrayRequest(r *http.Re
 }
 
 func (s *Server) decodeTestRequestRequiredStringUintNullableRequest(r *http.Request) (
-	req NilUint,
+	req NilStringUint,
 	close func() error,
 	rerr error,
 ) {
@@ -37265,7 +37265,7 @@ func (s *Server) decodeTestRequestRequiredStringUintNullableRequest(r *http.Requ
 
 		d := jx.DecodeBytes(buf)
 
-		var request NilUint
+		var request NilStringUint
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -37289,7 +37289,7 @@ func (s *Server) decodeTestRequestRequiredStringUintNullableRequest(r *http.Requ
 }
 
 func (s *Server) decodeTestRequestRequiredStringUintNullableArrayRequest(r *http.Request) (
-	req []NilUint,
+	req []NilStringUint,
 	close func() error,
 	rerr error,
 ) {
@@ -37328,11 +37328,11 @@ func (s *Server) decodeTestRequestRequiredStringUintNullableArrayRequest(r *http
 
 		d := jx.DecodeBytes(buf)
 
-		var request []NilUint
+		var request []NilStringUint
 		if err := func() error {
-			request = make([]NilUint, 0)
+			request = make([]NilStringUint, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem NilUint
+				var elem NilStringUint
 				if err := elem.Decode(d); err != nil {
 					return err
 				}
@@ -37368,7 +37368,7 @@ func (s *Server) decodeTestRequestRequiredStringUintNullableArrayRequest(r *http
 }
 
 func (s *Server) decodeTestRequestRequiredStringUintNullableArrayArrayRequest(r *http.Request) (
-	req [][]NilUint,
+	req [][]NilStringUint,
 	close func() error,
 	rerr error,
 ) {
@@ -37407,14 +37407,14 @@ func (s *Server) decodeTestRequestRequiredStringUintNullableArrayArrayRequest(r 
 
 		d := jx.DecodeBytes(buf)
 
-		var request [][]NilUint
+		var request [][]NilStringUint
 		if err := func() error {
-			request = make([][]NilUint, 0)
+			request = make([][]NilStringUint, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []NilUint
-				elem = make([]NilUint, 0)
+				var elem []NilStringUint
+				elem = make([]NilStringUint, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem NilUint
+					var elemElem NilStringUint
 					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
@@ -43849,7 +43849,7 @@ func (s *Server) decodeTestRequestStringEmailNullableArrayArrayRequest(r *http.R
 }
 
 func (s *Server) decodeTestRequestStringFloat32Request(r *http.Request) (
-	req OptFloat32,
+	req OptStringFloat32,
 	close func() error,
 	rerr error,
 ) {
@@ -43891,7 +43891,7 @@ func (s *Server) decodeTestRequestStringFloat32Request(r *http.Request) (
 
 		d := jx.DecodeBytes(buf)
 
-		var request OptFloat32
+		var request OptStringFloat32
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -44152,7 +44152,7 @@ func (s *Server) decodeTestRequestStringFloat32ArrayArrayRequest(r *http.Request
 }
 
 func (s *Server) decodeTestRequestStringFloat32NullableRequest(r *http.Request) (
-	req OptNilFloat32,
+	req OptNilStringFloat32,
 	close func() error,
 	rerr error,
 ) {
@@ -44194,7 +44194,7 @@ func (s *Server) decodeTestRequestStringFloat32NullableRequest(r *http.Request) 
 
 		d := jx.DecodeBytes(buf)
 
-		var request OptNilFloat32
+		var request OptNilStringFloat32
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -44234,7 +44234,7 @@ func (s *Server) decodeTestRequestStringFloat32NullableRequest(r *http.Request) 
 }
 
 func (s *Server) decodeTestRequestStringFloat32NullableArrayRequest(r *http.Request) (
-	req []NilFloat32,
+	req []NilStringFloat32,
 	close func() error,
 	rerr error,
 ) {
@@ -44276,11 +44276,11 @@ func (s *Server) decodeTestRequestStringFloat32NullableArrayRequest(r *http.Requ
 
 		d := jx.DecodeBytes(buf)
 
-		var request []NilFloat32
+		var request []NilStringFloat32
 		if err := func() error {
-			request = make([]NilFloat32, 0)
+			request = make([]NilStringFloat32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem NilFloat32
+				var elem NilStringFloat32
 				if err := elem.Decode(d); err != nil {
 					return err
 				}
@@ -44337,7 +44337,7 @@ func (s *Server) decodeTestRequestStringFloat32NullableArrayRequest(r *http.Requ
 }
 
 func (s *Server) decodeTestRequestStringFloat32NullableArrayArrayRequest(r *http.Request) (
-	req [][]NilFloat32,
+	req [][]NilStringFloat32,
 	close func() error,
 	rerr error,
 ) {
@@ -44379,14 +44379,14 @@ func (s *Server) decodeTestRequestStringFloat32NullableArrayArrayRequest(r *http
 
 		d := jx.DecodeBytes(buf)
 
-		var request [][]NilFloat32
+		var request [][]NilStringFloat32
 		if err := func() error {
-			request = make([][]NilFloat32, 0)
+			request = make([][]NilStringFloat32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []NilFloat32
-				elem = make([]NilFloat32, 0)
+				var elem []NilStringFloat32
+				elem = make([]NilStringFloat32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem NilFloat32
+					var elemElem NilStringFloat32
 					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
@@ -44465,7 +44465,7 @@ func (s *Server) decodeTestRequestStringFloat32NullableArrayArrayRequest(r *http
 }
 
 func (s *Server) decodeTestRequestStringFloat64Request(r *http.Request) (
-	req OptFloat64,
+	req OptStringFloat64,
 	close func() error,
 	rerr error,
 ) {
@@ -44507,7 +44507,7 @@ func (s *Server) decodeTestRequestStringFloat64Request(r *http.Request) (
 
 		d := jx.DecodeBytes(buf)
 
-		var request OptFloat64
+		var request OptStringFloat64
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -44768,7 +44768,7 @@ func (s *Server) decodeTestRequestStringFloat64ArrayArrayRequest(r *http.Request
 }
 
 func (s *Server) decodeTestRequestStringFloat64NullableRequest(r *http.Request) (
-	req OptNilFloat64,
+	req OptNilStringFloat64,
 	close func() error,
 	rerr error,
 ) {
@@ -44810,7 +44810,7 @@ func (s *Server) decodeTestRequestStringFloat64NullableRequest(r *http.Request) 
 
 		d := jx.DecodeBytes(buf)
 
-		var request OptNilFloat64
+		var request OptNilStringFloat64
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -44850,7 +44850,7 @@ func (s *Server) decodeTestRequestStringFloat64NullableRequest(r *http.Request) 
 }
 
 func (s *Server) decodeTestRequestStringFloat64NullableArrayRequest(r *http.Request) (
-	req []NilFloat64,
+	req []NilStringFloat64,
 	close func() error,
 	rerr error,
 ) {
@@ -44892,11 +44892,11 @@ func (s *Server) decodeTestRequestStringFloat64NullableArrayRequest(r *http.Requ
 
 		d := jx.DecodeBytes(buf)
 
-		var request []NilFloat64
+		var request []NilStringFloat64
 		if err := func() error {
-			request = make([]NilFloat64, 0)
+			request = make([]NilStringFloat64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem NilFloat64
+				var elem NilStringFloat64
 				if err := elem.Decode(d); err != nil {
 					return err
 				}
@@ -44953,7 +44953,7 @@ func (s *Server) decodeTestRequestStringFloat64NullableArrayRequest(r *http.Requ
 }
 
 func (s *Server) decodeTestRequestStringFloat64NullableArrayArrayRequest(r *http.Request) (
-	req [][]NilFloat64,
+	req [][]NilStringFloat64,
 	close func() error,
 	rerr error,
 ) {
@@ -44995,14 +44995,14 @@ func (s *Server) decodeTestRequestStringFloat64NullableArrayArrayRequest(r *http
 
 		d := jx.DecodeBytes(buf)
 
-		var request [][]NilFloat64
+		var request [][]NilStringFloat64
 		if err := func() error {
-			request = make([][]NilFloat64, 0)
+			request = make([][]NilStringFloat64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []NilFloat64
-				elem = make([]NilFloat64, 0)
+				var elem []NilStringFloat64
+				elem = make([]NilStringFloat64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem NilFloat64
+					var elemElem NilStringFloat64
 					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
@@ -46239,7 +46239,7 @@ func (s *Server) decodeTestRequestStringIPNullableArrayArrayRequest(r *http.Requ
 }
 
 func (s *Server) decodeTestRequestStringIntRequest(r *http.Request) (
-	req OptInt,
+	req OptStringInt,
 	close func() error,
 	rerr error,
 ) {
@@ -46281,7 +46281,7 @@ func (s *Server) decodeTestRequestStringIntRequest(r *http.Request) (
 
 		d := jx.DecodeBytes(buf)
 
-		var request OptInt
+		var request OptStringInt
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -46306,7 +46306,7 @@ func (s *Server) decodeTestRequestStringIntRequest(r *http.Request) (
 }
 
 func (s *Server) decodeTestRequestStringInt16Request(r *http.Request) (
-	req OptInt16,
+	req OptStringInt16,
 	close func() error,
 	rerr error,
 ) {
@@ -46348,7 +46348,7 @@ func (s *Server) decodeTestRequestStringInt16Request(r *http.Request) (
 
 		d := jx.DecodeBytes(buf)
 
-		var request OptInt16
+		var request OptStringInt16
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -46555,7 +46555,7 @@ func (s *Server) decodeTestRequestStringInt16ArrayArrayRequest(r *http.Request) 
 }
 
 func (s *Server) decodeTestRequestStringInt16NullableRequest(r *http.Request) (
-	req OptNilInt16,
+	req OptNilStringInt16,
 	close func() error,
 	rerr error,
 ) {
@@ -46597,7 +46597,7 @@ func (s *Server) decodeTestRequestStringInt16NullableRequest(r *http.Request) (
 
 		d := jx.DecodeBytes(buf)
 
-		var request OptNilInt16
+		var request OptNilStringInt16
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -46622,7 +46622,7 @@ func (s *Server) decodeTestRequestStringInt16NullableRequest(r *http.Request) (
 }
 
 func (s *Server) decodeTestRequestStringInt16NullableArrayRequest(r *http.Request) (
-	req []NilInt16,
+	req []NilStringInt16,
 	close func() error,
 	rerr error,
 ) {
@@ -46664,11 +46664,11 @@ func (s *Server) decodeTestRequestStringInt16NullableArrayRequest(r *http.Reques
 
 		d := jx.DecodeBytes(buf)
 
-		var request []NilInt16
+		var request []NilStringInt16
 		if err := func() error {
-			request = make([]NilInt16, 0)
+			request = make([]NilStringInt16, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem NilInt16
+				var elem NilStringInt16
 				if err := elem.Decode(d); err != nil {
 					return err
 				}
@@ -46696,7 +46696,7 @@ func (s *Server) decodeTestRequestStringInt16NullableArrayRequest(r *http.Reques
 }
 
 func (s *Server) decodeTestRequestStringInt16NullableArrayArrayRequest(r *http.Request) (
-	req [][]NilInt16,
+	req [][]NilStringInt16,
 	close func() error,
 	rerr error,
 ) {
@@ -46738,14 +46738,14 @@ func (s *Server) decodeTestRequestStringInt16NullableArrayArrayRequest(r *http.R
 
 		d := jx.DecodeBytes(buf)
 
-		var request [][]NilInt16
+		var request [][]NilStringInt16
 		if err := func() error {
-			request = make([][]NilInt16, 0)
+			request = make([][]NilStringInt16, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []NilInt16
-				elem = make([]NilInt16, 0)
+				var elem []NilStringInt16
+				elem = make([]NilStringInt16, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem NilInt16
+					var elemElem NilStringInt16
 					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
@@ -47788,7 +47788,7 @@ func (s *Server) decodeTestRequestStringInt64NullableArrayArrayRequest(r *http.R
 }
 
 func (s *Server) decodeTestRequestStringInt8Request(r *http.Request) (
-	req OptInt8,
+	req OptStringInt8,
 	close func() error,
 	rerr error,
 ) {
@@ -47830,7 +47830,7 @@ func (s *Server) decodeTestRequestStringInt8Request(r *http.Request) (
 
 		d := jx.DecodeBytes(buf)
 
-		var request OptInt8
+		var request OptStringInt8
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -48037,7 +48037,7 @@ func (s *Server) decodeTestRequestStringInt8ArrayArrayRequest(r *http.Request) (
 }
 
 func (s *Server) decodeTestRequestStringInt8NullableRequest(r *http.Request) (
-	req OptNilInt8,
+	req OptNilStringInt8,
 	close func() error,
 	rerr error,
 ) {
@@ -48079,7 +48079,7 @@ func (s *Server) decodeTestRequestStringInt8NullableRequest(r *http.Request) (
 
 		d := jx.DecodeBytes(buf)
 
-		var request OptNilInt8
+		var request OptNilStringInt8
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -48104,7 +48104,7 @@ func (s *Server) decodeTestRequestStringInt8NullableRequest(r *http.Request) (
 }
 
 func (s *Server) decodeTestRequestStringInt8NullableArrayRequest(r *http.Request) (
-	req []NilInt8,
+	req []NilStringInt8,
 	close func() error,
 	rerr error,
 ) {
@@ -48146,11 +48146,11 @@ func (s *Server) decodeTestRequestStringInt8NullableArrayRequest(r *http.Request
 
 		d := jx.DecodeBytes(buf)
 
-		var request []NilInt8
+		var request []NilStringInt8
 		if err := func() error {
-			request = make([]NilInt8, 0)
+			request = make([]NilStringInt8, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem NilInt8
+				var elem NilStringInt8
 				if err := elem.Decode(d); err != nil {
 					return err
 				}
@@ -48178,7 +48178,7 @@ func (s *Server) decodeTestRequestStringInt8NullableArrayRequest(r *http.Request
 }
 
 func (s *Server) decodeTestRequestStringInt8NullableArrayArrayRequest(r *http.Request) (
-	req [][]NilInt8,
+	req [][]NilStringInt8,
 	close func() error,
 	rerr error,
 ) {
@@ -48220,14 +48220,14 @@ func (s *Server) decodeTestRequestStringInt8NullableArrayArrayRequest(r *http.Re
 
 		d := jx.DecodeBytes(buf)
 
-		var request [][]NilInt8
+		var request [][]NilStringInt8
 		if err := func() error {
-			request = make([][]NilInt8, 0)
+			request = make([][]NilStringInt8, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []NilInt8
-				elem = make([]NilInt8, 0)
+				var elem []NilStringInt8
+				elem = make([]NilStringInt8, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem NilInt8
+					var elemElem NilStringInt8
 					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
@@ -48464,7 +48464,7 @@ func (s *Server) decodeTestRequestStringIntArrayArrayRequest(r *http.Request) (
 }
 
 func (s *Server) decodeTestRequestStringIntNullableRequest(r *http.Request) (
-	req OptNilInt,
+	req OptNilStringInt,
 	close func() error,
 	rerr error,
 ) {
@@ -48506,7 +48506,7 @@ func (s *Server) decodeTestRequestStringIntNullableRequest(r *http.Request) (
 
 		d := jx.DecodeBytes(buf)
 
-		var request OptNilInt
+		var request OptNilStringInt
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -48531,7 +48531,7 @@ func (s *Server) decodeTestRequestStringIntNullableRequest(r *http.Request) (
 }
 
 func (s *Server) decodeTestRequestStringIntNullableArrayRequest(r *http.Request) (
-	req []NilInt,
+	req []NilStringInt,
 	close func() error,
 	rerr error,
 ) {
@@ -48573,11 +48573,11 @@ func (s *Server) decodeTestRequestStringIntNullableArrayRequest(r *http.Request)
 
 		d := jx.DecodeBytes(buf)
 
-		var request []NilInt
+		var request []NilStringInt
 		if err := func() error {
-			request = make([]NilInt, 0)
+			request = make([]NilStringInt, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem NilInt
+				var elem NilStringInt
 				if err := elem.Decode(d); err != nil {
 					return err
 				}
@@ -48605,7 +48605,7 @@ func (s *Server) decodeTestRequestStringIntNullableArrayRequest(r *http.Request)
 }
 
 func (s *Server) decodeTestRequestStringIntNullableArrayArrayRequest(r *http.Request) (
-	req [][]NilInt,
+	req [][]NilStringInt,
 	close func() error,
 	rerr error,
 ) {
@@ -48647,14 +48647,14 @@ func (s *Server) decodeTestRequestStringIntNullableArrayArrayRequest(r *http.Req
 
 		d := jx.DecodeBytes(buf)
 
-		var request [][]NilInt
+		var request [][]NilStringInt
 		if err := func() error {
-			request = make([][]NilInt, 0)
+			request = make([][]NilStringInt, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []NilInt
-				elem = make([]NilInt, 0)
+				var elem []NilStringInt
+				elem = make([]NilStringInt, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem NilInt
+					var elemElem NilStringInt
 					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
@@ -51918,7 +51918,7 @@ func (s *Server) decodeTestRequestStringUUIDNullableArrayArrayRequest(r *http.Re
 }
 
 func (s *Server) decodeTestRequestStringUintRequest(r *http.Request) (
-	req OptUint,
+	req OptStringUint,
 	close func() error,
 	rerr error,
 ) {
@@ -51960,7 +51960,7 @@ func (s *Server) decodeTestRequestStringUintRequest(r *http.Request) (
 
 		d := jx.DecodeBytes(buf)
 
-		var request OptUint
+		var request OptStringUint
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -51985,7 +51985,7 @@ func (s *Server) decodeTestRequestStringUintRequest(r *http.Request) (
 }
 
 func (s *Server) decodeTestRequestStringUint16Request(r *http.Request) (
-	req OptUint16,
+	req OptStringUint16,
 	close func() error,
 	rerr error,
 ) {
@@ -52027,7 +52027,7 @@ func (s *Server) decodeTestRequestStringUint16Request(r *http.Request) (
 
 		d := jx.DecodeBytes(buf)
 
-		var request OptUint16
+		var request OptStringUint16
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -52234,7 +52234,7 @@ func (s *Server) decodeTestRequestStringUint16ArrayArrayRequest(r *http.Request)
 }
 
 func (s *Server) decodeTestRequestStringUint16NullableRequest(r *http.Request) (
-	req OptNilUint16,
+	req OptNilStringUint16,
 	close func() error,
 	rerr error,
 ) {
@@ -52276,7 +52276,7 @@ func (s *Server) decodeTestRequestStringUint16NullableRequest(r *http.Request) (
 
 		d := jx.DecodeBytes(buf)
 
-		var request OptNilUint16
+		var request OptNilStringUint16
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -52301,7 +52301,7 @@ func (s *Server) decodeTestRequestStringUint16NullableRequest(r *http.Request) (
 }
 
 func (s *Server) decodeTestRequestStringUint16NullableArrayRequest(r *http.Request) (
-	req []NilUint16,
+	req []NilStringUint16,
 	close func() error,
 	rerr error,
 ) {
@@ -52343,11 +52343,11 @@ func (s *Server) decodeTestRequestStringUint16NullableArrayRequest(r *http.Reque
 
 		d := jx.DecodeBytes(buf)
 
-		var request []NilUint16
+		var request []NilStringUint16
 		if err := func() error {
-			request = make([]NilUint16, 0)
+			request = make([]NilStringUint16, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem NilUint16
+				var elem NilStringUint16
 				if err := elem.Decode(d); err != nil {
 					return err
 				}
@@ -52375,7 +52375,7 @@ func (s *Server) decodeTestRequestStringUint16NullableArrayRequest(r *http.Reque
 }
 
 func (s *Server) decodeTestRequestStringUint16NullableArrayArrayRequest(r *http.Request) (
-	req [][]NilUint16,
+	req [][]NilStringUint16,
 	close func() error,
 	rerr error,
 ) {
@@ -52417,14 +52417,14 @@ func (s *Server) decodeTestRequestStringUint16NullableArrayArrayRequest(r *http.
 
 		d := jx.DecodeBytes(buf)
 
-		var request [][]NilUint16
+		var request [][]NilStringUint16
 		if err := func() error {
-			request = make([][]NilUint16, 0)
+			request = make([][]NilStringUint16, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []NilUint16
-				elem = make([]NilUint16, 0)
+				var elem []NilStringUint16
+				elem = make([]NilStringUint16, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem NilUint16
+					var elemElem NilStringUint16
 					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
@@ -52479,7 +52479,7 @@ func (s *Server) decodeTestRequestStringUint16NullableArrayArrayRequest(r *http.
 }
 
 func (s *Server) decodeTestRequestStringUint32Request(r *http.Request) (
-	req OptUint32,
+	req OptStringUint32,
 	close func() error,
 	rerr error,
 ) {
@@ -52521,7 +52521,7 @@ func (s *Server) decodeTestRequestStringUint32Request(r *http.Request) (
 
 		d := jx.DecodeBytes(buf)
 
-		var request OptUint32
+		var request OptStringUint32
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -52728,7 +52728,7 @@ func (s *Server) decodeTestRequestStringUint32ArrayArrayRequest(r *http.Request)
 }
 
 func (s *Server) decodeTestRequestStringUint32NullableRequest(r *http.Request) (
-	req OptNilUint32,
+	req OptNilStringUint32,
 	close func() error,
 	rerr error,
 ) {
@@ -52770,7 +52770,7 @@ func (s *Server) decodeTestRequestStringUint32NullableRequest(r *http.Request) (
 
 		d := jx.DecodeBytes(buf)
 
-		var request OptNilUint32
+		var request OptNilStringUint32
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -52795,7 +52795,7 @@ func (s *Server) decodeTestRequestStringUint32NullableRequest(r *http.Request) (
 }
 
 func (s *Server) decodeTestRequestStringUint32NullableArrayRequest(r *http.Request) (
-	req []NilUint32,
+	req []NilStringUint32,
 	close func() error,
 	rerr error,
 ) {
@@ -52837,11 +52837,11 @@ func (s *Server) decodeTestRequestStringUint32NullableArrayRequest(r *http.Reque
 
 		d := jx.DecodeBytes(buf)
 
-		var request []NilUint32
+		var request []NilStringUint32
 		if err := func() error {
-			request = make([]NilUint32, 0)
+			request = make([]NilStringUint32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem NilUint32
+				var elem NilStringUint32
 				if err := elem.Decode(d); err != nil {
 					return err
 				}
@@ -52869,7 +52869,7 @@ func (s *Server) decodeTestRequestStringUint32NullableArrayRequest(r *http.Reque
 }
 
 func (s *Server) decodeTestRequestStringUint32NullableArrayArrayRequest(r *http.Request) (
-	req [][]NilUint32,
+	req [][]NilStringUint32,
 	close func() error,
 	rerr error,
 ) {
@@ -52911,14 +52911,14 @@ func (s *Server) decodeTestRequestStringUint32NullableArrayArrayRequest(r *http.
 
 		d := jx.DecodeBytes(buf)
 
-		var request [][]NilUint32
+		var request [][]NilStringUint32
 		if err := func() error {
-			request = make([][]NilUint32, 0)
+			request = make([][]NilStringUint32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []NilUint32
-				elem = make([]NilUint32, 0)
+				var elem []NilStringUint32
+				elem = make([]NilStringUint32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem NilUint32
+					var elemElem NilStringUint32
 					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
@@ -52973,7 +52973,7 @@ func (s *Server) decodeTestRequestStringUint32NullableArrayArrayRequest(r *http.
 }
 
 func (s *Server) decodeTestRequestStringUint64Request(r *http.Request) (
-	req OptUint64,
+	req OptStringUint64,
 	close func() error,
 	rerr error,
 ) {
@@ -53015,7 +53015,7 @@ func (s *Server) decodeTestRequestStringUint64Request(r *http.Request) (
 
 		d := jx.DecodeBytes(buf)
 
-		var request OptUint64
+		var request OptStringUint64
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -53222,7 +53222,7 @@ func (s *Server) decodeTestRequestStringUint64ArrayArrayRequest(r *http.Request)
 }
 
 func (s *Server) decodeTestRequestStringUint64NullableRequest(r *http.Request) (
-	req OptNilUint64,
+	req OptNilStringUint64,
 	close func() error,
 	rerr error,
 ) {
@@ -53264,7 +53264,7 @@ func (s *Server) decodeTestRequestStringUint64NullableRequest(r *http.Request) (
 
 		d := jx.DecodeBytes(buf)
 
-		var request OptNilUint64
+		var request OptNilStringUint64
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -53289,7 +53289,7 @@ func (s *Server) decodeTestRequestStringUint64NullableRequest(r *http.Request) (
 }
 
 func (s *Server) decodeTestRequestStringUint64NullableArrayRequest(r *http.Request) (
-	req []NilUint64,
+	req []NilStringUint64,
 	close func() error,
 	rerr error,
 ) {
@@ -53331,11 +53331,11 @@ func (s *Server) decodeTestRequestStringUint64NullableArrayRequest(r *http.Reque
 
 		d := jx.DecodeBytes(buf)
 
-		var request []NilUint64
+		var request []NilStringUint64
 		if err := func() error {
-			request = make([]NilUint64, 0)
+			request = make([]NilStringUint64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem NilUint64
+				var elem NilStringUint64
 				if err := elem.Decode(d); err != nil {
 					return err
 				}
@@ -53363,7 +53363,7 @@ func (s *Server) decodeTestRequestStringUint64NullableArrayRequest(r *http.Reque
 }
 
 func (s *Server) decodeTestRequestStringUint64NullableArrayArrayRequest(r *http.Request) (
-	req [][]NilUint64,
+	req [][]NilStringUint64,
 	close func() error,
 	rerr error,
 ) {
@@ -53405,14 +53405,14 @@ func (s *Server) decodeTestRequestStringUint64NullableArrayArrayRequest(r *http.
 
 		d := jx.DecodeBytes(buf)
 
-		var request [][]NilUint64
+		var request [][]NilStringUint64
 		if err := func() error {
-			request = make([][]NilUint64, 0)
+			request = make([][]NilStringUint64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []NilUint64
-				elem = make([]NilUint64, 0)
+				var elem []NilStringUint64
+				elem = make([]NilStringUint64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem NilUint64
+					var elemElem NilStringUint64
 					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
@@ -53467,7 +53467,7 @@ func (s *Server) decodeTestRequestStringUint64NullableArrayArrayRequest(r *http.
 }
 
 func (s *Server) decodeTestRequestStringUint8Request(r *http.Request) (
-	req OptUint8,
+	req OptStringUint8,
 	close func() error,
 	rerr error,
 ) {
@@ -53509,7 +53509,7 @@ func (s *Server) decodeTestRequestStringUint8Request(r *http.Request) (
 
 		d := jx.DecodeBytes(buf)
 
-		var request OptUint8
+		var request OptStringUint8
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -53716,7 +53716,7 @@ func (s *Server) decodeTestRequestStringUint8ArrayArrayRequest(r *http.Request) 
 }
 
 func (s *Server) decodeTestRequestStringUint8NullableRequest(r *http.Request) (
-	req OptNilUint8,
+	req OptNilStringUint8,
 	close func() error,
 	rerr error,
 ) {
@@ -53758,7 +53758,7 @@ func (s *Server) decodeTestRequestStringUint8NullableRequest(r *http.Request) (
 
 		d := jx.DecodeBytes(buf)
 
-		var request OptNilUint8
+		var request OptNilStringUint8
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -53783,7 +53783,7 @@ func (s *Server) decodeTestRequestStringUint8NullableRequest(r *http.Request) (
 }
 
 func (s *Server) decodeTestRequestStringUint8NullableArrayRequest(r *http.Request) (
-	req []NilUint8,
+	req []NilStringUint8,
 	close func() error,
 	rerr error,
 ) {
@@ -53825,11 +53825,11 @@ func (s *Server) decodeTestRequestStringUint8NullableArrayRequest(r *http.Reques
 
 		d := jx.DecodeBytes(buf)
 
-		var request []NilUint8
+		var request []NilStringUint8
 		if err := func() error {
-			request = make([]NilUint8, 0)
+			request = make([]NilStringUint8, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem NilUint8
+				var elem NilStringUint8
 				if err := elem.Decode(d); err != nil {
 					return err
 				}
@@ -53857,7 +53857,7 @@ func (s *Server) decodeTestRequestStringUint8NullableArrayRequest(r *http.Reques
 }
 
 func (s *Server) decodeTestRequestStringUint8NullableArrayArrayRequest(r *http.Request) (
-	req [][]NilUint8,
+	req [][]NilStringUint8,
 	close func() error,
 	rerr error,
 ) {
@@ -53899,14 +53899,14 @@ func (s *Server) decodeTestRequestStringUint8NullableArrayArrayRequest(r *http.R
 
 		d := jx.DecodeBytes(buf)
 
-		var request [][]NilUint8
+		var request [][]NilStringUint8
 		if err := func() error {
-			request = make([][]NilUint8, 0)
+			request = make([][]NilStringUint8, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []NilUint8
-				elem = make([]NilUint8, 0)
+				var elem []NilStringUint8
+				elem = make([]NilStringUint8, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem NilUint8
+					var elemElem NilStringUint8
 					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
@@ -54143,7 +54143,7 @@ func (s *Server) decodeTestRequestStringUintArrayArrayRequest(r *http.Request) (
 }
 
 func (s *Server) decodeTestRequestStringUintNullableRequest(r *http.Request) (
-	req OptNilUint,
+	req OptNilStringUint,
 	close func() error,
 	rerr error,
 ) {
@@ -54185,7 +54185,7 @@ func (s *Server) decodeTestRequestStringUintNullableRequest(r *http.Request) (
 
 		d := jx.DecodeBytes(buf)
 
-		var request OptNilUint
+		var request OptNilStringUint
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -54210,7 +54210,7 @@ func (s *Server) decodeTestRequestStringUintNullableRequest(r *http.Request) (
 }
 
 func (s *Server) decodeTestRequestStringUintNullableArrayRequest(r *http.Request) (
-	req []NilUint,
+	req []NilStringUint,
 	close func() error,
 	rerr error,
 ) {
@@ -54252,11 +54252,11 @@ func (s *Server) decodeTestRequestStringUintNullableArrayRequest(r *http.Request
 
 		d := jx.DecodeBytes(buf)
 
-		var request []NilUint
+		var request []NilStringUint
 		if err := func() error {
-			request = make([]NilUint, 0)
+			request = make([]NilStringUint, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem NilUint
+				var elem NilStringUint
 				if err := elem.Decode(d); err != nil {
 					return err
 				}
@@ -54284,7 +54284,7 @@ func (s *Server) decodeTestRequestStringUintNullableArrayRequest(r *http.Request
 }
 
 func (s *Server) decodeTestRequestStringUintNullableArrayArrayRequest(r *http.Request) (
-	req [][]NilUint,
+	req [][]NilStringUint,
 	close func() error,
 	rerr error,
 ) {
@@ -54326,14 +54326,14 @@ func (s *Server) decodeTestRequestStringUintNullableArrayArrayRequest(r *http.Re
 
 		d := jx.DecodeBytes(buf)
 
-		var request [][]NilUint
+		var request [][]NilStringUint
 		if err := func() error {
-			request = make([][]NilUint, 0)
+			request = make([][]NilStringUint, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []NilUint
-				elem = make([]NilUint, 0)
+				var elem []NilStringUint
+				elem = make([]NilStringUint, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem NilUint
+					var elemElem NilStringUint
 					if err := elemElem.Decode(d); err != nil {
 						return err
 					}

@@ -6193,7 +6193,7 @@ func encodeTestRequestRequiredStringFloat32ArrayArrayRequest(
 }
 
 func encodeTestRequestRequiredStringFloat32NullableRequest(
-	req NilFloat32,
+	req NilStringFloat32,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -6207,7 +6207,7 @@ func encodeTestRequestRequiredStringFloat32NullableRequest(
 }
 
 func encodeTestRequestRequiredStringFloat32NullableArrayRequest(
-	req []NilFloat32,
+	req []NilStringFloat32,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -6225,7 +6225,7 @@ func encodeTestRequestRequiredStringFloat32NullableArrayRequest(
 }
 
 func encodeTestRequestRequiredStringFloat32NullableArrayArrayRequest(
-	req [][]NilFloat32,
+	req [][]NilStringFloat32,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -6301,7 +6301,7 @@ func encodeTestRequestRequiredStringFloat64ArrayArrayRequest(
 }
 
 func encodeTestRequestRequiredStringFloat64NullableRequest(
-	req NilFloat64,
+	req NilStringFloat64,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -6315,7 +6315,7 @@ func encodeTestRequestRequiredStringFloat64NullableRequest(
 }
 
 func encodeTestRequestRequiredStringFloat64NullableArrayRequest(
-	req []NilFloat64,
+	req []NilStringFloat64,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -6333,7 +6333,7 @@ func encodeTestRequestRequiredStringFloat64NullableArrayRequest(
 }
 
 func encodeTestRequestRequiredStringFloat64NullableArrayArrayRequest(
-	req [][]NilFloat64,
+	req [][]NilStringFloat64,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -6639,7 +6639,7 @@ func encodeTestRequestRequiredStringInt16ArrayArrayRequest(
 }
 
 func encodeTestRequestRequiredStringInt16NullableRequest(
-	req NilInt16,
+	req NilStringInt16,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -6653,7 +6653,7 @@ func encodeTestRequestRequiredStringInt16NullableRequest(
 }
 
 func encodeTestRequestRequiredStringInt16NullableArrayRequest(
-	req []NilInt16,
+	req []NilStringInt16,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -6671,7 +6671,7 @@ func encodeTestRequestRequiredStringInt16NullableArrayRequest(
 }
 
 func encodeTestRequestRequiredStringInt16NullableArrayArrayRequest(
-	req [][]NilInt16,
+	req [][]NilStringInt16,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -6963,7 +6963,7 @@ func encodeTestRequestRequiredStringInt8ArrayArrayRequest(
 }
 
 func encodeTestRequestRequiredStringInt8NullableRequest(
-	req NilInt8,
+	req NilStringInt8,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -6977,7 +6977,7 @@ func encodeTestRequestRequiredStringInt8NullableRequest(
 }
 
 func encodeTestRequestRequiredStringInt8NullableArrayRequest(
-	req []NilInt8,
+	req []NilStringInt8,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -6995,7 +6995,7 @@ func encodeTestRequestRequiredStringInt8NullableArrayRequest(
 }
 
 func encodeTestRequestRequiredStringInt8NullableArrayArrayRequest(
-	req [][]NilInt8,
+	req [][]NilStringInt8,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -7057,7 +7057,7 @@ func encodeTestRequestRequiredStringIntArrayArrayRequest(
 }
 
 func encodeTestRequestRequiredStringIntNullableRequest(
-	req NilInt,
+	req NilStringInt,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -7071,7 +7071,7 @@ func encodeTestRequestRequiredStringIntNullableRequest(
 }
 
 func encodeTestRequestRequiredStringIntNullableArrayRequest(
-	req []NilInt,
+	req []NilStringInt,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -7089,7 +7089,7 @@ func encodeTestRequestRequiredStringIntNullableArrayRequest(
 }
 
 func encodeTestRequestRequiredStringIntNullableArrayArrayRequest(
-	req [][]NilInt,
+	req [][]NilStringInt,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -7881,7 +7881,7 @@ func encodeTestRequestRequiredStringUint16ArrayArrayRequest(
 }
 
 func encodeTestRequestRequiredStringUint16NullableRequest(
-	req NilUint16,
+	req NilStringUint16,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -7895,7 +7895,7 @@ func encodeTestRequestRequiredStringUint16NullableRequest(
 }
 
 func encodeTestRequestRequiredStringUint16NullableArrayRequest(
-	req []NilUint16,
+	req []NilStringUint16,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -7913,7 +7913,7 @@ func encodeTestRequestRequiredStringUint16NullableArrayRequest(
 }
 
 func encodeTestRequestRequiredStringUint16NullableArrayArrayRequest(
-	req [][]NilUint16,
+	req [][]NilStringUint16,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -7989,7 +7989,7 @@ func encodeTestRequestRequiredStringUint32ArrayArrayRequest(
 }
 
 func encodeTestRequestRequiredStringUint32NullableRequest(
-	req NilUint32,
+	req NilStringUint32,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -8003,7 +8003,7 @@ func encodeTestRequestRequiredStringUint32NullableRequest(
 }
 
 func encodeTestRequestRequiredStringUint32NullableArrayRequest(
-	req []NilUint32,
+	req []NilStringUint32,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -8021,7 +8021,7 @@ func encodeTestRequestRequiredStringUint32NullableArrayRequest(
 }
 
 func encodeTestRequestRequiredStringUint32NullableArrayArrayRequest(
-	req [][]NilUint32,
+	req [][]NilStringUint32,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -8097,7 +8097,7 @@ func encodeTestRequestRequiredStringUint64ArrayArrayRequest(
 }
 
 func encodeTestRequestRequiredStringUint64NullableRequest(
-	req NilUint64,
+	req NilStringUint64,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -8111,7 +8111,7 @@ func encodeTestRequestRequiredStringUint64NullableRequest(
 }
 
 func encodeTestRequestRequiredStringUint64NullableArrayRequest(
-	req []NilUint64,
+	req []NilStringUint64,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -8129,7 +8129,7 @@ func encodeTestRequestRequiredStringUint64NullableArrayRequest(
 }
 
 func encodeTestRequestRequiredStringUint64NullableArrayArrayRequest(
-	req [][]NilUint64,
+	req [][]NilStringUint64,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -8205,7 +8205,7 @@ func encodeTestRequestRequiredStringUint8ArrayArrayRequest(
 }
 
 func encodeTestRequestRequiredStringUint8NullableRequest(
-	req NilUint8,
+	req NilStringUint8,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -8219,7 +8219,7 @@ func encodeTestRequestRequiredStringUint8NullableRequest(
 }
 
 func encodeTestRequestRequiredStringUint8NullableArrayRequest(
-	req []NilUint8,
+	req []NilStringUint8,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -8237,7 +8237,7 @@ func encodeTestRequestRequiredStringUint8NullableArrayRequest(
 }
 
 func encodeTestRequestRequiredStringUint8NullableArrayArrayRequest(
-	req [][]NilUint8,
+	req [][]NilStringUint8,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -8299,7 +8299,7 @@ func encodeTestRequestRequiredStringUintArrayArrayRequest(
 }
 
 func encodeTestRequestRequiredStringUintNullableRequest(
-	req NilUint,
+	req NilStringUint,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -8313,7 +8313,7 @@ func encodeTestRequestRequiredStringUintNullableRequest(
 }
 
 func encodeTestRequestRequiredStringUintNullableArrayRequest(
-	req []NilUint,
+	req []NilStringUint,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -8331,7 +8331,7 @@ func encodeTestRequestRequiredStringUintNullableArrayRequest(
 }
 
 func encodeTestRequestRequiredStringUintNullableArrayArrayRequest(
-	req [][]NilUint,
+	req [][]NilStringUint,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -9841,7 +9841,7 @@ func encodeTestRequestStringEmailNullableArrayArrayRequest(
 }
 
 func encodeTestRequestStringFloat32Request(
-	req OptFloat32,
+	req OptStringFloat32,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -9905,7 +9905,7 @@ func encodeTestRequestStringFloat32ArrayArrayRequest(
 }
 
 func encodeTestRequestStringFloat32NullableRequest(
-	req OptNilFloat32,
+	req OptNilStringFloat32,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -9925,7 +9925,7 @@ func encodeTestRequestStringFloat32NullableRequest(
 }
 
 func encodeTestRequestStringFloat32NullableArrayRequest(
-	req []NilFloat32,
+	req []NilStringFloat32,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -9945,7 +9945,7 @@ func encodeTestRequestStringFloat32NullableArrayRequest(
 }
 
 func encodeTestRequestStringFloat32NullableArrayArrayRequest(
-	req [][]NilFloat32,
+	req [][]NilStringFloat32,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -9969,7 +9969,7 @@ func encodeTestRequestStringFloat32NullableArrayArrayRequest(
 }
 
 func encodeTestRequestStringFloat64Request(
-	req OptFloat64,
+	req OptStringFloat64,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -10033,7 +10033,7 @@ func encodeTestRequestStringFloat64ArrayArrayRequest(
 }
 
 func encodeTestRequestStringFloat64NullableRequest(
-	req OptNilFloat64,
+	req OptNilStringFloat64,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -10053,7 +10053,7 @@ func encodeTestRequestStringFloat64NullableRequest(
 }
 
 func encodeTestRequestStringFloat64NullableArrayRequest(
-	req []NilFloat64,
+	req []NilStringFloat64,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -10073,7 +10073,7 @@ func encodeTestRequestStringFloat64NullableArrayRequest(
 }
 
 func encodeTestRequestStringFloat64NullableArrayArrayRequest(
-	req [][]NilFloat64,
+	req [][]NilStringFloat64,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -10353,7 +10353,7 @@ func encodeTestRequestStringIPNullableArrayArrayRequest(
 }
 
 func encodeTestRequestStringIntRequest(
-	req OptInt,
+	req OptStringInt,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -10373,7 +10373,7 @@ func encodeTestRequestStringIntRequest(
 }
 
 func encodeTestRequestStringInt16Request(
-	req OptInt16,
+	req OptStringInt16,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -10437,7 +10437,7 @@ func encodeTestRequestStringInt16ArrayArrayRequest(
 }
 
 func encodeTestRequestStringInt16NullableRequest(
-	req OptNilInt16,
+	req OptNilStringInt16,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -10457,7 +10457,7 @@ func encodeTestRequestStringInt16NullableRequest(
 }
 
 func encodeTestRequestStringInt16NullableArrayRequest(
-	req []NilInt16,
+	req []NilStringInt16,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -10477,7 +10477,7 @@ func encodeTestRequestStringInt16NullableArrayRequest(
 }
 
 func encodeTestRequestStringInt16NullableArrayArrayRequest(
-	req [][]NilInt16,
+	req [][]NilStringInt16,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -10757,7 +10757,7 @@ func encodeTestRequestStringInt64NullableArrayArrayRequest(
 }
 
 func encodeTestRequestStringInt8Request(
-	req OptInt8,
+	req OptStringInt8,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -10821,7 +10821,7 @@ func encodeTestRequestStringInt8ArrayArrayRequest(
 }
 
 func encodeTestRequestStringInt8NullableRequest(
-	req OptNilInt8,
+	req OptNilStringInt8,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -10841,7 +10841,7 @@ func encodeTestRequestStringInt8NullableRequest(
 }
 
 func encodeTestRequestStringInt8NullableArrayRequest(
-	req []NilInt8,
+	req []NilStringInt8,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -10861,7 +10861,7 @@ func encodeTestRequestStringInt8NullableArrayRequest(
 }
 
 func encodeTestRequestStringInt8NullableArrayArrayRequest(
-	req [][]NilInt8,
+	req [][]NilStringInt8,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -10929,7 +10929,7 @@ func encodeTestRequestStringIntArrayArrayRequest(
 }
 
 func encodeTestRequestStringIntNullableRequest(
-	req OptNilInt,
+	req OptNilStringInt,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -10949,7 +10949,7 @@ func encodeTestRequestStringIntNullableRequest(
 }
 
 func encodeTestRequestStringIntNullableArrayRequest(
-	req []NilInt,
+	req []NilStringInt,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -10969,7 +10969,7 @@ func encodeTestRequestStringIntNullableArrayRequest(
 }
 
 func encodeTestRequestStringIntNullableArrayArrayRequest(
-	req [][]NilInt,
+	req [][]NilStringInt,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -11825,7 +11825,7 @@ func encodeTestRequestStringUUIDNullableArrayArrayRequest(
 }
 
 func encodeTestRequestStringUintRequest(
-	req OptUint,
+	req OptStringUint,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -11845,7 +11845,7 @@ func encodeTestRequestStringUintRequest(
 }
 
 func encodeTestRequestStringUint16Request(
-	req OptUint16,
+	req OptStringUint16,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -11909,7 +11909,7 @@ func encodeTestRequestStringUint16ArrayArrayRequest(
 }
 
 func encodeTestRequestStringUint16NullableRequest(
-	req OptNilUint16,
+	req OptNilStringUint16,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -11929,7 +11929,7 @@ func encodeTestRequestStringUint16NullableRequest(
 }
 
 func encodeTestRequestStringUint16NullableArrayRequest(
-	req []NilUint16,
+	req []NilStringUint16,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -11949,7 +11949,7 @@ func encodeTestRequestStringUint16NullableArrayRequest(
 }
 
 func encodeTestRequestStringUint16NullableArrayArrayRequest(
-	req [][]NilUint16,
+	req [][]NilStringUint16,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -11973,7 +11973,7 @@ func encodeTestRequestStringUint16NullableArrayArrayRequest(
 }
 
 func encodeTestRequestStringUint32Request(
-	req OptUint32,
+	req OptStringUint32,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -12037,7 +12037,7 @@ func encodeTestRequestStringUint32ArrayArrayRequest(
 }
 
 func encodeTestRequestStringUint32NullableRequest(
-	req OptNilUint32,
+	req OptNilStringUint32,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -12057,7 +12057,7 @@ func encodeTestRequestStringUint32NullableRequest(
 }
 
 func encodeTestRequestStringUint32NullableArrayRequest(
-	req []NilUint32,
+	req []NilStringUint32,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -12077,7 +12077,7 @@ func encodeTestRequestStringUint32NullableArrayRequest(
 }
 
 func encodeTestRequestStringUint32NullableArrayArrayRequest(
-	req [][]NilUint32,
+	req [][]NilStringUint32,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -12101,7 +12101,7 @@ func encodeTestRequestStringUint32NullableArrayArrayRequest(
 }
 
 func encodeTestRequestStringUint64Request(
-	req OptUint64,
+	req OptStringUint64,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -12165,7 +12165,7 @@ func encodeTestRequestStringUint64ArrayArrayRequest(
 }
 
 func encodeTestRequestStringUint64NullableRequest(
-	req OptNilUint64,
+	req OptNilStringUint64,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -12185,7 +12185,7 @@ func encodeTestRequestStringUint64NullableRequest(
 }
 
 func encodeTestRequestStringUint64NullableArrayRequest(
-	req []NilUint64,
+	req []NilStringUint64,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -12205,7 +12205,7 @@ func encodeTestRequestStringUint64NullableArrayRequest(
 }
 
 func encodeTestRequestStringUint64NullableArrayArrayRequest(
-	req [][]NilUint64,
+	req [][]NilStringUint64,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -12229,7 +12229,7 @@ func encodeTestRequestStringUint64NullableArrayArrayRequest(
 }
 
 func encodeTestRequestStringUint8Request(
-	req OptUint8,
+	req OptStringUint8,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -12293,7 +12293,7 @@ func encodeTestRequestStringUint8ArrayArrayRequest(
 }
 
 func encodeTestRequestStringUint8NullableRequest(
-	req OptNilUint8,
+	req OptNilStringUint8,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -12313,7 +12313,7 @@ func encodeTestRequestStringUint8NullableRequest(
 }
 
 func encodeTestRequestStringUint8NullableArrayRequest(
-	req []NilUint8,
+	req []NilStringUint8,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -12333,7 +12333,7 @@ func encodeTestRequestStringUint8NullableArrayRequest(
 }
 
 func encodeTestRequestStringUint8NullableArrayArrayRequest(
-	req [][]NilUint8,
+	req [][]NilStringUint8,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -12401,7 +12401,7 @@ func encodeTestRequestStringUintArrayArrayRequest(
 }
 
 func encodeTestRequestStringUintNullableRequest(
-	req OptNilUint,
+	req OptNilStringUint,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -12421,7 +12421,7 @@ func encodeTestRequestStringUintNullableRequest(
 }
 
 func encodeTestRequestStringUintNullableArrayRequest(
-	req []NilUint,
+	req []NilStringUint,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -12441,7 +12441,7 @@ func encodeTestRequestStringUintNullableArrayRequest(
 }
 
 func encodeTestRequestStringUintNullableArrayArrayRequest(
-	req [][]NilUint,
+	req [][]NilStringUint,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"

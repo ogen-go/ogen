@@ -39132,7 +39132,7 @@ func decodeTestResponseStringFloat32ArrayArrayResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringFloat32NullableResponse(resp *http.Response) (res NilFloat32, _ error) {
+func decodeTestResponseStringFloat32NullableResponse(resp *http.Response) (res NilStringFloat32, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -39148,7 +39148,7 @@ func decodeTestResponseStringFloat32NullableResponse(resp *http.Response) (res N
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response NilFloat32
+			var response NilStringFloat32
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -39189,7 +39189,7 @@ func decodeTestResponseStringFloat32NullableResponse(resp *http.Response) (res N
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringFloat32NullableArrayResponse(resp *http.Response) (res []NilFloat32, _ error) {
+func decodeTestResponseStringFloat32NullableArrayResponse(resp *http.Response) (res []NilStringFloat32, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -39205,11 +39205,11 @@ func decodeTestResponseStringFloat32NullableArrayResponse(resp *http.Response) (
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response []NilFloat32
+			var response []NilStringFloat32
 			if err := func() error {
-				response = make([]NilFloat32, 0)
+				response = make([]NilStringFloat32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem NilFloat32
+					var elem NilStringFloat32
 					if err := elem.Decode(d); err != nil {
 						return err
 					}
@@ -39271,7 +39271,7 @@ func decodeTestResponseStringFloat32NullableArrayResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringFloat32NullableArrayArrayResponse(resp *http.Response) (res [][]NilFloat32, _ error) {
+func decodeTestResponseStringFloat32NullableArrayArrayResponse(resp *http.Response) (res [][]NilStringFloat32, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -39287,14 +39287,14 @@ func decodeTestResponseStringFloat32NullableArrayArrayResponse(resp *http.Respon
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response [][]NilFloat32
+			var response [][]NilStringFloat32
 			if err := func() error {
-				response = make([][]NilFloat32, 0)
+				response = make([][]NilStringFloat32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []NilFloat32
-					elem = make([]NilFloat32, 0)
+					var elem []NilStringFloat32
+					elem = make([]NilStringFloat32, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem NilFloat32
+						var elemElem NilStringFloat32
 						if err := elemElem.Decode(d); err != nil {
 							return err
 						}
@@ -39609,7 +39609,7 @@ func decodeTestResponseStringFloat64ArrayArrayResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringFloat64NullableResponse(resp *http.Response) (res NilFloat64, _ error) {
+func decodeTestResponseStringFloat64NullableResponse(resp *http.Response) (res NilStringFloat64, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -39625,7 +39625,7 @@ func decodeTestResponseStringFloat64NullableResponse(resp *http.Response) (res N
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response NilFloat64
+			var response NilStringFloat64
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -39666,7 +39666,7 @@ func decodeTestResponseStringFloat64NullableResponse(resp *http.Response) (res N
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringFloat64NullableArrayResponse(resp *http.Response) (res []NilFloat64, _ error) {
+func decodeTestResponseStringFloat64NullableArrayResponse(resp *http.Response) (res []NilStringFloat64, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -39682,11 +39682,11 @@ func decodeTestResponseStringFloat64NullableArrayResponse(resp *http.Response) (
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response []NilFloat64
+			var response []NilStringFloat64
 			if err := func() error {
-				response = make([]NilFloat64, 0)
+				response = make([]NilStringFloat64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem NilFloat64
+					var elem NilStringFloat64
 					if err := elem.Decode(d); err != nil {
 						return err
 					}
@@ -39748,7 +39748,7 @@ func decodeTestResponseStringFloat64NullableArrayResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringFloat64NullableArrayArrayResponse(resp *http.Response) (res [][]NilFloat64, _ error) {
+func decodeTestResponseStringFloat64NullableArrayArrayResponse(resp *http.Response) (res [][]NilStringFloat64, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -39764,14 +39764,14 @@ func decodeTestResponseStringFloat64NullableArrayArrayResponse(resp *http.Respon
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response [][]NilFloat64
+			var response [][]NilStringFloat64
 			if err := func() error {
-				response = make([][]NilFloat64, 0)
+				response = make([][]NilStringFloat64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []NilFloat64
-					elem = make([]NilFloat64, 0)
+					var elem []NilStringFloat64
+					elem = make([]NilStringFloat64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem NilFloat64
+						var elemElem NilStringFloat64
 						if err := elemElem.Decode(d); err != nil {
 							return err
 						}
@@ -40981,7 +40981,7 @@ func decodeTestResponseStringInt16ArrayArrayResponse(resp *http.Response) (res [
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringInt16NullableResponse(resp *http.Response) (res NilInt16, _ error) {
+func decodeTestResponseStringInt16NullableResponse(resp *http.Response) (res NilStringInt16, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -40997,7 +40997,7 @@ func decodeTestResponseStringInt16NullableResponse(resp *http.Response) (res Nil
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response NilInt16
+			var response NilStringInt16
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -41022,7 +41022,7 @@ func decodeTestResponseStringInt16NullableResponse(resp *http.Response) (res Nil
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringInt16NullableArrayResponse(resp *http.Response) (res []NilInt16, _ error) {
+func decodeTestResponseStringInt16NullableArrayResponse(resp *http.Response) (res []NilStringInt16, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -41038,11 +41038,11 @@ func decodeTestResponseStringInt16NullableArrayResponse(resp *http.Response) (re
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response []NilInt16
+			var response []NilStringInt16
 			if err := func() error {
-				response = make([]NilInt16, 0)
+				response = make([]NilStringInt16, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem NilInt16
+					var elem NilStringInt16
 					if err := elem.Decode(d); err != nil {
 						return err
 					}
@@ -41080,7 +41080,7 @@ func decodeTestResponseStringInt16NullableArrayResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringInt16NullableArrayArrayResponse(resp *http.Response) (res [][]NilInt16, _ error) {
+func decodeTestResponseStringInt16NullableArrayArrayResponse(resp *http.Response) (res [][]NilStringInt16, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -41096,14 +41096,14 @@ func decodeTestResponseStringInt16NullableArrayArrayResponse(resp *http.Response
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response [][]NilInt16
+			var response [][]NilStringInt16
 			if err := func() error {
-				response = make([][]NilInt16, 0)
+				response = make([][]NilStringInt16, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []NilInt16
-					elem = make([]NilInt16, 0)
+					var elem []NilStringInt16
+					elem = make([]NilStringInt16, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem NilInt16
+						var elemElem NilStringInt16
 						if err := elemElem.Decode(d); err != nil {
 							return err
 						}
@@ -42091,7 +42091,7 @@ func decodeTestResponseStringInt8ArrayArrayResponse(resp *http.Response) (res []
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringInt8NullableResponse(resp *http.Response) (res NilInt8, _ error) {
+func decodeTestResponseStringInt8NullableResponse(resp *http.Response) (res NilStringInt8, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -42107,7 +42107,7 @@ func decodeTestResponseStringInt8NullableResponse(resp *http.Response) (res NilI
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response NilInt8
+			var response NilStringInt8
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -42132,7 +42132,7 @@ func decodeTestResponseStringInt8NullableResponse(resp *http.Response) (res NilI
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringInt8NullableArrayResponse(resp *http.Response) (res []NilInt8, _ error) {
+func decodeTestResponseStringInt8NullableArrayResponse(resp *http.Response) (res []NilStringInt8, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -42148,11 +42148,11 @@ func decodeTestResponseStringInt8NullableArrayResponse(resp *http.Response) (res
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response []NilInt8
+			var response []NilStringInt8
 			if err := func() error {
-				response = make([]NilInt8, 0)
+				response = make([]NilStringInt8, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem NilInt8
+					var elem NilStringInt8
 					if err := elem.Decode(d); err != nil {
 						return err
 					}
@@ -42190,7 +42190,7 @@ func decodeTestResponseStringInt8NullableArrayResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringInt8NullableArrayArrayResponse(resp *http.Response) (res [][]NilInt8, _ error) {
+func decodeTestResponseStringInt8NullableArrayArrayResponse(resp *http.Response) (res [][]NilStringInt8, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -42206,14 +42206,14 @@ func decodeTestResponseStringInt8NullableArrayArrayResponse(resp *http.Response)
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response [][]NilInt8
+			var response [][]NilStringInt8
 			if err := func() error {
-				response = make([][]NilInt8, 0)
+				response = make([][]NilStringInt8, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []NilInt8
-					elem = make([]NilInt8, 0)
+					var elem []NilStringInt8
+					elem = make([]NilStringInt8, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem NilInt8
+						var elemElem NilStringInt8
 						if err := elemElem.Decode(d); err != nil {
 							return err
 						}
@@ -42418,7 +42418,7 @@ func decodeTestResponseStringIntArrayArrayResponse(resp *http.Response) (res [][
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringIntNullableResponse(resp *http.Response) (res NilInt, _ error) {
+func decodeTestResponseStringIntNullableResponse(resp *http.Response) (res NilStringInt, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -42434,7 +42434,7 @@ func decodeTestResponseStringIntNullableResponse(resp *http.Response) (res NilIn
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response NilInt
+			var response NilStringInt
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -42459,7 +42459,7 @@ func decodeTestResponseStringIntNullableResponse(resp *http.Response) (res NilIn
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringIntNullableArrayResponse(resp *http.Response) (res []NilInt, _ error) {
+func decodeTestResponseStringIntNullableArrayResponse(resp *http.Response) (res []NilStringInt, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -42475,11 +42475,11 @@ func decodeTestResponseStringIntNullableArrayResponse(resp *http.Response) (res 
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response []NilInt
+			var response []NilStringInt
 			if err := func() error {
-				response = make([]NilInt, 0)
+				response = make([]NilStringInt, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem NilInt
+					var elem NilStringInt
 					if err := elem.Decode(d); err != nil {
 						return err
 					}
@@ -42517,7 +42517,7 @@ func decodeTestResponseStringIntNullableArrayResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringIntNullableArrayArrayResponse(resp *http.Response) (res [][]NilInt, _ error) {
+func decodeTestResponseStringIntNullableArrayArrayResponse(resp *http.Response) (res [][]NilStringInt, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -42533,14 +42533,14 @@ func decodeTestResponseStringIntNullableArrayArrayResponse(resp *http.Response) 
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response [][]NilInt
+			var response [][]NilStringInt
 			if err := func() error {
-				response = make([][]NilInt, 0)
+				response = make([][]NilStringInt, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []NilInt
-					elem = make([]NilInt, 0)
+					var elem []NilStringInt
+					elem = make([]NilStringInt, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem NilInt
+						var elemElem NilStringInt
 						if err := elemElem.Decode(d); err != nil {
 							return err
 						}
@@ -45233,7 +45233,7 @@ func decodeTestResponseStringUint16ArrayArrayResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUint16NullableResponse(resp *http.Response) (res NilUint16, _ error) {
+func decodeTestResponseStringUint16NullableResponse(resp *http.Response) (res NilStringUint16, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -45249,7 +45249,7 @@ func decodeTestResponseStringUint16NullableResponse(resp *http.Response) (res Ni
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response NilUint16
+			var response NilStringUint16
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -45274,7 +45274,7 @@ func decodeTestResponseStringUint16NullableResponse(resp *http.Response) (res Ni
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUint16NullableArrayResponse(resp *http.Response) (res []NilUint16, _ error) {
+func decodeTestResponseStringUint16NullableArrayResponse(resp *http.Response) (res []NilStringUint16, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -45290,11 +45290,11 @@ func decodeTestResponseStringUint16NullableArrayResponse(resp *http.Response) (r
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response []NilUint16
+			var response []NilStringUint16
 			if err := func() error {
-				response = make([]NilUint16, 0)
+				response = make([]NilStringUint16, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem NilUint16
+					var elem NilStringUint16
 					if err := elem.Decode(d); err != nil {
 						return err
 					}
@@ -45332,7 +45332,7 @@ func decodeTestResponseStringUint16NullableArrayResponse(resp *http.Response) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUint16NullableArrayArrayResponse(resp *http.Response) (res [][]NilUint16, _ error) {
+func decodeTestResponseStringUint16NullableArrayArrayResponse(resp *http.Response) (res [][]NilStringUint16, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -45348,14 +45348,14 @@ func decodeTestResponseStringUint16NullableArrayArrayResponse(resp *http.Respons
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response [][]NilUint16
+			var response [][]NilStringUint16
 			if err := func() error {
-				response = make([][]NilUint16, 0)
+				response = make([][]NilStringUint16, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []NilUint16
-					elem = make([]NilUint16, 0)
+					var elem []NilStringUint16
+					elem = make([]NilStringUint16, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem NilUint16
+						var elemElem NilStringUint16
 						if err := elemElem.Decode(d); err != nil {
 							return err
 						}
@@ -45603,7 +45603,7 @@ func decodeTestResponseStringUint32ArrayArrayResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUint32NullableResponse(resp *http.Response) (res NilUint32, _ error) {
+func decodeTestResponseStringUint32NullableResponse(resp *http.Response) (res NilStringUint32, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -45619,7 +45619,7 @@ func decodeTestResponseStringUint32NullableResponse(resp *http.Response) (res Ni
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response NilUint32
+			var response NilStringUint32
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -45644,7 +45644,7 @@ func decodeTestResponseStringUint32NullableResponse(resp *http.Response) (res Ni
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUint32NullableArrayResponse(resp *http.Response) (res []NilUint32, _ error) {
+func decodeTestResponseStringUint32NullableArrayResponse(resp *http.Response) (res []NilStringUint32, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -45660,11 +45660,11 @@ func decodeTestResponseStringUint32NullableArrayResponse(resp *http.Response) (r
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response []NilUint32
+			var response []NilStringUint32
 			if err := func() error {
-				response = make([]NilUint32, 0)
+				response = make([]NilStringUint32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem NilUint32
+					var elem NilStringUint32
 					if err := elem.Decode(d); err != nil {
 						return err
 					}
@@ -45702,7 +45702,7 @@ func decodeTestResponseStringUint32NullableArrayResponse(resp *http.Response) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUint32NullableArrayArrayResponse(resp *http.Response) (res [][]NilUint32, _ error) {
+func decodeTestResponseStringUint32NullableArrayArrayResponse(resp *http.Response) (res [][]NilStringUint32, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -45718,14 +45718,14 @@ func decodeTestResponseStringUint32NullableArrayArrayResponse(resp *http.Respons
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response [][]NilUint32
+			var response [][]NilStringUint32
 			if err := func() error {
-				response = make([][]NilUint32, 0)
+				response = make([][]NilStringUint32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []NilUint32
-					elem = make([]NilUint32, 0)
+					var elem []NilStringUint32
+					elem = make([]NilStringUint32, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem NilUint32
+						var elemElem NilStringUint32
 						if err := elemElem.Decode(d); err != nil {
 							return err
 						}
@@ -45973,7 +45973,7 @@ func decodeTestResponseStringUint64ArrayArrayResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUint64NullableResponse(resp *http.Response) (res NilUint64, _ error) {
+func decodeTestResponseStringUint64NullableResponse(resp *http.Response) (res NilStringUint64, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -45989,7 +45989,7 @@ func decodeTestResponseStringUint64NullableResponse(resp *http.Response) (res Ni
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response NilUint64
+			var response NilStringUint64
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -46014,7 +46014,7 @@ func decodeTestResponseStringUint64NullableResponse(resp *http.Response) (res Ni
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUint64NullableArrayResponse(resp *http.Response) (res []NilUint64, _ error) {
+func decodeTestResponseStringUint64NullableArrayResponse(resp *http.Response) (res []NilStringUint64, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -46030,11 +46030,11 @@ func decodeTestResponseStringUint64NullableArrayResponse(resp *http.Response) (r
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response []NilUint64
+			var response []NilStringUint64
 			if err := func() error {
-				response = make([]NilUint64, 0)
+				response = make([]NilStringUint64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem NilUint64
+					var elem NilStringUint64
 					if err := elem.Decode(d); err != nil {
 						return err
 					}
@@ -46072,7 +46072,7 @@ func decodeTestResponseStringUint64NullableArrayResponse(resp *http.Response) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUint64NullableArrayArrayResponse(resp *http.Response) (res [][]NilUint64, _ error) {
+func decodeTestResponseStringUint64NullableArrayArrayResponse(resp *http.Response) (res [][]NilStringUint64, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -46088,14 +46088,14 @@ func decodeTestResponseStringUint64NullableArrayArrayResponse(resp *http.Respons
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response [][]NilUint64
+			var response [][]NilStringUint64
 			if err := func() error {
-				response = make([][]NilUint64, 0)
+				response = make([][]NilStringUint64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []NilUint64
-					elem = make([]NilUint64, 0)
+					var elem []NilStringUint64
+					elem = make([]NilStringUint64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem NilUint64
+						var elemElem NilStringUint64
 						if err := elemElem.Decode(d); err != nil {
 							return err
 						}
@@ -46343,7 +46343,7 @@ func decodeTestResponseStringUint8ArrayArrayResponse(resp *http.Response) (res [
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUint8NullableResponse(resp *http.Response) (res NilUint8, _ error) {
+func decodeTestResponseStringUint8NullableResponse(resp *http.Response) (res NilStringUint8, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -46359,7 +46359,7 @@ func decodeTestResponseStringUint8NullableResponse(resp *http.Response) (res Nil
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response NilUint8
+			var response NilStringUint8
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -46384,7 +46384,7 @@ func decodeTestResponseStringUint8NullableResponse(resp *http.Response) (res Nil
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUint8NullableArrayResponse(resp *http.Response) (res []NilUint8, _ error) {
+func decodeTestResponseStringUint8NullableArrayResponse(resp *http.Response) (res []NilStringUint8, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -46400,11 +46400,11 @@ func decodeTestResponseStringUint8NullableArrayResponse(resp *http.Response) (re
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response []NilUint8
+			var response []NilStringUint8
 			if err := func() error {
-				response = make([]NilUint8, 0)
+				response = make([]NilStringUint8, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem NilUint8
+					var elem NilStringUint8
 					if err := elem.Decode(d); err != nil {
 						return err
 					}
@@ -46442,7 +46442,7 @@ func decodeTestResponseStringUint8NullableArrayResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUint8NullableArrayArrayResponse(resp *http.Response) (res [][]NilUint8, _ error) {
+func decodeTestResponseStringUint8NullableArrayArrayResponse(resp *http.Response) (res [][]NilStringUint8, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -46458,14 +46458,14 @@ func decodeTestResponseStringUint8NullableArrayArrayResponse(resp *http.Response
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response [][]NilUint8
+			var response [][]NilStringUint8
 			if err := func() error {
-				response = make([][]NilUint8, 0)
+				response = make([][]NilStringUint8, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []NilUint8
-					elem = make([]NilUint8, 0)
+					var elem []NilStringUint8
+					elem = make([]NilStringUint8, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem NilUint8
+						var elemElem NilStringUint8
 						if err := elemElem.Decode(d); err != nil {
 							return err
 						}
@@ -46670,7 +46670,7 @@ func decodeTestResponseStringUintArrayArrayResponse(resp *http.Response) (res []
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUintNullableResponse(resp *http.Response) (res NilUint, _ error) {
+func decodeTestResponseStringUintNullableResponse(resp *http.Response) (res NilStringUint, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -46686,7 +46686,7 @@ func decodeTestResponseStringUintNullableResponse(resp *http.Response) (res NilU
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response NilUint
+			var response NilStringUint
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -46711,7 +46711,7 @@ func decodeTestResponseStringUintNullableResponse(resp *http.Response) (res NilU
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUintNullableArrayResponse(resp *http.Response) (res []NilUint, _ error) {
+func decodeTestResponseStringUintNullableArrayResponse(resp *http.Response) (res []NilStringUint, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -46727,11 +46727,11 @@ func decodeTestResponseStringUintNullableArrayResponse(resp *http.Response) (res
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response []NilUint
+			var response []NilStringUint
 			if err := func() error {
-				response = make([]NilUint, 0)
+				response = make([]NilStringUint, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem NilUint
+					var elem NilStringUint
 					if err := elem.Decode(d); err != nil {
 						return err
 					}
@@ -46769,7 +46769,7 @@ func decodeTestResponseStringUintNullableArrayResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUintNullableArrayArrayResponse(resp *http.Response) (res [][]NilUint, _ error) {
+func decodeTestResponseStringUintNullableArrayArrayResponse(resp *http.Response) (res [][]NilStringUint, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -46785,14 +46785,14 @@ func decodeTestResponseStringUintNullableArrayArrayResponse(resp *http.Response)
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response [][]NilUint
+			var response [][]NilStringUint
 			if err := func() error {
-				response = make([][]NilUint, 0)
+				response = make([][]NilStringUint, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []NilUint
-					elem = make([]NilUint, 0)
+					var elem []NilStringUint
+					elem = make([]NilStringUint, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem NilUint
+						var elemElem NilStringUint
 						if err := elemElem.Decode(d); err != nil {
 							return err
 						}
