@@ -218,7 +218,9 @@ func (t *Type) NamePostfix() string {
 			return "IPv6"
 		case "uri":
 			return "URI"
-		case "int32", "int64":
+		case "int", "int8", "int16", "int32", "int64",
+			"uint", "uint8", "uint16", "uint32", "uint64",
+			"float32", "float64":
 			if s.Type != jsonschema.String {
 				return t.Primitive.String()
 			}
