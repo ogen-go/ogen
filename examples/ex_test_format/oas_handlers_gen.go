@@ -33712,7 +33712,7 @@ func (s *Server) handleTestRequestRequiredStringFloat32NullableRequest(args [0]s
 		}
 
 		type (
-			Request  = NilFloat32
+			Request  = NilStringFloat32
 			Params   = struct{}
 			Response = *Error
 		)
@@ -33816,7 +33816,7 @@ func (s *Server) handleTestRequestRequiredStringFloat32NullableArrayRequest(args
 		}
 
 		type (
-			Request  = []NilFloat32
+			Request  = []NilStringFloat32
 			Params   = struct{}
 			Response = *Error
 		)
@@ -33920,7 +33920,7 @@ func (s *Server) handleTestRequestRequiredStringFloat32NullableArrayArrayRequest
 		}
 
 		type (
-			Request  = [][]NilFloat32
+			Request  = [][]NilStringFloat32
 			Params   = struct{}
 			Response = *Error
 		)
@@ -34336,7 +34336,7 @@ func (s *Server) handleTestRequestRequiredStringFloat64NullableRequest(args [0]s
 		}
 
 		type (
-			Request  = NilFloat64
+			Request  = NilStringFloat64
 			Params   = struct{}
 			Response = *Error
 		)
@@ -34440,7 +34440,7 @@ func (s *Server) handleTestRequestRequiredStringFloat64NullableArrayRequest(args
 		}
 
 		type (
-			Request  = []NilFloat64
+			Request  = []NilStringFloat64
 			Params   = struct{}
 			Response = *Error
 		)
@@ -34544,7 +34544,7 @@ func (s *Server) handleTestRequestRequiredStringFloat64NullableArrayArrayRequest
 		}
 
 		type (
-			Request  = [][]NilFloat64
+			Request  = [][]NilStringFloat64
 			Params   = struct{}
 			Response = *Error
 		)
@@ -36312,7 +36312,7 @@ func (s *Server) handleTestRequestRequiredStringInt16NullableRequest(args [0]str
 		}
 
 		type (
-			Request  = NilInt16
+			Request  = NilStringInt16
 			Params   = struct{}
 			Response = *Error
 		)
@@ -36416,7 +36416,7 @@ func (s *Server) handleTestRequestRequiredStringInt16NullableArrayRequest(args [
 		}
 
 		type (
-			Request  = []NilInt16
+			Request  = []NilStringInt16
 			Params   = struct{}
 			Response = *Error
 		)
@@ -36520,7 +36520,7 @@ func (s *Server) handleTestRequestRequiredStringInt16NullableArrayArrayRequest(a
 		}
 
 		type (
-			Request  = [][]NilInt16
+			Request  = [][]NilStringInt16
 			Params   = struct{}
 			Response = *Error
 		)
@@ -38184,7 +38184,7 @@ func (s *Server) handleTestRequestRequiredStringInt8NullableRequest(args [0]stri
 		}
 
 		type (
-			Request  = NilInt8
+			Request  = NilStringInt8
 			Params   = struct{}
 			Response = *Error
 		)
@@ -38288,7 +38288,7 @@ func (s *Server) handleTestRequestRequiredStringInt8NullableArrayRequest(args [0
 		}
 
 		type (
-			Request  = []NilInt8
+			Request  = []NilStringInt8
 			Params   = struct{}
 			Response = *Error
 		)
@@ -38392,7 +38392,7 @@ func (s *Server) handleTestRequestRequiredStringInt8NullableArrayArrayRequest(ar
 		}
 
 		type (
-			Request  = [][]NilInt8
+			Request  = [][]NilStringInt8
 			Params   = struct{}
 			Response = *Error
 		)
@@ -38704,7 +38704,7 @@ func (s *Server) handleTestRequestRequiredStringIntNullableRequest(args [0]strin
 		}
 
 		type (
-			Request  = NilInt
+			Request  = NilStringInt
 			Params   = struct{}
 			Response = *Error
 		)
@@ -38808,7 +38808,7 @@ func (s *Server) handleTestRequestRequiredStringIntNullableArrayRequest(args [0]
 		}
 
 		type (
-			Request  = []NilInt
+			Request  = []NilStringInt
 			Params   = struct{}
 			Response = *Error
 		)
@@ -38912,7 +38912,7 @@ func (s *Server) handleTestRequestRequiredStringIntNullableArrayArrayRequest(arg
 		}
 
 		type (
-			Request  = [][]NilInt
+			Request  = [][]NilStringInt
 			Params   = struct{}
 			Response = *Error
 		)
@@ -43488,7 +43488,7 @@ func (s *Server) handleTestRequestRequiredStringUint16NullableRequest(args [0]st
 		}
 
 		type (
-			Request  = NilUint16
+			Request  = NilStringUint16
 			Params   = struct{}
 			Response = *Error
 		)
@@ -43592,7 +43592,7 @@ func (s *Server) handleTestRequestRequiredStringUint16NullableArrayRequest(args 
 		}
 
 		type (
-			Request  = []NilUint16
+			Request  = []NilStringUint16
 			Params   = struct{}
 			Response = *Error
 		)
@@ -43696,7 +43696,7 @@ func (s *Server) handleTestRequestRequiredStringUint16NullableArrayArrayRequest(
 		}
 
 		type (
-			Request  = [][]NilUint16
+			Request  = [][]NilStringUint16
 			Params   = struct{}
 			Response = *Error
 		)
@@ -44112,7 +44112,7 @@ func (s *Server) handleTestRequestRequiredStringUint32NullableRequest(args [0]st
 		}
 
 		type (
-			Request  = NilUint32
+			Request  = NilStringUint32
 			Params   = struct{}
 			Response = *Error
 		)
@@ -44216,7 +44216,7 @@ func (s *Server) handleTestRequestRequiredStringUint32NullableArrayRequest(args 
 		}
 
 		type (
-			Request  = []NilUint32
+			Request  = []NilStringUint32
 			Params   = struct{}
 			Response = *Error
 		)
@@ -44320,7 +44320,7 @@ func (s *Server) handleTestRequestRequiredStringUint32NullableArrayArrayRequest(
 		}
 
 		type (
-			Request  = [][]NilUint32
+			Request  = [][]NilStringUint32
 			Params   = struct{}
 			Response = *Error
 		)
@@ -44736,7 +44736,7 @@ func (s *Server) handleTestRequestRequiredStringUint64NullableRequest(args [0]st
 		}
 
 		type (
-			Request  = NilUint64
+			Request  = NilStringUint64
 			Params   = struct{}
 			Response = *Error
 		)
@@ -44840,7 +44840,7 @@ func (s *Server) handleTestRequestRequiredStringUint64NullableArrayRequest(args 
 		}
 
 		type (
-			Request  = []NilUint64
+			Request  = []NilStringUint64
 			Params   = struct{}
 			Response = *Error
 		)
@@ -44944,7 +44944,7 @@ func (s *Server) handleTestRequestRequiredStringUint64NullableArrayArrayRequest(
 		}
 
 		type (
-			Request  = [][]NilUint64
+			Request  = [][]NilStringUint64
 			Params   = struct{}
 			Response = *Error
 		)
@@ -45360,7 +45360,7 @@ func (s *Server) handleTestRequestRequiredStringUint8NullableRequest(args [0]str
 		}
 
 		type (
-			Request  = NilUint8
+			Request  = NilStringUint8
 			Params   = struct{}
 			Response = *Error
 		)
@@ -45464,7 +45464,7 @@ func (s *Server) handleTestRequestRequiredStringUint8NullableArrayRequest(args [
 		}
 
 		type (
-			Request  = []NilUint8
+			Request  = []NilStringUint8
 			Params   = struct{}
 			Response = *Error
 		)
@@ -45568,7 +45568,7 @@ func (s *Server) handleTestRequestRequiredStringUint8NullableArrayArrayRequest(a
 		}
 
 		type (
-			Request  = [][]NilUint8
+			Request  = [][]NilStringUint8
 			Params   = struct{}
 			Response = *Error
 		)
@@ -45880,7 +45880,7 @@ func (s *Server) handleTestRequestRequiredStringUintNullableRequest(args [0]stri
 		}
 
 		type (
-			Request  = NilUint
+			Request  = NilStringUint
 			Params   = struct{}
 			Response = *Error
 		)
@@ -45984,7 +45984,7 @@ func (s *Server) handleTestRequestRequiredStringUintNullableArrayRequest(args [0
 		}
 
 		type (
-			Request  = []NilUint
+			Request  = []NilStringUint
 			Params   = struct{}
 			Response = *Error
 		)
@@ -46088,7 +46088,7 @@ func (s *Server) handleTestRequestRequiredStringUintNullableArrayArrayRequest(ar
 		}
 
 		type (
-			Request  = [][]NilUint
+			Request  = [][]NilStringUint
 			Params   = struct{}
 			Response = *Error
 		)
@@ -53992,7 +53992,7 @@ func (s *Server) handleTestRequestStringFloat32Request(args [0]string, argsEscap
 		}
 
 		type (
-			Request  = OptFloat32
+			Request  = OptStringFloat32
 			Params   = struct{}
 			Response = *Error
 		)
@@ -54304,7 +54304,7 @@ func (s *Server) handleTestRequestStringFloat32NullableRequest(args [0]string, a
 		}
 
 		type (
-			Request  = OptNilFloat32
+			Request  = OptNilStringFloat32
 			Params   = struct{}
 			Response = *Error
 		)
@@ -54408,7 +54408,7 @@ func (s *Server) handleTestRequestStringFloat32NullableArrayRequest(args [0]stri
 		}
 
 		type (
-			Request  = []NilFloat32
+			Request  = []NilStringFloat32
 			Params   = struct{}
 			Response = *Error
 		)
@@ -54512,7 +54512,7 @@ func (s *Server) handleTestRequestStringFloat32NullableArrayArrayRequest(args [0
 		}
 
 		type (
-			Request  = [][]NilFloat32
+			Request  = [][]NilStringFloat32
 			Params   = struct{}
 			Response = *Error
 		)
@@ -54616,7 +54616,7 @@ func (s *Server) handleTestRequestStringFloat64Request(args [0]string, argsEscap
 		}
 
 		type (
-			Request  = OptFloat64
+			Request  = OptStringFloat64
 			Params   = struct{}
 			Response = *Error
 		)
@@ -54928,7 +54928,7 @@ func (s *Server) handleTestRequestStringFloat64NullableRequest(args [0]string, a
 		}
 
 		type (
-			Request  = OptNilFloat64
+			Request  = OptNilStringFloat64
 			Params   = struct{}
 			Response = *Error
 		)
@@ -55032,7 +55032,7 @@ func (s *Server) handleTestRequestStringFloat64NullableArrayRequest(args [0]stri
 		}
 
 		type (
-			Request  = []NilFloat64
+			Request  = []NilStringFloat64
 			Params   = struct{}
 			Response = *Error
 		)
@@ -55136,7 +55136,7 @@ func (s *Server) handleTestRequestStringFloat64NullableArrayArrayRequest(args [0
 		}
 
 		type (
-			Request  = [][]NilFloat64
+			Request  = [][]NilStringFloat64
 			Params   = struct{}
 			Response = *Error
 		)
@@ -56488,7 +56488,7 @@ func (s *Server) handleTestRequestStringIntRequest(args [0]string, argsEscaped b
 		}
 
 		type (
-			Request  = OptInt
+			Request  = OptStringInt
 			Params   = struct{}
 			Response = *Error
 		)
@@ -56592,7 +56592,7 @@ func (s *Server) handleTestRequestStringInt16Request(args [0]string, argsEscaped
 		}
 
 		type (
-			Request  = OptInt16
+			Request  = OptStringInt16
 			Params   = struct{}
 			Response = *Error
 		)
@@ -56904,7 +56904,7 @@ func (s *Server) handleTestRequestStringInt16NullableRequest(args [0]string, arg
 		}
 
 		type (
-			Request  = OptNilInt16
+			Request  = OptNilStringInt16
 			Params   = struct{}
 			Response = *Error
 		)
@@ -57008,7 +57008,7 @@ func (s *Server) handleTestRequestStringInt16NullableArrayRequest(args [0]string
 		}
 
 		type (
-			Request  = []NilInt16
+			Request  = []NilStringInt16
 			Params   = struct{}
 			Response = *Error
 		)
@@ -57112,7 +57112,7 @@ func (s *Server) handleTestRequestStringInt16NullableArrayArrayRequest(args [0]s
 		}
 
 		type (
-			Request  = [][]NilInt16
+			Request  = [][]NilStringInt16
 			Params   = struct{}
 			Response = *Error
 		)
@@ -58464,7 +58464,7 @@ func (s *Server) handleTestRequestStringInt8Request(args [0]string, argsEscaped 
 		}
 
 		type (
-			Request  = OptInt8
+			Request  = OptStringInt8
 			Params   = struct{}
 			Response = *Error
 		)
@@ -58776,7 +58776,7 @@ func (s *Server) handleTestRequestStringInt8NullableRequest(args [0]string, args
 		}
 
 		type (
-			Request  = OptNilInt8
+			Request  = OptNilStringInt8
 			Params   = struct{}
 			Response = *Error
 		)
@@ -58880,7 +58880,7 @@ func (s *Server) handleTestRequestStringInt8NullableArrayRequest(args [0]string,
 		}
 
 		type (
-			Request  = []NilInt8
+			Request  = []NilStringInt8
 			Params   = struct{}
 			Response = *Error
 		)
@@ -58984,7 +58984,7 @@ func (s *Server) handleTestRequestStringInt8NullableArrayArrayRequest(args [0]st
 		}
 
 		type (
-			Request  = [][]NilInt8
+			Request  = [][]NilStringInt8
 			Params   = struct{}
 			Response = *Error
 		)
@@ -59296,7 +59296,7 @@ func (s *Server) handleTestRequestStringIntNullableRequest(args [0]string, argsE
 		}
 
 		type (
-			Request  = OptNilInt
+			Request  = OptNilStringInt
 			Params   = struct{}
 			Response = *Error
 		)
@@ -59400,7 +59400,7 @@ func (s *Server) handleTestRequestStringIntNullableArrayRequest(args [0]string, 
 		}
 
 		type (
-			Request  = []NilInt
+			Request  = []NilStringInt
 			Params   = struct{}
 			Response = *Error
 		)
@@ -59504,7 +59504,7 @@ func (s *Server) handleTestRequestStringIntNullableArrayArrayRequest(args [0]str
 		}
 
 		type (
-			Request  = [][]NilInt
+			Request  = [][]NilStringInt
 			Params   = struct{}
 			Response = *Error
 		)
@@ -63664,7 +63664,7 @@ func (s *Server) handleTestRequestStringUintRequest(args [0]string, argsEscaped 
 		}
 
 		type (
-			Request  = OptUint
+			Request  = OptStringUint
 			Params   = struct{}
 			Response = *Error
 		)
@@ -63768,7 +63768,7 @@ func (s *Server) handleTestRequestStringUint16Request(args [0]string, argsEscape
 		}
 
 		type (
-			Request  = OptUint16
+			Request  = OptStringUint16
 			Params   = struct{}
 			Response = *Error
 		)
@@ -64080,7 +64080,7 @@ func (s *Server) handleTestRequestStringUint16NullableRequest(args [0]string, ar
 		}
 
 		type (
-			Request  = OptNilUint16
+			Request  = OptNilStringUint16
 			Params   = struct{}
 			Response = *Error
 		)
@@ -64184,7 +64184,7 @@ func (s *Server) handleTestRequestStringUint16NullableArrayRequest(args [0]strin
 		}
 
 		type (
-			Request  = []NilUint16
+			Request  = []NilStringUint16
 			Params   = struct{}
 			Response = *Error
 		)
@@ -64288,7 +64288,7 @@ func (s *Server) handleTestRequestStringUint16NullableArrayArrayRequest(args [0]
 		}
 
 		type (
-			Request  = [][]NilUint16
+			Request  = [][]NilStringUint16
 			Params   = struct{}
 			Response = *Error
 		)
@@ -64392,7 +64392,7 @@ func (s *Server) handleTestRequestStringUint32Request(args [0]string, argsEscape
 		}
 
 		type (
-			Request  = OptUint32
+			Request  = OptStringUint32
 			Params   = struct{}
 			Response = *Error
 		)
@@ -64704,7 +64704,7 @@ func (s *Server) handleTestRequestStringUint32NullableRequest(args [0]string, ar
 		}
 
 		type (
-			Request  = OptNilUint32
+			Request  = OptNilStringUint32
 			Params   = struct{}
 			Response = *Error
 		)
@@ -64808,7 +64808,7 @@ func (s *Server) handleTestRequestStringUint32NullableArrayRequest(args [0]strin
 		}
 
 		type (
-			Request  = []NilUint32
+			Request  = []NilStringUint32
 			Params   = struct{}
 			Response = *Error
 		)
@@ -64912,7 +64912,7 @@ func (s *Server) handleTestRequestStringUint32NullableArrayArrayRequest(args [0]
 		}
 
 		type (
-			Request  = [][]NilUint32
+			Request  = [][]NilStringUint32
 			Params   = struct{}
 			Response = *Error
 		)
@@ -65016,7 +65016,7 @@ func (s *Server) handleTestRequestStringUint64Request(args [0]string, argsEscape
 		}
 
 		type (
-			Request  = OptUint64
+			Request  = OptStringUint64
 			Params   = struct{}
 			Response = *Error
 		)
@@ -65328,7 +65328,7 @@ func (s *Server) handleTestRequestStringUint64NullableRequest(args [0]string, ar
 		}
 
 		type (
-			Request  = OptNilUint64
+			Request  = OptNilStringUint64
 			Params   = struct{}
 			Response = *Error
 		)
@@ -65432,7 +65432,7 @@ func (s *Server) handleTestRequestStringUint64NullableArrayRequest(args [0]strin
 		}
 
 		type (
-			Request  = []NilUint64
+			Request  = []NilStringUint64
 			Params   = struct{}
 			Response = *Error
 		)
@@ -65536,7 +65536,7 @@ func (s *Server) handleTestRequestStringUint64NullableArrayArrayRequest(args [0]
 		}
 
 		type (
-			Request  = [][]NilUint64
+			Request  = [][]NilStringUint64
 			Params   = struct{}
 			Response = *Error
 		)
@@ -65640,7 +65640,7 @@ func (s *Server) handleTestRequestStringUint8Request(args [0]string, argsEscaped
 		}
 
 		type (
-			Request  = OptUint8
+			Request  = OptStringUint8
 			Params   = struct{}
 			Response = *Error
 		)
@@ -65952,7 +65952,7 @@ func (s *Server) handleTestRequestStringUint8NullableRequest(args [0]string, arg
 		}
 
 		type (
-			Request  = OptNilUint8
+			Request  = OptNilStringUint8
 			Params   = struct{}
 			Response = *Error
 		)
@@ -66056,7 +66056,7 @@ func (s *Server) handleTestRequestStringUint8NullableArrayRequest(args [0]string
 		}
 
 		type (
-			Request  = []NilUint8
+			Request  = []NilStringUint8
 			Params   = struct{}
 			Response = *Error
 		)
@@ -66160,7 +66160,7 @@ func (s *Server) handleTestRequestStringUint8NullableArrayArrayRequest(args [0]s
 		}
 
 		type (
-			Request  = [][]NilUint8
+			Request  = [][]NilStringUint8
 			Params   = struct{}
 			Response = *Error
 		)
@@ -66472,7 +66472,7 @@ func (s *Server) handleTestRequestStringUintNullableRequest(args [0]string, args
 		}
 
 		type (
-			Request  = OptNilUint
+			Request  = OptNilStringUint
 			Params   = struct{}
 			Response = *Error
 		)
@@ -66576,7 +66576,7 @@ func (s *Server) handleTestRequestStringUintNullableArrayRequest(args [0]string,
 		}
 
 		type (
-			Request  = []NilUint
+			Request  = []NilStringUint
 			Params   = struct{}
 			Response = *Error
 		)
@@ -66680,7 +66680,7 @@ func (s *Server) handleTestRequestStringUintNullableArrayArrayRequest(args [0]st
 		}
 
 		type (
-			Request  = [][]NilUint
+			Request  = [][]NilStringUint
 			Params   = struct{}
 			Response = *Error
 		)
@@ -88923,7 +88923,7 @@ func (s *Server) handleTestResponseStringFloat32NullableRequest(args [0]string, 
 		}
 	}()
 
-	var response NilFloat32
+	var response NilStringFloat32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -88938,7 +88938,7 @@ func (s *Server) handleTestResponseStringFloat32NullableRequest(args [0]string, 
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = NilFloat32
+			Response = NilStringFloat32
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -89027,7 +89027,7 @@ func (s *Server) handleTestResponseStringFloat32NullableArrayRequest(args [0]str
 		}
 	}()
 
-	var response []NilFloat32
+	var response []NilStringFloat32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -89042,7 +89042,7 @@ func (s *Server) handleTestResponseStringFloat32NullableArrayRequest(args [0]str
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = []NilFloat32
+			Response = []NilStringFloat32
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -89131,7 +89131,7 @@ func (s *Server) handleTestResponseStringFloat32NullableArrayArrayRequest(args [
 		}
 	}()
 
-	var response [][]NilFloat32
+	var response [][]NilStringFloat32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -89146,7 +89146,7 @@ func (s *Server) handleTestResponseStringFloat32NullableArrayArrayRequest(args [
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = [][]NilFloat32
+			Response = [][]NilStringFloat32
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -89547,7 +89547,7 @@ func (s *Server) handleTestResponseStringFloat64NullableRequest(args [0]string, 
 		}
 	}()
 
-	var response NilFloat64
+	var response NilStringFloat64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -89562,7 +89562,7 @@ func (s *Server) handleTestResponseStringFloat64NullableRequest(args [0]string, 
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = NilFloat64
+			Response = NilStringFloat64
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -89651,7 +89651,7 @@ func (s *Server) handleTestResponseStringFloat64NullableArrayRequest(args [0]str
 		}
 	}()
 
-	var response []NilFloat64
+	var response []NilStringFloat64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -89666,7 +89666,7 @@ func (s *Server) handleTestResponseStringFloat64NullableArrayRequest(args [0]str
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = []NilFloat64
+			Response = []NilStringFloat64
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -89755,7 +89755,7 @@ func (s *Server) handleTestResponseStringFloat64NullableArrayArrayRequest(args [
 		}
 	}()
 
-	var response [][]NilFloat64
+	var response [][]NilStringFloat64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -89770,7 +89770,7 @@ func (s *Server) handleTestResponseStringFloat64NullableArrayArrayRequest(args [
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = [][]NilFloat64
+			Response = [][]NilStringFloat64
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -91523,7 +91523,7 @@ func (s *Server) handleTestResponseStringInt16NullableRequest(args [0]string, ar
 		}
 	}()
 
-	var response NilInt16
+	var response NilStringInt16
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -91538,7 +91538,7 @@ func (s *Server) handleTestResponseStringInt16NullableRequest(args [0]string, ar
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = NilInt16
+			Response = NilStringInt16
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -91627,7 +91627,7 @@ func (s *Server) handleTestResponseStringInt16NullableArrayRequest(args [0]strin
 		}
 	}()
 
-	var response []NilInt16
+	var response []NilStringInt16
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -91642,7 +91642,7 @@ func (s *Server) handleTestResponseStringInt16NullableArrayRequest(args [0]strin
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = []NilInt16
+			Response = []NilStringInt16
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -91731,7 +91731,7 @@ func (s *Server) handleTestResponseStringInt16NullableArrayArrayRequest(args [0]
 		}
 	}()
 
-	var response [][]NilInt16
+	var response [][]NilStringInt16
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -91746,7 +91746,7 @@ func (s *Server) handleTestResponseStringInt16NullableArrayArrayRequest(args [0]
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = [][]NilInt16
+			Response = [][]NilStringInt16
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -93395,7 +93395,7 @@ func (s *Server) handleTestResponseStringInt8NullableRequest(args [0]string, arg
 		}
 	}()
 
-	var response NilInt8
+	var response NilStringInt8
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -93410,7 +93410,7 @@ func (s *Server) handleTestResponseStringInt8NullableRequest(args [0]string, arg
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = NilInt8
+			Response = NilStringInt8
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -93499,7 +93499,7 @@ func (s *Server) handleTestResponseStringInt8NullableArrayRequest(args [0]string
 		}
 	}()
 
-	var response []NilInt8
+	var response []NilStringInt8
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -93514,7 +93514,7 @@ func (s *Server) handleTestResponseStringInt8NullableArrayRequest(args [0]string
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = []NilInt8
+			Response = []NilStringInt8
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -93603,7 +93603,7 @@ func (s *Server) handleTestResponseStringInt8NullableArrayArrayRequest(args [0]s
 		}
 	}()
 
-	var response [][]NilInt8
+	var response [][]NilStringInt8
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -93618,7 +93618,7 @@ func (s *Server) handleTestResponseStringInt8NullableArrayArrayRequest(args [0]s
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = [][]NilInt8
+			Response = [][]NilStringInt8
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -93915,7 +93915,7 @@ func (s *Server) handleTestResponseStringIntNullableRequest(args [0]string, args
 		}
 	}()
 
-	var response NilInt
+	var response NilStringInt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -93930,7 +93930,7 @@ func (s *Server) handleTestResponseStringIntNullableRequest(args [0]string, args
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = NilInt
+			Response = NilStringInt
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -94019,7 +94019,7 @@ func (s *Server) handleTestResponseStringIntNullableArrayRequest(args [0]string,
 		}
 	}()
 
-	var response []NilInt
+	var response []NilStringInt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -94034,7 +94034,7 @@ func (s *Server) handleTestResponseStringIntNullableArrayRequest(args [0]string,
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = []NilInt
+			Response = []NilStringInt
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -94123,7 +94123,7 @@ func (s *Server) handleTestResponseStringIntNullableArrayArrayRequest(args [0]st
 		}
 	}()
 
-	var response [][]NilInt
+	var response [][]NilStringInt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -94138,7 +94138,7 @@ func (s *Server) handleTestResponseStringIntNullableArrayArrayRequest(args [0]st
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = [][]NilInt
+			Response = [][]NilStringInt
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -98699,7 +98699,7 @@ func (s *Server) handleTestResponseStringUint16NullableRequest(args [0]string, a
 		}
 	}()
 
-	var response NilUint16
+	var response NilStringUint16
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -98714,7 +98714,7 @@ func (s *Server) handleTestResponseStringUint16NullableRequest(args [0]string, a
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = NilUint16
+			Response = NilStringUint16
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -98803,7 +98803,7 @@ func (s *Server) handleTestResponseStringUint16NullableArrayRequest(args [0]stri
 		}
 	}()
 
-	var response []NilUint16
+	var response []NilStringUint16
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -98818,7 +98818,7 @@ func (s *Server) handleTestResponseStringUint16NullableArrayRequest(args [0]stri
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = []NilUint16
+			Response = []NilStringUint16
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -98907,7 +98907,7 @@ func (s *Server) handleTestResponseStringUint16NullableArrayArrayRequest(args [0
 		}
 	}()
 
-	var response [][]NilUint16
+	var response [][]NilStringUint16
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -98922,7 +98922,7 @@ func (s *Server) handleTestResponseStringUint16NullableArrayArrayRequest(args [0
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = [][]NilUint16
+			Response = [][]NilStringUint16
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -99323,7 +99323,7 @@ func (s *Server) handleTestResponseStringUint32NullableRequest(args [0]string, a
 		}
 	}()
 
-	var response NilUint32
+	var response NilStringUint32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -99338,7 +99338,7 @@ func (s *Server) handleTestResponseStringUint32NullableRequest(args [0]string, a
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = NilUint32
+			Response = NilStringUint32
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -99427,7 +99427,7 @@ func (s *Server) handleTestResponseStringUint32NullableArrayRequest(args [0]stri
 		}
 	}()
 
-	var response []NilUint32
+	var response []NilStringUint32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -99442,7 +99442,7 @@ func (s *Server) handleTestResponseStringUint32NullableArrayRequest(args [0]stri
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = []NilUint32
+			Response = []NilStringUint32
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -99531,7 +99531,7 @@ func (s *Server) handleTestResponseStringUint32NullableArrayArrayRequest(args [0
 		}
 	}()
 
-	var response [][]NilUint32
+	var response [][]NilStringUint32
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -99546,7 +99546,7 @@ func (s *Server) handleTestResponseStringUint32NullableArrayArrayRequest(args [0
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = [][]NilUint32
+			Response = [][]NilStringUint32
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -99947,7 +99947,7 @@ func (s *Server) handleTestResponseStringUint64NullableRequest(args [0]string, a
 		}
 	}()
 
-	var response NilUint64
+	var response NilStringUint64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -99962,7 +99962,7 @@ func (s *Server) handleTestResponseStringUint64NullableRequest(args [0]string, a
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = NilUint64
+			Response = NilStringUint64
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -100051,7 +100051,7 @@ func (s *Server) handleTestResponseStringUint64NullableArrayRequest(args [0]stri
 		}
 	}()
 
-	var response []NilUint64
+	var response []NilStringUint64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -100066,7 +100066,7 @@ func (s *Server) handleTestResponseStringUint64NullableArrayRequest(args [0]stri
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = []NilUint64
+			Response = []NilStringUint64
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -100155,7 +100155,7 @@ func (s *Server) handleTestResponseStringUint64NullableArrayArrayRequest(args [0
 		}
 	}()
 
-	var response [][]NilUint64
+	var response [][]NilStringUint64
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -100170,7 +100170,7 @@ func (s *Server) handleTestResponseStringUint64NullableArrayArrayRequest(args [0
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = [][]NilUint64
+			Response = [][]NilStringUint64
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -100571,7 +100571,7 @@ func (s *Server) handleTestResponseStringUint8NullableRequest(args [0]string, ar
 		}
 	}()
 
-	var response NilUint8
+	var response NilStringUint8
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -100586,7 +100586,7 @@ func (s *Server) handleTestResponseStringUint8NullableRequest(args [0]string, ar
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = NilUint8
+			Response = NilStringUint8
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -100675,7 +100675,7 @@ func (s *Server) handleTestResponseStringUint8NullableArrayRequest(args [0]strin
 		}
 	}()
 
-	var response []NilUint8
+	var response []NilStringUint8
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -100690,7 +100690,7 @@ func (s *Server) handleTestResponseStringUint8NullableArrayRequest(args [0]strin
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = []NilUint8
+			Response = []NilStringUint8
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -100779,7 +100779,7 @@ func (s *Server) handleTestResponseStringUint8NullableArrayArrayRequest(args [0]
 		}
 	}()
 
-	var response [][]NilUint8
+	var response [][]NilStringUint8
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -100794,7 +100794,7 @@ func (s *Server) handleTestResponseStringUint8NullableArrayArrayRequest(args [0]
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = [][]NilUint8
+			Response = [][]NilStringUint8
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -101091,7 +101091,7 @@ func (s *Server) handleTestResponseStringUintNullableRequest(args [0]string, arg
 		}
 	}()
 
-	var response NilUint
+	var response NilStringUint
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -101106,7 +101106,7 @@ func (s *Server) handleTestResponseStringUintNullableRequest(args [0]string, arg
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = NilUint
+			Response = NilStringUint
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -101195,7 +101195,7 @@ func (s *Server) handleTestResponseStringUintNullableArrayRequest(args [0]string
 		}
 	}()
 
-	var response []NilUint
+	var response []NilStringUint
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -101210,7 +101210,7 @@ func (s *Server) handleTestResponseStringUintNullableArrayRequest(args [0]string
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = []NilUint
+			Response = []NilStringUint
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -101299,7 +101299,7 @@ func (s *Server) handleTestResponseStringUintNullableArrayArrayRequest(args [0]s
 		}
 	}()
 
-	var response [][]NilUint
+	var response [][]NilStringUint
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -101314,7 +101314,7 @@ func (s *Server) handleTestResponseStringUintNullableArrayArrayRequest(args [0]s
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = [][]NilUint
+			Response = [][]NilStringUint
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
