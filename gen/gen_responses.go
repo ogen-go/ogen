@@ -46,7 +46,7 @@ func (g *Generator) generateResponses(ctx *genctx, opName string, responses open
 			return nil, errors.Wrapf(err, "%s: %s: response name", opName, pattern)
 		}
 
-		var doc = fmt.Sprintf("%s is %s pattern response for %s operation.", respName, pattern, opName)
+		doc := fmt.Sprintf("%s is %s pattern response for %s operation.", respName, pattern, opName)
 
 		result.Pattern[idx], err = g.responseToIR(ctx, respName, doc, resp, true)
 		if err != nil {
@@ -197,6 +197,20 @@ func (g *Generator) responseToIR(
 	}
 
 	for contentType, media := range contents {
+		if contentType.Mask() {
+			if headers == nil {
+				headers = map[string]*ir.Parameter{}
+			}
+			headers["Content-Type"] = &ir.Parameter{
+				Name: "ContentType",
+				Type: ir.Primitive(ir.String, nil),
+				Spec: &openapi.Parameter{
+					Name:     "Content-Type",
+					In:       openapi.LocationHeader,
+					Required: true,
+				},
+			}
+		}
 		t, err := wrapResponseType(ctx, name, media.Type, headers, withStatusCode)
 		if err != nil {
 			return nil, errors.Wrapf(err, "content: %q: wrap response type", contentType)

@@ -16,19 +16,51 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
-func encodeAnyContentTypeBinaryStringSchemaResponse(response AnyContentTypeBinaryStringSchemaOK, w http.ResponseWriter, span trace.Span) error {
+func encodeAnyContentTypeBinaryStringSchemaResponse(response *AnyContentTypeBinaryStringSchemaOKHeaders, w http.ResponseWriter, span trace.Span) error {
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode "Content-Type" header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Content-Type",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				return e.EncodeValue(conv.StringToString(response.ContentType))
+			}); err != nil {
+				return errors.Wrap(err, "encode Content-Type header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	writer := w
-	if _, err := io.Copy(writer, response); err != nil {
+	if _, err := io.Copy(writer, response.Response); err != nil {
 		return errors.Wrap(err, "write")
 	}
 
 	return nil
 }
 
-func encodeAnyContentTypeBinaryStringSchemaDefaultResponse(response *AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, w http.ResponseWriter, span trace.Span) error {
+func encodeAnyContentTypeBinaryStringSchemaDefaultResponse(response *AnyContentTypeBinaryStringSchemaDefaultDefStatusCodeWithHeaders, w http.ResponseWriter, span trace.Span) error {
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode "Content-Type" header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Content-Type",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				return e.EncodeValue(conv.StringToString(response.ContentType))
+			}); err != nil {
+				return errors.Wrap(err, "encode Content-Type header")
+			}
+		}
+	}
 	code := response.StatusCode
 	if code == 0 {
 		// Set default status code.

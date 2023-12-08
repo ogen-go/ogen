@@ -35,7 +35,33 @@ func (s ConnectCoreV1DeleteNamespacedPodProxyOK) Read(p []byte) (n int, err erro
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1DeleteNamespacedPodProxyOK) connectCoreV1DeleteNamespacedPodProxyRes() {}
+// ConnectCoreV1DeleteNamespacedPodProxyOKHeaders wraps ConnectCoreV1DeleteNamespacedPodProxyOK with response headers.
+type ConnectCoreV1DeleteNamespacedPodProxyOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1DeleteNamespacedPodProxyOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1DeleteNamespacedPodProxyOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1DeleteNamespacedPodProxyOKHeaders) GetResponse() ConnectCoreV1DeleteNamespacedPodProxyOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1DeleteNamespacedPodProxyOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1DeleteNamespacedPodProxyOKHeaders) SetResponse(val ConnectCoreV1DeleteNamespacedPodProxyOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1DeleteNamespacedPodProxyOKHeaders) connectCoreV1DeleteNamespacedPodProxyRes() {}
 
 // ConnectCoreV1DeleteNamespacedPodProxyUnauthorized is response for ConnectCoreV1DeleteNamespacedPodProxy operation.
 type ConnectCoreV1DeleteNamespacedPodProxyUnauthorized struct{}
@@ -57,7 +83,33 @@ func (s ConnectCoreV1DeleteNamespacedPodProxyWithPathOK) Read(p []byte) (n int, 
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1DeleteNamespacedPodProxyWithPathOK) connectCoreV1DeleteNamespacedPodProxyWithPathRes() {
+// ConnectCoreV1DeleteNamespacedPodProxyWithPathOKHeaders wraps ConnectCoreV1DeleteNamespacedPodProxyWithPathOK with response headers.
+type ConnectCoreV1DeleteNamespacedPodProxyWithPathOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1DeleteNamespacedPodProxyWithPathOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1DeleteNamespacedPodProxyWithPathOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1DeleteNamespacedPodProxyWithPathOKHeaders) GetResponse() ConnectCoreV1DeleteNamespacedPodProxyWithPathOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1DeleteNamespacedPodProxyWithPathOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1DeleteNamespacedPodProxyWithPathOKHeaders) SetResponse(val ConnectCoreV1DeleteNamespacedPodProxyWithPathOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1DeleteNamespacedPodProxyWithPathOKHeaders) connectCoreV1DeleteNamespacedPodProxyWithPathRes() {
 }
 
 // ConnectCoreV1DeleteNamespacedPodProxyWithPathUnauthorized is response for ConnectCoreV1DeleteNamespacedPodProxyWithPath operation.
@@ -80,7 +132,34 @@ func (s ConnectCoreV1DeleteNamespacedServiceProxyOK) Read(p []byte) (n int, err 
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1DeleteNamespacedServiceProxyOK) connectCoreV1DeleteNamespacedServiceProxyRes() {}
+// ConnectCoreV1DeleteNamespacedServiceProxyOKHeaders wraps ConnectCoreV1DeleteNamespacedServiceProxyOK with response headers.
+type ConnectCoreV1DeleteNamespacedServiceProxyOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1DeleteNamespacedServiceProxyOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1DeleteNamespacedServiceProxyOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1DeleteNamespacedServiceProxyOKHeaders) GetResponse() ConnectCoreV1DeleteNamespacedServiceProxyOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1DeleteNamespacedServiceProxyOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1DeleteNamespacedServiceProxyOKHeaders) SetResponse(val ConnectCoreV1DeleteNamespacedServiceProxyOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1DeleteNamespacedServiceProxyOKHeaders) connectCoreV1DeleteNamespacedServiceProxyRes() {
+}
 
 // ConnectCoreV1DeleteNamespacedServiceProxyUnauthorized is response for ConnectCoreV1DeleteNamespacedServiceProxy operation.
 type ConnectCoreV1DeleteNamespacedServiceProxyUnauthorized struct{}
@@ -102,7 +181,33 @@ func (s ConnectCoreV1DeleteNamespacedServiceProxyWithPathOK) Read(p []byte) (n i
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1DeleteNamespacedServiceProxyWithPathOK) connectCoreV1DeleteNamespacedServiceProxyWithPathRes() {
+// ConnectCoreV1DeleteNamespacedServiceProxyWithPathOKHeaders wraps ConnectCoreV1DeleteNamespacedServiceProxyWithPathOK with response headers.
+type ConnectCoreV1DeleteNamespacedServiceProxyWithPathOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1DeleteNamespacedServiceProxyWithPathOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1DeleteNamespacedServiceProxyWithPathOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1DeleteNamespacedServiceProxyWithPathOKHeaders) GetResponse() ConnectCoreV1DeleteNamespacedServiceProxyWithPathOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1DeleteNamespacedServiceProxyWithPathOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1DeleteNamespacedServiceProxyWithPathOKHeaders) SetResponse(val ConnectCoreV1DeleteNamespacedServiceProxyWithPathOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1DeleteNamespacedServiceProxyWithPathOKHeaders) connectCoreV1DeleteNamespacedServiceProxyWithPathRes() {
 }
 
 // ConnectCoreV1DeleteNamespacedServiceProxyWithPathUnauthorized is response for ConnectCoreV1DeleteNamespacedServiceProxyWithPath operation.
@@ -125,7 +230,33 @@ func (s ConnectCoreV1DeleteNodeProxyOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1DeleteNodeProxyOK) connectCoreV1DeleteNodeProxyRes() {}
+// ConnectCoreV1DeleteNodeProxyOKHeaders wraps ConnectCoreV1DeleteNodeProxyOK with response headers.
+type ConnectCoreV1DeleteNodeProxyOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1DeleteNodeProxyOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1DeleteNodeProxyOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1DeleteNodeProxyOKHeaders) GetResponse() ConnectCoreV1DeleteNodeProxyOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1DeleteNodeProxyOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1DeleteNodeProxyOKHeaders) SetResponse(val ConnectCoreV1DeleteNodeProxyOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1DeleteNodeProxyOKHeaders) connectCoreV1DeleteNodeProxyRes() {}
 
 // ConnectCoreV1DeleteNodeProxyUnauthorized is response for ConnectCoreV1DeleteNodeProxy operation.
 type ConnectCoreV1DeleteNodeProxyUnauthorized struct{}
@@ -146,7 +277,33 @@ func (s ConnectCoreV1DeleteNodeProxyWithPathOK) Read(p []byte) (n int, err error
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1DeleteNodeProxyWithPathOK) connectCoreV1DeleteNodeProxyWithPathRes() {}
+// ConnectCoreV1DeleteNodeProxyWithPathOKHeaders wraps ConnectCoreV1DeleteNodeProxyWithPathOK with response headers.
+type ConnectCoreV1DeleteNodeProxyWithPathOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1DeleteNodeProxyWithPathOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1DeleteNodeProxyWithPathOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1DeleteNodeProxyWithPathOKHeaders) GetResponse() ConnectCoreV1DeleteNodeProxyWithPathOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1DeleteNodeProxyWithPathOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1DeleteNodeProxyWithPathOKHeaders) SetResponse(val ConnectCoreV1DeleteNodeProxyWithPathOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1DeleteNodeProxyWithPathOKHeaders) connectCoreV1DeleteNodeProxyWithPathRes() {}
 
 // ConnectCoreV1DeleteNodeProxyWithPathUnauthorized is response for ConnectCoreV1DeleteNodeProxyWithPath operation.
 type ConnectCoreV1DeleteNodeProxyWithPathUnauthorized struct{}
@@ -167,7 +324,33 @@ func (s ConnectCoreV1GetNamespacedPodAttachOK) Read(p []byte) (n int, err error)
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1GetNamespacedPodAttachOK) connectCoreV1GetNamespacedPodAttachRes() {}
+// ConnectCoreV1GetNamespacedPodAttachOKHeaders wraps ConnectCoreV1GetNamespacedPodAttachOK with response headers.
+type ConnectCoreV1GetNamespacedPodAttachOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1GetNamespacedPodAttachOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1GetNamespacedPodAttachOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1GetNamespacedPodAttachOKHeaders) GetResponse() ConnectCoreV1GetNamespacedPodAttachOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1GetNamespacedPodAttachOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1GetNamespacedPodAttachOKHeaders) SetResponse(val ConnectCoreV1GetNamespacedPodAttachOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1GetNamespacedPodAttachOKHeaders) connectCoreV1GetNamespacedPodAttachRes() {}
 
 // ConnectCoreV1GetNamespacedPodAttachUnauthorized is response for ConnectCoreV1GetNamespacedPodAttach operation.
 type ConnectCoreV1GetNamespacedPodAttachUnauthorized struct{}
@@ -188,7 +371,33 @@ func (s ConnectCoreV1GetNamespacedPodExecOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1GetNamespacedPodExecOK) connectCoreV1GetNamespacedPodExecRes() {}
+// ConnectCoreV1GetNamespacedPodExecOKHeaders wraps ConnectCoreV1GetNamespacedPodExecOK with response headers.
+type ConnectCoreV1GetNamespacedPodExecOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1GetNamespacedPodExecOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1GetNamespacedPodExecOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1GetNamespacedPodExecOKHeaders) GetResponse() ConnectCoreV1GetNamespacedPodExecOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1GetNamespacedPodExecOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1GetNamespacedPodExecOKHeaders) SetResponse(val ConnectCoreV1GetNamespacedPodExecOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1GetNamespacedPodExecOKHeaders) connectCoreV1GetNamespacedPodExecRes() {}
 
 // ConnectCoreV1GetNamespacedPodExecUnauthorized is response for ConnectCoreV1GetNamespacedPodExec operation.
 type ConnectCoreV1GetNamespacedPodExecUnauthorized struct{}
@@ -209,7 +418,34 @@ func (s ConnectCoreV1GetNamespacedPodPortforwardOK) Read(p []byte) (n int, err e
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1GetNamespacedPodPortforwardOK) connectCoreV1GetNamespacedPodPortforwardRes() {}
+// ConnectCoreV1GetNamespacedPodPortforwardOKHeaders wraps ConnectCoreV1GetNamespacedPodPortforwardOK with response headers.
+type ConnectCoreV1GetNamespacedPodPortforwardOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1GetNamespacedPodPortforwardOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1GetNamespacedPodPortforwardOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1GetNamespacedPodPortforwardOKHeaders) GetResponse() ConnectCoreV1GetNamespacedPodPortforwardOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1GetNamespacedPodPortforwardOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1GetNamespacedPodPortforwardOKHeaders) SetResponse(val ConnectCoreV1GetNamespacedPodPortforwardOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1GetNamespacedPodPortforwardOKHeaders) connectCoreV1GetNamespacedPodPortforwardRes() {
+}
 
 // ConnectCoreV1GetNamespacedPodPortforwardUnauthorized is response for ConnectCoreV1GetNamespacedPodPortforward operation.
 type ConnectCoreV1GetNamespacedPodPortforwardUnauthorized struct{}
@@ -231,7 +467,33 @@ func (s ConnectCoreV1GetNamespacedPodProxyOK) Read(p []byte) (n int, err error) 
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1GetNamespacedPodProxyOK) connectCoreV1GetNamespacedPodProxyRes() {}
+// ConnectCoreV1GetNamespacedPodProxyOKHeaders wraps ConnectCoreV1GetNamespacedPodProxyOK with response headers.
+type ConnectCoreV1GetNamespacedPodProxyOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1GetNamespacedPodProxyOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1GetNamespacedPodProxyOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1GetNamespacedPodProxyOKHeaders) GetResponse() ConnectCoreV1GetNamespacedPodProxyOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1GetNamespacedPodProxyOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1GetNamespacedPodProxyOKHeaders) SetResponse(val ConnectCoreV1GetNamespacedPodProxyOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1GetNamespacedPodProxyOKHeaders) connectCoreV1GetNamespacedPodProxyRes() {}
 
 // ConnectCoreV1GetNamespacedPodProxyUnauthorized is response for ConnectCoreV1GetNamespacedPodProxy operation.
 type ConnectCoreV1GetNamespacedPodProxyUnauthorized struct{}
@@ -252,7 +514,33 @@ func (s ConnectCoreV1GetNamespacedPodProxyWithPathOK) Read(p []byte) (n int, err
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1GetNamespacedPodProxyWithPathOK) connectCoreV1GetNamespacedPodProxyWithPathRes() {
+// ConnectCoreV1GetNamespacedPodProxyWithPathOKHeaders wraps ConnectCoreV1GetNamespacedPodProxyWithPathOK with response headers.
+type ConnectCoreV1GetNamespacedPodProxyWithPathOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1GetNamespacedPodProxyWithPathOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1GetNamespacedPodProxyWithPathOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1GetNamespacedPodProxyWithPathOKHeaders) GetResponse() ConnectCoreV1GetNamespacedPodProxyWithPathOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1GetNamespacedPodProxyWithPathOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1GetNamespacedPodProxyWithPathOKHeaders) SetResponse(val ConnectCoreV1GetNamespacedPodProxyWithPathOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1GetNamespacedPodProxyWithPathOKHeaders) connectCoreV1GetNamespacedPodProxyWithPathRes() {
 }
 
 // ConnectCoreV1GetNamespacedPodProxyWithPathUnauthorized is response for ConnectCoreV1GetNamespacedPodProxyWithPath operation.
@@ -275,7 +563,33 @@ func (s ConnectCoreV1GetNamespacedServiceProxyOK) Read(p []byte) (n int, err err
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1GetNamespacedServiceProxyOK) connectCoreV1GetNamespacedServiceProxyRes() {}
+// ConnectCoreV1GetNamespacedServiceProxyOKHeaders wraps ConnectCoreV1GetNamespacedServiceProxyOK with response headers.
+type ConnectCoreV1GetNamespacedServiceProxyOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1GetNamespacedServiceProxyOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1GetNamespacedServiceProxyOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1GetNamespacedServiceProxyOKHeaders) GetResponse() ConnectCoreV1GetNamespacedServiceProxyOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1GetNamespacedServiceProxyOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1GetNamespacedServiceProxyOKHeaders) SetResponse(val ConnectCoreV1GetNamespacedServiceProxyOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1GetNamespacedServiceProxyOKHeaders) connectCoreV1GetNamespacedServiceProxyRes() {}
 
 // ConnectCoreV1GetNamespacedServiceProxyUnauthorized is response for ConnectCoreV1GetNamespacedServiceProxy operation.
 type ConnectCoreV1GetNamespacedServiceProxyUnauthorized struct{}
@@ -297,7 +611,33 @@ func (s ConnectCoreV1GetNamespacedServiceProxyWithPathOK) Read(p []byte) (n int,
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1GetNamespacedServiceProxyWithPathOK) connectCoreV1GetNamespacedServiceProxyWithPathRes() {
+// ConnectCoreV1GetNamespacedServiceProxyWithPathOKHeaders wraps ConnectCoreV1GetNamespacedServiceProxyWithPathOK with response headers.
+type ConnectCoreV1GetNamespacedServiceProxyWithPathOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1GetNamespacedServiceProxyWithPathOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1GetNamespacedServiceProxyWithPathOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1GetNamespacedServiceProxyWithPathOKHeaders) GetResponse() ConnectCoreV1GetNamespacedServiceProxyWithPathOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1GetNamespacedServiceProxyWithPathOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1GetNamespacedServiceProxyWithPathOKHeaders) SetResponse(val ConnectCoreV1GetNamespacedServiceProxyWithPathOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1GetNamespacedServiceProxyWithPathOKHeaders) connectCoreV1GetNamespacedServiceProxyWithPathRes() {
 }
 
 // ConnectCoreV1GetNamespacedServiceProxyWithPathUnauthorized is response for ConnectCoreV1GetNamespacedServiceProxyWithPath operation.
@@ -320,7 +660,33 @@ func (s ConnectCoreV1GetNodeProxyOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1GetNodeProxyOK) connectCoreV1GetNodeProxyRes() {}
+// ConnectCoreV1GetNodeProxyOKHeaders wraps ConnectCoreV1GetNodeProxyOK with response headers.
+type ConnectCoreV1GetNodeProxyOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1GetNodeProxyOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1GetNodeProxyOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1GetNodeProxyOKHeaders) GetResponse() ConnectCoreV1GetNodeProxyOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1GetNodeProxyOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1GetNodeProxyOKHeaders) SetResponse(val ConnectCoreV1GetNodeProxyOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1GetNodeProxyOKHeaders) connectCoreV1GetNodeProxyRes() {}
 
 // ConnectCoreV1GetNodeProxyUnauthorized is response for ConnectCoreV1GetNodeProxy operation.
 type ConnectCoreV1GetNodeProxyUnauthorized struct{}
@@ -341,7 +707,33 @@ func (s ConnectCoreV1GetNodeProxyWithPathOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1GetNodeProxyWithPathOK) connectCoreV1GetNodeProxyWithPathRes() {}
+// ConnectCoreV1GetNodeProxyWithPathOKHeaders wraps ConnectCoreV1GetNodeProxyWithPathOK with response headers.
+type ConnectCoreV1GetNodeProxyWithPathOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1GetNodeProxyWithPathOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1GetNodeProxyWithPathOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1GetNodeProxyWithPathOKHeaders) GetResponse() ConnectCoreV1GetNodeProxyWithPathOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1GetNodeProxyWithPathOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1GetNodeProxyWithPathOKHeaders) SetResponse(val ConnectCoreV1GetNodeProxyWithPathOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1GetNodeProxyWithPathOKHeaders) connectCoreV1GetNodeProxyWithPathRes() {}
 
 // ConnectCoreV1GetNodeProxyWithPathUnauthorized is response for ConnectCoreV1GetNodeProxyWithPath operation.
 type ConnectCoreV1GetNodeProxyWithPathUnauthorized struct{}
@@ -362,7 +754,33 @@ func (s ConnectCoreV1HeadNamespacedPodProxyOK) Read(p []byte) (n int, err error)
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1HeadNamespacedPodProxyOK) connectCoreV1HeadNamespacedPodProxyRes() {}
+// ConnectCoreV1HeadNamespacedPodProxyOKHeaders wraps ConnectCoreV1HeadNamespacedPodProxyOK with response headers.
+type ConnectCoreV1HeadNamespacedPodProxyOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1HeadNamespacedPodProxyOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1HeadNamespacedPodProxyOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1HeadNamespacedPodProxyOKHeaders) GetResponse() ConnectCoreV1HeadNamespacedPodProxyOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1HeadNamespacedPodProxyOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1HeadNamespacedPodProxyOKHeaders) SetResponse(val ConnectCoreV1HeadNamespacedPodProxyOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1HeadNamespacedPodProxyOKHeaders) connectCoreV1HeadNamespacedPodProxyRes() {}
 
 // ConnectCoreV1HeadNamespacedPodProxyUnauthorized is response for ConnectCoreV1HeadNamespacedPodProxy operation.
 type ConnectCoreV1HeadNamespacedPodProxyUnauthorized struct{}
@@ -383,7 +801,33 @@ func (s ConnectCoreV1HeadNamespacedPodProxyWithPathOK) Read(p []byte) (n int, er
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1HeadNamespacedPodProxyWithPathOK) connectCoreV1HeadNamespacedPodProxyWithPathRes() {
+// ConnectCoreV1HeadNamespacedPodProxyWithPathOKHeaders wraps ConnectCoreV1HeadNamespacedPodProxyWithPathOK with response headers.
+type ConnectCoreV1HeadNamespacedPodProxyWithPathOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1HeadNamespacedPodProxyWithPathOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1HeadNamespacedPodProxyWithPathOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1HeadNamespacedPodProxyWithPathOKHeaders) GetResponse() ConnectCoreV1HeadNamespacedPodProxyWithPathOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1HeadNamespacedPodProxyWithPathOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1HeadNamespacedPodProxyWithPathOKHeaders) SetResponse(val ConnectCoreV1HeadNamespacedPodProxyWithPathOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1HeadNamespacedPodProxyWithPathOKHeaders) connectCoreV1HeadNamespacedPodProxyWithPathRes() {
 }
 
 // ConnectCoreV1HeadNamespacedPodProxyWithPathUnauthorized is response for ConnectCoreV1HeadNamespacedPodProxyWithPath operation.
@@ -406,7 +850,34 @@ func (s ConnectCoreV1HeadNamespacedServiceProxyOK) Read(p []byte) (n int, err er
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1HeadNamespacedServiceProxyOK) connectCoreV1HeadNamespacedServiceProxyRes() {}
+// ConnectCoreV1HeadNamespacedServiceProxyOKHeaders wraps ConnectCoreV1HeadNamespacedServiceProxyOK with response headers.
+type ConnectCoreV1HeadNamespacedServiceProxyOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1HeadNamespacedServiceProxyOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1HeadNamespacedServiceProxyOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1HeadNamespacedServiceProxyOKHeaders) GetResponse() ConnectCoreV1HeadNamespacedServiceProxyOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1HeadNamespacedServiceProxyOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1HeadNamespacedServiceProxyOKHeaders) SetResponse(val ConnectCoreV1HeadNamespacedServiceProxyOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1HeadNamespacedServiceProxyOKHeaders) connectCoreV1HeadNamespacedServiceProxyRes() {
+}
 
 // ConnectCoreV1HeadNamespacedServiceProxyUnauthorized is response for ConnectCoreV1HeadNamespacedServiceProxy operation.
 type ConnectCoreV1HeadNamespacedServiceProxyUnauthorized struct{}
@@ -428,7 +899,33 @@ func (s ConnectCoreV1HeadNamespacedServiceProxyWithPathOK) Read(p []byte) (n int
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1HeadNamespacedServiceProxyWithPathOK) connectCoreV1HeadNamespacedServiceProxyWithPathRes() {
+// ConnectCoreV1HeadNamespacedServiceProxyWithPathOKHeaders wraps ConnectCoreV1HeadNamespacedServiceProxyWithPathOK with response headers.
+type ConnectCoreV1HeadNamespacedServiceProxyWithPathOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1HeadNamespacedServiceProxyWithPathOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1HeadNamespacedServiceProxyWithPathOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1HeadNamespacedServiceProxyWithPathOKHeaders) GetResponse() ConnectCoreV1HeadNamespacedServiceProxyWithPathOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1HeadNamespacedServiceProxyWithPathOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1HeadNamespacedServiceProxyWithPathOKHeaders) SetResponse(val ConnectCoreV1HeadNamespacedServiceProxyWithPathOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1HeadNamespacedServiceProxyWithPathOKHeaders) connectCoreV1HeadNamespacedServiceProxyWithPathRes() {
 }
 
 // ConnectCoreV1HeadNamespacedServiceProxyWithPathUnauthorized is response for ConnectCoreV1HeadNamespacedServiceProxyWithPath operation.
@@ -451,7 +948,33 @@ func (s ConnectCoreV1HeadNodeProxyOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1HeadNodeProxyOK) connectCoreV1HeadNodeProxyRes() {}
+// ConnectCoreV1HeadNodeProxyOKHeaders wraps ConnectCoreV1HeadNodeProxyOK with response headers.
+type ConnectCoreV1HeadNodeProxyOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1HeadNodeProxyOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1HeadNodeProxyOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1HeadNodeProxyOKHeaders) GetResponse() ConnectCoreV1HeadNodeProxyOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1HeadNodeProxyOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1HeadNodeProxyOKHeaders) SetResponse(val ConnectCoreV1HeadNodeProxyOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1HeadNodeProxyOKHeaders) connectCoreV1HeadNodeProxyRes() {}
 
 // ConnectCoreV1HeadNodeProxyUnauthorized is response for ConnectCoreV1HeadNodeProxy operation.
 type ConnectCoreV1HeadNodeProxyUnauthorized struct{}
@@ -472,7 +995,33 @@ func (s ConnectCoreV1HeadNodeProxyWithPathOK) Read(p []byte) (n int, err error) 
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1HeadNodeProxyWithPathOK) connectCoreV1HeadNodeProxyWithPathRes() {}
+// ConnectCoreV1HeadNodeProxyWithPathOKHeaders wraps ConnectCoreV1HeadNodeProxyWithPathOK with response headers.
+type ConnectCoreV1HeadNodeProxyWithPathOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1HeadNodeProxyWithPathOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1HeadNodeProxyWithPathOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1HeadNodeProxyWithPathOKHeaders) GetResponse() ConnectCoreV1HeadNodeProxyWithPathOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1HeadNodeProxyWithPathOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1HeadNodeProxyWithPathOKHeaders) SetResponse(val ConnectCoreV1HeadNodeProxyWithPathOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1HeadNodeProxyWithPathOKHeaders) connectCoreV1HeadNodeProxyWithPathRes() {}
 
 // ConnectCoreV1HeadNodeProxyWithPathUnauthorized is response for ConnectCoreV1HeadNodeProxyWithPath operation.
 type ConnectCoreV1HeadNodeProxyWithPathUnauthorized struct{}
@@ -493,7 +1042,33 @@ func (s ConnectCoreV1OptionsNamespacedPodProxyOK) Read(p []byte) (n int, err err
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1OptionsNamespacedPodProxyOK) connectCoreV1OptionsNamespacedPodProxyRes() {}
+// ConnectCoreV1OptionsNamespacedPodProxyOKHeaders wraps ConnectCoreV1OptionsNamespacedPodProxyOK with response headers.
+type ConnectCoreV1OptionsNamespacedPodProxyOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1OptionsNamespacedPodProxyOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1OptionsNamespacedPodProxyOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1OptionsNamespacedPodProxyOKHeaders) GetResponse() ConnectCoreV1OptionsNamespacedPodProxyOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1OptionsNamespacedPodProxyOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1OptionsNamespacedPodProxyOKHeaders) SetResponse(val ConnectCoreV1OptionsNamespacedPodProxyOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1OptionsNamespacedPodProxyOKHeaders) connectCoreV1OptionsNamespacedPodProxyRes() {}
 
 // ConnectCoreV1OptionsNamespacedPodProxyUnauthorized is response for ConnectCoreV1OptionsNamespacedPodProxy operation.
 type ConnectCoreV1OptionsNamespacedPodProxyUnauthorized struct{}
@@ -515,7 +1090,33 @@ func (s ConnectCoreV1OptionsNamespacedPodProxyWithPathOK) Read(p []byte) (n int,
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1OptionsNamespacedPodProxyWithPathOK) connectCoreV1OptionsNamespacedPodProxyWithPathRes() {
+// ConnectCoreV1OptionsNamespacedPodProxyWithPathOKHeaders wraps ConnectCoreV1OptionsNamespacedPodProxyWithPathOK with response headers.
+type ConnectCoreV1OptionsNamespacedPodProxyWithPathOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1OptionsNamespacedPodProxyWithPathOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1OptionsNamespacedPodProxyWithPathOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1OptionsNamespacedPodProxyWithPathOKHeaders) GetResponse() ConnectCoreV1OptionsNamespacedPodProxyWithPathOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1OptionsNamespacedPodProxyWithPathOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1OptionsNamespacedPodProxyWithPathOKHeaders) SetResponse(val ConnectCoreV1OptionsNamespacedPodProxyWithPathOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1OptionsNamespacedPodProxyWithPathOKHeaders) connectCoreV1OptionsNamespacedPodProxyWithPathRes() {
 }
 
 // ConnectCoreV1OptionsNamespacedPodProxyWithPathUnauthorized is response for ConnectCoreV1OptionsNamespacedPodProxyWithPath operation.
@@ -538,7 +1139,33 @@ func (s ConnectCoreV1OptionsNamespacedServiceProxyOK) Read(p []byte) (n int, err
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1OptionsNamespacedServiceProxyOK) connectCoreV1OptionsNamespacedServiceProxyRes() {
+// ConnectCoreV1OptionsNamespacedServiceProxyOKHeaders wraps ConnectCoreV1OptionsNamespacedServiceProxyOK with response headers.
+type ConnectCoreV1OptionsNamespacedServiceProxyOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1OptionsNamespacedServiceProxyOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1OptionsNamespacedServiceProxyOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1OptionsNamespacedServiceProxyOKHeaders) GetResponse() ConnectCoreV1OptionsNamespacedServiceProxyOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1OptionsNamespacedServiceProxyOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1OptionsNamespacedServiceProxyOKHeaders) SetResponse(val ConnectCoreV1OptionsNamespacedServiceProxyOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1OptionsNamespacedServiceProxyOKHeaders) connectCoreV1OptionsNamespacedServiceProxyRes() {
 }
 
 // ConnectCoreV1OptionsNamespacedServiceProxyUnauthorized is response for ConnectCoreV1OptionsNamespacedServiceProxy operation.
@@ -561,7 +1188,33 @@ func (s ConnectCoreV1OptionsNamespacedServiceProxyWithPathOK) Read(p []byte) (n 
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1OptionsNamespacedServiceProxyWithPathOK) connectCoreV1OptionsNamespacedServiceProxyWithPathRes() {
+// ConnectCoreV1OptionsNamespacedServiceProxyWithPathOKHeaders wraps ConnectCoreV1OptionsNamespacedServiceProxyWithPathOK with response headers.
+type ConnectCoreV1OptionsNamespacedServiceProxyWithPathOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1OptionsNamespacedServiceProxyWithPathOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1OptionsNamespacedServiceProxyWithPathOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1OptionsNamespacedServiceProxyWithPathOKHeaders) GetResponse() ConnectCoreV1OptionsNamespacedServiceProxyWithPathOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1OptionsNamespacedServiceProxyWithPathOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1OptionsNamespacedServiceProxyWithPathOKHeaders) SetResponse(val ConnectCoreV1OptionsNamespacedServiceProxyWithPathOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1OptionsNamespacedServiceProxyWithPathOKHeaders) connectCoreV1OptionsNamespacedServiceProxyWithPathRes() {
 }
 
 // ConnectCoreV1OptionsNamespacedServiceProxyWithPathUnauthorized is response for ConnectCoreV1OptionsNamespacedServiceProxyWithPath operation.
@@ -584,7 +1237,33 @@ func (s ConnectCoreV1OptionsNodeProxyOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1OptionsNodeProxyOK) connectCoreV1OptionsNodeProxyRes() {}
+// ConnectCoreV1OptionsNodeProxyOKHeaders wraps ConnectCoreV1OptionsNodeProxyOK with response headers.
+type ConnectCoreV1OptionsNodeProxyOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1OptionsNodeProxyOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1OptionsNodeProxyOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1OptionsNodeProxyOKHeaders) GetResponse() ConnectCoreV1OptionsNodeProxyOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1OptionsNodeProxyOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1OptionsNodeProxyOKHeaders) SetResponse(val ConnectCoreV1OptionsNodeProxyOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1OptionsNodeProxyOKHeaders) connectCoreV1OptionsNodeProxyRes() {}
 
 // ConnectCoreV1OptionsNodeProxyUnauthorized is response for ConnectCoreV1OptionsNodeProxy operation.
 type ConnectCoreV1OptionsNodeProxyUnauthorized struct{}
@@ -605,7 +1284,33 @@ func (s ConnectCoreV1OptionsNodeProxyWithPathOK) Read(p []byte) (n int, err erro
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1OptionsNodeProxyWithPathOK) connectCoreV1OptionsNodeProxyWithPathRes() {}
+// ConnectCoreV1OptionsNodeProxyWithPathOKHeaders wraps ConnectCoreV1OptionsNodeProxyWithPathOK with response headers.
+type ConnectCoreV1OptionsNodeProxyWithPathOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1OptionsNodeProxyWithPathOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1OptionsNodeProxyWithPathOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1OptionsNodeProxyWithPathOKHeaders) GetResponse() ConnectCoreV1OptionsNodeProxyWithPathOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1OptionsNodeProxyWithPathOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1OptionsNodeProxyWithPathOKHeaders) SetResponse(val ConnectCoreV1OptionsNodeProxyWithPathOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1OptionsNodeProxyWithPathOKHeaders) connectCoreV1OptionsNodeProxyWithPathRes() {}
 
 // ConnectCoreV1OptionsNodeProxyWithPathUnauthorized is response for ConnectCoreV1OptionsNodeProxyWithPath operation.
 type ConnectCoreV1OptionsNodeProxyWithPathUnauthorized struct{}
@@ -627,7 +1332,33 @@ func (s ConnectCoreV1PatchNamespacedPodProxyOK) Read(p []byte) (n int, err error
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1PatchNamespacedPodProxyOK) connectCoreV1PatchNamespacedPodProxyRes() {}
+// ConnectCoreV1PatchNamespacedPodProxyOKHeaders wraps ConnectCoreV1PatchNamespacedPodProxyOK with response headers.
+type ConnectCoreV1PatchNamespacedPodProxyOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1PatchNamespacedPodProxyOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1PatchNamespacedPodProxyOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1PatchNamespacedPodProxyOKHeaders) GetResponse() ConnectCoreV1PatchNamespacedPodProxyOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1PatchNamespacedPodProxyOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1PatchNamespacedPodProxyOKHeaders) SetResponse(val ConnectCoreV1PatchNamespacedPodProxyOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1PatchNamespacedPodProxyOKHeaders) connectCoreV1PatchNamespacedPodProxyRes() {}
 
 // ConnectCoreV1PatchNamespacedPodProxyUnauthorized is response for ConnectCoreV1PatchNamespacedPodProxy operation.
 type ConnectCoreV1PatchNamespacedPodProxyUnauthorized struct{}
@@ -648,7 +1379,33 @@ func (s ConnectCoreV1PatchNamespacedPodProxyWithPathOK) Read(p []byte) (n int, e
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1PatchNamespacedPodProxyWithPathOK) connectCoreV1PatchNamespacedPodProxyWithPathRes() {
+// ConnectCoreV1PatchNamespacedPodProxyWithPathOKHeaders wraps ConnectCoreV1PatchNamespacedPodProxyWithPathOK with response headers.
+type ConnectCoreV1PatchNamespacedPodProxyWithPathOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1PatchNamespacedPodProxyWithPathOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1PatchNamespacedPodProxyWithPathOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1PatchNamespacedPodProxyWithPathOKHeaders) GetResponse() ConnectCoreV1PatchNamespacedPodProxyWithPathOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1PatchNamespacedPodProxyWithPathOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1PatchNamespacedPodProxyWithPathOKHeaders) SetResponse(val ConnectCoreV1PatchNamespacedPodProxyWithPathOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1PatchNamespacedPodProxyWithPathOKHeaders) connectCoreV1PatchNamespacedPodProxyWithPathRes() {
 }
 
 // ConnectCoreV1PatchNamespacedPodProxyWithPathUnauthorized is response for ConnectCoreV1PatchNamespacedPodProxyWithPath operation.
@@ -671,7 +1428,34 @@ func (s ConnectCoreV1PatchNamespacedServiceProxyOK) Read(p []byte) (n int, err e
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1PatchNamespacedServiceProxyOK) connectCoreV1PatchNamespacedServiceProxyRes() {}
+// ConnectCoreV1PatchNamespacedServiceProxyOKHeaders wraps ConnectCoreV1PatchNamespacedServiceProxyOK with response headers.
+type ConnectCoreV1PatchNamespacedServiceProxyOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1PatchNamespacedServiceProxyOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1PatchNamespacedServiceProxyOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1PatchNamespacedServiceProxyOKHeaders) GetResponse() ConnectCoreV1PatchNamespacedServiceProxyOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1PatchNamespacedServiceProxyOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1PatchNamespacedServiceProxyOKHeaders) SetResponse(val ConnectCoreV1PatchNamespacedServiceProxyOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1PatchNamespacedServiceProxyOKHeaders) connectCoreV1PatchNamespacedServiceProxyRes() {
+}
 
 // ConnectCoreV1PatchNamespacedServiceProxyUnauthorized is response for ConnectCoreV1PatchNamespacedServiceProxy operation.
 type ConnectCoreV1PatchNamespacedServiceProxyUnauthorized struct{}
@@ -693,7 +1477,33 @@ func (s ConnectCoreV1PatchNamespacedServiceProxyWithPathOK) Read(p []byte) (n in
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1PatchNamespacedServiceProxyWithPathOK) connectCoreV1PatchNamespacedServiceProxyWithPathRes() {
+// ConnectCoreV1PatchNamespacedServiceProxyWithPathOKHeaders wraps ConnectCoreV1PatchNamespacedServiceProxyWithPathOK with response headers.
+type ConnectCoreV1PatchNamespacedServiceProxyWithPathOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1PatchNamespacedServiceProxyWithPathOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1PatchNamespacedServiceProxyWithPathOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1PatchNamespacedServiceProxyWithPathOKHeaders) GetResponse() ConnectCoreV1PatchNamespacedServiceProxyWithPathOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1PatchNamespacedServiceProxyWithPathOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1PatchNamespacedServiceProxyWithPathOKHeaders) SetResponse(val ConnectCoreV1PatchNamespacedServiceProxyWithPathOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1PatchNamespacedServiceProxyWithPathOKHeaders) connectCoreV1PatchNamespacedServiceProxyWithPathRes() {
 }
 
 // ConnectCoreV1PatchNamespacedServiceProxyWithPathUnauthorized is response for ConnectCoreV1PatchNamespacedServiceProxyWithPath operation.
@@ -716,7 +1526,33 @@ func (s ConnectCoreV1PatchNodeProxyOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1PatchNodeProxyOK) connectCoreV1PatchNodeProxyRes() {}
+// ConnectCoreV1PatchNodeProxyOKHeaders wraps ConnectCoreV1PatchNodeProxyOK with response headers.
+type ConnectCoreV1PatchNodeProxyOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1PatchNodeProxyOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1PatchNodeProxyOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1PatchNodeProxyOKHeaders) GetResponse() ConnectCoreV1PatchNodeProxyOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1PatchNodeProxyOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1PatchNodeProxyOKHeaders) SetResponse(val ConnectCoreV1PatchNodeProxyOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1PatchNodeProxyOKHeaders) connectCoreV1PatchNodeProxyRes() {}
 
 // ConnectCoreV1PatchNodeProxyUnauthorized is response for ConnectCoreV1PatchNodeProxy operation.
 type ConnectCoreV1PatchNodeProxyUnauthorized struct{}
@@ -737,7 +1573,33 @@ func (s ConnectCoreV1PatchNodeProxyWithPathOK) Read(p []byte) (n int, err error)
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1PatchNodeProxyWithPathOK) connectCoreV1PatchNodeProxyWithPathRes() {}
+// ConnectCoreV1PatchNodeProxyWithPathOKHeaders wraps ConnectCoreV1PatchNodeProxyWithPathOK with response headers.
+type ConnectCoreV1PatchNodeProxyWithPathOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1PatchNodeProxyWithPathOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1PatchNodeProxyWithPathOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1PatchNodeProxyWithPathOKHeaders) GetResponse() ConnectCoreV1PatchNodeProxyWithPathOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1PatchNodeProxyWithPathOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1PatchNodeProxyWithPathOKHeaders) SetResponse(val ConnectCoreV1PatchNodeProxyWithPathOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1PatchNodeProxyWithPathOKHeaders) connectCoreV1PatchNodeProxyWithPathRes() {}
 
 // ConnectCoreV1PatchNodeProxyWithPathUnauthorized is response for ConnectCoreV1PatchNodeProxyWithPath operation.
 type ConnectCoreV1PatchNodeProxyWithPathUnauthorized struct{}
@@ -758,7 +1620,33 @@ func (s ConnectCoreV1PostNamespacedPodAttachOK) Read(p []byte) (n int, err error
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1PostNamespacedPodAttachOK) connectCoreV1PostNamespacedPodAttachRes() {}
+// ConnectCoreV1PostNamespacedPodAttachOKHeaders wraps ConnectCoreV1PostNamespacedPodAttachOK with response headers.
+type ConnectCoreV1PostNamespacedPodAttachOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1PostNamespacedPodAttachOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1PostNamespacedPodAttachOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1PostNamespacedPodAttachOKHeaders) GetResponse() ConnectCoreV1PostNamespacedPodAttachOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1PostNamespacedPodAttachOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1PostNamespacedPodAttachOKHeaders) SetResponse(val ConnectCoreV1PostNamespacedPodAttachOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1PostNamespacedPodAttachOKHeaders) connectCoreV1PostNamespacedPodAttachRes() {}
 
 // ConnectCoreV1PostNamespacedPodAttachUnauthorized is response for ConnectCoreV1PostNamespacedPodAttach operation.
 type ConnectCoreV1PostNamespacedPodAttachUnauthorized struct{}
@@ -779,7 +1667,33 @@ func (s ConnectCoreV1PostNamespacedPodExecOK) Read(p []byte) (n int, err error) 
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1PostNamespacedPodExecOK) connectCoreV1PostNamespacedPodExecRes() {}
+// ConnectCoreV1PostNamespacedPodExecOKHeaders wraps ConnectCoreV1PostNamespacedPodExecOK with response headers.
+type ConnectCoreV1PostNamespacedPodExecOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1PostNamespacedPodExecOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1PostNamespacedPodExecOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1PostNamespacedPodExecOKHeaders) GetResponse() ConnectCoreV1PostNamespacedPodExecOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1PostNamespacedPodExecOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1PostNamespacedPodExecOKHeaders) SetResponse(val ConnectCoreV1PostNamespacedPodExecOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1PostNamespacedPodExecOKHeaders) connectCoreV1PostNamespacedPodExecRes() {}
 
 // ConnectCoreV1PostNamespacedPodExecUnauthorized is response for ConnectCoreV1PostNamespacedPodExec operation.
 type ConnectCoreV1PostNamespacedPodExecUnauthorized struct{}
@@ -800,7 +1714,34 @@ func (s ConnectCoreV1PostNamespacedPodPortforwardOK) Read(p []byte) (n int, err 
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1PostNamespacedPodPortforwardOK) connectCoreV1PostNamespacedPodPortforwardRes() {}
+// ConnectCoreV1PostNamespacedPodPortforwardOKHeaders wraps ConnectCoreV1PostNamespacedPodPortforwardOK with response headers.
+type ConnectCoreV1PostNamespacedPodPortforwardOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1PostNamespacedPodPortforwardOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1PostNamespacedPodPortforwardOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1PostNamespacedPodPortforwardOKHeaders) GetResponse() ConnectCoreV1PostNamespacedPodPortforwardOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1PostNamespacedPodPortforwardOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1PostNamespacedPodPortforwardOKHeaders) SetResponse(val ConnectCoreV1PostNamespacedPodPortforwardOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1PostNamespacedPodPortforwardOKHeaders) connectCoreV1PostNamespacedPodPortforwardRes() {
+}
 
 // ConnectCoreV1PostNamespacedPodPortforwardUnauthorized is response for ConnectCoreV1PostNamespacedPodPortforward operation.
 type ConnectCoreV1PostNamespacedPodPortforwardUnauthorized struct{}
@@ -822,7 +1763,33 @@ func (s ConnectCoreV1PostNamespacedPodProxyOK) Read(p []byte) (n int, err error)
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1PostNamespacedPodProxyOK) connectCoreV1PostNamespacedPodProxyRes() {}
+// ConnectCoreV1PostNamespacedPodProxyOKHeaders wraps ConnectCoreV1PostNamespacedPodProxyOK with response headers.
+type ConnectCoreV1PostNamespacedPodProxyOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1PostNamespacedPodProxyOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1PostNamespacedPodProxyOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1PostNamespacedPodProxyOKHeaders) GetResponse() ConnectCoreV1PostNamespacedPodProxyOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1PostNamespacedPodProxyOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1PostNamespacedPodProxyOKHeaders) SetResponse(val ConnectCoreV1PostNamespacedPodProxyOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1PostNamespacedPodProxyOKHeaders) connectCoreV1PostNamespacedPodProxyRes() {}
 
 // ConnectCoreV1PostNamespacedPodProxyUnauthorized is response for ConnectCoreV1PostNamespacedPodProxy operation.
 type ConnectCoreV1PostNamespacedPodProxyUnauthorized struct{}
@@ -843,7 +1810,33 @@ func (s ConnectCoreV1PostNamespacedPodProxyWithPathOK) Read(p []byte) (n int, er
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1PostNamespacedPodProxyWithPathOK) connectCoreV1PostNamespacedPodProxyWithPathRes() {
+// ConnectCoreV1PostNamespacedPodProxyWithPathOKHeaders wraps ConnectCoreV1PostNamespacedPodProxyWithPathOK with response headers.
+type ConnectCoreV1PostNamespacedPodProxyWithPathOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1PostNamespacedPodProxyWithPathOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1PostNamespacedPodProxyWithPathOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1PostNamespacedPodProxyWithPathOKHeaders) GetResponse() ConnectCoreV1PostNamespacedPodProxyWithPathOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1PostNamespacedPodProxyWithPathOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1PostNamespacedPodProxyWithPathOKHeaders) SetResponse(val ConnectCoreV1PostNamespacedPodProxyWithPathOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1PostNamespacedPodProxyWithPathOKHeaders) connectCoreV1PostNamespacedPodProxyWithPathRes() {
 }
 
 // ConnectCoreV1PostNamespacedPodProxyWithPathUnauthorized is response for ConnectCoreV1PostNamespacedPodProxyWithPath operation.
@@ -866,7 +1859,34 @@ func (s ConnectCoreV1PostNamespacedServiceProxyOK) Read(p []byte) (n int, err er
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1PostNamespacedServiceProxyOK) connectCoreV1PostNamespacedServiceProxyRes() {}
+// ConnectCoreV1PostNamespacedServiceProxyOKHeaders wraps ConnectCoreV1PostNamespacedServiceProxyOK with response headers.
+type ConnectCoreV1PostNamespacedServiceProxyOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1PostNamespacedServiceProxyOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1PostNamespacedServiceProxyOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1PostNamespacedServiceProxyOKHeaders) GetResponse() ConnectCoreV1PostNamespacedServiceProxyOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1PostNamespacedServiceProxyOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1PostNamespacedServiceProxyOKHeaders) SetResponse(val ConnectCoreV1PostNamespacedServiceProxyOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1PostNamespacedServiceProxyOKHeaders) connectCoreV1PostNamespacedServiceProxyRes() {
+}
 
 // ConnectCoreV1PostNamespacedServiceProxyUnauthorized is response for ConnectCoreV1PostNamespacedServiceProxy operation.
 type ConnectCoreV1PostNamespacedServiceProxyUnauthorized struct{}
@@ -888,7 +1908,33 @@ func (s ConnectCoreV1PostNamespacedServiceProxyWithPathOK) Read(p []byte) (n int
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1PostNamespacedServiceProxyWithPathOK) connectCoreV1PostNamespacedServiceProxyWithPathRes() {
+// ConnectCoreV1PostNamespacedServiceProxyWithPathOKHeaders wraps ConnectCoreV1PostNamespacedServiceProxyWithPathOK with response headers.
+type ConnectCoreV1PostNamespacedServiceProxyWithPathOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1PostNamespacedServiceProxyWithPathOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1PostNamespacedServiceProxyWithPathOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1PostNamespacedServiceProxyWithPathOKHeaders) GetResponse() ConnectCoreV1PostNamespacedServiceProxyWithPathOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1PostNamespacedServiceProxyWithPathOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1PostNamespacedServiceProxyWithPathOKHeaders) SetResponse(val ConnectCoreV1PostNamespacedServiceProxyWithPathOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1PostNamespacedServiceProxyWithPathOKHeaders) connectCoreV1PostNamespacedServiceProxyWithPathRes() {
 }
 
 // ConnectCoreV1PostNamespacedServiceProxyWithPathUnauthorized is response for ConnectCoreV1PostNamespacedServiceProxyWithPath operation.
@@ -911,7 +1957,33 @@ func (s ConnectCoreV1PostNodeProxyOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1PostNodeProxyOK) connectCoreV1PostNodeProxyRes() {}
+// ConnectCoreV1PostNodeProxyOKHeaders wraps ConnectCoreV1PostNodeProxyOK with response headers.
+type ConnectCoreV1PostNodeProxyOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1PostNodeProxyOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1PostNodeProxyOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1PostNodeProxyOKHeaders) GetResponse() ConnectCoreV1PostNodeProxyOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1PostNodeProxyOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1PostNodeProxyOKHeaders) SetResponse(val ConnectCoreV1PostNodeProxyOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1PostNodeProxyOKHeaders) connectCoreV1PostNodeProxyRes() {}
 
 // ConnectCoreV1PostNodeProxyUnauthorized is response for ConnectCoreV1PostNodeProxy operation.
 type ConnectCoreV1PostNodeProxyUnauthorized struct{}
@@ -932,7 +2004,33 @@ func (s ConnectCoreV1PostNodeProxyWithPathOK) Read(p []byte) (n int, err error) 
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1PostNodeProxyWithPathOK) connectCoreV1PostNodeProxyWithPathRes() {}
+// ConnectCoreV1PostNodeProxyWithPathOKHeaders wraps ConnectCoreV1PostNodeProxyWithPathOK with response headers.
+type ConnectCoreV1PostNodeProxyWithPathOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1PostNodeProxyWithPathOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1PostNodeProxyWithPathOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1PostNodeProxyWithPathOKHeaders) GetResponse() ConnectCoreV1PostNodeProxyWithPathOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1PostNodeProxyWithPathOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1PostNodeProxyWithPathOKHeaders) SetResponse(val ConnectCoreV1PostNodeProxyWithPathOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1PostNodeProxyWithPathOKHeaders) connectCoreV1PostNodeProxyWithPathRes() {}
 
 // ConnectCoreV1PostNodeProxyWithPathUnauthorized is response for ConnectCoreV1PostNodeProxyWithPath operation.
 type ConnectCoreV1PostNodeProxyWithPathUnauthorized struct{}
@@ -953,7 +2051,33 @@ func (s ConnectCoreV1PutNamespacedPodProxyOK) Read(p []byte) (n int, err error) 
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1PutNamespacedPodProxyOK) connectCoreV1PutNamespacedPodProxyRes() {}
+// ConnectCoreV1PutNamespacedPodProxyOKHeaders wraps ConnectCoreV1PutNamespacedPodProxyOK with response headers.
+type ConnectCoreV1PutNamespacedPodProxyOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1PutNamespacedPodProxyOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1PutNamespacedPodProxyOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1PutNamespacedPodProxyOKHeaders) GetResponse() ConnectCoreV1PutNamespacedPodProxyOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1PutNamespacedPodProxyOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1PutNamespacedPodProxyOKHeaders) SetResponse(val ConnectCoreV1PutNamespacedPodProxyOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1PutNamespacedPodProxyOKHeaders) connectCoreV1PutNamespacedPodProxyRes() {}
 
 // ConnectCoreV1PutNamespacedPodProxyUnauthorized is response for ConnectCoreV1PutNamespacedPodProxy operation.
 type ConnectCoreV1PutNamespacedPodProxyUnauthorized struct{}
@@ -974,7 +2098,33 @@ func (s ConnectCoreV1PutNamespacedPodProxyWithPathOK) Read(p []byte) (n int, err
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1PutNamespacedPodProxyWithPathOK) connectCoreV1PutNamespacedPodProxyWithPathRes() {
+// ConnectCoreV1PutNamespacedPodProxyWithPathOKHeaders wraps ConnectCoreV1PutNamespacedPodProxyWithPathOK with response headers.
+type ConnectCoreV1PutNamespacedPodProxyWithPathOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1PutNamespacedPodProxyWithPathOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1PutNamespacedPodProxyWithPathOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1PutNamespacedPodProxyWithPathOKHeaders) GetResponse() ConnectCoreV1PutNamespacedPodProxyWithPathOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1PutNamespacedPodProxyWithPathOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1PutNamespacedPodProxyWithPathOKHeaders) SetResponse(val ConnectCoreV1PutNamespacedPodProxyWithPathOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1PutNamespacedPodProxyWithPathOKHeaders) connectCoreV1PutNamespacedPodProxyWithPathRes() {
 }
 
 // ConnectCoreV1PutNamespacedPodProxyWithPathUnauthorized is response for ConnectCoreV1PutNamespacedPodProxyWithPath operation.
@@ -997,7 +2147,33 @@ func (s ConnectCoreV1PutNamespacedServiceProxyOK) Read(p []byte) (n int, err err
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1PutNamespacedServiceProxyOK) connectCoreV1PutNamespacedServiceProxyRes() {}
+// ConnectCoreV1PutNamespacedServiceProxyOKHeaders wraps ConnectCoreV1PutNamespacedServiceProxyOK with response headers.
+type ConnectCoreV1PutNamespacedServiceProxyOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1PutNamespacedServiceProxyOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1PutNamespacedServiceProxyOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1PutNamespacedServiceProxyOKHeaders) GetResponse() ConnectCoreV1PutNamespacedServiceProxyOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1PutNamespacedServiceProxyOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1PutNamespacedServiceProxyOKHeaders) SetResponse(val ConnectCoreV1PutNamespacedServiceProxyOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1PutNamespacedServiceProxyOKHeaders) connectCoreV1PutNamespacedServiceProxyRes() {}
 
 // ConnectCoreV1PutNamespacedServiceProxyUnauthorized is response for ConnectCoreV1PutNamespacedServiceProxy operation.
 type ConnectCoreV1PutNamespacedServiceProxyUnauthorized struct{}
@@ -1019,7 +2195,33 @@ func (s ConnectCoreV1PutNamespacedServiceProxyWithPathOK) Read(p []byte) (n int,
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1PutNamespacedServiceProxyWithPathOK) connectCoreV1PutNamespacedServiceProxyWithPathRes() {
+// ConnectCoreV1PutNamespacedServiceProxyWithPathOKHeaders wraps ConnectCoreV1PutNamespacedServiceProxyWithPathOK with response headers.
+type ConnectCoreV1PutNamespacedServiceProxyWithPathOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1PutNamespacedServiceProxyWithPathOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1PutNamespacedServiceProxyWithPathOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1PutNamespacedServiceProxyWithPathOKHeaders) GetResponse() ConnectCoreV1PutNamespacedServiceProxyWithPathOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1PutNamespacedServiceProxyWithPathOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1PutNamespacedServiceProxyWithPathOKHeaders) SetResponse(val ConnectCoreV1PutNamespacedServiceProxyWithPathOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1PutNamespacedServiceProxyWithPathOKHeaders) connectCoreV1PutNamespacedServiceProxyWithPathRes() {
 }
 
 // ConnectCoreV1PutNamespacedServiceProxyWithPathUnauthorized is response for ConnectCoreV1PutNamespacedServiceProxyWithPath operation.
@@ -1042,7 +2244,33 @@ func (s ConnectCoreV1PutNodeProxyOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1PutNodeProxyOK) connectCoreV1PutNodeProxyRes() {}
+// ConnectCoreV1PutNodeProxyOKHeaders wraps ConnectCoreV1PutNodeProxyOK with response headers.
+type ConnectCoreV1PutNodeProxyOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1PutNodeProxyOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1PutNodeProxyOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1PutNodeProxyOKHeaders) GetResponse() ConnectCoreV1PutNodeProxyOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1PutNodeProxyOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1PutNodeProxyOKHeaders) SetResponse(val ConnectCoreV1PutNodeProxyOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1PutNodeProxyOKHeaders) connectCoreV1PutNodeProxyRes() {}
 
 // ConnectCoreV1PutNodeProxyUnauthorized is response for ConnectCoreV1PutNodeProxy operation.
 type ConnectCoreV1PutNodeProxyUnauthorized struct{}
@@ -1063,7 +2291,33 @@ func (s ConnectCoreV1PutNodeProxyWithPathOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
 
-func (*ConnectCoreV1PutNodeProxyWithPathOK) connectCoreV1PutNodeProxyWithPathRes() {}
+// ConnectCoreV1PutNodeProxyWithPathOKHeaders wraps ConnectCoreV1PutNodeProxyWithPathOK with response headers.
+type ConnectCoreV1PutNodeProxyWithPathOKHeaders struct {
+	ContentType string
+	Response    ConnectCoreV1PutNodeProxyWithPathOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *ConnectCoreV1PutNodeProxyWithPathOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *ConnectCoreV1PutNodeProxyWithPathOKHeaders) GetResponse() ConnectCoreV1PutNodeProxyWithPathOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ConnectCoreV1PutNodeProxyWithPathOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ConnectCoreV1PutNodeProxyWithPathOKHeaders) SetResponse(val ConnectCoreV1PutNodeProxyWithPathOK) {
+	s.Response = val
+}
+
+func (*ConnectCoreV1PutNodeProxyWithPathOKHeaders) connectCoreV1PutNodeProxyWithPathRes() {}
 
 // ConnectCoreV1PutNodeProxyWithPathUnauthorized is response for ConnectCoreV1PutNodeProxyWithPath operation.
 type ConnectCoreV1PutNodeProxyWithPathUnauthorized struct{}

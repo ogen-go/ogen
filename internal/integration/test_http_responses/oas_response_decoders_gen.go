@@ -18,7 +18,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeAnyContentTypeBinaryStringSchemaResponse(resp *http.Response) (res AnyContentTypeBinaryStringSchemaOK, _ error) {
+func decodeAnyContentTypeBinaryStringSchemaResponse(resp *http.Response) (res *AnyContentTypeBinaryStringSchemaOKHeaders, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -35,7 +35,42 @@ func decodeAnyContentTypeBinaryStringSchemaResponse(resp *http.Response) (res An
 			}
 
 			response := AnyContentTypeBinaryStringSchemaOK{Data: bytes.NewReader(b)}
-			return response, nil
+			var wrapper AnyContentTypeBinaryStringSchemaOKHeaders
+			wrapper.Response = response
+			h := uri.NewHeaderDecoder(resp.Header)
+			// Parse "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterDecodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := func() error {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapper.ContentType = c
+							return nil
+						}); err != nil {
+							return err
+						}
+					} else {
+						return validate.ErrFieldRequired
+					}
+					return nil
+				}(); err != nil {
+					return res, errors.Wrap(err, "parse Content-Type header")
+				}
+			}
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -43,9 +78,9 @@ func decodeAnyContentTypeBinaryStringSchemaResponse(resp *http.Response) (res An
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAnyContentTypeBinaryStringSchemaDefaultResponse(resp *http.Response) (res *AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, _ error) {
+func decodeAnyContentTypeBinaryStringSchemaDefaultResponse(resp *http.Response) (res *AnyContentTypeBinaryStringSchemaDefaultDefStatusCodeWithHeaders, _ error) {
 	// Default response.
-	res, err := func() (res *AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, err error) {
+	res, err := func() (res *AnyContentTypeBinaryStringSchemaDefaultDefStatusCodeWithHeaders, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -59,10 +94,43 @@ func decodeAnyContentTypeBinaryStringSchemaDefaultResponse(resp *http.Response) 
 			}
 
 			response := AnyContentTypeBinaryStringSchemaDefaultDef{Data: bytes.NewReader(b)}
-			return &AnyContentTypeBinaryStringSchemaDefaultDefStatusCode{
-				StatusCode: resp.StatusCode,
-				Response:   response,
-			}, nil
+			var wrapper AnyContentTypeBinaryStringSchemaDefaultDefStatusCodeWithHeaders
+			wrapper.Response = response
+			wrapper.StatusCode = resp.StatusCode
+			h := uri.NewHeaderDecoder(resp.Header)
+			// Parse "Content-Type" header.
+			{
+				cfg := uri.HeaderParameterDecodingConfig{
+					Name:    "Content-Type",
+					Explode: false,
+				}
+				if err := func() error {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapper.ContentType = c
+							return nil
+						}); err != nil {
+							return err
+						}
+					} else {
+						return validate.ErrFieldRequired
+					}
+					return nil
+				}(); err != nil {
+					return res, errors.Wrap(err, "parse Content-Type header")
+				}
+			}
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
