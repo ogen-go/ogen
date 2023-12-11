@@ -397,11 +397,22 @@ func (s *Server) decodeReferencedAllofRequest(r *http.Request) (
 				Name:    "location",
 				Style:   uri.QueryStyleForm,
 				Explode: true,
-				Fields:  []uri.QueryParameterObjectField{{"lat", true}, {"lon", true}},
 			}
 			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					return request.Location.DecodeURI(d)
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+					if err := func(d *jx.Decoder) error {
+						if err := request.Location.Decode(d); err != nil {
+							return err
+						}
+						return nil
+					}(jx.DecodeStr(val)); err != nil {
+						return err
+					}
+					return nil
 				}); err != nil {
 					return req, close, errors.Wrap(err, "decode \"location\"")
 				}
@@ -578,11 +589,22 @@ func (s *Server) decodeReferencedAllofOptionalRequest(r *http.Request) (
 				Name:    "location",
 				Style:   uri.QueryStyleForm,
 				Explode: true,
-				Fields:  []uri.QueryParameterObjectField{{"lat", true}, {"lon", true}},
 			}
 			if err := q.HasParam(cfg); err == nil { // if NO error
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					return request.Location.DecodeURI(d)
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+					if err := func(d *jx.Decoder) error {
+						if err := request.Location.Decode(d); err != nil {
+							return err
+						}
+						return nil
+					}(jx.DecodeStr(val)); err != nil {
+						return err
+					}
+					return nil
 				}); err != nil {
 					return req, close, errors.Wrap(err, "decode \"location\"")
 				}

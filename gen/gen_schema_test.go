@@ -14,7 +14,7 @@ import (
 	"go.uber.org/zap/zaptest"
 
 	"github.com/ogen-go/ogen/gen/genfs"
-	"github.com/ogen-go/ogen/internal/jsonpointer"
+	"github.com/ogen-go/ogen/jsonpointer"
 	"github.com/ogen-go/ogen/jsonschema"
 )
 

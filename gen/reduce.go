@@ -7,8 +7,8 @@ import (
 	"go.uber.org/zap"
 
 	"github.com/ogen-go/ogen/gen/ir"
-	"github.com/ogen-go/ogen/internal/location"
 	ogenjson "github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/location"
 	"github.com/ogen-go/ogen/openapi"
 )
 

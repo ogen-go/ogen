@@ -16,14 +16,14 @@ var _ Handler = UnimplementedHandler{}
 // AnyContentTypeBinaryStringSchema implements anyContentTypeBinaryStringSchema operation.
 //
 // GET /anyContentTypeBinaryStringSchema
-func (UnimplementedHandler) AnyContentTypeBinaryStringSchema(ctx context.Context) (r AnyContentTypeBinaryStringSchemaOK, _ error) {
+func (UnimplementedHandler) AnyContentTypeBinaryStringSchema(ctx context.Context) (r *AnyContentTypeBinaryStringSchemaOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // AnyContentTypeBinaryStringSchemaDefault implements anyContentTypeBinaryStringSchemaDefault operation.
 //
 // GET /anyContentTypeBinaryStringSchemaDefault
-func (UnimplementedHandler) AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (r *AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, _ error) {
+func (UnimplementedHandler) AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (r *AnyContentTypeBinaryStringSchemaDefaultDefStatusCodeWithHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 

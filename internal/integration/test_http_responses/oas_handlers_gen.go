@@ -57,7 +57,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaRequest(args [0]string, a
 		err error
 	)
 
-	var response AnyContentTypeBinaryStringSchemaOK
+	var response *AnyContentTypeBinaryStringSchemaOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -72,7 +72,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaRequest(args [0]string, a
 		type (
 			Request  = struct{}
 			Params   = struct{}
-			Response = AnyContentTypeBinaryStringSchemaOK
+			Response = *AnyContentTypeBinaryStringSchemaOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -142,7 +142,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaDefaultRequest(args [0]st
 		err error
 	)
 
-	var response *AnyContentTypeBinaryStringSchemaDefaultDefStatusCode
+	var response *AnyContentTypeBinaryStringSchemaDefaultDefStatusCodeWithHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -157,7 +157,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaDefaultRequest(args [0]st
 		type (
 			Request  = struct{}
 			Params   = struct{}
-			Response = *AnyContentTypeBinaryStringSchemaDefaultDefStatusCode
+			Response = *AnyContentTypeBinaryStringSchemaDefaultDefStatusCodeWithHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,

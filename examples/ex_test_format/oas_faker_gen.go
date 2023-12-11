@@ -101,12 +101,62 @@ func (s *NilString) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *NilStringFloat32) SetFake() {
+	s.Null = true
+}
+
+// SetFake set fake values.
+func (s *NilStringFloat64) SetFake() {
+	s.Null = true
+}
+
+// SetFake set fake values.
+func (s *NilStringInt) SetFake() {
+	s.Null = true
+}
+
+// SetFake set fake values.
+func (s *NilStringInt16) SetFake() {
+	s.Null = true
+}
+
+// SetFake set fake values.
 func (s *NilStringInt32) SetFake() {
 	s.Null = true
 }
 
 // SetFake set fake values.
 func (s *NilStringInt64) SetFake() {
+	s.Null = true
+}
+
+// SetFake set fake values.
+func (s *NilStringInt8) SetFake() {
+	s.Null = true
+}
+
+// SetFake set fake values.
+func (s *NilStringUint) SetFake() {
+	s.Null = true
+}
+
+// SetFake set fake values.
+func (s *NilStringUint16) SetFake() {
+	s.Null = true
+}
+
+// SetFake set fake values.
+func (s *NilStringUint32) SetFake() {
+	s.Null = true
+}
+
+// SetFake set fake values.
+func (s *NilStringUint64) SetFake() {
+	s.Null = true
+}
+
+// SetFake set fake values.
+func (s *NilStringUint8) SetFake() {
 	s.Null = true
 }
 
@@ -413,6 +463,30 @@ func (s *OptNilString) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *OptNilStringFloat32) SetFake() {
+	s.Null = true
+	s.Set = true
+}
+
+// SetFake set fake values.
+func (s *OptNilStringFloat64) SetFake() {
+	s.Null = true
+	s.Set = true
+}
+
+// SetFake set fake values.
+func (s *OptNilStringInt) SetFake() {
+	s.Null = true
+	s.Set = true
+}
+
+// SetFake set fake values.
+func (s *OptNilStringInt16) SetFake() {
+	s.Null = true
+	s.Set = true
+}
+
+// SetFake set fake values.
 func (s *OptNilStringInt32) SetFake() {
 	s.Null = true
 	s.Set = true
@@ -420,6 +494,42 @@ func (s *OptNilStringInt32) SetFake() {
 
 // SetFake set fake values.
 func (s *OptNilStringInt64) SetFake() {
+	s.Null = true
+	s.Set = true
+}
+
+// SetFake set fake values.
+func (s *OptNilStringInt8) SetFake() {
+	s.Null = true
+	s.Set = true
+}
+
+// SetFake set fake values.
+func (s *OptNilStringUint) SetFake() {
+	s.Null = true
+	s.Set = true
+}
+
+// SetFake set fake values.
+func (s *OptNilStringUint16) SetFake() {
+	s.Null = true
+	s.Set = true
+}
+
+// SetFake set fake values.
+func (s *OptNilStringUint32) SetFake() {
+	s.Null = true
+	s.Set = true
+}
+
+// SetFake set fake values.
+func (s *OptNilStringUint64) SetFake() {
+	s.Null = true
+	s.Set = true
+}
+
+// SetFake set fake values.
+func (s *OptNilStringUint8) SetFake() {
 	s.Null = true
 	s.Set = true
 }
@@ -539,6 +649,42 @@ func (s *OptString) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *OptStringFloat32) SetFake() {
+	var elem float32
+	{
+		elem = float32(0)
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptStringFloat64) SetFake() {
+	var elem float64
+	{
+		elem = float64(0)
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptStringInt) SetFake() {
+	var elem int
+	{
+		elem = int(0)
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptStringInt16) SetFake() {
+	var elem int16
+	{
+		elem = int16(0)
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
 func (s *OptStringInt32) SetFake() {
 	var elem int32
 	{
@@ -552,6 +698,60 @@ func (s *OptStringInt64) SetFake() {
 	var elem int64
 	{
 		elem = int64(0)
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptStringInt8) SetFake() {
+	var elem int8
+	{
+		elem = int8(0)
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptStringUint) SetFake() {
+	var elem uint
+	{
+		elem = uint(0)
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptStringUint16) SetFake() {
+	var elem uint16
+	{
+		elem = uint16(0)
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptStringUint32) SetFake() {
+	var elem uint32
+	{
+		elem = uint32(0)
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptStringUint64) SetFake() {
+	var elem uint64
+	{
+		elem = uint64(0)
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptStringUint8) SetFake() {
+	var elem uint8
+	{
+		elem = uint8(0)
 	}
 	s.SetTo(elem)
 }

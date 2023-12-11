@@ -26,15 +26,19 @@ type testHTTPResponses struct {
 	headerJSONRaw jx.Raw
 }
 
-func (t testHTTPResponses) AnyContentTypeBinaryStringSchema(ctx context.Context) (api.AnyContentTypeBinaryStringSchemaOK, error) {
-	return api.AnyContentTypeBinaryStringSchemaOK{
-		Data: bytes.NewReader(t.data),
+func (t testHTTPResponses) AnyContentTypeBinaryStringSchema(ctx context.Context) (*api.AnyContentTypeBinaryStringSchemaOKHeaders, error) {
+	return &api.AnyContentTypeBinaryStringSchemaOKHeaders{
+		ContentType: "text/plain",
+		Response: api.AnyContentTypeBinaryStringSchemaOK{
+			Data: bytes.NewReader(t.data),
+		},
 	}, nil
 }
 
-func (t testHTTPResponses) AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (*api.AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, error) {
-	return &api.AnyContentTypeBinaryStringSchemaDefaultDefStatusCode{
-		StatusCode: 200,
+func (t testHTTPResponses) AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (*api.AnyContentTypeBinaryStringSchemaDefaultDefStatusCodeWithHeaders, error) {
+	return &api.AnyContentTypeBinaryStringSchemaDefaultDefStatusCodeWithHeaders{
+		StatusCode:  200,
+		ContentType: "text/plain",
 		Response: api.AnyContentTypeBinaryStringSchemaDefaultDef{
 			Data: bytes.NewReader(t.data),
 		},
@@ -196,19 +200,22 @@ func TestResponsesEncoding(t *testing.T) {
 
 		r, err := client.AnyContentTypeBinaryStringSchema(ctx)
 		a.NoError(err)
-		data, err := io.ReadAll(r.Data)
+
+		data, err := io.ReadAll(r.Response)
 		a.NoError(err)
 		a.Equal(testData, data)
+		a.Equal("text/plain", r.ContentType)
 	})
 	t.Run("AnyContentTypeBinaryStringSchemaDefault", func(t *testing.T) {
 		ctx, a, client := create(t)
 
 		r, err := client.AnyContentTypeBinaryStringSchemaDefault(ctx)
 		a.NoError(err)
-		data, err := io.ReadAll(r.Response.Data)
+		data, err := io.ReadAll(r.Response)
 		a.NoError(err)
 		a.Equal(testData, data)
 		a.Equal(200, r.StatusCode)
+		a.Equal("text/plain", r.ContentType)
 	})
 	t.Run("MultipleGenericResponses", func(t *testing.T) {
 		ctx, a, client := create(t)

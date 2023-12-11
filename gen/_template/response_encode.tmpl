@@ -9,7 +9,7 @@
 
 {{- if $.Error }}
 {{- $otel := $.OpenTelemetryEnabled }}
-func encodeErrorResponse(response {{ $.ErrorGoType }}, w http.ResponseWriter, span trace.Span) error {
+func encodeErrorResponse(response {{ $.ErrorGoType }}, w http.ResponseWriter, {{ if $otel }}span trace.Span{{ end }}) error {
 	{{- $infos := $.Error.ResponseInfo $otel }}
 	{{- if eq (len $infos) 1 }}
 		{{- range $info := $infos }}

@@ -137,7 +137,33 @@ func (s GetPageCoverImageOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
 
-func (*GetPageCoverImageOK) getPageCoverImageRes() {}
+// GetPageCoverImageOKHeaders wraps GetPageCoverImageOK with response headers.
+type GetPageCoverImageOKHeaders struct {
+	ContentType string
+	Response    GetPageCoverImageOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *GetPageCoverImageOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *GetPageCoverImageOKHeaders) GetResponse() GetPageCoverImageOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *GetPageCoverImageOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *GetPageCoverImageOKHeaders) SetResponse(val GetPageCoverImageOK) {
+	s.Response = val
+}
+
+func (*GetPageCoverImageOKHeaders) getPageCoverImageRes() {}
 
 // GetPageImageForbidden is response for GetPageImage operation.
 type GetPageImageForbidden struct{}
@@ -158,7 +184,33 @@ func (s GetPageImageOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
 
-func (*GetPageImageOK) getPageImageRes() {}
+// GetPageImageOKHeaders wraps GetPageImageOK with response headers.
+type GetPageImageOKHeaders struct {
+	ContentType string
+	Response    GetPageImageOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *GetPageImageOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *GetPageImageOKHeaders) GetResponse() GetPageImageOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *GetPageImageOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *GetPageImageOKHeaders) SetResponse(val GetPageImageOK) {
+	s.Response = val
+}
+
+func (*GetPageImageOKHeaders) getPageImageRes() {}
 
 // GetPageThumbnailImageForbidden is response for GetPageThumbnailImage operation.
 type GetPageThumbnailImageForbidden struct{}
@@ -179,7 +231,33 @@ func (s GetPageThumbnailImageOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
 
-func (*GetPageThumbnailImageOK) getPageThumbnailImageRes() {}
+// GetPageThumbnailImageOKHeaders wraps GetPageThumbnailImageOK with response headers.
+type GetPageThumbnailImageOKHeaders struct {
+	ContentType string
+	Response    GetPageThumbnailImageOK
+}
+
+// GetContentType returns the value of ContentType.
+func (s *GetPageThumbnailImageOKHeaders) GetContentType() string {
+	return s.ContentType
+}
+
+// GetResponse returns the value of Response.
+func (s *GetPageThumbnailImageOKHeaders) GetResponse() GetPageThumbnailImageOK {
+	return s.Response
+}
+
+// SetContentType sets the value of ContentType.
+func (s *GetPageThumbnailImageOKHeaders) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetResponse sets the value of Response.
+func (s *GetPageThumbnailImageOKHeaders) SetResponse(val GetPageThumbnailImageOK) {
+	s.Response = val
+}
+
+func (*GetPageThumbnailImageOKHeaders) getPageThumbnailImageRes() {}
 
 // Ref: #/components/schemas/Image
 type Image struct {

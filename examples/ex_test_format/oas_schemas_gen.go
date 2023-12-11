@@ -712,6 +712,186 @@ func (o NilString) Or(d string) string {
 	return d
 }
 
+// NewNilStringFloat32 returns new NilStringFloat32 with value set to v.
+func NewNilStringFloat32(v float32) NilStringFloat32 {
+	return NilStringFloat32{
+		Value: v,
+	}
+}
+
+// NilStringFloat32 is nullable float32.
+type NilStringFloat32 struct {
+	Value float32
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilStringFloat32) SetTo(v float32) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilStringFloat32) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *NilStringFloat32) SetToNull() {
+	o.Null = true
+	var v float32
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilStringFloat32) Get() (v float32, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilStringFloat32) Or(d float32) float32 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewNilStringFloat64 returns new NilStringFloat64 with value set to v.
+func NewNilStringFloat64(v float64) NilStringFloat64 {
+	return NilStringFloat64{
+		Value: v,
+	}
+}
+
+// NilStringFloat64 is nullable float64.
+type NilStringFloat64 struct {
+	Value float64
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilStringFloat64) SetTo(v float64) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilStringFloat64) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *NilStringFloat64) SetToNull() {
+	o.Null = true
+	var v float64
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilStringFloat64) Get() (v float64, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilStringFloat64) Or(d float64) float64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewNilStringInt returns new NilStringInt with value set to v.
+func NewNilStringInt(v int) NilStringInt {
+	return NilStringInt{
+		Value: v,
+	}
+}
+
+// NilStringInt is nullable int.
+type NilStringInt struct {
+	Value int
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilStringInt) SetTo(v int) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilStringInt) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *NilStringInt) SetToNull() {
+	o.Null = true
+	var v int
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilStringInt) Get() (v int, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilStringInt) Or(d int) int {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewNilStringInt16 returns new NilStringInt16 with value set to v.
+func NewNilStringInt16(v int16) NilStringInt16 {
+	return NilStringInt16{
+		Value: v,
+	}
+}
+
+// NilStringInt16 is nullable int16.
+type NilStringInt16 struct {
+	Value int16
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilStringInt16) SetTo(v int16) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilStringInt16) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *NilStringInt16) SetToNull() {
+	o.Null = true
+	var v int16
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilStringInt16) Get() (v int16, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilStringInt16) Or(d int16) int16 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewNilStringInt32 returns new NilStringInt32 with value set to v.
 func NewNilStringInt32(v int32) NilStringInt32 {
 	return NilStringInt32{
@@ -796,6 +976,276 @@ func (o NilStringInt64) Get() (v int64, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o NilStringInt64) Or(d int64) int64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewNilStringInt8 returns new NilStringInt8 with value set to v.
+func NewNilStringInt8(v int8) NilStringInt8 {
+	return NilStringInt8{
+		Value: v,
+	}
+}
+
+// NilStringInt8 is nullable int8.
+type NilStringInt8 struct {
+	Value int8
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilStringInt8) SetTo(v int8) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilStringInt8) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *NilStringInt8) SetToNull() {
+	o.Null = true
+	var v int8
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilStringInt8) Get() (v int8, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilStringInt8) Or(d int8) int8 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewNilStringUint returns new NilStringUint with value set to v.
+func NewNilStringUint(v uint) NilStringUint {
+	return NilStringUint{
+		Value: v,
+	}
+}
+
+// NilStringUint is nullable uint.
+type NilStringUint struct {
+	Value uint
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilStringUint) SetTo(v uint) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilStringUint) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *NilStringUint) SetToNull() {
+	o.Null = true
+	var v uint
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilStringUint) Get() (v uint, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilStringUint) Or(d uint) uint {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewNilStringUint16 returns new NilStringUint16 with value set to v.
+func NewNilStringUint16(v uint16) NilStringUint16 {
+	return NilStringUint16{
+		Value: v,
+	}
+}
+
+// NilStringUint16 is nullable uint16.
+type NilStringUint16 struct {
+	Value uint16
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilStringUint16) SetTo(v uint16) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilStringUint16) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *NilStringUint16) SetToNull() {
+	o.Null = true
+	var v uint16
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilStringUint16) Get() (v uint16, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilStringUint16) Or(d uint16) uint16 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewNilStringUint32 returns new NilStringUint32 with value set to v.
+func NewNilStringUint32(v uint32) NilStringUint32 {
+	return NilStringUint32{
+		Value: v,
+	}
+}
+
+// NilStringUint32 is nullable uint32.
+type NilStringUint32 struct {
+	Value uint32
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilStringUint32) SetTo(v uint32) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilStringUint32) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *NilStringUint32) SetToNull() {
+	o.Null = true
+	var v uint32
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilStringUint32) Get() (v uint32, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilStringUint32) Or(d uint32) uint32 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewNilStringUint64 returns new NilStringUint64 with value set to v.
+func NewNilStringUint64(v uint64) NilStringUint64 {
+	return NilStringUint64{
+		Value: v,
+	}
+}
+
+// NilStringUint64 is nullable uint64.
+type NilStringUint64 struct {
+	Value uint64
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilStringUint64) SetTo(v uint64) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilStringUint64) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *NilStringUint64) SetToNull() {
+	o.Null = true
+	var v uint64
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilStringUint64) Get() (v uint64, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilStringUint64) Or(d uint64) uint64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewNilStringUint8 returns new NilStringUint8 with value set to v.
+func NewNilStringUint8(v uint8) NilStringUint8 {
+	return NilStringUint8{
+		Value: v,
+	}
+}
+
+// NilStringUint8 is nullable uint8.
+type NilStringUint8 struct {
+	Value uint8
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilStringUint8) SetTo(v uint8) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilStringUint8) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *NilStringUint8) SetToNull() {
+	o.Null = true
+	var v uint8
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilStringUint8) Get() (v uint8, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilStringUint8) Or(d uint8) uint8 {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -3174,6 +3624,258 @@ func (o OptNilString) Or(d string) string {
 	return d
 }
 
+// NewOptNilStringFloat32 returns new OptNilStringFloat32 with value set to v.
+func NewOptNilStringFloat32(v float32) OptNilStringFloat32 {
+	return OptNilStringFloat32{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilStringFloat32 is optional nullable float32.
+type OptNilStringFloat32 struct {
+	Value float32
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilStringFloat32 was set.
+func (o OptNilStringFloat32) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilStringFloat32) Reset() {
+	var v float32
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilStringFloat32) SetTo(v float32) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilStringFloat32) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *OptNilStringFloat32) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v float32
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilStringFloat32) Get() (v float32, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilStringFloat32) Or(d float32) float32 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilStringFloat64 returns new OptNilStringFloat64 with value set to v.
+func NewOptNilStringFloat64(v float64) OptNilStringFloat64 {
+	return OptNilStringFloat64{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilStringFloat64 is optional nullable float64.
+type OptNilStringFloat64 struct {
+	Value float64
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilStringFloat64 was set.
+func (o OptNilStringFloat64) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilStringFloat64) Reset() {
+	var v float64
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilStringFloat64) SetTo(v float64) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilStringFloat64) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *OptNilStringFloat64) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v float64
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilStringFloat64) Get() (v float64, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilStringFloat64) Or(d float64) float64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilStringInt returns new OptNilStringInt with value set to v.
+func NewOptNilStringInt(v int) OptNilStringInt {
+	return OptNilStringInt{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilStringInt is optional nullable int.
+type OptNilStringInt struct {
+	Value int
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilStringInt was set.
+func (o OptNilStringInt) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilStringInt) Reset() {
+	var v int
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilStringInt) SetTo(v int) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilStringInt) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *OptNilStringInt) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v int
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilStringInt) Get() (v int, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilStringInt) Or(d int) int {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilStringInt16 returns new OptNilStringInt16 with value set to v.
+func NewOptNilStringInt16(v int16) OptNilStringInt16 {
+	return OptNilStringInt16{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilStringInt16 is optional nullable int16.
+type OptNilStringInt16 struct {
+	Value int16
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilStringInt16 was set.
+func (o OptNilStringInt16) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilStringInt16) Reset() {
+	var v int16
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilStringInt16) SetTo(v int16) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilStringInt16) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *OptNilStringInt16) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v int16
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilStringInt16) Get() (v int16, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilStringInt16) Or(d int16) int16 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilStringInt32 returns new OptNilStringInt32 with value set to v.
 func NewOptNilStringInt32(v int32) OptNilStringInt32 {
 	return OptNilStringInt32{
@@ -3294,6 +3996,384 @@ func (o OptNilStringInt64) Get() (v int64, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptNilStringInt64) Or(d int64) int64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilStringInt8 returns new OptNilStringInt8 with value set to v.
+func NewOptNilStringInt8(v int8) OptNilStringInt8 {
+	return OptNilStringInt8{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilStringInt8 is optional nullable int8.
+type OptNilStringInt8 struct {
+	Value int8
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilStringInt8 was set.
+func (o OptNilStringInt8) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilStringInt8) Reset() {
+	var v int8
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilStringInt8) SetTo(v int8) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilStringInt8) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *OptNilStringInt8) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v int8
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilStringInt8) Get() (v int8, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilStringInt8) Or(d int8) int8 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilStringUint returns new OptNilStringUint with value set to v.
+func NewOptNilStringUint(v uint) OptNilStringUint {
+	return OptNilStringUint{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilStringUint is optional nullable uint.
+type OptNilStringUint struct {
+	Value uint
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilStringUint was set.
+func (o OptNilStringUint) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilStringUint) Reset() {
+	var v uint
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilStringUint) SetTo(v uint) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilStringUint) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *OptNilStringUint) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v uint
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilStringUint) Get() (v uint, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilStringUint) Or(d uint) uint {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilStringUint16 returns new OptNilStringUint16 with value set to v.
+func NewOptNilStringUint16(v uint16) OptNilStringUint16 {
+	return OptNilStringUint16{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilStringUint16 is optional nullable uint16.
+type OptNilStringUint16 struct {
+	Value uint16
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilStringUint16 was set.
+func (o OptNilStringUint16) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilStringUint16) Reset() {
+	var v uint16
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilStringUint16) SetTo(v uint16) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilStringUint16) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *OptNilStringUint16) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v uint16
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilStringUint16) Get() (v uint16, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilStringUint16) Or(d uint16) uint16 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilStringUint32 returns new OptNilStringUint32 with value set to v.
+func NewOptNilStringUint32(v uint32) OptNilStringUint32 {
+	return OptNilStringUint32{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilStringUint32 is optional nullable uint32.
+type OptNilStringUint32 struct {
+	Value uint32
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilStringUint32 was set.
+func (o OptNilStringUint32) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilStringUint32) Reset() {
+	var v uint32
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilStringUint32) SetTo(v uint32) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilStringUint32) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *OptNilStringUint32) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v uint32
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilStringUint32) Get() (v uint32, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilStringUint32) Or(d uint32) uint32 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilStringUint64 returns new OptNilStringUint64 with value set to v.
+func NewOptNilStringUint64(v uint64) OptNilStringUint64 {
+	return OptNilStringUint64{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilStringUint64 is optional nullable uint64.
+type OptNilStringUint64 struct {
+	Value uint64
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilStringUint64 was set.
+func (o OptNilStringUint64) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilStringUint64) Reset() {
+	var v uint64
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilStringUint64) SetTo(v uint64) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilStringUint64) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *OptNilStringUint64) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v uint64
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilStringUint64) Get() (v uint64, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilStringUint64) Or(d uint64) uint64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilStringUint8 returns new OptNilStringUint8 with value set to v.
+func NewOptNilStringUint8(v uint8) OptNilStringUint8 {
+	return OptNilStringUint8{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilStringUint8 is optional nullable uint8.
+type OptNilStringUint8 struct {
+	Value uint8
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilStringUint8 was set.
+func (o OptNilStringUint8) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilStringUint8) Reset() {
+	var v uint8
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilStringUint8) SetTo(v uint8) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilStringUint8) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *OptNilStringUint8) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v uint8
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilStringUint8) Get() (v uint8, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilStringUint8) Or(d uint8) uint8 {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -4400,6 +5480,190 @@ func (o OptString) Or(d string) string {
 	return d
 }
 
+// NewOptStringFloat32 returns new OptStringFloat32 with value set to v.
+func NewOptStringFloat32(v float32) OptStringFloat32 {
+	return OptStringFloat32{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptStringFloat32 is optional float32.
+type OptStringFloat32 struct {
+	Value float32
+	Set   bool
+}
+
+// IsSet returns true if OptStringFloat32 was set.
+func (o OptStringFloat32) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptStringFloat32) Reset() {
+	var v float32
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptStringFloat32) SetTo(v float32) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptStringFloat32) Get() (v float32, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptStringFloat32) Or(d float32) float32 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptStringFloat64 returns new OptStringFloat64 with value set to v.
+func NewOptStringFloat64(v float64) OptStringFloat64 {
+	return OptStringFloat64{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptStringFloat64 is optional float64.
+type OptStringFloat64 struct {
+	Value float64
+	Set   bool
+}
+
+// IsSet returns true if OptStringFloat64 was set.
+func (o OptStringFloat64) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptStringFloat64) Reset() {
+	var v float64
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptStringFloat64) SetTo(v float64) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptStringFloat64) Get() (v float64, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptStringFloat64) Or(d float64) float64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptStringInt returns new OptStringInt with value set to v.
+func NewOptStringInt(v int) OptStringInt {
+	return OptStringInt{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptStringInt is optional int.
+type OptStringInt struct {
+	Value int
+	Set   bool
+}
+
+// IsSet returns true if OptStringInt was set.
+func (o OptStringInt) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptStringInt) Reset() {
+	var v int
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptStringInt) SetTo(v int) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptStringInt) Get() (v int, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptStringInt) Or(d int) int {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptStringInt16 returns new OptStringInt16 with value set to v.
+func NewOptStringInt16(v int16) OptStringInt16 {
+	return OptStringInt16{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptStringInt16 is optional int16.
+type OptStringInt16 struct {
+	Value int16
+	Set   bool
+}
+
+// IsSet returns true if OptStringInt16 was set.
+func (o OptStringInt16) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptStringInt16) Reset() {
+	var v int16
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptStringInt16) SetTo(v int16) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptStringInt16) Get() (v int16, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptStringInt16) Or(d int16) int16 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptStringInt32 returns new OptStringInt32 with value set to v.
 func NewOptStringInt32(v int32) OptStringInt32 {
 	return OptStringInt32{
@@ -4486,6 +5750,282 @@ func (o OptStringInt64) Get() (v int64, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptStringInt64) Or(d int64) int64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptStringInt8 returns new OptStringInt8 with value set to v.
+func NewOptStringInt8(v int8) OptStringInt8 {
+	return OptStringInt8{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptStringInt8 is optional int8.
+type OptStringInt8 struct {
+	Value int8
+	Set   bool
+}
+
+// IsSet returns true if OptStringInt8 was set.
+func (o OptStringInt8) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptStringInt8) Reset() {
+	var v int8
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptStringInt8) SetTo(v int8) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptStringInt8) Get() (v int8, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptStringInt8) Or(d int8) int8 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptStringUint returns new OptStringUint with value set to v.
+func NewOptStringUint(v uint) OptStringUint {
+	return OptStringUint{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptStringUint is optional uint.
+type OptStringUint struct {
+	Value uint
+	Set   bool
+}
+
+// IsSet returns true if OptStringUint was set.
+func (o OptStringUint) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptStringUint) Reset() {
+	var v uint
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptStringUint) SetTo(v uint) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptStringUint) Get() (v uint, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptStringUint) Or(d uint) uint {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptStringUint16 returns new OptStringUint16 with value set to v.
+func NewOptStringUint16(v uint16) OptStringUint16 {
+	return OptStringUint16{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptStringUint16 is optional uint16.
+type OptStringUint16 struct {
+	Value uint16
+	Set   bool
+}
+
+// IsSet returns true if OptStringUint16 was set.
+func (o OptStringUint16) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptStringUint16) Reset() {
+	var v uint16
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptStringUint16) SetTo(v uint16) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptStringUint16) Get() (v uint16, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptStringUint16) Or(d uint16) uint16 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptStringUint32 returns new OptStringUint32 with value set to v.
+func NewOptStringUint32(v uint32) OptStringUint32 {
+	return OptStringUint32{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptStringUint32 is optional uint32.
+type OptStringUint32 struct {
+	Value uint32
+	Set   bool
+}
+
+// IsSet returns true if OptStringUint32 was set.
+func (o OptStringUint32) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptStringUint32) Reset() {
+	var v uint32
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptStringUint32) SetTo(v uint32) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptStringUint32) Get() (v uint32, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptStringUint32) Or(d uint32) uint32 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptStringUint64 returns new OptStringUint64 with value set to v.
+func NewOptStringUint64(v uint64) OptStringUint64 {
+	return OptStringUint64{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptStringUint64 is optional uint64.
+type OptStringUint64 struct {
+	Value uint64
+	Set   bool
+}
+
+// IsSet returns true if OptStringUint64 was set.
+func (o OptStringUint64) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptStringUint64) Reset() {
+	var v uint64
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptStringUint64) SetTo(v uint64) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptStringUint64) Get() (v uint64, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptStringUint64) Or(d uint64) uint64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptStringUint8 returns new OptStringUint8 with value set to v.
+func NewOptStringUint8(v uint8) OptStringUint8 {
+	return OptStringUint8{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptStringUint8 is optional uint8.
+type OptStringUint8 struct {
+	Value uint8
+	Set   bool
+}
+
+// IsSet returns true if OptStringUint8 was set.
+func (o OptStringUint8) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptStringUint8) Reset() {
+	var v uint8
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptStringUint8) SetTo(v uint8) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptStringUint8) Get() (v uint8, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptStringUint8) Or(d uint8) uint8 {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -5588,24 +7128,24 @@ type TestRequestFormatTestReq struct {
 	OptionalStringDateMinusTime                OptDateTime          `json:"optional_string_date-time"`
 	OptionalStringDuration                     OptDuration          `json:"optional_string_duration"`
 	OptionalStringEmail                        OptString            `json:"optional_string_email"`
-	OptionalStringFloat32                      OptFloat32           `json:"optional_string_float32"`
-	OptionalStringFloat64                      OptFloat64           `json:"optional_string_float64"`
+	OptionalStringFloat32                      OptStringFloat32     `json:"optional_string_float32"`
+	OptionalStringFloat64                      OptStringFloat64     `json:"optional_string_float64"`
 	OptionalStringHostname                     OptString            `json:"optional_string_hostname"`
-	OptionalStringInt                          OptInt               `json:"optional_string_int"`
-	OptionalStringInt16                        OptInt16             `json:"optional_string_int16"`
+	OptionalStringInt                          OptStringInt         `json:"optional_string_int"`
+	OptionalStringInt16                        OptStringInt16       `json:"optional_string_int16"`
 	OptionalStringInt32                        OptStringInt32       `json:"optional_string_int32"`
 	OptionalStringInt64                        OptStringInt64       `json:"optional_string_int64"`
-	OptionalStringInt8                         OptInt8              `json:"optional_string_int8"`
+	OptionalStringInt8                         OptStringInt8        `json:"optional_string_int8"`
 	OptionalStringIP                           OptIP                `json:"optional_string_ip"`
 	OptionalStringIpv4                         OptIPv4              `json:"optional_string_ipv4"`
 	OptionalStringIpv6                         OptIPv6              `json:"optional_string_ipv6"`
 	OptionalStringPassword                     OptString            `json:"optional_string_password"`
 	OptionalStringTime                         OptTime              `json:"optional_string_time"`
-	OptionalStringUint                         OptUint              `json:"optional_string_uint"`
-	OptionalStringUint16                       OptUint16            `json:"optional_string_uint16"`
-	OptionalStringUint32                       OptUint32            `json:"optional_string_uint32"`
-	OptionalStringUint64                       OptUint64            `json:"optional_string_uint64"`
-	OptionalStringUint8                        OptUint8             `json:"optional_string_uint8"`
+	OptionalStringUint                         OptStringUint        `json:"optional_string_uint"`
+	OptionalStringUint16                       OptStringUint16      `json:"optional_string_uint16"`
+	OptionalStringUint32                       OptStringUint32      `json:"optional_string_uint32"`
+	OptionalStringUint64                       OptStringUint64      `json:"optional_string_uint64"`
+	OptionalStringUint8                        OptStringUint8       `json:"optional_string_uint8"`
 	OptionalStringUnix                         OptStringUnixSeconds `json:"optional_string_unix"`
 	OptionalStringUnixMinusMicro               OptStringUnixMicro   `json:"optional_string_unix-micro"`
 	OptionalStringUnixMinusMilli               OptStringUnixMilli   `json:"optional_string_unix-milli"`
@@ -7171,12 +8711,12 @@ func (s *TestRequestFormatTestReq) GetOptionalStringEmail() OptString {
 }
 
 // GetOptionalStringFloat32 returns the value of OptionalStringFloat32.
-func (s *TestRequestFormatTestReq) GetOptionalStringFloat32() OptFloat32 {
+func (s *TestRequestFormatTestReq) GetOptionalStringFloat32() OptStringFloat32 {
 	return s.OptionalStringFloat32
 }
 
 // GetOptionalStringFloat64 returns the value of OptionalStringFloat64.
-func (s *TestRequestFormatTestReq) GetOptionalStringFloat64() OptFloat64 {
+func (s *TestRequestFormatTestReq) GetOptionalStringFloat64() OptStringFloat64 {
 	return s.OptionalStringFloat64
 }
 
@@ -7186,12 +8726,12 @@ func (s *TestRequestFormatTestReq) GetOptionalStringHostname() OptString {
 }
 
 // GetOptionalStringInt returns the value of OptionalStringInt.
-func (s *TestRequestFormatTestReq) GetOptionalStringInt() OptInt {
+func (s *TestRequestFormatTestReq) GetOptionalStringInt() OptStringInt {
 	return s.OptionalStringInt
 }
 
 // GetOptionalStringInt16 returns the value of OptionalStringInt16.
-func (s *TestRequestFormatTestReq) GetOptionalStringInt16() OptInt16 {
+func (s *TestRequestFormatTestReq) GetOptionalStringInt16() OptStringInt16 {
 	return s.OptionalStringInt16
 }
 
@@ -7206,7 +8746,7 @@ func (s *TestRequestFormatTestReq) GetOptionalStringInt64() OptStringInt64 {
 }
 
 // GetOptionalStringInt8 returns the value of OptionalStringInt8.
-func (s *TestRequestFormatTestReq) GetOptionalStringInt8() OptInt8 {
+func (s *TestRequestFormatTestReq) GetOptionalStringInt8() OptStringInt8 {
 	return s.OptionalStringInt8
 }
 
@@ -7236,27 +8776,27 @@ func (s *TestRequestFormatTestReq) GetOptionalStringTime() OptTime {
 }
 
 // GetOptionalStringUint returns the value of OptionalStringUint.
-func (s *TestRequestFormatTestReq) GetOptionalStringUint() OptUint {
+func (s *TestRequestFormatTestReq) GetOptionalStringUint() OptStringUint {
 	return s.OptionalStringUint
 }
 
 // GetOptionalStringUint16 returns the value of OptionalStringUint16.
-func (s *TestRequestFormatTestReq) GetOptionalStringUint16() OptUint16 {
+func (s *TestRequestFormatTestReq) GetOptionalStringUint16() OptStringUint16 {
 	return s.OptionalStringUint16
 }
 
 // GetOptionalStringUint32 returns the value of OptionalStringUint32.
-func (s *TestRequestFormatTestReq) GetOptionalStringUint32() OptUint32 {
+func (s *TestRequestFormatTestReq) GetOptionalStringUint32() OptStringUint32 {
 	return s.OptionalStringUint32
 }
 
 // GetOptionalStringUint64 returns the value of OptionalStringUint64.
-func (s *TestRequestFormatTestReq) GetOptionalStringUint64() OptUint64 {
+func (s *TestRequestFormatTestReq) GetOptionalStringUint64() OptStringUint64 {
 	return s.OptionalStringUint64
 }
 
 // GetOptionalStringUint8 returns the value of OptionalStringUint8.
-func (s *TestRequestFormatTestReq) GetOptionalStringUint8() OptUint8 {
+func (s *TestRequestFormatTestReq) GetOptionalStringUint8() OptStringUint8 {
 	return s.OptionalStringUint8
 }
 
@@ -8851,12 +10391,12 @@ func (s *TestRequestFormatTestReq) SetOptionalStringEmail(val OptString) {
 }
 
 // SetOptionalStringFloat32 sets the value of OptionalStringFloat32.
-func (s *TestRequestFormatTestReq) SetOptionalStringFloat32(val OptFloat32) {
+func (s *TestRequestFormatTestReq) SetOptionalStringFloat32(val OptStringFloat32) {
 	s.OptionalStringFloat32 = val
 }
 
 // SetOptionalStringFloat64 sets the value of OptionalStringFloat64.
-func (s *TestRequestFormatTestReq) SetOptionalStringFloat64(val OptFloat64) {
+func (s *TestRequestFormatTestReq) SetOptionalStringFloat64(val OptStringFloat64) {
 	s.OptionalStringFloat64 = val
 }
 
@@ -8866,12 +10406,12 @@ func (s *TestRequestFormatTestReq) SetOptionalStringHostname(val OptString) {
 }
 
 // SetOptionalStringInt sets the value of OptionalStringInt.
-func (s *TestRequestFormatTestReq) SetOptionalStringInt(val OptInt) {
+func (s *TestRequestFormatTestReq) SetOptionalStringInt(val OptStringInt) {
 	s.OptionalStringInt = val
 }
 
 // SetOptionalStringInt16 sets the value of OptionalStringInt16.
-func (s *TestRequestFormatTestReq) SetOptionalStringInt16(val OptInt16) {
+func (s *TestRequestFormatTestReq) SetOptionalStringInt16(val OptStringInt16) {
 	s.OptionalStringInt16 = val
 }
 
@@ -8886,7 +10426,7 @@ func (s *TestRequestFormatTestReq) SetOptionalStringInt64(val OptStringInt64) {
 }
 
 // SetOptionalStringInt8 sets the value of OptionalStringInt8.
-func (s *TestRequestFormatTestReq) SetOptionalStringInt8(val OptInt8) {
+func (s *TestRequestFormatTestReq) SetOptionalStringInt8(val OptStringInt8) {
 	s.OptionalStringInt8 = val
 }
 
@@ -8916,27 +10456,27 @@ func (s *TestRequestFormatTestReq) SetOptionalStringTime(val OptTime) {
 }
 
 // SetOptionalStringUint sets the value of OptionalStringUint.
-func (s *TestRequestFormatTestReq) SetOptionalStringUint(val OptUint) {
+func (s *TestRequestFormatTestReq) SetOptionalStringUint(val OptStringUint) {
 	s.OptionalStringUint = val
 }
 
 // SetOptionalStringUint16 sets the value of OptionalStringUint16.
-func (s *TestRequestFormatTestReq) SetOptionalStringUint16(val OptUint16) {
+func (s *TestRequestFormatTestReq) SetOptionalStringUint16(val OptStringUint16) {
 	s.OptionalStringUint16 = val
 }
 
 // SetOptionalStringUint32 sets the value of OptionalStringUint32.
-func (s *TestRequestFormatTestReq) SetOptionalStringUint32(val OptUint32) {
+func (s *TestRequestFormatTestReq) SetOptionalStringUint32(val OptStringUint32) {
 	s.OptionalStringUint32 = val
 }
 
 // SetOptionalStringUint64 sets the value of OptionalStringUint64.
-func (s *TestRequestFormatTestReq) SetOptionalStringUint64(val OptUint64) {
+func (s *TestRequestFormatTestReq) SetOptionalStringUint64(val OptStringUint64) {
 	s.OptionalStringUint64 = val
 }
 
 // SetOptionalStringUint8 sets the value of OptionalStringUint8.
-func (s *TestRequestFormatTestReq) SetOptionalStringUint8(val OptUint8) {
+func (s *TestRequestFormatTestReq) SetOptionalStringUint8(val OptStringUint8) {
 	s.OptionalStringUint8 = val
 }
 
@@ -9289,24 +10829,24 @@ type TestRequestRequiredFormatTestReq struct {
 	OptionalStringDateMinusTime                OptDateTime          `json:"optional_string_date-time"`
 	OptionalStringDuration                     OptDuration          `json:"optional_string_duration"`
 	OptionalStringEmail                        OptString            `json:"optional_string_email"`
-	OptionalStringFloat32                      OptFloat32           `json:"optional_string_float32"`
-	OptionalStringFloat64                      OptFloat64           `json:"optional_string_float64"`
+	OptionalStringFloat32                      OptStringFloat32     `json:"optional_string_float32"`
+	OptionalStringFloat64                      OptStringFloat64     `json:"optional_string_float64"`
 	OptionalStringHostname                     OptString            `json:"optional_string_hostname"`
-	OptionalStringInt                          OptInt               `json:"optional_string_int"`
-	OptionalStringInt16                        OptInt16             `json:"optional_string_int16"`
+	OptionalStringInt                          OptStringInt         `json:"optional_string_int"`
+	OptionalStringInt16                        OptStringInt16       `json:"optional_string_int16"`
 	OptionalStringInt32                        OptStringInt32       `json:"optional_string_int32"`
 	OptionalStringInt64                        OptStringInt64       `json:"optional_string_int64"`
-	OptionalStringInt8                         OptInt8              `json:"optional_string_int8"`
+	OptionalStringInt8                         OptStringInt8        `json:"optional_string_int8"`
 	OptionalStringIP                           OptIP                `json:"optional_string_ip"`
 	OptionalStringIpv4                         OptIPv4              `json:"optional_string_ipv4"`
 	OptionalStringIpv6                         OptIPv6              `json:"optional_string_ipv6"`
 	OptionalStringPassword                     OptString            `json:"optional_string_password"`
 	OptionalStringTime                         OptTime              `json:"optional_string_time"`
-	OptionalStringUint                         OptUint              `json:"optional_string_uint"`
-	OptionalStringUint16                       OptUint16            `json:"optional_string_uint16"`
-	OptionalStringUint32                       OptUint32            `json:"optional_string_uint32"`
-	OptionalStringUint64                       OptUint64            `json:"optional_string_uint64"`
-	OptionalStringUint8                        OptUint8             `json:"optional_string_uint8"`
+	OptionalStringUint                         OptStringUint        `json:"optional_string_uint"`
+	OptionalStringUint16                       OptStringUint16      `json:"optional_string_uint16"`
+	OptionalStringUint32                       OptStringUint32      `json:"optional_string_uint32"`
+	OptionalStringUint64                       OptStringUint64      `json:"optional_string_uint64"`
+	OptionalStringUint8                        OptStringUint8       `json:"optional_string_uint8"`
 	OptionalStringUnix                         OptStringUnixSeconds `json:"optional_string_unix"`
 	OptionalStringUnixMinusMicro               OptStringUnixMicro   `json:"optional_string_unix-micro"`
 	OptionalStringUnixMinusMilli               OptStringUnixMilli   `json:"optional_string_unix-milli"`
@@ -10872,12 +12412,12 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalStringEmail() OptString {
 }
 
 // GetOptionalStringFloat32 returns the value of OptionalStringFloat32.
-func (s *TestRequestRequiredFormatTestReq) GetOptionalStringFloat32() OptFloat32 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringFloat32() OptStringFloat32 {
 	return s.OptionalStringFloat32
 }
 
 // GetOptionalStringFloat64 returns the value of OptionalStringFloat64.
-func (s *TestRequestRequiredFormatTestReq) GetOptionalStringFloat64() OptFloat64 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringFloat64() OptStringFloat64 {
 	return s.OptionalStringFloat64
 }
 
@@ -10887,12 +12427,12 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalStringHostname() OptString
 }
 
 // GetOptionalStringInt returns the value of OptionalStringInt.
-func (s *TestRequestRequiredFormatTestReq) GetOptionalStringInt() OptInt {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringInt() OptStringInt {
 	return s.OptionalStringInt
 }
 
 // GetOptionalStringInt16 returns the value of OptionalStringInt16.
-func (s *TestRequestRequiredFormatTestReq) GetOptionalStringInt16() OptInt16 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringInt16() OptStringInt16 {
 	return s.OptionalStringInt16
 }
 
@@ -10907,7 +12447,7 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalStringInt64() OptStringInt
 }
 
 // GetOptionalStringInt8 returns the value of OptionalStringInt8.
-func (s *TestRequestRequiredFormatTestReq) GetOptionalStringInt8() OptInt8 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringInt8() OptStringInt8 {
 	return s.OptionalStringInt8
 }
 
@@ -10937,27 +12477,27 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalStringTime() OptTime {
 }
 
 // GetOptionalStringUint returns the value of OptionalStringUint.
-func (s *TestRequestRequiredFormatTestReq) GetOptionalStringUint() OptUint {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringUint() OptStringUint {
 	return s.OptionalStringUint
 }
 
 // GetOptionalStringUint16 returns the value of OptionalStringUint16.
-func (s *TestRequestRequiredFormatTestReq) GetOptionalStringUint16() OptUint16 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringUint16() OptStringUint16 {
 	return s.OptionalStringUint16
 }
 
 // GetOptionalStringUint32 returns the value of OptionalStringUint32.
-func (s *TestRequestRequiredFormatTestReq) GetOptionalStringUint32() OptUint32 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringUint32() OptStringUint32 {
 	return s.OptionalStringUint32
 }
 
 // GetOptionalStringUint64 returns the value of OptionalStringUint64.
-func (s *TestRequestRequiredFormatTestReq) GetOptionalStringUint64() OptUint64 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringUint64() OptStringUint64 {
 	return s.OptionalStringUint64
 }
 
 // GetOptionalStringUint8 returns the value of OptionalStringUint8.
-func (s *TestRequestRequiredFormatTestReq) GetOptionalStringUint8() OptUint8 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringUint8() OptStringUint8 {
 	return s.OptionalStringUint8
 }
 
@@ -12552,12 +14092,12 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalStringEmail(val OptString)
 }
 
 // SetOptionalStringFloat32 sets the value of OptionalStringFloat32.
-func (s *TestRequestRequiredFormatTestReq) SetOptionalStringFloat32(val OptFloat32) {
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringFloat32(val OptStringFloat32) {
 	s.OptionalStringFloat32 = val
 }
 
 // SetOptionalStringFloat64 sets the value of OptionalStringFloat64.
-func (s *TestRequestRequiredFormatTestReq) SetOptionalStringFloat64(val OptFloat64) {
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringFloat64(val OptStringFloat64) {
 	s.OptionalStringFloat64 = val
 }
 
@@ -12567,12 +14107,12 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalStringHostname(val OptStri
 }
 
 // SetOptionalStringInt sets the value of OptionalStringInt.
-func (s *TestRequestRequiredFormatTestReq) SetOptionalStringInt(val OptInt) {
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringInt(val OptStringInt) {
 	s.OptionalStringInt = val
 }
 
 // SetOptionalStringInt16 sets the value of OptionalStringInt16.
-func (s *TestRequestRequiredFormatTestReq) SetOptionalStringInt16(val OptInt16) {
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringInt16(val OptStringInt16) {
 	s.OptionalStringInt16 = val
 }
 
@@ -12587,7 +14127,7 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalStringInt64(val OptStringI
 }
 
 // SetOptionalStringInt8 sets the value of OptionalStringInt8.
-func (s *TestRequestRequiredFormatTestReq) SetOptionalStringInt8(val OptInt8) {
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringInt8(val OptStringInt8) {
 	s.OptionalStringInt8 = val
 }
 
@@ -12617,27 +14157,27 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalStringTime(val OptTime) {
 }
 
 // SetOptionalStringUint sets the value of OptionalStringUint.
-func (s *TestRequestRequiredFormatTestReq) SetOptionalStringUint(val OptUint) {
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringUint(val OptStringUint) {
 	s.OptionalStringUint = val
 }
 
 // SetOptionalStringUint16 sets the value of OptionalStringUint16.
-func (s *TestRequestRequiredFormatTestReq) SetOptionalStringUint16(val OptUint16) {
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringUint16(val OptStringUint16) {
 	s.OptionalStringUint16 = val
 }
 
 // SetOptionalStringUint32 sets the value of OptionalStringUint32.
-func (s *TestRequestRequiredFormatTestReq) SetOptionalStringUint32(val OptUint32) {
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringUint32(val OptStringUint32) {
 	s.OptionalStringUint32 = val
 }
 
 // SetOptionalStringUint64 sets the value of OptionalStringUint64.
-func (s *TestRequestRequiredFormatTestReq) SetOptionalStringUint64(val OptUint64) {
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringUint64(val OptStringUint64) {
 	s.OptionalStringUint64 = val
 }
 
 // SetOptionalStringUint8 sets the value of OptionalStringUint8.
-func (s *TestRequestRequiredFormatTestReq) SetOptionalStringUint8(val OptUint8) {
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringUint8(val OptStringUint8) {
 	s.OptionalStringUint8 = val
 }
 
@@ -12990,24 +14530,24 @@ type TestResponseFormatTestOK struct {
 	OptionalStringDateMinusTime                OptDateTime          `json:"optional_string_date-time"`
 	OptionalStringDuration                     OptDuration          `json:"optional_string_duration"`
 	OptionalStringEmail                        OptString            `json:"optional_string_email"`
-	OptionalStringFloat32                      OptFloat32           `json:"optional_string_float32"`
-	OptionalStringFloat64                      OptFloat64           `json:"optional_string_float64"`
+	OptionalStringFloat32                      OptStringFloat32     `json:"optional_string_float32"`
+	OptionalStringFloat64                      OptStringFloat64     `json:"optional_string_float64"`
 	OptionalStringHostname                     OptString            `json:"optional_string_hostname"`
-	OptionalStringInt                          OptInt               `json:"optional_string_int"`
-	OptionalStringInt16                        OptInt16             `json:"optional_string_int16"`
+	OptionalStringInt                          OptStringInt         `json:"optional_string_int"`
+	OptionalStringInt16                        OptStringInt16       `json:"optional_string_int16"`
 	OptionalStringInt32                        OptStringInt32       `json:"optional_string_int32"`
 	OptionalStringInt64                        OptStringInt64       `json:"optional_string_int64"`
-	OptionalStringInt8                         OptInt8              `json:"optional_string_int8"`
+	OptionalStringInt8                         OptStringInt8        `json:"optional_string_int8"`
 	OptionalStringIP                           OptIP                `json:"optional_string_ip"`
 	OptionalStringIpv4                         OptIPv4              `json:"optional_string_ipv4"`
 	OptionalStringIpv6                         OptIPv6              `json:"optional_string_ipv6"`
 	OptionalStringPassword                     OptString            `json:"optional_string_password"`
 	OptionalStringTime                         OptTime              `json:"optional_string_time"`
-	OptionalStringUint                         OptUint              `json:"optional_string_uint"`
-	OptionalStringUint16                       OptUint16            `json:"optional_string_uint16"`
-	OptionalStringUint32                       OptUint32            `json:"optional_string_uint32"`
-	OptionalStringUint64                       OptUint64            `json:"optional_string_uint64"`
-	OptionalStringUint8                        OptUint8             `json:"optional_string_uint8"`
+	OptionalStringUint                         OptStringUint        `json:"optional_string_uint"`
+	OptionalStringUint16                       OptStringUint16      `json:"optional_string_uint16"`
+	OptionalStringUint32                       OptStringUint32      `json:"optional_string_uint32"`
+	OptionalStringUint64                       OptStringUint64      `json:"optional_string_uint64"`
+	OptionalStringUint8                        OptStringUint8       `json:"optional_string_uint8"`
 	OptionalStringUnix                         OptStringUnixSeconds `json:"optional_string_unix"`
 	OptionalStringUnixMinusMicro               OptStringUnixMicro   `json:"optional_string_unix-micro"`
 	OptionalStringUnixMinusMilli               OptStringUnixMilli   `json:"optional_string_unix-milli"`
@@ -14573,12 +16113,12 @@ func (s *TestResponseFormatTestOK) GetOptionalStringEmail() OptString {
 }
 
 // GetOptionalStringFloat32 returns the value of OptionalStringFloat32.
-func (s *TestResponseFormatTestOK) GetOptionalStringFloat32() OptFloat32 {
+func (s *TestResponseFormatTestOK) GetOptionalStringFloat32() OptStringFloat32 {
 	return s.OptionalStringFloat32
 }
 
 // GetOptionalStringFloat64 returns the value of OptionalStringFloat64.
-func (s *TestResponseFormatTestOK) GetOptionalStringFloat64() OptFloat64 {
+func (s *TestResponseFormatTestOK) GetOptionalStringFloat64() OptStringFloat64 {
 	return s.OptionalStringFloat64
 }
 
@@ -14588,12 +16128,12 @@ func (s *TestResponseFormatTestOK) GetOptionalStringHostname() OptString {
 }
 
 // GetOptionalStringInt returns the value of OptionalStringInt.
-func (s *TestResponseFormatTestOK) GetOptionalStringInt() OptInt {
+func (s *TestResponseFormatTestOK) GetOptionalStringInt() OptStringInt {
 	return s.OptionalStringInt
 }
 
 // GetOptionalStringInt16 returns the value of OptionalStringInt16.
-func (s *TestResponseFormatTestOK) GetOptionalStringInt16() OptInt16 {
+func (s *TestResponseFormatTestOK) GetOptionalStringInt16() OptStringInt16 {
 	return s.OptionalStringInt16
 }
 
@@ -14608,7 +16148,7 @@ func (s *TestResponseFormatTestOK) GetOptionalStringInt64() OptStringInt64 {
 }
 
 // GetOptionalStringInt8 returns the value of OptionalStringInt8.
-func (s *TestResponseFormatTestOK) GetOptionalStringInt8() OptInt8 {
+func (s *TestResponseFormatTestOK) GetOptionalStringInt8() OptStringInt8 {
 	return s.OptionalStringInt8
 }
 
@@ -14638,27 +16178,27 @@ func (s *TestResponseFormatTestOK) GetOptionalStringTime() OptTime {
 }
 
 // GetOptionalStringUint returns the value of OptionalStringUint.
-func (s *TestResponseFormatTestOK) GetOptionalStringUint() OptUint {
+func (s *TestResponseFormatTestOK) GetOptionalStringUint() OptStringUint {
 	return s.OptionalStringUint
 }
 
 // GetOptionalStringUint16 returns the value of OptionalStringUint16.
-func (s *TestResponseFormatTestOK) GetOptionalStringUint16() OptUint16 {
+func (s *TestResponseFormatTestOK) GetOptionalStringUint16() OptStringUint16 {
 	return s.OptionalStringUint16
 }
 
 // GetOptionalStringUint32 returns the value of OptionalStringUint32.
-func (s *TestResponseFormatTestOK) GetOptionalStringUint32() OptUint32 {
+func (s *TestResponseFormatTestOK) GetOptionalStringUint32() OptStringUint32 {
 	return s.OptionalStringUint32
 }
 
 // GetOptionalStringUint64 returns the value of OptionalStringUint64.
-func (s *TestResponseFormatTestOK) GetOptionalStringUint64() OptUint64 {
+func (s *TestResponseFormatTestOK) GetOptionalStringUint64() OptStringUint64 {
 	return s.OptionalStringUint64
 }
 
 // GetOptionalStringUint8 returns the value of OptionalStringUint8.
-func (s *TestResponseFormatTestOK) GetOptionalStringUint8() OptUint8 {
+func (s *TestResponseFormatTestOK) GetOptionalStringUint8() OptStringUint8 {
 	return s.OptionalStringUint8
 }
 
@@ -16253,12 +17793,12 @@ func (s *TestResponseFormatTestOK) SetOptionalStringEmail(val OptString) {
 }
 
 // SetOptionalStringFloat32 sets the value of OptionalStringFloat32.
-func (s *TestResponseFormatTestOK) SetOptionalStringFloat32(val OptFloat32) {
+func (s *TestResponseFormatTestOK) SetOptionalStringFloat32(val OptStringFloat32) {
 	s.OptionalStringFloat32 = val
 }
 
 // SetOptionalStringFloat64 sets the value of OptionalStringFloat64.
-func (s *TestResponseFormatTestOK) SetOptionalStringFloat64(val OptFloat64) {
+func (s *TestResponseFormatTestOK) SetOptionalStringFloat64(val OptStringFloat64) {
 	s.OptionalStringFloat64 = val
 }
 
@@ -16268,12 +17808,12 @@ func (s *TestResponseFormatTestOK) SetOptionalStringHostname(val OptString) {
 }
 
 // SetOptionalStringInt sets the value of OptionalStringInt.
-func (s *TestResponseFormatTestOK) SetOptionalStringInt(val OptInt) {
+func (s *TestResponseFormatTestOK) SetOptionalStringInt(val OptStringInt) {
 	s.OptionalStringInt = val
 }
 
 // SetOptionalStringInt16 sets the value of OptionalStringInt16.
-func (s *TestResponseFormatTestOK) SetOptionalStringInt16(val OptInt16) {
+func (s *TestResponseFormatTestOK) SetOptionalStringInt16(val OptStringInt16) {
 	s.OptionalStringInt16 = val
 }
 
@@ -16288,7 +17828,7 @@ func (s *TestResponseFormatTestOK) SetOptionalStringInt64(val OptStringInt64) {
 }
 
 // SetOptionalStringInt8 sets the value of OptionalStringInt8.
-func (s *TestResponseFormatTestOK) SetOptionalStringInt8(val OptInt8) {
+func (s *TestResponseFormatTestOK) SetOptionalStringInt8(val OptStringInt8) {
 	s.OptionalStringInt8 = val
 }
 
@@ -16318,27 +17858,27 @@ func (s *TestResponseFormatTestOK) SetOptionalStringTime(val OptTime) {
 }
 
 // SetOptionalStringUint sets the value of OptionalStringUint.
-func (s *TestResponseFormatTestOK) SetOptionalStringUint(val OptUint) {
+func (s *TestResponseFormatTestOK) SetOptionalStringUint(val OptStringUint) {
 	s.OptionalStringUint = val
 }
 
 // SetOptionalStringUint16 sets the value of OptionalStringUint16.
-func (s *TestResponseFormatTestOK) SetOptionalStringUint16(val OptUint16) {
+func (s *TestResponseFormatTestOK) SetOptionalStringUint16(val OptStringUint16) {
 	s.OptionalStringUint16 = val
 }
 
 // SetOptionalStringUint32 sets the value of OptionalStringUint32.
-func (s *TestResponseFormatTestOK) SetOptionalStringUint32(val OptUint32) {
+func (s *TestResponseFormatTestOK) SetOptionalStringUint32(val OptStringUint32) {
 	s.OptionalStringUint32 = val
 }
 
 // SetOptionalStringUint64 sets the value of OptionalStringUint64.
-func (s *TestResponseFormatTestOK) SetOptionalStringUint64(val OptUint64) {
+func (s *TestResponseFormatTestOK) SetOptionalStringUint64(val OptStringUint64) {
 	s.OptionalStringUint64 = val
 }
 
 // SetOptionalStringUint8 sets the value of OptionalStringUint8.
-func (s *TestResponseFormatTestOK) SetOptionalStringUint8(val OptUint8) {
+func (s *TestResponseFormatTestOK) SetOptionalStringUint8(val OptStringUint8) {
 	s.OptionalStringUint8 = val
 }
 
