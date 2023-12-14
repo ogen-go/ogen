@@ -3,7 +3,7 @@ module github.com/ogen-go/ogen/examples
 go 1.20
 
 require (
-	github.com/go-faster/errors v0.7.0
+	github.com/go-faster/errors v0.7.1
 	github.com/go-faster/jx v1.1.0
 	github.com/google/uuid v1.5.0
 	github.com/ogen-go/ogen v0.0.0
