@@ -139,7 +139,11 @@ func encode{{ $op.Name }}Request(
 	{{- else }}
         {{- errorf "unexpected type: %s" $unaliased }}
 	{{- end }}
-	q := uri.NewQueryEncoder()
+	q := uri.NewFormEncoder(map[string]string{
+		{{- range $param := $type.FormParameters }}{{- if $param.Spec.Content }}
+		{{ quote $param.Spec.Name }}: "application/json; charset=utf-8",
+		{{- end }}{{- end }}
+	})
 	{{- range $param := $type.FormParameters }}
 	{
 		// Encode {{ quote $param.Spec.Name }} form field.
