@@ -76,7 +76,9 @@ func encodeReferencedAllofRequest(
 		const contentType = "multipart/form-data"
 		request := req
 
-		q := uri.NewQueryEncoder()
+		q := uri.NewFormEncoder(map[string]string{
+			"location": "application/json; charset=utf-8",
+		})
 		{
 			// Encode "state" form field.
 			cfg := uri.QueryParameterEncodingConfig{
@@ -154,7 +156,9 @@ func encodeReferencedAllofOptionalRequest(
 		const contentType = "multipart/form-data"
 		request := req
 
-		q := uri.NewQueryEncoder()
+		q := uri.NewFormEncoder(map[string]string{
+			"location": "application/json; charset=utf-8",
+		})
 		{
 			// Encode "state" form field.
 			cfg := uri.QueryParameterEncodingConfig{

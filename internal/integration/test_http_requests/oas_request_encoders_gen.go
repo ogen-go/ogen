@@ -42,7 +42,7 @@ func encodeAllRequestBodiesRequest(
 		const contentType = "application/x-www-form-urlencoded"
 		request := req
 
-		q := uri.NewQueryEncoder()
+		q := uri.NewFormEncoder(map[string]string{})
 		{
 			// Encode "name" form field.
 			cfg := uri.QueryParameterEncodingConfig{
@@ -79,7 +79,7 @@ func encodeAllRequestBodiesRequest(
 		const contentType = "multipart/form-data"
 		request := req
 
-		q := uri.NewQueryEncoder()
+		q := uri.NewFormEncoder(map[string]string{})
 		{
 			// Encode "name" form field.
 			cfg := uri.QueryParameterEncodingConfig{
@@ -153,7 +153,7 @@ func encodeAllRequestBodiesOptionalRequest(
 		const contentType = "application/x-www-form-urlencoded"
 		request := req
 
-		q := uri.NewQueryEncoder()
+		q := uri.NewFormEncoder(map[string]string{})
 		{
 			// Encode "name" form field.
 			cfg := uri.QueryParameterEncodingConfig{
@@ -190,7 +190,7 @@ func encodeAllRequestBodiesOptionalRequest(
 		const contentType = "multipart/form-data"
 		request := req
 
-		q := uri.NewQueryEncoder()
+		q := uri.NewFormEncoder(map[string]string{})
 		{
 			// Encode "name" form field.
 			cfg := uri.QueryParameterEncodingConfig{

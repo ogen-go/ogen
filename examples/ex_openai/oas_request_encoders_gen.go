@@ -107,7 +107,7 @@ func encodeCreateFileRequest(
 	const contentType = "multipart/form-data"
 	request := req
 
-	q := uri.NewQueryEncoder()
+	q := uri.NewFormEncoder(map[string]string{})
 	{
 		// Encode "purpose" form field.
 		cfg := uri.QueryParameterEncodingConfig{
@@ -169,7 +169,7 @@ func encodeCreateImageEditRequest(
 	const contentType = "multipart/form-data"
 	request := req
 
-	q := uri.NewQueryEncoder()
+	q := uri.NewFormEncoder(map[string]string{})
 	{
 		// Encode "prompt" form field.
 		cfg := uri.QueryParameterEncodingConfig{
@@ -272,7 +272,7 @@ func encodeCreateImageVariationRequest(
 	const contentType = "multipart/form-data"
 	request := req
 
-	q := uri.NewQueryEncoder()
+	q := uri.NewFormEncoder(map[string]string{})
 	{
 		// Encode "n" form field.
 		cfg := uri.QueryParameterEncodingConfig{
@@ -385,7 +385,7 @@ func encodeCreateTranscriptionRequest(
 	const contentType = "multipart/form-data"
 	request := req
 
-	q := uri.NewQueryEncoder()
+	q := uri.NewFormEncoder(map[string]string{})
 	{
 		// Encode "model" form field.
 		cfg := uri.QueryParameterEncodingConfig{
@@ -483,7 +483,7 @@ func encodeCreateTranslationRequest(
 	const contentType = "multipart/form-data"
 	request := req
 
-	q := uri.NewQueryEncoder()
+	q := uri.NewFormEncoder(map[string]string{})
 	{
 		// Encode "model" form field.
 		cfg := uri.QueryParameterEncodingConfig{
