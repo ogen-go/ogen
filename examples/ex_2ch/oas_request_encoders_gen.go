@@ -25,7 +25,7 @@ func encodeUserPassloginPostRequest(
 	}
 	request := req.Value
 
-	q := uri.NewQueryEncoder()
+	q := uri.NewFormEncoder(map[string]string{})
 	{
 		// Encode "passcode" form field.
 		cfg := uri.QueryParameterEncodingConfig{
@@ -60,7 +60,7 @@ func encodeUserPostingPostRequest(
 	}
 	request := req.Value
 
-	q := uri.NewQueryEncoder()
+	q := uri.NewFormEncoder(map[string]string{})
 	{
 		// Encode "captcha_type" form field.
 		cfg := uri.QueryParameterEncodingConfig{
@@ -246,7 +246,7 @@ func encodeUserReportPostRequest(
 	}
 	request := req.Value
 
-	q := uri.NewQueryEncoder()
+	q := uri.NewFormEncoder(map[string]string{})
 	{
 		// Encode "board" form field.
 		cfg := uri.QueryParameterEncodingConfig{

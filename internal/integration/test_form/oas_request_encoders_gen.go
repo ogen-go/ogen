@@ -24,7 +24,7 @@ func encodeOnlyFormRequest(
 	const contentType = "application/x-www-form-urlencoded"
 	request := req
 
-	q := uri.NewQueryEncoder()
+	q := uri.NewFormEncoder(map[string]string{})
 	{
 		// Encode "field" form field.
 		cfg := uri.QueryParameterEncodingConfig{
@@ -50,7 +50,7 @@ func encodeOnlyMultipartFileRequest(
 	const contentType = "multipart/form-data"
 	request := req
 
-	q := uri.NewQueryEncoder()
+	q := uri.NewFormEncoder(map[string]string{})
 	body, boundary := ht.CreateMultipartBody(func(w *multipart.Writer) error {
 		if err := request.File.WriteMultipart("file", w); err != nil {
 			return errors.Wrap(err, "write \"file\"")
@@ -71,7 +71,7 @@ func encodeOnlyMultipartFormRequest(
 	const contentType = "multipart/form-data"
 	request := req
 
-	q := uri.NewQueryEncoder()
+	q := uri.NewFormEncoder(map[string]string{})
 	{
 		// Encode "field" form field.
 		cfg := uri.QueryParameterEncodingConfig{
@@ -102,7 +102,7 @@ func encodeTestFormURLEncodedRequest(
 	const contentType = "application/x-www-form-urlencoded"
 	request := req
 
-	q := uri.NewQueryEncoder()
+	q := uri.NewFormEncoder(map[string]string{})
 	{
 		// Encode "id" form field.
 		cfg := uri.QueryParameterEncodingConfig{
@@ -214,7 +214,9 @@ func encodeTestMultipartRequest(
 	const contentType = "multipart/form-data"
 	request := req
 
-	q := uri.NewQueryEncoder()
+	q := uri.NewFormEncoder(map[string]string{
+		"object": "application/json; charset=utf-8",
+	})
 	{
 		// Encode "id" form field.
 		cfg := uri.QueryParameterEncodingConfig{
@@ -334,7 +336,7 @@ func encodeTestMultipartUploadRequest(
 	const contentType = "multipart/form-data"
 	request := req
 
-	q := uri.NewQueryEncoder()
+	q := uri.NewFormEncoder(map[string]string{})
 	{
 		// Encode "orderId" form field.
 		cfg := uri.QueryParameterEncodingConfig{
@@ -406,7 +408,7 @@ func encodeTestReuseFormOptionalSchemaRequest(
 	}
 	request := req.Value
 
-	q := uri.NewQueryEncoder()
+	q := uri.NewFormEncoder(map[string]string{})
 	{
 		// Encode "filename" form field.
 		cfg := uri.QueryParameterEncodingConfig{
@@ -445,7 +447,7 @@ func encodeTestReuseFormSchemaRequest(
 	const contentType = "multipart/form-data"
 	request := req
 
-	q := uri.NewQueryEncoder()
+	q := uri.NewFormEncoder(map[string]string{})
 	{
 		// Encode "filename" form field.
 		cfg := uri.QueryParameterEncodingConfig{
@@ -495,7 +497,7 @@ func encodeTestShareFormSchemaRequest(
 		const contentType = "multipart/form-data"
 		request := req
 
-		q := uri.NewQueryEncoder()
+		q := uri.NewFormEncoder(map[string]string{})
 		{
 			// Encode "filename" form field.
 			cfg := uri.QueryParameterEncodingConfig{
