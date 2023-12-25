@@ -35,7 +35,7 @@ func encodeAllRequestBodiesRequest(
 		return nil
 	case *AllRequestBodiesReqApplicationOctetStream:
 		const contentType = "application/octet-stream"
-		body := req
+		body := req.Data
 		ht.SetBody(r, body, contentType)
 		return nil
 	case *AllRequestBodiesApplicationXWwwFormUrlencoded:
@@ -119,7 +119,7 @@ func encodeAllRequestBodiesRequest(
 		return nil
 	case *AllRequestBodiesReqTextPlain:
 		const contentType = "text/plain"
-		body := req
+		body := req.Data
 		ht.SetBody(r, body, contentType)
 		return nil
 	default:
@@ -146,7 +146,7 @@ func encodeAllRequestBodiesOptionalRequest(
 		return nil
 	case *AllRequestBodiesOptionalReqApplicationOctetStream:
 		const contentType = "application/octet-stream"
-		body := req
+		body := req.Data
 		ht.SetBody(r, body, contentType)
 		return nil
 	case *AllRequestBodiesOptionalApplicationXWwwFormUrlencoded:
@@ -230,7 +230,7 @@ func encodeAllRequestBodiesOptionalRequest(
 		return nil
 	case *AllRequestBodiesOptionalReqTextPlain:
 		const contentType = "text/plain"
-		body := req
+		body := req.Data
 		ht.SetBody(r, body, contentType)
 		return nil
 	default:
@@ -268,7 +268,7 @@ func encodeMaskContentTypeRequest(
 	}
 	{
 		req := req.Content
-		body := req
+		body := req.Data
 		ht.SetBody(r, body, contentType)
 		return nil
 	}
@@ -284,7 +284,7 @@ func encodeMaskContentTypeOptionalRequest(
 	}
 	{
 		req := req.Content
-		body := req
+		body := req.Data
 		ht.SetBody(r, body, contentType)
 		return nil
 	}

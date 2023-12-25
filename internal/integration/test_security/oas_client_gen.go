@@ -97,6 +97,9 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // GET /customSecurity
 func (c *Client) CustomSecurity(ctx context.Context) error {
 	_, err := c.sendCustomSecurity(ctx)
+	if err != nil && c.cfg.errorMiddleware != nil {
+		err = c.cfg.errorMiddleware(ctx, "CustomSecurity", "GET", "/customSecurity", err)
+	}
 	return err
 }
 

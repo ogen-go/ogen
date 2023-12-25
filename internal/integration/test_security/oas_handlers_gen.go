@@ -144,9 +144,7 @@ func (s *Server) handleCustomSecurityRequest(args [0]string, argsEscaped bool, w
 
 	if err := encodeCustomSecurityResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
-		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
-			s.cfg.ErrorHandler(ctx, w, r, err)
-		}
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 }

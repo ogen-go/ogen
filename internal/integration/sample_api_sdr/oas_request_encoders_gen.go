@@ -16,7 +16,7 @@ func encodeDefaultTestRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -34,7 +34,7 @@ func encodeFoobarPostRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -50,7 +50,7 @@ func encodeOneofBugRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}
@@ -68,7 +68,7 @@ func encodePetCreateRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -88,7 +88,7 @@ func encodePetUpdateNameAliasPostRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -108,7 +108,7 @@ func encodePetUpdateNamePostRequest(
 		// Keep request with empty body if value is not set.
 		return nil
 	}
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		if req.Set {
 			req.Encode(e)
@@ -124,7 +124,7 @@ func encodePetUploadAvatarByIDRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/octet-stream"
-	body := req
+	body := req.Data
 	ht.SetBody(r, body, contentType)
 	return nil
 }
@@ -134,7 +134,7 @@ func encodeTestFloatValidationRequest(
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	e := jx.GetEncoder()
+	e := new(jx.Encoder)
 	{
 		req.Encode(e)
 	}

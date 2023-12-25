@@ -17,7 +17,11 @@ func decodeCustomSecurityResponse(resp *http.Response) (res *CustomSecurityOK, _
 		// Code 200.
 		return &CustomSecurityOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	err := validate.UnexpectedStatusCode(resp.StatusCode)
+	if buf, bodyErr := io.ReadAll(resp.Body); bodyErr == nil {
+		err = errors.Wrapf(err, "request failed: %s", string(buf))
+	}
+	return res, err
 }
 
 func decodeDisjointSecurityResponse(resp *http.Response) (res *DisjointSecurityOK, _ error) {

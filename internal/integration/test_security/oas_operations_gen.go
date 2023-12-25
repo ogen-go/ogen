@@ -8,6 +8,10 @@ import (
 
 // Operations defines a contract for the operations described by OpenAPI v3 specification.
 type Operations interface {
+	// CustomSecurity implements customSecurity operation.
+	//
+	// GET /customSecurity
+	CustomSecurity(ctx context.Context) error
 	// DisjointSecurity implements disjointSecurity operation.
 	//
 	// GET /disjointSecurity

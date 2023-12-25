@@ -101,7 +101,7 @@ func encode{{ $op.Name }}Request(
 		})
 		ht.SetCloserBody(r, body, contentType)
 	{{- else }}
-		body := req
+		body := req.Data
 		ht.SetBody(r, body, contentType)
 	{{- end }}
 	return nil

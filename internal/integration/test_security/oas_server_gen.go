@@ -2,30 +2,9 @@
 
 package api
 
-import (
-	"context"
-)
-
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
 	Operations
-
-	// CustomSecurity implements customSecurity operation.
-	//
-	// GET /customSecurity
-	CustomSecurity(ctx context.Context) error
-	// DisjointSecurity implements disjointSecurity operation.
-	//
-	// GET /disjointSecurity
-	DisjointSecurity(ctx context.Context) error
-	// IntersectSecurity implements intersectSecurity operation.
-	//
-	// GET /intersectSecurity
-	IntersectSecurity(ctx context.Context) error
-	// OptionalSecurity implements optionalSecurity operation.
-	//
-	// GET /optionalSecurity
-	OptionalSecurity(ctx context.Context) error
 }
 
 // Server implements http server based on OpenAPI v3 specification and
