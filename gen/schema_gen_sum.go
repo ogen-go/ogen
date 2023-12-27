@@ -465,9 +465,10 @@ func (g *schemaGen) allOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 		return nil, err
 	}
 
-	// The reference field must not change
-	mergedSchema.Ref = schema.Ref
-
+	// Do not modify reference fields, as they may still refer to the original schema.
+	if mergedSchema.Ref.IsZero() {
+		mergedSchema.Ref = schema.Ref
+	}
 	return g.generate(name, mergedSchema, false)
 }
 
