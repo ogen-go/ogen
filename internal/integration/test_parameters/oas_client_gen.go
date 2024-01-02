@@ -132,6 +132,7 @@ func (c *Client) sendComplicatedParameterNameGet(ctx context.Context, params Com
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/complicatedParameterName"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -276,6 +277,7 @@ func (c *Client) sendContentParameters(ctx context.Context, params ContentParame
 		otelogen.OperationID("contentParameters"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/contentParameters/{path}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -430,6 +432,7 @@ func (c *Client) sendCookieParameter(ctx context.Context, params CookieParameter
 		otelogen.OperationID("cookieParameter"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/cookieParameter"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -518,6 +521,7 @@ func (c *Client) sendHeaderParameter(ctx context.Context, params HeaderParameter
 		otelogen.OperationID("headerParameter"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/headerParameter"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -602,6 +606,7 @@ func (c *Client) sendObjectCookieParameter(ctx context.Context, params ObjectCoo
 		otelogen.OperationID("objectCookieParameter"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/objectCookieParameter"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -688,6 +693,7 @@ func (c *Client) sendObjectQueryParameter(ctx context.Context, params ObjectQuer
 		otelogen.OperationID("objectQueryParameter"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/objectQueryParameter"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -798,6 +804,7 @@ func (c *Client) sendPathParameter(ctx context.Context, params PathParameterPara
 		otelogen.OperationID("pathParameter"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/pathParameter/{value}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -888,6 +895,7 @@ func (c *Client) sendSameName(ctx context.Context, params SameNameParams) (res *
 		otelogen.OperationID("sameName"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/same_name/{param}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -996,6 +1004,7 @@ func (c *Client) sendSimilarNames(ctx context.Context, params SimilarNamesParams
 		otelogen.OperationID("similarNames"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/similarNames"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.

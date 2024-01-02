@@ -437,6 +437,7 @@ func (c *Client) sendAddStickerToSet(ctx context.Context, request *AddStickerToS
 		otelogen.OperationID("addStickerToSet"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/addStickerToSet"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -510,6 +511,7 @@ func (c *Client) sendAnswerCallbackQuery(ctx context.Context, request *AnswerCal
 		otelogen.OperationID("answerCallbackQuery"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/answerCallbackQuery"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -583,6 +585,7 @@ func (c *Client) sendAnswerInlineQuery(ctx context.Context, request *AnswerInlin
 		otelogen.OperationID("answerInlineQuery"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/answerInlineQuery"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -656,6 +659,7 @@ func (c *Client) sendAnswerPreCheckoutQuery(ctx context.Context, request *Answer
 		otelogen.OperationID("answerPreCheckoutQuery"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/answerPreCheckoutQuery"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -729,6 +733,7 @@ func (c *Client) sendAnswerShippingQuery(ctx context.Context, request *AnswerShi
 		otelogen.OperationID("answerShippingQuery"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/answerShippingQuery"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -802,6 +807,7 @@ func (c *Client) sendAnswerWebAppQuery(ctx context.Context, request *AnswerWebAp
 		otelogen.OperationID("answerWebAppQuery"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/answerWebAppQuery"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -875,6 +881,7 @@ func (c *Client) sendApproveChatJoinRequest(ctx context.Context, request *Approv
 		otelogen.OperationID("approveChatJoinRequest"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/approveChatJoinRequest"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -948,6 +955,7 @@ func (c *Client) sendBanChatMember(ctx context.Context, request *BanChatMember) 
 		otelogen.OperationID("banChatMember"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/banChatMember"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1021,6 +1029,7 @@ func (c *Client) sendBanChatSenderChat(ctx context.Context, request *BanChatSend
 		otelogen.OperationID("banChatSenderChat"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/banChatSenderChat"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1094,6 +1103,7 @@ func (c *Client) sendClose(ctx context.Context) (res *Result, err error) {
 		otelogen.OperationID("close"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/close"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1164,6 +1174,7 @@ func (c *Client) sendCopyMessage(ctx context.Context, request *CopyMessage) (res
 		otelogen.OperationID("copyMessage"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/copyMessage"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1237,6 +1248,7 @@ func (c *Client) sendCreateChatInviteLink(ctx context.Context, request *CreateCh
 		otelogen.OperationID("createChatInviteLink"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/createChatInviteLink"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1310,6 +1322,7 @@ func (c *Client) sendCreateNewStickerSet(ctx context.Context, request *CreateNew
 		otelogen.OperationID("createNewStickerSet"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/createNewStickerSet"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1383,6 +1396,7 @@ func (c *Client) sendDeclineChatJoinRequest(ctx context.Context, request *Declin
 		otelogen.OperationID("declineChatJoinRequest"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/declineChatJoinRequest"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1456,6 +1470,7 @@ func (c *Client) sendDeleteChatPhoto(ctx context.Context, request *DeleteChatPho
 		otelogen.OperationID("deleteChatPhoto"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/deleteChatPhoto"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1529,6 +1544,7 @@ func (c *Client) sendDeleteChatStickerSet(ctx context.Context, request *DeleteCh
 		otelogen.OperationID("deleteChatStickerSet"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/deleteChatStickerSet"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1602,6 +1618,7 @@ func (c *Client) sendDeleteMessage(ctx context.Context, request *DeleteMessage) 
 		otelogen.OperationID("deleteMessage"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/deleteMessage"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1675,6 +1692,7 @@ func (c *Client) sendDeleteMyCommands(ctx context.Context, request OptDeleteMyCo
 		otelogen.OperationID("deleteMyCommands"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/deleteMyCommands"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1748,6 +1766,7 @@ func (c *Client) sendDeleteStickerFromSet(ctx context.Context, request *DeleteSt
 		otelogen.OperationID("deleteStickerFromSet"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/deleteStickerFromSet"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1821,6 +1840,7 @@ func (c *Client) sendDeleteWebhook(ctx context.Context, request OptDeleteWebhook
 		otelogen.OperationID("deleteWebhook"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/deleteWebhook"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1894,6 +1914,7 @@ func (c *Client) sendEditChatInviteLink(ctx context.Context, request *EditChatIn
 		otelogen.OperationID("editChatInviteLink"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/editChatInviteLink"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1967,6 +1988,7 @@ func (c *Client) sendEditMessageCaption(ctx context.Context, request *EditMessag
 		otelogen.OperationID("editMessageCaption"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/editMessageCaption"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2040,6 +2062,7 @@ func (c *Client) sendEditMessageLiveLocation(ctx context.Context, request *EditM
 		otelogen.OperationID("editMessageLiveLocation"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/editMessageLiveLocation"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2113,6 +2136,7 @@ func (c *Client) sendEditMessageMedia(ctx context.Context, request *EditMessageM
 		otelogen.OperationID("editMessageMedia"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/editMessageMedia"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2186,6 +2210,7 @@ func (c *Client) sendEditMessageReplyMarkup(ctx context.Context, request *EditMe
 		otelogen.OperationID("editMessageReplyMarkup"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/editMessageReplyMarkup"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2259,6 +2284,7 @@ func (c *Client) sendEditMessageText(ctx context.Context, request *EditMessageTe
 		otelogen.OperationID("editMessageText"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/editMessageText"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2332,6 +2358,7 @@ func (c *Client) sendExportChatInviteLink(ctx context.Context, request *ExportCh
 		otelogen.OperationID("exportChatInviteLink"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/exportChatInviteLink"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2405,6 +2432,7 @@ func (c *Client) sendForwardMessage(ctx context.Context, request *ForwardMessage
 		otelogen.OperationID("forwardMessage"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/forwardMessage"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2478,6 +2506,7 @@ func (c *Client) sendGetChat(ctx context.Context, request *GetChat) (res *Result
 		otelogen.OperationID("getChat"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/getChat"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2551,6 +2580,7 @@ func (c *Client) sendGetChatAdministrators(ctx context.Context, request *GetChat
 		otelogen.OperationID("getChatAdministrators"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/getChatAdministrators"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2624,6 +2654,7 @@ func (c *Client) sendGetChatMember(ctx context.Context, request *GetChatMember) 
 		otelogen.OperationID("getChatMember"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/getChatMember"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2697,6 +2728,7 @@ func (c *Client) sendGetChatMemberCount(ctx context.Context, request *GetChatMem
 		otelogen.OperationID("getChatMemberCount"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/getChatMemberCount"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2770,6 +2802,7 @@ func (c *Client) sendGetChatMenuButton(ctx context.Context, request OptGetChatMe
 		otelogen.OperationID("getChatMenuButton"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/getChatMenuButton"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2843,6 +2876,7 @@ func (c *Client) sendGetFile(ctx context.Context, request *GetFile) (res *Result
 		otelogen.OperationID("getFile"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/getFile"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2916,6 +2950,7 @@ func (c *Client) sendGetGameHighScores(ctx context.Context, request *GetGameHigh
 		otelogen.OperationID("getGameHighScores"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/getGameHighScores"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2989,6 +3024,7 @@ func (c *Client) sendGetMe(ctx context.Context) (res *ResultUser, err error) {
 		otelogen.OperationID("getMe"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/getMe"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -3059,6 +3095,7 @@ func (c *Client) sendGetMyCommands(ctx context.Context, request OptGetMyCommands
 		otelogen.OperationID("getMyCommands"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/getMyCommands"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -3132,6 +3169,7 @@ func (c *Client) sendGetMyDefaultAdministratorRights(ctx context.Context, reques
 		otelogen.OperationID("getMyDefaultAdministratorRights"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/getMyDefaultAdministratorRights"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -3205,6 +3243,7 @@ func (c *Client) sendGetStickerSet(ctx context.Context, request *GetStickerSet) 
 		otelogen.OperationID("getStickerSet"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/getStickerSet"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -3278,6 +3317,7 @@ func (c *Client) sendGetUpdates(ctx context.Context, request OptGetUpdates) (res
 		otelogen.OperationID("getUpdates"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/getUpdates"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -3351,6 +3391,7 @@ func (c *Client) sendGetUserProfilePhotos(ctx context.Context, request *GetUserP
 		otelogen.OperationID("getUserProfilePhotos"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/getUserProfilePhotos"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -3424,6 +3465,7 @@ func (c *Client) sendGetWebhookInfo(ctx context.Context) (res *ResultWebhookInfo
 		otelogen.OperationID("getWebhookInfo"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/getWebhookInfo"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -3494,6 +3536,7 @@ func (c *Client) sendLeaveChat(ctx context.Context, request *LeaveChat) (res *Re
 		otelogen.OperationID("leaveChat"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/leaveChat"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -3567,6 +3610,7 @@ func (c *Client) sendLogOut(ctx context.Context) (res *Result, err error) {
 		otelogen.OperationID("logOut"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/logOut"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -3637,6 +3681,7 @@ func (c *Client) sendPinChatMessage(ctx context.Context, request *PinChatMessage
 		otelogen.OperationID("pinChatMessage"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/pinChatMessage"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -3710,6 +3755,7 @@ func (c *Client) sendPromoteChatMember(ctx context.Context, request *PromoteChat
 		otelogen.OperationID("promoteChatMember"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/promoteChatMember"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -3783,6 +3829,7 @@ func (c *Client) sendRestrictChatMember(ctx context.Context, request *RestrictCh
 		otelogen.OperationID("restrictChatMember"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/restrictChatMember"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -3856,6 +3903,7 @@ func (c *Client) sendRevokeChatInviteLink(ctx context.Context, request *RevokeCh
 		otelogen.OperationID("revokeChatInviteLink"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/revokeChatInviteLink"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -3929,6 +3977,7 @@ func (c *Client) sendSendAnimation(ctx context.Context, request *SendAnimation) 
 		otelogen.OperationID("sendAnimation"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendAnimation"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -4002,6 +4051,7 @@ func (c *Client) sendSendAudio(ctx context.Context, request *SendAudio) (res *Re
 		otelogen.OperationID("sendAudio"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendAudio"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -4075,6 +4125,7 @@ func (c *Client) sendSendChatAction(ctx context.Context, request *SendChatAction
 		otelogen.OperationID("sendChatAction"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendChatAction"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -4148,6 +4199,7 @@ func (c *Client) sendSendContact(ctx context.Context, request *SendContact) (res
 		otelogen.OperationID("sendContact"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendContact"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -4221,6 +4273,7 @@ func (c *Client) sendSendDice(ctx context.Context, request *SendDice) (res *Resu
 		otelogen.OperationID("sendDice"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendDice"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -4294,6 +4347,7 @@ func (c *Client) sendSendDocument(ctx context.Context, request *SendDocument) (r
 		otelogen.OperationID("sendDocument"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendDocument"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -4367,6 +4421,7 @@ func (c *Client) sendSendGame(ctx context.Context, request *SendGame) (res *Resu
 		otelogen.OperationID("sendGame"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendGame"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -4440,6 +4495,7 @@ func (c *Client) sendSendInvoice(ctx context.Context, request *SendInvoice) (res
 		otelogen.OperationID("sendInvoice"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendInvoice"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -4513,6 +4569,7 @@ func (c *Client) sendSendLocation(ctx context.Context, request *SendLocation) (r
 		otelogen.OperationID("sendLocation"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendLocation"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -4586,6 +4643,7 @@ func (c *Client) sendSendMediaGroup(ctx context.Context, request *SendMediaGroup
 		otelogen.OperationID("sendMediaGroup"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendMediaGroup"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -4659,6 +4717,7 @@ func (c *Client) sendSendMessage(ctx context.Context, request *SendMessage) (res
 		otelogen.OperationID("sendMessage"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendMessage"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -4732,6 +4791,7 @@ func (c *Client) sendSendPhoto(ctx context.Context, request *SendPhoto) (res *Re
 		otelogen.OperationID("sendPhoto"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendPhoto"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -4805,6 +4865,7 @@ func (c *Client) sendSendPoll(ctx context.Context, request *SendPoll) (res *Resu
 		otelogen.OperationID("sendPoll"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendPoll"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -4878,6 +4939,7 @@ func (c *Client) sendSendSticker(ctx context.Context, request *SendSticker) (res
 		otelogen.OperationID("sendSticker"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendSticker"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -4951,6 +5013,7 @@ func (c *Client) sendSendVenue(ctx context.Context, request *SendVenue) (res *Re
 		otelogen.OperationID("sendVenue"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendVenue"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -5024,6 +5087,7 @@ func (c *Client) sendSendVideo(ctx context.Context, request *SendVideo) (res *Re
 		otelogen.OperationID("sendVideo"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendVideo"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -5097,6 +5161,7 @@ func (c *Client) sendSendVideoNote(ctx context.Context, request *SendVideoNote) 
 		otelogen.OperationID("sendVideoNote"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendVideoNote"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -5170,6 +5235,7 @@ func (c *Client) sendSendVoice(ctx context.Context, request *SendVoice) (res *Re
 		otelogen.OperationID("sendVoice"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendVoice"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -5243,6 +5309,7 @@ func (c *Client) sendSetChatAdministratorCustomTitle(ctx context.Context, reques
 		otelogen.OperationID("setChatAdministratorCustomTitle"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/setChatAdministratorCustomTitle"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -5316,6 +5383,7 @@ func (c *Client) sendSetChatDescription(ctx context.Context, request *SetChatDes
 		otelogen.OperationID("setChatDescription"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/setChatDescription"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -5389,6 +5457,7 @@ func (c *Client) sendSetChatMenuButton(ctx context.Context, request OptSetChatMe
 		otelogen.OperationID("setChatMenuButton"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/setChatMenuButton"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -5462,6 +5531,7 @@ func (c *Client) sendSetChatPermissions(ctx context.Context, request *SetChatPer
 		otelogen.OperationID("setChatPermissions"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/setChatPermissions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -5535,6 +5605,7 @@ func (c *Client) sendSetChatPhoto(ctx context.Context, request *SetChatPhoto) (r
 		otelogen.OperationID("setChatPhoto"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/setChatPhoto"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -5608,6 +5679,7 @@ func (c *Client) sendSetChatStickerSet(ctx context.Context, request *SetChatStic
 		otelogen.OperationID("setChatStickerSet"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/setChatStickerSet"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -5681,6 +5753,7 @@ func (c *Client) sendSetChatTitle(ctx context.Context, request *SetChatTitle) (r
 		otelogen.OperationID("setChatTitle"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/setChatTitle"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -5754,6 +5827,7 @@ func (c *Client) sendSetGameScore(ctx context.Context, request *SetGameScore) (r
 		otelogen.OperationID("setGameScore"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/setGameScore"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -5827,6 +5901,7 @@ func (c *Client) sendSetMyCommands(ctx context.Context, request *SetMyCommands) 
 		otelogen.OperationID("setMyCommands"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/setMyCommands"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -5900,6 +5975,7 @@ func (c *Client) sendSetMyDefaultAdministratorRights(ctx context.Context, reques
 		otelogen.OperationID("setMyDefaultAdministratorRights"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/setMyDefaultAdministratorRights"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -5973,6 +6049,7 @@ func (c *Client) sendSetPassportDataErrors(ctx context.Context, request *SetPass
 		otelogen.OperationID("setPassportDataErrors"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/setPassportDataErrors"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -6046,6 +6123,7 @@ func (c *Client) sendSetStickerPositionInSet(ctx context.Context, request *SetSt
 		otelogen.OperationID("setStickerPositionInSet"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/setStickerPositionInSet"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -6119,6 +6197,7 @@ func (c *Client) sendSetStickerSetThumb(ctx context.Context, request *SetSticker
 		otelogen.OperationID("setStickerSetThumb"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/setStickerSetThumb"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -6192,6 +6271,7 @@ func (c *Client) sendSetWebhook(ctx context.Context, request *SetWebhook) (res *
 		otelogen.OperationID("setWebhook"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/setWebhook"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -6265,6 +6345,7 @@ func (c *Client) sendStopMessageLiveLocation(ctx context.Context, request *StopM
 		otelogen.OperationID("stopMessageLiveLocation"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/stopMessageLiveLocation"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -6338,6 +6419,7 @@ func (c *Client) sendStopPoll(ctx context.Context, request *StopPoll) (res *Resu
 		otelogen.OperationID("stopPoll"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/stopPoll"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -6411,6 +6493,7 @@ func (c *Client) sendUnbanChatMember(ctx context.Context, request *UnbanChatMemb
 		otelogen.OperationID("unbanChatMember"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/unbanChatMember"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -6484,6 +6567,7 @@ func (c *Client) sendUnbanChatSenderChat(ctx context.Context, request *UnbanChat
 		otelogen.OperationID("unbanChatSenderChat"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/unbanChatSenderChat"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -6557,6 +6641,7 @@ func (c *Client) sendUnpinAllChatMessages(ctx context.Context, request *UnpinAll
 		otelogen.OperationID("unpinAllChatMessages"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/unpinAllChatMessages"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -6630,6 +6715,7 @@ func (c *Client) sendUnpinChatMessage(ctx context.Context, request *UnpinChatMes
 		otelogen.OperationID("unpinChatMessage"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/unpinChatMessage"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -6703,6 +6789,7 @@ func (c *Client) sendUploadStickerFile(ctx context.Context, request *UploadStick
 		otelogen.OperationID("uploadStickerFile"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/uploadStickerFile"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.

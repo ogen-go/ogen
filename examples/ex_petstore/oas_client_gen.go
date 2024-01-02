@@ -110,6 +110,7 @@ func (c *Client) sendCreatePets(ctx context.Context) (res *CreatePetsCreated, er
 		otelogen.OperationID("createPets"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/pets"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -182,6 +183,7 @@ func (c *Client) sendListPets(ctx context.Context, params ListPetsParams) (res *
 		otelogen.OperationID("listPets"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/pets"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -275,6 +277,7 @@ func (c *Client) sendShowPetById(ctx context.Context, params ShowPetByIdParams) 
 		otelogen.OperationID("showPetById"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/pets/{petId}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.

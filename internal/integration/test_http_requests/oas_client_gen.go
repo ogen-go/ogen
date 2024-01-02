@@ -109,6 +109,7 @@ func (c *Client) sendAllRequestBodies(ctx context.Context, request AllRequestBod
 		otelogen.OperationID("allRequestBodies"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/allRequestBodies"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -182,6 +183,7 @@ func (c *Client) sendAllRequestBodiesOptional(ctx context.Context, request AllRe
 		otelogen.OperationID("allRequestBodiesOptional"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/allRequestBodiesOptional"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -255,6 +257,7 @@ func (c *Client) sendBase64Request(ctx context.Context, request Base64RequestReq
 		otelogen.OperationID("base64Request"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/base64Request"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -328,6 +331,7 @@ func (c *Client) sendMaskContentType(ctx context.Context, request *MaskContentTy
 		otelogen.OperationID("maskContentType"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/maskContentType"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -401,6 +405,7 @@ func (c *Client) sendMaskContentTypeOptional(ctx context.Context, request *MaskC
 		otelogen.OperationID("maskContentTypeOptional"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/maskContentTypeOptional"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -474,6 +479,7 @@ func (c *Client) sendStreamJSON(ctx context.Context, request []float64) (res flo
 		otelogen.OperationID("streamJSON"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/streamJSON"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.

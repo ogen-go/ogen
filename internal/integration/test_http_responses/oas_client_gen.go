@@ -151,6 +151,7 @@ func (c *Client) sendAnyContentTypeBinaryStringSchema(ctx context.Context) (res 
 		otelogen.OperationID("anyContentTypeBinaryStringSchema"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/anyContentTypeBinaryStringSchema"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -221,6 +222,7 @@ func (c *Client) sendAnyContentTypeBinaryStringSchemaDefault(ctx context.Context
 		otelogen.OperationID("anyContentTypeBinaryStringSchemaDefault"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/anyContentTypeBinaryStringSchemaDefault"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -291,6 +293,7 @@ func (c *Client) sendCombined(ctx context.Context, params CombinedParams) (res C
 		otelogen.OperationID("combined"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/combined"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -379,6 +382,7 @@ func (c *Client) sendHeaders200(ctx context.Context) (res *Headers200OK, err err
 		otelogen.OperationID("headers200"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/headers200"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -449,6 +453,7 @@ func (c *Client) sendHeadersCombined(ctx context.Context, params HeadersCombined
 		otelogen.OperationID("headersCombined"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/headersCombined"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -537,6 +542,7 @@ func (c *Client) sendHeadersDefault(ctx context.Context) (res *HeadersDefaultDef
 		otelogen.OperationID("headersDefault"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/headersDefault"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -607,6 +613,7 @@ func (c *Client) sendHeadersJSON(ctx context.Context) (res *HeadersJSONOK, err e
 		otelogen.OperationID("headersJSON"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/headersJSON"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -677,6 +684,7 @@ func (c *Client) sendHeadersPattern(ctx context.Context) (res *HeadersPattern4XX
 		otelogen.OperationID("headersPattern"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/headersPattern"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -750,6 +758,7 @@ func (c *Client) sendIntersectPatternCode(ctx context.Context, params IntersectP
 		otelogen.OperationID("intersectPatternCode"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/intersectPatternCode"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -838,6 +847,7 @@ func (c *Client) sendMultipleGenericResponses(ctx context.Context) (res Multiple
 		otelogen.OperationID("multipleGenericResponses"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/multipleGenericResponses"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -908,6 +918,7 @@ func (c *Client) sendOctetStreamBinaryStringSchema(ctx context.Context) (res Oct
 		otelogen.OperationID("octetStreamBinaryStringSchema"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/octetStreamBinaryStringSchema"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -978,6 +989,7 @@ func (c *Client) sendOctetStreamEmptySchema(ctx context.Context) (res OctetStrea
 		otelogen.OperationID("octetStreamEmptySchema"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/octetStreamEmptySchema"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1050,6 +1062,7 @@ func (c *Client) sendOptionalHeaders(ctx context.Context) (res *OptionalHeadersO
 		otelogen.OperationID("optionalHeaders"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/optionalHeaders"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1120,6 +1133,7 @@ func (c *Client) sendStreamJSON(ctx context.Context, params StreamJSONParams) (r
 		otelogen.OperationID("streamJSON"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/streamJSON"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1208,6 +1222,7 @@ func (c *Client) sendTextPlainBinaryStringSchema(ctx context.Context) (res TextP
 		otelogen.OperationID("textPlainBinaryStringSchema"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/textPlainBinaryStringSchema"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.

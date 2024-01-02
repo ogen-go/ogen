@@ -121,6 +121,7 @@ func (c *Client) sendOnlyForm(ctx context.Context, request *OnlyFormReq) (res *O
 		otelogen.OperationID("onlyForm"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/onlyForm"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -194,6 +195,7 @@ func (c *Client) sendOnlyMultipartFile(ctx context.Context, request *OnlyMultipa
 		otelogen.OperationID("onlyMultipartFile"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/onlyMultipartFile"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -267,6 +269,7 @@ func (c *Client) sendOnlyMultipartForm(ctx context.Context, request *OnlyMultipa
 		otelogen.OperationID("onlyMultipartForm"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/onlyMultipartForm"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -340,6 +343,7 @@ func (c *Client) sendTestFormURLEncoded(ctx context.Context, request *TestForm) 
 		otelogen.OperationID("testFormURLEncoded"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/testFormURLEncoded"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -413,6 +417,7 @@ func (c *Client) sendTestMultipart(ctx context.Context, request *TestFormMultipa
 		otelogen.OperationID("testMultipart"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/testMultipart"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -486,6 +491,7 @@ func (c *Client) sendTestMultipartUpload(ctx context.Context, request *TestMulti
 		otelogen.OperationID("testMultipartUpload"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/testMultipartUpload"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -559,6 +565,7 @@ func (c *Client) sendTestReuseFormOptionalSchema(ctx context.Context, request Op
 		otelogen.OperationID("testReuseFormOptionalSchema"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/testReuseFormOptionalSchema"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -632,6 +639,7 @@ func (c *Client) sendTestReuseFormSchema(ctx context.Context, request *SharedReq
 		otelogen.OperationID("testReuseFormSchema"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/testReuseFormSchema"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -705,6 +713,7 @@ func (c *Client) sendTestShareFormSchema(ctx context.Context, request TestShareF
 		otelogen.OperationID("testShareFormSchema"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/testShareFormSchema"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.

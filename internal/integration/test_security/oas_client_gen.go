@@ -104,6 +104,7 @@ func (c *Client) sendCustomSecurity(ctx context.Context) (res *CustomSecurityOK,
 		otelogen.OperationID("customSecurity"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/customSecurity"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -207,6 +208,7 @@ func (c *Client) sendDisjointSecurity(ctx context.Context) (res *DisjointSecurit
 		otelogen.OperationID("disjointSecurity"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/disjointSecurity"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -344,6 +346,7 @@ func (c *Client) sendIntersectSecurity(ctx context.Context) (res *IntersectSecur
 		otelogen.OperationID("intersectSecurity"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/intersectSecurity"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -470,6 +473,7 @@ func (c *Client) sendOptionalSecurity(ctx context.Context) (res *OptionalSecurit
 		otelogen.OperationID("optionalSecurity"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/optionalSecurity"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.

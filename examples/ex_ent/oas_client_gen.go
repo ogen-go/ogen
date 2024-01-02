@@ -160,6 +160,7 @@ func (c *Client) sendCreatePet(ctx context.Context, request *CreatePetReq) (res 
 		otelogen.OperationID("createPet"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/pets"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -235,6 +236,7 @@ func (c *Client) sendCreatePetCategories(ctx context.Context, request *CreatePet
 		otelogen.OperationID("createPetCategories"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/pets/{id}/categories"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -329,6 +331,7 @@ func (c *Client) sendCreatePetFriends(ctx context.Context, request *CreatePetFri
 		otelogen.OperationID("createPetFriends"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/pets/{id}/friends"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -423,6 +426,7 @@ func (c *Client) sendCreatePetOwner(ctx context.Context, request *CreatePetOwner
 		otelogen.OperationID("createPetOwner"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/pets/{id}/owner"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -517,6 +521,7 @@ func (c *Client) sendDeletePet(ctx context.Context, params DeletePetParams) (res
 		otelogen.OperationID("deletePet"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/pets/{id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -607,6 +612,7 @@ func (c *Client) sendDeletePetOwner(ctx context.Context, params DeletePetOwnerPa
 		otelogen.OperationID("deletePetOwner"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/pets/{id}/owner"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -698,6 +704,7 @@ func (c *Client) sendListPet(ctx context.Context, params ListPetParams) (res Lis
 		otelogen.OperationID("listPet"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/pets"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -808,6 +815,7 @@ func (c *Client) sendListPetCategories(ctx context.Context, params ListPetCatego
 		otelogen.OperationID("listPetCategories"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/pets/{id}/categories"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -937,6 +945,7 @@ func (c *Client) sendListPetFriends(ctx context.Context, params ListPetFriendsPa
 		otelogen.OperationID("listPetFriends"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/pets/{id}/friends"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1066,6 +1075,7 @@ func (c *Client) sendReadPet(ctx context.Context, params ReadPetParams) (res Rea
 		otelogen.OperationID("readPet"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/pets/{id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1156,6 +1166,7 @@ func (c *Client) sendReadPetOwner(ctx context.Context, params ReadPetOwnerParams
 		otelogen.OperationID("readPetOwner"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/pets/{id}/owner"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1247,6 +1258,7 @@ func (c *Client) sendUpdatePet(ctx context.Context, request *UpdatePetReq, param
 		otelogen.OperationID("updatePet"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/pets/{id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.

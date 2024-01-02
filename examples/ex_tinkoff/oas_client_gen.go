@@ -215,6 +215,7 @@ func (c *Client) sendMarketBondsGet(ctx context.Context) (res MarketBondsGetRes,
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/market/bonds"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -319,6 +320,7 @@ func (c *Client) sendMarketCandlesGet(ctx context.Context, params MarketCandlesG
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/market/candles"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -483,6 +485,7 @@ func (c *Client) sendMarketCurrenciesGet(ctx context.Context) (res MarketCurrenc
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/market/currencies"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -587,6 +590,7 @@ func (c *Client) sendMarketEtfsGet(ctx context.Context) (res MarketEtfsGetRes, e
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/market/etfs"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -691,6 +695,7 @@ func (c *Client) sendMarketOrderbookGet(ctx context.Context, params MarketOrderb
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/market/orderbook"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -827,6 +832,7 @@ func (c *Client) sendMarketSearchByFigiGet(ctx context.Context, params MarketSea
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/market/search/by-figi"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -949,6 +955,7 @@ func (c *Client) sendMarketSearchByTickerGet(ctx context.Context, params MarketS
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/market/search/by-ticker"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1071,6 +1078,7 @@ func (c *Client) sendMarketStocksGet(ctx context.Context) (res MarketStocksGetRe
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/market/stocks"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1175,6 +1183,7 @@ func (c *Client) sendOperationsGet(ctx context.Context, params OperationsGetPara
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/operations"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1345,6 +1354,7 @@ func (c *Client) sendOrdersCancelPost(ctx context.Context, params OrdersCancelPo
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orders/cancel"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1484,6 +1494,7 @@ func (c *Client) sendOrdersGet(ctx context.Context, params OrdersGetParams) (res
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orders"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1609,6 +1620,7 @@ func (c *Client) sendOrdersLimitOrderPost(ctx context.Context, request *LimitOrd
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orders/limit-order"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1751,6 +1763,7 @@ func (c *Client) sendOrdersMarketOrderPost(ctx context.Context, request *MarketO
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orders/market-order"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1893,6 +1906,7 @@ func (c *Client) sendPortfolioCurrenciesGet(ctx context.Context, params Portfoli
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/portfolio/currencies"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2018,6 +2032,7 @@ func (c *Client) sendPortfolioGet(ctx context.Context, params PortfolioGetParams
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/portfolio"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2143,6 +2158,7 @@ func (c *Client) sendSandboxClearPost(ctx context.Context, params SandboxClearPo
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sandbox/clear"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2268,6 +2284,7 @@ func (c *Client) sendSandboxCurrenciesBalancePost(ctx context.Context, request *
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sandbox/currencies/balance"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2396,6 +2413,7 @@ func (c *Client) sendSandboxPositionsBalancePost(ctx context.Context, request *S
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sandbox/positions/balance"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2524,6 +2542,7 @@ func (c *Client) sendSandboxRegisterPost(ctx context.Context, request OptSandbox
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sandbox/register"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2631,6 +2650,7 @@ func (c *Client) sendSandboxRemovePost(ctx context.Context, params SandboxRemove
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sandbox/remove"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2756,6 +2776,7 @@ func (c *Client) sendUserAccountsGet(ctx context.Context) (res UserAccountsGetRe
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/accounts"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.

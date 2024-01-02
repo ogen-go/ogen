@@ -7840,6 +7840,7 @@ func (c *Client) sendActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx contex
 		otelogen.OperationID("actions/add-repo-access-to-self-hosted-runner-group-in-org"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -7972,6 +7973,7 @@ func (c *Client) sendActionsAddSelectedRepoToOrgSecret(ctx context.Context, para
 		otelogen.OperationID("actions/add-selected-repo-to-org-secret"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -8105,6 +8107,7 @@ func (c *Client) sendActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context
 		otelogen.OperationID("actions/add-self-hosted-runner-to-group-for-org"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -8237,6 +8240,7 @@ func (c *Client) sendActionsApproveWorkflowRun(ctx context.Context, params Actio
 		otelogen.OperationID("actions/approve-workflow-run"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/approve"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -8368,6 +8372,7 @@ func (c *Client) sendActionsCancelWorkflowRun(ctx context.Context, params Action
 		otelogen.OperationID("actions/cancel-workflow-run"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/cancel"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -8550,6 +8555,7 @@ func (c *Client) sendActionsCreateOrUpdateEnvironmentSecret(ctx context.Context,
 		otelogen.OperationID("actions/create-or-update-environment-secret"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -8734,6 +8740,7 @@ func (c *Client) sendActionsCreateOrUpdateOrgSecret(ctx context.Context, request
 		otelogen.OperationID("actions/create-or-update-org-secret"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/{secret_name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -8899,6 +8906,7 @@ func (c *Client) sendActionsCreateOrUpdateRepoSecret(ctx context.Context, reques
 		otelogen.OperationID("actions/create-or-update-repo-secret"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/secrets/{secret_name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -9037,6 +9045,7 @@ func (c *Client) sendActionsCreateRegistrationTokenForOrg(ctx context.Context, p
 		otelogen.OperationID("actions/create-registration-token-for-org"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runners/registration-token"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -9136,6 +9145,7 @@ func (c *Client) sendActionsCreateRegistrationTokenForRepo(ctx context.Context, 
 		otelogen.OperationID("actions/create-registration-token-for-repo"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runners/registration-token"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -9255,6 +9265,7 @@ func (c *Client) sendActionsCreateRemoveTokenForOrg(ctx context.Context, params 
 		otelogen.OperationID("actions/create-remove-token-for-org"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runners/remove-token"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -9354,6 +9365,7 @@ func (c *Client) sendActionsCreateRemoveTokenForRepo(ctx context.Context, params
 		otelogen.OperationID("actions/create-remove-token-for-repo"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runners/remove-token"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -9468,6 +9480,7 @@ func (c *Client) sendActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Contex
 		otelogen.OperationID("actions/create-self-hosted-runner-group-for-org"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -9564,6 +9577,7 @@ func (c *Client) sendActionsDeleteArtifact(ctx context.Context, params ActionsDe
 		otelogen.OperationID("actions/delete-artifact"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/artifacts/{artifact_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -9694,6 +9708,7 @@ func (c *Client) sendActionsDeleteEnvironmentSecret(ctx context.Context, params 
 		otelogen.OperationID("actions/delete-environment-secret"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -9824,6 +9839,7 @@ func (c *Client) sendActionsDeleteOrgSecret(ctx context.Context, params ActionsD
 		otelogen.OperationID("actions/delete-org-secret"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/{secret_name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -9935,6 +9951,7 @@ func (c *Client) sendActionsDeleteRepoSecret(ctx context.Context, params Actions
 		otelogen.OperationID("actions/delete-repo-secret"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/secrets/{secret_name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -10065,6 +10082,7 @@ func (c *Client) sendActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, p
 		otelogen.OperationID("actions/delete-self-hosted-runner-from-org"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runners/{runner_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -10177,6 +10195,7 @@ func (c *Client) sendActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, 
 		otelogen.OperationID("actions/delete-self-hosted-runner-from-repo"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runners/{runner_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -10309,6 +10328,7 @@ func (c *Client) sendActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Conte
 		otelogen.OperationID("actions/delete-self-hosted-runner-group-from-org"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -10422,6 +10442,7 @@ func (c *Client) sendActionsDeleteWorkflowRun(ctx context.Context, params Action
 		otelogen.OperationID("actions/delete-workflow-run"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -10552,6 +10573,7 @@ func (c *Client) sendActionsDeleteWorkflowRunLogs(ctx context.Context, params Ac
 		otelogen.OperationID("actions/delete-workflow-run-logs"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/logs"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -10686,6 +10708,7 @@ func (c *Client) sendActionsDisableSelectedRepositoryGithubActionsOrganization(c
 		otelogen.OperationID("actions/disable-selected-repository-github-actions-organization"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions/repositories/{repository_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -10801,6 +10824,7 @@ func (c *Client) sendActionsDownloadArtifact(ctx context.Context, params Actions
 		otelogen.OperationID("actions/download-artifact"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -10956,6 +10980,7 @@ func (c *Client) sendActionsDownloadJobLogsForWorkflowRun(ctx context.Context, p
 		otelogen.OperationID("actions/download-job-logs-for-workflow-run"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/jobs/{job_id}/logs"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -11091,6 +11116,7 @@ func (c *Client) sendActionsDownloadWorkflowRunLogs(ctx context.Context, params 
 		otelogen.OperationID("actions/download-workflow-run-logs"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/logs"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -11225,6 +11251,7 @@ func (c *Client) sendActionsEnableSelectedRepositoryGithubActionsOrganization(ct
 		otelogen.OperationID("actions/enable-selected-repository-github-actions-organization"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions/repositories/{repository_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -11339,6 +11366,7 @@ func (c *Client) sendActionsGetAllowedActionsOrganization(ctx context.Context, p
 		otelogen.OperationID("actions/get-allowed-actions-organization"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions/selected-actions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -11435,6 +11463,7 @@ func (c *Client) sendActionsGetAllowedActionsRepository(ctx context.Context, par
 		otelogen.OperationID("actions/get-allowed-actions-repository"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/permissions/selected-actions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -11547,6 +11576,7 @@ func (c *Client) sendActionsGetArtifact(ctx context.Context, params ActionsGetAr
 		otelogen.OperationID("actions/get-artifact"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/artifacts/{artifact_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -11678,6 +11708,7 @@ func (c *Client) sendActionsGetEnvironmentPublicKey(ctx context.Context, params 
 		otelogen.OperationID("actions/get-environment-public-key"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repositories/{repository_id}/environments/{environment_name}/secrets/public-key"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -11790,6 +11821,7 @@ func (c *Client) sendActionsGetEnvironmentSecret(ctx context.Context, params Act
 		otelogen.OperationID("actions/get-environment-secret"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -11920,6 +11952,7 @@ func (c *Client) sendActionsGetGithubActionsPermissionsOrganization(ctx context.
 		otelogen.OperationID("actions/get-github-actions-permissions-organization"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -12014,6 +12047,7 @@ func (c *Client) sendActionsGetGithubActionsPermissionsRepository(ctx context.Co
 		otelogen.OperationID("actions/get-github-actions-permissions-repository"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/permissions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -12126,6 +12160,7 @@ func (c *Client) sendActionsGetJobForWorkflowRun(ctx context.Context, params Act
 		otelogen.OperationID("actions/get-job-for-workflow-run"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/jobs/{job_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -12257,6 +12292,7 @@ func (c *Client) sendActionsGetOrgPublicKey(ctx context.Context, params ActionsG
 		otelogen.OperationID("actions/get-org-public-key"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/public-key"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -12350,6 +12386,7 @@ func (c *Client) sendActionsGetOrgSecret(ctx context.Context, params ActionsGetO
 		otelogen.OperationID("actions/get-org-secret"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/{secret_name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -12462,6 +12499,7 @@ func (c *Client) sendActionsGetRepoPublicKey(ctx context.Context, params Actions
 		otelogen.OperationID("actions/get-repo-public-key"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/secrets/public-key"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -12574,6 +12612,7 @@ func (c *Client) sendActionsGetRepoSecret(ctx context.Context, params ActionsGet
 		otelogen.OperationID("actions/get-repo-secret"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/secrets/{secret_name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -12704,6 +12743,7 @@ func (c *Client) sendActionsGetReviewsForRun(ctx context.Context, params Actions
 		otelogen.OperationID("actions/get-reviews-for-run"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/approvals"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -12834,6 +12874,7 @@ func (c *Client) sendActionsGetSelfHostedRunnerForOrg(ctx context.Context, param
 		otelogen.OperationID("actions/get-self-hosted-runner-for-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runners/{runner_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -12945,6 +12986,7 @@ func (c *Client) sendActionsGetSelfHostedRunnerForRepo(ctx context.Context, para
 		otelogen.OperationID("actions/get-self-hosted-runner-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runners/{runner_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -13077,6 +13119,7 @@ func (c *Client) sendActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, 
 		otelogen.OperationID("actions/get-self-hosted-runner-group-for-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -13188,6 +13231,7 @@ func (c *Client) sendActionsGetWorkflowRun(ctx context.Context, params ActionsGe
 		otelogen.OperationID("actions/get-workflow-run"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -13325,6 +13369,7 @@ func (c *Client) sendActionsGetWorkflowRunUsage(ctx context.Context, params Acti
 		otelogen.OperationID("actions/get-workflow-run-usage"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/timing"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -13456,6 +13501,7 @@ func (c *Client) sendActionsListArtifactsForRepo(ctx context.Context, params Act
 		otelogen.OperationID("actions/list-artifacts-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/artifacts"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -13606,6 +13652,7 @@ func (c *Client) sendActionsListEnvironmentSecrets(ctx context.Context, params A
 		otelogen.OperationID("actions/list-environment-secrets"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repositories/{repository_id}/environments/{environment_name}/secrets"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -13758,6 +13805,7 @@ func (c *Client) sendActionsListJobsForWorkflowRun(ctx context.Context, params A
 		otelogen.OperationID("actions/list-jobs-for-workflow-run"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/jobs"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -13944,6 +13992,7 @@ func (c *Client) sendActionsListOrgSecrets(ctx context.Context, params ActionsLi
 		otelogen.OperationID("actions/list-org-secrets"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -14077,6 +14126,7 @@ func (c *Client) sendActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx conte
 		otelogen.OperationID("actions/list-repo-access-to-self-hosted-runner-group-in-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -14227,6 +14277,7 @@ func (c *Client) sendActionsListRepoSecrets(ctx context.Context, params ActionsL
 		otelogen.OperationID("actions/list-repo-secrets"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/secrets"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -14377,6 +14428,7 @@ func (c *Client) sendActionsListRepoWorkflows(ctx context.Context, params Action
 		otelogen.OperationID("actions/list-repo-workflows"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/workflows"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -14526,6 +14578,7 @@ func (c *Client) sendActionsListRunnerApplicationsForOrg(ctx context.Context, pa
 		otelogen.OperationID("actions/list-runner-applications-for-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runners/downloads"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -14618,6 +14671,7 @@ func (c *Client) sendActionsListRunnerApplicationsForRepo(ctx context.Context, p
 		otelogen.OperationID("actions/list-runner-applications-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runners/downloads"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -14731,6 +14785,7 @@ func (c *Client) sendActionsListSelectedReposForOrgSecret(ctx context.Context, p
 		otelogen.OperationID("actions/list-selected-repos-for-org-secret"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/{secret_name}/repositories"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -14884,6 +14939,7 @@ func (c *Client) sendActionsListSelectedRepositoriesEnabledGithubActionsOrganiza
 		otelogen.OperationID("actions/list-selected-repositories-enabled-github-actions-organization"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions/repositories"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -15017,6 +15073,7 @@ func (c *Client) sendActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context
 		otelogen.OperationID("actions/list-self-hosted-runner-groups-for-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -15147,6 +15204,7 @@ func (c *Client) sendActionsListSelfHostedRunnersForOrg(ctx context.Context, par
 		otelogen.OperationID("actions/list-self-hosted-runners-for-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runners"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -15277,6 +15335,7 @@ func (c *Client) sendActionsListSelfHostedRunnersForRepo(ctx context.Context, pa
 		otelogen.OperationID("actions/list-self-hosted-runners-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runners"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -15429,6 +15488,7 @@ func (c *Client) sendActionsListSelfHostedRunnersInGroupForOrg(ctx context.Conte
 		otelogen.OperationID("actions/list-self-hosted-runners-in-group-for-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/runners"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -15579,6 +15639,7 @@ func (c *Client) sendActionsListWorkflowRunArtifacts(ctx context.Context, params
 		otelogen.OperationID("actions/list-workflow-run-artifacts"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/artifacts"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -15751,6 +15812,7 @@ func (c *Client) sendActionsListWorkflowRunsForRepo(ctx context.Context, params 
 		otelogen.OperationID("actions/list-workflow-runs-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -15991,6 +16053,7 @@ func (c *Client) sendActionsReRunWorkflow(ctx context.Context, params ActionsReR
 		otelogen.OperationID("actions/re-run-workflow"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/rerun"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -16127,6 +16190,7 @@ func (c *Client) sendActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx con
 		otelogen.OperationID("actions/remove-repo-access-to-self-hosted-runner-group-in-org"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -16259,6 +16323,7 @@ func (c *Client) sendActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context,
 		otelogen.OperationID("actions/remove-selected-repo-from-org-secret"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -16392,6 +16457,7 @@ func (c *Client) sendActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Co
 		otelogen.OperationID("actions/remove-self-hosted-runner-from-group-for-org"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -16522,6 +16588,7 @@ func (c *Client) sendActionsRetryWorkflow(ctx context.Context, params ActionsRet
 		otelogen.OperationID("actions/retry-workflow"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/retry"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -16652,6 +16719,7 @@ func (c *Client) sendActionsReviewPendingDeploymentsForRun(ctx context.Context, 
 		otelogen.OperationID("actions/review-pending-deployments-for-run"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -16794,6 +16862,7 @@ func (c *Client) sendActionsSetAllowedActionsOrganization(ctx context.Context, r
 		otelogen.OperationID("actions/set-allowed-actions-organization"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions/selected-actions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -16897,6 +16966,7 @@ func (c *Client) sendActionsSetAllowedActionsRepository(ctx context.Context, req
 		otelogen.OperationID("actions/set-allowed-actions-repository"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/permissions/selected-actions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -17015,6 +17085,7 @@ func (c *Client) sendActionsSetGithubActionsPermissionsOrganization(ctx context.
 		otelogen.OperationID("actions/set-github-actions-permissions-organization"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -17115,6 +17186,7 @@ func (c *Client) sendActionsSetGithubActionsPermissionsRepository(ctx context.Co
 		otelogen.OperationID("actions/set-github-actions-permissions-repository"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/permissions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -17233,6 +17305,7 @@ func (c *Client) sendActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx contex
 		otelogen.OperationID("actions/set-repo-access-to-self-hosted-runner-group-in-org"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -17350,6 +17423,7 @@ func (c *Client) sendActionsSetSelectedReposForOrgSecret(ctx context.Context, re
 		otelogen.OperationID("actions/set-selected-repos-for-org-secret"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/{secret_name}/repositories"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -17468,6 +17542,7 @@ func (c *Client) sendActionsSetSelectedRepositoriesEnabledGithubActionsOrganizat
 		otelogen.OperationID("actions/set-selected-repositories-enabled-github-actions-organization"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions/repositories"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -17566,6 +17641,7 @@ func (c *Client) sendActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Contex
 		otelogen.OperationID("actions/set-self-hosted-runners-in-group-for-org"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/runners"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -17683,6 +17759,7 @@ func (c *Client) sendActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Contex
 		otelogen.OperationID("actions/update-self-hosted-runner-group-for-org"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -17795,6 +17872,7 @@ func (c *Client) sendActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.C
 		otelogen.OperationID("activity/check-repo-is-starred-by-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/starred/{owner}/{repo}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -17906,6 +17984,7 @@ func (c *Client) sendActivityDeleteRepoSubscription(ctx context.Context, params 
 		otelogen.OperationID("activity/delete-repo-subscription"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/subscription"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -18020,6 +18099,7 @@ func (c *Client) sendActivityDeleteThreadSubscription(ctx context.Context, param
 		otelogen.OperationID("activity/delete-thread-subscription"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/notifications/threads/{thread_id}/subscription"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -18125,6 +18205,7 @@ func (c *Client) sendActivityGetFeeds(ctx context.Context) (res *Feed, err error
 		otelogen.OperationID("activity/get-feeds"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/feeds"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -18197,6 +18278,7 @@ func (c *Client) sendActivityGetRepoSubscription(ctx context.Context, params Act
 		otelogen.OperationID("activity/get-repo-subscription"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/subscription"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -18307,6 +18389,7 @@ func (c *Client) sendActivityGetThread(ctx context.Context, params ActivityGetTh
 		otelogen.OperationID("activity/get-thread"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/notifications/threads/{thread_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -18400,6 +18483,7 @@ func (c *Client) sendActivityGetThreadSubscriptionForAuthenticatedUser(ctx conte
 		otelogen.OperationID("activity/get-thread-subscription-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/notifications/threads/{thread_id}/subscription"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -18492,6 +18576,7 @@ func (c *Client) sendActivityListEventsForAuthenticatedUser(ctx context.Context,
 		otelogen.OperationID("activity/list-events-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/events"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -18621,6 +18706,7 @@ func (c *Client) sendActivityListNotificationsForAuthenticatedUser(ctx context.C
 		otelogen.OperationID("activity/list-notifications-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/notifications"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -18799,6 +18885,7 @@ func (c *Client) sendActivityListOrgEventsForAuthenticatedUser(ctx context.Conte
 		otelogen.OperationID("activity/list-org-events-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/events/orgs/{org}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -18947,6 +19034,7 @@ func (c *Client) sendActivityListPublicEvents(ctx context.Context, params Activi
 		otelogen.OperationID("activity/list-public-events"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/events"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -19057,6 +19145,7 @@ func (c *Client) sendActivityListPublicEventsForRepoNetwork(ctx context.Context,
 		otelogen.OperationID("activity/list-public-events-for-repo-network"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/networks/{owner}/{repo}/events"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -19205,6 +19294,7 @@ func (c *Client) sendActivityListPublicEventsForUser(ctx context.Context, params
 		otelogen.OperationID("activity/list-public-events-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/events/public"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -19334,6 +19424,7 @@ func (c *Client) sendActivityListPublicOrgEvents(ctx context.Context, params Act
 		otelogen.OperationID("activity/list-public-org-events"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/events"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -19465,6 +19556,7 @@ func (c *Client) sendActivityListReceivedEventsForUser(ctx context.Context, para
 		otelogen.OperationID("activity/list-received-events-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/received_events"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -19594,6 +19686,7 @@ func (c *Client) sendActivityListReceivedPublicEventsForUser(ctx context.Context
 		otelogen.OperationID("activity/list-received-public-events-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/received_events/public"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -19723,6 +19816,7 @@ func (c *Client) sendActivityListRepoEvents(ctx context.Context, params Activity
 		otelogen.OperationID("activity/list-repo-events"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/events"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -19871,6 +19965,7 @@ func (c *Client) sendActivityListRepoNotificationsForAuthenticatedUser(ctx conte
 		otelogen.OperationID("activity/list-repo-notifications-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/notifications"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -20089,6 +20184,7 @@ func (c *Client) sendActivityListReposStarredByAuthenticatedUser(ctx context.Con
 		otelogen.OperationID("activity/list-repos-starred-by-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/starred"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -20233,6 +20329,7 @@ func (c *Client) sendActivityListReposWatchedByUser(ctx context.Context, params 
 		otelogen.OperationID("activity/list-repos-watched-by-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/subscriptions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -20362,6 +20459,7 @@ func (c *Client) sendActivityListWatchedReposForAuthenticatedUser(ctx context.Co
 		otelogen.OperationID("activity/list-watched-repos-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/subscriptions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -20472,6 +20570,7 @@ func (c *Client) sendActivityListWatchersForRepo(ctx context.Context, params Act
 		otelogen.OperationID("activity/list-watchers-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/subscribers"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -20626,6 +20725,7 @@ func (c *Client) sendActivityMarkNotificationsAsRead(ctx context.Context, reques
 		otelogen.OperationID("activity/mark-notifications-as-read"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/notifications"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -20707,6 +20807,7 @@ func (c *Client) sendActivityMarkRepoNotificationsAsRead(ctx context.Context, re
 		otelogen.OperationID("activity/mark-repo-notifications-as-read"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/notifications"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -20820,6 +20921,7 @@ func (c *Client) sendActivityMarkThreadAsRead(ctx context.Context, params Activi
 		otelogen.OperationID("activity/mark-thread-as-read"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/notifications/threads/{thread_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -20913,6 +21015,7 @@ func (c *Client) sendActivitySetRepoSubscription(ctx context.Context, request Op
 		otelogen.OperationID("activity/set-repo-subscription"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/subscription"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -21033,6 +21136,7 @@ func (c *Client) sendActivitySetThreadSubscription(ctx context.Context, request 
 		otelogen.OperationID("activity/set-thread-subscription"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/notifications/threads/{thread_id}/subscription"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -21129,6 +21233,7 @@ func (c *Client) sendActivityStarRepoForAuthenticatedUser(ctx context.Context, p
 		otelogen.OperationID("activity/star-repo-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/user/starred/{owner}/{repo}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -21238,6 +21343,7 @@ func (c *Client) sendActivityUnstarRepoForAuthenticatedUser(ctx context.Context,
 		otelogen.OperationID("activity/unstar-repo-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/user/starred/{owner}/{repo}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -21352,6 +21458,7 @@ func (c *Client) sendAppsAddRepoToInstallation(ctx context.Context, params AppsA
 		otelogen.OperationID("apps/add-repo-to-installation"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/user/installations/{installation_id}/repositories/{repository_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -21466,6 +21573,7 @@ func (c *Client) sendAppsCheckToken(ctx context.Context, request *AppsCheckToken
 		otelogen.OperationID("apps/check-token"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/applications/{client_id}/token"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -21569,6 +21677,7 @@ func (c *Client) sendAppsCreateContentAttachment(ctx context.Context, request *A
 		otelogen.OperationID("apps/create-content-attachment"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/content_references/{content_reference_id}/attachments"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -21704,6 +21813,7 @@ func (c *Client) sendAppsCreateFromManifest(ctx context.Context, request *AppsCr
 		otelogen.OperationID("apps/create-from-manifest"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/app-manifests/{code}/conversions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -21807,6 +21917,7 @@ func (c *Client) sendAppsCreateInstallationAccessToken(ctx context.Context, requ
 		otelogen.OperationID("apps/create-installation-access-token"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/app/installations/{installation_id}/access_tokens"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -21910,6 +22021,7 @@ func (c *Client) sendAppsDeleteAuthorization(ctx context.Context, request *AppsD
 		otelogen.OperationID("apps/delete-authorization"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/applications/{client_id}/grant"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -22009,6 +22121,7 @@ func (c *Client) sendAppsDeleteInstallation(ctx context.Context, params AppsDele
 		otelogen.OperationID("apps/delete-installation"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/app/installations/{installation_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -22102,6 +22215,7 @@ func (c *Client) sendAppsDeleteToken(ctx context.Context, request *AppsDeleteTok
 		otelogen.OperationID("apps/delete-token"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/applications/{client_id}/token"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -22203,6 +22317,7 @@ func (c *Client) sendAppsGetAuthenticated(ctx context.Context) (res *Integration
 		otelogen.OperationID("apps/get-authenticated"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/app"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -22282,6 +22397,7 @@ func (c *Client) sendAppsGetBySlug(ctx context.Context, params AppsGetBySlugPara
 		otelogen.OperationID("apps/get-by-slug"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apps/{app_slug}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -22379,6 +22495,7 @@ func (c *Client) sendAppsGetSubscriptionPlanForAccount(ctx context.Context, para
 		otelogen.OperationID("apps/get-subscription-plan-for-account"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/marketplace_listing/accounts/{account_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -22476,6 +22593,7 @@ func (c *Client) sendAppsGetSubscriptionPlanForAccountStubbed(ctx context.Contex
 		otelogen.OperationID("apps/get-subscription-plan-for-account-stubbed"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/marketplace_listing/stubbed/accounts/{account_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -22570,6 +22688,7 @@ func (c *Client) sendAppsGetWebhookConfigForApp(ctx context.Context) (res *Webho
 		otelogen.OperationID("apps/get-webhook-config-for-app"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/app/hook/config"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -22645,6 +22764,7 @@ func (c *Client) sendAppsGetWebhookDelivery(ctx context.Context, params AppsGetW
 		otelogen.OperationID("apps/get-webhook-delivery"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/app/hook/deliveries/{delivery_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -22743,6 +22863,7 @@ func (c *Client) sendAppsListAccountsForPlan(ctx context.Context, params AppsLis
 		otelogen.OperationID("apps/list-accounts-for-plan"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/marketplace_listing/plans/{plan_id}/accounts"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -22914,6 +23035,7 @@ func (c *Client) sendAppsListAccountsForPlanStubbed(ctx context.Context, params 
 		otelogen.OperationID("apps/list-accounts-for-plan-stubbed"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/marketplace_listing/stubbed/plans/{plan_id}/accounts"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -23083,6 +23205,7 @@ func (c *Client) sendAppsListInstallationReposForAuthenticatedUser(ctx context.C
 		otelogen.OperationID("apps/list-installation-repos-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/installations/{installation_id}/repositories"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -23217,6 +23340,7 @@ func (c *Client) sendAppsListPlans(ctx context.Context, params AppsListPlansPara
 		otelogen.OperationID("apps/list-plans"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/marketplace_listing/plans"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -23332,6 +23456,7 @@ func (c *Client) sendAppsListPlansStubbed(ctx context.Context, params AppsListPl
 		otelogen.OperationID("apps/list-plans-stubbed"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/marketplace_listing/stubbed/plans"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -23445,6 +23570,7 @@ func (c *Client) sendAppsListReposAccessibleToInstallation(ctx context.Context, 
 		otelogen.OperationID("apps/list-repos-accessible-to-installation"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/installation/repositories"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -23557,6 +23683,7 @@ func (c *Client) sendAppsListSubscriptionsForAuthenticatedUser(ctx context.Conte
 		otelogen.OperationID("apps/list-subscriptions-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/marketplace_purchases"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -23669,6 +23796,7 @@ func (c *Client) sendAppsListSubscriptionsForAuthenticatedUserStubbed(ctx contex
 		otelogen.OperationID("apps/list-subscriptions-for-authenticated-user-stubbed"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/marketplace_purchases/stubbed"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -23782,6 +23910,7 @@ func (c *Client) sendAppsListWebhookDeliveries(ctx context.Context, params AppsL
 		otelogen.OperationID("apps/list-webhook-deliveries"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/app/hook/deliveries"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -23895,6 +24024,7 @@ func (c *Client) sendAppsRedeliverWebhookDelivery(ctx context.Context, params Ap
 		otelogen.OperationID("apps/redeliver-webhook-delivery"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/app/hook/deliveries/{delivery_id}/attempts"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -23991,6 +24121,7 @@ func (c *Client) sendAppsRemoveRepoFromInstallation(ctx context.Context, params 
 		otelogen.OperationID("apps/remove-repo-from-installation"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/user/installations/{installation_id}/repositories/{repository_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -24105,6 +24236,7 @@ func (c *Client) sendAppsResetToken(ctx context.Context, request *AppsResetToken
 		otelogen.OperationID("apps/reset-token"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/applications/{client_id}/token"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -24208,6 +24340,7 @@ func (c *Client) sendAppsRevokeInstallationAccessToken(ctx context.Context) (res
 		otelogen.OperationID("apps/revoke-installation-access-token"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/installation/token"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -24285,6 +24418,7 @@ func (c *Client) sendAppsScopeToken(ctx context.Context, request *AppsScopeToken
 		otelogen.OperationID("apps/scope-token"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/applications/{client_id}/token/scoped"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -24384,6 +24518,7 @@ func (c *Client) sendAppsSuspendInstallation(ctx context.Context, params AppsSus
 		otelogen.OperationID("apps/suspend-installation"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/app/installations/{installation_id}/suspended"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -24478,6 +24613,7 @@ func (c *Client) sendAppsUnsuspendInstallation(ctx context.Context, params AppsU
 		otelogen.OperationID("apps/unsuspend-installation"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/app/installations/{installation_id}/suspended"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -24573,6 +24709,7 @@ func (c *Client) sendAppsUpdateWebhookConfigForApp(ctx context.Context, request 
 		otelogen.OperationID("apps/update-webhook-config-for-app"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/app/hook/config"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -24655,6 +24792,7 @@ func (c *Client) sendBillingGetGithubActionsBillingGhe(ctx context.Context, para
 		otelogen.OperationID("billing/get-github-actions-billing-ghe"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/settings/billing/actions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -24753,6 +24891,7 @@ func (c *Client) sendBillingGetGithubActionsBillingOrg(ctx context.Context, para
 		otelogen.OperationID("billing/get-github-actions-billing-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/settings/billing/actions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -24851,6 +24990,7 @@ func (c *Client) sendBillingGetGithubActionsBillingUser(ctx context.Context, par
 		otelogen.OperationID("billing/get-github-actions-billing-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/settings/billing/actions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -24946,6 +25086,7 @@ func (c *Client) sendBillingGetGithubPackagesBillingGhe(ctx context.Context, par
 		otelogen.OperationID("billing/get-github-packages-billing-ghe"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/settings/billing/packages"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -25041,6 +25182,7 @@ func (c *Client) sendBillingGetGithubPackagesBillingOrg(ctx context.Context, par
 		otelogen.OperationID("billing/get-github-packages-billing-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/settings/billing/packages"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -25136,6 +25278,7 @@ func (c *Client) sendBillingGetGithubPackagesBillingUser(ctx context.Context, pa
 		otelogen.OperationID("billing/get-github-packages-billing-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/settings/billing/packages"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -25231,6 +25374,7 @@ func (c *Client) sendBillingGetSharedStorageBillingGhe(ctx context.Context, para
 		otelogen.OperationID("billing/get-shared-storage-billing-ghe"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/settings/billing/shared-storage"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -25326,6 +25470,7 @@ func (c *Client) sendBillingGetSharedStorageBillingOrg(ctx context.Context, para
 		otelogen.OperationID("billing/get-shared-storage-billing-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/settings/billing/shared-storage"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -25421,6 +25566,7 @@ func (c *Client) sendBillingGetSharedStorageBillingUser(ctx context.Context, par
 		otelogen.OperationID("billing/get-shared-storage-billing-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/settings/billing/shared-storage"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -25520,6 +25666,7 @@ func (c *Client) sendChecksCreateSuite(ctx context.Context, request *ChecksCreat
 		otelogen.OperationID("checks/create-suite"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/check-suites"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -25638,6 +25785,7 @@ func (c *Client) sendChecksGet(ctx context.Context, params ChecksGetParams) (res
 		otelogen.OperationID("checks/get"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/check-runs/{check_run_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -25771,6 +25919,7 @@ func (c *Client) sendChecksGetSuite(ctx context.Context, params ChecksGetSuitePa
 		otelogen.OperationID("checks/get-suite"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/check-suites/{check_suite_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -25902,6 +26051,7 @@ func (c *Client) sendChecksListAnnotations(ctx context.Context, params ChecksLis
 		otelogen.OperationID("checks/list-annotations"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/check-runs/{check_run_id}/annotations"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -26075,6 +26225,7 @@ func (c *Client) sendChecksListForRef(ctx context.Context, params ChecksListForR
 		otelogen.OperationID("checks/list-for-ref"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{ref}/check-runs"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -26315,6 +26466,7 @@ func (c *Client) sendChecksListForSuite(ctx context.Context, params ChecksListFo
 		otelogen.OperationID("checks/list-for-suite"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -26539,6 +26691,7 @@ func (c *Client) sendChecksListSuitesForRef(ctx context.Context, params ChecksLi
 		otelogen.OperationID("checks/list-suites-for-ref"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{ref}/check-suites"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -26745,6 +26898,7 @@ func (c *Client) sendChecksRerequestSuite(ctx context.Context, params ChecksRere
 		otelogen.OperationID("checks/rerequest-suite"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -26878,6 +27032,7 @@ func (c *Client) sendChecksSetSuitesPreferences(ctx context.Context, request *Ch
 		otelogen.OperationID("checks/set-suites-preferences"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/check-suites/preferences"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -27049,6 +27204,7 @@ func (c *Client) sendCodeScanningDeleteAnalysis(ctx context.Context, params Code
 		otelogen.OperationID("code-scanning/delete-analysis"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -27204,6 +27360,7 @@ func (c *Client) sendCodeScanningGetAlert(ctx context.Context, params CodeScanni
 		otelogen.OperationID("code-scanning/get-alert"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -27353,6 +27510,7 @@ func (c *Client) sendCodeScanningGetAnalysis(ctx context.Context, params CodeSca
 		otelogen.OperationID("code-scanning/get-analysis"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -27486,6 +27644,7 @@ func (c *Client) sendCodeScanningGetSarif(ctx context.Context, params CodeScanni
 		otelogen.OperationID("code-scanning/get-sarif"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -27616,6 +27775,7 @@ func (c *Client) sendCodeScanningListAlertInstances(ctx context.Context, params 
 		otelogen.OperationID("code-scanning/list-alert-instances"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -27813,6 +27973,7 @@ func (c *Client) sendCodeScanningListAlertsForRepo(ctx context.Context, params C
 		otelogen.OperationID("code-scanning/list-alerts-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/alerts"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -28052,6 +28213,7 @@ func (c *Client) sendCodeScanningListRecentAnalyses(ctx context.Context, params 
 		otelogen.OperationID("code-scanning/list-recent-analyses"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/analyses"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -28282,6 +28444,7 @@ func (c *Client) sendCodeScanningUpdateAlert(ctx context.Context, request *CodeS
 		otelogen.OperationID("code-scanning/update-alert"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -28442,6 +28605,7 @@ func (c *Client) sendCodeScanningUploadSarif(ctx context.Context, request *CodeS
 		otelogen.OperationID("code-scanning/upload-sarif"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/sarifs"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -28555,6 +28719,7 @@ func (c *Client) sendCodesOfConductGetAllCodesOfConduct(ctx context.Context) (re
 		otelogen.OperationID("codes-of-conduct/get-all-codes-of-conduct"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/codes_of_conduct"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -28627,6 +28792,7 @@ func (c *Client) sendCodesOfConductGetConductCode(ctx context.Context, params Co
 		otelogen.OperationID("codes-of-conduct/get-conduct-code"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/codes_of_conduct/{key}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -28717,6 +28883,7 @@ func (c *Client) sendEmojisGet(ctx context.Context) (res EmojisGetRes, err error
 		otelogen.OperationID("emojis/get"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/emojis"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -28793,6 +28960,7 @@ func (c *Client) sendEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpr
 		otelogen.OperationID("enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -28923,6 +29091,7 @@ func (c *Client) sendEnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx 
 		otelogen.OperationID("enterprise-admin/add-self-hosted-runner-to-group-for-enterprise"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -29058,6 +29227,7 @@ func (c *Client) sendEnterpriseAdminCreateRegistrationTokenForEnterprise(ctx con
 		otelogen.OperationID("enterprise-admin/create-registration-token-for-enterprise"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runners/registration-token"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -29158,6 +29328,7 @@ func (c *Client) sendEnterpriseAdminCreateRemoveTokenForEnterprise(ctx context.C
 		otelogen.OperationID("enterprise-admin/create-remove-token-for-enterprise"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runners/remove-token"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -29250,6 +29421,7 @@ func (c *Client) sendEnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx
 		otelogen.OperationID("enterprise-admin/create-self-hosted-runner-group-for-enterprise"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -29345,6 +29517,7 @@ func (c *Client) sendEnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Co
 		otelogen.OperationID("enterprise-admin/delete-scim-group-from-enterprise"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -29456,6 +29629,7 @@ func (c *Client) sendEnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx con
 		otelogen.OperationID("enterprise-admin/delete-self-hosted-runner-from-enterprise"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runners/{runner_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -29566,6 +29740,7 @@ func (c *Client) sendEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ct
 		otelogen.OperationID("enterprise-admin/delete-self-hosted-runner-group-from-enterprise"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -29676,6 +29851,7 @@ func (c *Client) sendEnterpriseAdminDeleteUserFromEnterprise(ctx context.Context
 		otelogen.OperationID("enterprise-admin/delete-user-from-enterprise"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -29789,6 +29965,7 @@ func (c *Client) sendEnterpriseAdminDisableSelectedOrganizationGithubActionsEnte
 		otelogen.OperationID("enterprise-admin/disable-selected-organization-github-actions-enterprise"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions/organizations/{org_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -29902,6 +30079,7 @@ func (c *Client) sendEnterpriseAdminEnableSelectedOrganizationGithubActionsEnter
 		otelogen.OperationID("enterprise-admin/enable-selected-organization-github-actions-enterprise"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions/organizations/{org_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -30015,6 +30193,7 @@ func (c *Client) sendEnterpriseAdminGetAllowedActionsEnterprise(ctx context.Cont
 		otelogen.OperationID("enterprise-admin/get-allowed-actions-enterprise"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions/selected-actions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -30107,6 +30286,7 @@ func (c *Client) sendEnterpriseAdminGetAuditLog(ctx context.Context, params Ente
 		otelogen.OperationID("enterprise-admin/get-audit-log"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/audit-log"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -30322,6 +30502,7 @@ func (c *Client) sendEnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx co
 		otelogen.OperationID("enterprise-admin/get-github-actions-permissions-enterprise"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -30414,6 +30595,7 @@ func (c *Client) sendEnterpriseAdminGetProvisioningInformationForEnterpriseGroup
 		otelogen.OperationID("enterprise-admin/get-provisioning-information-for-enterprise-group"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -30545,6 +30727,7 @@ func (c *Client) sendEnterpriseAdminGetProvisioningInformationForEnterpriseUser(
 		otelogen.OperationID("enterprise-admin/get-provisioning-information-for-enterprise-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -30655,6 +30838,7 @@ func (c *Client) sendEnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx context
 		otelogen.OperationID("enterprise-admin/get-self-hosted-runner-for-enterprise"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runners/{runner_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -30765,6 +30949,7 @@ func (c *Client) sendEnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx co
 		otelogen.OperationID("enterprise-admin/get-self-hosted-runner-group-for-enterprise"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -30875,6 +31060,7 @@ func (c *Client) sendEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterp
 		otelogen.OperationID("enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -31024,6 +31210,7 @@ func (c *Client) sendEnterpriseAdminListProvisionedGroupsEnterprise(ctx context.
 		otelogen.OperationID("enterprise-admin/list-provisioned-groups-enterprise"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Groups"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -31213,6 +31400,7 @@ func (c *Client) sendEnterpriseAdminListProvisionedIdentitiesEnterprise(ctx cont
 		otelogen.OperationID("enterprise-admin/list-provisioned-identities-enterprise"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Users"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -31360,6 +31548,7 @@ func (c *Client) sendEnterpriseAdminListRunnerApplicationsForEnterprise(ctx cont
 		otelogen.OperationID("enterprise-admin/list-runner-applications-for-enterprise"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runners/downloads"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -31455,6 +31644,7 @@ func (c *Client) sendEnterpriseAdminListSelectedOrganizationsEnabledGithubAction
 		otelogen.OperationID("enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions/organizations"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -31585,6 +31775,7 @@ func (c *Client) sendEnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx 
 		otelogen.OperationID("enterprise-admin/list-self-hosted-runner-groups-for-enterprise"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -31715,6 +31906,7 @@ func (c *Client) sendEnterpriseAdminListSelfHostedRunnersForEnterprise(ctx conte
 		otelogen.OperationID("enterprise-admin/list-self-hosted-runners-for-enterprise"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runners"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -31845,6 +32037,7 @@ func (c *Client) sendEnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ct
 		otelogen.OperationID("enterprise-admin/list-self-hosted-runners-in-group-for-enterprise"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -31997,6 +32190,7 @@ func (c *Client) sendEnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx contex
 		otelogen.OperationID("enterprise-admin/provision-and-invite-enterprise-group"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Groups"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -32097,6 +32291,7 @@ func (c *Client) sendEnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context
 		otelogen.OperationID("enterprise-admin/provision-and-invite-enterprise-user"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Users"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -32195,6 +32390,7 @@ func (c *Client) sendEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnte
 		otelogen.OperationID("enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -32325,6 +32521,7 @@ func (c *Client) sendEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise
 		otelogen.OperationID("enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -32457,6 +32654,7 @@ func (c *Client) sendEnterpriseAdminSetAllowedActionsEnterprise(ctx context.Cont
 		otelogen.OperationID("enterprise-admin/set-allowed-actions-enterprise"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions/selected-actions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -32552,6 +32750,7 @@ func (c *Client) sendEnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx co
 		otelogen.OperationID("enterprise-admin/set-github-actions-permissions-enterprise"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -32652,6 +32851,7 @@ func (c *Client) sendEnterpriseAdminSetInformationForProvisionedEnterpriseGroup(
 		otelogen.OperationID("enterprise-admin/set-information-for-provisioned-enterprise-group"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -32773,6 +32973,7 @@ func (c *Client) sendEnterpriseAdminSetInformationForProvisionedEnterpriseUser(c
 		otelogen.OperationID("enterprise-admin/set-information-for-provisioned-enterprise-user"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -32887,6 +33088,7 @@ func (c *Client) sendEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpr
 		otelogen.OperationID("enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -33004,6 +33206,7 @@ func (c *Client) sendEnterpriseAdminSetSelectedOrganizationsEnabledGithubActions
 		otelogen.OperationID("enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions/organizations"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -33099,6 +33302,7 @@ func (c *Client) sendEnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx
 		otelogen.OperationID("enterprise-admin/set-self-hosted-runners-in-group-for-enterprise"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -33217,6 +33421,7 @@ func (c *Client) sendEnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx contex
 		otelogen.OperationID("enterprise-admin/update-attribute-for-enterprise-group"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -33351,6 +33556,7 @@ func (c *Client) sendEnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context
 		otelogen.OperationID("enterprise-admin/update-attribute-for-enterprise-user"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -33464,6 +33670,7 @@ func (c *Client) sendEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx
 		otelogen.OperationID("enterprise-admin/update-self-hosted-runner-group-for-enterprise"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -33576,6 +33783,7 @@ func (c *Client) sendGistsCheckIsStarred(ctx context.Context, params GistsCheckI
 		otelogen.OperationID("gists/check-is-starred"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/gists/{gist_id}/star"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -33669,6 +33877,7 @@ func (c *Client) sendGistsCreate(ctx context.Context, request *GistsCreateReq) (
 		otelogen.OperationID("gists/create"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/gists"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -33744,6 +33953,7 @@ func (c *Client) sendGistsCreateComment(ctx context.Context, request *GistsCreat
 		otelogen.OperationID("gists/create-comment"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/gists/{gist_id}/comments"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -33838,6 +34048,7 @@ func (c *Client) sendGistsDelete(ctx context.Context, params GistsDeleteParams) 
 		otelogen.OperationID("gists/delete"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/gists/{gist_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -33928,6 +34139,7 @@ func (c *Client) sendGistsDeleteComment(ctx context.Context, params GistsDeleteC
 		otelogen.OperationID("gists/delete-comment"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/gists/{gist_id}/comments/{comment_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -34037,6 +34249,7 @@ func (c *Client) sendGistsFork(ctx context.Context, params GistsForkParams) (res
 		otelogen.OperationID("gists/fork"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/gists/{gist_id}/forks"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -34128,6 +34341,7 @@ func (c *Client) sendGistsGet(ctx context.Context, params GistsGetParams) (res G
 		otelogen.OperationID("gists/get"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/gists/{gist_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -34218,6 +34432,7 @@ func (c *Client) sendGistsGetComment(ctx context.Context, params GistsGetComment
 		otelogen.OperationID("gists/get-comment"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/gists/{gist_id}/comments/{comment_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -34327,6 +34542,7 @@ func (c *Client) sendGistsGetRevision(ctx context.Context, params GistsGetRevisi
 		otelogen.OperationID("gists/get-revision"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/gists/{gist_id}/{sha}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -34437,6 +34653,7 @@ func (c *Client) sendGistsList(ctx context.Context, params GistsListParams) (res
 		otelogen.OperationID("gists/list"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/gists"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -34564,6 +34781,7 @@ func (c *Client) sendGistsListComments(ctx context.Context, params GistsListComm
 		otelogen.OperationID("gists/list-comments"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/gists/{gist_id}/comments"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -34693,6 +34911,7 @@ func (c *Client) sendGistsListCommits(ctx context.Context, params GistsListCommi
 		otelogen.OperationID("gists/list-commits"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/gists/{gist_id}/commits"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -34822,6 +35041,7 @@ func (c *Client) sendGistsListForUser(ctx context.Context, params GistsListForUs
 		otelogen.OperationID("gists/list-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/gists"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -34968,6 +35188,7 @@ func (c *Client) sendGistsListForks(ctx context.Context, params GistsListForksPa
 		otelogen.OperationID("gists/list-forks"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/gists/{gist_id}/forks"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -35100,6 +35321,7 @@ func (c *Client) sendGistsListPublic(ctx context.Context, params GistsListPublic
 		otelogen.OperationID("gists/list-public"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/gists/public"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -35227,6 +35449,7 @@ func (c *Client) sendGistsListStarred(ctx context.Context, params GistsListStarr
 		otelogen.OperationID("gists/list-starred"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/gists/starred"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -35356,6 +35579,7 @@ func (c *Client) sendGistsStar(ctx context.Context, params GistsStarParams) (res
 		otelogen.OperationID("gists/star"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/gists/{gist_id}/star"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -35447,6 +35671,7 @@ func (c *Client) sendGistsUnstar(ctx context.Context, params GistsUnstarParams) 
 		otelogen.OperationID("gists/unstar"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/gists/{gist_id}/star"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -35538,6 +35763,7 @@ func (c *Client) sendGistsUpdateComment(ctx context.Context, request *GistsUpdat
 		otelogen.OperationID("gists/update-comment"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/gists/{gist_id}/comments/{comment_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -35650,6 +35876,7 @@ func (c *Client) sendGitCreateBlob(ctx context.Context, request *GitCreateBlobRe
 		otelogen.OperationID("git/create-blob"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/blobs"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -35796,6 +36023,7 @@ func (c *Client) sendGitCreateCommit(ctx context.Context, request *GitCreateComm
 		otelogen.OperationID("git/create-commit"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/commits"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -35911,6 +36139,7 @@ func (c *Client) sendGitCreateRef(ctx context.Context, request *GitCreateRefReq,
 		otelogen.OperationID("git/create-ref"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/refs"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -36060,6 +36289,7 @@ func (c *Client) sendGitCreateTag(ctx context.Context, request *GitCreateTagReq,
 		otelogen.OperationID("git/create-tag"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/tags"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -36179,6 +36409,7 @@ func (c *Client) sendGitCreateTree(ctx context.Context, request *GitCreateTreeRe
 		otelogen.OperationID("git/create-tree"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/trees"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -36292,6 +36523,7 @@ func (c *Client) sendGitDeleteRef(ctx context.Context, params GitDeleteRefParams
 		otelogen.OperationID("git/delete-ref"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/refs/{ref}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -36421,6 +36653,7 @@ func (c *Client) sendGitGetBlob(ctx context.Context, params GitGetBlobParams) (r
 		otelogen.OperationID("git/get-blob"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/blobs/{file_sha}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -36582,6 +36815,7 @@ func (c *Client) sendGitGetCommit(ctx context.Context, params GitGetCommitParams
 		otelogen.OperationID("git/get-commit"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/commits/{commit_sha}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -36717,6 +36951,7 @@ func (c *Client) sendGitGetRef(ctx context.Context, params GitGetRefParams) (res
 		otelogen.OperationID("git/get-ref"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/ref/{ref}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -36876,6 +37111,7 @@ func (c *Client) sendGitGetTag(ctx context.Context, params GitGetTagParams) (res
 		otelogen.OperationID("git/get-tag"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/tags/{tag_sha}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -37007,6 +37243,7 @@ func (c *Client) sendGitGetTree(ctx context.Context, params GitGetTreeParams) (r
 		otelogen.OperationID("git/get-tree"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/trees/{tree_sha}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -37170,6 +37407,7 @@ func (c *Client) sendGitListMatchingRefs(ctx context.Context, params GitListMatc
 		otelogen.OperationID("git/list-matching-refs"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/matching-refs/{ref}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -37336,6 +37574,7 @@ func (c *Client) sendGitUpdateRef(ctx context.Context, request *GitUpdateRefReq,
 		otelogen.OperationID("git/update-ref"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/refs/{ref}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -37468,6 +37707,7 @@ func (c *Client) sendGitignoreGetAllTemplates(ctx context.Context) (res Gitignor
 		otelogen.OperationID("gitignore/get-all-templates"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/gitignore/templates"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -37542,6 +37782,7 @@ func (c *Client) sendGitignoreGetTemplate(ctx context.Context, params GitignoreG
 		otelogen.OperationID("gitignore/get-template"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/gitignore/templates/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -37632,6 +37873,7 @@ func (c *Client) sendInteractionsRemoveRestrictionsForAuthenticatedUser(ctx cont
 		otelogen.OperationID("interactions/remove-restrictions-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/user/interaction-limits"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -37705,6 +37947,7 @@ func (c *Client) sendInteractionsRemoveRestrictionsForOrg(ctx context.Context, p
 		otelogen.OperationID("interactions/remove-restrictions-for-org"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/interaction-limits"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -37799,6 +38042,7 @@ func (c *Client) sendInteractionsRemoveRestrictionsForRepo(ctx context.Context, 
 		otelogen.OperationID("interactions/remove-restrictions-for-repo"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/interaction-limits"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -37911,6 +38155,7 @@ func (c *Client) sendInteractionsSetRestrictionsForAuthenticatedUser(ctx context
 		otelogen.OperationID("interactions/set-restrictions-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/user/interaction-limits"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -37989,6 +38234,7 @@ func (c *Client) sendInteractionsSetRestrictionsForOrg(ctx context.Context, requ
 		otelogen.OperationID("interactions/set-restrictions-for-org"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/interaction-limits"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -38086,6 +38332,7 @@ func (c *Client) sendInteractionsSetRestrictionsForRepo(ctx context.Context, req
 		otelogen.OperationID("interactions/set-restrictions-for-repo"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/interaction-limits"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -38199,6 +38446,7 @@ func (c *Client) sendIssuesAddAssignees(ctx context.Context, request OptIssuesAd
 		otelogen.OperationID("issues/add-assignees"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/assignees"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -38334,6 +38582,7 @@ func (c *Client) sendIssuesCheckUserCanBeAssigned(ctx context.Context, params Is
 		otelogen.OperationID("issues/check-user-can-be-assigned"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/assignees/{assignee}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -38471,6 +38720,7 @@ func (c *Client) sendIssuesCreate(ctx context.Context, request *IssuesCreateReq,
 		otelogen.OperationID("issues/create"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -38590,6 +38840,7 @@ func (c *Client) sendIssuesCreateComment(ctx context.Context, request *IssuesCre
 		otelogen.OperationID("issues/create-comment"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/comments"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -38722,6 +38973,7 @@ func (c *Client) sendIssuesCreateLabel(ctx context.Context, request *IssuesCreat
 		otelogen.OperationID("issues/create-label"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/labels"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -38835,6 +39087,7 @@ func (c *Client) sendIssuesCreateMilestone(ctx context.Context, request *IssuesC
 		otelogen.OperationID("issues/create-milestone"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/milestones"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -38948,6 +39201,7 @@ func (c *Client) sendIssuesDeleteComment(ctx context.Context, params IssuesDelet
 		otelogen.OperationID("issues/delete-comment"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/comments/{comment_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -39076,6 +39330,7 @@ func (c *Client) sendIssuesDeleteLabel(ctx context.Context, params IssuesDeleteL
 		otelogen.OperationID("issues/delete-label"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/labels/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -39204,6 +39459,7 @@ func (c *Client) sendIssuesDeleteMilestone(ctx context.Context, params IssuesDel
 		otelogen.OperationID("issues/delete-milestone"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/milestones/{milestone_number}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -39350,6 +39606,7 @@ func (c *Client) sendIssuesGet(ctx context.Context, params IssuesGetParams) (res
 		otelogen.OperationID("issues/get"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -39478,6 +39735,7 @@ func (c *Client) sendIssuesGetComment(ctx context.Context, params IssuesGetComme
 		otelogen.OperationID("issues/get-comment"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/comments/{comment_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -39606,6 +39864,7 @@ func (c *Client) sendIssuesGetEvent(ctx context.Context, params IssuesGetEventPa
 		otelogen.OperationID("issues/get-event"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/events/{event_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -39734,6 +39993,7 @@ func (c *Client) sendIssuesGetLabel(ctx context.Context, params IssuesGetLabelPa
 		otelogen.OperationID("issues/get-label"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/labels/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -39862,6 +40122,7 @@ func (c *Client) sendIssuesGetMilestone(ctx context.Context, params IssuesGetMil
 		otelogen.OperationID("issues/get-milestone"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/milestones/{milestone_number}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -40002,6 +40263,7 @@ func (c *Client) sendIssuesList(ctx context.Context, params IssuesListParams) (r
 		otelogen.OperationID("issues/list"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/issues"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -40283,6 +40545,7 @@ func (c *Client) sendIssuesListAssignees(ctx context.Context, params IssuesListA
 		otelogen.OperationID("issues/list-assignees"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/assignees"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -40431,6 +40694,7 @@ func (c *Client) sendIssuesListComments(ctx context.Context, params IssuesListCo
 		otelogen.OperationID("issues/list-comments"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/comments"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -40615,6 +40879,7 @@ func (c *Client) sendIssuesListCommentsForRepo(ctx context.Context, params Issue
 		otelogen.OperationID("issues/list-comments-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/comments"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -40814,6 +41079,7 @@ func (c *Client) sendIssuesListEventsForRepo(ctx context.Context, params IssuesL
 		otelogen.OperationID("issues/list-events-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/events"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -40970,6 +41236,7 @@ func (c *Client) sendIssuesListForAuthenticatedUser(ctx context.Context, params 
 		otelogen.OperationID("issues/list-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/issues"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -41190,6 +41457,7 @@ func (c *Client) sendIssuesListForOrg(ctx context.Context, params IssuesListForO
 		otelogen.OperationID("issues/list-for-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/issues"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -41429,6 +41697,7 @@ func (c *Client) sendIssuesListForRepo(ctx context.Context, params IssuesListFor
 		otelogen.OperationID("issues/list-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -41730,6 +41999,7 @@ func (c *Client) sendIssuesListLabelsForMilestone(ctx context.Context, params Is
 		otelogen.OperationID("issues/list-labels-for-milestone"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/milestones/{milestone_number}/labels"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -41897,6 +42167,7 @@ func (c *Client) sendIssuesListLabelsForRepo(ctx context.Context, params IssuesL
 		otelogen.OperationID("issues/list-labels-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/labels"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -42045,6 +42316,7 @@ func (c *Client) sendIssuesListLabelsOnIssue(ctx context.Context, params IssuesL
 		otelogen.OperationID("issues/list-labels-on-issue"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/labels"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -42212,6 +42484,7 @@ func (c *Client) sendIssuesListMilestones(ctx context.Context, params IssuesList
 		otelogen.OperationID("issues/list-milestones"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/milestones"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -42414,6 +42687,7 @@ func (c *Client) sendIssuesLock(ctx context.Context, request OptNilIssuesLockReq
 		otelogen.OperationID("issues/lock"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/lock"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -42546,6 +42820,7 @@ func (c *Client) sendIssuesRemoveAllLabels(ctx context.Context, params IssuesRem
 		otelogen.OperationID("issues/remove-all-labels"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/labels"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -42675,6 +42950,7 @@ func (c *Client) sendIssuesRemoveAssignees(ctx context.Context, request OptIssue
 		otelogen.OperationID("issues/remove-assignees"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/assignees"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -42808,6 +43084,7 @@ func (c *Client) sendIssuesRemoveLabel(ctx context.Context, params IssuesRemoveL
 		otelogen.OperationID("issues/remove-label"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/labels/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -42955,6 +43232,7 @@ func (c *Client) sendIssuesUnlock(ctx context.Context, params IssuesUnlockParams
 		otelogen.OperationID("issues/unlock"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/lock"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -43084,6 +43362,7 @@ func (c *Client) sendIssuesUpdate(ctx context.Context, request OptIssuesUpdateRe
 		otelogen.OperationID("issues/update"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -43215,6 +43494,7 @@ func (c *Client) sendIssuesUpdateComment(ctx context.Context, request *IssuesUpd
 		otelogen.OperationID("issues/update-comment"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/comments/{comment_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -43346,6 +43626,7 @@ func (c *Client) sendIssuesUpdateLabel(ctx context.Context, request OptIssuesUpd
 		otelogen.OperationID("issues/update-label"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/labels/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -43477,6 +43758,7 @@ func (c *Client) sendIssuesUpdateMilestone(ctx context.Context, request OptIssue
 		otelogen.OperationID("issues/update-milestone"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/milestones/{milestone_number}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -43608,6 +43890,7 @@ func (c *Client) sendLicensesGet(ctx context.Context, params LicensesGetParams) 
 		otelogen.OperationID("licenses/get"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/licenses/{license}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -43698,6 +43981,7 @@ func (c *Client) sendLicensesGetAllCommonlyUsed(ctx context.Context, params Lice
 		otelogen.OperationID("licenses/get-all-commonly-used"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/licenses"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -43829,6 +44113,7 @@ func (c *Client) sendLicensesGetForRepo(ctx context.Context, params LicensesGetF
 		otelogen.OperationID("licenses/get-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/license"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -43939,6 +44224,7 @@ func (c *Client) sendMarkdownRender(ctx context.Context, request *MarkdownRender
 		otelogen.OperationID("markdown/render"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/markdown"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -44017,6 +44303,7 @@ func (c *Client) sendMarkdownRenderRaw(ctx context.Context, request MarkdownRend
 		otelogen.OperationID("markdown/render-raw"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/markdown/raw"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -44096,6 +44383,7 @@ func (c *Client) sendMetaGet(ctx context.Context) (res MetaGetRes, err error) {
 		otelogen.OperationID("meta/get"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/meta"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -44168,6 +44456,7 @@ func (c *Client) sendMetaGetOctocat(ctx context.Context, params MetaGetOctocatPa
 		otelogen.OperationID("meta/get-octocat"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/octocat"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -44261,6 +44550,7 @@ func (c *Client) sendMetaGetZen(ctx context.Context) (res MetaGetZenOK, err erro
 		otelogen.OperationID("meta/get-zen"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/zen"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -44333,6 +44623,7 @@ func (c *Client) sendMetaRoot(ctx context.Context) (res *MetaRootOK, err error) 
 		otelogen.OperationID("meta/root"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -44405,6 +44696,7 @@ func (c *Client) sendMigrationsCancelImport(ctx context.Context, params Migratio
 		otelogen.OperationID("migrations/cancel-import"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -44519,6 +44811,7 @@ func (c *Client) sendMigrationsDeleteArchiveForAuthenticatedUser(ctx context.Con
 		otelogen.OperationID("migrations/delete-archive-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/user/migrations/{migration_id}/archive"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -44611,6 +44904,7 @@ func (c *Client) sendMigrationsDeleteArchiveForOrg(ctx context.Context, params M
 		otelogen.OperationID("migrations/delete-archive-for-org"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/migrations/{migration_id}/archive"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -44721,6 +45015,7 @@ func (c *Client) sendMigrationsDownloadArchiveForOrg(ctx context.Context, params
 		otelogen.OperationID("migrations/download-archive-for-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/migrations/{migration_id}/archive"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -44851,6 +45146,7 @@ func (c *Client) sendMigrationsGetArchiveForAuthenticatedUser(ctx context.Contex
 		otelogen.OperationID("migrations/get-archive-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/migrations/{migration_id}/archive"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -44949,6 +45245,7 @@ func (c *Client) sendMigrationsGetCommitAuthors(ctx context.Context, params Migr
 		otelogen.OperationID("migrations/get-commit-authors"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import/authors"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -45132,6 +45429,7 @@ func (c *Client) sendMigrationsGetImportStatus(ctx context.Context, params Migra
 		otelogen.OperationID("migrations/get-import-status"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -45242,6 +45540,7 @@ func (c *Client) sendMigrationsGetLargeFiles(ctx context.Context, params Migrati
 		otelogen.OperationID("migrations/get-large-files"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import/large_files"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -45359,6 +45658,7 @@ func (c *Client) sendMigrationsGetStatusForAuthenticatedUser(ctx context.Context
 		otelogen.OperationID("migrations/get-status-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/migrations/{migration_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -45481,6 +45781,7 @@ func (c *Client) sendMigrationsGetStatusForOrg(ctx context.Context, params Migra
 		otelogen.OperationID("migrations/get-status-for-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/migrations/{migration_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -45617,6 +45918,7 @@ func (c *Client) sendMigrationsListForAuthenticatedUser(ctx context.Context, par
 		otelogen.OperationID("migrations/list-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/migrations"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -45727,6 +46029,7 @@ func (c *Client) sendMigrationsListForOrg(ctx context.Context, params Migrations
 		otelogen.OperationID("migrations/list-for-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/migrations"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -45879,6 +46182,7 @@ func (c *Client) sendMigrationsListReposForOrg(ctx context.Context, params Migra
 		otelogen.OperationID("migrations/list-repos-for-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/migrations/{migration_id}/repositories"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -46027,6 +46331,7 @@ func (c *Client) sendMigrationsListReposForUser(ctx context.Context, params Migr
 		otelogen.OperationID("migrations/list-repos-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/migrations/{migration_id}/repositories"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -46157,6 +46462,7 @@ func (c *Client) sendMigrationsMapCommitAuthor(ctx context.Context, request OptM
 		otelogen.OperationID("migrations/map-commit-author"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import/authors/{author_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -46291,6 +46597,7 @@ func (c *Client) sendMigrationsSetLfsPreference(ctx context.Context, request *Mi
 		otelogen.OperationID("migrations/set-lfs-preference"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import/lfs"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -46404,6 +46711,7 @@ func (c *Client) sendMigrationsStartForAuthenticatedUser(ctx context.Context, re
 		otelogen.OperationID("migrations/start-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/user/migrations"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -46479,6 +46787,7 @@ func (c *Client) sendMigrationsStartForOrg(ctx context.Context, request *Migrati
 		otelogen.OperationID("migrations/start-for-org"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/migrations"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -46573,6 +46882,7 @@ func (c *Client) sendMigrationsStartImport(ctx context.Context, request *Migrati
 		otelogen.OperationID("migrations/start-import"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -46690,6 +47000,7 @@ func (c *Client) sendMigrationsUnlockRepoForAuthenticatedUser(ctx context.Contex
 		otelogen.OperationID("migrations/unlock-repo-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/user/migrations/{migration_id}/repos/{repo_name}/lock"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -46802,6 +47113,7 @@ func (c *Client) sendMigrationsUnlockRepoForOrg(ctx context.Context, params Migr
 		otelogen.OperationID("migrations/unlock-repo-for-org"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -46933,6 +47245,7 @@ func (c *Client) sendMigrationsUpdateImport(ctx context.Context, request OptNilM
 		otelogen.OperationID("migrations/update-import"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -47075,6 +47388,7 @@ func (c *Client) sendOAuthAuthorizationsCreateAuthorization(ctx context.Context,
 		otelogen.OperationID("oauth-authorizations/create-authorization"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/authorizations"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -47159,6 +47473,7 @@ func (c *Client) sendOAuthAuthorizationsDeleteAuthorization(ctx context.Context,
 		otelogen.OperationID("oauth-authorizations/delete-authorization"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/authorizations/{authorization_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -47261,6 +47576,7 @@ func (c *Client) sendOAuthAuthorizationsDeleteGrant(ctx context.Context, params 
 		otelogen.OperationID("oauth-authorizations/delete-grant"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/applications/grants/{grant_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -47360,6 +47676,7 @@ func (c *Client) sendOAuthAuthorizationsGetAuthorization(ctx context.Context, pa
 		otelogen.OperationID("oauth-authorizations/get-authorization"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/authorizations/{authorization_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -47459,6 +47776,7 @@ func (c *Client) sendOAuthAuthorizationsGetGrant(ctx context.Context, params OAu
 		otelogen.OperationID("oauth-authorizations/get-grant"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/applications/grants/{grant_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -47577,6 +47895,7 @@ func (c *Client) sendOAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx conte
 		otelogen.OperationID("oauth-authorizations/get-or-create-authorization-for-app"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/authorizations/clients/{client_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -47693,6 +48012,7 @@ func (c *Client) sendOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerp
 		otelogen.OperationID("oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/authorizations/clients/{client_id}/{fingerprint}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -47814,6 +48134,7 @@ func (c *Client) sendOAuthAuthorizationsListAuthorizations(ctx context.Context, 
 		otelogen.OperationID("oauth-authorizations/list-authorizations"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/authorizations"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -47961,6 +48282,7 @@ func (c *Client) sendOAuthAuthorizationsListGrants(ctx context.Context, params O
 		otelogen.OperationID("oauth-authorizations/list-grants"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/applications/grants"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -48101,6 +48423,7 @@ func (c *Client) sendOAuthAuthorizationsUpdateAuthorization(ctx context.Context,
 		otelogen.OperationID("oauth-authorizations/update-authorization"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/authorizations/{authorization_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -48194,6 +48517,7 @@ func (c *Client) sendOrgsBlockUser(ctx context.Context, params OrgsBlockUserPara
 		otelogen.OperationID("orgs/block-user"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/blocks/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -48306,6 +48630,7 @@ func (c *Client) sendOrgsCancelInvitation(ctx context.Context, params OrgsCancel
 		otelogen.OperationID("orgs/cancel-invitation"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/invitations/{invitation_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -48415,6 +48740,7 @@ func (c *Client) sendOrgsCheckBlockedUser(ctx context.Context, params OrgsCheckB
 		otelogen.OperationID("orgs/check-blocked-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/blocks/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -48524,6 +48850,7 @@ func (c *Client) sendOrgsCheckMembershipForUser(ctx context.Context, params Orgs
 		otelogen.OperationID("orgs/check-membership-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/members/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -48633,6 +48960,7 @@ func (c *Client) sendOrgsCheckPublicMembershipForUser(ctx context.Context, param
 		otelogen.OperationID("orgs/check-public-membership-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/public_members/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -48746,6 +49074,7 @@ func (c *Client) sendOrgsConvertMemberToOutsideCollaborator(ctx context.Context,
 		otelogen.OperationID("orgs/convert-member-to-outside-collaborator"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/outside_collaborators/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -48863,6 +49192,7 @@ func (c *Client) sendOrgsCreateInvitation(ctx context.Context, request OptOrgsCr
 		otelogen.OperationID("orgs/create-invitation"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/invitations"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -48957,6 +49287,7 @@ func (c *Client) sendOrgsCreateWebhook(ctx context.Context, request *OrgsCreateW
 		otelogen.OperationID("orgs/create-webhook"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/hooks"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -49051,6 +49382,7 @@ func (c *Client) sendOrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWeb
 		otelogen.OperationID("orgs/delete-webhook"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -49168,6 +49500,7 @@ func (c *Client) sendOrgsGet(ctx context.Context, params OrgsGetParams) (res Org
 		otelogen.OperationID("orgs/get"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -49263,6 +49596,7 @@ func (c *Client) sendOrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLog
 		otelogen.OperationID("orgs/get-audit-log"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/audit-log"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -49477,6 +49811,7 @@ func (c *Client) sendOrgsGetMembershipForAuthenticatedUser(ctx context.Context, 
 		otelogen.OperationID("orgs/get-membership-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/memberships/orgs/{org}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -49569,6 +49904,7 @@ func (c *Client) sendOrgsGetMembershipForUser(ctx context.Context, params OrgsGe
 		otelogen.OperationID("orgs/get-membership-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/memberships/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -49680,6 +50016,7 @@ func (c *Client) sendOrgsGetWebhook(ctx context.Context, params OrgsGetWebhookPa
 		otelogen.OperationID("orgs/get-webhook"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -49793,6 +50130,7 @@ func (c *Client) sendOrgsGetWebhookConfigForOrg(ctx context.Context, params Orgs
 		otelogen.OperationID("orgs/get-webhook-config-for-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}/config"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -49903,6 +50241,7 @@ func (c *Client) sendOrgsGetWebhookDelivery(ctx context.Context, params OrgsGetW
 		otelogen.OperationID("orgs/get-webhook-delivery"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -50034,6 +50373,7 @@ func (c *Client) sendOrgsList(ctx context.Context, params OrgsListParams) (res O
 		otelogen.OperationID("orgs/list"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/organizations"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -50144,6 +50484,7 @@ func (c *Client) sendOrgsListBlockedUsers(ctx context.Context, params OrgsListBl
 		otelogen.OperationID("orgs/list-blocked-users"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/blocks"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -50236,6 +50577,7 @@ func (c *Client) sendOrgsListFailedInvitations(ctx context.Context, params OrgsL
 		otelogen.OperationID("orgs/list-failed-invitations"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/failed_invitations"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -50370,6 +50712,7 @@ func (c *Client) sendOrgsListForAuthenticatedUser(ctx context.Context, params Or
 		otelogen.OperationID("orgs/list-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/orgs"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -50485,6 +50828,7 @@ func (c *Client) sendOrgsListForUser(ctx context.Context, params OrgsListForUser
 		otelogen.OperationID("orgs/list-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/orgs"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -50615,6 +50959,7 @@ func (c *Client) sendOrgsListInvitationTeams(ctx context.Context, params OrgsLis
 		otelogen.OperationID("orgs/list-invitation-teams"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/invitations/{invitation_id}/teams"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -50764,6 +51109,7 @@ func (c *Client) sendOrgsListMembers(ctx context.Context, params OrgsListMembers
 		otelogen.OperationID("orgs/list-members"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/members"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -50927,6 +51273,7 @@ func (c *Client) sendOrgsListMembershipsForAuthenticatedUser(ctx context.Context
 		otelogen.OperationID("orgs/list-memberships-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/memberships/orgs"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -51054,6 +51401,7 @@ func (c *Client) sendOrgsListOutsideCollaborators(ctx context.Context, params Or
 		otelogen.OperationID("orgs/list-outside-collaborators"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/outside_collaborators"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -51203,6 +51551,7 @@ func (c *Client) sendOrgsListPendingInvitations(ctx context.Context, params Orgs
 		otelogen.OperationID("orgs/list-pending-invitations"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/invitations"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -51332,6 +51681,7 @@ func (c *Client) sendOrgsListPublicMembers(ctx context.Context, params OrgsListP
 		otelogen.OperationID("orgs/list-public-members"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/public_members"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -51468,6 +51818,7 @@ func (c *Client) sendOrgsListSamlSSOAuthorizations(ctx context.Context, params O
 		otelogen.OperationID("orgs/list-saml-sso-authorizations"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/credential-authorizations"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -51559,6 +51910,7 @@ func (c *Client) sendOrgsListWebhookDeliveries(ctx context.Context, params OrgsL
 		otelogen.OperationID("orgs/list-webhook-deliveries"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}/deliveries"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -51707,6 +52059,7 @@ func (c *Client) sendOrgsListWebhooks(ctx context.Context, params OrgsListWebhoo
 		otelogen.OperationID("orgs/list-webhooks"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/hooks"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -51837,6 +52190,7 @@ func (c *Client) sendOrgsPingWebhook(ctx context.Context, params OrgsPingWebhook
 		otelogen.OperationID("orgs/ping-webhook"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}/pings"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -51947,6 +52301,7 @@ func (c *Client) sendOrgsRedeliverWebhookDelivery(ctx context.Context, params Or
 		otelogen.OperationID("orgs/redeliver-webhook-delivery"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}/attempts"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -52077,6 +52432,7 @@ func (c *Client) sendOrgsRemoveMember(ctx context.Context, params OrgsRemoveMemb
 		otelogen.OperationID("orgs/remove-member"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/members/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -52190,6 +52546,7 @@ func (c *Client) sendOrgsRemoveMembershipForUser(ctx context.Context, params Org
 		otelogen.OperationID("orgs/remove-membership-for-user"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/memberships/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -52299,6 +52656,7 @@ func (c *Client) sendOrgsRemoveOutsideCollaborator(ctx context.Context, params O
 		otelogen.OperationID("orgs/remove-outside-collaborator"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/outside_collaborators/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -52408,6 +52766,7 @@ func (c *Client) sendOrgsRemovePublicMembershipForAuthenticatedUser(ctx context.
 		otelogen.OperationID("orgs/remove-public-membership-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/public_members/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -52523,6 +52882,7 @@ func (c *Client) sendOrgsRemoveSamlSSOAuthorization(ctx context.Context, params 
 		otelogen.OperationID("orgs/remove-saml-sso-authorization"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/credential-authorizations/{credential_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -52645,6 +53005,7 @@ func (c *Client) sendOrgsSetMembershipForUser(ctx context.Context, request OptOr
 		otelogen.OperationID("orgs/set-membership-for-user"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/memberships/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -52761,6 +53122,7 @@ func (c *Client) sendOrgsSetPublicMembershipForAuthenticatedUser(ctx context.Con
 		otelogen.OperationID("orgs/set-public-membership-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/public_members/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -52870,6 +53232,7 @@ func (c *Client) sendOrgsUnblockUser(ctx context.Context, params OrgsUnblockUser
 		otelogen.OperationID("orgs/unblock-user"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/blocks/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -52979,6 +53342,7 @@ func (c *Client) sendOrgsUpdateMembershipForAuthenticatedUser(ctx context.Contex
 		otelogen.OperationID("orgs/update-membership-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/user/memberships/orgs/{org}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -53076,6 +53440,7 @@ func (c *Client) sendOrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdat
 		otelogen.OperationID("orgs/update-webhook"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -53192,6 +53557,7 @@ func (c *Client) sendOrgsUpdateWebhookConfigForOrg(ctx context.Context, request 
 		otelogen.OperationID("orgs/update-webhook-config-for-org"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}/config"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -53310,6 +53676,7 @@ func (c *Client) sendPackagesDeletePackageForAuthenticatedUser(ctx context.Conte
 		otelogen.OperationID("packages/delete-package-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/user/packages/{package_type}/{package_name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -53426,6 +53793,7 @@ func (c *Client) sendPackagesDeletePackageForOrg(ctx context.Context, params Pac
 		otelogen.OperationID("packages/delete-package-for-org"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/packages/{package_type}/{package_name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -53561,6 +53929,7 @@ func (c *Client) sendPackagesDeletePackageForUser(ctx context.Context, params Pa
 		otelogen.OperationID("packages/delete-package-for-user"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/users/{username}/packages/{package_type}/{package_name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -53694,6 +54063,7 @@ func (c *Client) sendPackagesDeletePackageVersionForAuthenticatedUser(ctx contex
 		otelogen.OperationID("packages/delete-package-version-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/user/packages/{package_type}/{package_name}/versions/{package_version_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -53829,6 +54199,7 @@ func (c *Client) sendPackagesDeletePackageVersionForOrg(ctx context.Context, par
 		otelogen.OperationID("packages/delete-package-version-for-org"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -53983,6 +54354,7 @@ func (c *Client) sendPackagesDeletePackageVersionForUser(ctx context.Context, pa
 		otelogen.OperationID("packages/delete-package-version-for-user"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -54132,6 +54504,7 @@ func (c *Client) sendPackagesGetAllPackageVersionsForPackageOwnedByAuthenticated
 		otelogen.OperationID("packages/get-all-package-versions-for-package-owned-by-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/packages/{package_type}/{package_name}/versions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -54299,6 +54672,7 @@ func (c *Client) sendPackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx conte
 		otelogen.OperationID("packages/get-all-package-versions-for-package-owned-by-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/packages/{package_type}/{package_name}/versions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -54485,6 +54859,7 @@ func (c *Client) sendPackagesGetAllPackageVersionsForPackageOwnedByUser(ctx cont
 		otelogen.OperationID("packages/get-all-package-versions-for-package-owned-by-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/packages/{package_type}/{package_name}/versions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -54616,6 +54991,7 @@ func (c *Client) sendPackagesGetPackageForAuthenticatedUser(ctx context.Context,
 		otelogen.OperationID("packages/get-package-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/packages/{package_type}/{package_name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -54727,6 +55103,7 @@ func (c *Client) sendPackagesGetPackageForOrganization(ctx context.Context, para
 		otelogen.OperationID("packages/get-package-for-organization"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/packages/{package_type}/{package_name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -54857,6 +55234,7 @@ func (c *Client) sendPackagesGetPackageForUser(ctx context.Context, params Packa
 		otelogen.OperationID("packages/get-package-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/packages/{package_type}/{package_name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -54987,6 +55365,7 @@ func (c *Client) sendPackagesGetPackageVersionForAuthenticatedUser(ctx context.C
 		otelogen.OperationID("packages/get-package-version-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/packages/{package_type}/{package_name}/versions/{package_version_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -55117,6 +55496,7 @@ func (c *Client) sendPackagesGetPackageVersionForOrganization(ctx context.Contex
 		otelogen.OperationID("packages/get-package-version-for-organization"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -55267,6 +55647,7 @@ func (c *Client) sendPackagesGetPackageVersionForUser(ctx context.Context, param
 		otelogen.OperationID("packages/get-package-version-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -55416,6 +55797,7 @@ func (c *Client) sendPackagesListPackagesForAuthenticatedUser(ctx context.Contex
 		otelogen.OperationID("packages/list-packages-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/packages"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -55525,6 +55907,7 @@ func (c *Client) sendPackagesListPackagesForOrganization(ctx context.Context, pa
 		otelogen.OperationID("packages/list-packages-for-organization"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/packages"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -55653,6 +56036,7 @@ func (c *Client) sendPackagesListPackagesForUser(ctx context.Context, params Pac
 		otelogen.OperationID("packages/list-packages-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/packages"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -55788,6 +56172,7 @@ func (c *Client) sendPackagesRestorePackageForAuthenticatedUser(ctx context.Cont
 		otelogen.OperationID("packages/restore-package-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/user/packages/{package_type}/{package_name}/restore"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -55930,6 +56315,7 @@ func (c *Client) sendPackagesRestorePackageForOrg(ctx context.Context, params Pa
 		otelogen.OperationID("packages/restore-package-for-org"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/packages/{package_type}/{package_name}/restore"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -56091,6 +56477,7 @@ func (c *Client) sendPackagesRestorePackageForUser(ctx context.Context, params P
 		otelogen.OperationID("packages/restore-package-for-user"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/users/{username}/packages/{package_type}/{package_name}/restore"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -56250,6 +56637,7 @@ func (c *Client) sendPackagesRestorePackageVersionForAuthenticatedUser(ctx conte
 		otelogen.OperationID("packages/restore-package-version-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -56390,6 +56778,7 @@ func (c *Client) sendPackagesRestorePackageVersionForOrg(ctx context.Context, pa
 		otelogen.OperationID("packages/restore-package-version-for-org"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -56549,6 +56938,7 @@ func (c *Client) sendPackagesRestorePackageVersionForUser(ctx context.Context, p
 		otelogen.OperationID("packages/restore-package-version-for-user"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -56698,6 +57088,7 @@ func (c *Client) sendProjectsAddCollaborator(ctx context.Context, request OptNil
 		otelogen.OperationID("projects/add-collaborator"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/projects/{project_id}/collaborators/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -56810,6 +57201,7 @@ func (c *Client) sendProjectsCreateColumn(ctx context.Context, request *Projects
 		otelogen.OperationID("projects/create-column"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/projects/{project_id}/columns"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -56904,6 +57296,7 @@ func (c *Client) sendProjectsCreateForAuthenticatedUser(ctx context.Context, req
 		otelogen.OperationID("projects/create-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/user/projects"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -56981,6 +57374,7 @@ func (c *Client) sendProjectsCreateForOrg(ctx context.Context, request *Projects
 		otelogen.OperationID("projects/create-for-org"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/projects"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -57077,6 +57471,7 @@ func (c *Client) sendProjectsCreateForRepo(ctx context.Context, request *Project
 		otelogen.OperationID("projects/create-for-repo"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/projects"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -57190,6 +57585,7 @@ func (c *Client) sendProjectsDelete(ctx context.Context, params ProjectsDeletePa
 		otelogen.OperationID("projects/delete"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/projects/{project_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -57280,6 +57676,7 @@ func (c *Client) sendProjectsDeleteCard(ctx context.Context, params ProjectsDele
 		otelogen.OperationID("projects/delete-card"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/projects/columns/cards/{card_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -57370,6 +57767,7 @@ func (c *Client) sendProjectsDeleteColumn(ctx context.Context, params ProjectsDe
 		otelogen.OperationID("projects/delete-column"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/projects/columns/{column_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -57462,6 +57860,7 @@ func (c *Client) sendProjectsGet(ctx context.Context, params ProjectsGetParams) 
 		otelogen.OperationID("projects/get"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/projects/{project_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -57552,6 +57951,7 @@ func (c *Client) sendProjectsGetCard(ctx context.Context, params ProjectsGetCard
 		otelogen.OperationID("projects/get-card"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/projects/columns/cards/{card_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -57642,6 +58042,7 @@ func (c *Client) sendProjectsGetColumn(ctx context.Context, params ProjectsGetCo
 		otelogen.OperationID("projects/get-column"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/projects/columns/{column_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -57734,6 +58135,7 @@ func (c *Client) sendProjectsGetPermissionForUser(ctx context.Context, params Pr
 		otelogen.OperationID("projects/get-permission-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/projects/{project_id}/collaborators/{username}/permission"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -57844,6 +58246,7 @@ func (c *Client) sendProjectsListCards(ctx context.Context, params ProjectsListC
 		otelogen.OperationID("projects/list-cards"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/projects/columns/{column_id}/cards"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -57994,6 +58397,7 @@ func (c *Client) sendProjectsListCollaborators(ctx context.Context, params Proje
 		otelogen.OperationID("projects/list-collaborators"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/projects/{project_id}/collaborators"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -58140,6 +58544,7 @@ func (c *Client) sendProjectsListColumns(ctx context.Context, params ProjectsLis
 		otelogen.OperationID("projects/list-columns"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/projects/{project_id}/columns"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -58271,6 +58676,7 @@ func (c *Client) sendProjectsListForOrg(ctx context.Context, params ProjectsList
 		otelogen.OperationID("projects/list-for-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/projects"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -58419,6 +58825,7 @@ func (c *Client) sendProjectsListForRepo(ctx context.Context, params ProjectsLis
 		otelogen.OperationID("projects/list-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/projects"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -58584,6 +58991,7 @@ func (c *Client) sendProjectsListForUser(ctx context.Context, params ProjectsLis
 		otelogen.OperationID("projects/list-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/projects"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -58730,6 +59138,7 @@ func (c *Client) sendProjectsMoveCard(ctx context.Context, request *ProjectsMove
 		otelogen.OperationID("projects/move-card"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/projects/columns/cards/{card_id}/moves"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -58824,6 +59233,7 @@ func (c *Client) sendProjectsMoveColumn(ctx context.Context, request *ProjectsMo
 		otelogen.OperationID("projects/move-column"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/projects/columns/{column_id}/moves"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -58919,6 +59329,7 @@ func (c *Client) sendProjectsRemoveCollaborator(ctx context.Context, params Proj
 		otelogen.OperationID("projects/remove-collaborator"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/projects/{project_id}/collaborators/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -59030,6 +59441,7 @@ func (c *Client) sendProjectsUpdate(ctx context.Context, request OptProjectsUpda
 		otelogen.OperationID("projects/update"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/projects/{project_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -59123,6 +59535,7 @@ func (c *Client) sendProjectsUpdateCard(ctx context.Context, request OptProjects
 		otelogen.OperationID("projects/update-card"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/projects/columns/cards/{card_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -59216,6 +59629,7 @@ func (c *Client) sendProjectsUpdateColumn(ctx context.Context, request *Projects
 		otelogen.OperationID("projects/update-column"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/projects/columns/{column_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -59309,6 +59723,7 @@ func (c *Client) sendPullsCheckIfMerged(ctx context.Context, params PullsCheckIf
 		otelogen.OperationID("pulls/check-if-merged"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/merge"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -59453,6 +59868,7 @@ func (c *Client) sendPullsCreate(ctx context.Context, request *PullsCreateReq, p
 		otelogen.OperationID("pulls/create"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -59575,6 +59991,7 @@ func (c *Client) sendPullsCreateReplyForReviewComment(ctx context.Context, reque
 		otelogen.OperationID("pulls/create-reply-for-review-comment"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -59744,6 +60161,7 @@ func (c *Client) sendPullsCreateReview(ctx context.Context, request OptPullsCrea
 		otelogen.OperationID("pulls/create-review"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -59895,6 +60313,7 @@ func (c *Client) sendPullsCreateReviewComment(ctx context.Context, request *Pull
 		otelogen.OperationID("pulls/create-review-comment"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/comments"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -60027,6 +60446,7 @@ func (c *Client) sendPullsDeletePendingReview(ctx context.Context, params PullsD
 		otelogen.OperationID("pulls/delete-pending-review"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -60174,6 +60594,7 @@ func (c *Client) sendPullsDeleteReviewComment(ctx context.Context, params PullsD
 		otelogen.OperationID("pulls/delete-review-comment"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/comments/{comment_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -60304,6 +60725,7 @@ func (c *Client) sendPullsDismissReview(ctx context.Context, request *PullsDismi
 		otelogen.OperationID("pulls/dismiss-review"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -60488,6 +60910,7 @@ func (c *Client) sendPullsGet(ctx context.Context, params PullsGetParams) (res P
 		otelogen.OperationID("pulls/get"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -60616,6 +61039,7 @@ func (c *Client) sendPullsGetReview(ctx context.Context, params PullsGetReviewPa
 		otelogen.OperationID("pulls/get-review"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -60763,6 +61187,7 @@ func (c *Client) sendPullsGetReviewComment(ctx context.Context, params PullsGetR
 		otelogen.OperationID("pulls/get-review-comment"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/comments/{comment_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -60895,6 +61320,7 @@ func (c *Client) sendPullsList(ctx context.Context, params PullsListParams) (res
 		otelogen.OperationID("pulls/list"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -61128,6 +61554,7 @@ func (c *Client) sendPullsListCommentsForReview(ctx context.Context, params Pull
 		otelogen.OperationID("pulls/list-comments-for-review"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -61316,6 +61743,7 @@ func (c *Client) sendPullsListCommits(ctx context.Context, params PullsListCommi
 		otelogen.OperationID("pulls/list-commits"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/commits"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -61484,6 +61912,7 @@ func (c *Client) sendPullsListFiles(ctx context.Context, params PullsListFilesPa
 		otelogen.OperationID("pulls/list-files"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/files"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -61651,6 +62080,7 @@ func (c *Client) sendPullsListRequestedReviewers(ctx context.Context, params Pul
 		otelogen.OperationID("pulls/list-requested-reviewers"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -61819,6 +62249,7 @@ func (c *Client) sendPullsListReviewComments(ctx context.Context, params PullsLi
 		otelogen.OperationID("pulls/list-review-comments"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/comments"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -62038,6 +62469,7 @@ func (c *Client) sendPullsListReviewCommentsForRepo(ctx context.Context, params 
 		otelogen.OperationID("pulls/list-review-comments-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/comments"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -62237,6 +62669,7 @@ func (c *Client) sendPullsListReviews(ctx context.Context, params PullsListRevie
 		otelogen.OperationID("pulls/list-reviews"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -62410,6 +62843,7 @@ func (c *Client) sendPullsMerge(ctx context.Context, request OptNilPullsMergeReq
 		otelogen.OperationID("pulls/merge"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/merge"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -62542,6 +62976,7 @@ func (c *Client) sendPullsRemoveRequestedReviewers(ctx context.Context, request 
 		otelogen.OperationID("pulls/remove-requested-reviewers"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -62674,6 +63109,7 @@ func (c *Client) sendPullsSubmitReview(ctx context.Context, request *PullsSubmit
 		otelogen.OperationID("pulls/submit-review"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -62832,6 +63268,7 @@ func (c *Client) sendPullsUpdate(ctx context.Context, request OptPullsUpdateReq,
 		otelogen.OperationID("pulls/update"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -62964,6 +63401,7 @@ func (c *Client) sendPullsUpdateBranch(ctx context.Context, request OptNilPullsU
 		otelogen.OperationID("pulls/update-branch"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/update-branch"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -63096,6 +63534,7 @@ func (c *Client) sendPullsUpdateReview(ctx context.Context, request *PullsUpdate
 		otelogen.OperationID("pulls/update-review"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -63246,6 +63685,7 @@ func (c *Client) sendPullsUpdateReviewComment(ctx context.Context, request *Pull
 		otelogen.OperationID("pulls/update-review-comment"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/comments/{comment_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -63380,6 +63820,7 @@ func (c *Client) sendRateLimitGet(ctx context.Context) (res RateLimitGetRes, err
 		otelogen.OperationID("rate-limit/get"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/rate_limit"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -63454,6 +63895,7 @@ func (c *Client) sendReactionsCreateForCommitComment(ctx context.Context, reques
 		otelogen.OperationID("reactions/create-for-commit-comment"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/comments/{comment_id}/reactions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -63587,6 +64029,7 @@ func (c *Client) sendReactionsCreateForIssue(ctx context.Context, request *React
 		otelogen.OperationID("reactions/create-for-issue"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/reactions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -63721,6 +64164,7 @@ func (c *Client) sendReactionsCreateForIssueComment(ctx context.Context, request
 		otelogen.OperationID("reactions/create-for-issue-comment"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -63855,6 +64299,7 @@ func (c *Client) sendReactionsCreateForPullRequestReviewComment(ctx context.Cont
 		otelogen.OperationID("reactions/create-for-pull-request-review-comment"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -63988,6 +64433,7 @@ func (c *Client) sendReactionsCreateForRelease(ctx context.Context, request *Rea
 		otelogen.OperationID("reactions/create-for-release"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/{release_id}/reactions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -64126,6 +64572,7 @@ func (c *Client) sendReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Co
 		otelogen.OperationID("reactions/create-for-team-discussion-comment-in-org"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -64287,6 +64734,7 @@ func (c *Client) sendReactionsCreateForTeamDiscussionCommentLegacy(ctx context.C
 		otelogen.OperationID("reactions/create-for-team-discussion-comment-legacy"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -64426,6 +64874,7 @@ func (c *Client) sendReactionsCreateForTeamDiscussionInOrg(ctx context.Context, 
 		otelogen.OperationID("reactions/create-for-team-discussion-in-org"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -64569,6 +65018,7 @@ func (c *Client) sendReactionsCreateForTeamDiscussionLegacy(ctx context.Context,
 		otelogen.OperationID("reactions/create-for-team-discussion-legacy"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/reactions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -64684,6 +65134,7 @@ func (c *Client) sendReactionsDeleteForCommitComment(ctx context.Context, params
 		otelogen.OperationID("reactions/delete-for-commit-comment"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -64833,6 +65284,7 @@ func (c *Client) sendReactionsDeleteForIssue(ctx context.Context, params Reactio
 		otelogen.OperationID("reactions/delete-for-issue"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -64982,6 +65434,7 @@ func (c *Client) sendReactionsDeleteForIssueComment(ctx context.Context, params 
 		otelogen.OperationID("reactions/delete-for-issue-comment"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -65132,6 +65585,7 @@ func (c *Client) sendReactionsDeleteForPullRequestComment(ctx context.Context, p
 		otelogen.OperationID("reactions/delete-for-pull-request-comment"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -65286,6 +65740,7 @@ func (c *Client) sendReactionsDeleteForTeamDiscussion(ctx context.Context, param
 		otelogen.OperationID("reactions/delete-for-team-discussion"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -65438,6 +65893,7 @@ func (c *Client) sendReactionsDeleteForTeamDiscussionComment(ctx context.Context
 		otelogen.OperationID("reactions/delete-for-team-discussion-comment"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -65613,6 +66069,7 @@ func (c *Client) sendReactionsDeleteLegacy(ctx context.Context, params Reactions
 		otelogen.OperationID("reactions/delete-legacy"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/reactions/{reaction_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -65703,6 +66160,7 @@ func (c *Client) sendReactionsListForCommitComment(ctx context.Context, params R
 		otelogen.OperationID("reactions/list-for-commit-comment"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/comments/{comment_id}/reactions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -65887,6 +66345,7 @@ func (c *Client) sendReactionsListForIssue(ctx context.Context, params Reactions
 		otelogen.OperationID("reactions/list-for-issue"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/reactions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -66071,6 +66530,7 @@ func (c *Client) sendReactionsListForIssueComment(ctx context.Context, params Re
 		otelogen.OperationID("reactions/list-for-issue-comment"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -66256,6 +66716,7 @@ func (c *Client) sendReactionsListForPullRequestReviewComment(ctx context.Contex
 		otelogen.OperationID("reactions/list-for-pull-request-review-comment"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -66444,6 +66905,7 @@ func (c *Client) sendReactionsListForTeamDiscussionCommentInOrg(ctx context.Cont
 		otelogen.OperationID("reactions/list-for-team-discussion-comment-in-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -66655,6 +67117,7 @@ func (c *Client) sendReactionsListForTeamDiscussionCommentLegacy(ctx context.Con
 		otelogen.OperationID("reactions/list-for-team-discussion-comment-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -66843,6 +67306,7 @@ func (c *Client) sendReactionsListForTeamDiscussionInOrg(ctx context.Context, pa
 		otelogen.OperationID("reactions/list-for-team-discussion-in-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -67035,6 +67499,7 @@ func (c *Client) sendReactionsListForTeamDiscussionLegacy(ctx context.Context, p
 		otelogen.OperationID("reactions/list-for-team-discussion-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/reactions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -67200,6 +67665,7 @@ func (c *Client) sendReposAcceptInvitation(ctx context.Context, params ReposAcce
 		otelogen.OperationID("repos/accept-invitation"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/user/repository_invitations/{invitation_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -67304,6 +67770,7 @@ func (c *Client) sendReposAddAppAccessRestrictions(ctx context.Context, request 
 		otelogen.OperationID("repos/add-app-access-restrictions"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -67455,6 +67922,7 @@ func (c *Client) sendReposAddCollaborator(ctx context.Context, request OptReposA
 		otelogen.OperationID("repos/add-collaborator"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/collaborators/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -67590,6 +68058,7 @@ func (c *Client) sendReposAddStatusCheckContexts(ctx context.Context, request Op
 		otelogen.OperationID("repos/add-status-check-contexts"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -67736,6 +68205,7 @@ func (c *Client) sendReposAddTeamAccessRestrictions(ctx context.Context, request
 		otelogen.OperationID("repos/add-team-access-restrictions"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -67881,6 +68351,7 @@ func (c *Client) sendReposAddUserAccessRestrictions(ctx context.Context, request
 		otelogen.OperationID("repos/add-user-access-restrictions"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -68017,6 +68488,7 @@ func (c *Client) sendReposCheckCollaborator(ctx context.Context, params ReposChe
 		otelogen.OperationID("repos/check-collaborator"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/collaborators/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -68148,6 +68620,7 @@ func (c *Client) sendReposCheckVulnerabilityAlerts(ctx context.Context, params R
 		otelogen.OperationID("repos/check-vulnerability-alerts"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/vulnerability-alerts"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -68312,6 +68785,7 @@ func (c *Client) sendReposCompareCommits(ctx context.Context, params ReposCompar
 		otelogen.OperationID("repos/compare-commits"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/compare/{basehead}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -68478,6 +68952,7 @@ func (c *Client) sendReposCreateAutolink(ctx context.Context, request *ReposCrea
 		otelogen.OperationID("repos/create-autolink"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/autolinks"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -68598,6 +69073,7 @@ func (c *Client) sendReposCreateCommitComment(ctx context.Context, request *Repo
 		otelogen.OperationID("repos/create-commit-comment"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{commit_sha}/comments"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -68736,6 +69212,7 @@ func (c *Client) sendReposCreateCommitSignatureProtection(ctx context.Context, p
 		otelogen.OperationID("repos/create-commit-signature-protection"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -68867,6 +69344,7 @@ func (c *Client) sendReposCreateCommitStatus(ctx context.Context, request *Repos
 		otelogen.OperationID("repos/create-commit-status"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/statuses/{sha}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -68998,6 +69476,7 @@ func (c *Client) sendReposCreateDeployKey(ctx context.Context, request *ReposCre
 		otelogen.OperationID("repos/create-deploy-key"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/keys"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -69166,6 +69645,7 @@ func (c *Client) sendReposCreateDeployment(ctx context.Context, request *ReposCr
 		otelogen.OperationID("repos/create-deployment"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/deployments"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -69281,6 +69761,7 @@ func (c *Client) sendReposCreateDeploymentStatus(ctx context.Context, request *R
 		otelogen.OperationID("repos/create-deployment-status"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -69432,6 +69913,7 @@ func (c *Client) sendReposCreateDispatchEvent(ctx context.Context, request *Repo
 		otelogen.OperationID("repos/create-dispatch-event"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/dispatches"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -69551,6 +70033,7 @@ func (c *Client) sendReposCreateForAuthenticatedUser(ctx context.Context, reques
 		otelogen.OperationID("repos/create-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/user/repos"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -69629,6 +70112,7 @@ func (c *Client) sendReposCreateFork(ctx context.Context, request OptNilReposCre
 		otelogen.OperationID("repos/create-fork"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/forks"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -69749,6 +70233,7 @@ func (c *Client) sendReposCreateInOrg(ctx context.Context, request *ReposCreateI
 		otelogen.OperationID("repos/create-in-org"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/repos"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -69843,6 +70328,7 @@ func (c *Client) sendReposCreateOrUpdateFileContents(ctx context.Context, reques
 		otelogen.OperationID("repos/create-or-update-file-contents"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/contents/{path}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -69975,6 +70461,7 @@ func (c *Client) sendReposCreatePagesSite(ctx context.Context, request NilReposC
 		otelogen.OperationID("repos/create-pages-site"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -70095,6 +70582,7 @@ func (c *Client) sendReposCreateRelease(ctx context.Context, request *ReposCreat
 		otelogen.OperationID("repos/create-release"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -70219,6 +70707,7 @@ func (c *Client) sendReposCreateUsingTemplate(ctx context.Context, request *Repo
 		otelogen.OperationID("repos/create-using-template"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{template_owner}/{template_repo}/generate"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -70334,6 +70823,7 @@ func (c *Client) sendReposCreateWebhook(ctx context.Context, request OptNilRepos
 		otelogen.OperationID("repos/create-webhook"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -70447,6 +70937,7 @@ func (c *Client) sendReposDeclineInvitation(ctx context.Context, params ReposDec
 		otelogen.OperationID("repos/decline-invitation"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/user/repository_invitations/{invitation_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -70540,6 +71031,7 @@ func (c *Client) sendReposDelete(ctx context.Context, params ReposDeleteParams) 
 		otelogen.OperationID("repos/delete"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -70654,6 +71146,7 @@ func (c *Client) sendReposDeleteAccessRestrictions(ctx context.Context, params R
 		otelogen.OperationID("repos/delete-access-restrictions"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -70789,6 +71282,7 @@ func (c *Client) sendReposDeleteAdminBranchProtection(ctx context.Context, param
 		otelogen.OperationID("repos/delete-admin-branch-protection"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -70918,6 +71412,7 @@ func (c *Client) sendReposDeleteAnEnvironment(ctx context.Context, params ReposD
 		otelogen.OperationID("repos/delete-an-environment"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/environments/{environment_name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -71047,6 +71542,7 @@ func (c *Client) sendReposDeleteAutolink(ctx context.Context, params ReposDelete
 		otelogen.OperationID("repos/delete-autolink"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/autolinks/{autolink_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -71179,6 +71675,7 @@ func (c *Client) sendReposDeleteBranchProtection(ctx context.Context, params Rep
 		otelogen.OperationID("repos/delete-branch-protection"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -71308,6 +71805,7 @@ func (c *Client) sendReposDeleteCommitComment(ctx context.Context, params ReposD
 		otelogen.OperationID("repos/delete-commit-comment"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/comments/{comment_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -71443,6 +71941,7 @@ func (c *Client) sendReposDeleteCommitSignatureProtection(ctx context.Context, p
 		otelogen.OperationID("repos/delete-commit-signature-protection"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -71573,6 +72072,7 @@ func (c *Client) sendReposDeleteDeployKey(ctx context.Context, params ReposDelet
 		otelogen.OperationID("repos/delete-deploy-key"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/keys/{key_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -71709,6 +72209,7 @@ func (c *Client) sendReposDeleteDeployment(ctx context.Context, params ReposDele
 		otelogen.OperationID("repos/delete-deployment"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/deployments/{deployment_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -71844,6 +72345,7 @@ func (c *Client) sendReposDeleteFile(ctx context.Context, request *ReposDeleteFi
 		otelogen.OperationID("repos/delete-file"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/contents/{path}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -71975,6 +72477,7 @@ func (c *Client) sendReposDeleteInvitation(ctx context.Context, params ReposDele
 		otelogen.OperationID("repos/delete-invitation"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/invitations/{invitation_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -72103,6 +72606,7 @@ func (c *Client) sendReposDeletePagesSite(ctx context.Context, params ReposDelet
 		otelogen.OperationID("repos/delete-pages-site"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -72217,6 +72721,7 @@ func (c *Client) sendReposDeletePullRequestReviewProtection(ctx context.Context,
 		otelogen.OperationID("repos/delete-pull-request-review-protection"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -72346,6 +72851,7 @@ func (c *Client) sendReposDeleteRelease(ctx context.Context, params ReposDeleteR
 		otelogen.OperationID("repos/delete-release"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/{release_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -72474,6 +72980,7 @@ func (c *Client) sendReposDeleteReleaseAsset(ctx context.Context, params ReposDe
 		otelogen.OperationID("repos/delete-release-asset"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/assets/{asset_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -72602,6 +73109,7 @@ func (c *Client) sendReposDeleteWebhook(ctx context.Context, params ReposDeleteW
 		otelogen.OperationID("repos/delete-webhook"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -72732,6 +73240,7 @@ func (c *Client) sendReposDisableAutomatedSecurityFixes(ctx context.Context, par
 		otelogen.OperationID("repos/disable-automated-security-fixes"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/automated-security-fixes"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -72842,6 +73351,7 @@ func (c *Client) sendReposDisableLfsForRepo(ctx context.Context, params ReposDis
 		otelogen.OperationID("repos/disable-lfs-for-repo"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/lfs"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -72955,6 +73465,7 @@ func (c *Client) sendReposDisableVulnerabilityAlerts(ctx context.Context, params
 		otelogen.OperationID("repos/disable-vulnerability-alerts"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/vulnerability-alerts"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -73070,6 +73581,7 @@ func (c *Client) sendReposDownloadTarballArchive(ctx context.Context, params Rep
 		otelogen.OperationID("repos/download-tarball-archive"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/tarball/{ref}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -73203,6 +73715,7 @@ func (c *Client) sendReposDownloadZipballArchive(ctx context.Context, params Rep
 		otelogen.OperationID("repos/download-zipball-archive"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/zipball/{ref}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -73333,6 +73846,7 @@ func (c *Client) sendReposEnableAutomatedSecurityFixes(ctx context.Context, para
 		otelogen.OperationID("repos/enable-automated-security-fixes"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/automated-security-fixes"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -73443,6 +73957,7 @@ func (c *Client) sendReposEnableLfsForRepo(ctx context.Context, params ReposEnab
 		otelogen.OperationID("repos/enable-lfs-for-repo"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/lfs"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -73556,6 +74071,7 @@ func (c *Client) sendReposEnableVulnerabilityAlerts(ctx context.Context, params 
 		otelogen.OperationID("repos/enable-vulnerability-alerts"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/vulnerability-alerts"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -73667,6 +74183,7 @@ func (c *Client) sendReposGet(ctx context.Context, params ReposGetParams) (res R
 		otelogen.OperationID("repos/get"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -73783,6 +74300,7 @@ func (c *Client) sendReposGetAccessRestrictions(ctx context.Context, params Repo
 		otelogen.OperationID("repos/get-access-restrictions"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -73916,6 +74434,7 @@ func (c *Client) sendReposGetAdminBranchProtection(ctx context.Context, params R
 		otelogen.OperationID("repos/get-admin-branch-protection"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -74049,6 +74568,7 @@ func (c *Client) sendReposGetAllStatusCheckContexts(ctx context.Context, params 
 		otelogen.OperationID("repos/get-all-status-check-contexts"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -74178,6 +74698,7 @@ func (c *Client) sendReposGetAllTopics(ctx context.Context, params ReposGetAllTo
 		otelogen.OperationID("repos/get-all-topics"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/topics"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -74333,6 +74854,7 @@ func (c *Client) sendReposGetAppsWithAccessToProtectedBranch(ctx context.Context
 		otelogen.OperationID("repos/get-apps-with-access-to-protected-branch"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -74463,6 +74985,7 @@ func (c *Client) sendReposGetAutolink(ctx context.Context, params ReposGetAutoli
 		otelogen.OperationID("repos/get-autolink"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/autolinks/{autolink_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -74591,6 +75114,7 @@ func (c *Client) sendReposGetBranch(ctx context.Context, params ReposGetBranchPa
 		otelogen.OperationID("repos/get-branch"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -74723,6 +75247,7 @@ func (c *Client) sendReposGetBranchProtection(ctx context.Context, params ReposG
 		otelogen.OperationID("repos/get-branch-protection"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -74853,6 +75378,7 @@ func (c *Client) sendReposGetClones(ctx context.Context, params ReposGetClonesPa
 		otelogen.OperationID("repos/get-clones"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/traffic/clones"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -74984,6 +75510,7 @@ func (c *Client) sendReposGetCodeFrequencyStats(ctx context.Context, params Repo
 		otelogen.OperationID("repos/get-code-frequency-stats"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/stats/code_frequency"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -75095,6 +75622,7 @@ func (c *Client) sendReposGetCollaboratorPermissionLevel(ctx context.Context, pa
 		otelogen.OperationID("repos/get-collaborator-permission-level"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/collaborators/{username}/permission"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -75232,6 +75760,7 @@ func (c *Client) sendReposGetCombinedStatusForRef(ctx context.Context, params Re
 		otelogen.OperationID("repos/get-combined-status-for-ref"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{ref}/status"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -75445,6 +75974,7 @@ func (c *Client) sendReposGetCommit(ctx context.Context, params ReposGetCommitPa
 		otelogen.OperationID("repos/get-commit"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{ref}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -75612,6 +76142,7 @@ func (c *Client) sendReposGetCommitActivityStats(ctx context.Context, params Rep
 		otelogen.OperationID("repos/get-commit-activity-stats"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/stats/commit_activity"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -75722,6 +76253,7 @@ func (c *Client) sendReposGetCommitComment(ctx context.Context, params ReposGetC
 		otelogen.OperationID("repos/get-commit-comment"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/comments/{comment_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -75859,6 +76391,7 @@ func (c *Client) sendReposGetCommitSignatureProtection(ctx context.Context, para
 		otelogen.OperationID("repos/get-commit-signature-protection"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -75997,6 +76530,7 @@ func (c *Client) sendReposGetCommunityProfileMetrics(ctx context.Context, params
 		otelogen.OperationID("repos/get-community-profile-metrics"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/community/profile"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -76112,6 +76646,7 @@ func (c *Client) sendReposGetContributorsStats(ctx context.Context, params Repos
 		otelogen.OperationID("repos/get-contributors-stats"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/stats/contributors"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -76222,6 +76757,7 @@ func (c *Client) sendReposGetDeployKey(ctx context.Context, params ReposGetDeplo
 		otelogen.OperationID("repos/get-deploy-key"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/keys/{key_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -76350,6 +76886,7 @@ func (c *Client) sendReposGetDeployment(ctx context.Context, params ReposGetDepl
 		otelogen.OperationID("repos/get-deployment"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/deployments/{deployment_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -76478,6 +77015,7 @@ func (c *Client) sendReposGetDeploymentStatus(ctx context.Context, params ReposG
 		otelogen.OperationID("repos/get-deployment-status"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -76625,6 +77163,7 @@ func (c *Client) sendReposGetLatestPagesBuild(ctx context.Context, params ReposG
 		otelogen.OperationID("repos/get-latest-pages-build"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages/builds/latest"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -76738,6 +77277,7 @@ func (c *Client) sendReposGetLatestRelease(ctx context.Context, params ReposGetL
 		otelogen.OperationID("repos/get-latest-release"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/latest"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -76848,6 +77388,7 @@ func (c *Client) sendReposGetPages(ctx context.Context, params ReposGetPagesPara
 		otelogen.OperationID("repos/get-pages"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -76958,6 +77499,7 @@ func (c *Client) sendReposGetPagesBuild(ctx context.Context, params ReposGetPage
 		otelogen.OperationID("repos/get-pages-build"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages/builds/{build_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -77092,6 +77634,7 @@ func (c *Client) sendReposGetPagesHealthCheck(ctx context.Context, params ReposG
 		otelogen.OperationID("repos/get-pages-health-check"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages/health"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -77205,6 +77748,7 @@ func (c *Client) sendReposGetParticipationStats(ctx context.Context, params Repo
 		otelogen.OperationID("repos/get-participation-stats"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/stats/participation"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -77319,6 +77863,7 @@ func (c *Client) sendReposGetPullRequestReviewProtection(ctx context.Context, pa
 		otelogen.OperationID("repos/get-pull-request-review-protection"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -77453,6 +77998,7 @@ func (c *Client) sendReposGetPunchCardStats(ctx context.Context, params ReposGet
 		otelogen.OperationID("repos/get-punch-card-stats"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/stats/punch_card"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -77565,6 +78111,7 @@ func (c *Client) sendReposGetReadme(ctx context.Context, params ReposGetReadmePa
 		otelogen.OperationID("repos/get-readme"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/readme"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -77698,6 +78245,7 @@ func (c *Client) sendReposGetReadmeInDirectory(ctx context.Context, params Repos
 		otelogen.OperationID("repos/get-readme-in-directory"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/readme/{dir}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -77849,6 +78397,7 @@ func (c *Client) sendReposGetRelease(ctx context.Context, params ReposGetRelease
 		otelogen.OperationID("repos/get-release"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/{release_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -77980,6 +78529,7 @@ func (c *Client) sendReposGetReleaseAsset(ctx context.Context, params ReposGetRe
 		otelogen.OperationID("repos/get-release-asset"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/assets/{asset_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -78108,6 +78658,7 @@ func (c *Client) sendReposGetReleaseByTag(ctx context.Context, params ReposGetRe
 		otelogen.OperationID("repos/get-release-by-tag"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/tags/{tag}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -78240,6 +78791,7 @@ func (c *Client) sendReposGetStatusChecksProtection(ctx context.Context, params 
 		otelogen.OperationID("repos/get-status-checks-protection"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -78374,6 +78926,7 @@ func (c *Client) sendReposGetTeamsWithAccessToProtectedBranch(ctx context.Contex
 		otelogen.OperationID("repos/get-teams-with-access-to-protected-branch"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -78503,6 +79056,7 @@ func (c *Client) sendReposGetTopPaths(ctx context.Context, params ReposGetTopPat
 		otelogen.OperationID("repos/get-top-paths"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/traffic/popular/paths"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -78613,6 +79167,7 @@ func (c *Client) sendReposGetTopReferrers(ctx context.Context, params ReposGetTo
 		otelogen.OperationID("repos/get-top-referrers"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/traffic/popular/referrers"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -78728,6 +79283,7 @@ func (c *Client) sendReposGetUsersWithAccessToProtectedBranch(ctx context.Contex
 		otelogen.OperationID("repos/get-users-with-access-to-protected-branch"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -78858,6 +79414,7 @@ func (c *Client) sendReposGetViews(ctx context.Context, params ReposGetViewsPara
 		otelogen.OperationID("repos/get-views"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/traffic/views"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -78991,6 +79548,7 @@ func (c *Client) sendReposGetWebhook(ctx context.Context, params ReposGetWebhook
 		otelogen.OperationID("repos/get-webhook"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -79123,6 +79681,7 @@ func (c *Client) sendReposGetWebhookConfigForRepo(ctx context.Context, params Re
 		otelogen.OperationID("repos/get-webhook-config-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/config"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -79252,6 +79811,7 @@ func (c *Client) sendReposGetWebhookDelivery(ctx context.Context, params ReposGe
 		otelogen.OperationID("repos/get-webhook-delivery"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -79400,6 +79960,7 @@ func (c *Client) sendReposListAutolinks(ctx context.Context, params ReposListAut
 		otelogen.OperationID("repos/list-autolinks"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/autolinks"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -79531,6 +80092,7 @@ func (c *Client) sendReposListBranches(ctx context.Context, params ReposListBran
 		otelogen.OperationID("repos/list-branches"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -79701,6 +80263,7 @@ func (c *Client) sendReposListBranchesForHeadCommit(ctx context.Context, params 
 		otelogen.OperationID("repos/list-branches-for-head-commit"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -79834,6 +80397,7 @@ func (c *Client) sendReposListCollaborators(ctx context.Context, params ReposLis
 		otelogen.OperationID("repos/list-collaborators"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/collaborators"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -79999,6 +80563,7 @@ func (c *Client) sendReposListCommentsForCommit(ctx context.Context, params Repo
 		otelogen.OperationID("repos/list-comments-for-commit"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{commit_sha}/comments"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -80169,6 +80734,7 @@ func (c *Client) sendReposListCommitCommentsForRepo(ctx context.Context, params 
 		otelogen.OperationID("repos/list-commit-comments-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/comments"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -80320,6 +80886,7 @@ func (c *Client) sendReposListCommitStatusesForRef(ctx context.Context, params R
 		otelogen.OperationID("repos/list-commit-statuses-for-ref"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{ref}/statuses"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -80518,6 +81085,7 @@ func (c *Client) sendReposListCommits(ctx context.Context, params ReposListCommi
 		otelogen.OperationID("repos/list-commits"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -80757,6 +81325,7 @@ func (c *Client) sendReposListContributors(ctx context.Context, params ReposList
 		otelogen.OperationID("repos/list-contributors"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/contributors"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -80922,6 +81491,7 @@ func (c *Client) sendReposListDeployKeys(ctx context.Context, params ReposListDe
 		otelogen.OperationID("repos/list-deploy-keys"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/keys"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -81070,6 +81640,7 @@ func (c *Client) sendReposListDeploymentStatuses(ctx context.Context, params Rep
 		otelogen.OperationID("repos/list-deployment-statuses"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -81237,6 +81808,7 @@ func (c *Client) sendReposListDeployments(ctx context.Context, params ReposListD
 		otelogen.OperationID("repos/list-deployments"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/deployments"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -81456,6 +82028,7 @@ func (c *Client) sendReposListForAuthenticatedUser(ctx context.Context, params R
 		otelogen.OperationID("repos/list-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/repos"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -81685,6 +82258,7 @@ func (c *Client) sendReposListForOrg(ctx context.Context, params ReposListForOrg
 		otelogen.OperationID("repos/list-for-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/repos"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -81866,6 +82440,7 @@ func (c *Client) sendReposListForUser(ctx context.Context, params ReposListForUs
 		otelogen.OperationID("repos/list-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/repos"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -82046,6 +82621,7 @@ func (c *Client) sendReposListForks(ctx context.Context, params ReposListForksPa
 		otelogen.OperationID("repos/list-forks"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/forks"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -82212,6 +82788,7 @@ func (c *Client) sendReposListInvitations(ctx context.Context, params ReposListI
 		otelogen.OperationID("repos/list-invitations"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/invitations"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -82361,6 +82938,7 @@ func (c *Client) sendReposListInvitationsForAuthenticatedUser(ctx context.Contex
 		otelogen.OperationID("repos/list-invitations-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/repository_invitations"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -82472,6 +83050,7 @@ func (c *Client) sendReposListLanguages(ctx context.Context, params ReposListLan
 		otelogen.OperationID("repos/list-languages"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/languages"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -82582,6 +83161,7 @@ func (c *Client) sendReposListPagesBuilds(ctx context.Context, params ReposListP
 		otelogen.OperationID("repos/list-pages-builds"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages/builds"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -82736,6 +83316,7 @@ func (c *Client) sendReposListPublic(ctx context.Context, params ReposListPublic
 		otelogen.OperationID("repos/list-public"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repositories"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -82834,6 +83415,7 @@ func (c *Client) sendReposListPullRequestsAssociatedWithCommit(ctx context.Conte
 		otelogen.OperationID("repos/list-pull-requests-associated-with-commit"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{commit_sha}/pulls"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -83001,6 +83583,7 @@ func (c *Client) sendReposListReleaseAssets(ctx context.Context, params ReposLis
 		otelogen.OperationID("repos/list-release-assets"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/{release_id}/assets"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -83172,6 +83755,7 @@ func (c *Client) sendReposListReleases(ctx context.Context, params ReposListRele
 		otelogen.OperationID("repos/list-releases"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -83320,6 +83904,7 @@ func (c *Client) sendReposListTags(ctx context.Context, params ReposListTagsPara
 		otelogen.OperationID("repos/list-tags"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/tags"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -83468,6 +84053,7 @@ func (c *Client) sendReposListTeams(ctx context.Context, params ReposListTeamsPa
 		otelogen.OperationID("repos/list-teams"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/teams"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -83616,6 +84202,7 @@ func (c *Client) sendReposListWebhookDeliveries(ctx context.Context, params Repo
 		otelogen.OperationID("repos/list-webhook-deliveries"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/deliveries"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -83783,6 +84370,7 @@ func (c *Client) sendReposListWebhooks(ctx context.Context, params ReposListWebh
 		otelogen.OperationID("repos/list-webhooks"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -83931,6 +84519,7 @@ func (c *Client) sendReposMerge(ctx context.Context, request *ReposMergeReq, par
 		otelogen.OperationID("repos/merge"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/merges"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -84045,6 +84634,7 @@ func (c *Client) sendReposMergeUpstream(ctx context.Context, request *ReposMerge
 		otelogen.OperationID("repos/merge-upstream"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/merge-upstream"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -84159,6 +84749,7 @@ func (c *Client) sendReposPingWebhook(ctx context.Context, params ReposPingWebho
 		otelogen.OperationID("repos/ping-webhook"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/pings"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -84288,6 +84879,7 @@ func (c *Client) sendReposRedeliverWebhookDelivery(ctx context.Context, params R
 		otelogen.OperationID("repos/redeliver-webhook-delivery"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}/attempts"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -84450,6 +85042,7 @@ func (c *Client) sendReposRemoveAppAccessRestrictions(ctx context.Context, reque
 		otelogen.OperationID("repos/remove-app-access-restrictions"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -84582,6 +85175,7 @@ func (c *Client) sendReposRemoveCollaborator(ctx context.Context, params ReposRe
 		otelogen.OperationID("repos/remove-collaborator"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/collaborators/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -84714,6 +85308,7 @@ func (c *Client) sendReposRemoveStatusCheckContexts(ctx context.Context, request
 		otelogen.OperationID("repos/remove-status-check-contexts"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -84850,6 +85445,7 @@ func (c *Client) sendReposRemoveStatusCheckProtection(ctx context.Context, param
 		otelogen.OperationID("repos/remove-status-check-protection"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -84993,6 +85589,7 @@ func (c *Client) sendReposRemoveTeamAccessRestrictions(ctx context.Context, requ
 		otelogen.OperationID("repos/remove-team-access-restrictions"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -85138,6 +85735,7 @@ func (c *Client) sendReposRemoveUserAccessRestrictions(ctx context.Context, requ
 		otelogen.OperationID("repos/remove-user-access-restrictions"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -85282,6 +85880,7 @@ func (c *Client) sendReposRenameBranch(ctx context.Context, request OptReposRena
 		otelogen.OperationID("repos/rename-branch"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/rename"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -85414,6 +86013,7 @@ func (c *Client) sendReposReplaceAllTopics(ctx context.Context, request *ReposRe
 		otelogen.OperationID("repos/replace-all-topics"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/topics"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -85532,6 +86132,7 @@ func (c *Client) sendReposRequestPagesBuild(ctx context.Context, params ReposReq
 		otelogen.OperationID("repos/request-pages-build"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages/builds"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -85648,6 +86249,7 @@ func (c *Client) sendReposSetAdminBranchProtection(ctx context.Context, params R
 		otelogen.OperationID("repos/set-admin-branch-protection"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -85793,6 +86395,7 @@ func (c *Client) sendReposSetAppAccessRestrictions(ctx context.Context, request 
 		otelogen.OperationID("repos/set-app-access-restrictions"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -85929,6 +86532,7 @@ func (c *Client) sendReposSetStatusCheckContexts(ctx context.Context, request Op
 		otelogen.OperationID("repos/set-status-check-contexts"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -86076,6 +86680,7 @@ func (c *Client) sendReposSetTeamAccessRestrictions(ctx context.Context, request
 		otelogen.OperationID("repos/set-team-access-restrictions"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -86222,6 +86827,7 @@ func (c *Client) sendReposSetUserAccessRestrictions(ctx context.Context, request
 		otelogen.OperationID("repos/set-user-access-restrictions"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -86357,6 +86963,7 @@ func (c *Client) sendReposTestPushWebhook(ctx context.Context, params ReposTestP
 		otelogen.OperationID("repos/test-push-webhook"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/tests"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -86490,6 +87097,7 @@ func (c *Client) sendReposTransfer(ctx context.Context, request *ReposTransferRe
 		otelogen.OperationID("repos/transfer"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/transfer"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -86604,6 +87212,7 @@ func (c *Client) sendReposUpdate(ctx context.Context, request OptReposUpdateReq,
 		otelogen.OperationID("repos/update"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -86723,6 +87332,7 @@ func (c *Client) sendReposUpdateBranchProtection(ctx context.Context, request *R
 		otelogen.OperationID("repos/update-branch-protection"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -86855,6 +87465,7 @@ func (c *Client) sendReposUpdateCommitComment(ctx context.Context, request *Repo
 		otelogen.OperationID("repos/update-commit-comment"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/comments/{comment_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -86986,6 +87597,7 @@ func (c *Client) sendReposUpdateInvitation(ctx context.Context, request OptRepos
 		otelogen.OperationID("repos/update-invitation"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/invitations/{invitation_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -87124,6 +87736,7 @@ func (c *Client) sendReposUpdatePullRequestReviewProtection(ctx context.Context,
 		otelogen.OperationID("repos/update-pull-request-review-protection"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -87256,6 +87869,7 @@ func (c *Client) sendReposUpdateRelease(ctx context.Context, request OptReposUpd
 		otelogen.OperationID("repos/update-release"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/{release_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -87387,6 +88001,7 @@ func (c *Client) sendReposUpdateReleaseAsset(ctx context.Context, request OptRep
 		otelogen.OperationID("repos/update-release-asset"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/assets/{asset_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -87524,6 +88139,7 @@ func (c *Client) sendReposUpdateStatusCheckProtection(ctx context.Context, reque
 		otelogen.OperationID("repos/update-status-check-protection"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -87659,6 +88275,7 @@ func (c *Client) sendReposUpdateWebhook(ctx context.Context, request OptReposUpd
 		otelogen.OperationID("repos/update-webhook"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -87794,6 +88411,7 @@ func (c *Client) sendReposUpdateWebhookConfigForRepo(ctx context.Context, reques
 		otelogen.OperationID("repos/update-webhook-config-for-repo"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/config"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -87951,6 +88569,7 @@ func (c *Client) sendReposUploadReleaseAsset(ctx context.Context, request *Repos
 		otelogen.OperationID("repos/upload-release-asset"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/{release_id}/assets"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -88118,6 +88737,7 @@ func (c *Client) sendScimDeleteUserFromOrg(ctx context.Context, params ScimDelet
 		otelogen.OperationID("scim/delete-user-from-org"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/scim/v2/organizations/{org}/Users/{scim_user_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -88246,6 +88866,7 @@ func (c *Client) sendSearchCode(ctx context.Context, params SearchCodeParams) (r
 		otelogen.OperationID("search/code"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/search/code"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -88414,6 +89035,7 @@ func (c *Client) sendSearchCommits(ctx context.Context, params SearchCommitsPara
 		otelogen.OperationID("search/commits"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/search/commits"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -88594,6 +89216,7 @@ func (c *Client) sendSearchIssuesAndPullRequests(ctx context.Context, params Sea
 		otelogen.OperationID("search/issues-and-pull-requests"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/search/issues"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -88761,6 +89384,7 @@ func (c *Client) sendSearchLabels(ctx context.Context, params SearchLabelsParams
 		otelogen.OperationID("search/labels"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/search/labels"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -88948,6 +89572,7 @@ func (c *Client) sendSearchRepos(ctx context.Context, params SearchReposParams) 
 		otelogen.OperationID("search/repos"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/search/repositories"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -89119,6 +89744,7 @@ func (c *Client) sendSearchTopics(ctx context.Context, params SearchTopicsParams
 		otelogen.OperationID("search/topics"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/search/topics"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -89254,6 +89880,7 @@ func (c *Client) sendSearchUsers(ctx context.Context, params SearchUsersParams) 
 		otelogen.OperationID("search/users"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/search/users"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -89415,6 +90042,7 @@ func (c *Client) sendSecretScanningGetAlert(ctx context.Context, params SecretSc
 		otelogen.OperationID("secret-scanning/get-alert"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -89550,6 +90178,7 @@ func (c *Client) sendSecretScanningListAlertsForOrg(ctx context.Context, params 
 		otelogen.OperationID("secret-scanning/list-alerts-for-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/secret-scanning/alerts"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -89716,6 +90345,7 @@ func (c *Client) sendSecretScanningListAlertsForRepo(ctx context.Context, params
 		otelogen.OperationID("secret-scanning/list-alerts-for-repo"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/secret-scanning/alerts"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -89901,6 +90531,7 @@ func (c *Client) sendSecretScanningUpdateAlert(ctx context.Context, request *Sec
 		otelogen.OperationID("secret-scanning/update-alert"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -90056,6 +90687,7 @@ func (c *Client) sendTeamsAddMemberLegacy(ctx context.Context, params TeamsAddMe
 		otelogen.OperationID("teams/add-member-legacy"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/members/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -90186,6 +90818,7 @@ func (c *Client) sendTeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context,
 		otelogen.OperationID("teams/add-or-update-membership-for-user-in-org"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/memberships/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -90343,6 +90976,7 @@ func (c *Client) sendTeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context
 		otelogen.OperationID("teams/add-or-update-membership-for-user-legacy"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/memberships/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -90459,6 +91093,7 @@ func (c *Client) sendTeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context
 		otelogen.OperationID("teams/add-or-update-project-permissions-in-org"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/projects/{project_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -90598,6 +91233,7 @@ func (c *Client) sendTeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Contex
 		otelogen.OperationID("teams/add-or-update-project-permissions-legacy"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/projects/{project_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -90721,6 +91357,7 @@ func (c *Client) sendTeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, r
 		otelogen.OperationID("teams/add-or-update-repo-permissions-in-org"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -90884,6 +91521,7 @@ func (c *Client) sendTeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, 
 		otelogen.OperationID("teams/add-or-update-repo-permissions-legacy"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/repos/{owner}/{repo}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -91018,6 +91656,7 @@ func (c *Client) sendTeamsCheckPermissionsForProjectInOrg(ctx context.Context, p
 		otelogen.OperationID("teams/check-permissions-for-project-in-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/projects/{project_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -91153,6 +91792,7 @@ func (c *Client) sendTeamsCheckPermissionsForProjectLegacy(ctx context.Context, 
 		otelogen.OperationID("teams/check-permissions-for-project-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/projects/{project_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -91270,6 +91910,7 @@ func (c *Client) sendTeamsCheckPermissionsForRepoInOrg(ctx context.Context, para
 		otelogen.OperationID("teams/check-permissions-for-repo-in-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -91426,6 +92067,7 @@ func (c *Client) sendTeamsCheckPermissionsForRepoLegacy(ctx context.Context, par
 		otelogen.OperationID("teams/check-permissions-for-repo-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/repos/{owner}/{repo}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -91561,6 +92203,7 @@ func (c *Client) sendTeamsCreate(ctx context.Context, request *TeamsCreateReq, p
 		otelogen.OperationID("teams/create"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -91665,6 +92308,7 @@ func (c *Client) sendTeamsCreateDiscussionCommentInOrg(ctx context.Context, requ
 		otelogen.OperationID("teams/create-discussion-comment-in-org"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -91810,6 +92454,7 @@ func (c *Client) sendTeamsCreateDiscussionCommentLegacy(ctx context.Context, req
 		otelogen.OperationID("teams/create-discussion-comment-legacy"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/comments"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -91933,6 +92578,7 @@ func (c *Client) sendTeamsCreateDiscussionInOrg(ctx context.Context, request *Te
 		otelogen.OperationID("teams/create-discussion-in-org"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -92059,6 +92705,7 @@ func (c *Client) sendTeamsCreateDiscussionLegacy(ctx context.Context, request *T
 		otelogen.OperationID("teams/create-discussion-legacy"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -92160,6 +92807,7 @@ func (c *Client) sendTeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Con
 		otelogen.OperationID("teams/create-or-update-idp-group-connections-in-org"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/team-sync/group-mappings"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -92284,6 +92932,7 @@ func (c *Client) sendTeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Co
 		otelogen.OperationID("teams/create-or-update-idp-group-connections-legacy"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/team-sync/group-mappings"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -92381,6 +93030,7 @@ func (c *Client) sendTeamsDeleteDiscussionCommentInOrg(ctx context.Context, para
 		otelogen.OperationID("teams/delete-discussion-comment-in-org"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -92534,6 +93184,7 @@ func (c *Client) sendTeamsDeleteDiscussionCommentLegacy(ctx context.Context, par
 		otelogen.OperationID("teams/delete-discussion-comment-legacy"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -92665,6 +93316,7 @@ func (c *Client) sendTeamsDeleteDiscussionInOrg(ctx context.Context, params Team
 		otelogen.OperationID("teams/delete-discussion-in-org"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -92799,6 +93451,7 @@ func (c *Client) sendTeamsDeleteDiscussionLegacy(ctx context.Context, params Tea
 		otelogen.OperationID("teams/delete-discussion-legacy"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -92912,6 +93565,7 @@ func (c *Client) sendTeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInO
 		otelogen.OperationID("teams/delete-in-org"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -93028,6 +93682,7 @@ func (c *Client) sendTeamsDeleteLegacy(ctx context.Context, params TeamsDeleteLe
 		otelogen.OperationID("teams/delete-legacy"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -93120,6 +93775,7 @@ func (c *Client) sendTeamsGetByName(ctx context.Context, params TeamsGetByNamePa
 		otelogen.OperationID("teams/get-by-name"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -93232,6 +93888,7 @@ func (c *Client) sendTeamsGetDiscussionCommentInOrg(ctx context.Context, params 
 		otelogen.OperationID("teams/get-discussion-comment-in-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -93385,6 +94042,7 @@ func (c *Client) sendTeamsGetDiscussionCommentLegacy(ctx context.Context, params
 		otelogen.OperationID("teams/get-discussion-comment-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -93516,6 +94174,7 @@ func (c *Client) sendTeamsGetDiscussionInOrg(ctx context.Context, params TeamsGe
 		otelogen.OperationID("teams/get-discussion-in-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -93650,6 +94309,7 @@ func (c *Client) sendTeamsGetDiscussionLegacy(ctx context.Context, params TeamsG
 		otelogen.OperationID("teams/get-discussion-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -93763,6 +94423,7 @@ func (c *Client) sendTeamsGetLegacy(ctx context.Context, params TeamsGetLegacyPa
 		otelogen.OperationID("teams/get-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -93859,6 +94520,7 @@ func (c *Client) sendTeamsGetMemberLegacy(ctx context.Context, params TeamsGetMe
 		otelogen.OperationID("teams/get-member-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/members/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -93975,6 +94637,7 @@ func (c *Client) sendTeamsGetMembershipForUserInOrg(ctx context.Context, params 
 		otelogen.OperationID("teams/get-membership-for-user-in-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/memberships/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -94113,6 +94776,7 @@ func (c *Client) sendTeamsGetMembershipForUserLegacy(ctx context.Context, params
 		otelogen.OperationID("teams/get-membership-for-user-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/memberships/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -94222,6 +94886,7 @@ func (c *Client) sendTeamsList(ctx context.Context, params TeamsListParams) (res
 		otelogen.OperationID("teams/list"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -94353,6 +95018,7 @@ func (c *Client) sendTeamsListChildInOrg(ctx context.Context, params TeamsListCh
 		otelogen.OperationID("teams/list-child-in-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/teams"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -94505,6 +95171,7 @@ func (c *Client) sendTeamsListChildLegacy(ctx context.Context, params TeamsListC
 		otelogen.OperationID("teams/list-child-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/teams"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -94637,6 +95304,7 @@ func (c *Client) sendTeamsListDiscussionCommentsInOrg(ctx context.Context, param
 		otelogen.OperationID("teams/list-discussion-comments-in-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -94827,6 +95495,7 @@ func (c *Client) sendTeamsListDiscussionCommentsLegacy(ctx context.Context, para
 		otelogen.OperationID("teams/list-discussion-comments-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/comments"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -94995,6 +95664,7 @@ func (c *Client) sendTeamsListDiscussionsInOrg(ctx context.Context, params Teams
 		otelogen.OperationID("teams/list-discussions-in-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -95183,6 +95853,7 @@ func (c *Client) sendTeamsListDiscussionsLegacy(ctx context.Context, params Team
 		otelogen.OperationID("teams/list-discussions-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -95332,6 +96003,7 @@ func (c *Client) sendTeamsListForAuthenticatedUser(ctx context.Context, params T
 		otelogen.OperationID("teams/list-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/teams"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -95450,6 +96122,7 @@ func (c *Client) sendTeamsListIdpGroupsForLegacy(ctx context.Context, params Tea
 		otelogen.OperationID("teams/list-idp-groups-for-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/team-sync/group-mappings"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -95547,6 +96220,7 @@ func (c *Client) sendTeamsListIdpGroupsForOrg(ctx context.Context, params TeamsL
 		otelogen.OperationID("teams/list-idp-groups-for-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/team-sync/groups"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -95681,6 +96355,7 @@ func (c *Client) sendTeamsListIdpGroupsInOrg(ctx context.Context, params TeamsLi
 		otelogen.OperationID("teams/list-idp-groups-in-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/team-sync/group-mappings"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -95792,6 +96467,7 @@ func (c *Client) sendTeamsListMembersInOrg(ctx context.Context, params TeamsList
 		otelogen.OperationID("teams/list-members-in-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/members"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -95962,6 +96638,7 @@ func (c *Client) sendTeamsListMembersLegacy(ctx context.Context, params TeamsLis
 		otelogen.OperationID("teams/list-members-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/members"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -96113,6 +96790,7 @@ func (c *Client) sendTeamsListPendingInvitationsInOrg(ctx context.Context, param
 		otelogen.OperationID("teams/list-pending-invitations-in-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/invitations"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -96269,6 +96947,7 @@ func (c *Client) sendTeamsListPendingInvitationsLegacy(ctx context.Context, para
 		otelogen.OperationID("teams/list-pending-invitations-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/invitations"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -96400,6 +97079,7 @@ func (c *Client) sendTeamsListProjectsInOrg(ctx context.Context, params TeamsLis
 		otelogen.OperationID("teams/list-projects-in-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/projects"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -96553,6 +97233,7 @@ func (c *Client) sendTeamsListProjectsLegacy(ctx context.Context, params TeamsLi
 		otelogen.OperationID("teams/list-projects-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/projects"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -96684,6 +97365,7 @@ func (c *Client) sendTeamsListReposInOrg(ctx context.Context, params TeamsListRe
 		otelogen.OperationID("teams/list-repos-in-org"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/repos"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -96836,6 +97518,7 @@ func (c *Client) sendTeamsListReposLegacy(ctx context.Context, params TeamsListR
 		otelogen.OperationID("teams/list-repos-legacy"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/repos"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -96985,6 +97668,7 @@ func (c *Client) sendTeamsRemoveMemberLegacy(ctx context.Context, params TeamsRe
 		otelogen.OperationID("teams/remove-member-legacy"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/members/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -97108,6 +97792,7 @@ func (c *Client) sendTeamsRemoveMembershipForUserInOrg(ctx context.Context, para
 		otelogen.OperationID("teams/remove-membership-for-user-in-org"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/memberships/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -97253,6 +97938,7 @@ func (c *Client) sendTeamsRemoveMembershipForUserLegacy(ctx context.Context, par
 		otelogen.OperationID("teams/remove-membership-for-user-legacy"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/memberships/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -97367,6 +98053,7 @@ func (c *Client) sendTeamsRemoveProjectInOrg(ctx context.Context, params TeamsRe
 		otelogen.OperationID("teams/remove-project-in-org"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/projects/{project_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -97503,6 +98190,7 @@ func (c *Client) sendTeamsRemoveProjectLegacy(ctx context.Context, params TeamsR
 		otelogen.OperationID("teams/remove-project-legacy"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/projects/{project_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -97617,6 +98305,7 @@ func (c *Client) sendTeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemov
 		otelogen.OperationID("teams/remove-repo-in-org"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -97772,6 +98461,7 @@ func (c *Client) sendTeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemo
 		otelogen.OperationID("teams/remove-repo-legacy"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/repos/{owner}/{repo}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -97903,6 +98593,7 @@ func (c *Client) sendTeamsUpdateDiscussionCommentInOrg(ctx context.Context, requ
 		otelogen.OperationID("teams/update-discussion-comment-in-org"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -98059,6 +98750,7 @@ func (c *Client) sendTeamsUpdateDiscussionCommentLegacy(ctx context.Context, req
 		otelogen.OperationID("teams/update-discussion-comment-legacy"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -98194,6 +98886,7 @@ func (c *Client) sendTeamsUpdateDiscussionInOrg(ctx context.Context, request Opt
 		otelogen.OperationID("teams/update-discussion-in-org"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -98332,6 +99025,7 @@ func (c *Client) sendTeamsUpdateDiscussionLegacy(ctx context.Context, request Op
 		otelogen.OperationID("teams/update-discussion-legacy"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -98446,6 +99140,7 @@ func (c *Client) sendTeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdat
 		otelogen.OperationID("teams/update-in-org"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -98564,6 +99259,7 @@ func (c *Client) sendTeamsUpdateLegacy(ctx context.Context, request *TeamsUpdate
 		otelogen.OperationID("teams/update-legacy"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -98657,6 +99353,7 @@ func (c *Client) sendUsersAddEmailForAuthenticated(ctx context.Context, request 
 		otelogen.OperationID("users/add-email-for-authenticated"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/user/emails"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -98732,6 +99429,7 @@ func (c *Client) sendUsersBlock(ctx context.Context, params UsersBlockParams) (r
 		otelogen.OperationID("users/block"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/user/blocks/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -98822,6 +99520,7 @@ func (c *Client) sendUsersCheckBlocked(ctx context.Context, params UsersCheckBlo
 		otelogen.OperationID("users/check-blocked"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/blocks/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -98912,6 +99611,7 @@ func (c *Client) sendUsersCheckFollowingForUser(ctx context.Context, params User
 		otelogen.OperationID("users/check-following-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/following/{target_user}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -99021,6 +99721,7 @@ func (c *Client) sendUsersCheckPersonIsFollowedByAuthenticated(ctx context.Conte
 		otelogen.OperationID("users/check-person-is-followed-by-authenticated"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/following/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -99113,6 +99814,7 @@ func (c *Client) sendUsersCreateGpgKeyForAuthenticated(ctx context.Context, requ
 		otelogen.OperationID("users/create-gpg-key-for-authenticated"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/user/gpg_keys"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -99190,6 +99892,7 @@ func (c *Client) sendUsersCreatePublicSSHKeyForAuthenticated(ctx context.Context
 		otelogen.OperationID("users/create-public-ssh-key-for-authenticated"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/user/keys"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -99265,6 +99968,7 @@ func (c *Client) sendUsersDeleteEmailForAuthenticated(ctx context.Context, reque
 		otelogen.OperationID("users/delete-email-for-authenticated"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/user/emails"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -99342,6 +100046,7 @@ func (c *Client) sendUsersDeleteGpgKeyForAuthenticated(ctx context.Context, para
 		otelogen.OperationID("users/delete-gpg-key-for-authenticated"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/user/gpg_keys/{gpg_key_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -99434,6 +100139,7 @@ func (c *Client) sendUsersDeletePublicSSHKeyForAuthenticated(ctx context.Context
 		otelogen.OperationID("users/delete-public-ssh-key-for-authenticated"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/user/keys/{key_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -99528,6 +100234,7 @@ func (c *Client) sendUsersFollow(ctx context.Context, params UsersFollowParams) 
 		otelogen.OperationID("users/follow"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/user/following/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -99621,6 +100328,7 @@ func (c *Client) sendUsersGetAuthenticated(ctx context.Context) (res UsersGetAut
 		otelogen.OperationID("users/get-authenticated"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -99707,6 +100415,7 @@ func (c *Client) sendUsersGetByUsername(ctx context.Context, params UsersGetByUs
 		otelogen.OperationID("users/get-by-username"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -99806,6 +100515,7 @@ func (c *Client) sendUsersGetContextForUser(ctx context.Context, params UsersGet
 		otelogen.OperationID("users/get-context-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/hovercard"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -99937,6 +100647,7 @@ func (c *Client) sendUsersGetGpgKeyForAuthenticated(ctx context.Context, params 
 		otelogen.OperationID("users/get-gpg-key-for-authenticated"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/gpg_keys/{gpg_key_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -100029,6 +100740,7 @@ func (c *Client) sendUsersGetPublicSSHKeyForAuthenticated(ctx context.Context, p
 		otelogen.OperationID("users/get-public-ssh-key-for-authenticated"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/keys/{key_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -100123,6 +100835,7 @@ func (c *Client) sendUsersList(ctx context.Context, params UsersListParams) (res
 		otelogen.OperationID("users/list"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -100233,6 +100946,7 @@ func (c *Client) sendUsersListBlockedByAuthenticated(ctx context.Context) (res U
 		otelogen.OperationID("users/list-blocked-by-authenticated"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/blocks"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -100306,6 +101020,7 @@ func (c *Client) sendUsersListEmailsForAuthenticated(ctx context.Context, params
 		otelogen.OperationID("users/list-emails-for-authenticated"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/emails"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -100416,6 +101131,7 @@ func (c *Client) sendUsersListFollowedByAuthenticated(ctx context.Context, param
 		otelogen.OperationID("users/list-followed-by-authenticated"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/following"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -100526,6 +101242,7 @@ func (c *Client) sendUsersListFollowersForAuthenticatedUser(ctx context.Context,
 		otelogen.OperationID("users/list-followers-for-authenticated-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/followers"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -100636,6 +101353,7 @@ func (c *Client) sendUsersListFollowersForUser(ctx context.Context, params Users
 		otelogen.OperationID("users/list-followers-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/followers"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -100765,6 +101483,7 @@ func (c *Client) sendUsersListFollowingForUser(ctx context.Context, params Users
 		otelogen.OperationID("users/list-following-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/following"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -100896,6 +101615,7 @@ func (c *Client) sendUsersListGpgKeysForAuthenticated(ctx context.Context, param
 		otelogen.OperationID("users/list-gpg-keys-for-authenticated"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/gpg_keys"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -101006,6 +101726,7 @@ func (c *Client) sendUsersListGpgKeysForUser(ctx context.Context, params UsersLi
 		otelogen.OperationID("users/list-gpg-keys-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/gpg_keys"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -101138,6 +101859,7 @@ func (c *Client) sendUsersListPublicEmailsForAuthenticated(ctx context.Context, 
 		otelogen.OperationID("users/list-public-emails-for-authenticated"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/public_emails"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -101248,6 +101970,7 @@ func (c *Client) sendUsersListPublicKeysForUser(ctx context.Context, params User
 		otelogen.OperationID("users/list-public-keys-for-user"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/keys"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -101379,6 +102102,7 @@ func (c *Client) sendUsersListPublicSSHKeysForAuthenticated(ctx context.Context,
 		otelogen.OperationID("users/list-public-ssh-keys-for-authenticated"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/keys"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -101489,6 +102213,7 @@ func (c *Client) sendUsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.
 		otelogen.OperationID("users/set-primary-email-visibility-for-authenticated"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/user/email/visibility"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -101564,6 +102289,7 @@ func (c *Client) sendUsersUnblock(ctx context.Context, params UsersUnblockParams
 		otelogen.OperationID("users/unblock"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/user/blocks/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -101655,6 +102381,7 @@ func (c *Client) sendUsersUnfollow(ctx context.Context, params UsersUnfollowPara
 		otelogen.OperationID("users/unfollow"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/user/following/{username}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -101747,6 +102474,7 @@ func (c *Client) sendUsersUpdateAuthenticated(ctx context.Context, request OptUs
 		otelogen.OperationID("users/update-authenticated"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/user"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.

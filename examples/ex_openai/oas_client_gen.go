@@ -292,6 +292,7 @@ func (c *Client) sendCancelFineTune(ctx context.Context, params CancelFineTunePa
 		otelogen.OperationID("cancelFineTune"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/fine-tunes/{fine_tune_id}/cancel"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -388,6 +389,7 @@ func (c *Client) sendCreateAnswer(ctx context.Context, request *CreateAnswerRequ
 		otelogen.OperationID("createAnswer"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/answers"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -463,6 +465,7 @@ func (c *Client) sendCreateChatCompletion(ctx context.Context, request *CreateCh
 		otelogen.OperationID("createChatCompletion"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/chat/completions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -546,6 +549,7 @@ func (c *Client) sendCreateClassification(ctx context.Context, request *CreateCl
 		otelogen.OperationID("createClassification"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/classifications"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -621,6 +625,7 @@ func (c *Client) sendCreateCompletion(ctx context.Context, request *CreateComple
 		otelogen.OperationID("createCompletion"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/completions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -696,6 +701,7 @@ func (c *Client) sendCreateEdit(ctx context.Context, request *CreateEditRequest)
 		otelogen.OperationID("createEdit"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/edits"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -771,6 +777,7 @@ func (c *Client) sendCreateEmbedding(ctx context.Context, request *CreateEmbeddi
 		otelogen.OperationID("createEmbedding"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/embeddings"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -848,6 +855,7 @@ func (c *Client) sendCreateFile(ctx context.Context, request *CreateFileRequestM
 		otelogen.OperationID("createFile"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/files"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -926,6 +934,7 @@ func (c *Client) sendCreateFineTune(ctx context.Context, request *CreateFineTune
 		otelogen.OperationID("createFineTune"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/fine-tunes"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1001,6 +1010,7 @@ func (c *Client) sendCreateImage(ctx context.Context, request *CreateImageReques
 		otelogen.OperationID("createImage"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/images/generations"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1076,6 +1086,7 @@ func (c *Client) sendCreateImageEdit(ctx context.Context, request *CreateImageEd
 		otelogen.OperationID("createImageEdit"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/images/edits"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1151,6 +1162,7 @@ func (c *Client) sendCreateImageVariation(ctx context.Context, request *CreateIm
 		otelogen.OperationID("createImageVariation"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/images/variations"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1226,6 +1238,7 @@ func (c *Client) sendCreateModeration(ctx context.Context, request *CreateModera
 		otelogen.OperationID("createModeration"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/moderations"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1310,6 +1323,7 @@ func (c *Client) sendCreateSearch(ctx context.Context, request *CreateSearchRequ
 		otelogen.OperationID("createSearch"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/engines/{engine_id}/search"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1404,6 +1418,7 @@ func (c *Client) sendCreateTranscription(ctx context.Context, request *CreateTra
 		otelogen.OperationID("createTranscription"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/audio/transcriptions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1479,6 +1494,7 @@ func (c *Client) sendCreateTranslation(ctx context.Context, request *CreateTrans
 		otelogen.OperationID("createTranslation"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/audio/translations"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1554,6 +1570,7 @@ func (c *Client) sendDeleteFile(ctx context.Context, params DeleteFileParams) (r
 		otelogen.OperationID("deleteFile"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/files/{file_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1644,6 +1661,7 @@ func (c *Client) sendDeleteModel(ctx context.Context, params DeleteModelParams) 
 		otelogen.OperationID("deleteModel"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/models/{model}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1734,6 +1752,7 @@ func (c *Client) sendDownloadFile(ctx context.Context, params DownloadFileParams
 		otelogen.OperationID("downloadFile"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/files/{file_id}/content"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1828,6 +1847,7 @@ func (c *Client) sendListEngines(ctx context.Context) (res *ListEnginesResponse,
 		otelogen.OperationID("listEngines"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/engines"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1900,6 +1920,7 @@ func (c *Client) sendListFiles(ctx context.Context) (res *ListFilesResponse, err
 		otelogen.OperationID("listFiles"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/files"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1972,6 +1993,7 @@ func (c *Client) sendListFineTuneEvents(ctx context.Context, params ListFineTune
 		otelogen.OperationID("listFineTuneEvents"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/fine-tunes/{fine_tune_id}/events"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2084,6 +2106,7 @@ func (c *Client) sendListFineTunes(ctx context.Context) (res *ListFineTunesRespo
 		otelogen.OperationID("listFineTunes"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/fine-tunes"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2157,6 +2180,7 @@ func (c *Client) sendListModels(ctx context.Context) (res *ListModelsResponse, e
 		otelogen.OperationID("listModels"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/models"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2232,6 +2256,7 @@ func (c *Client) sendRetrieveEngine(ctx context.Context, params RetrieveEnginePa
 		otelogen.OperationID("retrieveEngine"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/engines/{engine_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2322,6 +2347,7 @@ func (c *Client) sendRetrieveFile(ctx context.Context, params RetrieveFileParams
 		otelogen.OperationID("retrieveFile"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/files/{file_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2413,6 +2439,7 @@ func (c *Client) sendRetrieveFineTune(ctx context.Context, params RetrieveFineTu
 		otelogen.OperationID("retrieveFineTune"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/fine-tunes/{fine_tune_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2504,6 +2531,7 @@ func (c *Client) sendRetrieveModel(ctx context.Context, params RetrieveModelPara
 		otelogen.OperationID("retrieveModel"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/models/{model}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.

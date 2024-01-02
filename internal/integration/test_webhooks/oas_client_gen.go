@@ -94,6 +94,7 @@ func (c *Client) sendPublishEvent(ctx context.Context, request OptEvent) (res *E
 		otelogen.OperationID("publishEvent"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/event"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.

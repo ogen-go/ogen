@@ -106,6 +106,7 @@ func (c *Client) sendDataGet(ctx context.Context, params DataGetParams) (res str
 		otelogen.OperationID("dataGet"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/name/{id}/{key}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -215,6 +216,7 @@ func (c *Client) sendDataGetAny(ctx context.Context) (res string, err error) {
 		otelogen.OperationID("dataGetAny"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/name"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -287,6 +289,7 @@ func (c *Client) sendDataGetID(ctx context.Context, params DataGetIDParams) (res
 		otelogen.OperationID("dataGetID"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/name/{id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.

@@ -136,6 +136,7 @@ func (c *Client) sendCaching(ctx context.Context, params CachingParams) (res Wor
 		otelogen.OperationID("Caching"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/cached-worlds"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -227,6 +228,7 @@ func (c *Client) sendDB(ctx context.Context) (res *WorldObject, err error) {
 		otelogen.OperationID("DB"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/db"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -301,6 +303,7 @@ func (c *Client) sendJSON(ctx context.Context) (res *HelloWorld, err error) {
 		otelogen.OperationID("json"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/json"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -376,6 +379,7 @@ func (c *Client) sendQueries(ctx context.Context, params QueriesParams) (res Wor
 		otelogen.OperationID("Queries"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/queries"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -468,6 +472,7 @@ func (c *Client) sendUpdates(ctx context.Context, params UpdatesParams) (res Wor
 		otelogen.OperationID("Updates"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/updates"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.

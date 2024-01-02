@@ -97,6 +97,7 @@ func (c *Client) sendIntegerNumber(ctx context.Context) (res *IntegerNumber, err
 		otelogen.OperationID("integerNumber"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/integerNumber"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -167,6 +168,7 @@ func (c *Client) sendJaegerAnyOf(ctx context.Context) (res *JaegerAnyOf, err err
 		otelogen.OperationID("jaegerAnyOf"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/jaegerAnyOf"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -237,6 +239,7 @@ func (c *Client) sendOneUUID(ctx context.Context) (res *OneUUID, err error) {
 		otelogen.OperationID("oneUUID"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/oneUUID"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.

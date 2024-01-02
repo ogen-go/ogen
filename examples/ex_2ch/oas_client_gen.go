@@ -188,6 +188,7 @@ func (c *Client) sendAPICaptcha2chcaptchaIDGet(ctx context.Context, params APICa
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/captcha/2chcaptcha/id"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -297,6 +298,7 @@ func (c *Client) sendAPICaptcha2chcaptchaShowGet(ctx context.Context, params API
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/captcha/2chcaptcha/show"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -390,6 +392,7 @@ func (c *Client) sendAPICaptchaAppIDPublicKeyGet(ctx context.Context, params API
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/captcha/app/id/{public_key}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -517,6 +520,7 @@ func (c *Client) sendAPICaptchaInvisibleRecaptchaIDGet(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/captcha/invisible_recaptcha/id"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -626,6 +630,7 @@ func (c *Client) sendAPICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) 
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/captcha/invisible_recaptcha/mobile"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -697,6 +702,7 @@ func (c *Client) sendAPICaptchaRecaptchaIDGet(ctx context.Context, params APICap
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/captcha/recaptcha/id"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -806,6 +812,7 @@ func (c *Client) sendAPICaptchaRecaptchaMobileGet(ctx context.Context) (res *API
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/captcha/recaptcha/mobile"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -877,6 +884,7 @@ func (c *Client) sendAPIDislikeGet(ctx context.Context, params APIDislikeGetPara
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/dislike"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -980,6 +988,7 @@ func (c *Client) sendAPILikeGet(ctx context.Context, params APILikeGetParams) (r
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/like"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1085,6 +1094,7 @@ func (c *Client) sendAPIMobileV2AfterBoardThreadNumGet(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/mobile/v2/after/{board}/{thread}/{num}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1212,6 +1222,7 @@ func (c *Client) sendAPIMobileV2BoardsGet(ctx context.Context) (res Boards, err 
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/mobile/v2/boards"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1283,6 +1294,7 @@ func (c *Client) sendAPIMobileV2InfoBoardThreadGet(ctx context.Context, params A
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/mobile/v2/info/{board}/{thread}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1391,6 +1403,7 @@ func (c *Client) sendAPIMobileV2PostBoardNumGet(ctx context.Context, params APIM
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/mobile/v2/post/{board}/{num}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1499,6 +1512,7 @@ func (c *Client) sendUserPassloginPost(ctx context.Context, request OptUserPassl
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/user/passlogin"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1591,6 +1605,7 @@ func (c *Client) sendUserPostingPost(ctx context.Context, request OptUserPosting
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/user/posting"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1665,6 +1680,7 @@ func (c *Client) sendUserReportPost(ctx context.Context, request OptUserReportPo
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/user/report"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.

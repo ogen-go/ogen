@@ -87,6 +87,7 @@ func (c *Client) sendHealthzGet(ctx context.Context) (res *Person, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/healthz"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.

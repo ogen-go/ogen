@@ -158,6 +158,7 @@ func (c *Client) sendNullableStrings(ctx context.Context, request NilString) (re
 		otelogen.OperationID("nullableStrings"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/nullableStrings"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -242,6 +243,7 @@ func (c *Client) sendObjectsWithConflictingArrayProperty(ctx context.Context, re
 		otelogen.OperationID("objectsWithConflictingArrayProperty"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/objectsWithConflictingArrayProperty"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -326,6 +328,7 @@ func (c *Client) sendObjectsWithConflictingProperties(ctx context.Context, reque
 		otelogen.OperationID("objectsWithConflictingProperties"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/objectsWithConflictingProperties"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -424,6 +427,7 @@ func (c *Client) sendReferencedAllof(ctx context.Context, request ReferencedAllo
 		otelogen.OperationID("referencedAllof"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/referencedAllof"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -524,6 +528,7 @@ func (c *Client) sendReferencedAllofOptional(ctx context.Context, request Refere
 		otelogen.OperationID("referencedAllofOptional"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/referencedAllofOptional"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -617,6 +622,7 @@ func (c *Client) sendSimpleInteger(ctx context.Context, request int) (res *Simpl
 		otelogen.OperationID("simpleInteger"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/simpleInteger"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -692,6 +698,7 @@ func (c *Client) sendSimpleObjects(ctx context.Context, request *SimpleObjectsRe
 		otelogen.OperationID("simpleObjects"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/simpleObjects"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -789,6 +796,7 @@ func (c *Client) sendStringsNotype(ctx context.Context, request NilString) (res 
 		otelogen.OperationID("stringsNotype"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/stringsNotype"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.

@@ -103,6 +103,7 @@ func (c *Client) sendDataCreate(ctx context.Context, request OptData) (res *Data
 		otelogen.OperationID("dataCreate"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/data"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -178,6 +179,7 @@ func (c *Client) sendDataGet(ctx context.Context) (res *Data, err error) {
 		otelogen.OperationID("dataGet"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/data"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.

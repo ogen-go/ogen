@@ -124,6 +124,7 @@ func (c *Client) sendGetBook(ctx context.Context, params GetBookParams) (res Get
 		otelogen.OperationID("getBook"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/gallery/{book_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -214,6 +215,7 @@ func (c *Client) sendGetPageCoverImage(ctx context.Context, params GetPageCoverI
 		otelogen.OperationID("getPageCoverImage"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/galleries/{media_id}/cover.{format}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -323,6 +325,7 @@ func (c *Client) sendGetPageImage(ctx context.Context, params GetPageImageParams
 		otelogen.OperationID("getPageImage"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/galleries/{media_id}/{page}.{format}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -451,6 +454,7 @@ func (c *Client) sendGetPageThumbnailImage(ctx context.Context, params GetPageTh
 		otelogen.OperationID("getPageThumbnailImage"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/galleries/{media_id}/{page}t.{format}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -579,6 +583,7 @@ func (c *Client) sendSearch(ctx context.Context, params SearchParams) (res Searc
 		otelogen.OperationID("search"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/galleries/search"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -686,6 +691,7 @@ func (c *Client) sendSearchByTagID(ctx context.Context, params SearchByTagIDPara
 		otelogen.OperationID("searchByTagID"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/galleries/tagged"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.

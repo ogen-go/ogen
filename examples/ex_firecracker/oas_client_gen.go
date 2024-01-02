@@ -262,6 +262,7 @@ func (c *Client) sendCreateSnapshot(ctx context.Context, request *SnapshotCreate
 		otelogen.OperationID("createSnapshot"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/snapshot/create"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -337,6 +338,7 @@ func (c *Client) sendCreateSyncAction(ctx context.Context, request *InstanceActi
 		otelogen.OperationID("createSyncAction"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/actions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -412,6 +414,7 @@ func (c *Client) sendDescribeBalloonConfig(ctx context.Context) (res DescribeBal
 		otelogen.OperationID("describeBalloonConfig"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/balloon"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -484,6 +487,7 @@ func (c *Client) sendDescribeBalloonStats(ctx context.Context) (res DescribeBall
 		otelogen.OperationID("describeBalloonStats"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/balloon/statistics"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -556,6 +560,7 @@ func (c *Client) sendDescribeInstance(ctx context.Context) (res *InstanceInfo, e
 		otelogen.OperationID("describeInstance"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -628,6 +633,7 @@ func (c *Client) sendGetExportVmConfig(ctx context.Context) (res *FullVmConfigur
 		otelogen.OperationID("getExportVmConfig"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/vm/config"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -702,6 +708,7 @@ func (c *Client) sendGetMachineConfiguration(ctx context.Context) (res *MachineC
 		otelogen.OperationID("getMachineConfiguration"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/machine-config"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -775,6 +782,7 @@ func (c *Client) sendLoadSnapshot(ctx context.Context, request *SnapshotLoadPara
 		otelogen.OperationID("loadSnapshot"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/snapshot/load"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -849,6 +857,7 @@ func (c *Client) sendMmdsConfigPut(ctx context.Context, request *MmdsConfig) (re
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/mmds/config"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -923,6 +932,7 @@ func (c *Client) sendMmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/mmds"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -994,6 +1004,7 @@ func (c *Client) sendMmdsPatch(ctx context.Context, request *MmdsPatchReq) (res 
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/mmds"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1068,6 +1079,7 @@ func (c *Client) sendMmdsPut(ctx context.Context, request *MmdsPutReq) (res Mmds
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/mmds"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1144,6 +1156,7 @@ func (c *Client) sendPatchBalloon(ctx context.Context, request *BalloonUpdate) (
 		otelogen.OperationID("patchBalloon"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/balloon"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1220,6 +1233,7 @@ func (c *Client) sendPatchBalloonStatsInterval(ctx context.Context, request *Bal
 		otelogen.OperationID("patchBalloonStatsInterval"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/balloon/statistics"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1296,6 +1310,7 @@ func (c *Client) sendPatchGuestDriveByID(ctx context.Context, request *PartialDr
 		otelogen.OperationID("patchGuestDriveByID"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/drives/{drive_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1389,6 +1404,7 @@ func (c *Client) sendPatchGuestNetworkInterfaceByID(ctx context.Context, request
 		otelogen.OperationID("patchGuestNetworkInterfaceByID"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/network-interfaces/{iface_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1483,6 +1499,7 @@ func (c *Client) sendPatchMachineConfiguration(ctx context.Context, request OptM
 		otelogen.OperationID("patchMachineConfiguration"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/machine-config"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1558,6 +1575,7 @@ func (c *Client) sendPatchVm(ctx context.Context, request *VM) (res PatchVmRes, 
 		otelogen.OperationID("patchVm"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/vm"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1634,6 +1652,7 @@ func (c *Client) sendPutBalloon(ctx context.Context, request *Balloon) (res PutB
 		otelogen.OperationID("putBalloon"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/balloon"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1710,6 +1729,7 @@ func (c *Client) sendPutGuestBootSource(ctx context.Context, request *BootSource
 		otelogen.OperationID("putGuestBootSource"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/boot-source"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1786,6 +1806,7 @@ func (c *Client) sendPutGuestDriveByID(ctx context.Context, request *Drive, para
 		otelogen.OperationID("putGuestDriveByID"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/drives/{drive_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1879,6 +1900,7 @@ func (c *Client) sendPutGuestNetworkInterfaceByID(ctx context.Context, request *
 		otelogen.OperationID("putGuestNetworkInterfaceByID"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/network-interfaces/{iface_id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1973,6 +1995,7 @@ func (c *Client) sendPutGuestVsock(ctx context.Context, request *Vsock) (res Put
 		otelogen.OperationID("putGuestVsock"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/vsock"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2048,6 +2071,7 @@ func (c *Client) sendPutLogger(ctx context.Context, request *Logger) (res PutLog
 		otelogen.OperationID("putLogger"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/logger"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2126,6 +2150,7 @@ func (c *Client) sendPutMachineConfiguration(ctx context.Context, request OptMac
 		otelogen.OperationID("putMachineConfiguration"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/machine-config"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2201,6 +2226,7 @@ func (c *Client) sendPutMetrics(ctx context.Context, request *Metrics) (res PutM
 		otelogen.OperationID("putMetrics"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/metrics"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.

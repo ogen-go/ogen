@@ -3022,6 +3022,7 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedPodProxy(ctx context.Context, 
 		otelogen.OperationID("connectCoreV1DeleteNamespacedPodProxy"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -3186,6 +3187,7 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedPodProxyWithPath(ctx context.C
 		otelogen.OperationID("connectCoreV1DeleteNamespacedPodProxyWithPath"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -3368,6 +3370,7 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedServiceProxy(ctx context.Conte
 		otelogen.OperationID("connectCoreV1DeleteNamespacedServiceProxy"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -3532,6 +3535,7 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedServiceProxyWithPath(ctx conte
 		otelogen.OperationID("connectCoreV1DeleteNamespacedServiceProxyWithPath"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -3714,6 +3718,7 @@ func (c *Client) sendConnectCoreV1DeleteNodeProxy(ctx context.Context, params Co
 		otelogen.OperationID("connectCoreV1DeleteNodeProxy"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -3859,6 +3864,7 @@ func (c *Client) sendConnectCoreV1DeleteNodeProxyWithPath(ctx context.Context, p
 		otelogen.OperationID("connectCoreV1DeleteNodeProxyWithPath"),
 		semconv.HTTPMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -4022,6 +4028,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodAttach(ctx context.Context, pa
 		otelogen.OperationID("connectCoreV1GetNamespacedPodAttach"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/attach"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -4254,6 +4261,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodExec(ctx context.Context, para
 		otelogen.OperationID("connectCoreV1GetNamespacedPodExec"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/exec"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -4503,6 +4511,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodPortforward(ctx context.Contex
 		otelogen.OperationID("connectCoreV1GetNamespacedPodPortforward"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/portforward"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -4667,6 +4676,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodProxy(ctx context.Context, par
 		otelogen.OperationID("connectCoreV1GetNamespacedPodProxy"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -4831,6 +4841,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodProxyWithPath(ctx context.Cont
 		otelogen.OperationID("connectCoreV1GetNamespacedPodProxyWithPath"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -5013,6 +5024,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedServiceProxy(ctx context.Context,
 		otelogen.OperationID("connectCoreV1GetNamespacedServiceProxy"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -5177,6 +5189,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedServiceProxyWithPath(ctx context.
 		otelogen.OperationID("connectCoreV1GetNamespacedServiceProxyWithPath"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -5359,6 +5372,7 @@ func (c *Client) sendConnectCoreV1GetNodeProxy(ctx context.Context, params Conne
 		otelogen.OperationID("connectCoreV1GetNodeProxy"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -5504,6 +5518,7 @@ func (c *Client) sendConnectCoreV1GetNodeProxyWithPath(ctx context.Context, para
 		otelogen.OperationID("connectCoreV1GetNodeProxyWithPath"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -5667,6 +5682,7 @@ func (c *Client) sendConnectCoreV1HeadNamespacedPodProxy(ctx context.Context, pa
 		otelogen.OperationID("connectCoreV1HeadNamespacedPodProxy"),
 		semconv.HTTPMethodKey.String("HEAD"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -5831,6 +5847,7 @@ func (c *Client) sendConnectCoreV1HeadNamespacedPodProxyWithPath(ctx context.Con
 		otelogen.OperationID("connectCoreV1HeadNamespacedPodProxyWithPath"),
 		semconv.HTTPMethodKey.String("HEAD"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -6013,6 +6030,7 @@ func (c *Client) sendConnectCoreV1HeadNamespacedServiceProxy(ctx context.Context
 		otelogen.OperationID("connectCoreV1HeadNamespacedServiceProxy"),
 		semconv.HTTPMethodKey.String("HEAD"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -6177,6 +6195,7 @@ func (c *Client) sendConnectCoreV1HeadNamespacedServiceProxyWithPath(ctx context
 		otelogen.OperationID("connectCoreV1HeadNamespacedServiceProxyWithPath"),
 		semconv.HTTPMethodKey.String("HEAD"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -6359,6 +6378,7 @@ func (c *Client) sendConnectCoreV1HeadNodeProxy(ctx context.Context, params Conn
 		otelogen.OperationID("connectCoreV1HeadNodeProxy"),
 		semconv.HTTPMethodKey.String("HEAD"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -6504,6 +6524,7 @@ func (c *Client) sendConnectCoreV1HeadNodeProxyWithPath(ctx context.Context, par
 		otelogen.OperationID("connectCoreV1HeadNodeProxyWithPath"),
 		semconv.HTTPMethodKey.String("HEAD"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -6667,6 +6688,7 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedPodProxy(ctx context.Context,
 		otelogen.OperationID("connectCoreV1OptionsNamespacedPodProxy"),
 		semconv.HTTPMethodKey.String("OPTIONS"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -6831,6 +6853,7 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedPodProxyWithPath(ctx context.
 		otelogen.OperationID("connectCoreV1OptionsNamespacedPodProxyWithPath"),
 		semconv.HTTPMethodKey.String("OPTIONS"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -7013,6 +7036,7 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedServiceProxy(ctx context.Cont
 		otelogen.OperationID("connectCoreV1OptionsNamespacedServiceProxy"),
 		semconv.HTTPMethodKey.String("OPTIONS"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -7177,6 +7201,7 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedServiceProxyWithPath(ctx cont
 		otelogen.OperationID("connectCoreV1OptionsNamespacedServiceProxyWithPath"),
 		semconv.HTTPMethodKey.String("OPTIONS"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -7359,6 +7384,7 @@ func (c *Client) sendConnectCoreV1OptionsNodeProxy(ctx context.Context, params C
 		otelogen.OperationID("connectCoreV1OptionsNodeProxy"),
 		semconv.HTTPMethodKey.String("OPTIONS"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -7504,6 +7530,7 @@ func (c *Client) sendConnectCoreV1OptionsNodeProxyWithPath(ctx context.Context, 
 		otelogen.OperationID("connectCoreV1OptionsNodeProxyWithPath"),
 		semconv.HTTPMethodKey.String("OPTIONS"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -7667,6 +7694,7 @@ func (c *Client) sendConnectCoreV1PatchNamespacedPodProxy(ctx context.Context, p
 		otelogen.OperationID("connectCoreV1PatchNamespacedPodProxy"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -7831,6 +7859,7 @@ func (c *Client) sendConnectCoreV1PatchNamespacedPodProxyWithPath(ctx context.Co
 		otelogen.OperationID("connectCoreV1PatchNamespacedPodProxyWithPath"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -8013,6 +8042,7 @@ func (c *Client) sendConnectCoreV1PatchNamespacedServiceProxy(ctx context.Contex
 		otelogen.OperationID("connectCoreV1PatchNamespacedServiceProxy"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -8177,6 +8207,7 @@ func (c *Client) sendConnectCoreV1PatchNamespacedServiceProxyWithPath(ctx contex
 		otelogen.OperationID("connectCoreV1PatchNamespacedServiceProxyWithPath"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -8359,6 +8390,7 @@ func (c *Client) sendConnectCoreV1PatchNodeProxy(ctx context.Context, params Con
 		otelogen.OperationID("connectCoreV1PatchNodeProxy"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -8504,6 +8536,7 @@ func (c *Client) sendConnectCoreV1PatchNodeProxyWithPath(ctx context.Context, pa
 		otelogen.OperationID("connectCoreV1PatchNodeProxyWithPath"),
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -8667,6 +8700,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodAttach(ctx context.Context, p
 		otelogen.OperationID("connectCoreV1PostNamespacedPodAttach"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/attach"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -8899,6 +8933,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodExec(ctx context.Context, par
 		otelogen.OperationID("connectCoreV1PostNamespacedPodExec"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/exec"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -9148,6 +9183,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodPortforward(ctx context.Conte
 		otelogen.OperationID("connectCoreV1PostNamespacedPodPortforward"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/portforward"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -9312,6 +9348,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodProxy(ctx context.Context, pa
 		otelogen.OperationID("connectCoreV1PostNamespacedPodProxy"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -9476,6 +9513,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodProxyWithPath(ctx context.Con
 		otelogen.OperationID("connectCoreV1PostNamespacedPodProxyWithPath"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -9658,6 +9696,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedServiceProxy(ctx context.Context
 		otelogen.OperationID("connectCoreV1PostNamespacedServiceProxy"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -9822,6 +9861,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedServiceProxyWithPath(ctx context
 		otelogen.OperationID("connectCoreV1PostNamespacedServiceProxyWithPath"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -10004,6 +10044,7 @@ func (c *Client) sendConnectCoreV1PostNodeProxy(ctx context.Context, params Conn
 		otelogen.OperationID("connectCoreV1PostNodeProxy"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -10149,6 +10190,7 @@ func (c *Client) sendConnectCoreV1PostNodeProxyWithPath(ctx context.Context, par
 		otelogen.OperationID("connectCoreV1PostNodeProxyWithPath"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -10312,6 +10354,7 @@ func (c *Client) sendConnectCoreV1PutNamespacedPodProxy(ctx context.Context, par
 		otelogen.OperationID("connectCoreV1PutNamespacedPodProxy"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -10476,6 +10519,7 @@ func (c *Client) sendConnectCoreV1PutNamespacedPodProxyWithPath(ctx context.Cont
 		otelogen.OperationID("connectCoreV1PutNamespacedPodProxyWithPath"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -10658,6 +10702,7 @@ func (c *Client) sendConnectCoreV1PutNamespacedServiceProxy(ctx context.Context,
 		otelogen.OperationID("connectCoreV1PutNamespacedServiceProxy"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -10822,6 +10867,7 @@ func (c *Client) sendConnectCoreV1PutNamespacedServiceProxyWithPath(ctx context.
 		otelogen.OperationID("connectCoreV1PutNamespacedServiceProxyWithPath"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -11004,6 +11050,7 @@ func (c *Client) sendConnectCoreV1PutNodeProxy(ctx context.Context, params Conne
 		otelogen.OperationID("connectCoreV1PutNodeProxy"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -11149,6 +11196,7 @@ func (c *Client) sendConnectCoreV1PutNodeProxyWithPath(ctx context.Context, para
 		otelogen.OperationID("connectCoreV1PutNodeProxyWithPath"),
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -11312,6 +11360,7 @@ func (c *Client) sendGetAPIVersions(ctx context.Context) (res GetAPIVersionsRes,
 		otelogen.OperationID("getAPIVersions"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -11417,6 +11466,7 @@ func (c *Client) sendGetAdmissionregistrationAPIGroup(ctx context.Context) (res 
 		otelogen.OperationID("getAdmissionregistrationAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -11522,6 +11572,7 @@ func (c *Client) sendGetAdmissionregistrationV1APIResources(ctx context.Context)
 		otelogen.OperationID("getAdmissionregistrationV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -11627,6 +11678,7 @@ func (c *Client) sendGetApiextensionsAPIGroup(ctx context.Context) (res GetApiex
 		otelogen.OperationID("getApiextensionsAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -11732,6 +11784,7 @@ func (c *Client) sendGetApiextensionsV1APIResources(ctx context.Context) (res Ge
 		otelogen.OperationID("getApiextensionsV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/v1/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -11837,6 +11890,7 @@ func (c *Client) sendGetApiregistrationAPIGroup(ctx context.Context) (res GetApi
 		otelogen.OperationID("getApiregistrationAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -11942,6 +11996,7 @@ func (c *Client) sendGetApiregistrationV1APIResources(ctx context.Context) (res 
 		otelogen.OperationID("getApiregistrationV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/v1/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -12047,6 +12102,7 @@ func (c *Client) sendGetAppsAPIGroup(ctx context.Context) (res GetAppsAPIGroupRe
 		otelogen.OperationID("getAppsAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -12152,6 +12208,7 @@ func (c *Client) sendGetAppsV1APIResources(ctx context.Context) (res GetAppsV1AP
 		otelogen.OperationID("getAppsV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -12257,6 +12314,7 @@ func (c *Client) sendGetAuthenticationAPIGroup(ctx context.Context) (res GetAuth
 		otelogen.OperationID("getAuthenticationAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/authentication.k8s.io/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -12362,6 +12420,7 @@ func (c *Client) sendGetAuthenticationV1APIResources(ctx context.Context) (res G
 		otelogen.OperationID("getAuthenticationV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/authentication.k8s.io/v1/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -12467,6 +12526,7 @@ func (c *Client) sendGetAuthorizationAPIGroup(ctx context.Context) (res GetAutho
 		otelogen.OperationID("getAuthorizationAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/authorization.k8s.io/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -12572,6 +12632,7 @@ func (c *Client) sendGetAuthorizationV1APIResources(ctx context.Context) (res Ge
 		otelogen.OperationID("getAuthorizationV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/authorization.k8s.io/v1/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -12677,6 +12738,7 @@ func (c *Client) sendGetAutoscalingAPIGroup(ctx context.Context) (res GetAutosca
 		otelogen.OperationID("getAutoscalingAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -12782,6 +12844,7 @@ func (c *Client) sendGetAutoscalingV1APIResources(ctx context.Context) (res GetA
 		otelogen.OperationID("getAutoscalingV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -12887,6 +12950,7 @@ func (c *Client) sendGetAutoscalingV2beta1APIResources(ctx context.Context) (res
 		otelogen.OperationID("getAutoscalingV2beta1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -12992,6 +13056,7 @@ func (c *Client) sendGetAutoscalingV2beta2APIResources(ctx context.Context) (res
 		otelogen.OperationID("getAutoscalingV2beta2APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -13097,6 +13162,7 @@ func (c *Client) sendGetBatchAPIGroup(ctx context.Context) (res GetBatchAPIGroup
 		otelogen.OperationID("getBatchAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -13202,6 +13268,7 @@ func (c *Client) sendGetBatchV1APIResources(ctx context.Context) (res GetBatchV1
 		otelogen.OperationID("getBatchV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -13307,6 +13374,7 @@ func (c *Client) sendGetBatchV1beta1APIResources(ctx context.Context) (res GetBa
 		otelogen.OperationID("getBatchV1beta1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -13412,6 +13480,7 @@ func (c *Client) sendGetCertificatesAPIGroup(ctx context.Context) (res GetCertif
 		otelogen.OperationID("getCertificatesAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -13517,6 +13586,7 @@ func (c *Client) sendGetCertificatesV1APIResources(ctx context.Context) (res Get
 		otelogen.OperationID("getCertificatesV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -13622,6 +13692,7 @@ func (c *Client) sendGetCodeVersion(ctx context.Context) (res GetCodeVersionRes,
 		otelogen.OperationID("getCodeVersion"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/version/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -13727,6 +13798,7 @@ func (c *Client) sendGetCoordinationAPIGroup(ctx context.Context) (res GetCoordi
 		otelogen.OperationID("getCoordinationAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -13832,6 +13904,7 @@ func (c *Client) sendGetCoordinationV1APIResources(ctx context.Context) (res Get
 		otelogen.OperationID("getCoordinationV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -13937,6 +14010,7 @@ func (c *Client) sendGetCoreAPIVersions(ctx context.Context) (res GetCoreAPIVers
 		otelogen.OperationID("getCoreAPIVersions"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -14042,6 +14116,7 @@ func (c *Client) sendGetCoreV1APIResources(ctx context.Context) (res GetCoreV1AP
 		otelogen.OperationID("getCoreV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -14147,6 +14222,7 @@ func (c *Client) sendGetDiscoveryAPIGroup(ctx context.Context) (res GetDiscovery
 		otelogen.OperationID("getDiscoveryAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -14252,6 +14328,7 @@ func (c *Client) sendGetDiscoveryV1APIResources(ctx context.Context) (res GetDis
 		otelogen.OperationID("getDiscoveryV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -14357,6 +14434,7 @@ func (c *Client) sendGetDiscoveryV1beta1APIResources(ctx context.Context) (res G
 		otelogen.OperationID("getDiscoveryV1beta1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -14462,6 +14540,7 @@ func (c *Client) sendGetEventsAPIGroup(ctx context.Context) (res GetEventsAPIGro
 		otelogen.OperationID("getEventsAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/events.k8s.io/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -14567,6 +14646,7 @@ func (c *Client) sendGetEventsV1APIResources(ctx context.Context) (res GetEvents
 		otelogen.OperationID("getEventsV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -14672,6 +14752,7 @@ func (c *Client) sendGetEventsV1beta1APIResources(ctx context.Context) (res GetE
 		otelogen.OperationID("getEventsV1beta1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -14777,6 +14858,7 @@ func (c *Client) sendGetFlowcontrolApiserverAPIGroup(ctx context.Context) (res G
 		otelogen.OperationID("getFlowcontrolApiserverAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -14882,6 +14964,7 @@ func (c *Client) sendGetFlowcontrolApiserverV1beta1APIResources(ctx context.Cont
 		otelogen.OperationID("getFlowcontrolApiserverV1beta1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -14987,6 +15070,7 @@ func (c *Client) sendGetFlowcontrolApiserverV1beta2APIResources(ctx context.Cont
 		otelogen.OperationID("getFlowcontrolApiserverV1beta2APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -15092,6 +15176,7 @@ func (c *Client) sendGetInternalApiserverAPIGroup(ctx context.Context) (res GetI
 		otelogen.OperationID("getInternalApiserverAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -15197,6 +15282,7 @@ func (c *Client) sendGetInternalApiserverV1alpha1APIResources(ctx context.Contex
 		otelogen.OperationID("getInternalApiserverV1alpha1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -15302,6 +15388,7 @@ func (c *Client) sendGetNetworkingAPIGroup(ctx context.Context) (res GetNetworki
 		otelogen.OperationID("getNetworkingAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -15407,6 +15494,7 @@ func (c *Client) sendGetNetworkingV1APIResources(ctx context.Context) (res GetNe
 		otelogen.OperationID("getNetworkingV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -15512,6 +15600,7 @@ func (c *Client) sendGetNodeAPIGroup(ctx context.Context) (res GetNodeAPIGroupRe
 		otelogen.OperationID("getNodeAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -15617,6 +15706,7 @@ func (c *Client) sendGetNodeV1APIResources(ctx context.Context) (res GetNodeV1AP
 		otelogen.OperationID("getNodeV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -15722,6 +15812,7 @@ func (c *Client) sendGetNodeV1alpha1APIResources(ctx context.Context) (res GetNo
 		otelogen.OperationID("getNodeV1alpha1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1alpha1/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -15827,6 +15918,7 @@ func (c *Client) sendGetNodeV1beta1APIResources(ctx context.Context) (res GetNod
 		otelogen.OperationID("getNodeV1beta1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1beta1/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -15932,6 +16024,7 @@ func (c *Client) sendGetPolicyAPIGroup(ctx context.Context) (res GetPolicyAPIGro
 		otelogen.OperationID("getPolicyAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -16037,6 +16130,7 @@ func (c *Client) sendGetPolicyV1APIResources(ctx context.Context) (res GetPolicy
 		otelogen.OperationID("getPolicyV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -16142,6 +16236,7 @@ func (c *Client) sendGetPolicyV1beta1APIResources(ctx context.Context) (res GetP
 		otelogen.OperationID("getPolicyV1beta1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -16247,6 +16342,7 @@ func (c *Client) sendGetRbacAuthorizationAPIGroup(ctx context.Context) (res GetR
 		otelogen.OperationID("getRbacAuthorizationAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -16352,6 +16448,7 @@ func (c *Client) sendGetRbacAuthorizationV1APIResources(ctx context.Context) (re
 		otelogen.OperationID("getRbacAuthorizationV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -16457,6 +16554,7 @@ func (c *Client) sendGetSchedulingAPIGroup(ctx context.Context) (res GetScheduli
 		otelogen.OperationID("getSchedulingAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/scheduling.k8s.io/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -16562,6 +16660,7 @@ func (c *Client) sendGetSchedulingV1APIResources(ctx context.Context) (res GetSc
 		otelogen.OperationID("getSchedulingV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/scheduling.k8s.io/v1/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -16667,6 +16766,7 @@ func (c *Client) sendGetServiceAccountIssuerOpenIDConfiguration(ctx context.Cont
 		otelogen.OperationID("getServiceAccountIssuerOpenIDConfiguration"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/.well-known/openid-configuration/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -16772,6 +16872,7 @@ func (c *Client) sendGetServiceAccountIssuerOpenIDKeyset(ctx context.Context) (r
 		otelogen.OperationID("getServiceAccountIssuerOpenIDKeyset"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/openid/v1/jwks/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -16877,6 +16978,7 @@ func (c *Client) sendGetStorageAPIGroup(ctx context.Context) (res GetStorageAPIG
 		otelogen.OperationID("getStorageAPIGroup"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -16982,6 +17084,7 @@ func (c *Client) sendGetStorageV1APIResources(ctx context.Context) (res GetStora
 		otelogen.OperationID("getStorageV1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -17087,6 +17190,7 @@ func (c *Client) sendGetStorageV1alpha1APIResources(ctx context.Context) (res Ge
 		otelogen.OperationID("getStorageV1alpha1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -17192,6 +17296,7 @@ func (c *Client) sendGetStorageV1beta1APIResources(ctx context.Context) (res Get
 		otelogen.OperationID("getStorageV1beta1APIResources"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -17297,6 +17402,7 @@ func (c *Client) sendListAdmissionregistrationV1MutatingWebhookConfiguration(ctx
 		otelogen.OperationID("listAdmissionregistrationV1MutatingWebhookConfiguration"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -17576,6 +17682,7 @@ func (c *Client) sendListAdmissionregistrationV1ValidatingWebhookConfiguration(c
 		otelogen.OperationID("listAdmissionregistrationV1ValidatingWebhookConfiguration"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -17855,6 +17962,7 @@ func (c *Client) sendListApiextensionsV1CustomResourceDefinition(ctx context.Con
 		otelogen.OperationID("listApiextensionsV1CustomResourceDefinition"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/v1/customresourcedefinitions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -18134,6 +18242,7 @@ func (c *Client) sendListApiregistrationV1APIService(ctx context.Context, params
 		otelogen.OperationID("listApiregistrationV1APIService"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/v1/apiservices"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -18413,6 +18522,7 @@ func (c *Client) sendListAppsV1ControllerRevisionForAllNamespaces(ctx context.Co
 		otelogen.OperationID("listAppsV1ControllerRevisionForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/controllerrevisions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -18692,6 +18802,7 @@ func (c *Client) sendListAppsV1DaemonSetForAllNamespaces(ctx context.Context, pa
 		otelogen.OperationID("listAppsV1DaemonSetForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/daemonsets"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -18971,6 +19082,7 @@ func (c *Client) sendListAppsV1DeploymentForAllNamespaces(ctx context.Context, p
 		otelogen.OperationID("listAppsV1DeploymentForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/deployments"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -19250,6 +19362,7 @@ func (c *Client) sendListAppsV1NamespacedControllerRevision(ctx context.Context,
 		otelogen.OperationID("listAppsV1NamespacedControllerRevision"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/controllerrevisions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -19548,6 +19661,7 @@ func (c *Client) sendListAppsV1NamespacedDaemonSet(ctx context.Context, params L
 		otelogen.OperationID("listAppsV1NamespacedDaemonSet"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/daemonsets"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -19846,6 +19960,7 @@ func (c *Client) sendListAppsV1NamespacedDeployment(ctx context.Context, params 
 		otelogen.OperationID("listAppsV1NamespacedDeployment"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/deployments"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -20144,6 +20259,7 @@ func (c *Client) sendListAppsV1NamespacedReplicaSet(ctx context.Context, params 
 		otelogen.OperationID("listAppsV1NamespacedReplicaSet"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/replicasets"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -20442,6 +20558,7 @@ func (c *Client) sendListAppsV1NamespacedStatefulSet(ctx context.Context, params
 		otelogen.OperationID("listAppsV1NamespacedStatefulSet"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/statefulsets"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -20740,6 +20857,7 @@ func (c *Client) sendListAppsV1ReplicaSetForAllNamespaces(ctx context.Context, p
 		otelogen.OperationID("listAppsV1ReplicaSetForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/replicasets"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -21019,6 +21137,7 @@ func (c *Client) sendListAppsV1StatefulSetForAllNamespaces(ctx context.Context, 
 		otelogen.OperationID("listAppsV1StatefulSetForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/statefulsets"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -21298,6 +21417,7 @@ func (c *Client) sendListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ct
 		otelogen.OperationID("listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/horizontalpodautoscalers"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -21577,6 +21697,7 @@ func (c *Client) sendListAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx cont
 		otelogen.OperationID("listAutoscalingV1NamespacedHorizontalPodAutoscaler"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -21875,6 +21996,7 @@ func (c *Client) sendListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespac
 		otelogen.OperationID("listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/horizontalpodautoscalers"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -22154,6 +22276,7 @@ func (c *Client) sendListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx
 		otelogen.OperationID("listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -22452,6 +22575,7 @@ func (c *Client) sendListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespac
 		otelogen.OperationID("listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/horizontalpodautoscalers"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -22731,6 +22855,7 @@ func (c *Client) sendListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx
 		otelogen.OperationID("listAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -23029,6 +23154,7 @@ func (c *Client) sendListBatchV1CronJobForAllNamespaces(ctx context.Context, par
 		otelogen.OperationID("listBatchV1CronJobForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/cronjobs"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -23308,6 +23434,7 @@ func (c *Client) sendListBatchV1JobForAllNamespaces(ctx context.Context, params 
 		otelogen.OperationID("listBatchV1JobForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/jobs"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -23587,6 +23714,7 @@ func (c *Client) sendListBatchV1NamespacedCronJob(ctx context.Context, params Li
 		otelogen.OperationID("listBatchV1NamespacedCronJob"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/cronjobs"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -23885,6 +24013,7 @@ func (c *Client) sendListBatchV1NamespacedJob(ctx context.Context, params ListBa
 		otelogen.OperationID("listBatchV1NamespacedJob"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/jobs"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -24183,6 +24312,7 @@ func (c *Client) sendListBatchV1beta1CronJobForAllNamespaces(ctx context.Context
 		otelogen.OperationID("listBatchV1beta1CronJobForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/cronjobs"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -24462,6 +24592,7 @@ func (c *Client) sendListBatchV1beta1NamespacedCronJob(ctx context.Context, para
 		otelogen.OperationID("listBatchV1beta1NamespacedCronJob"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/namespaces/{namespace}/cronjobs"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -24760,6 +24891,7 @@ func (c *Client) sendListCertificatesV1CertificateSigningRequest(ctx context.Con
 		otelogen.OperationID("listCertificatesV1CertificateSigningRequest"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/certificatesigningrequests"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -25039,6 +25171,7 @@ func (c *Client) sendListCoordinationV1LeaseForAllNamespaces(ctx context.Context
 		otelogen.OperationID("listCoordinationV1LeaseForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/leases"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -25318,6 +25451,7 @@ func (c *Client) sendListCoordinationV1NamespacedLease(ctx context.Context, para
 		otelogen.OperationID("listCoordinationV1NamespacedLease"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -25616,6 +25750,7 @@ func (c *Client) sendListCoreV1ComponentStatus(ctx context.Context, params ListC
 		otelogen.OperationID("listCoreV1ComponentStatus"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/componentstatuses"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -25895,6 +26030,7 @@ func (c *Client) sendListCoreV1ConfigMapForAllNamespaces(ctx context.Context, pa
 		otelogen.OperationID("listCoreV1ConfigMapForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/configmaps"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -26174,6 +26310,7 @@ func (c *Client) sendListCoreV1EndpointsForAllNamespaces(ctx context.Context, pa
 		otelogen.OperationID("listCoreV1EndpointsForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/endpoints"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -26453,6 +26590,7 @@ func (c *Client) sendListCoreV1EventForAllNamespaces(ctx context.Context, params
 		otelogen.OperationID("listCoreV1EventForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/events"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -26732,6 +26870,7 @@ func (c *Client) sendListCoreV1LimitRangeForAllNamespaces(ctx context.Context, p
 		otelogen.OperationID("listCoreV1LimitRangeForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/limitranges"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -27011,6 +27150,7 @@ func (c *Client) sendListCoreV1Namespace(ctx context.Context, params ListCoreV1N
 		otelogen.OperationID("listCoreV1Namespace"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -27290,6 +27430,7 @@ func (c *Client) sendListCoreV1NamespacedConfigMap(ctx context.Context, params L
 		otelogen.OperationID("listCoreV1NamespacedConfigMap"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/configmaps"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -27588,6 +27729,7 @@ func (c *Client) sendListCoreV1NamespacedEndpoints(ctx context.Context, params L
 		otelogen.OperationID("listCoreV1NamespacedEndpoints"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/endpoints"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -27886,6 +28028,7 @@ func (c *Client) sendListCoreV1NamespacedEvent(ctx context.Context, params ListC
 		otelogen.OperationID("listCoreV1NamespacedEvent"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/events"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -28184,6 +28327,7 @@ func (c *Client) sendListCoreV1NamespacedLimitRange(ctx context.Context, params 
 		otelogen.OperationID("listCoreV1NamespacedLimitRange"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/limitranges"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -28482,6 +28626,7 @@ func (c *Client) sendListCoreV1NamespacedPersistentVolumeClaim(ctx context.Conte
 		otelogen.OperationID("listCoreV1NamespacedPersistentVolumeClaim"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/persistentvolumeclaims"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -28780,6 +28925,7 @@ func (c *Client) sendListCoreV1NamespacedPod(ctx context.Context, params ListCor
 		otelogen.OperationID("listCoreV1NamespacedPod"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -29078,6 +29224,7 @@ func (c *Client) sendListCoreV1NamespacedPodTemplate(ctx context.Context, params
 		otelogen.OperationID("listCoreV1NamespacedPodTemplate"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/podtemplates"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -29376,6 +29523,7 @@ func (c *Client) sendListCoreV1NamespacedReplicationController(ctx context.Conte
 		otelogen.OperationID("listCoreV1NamespacedReplicationController"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/replicationcontrollers"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -29674,6 +29822,7 @@ func (c *Client) sendListCoreV1NamespacedResourceQuota(ctx context.Context, para
 		otelogen.OperationID("listCoreV1NamespacedResourceQuota"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/resourcequotas"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -29972,6 +30121,7 @@ func (c *Client) sendListCoreV1NamespacedSecret(ctx context.Context, params List
 		otelogen.OperationID("listCoreV1NamespacedSecret"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/secrets"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -30270,6 +30420,7 @@ func (c *Client) sendListCoreV1NamespacedService(ctx context.Context, params Lis
 		otelogen.OperationID("listCoreV1NamespacedService"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -30568,6 +30719,7 @@ func (c *Client) sendListCoreV1NamespacedServiceAccount(ctx context.Context, par
 		otelogen.OperationID("listCoreV1NamespacedServiceAccount"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/serviceaccounts"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -30866,6 +31018,7 @@ func (c *Client) sendListCoreV1Node(ctx context.Context, params ListCoreV1NodePa
 		otelogen.OperationID("listCoreV1Node"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -31145,6 +31298,7 @@ func (c *Client) sendListCoreV1PersistentVolume(ctx context.Context, params List
 		otelogen.OperationID("listCoreV1PersistentVolume"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/persistentvolumes"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -31424,6 +31578,7 @@ func (c *Client) sendListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context
 		otelogen.OperationID("listCoreV1PersistentVolumeClaimForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/persistentvolumeclaims"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -31703,6 +31858,7 @@ func (c *Client) sendListCoreV1PodForAllNamespaces(ctx context.Context, params L
 		otelogen.OperationID("listCoreV1PodForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/pods"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -31982,6 +32138,7 @@ func (c *Client) sendListCoreV1PodTemplateForAllNamespaces(ctx context.Context, 
 		otelogen.OperationID("listCoreV1PodTemplateForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/podtemplates"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -32261,6 +32418,7 @@ func (c *Client) sendListCoreV1ReplicationControllerForAllNamespaces(ctx context
 		otelogen.OperationID("listCoreV1ReplicationControllerForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/replicationcontrollers"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -32540,6 +32698,7 @@ func (c *Client) sendListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context
 		otelogen.OperationID("listCoreV1ResourceQuotaForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/resourcequotas"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -32819,6 +32978,7 @@ func (c *Client) sendListCoreV1SecretForAllNamespaces(ctx context.Context, param
 		otelogen.OperationID("listCoreV1SecretForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/secrets"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -33098,6 +33258,7 @@ func (c *Client) sendListCoreV1ServiceAccountForAllNamespaces(ctx context.Contex
 		otelogen.OperationID("listCoreV1ServiceAccountForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/serviceaccounts"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -33377,6 +33538,7 @@ func (c *Client) sendListCoreV1ServiceForAllNamespaces(ctx context.Context, para
 		otelogen.OperationID("listCoreV1ServiceForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/services"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -33656,6 +33818,7 @@ func (c *Client) sendListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Co
 		otelogen.OperationID("listDiscoveryV1EndpointSliceForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/endpointslices"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -33935,6 +34098,7 @@ func (c *Client) sendListDiscoveryV1NamespacedEndpointSlice(ctx context.Context,
 		otelogen.OperationID("listDiscoveryV1NamespacedEndpointSlice"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -34233,6 +34397,7 @@ func (c *Client) sendListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx conte
 		otelogen.OperationID("listDiscoveryV1beta1EndpointSliceForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/endpointslices"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -34512,6 +34677,7 @@ func (c *Client) sendListDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Con
 		otelogen.OperationID("listDiscoveryV1beta1NamespacedEndpointSlice"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -34810,6 +34976,7 @@ func (c *Client) sendListEventsV1EventForAllNamespaces(ctx context.Context, para
 		otelogen.OperationID("listEventsV1EventForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/events"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -35089,6 +35256,7 @@ func (c *Client) sendListEventsV1NamespacedEvent(ctx context.Context, params Lis
 		otelogen.OperationID("listEventsV1NamespacedEvent"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/namespaces/{namespace}/events"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -35387,6 +35555,7 @@ func (c *Client) sendListEventsV1beta1EventForAllNamespaces(ctx context.Context,
 		otelogen.OperationID("listEventsV1beta1EventForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/events"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -35666,6 +35835,7 @@ func (c *Client) sendListEventsV1beta1NamespacedEvent(ctx context.Context, param
 		otelogen.OperationID("listEventsV1beta1NamespacedEvent"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -35964,6 +36134,7 @@ func (c *Client) sendListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Conte
 		otelogen.OperationID("listFlowcontrolApiserverV1beta1FlowSchema"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -36243,6 +36414,7 @@ func (c *Client) sendListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(c
 		otelogen.OperationID("listFlowcontrolApiserverV1beta1PriorityLevelConfiguration"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -36522,6 +36694,7 @@ func (c *Client) sendListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Conte
 		otelogen.OperationID("listFlowcontrolApiserverV1beta2FlowSchema"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -36801,6 +36974,7 @@ func (c *Client) sendListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(c
 		otelogen.OperationID("listFlowcontrolApiserverV1beta2PriorityLevelConfiguration"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -37080,6 +37254,7 @@ func (c *Client) sendListInternalApiserverV1alpha1StorageVersion(ctx context.Con
 		otelogen.OperationID("listInternalApiserverV1alpha1StorageVersion"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/storageversions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -37359,6 +37534,7 @@ func (c *Client) sendListNetworkingV1IngressClass(ctx context.Context, params Li
 		otelogen.OperationID("listNetworkingV1IngressClass"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/ingressclasses"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -37638,6 +37814,7 @@ func (c *Client) sendListNetworkingV1IngressForAllNamespaces(ctx context.Context
 		otelogen.OperationID("listNetworkingV1IngressForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/ingresses"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -37917,6 +38094,7 @@ func (c *Client) sendListNetworkingV1NamespacedIngress(ctx context.Context, para
 		otelogen.OperationID("listNetworkingV1NamespacedIngress"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -38215,6 +38393,7 @@ func (c *Client) sendListNetworkingV1NamespacedNetworkPolicy(ctx context.Context
 		otelogen.OperationID("listNetworkingV1NamespacedNetworkPolicy"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -38513,6 +38692,7 @@ func (c *Client) sendListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.C
 		otelogen.OperationID("listNetworkingV1NetworkPolicyForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/networkpolicies"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -38792,6 +38972,7 @@ func (c *Client) sendListNodeV1RuntimeClass(ctx context.Context, params ListNode
 		otelogen.OperationID("listNodeV1RuntimeClass"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1/runtimeclasses"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -39071,6 +39252,7 @@ func (c *Client) sendListNodeV1alpha1RuntimeClass(ctx context.Context, params Li
 		otelogen.OperationID("listNodeV1alpha1RuntimeClass"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1alpha1/runtimeclasses"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -39350,6 +39532,7 @@ func (c *Client) sendListNodeV1beta1RuntimeClass(ctx context.Context, params Lis
 		otelogen.OperationID("listNodeV1beta1RuntimeClass"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1beta1/runtimeclasses"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -39629,6 +39812,7 @@ func (c *Client) sendListPolicyV1NamespacedPodDisruptionBudget(ctx context.Conte
 		otelogen.OperationID("listPolicyV1NamespacedPodDisruptionBudget"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -39927,6 +40111,7 @@ func (c *Client) sendListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context
 		otelogen.OperationID("listPolicyV1PodDisruptionBudgetForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1/poddisruptionbudgets"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -40206,6 +40391,7 @@ func (c *Client) sendListPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.
 		otelogen.OperationID("listPolicyV1beta1NamespacedPodDisruptionBudget"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -40504,6 +40690,7 @@ func (c *Client) sendListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx co
 		otelogen.OperationID("listPolicyV1beta1PodDisruptionBudgetForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/poddisruptionbudgets"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -40783,6 +40970,7 @@ func (c *Client) sendListPolicyV1beta1PodSecurityPolicy(ctx context.Context, par
 		otelogen.OperationID("listPolicyV1beta1PodSecurityPolicy"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/podsecuritypolicies"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -41062,6 +41250,7 @@ func (c *Client) sendListRbacAuthorizationV1ClusterRole(ctx context.Context, par
 		otelogen.OperationID("listRbacAuthorizationV1ClusterRole"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/clusterroles"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -41341,6 +41530,7 @@ func (c *Client) sendListRbacAuthorizationV1ClusterRoleBinding(ctx context.Conte
 		otelogen.OperationID("listRbacAuthorizationV1ClusterRoleBinding"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -41620,6 +41810,7 @@ func (c *Client) sendListRbacAuthorizationV1NamespacedRole(ctx context.Context, 
 		otelogen.OperationID("listRbacAuthorizationV1NamespacedRole"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -41918,6 +42109,7 @@ func (c *Client) sendListRbacAuthorizationV1NamespacedRoleBinding(ctx context.Co
 		otelogen.OperationID("listRbacAuthorizationV1NamespacedRoleBinding"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -42216,6 +42408,7 @@ func (c *Client) sendListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx cont
 		otelogen.OperationID("listRbacAuthorizationV1RoleBindingForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/rolebindings"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -42495,6 +42688,7 @@ func (c *Client) sendListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Con
 		otelogen.OperationID("listRbacAuthorizationV1RoleForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/roles"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -42774,6 +42968,7 @@ func (c *Client) sendListSchedulingV1PriorityClass(ctx context.Context, params L
 		otelogen.OperationID("listSchedulingV1PriorityClass"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/scheduling.k8s.io/v1/priorityclasses"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -43053,6 +43248,7 @@ func (c *Client) sendListStorageV1CSIDriver(ctx context.Context, params ListStor
 		otelogen.OperationID("listStorageV1CSIDriver"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/csidrivers"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -43332,6 +43528,7 @@ func (c *Client) sendListStorageV1CSINode(ctx context.Context, params ListStorag
 		otelogen.OperationID("listStorageV1CSINode"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/csinodes"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -43611,6 +43808,7 @@ func (c *Client) sendListStorageV1StorageClass(ctx context.Context, params ListS
 		otelogen.OperationID("listStorageV1StorageClass"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/storageclasses"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -43890,6 +44088,7 @@ func (c *Client) sendListStorageV1VolumeAttachment(ctx context.Context, params L
 		otelogen.OperationID("listStorageV1VolumeAttachment"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/volumeattachments"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -44169,6 +44368,7 @@ func (c *Client) sendListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx c
 		otelogen.OperationID("listStorageV1alpha1CSIStorageCapacityForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/csistoragecapacities"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -44448,6 +44648,7 @@ func (c *Client) sendListStorageV1alpha1NamespacedCSIStorageCapacity(ctx context
 		otelogen.OperationID("listStorageV1alpha1NamespacedCSIStorageCapacity"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -44746,6 +44947,7 @@ func (c *Client) sendListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx co
 		otelogen.OperationID("listStorageV1beta1CSIStorageCapacityForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/csistoragecapacities"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -45025,6 +45227,7 @@ func (c *Client) sendListStorageV1beta1NamespacedCSIStorageCapacity(ctx context.
 		otelogen.OperationID("listStorageV1beta1NamespacedCSIStorageCapacity"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -45321,6 +45524,7 @@ func (c *Client) sendLogFileHandler(ctx context.Context, params LogFileHandlerPa
 		otelogen.OperationID("logFileHandler"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/logs/{logpath}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -45442,6 +45646,7 @@ func (c *Client) sendLogFileListHandler(ctx context.Context) (res *LogFileListHa
 		otelogen.OperationID("logFileListHandler"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/logs/"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -45547,6 +45752,7 @@ func (c *Client) sendReadAdmissionregistrationV1MutatingWebhookConfiguration(ctx
 		otelogen.OperationID("readAdmissionregistrationV1MutatingWebhookConfiguration"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -45691,6 +45897,7 @@ func (c *Client) sendReadAdmissionregistrationV1ValidatingWebhookConfiguration(c
 		otelogen.OperationID("readAdmissionregistrationV1ValidatingWebhookConfiguration"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -45835,6 +46042,7 @@ func (c *Client) sendReadApiextensionsV1CustomResourceDefinition(ctx context.Con
 		otelogen.OperationID("readApiextensionsV1CustomResourceDefinition"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -45979,6 +46187,7 @@ func (c *Client) sendReadApiextensionsV1CustomResourceDefinitionStatus(ctx conte
 		otelogen.OperationID("readApiextensionsV1CustomResourceDefinitionStatus"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -46124,6 +46333,7 @@ func (c *Client) sendReadApiregistrationV1APIService(ctx context.Context, params
 		otelogen.OperationID("readApiregistrationV1APIService"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/v1/apiservices/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -46268,6 +46478,7 @@ func (c *Client) sendReadApiregistrationV1APIServiceStatus(ctx context.Context, 
 		otelogen.OperationID("readApiregistrationV1APIServiceStatus"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/v1/apiservices/{name}/status"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -46413,6 +46624,7 @@ func (c *Client) sendReadAppsV1NamespacedControllerRevision(ctx context.Context,
 		otelogen.OperationID("readAppsV1NamespacedControllerRevision"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/controllerrevisions/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -46576,6 +46788,7 @@ func (c *Client) sendReadAppsV1NamespacedDaemonSet(ctx context.Context, params R
 		otelogen.OperationID("readAppsV1NamespacedDaemonSet"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/daemonsets/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -46739,6 +46952,7 @@ func (c *Client) sendReadAppsV1NamespacedDaemonSetStatus(ctx context.Context, pa
 		otelogen.OperationID("readAppsV1NamespacedDaemonSetStatus"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/daemonsets/{name}/status"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -46903,6 +47117,7 @@ func (c *Client) sendReadAppsV1NamespacedDeployment(ctx context.Context, params 
 		otelogen.OperationID("readAppsV1NamespacedDeployment"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/deployments/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -47066,6 +47281,7 @@ func (c *Client) sendReadAppsV1NamespacedDeploymentScale(ctx context.Context, pa
 		otelogen.OperationID("readAppsV1NamespacedDeploymentScale"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/deployments/{name}/scale"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -47230,6 +47446,7 @@ func (c *Client) sendReadAppsV1NamespacedDeploymentStatus(ctx context.Context, p
 		otelogen.OperationID("readAppsV1NamespacedDeploymentStatus"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/deployments/{name}/status"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -47394,6 +47611,7 @@ func (c *Client) sendReadAppsV1NamespacedReplicaSet(ctx context.Context, params 
 		otelogen.OperationID("readAppsV1NamespacedReplicaSet"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/replicasets/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -47557,6 +47775,7 @@ func (c *Client) sendReadAppsV1NamespacedReplicaSetScale(ctx context.Context, pa
 		otelogen.OperationID("readAppsV1NamespacedReplicaSetScale"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/replicasets/{name}/scale"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -47721,6 +47940,7 @@ func (c *Client) sendReadAppsV1NamespacedReplicaSetStatus(ctx context.Context, p
 		otelogen.OperationID("readAppsV1NamespacedReplicaSetStatus"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/replicasets/{name}/status"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -47885,6 +48105,7 @@ func (c *Client) sendReadAppsV1NamespacedStatefulSet(ctx context.Context, params
 		otelogen.OperationID("readAppsV1NamespacedStatefulSet"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -48048,6 +48269,7 @@ func (c *Client) sendReadAppsV1NamespacedStatefulSetScale(ctx context.Context, p
 		otelogen.OperationID("readAppsV1NamespacedStatefulSetScale"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/scale"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -48212,6 +48434,7 @@ func (c *Client) sendReadAppsV1NamespacedStatefulSetStatus(ctx context.Context, 
 		otelogen.OperationID("readAppsV1NamespacedStatefulSetStatus"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/status"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -48376,6 +48599,7 @@ func (c *Client) sendReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx cont
 		otelogen.OperationID("readAutoscalingV1NamespacedHorizontalPodAutoscaler"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -48539,6 +48763,7 @@ func (c *Client) sendReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ct
 		otelogen.OperationID("readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -48703,6 +48928,7 @@ func (c *Client) sendReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx
 		otelogen.OperationID("readAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -48866,6 +49092,7 @@ func (c *Client) sendReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStat
 		otelogen.OperationID("readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -49030,6 +49257,7 @@ func (c *Client) sendReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx
 		otelogen.OperationID("readAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -49193,6 +49421,7 @@ func (c *Client) sendReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStat
 		otelogen.OperationID("readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -49357,6 +49586,7 @@ func (c *Client) sendReadBatchV1NamespacedCronJob(ctx context.Context, params Re
 		otelogen.OperationID("readBatchV1NamespacedCronJob"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/cronjobs/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -49520,6 +49750,7 @@ func (c *Client) sendReadBatchV1NamespacedCronJobStatus(ctx context.Context, par
 		otelogen.OperationID("readBatchV1NamespacedCronJobStatus"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/cronjobs/{name}/status"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -49684,6 +49915,7 @@ func (c *Client) sendReadBatchV1NamespacedJob(ctx context.Context, params ReadBa
 		otelogen.OperationID("readBatchV1NamespacedJob"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/jobs/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -49847,6 +50079,7 @@ func (c *Client) sendReadBatchV1NamespacedJobStatus(ctx context.Context, params 
 		otelogen.OperationID("readBatchV1NamespacedJobStatus"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/jobs/{name}/status"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -50011,6 +50244,7 @@ func (c *Client) sendReadBatchV1beta1NamespacedCronJob(ctx context.Context, para
 		otelogen.OperationID("readBatchV1beta1NamespacedCronJob"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -50174,6 +50408,7 @@ func (c *Client) sendReadBatchV1beta1NamespacedCronJobStatus(ctx context.Context
 		otelogen.OperationID("readBatchV1beta1NamespacedCronJobStatus"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -50338,6 +50573,7 @@ func (c *Client) sendReadCertificatesV1CertificateSigningRequest(ctx context.Con
 		otelogen.OperationID("readCertificatesV1CertificateSigningRequest"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -50482,6 +50718,7 @@ func (c *Client) sendReadCertificatesV1CertificateSigningRequestApproval(ctx con
 		otelogen.OperationID("readCertificatesV1CertificateSigningRequestApproval"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/approval"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -50627,6 +50864,7 @@ func (c *Client) sendReadCertificatesV1CertificateSigningRequestStatus(ctx conte
 		otelogen.OperationID("readCertificatesV1CertificateSigningRequestStatus"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/status"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -50772,6 +51010,7 @@ func (c *Client) sendReadCoordinationV1NamespacedLease(ctx context.Context, para
 		otelogen.OperationID("readCoordinationV1NamespacedLease"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -50935,6 +51174,7 @@ func (c *Client) sendReadCoreV1ComponentStatus(ctx context.Context, params ReadC
 		otelogen.OperationID("readCoreV1ComponentStatus"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/componentstatuses/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -51079,6 +51319,7 @@ func (c *Client) sendReadCoreV1Namespace(ctx context.Context, params ReadCoreV1N
 		otelogen.OperationID("readCoreV1Namespace"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -51223,6 +51464,7 @@ func (c *Client) sendReadCoreV1NamespaceStatus(ctx context.Context, params ReadC
 		otelogen.OperationID("readCoreV1NamespaceStatus"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{name}/status"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -51368,6 +51610,7 @@ func (c *Client) sendReadCoreV1NamespacedConfigMap(ctx context.Context, params R
 		otelogen.OperationID("readCoreV1NamespacedConfigMap"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/configmaps/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -51531,6 +51774,7 @@ func (c *Client) sendReadCoreV1NamespacedEndpoints(ctx context.Context, params R
 		otelogen.OperationID("readCoreV1NamespacedEndpoints"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/endpoints/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -51694,6 +51938,7 @@ func (c *Client) sendReadCoreV1NamespacedEvent(ctx context.Context, params ReadC
 		otelogen.OperationID("readCoreV1NamespacedEvent"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/events/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -51857,6 +52102,7 @@ func (c *Client) sendReadCoreV1NamespacedLimitRange(ctx context.Context, params 
 		otelogen.OperationID("readCoreV1NamespacedLimitRange"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/limitranges/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -52020,6 +52266,7 @@ func (c *Client) sendReadCoreV1NamespacedPersistentVolumeClaim(ctx context.Conte
 		otelogen.OperationID("readCoreV1NamespacedPersistentVolumeClaim"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -52183,6 +52430,7 @@ func (c *Client) sendReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx context
 		otelogen.OperationID("readCoreV1NamespacedPersistentVolumeClaimStatus"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -52347,6 +52595,7 @@ func (c *Client) sendReadCoreV1NamespacedPod(ctx context.Context, params ReadCor
 		otelogen.OperationID("readCoreV1NamespacedPod"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -52510,6 +52759,7 @@ func (c *Client) sendReadCoreV1NamespacedPodEphemeralcontainers(ctx context.Cont
 		otelogen.OperationID("readCoreV1NamespacedPodEphemeralcontainers"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -52674,6 +52924,7 @@ func (c *Client) sendReadCoreV1NamespacedPodLog(ctx context.Context, params Read
 		otelogen.OperationID("readCoreV1NamespacedPodLog"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/log"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -52974,6 +53225,7 @@ func (c *Client) sendReadCoreV1NamespacedPodStatus(ctx context.Context, params R
 		otelogen.OperationID("readCoreV1NamespacedPodStatus"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/status"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -53138,6 +53390,7 @@ func (c *Client) sendReadCoreV1NamespacedPodTemplate(ctx context.Context, params
 		otelogen.OperationID("readCoreV1NamespacedPodTemplate"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/podtemplates/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -53301,6 +53554,7 @@ func (c *Client) sendReadCoreV1NamespacedReplicationController(ctx context.Conte
 		otelogen.OperationID("readCoreV1NamespacedReplicationController"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/replicationcontrollers/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -53464,6 +53718,7 @@ func (c *Client) sendReadCoreV1NamespacedReplicationControllerScale(ctx context.
 		otelogen.OperationID("readCoreV1NamespacedReplicationControllerScale"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -53628,6 +53883,7 @@ func (c *Client) sendReadCoreV1NamespacedReplicationControllerStatus(ctx context
 		otelogen.OperationID("readCoreV1NamespacedReplicationControllerStatus"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -53792,6 +54048,7 @@ func (c *Client) sendReadCoreV1NamespacedResourceQuota(ctx context.Context, para
 		otelogen.OperationID("readCoreV1NamespacedResourceQuota"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/resourcequotas/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -53955,6 +54212,7 @@ func (c *Client) sendReadCoreV1NamespacedResourceQuotaStatus(ctx context.Context
 		otelogen.OperationID("readCoreV1NamespacedResourceQuotaStatus"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/resourcequotas/{name}/status"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -54119,6 +54377,7 @@ func (c *Client) sendReadCoreV1NamespacedSecret(ctx context.Context, params Read
 		otelogen.OperationID("readCoreV1NamespacedSecret"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/secrets/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -54282,6 +54541,7 @@ func (c *Client) sendReadCoreV1NamespacedService(ctx context.Context, params Rea
 		otelogen.OperationID("readCoreV1NamespacedService"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -54445,6 +54705,7 @@ func (c *Client) sendReadCoreV1NamespacedServiceAccount(ctx context.Context, par
 		otelogen.OperationID("readCoreV1NamespacedServiceAccount"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/serviceaccounts/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -54608,6 +54869,7 @@ func (c *Client) sendReadCoreV1NamespacedServiceStatus(ctx context.Context, para
 		otelogen.OperationID("readCoreV1NamespacedServiceStatus"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/status"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -54772,6 +55034,7 @@ func (c *Client) sendReadCoreV1Node(ctx context.Context, params ReadCoreV1NodePa
 		otelogen.OperationID("readCoreV1Node"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -54916,6 +55179,7 @@ func (c *Client) sendReadCoreV1NodeStatus(ctx context.Context, params ReadCoreV1
 		otelogen.OperationID("readCoreV1NodeStatus"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/status"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -55061,6 +55325,7 @@ func (c *Client) sendReadCoreV1PersistentVolume(ctx context.Context, params Read
 		otelogen.OperationID("readCoreV1PersistentVolume"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/persistentvolumes/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -55205,6 +55470,7 @@ func (c *Client) sendReadCoreV1PersistentVolumeStatus(ctx context.Context, param
 		otelogen.OperationID("readCoreV1PersistentVolumeStatus"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/persistentvolumes/{name}/status"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -55350,6 +55616,7 @@ func (c *Client) sendReadDiscoveryV1NamespacedEndpointSlice(ctx context.Context,
 		otelogen.OperationID("readDiscoveryV1NamespacedEndpointSlice"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -55513,6 +55780,7 @@ func (c *Client) sendReadDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Con
 		otelogen.OperationID("readDiscoveryV1beta1NamespacedEndpointSlice"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -55676,6 +55944,7 @@ func (c *Client) sendReadEventsV1NamespacedEvent(ctx context.Context, params Rea
 		otelogen.OperationID("readEventsV1NamespacedEvent"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -55839,6 +56108,7 @@ func (c *Client) sendReadEventsV1beta1NamespacedEvent(ctx context.Context, param
 		otelogen.OperationID("readEventsV1beta1NamespacedEvent"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -56002,6 +56272,7 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1FlowSchema(ctx context.Conte
 		otelogen.OperationID("readFlowcontrolApiserverV1beta1FlowSchema"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -56146,6 +56417,7 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx context
 		otelogen.OperationID("readFlowcontrolApiserverV1beta1FlowSchemaStatus"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}/status"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -56291,6 +56563,7 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration(c
 		otelogen.OperationID("readFlowcontrolApiserverV1beta1PriorityLevelConfiguration"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -56435,6 +56708,7 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationSt
 		otelogen.OperationID("readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}/status"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -56580,6 +56854,7 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2FlowSchema(ctx context.Conte
 		otelogen.OperationID("readFlowcontrolApiserverV1beta2FlowSchema"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -56724,6 +56999,7 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx context
 		otelogen.OperationID("readFlowcontrolApiserverV1beta2FlowSchemaStatus"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}/status"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -56869,6 +57145,7 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration(c
 		otelogen.OperationID("readFlowcontrolApiserverV1beta2PriorityLevelConfiguration"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -57013,6 +57290,7 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationSt
 		otelogen.OperationID("readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}/status"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -57158,6 +57436,7 @@ func (c *Client) sendReadInternalApiserverV1alpha1StorageVersion(ctx context.Con
 		otelogen.OperationID("readInternalApiserverV1alpha1StorageVersion"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -57302,6 +57581,7 @@ func (c *Client) sendReadInternalApiserverV1alpha1StorageVersionStatus(ctx conte
 		otelogen.OperationID("readInternalApiserverV1alpha1StorageVersionStatus"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}/status"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -57447,6 +57727,7 @@ func (c *Client) sendReadNetworkingV1IngressClass(ctx context.Context, params Re
 		otelogen.OperationID("readNetworkingV1IngressClass"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/ingressclasses/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -57591,6 +57872,7 @@ func (c *Client) sendReadNetworkingV1NamespacedIngress(ctx context.Context, para
 		otelogen.OperationID("readNetworkingV1NamespacedIngress"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -57754,6 +58036,7 @@ func (c *Client) sendReadNetworkingV1NamespacedIngressStatus(ctx context.Context
 		otelogen.OperationID("readNetworkingV1NamespacedIngressStatus"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -57918,6 +58201,7 @@ func (c *Client) sendReadNetworkingV1NamespacedNetworkPolicy(ctx context.Context
 		otelogen.OperationID("readNetworkingV1NamespacedNetworkPolicy"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -58081,6 +58365,7 @@ func (c *Client) sendReadNodeV1RuntimeClass(ctx context.Context, params ReadNode
 		otelogen.OperationID("readNodeV1RuntimeClass"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1/runtimeclasses/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -58225,6 +58510,7 @@ func (c *Client) sendReadNodeV1alpha1RuntimeClass(ctx context.Context, params Re
 		otelogen.OperationID("readNodeV1alpha1RuntimeClass"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1alpha1/runtimeclasses/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -58369,6 +58655,7 @@ func (c *Client) sendReadNodeV1beta1RuntimeClass(ctx context.Context, params Rea
 		otelogen.OperationID("readNodeV1beta1RuntimeClass"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1beta1/runtimeclasses/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -58513,6 +58800,7 @@ func (c *Client) sendReadPolicyV1NamespacedPodDisruptionBudget(ctx context.Conte
 		otelogen.OperationID("readPolicyV1NamespacedPodDisruptionBudget"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -58676,6 +58964,7 @@ func (c *Client) sendReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx context
 		otelogen.OperationID("readPolicyV1NamespacedPodDisruptionBudgetStatus"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -58840,6 +59129,7 @@ func (c *Client) sendReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.
 		otelogen.OperationID("readPolicyV1beta1NamespacedPodDisruptionBudget"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -59003,6 +59293,7 @@ func (c *Client) sendReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx co
 		otelogen.OperationID("readPolicyV1beta1NamespacedPodDisruptionBudgetStatus"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -59167,6 +59458,7 @@ func (c *Client) sendReadPolicyV1beta1PodSecurityPolicy(ctx context.Context, par
 		otelogen.OperationID("readPolicyV1beta1PodSecurityPolicy"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/podsecuritypolicies/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -59311,6 +59603,7 @@ func (c *Client) sendReadRbacAuthorizationV1ClusterRole(ctx context.Context, par
 		otelogen.OperationID("readRbacAuthorizationV1ClusterRole"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/clusterroles/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -59455,6 +59748,7 @@ func (c *Client) sendReadRbacAuthorizationV1ClusterRoleBinding(ctx context.Conte
 		otelogen.OperationID("readRbacAuthorizationV1ClusterRoleBinding"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -59599,6 +59893,7 @@ func (c *Client) sendReadRbacAuthorizationV1NamespacedRole(ctx context.Context, 
 		otelogen.OperationID("readRbacAuthorizationV1NamespacedRole"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -59762,6 +60057,7 @@ func (c *Client) sendReadRbacAuthorizationV1NamespacedRoleBinding(ctx context.Co
 		otelogen.OperationID("readRbacAuthorizationV1NamespacedRoleBinding"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -59925,6 +60221,7 @@ func (c *Client) sendReadSchedulingV1PriorityClass(ctx context.Context, params R
 		otelogen.OperationID("readSchedulingV1PriorityClass"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/scheduling.k8s.io/v1/priorityclasses/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -60069,6 +60366,7 @@ func (c *Client) sendReadStorageV1CSIDriver(ctx context.Context, params ReadStor
 		otelogen.OperationID("readStorageV1CSIDriver"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/csidrivers/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -60213,6 +60511,7 @@ func (c *Client) sendReadStorageV1CSINode(ctx context.Context, params ReadStorag
 		otelogen.OperationID("readStorageV1CSINode"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/csinodes/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -60357,6 +60656,7 @@ func (c *Client) sendReadStorageV1StorageClass(ctx context.Context, params ReadS
 		otelogen.OperationID("readStorageV1StorageClass"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/storageclasses/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -60501,6 +60801,7 @@ func (c *Client) sendReadStorageV1VolumeAttachment(ctx context.Context, params R
 		otelogen.OperationID("readStorageV1VolumeAttachment"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/volumeattachments/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -60645,6 +60946,7 @@ func (c *Client) sendReadStorageV1VolumeAttachmentStatus(ctx context.Context, pa
 		otelogen.OperationID("readStorageV1VolumeAttachmentStatus"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/volumeattachments/{name}/status"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -60790,6 +61092,7 @@ func (c *Client) sendReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx context
 		otelogen.OperationID("readStorageV1alpha1NamespacedCSIStorageCapacity"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -60953,6 +61256,7 @@ func (c *Client) sendReadStorageV1beta1NamespacedCSIStorageCapacity(ctx context.
 		otelogen.OperationID("readStorageV1beta1NamespacedCSIStorageCapacity"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -61118,6 +61422,7 @@ func (c *Client) sendWatchAdmissionregistrationV1MutatingWebhookConfiguration(ct
 		otelogen.OperationID("watchAdmissionregistrationV1MutatingWebhookConfiguration"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -61416,6 +61721,7 @@ func (c *Client) sendWatchAdmissionregistrationV1MutatingWebhookConfigurationLis
 		otelogen.OperationID("watchAdmissionregistrationV1MutatingWebhookConfigurationList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -61697,6 +62003,7 @@ func (c *Client) sendWatchAdmissionregistrationV1ValidatingWebhookConfiguration(
 		otelogen.OperationID("watchAdmissionregistrationV1ValidatingWebhookConfiguration"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -61995,6 +62302,7 @@ func (c *Client) sendWatchAdmissionregistrationV1ValidatingWebhookConfigurationL
 		otelogen.OperationID("watchAdmissionregistrationV1ValidatingWebhookConfigurationList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -62275,6 +62583,7 @@ func (c *Client) sendWatchApiextensionsV1CustomResourceDefinition(ctx context.Co
 		otelogen.OperationID("watchApiextensionsV1CustomResourceDefinition"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -62573,6 +62882,7 @@ func (c *Client) sendWatchApiextensionsV1CustomResourceDefinitionList(ctx contex
 		otelogen.OperationID("watchApiextensionsV1CustomResourceDefinitionList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -62853,6 +63163,7 @@ func (c *Client) sendWatchApiregistrationV1APIService(ctx context.Context, param
 		otelogen.OperationID("watchApiregistrationV1APIService"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/v1/watch/apiservices/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -63151,6 +63462,7 @@ func (c *Client) sendWatchApiregistrationV1APIServiceList(ctx context.Context, p
 		otelogen.OperationID("watchApiregistrationV1APIServiceList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/v1/watch/apiservices"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -63431,6 +63743,7 @@ func (c *Client) sendWatchAppsV1ControllerRevisionListForAllNamespaces(ctx conte
 		otelogen.OperationID("watchAppsV1ControllerRevisionListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/controllerrevisions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -63711,6 +64024,7 @@ func (c *Client) sendWatchAppsV1DaemonSetListForAllNamespaces(ctx context.Contex
 		otelogen.OperationID("watchAppsV1DaemonSetListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/daemonsets"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -63991,6 +64305,7 @@ func (c *Client) sendWatchAppsV1DeploymentListForAllNamespaces(ctx context.Conte
 		otelogen.OperationID("watchAppsV1DeploymentListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/deployments"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -64271,6 +64586,7 @@ func (c *Client) sendWatchAppsV1NamespacedControllerRevision(ctx context.Context
 		otelogen.OperationID("watchAppsV1NamespacedControllerRevision"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -64588,6 +64904,7 @@ func (c *Client) sendWatchAppsV1NamespacedControllerRevisionList(ctx context.Con
 		otelogen.OperationID("watchAppsV1NamespacedControllerRevisionList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -64887,6 +65204,7 @@ func (c *Client) sendWatchAppsV1NamespacedDaemonSet(ctx context.Context, params 
 		otelogen.OperationID("watchAppsV1NamespacedDaemonSet"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/daemonsets/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -65204,6 +65522,7 @@ func (c *Client) sendWatchAppsV1NamespacedDaemonSetList(ctx context.Context, par
 		otelogen.OperationID("watchAppsV1NamespacedDaemonSetList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/daemonsets"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -65503,6 +65822,7 @@ func (c *Client) sendWatchAppsV1NamespacedDeployment(ctx context.Context, params
 		otelogen.OperationID("watchAppsV1NamespacedDeployment"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/deployments/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -65820,6 +66140,7 @@ func (c *Client) sendWatchAppsV1NamespacedDeploymentList(ctx context.Context, pa
 		otelogen.OperationID("watchAppsV1NamespacedDeploymentList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/deployments"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -66119,6 +66440,7 @@ func (c *Client) sendWatchAppsV1NamespacedReplicaSet(ctx context.Context, params
 		otelogen.OperationID("watchAppsV1NamespacedReplicaSet"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/replicasets/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -66436,6 +66758,7 @@ func (c *Client) sendWatchAppsV1NamespacedReplicaSetList(ctx context.Context, pa
 		otelogen.OperationID("watchAppsV1NamespacedReplicaSetList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/replicasets"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -66735,6 +67058,7 @@ func (c *Client) sendWatchAppsV1NamespacedStatefulSet(ctx context.Context, param
 		otelogen.OperationID("watchAppsV1NamespacedStatefulSet"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/statefulsets/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -67052,6 +67376,7 @@ func (c *Client) sendWatchAppsV1NamespacedStatefulSetList(ctx context.Context, p
 		otelogen.OperationID("watchAppsV1NamespacedStatefulSetList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/statefulsets"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -67351,6 +67676,7 @@ func (c *Client) sendWatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Conte
 		otelogen.OperationID("watchAppsV1ReplicaSetListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/replicasets"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -67631,6 +67957,7 @@ func (c *Client) sendWatchAppsV1StatefulSetListForAllNamespaces(ctx context.Cont
 		otelogen.OperationID("watchAppsV1StatefulSetListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/statefulsets"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -67911,6 +68238,7 @@ func (c *Client) sendWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespac
 		otelogen.OperationID("watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/watch/horizontalpodautoscalers"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -68191,6 +68519,7 @@ func (c *Client) sendWatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx con
 		otelogen.OperationID("watchAutoscalingV1NamespacedHorizontalPodAutoscaler"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -68508,6 +68837,7 @@ func (c *Client) sendWatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx
 		otelogen.OperationID("watchAutoscalingV1NamespacedHorizontalPodAutoscalerList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -68807,6 +69137,7 @@ func (c *Client) sendWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNam
 		otelogen.OperationID("watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/watch/horizontalpodautoscalers"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -69087,6 +69418,7 @@ func (c *Client) sendWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ct
 		otelogen.OperationID("watchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -69404,6 +69736,7 @@ func (c *Client) sendWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerLis
 		otelogen.OperationID("watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -69703,6 +70036,7 @@ func (c *Client) sendWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNam
 		otelogen.OperationID("watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/watch/horizontalpodautoscalers"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -69983,6 +70317,7 @@ func (c *Client) sendWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ct
 		otelogen.OperationID("watchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -70300,6 +70635,7 @@ func (c *Client) sendWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerLis
 		otelogen.OperationID("watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -70599,6 +70935,7 @@ func (c *Client) sendWatchBatchV1CronJobListForAllNamespaces(ctx context.Context
 		otelogen.OperationID("watchBatchV1CronJobListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/watch/cronjobs"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -70879,6 +71216,7 @@ func (c *Client) sendWatchBatchV1JobListForAllNamespaces(ctx context.Context, pa
 		otelogen.OperationID("watchBatchV1JobListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/watch/jobs"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -71159,6 +71497,7 @@ func (c *Client) sendWatchBatchV1NamespacedCronJob(ctx context.Context, params W
 		otelogen.OperationID("watchBatchV1NamespacedCronJob"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/watch/namespaces/{namespace}/cronjobs/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -71476,6 +71815,7 @@ func (c *Client) sendWatchBatchV1NamespacedCronJobList(ctx context.Context, para
 		otelogen.OperationID("watchBatchV1NamespacedCronJobList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/watch/namespaces/{namespace}/cronjobs"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -71775,6 +72115,7 @@ func (c *Client) sendWatchBatchV1NamespacedJob(ctx context.Context, params Watch
 		otelogen.OperationID("watchBatchV1NamespacedJob"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/watch/namespaces/{namespace}/jobs/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -72092,6 +72433,7 @@ func (c *Client) sendWatchBatchV1NamespacedJobList(ctx context.Context, params W
 		otelogen.OperationID("watchBatchV1NamespacedJobList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/watch/namespaces/{namespace}/jobs"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -72391,6 +72733,7 @@ func (c *Client) sendWatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Co
 		otelogen.OperationID("watchBatchV1beta1CronJobListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/watch/cronjobs"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -72671,6 +73014,7 @@ func (c *Client) sendWatchBatchV1beta1NamespacedCronJob(ctx context.Context, par
 		otelogen.OperationID("watchBatchV1beta1NamespacedCronJob"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -72988,6 +73332,7 @@ func (c *Client) sendWatchBatchV1beta1NamespacedCronJobList(ctx context.Context,
 		otelogen.OperationID("watchBatchV1beta1NamespacedCronJobList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -73288,6 +73633,7 @@ func (c *Client) sendWatchCertificatesV1CertificateSigningRequest(ctx context.Co
 		otelogen.OperationID("watchCertificatesV1CertificateSigningRequest"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/watch/certificatesigningrequests/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -73586,6 +73932,7 @@ func (c *Client) sendWatchCertificatesV1CertificateSigningRequestList(ctx contex
 		otelogen.OperationID("watchCertificatesV1CertificateSigningRequestList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/watch/certificatesigningrequests"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -73866,6 +74213,7 @@ func (c *Client) sendWatchCoordinationV1LeaseListForAllNamespaces(ctx context.Co
 		otelogen.OperationID("watchCoordinationV1LeaseListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/watch/leases"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -74146,6 +74494,7 @@ func (c *Client) sendWatchCoordinationV1NamespacedLease(ctx context.Context, par
 		otelogen.OperationID("watchCoordinationV1NamespacedLease"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -74463,6 +74812,7 @@ func (c *Client) sendWatchCoordinationV1NamespacedLeaseList(ctx context.Context,
 		otelogen.OperationID("watchCoordinationV1NamespacedLeaseList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -74762,6 +75112,7 @@ func (c *Client) sendWatchCoreV1ConfigMapListForAllNamespaces(ctx context.Contex
 		otelogen.OperationID("watchCoreV1ConfigMapListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/configmaps"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -75042,6 +75393,7 @@ func (c *Client) sendWatchCoreV1EndpointsListForAllNamespaces(ctx context.Contex
 		otelogen.OperationID("watchCoreV1EndpointsListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/endpoints"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -75322,6 +75674,7 @@ func (c *Client) sendWatchCoreV1EventListForAllNamespaces(ctx context.Context, p
 		otelogen.OperationID("watchCoreV1EventListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/events"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -75602,6 +75955,7 @@ func (c *Client) sendWatchCoreV1LimitRangeListForAllNamespaces(ctx context.Conte
 		otelogen.OperationID("watchCoreV1LimitRangeListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/limitranges"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -75882,6 +76236,7 @@ func (c *Client) sendWatchCoreV1Namespace(ctx context.Context, params WatchCoreV
 		otelogen.OperationID("watchCoreV1Namespace"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -76180,6 +76535,7 @@ func (c *Client) sendWatchCoreV1NamespaceList(ctx context.Context, params WatchC
 		otelogen.OperationID("watchCoreV1NamespaceList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -76460,6 +76816,7 @@ func (c *Client) sendWatchCoreV1NamespacedConfigMap(ctx context.Context, params 
 		otelogen.OperationID("watchCoreV1NamespacedConfigMap"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/configmaps/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -76777,6 +77134,7 @@ func (c *Client) sendWatchCoreV1NamespacedConfigMapList(ctx context.Context, par
 		otelogen.OperationID("watchCoreV1NamespacedConfigMapList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/configmaps"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -77076,6 +77434,7 @@ func (c *Client) sendWatchCoreV1NamespacedEndpoints(ctx context.Context, params 
 		otelogen.OperationID("watchCoreV1NamespacedEndpoints"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/endpoints/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -77393,6 +77752,7 @@ func (c *Client) sendWatchCoreV1NamespacedEndpointsList(ctx context.Context, par
 		otelogen.OperationID("watchCoreV1NamespacedEndpointsList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/endpoints"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -77692,6 +78052,7 @@ func (c *Client) sendWatchCoreV1NamespacedEvent(ctx context.Context, params Watc
 		otelogen.OperationID("watchCoreV1NamespacedEvent"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/events/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -78009,6 +78370,7 @@ func (c *Client) sendWatchCoreV1NamespacedEventList(ctx context.Context, params 
 		otelogen.OperationID("watchCoreV1NamespacedEventList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/events"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -78308,6 +78670,7 @@ func (c *Client) sendWatchCoreV1NamespacedLimitRange(ctx context.Context, params
 		otelogen.OperationID("watchCoreV1NamespacedLimitRange"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/limitranges/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -78625,6 +78988,7 @@ func (c *Client) sendWatchCoreV1NamespacedLimitRangeList(ctx context.Context, pa
 		otelogen.OperationID("watchCoreV1NamespacedLimitRangeList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/limitranges"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -78924,6 +79288,7 @@ func (c *Client) sendWatchCoreV1NamespacedPersistentVolumeClaim(ctx context.Cont
 		otelogen.OperationID("watchCoreV1NamespacedPersistentVolumeClaim"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -79241,6 +79606,7 @@ func (c *Client) sendWatchCoreV1NamespacedPersistentVolumeClaimList(ctx context.
 		otelogen.OperationID("watchCoreV1NamespacedPersistentVolumeClaimList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -79540,6 +79906,7 @@ func (c *Client) sendWatchCoreV1NamespacedPod(ctx context.Context, params WatchC
 		otelogen.OperationID("watchCoreV1NamespacedPod"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/pods/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -79857,6 +80224,7 @@ func (c *Client) sendWatchCoreV1NamespacedPodList(ctx context.Context, params Wa
 		otelogen.OperationID("watchCoreV1NamespacedPodList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/pods"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -80156,6 +80524,7 @@ func (c *Client) sendWatchCoreV1NamespacedPodTemplate(ctx context.Context, param
 		otelogen.OperationID("watchCoreV1NamespacedPodTemplate"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/podtemplates/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -80473,6 +80842,7 @@ func (c *Client) sendWatchCoreV1NamespacedPodTemplateList(ctx context.Context, p
 		otelogen.OperationID("watchCoreV1NamespacedPodTemplateList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/podtemplates"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -80772,6 +81142,7 @@ func (c *Client) sendWatchCoreV1NamespacedReplicationController(ctx context.Cont
 		otelogen.OperationID("watchCoreV1NamespacedReplicationController"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/replicationcontrollers/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -81089,6 +81460,7 @@ func (c *Client) sendWatchCoreV1NamespacedReplicationControllerList(ctx context.
 		otelogen.OperationID("watchCoreV1NamespacedReplicationControllerList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/replicationcontrollers"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -81388,6 +81760,7 @@ func (c *Client) sendWatchCoreV1NamespacedResourceQuota(ctx context.Context, par
 		otelogen.OperationID("watchCoreV1NamespacedResourceQuota"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/resourcequotas/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -81705,6 +82078,7 @@ func (c *Client) sendWatchCoreV1NamespacedResourceQuotaList(ctx context.Context,
 		otelogen.OperationID("watchCoreV1NamespacedResourceQuotaList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/resourcequotas"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -82004,6 +82378,7 @@ func (c *Client) sendWatchCoreV1NamespacedSecret(ctx context.Context, params Wat
 		otelogen.OperationID("watchCoreV1NamespacedSecret"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/secrets/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -82321,6 +82696,7 @@ func (c *Client) sendWatchCoreV1NamespacedSecretList(ctx context.Context, params
 		otelogen.OperationID("watchCoreV1NamespacedSecretList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/secrets"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -82620,6 +82996,7 @@ func (c *Client) sendWatchCoreV1NamespacedService(ctx context.Context, params Wa
 		otelogen.OperationID("watchCoreV1NamespacedService"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/services/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -82937,6 +83314,7 @@ func (c *Client) sendWatchCoreV1NamespacedServiceAccount(ctx context.Context, pa
 		otelogen.OperationID("watchCoreV1NamespacedServiceAccount"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/serviceaccounts/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -83254,6 +83632,7 @@ func (c *Client) sendWatchCoreV1NamespacedServiceAccountList(ctx context.Context
 		otelogen.OperationID("watchCoreV1NamespacedServiceAccountList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/serviceaccounts"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -83553,6 +83932,7 @@ func (c *Client) sendWatchCoreV1NamespacedServiceList(ctx context.Context, param
 		otelogen.OperationID("watchCoreV1NamespacedServiceList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/services"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -83852,6 +84232,7 @@ func (c *Client) sendWatchCoreV1Node(ctx context.Context, params WatchCoreV1Node
 		otelogen.OperationID("watchCoreV1Node"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/nodes/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -84150,6 +84531,7 @@ func (c *Client) sendWatchCoreV1NodeList(ctx context.Context, params WatchCoreV1
 		otelogen.OperationID("watchCoreV1NodeList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/nodes"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -84430,6 +84812,7 @@ func (c *Client) sendWatchCoreV1PersistentVolume(ctx context.Context, params Wat
 		otelogen.OperationID("watchCoreV1PersistentVolume"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/persistentvolumes/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -84728,6 +85111,7 @@ func (c *Client) sendWatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx co
 		otelogen.OperationID("watchCoreV1PersistentVolumeClaimListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/persistentvolumeclaims"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -85008,6 +85392,7 @@ func (c *Client) sendWatchCoreV1PersistentVolumeList(ctx context.Context, params
 		otelogen.OperationID("watchCoreV1PersistentVolumeList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/persistentvolumes"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -85288,6 +85673,7 @@ func (c *Client) sendWatchCoreV1PodListForAllNamespaces(ctx context.Context, par
 		otelogen.OperationID("watchCoreV1PodListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/pods"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -85568,6 +85954,7 @@ func (c *Client) sendWatchCoreV1PodTemplateListForAllNamespaces(ctx context.Cont
 		otelogen.OperationID("watchCoreV1PodTemplateListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/podtemplates"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -85848,6 +86235,7 @@ func (c *Client) sendWatchCoreV1ReplicationControllerListForAllNamespaces(ctx co
 		otelogen.OperationID("watchCoreV1ReplicationControllerListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/replicationcontrollers"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -86128,6 +86516,7 @@ func (c *Client) sendWatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Co
 		otelogen.OperationID("watchCoreV1ResourceQuotaListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/resourcequotas"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -86408,6 +86797,7 @@ func (c *Client) sendWatchCoreV1SecretListForAllNamespaces(ctx context.Context, 
 		otelogen.OperationID("watchCoreV1SecretListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/secrets"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -86688,6 +87078,7 @@ func (c *Client) sendWatchCoreV1ServiceAccountListForAllNamespaces(ctx context.C
 		otelogen.OperationID("watchCoreV1ServiceAccountListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/serviceaccounts"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -86968,6 +87359,7 @@ func (c *Client) sendWatchCoreV1ServiceListForAllNamespaces(ctx context.Context,
 		otelogen.OperationID("watchCoreV1ServiceListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/services"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -87248,6 +87640,7 @@ func (c *Client) sendWatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx conte
 		otelogen.OperationID("watchDiscoveryV1EndpointSliceListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/watch/endpointslices"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -87528,6 +87921,7 @@ func (c *Client) sendWatchDiscoveryV1NamespacedEndpointSlice(ctx context.Context
 		otelogen.OperationID("watchDiscoveryV1NamespacedEndpointSlice"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -87845,6 +88239,7 @@ func (c *Client) sendWatchDiscoveryV1NamespacedEndpointSliceList(ctx context.Con
 		otelogen.OperationID("watchDiscoveryV1NamespacedEndpointSliceList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -88144,6 +88539,7 @@ func (c *Client) sendWatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx 
 		otelogen.OperationID("watchDiscoveryV1beta1EndpointSliceListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/watch/endpointslices"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -88424,6 +88820,7 @@ func (c *Client) sendWatchDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Co
 		otelogen.OperationID("watchDiscoveryV1beta1NamespacedEndpointSlice"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -88741,6 +89138,7 @@ func (c *Client) sendWatchDiscoveryV1beta1NamespacedEndpointSliceList(ctx contex
 		otelogen.OperationID("watchDiscoveryV1beta1NamespacedEndpointSliceList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -89040,6 +89438,7 @@ func (c *Client) sendWatchEventsV1EventListForAllNamespaces(ctx context.Context,
 		otelogen.OperationID("watchEventsV1EventListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/watch/events"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -89320,6 +89719,7 @@ func (c *Client) sendWatchEventsV1NamespacedEvent(ctx context.Context, params Wa
 		otelogen.OperationID("watchEventsV1NamespacedEvent"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/watch/namespaces/{namespace}/events/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -89637,6 +90037,7 @@ func (c *Client) sendWatchEventsV1NamespacedEventList(ctx context.Context, param
 		otelogen.OperationID("watchEventsV1NamespacedEventList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/watch/namespaces/{namespace}/events"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -89936,6 +90337,7 @@ func (c *Client) sendWatchEventsV1beta1EventListForAllNamespaces(ctx context.Con
 		otelogen.OperationID("watchEventsV1beta1EventListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/watch/events"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -90216,6 +90618,7 @@ func (c *Client) sendWatchEventsV1beta1NamespacedEvent(ctx context.Context, para
 		otelogen.OperationID("watchEventsV1beta1NamespacedEvent"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -90533,6 +90936,7 @@ func (c *Client) sendWatchEventsV1beta1NamespacedEventList(ctx context.Context, 
 		otelogen.OperationID("watchEventsV1beta1NamespacedEventList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -90832,6 +91236,7 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta1FlowSchema(ctx context.Cont
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta1FlowSchema"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -91130,6 +91535,7 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta1FlowSchemaList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -91411,6 +91817,7 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -91709,6 +92116,7 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationL
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -91989,6 +92397,7 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta2FlowSchema(ctx context.Cont
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta2FlowSchema"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -92287,6 +92696,7 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta2FlowSchemaList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -92568,6 +92978,7 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -92866,6 +93277,7 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationL
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -93146,6 +93558,7 @@ func (c *Client) sendWatchInternalApiserverV1alpha1StorageVersion(ctx context.Co
 		otelogen.OperationID("watchInternalApiserverV1alpha1StorageVersion"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -93444,6 +93857,7 @@ func (c *Client) sendWatchInternalApiserverV1alpha1StorageVersionList(ctx contex
 		otelogen.OperationID("watchInternalApiserverV1alpha1StorageVersionList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -93724,6 +94138,7 @@ func (c *Client) sendWatchNetworkingV1IngressClass(ctx context.Context, params W
 		otelogen.OperationID("watchNetworkingV1IngressClass"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/ingressclasses/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -94022,6 +94437,7 @@ func (c *Client) sendWatchNetworkingV1IngressClassList(ctx context.Context, para
 		otelogen.OperationID("watchNetworkingV1IngressClassList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/ingressclasses"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -94302,6 +94718,7 @@ func (c *Client) sendWatchNetworkingV1IngressListForAllNamespaces(ctx context.Co
 		otelogen.OperationID("watchNetworkingV1IngressListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/ingresses"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -94582,6 +94999,7 @@ func (c *Client) sendWatchNetworkingV1NamespacedIngress(ctx context.Context, par
 		otelogen.OperationID("watchNetworkingV1NamespacedIngress"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -94899,6 +95317,7 @@ func (c *Client) sendWatchNetworkingV1NamespacedIngressList(ctx context.Context,
 		otelogen.OperationID("watchNetworkingV1NamespacedIngressList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -95198,6 +95617,7 @@ func (c *Client) sendWatchNetworkingV1NamespacedNetworkPolicy(ctx context.Contex
 		otelogen.OperationID("watchNetworkingV1NamespacedNetworkPolicy"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -95515,6 +95935,7 @@ func (c *Client) sendWatchNetworkingV1NamespacedNetworkPolicyList(ctx context.Co
 		otelogen.OperationID("watchNetworkingV1NamespacedNetworkPolicyList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -95814,6 +96235,7 @@ func (c *Client) sendWatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx cont
 		otelogen.OperationID("watchNetworkingV1NetworkPolicyListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/networkpolicies"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -96094,6 +96516,7 @@ func (c *Client) sendWatchNodeV1RuntimeClass(ctx context.Context, params WatchNo
 		otelogen.OperationID("watchNodeV1RuntimeClass"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1/watch/runtimeclasses/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -96392,6 +96815,7 @@ func (c *Client) sendWatchNodeV1RuntimeClassList(ctx context.Context, params Wat
 		otelogen.OperationID("watchNodeV1RuntimeClassList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1/watch/runtimeclasses"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -96672,6 +97096,7 @@ func (c *Client) sendWatchNodeV1alpha1RuntimeClass(ctx context.Context, params W
 		otelogen.OperationID("watchNodeV1alpha1RuntimeClass"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1alpha1/watch/runtimeclasses/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -96970,6 +97395,7 @@ func (c *Client) sendWatchNodeV1alpha1RuntimeClassList(ctx context.Context, para
 		otelogen.OperationID("watchNodeV1alpha1RuntimeClassList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1alpha1/watch/runtimeclasses"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -97250,6 +97676,7 @@ func (c *Client) sendWatchNodeV1beta1RuntimeClass(ctx context.Context, params Wa
 		otelogen.OperationID("watchNodeV1beta1RuntimeClass"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1beta1/watch/runtimeclasses/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -97548,6 +97975,7 @@ func (c *Client) sendWatchNodeV1beta1RuntimeClassList(ctx context.Context, param
 		otelogen.OperationID("watchNodeV1beta1RuntimeClassList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1beta1/watch/runtimeclasses"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -97828,6 +98256,7 @@ func (c *Client) sendWatchPolicyV1NamespacedPodDisruptionBudget(ctx context.Cont
 		otelogen.OperationID("watchPolicyV1NamespacedPodDisruptionBudget"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -98145,6 +98574,7 @@ func (c *Client) sendWatchPolicyV1NamespacedPodDisruptionBudgetList(ctx context.
 		otelogen.OperationID("watchPolicyV1NamespacedPodDisruptionBudgetList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -98444,6 +98874,7 @@ func (c *Client) sendWatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx co
 		otelogen.OperationID("watchPolicyV1PodDisruptionBudgetListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1/watch/poddisruptionbudgets"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -98724,6 +99155,7 @@ func (c *Client) sendWatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx context
 		otelogen.OperationID("watchPolicyV1beta1NamespacedPodDisruptionBudget"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -99041,6 +99473,7 @@ func (c *Client) sendWatchPolicyV1beta1NamespacedPodDisruptionBudgetList(ctx con
 		otelogen.OperationID("watchPolicyV1beta1NamespacedPodDisruptionBudgetList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -99340,6 +99773,7 @@ func (c *Client) sendWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(c
 		otelogen.OperationID("watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/watch/poddisruptionbudgets"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -99620,6 +100054,7 @@ func (c *Client) sendWatchPolicyV1beta1PodSecurityPolicy(ctx context.Context, pa
 		otelogen.OperationID("watchPolicyV1beta1PodSecurityPolicy"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/watch/podsecuritypolicies/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -99918,6 +100353,7 @@ func (c *Client) sendWatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context
 		otelogen.OperationID("watchPolicyV1beta1PodSecurityPolicyList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/watch/podsecuritypolicies"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -100198,6 +100634,7 @@ func (c *Client) sendWatchRbacAuthorizationV1ClusterRole(ctx context.Context, pa
 		otelogen.OperationID("watchRbacAuthorizationV1ClusterRole"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/clusterroles/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -100496,6 +100933,7 @@ func (c *Client) sendWatchRbacAuthorizationV1ClusterRoleBinding(ctx context.Cont
 		otelogen.OperationID("watchRbacAuthorizationV1ClusterRoleBinding"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -100794,6 +101232,7 @@ func (c *Client) sendWatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.
 		otelogen.OperationID("watchRbacAuthorizationV1ClusterRoleBindingList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -101074,6 +101513,7 @@ func (c *Client) sendWatchRbacAuthorizationV1ClusterRoleList(ctx context.Context
 		otelogen.OperationID("watchRbacAuthorizationV1ClusterRoleList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/clusterroles"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -101354,6 +101794,7 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRole(ctx context.Context,
 		otelogen.OperationID("watchRbacAuthorizationV1NamespacedRole"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -101671,6 +102112,7 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleBinding(ctx context.C
 		otelogen.OperationID("watchRbacAuthorizationV1NamespacedRoleBinding"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -101988,6 +102430,7 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleBindingList(ctx conte
 		otelogen.OperationID("watchRbacAuthorizationV1NamespacedRoleBindingList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -102287,6 +102730,7 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleList(ctx context.Cont
 		otelogen.OperationID("watchRbacAuthorizationV1NamespacedRoleList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -102586,6 +103030,7 @@ func (c *Client) sendWatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx
 		otelogen.OperationID("watchRbacAuthorizationV1RoleBindingListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/rolebindings"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -102866,6 +103311,7 @@ func (c *Client) sendWatchRbacAuthorizationV1RoleListForAllNamespaces(ctx contex
 		otelogen.OperationID("watchRbacAuthorizationV1RoleListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/roles"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -103146,6 +103592,7 @@ func (c *Client) sendWatchSchedulingV1PriorityClass(ctx context.Context, params 
 		otelogen.OperationID("watchSchedulingV1PriorityClass"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/scheduling.k8s.io/v1/watch/priorityclasses/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -103444,6 +103891,7 @@ func (c *Client) sendWatchSchedulingV1PriorityClassList(ctx context.Context, par
 		otelogen.OperationID("watchSchedulingV1PriorityClassList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/scheduling.k8s.io/v1/watch/priorityclasses"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -103724,6 +104172,7 @@ func (c *Client) sendWatchStorageV1CSIDriver(ctx context.Context, params WatchSt
 		otelogen.OperationID("watchStorageV1CSIDriver"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/csidrivers/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -104022,6 +104471,7 @@ func (c *Client) sendWatchStorageV1CSIDriverList(ctx context.Context, params Wat
 		otelogen.OperationID("watchStorageV1CSIDriverList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/csidrivers"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -104302,6 +104752,7 @@ func (c *Client) sendWatchStorageV1CSINode(ctx context.Context, params WatchStor
 		otelogen.OperationID("watchStorageV1CSINode"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/csinodes/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -104600,6 +105051,7 @@ func (c *Client) sendWatchStorageV1CSINodeList(ctx context.Context, params Watch
 		otelogen.OperationID("watchStorageV1CSINodeList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/csinodes"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -104880,6 +105332,7 @@ func (c *Client) sendWatchStorageV1StorageClass(ctx context.Context, params Watc
 		otelogen.OperationID("watchStorageV1StorageClass"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/storageclasses/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -105178,6 +105631,7 @@ func (c *Client) sendWatchStorageV1StorageClassList(ctx context.Context, params 
 		otelogen.OperationID("watchStorageV1StorageClassList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/storageclasses"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -105458,6 +105912,7 @@ func (c *Client) sendWatchStorageV1VolumeAttachment(ctx context.Context, params 
 		otelogen.OperationID("watchStorageV1VolumeAttachment"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/volumeattachments/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -105756,6 +106211,7 @@ func (c *Client) sendWatchStorageV1VolumeAttachmentList(ctx context.Context, par
 		otelogen.OperationID("watchStorageV1VolumeAttachmentList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/volumeattachments"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -106036,6 +106492,7 @@ func (c *Client) sendWatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(
 		otelogen.OperationID("watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -106316,6 +106773,7 @@ func (c *Client) sendWatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx contex
 		otelogen.OperationID("watchStorageV1alpha1NamespacedCSIStorageCapacity"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -106633,6 +107091,7 @@ func (c *Client) sendWatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx co
 		otelogen.OperationID("watchStorageV1alpha1NamespacedCSIStorageCapacityList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -106932,6 +107391,7 @@ func (c *Client) sendWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(c
 		otelogen.OperationID("watchStorageV1beta1CSIStorageCapacityListForAllNamespaces"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/watch/csistoragecapacities"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -107212,6 +107672,7 @@ func (c *Client) sendWatchStorageV1beta1NamespacedCSIStorageCapacity(ctx context
 		otelogen.OperationID("watchStorageV1beta1NamespacedCSIStorageCapacity"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -107529,6 +107990,7 @@ func (c *Client) sendWatchStorageV1beta1NamespacedCSIStorageCapacityList(ctx con
 		otelogen.OperationID("watchStorageV1beta1NamespacedCSIStorageCapacityList"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.

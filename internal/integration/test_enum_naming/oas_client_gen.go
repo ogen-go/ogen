@@ -93,6 +93,7 @@ func (c *Client) sendProbeLiveness(ctx context.Context) (res *ProbeLivenessOK, e
 		otelogen.OperationID("probeLiveness"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/healthz"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.

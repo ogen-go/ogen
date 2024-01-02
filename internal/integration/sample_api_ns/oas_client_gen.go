@@ -231,6 +231,7 @@ func (c *Client) sendDataGetFormat(ctx context.Context, params DataGetFormatPara
 		otelogen.OperationID("dataGetFormat"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/name/{id}/{foo}1234{bar}-{baz}!{kek}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -395,6 +396,7 @@ func (c *Client) sendDefaultTest(ctx context.Context, request *DefaultTest, para
 		otelogen.OperationID("defaultTest"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/defaultTest"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -491,6 +493,7 @@ func (c *Client) sendErrorGet(ctx context.Context) (res *ErrorStatusCode, err er
 		otelogen.OperationID("errorGet"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/error"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -563,6 +566,7 @@ func (c *Client) sendFoobarGet(ctx context.Context, params FoobarGetParams) (res
 		otelogen.OperationID("foobarGet"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/foobar"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -667,6 +671,7 @@ func (c *Client) sendFoobarPost(ctx context.Context, request OptPet) (res Foobar
 		otelogen.OperationID("foobarPost"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/foobar"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -739,6 +744,7 @@ func (c *Client) sendFoobarPut(ctx context.Context) (res *FoobarPutDef, err erro
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/foobar"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -809,6 +815,7 @@ func (c *Client) sendNoAdditionalPropertiesTest(ctx context.Context) (res *NoAdd
 		otelogen.OperationID("noAdditionalPropertiesTest"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/noAdditionalPropertiesTest"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -879,6 +886,7 @@ func (c *Client) sendNullableDefaultResponse(ctx context.Context) (res *NilIntSt
 		otelogen.OperationID("nullableDefaultResponse"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/nullableDefaultResponse"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -949,6 +957,7 @@ func (c *Client) sendOneofBug(ctx context.Context, request *OneOfBugs) (res *One
 		otelogen.OperationID("oneofBug"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/oneofBug"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1021,6 +1030,7 @@ func (c *Client) sendPatternRecursiveMapGet(ctx context.Context) (res PatternRec
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/patternRecursiveMap"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1093,6 +1103,7 @@ func (c *Client) sendPetCreate(ctx context.Context, request OptPet) (res *Pet, e
 		otelogen.OperationID("petCreate"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/pet"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1168,6 +1179,7 @@ func (c *Client) sendPetFriendsNamesByID(ctx context.Context, params PetFriendsN
 		otelogen.OperationID("petFriendsNamesByID"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/pet/friendNames/{id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1258,6 +1270,7 @@ func (c *Client) sendPetGet(ctx context.Context, params PetGetParams) (res PetGe
 		otelogen.OperationID("petGet"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/pet"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1405,6 +1418,7 @@ func (c *Client) sendPetGetAvatarByID(ctx context.Context, params PetGetAvatarBy
 		otelogen.OperationID("petGetAvatarByID"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/pet/avatar"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1495,6 +1509,7 @@ func (c *Client) sendPetGetAvatarByName(ctx context.Context, params PetGetAvatar
 		otelogen.OperationID("petGetAvatarByName"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/pet/{name}/avatar"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1586,6 +1601,7 @@ func (c *Client) sendPetGetByName(ctx context.Context, params PetGetByNameParams
 		otelogen.OperationID("petGetByName"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/pet/{name}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1676,6 +1692,7 @@ func (c *Client) sendPetNameByID(ctx context.Context, params PetNameByIDParams) 
 		otelogen.OperationID("petNameByID"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/pet/name/{id}"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1763,6 +1780,7 @@ func (c *Client) sendPetUpdateNameAliasPost(ctx context.Context, request OptPetN
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/pet/updateNameAlias"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1835,6 +1853,7 @@ func (c *Client) sendPetUpdateNamePost(ctx context.Context, request OptString) (
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/pet/updateName"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -1910,6 +1929,7 @@ func (c *Client) sendPetUploadAvatarByID(ctx context.Context, request PetUploadA
 		otelogen.OperationID("petUploadAvatarByID"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/pet/avatar"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2000,6 +2020,7 @@ func (c *Client) sendRecursiveArrayGet(ctx context.Context) (res RecursiveArray,
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/recursiveArray"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2069,6 +2090,7 @@ func (c *Client) sendRecursiveMapGet(ctx context.Context) (res *RecursiveMap, er
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/recursiveMap"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2139,6 +2161,7 @@ func (c *Client) sendSecurityTest(ctx context.Context) (res string, err error) {
 		otelogen.OperationID("securityTest"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/securityTest"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2241,6 +2264,7 @@ func (c *Client) sendStringIntMapGet(ctx context.Context) (res *StringIntMap, er
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/stringIntMap"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2311,6 +2335,7 @@ func (c *Client) sendTestFloatValidation(ctx context.Context, request *TestFloat
 		otelogen.OperationID("testFloatValidation"),
 		semconv.HTTPMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/testFloatValidation"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2384,6 +2409,7 @@ func (c *Client) sendTestInlineOneof(ctx context.Context) (res *TestInlineOneOf,
 		otelogen.OperationID("testInlineOneof"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/testInlineOneof"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2454,6 +2480,7 @@ func (c *Client) sendTestNullableOneofs(ctx context.Context) (res TestNullableOn
 		otelogen.OperationID("testNullableOneofs"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/testNullableOneofs"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2524,6 +2551,7 @@ func (c *Client) sendTestTuple(ctx context.Context) (res *TupleTest, err error) 
 		otelogen.OperationID("testTuple"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/testTuple"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2594,6 +2622,7 @@ func (c *Client) sendTestTupleNamed(ctx context.Context) (res *TupleNamedTest, e
 		otelogen.OperationID("testTupleNamed"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/testTupleNamed"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
@@ -2664,6 +2693,7 @@ func (c *Client) sendTestUniqueItems(ctx context.Context) (res *UniqueItemsTest,
 		otelogen.OperationID("testUniqueItems"),
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/testUniqueItems"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.

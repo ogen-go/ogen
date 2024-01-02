@@ -87,6 +87,7 @@ func (c *Client) sendFooGet(ctx context.Context) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/foo"),
+		semconv.NetHostName(c.requestURL(ctx).Host),
 	}
 
 	// Run stopwatch.
