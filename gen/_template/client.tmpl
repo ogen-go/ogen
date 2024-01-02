@@ -184,6 +184,7 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 			{{- if not $op.WebhookInfo }}
 			semconv.HTTPMethodKey.String({{ upper $op.Spec.HTTPMethod | quote }}),
 			semconv.HTTPRouteKey.String({{ quote $op.Spec.Path }}),
+			semconv.NetHostName(c.requestURL(ctx).Host),
 			{{- end }}
 		}
 		{{- else }}
