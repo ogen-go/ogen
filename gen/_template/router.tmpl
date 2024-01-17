@@ -214,12 +214,15 @@ func (s *WebhookServer) Handler(webhookName string) http.Handler {
 		switch elem[0] {
 		{{- range $c := $child }}
 		case {{ quote $c.Head }}: // Prefix: {{ quote $c.Prefix }}
+			origElem := elem
 			if l := len({{ quote $c.Prefix }}); len(elem) >= l && elem[0:l] == {{ quote $c.Prefix }} {
 				elem = elem[l:]
 			} else {
 				break
 			}
 			{{ template "route_edge" router_elem $c $.ParameterIndex }}
+			
+			elem = origElem
 		{{- end }}
 		}
 	{{- end }}
@@ -299,12 +302,15 @@ func (s *WebhookServer) Handler(webhookName string) http.Handler {
 		switch elem[0] {
 		{{- range $c := $child }}
 		case {{ quote $c.Head }}: // Prefix: {{ quote $c.Prefix }}
+			origElem := elem
 			if l := len({{ quote $c.Prefix }}); len(elem) >= l && elem[0:l] == {{ quote $c.Prefix }} {
 				elem = elem[l:]
 			} else {
 				break
 			}
 			{{ template "find_edge" router_elem $c $.ParameterIndex }}
+
+			elem = origElem
 		{{- end }}
 		}
 	{{- end }}
