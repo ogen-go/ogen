@@ -49,6 +49,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/"
+			origElem := elem
 			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 				elem = elem[l:]
 			} else {
@@ -60,6 +61,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch elem[0] {
 			case 'a': // Prefix: "anyContentTypeBinaryStringSchema"
+				origElem := elem
 				if l := len("anyContentTypeBinaryStringSchema"); len(elem) >= l && elem[0:l] == "anyContentTypeBinaryStringSchema" {
 					elem = elem[l:]
 				} else {
@@ -78,6 +80,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 'D': // Prefix: "Default"
+					origElem := elem
 					if l := len("Default"); len(elem) >= l && elem[0:l] == "Default" {
 						elem = elem[l:]
 					} else {
@@ -95,8 +98,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 						return
 					}
+
+					elem = origElem
 				}
+
+				elem = origElem
 			case 'c': // Prefix: "combined"
+				origElem := elem
 				if l := len("combined"); len(elem) >= l && elem[0:l] == "combined" {
 					elem = elem[l:]
 				} else {
@@ -114,7 +122,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 					return
 				}
+
+				elem = origElem
 			case 'h': // Prefix: "headers"
+				origElem := elem
 				if l := len("headers"); len(elem) >= l && elem[0:l] == "headers" {
 					elem = elem[l:]
 				} else {
@@ -126,6 +137,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case '2': // Prefix: "200"
+					origElem := elem
 					if l := len("200"); len(elem) >= l && elem[0:l] == "200" {
 						elem = elem[l:]
 					} else {
@@ -143,7 +155,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 						return
 					}
+
+					elem = origElem
 				case 'C': // Prefix: "Combined"
+					origElem := elem
 					if l := len("Combined"); len(elem) >= l && elem[0:l] == "Combined" {
 						elem = elem[l:]
 					} else {
@@ -161,7 +176,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 						return
 					}
+
+					elem = origElem
 				case 'D': // Prefix: "Default"
+					origElem := elem
 					if l := len("Default"); len(elem) >= l && elem[0:l] == "Default" {
 						elem = elem[l:]
 					} else {
@@ -179,7 +197,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 						return
 					}
+
+					elem = origElem
 				case 'J': // Prefix: "JSON"
+					origElem := elem
 					if l := len("JSON"); len(elem) >= l && elem[0:l] == "JSON" {
 						elem = elem[l:]
 					} else {
@@ -197,7 +218,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 						return
 					}
+
+					elem = origElem
 				case 'P': // Prefix: "Pattern"
+					origElem := elem
 					if l := len("Pattern"); len(elem) >= l && elem[0:l] == "Pattern" {
 						elem = elem[l:]
 					} else {
@@ -215,8 +239,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 						return
 					}
+
+					elem = origElem
 				}
+
+				elem = origElem
 			case 'i': // Prefix: "intersectPatternCode"
+				origElem := elem
 				if l := len("intersectPatternCode"); len(elem) >= l && elem[0:l] == "intersectPatternCode" {
 					elem = elem[l:]
 				} else {
@@ -234,7 +263,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 					return
 				}
+
+				elem = origElem
 			case 'm': // Prefix: "multipleGenericResponses"
+				origElem := elem
 				if l := len("multipleGenericResponses"); len(elem) >= l && elem[0:l] == "multipleGenericResponses" {
 					elem = elem[l:]
 				} else {
@@ -252,7 +284,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 					return
 				}
+
+				elem = origElem
 			case 'o': // Prefix: "o"
+				origElem := elem
 				if l := len("o"); len(elem) >= l && elem[0:l] == "o" {
 					elem = elem[l:]
 				} else {
@@ -264,6 +299,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 'c': // Prefix: "ctetStream"
+					origElem := elem
 					if l := len("ctetStream"); len(elem) >= l && elem[0:l] == "ctetStream" {
 						elem = elem[l:]
 					} else {
@@ -275,6 +311,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case 'B': // Prefix: "BinaryStringSchema"
+						origElem := elem
 						if l := len("BinaryStringSchema"); len(elem) >= l && elem[0:l] == "BinaryStringSchema" {
 							elem = elem[l:]
 						} else {
@@ -292,7 +329,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 							return
 						}
+
+						elem = origElem
 					case 'E': // Prefix: "EmptySchema"
+						origElem := elem
 						if l := len("EmptySchema"); len(elem) >= l && elem[0:l] == "EmptySchema" {
 							elem = elem[l:]
 						} else {
@@ -310,8 +350,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 							return
 						}
+
+						elem = origElem
 					}
+
+					elem = origElem
 				case 'p': // Prefix: "ptionalHeaders"
+					origElem := elem
 					if l := len("ptionalHeaders"); len(elem) >= l && elem[0:l] == "ptionalHeaders" {
 						elem = elem[l:]
 					} else {
@@ -329,8 +374,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 						return
 					}
+
+					elem = origElem
 				}
+
+				elem = origElem
 			case 's': // Prefix: "streamJSON"
+				origElem := elem
 				if l := len("streamJSON"); len(elem) >= l && elem[0:l] == "streamJSON" {
 					elem = elem[l:]
 				} else {
@@ -348,7 +398,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 					return
 				}
+
+				elem = origElem
 			case 't': // Prefix: "textPlainBinaryStringSchema"
+				origElem := elem
 				if l := len("textPlainBinaryStringSchema"); len(elem) >= l && elem[0:l] == "textPlainBinaryStringSchema" {
 					elem = elem[l:]
 				} else {
@@ -366,7 +419,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 					return
 				}
+
+				elem = origElem
 			}
+
+			elem = origElem
 		}
 	}
 	s.notFound(w, r)
@@ -448,6 +505,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/"
+			origElem := elem
 			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 				elem = elem[l:]
 			} else {
@@ -459,6 +517,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 			}
 			switch elem[0] {
 			case 'a': // Prefix: "anyContentTypeBinaryStringSchema"
+				origElem := elem
 				if l := len("anyContentTypeBinaryStringSchema"); len(elem) >= l && elem[0:l] == "anyContentTypeBinaryStringSchema" {
 					elem = elem[l:]
 				} else {
@@ -481,6 +540,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 				switch elem[0] {
 				case 'D': // Prefix: "Default"
+					origElem := elem
 					if l := len("Default"); len(elem) >= l && elem[0:l] == "Default" {
 						elem = elem[l:]
 					} else {
@@ -502,8 +562,13 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							return
 						}
 					}
+
+					elem = origElem
 				}
+
+				elem = origElem
 			case 'c': // Prefix: "combined"
+				origElem := elem
 				if l := len("combined"); len(elem) >= l && elem[0:l] == "combined" {
 					elem = elem[l:]
 				} else {
@@ -525,7 +590,10 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						return
 					}
 				}
+
+				elem = origElem
 			case 'h': // Prefix: "headers"
+				origElem := elem
 				if l := len("headers"); len(elem) >= l && elem[0:l] == "headers" {
 					elem = elem[l:]
 				} else {
@@ -537,6 +605,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 				switch elem[0] {
 				case '2': // Prefix: "200"
+					origElem := elem
 					if l := len("200"); len(elem) >= l && elem[0:l] == "200" {
 						elem = elem[l:]
 					} else {
@@ -558,7 +627,10 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							return
 						}
 					}
+
+					elem = origElem
 				case 'C': // Prefix: "Combined"
+					origElem := elem
 					if l := len("Combined"); len(elem) >= l && elem[0:l] == "Combined" {
 						elem = elem[l:]
 					} else {
@@ -580,7 +652,10 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							return
 						}
 					}
+
+					elem = origElem
 				case 'D': // Prefix: "Default"
+					origElem := elem
 					if l := len("Default"); len(elem) >= l && elem[0:l] == "Default" {
 						elem = elem[l:]
 					} else {
@@ -602,7 +677,10 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							return
 						}
 					}
+
+					elem = origElem
 				case 'J': // Prefix: "JSON"
+					origElem := elem
 					if l := len("JSON"); len(elem) >= l && elem[0:l] == "JSON" {
 						elem = elem[l:]
 					} else {
@@ -624,7 +702,10 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							return
 						}
 					}
+
+					elem = origElem
 				case 'P': // Prefix: "Pattern"
+					origElem := elem
 					if l := len("Pattern"); len(elem) >= l && elem[0:l] == "Pattern" {
 						elem = elem[l:]
 					} else {
@@ -646,8 +727,13 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							return
 						}
 					}
+
+					elem = origElem
 				}
+
+				elem = origElem
 			case 'i': // Prefix: "intersectPatternCode"
+				origElem := elem
 				if l := len("intersectPatternCode"); len(elem) >= l && elem[0:l] == "intersectPatternCode" {
 					elem = elem[l:]
 				} else {
@@ -669,7 +755,10 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						return
 					}
 				}
+
+				elem = origElem
 			case 'm': // Prefix: "multipleGenericResponses"
+				origElem := elem
 				if l := len("multipleGenericResponses"); len(elem) >= l && elem[0:l] == "multipleGenericResponses" {
 					elem = elem[l:]
 				} else {
@@ -691,7 +780,10 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						return
 					}
 				}
+
+				elem = origElem
 			case 'o': // Prefix: "o"
+				origElem := elem
 				if l := len("o"); len(elem) >= l && elem[0:l] == "o" {
 					elem = elem[l:]
 				} else {
@@ -703,6 +795,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 				switch elem[0] {
 				case 'c': // Prefix: "ctetStream"
+					origElem := elem
 					if l := len("ctetStream"); len(elem) >= l && elem[0:l] == "ctetStream" {
 						elem = elem[l:]
 					} else {
@@ -714,6 +807,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 					switch elem[0] {
 					case 'B': // Prefix: "BinaryStringSchema"
+						origElem := elem
 						if l := len("BinaryStringSchema"); len(elem) >= l && elem[0:l] == "BinaryStringSchema" {
 							elem = elem[l:]
 						} else {
@@ -735,7 +829,10 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								return
 							}
 						}
+
+						elem = origElem
 					case 'E': // Prefix: "EmptySchema"
+						origElem := elem
 						if l := len("EmptySchema"); len(elem) >= l && elem[0:l] == "EmptySchema" {
 							elem = elem[l:]
 						} else {
@@ -757,8 +854,13 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								return
 							}
 						}
+
+						elem = origElem
 					}
+
+					elem = origElem
 				case 'p': // Prefix: "ptionalHeaders"
+					origElem := elem
 					if l := len("ptionalHeaders"); len(elem) >= l && elem[0:l] == "ptionalHeaders" {
 						elem = elem[l:]
 					} else {
@@ -780,8 +882,13 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							return
 						}
 					}
+
+					elem = origElem
 				}
+
+				elem = origElem
 			case 's': // Prefix: "streamJSON"
+				origElem := elem
 				if l := len("streamJSON"); len(elem) >= l && elem[0:l] == "streamJSON" {
 					elem = elem[l:]
 				} else {
@@ -803,7 +910,10 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						return
 					}
 				}
+
+				elem = origElem
 			case 't': // Prefix: "textPlainBinaryStringSchema"
+				origElem := elem
 				if l := len("textPlainBinaryStringSchema"); len(elem) >= l && elem[0:l] == "textPlainBinaryStringSchema" {
 					elem = elem[l:]
 				} else {
@@ -825,7 +935,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						return
 					}
 				}
+
+				elem = origElem
 			}
+
+			elem = origElem
 		}
 	}
 	return r, false

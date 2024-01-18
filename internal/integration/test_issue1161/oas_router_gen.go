@@ -49,53 +49,106 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			break
 		}
 		switch elem[0] {
-		case '/': // Prefix: "/pets"
+		case '/': // Prefix: "/foo/"
 			origElem := elem
-			if l := len("/pets"); len(elem) >= l && elem[0:l] == "/pets" {
+			if l := len("/foo/"); len(elem) >= l && elem[0:l] == "/foo/" {
 				elem = elem[l:]
 			} else {
 				break
 			}
 
 			if len(elem) == 0 {
-				switch r.Method {
-				case "GET":
-					s.handleFindPetsRequest([0]string{}, elemIsEscaped, w, r)
-				case "POST":
-					s.handleAddPetRequest([0]string{}, elemIsEscaped, w, r)
-				default:
-					s.notAllowed(w, r, "GET,POST")
-				}
-
-				return
+				break
 			}
 			switch elem[0] {
-			case '/': // Prefix: "/"
+			case 'b': // Prefix: "bar/"
 				origElem := elem
-				if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+				if l := len("bar/"); len(elem) >= l && elem[0:l] == "bar/" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
-				// Param: "id"
-				// Leaf parameter
-				args[0] = elem
-				elem = ""
+				if len(elem) == 0 {
+					break
+				}
+				switch elem[0] {
+				case 'b': // Prefix: "baz"
+					origElem := elem
+					if l := len("baz"); len(elem) >= l && elem[0:l] == "baz" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleFooBarBazGetRequest([0]string{}, elemIsEscaped, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
+
+						return
+					}
+
+					elem = origElem
+				case 'q': // Prefix: "qux"
+					origElem := elem
+					if l := len("qux"); len(elem) >= l && elem[0:l] == "qux" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleFooBarQuxGetRequest([0]string{}, elemIsEscaped, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
+
+						return
+					}
+
+					elem = origElem
+				}
+
+				elem = origElem
+			}
+			// Param: "param"
+			// Match until "/"
+			idx := strings.IndexByte(elem, '/')
+			if idx < 0 {
+				idx = len(elem)
+			}
+			args[0] = elem[:idx]
+			elem = elem[idx:]
+
+			if len(elem) == 0 {
+				break
+			}
+			switch elem[0] {
+			case '/': // Prefix: "/xyz"
+				origElem := elem
+				if l := len("/xyz"); len(elem) >= l && elem[0:l] == "/xyz" {
+					elem = elem[l:]
+				} else {
+					break
+				}
 
 				if len(elem) == 0 {
 					// Leaf node.
 					switch r.Method {
-					case "DELETE":
-						s.handleDeletePetRequest([1]string{
-							args[0],
-						}, elemIsEscaped, w, r)
 					case "GET":
-						s.handleFindPetByIDRequest([1]string{
+						s.handleFooParamXyzGetRequest([1]string{
 							args[0],
 						}, elemIsEscaped, w, r)
 					default:
-						s.notAllowed(w, r, "DELETE,GET")
+						s.notAllowed(w, r, "GET")
 					}
 
 					return
@@ -185,67 +238,113 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 			break
 		}
 		switch elem[0] {
-		case '/': // Prefix: "/pets"
+		case '/': // Prefix: "/foo/"
 			origElem := elem
-			if l := len("/pets"); len(elem) >= l && elem[0:l] == "/pets" {
+			if l := len("/foo/"); len(elem) >= l && elem[0:l] == "/foo/" {
 				elem = elem[l:]
 			} else {
 				break
 			}
 
 			if len(elem) == 0 {
-				switch method {
-				case "GET":
-					r.name = "FindPets"
-					r.summary = ""
-					r.operationID = "findPets"
-					r.pathPattern = "/pets"
-					r.args = args
-					r.count = 0
-					return r, true
-				case "POST":
-					r.name = "AddPet"
-					r.summary = ""
-					r.operationID = "addPet"
-					r.pathPattern = "/pets"
-					r.args = args
-					r.count = 0
-					return r, true
-				default:
-					return
-				}
+				break
 			}
 			switch elem[0] {
-			case '/': // Prefix: "/"
+			case 'b': // Prefix: "bar/"
 				origElem := elem
-				if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+				if l := len("bar/"); len(elem) >= l && elem[0:l] == "bar/" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
-				// Param: "id"
-				// Leaf parameter
-				args[0] = elem
-				elem = ""
+				if len(elem) == 0 {
+					break
+				}
+				switch elem[0] {
+				case 'b': // Prefix: "baz"
+					origElem := elem
+					if l := len("baz"); len(elem) >= l && elem[0:l] == "baz" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						switch method {
+						case "GET":
+							// Leaf: FooBarBazGet
+							r.name = "FooBarBazGet"
+							r.summary = ""
+							r.operationID = ""
+							r.pathPattern = "/foo/bar/baz"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
+					}
+
+					elem = origElem
+				case 'q': // Prefix: "qux"
+					origElem := elem
+					if l := len("qux"); len(elem) >= l && elem[0:l] == "qux" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						switch method {
+						case "GET":
+							// Leaf: FooBarQuxGet
+							r.name = "FooBarQuxGet"
+							r.summary = ""
+							r.operationID = ""
+							r.pathPattern = "/foo/bar/qux"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
+					}
+
+					elem = origElem
+				}
+
+				elem = origElem
+			}
+			// Param: "param"
+			// Match until "/"
+			idx := strings.IndexByte(elem, '/')
+			if idx < 0 {
+				idx = len(elem)
+			}
+			args[0] = elem[:idx]
+			elem = elem[idx:]
+
+			if len(elem) == 0 {
+				break
+			}
+			switch elem[0] {
+			case '/': // Prefix: "/xyz"
+				origElem := elem
+				if l := len("/xyz"); len(elem) >= l && elem[0:l] == "/xyz" {
+					elem = elem[l:]
+				} else {
+					break
+				}
 
 				if len(elem) == 0 {
 					switch method {
-					case "DELETE":
-						// Leaf: DeletePet
-						r.name = "DeletePet"
-						r.summary = ""
-						r.operationID = "deletePet"
-						r.pathPattern = "/pets/{id}"
-						r.args = args
-						r.count = 1
-						return r, true
 					case "GET":
-						// Leaf: FindPetByID
-						r.name = "FindPetByID"
+						// Leaf: FooParamXyzGet
+						r.name = "FooParamXyzGet"
 						r.summary = ""
-						r.operationID = "find pet by id"
-						r.pathPattern = "/pets/{id}"
+						r.operationID = ""
+						r.pathPattern = "/foo/{param}/xyz"
 						r.args = args
 						r.count = 1
 						return r, true

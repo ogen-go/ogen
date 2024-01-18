@@ -14,6 +14,7 @@ import (
 	"github.com/stretchr/testify/require"
 
 	api "github.com/ogen-go/ogen/internal/integration/sample_api"
+	issue1161 "github.com/ogen-go/ogen/internal/integration/test_issue1161"
 )
 
 func BenchmarkFindRoute(b *testing.B) {
@@ -242,4 +243,48 @@ func TestComplicatedRoute(t *testing.T) {
 		a.NoError(err)
 		a.Equal(expectedResult, h)
 	})
+}
+
+type issue1161Server struct{}
+
+func (issue1161Server) FooBarBazGet(ctx context.Context) (string, error) {
+	return "baz", nil
+}
+
+func (issue1161Server) FooBarQuxGet(ctx context.Context) (string, error) {
+	return "qux", nil
+}
+
+func (issue1161Server) FooParamXyzGet(ctx context.Context, params issue1161.FooParamXyzGetParams) (string, error) {
+	return params.Param, nil
+}
+
+func TestIssue1161(t *testing.T) {
+	ctx := context.Background()
+
+	handler := &issue1161Server{}
+	h, err := issue1161.NewServer(handler)
+	require.NoError(t, err)
+	s := httptest.NewServer(h)
+	defer t.Cleanup(s.Close)
+
+	httpClient := s.Client()
+	client, err := issue1161.NewClient(s.URL,
+		issue1161.WithClient(httpClient),
+	)
+	require.NoError(t, err)
+
+	r, err := client.FooBarBazGet(ctx)
+	require.NoError(t, err)
+	require.Equal(t, "baz", r)
+
+	r, err = client.FooBarQuxGet(ctx)
+	require.NoError(t, err)
+	require.Equal(t, "qux", r)
+
+	r, err = client.FooParamXyzGet(ctx, issue1161.FooParamXyzGetParams{
+		Param: "hello",
+	})
+	require.NoError(t, err)
+	require.Equal(t, "hello", r)
 }

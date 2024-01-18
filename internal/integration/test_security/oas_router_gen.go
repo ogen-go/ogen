@@ -49,6 +49,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/"
+			origElem := elem
 			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 				elem = elem[l:]
 			} else {
@@ -60,6 +61,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch elem[0] {
 			case 'c': // Prefix: "customSecurity"
+				origElem := elem
 				if l := len("customSecurity"); len(elem) >= l && elem[0:l] == "customSecurity" {
 					elem = elem[l:]
 				} else {
@@ -77,7 +79,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 					return
 				}
+
+				elem = origElem
 			case 'd': // Prefix: "disjointSecurity"
+				origElem := elem
 				if l := len("disjointSecurity"); len(elem) >= l && elem[0:l] == "disjointSecurity" {
 					elem = elem[l:]
 				} else {
@@ -95,7 +100,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 					return
 				}
+
+				elem = origElem
 			case 'i': // Prefix: "intersectSecurity"
+				origElem := elem
 				if l := len("intersectSecurity"); len(elem) >= l && elem[0:l] == "intersectSecurity" {
 					elem = elem[l:]
 				} else {
@@ -113,7 +121,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 					return
 				}
+
+				elem = origElem
 			case 'o': // Prefix: "optionalSecurity"
+				origElem := elem
 				if l := len("optionalSecurity"); len(elem) >= l && elem[0:l] == "optionalSecurity" {
 					elem = elem[l:]
 				} else {
@@ -131,7 +142,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 					return
 				}
+
+				elem = origElem
 			}
+
+			elem = origElem
 		}
 	}
 	s.notFound(w, r)
@@ -213,6 +228,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/"
+			origElem := elem
 			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 				elem = elem[l:]
 			} else {
@@ -224,6 +240,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 			}
 			switch elem[0] {
 			case 'c': // Prefix: "customSecurity"
+				origElem := elem
 				if l := len("customSecurity"); len(elem) >= l && elem[0:l] == "customSecurity" {
 					elem = elem[l:]
 				} else {
@@ -245,7 +262,10 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						return
 					}
 				}
+
+				elem = origElem
 			case 'd': // Prefix: "disjointSecurity"
+				origElem := elem
 				if l := len("disjointSecurity"); len(elem) >= l && elem[0:l] == "disjointSecurity" {
 					elem = elem[l:]
 				} else {
@@ -267,7 +287,10 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						return
 					}
 				}
+
+				elem = origElem
 			case 'i': // Prefix: "intersectSecurity"
+				origElem := elem
 				if l := len("intersectSecurity"); len(elem) >= l && elem[0:l] == "intersectSecurity" {
 					elem = elem[l:]
 				} else {
@@ -289,7 +312,10 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						return
 					}
 				}
+
+				elem = origElem
 			case 'o': // Prefix: "optionalSecurity"
+				origElem := elem
 				if l := len("optionalSecurity"); len(elem) >= l && elem[0:l] == "optionalSecurity" {
 					elem = elem[l:]
 				} else {
@@ -311,7 +337,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						return
 					}
 				}
+
+				elem = origElem
 			}
+
+			elem = origElem
 		}
 	}
 	return r, false
