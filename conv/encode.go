@@ -1,6 +1,7 @@
 package conv
 
 import (
+	"net"
 	"net/netip"
 	"net/url"
 	"strconv"
@@ -41,6 +42,8 @@ func UnixMilliToString(v time.Time) string   { return StringInt64ToString(v.Unix
 func DurationToString(v time.Duration) string { return v.String() }
 
 func UUIDToString(v uuid.UUID) string { return v.String() }
+
+func MACToString(v net.HardwareAddr) string { return v.String() }
 
 func AddrToString(v netip.Addr) string { return v.String() }
 
@@ -103,4 +106,8 @@ func BoolArrayToString(vs []bool) []string {
 
 func UUIDArrayToString(vs []uuid.UUID) []string {
 	return encodeArray(vs, UUIDToString)
+}
+
+func MACArrayToString(vs []net.HardwareAddr) []string {
+	return encodeArray(vs, MACToString)
 }

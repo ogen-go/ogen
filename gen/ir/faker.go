@@ -31,6 +31,8 @@ func (t *Type) FakeValue() string {
 		return "time.Duration(5 * time.Second)"
 	case UUID:
 		return "uuid.New()"
+	case MAC:
+		return `net.ParseMAC("11:22:33:44:55:66")`
 	case IP:
 		if s := t.Schema; s != nil && s.Format == "ipv6" {
 			return `netip.MustParseAddr("::1")`

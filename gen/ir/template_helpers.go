@@ -22,7 +22,7 @@ func (t *Type) EncodeFn() string {
 		Float32, Float64,
 		String, Bool:
 		return naming.Capitalize(t.Primitive.String())
-	case UUID, Time, IP, Duration, URL:
+	case UUID, Time, MAC, IP, Duration, URL:
 		return naming.AfterDot(t.Primitive.String())
 	default:
 		return ""
