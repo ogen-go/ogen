@@ -39,6 +39,8 @@ type Spec struct {
 	// REQUIRED. This string MUST be the version number of the OpenAPI Specification
 	// that the OpenAPI document uses.
 	OpenAPI string `json:"openapi" yaml:"openapi"`
+	// Added just to detect v2 openAPI specifications and to pretty print version error.
+	Swagger string `json:"swagger,omitempty" yaml:"swagger,omitempty"`
 	// REQUIRED. Provides metadata about the API.
 	//
 	// The metadata MAY be used by tooling as required.

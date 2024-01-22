@@ -51,3 +51,16 @@ func TestComponents_Init(t *testing.T) {
 		a.NotNil(f.Interface())
 	}
 }
+
+func TestSwaggerExtraction(t *testing.T) {
+	a := require.New(t)
+
+	{
+		var (
+			input = `{"swagger": "2.0.0"}`
+			s     ogen.Spec
+		)
+		a.NoError(yaml.Unmarshal([]byte(input), &s))
+		a.Equal("2.0.0", s.Swagger)
+	}
+}
