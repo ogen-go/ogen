@@ -12,11 +12,17 @@ func (p *parser) parseVersion() (rerr error) {
 	defer func() {
 		rerr = p.wrapLocation(p.rootFile, p.rootLoc.Field("openapi"), rerr)
 	}()
-	if err := p.version.UnmarshalText([]byte(p.spec.OpenAPI)); err != nil {
+
+	version := p.spec.OpenAPI
+	if version == "" {
+		version = p.spec.Swagger
+	}
+
+	if err := p.version.UnmarshalText([]byte(version)); err != nil {
 		return errors.Wrap(err, "invalid version")
 	}
 	if p.version.Major != 3 || p.version.Minor > 1 {
-		return errors.Errorf("unsupported version: %s", p.spec.OpenAPI)
+		return errors.Errorf("unsupported version: %s", version)
 	}
 	return nil
 }
