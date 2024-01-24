@@ -140,6 +140,8 @@ func (j JSON) Format() string {
 		return "IPv4"
 	case "ipv6":
 		return "IPv6"
+	case "mac":
+		return "MAC"
 	case "uri":
 		return "URI"
 	case "int", "int8", "int16", "int32", "int64",
