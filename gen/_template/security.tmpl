@@ -62,13 +62,13 @@ func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationName s
 		value := q.Get(parameterName)
         {{- else if $s.Kind.IsCookie }}
 	    var value string
-		switch cookie, err := req.Cookie(parameterName); err {
-		case nil:
+		switch cookie, err := req.Cookie(parameterName); {
+		case err == nil: // if NO error
 			value = cookie.Value
-		case http.ErrNoCookie:
+		case errors.Is(err, http.ErrNoCookie):
 			return ctx, false, nil
 		default:
-			return nil, false, err
+			return nil, false, errors.Wrap(err, "get cookie value")
 		}
 		{{- else }}
             {{ errorf "unexpected security %q:%q" $s.Kind $s.Format }}
