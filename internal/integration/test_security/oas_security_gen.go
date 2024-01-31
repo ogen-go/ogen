@@ -81,13 +81,13 @@ func (s *Server) securityCookieKey(ctx context.Context, operationName string, re
 	var t CookieKey
 	const parameterName = "api_key"
 	var value string
-	switch cookie, err := req.Cookie(parameterName); err {
-	case nil:
+	switch cookie, err := req.Cookie(parameterName); {
+	case err == nil: // if NO error
 		value = cookie.Value
-	case http.ErrNoCookie:
+	case errors.Is(err, http.ErrNoCookie):
 		return ctx, false, nil
 	default:
-		return nil, false, err
+		return nil, false, errors.Wrap(err, "get cookie value")
 	}
 	t.APIKey = value
 	rctx, err := s.sec.HandleCookieKey(ctx, operationName, t)
