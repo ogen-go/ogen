@@ -32,7 +32,7 @@ func (t *Type) FakeValue() string {
 	case UUID:
 		return "uuid.New()"
 	case MAC:
-		return `net.ParseMAC("11:22:33:44:55:66")`
+		return `net.HardwareAddr{0x11, 0x22, 0x33, 0x44, 0x55, 0x66}`
 	case IP:
 		if s := t.Schema; s != nil && s.Format == "ipv6" {
 			return `netip.MustParseAddr("::1")`
